@@ -1,5 +1,6 @@
 import json
 import threading
+from dataclasses import dataclass, field
 
 from websocket import WebSocket
 
@@ -21,7 +22,6 @@ def send_json_rpc_request(
         params: dict = None
 ):
     request_id = JSONRPCRequestID.get()
-
     request = {
         'id': request_id,
         'method': method,
@@ -31,3 +31,13 @@ def send_json_rpc_request(
         request['params'] = params
 
     ws.send(json.dumps(request))
+
+
+@dataclass
+class Connection:
+    in_flight_requests: dict = field(
+        init=False
+    )
+
+    def __post_init__(self):
+        self.in_flight_requests = {}

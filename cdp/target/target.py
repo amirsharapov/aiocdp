@@ -3,7 +3,8 @@ from typing import Optional
 
 from websocket import WebSocket
 
-from cdp.domains.domains import Domains
+from cdp.domains import Domains
+from cdp.domains.domains import TargetDomains
 
 
 @dataclass
@@ -12,8 +13,12 @@ class Target:
     connection: Optional['WebSocket'] = field(init=False)
 
     def __post_init__(self):
-        self.domains = Domains(self)
+        self.domains = TargetDomains(self)
         self.connection = None
 
     def send_command(self, method: str, params: dict = None):
         raise NotImplementedError
+
+
+target = Target()
+target.domains.accessibility.some_other_method(1)

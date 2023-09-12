@@ -1,24 +1,16 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from cdp.domains.dynamic import DynamicDomain
+from cdp.domains.accessibility import Accessibility
 
 if TYPE_CHECKING:
     from cdp.target import Target
 
 
 @dataclass
-class Domains:
+class TargetDomains:
     target: 'Target'
 
-    def __post_init__(self):
-        self._domains = {}
-
-    def __getattr__(self, item: str):
-        if item not in self._domains:
-            self._domains[item] = DynamicDomain(
-                item,
-                self
-            )
-
-        return self._domains[item]
+    accessibility: 'Accessibility' = field(
+        init=False
+    )
