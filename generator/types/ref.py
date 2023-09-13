@@ -1,8 +1,7 @@
 from dataclasses import dataclass
 
-from generator.utils import MaybeUndefined
 from generator.types.base import Node
-from generator.utils import UNDEFINED
+from generator.utils import UNDEFINED, MaybeUndefined
 
 
 @dataclass

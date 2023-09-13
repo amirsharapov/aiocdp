@@ -1,5 +1,4 @@
 import logging
-from collections import defaultdict
 from dataclasses import dataclass
 
 from generator.types.base import ComplexNode
@@ -8,13 +7,9 @@ from generator.types.event import Event
 from generator.types.ref import Ref
 from generator.types.type import Type
 from generator.utils import (
-    MaybeUndefined,
+    convert_to_snake_case,
     UNDEFINED,
-    concat_lines,
-    is_defined,
-    split_ref,
-    snake_case,
-    create_vertical_comma_separated_list
+    MaybeUndefined
 )
 
 logger = logging.getLogger(
@@ -52,7 +47,7 @@ class Domain(ComplexNode):
 
     @property
     def module_name(self):
-        return snake_case(self.domain)
+        return convert_to_snake_case(self.domain)
 
     def get_refs(self) -> list[Ref]:
         refs = []
@@ -67,66 +62,3 @@ class Domain(ComplexNode):
             refs += event.get_refs()
 
         return refs
-
-    def generate_class_definition(self):
-        result = concat_lines([
-            f'@dataclass',
-            f'class {self.domain}(Domain):',
-        ])
-
-        if is_defined(self.description):
-            description = self.description.split('\n')
-            description = '\n    '.join(description)
-
-        else:
-            description = 'No description.'
-
-        result = concat_lines([
-            result,
-            f'    """',
-            f'    {description}',
-            f'    """'
-        ])
-
-        logger.debug(result)
-
-        return result
-
-    def generate_type_imports(self):
-        refs = self.get_refs()
-        import_tree = defaultdict(set)
-
-        for ref in refs:
-            domain, type_ = split_ref(ref)
-            domain = domain or self.domain
-            domain = snake_case(domain)
-
-            import_tree[domain].add(type_)
-
-        imports = []
-
-        for domain, types in import_tree.items():
-
-            lines = [
-                f'from cdp.domains.{domain}.types import (',
-                create_vertical_comma_separated_list(
-                    sorted(types),
-                    4,
-                    False
-                ),
-                f')'
-            ]
-
-            imports.append(
-                concat_lines(
-                    lines
-                )
-            )
-
-        result = concat_lines(
-            sorted(imports)
-        )
-
-        logger.debug(result)
-
-        return result

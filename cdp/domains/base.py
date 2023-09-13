@@ -1,17 +1,17 @@
 from abc import ABC
 from dataclasses import dataclass
 
-
-@dataclass
-class Domain:
-    def send_command(
-            self,
-            method: str,
-            params: dict
-    ):
-        pass
+from cdp.target import Target
 
 
 @dataclass
-class ComplexType(ABC):
-    pass
+class BaseDomain(ABC):
+    target: 'Target'
+
+    def _send_command(self, method: str, params: dict = None):
+        params = params or {}
+
+        return self.target.send_command(
+            method,
+            params
+        )

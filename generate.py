@@ -1,12 +1,12 @@
-import ast
 import json
 import logging
+import shutil
 from pathlib import Path
 
 from generator.types.protocol import Protocol
 from generator import generators
-
-ROOT = '.'
+from generator.utils import convert_to_snake_case
+from generator.visitor import SourceCodeGenerator
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -32,11 +32,30 @@ def main():
         'static/protocols/1.3/js_protocol.json'
     ])
 
+    Path('cdp/domains').mkdir(parents=True, exist_ok=True)
+    Path('cdp/domains/__init__.py').touch()
+
+    for item in Path('cdp/domains').iterdir():
+        if item.name not in ['__init__.py', 'base.py']:
+            if item.is_dir():
+                shutil.rmtree(item)
+            else:
+                item.unlink()
+
     for protocol in protocols:
         for domain in protocol.domains:
-            domain_module = generators.domain.generate(domain)
-            ast.unparse(domain_module)
-            module_types = generators.types.generate(domain)
+            base_path = Path(f'cdp/domains/{convert_to_snake_case(domain.domain)}')
+            base_path.mkdir(parents=True, exist_ok=True)
+
+            (base_path / '__init__.py').touch()
+
+            module = generators.create_domain.generate(domain)
+            module = SourceCodeGenerator().generate(module)
+
+            print(module)
+
+            path = base_path / 'domain.py'
+            path.write_text(module)
 
 
 if __name__ == '__main__':

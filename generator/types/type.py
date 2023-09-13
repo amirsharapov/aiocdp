@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from generator.types.base import ComplexNode
 from generator.types.property import Property
-from generator.utils import MaybeUndefined, UNDEFINED
+from generator.utils import UNDEFINED, MaybeUndefined
 
 
 @dataclass

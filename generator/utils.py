@@ -1,8 +1,38 @@
-from typing import TypeVar, Iterable
+import builtins
+from typing import TypeVar
 
 import inflection
 
+
+direct_python_type_map = {
+    'string': 'str',
+    'integer': 'int',
+    'number': 'float',
+    'boolean': 'bool',
+    'any': 'Any',
+    'array': 'list'
+}
+
+
+def convert_to_snake_case(value):
+    return inflection.underscore(value)
+
+
+def convert_to_python_type(value):
+    return direct_python_type_map.get(value, value)
+
+
+def is_builtin(name: str):
+    try:
+        getattr(builtins, name)
+        return True
+
+    except AttributeError:
+        return False
+
+
 T = TypeVar('T')
+
 
 class _Undefined:
     def __repr__(self):
@@ -10,6 +40,9 @@ class _Undefined:
 
     def __getattr__(self, item):
         return self
+
+    def __bool__(self):
+        return False
 
 
 UNDEFINED = _Undefined()
@@ -30,49 +63,3 @@ def coalesce_undefined(args):
             return arg
 
     return UNDEFINED
-
-
-def snake_case(value):
-    return inflection.underscore(value)
-
-
-def concat_lines(args: Iterable[str]) -> str:
-    return '\n'.join(args)
-
-
-def split_ref(type_: str) -> tuple[str, str] | tuple[None, str]:
-    split = type_.split('.')
-
-    if len(split) == 1:
-        return None, split[0]
-
-    return split[0], split[1]
-
-
-def indent(s: str, n: int):
-    return ' ' * n + s if s else ''
-
-
-def indent_lines(s: str, n: int):
-    lines = s.split('\n')
-    lines = [indent(line, n) for line in lines]
-    return '\n'.join(lines)
-
-
-def create_vertical_comma_separated_list(
-    items: list[str],
-    indent_size: int = 0,
-    trailing_comma: bool = False
-) -> str:
-    if not items:
-        return ''
-
-    result = ',\n'.join(items)
-
-    if trailing_comma:
-        result += ','
-
-    return indent_lines(
-        result,
-        indent_size
-    )

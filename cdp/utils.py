@@ -2,12 +2,20 @@ from typing import TypeVar
 
 T = TypeVar('T')
 
+
 class _Undefined:
-    pass
+    def __repr__(self):
+        return 'UNDEFINED'
+
+    def __getattr__(self, item):
+        return self
+
+    def __bool__(self):
+        return False
 
 
 UNDEFINED = _Undefined()
-Undefinable = T | _Undefined
+MaybeUndefined = T | _Undefined
 
 
 def is_undefined(value):

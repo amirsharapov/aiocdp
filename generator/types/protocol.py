@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from generator.types.base import ComplexNode
 from generator.types.domain import Domain
 from generator.types.version import Version
-from generator.utils import MaybeUndefined, UNDEFINED
 
 
 @dataclass
