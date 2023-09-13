@@ -7,10 +7,10 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.target.types import (
+    TargetFilter,
     TargetID,
-    SessionID,
     TargetInfo,
-    TargetFilter
+    SessionID
 )
 from cdp.domains.page.types import (
     FrameId

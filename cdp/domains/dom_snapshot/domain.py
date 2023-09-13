@@ -7,22 +7,22 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom.types import (
-    BackendNodeId,
     Rect,
-    PseudoType,
-    ShadowRootType
+    BackendNodeId,
+    ShadowRootType,
+    PseudoType
 )
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.dom_snapshot.types import (
     RareIntegerData,
-    LayoutTreeSnapshot,
-    RareStringData,
+    TextBoxSnapshot,
     NodeTreeSnapshot,
     StringIndex,
-    TextBoxSnapshot,
-    RareBooleanData
+    RareStringData,
+    RareBooleanData,
+    LayoutTreeSnapshot
 )
 
 

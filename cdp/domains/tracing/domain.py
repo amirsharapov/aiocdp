@@ -7,11 +7,11 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.tracing.types import (
-    TraceConfig,
-    StreamFormat,
-    StreamCompression,
     TracingBackend,
     MemoryDumpLevelOfDetail,
+    StreamFormat,
+    TraceConfig,
+    StreamCompression,
     MemoryDumpConfig
 )
 from cdp.domains.io.types import (

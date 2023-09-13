@@ -6,7 +6,7 @@ from pathlib import Path
 from generator.types.protocol import Protocol
 from generator import generators
 from generator.utils import convert_to_snake_case
-from generator.visitor import SourceCodeGenerator
+from generator.generators.visitor import SourceCodeGenerator
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -49,7 +49,7 @@ def main():
 
             (base_path / '__init__.py').touch()
 
-            module = generators.create_domain.generate(domain)
+            module = generators.generate_domain.generate(domain)
             module = SourceCodeGenerator().generate(module)
 
             print(module)

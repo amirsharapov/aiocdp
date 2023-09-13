@@ -7,10 +7,10 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.indexed_db.types import (
-    Key,
     KeyRange,
     DatabaseWithObjectStores,
-    KeyPath
+    KeyPath,
+    Key
 )
 from cdp.domains.runtime.types import (
     RemoteObject

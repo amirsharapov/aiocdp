@@ -7,13 +7,13 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.runtime.types import (
-    RemoteObject,
     ScriptId,
+    RemoteObject,
     RemoteObjectId
 )
 from cdp.domains.dom.types import (
-    BackendNodeId,
-    NodeId
+    NodeId,
+    BackendNodeId
 )
 from cdp.domains.dom_debugger.types import (
     DOMBreakpointType

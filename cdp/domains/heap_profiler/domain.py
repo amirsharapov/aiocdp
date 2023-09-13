@@ -12,9 +12,9 @@ from cdp.domains.runtime.types import (
     RemoteObjectId
 )
 from cdp.domains.heap_profiler.types import (
-    SamplingHeapProfileNode,
     HeapSnapshotObjectId,
-    SamplingHeapProfile
+    SamplingHeapProfile,
+    SamplingHeapProfileNode
 )
 
 

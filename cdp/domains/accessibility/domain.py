@@ -7,17 +7,17 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.accessibility.types import (
-    AXValueNativeSourceType,
-    AXPropertyName,
     AXValue,
+    AXNodeId,
+    AXValueNativeSourceType,
+    AXValueType,
     AXValueSourceType,
     AXNode,
-    AXValueType,
-    AXNodeId
+    AXPropertyName
 )
 from cdp.domains.dom.types import (
-    BackendNodeId,
-    NodeId
+    NodeId,
+    BackendNodeId
 )
 from cdp.domains.page.types import (
     FrameId

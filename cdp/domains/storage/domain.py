@@ -7,23 +7,23 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.storage.types import (
-    SerializedStorageKey,
-    UnsignedInt64AsBase10,
-    AttributionReportingSourceRegistration,
-    AttributionReportingSourceRegistrationResult,
-    StorageBucketsDurability,
     StorageBucket,
-    UnsignedInt128AsBase16,
-    StorageBucketInfo,
-    AttributionReportingSourceType,
-    SignedInt64AsBase10,
-    SharedStorageMetadata,
-    InterestGroupAccessType,
-    InterestGroupDetails,
-    AttributionReportingEventReportWindows,
+    StorageBucketsDurability,
     StorageType,
+    SharedStorageMetadata,
     SharedStorageAccessType,
-    SharedStorageAccessParams
+    SharedStorageAccessParams,
+    AttributionReportingSourceRegistrationResult,
+    SerializedStorageKey,
+    AttributionReportingSourceType,
+    InterestGroupDetails,
+    InterestGroupAccessType,
+    UnsignedInt64AsBase10,
+    AttributionReportingEventReportWindows,
+    SignedInt64AsBase10,
+    StorageBucketInfo,
+    UnsignedInt128AsBase16,
+    AttributionReportingSourceRegistration
 )
 from cdp.domains.network.types import (
     TimeSinceEpoch

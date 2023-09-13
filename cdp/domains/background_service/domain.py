@@ -13,8 +13,8 @@ from cdp.domains.service_worker.types import (
     RegistrationID
 )
 from cdp.domains.background_service.types import (
-    ServiceName,
-    BackgroundServiceEvent
+    BackgroundServiceEvent,
+    ServiceName
 )
 
 

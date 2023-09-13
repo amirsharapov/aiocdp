@@ -1,1 +1,1 @@
-from . import create_domain, create_types
+from . import generate_domain, generate_types

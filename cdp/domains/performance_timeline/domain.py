@@ -10,15 +10,15 @@ from cdp.domains.network.types import (
     TimeSinceEpoch
 )
 from cdp.domains.dom.types import (
-    BackendNodeId,
-    Rect
+    Rect,
+    BackendNodeId
 )
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.performance_timeline.types import (
-    LayoutShift,
     LargestContentfulPaint,
+    LayoutShift,
     TimelineEvent
 )
 

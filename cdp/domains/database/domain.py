@@ -7,9 +7,9 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.database.types import (
+    Database,
     DatabaseId,
-    Error,
-    Database
+    Error
 )
 
 

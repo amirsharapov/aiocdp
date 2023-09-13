@@ -7,27 +7,27 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom.types import (
-    Quad,
-    Node,
     NodeId,
-    Rect,
     BackendNode,
-    CompatibilityMode,
+    ShadowRootType,
+    PhysicalAxes,
+    Quad,
+    BackendNodeId,
     ShapeOutsideInfo,
     LogicalAxes,
-    PseudoType,
-    ShadowRootType,
+    CompatibilityMode,
     BoxModel,
-    BackendNodeId,
-    PhysicalAxes
+    Node,
+    Rect,
+    PseudoType
 )
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.runtime.types import (
     ExecutionContextId,
-    RemoteObject,
     StackTrace,
+    RemoteObject,
     RemoteObjectId
 )
 

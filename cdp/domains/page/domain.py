@@ -7,56 +7,56 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.page.types import (
-    TransitionType,
-    ScriptIdentifier,
-    FrameTree,
-    VisualViewport,
-    PermissionsPolicyFeature,
-    ScreencastFrameMetadata,
-    OriginTrialStatus,
-    SecureContextType,
-    BackForwardCacheNotRestoredReasonType,
-    OriginTrialToken,
-    FrameResourceTree,
-    BackForwardCacheNotRestoredExplanationTree,
-    ReferrerPolicy,
-    BackForwardCacheNotRestoredReason,
-    ClientNavigationReason,
-    OriginTrialTokenStatus,
-    AdFrameStatus,
-    AutoResponseMode,
-    LayoutViewport,
-    PermissionsPolicyBlockLocator,
-    Viewport,
-    FontSizes,
     PermissionsPolicyBlockReason,
-    DialogType,
-    NavigationType,
-    FontFamilies,
+    BackForwardCacheNotRestoredExplanationTree,
+    ClientNavigationReason,
+    BackForwardCacheNotRestoredReasonType,
     FrameId,
-    AdScriptId,
-    CrossOriginIsolatedContextType,
-    Frame,
-    AdFrameType,
-    AppManifestParsedProperties,
+    FrameTree,
+    NavigationType,
+    FrameResourceTree,
+    ReferrerPolicy,
     OriginTrialUsageRestriction,
-    ClientNavigationDisposition
+    Frame,
+    LayoutViewport,
+    FontFamilies,
+    ScreencastFrameMetadata,
+    AdFrameType,
+    PermissionsPolicyBlockLocator,
+    AutoResponseMode,
+    PermissionsPolicyFeature,
+    FontSizes,
+    TransitionType,
+    OriginTrialToken,
+    OriginTrialStatus,
+    BackForwardCacheNotRestoredReason,
+    ScriptIdentifier,
+    Viewport,
+    AppManifestParsedProperties,
+    DialogType,
+    CrossOriginIsolatedContextType,
+    AdScriptId,
+    AdFrameStatus,
+    VisualViewport,
+    ClientNavigationDisposition,
+    OriginTrialTokenStatus,
+    SecureContextType
 )
 from cdp.domains.runtime.types import (
-    ExecutionContextId,
-    UniqueDebuggerId,
     StackTrace,
-    ScriptId
+    ScriptId,
+    UniqueDebuggerId,
+    ExecutionContextId
 )
 from cdp.domains.network.types import (
     TimeSinceEpoch,
     ResourceType,
-    LoaderId,
-    MonotonicTime
+    MonotonicTime,
+    LoaderId
 )
 from cdp.domains.dom.types import (
-    BackendNodeId,
-    Rect
+    Rect,
+    BackendNodeId
 )
 from cdp.domains.io.types import (
     StreamHandle

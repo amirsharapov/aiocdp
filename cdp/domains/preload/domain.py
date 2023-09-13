@@ -7,15 +7,15 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.preload.types import (
-    RuleSet,
-    PreloadingAttemptKey,
-    SpeculationTargetHint,
     SpeculationAction,
-    PreloadingStatus,
+    SpeculationTargetHint,
+    PreloadingAttemptKey,
     PrerenderFinalStatus,
+    PreloadingStatus,
     PrefetchStatus,
     RuleSetId,
-    RuleSetErrorType
+    RuleSetErrorType,
+    RuleSet
 )
 from cdp.domains.network.types import (
     RequestId,

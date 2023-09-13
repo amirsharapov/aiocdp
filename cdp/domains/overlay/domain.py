@@ -8,30 +8,30 @@ from cdp.utils import (
 )
 from cdp.domains.dom.types import (
     NodeId,
+    BackendNodeId,
     Rect,
     RGBA,
-    BackendNodeId,
     Quad
 )
 from cdp.domains.overlay.types import (
-    BoxStyle,
-    FlexItemHighlightConfig,
-    ContainerQueryContainerHighlightConfig,
-    InspectMode,
-    LineStyle,
     FlexContainerHighlightConfig,
-    IsolationModeHighlightConfig,
-    HingeConfig,
     ContrastAlgorithm,
-    ScrollSnapContainerHighlightConfig,
-    HighlightConfig,
     SourceOrderConfig,
+    InspectMode,
+    HingeConfig,
+    LineStyle,
+    ContainerQueryContainerHighlightConfig,
+    FlexItemHighlightConfig,
+    IsolationModeHighlightConfig,
     ColorFormat,
+    ScrollSnapContainerHighlightConfig,
+    BoxStyle,
+    HighlightConfig,
     GridHighlightConfig
 )
 from cdp.domains.page.types import (
-    FrameId,
-    Viewport
+    Viewport,
+    FrameId
 )
 from cdp.domains.runtime.types import (
     RemoteObjectId

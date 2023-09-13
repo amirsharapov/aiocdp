@@ -8,9 +8,9 @@ from cdp.utils import (
 )
 from cdp.domains.service_worker.types import (
     ServiceWorkerVersionRunningStatus,
+    ServiceWorkerVersionStatus,
     RegistrationID,
-    ServiceWorkerErrorMessage,
-    ServiceWorkerVersionStatus
+    ServiceWorkerErrorMessage
 )
 from cdp.domains.target.types import (
     TargetID

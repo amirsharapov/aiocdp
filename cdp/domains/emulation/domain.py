@@ -10,10 +10,10 @@ from cdp.domains.dom.types import (
     RGBA
 )
 from cdp.domains.emulation.types import (
-    VirtualTimePolicy,
     UserAgentMetadata,
-    ScreenOrientation,
-    DisplayFeature
+    VirtualTimePolicy,
+    DisplayFeature,
+    ScreenOrientation
 )
 from cdp.domains.page.types import (
     Viewport

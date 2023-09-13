@@ -10,14 +10,14 @@ from cdp.domains.network.types import (
     TimeSinceEpoch
 )
 from cdp.domains.security.types import (
-    VisibleSecurityState,
-    SecurityState,
-    MixedContentType,
-    InsecureContentStatus,
     SafetyTipStatus,
     CertificateSecurityState,
     SafetyTipInfo,
-    CertificateErrorAction
+    InsecureContentStatus,
+    SecurityState,
+    VisibleSecurityState,
+    CertificateErrorAction,
+    MixedContentType
 )
 
 

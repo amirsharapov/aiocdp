@@ -7,8 +7,8 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.device_access.types import (
-    DeviceId,
-    RequestId
+    RequestId,
+    DeviceId
 )
 
 

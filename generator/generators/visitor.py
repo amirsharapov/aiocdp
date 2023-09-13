@@ -1,18 +1,5 @@
 import ast
 import contextlib
-from _ast import (
-    FunctionDef,
-    Dict,
-    Module,
-    alias,
-    arguments,
-    ClassDef,
-    ImportFrom,
-    Name,
-    Subscript,
-    arg,
-    Assign, Is, If, Compare, Constant, Return, Call, Attribute
-)
 from typing import Any
 
 
@@ -39,9 +26,9 @@ def concat_lines(lines: list[str], trailing_newline: bool = False) -> str:
 
 
 def create_vertical_comma_separated_list(
-    items: list[str],
-    indent: int,
-    trailing_comma: bool = True
+        items: list[str],
+        indent: int,
+        trailing_comma: bool = True
 ) -> str:
     items = ',\n'.join(items)
 
@@ -54,6 +41,7 @@ def create_vertical_comma_separated_list(
     )
 
 
+# noinspection PyTypeChecker
 class SourceCodeGenerator(ast.NodeVisitor):
     def __init__(self):
         self.source = ''
@@ -69,21 +57,21 @@ class SourceCodeGenerator(ast.NodeVisitor):
         yield
         self.indent_length -= 4
 
-    def generate(self, module: Module):
+    def generate(self, module: ast.Module):
         self.visit(module)
         return self.source
 
-    def visit_alias(self, node: alias) -> Any:
+    def visit_alias(self, node: ast.alias) -> Any:
         self.source += f'{self.indent}{node.name}'
 
-    def visit_arg(self, node: arg) -> Any:
+    def visit_arg(self, node: ast.arg) -> Any:
         self.source += f'{self.indent}{node.arg}'
 
         if node.annotation:
             self.source += ': '
             self.visit(node.annotation)
 
-    def visit_arguments(self, node: arguments) -> Any:
+    def visit_arguments(self, node: ast.arguments) -> Any:
         self.source += '('
 
         with self.indent_context():
@@ -97,18 +85,18 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += '\n'
         self.source += f'{self.indent})'
 
-    def visit_Assign(self, node: Assign) -> Any:
+    def visit_Assign(self, node: ast.Assign) -> Any:
         self.source += self.indent
         self.visit(node.targets[0])
         self.source += ' = '
         self.visit(node.value)
         self.source += '\n'
 
-    def visit_Attribute(self, node: Attribute) -> Any:
+    def visit_Attribute(self, node: ast.Attribute) -> Any:
         self.visit(node.value)
         self.source += f'.{node.attr}'
 
-    def visit_Call(self, node: Call) -> Any:
+    def visit_Call(self, node: ast.Call) -> Any:
         self.visit(node.func)
         self.source += '('
 
@@ -124,7 +112,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += '\n'
         self.source += f'{self.indent})'
 
-    def visit_ClassDef(self, node: ClassDef) -> Any:
+    def visit_ClassDef(self, node: ast.ClassDef) -> Any:
         for decorator in node.decorator_list:
             self.source += f'{self.indent}@'
             self.visit(decorator)
@@ -142,7 +130,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
                 self.visit(item)
                 self.source += '\n'
 
-    def visit_Compare(self, node: Compare) -> Any:
+    def visit_Compare(self, node: ast.Compare) -> Any:
         lookup = {
             "Eq": "==",
             "NotEq": "!=",
@@ -160,10 +148,10 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += f' {lookup[type(node.ops[0]).__name__]} '
         self.visit(node.comparators[0])
 
-    def visit_Constant(self, node: Constant) -> Any:
+    def visit_Constant(self, node: ast.Constant) -> Any:
         self.source += node.value
 
-    def visit_Dict(self, node: Dict) -> Any:
+    def visit_Dict(self, node: ast.Dict) -> Any:
         self.source += '{'
 
         if node.keys:
@@ -182,7 +170,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         self.source += '}'
 
-    def visit_FunctionDef(self, node: FunctionDef) -> Any:
+    def visit_FunctionDef(self, node: ast.FunctionDef) -> Any:
         self.source += f'{self.indent}def {node.name}'
         self.visit(node.args)
         self.source += ':\n'
@@ -191,7 +179,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         with self.indent_context():
             for body in node.body:
-                if isinstance(body, If):
+                if isinstance(body, ast.If):
                     self.source += '\n'
 
                 elif prev and type(prev) != type(body):
@@ -199,12 +187,12 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
                 self.visit(body)
 
-                if isinstance(body, (Return, Call)):
+                if isinstance(body, (ast.Return, ast.Call)):
                     self.source += '\n'
 
                 prev = body
 
-    def visit_ImportFrom(self, node: ImportFrom) -> Any:
+    def visit_ImportFrom(self, node: ast.ImportFrom) -> Any:
         self.source += f'from {node.module} import ('
 
         with self.indent_context():
@@ -217,7 +205,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         self.source += '\n)\n'
 
-    def visit_If(self, node: If) -> Any:
+    def visit_If(self, node: ast.If) -> Any:
         self.source += f'{self.indent}if '
         self.visit(node.test)
         self.source += ':\n'
@@ -233,20 +221,20 @@ class SourceCodeGenerator(ast.NodeVisitor):
                 for body in node.orelse:
                     self.visit(body)
 
-    def visit_Module(self, node: Module) -> Any:
+    def visit_Module(self, node: ast.Module) -> Any:
         for item in node.body:
-            if isinstance(item, (ClassDef, FunctionDef)):
+            if isinstance(item, (ast.ClassDef, ast.FunctionDef)):
                 self.source += '\n\n'
             self.visit(item)
 
-    def visit_Name(self, node: Name) -> Any:
+    def visit_Name(self, node: ast.Name) -> Any:
         self.source += node.id
 
-    def visit_Return(self, node: Return) -> Any:
+    def visit_Return(self, node: ast.Return) -> Any:
         self.source += f'{self.indent}return '
         self.visit(node.value)
 
-    def visit_Subscript(self, node: Subscript) -> Any:
+    def visit_Subscript(self, node: ast.Subscript) -> Any:
         self.visit(node.value)
         self.source += '['
         self.visit(node.slice)

@@ -7,8 +7,8 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.fed_cm.types import (
-    LoginState,
-    DialogType
+    DialogType,
+    LoginState
 )
 
 

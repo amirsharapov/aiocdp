@@ -7,9 +7,9 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.system_info.types import (
-    Size,
     GPUInfo,
-    ImageType
+    ImageType,
+    Size
 )
 
 

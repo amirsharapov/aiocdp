@@ -7,12 +7,12 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.web_authn.types import (
+    AuthenticatorProtocol,
     VirtualAuthenticatorOptions,
     Ctap2Version,
-    AuthenticatorProtocol,
     Credential,
-    AuthenticatorId,
-    AuthenticatorTransport
+    AuthenticatorTransport,
+    AuthenticatorId
 )
 
 

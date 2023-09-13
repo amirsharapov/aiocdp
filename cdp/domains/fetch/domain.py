@@ -8,15 +8,15 @@ from cdp.utils import (
 )
 from cdp.domains.network.types import (
     RequestId,
+    ErrorReason,
     ResourceType,
-    Request,
-    ErrorReason
+    Request
 )
 from cdp.domains.fetch.types import (
-    RequestId,
     AuthChallengeResponse,
     RequestStage,
-    AuthChallenge
+    AuthChallenge,
+    RequestId
 )
 from cdp.domains.io.types import (
     StreamHandle

@@ -7,9 +7,9 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.animation.types import (
+    Animation,
     AnimationEffect,
-    KeyframesRule,
-    Animation
+    KeyframesRule
 )
 from cdp.domains.dom.types import (
     BackendNodeId

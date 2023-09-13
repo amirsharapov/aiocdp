@@ -7,13 +7,13 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom.types import (
-    BackendNodeId,
-    Rect
+    Rect,
+    BackendNodeId
 )
 from cdp.domains.layer_tree.types import (
-    SnapshotId,
+    StickyPositionConstraint,
     LayerId,
-    StickyPositionConstraint
+    SnapshotId
 )
 
 
