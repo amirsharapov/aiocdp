@@ -1,24 +1,28 @@
 from dataclasses import dataclass
 
-from generator.nodes.base import Node
-from generator.nodes.property import Parameter
+from generator.types.base import ComplexNode
+from generator.types.property import Property
 from generator.utils import MaybeUndefined, UNDEFINED
 
 
 @dataclass
-class Event(Node):
-    name: str
+class Type(ComplexNode):
+    id: str
+    type: str
     description: MaybeUndefined[str]
-    parameters: list['Parameter']
+    properties: list['Property']
+    enum: list[str]
     experimental: MaybeUndefined[bool]
     deprecated: MaybeUndefined[bool]
 
     @classmethod
     def from_dict(cls, data):
         return cls(
-            name=data['name'],
+            id=data['id'],
+            type=data['type'],
             description=data.get('description', UNDEFINED),
-            parameters=[Parameter.from_dict(parameter) for parameter in data.get('parameters', [])],
+            properties=[Property.from_dict(property_) for property_ in data.get('properties', [])],
+            enum=data.get('enum', []),
             experimental=data.get('experimental', UNDEFINED),
             deprecated=data.get('deprecated', UNDEFINED)
         )
@@ -26,7 +30,7 @@ class Event(Node):
     def get_refs(self):
         refs = []
 
-        for parameter in self.parameters:
-            refs += parameter.get_refs()
+        for property_ in self.properties:
+            refs += property_.get_refs()
 
         return refs

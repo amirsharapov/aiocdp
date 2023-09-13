@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
-from generator.nodes.base import Node
+from generator.types.base import ComplexNode
 
 
 @dataclass
-class Version(Node):
+class Version(ComplexNode):
     major: int
     minor: int
 

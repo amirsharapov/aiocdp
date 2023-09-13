@@ -13,7 +13,7 @@ class Node(ABC):
     def __post_init__(self):
         self.parent = None
 
-    def resolve_children(self):
+    def resolve_parent_refs(self):
         for field_ in fields(self):
             if field_.name == 'parent':
                 continue
@@ -22,19 +22,23 @@ class Node(ABC):
 
             if isinstance(attribute, Node):
                 attribute.parent = self
-                attribute.resolve_children()
+                attribute.resolve_parent_refs()
 
             elif isinstance(attribute, list):
                 for item in attribute:
                     if isinstance(item, Node):
                         item.parent = self
-                        item.resolve_children()
+                        item.resolve_parent_refs()
 
             elif isinstance(attribute, dict):
                 for item in attribute.values():
                     if isinstance(item, Node):
                         item.parent = self
-                        item.resolve_children()
+                        item.resolve_parent_refs()
+
+
+@dataclass
+class ComplexNode(Node, ABC):
 
     @classmethod
     @abstractmethod

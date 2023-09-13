@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 
-from generator.nodes.base import Node
-from generator.nodes.domain import Domain
-from generator.nodes.version import Version
+from generator.types.base import ComplexNode
+from generator.types.domain import Domain
+from generator.types.version import Version
 from generator.utils import MaybeUndefined, UNDEFINED
 
 
 @dataclass
-class Protocol(Node):
+class Protocol(ComplexNode):
     version: 'Version'
     domains: list['Domain']
 

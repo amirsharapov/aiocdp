@@ -1,14 +1,15 @@
 from dataclasses import dataclass
 
-from generator.nodes.base import Node
+from generator.types.base import ComplexNode
+from generator.types.ref import Ref
 from generator.utils import MaybeUndefined, UNDEFINED, is_defined
 
 
 @dataclass
-class Property(Node):
+class Property(ComplexNode):
     name: str
     type: MaybeUndefined[str]
-    ref: MaybeUndefined[str]
+    ref: MaybeUndefined[Ref]
     description: MaybeUndefined[str]
     optional: MaybeUndefined[bool]
     experimental: MaybeUndefined[bool]
@@ -16,10 +17,15 @@ class Property(Node):
 
     @classmethod
     def from_dict(cls, data):
+        ref = data.get('$ref', UNDEFINED)
+
+        if is_defined(ref):
+            ref = Ref.from_str(ref)
+
         return cls(
             name=data['name'],
             type=data.get('type', UNDEFINED),
-            ref=data.get('$ref', UNDEFINED),
+            ref=ref,
             description=data.get('description', UNDEFINED),
             optional=data.get('optional', UNDEFINED),
             experimental=data.get('experimental', UNDEFINED),

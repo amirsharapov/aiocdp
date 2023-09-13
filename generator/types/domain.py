@@ -2,11 +2,20 @@ import logging
 from collections import defaultdict
 from dataclasses import dataclass
 
-from generator.nodes.base import Node
-from generator.nodes.command import Command
-from generator.nodes.event import Event
-from generator.nodes.type import Type
-from generator.utils import MaybeUndefined, UNDEFINED, concat_lines, is_defined, split_ref, snake_case
+from generator.types.base import ComplexNode
+from generator.types.command import Command
+from generator.types.event import Event
+from generator.types.ref import Ref
+from generator.types.type import Type
+from generator.utils import (
+    MaybeUndefined,
+    UNDEFINED,
+    concat_lines,
+    is_defined,
+    split_ref,
+    snake_case,
+    create_vertical_comma_separated_list
+)
 
 logger = logging.getLogger(
     'cdp.generator'
@@ -14,7 +23,7 @@ logger = logging.getLogger(
 
 
 @dataclass
-class Domain(Node):
+class Domain(ComplexNode):
     domain: str
     description: MaybeUndefined[str]
     types: list['Type']
@@ -38,8 +47,26 @@ class Domain(Node):
         )
 
     @property
+    def class_name(self):
+        return self.domain
+
+    @property
     def module_name(self):
         return snake_case(self.domain)
+
+    def get_refs(self) -> list[Ref]:
+        refs = []
+
+        for type_ in self.types:
+            refs += type_.get_refs()
+
+        for command in self.commands:
+            refs += command.get_refs()
+
+        for event in self.events:
+            refs += event.get_refs()
+
+        return refs
 
     def generate_class_definition(self):
         result = concat_lines([
@@ -66,45 +93,29 @@ class Domain(Node):
         return result
 
     def generate_type_imports(self):
+        refs = self.get_refs()
         import_tree = defaultdict(set)
 
-        for type_ in self.types:
-            for ref in type_.get_refs():
-                domain, name = split_ref(ref)
-                import_tree[domain].add(name)
+        for ref in refs:
+            domain, type_ = split_ref(ref)
+            domain = domain or self.domain
+            domain = snake_case(domain)
 
-        for command in self.commands:
-            for ref in command.get_refs():
-                domain, name = split_ref(ref)
-                import_tree[domain].add(name)
-
-        for event in self.events:
-            for ref in event.get_refs():
-                domain, name = split_ref(ref)
-                import_tree[domain].add(name)
+            import_tree[domain].add(type_)
 
         imports = []
 
         for domain, types in import_tree.items():
 
-            if domain is None:
-                domain = self.domain
-
-            domain = snake_case(domain)
-
             lines = [
-                f'from cdp.domains.{domain} import (',
+                f'from cdp.domains.{domain}.types import (',
+                create_vertical_comma_separated_list(
+                    sorted(types),
+                    4,
+                    False
+                ),
+                f')'
             ]
-
-            for i, type_ in enumerate(sorted(types)):
-                lines.append(
-                    f'    {type_}'
-                )
-
-                if i != len(types) - 1:
-                    lines[-1] += ','
-
-            lines.append(')')
 
             imports.append(
                 concat_lines(
