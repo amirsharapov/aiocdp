@@ -8,11 +8,11 @@ from cdp.utils import (
 )
 from cdp.domains.web_authn.types import (
     VirtualAuthenticatorOptions,
+    Ctap2Version,
+    AuthenticatorProtocol,
     Credential,
     AuthenticatorId,
-    AuthenticatorTransport,
-    AuthenticatorProtocol,
-    Ctap2Version
+    AuthenticatorTransport
 )
 
 

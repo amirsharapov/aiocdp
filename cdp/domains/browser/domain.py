@@ -7,14 +7,14 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.browser.types import (
-    PermissionDescriptor,
-    BrowserContextID,
-    WindowState,
-    Bounds,
     PermissionSetting,
     BrowserCommandId,
+    Bounds,
+    WindowState,
     Histogram,
-    WindowID
+    BrowserContextID,
+    WindowID,
+    PermissionDescriptor
 )
 from cdp.domains.target.types import (
     TargetID

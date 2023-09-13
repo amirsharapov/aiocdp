@@ -11,9 +11,9 @@ from cdp.domains.dom.types import (
     Rect
 )
 from cdp.domains.layer_tree.types import (
-    StickyPositionConstraint,
     SnapshotId,
-    LayerId
+    LayerId,
+    StickyPositionConstraint
 )
 
 

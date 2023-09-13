@@ -7,20 +7,20 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.runtime.types import (
-    Timestamp,
-    StackTrace,
-    RemoteObject,
-    TimeDelta,
+    ExecutionContextDescription,
+    ScriptId,
+    CustomPreview,
     StackTraceId,
     ExceptionDetails,
-    ExecutionContextDescription,
-    UniqueDebuggerId,
-    ScriptId,
+    TimeDelta,
+    RemoteObject,
+    UnserializableValue,
     ExecutionContextId,
-    CustomPreview,
-    RemoteObjectId,
+    UniqueDebuggerId,
     ObjectPreview,
-    UnserializableValue
+    StackTrace,
+    Timestamp,
+    RemoteObjectId
 )
 
 

@@ -8,21 +8,21 @@ from cdp.utils import (
 )
 from cdp.domains.dom.types import (
     BackendNodeId,
-    ShadowRootType,
     Rect,
-    PseudoType
+    PseudoType,
+    ShadowRootType
 )
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.dom_snapshot.types import (
+    RareIntegerData,
     LayoutTreeSnapshot,
-    RareBooleanData,
+    RareStringData,
     NodeTreeSnapshot,
     StringIndex,
-    RareIntegerData,
-    RareStringData,
-    TextBoxSnapshot
+    TextBoxSnapshot,
+    RareBooleanData
 )
 
 

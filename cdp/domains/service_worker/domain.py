@@ -7,10 +7,10 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.service_worker.types import (
-    ServiceWorkerErrorMessage,
     ServiceWorkerVersionRunningStatus,
-    ServiceWorkerVersionStatus,
-    RegistrationID
+    RegistrationID,
+    ServiceWorkerErrorMessage,
+    ServiceWorkerVersionStatus
 )
 from cdp.domains.target.types import (
     TargetID

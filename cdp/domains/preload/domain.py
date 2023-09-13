@@ -7,19 +7,19 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.preload.types import (
-    RuleSetId,
-    PreloadingAttemptKey,
-    PrerenderFinalStatus,
-    PreloadingStatus,
-    SpeculationTargetHint,
-    PrefetchStatus,
     RuleSet,
+    PreloadingAttemptKey,
+    SpeculationTargetHint,
     SpeculationAction,
+    PreloadingStatus,
+    PrerenderFinalStatus,
+    PrefetchStatus,
+    RuleSetId,
     RuleSetErrorType
 )
 from cdp.domains.network.types import (
-    LoaderId,
-    RequestId
+    RequestId,
+    LoaderId
 )
 from cdp.domains.dom.types import (
     BackendNodeId

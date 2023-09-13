@@ -8,12 +8,12 @@ from cdp.utils import (
 )
 from cdp.domains.accessibility.types import (
     AXValueNativeSourceType,
-    AXNode,
-    AXValueSourceType,
-    AXNodeId,
     AXPropertyName,
+    AXValue,
+    AXValueSourceType,
+    AXNode,
     AXValueType,
-    AXValue
+    AXNodeId
 )
 from cdp.domains.dom.types import (
     BackendNodeId,

@@ -7,10 +7,10 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.input.types import (
-    MouseButton,
     TimeSinceEpoch,
     GestureSourceType,
-    DragData
+    DragData,
+    MouseButton
 )
 
 

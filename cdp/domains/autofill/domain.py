@@ -7,9 +7,9 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.autofill.types import (
+    CreditCard,
     FillingStrategy,
-    AddressUI,
-    CreditCard
+    AddressUI
 )
 from cdp.domains.dom.types import (
     BackendNodeId

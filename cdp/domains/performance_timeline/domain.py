@@ -17,9 +17,9 @@ from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.performance_timeline.types import (
-    TimelineEvent,
     LayoutShift,
-    LargestContentfulPaint
+    LargestContentfulPaint,
+    TimelineEvent
 )
 
 

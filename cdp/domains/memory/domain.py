@@ -7,8 +7,8 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.memory.types import (
-    PressureLevel,
-    SamplingProfile
+    SamplingProfile,
+    PressureLevel
 )
 
 

@@ -7,9 +7,9 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.cache_storage.types import (
+    CachedResponseType,
     CacheId,
-    CachedResponse,
-    CachedResponseType
+    CachedResponse
 )
 from cdp.domains.storage.types import (
     StorageBucket

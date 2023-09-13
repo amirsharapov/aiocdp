@@ -8,13 +8,13 @@ from cdp.utils import (
 )
 from cdp.domains.runtime.types import (
     CallFrame,
-    RemoteObjectId,
-    RemoteObject
+    RemoteObject,
+    RemoteObjectId
 )
 from cdp.domains.heap_profiler.types import (
+    SamplingHeapProfileNode,
     HeapSnapshotObjectId,
-    SamplingHeapProfile,
-    SamplingHeapProfileNode
+    SamplingHeapProfile
 )
 
 

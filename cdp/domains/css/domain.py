@@ -7,28 +7,28 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom.types import (
-    BackendNodeId,
-    PhysicalAxes,
     NodeId,
     LogicalAxes,
-    PseudoType
+    PseudoType,
+    BackendNodeId,
+    PhysicalAxes
 )
 from cdp.domains.css.types import (
     CSSScope,
-    FontFace,
-    CSSLayerData,
-    Specificity,
-    StyleSheetOrigin,
     Value,
-    CSSStyle,
-    CSSRule,
-    CSSSupports,
-    StyleSheetId,
     CSSMedia,
-    SelectorList,
-    CSSContainerQuery,
     CSSStyleSheetHeader,
-    SourceRange
+    CSSContainerQuery,
+    FontFace,
+    Specificity,
+    CSSRule,
+    StyleSheetOrigin,
+    CSSStyle,
+    CSSLayerData,
+    SelectorList,
+    StyleSheetId,
+    SourceRange,
+    CSSSupports
 )
 from cdp.domains.page.types import (
     FrameId

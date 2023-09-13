@@ -7,9 +7,9 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.runtime.types import (
+    RemoteObject,
     ScriptId,
-    RemoteObjectId,
-    RemoteObject
+    RemoteObjectId
 )
 from cdp.domains.dom.types import (
     BackendNodeId,

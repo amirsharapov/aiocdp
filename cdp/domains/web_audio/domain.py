@@ -7,19 +7,19 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.web_audio.types import (
-    ContextType,
+    NodeType,
+    AutomationRate,
+    ChannelInterpretation,
     GraphObjectId,
     BaseAudioContext,
-    AudioParam,
-    ChannelInterpretation,
+    ContextType,
     ChannelCountMode,
-    ContextRealtimeData,
-    AudioNode,
-    ParamType,
-    AutomationRate,
-    ContextState,
+    AudioParam,
     AudioListener,
-    NodeType
+    ContextRealtimeData,
+    ParamType,
+    AudioNode,
+    ContextState
 )
 
 

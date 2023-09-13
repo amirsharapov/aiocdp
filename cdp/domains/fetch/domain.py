@@ -7,16 +7,16 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.network.types import (
-    Request,
     RequestId,
     ResourceType,
+    Request,
     ErrorReason
 )
 from cdp.domains.fetch.types import (
-    AuthChallenge,
     RequestId,
+    AuthChallengeResponse,
     RequestStage,
-    AuthChallengeResponse
+    AuthChallenge
 )
 from cdp.domains.io.types import (
     StreamHandle

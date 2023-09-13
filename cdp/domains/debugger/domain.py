@@ -7,20 +7,20 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.runtime.types import (
-    StackTrace,
-    RemoteObject,
+    ScriptId,
+    ExceptionDetails,
     TimeDelta,
     StackTraceId,
-    ExceptionDetails,
+    RemoteObject,
+    CallArgument,
     UniqueDebuggerId,
     ExecutionContextId,
-    ScriptId,
-    CallArgument,
+    StackTrace,
     RemoteObjectId
 )
 from cdp.domains.debugger.types import (
-    BreakpointId,
     CallFrameId,
+    BreakpointId,
     Location
 )
 

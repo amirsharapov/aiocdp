@@ -7,8 +7,8 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.animation.types import (
-    KeyframesRule,
     AnimationEffect,
+    KeyframesRule,
     Animation
 )
 from cdp.domains.dom.types import (
