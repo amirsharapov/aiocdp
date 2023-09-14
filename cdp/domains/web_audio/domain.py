@@ -1,9 +1,15 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.web_audio.types import (
+    ContextRealtimeData,
+    GraphObjectId
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -35,7 +41,7 @@ class WebAudio(BaseDomain):
         context_id: GraphObjectId
     ):
         params = {
-            ""contextId"": context_id,
+            "contextId": context_id,
         }
 
         return self._send_command(

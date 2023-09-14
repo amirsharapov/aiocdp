@@ -7,6 +7,12 @@ from typing import (
 from cdp.domains.network.types import (
     TimeSinceEpoch
 )
+from cdp.domains.page.types import (
+    FrameId
+)
+from cdp.domains.browser.types import (
+    BrowserContextID
+)
 
 SerializedStorageKey = str
 
@@ -207,3 +213,51 @@ class AttributionReportingSourceRegistration:
     filter_data: list
     aggregation_keys: list
     debug_key: "UnsignedInt64AsBase10"
+
+
+@dataclass
+class GetStorageKeyForFrameReturnT:
+    storage_key: "SerializedStorageKey"
+
+
+@dataclass
+class GetCookiesReturnT:
+    cookies: list
+
+
+@dataclass
+class GetUsageAndQuotaReturnT:
+    usage: float
+    quota: float
+    override_active: bool
+    usage_breakdown: list
+
+
+@dataclass
+class GetTrustTokensReturnT:
+    tokens: list
+
+
+@dataclass
+class ClearTrustTokensReturnT:
+    did_delete_tokens: bool
+
+
+@dataclass
+class GetInterestGroupDetailsReturnT:
+    details: "InterestGroupDetails"
+
+
+@dataclass
+class GetSharedStorageMetadataReturnT:
+    metadata: "SharedStorageMetadata"
+
+
+@dataclass
+class GetSharedStorageEntriesReturnT:
+    entries: list
+
+
+@dataclass
+class RunBounceTrackingMitigationsReturnT:
+    deleted_sites: list

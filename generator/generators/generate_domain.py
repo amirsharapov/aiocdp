@@ -12,17 +12,7 @@ from generator.utils import (
 )
 
 
-def _generate_dataclass_import(domain: Domain):
-    should_generate = False
-
-    for command in domain.commands:
-        if command.parameters:
-            should_generate = True
-            break
-
-    if not should_generate:
-        return
-
+def _generate_dataclass_import():
     return ast.ImportFrom(
         module='dataclasses',
         names=[
@@ -35,11 +25,11 @@ def _generate_external_type_imports(domain: Domain):
     import_tree = defaultdict(set)
 
     for command in domain.commands:
-        for parameter in command.parameters:
-            if parameter.ref.domain:
-                import_tree[parameter.ref.domain_snake_case].add(
-                    parameter.ref.type
-                )
+        for ref in command.get_refs():
+            module_name = ref.domain_snake_case or domain.module_name
+            import_tree[module_name].add(
+                ref.type
+            )
 
     imports = []
 
@@ -62,7 +52,6 @@ def _generate_util_imports(domain: Domain):
             module='cdp.utils',
             names=[
                 ast.alias('is_defined'),
-                ast.alias('MaybeUndefined'),
                 ast.alias('UNDEFINED')
             ]
         )
@@ -261,10 +250,17 @@ def _generate_class_definition(domain: Domain):
 
 def generate(domain: Domain):
     root = ast.Module(
-        body=[]
+        body=[
+            ast.ImportFrom(
+                module='cdp.domains.base',
+                names=[
+                    ast.alias('BaseDomain')
+                ]
+            ),
+        ]
     )
 
-    if import_ := _generate_dataclass_import(domain):
+    if import_ := _generate_dataclass_import():
         root.body.append(import_)
 
     if imports := _generate_external_type_imports(domain):

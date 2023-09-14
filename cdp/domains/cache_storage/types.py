@@ -50,3 +50,19 @@ class Header:
 @dataclass
 class CachedResponse:
     body: str
+
+
+@dataclass
+class RequestCacheNamesReturnT:
+    caches: list
+
+
+@dataclass
+class RequestCachedResponseReturnT:
+    response: "CachedResponse"
+
+
+@dataclass
+class RequestEntriesReturnT:
+    cache_data_entries: list
+    return_count: float

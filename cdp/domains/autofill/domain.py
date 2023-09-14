@@ -1,3 +1,6 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
@@ -7,9 +10,11 @@ from cdp.domains.dom.types import (
 from cdp.domains.page.types import (
     FrameId
 )
+from cdp.domains.autofill.types import (
+    CreditCard
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -23,8 +28,8 @@ class Autofill(BaseDomain):
         card: CreditCard = UNDEFINED
     ):
         params = {
-            ""fieldId"": field_id,
-            ""card"": card,
+            "fieldId": field_id,
+            "card": card,
         }
 
         if is_defined(
@@ -42,7 +47,7 @@ class Autofill(BaseDomain):
         addresses: list
     ):
         params = {
-            ""addresses"": addresses,
+            "addresses": addresses,
         }
 
         return self._send_command(

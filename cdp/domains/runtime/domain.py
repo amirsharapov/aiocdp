@@ -1,9 +1,19 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.runtime.types import (
+    ExceptionDetails,
+    ExecutionContextId,
+    RemoteObject,
+    RemoteObjectId,
+    ScriptId,
+    TimeDelta
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -17,7 +27,7 @@ class Runtime(BaseDomain):
         generate_preview: bool = UNDEFINED
     ):
         params = {
-            ""promiseObjectId"": promise_object_id,
+            "promiseObjectId": promise_object_id,
         }
 
         if is_defined(
@@ -49,7 +59,7 @@ class Runtime(BaseDomain):
         object_group: str = UNDEFINED
     ):
         params = {
-            ""functionDeclaration"": function_declaration,
+            "functionDeclaration": function_declaration,
         }
 
         if is_defined(
@@ -110,9 +120,9 @@ class Runtime(BaseDomain):
         execution_context_id: ExecutionContextId = UNDEFINED
     ):
         params = {
-            ""expression"": expression,
-            ""sourceURL"": source_url,
-            ""persistScript"": persist_script,
+            "expression": expression,
+            "sourceURL": source_url,
+            "persistScript": persist_script,
         }
 
         if is_defined(
@@ -170,7 +180,7 @@ class Runtime(BaseDomain):
         timeout: TimeDelta = UNDEFINED
     ):
         params = {
-            ""expression"": expression,
+            "expression": expression,
         }
 
         if is_defined(
@@ -256,7 +266,7 @@ class Runtime(BaseDomain):
         generate_preview: bool = UNDEFINED
     ):
         params = {
-            ""objectId"": object_id,
+            "objectId": object_id,
         }
 
         if is_defined(
@@ -301,7 +311,7 @@ class Runtime(BaseDomain):
         object_group: str = UNDEFINED
     ):
         params = {
-            ""prototypeObjectId"": prototype_object_id,
+            "prototypeObjectId": prototype_object_id,
         }
 
         if is_defined(
@@ -319,7 +329,7 @@ class Runtime(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            ""objectId"": object_id,
+            "objectId": object_id,
         }
 
         return self._send_command(
@@ -332,7 +342,7 @@ class Runtime(BaseDomain):
         object_group: str
     ):
         params = {
-            ""objectGroup"": object_group,
+            "objectGroup": object_group,
         }
 
         return self._send_command(
@@ -362,7 +372,7 @@ class Runtime(BaseDomain):
         await_promise: bool = UNDEFINED
     ):
         params = {
-            ""scriptId"": script_id,
+            "scriptId": script_id,
         }
 
         if is_defined(
@@ -410,7 +420,7 @@ class Runtime(BaseDomain):
         max_depth: int
     ):
         params = {
-            ""maxDepth"": max_depth,
+            "maxDepth": max_depth,
         }
 
         return self._send_command(
@@ -423,7 +433,7 @@ class Runtime(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(
@@ -436,7 +446,7 @@ class Runtime(BaseDomain):
         size: int
     ):
         params = {
-            ""size"": size,
+            "size": size,
         }
 
         return self._send_command(
@@ -460,7 +470,7 @@ class Runtime(BaseDomain):
         execution_context_id: ExecutionContextId = UNDEFINED
     ):
         params = {
-            ""name"": name,
+            "name": name,
         }
 
         if is_defined(
@@ -478,7 +488,7 @@ class Runtime(BaseDomain):
         name: str
     ):
         params = {
-            ""name"": name,
+            "name": name,
         }
 
         return self._send_command(

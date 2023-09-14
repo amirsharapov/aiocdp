@@ -442,3 +442,15 @@ class InspectorIssue:
     code: "InspectorIssueCode"
     details: "InspectorIssueDetails"
     issue_id: "IssueId"
+
+
+@dataclass
+class GetEncodedResponseReturnT:
+    body: str
+    original_size: int
+    encoded_size: int
+
+
+@dataclass
+class CheckFormsIssuesReturnT:
+    form_issues: list

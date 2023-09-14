@@ -1,9 +1,14 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.system_info.types import (
+    GPUInfo
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -25,7 +30,7 @@ class SystemInfo(BaseDomain):
         feature_state: str
     ):
         params = {
-            ""featureState"": feature_state,
+            "featureState": feature_state,
         }
 
         return self._send_command(

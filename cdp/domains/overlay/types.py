@@ -5,9 +5,17 @@ from typing import (
     Literal
 )
 from cdp.domains.dom.types import (
+    BackendNodeId,
     NodeId,
+    Quad,
     RGBA,
     Rect
+)
+from cdp.domains.page.types import (
+    FrameId
+)
+from cdp.domains.runtime.types import (
+    RemoteObjectId
 )
 
 ContrastAlgorithm = Literal[
@@ -172,3 +180,18 @@ class IsolationModeHighlightConfig:
     resizer_color: "RGBA"
     resizer_handle_color: "RGBA"
     mask_color: "RGBA"
+
+
+@dataclass
+class GetHighlightObjectForTestReturnT:
+    highlight: object
+
+
+@dataclass
+class GetGridHighlightObjectsForTestReturnT:
+    highlights: object
+
+
+@dataclass
+class GetSourceOrderHighlightObjectForTestReturnT:
+    highlight: object

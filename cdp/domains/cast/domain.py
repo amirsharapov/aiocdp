@@ -1,9 +1,11 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -41,7 +43,7 @@ class Cast(BaseDomain):
         sink_name: str
     ):
         params = {
-            ""sinkName"": sink_name,
+            "sinkName": sink_name,
         }
 
         return self._send_command(
@@ -54,7 +56,7 @@ class Cast(BaseDomain):
         sink_name: str
     ):
         params = {
-            ""sinkName"": sink_name,
+            "sinkName": sink_name,
         }
 
         return self._send_command(
@@ -67,7 +69,7 @@ class Cast(BaseDomain):
         sink_name: str
     ):
         params = {
-            ""sinkName"": sink_name,
+            "sinkName": sink_name,
         }
 
         return self._send_command(
@@ -80,7 +82,7 @@ class Cast(BaseDomain):
         sink_name: str
     ):
         params = {
-            ""sinkName"": sink_name,
+            "sinkName": sink_name,
         }
 
         return self._send_command(

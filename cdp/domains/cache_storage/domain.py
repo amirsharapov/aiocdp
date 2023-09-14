@@ -1,12 +1,18 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
+)
+from cdp.domains.cache_storage.types import (
+    CacheId,
+    CachedResponse
 )
 from cdp.domains.storage.types import (
     StorageBucket
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -18,7 +24,7 @@ class CacheStorage(BaseDomain):
         cache_id: CacheId
     ):
         params = {
-            ""cacheId"": cache_id,
+            "cacheId": cache_id,
         }
 
         return self._send_command(
@@ -32,8 +38,8 @@ class CacheStorage(BaseDomain):
         request: str
     ):
         params = {
-            ""cacheId"": cache_id,
-            ""request"": request,
+            "cacheId": cache_id,
+            "request": request,
         }
 
         return self._send_command(
@@ -76,9 +82,9 @@ class CacheStorage(BaseDomain):
         request_headers: list
     ):
         params = {
-            ""cacheId"": cache_id,
-            ""requestURL"": request_url,
-            ""requestHeaders"": request_headers,
+            "cacheId": cache_id,
+            "requestURL": request_url,
+            "requestHeaders": request_headers,
         }
 
         return self._send_command(
@@ -94,7 +100,7 @@ class CacheStorage(BaseDomain):
         path_filter: str = UNDEFINED
     ):
         params = {
-            ""cacheId"": cache_id,
+            "cacheId": cache_id,
         }
 
         if is_defined(

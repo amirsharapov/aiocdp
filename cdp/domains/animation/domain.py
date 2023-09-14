@@ -1,9 +1,14 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.runtime.types import (
+    RemoteObject
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -35,7 +40,7 @@ class Animation(BaseDomain):
         id_: str
     ):
         params = {
-            ""id"": id_,
+            "id": id_,
         }
 
         return self._send_command(
@@ -58,7 +63,7 @@ class Animation(BaseDomain):
         animations: list
     ):
         params = {
-            ""animations"": animations,
+            "animations": animations,
         }
 
         return self._send_command(
@@ -71,7 +76,7 @@ class Animation(BaseDomain):
         animation_id: str
     ):
         params = {
-            ""animationId"": animation_id,
+            "animationId": animation_id,
         }
 
         return self._send_command(
@@ -85,8 +90,8 @@ class Animation(BaseDomain):
         current_time: float
     ):
         params = {
-            ""animations"": animations,
-            ""currentTime"": current_time,
+            "animations": animations,
+            "currentTime": current_time,
         }
 
         return self._send_command(
@@ -100,8 +105,8 @@ class Animation(BaseDomain):
         paused: bool
     ):
         params = {
-            ""animations"": animations,
-            ""paused"": paused,
+            "animations": animations,
+            "paused": paused,
         }
 
         return self._send_command(
@@ -114,7 +119,7 @@ class Animation(BaseDomain):
         playback_rate: float
     ):
         params = {
-            ""playbackRate"": playback_rate,
+            "playbackRate": playback_rate,
         }
 
         return self._send_command(
@@ -129,9 +134,9 @@ class Animation(BaseDomain):
         delay: float
     ):
         params = {
-            ""animationId"": animation_id,
-            ""duration"": duration,
-            ""delay"": delay,
+            "animationId": animation_id,
+            "duration": duration,
+            "delay": delay,
         }
 
         return self._send_command(

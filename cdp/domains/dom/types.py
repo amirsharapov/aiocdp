@@ -7,6 +7,15 @@ from typing import (
 from cdp.domains.page.types import (
     FrameId
 )
+from cdp.domains.runtime.types import (
+    ExecutionContextId,
+    RemoteObject,
+    RemoteObjectId,
+    StackTrace
+)
+from cdp.domains.dom.types import (
+    BackendNodeId
+)
 
 NodeId = int
 
@@ -147,3 +156,147 @@ class Rect:
 class CSSComputedStyleProperty:
     name: str
     value: str
+
+
+@dataclass
+class CollectClassNamesFromSubtreeReturnT:
+    class_names: list
+
+
+@dataclass
+class CopyToReturnT:
+    node_id: "NodeId"
+
+
+@dataclass
+class DescribeNodeReturnT:
+    node: "Node"
+
+
+@dataclass
+class GetAttributesReturnT:
+    attributes: list
+
+
+@dataclass
+class GetBoxModelReturnT:
+    model: "BoxModel"
+
+
+@dataclass
+class GetContentQuadsReturnT:
+    quads: list
+
+
+@dataclass
+class GetDocumentReturnT:
+    root: "Node"
+
+
+@dataclass
+class GetFlattenedDocumentReturnT:
+    nodes: list
+
+
+@dataclass
+class GetNodesForSubtreeByStyleReturnT:
+    node_ids: list
+
+
+@dataclass
+class GetNodeForLocationReturnT:
+    backend_node_id: "BackendNodeId"
+    frame_id: "FrameId"
+    node_id: "NodeId"
+
+
+@dataclass
+class GetOuterHTMLReturnT:
+    outer_html: str
+
+
+@dataclass
+class GetRelayoutBoundaryReturnT:
+    node_id: "NodeId"
+
+
+@dataclass
+class GetSearchResultsReturnT:
+    node_ids: list
+
+
+@dataclass
+class MoveToReturnT:
+    node_id: "NodeId"
+
+
+@dataclass
+class PerformSearchReturnT:
+    search_id: str
+    result_count: int
+
+
+@dataclass
+class PushNodeByPathToFrontendReturnT:
+    node_id: "NodeId"
+
+
+@dataclass
+class PushNodesByBackendIdsToFrontendReturnT:
+    node_ids: list
+
+
+@dataclass
+class QuerySelectorReturnT:
+    node_id: "NodeId"
+
+
+@dataclass
+class QuerySelectorAllReturnT:
+    node_ids: list
+
+
+@dataclass
+class GetTopLayerElementsReturnT:
+    node_ids: list
+
+
+@dataclass
+class RequestNodeReturnT:
+    node_id: "NodeId"
+
+
+@dataclass
+class ResolveNodeReturnT:
+    object: "RemoteObject"
+
+
+@dataclass
+class GetNodeStackTracesReturnT:
+    creation: "StackTrace"
+
+
+@dataclass
+class GetFileInfoReturnT:
+    path: str
+
+
+@dataclass
+class SetNodeNameReturnT:
+    node_id: "NodeId"
+
+
+@dataclass
+class GetFrameOwnerReturnT:
+    backend_node_id: "BackendNodeId"
+    node_id: "NodeId"
+
+
+@dataclass
+class GetContainerForNodeReturnT:
+    node_id: "NodeId"
+
+
+@dataclass
+class GetQueryingDescendantsForContainerReturnT:
+    node_ids: list

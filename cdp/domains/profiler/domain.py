@@ -1,9 +1,14 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.profiler.types import (
+    Profile
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -45,7 +50,7 @@ class Profiler(BaseDomain):
         interval: int
     ):
         params = {
-            ""interval"": interval,
+            "interval": interval,
         }
 
         return self._send_command(

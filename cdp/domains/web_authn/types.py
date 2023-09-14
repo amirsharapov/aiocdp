@@ -50,3 +50,18 @@ class Credential:
     user_handle: str
     sign_count: int
     large_blob: str
+
+
+@dataclass
+class AddVirtualAuthenticatorReturnT:
+    authenticator_id: "AuthenticatorId"
+
+
+@dataclass
+class GetCredentialReturnT:
+    credential: "Credential"
+
+
+@dataclass
+class GetCredentialsReturnT:
+    credentials: list

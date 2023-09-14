@@ -1,9 +1,15 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.memory.types import (
+    PressureLevel,
+    SamplingProfile
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -45,7 +51,7 @@ class Memory(BaseDomain):
         suppressed: bool
     ):
         params = {
-            ""suppressed"": suppressed,
+            "suppressed": suppressed,
         }
 
         return self._send_command(
@@ -58,7 +64,7 @@ class Memory(BaseDomain):
         level: PressureLevel
     ):
         params = {
-            ""level"": level,
+            "level": level,
         }
 
         return self._send_command(

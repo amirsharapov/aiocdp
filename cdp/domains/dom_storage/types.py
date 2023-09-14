@@ -12,3 +12,8 @@ class StorageId:
     security_origin: str
     storage_key: "SerializedStorageKey"
     is_local_storage: bool
+
+
+@dataclass
+class GetDOMStorageItemsReturnT:
+    entries: list

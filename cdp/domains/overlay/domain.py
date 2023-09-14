@@ -1,3 +1,6 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
@@ -7,6 +10,13 @@ from cdp.domains.dom.types import (
     Quad,
     RGBA
 )
+from cdp.domains.overlay.types import (
+    ColorFormat,
+    HighlightConfig,
+    HingeConfig,
+    InspectMode,
+    SourceOrderConfig
+)
 from cdp.domains.page.types import (
     FrameId
 )
@@ -15,7 +25,6 @@ from cdp.domains.runtime.types import (
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -51,7 +60,7 @@ class Overlay(BaseDomain):
         show_accessibility_info: bool = UNDEFINED
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         if is_defined(
@@ -84,7 +93,7 @@ class Overlay(BaseDomain):
         node_ids: list
     ):
         params = {
-            ""nodeIds"": node_ids,
+            "nodeIds": node_ids,
         }
 
         return self._send_command(
@@ -97,7 +106,7 @@ class Overlay(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -122,7 +131,7 @@ class Overlay(BaseDomain):
         content_outline_color: RGBA = UNDEFINED
     ):
         params = {
-            ""frameId"": frame_id,
+            "frameId": frame_id,
         }
 
         if is_defined(
@@ -149,7 +158,7 @@ class Overlay(BaseDomain):
         selector: str = UNDEFINED
     ):
         params = {
-            ""highlightConfig"": highlight_config,
+            "highlightConfig": highlight_config,
         }
 
         if is_defined(
@@ -184,7 +193,7 @@ class Overlay(BaseDomain):
         outline_color: RGBA = UNDEFINED
     ):
         params = {
-            ""quad"": quad,
+            "quad": quad,
         }
 
         if is_defined(
@@ -212,10 +221,10 @@ class Overlay(BaseDomain):
         outline_color: RGBA = UNDEFINED
     ):
         params = {
-            ""x"": x,
-            ""y"": y,
-            ""width"": width,
-            ""height"": height,
+            "x": x,
+            "y": y,
+            "width": width,
+            "height": height,
         }
 
         if is_defined(
@@ -241,7 +250,7 @@ class Overlay(BaseDomain):
         object_id: RemoteObjectId = UNDEFINED
     ):
         params = {
-            ""sourceOrderConfig"": source_order_config,
+            "sourceOrderConfig": source_order_config,
         }
 
         if is_defined(
@@ -270,7 +279,7 @@ class Overlay(BaseDomain):
         highlight_config: HighlightConfig = UNDEFINED
     ):
         params = {
-            ""mode"": mode,
+            "mode": mode,
         }
 
         if is_defined(
@@ -288,7 +297,7 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            ""show"": show,
+            "show": show,
         }
 
         return self._send_command(
@@ -317,7 +326,7 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            ""show"": show,
+            "show": show,
         }
 
         return self._send_command(
@@ -330,7 +339,7 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            ""show"": show,
+            "show": show,
         }
 
         return self._send_command(
@@ -343,7 +352,7 @@ class Overlay(BaseDomain):
         grid_node_highlight_configs: list
     ):
         params = {
-            ""gridNodeHighlightConfigs"": grid_node_highlight_configs,
+            "gridNodeHighlightConfigs": grid_node_highlight_configs,
         }
 
         return self._send_command(
@@ -356,7 +365,7 @@ class Overlay(BaseDomain):
         flex_node_highlight_configs: list
     ):
         params = {
-            ""flexNodeHighlightConfigs"": flex_node_highlight_configs,
+            "flexNodeHighlightConfigs": flex_node_highlight_configs,
         }
 
         return self._send_command(
@@ -369,7 +378,7 @@ class Overlay(BaseDomain):
         scroll_snap_highlight_configs: list
     ):
         params = {
-            ""scrollSnapHighlightConfigs"": scroll_snap_highlight_configs,
+            "scrollSnapHighlightConfigs": scroll_snap_highlight_configs,
         }
 
         return self._send_command(
@@ -382,7 +391,7 @@ class Overlay(BaseDomain):
         container_query_highlight_configs: list
     ):
         params = {
-            ""containerQueryHighlightConfigs"": container_query_highlight_configs,
+            "containerQueryHighlightConfigs": container_query_highlight_configs,
         }
 
         return self._send_command(
@@ -395,7 +404,7 @@ class Overlay(BaseDomain):
         result: bool
     ):
         params = {
-            ""result"": result,
+            "result": result,
         }
 
         return self._send_command(
@@ -408,7 +417,7 @@ class Overlay(BaseDomain):
         result: bool
     ):
         params = {
-            ""result"": result,
+            "result": result,
         }
 
         return self._send_command(
@@ -421,7 +430,7 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            ""show"": show,
+            "show": show,
         }
 
         return self._send_command(
@@ -434,7 +443,7 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            ""show"": show,
+            "show": show,
         }
 
         return self._send_command(
@@ -447,7 +456,7 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            ""show"": show,
+            "show": show,
         }
 
         return self._send_command(
@@ -460,7 +469,7 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            ""show"": show,
+            "show": show,
         }
 
         return self._send_command(
@@ -489,7 +498,7 @@ class Overlay(BaseDomain):
         isolated_element_highlight_configs: list
     ):
         params = {
-            ""isolatedElementHighlightConfigs"": isolated_element_highlight_configs,
+            "isolatedElementHighlightConfigs": isolated_element_highlight_configs,
         }
 
         return self._send_command(

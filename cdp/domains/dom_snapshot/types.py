@@ -155,3 +155,16 @@ class TextBoxSnapshot:
     bounds: list
     start: list
     length: list
+
+
+@dataclass
+class GetSnapshotReturnT:
+    dom_nodes: list
+    layout_tree_nodes: list
+    computed_styles: list
+
+
+@dataclass
+class CaptureSnapshotReturnT:
+    documents: list
+    strings: list

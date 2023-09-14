@@ -1,15 +1,23 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.domains.page.types import (
     FrameId
 )
+from cdp.domains.storage.types import (
+    InterestGroupDetails,
+    SerializedStorageKey,
+    SharedStorageMetadata,
+    StorageBucket
+)
 from cdp.domains.browser.types import (
     BrowserContextID
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -21,7 +29,7 @@ class Storage(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            ""frameId"": frame_id,
+            "frameId": frame_id,
         }
 
         return self._send_command(
@@ -35,8 +43,8 @@ class Storage(BaseDomain):
         storage_types: str
     ):
         params = {
-            ""origin"": origin,
-            ""storageTypes"": storage_types,
+            "origin": origin,
+            "storageTypes": storage_types,
         }
 
         return self._send_command(
@@ -50,8 +58,8 @@ class Storage(BaseDomain):
         storage_types: str
     ):
         params = {
-            ""storageKey"": storage_key,
-            ""storageTypes"": storage_types,
+            "storageKey": storage_key,
+            "storageTypes": storage_types,
         }
 
         return self._send_command(
@@ -81,7 +89,7 @@ class Storage(BaseDomain):
         browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {
-            ""cookies"": cookies,
+            "cookies": cookies,
         }
 
         if is_defined(
@@ -115,7 +123,7 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            ""origin"": origin,
+            "origin": origin,
         }
 
         return self._send_command(
@@ -129,7 +137,7 @@ class Storage(BaseDomain):
         quota_size: float = UNDEFINED
     ):
         params = {
-            ""origin"": origin,
+            "origin": origin,
         }
 
         if is_defined(
@@ -147,7 +155,7 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            ""origin"": origin,
+            "origin": origin,
         }
 
         return self._send_command(
@@ -160,7 +168,7 @@ class Storage(BaseDomain):
         storage_key: str
     ):
         params = {
-            ""storageKey"": storage_key,
+            "storageKey": storage_key,
         }
 
         return self._send_command(
@@ -173,7 +181,7 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            ""origin"": origin,
+            "origin": origin,
         }
 
         return self._send_command(
@@ -186,7 +194,7 @@ class Storage(BaseDomain):
         storage_key: str
     ):
         params = {
-            ""storageKey"": storage_key,
+            "storageKey": storage_key,
         }
 
         return self._send_command(
@@ -199,7 +207,7 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            ""origin"": origin,
+            "origin": origin,
         }
 
         return self._send_command(
@@ -212,7 +220,7 @@ class Storage(BaseDomain):
         storage_key: str
     ):
         params = {
-            ""storageKey"": storage_key,
+            "storageKey": storage_key,
         }
 
         return self._send_command(
@@ -225,7 +233,7 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            ""origin"": origin,
+            "origin": origin,
         }
 
         return self._send_command(
@@ -238,7 +246,7 @@ class Storage(BaseDomain):
         storage_key: str
     ):
         params = {
-            ""storageKey"": storage_key,
+            "storageKey": storage_key,
         }
 
         return self._send_command(
@@ -261,7 +269,7 @@ class Storage(BaseDomain):
         issuer_origin: str
     ):
         params = {
-            ""issuerOrigin"": issuer_origin,
+            "issuerOrigin": issuer_origin,
         }
 
         return self._send_command(
@@ -275,8 +283,8 @@ class Storage(BaseDomain):
         name: str
     ):
         params = {
-            ""ownerOrigin"": owner_origin,
-            ""name"": name,
+            "ownerOrigin": owner_origin,
+            "name": name,
         }
 
         return self._send_command(
@@ -289,7 +297,7 @@ class Storage(BaseDomain):
         enable: bool
     ):
         params = {
-            ""enable"": enable,
+            "enable": enable,
         }
 
         return self._send_command(
@@ -302,7 +310,7 @@ class Storage(BaseDomain):
         owner_origin: str
     ):
         params = {
-            ""ownerOrigin"": owner_origin,
+            "ownerOrigin": owner_origin,
         }
 
         return self._send_command(
@@ -315,7 +323,7 @@ class Storage(BaseDomain):
         owner_origin: str
     ):
         params = {
-            ""ownerOrigin"": owner_origin,
+            "ownerOrigin": owner_origin,
         }
 
         return self._send_command(
@@ -331,9 +339,9 @@ class Storage(BaseDomain):
         ignore_if_present: bool = UNDEFINED
     ):
         params = {
-            ""ownerOrigin"": owner_origin,
-            ""key"": key,
-            ""value"": value,
+            "ownerOrigin": owner_origin,
+            "key": key,
+            "value": value,
         }
 
         if is_defined(
@@ -352,8 +360,8 @@ class Storage(BaseDomain):
         key: str
     ):
         params = {
-            ""ownerOrigin"": owner_origin,
-            ""key"": key,
+            "ownerOrigin": owner_origin,
+            "key": key,
         }
 
         return self._send_command(
@@ -366,7 +374,7 @@ class Storage(BaseDomain):
         owner_origin: str
     ):
         params = {
-            ""ownerOrigin"": owner_origin,
+            "ownerOrigin": owner_origin,
         }
 
         return self._send_command(
@@ -379,7 +387,7 @@ class Storage(BaseDomain):
         owner_origin: str
     ):
         params = {
-            ""ownerOrigin"": owner_origin,
+            "ownerOrigin": owner_origin,
         }
 
         return self._send_command(
@@ -392,7 +400,7 @@ class Storage(BaseDomain):
         enable: bool
     ):
         params = {
-            ""enable"": enable,
+            "enable": enable,
         }
 
         return self._send_command(
@@ -406,8 +414,8 @@ class Storage(BaseDomain):
         enable: bool
     ):
         params = {
-            ""storageKey"": storage_key,
-            ""enable"": enable,
+            "storageKey": storage_key,
+            "enable": enable,
         }
 
         return self._send_command(
@@ -420,7 +428,7 @@ class Storage(BaseDomain):
         bucket: StorageBucket
     ):
         params = {
-            ""bucket"": bucket,
+            "bucket": bucket,
         }
 
         return self._send_command(
@@ -443,7 +451,7 @@ class Storage(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(
@@ -456,7 +464,7 @@ class Storage(BaseDomain):
         enable: bool
     ):
         params = {
-            ""enable"": enable,
+            "enable": enable,
         }
 
         return self._send_command(

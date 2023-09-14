@@ -6,10 +6,12 @@ from typing import (
 )
 from cdp.domains.runtime.types import (
     RemoteObject,
+    RemoteObjectId,
     ScriptId
 )
 from cdp.domains.dom.types import (
-    BackendNodeId
+    BackendNodeId,
+    NodeId
 )
 
 DOMBreakpointType = Literal[
@@ -36,3 +38,8 @@ class EventListener:
     handler: "RemoteObject"
     original_handler: "RemoteObject"
     backend_node_id: "BackendNodeId"
+
+
+@dataclass
+class GetEventListenersReturnT:
+    listeners: list

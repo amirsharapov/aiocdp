@@ -5,6 +5,7 @@ from typing import (
     Literal
 )
 from cdp.domains.runtime.types import (
+    ExecutionContextId,
     ScriptId,
     UniqueDebuggerId
 )
@@ -12,6 +13,15 @@ from cdp.domains.network.types import (
     LoaderId,
     ResourceType,
     TimeSinceEpoch
+)
+from cdp.domains.dom.types import (
+    Rect
+)
+from cdp.domains.io.types import (
+    StreamHandle
+)
+from cdp.domains.emulation.types import (
+    ScreenOrientation
 )
 
 FrameId = str
@@ -574,3 +584,122 @@ class BackForwardCacheNotRestoredExplanationTree:
     url: str
     explanations: list
     children: list
+
+
+@dataclass
+class AddScriptToEvaluateOnLoadReturnT:
+    identifier: "ScriptIdentifier"
+
+
+@dataclass
+class AddScriptToEvaluateOnNewDocumentReturnT:
+    identifier: "ScriptIdentifier"
+
+
+@dataclass
+class CaptureScreenshotReturnT:
+    data: str
+
+
+@dataclass
+class CaptureSnapshotReturnT:
+    data: str
+
+
+@dataclass
+class CreateIsolatedWorldReturnT:
+    execution_context_id: "ExecutionContextId"
+
+
+@dataclass
+class GetAppManifestReturnT:
+    url: str
+    errors: list
+    data: str
+    parsed: "AppManifestParsedProperties"
+
+
+@dataclass
+class GetInstallabilityErrorsReturnT:
+    installability_errors: list
+
+
+@dataclass
+class GetManifestIconsReturnT:
+    primary_icon: str
+
+
+@dataclass
+class GetAppIdReturnT:
+    app_id: str
+    recommended_id: str
+
+
+@dataclass
+class GetAdScriptIdReturnT:
+    ad_script_id: "AdScriptId"
+
+
+@dataclass
+class GetCookiesReturnT:
+    cookies: list
+
+
+@dataclass
+class GetFrameTreeReturnT:
+    frame_tree: "FrameTree"
+
+
+@dataclass
+class GetLayoutMetricsReturnT:
+    layout_viewport: "LayoutViewport"
+    visual_viewport: "VisualViewport"
+    content_size: "Rect"
+    css_layout_viewport: "LayoutViewport"
+    css_visual_viewport: "VisualViewport"
+    css_content_size: "Rect"
+
+
+@dataclass
+class GetNavigationHistoryReturnT:
+    current_index: int
+    entries: list
+
+
+@dataclass
+class GetResourceContentReturnT:
+    content: str
+    base64_encoded: bool
+
+
+@dataclass
+class GetResourceTreeReturnT:
+    frame_tree: "FrameResourceTree"
+
+
+@dataclass
+class NavigateReturnT:
+    frame_id: "FrameId"
+    loader_id: "LoaderId"
+    error_text: str
+
+
+@dataclass
+class PrintToPDFReturnT:
+    data: str
+    stream: "StreamHandle"
+
+
+@dataclass
+class SearchInResourceReturnT:
+    result: list
+
+
+@dataclass
+class GetPermissionsPolicyStateReturnT:
+    states: list
+
+
+@dataclass
+class GetOriginTrialsReturnT:
+    origin_trials: list

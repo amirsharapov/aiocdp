@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 
 from generator.types.base import ComplexNode
 from generator.types.property import Parameter, Return
-from generator.utils import UNDEFINED, MaybeUndefined
+from generator.utils import UNDEFINED, MaybeUndefined, snake_case
 
 if TYPE_CHECKING:
     from generator.types.domain import Domain
@@ -30,6 +30,14 @@ class Command(ComplexNode):
             experimental=data.get('experimental', UNDEFINED),
             deprecated=data.get('deprecated', UNDEFINED)
         )
+
+    @property
+    def name_snake_case(self):
+        return snake_case(self.name)
+
+    @property
+    def name_pascal_case(self):
+        return self.name[0].upper() + self.name[1:]
 
     def get_refs(self):
         refs = []

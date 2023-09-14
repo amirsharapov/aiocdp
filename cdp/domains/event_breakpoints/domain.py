@@ -1,9 +1,11 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -15,7 +17,7 @@ class EventBreakpoints(BaseDomain):
         event_name: str
     ):
         params = {
-            ""eventName"": event_name,
+            "eventName": event_name,
         }
 
         return self._send_command(
@@ -28,7 +30,7 @@ class EventBreakpoints(BaseDomain):
         event_name: str
     ):
         params = {
-            ""eventName"": event_name,
+            "eventName": event_name,
         }
 
         return self._send_command(

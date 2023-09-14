@@ -1,5 +1,21 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
+)
+from cdp.domains.css.types import (
+    CSSContainerQuery,
+    CSSLayerData,
+    CSSMedia,
+    CSSRule,
+    CSSScope,
+    CSSStyle,
+    CSSSupports,
+    SelectorList,
+    SourceRange,
+    StyleSheetId,
+    Value
 )
 from cdp.domains.page.types import (
     FrameId
@@ -9,7 +25,6 @@ from cdp.domains.dom.types import (
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -23,9 +38,9 @@ class CSS(BaseDomain):
         location: SourceRange
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
-            ""ruleText"": rule_text,
-            ""location"": location,
+            "styleSheetId": style_sheet_id,
+            "ruleText": rule_text,
+            "location": location,
         }
 
         return self._send_command(
@@ -38,7 +53,7 @@ class CSS(BaseDomain):
         style_sheet_id: StyleSheetId
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
+            "styleSheetId": style_sheet_id,
         }
 
         return self._send_command(
@@ -51,7 +66,7 @@ class CSS(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            ""frameId"": frame_id,
+            "frameId": frame_id,
         }
 
         return self._send_command(
@@ -85,8 +100,8 @@ class CSS(BaseDomain):
         forced_pseudo_classes: list
     ):
         params = {
-            ""nodeId"": node_id,
-            ""forcedPseudoClasses"": forced_pseudo_classes,
+            "nodeId": node_id,
+            "forcedPseudoClasses": forced_pseudo_classes,
         }
 
         return self._send_command(
@@ -99,7 +114,7 @@ class CSS(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -112,7 +127,7 @@ class CSS(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -125,7 +140,7 @@ class CSS(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -138,7 +153,7 @@ class CSS(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -161,7 +176,7 @@ class CSS(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -174,7 +189,7 @@ class CSS(BaseDomain):
         style_sheet_id: StyleSheetId
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
+            "styleSheetId": style_sheet_id,
         }
 
         return self._send_command(
@@ -187,7 +202,7 @@ class CSS(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -200,7 +215,7 @@ class CSS(BaseDomain):
         properties_to_track: list
     ):
         params = {
-            ""propertiesToTrack"": properties_to_track,
+            "propertiesToTrack": properties_to_track,
         }
 
         return self._send_command(
@@ -225,9 +240,9 @@ class CSS(BaseDomain):
         value: str
     ):
         params = {
-            ""nodeId"": node_id,
-            ""propertyName"": property_name,
-            ""value"": value,
+            "nodeId": node_id,
+            "propertyName": property_name,
+            "value": value,
         }
 
         return self._send_command(
@@ -242,9 +257,9 @@ class CSS(BaseDomain):
         key_text: str
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
-            ""range"": range_,
-            ""keyText"": key_text,
+            "styleSheetId": style_sheet_id,
+            "range": range_,
+            "keyText": key_text,
         }
 
         return self._send_command(
@@ -259,9 +274,9 @@ class CSS(BaseDomain):
         text: str
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
-            ""range"": range_,
-            ""text"": text,
+            "styleSheetId": style_sheet_id,
+            "range": range_,
+            "text": text,
         }
 
         return self._send_command(
@@ -276,9 +291,9 @@ class CSS(BaseDomain):
         text: str
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
-            ""range"": range_,
-            ""text"": text,
+            "styleSheetId": style_sheet_id,
+            "range": range_,
+            "text": text,
         }
 
         return self._send_command(
@@ -293,9 +308,9 @@ class CSS(BaseDomain):
         text: str
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
-            ""range"": range_,
-            ""text"": text,
+            "styleSheetId": style_sheet_id,
+            "range": range_,
+            "text": text,
         }
 
         return self._send_command(
@@ -310,9 +325,9 @@ class CSS(BaseDomain):
         text: str
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
-            ""range"": range_,
-            ""text"": text,
+            "styleSheetId": style_sheet_id,
+            "range": range_,
+            "text": text,
         }
 
         return self._send_command(
@@ -327,9 +342,9 @@ class CSS(BaseDomain):
         selector: str
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
-            ""range"": range_,
-            ""selector"": selector,
+            "styleSheetId": style_sheet_id,
+            "range": range_,
+            "selector": selector,
         }
 
         return self._send_command(
@@ -343,8 +358,8 @@ class CSS(BaseDomain):
         text: str
     ):
         params = {
-            ""styleSheetId"": style_sheet_id,
-            ""text"": text,
+            "styleSheetId": style_sheet_id,
+            "text": text,
         }
 
         return self._send_command(
@@ -357,7 +372,7 @@ class CSS(BaseDomain):
         edits: list
     ):
         params = {
-            ""edits"": edits,
+            "edits": edits,
         }
 
         return self._send_command(
@@ -400,7 +415,7 @@ class CSS(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(

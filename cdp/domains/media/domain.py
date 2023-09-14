@@ -1,6 +1,11 @@
+from cdp.domains.base import (
+    BaseDomain
+)
+from dataclasses import (
+    dataclass
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 

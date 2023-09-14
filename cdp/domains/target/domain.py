@@ -1,12 +1,20 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
+)
+from cdp.domains.target.types import (
+    SessionID,
+    TargetFilter,
+    TargetID,
+    TargetInfo
 )
 from cdp.domains.browser.types import (
     BrowserContextID
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -18,7 +26,7 @@ class Target(BaseDomain):
         target_id: TargetID
     ):
         params = {
-            ""targetId"": target_id,
+            "targetId": target_id,
         }
 
         return self._send_command(
@@ -32,7 +40,7 @@ class Target(BaseDomain):
         flatten: bool = UNDEFINED
     ):
         params = {
-            ""targetId"": target_id,
+            "targetId": target_id,
         }
 
         if is_defined(
@@ -60,7 +68,7 @@ class Target(BaseDomain):
         target_id: TargetID
     ):
         params = {
-            ""targetId"": target_id,
+            "targetId": target_id,
         }
 
         return self._send_command(
@@ -74,7 +82,7 @@ class Target(BaseDomain):
         binding_name: str = UNDEFINED
     ):
         params = {
-            ""targetId"": target_id,
+            "targetId": target_id,
         }
 
         if is_defined(
@@ -143,7 +151,7 @@ class Target(BaseDomain):
         for_tab: bool = UNDEFINED
     ):
         params = {
-            ""url"": url,
+            "url": url,
         }
 
         if is_defined(
@@ -213,7 +221,7 @@ class Target(BaseDomain):
         browser_context_id: BrowserContextID
     ):
         params = {
-            ""browserContextId"": browser_context_id,
+            "browserContextId": browser_context_id,
         }
 
         return self._send_command(
@@ -260,7 +268,7 @@ class Target(BaseDomain):
         target_id: TargetID = UNDEFINED
     ):
         params = {
-            ""message"": message,
+            "message": message,
         }
 
         if is_defined(
@@ -286,8 +294,8 @@ class Target(BaseDomain):
         filter_: TargetFilter = UNDEFINED
     ):
         params = {
-            ""autoAttach"": auto_attach,
-            ""waitForDebuggerOnStart"": wait_for_debugger_on_start,
+            "autoAttach": auto_attach,
+            "waitForDebuggerOnStart": wait_for_debugger_on_start,
         }
 
         if is_defined(
@@ -312,8 +320,8 @@ class Target(BaseDomain):
         filter_: TargetFilter = UNDEFINED
     ):
         params = {
-            ""targetId"": target_id,
-            ""waitForDebuggerOnStart"": wait_for_debugger_on_start,
+            "targetId": target_id,
+            "waitForDebuggerOnStart": wait_for_debugger_on_start,
         }
 
         if is_defined(
@@ -332,7 +340,7 @@ class Target(BaseDomain):
         filter_: TargetFilter = UNDEFINED
     ):
         params = {
-            ""discover"": discover,
+            "discover": discover,
         }
 
         if is_defined(
@@ -350,7 +358,7 @@ class Target(BaseDomain):
         locations: list
     ):
         params = {
-            ""locations"": locations,
+            "locations": locations,
         }
 
         return self._send_command(

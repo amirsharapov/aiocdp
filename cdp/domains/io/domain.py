@@ -1,12 +1,17 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
+)
+from cdp.domains.io.types import (
+    StreamHandle
 )
 from cdp.domains.runtime.types import (
     RemoteObjectId
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -18,7 +23,7 @@ class IO(BaseDomain):
         handle: StreamHandle
     ):
         params = {
-            ""handle"": handle,
+            "handle": handle,
         }
 
         return self._send_command(
@@ -33,7 +38,7 @@ class IO(BaseDomain):
         size: int = UNDEFINED
     ):
         params = {
-            ""handle"": handle,
+            "handle": handle,
         }
 
         if is_defined(
@@ -56,7 +61,7 @@ class IO(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            ""objectId"": object_id,
+            "objectId": object_id,
         }
 
         return self._send_command(

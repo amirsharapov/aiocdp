@@ -1,12 +1,18 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.domains.storage.types import (
     StorageBucket
 )
+from cdp.domains.indexed_db.types import (
+    DatabaseWithObjectStores,
+    KeyRange
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -22,8 +28,8 @@ class IndexedDB(BaseDomain):
         object_store_name: str = UNDEFINED
     ):
         params = {
-            ""databaseName"": database_name,
-            ""objectStoreName"": object_store_name,
+            "databaseName": database_name,
+            "objectStoreName": object_store_name,
         }
 
         if is_defined(
@@ -54,7 +60,7 @@ class IndexedDB(BaseDomain):
         database_name: str = UNDEFINED
     ):
         params = {
-            ""databaseName"": database_name,
+            "databaseName": database_name,
         }
 
         if is_defined(
@@ -87,9 +93,9 @@ class IndexedDB(BaseDomain):
         key_range: KeyRange = UNDEFINED
     ):
         params = {
-            ""databaseName"": database_name,
-            ""objectStoreName"": object_store_name,
-            ""keyRange"": key_range,
+            "databaseName": database_name,
+            "objectStoreName": object_store_name,
+            "keyRange": key_range,
         }
 
         if is_defined(
@@ -145,11 +151,11 @@ class IndexedDB(BaseDomain):
         key_range: KeyRange = UNDEFINED
     ):
         params = {
-            ""databaseName"": database_name,
-            ""objectStoreName"": object_store_name,
-            ""indexName"": index_name,
-            ""skipCount"": skip_count,
-            ""pageSize"": page_size,
+            "databaseName": database_name,
+            "objectStoreName": object_store_name,
+            "indexName": index_name,
+            "skipCount": skip_count,
+            "pageSize": page_size,
         }
 
         if is_defined(
@@ -186,8 +192,8 @@ class IndexedDB(BaseDomain):
         object_store_name: str = UNDEFINED
     ):
         params = {
-            ""databaseName"": database_name,
-            ""objectStoreName"": object_store_name,
+            "databaseName": database_name,
+            "objectStoreName": object_store_name,
         }
 
         if is_defined(
@@ -218,7 +224,7 @@ class IndexedDB(BaseDomain):
         database_name: str = UNDEFINED
     ):
         params = {
-            ""databaseName"": database_name,
+            "databaseName": database_name,
         }
 
         if is_defined(

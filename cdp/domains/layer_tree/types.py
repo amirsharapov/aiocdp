@@ -52,3 +52,34 @@ class Layer:
     invisible: bool
     scroll_rects: list
     sticky_position_constraint: "StickyPositionConstraint"
+
+
+@dataclass
+class CompositingReasonsReturnT:
+    compositing_reasons: list
+    compositing_reason_ids: list
+
+
+@dataclass
+class LoadSnapshotReturnT:
+    snapshot_id: "SnapshotId"
+
+
+@dataclass
+class MakeSnapshotReturnT:
+    snapshot_id: "SnapshotId"
+
+
+@dataclass
+class ProfileSnapshotReturnT:
+    timings: list
+
+
+@dataclass
+class ReplaySnapshotReturnT:
+    data_url: str
+
+
+@dataclass
+class SnapshotCommandLogReturnT:
+    command_log: list

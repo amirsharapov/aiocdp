@@ -1,9 +1,18 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.tracing.types import (
+    MemoryDumpLevelOfDetail,
+    StreamCompression,
+    StreamFormat,
+    TraceConfig,
+    TracingBackend
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -35,7 +44,7 @@ class Tracing(BaseDomain):
         sync_id: str
     ):
         params = {
-            ""syncId"": sync_id,
+            "syncId": sync_id,
         }
 
         return self._send_command(

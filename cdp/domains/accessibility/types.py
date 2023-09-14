@@ -5,10 +5,14 @@ from typing import (
     Literal
 )
 from cdp.domains.dom.types import (
-    BackendNodeId
+    BackendNodeId,
+    NodeId
 )
 from cdp.domains.page.types import (
     FrameId
+)
+from cdp.domains.runtime.types import (
+    RemoteObjectId
 )
 
 AXNodeId = str
@@ -147,3 +151,33 @@ class AXNode:
     child_ids: list
     backend_dom_node_id: "BackendNodeId"
     frame_id: "FrameId"
+
+
+@dataclass
+class GetPartialAXTreeReturnT:
+    nodes: list
+
+
+@dataclass
+class GetFullAXTreeReturnT:
+    nodes: list
+
+
+@dataclass
+class GetRootAXNodeReturnT:
+    node: "AXNode"
+
+
+@dataclass
+class GetAXNodeAndAncestorsReturnT:
+    nodes: list
+
+
+@dataclass
+class GetChildAXNodesReturnT:
+    nodes: list
+
+
+@dataclass
+class QueryAXTreeReturnT:
+    nodes: list

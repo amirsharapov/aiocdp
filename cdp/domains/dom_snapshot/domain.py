@@ -1,9 +1,11 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -38,7 +40,7 @@ class DOMSnapshot(BaseDomain):
         include_user_agent_shadow_tree: bool = UNDEFINED
     ):
         params = {
-            ""computedStyleWhitelist"": computed_style_whitelist,
+            "computedStyleWhitelist": computed_style_whitelist,
         }
 
         if is_defined(
@@ -70,7 +72,7 @@ class DOMSnapshot(BaseDomain):
         include_text_color_opacities: bool = UNDEFINED
     ):
         params = {
-            ""computedStyles"": computed_styles,
+            "computedStyles": computed_styles,
         }
 
         if is_defined(

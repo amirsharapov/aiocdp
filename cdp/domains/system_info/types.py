@@ -75,3 +75,21 @@ class ProcessInfo:
     type: str
     id: int
     cpu_time: float
+
+
+@dataclass
+class GetInfoReturnT:
+    gpu: "GPUInfo"
+    model_name: str
+    model_version: str
+    command_line: str
+
+
+@dataclass
+class GetFeatureStateReturnT:
+    feature_enabled: bool
+
+
+@dataclass
+class GetProcessInfoReturnT:
+    process_info: list

@@ -7,3 +7,8 @@ from dataclasses import (
 class Metric:
     name: str
     value: float
+
+
+@dataclass
+class GetMetricsReturnT:
+    metrics: list

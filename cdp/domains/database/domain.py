@@ -1,9 +1,15 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.database.types import (
+    DatabaseId,
+    Error
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -36,8 +42,8 @@ class Database(BaseDomain):
         query: str
     ):
         params = {
-            ""databaseId"": database_id,
-            ""query"": query,
+            "databaseId": database_id,
+            "query": query,
         }
 
         return self._send_command(
@@ -50,7 +56,7 @@ class Database(BaseDomain):
         database_id: DatabaseId
     ):
         params = {
-            ""databaseId"": database_id,
+            "databaseId": database_id,
         }
 
         return self._send_command(

@@ -1,9 +1,14 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.service_worker.types import (
+    RegistrationID
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -17,9 +22,9 @@ class ServiceWorker(BaseDomain):
         data: str
     ):
         params = {
-            ""origin"": origin,
-            ""registrationId"": registration_id,
-            ""data"": data,
+            "origin": origin,
+            "registrationId": registration_id,
+            "data": data,
         }
 
         return self._send_command(
@@ -45,10 +50,10 @@ class ServiceWorker(BaseDomain):
         last_chance: bool
     ):
         params = {
-            ""origin"": origin,
-            ""registrationId"": registration_id,
-            ""tag"": tag,
-            ""lastChance"": last_chance,
+            "origin": origin,
+            "registrationId": registration_id,
+            "tag": tag,
+            "lastChance": last_chance,
         }
 
         return self._send_command(
@@ -63,9 +68,9 @@ class ServiceWorker(BaseDomain):
         tag: str
     ):
         params = {
-            ""origin"": origin,
-            ""registrationId"": registration_id,
-            ""tag"": tag,
+            "origin": origin,
+            "registrationId": registration_id,
+            "tag": tag,
         }
 
         return self._send_command(
@@ -88,7 +93,7 @@ class ServiceWorker(BaseDomain):
         version_id: str
     ):
         params = {
-            ""versionId"": version_id,
+            "versionId": version_id,
         }
 
         return self._send_command(
@@ -101,7 +106,7 @@ class ServiceWorker(BaseDomain):
         force_update_on_page_load: bool
     ):
         params = {
-            ""forceUpdateOnPageLoad"": force_update_on_page_load,
+            "forceUpdateOnPageLoad": force_update_on_page_load,
         }
 
         return self._send_command(
@@ -114,7 +119,7 @@ class ServiceWorker(BaseDomain):
         scope_url: str
     ):
         params = {
-            ""scopeURL"": scope_url,
+            "scopeURL": scope_url,
         }
 
         return self._send_command(
@@ -127,7 +132,7 @@ class ServiceWorker(BaseDomain):
         scope_url: str
     ):
         params = {
-            ""scopeURL"": scope_url,
+            "scopeURL": scope_url,
         }
 
         return self._send_command(
@@ -150,7 +155,7 @@ class ServiceWorker(BaseDomain):
         version_id: str
     ):
         params = {
-            ""versionId"": version_id,
+            "versionId": version_id,
         }
 
         return self._send_command(
@@ -163,7 +168,7 @@ class ServiceWorker(BaseDomain):
         scope_url: str
     ):
         params = {
-            ""scopeURL"": scope_url,
+            "scopeURL": scope_url,
         }
 
         return self._send_command(
@@ -176,7 +181,7 @@ class ServiceWorker(BaseDomain):
         scope_url: str
     ):
         params = {
-            ""scopeURL"": scope_url,
+            "scopeURL": scope_url,
         }
 
         return self._send_command(

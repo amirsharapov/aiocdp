@@ -4,6 +4,12 @@ from dataclasses import (
 from typing import (
     Literal
 )
+from cdp.domains.dom.types import (
+    BackendNodeId
+)
+from cdp.domains.page.types import (
+    FrameId
+)
 
 FillingStrategy = Literal[
     "autocompleteAttribute",

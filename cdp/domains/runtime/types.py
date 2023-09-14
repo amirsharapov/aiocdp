@@ -136,3 +136,62 @@ class StackTrace:
 class StackTraceId:
     id: str
     debugger_id: "UniqueDebuggerId"
+
+
+@dataclass
+class AwaitPromiseReturnT:
+    result: "RemoteObject"
+    exception_details: "ExceptionDetails"
+
+
+@dataclass
+class CallFunctionOnReturnT:
+    result: "RemoteObject"
+    exception_details: "ExceptionDetails"
+
+
+@dataclass
+class CompileScriptReturnT:
+    script_id: "ScriptId"
+    exception_details: "ExceptionDetails"
+
+
+@dataclass
+class EvaluateReturnT:
+    result: "RemoteObject"
+    exception_details: "ExceptionDetails"
+
+
+@dataclass
+class GetIsolateIdReturnT:
+    id: str
+
+
+@dataclass
+class GetHeapUsageReturnT:
+    used_size: float
+    total_size: float
+
+
+@dataclass
+class GetPropertiesReturnT:
+    result: list
+    internal_properties: list
+    private_properties: list
+    exception_details: "ExceptionDetails"
+
+
+@dataclass
+class GlobalLexicalScopeNamesReturnT:
+    names: list
+
+
+@dataclass
+class QueryObjectsReturnT:
+    objects: "RemoteObject"
+
+
+@dataclass
+class RunScriptReturnT:
+    result: "RemoteObject"
+    exception_details: "ExceptionDetails"

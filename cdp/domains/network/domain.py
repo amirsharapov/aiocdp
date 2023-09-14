@@ -1,5 +1,26 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
+)
+from cdp.domains.network.types import (
+    AuthChallengeResponse,
+    ConnectionType,
+    CookiePriority,
+    CookieSameSite,
+    CookieSourceScheme,
+    ErrorReason,
+    Headers,
+    InterceptionId,
+    LoadNetworkResourceOptions,
+    LoadNetworkResourcePageResult,
+    RequestId,
+    SecurityIsolationStatus,
+    TimeSinceEpoch
+)
+from cdp.domains.io.types import (
+    StreamHandle
 )
 from cdp.domains.emulation.types import (
     UserAgentMetadata
@@ -9,7 +30,6 @@ from cdp.domains.page.types import (
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -21,7 +41,7 @@ class Network(BaseDomain):
         encodings: list
     ):
         params = {
-            ""encodings"": encodings,
+            "encodings": encodings,
         }
 
         return self._send_command(
@@ -101,7 +121,7 @@ class Network(BaseDomain):
         auth_challenge_response: AuthChallengeResponse = UNDEFINED
     ):
         params = {
-            ""interceptionId"": interception_id,
+            "interceptionId": interception_id,
         }
 
         if is_defined(
@@ -152,7 +172,7 @@ class Network(BaseDomain):
         path: str = UNDEFINED
     ):
         params = {
-            ""name"": name,
+            "name": name,
         }
 
         if is_defined(
@@ -194,10 +214,10 @@ class Network(BaseDomain):
         connection_type: ConnectionType = UNDEFINED
     ):
         params = {
-            ""offline"": offline,
-            ""latency"": latency,
-            ""downloadThroughput"": download_throughput,
-            ""uploadThroughput"": upload_throughput,
+            "offline": offline,
+            "latency": latency,
+            "downloadThroughput": download_throughput,
+            "uploadThroughput": upload_throughput,
         }
 
         if is_defined(
@@ -253,7 +273,7 @@ class Network(BaseDomain):
         origin: str
     ):
         params = {
-            ""origin"": origin,
+            "origin": origin,
         }
 
         return self._send_command(
@@ -282,7 +302,7 @@ class Network(BaseDomain):
         request_id: RequestId
     ):
         params = {
-            ""requestId"": request_id,
+            "requestId": request_id,
         }
 
         return self._send_command(
@@ -295,7 +315,7 @@ class Network(BaseDomain):
         request_id: RequestId
     ):
         params = {
-            ""requestId"": request_id,
+            "requestId": request_id,
         }
 
         return self._send_command(
@@ -308,7 +328,7 @@ class Network(BaseDomain):
         interception_id: InterceptionId
     ):
         params = {
-            ""interceptionId"": interception_id,
+            "interceptionId": interception_id,
         }
 
         return self._send_command(
@@ -321,7 +341,7 @@ class Network(BaseDomain):
         interception_id: InterceptionId
     ):
         params = {
-            ""interceptionId"": interception_id,
+            "interceptionId": interception_id,
         }
 
         return self._send_command(
@@ -334,7 +354,7 @@ class Network(BaseDomain):
         request_id: RequestId
     ):
         params = {
-            ""requestId"": request_id,
+            "requestId": request_id,
         }
 
         return self._send_command(
@@ -350,8 +370,8 @@ class Network(BaseDomain):
         is_regex: bool = UNDEFINED
     ):
         params = {
-            ""requestId"": request_id,
-            ""query"": query,
+            "requestId": request_id,
+            "query": query,
         }
 
         if is_defined(
@@ -374,7 +394,7 @@ class Network(BaseDomain):
         urls: list
     ):
         params = {
-            ""urls"": urls,
+            "urls": urls,
         }
 
         return self._send_command(
@@ -387,7 +407,7 @@ class Network(BaseDomain):
         bypass: bool
     ):
         params = {
-            ""bypass"": bypass,
+            "bypass": bypass,
         }
 
         return self._send_command(
@@ -400,7 +420,7 @@ class Network(BaseDomain):
         cache_disabled: bool
     ):
         params = {
-            ""cacheDisabled"": cache_disabled,
+            "cacheDisabled": cache_disabled,
         }
 
         return self._send_command(
@@ -426,8 +446,8 @@ class Network(BaseDomain):
         partition_key: str = UNDEFINED
     ):
         params = {
-            ""name"": name,
-            ""value"": value,
+            "name": name,
+            "value": value,
         }
 
         if is_defined(
@@ -500,7 +520,7 @@ class Network(BaseDomain):
         cookies: list
     ):
         params = {
-            ""cookies"": cookies,
+            "cookies": cookies,
         }
 
         return self._send_command(
@@ -513,7 +533,7 @@ class Network(BaseDomain):
         headers: Headers
     ):
         params = {
-            ""headers"": headers,
+            "headers": headers,
         }
 
         return self._send_command(
@@ -526,7 +546,7 @@ class Network(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(
@@ -539,7 +559,7 @@ class Network(BaseDomain):
         patterns: list
     ):
         params = {
-            ""patterns"": patterns,
+            "patterns": patterns,
         }
 
         return self._send_command(
@@ -555,7 +575,7 @@ class Network(BaseDomain):
         user_agent_metadata: UserAgentMetadata = UNDEFINED
     ):
         params = {
-            ""userAgent"": user_agent,
+            "userAgent": user_agent,
         }
 
         if is_defined(
@@ -599,7 +619,7 @@ class Network(BaseDomain):
         enable: bool
     ):
         params = {
-            ""enable"": enable,
+            "enable": enable,
         }
 
         return self._send_command(
@@ -614,8 +634,8 @@ class Network(BaseDomain):
         options: LoadNetworkResourceOptions = UNDEFINED
     ):
         params = {
-            ""url"": url,
-            ""options"": options,
+            "url": url,
+            "options": options,
         }
 
         if is_defined(

@@ -86,3 +86,8 @@ class AudioParam:
     default_value: float
     min_value: float
     max_value: float
+
+
+@dataclass
+class GetRealtimeDataReturnT:
+    realtime_data: "ContextRealtimeData"

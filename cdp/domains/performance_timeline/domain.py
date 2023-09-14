@@ -1,9 +1,11 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -15,7 +17,7 @@ class PerformanceTimeline(BaseDomain):
         event_types: list
     ):
         params = {
-            ""eventTypes"": event_types,
+            "eventTypes": event_types,
         }
 
         return self._send_command(

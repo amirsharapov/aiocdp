@@ -30,3 +30,25 @@ class Module:
     uuid: str
     base_address: str
     size: float
+
+
+@dataclass
+class GetDOMCountersReturnT:
+    documents: int
+    nodes: int
+    js_event_listeners: int
+
+
+@dataclass
+class GetAllTimeSamplingProfileReturnT:
+    profile: "SamplingProfile"
+
+
+@dataclass
+class GetBrowserSamplingProfileReturnT:
+    profile: "SamplingProfile"
+
+
+@dataclass
+class GetSamplingProfileReturnT:
+    profile: "SamplingProfile"

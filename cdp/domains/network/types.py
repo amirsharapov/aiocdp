@@ -19,6 +19,12 @@ from cdp.domains.network.types import (
 from cdp.domains.io.types import (
     StreamHandle
 )
+from cdp.domains.emulation.types import (
+    UserAgentMetadata
+)
+from cdp.domains.page.types import (
+    FrameId
+)
 
 LoaderId = str
 
@@ -637,3 +643,75 @@ class LoadNetworkResourcePageResult:
 class LoadNetworkResourceOptions:
     disable_cache: bool
     include_credentials: bool
+
+
+@dataclass
+class CanClearBrowserCacheReturnT:
+    result: bool
+
+
+@dataclass
+class CanClearBrowserCookiesReturnT:
+    result: bool
+
+
+@dataclass
+class CanEmulateNetworkConditionsReturnT:
+    result: bool
+
+
+@dataclass
+class GetAllCookiesReturnT:
+    cookies: list
+
+
+@dataclass
+class GetCertificateReturnT:
+    table_names: list
+
+
+@dataclass
+class GetCookiesReturnT:
+    cookies: list
+
+
+@dataclass
+class GetResponseBodyReturnT:
+    body: str
+    base64_encoded: bool
+
+
+@dataclass
+class GetRequestPostDataReturnT:
+    post_data: str
+
+
+@dataclass
+class GetResponseBodyForInterceptionReturnT:
+    body: str
+    base64_encoded: bool
+
+
+@dataclass
+class TakeResponseBodyForInterceptionAsStreamReturnT:
+    stream: "StreamHandle"
+
+
+@dataclass
+class SearchInResponseBodyReturnT:
+    result: list
+
+
+@dataclass
+class SetCookieReturnT:
+    success: bool
+
+
+@dataclass
+class GetSecurityIsolationStatusReturnT:
+    status: "SecurityIsolationStatus"
+
+
+@dataclass
+class LoadNetworkResourceReturnT:
+    resource: "LoadNetworkResourcePageResult"

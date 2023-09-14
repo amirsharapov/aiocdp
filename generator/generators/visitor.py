@@ -179,9 +179,9 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         with self._indent_context():
             for key, value in zip(node.keys, node.values):
-                self.source += f'{self.indent}"'
+                self.source += f'{self.indent}'
                 self.visit(key)
-                self.source += '": '
+                self.source += ': '
                 self.visit(value)
                 self.source += ',\n'
 

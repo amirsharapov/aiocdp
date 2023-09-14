@@ -1,9 +1,14 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.security.types import (
+    CertificateErrorAction
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -35,7 +40,7 @@ class Security(BaseDomain):
         ignore: bool
     ):
         params = {
-            ""ignore"": ignore,
+            "ignore": ignore,
         }
 
         return self._send_command(
@@ -49,8 +54,8 @@ class Security(BaseDomain):
         action: CertificateErrorAction
     ):
         params = {
-            ""eventId"": event_id,
-            ""action"": action,
+            "eventId": event_id,
+            "action": action,
         }
 
         return self._send_command(
@@ -63,7 +68,7 @@ class Security(BaseDomain):
         override: bool
     ):
         params = {
-            ""override"": override,
+            "override": override,
         }
 
         return self._send_command(

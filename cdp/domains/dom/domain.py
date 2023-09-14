@@ -1,19 +1,29 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.dom.types import (
+    BackendNodeId,
+    BoxModel,
+    LogicalAxes,
+    Node,
+    NodeId,
+    PhysicalAxes,
+    Rect
+)
 from cdp.domains.runtime.types import (
     ExecutionContextId,
-    RemoteObjectId
-)
-from cdp.domains.dom.types import (
-    BackendNodeId
+    RemoteObject,
+    RemoteObjectId,
+    StackTrace
 )
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -25,7 +35,7 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -40,8 +50,8 @@ class DOM(BaseDomain):
         insert_before_node_id: NodeId = UNDEFINED
     ):
         params = {
-            ""nodeId"": node_id,
-            ""targetNodeId"": target_node_id,
+            "nodeId": node_id,
+            "targetNodeId": target_node_id,
         }
 
         if is_defined(
@@ -143,7 +153,7 @@ class DOM(BaseDomain):
         search_id: str
     ):
         params = {
-            ""searchId"": search_id,
+            "searchId": search_id,
         }
 
         return self._send_command(
@@ -200,7 +210,7 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -315,8 +325,8 @@ class DOM(BaseDomain):
         pierce: bool = UNDEFINED
     ):
         params = {
-            ""nodeId"": node_id,
-            ""computedStyles"": computed_styles,
+            "nodeId": node_id,
+            "computedStyles": computed_styles,
         }
 
         if is_defined(
@@ -337,8 +347,8 @@ class DOM(BaseDomain):
         ignore_pointer_events_none: bool = UNDEFINED
     ):
         params = {
-            ""x"": x,
-            ""y"": y,
+            "x": x,
+            "y": y,
         }
 
         if is_defined(
@@ -389,7 +399,7 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -404,9 +414,9 @@ class DOM(BaseDomain):
         to_index: int
     ):
         params = {
-            ""searchId"": search_id,
-            ""fromIndex"": from_index,
-            ""toIndex"": to_index,
+            "searchId": search_id,
+            "fromIndex": from_index,
+            "toIndex": to_index,
         }
 
         return self._send_command(
@@ -461,8 +471,8 @@ class DOM(BaseDomain):
         insert_before_node_id: NodeId = UNDEFINED
     ):
         params = {
-            ""nodeId"": node_id,
-            ""targetNodeId"": target_node_id,
+            "nodeId": node_id,
+            "targetNodeId": target_node_id,
         }
 
         if is_defined(
@@ -481,7 +491,7 @@ class DOM(BaseDomain):
         include_user_agent_shadow_dom: bool = UNDEFINED
     ):
         params = {
-            ""query"": query,
+            "query": query,
         }
 
         if is_defined(
@@ -499,7 +509,7 @@ class DOM(BaseDomain):
         path: str
     ):
         params = {
-            ""path"": path,
+            "path": path,
         }
 
         return self._send_command(
@@ -512,7 +522,7 @@ class DOM(BaseDomain):
         backend_node_ids: list
     ):
         params = {
-            ""backendNodeIds"": backend_node_ids,
+            "backendNodeIds": backend_node_ids,
         }
 
         return self._send_command(
@@ -526,8 +536,8 @@ class DOM(BaseDomain):
         selector: str
     ):
         params = {
-            ""nodeId"": node_id,
-            ""selector"": selector,
+            "nodeId": node_id,
+            "selector": selector,
         }
 
         return self._send_command(
@@ -541,8 +551,8 @@ class DOM(BaseDomain):
         selector: str
     ):
         params = {
-            ""nodeId"": node_id,
-            ""selector"": selector,
+            "nodeId": node_id,
+            "selector": selector,
         }
 
         return self._send_command(
@@ -576,8 +586,8 @@ class DOM(BaseDomain):
         name: str
     ):
         params = {
-            ""nodeId"": node_id,
-            ""name"": name,
+            "nodeId": node_id,
+            "name": name,
         }
 
         return self._send_command(
@@ -590,7 +600,7 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -605,7 +615,7 @@ class DOM(BaseDomain):
         pierce: bool = UNDEFINED
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         if is_defined(
@@ -628,7 +638,7 @@ class DOM(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            ""objectId"": object_id,
+            "objectId": object_id,
         }
 
         return self._send_command(
@@ -677,9 +687,9 @@ class DOM(BaseDomain):
         value: str
     ):
         params = {
-            ""nodeId"": node_id,
-            ""name"": name,
-            ""value"": value,
+            "nodeId": node_id,
+            "name": name,
+            "value": value,
         }
 
         return self._send_command(
@@ -694,8 +704,8 @@ class DOM(BaseDomain):
         name: str = UNDEFINED
     ):
         params = {
-            ""nodeId"": node_id,
-            ""text"": text,
+            "nodeId": node_id,
+            "text": text,
         }
 
         if is_defined(
@@ -716,7 +726,7 @@ class DOM(BaseDomain):
         object_id: RemoteObjectId = UNDEFINED
     ):
         params = {
-            ""files"": files,
+            "files": files,
         }
 
         if is_defined(
@@ -744,7 +754,7 @@ class DOM(BaseDomain):
         enable: bool
     ):
         params = {
-            ""enable"": enable,
+            "enable": enable,
         }
 
         return self._send_command(
@@ -757,7 +767,7 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -770,7 +780,7 @@ class DOM(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            ""objectId"": object_id,
+            "objectId": object_id,
         }
 
         return self._send_command(
@@ -783,7 +793,7 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(
@@ -797,8 +807,8 @@ class DOM(BaseDomain):
         name: str
     ):
         params = {
-            ""nodeId"": node_id,
-            ""name"": name,
+            "nodeId": node_id,
+            "name": name,
         }
 
         return self._send_command(
@@ -812,8 +822,8 @@ class DOM(BaseDomain):
         value: str
     ):
         params = {
-            ""nodeId"": node_id,
-            ""value"": value,
+            "nodeId": node_id,
+            "value": value,
         }
 
         return self._send_command(
@@ -827,8 +837,8 @@ class DOM(BaseDomain):
         outer_html: str
     ):
         params = {
-            ""nodeId"": node_id,
-            ""outerHTML"": outer_html,
+            "nodeId": node_id,
+            "outerHTML": outer_html,
         }
 
         return self._send_command(
@@ -851,7 +861,7 @@ class DOM(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            ""frameId"": frame_id,
+            "frameId": frame_id,
         }
 
         return self._send_command(
@@ -867,7 +877,7 @@ class DOM(BaseDomain):
         logical_axes: LogicalAxes = UNDEFINED
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         if is_defined(
@@ -895,7 +905,7 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            ""nodeId"": node_id,
+            "nodeId": node_id,
         }
 
         return self._send_command(

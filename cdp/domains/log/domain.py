@@ -1,9 +1,11 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -45,7 +47,7 @@ class Log(BaseDomain):
         config: list
     ):
         params = {
-            ""config"": config,
+            "config": config,
         }
 
         return self._send_command(

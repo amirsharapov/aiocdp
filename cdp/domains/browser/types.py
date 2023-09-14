@@ -4,6 +4,9 @@ from dataclasses import (
 from typing import (
     Literal
 )
+from cdp.domains.target.types import (
+    TargetID
+)
 
 BrowserContextID = str
 
@@ -89,3 +92,38 @@ class Histogram:
     sum: int
     count: int
     buckets: list
+
+
+@dataclass
+class GetVersionReturnT:
+    protocol_version: str
+    product: str
+    revision: str
+    user_agent: str
+    js_version: str
+
+
+@dataclass
+class GetBrowserCommandLineReturnT:
+    arguments: list
+
+
+@dataclass
+class GetHistogramsReturnT:
+    histograms: list
+
+
+@dataclass
+class GetHistogramReturnT:
+    histogram: "Histogram"
+
+
+@dataclass
+class GetWindowBoundsReturnT:
+    bounds: "Bounds"
+
+
+@dataclass
+class GetWindowForTargetReturnT:
+    window_id: "WindowID"
+    bounds: "Bounds"

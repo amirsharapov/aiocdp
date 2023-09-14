@@ -7,3 +7,8 @@ from dataclasses import (
 class Domain:
     name: str
     version: str
+
+
+@dataclass
+class GetDomainsReturnT:
+    domains: list

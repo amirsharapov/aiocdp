@@ -1,7 +1,7 @@
 import ast
 from collections import defaultdict
 
-from generator.types import Domain, Type
+from generator.types import Domain, Type, Command
 from generator.utils import cdp_to_python_type
 
 
@@ -47,10 +47,19 @@ def _generate_external_type_imports(domain: Domain):
     import_tree = defaultdict(set)
 
     for type_ in domain.types:
-        for property_ in type_.properties:
-            if property_.ref.domain:
-                import_tree[property_.ref.domain_snake_case].add(
-                    property_.ref.type
+        for ref in type_.get_refs():
+            if ref.domain:
+                module_name = ref.domain_snake_case or domain.module_name
+                import_tree[module_name].add(
+                    ref.type
+                )
+
+    for command in domain.commands:
+        for ref in command.get_refs():
+            if ref.domain:
+                module_name = ref.domain_snake_case or domain.module_name
+                import_tree[module_name].add(
+                    ref.type
                 )
 
     imports = []
@@ -140,7 +149,7 @@ def _generate_string_literal(type_: 'Type'):
     )
 
 
-def _generate_dataclass_definition(type_):
+def _generate_complex_type_definitions(type_):
     if not type_.properties:
         return
 
@@ -189,6 +198,50 @@ def _generate_dataclass_definition(type_):
     return class_
 
 
+def _generate_return_type_definition(command: Command):
+    if not command.returns:
+        return
+
+    class_ = ast.ClassDef(
+        name=command.name_pascal_case + 'ReturnT',
+        decorator_list=[
+            ast.Name(
+                id='dataclass',
+                ctx=ast.Load()
+            )
+        ],
+        body=[],
+        bases=[]
+    )
+
+    for return_ in command.returns:
+        if return_.ref:
+            annotation = ast.Constant(
+                value=return_.ref.type,
+                kind='str'
+            )
+
+        else:
+            annotation = ast.Name(
+                id=cdp_to_python_type(return_.type),
+                ctx=ast.Load()
+            )
+
+        class_.body.append(
+            ast.AnnAssign(
+                target=ast.Name(
+                    id=return_.name_snake_cased,
+                    ctx=ast.Store()
+                ),
+                annotation=annotation,
+                value=None,
+                simple=1
+            )
+        )
+
+    return class_
+
+
 def _generate_dataclass_to_json_method(type_: 'Type'):
     return ast.FunctionDef()
 
@@ -213,20 +266,28 @@ def generate(domain: Domain):
 
     type_aliases = []
     string_literals = []
-    dataclass_definitions = []
+    complex_type_definitions = []
+    return_type_definitions = []
 
     for type_ in domain.types:
+
         if type_definition := _generate_type_alias(type_):
             type_aliases.append(type_definition)
 
-        if type_definition := _generate_dataclass_definition(type_):
-            dataclass_definitions.append(type_definition)
+        if type_definition := _generate_complex_type_definitions(type_):
+            complex_type_definitions.append(type_definition)
 
         if type_definition := _generate_string_literal(type_):
             string_literals.append(type_definition)
 
+    for command in domain.commands:
+
+        if type_definition := _generate_return_type_definition(command):
+            return_type_definitions.append(type_definition)
+
     root.body += type_aliases
     root.body += string_literals
-    root.body += dataclass_definitions
+    root.body += complex_type_definitions
+    root.body += return_type_definitions
 
     return root

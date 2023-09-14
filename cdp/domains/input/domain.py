@@ -1,9 +1,17 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.input.types import (
+    DragData,
+    GestureSourceType,
+    MouseButton,
+    TimeSinceEpoch
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -19,10 +27,10 @@ class Input(BaseDomain):
         modifiers: int = UNDEFINED
     ):
         params = {
-            ""type"": type_,
-            ""x"": x,
-            ""y"": y,
-            ""data"": data,
+            "type": type_,
+            "x": x,
+            "y": y,
+            "data": data,
         }
 
         if is_defined(
@@ -54,7 +62,7 @@ class Input(BaseDomain):
         commands: list = UNDEFINED
     ):
         params = {
-            ""type"": type_,
+            "type": type_,
         }
 
         if is_defined(
@@ -137,7 +145,7 @@ class Input(BaseDomain):
         text: str
     ):
         params = {
-            ""text"": text,
+            "text": text,
         }
 
         return self._send_command(
@@ -154,9 +162,9 @@ class Input(BaseDomain):
         replacement_end: int = UNDEFINED
     ):
         params = {
-            ""text"": text,
-            ""selectionStart"": selection_start,
-            ""selectionEnd"": selection_end,
+            "text": text,
+            "selectionStart": selection_start,
+            "selectionEnd": selection_end,
         }
 
         if is_defined(
@@ -194,9 +202,9 @@ class Input(BaseDomain):
         pointer_type: str = UNDEFINED
     ):
         params = {
-            ""type"": type_,
-            ""x"": x,
-            ""y"": y,
+            "type": type_,
+            "x": x,
+            "y": y,
         }
 
         if is_defined(
@@ -277,8 +285,8 @@ class Input(BaseDomain):
         timestamp: TimeSinceEpoch = UNDEFINED
     ):
         params = {
-            ""type"": type_,
-            ""touchPoints"": touch_points,
+            "type": type_,
+            "touchPoints": touch_points,
         }
 
         if is_defined(
@@ -319,10 +327,10 @@ class Input(BaseDomain):
         click_count: int = UNDEFINED
     ):
         params = {
-            ""type"": type_,
-            ""x"": x,
-            ""y"": y,
-            ""button"": button,
+            "type": type_,
+            "x": x,
+            "y": y,
+            "button": button,
         }
 
         if is_defined(
@@ -360,7 +368,7 @@ class Input(BaseDomain):
         ignore: bool
     ):
         params = {
-            ""ignore"": ignore,
+            "ignore": ignore,
         }
 
         return self._send_command(
@@ -373,7 +381,7 @@ class Input(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(
@@ -390,9 +398,9 @@ class Input(BaseDomain):
         gesture_source_type: GestureSourceType = UNDEFINED
     ):
         params = {
-            ""x"": x,
-            ""y"": y,
-            ""scaleFactor"": scale_factor,
+            "x": x,
+            "y": y,
+            "scaleFactor": scale_factor,
         }
 
         if is_defined(
@@ -426,8 +434,8 @@ class Input(BaseDomain):
         interaction_marker_name: str = UNDEFINED
     ):
         params = {
-            ""x"": x,
-            ""y"": y,
+            "x": x,
+            "y": y,
         }
 
         if is_defined(
@@ -494,8 +502,8 @@ class Input(BaseDomain):
         gesture_source_type: GestureSourceType = UNDEFINED
     ):
         params = {
-            ""x"": x,
-            ""y"": y,
+            "x": x,
+            "y": y,
         }
 
         if is_defined(

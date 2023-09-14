@@ -69,3 +69,23 @@ class ScriptTypeProfile:
     script_id: "ScriptId"
     url: str
     entries: list
+
+
+@dataclass
+class GetBestEffortCoverageReturnT:
+    result: list
+
+
+@dataclass
+class StopReturnT:
+    profile: "Profile"
+
+
+@dataclass
+class TakePreciseCoverageReturnT:
+    result: list
+
+
+@dataclass
+class TakeTypeProfileReturnT:
+    result: list

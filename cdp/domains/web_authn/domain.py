@@ -1,9 +1,16 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.web_authn.types import (
+    AuthenticatorId,
+    Credential,
+    VirtualAuthenticatorOptions
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -41,7 +48,7 @@ class WebAuthn(BaseDomain):
         options: VirtualAuthenticatorOptions
     ):
         params = {
-            ""options"": options,
+            "options": options,
         }
 
         return self._send_command(
@@ -57,7 +64,7 @@ class WebAuthn(BaseDomain):
         is_bad_up: bool = UNDEFINED
     ):
         params = {
-            ""authenticatorId"": authenticator_id,
+            "authenticatorId": authenticator_id,
         }
 
         if is_defined(
@@ -85,7 +92,7 @@ class WebAuthn(BaseDomain):
         authenticator_id: AuthenticatorId
     ):
         params = {
-            ""authenticatorId"": authenticator_id,
+            "authenticatorId": authenticator_id,
         }
 
         return self._send_command(
@@ -99,8 +106,8 @@ class WebAuthn(BaseDomain):
         credential: Credential
     ):
         params = {
-            ""authenticatorId"": authenticator_id,
-            ""credential"": credential,
+            "authenticatorId": authenticator_id,
+            "credential": credential,
         }
 
         return self._send_command(
@@ -114,8 +121,8 @@ class WebAuthn(BaseDomain):
         credential_id: str
     ):
         params = {
-            ""authenticatorId"": authenticator_id,
-            ""credentialId"": credential_id,
+            "authenticatorId": authenticator_id,
+            "credentialId": credential_id,
         }
 
         return self._send_command(
@@ -128,7 +135,7 @@ class WebAuthn(BaseDomain):
         authenticator_id: AuthenticatorId
     ):
         params = {
-            ""authenticatorId"": authenticator_id,
+            "authenticatorId": authenticator_id,
         }
 
         return self._send_command(
@@ -142,8 +149,8 @@ class WebAuthn(BaseDomain):
         credential_id: str
     ):
         params = {
-            ""authenticatorId"": authenticator_id,
-            ""credentialId"": credential_id,
+            "authenticatorId": authenticator_id,
+            "credentialId": credential_id,
         }
 
         return self._send_command(
@@ -156,7 +163,7 @@ class WebAuthn(BaseDomain):
         authenticator_id: AuthenticatorId
     ):
         params = {
-            ""authenticatorId"": authenticator_id,
+            "authenticatorId": authenticator_id,
         }
 
         return self._send_command(
@@ -170,8 +177,8 @@ class WebAuthn(BaseDomain):
         is_user_verified: bool
     ):
         params = {
-            ""authenticatorId"": authenticator_id,
-            ""isUserVerified"": is_user_verified,
+            "authenticatorId": authenticator_id,
+            "isUserVerified": is_user_verified,
         }
 
         return self._send_command(
@@ -185,8 +192,8 @@ class WebAuthn(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""authenticatorId"": authenticator_id,
-            ""enabled"": enabled,
+            "authenticatorId": authenticator_id,
+            "enabled": enabled,
         }
 
         return self._send_command(

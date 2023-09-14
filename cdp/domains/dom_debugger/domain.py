@@ -1,3 +1,6 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
@@ -7,9 +10,11 @@ from cdp.domains.runtime.types import (
 from cdp.domains.dom.types import (
     NodeId
 )
+from cdp.domains.dom_debugger.types import (
+    DOMBreakpointType
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -23,7 +28,7 @@ class DOMDebugger(BaseDomain):
         pierce: bool = UNDEFINED
     ):
         params = {
-            ""objectId"": object_id,
+            "objectId": object_id,
         }
 
         if is_defined(
@@ -47,8 +52,8 @@ class DOMDebugger(BaseDomain):
         type_: DOMBreakpointType
     ):
         params = {
-            ""nodeId"": node_id,
-            ""type"": type_,
+            "nodeId": node_id,
+            "type": type_,
         }
 
         return self._send_command(
@@ -62,7 +67,7 @@ class DOMDebugger(BaseDomain):
         target_name: str = UNDEFINED
     ):
         params = {
-            ""eventName"": event_name,
+            "eventName": event_name,
         }
 
         if is_defined(
@@ -80,7 +85,7 @@ class DOMDebugger(BaseDomain):
         event_name: str
     ):
         params = {
-            ""eventName"": event_name,
+            "eventName": event_name,
         }
 
         return self._send_command(
@@ -93,7 +98,7 @@ class DOMDebugger(BaseDomain):
         url: str
     ):
         params = {
-            ""url"": url,
+            "url": url,
         }
 
         return self._send_command(
@@ -106,7 +111,7 @@ class DOMDebugger(BaseDomain):
         violation_types: list
     ):
         params = {
-            ""violationTypes"": violation_types,
+            "violationTypes": violation_types,
         }
 
         return self._send_command(
@@ -120,8 +125,8 @@ class DOMDebugger(BaseDomain):
         type_: DOMBreakpointType
     ):
         params = {
-            ""nodeId"": node_id,
-            ""type"": type_,
+            "nodeId": node_id,
+            "type": type_,
         }
 
         return self._send_command(
@@ -135,7 +140,7 @@ class DOMDebugger(BaseDomain):
         target_name: str = UNDEFINED
     ):
         params = {
-            ""eventName"": event_name,
+            "eventName": event_name,
         }
 
         if is_defined(
@@ -153,7 +158,7 @@ class DOMDebugger(BaseDomain):
         event_name: str
     ):
         params = {
-            ""eventName"": event_name,
+            "eventName": event_name,
         }
 
         return self._send_command(
@@ -166,7 +171,7 @@ class DOMDebugger(BaseDomain):
         url: str
     ):
         params = {
-            ""url"": url,
+            "url": url,
         }
 
         return self._send_command(

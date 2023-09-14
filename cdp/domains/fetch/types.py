@@ -5,7 +5,11 @@ from typing import (
     Literal
 )
 from cdp.domains.network.types import (
+    ErrorReason,
     ResourceType
+)
+from cdp.domains.io.types import (
+    StreamHandle
 )
 
 RequestId = str
@@ -42,3 +46,14 @@ class AuthChallengeResponse:
     response: str
     username: str
     password: str
+
+
+@dataclass
+class GetResponseBodyReturnT:
+    body: str
+    base64_encoded: bool
+
+
+@dataclass
+class TakeResponseBodyAsStreamReturnT:
+    stream: "StreamHandle"

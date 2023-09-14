@@ -7,6 +7,7 @@ from typing import (
 from cdp.domains.dom.types import (
     BackendNodeId,
     LogicalAxes,
+    NodeId,
     PhysicalAxes,
     PseudoType
 )
@@ -307,3 +308,127 @@ class StyleDeclarationEdit:
     style_sheet_id: "StyleSheetId"
     range: "SourceRange"
     text: str
+
+
+@dataclass
+class AddRuleReturnT:
+    rule: "CSSRule"
+
+
+@dataclass
+class CollectClassNamesReturnT:
+    class_names: list
+
+
+@dataclass
+class CreateStyleSheetReturnT:
+    style_sheet_id: "StyleSheetId"
+
+
+@dataclass
+class GetBackgroundColorsReturnT:
+    background_colors: list
+    computed_font_size: str
+    computed_font_weight: str
+
+
+@dataclass
+class GetComputedStyleForNodeReturnT:
+    computed_style: list
+
+
+@dataclass
+class GetInlineStylesForNodeReturnT:
+    inline_style: "CSSStyle"
+    attributes_style: "CSSStyle"
+
+
+@dataclass
+class GetMatchedStylesForNodeReturnT:
+    inline_style: "CSSStyle"
+    attributes_style: "CSSStyle"
+    matched_css_rules: list
+    pseudo_elements: list
+    inherited: list
+    inherited_pseudo_elements: list
+    css_keyframes_rules: list
+    css_position_fallback_rules: list
+    css_property_rules: list
+    css_property_registrations: list
+    parent_layout_node_id: "NodeId"
+
+
+@dataclass
+class GetMediaQueriesReturnT:
+    medias: list
+
+
+@dataclass
+class GetPlatformFontsForNodeReturnT:
+    fonts: list
+
+
+@dataclass
+class GetStyleSheetTextReturnT:
+    text: str
+
+
+@dataclass
+class GetLayersForNodeReturnT:
+    root_layer: "CSSLayerData"
+
+
+@dataclass
+class TakeComputedStyleUpdatesReturnT:
+    node_ids: list
+
+
+@dataclass
+class SetKeyframeKeyReturnT:
+    key_text: "Value"
+
+
+@dataclass
+class SetMediaTextReturnT:
+    media: "CSSMedia"
+
+
+@dataclass
+class SetContainerQueryTextReturnT:
+    container_query: "CSSContainerQuery"
+
+
+@dataclass
+class SetSupportsTextReturnT:
+    supports: "CSSSupports"
+
+
+@dataclass
+class SetScopeTextReturnT:
+    scope: "CSSScope"
+
+
+@dataclass
+class SetRuleSelectorReturnT:
+    selector_list: "SelectorList"
+
+
+@dataclass
+class SetStyleSheetTextReturnT:
+    source_map_url: str
+
+
+@dataclass
+class SetStyleTextsReturnT:
+    styles: list
+
+
+@dataclass
+class StopRuleUsageTrackingReturnT:
+    rule_usage: list
+
+
+@dataclass
+class TakeCoverageDeltaReturnT:
+    coverage: list
+    timestamp: float

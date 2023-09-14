@@ -1,9 +1,15 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.device_access.types import (
+    DeviceId,
+    RequestId
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -36,8 +42,8 @@ class DeviceAccess(BaseDomain):
         device_id: DeviceId
     ):
         params = {
-            ""id"": id_,
-            ""deviceId"": device_id,
+            "id": id_,
+            "deviceId": device_id,
         }
 
         return self._send_command(
@@ -50,7 +56,7 @@ class DeviceAccess(BaseDomain):
         id_: RequestId
     ):
         params = {
-            ""id"": id_,
+            "id": id_,
         }
 
         return self._send_command(

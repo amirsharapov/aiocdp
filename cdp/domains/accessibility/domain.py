@@ -1,3 +1,6 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
@@ -11,9 +14,12 @@ from cdp.domains.runtime.types import (
 from cdp.domains.page.types import (
     FrameId
 )
+from cdp.domains.accessibility.types import (
+    AXNode,
+    AXNodeId
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -146,7 +152,7 @@ class Accessibility(BaseDomain):
         frame_id: FrameId = UNDEFINED
     ):
         params = {
-            ""id"": id_,
+            "id": id_,
         }
 
         if is_defined(

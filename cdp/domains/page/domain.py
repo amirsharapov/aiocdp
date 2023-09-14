@@ -1,12 +1,42 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
+)
+from cdp.domains.page.types import (
+    AdScriptId,
+    AppManifestParsedProperties,
+    AutoResponseMode,
+    FontFamilies,
+    FontSizes,
+    FrameId,
+    FrameResourceTree,
+    FrameTree,
+    LayoutViewport,
+    ReferrerPolicy,
+    ScriptIdentifier,
+    TransitionType,
+    Viewport,
+    VisualViewport
+)
+from cdp.domains.runtime.types import (
+    ExecutionContextId
+)
+from cdp.domains.dom.types import (
+    Rect
+)
+from cdp.domains.network.types import (
+    LoaderId
+)
+from cdp.domains.io.types import (
+    StreamHandle
 )
 from cdp.domains.emulation.types import (
     ScreenOrientation
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -18,7 +48,7 @@ class Page(BaseDomain):
         script_source: str
     ):
         params = {
-            ""scriptSource"": script_source,
+            "scriptSource": script_source,
         }
 
         return self._send_command(
@@ -34,7 +64,7 @@ class Page(BaseDomain):
         run_immediately: bool = UNDEFINED
     ):
         params = {
-            ""source"": source,
+            "source": source,
         }
 
         if is_defined(
@@ -166,7 +196,7 @@ class Page(BaseDomain):
         grant_univeral_access: bool = UNDEFINED
     ):
         params = {
-            ""frameId"": frame_id,
+            "frameId": frame_id,
         }
 
         if is_defined(
@@ -190,8 +220,8 @@ class Page(BaseDomain):
         url: str
     ):
         params = {
-            ""cookieName"": cookie_name,
-            ""url"": url,
+            "cookieName": cookie_name,
+            "url": url,
         }
 
         return self._send_command(
@@ -264,7 +294,7 @@ class Page(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            ""frameId"": frame_id,
+            "frameId": frame_id,
         }
 
         return self._send_command(
@@ -328,8 +358,8 @@ class Page(BaseDomain):
         url: str
     ):
         params = {
-            ""frameId"": frame_id,
-            ""url"": url,
+            "frameId": frame_id,
+            "url": url,
         }
 
         return self._send_command(
@@ -353,7 +383,7 @@ class Page(BaseDomain):
         prompt_text: str = UNDEFINED
     ):
         params = {
-            ""accept"": accept,
+            "accept": accept,
         }
 
         if is_defined(
@@ -375,7 +405,7 @@ class Page(BaseDomain):
         referrer_policy: ReferrerPolicy = UNDEFINED
     ):
         params = {
-            ""url"": url,
+            "url": url,
         }
 
         if is_defined(
@@ -408,7 +438,7 @@ class Page(BaseDomain):
         entry_id: int
     ):
         params = {
-            ""entryId"": entry_id,
+            "entryId": entry_id,
         }
 
         return self._send_command(
@@ -549,7 +579,7 @@ class Page(BaseDomain):
         identifier: ScriptIdentifier
     ):
         params = {
-            ""identifier"": identifier,
+            "identifier": identifier,
         }
 
         return self._send_command(
@@ -562,7 +592,7 @@ class Page(BaseDomain):
         identifier: ScriptIdentifier
     ):
         params = {
-            ""identifier"": identifier,
+            "identifier": identifier,
         }
 
         return self._send_command(
@@ -575,7 +605,7 @@ class Page(BaseDomain):
         session_id: int
     ):
         params = {
-            ""sessionId"": session_id,
+            "sessionId": session_id,
         }
 
         return self._send_command(
@@ -592,9 +622,9 @@ class Page(BaseDomain):
         is_regex: bool = UNDEFINED
     ):
         params = {
-            ""frameId"": frame_id,
-            ""url"": url,
-            ""query"": query,
+            "frameId": frame_id,
+            "url": url,
+            "query": query,
         }
 
         if is_defined(
@@ -617,7 +647,7 @@ class Page(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(
@@ -630,7 +660,7 @@ class Page(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(
@@ -643,7 +673,7 @@ class Page(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            ""frameId"": frame_id,
+            "frameId": frame_id,
         }
 
         return self._send_command(
@@ -656,7 +686,7 @@ class Page(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            ""frameId"": frame_id,
+            "frameId": frame_id,
         }
 
         return self._send_command(
@@ -680,10 +710,10 @@ class Page(BaseDomain):
         viewport: Viewport = UNDEFINED
     ):
         params = {
-            ""width"": width,
-            ""height"": height,
-            ""deviceScaleFactor"": device_scale_factor,
-            ""mobile"": mobile,
+            "width": width,
+            "height": height,
+            "deviceScaleFactor": device_scale_factor,
+            "mobile": mobile,
         }
 
         if is_defined(
@@ -738,9 +768,9 @@ class Page(BaseDomain):
         gamma: float
     ):
         params = {
-            ""alpha"": alpha,
-            ""beta"": beta,
-            ""gamma"": gamma,
+            "alpha": alpha,
+            "beta": beta,
+            "gamma": gamma,
         }
 
         return self._send_command(
@@ -754,7 +784,7 @@ class Page(BaseDomain):
         for_scripts: list = UNDEFINED
     ):
         params = {
-            ""fontFamilies"": font_families,
+            "fontFamilies": font_families,
         }
 
         if is_defined(
@@ -772,7 +802,7 @@ class Page(BaseDomain):
         font_sizes: FontSizes
     ):
         params = {
-            ""fontSizes"": font_sizes,
+            "fontSizes": font_sizes,
         }
 
         return self._send_command(
@@ -786,8 +816,8 @@ class Page(BaseDomain):
         html: str
     ):
         params = {
-            ""frameId"": frame_id,
-            ""html"": html,
+            "frameId": frame_id,
+            "html": html,
         }
 
         return self._send_command(
@@ -801,7 +831,7 @@ class Page(BaseDomain):
         download_path: str = UNDEFINED
     ):
         params = {
-            ""behavior"": behavior,
+            "behavior": behavior,
         }
 
         if is_defined(
@@ -847,7 +877,7 @@ class Page(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(
@@ -861,7 +891,7 @@ class Page(BaseDomain):
         configuration: str = UNDEFINED
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         if is_defined(
@@ -949,7 +979,7 @@ class Page(BaseDomain):
         state: str
     ):
         params = {
-            ""state"": state,
+            "state": state,
         }
 
         return self._send_command(
@@ -972,7 +1002,7 @@ class Page(BaseDomain):
         scripts: list
     ):
         params = {
-            ""scripts"": scripts,
+            "scripts": scripts,
         }
 
         return self._send_command(
@@ -986,8 +1016,8 @@ class Page(BaseDomain):
         data: str
     ):
         params = {
-            ""url"": url,
-            ""data"": data,
+            "url": url,
+            "data": data,
         }
 
         return self._send_command(
@@ -1010,7 +1040,7 @@ class Page(BaseDomain):
         mode: AutoResponseMode
     ):
         params = {
-            ""mode"": mode,
+            "mode": mode,
         }
 
         return self._send_command(
@@ -1023,7 +1053,7 @@ class Page(BaseDomain):
         mode: AutoResponseMode
     ):
         params = {
-            ""mode"": mode,
+            "mode": mode,
         }
 
         return self._send_command(
@@ -1037,7 +1067,7 @@ class Page(BaseDomain):
         group: str = UNDEFINED
     ):
         params = {
-            ""message"": message,
+            "message": message,
         }
 
         if is_defined(
@@ -1065,7 +1095,7 @@ class Page(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(
@@ -1078,7 +1108,7 @@ class Page(BaseDomain):
         is_allowed: bool
     ):
         params = {
-            ""isAllowed"": is_allowed,
+            "isAllowed": is_allowed,
         }
 
         return self._send_command(

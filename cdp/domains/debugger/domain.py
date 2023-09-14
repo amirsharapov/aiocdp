@@ -1,16 +1,27 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.debugger.types import (
+    BreakpointId,
+    CallFrameId,
+    Location
+)
 from cdp.domains.runtime.types import (
     CallArgument,
+    ExceptionDetails,
+    RemoteObject,
     RemoteObjectId,
     ScriptId,
+    StackTrace,
     StackTraceId,
-    TimeDelta
+    TimeDelta,
+    UniqueDebuggerId
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -23,7 +34,7 @@ class Debugger(BaseDomain):
         target_call_frames: str = UNDEFINED
     ):
         params = {
-            ""location"": location,
+            "location": location,
         }
 
         if is_defined(
@@ -75,8 +86,8 @@ class Debugger(BaseDomain):
         timeout: TimeDelta = UNDEFINED
     ):
         params = {
-            ""callFrameId"": call_frame_id,
-            ""expression"": expression,
+            "callFrameId": call_frame_id,
+            "expression": expression,
         }
 
         if is_defined(
@@ -126,7 +137,7 @@ class Debugger(BaseDomain):
         restrict_to_function: bool = UNDEFINED
     ):
         params = {
-            ""start"": start,
+            "start": start,
         }
 
         if is_defined(
@@ -149,7 +160,7 @@ class Debugger(BaseDomain):
         script_id: ScriptId
     ):
         params = {
-            ""scriptId"": script_id,
+            "scriptId": script_id,
         }
 
         return self._send_command(
@@ -162,7 +173,7 @@ class Debugger(BaseDomain):
         stack_trace_id: StackTraceId
     ):
         params = {
-            ""stackTraceId"": stack_trace_id,
+            "stackTraceId": stack_trace_id,
         }
 
         return self._send_command(
@@ -185,7 +196,7 @@ class Debugger(BaseDomain):
         parent_stack_trace_id: StackTraceId
     ):
         params = {
-            ""parentStackTraceId"": parent_stack_trace_id,
+            "parentStackTraceId": parent_stack_trace_id,
         }
 
         return self._send_command(
@@ -198,7 +209,7 @@ class Debugger(BaseDomain):
         breakpoint_id: BreakpointId
     ):
         params = {
-            ""breakpointId"": breakpoint_id,
+            "breakpointId": breakpoint_id,
         }
 
         return self._send_command(
@@ -211,7 +222,7 @@ class Debugger(BaseDomain):
         call_frame_id: CallFrameId
     ):
         params = {
-            ""callFrameId"": call_frame_id,
+            "callFrameId": call_frame_id,
         }
 
         return self._send_command(
@@ -237,8 +248,8 @@ class Debugger(BaseDomain):
         is_regex: bool = UNDEFINED
     ):
         params = {
-            ""scriptId"": script_id,
-            ""query"": query,
+            "scriptId": script_id,
+            "query": query,
         }
 
         if is_defined(
@@ -261,7 +272,7 @@ class Debugger(BaseDomain):
         max_depth: int
     ):
         params = {
-            ""maxDepth"": max_depth,
+            "maxDepth": max_depth,
         }
 
         return self._send_command(
@@ -274,7 +285,7 @@ class Debugger(BaseDomain):
         patterns: list
     ):
         params = {
-            ""patterns"": patterns,
+            "patterns": patterns,
         }
 
         return self._send_command(
@@ -288,8 +299,8 @@ class Debugger(BaseDomain):
         positions: list
     ):
         params = {
-            ""scriptId"": script_id,
-            ""positions"": positions,
+            "scriptId": script_id,
+            "positions": positions,
         }
 
         return self._send_command(
@@ -303,7 +314,7 @@ class Debugger(BaseDomain):
         condition: str = UNDEFINED
     ):
         params = {
-            ""location"": location,
+            "location": location,
         }
 
         if is_defined(
@@ -321,7 +332,7 @@ class Debugger(BaseDomain):
         instrumentation: str
     ):
         params = {
-            ""instrumentation"": instrumentation,
+            "instrumentation": instrumentation,
         }
 
         return self._send_command(
@@ -339,7 +350,7 @@ class Debugger(BaseDomain):
         condition: str = UNDEFINED
     ):
         params = {
-            ""lineNumber"": line_number,
+            "lineNumber": line_number,
         }
 
         if is_defined(
@@ -378,7 +389,7 @@ class Debugger(BaseDomain):
         condition: str = UNDEFINED
     ):
         params = {
-            ""objectId"": object_id,
+            "objectId": object_id,
         }
 
         if is_defined(
@@ -396,7 +407,7 @@ class Debugger(BaseDomain):
         active: bool
     ):
         params = {
-            ""active"": active,
+            "active": active,
         }
 
         return self._send_command(
@@ -409,7 +420,7 @@ class Debugger(BaseDomain):
         state: str
     ):
         params = {
-            ""state"": state,
+            "state": state,
         }
 
         return self._send_command(
@@ -422,7 +433,7 @@ class Debugger(BaseDomain):
         new_value: CallArgument
     ):
         params = {
-            ""newValue"": new_value,
+            "newValue": new_value,
         }
 
         return self._send_command(
@@ -437,8 +448,8 @@ class Debugger(BaseDomain):
         dry_run: bool = UNDEFINED
     ):
         params = {
-            ""scriptId"": script_id,
-            ""scriptSource"": script_source,
+            "scriptId": script_id,
+            "scriptSource": script_source,
         }
 
         if is_defined(
@@ -456,7 +467,7 @@ class Debugger(BaseDomain):
         skip: bool
     ):
         params = {
-            ""skip"": skip,
+            "skip": skip,
         }
 
         return self._send_command(
@@ -472,10 +483,10 @@ class Debugger(BaseDomain):
         call_frame_id: CallFrameId
     ):
         params = {
-            ""scopeNumber"": scope_number,
-            ""variableName"": variable_name,
-            ""newValue"": new_value,
-            ""callFrameId"": call_frame_id,
+            "scopeNumber": scope_number,
+            "variableName": variable_name,
+            "newValue": new_value,
+            "callFrameId": call_frame_id,
         }
 
         return self._send_command(

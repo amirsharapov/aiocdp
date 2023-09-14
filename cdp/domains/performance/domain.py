@@ -1,9 +1,11 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -41,7 +43,7 @@ class Performance(BaseDomain):
         time_domain: str
     ):
         params = {
-            ""timeDomain"": time_domain,
+            "timeDomain": time_domain,
         }
 
         return self._send_command(

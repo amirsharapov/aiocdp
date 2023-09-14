@@ -1,9 +1,14 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.dom_storage.types import (
+    StorageId
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -15,7 +20,7 @@ class DOMStorage(BaseDomain):
         storage_id: StorageId
     ):
         params = {
-            ""storageId"": storage_id,
+            "storageId": storage_id,
         }
 
         return self._send_command(
@@ -48,7 +53,7 @@ class DOMStorage(BaseDomain):
         storage_id: StorageId
     ):
         params = {
-            ""storageId"": storage_id,
+            "storageId": storage_id,
         }
 
         return self._send_command(
@@ -62,8 +67,8 @@ class DOMStorage(BaseDomain):
         key: str
     ):
         params = {
-            ""storageId"": storage_id,
-            ""key"": key,
+            "storageId": storage_id,
+            "key": key,
         }
 
         return self._send_command(
@@ -78,9 +83,9 @@ class DOMStorage(BaseDomain):
         value: str
     ):
         params = {
-            ""storageId"": storage_id,
-            ""key"": key,
-            ""value"": value,
+            "storageId": storage_id,
+            "key": key,
+            "value": value,
         }
 
         return self._send_command(

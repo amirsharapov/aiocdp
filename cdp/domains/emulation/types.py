@@ -4,6 +4,15 @@ from dataclasses import (
 from typing import (
     Literal
 )
+from cdp.domains.dom.types import (
+    RGBA
+)
+from cdp.domains.page.types import (
+    Viewport
+)
+from cdp.domains.network.types import (
+    TimeSinceEpoch
+)
 
 VirtualTimePolicy = Literal[
     "advance",
@@ -54,3 +63,13 @@ class UserAgentMetadata:
     mobile: bool
     bitness: str
     wow64: bool
+
+
+@dataclass
+class CanEmulateReturnT:
+    result: bool
+
+
+@dataclass
+class SetVirtualTimePolicyReturnT:
+    virtual_time_ticks_base: float

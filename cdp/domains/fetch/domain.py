@@ -1,12 +1,21 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
+)
+from cdp.domains.fetch.types import (
+    AuthChallengeResponse,
+    RequestId
 )
 from cdp.domains.network.types import (
     ErrorReason
 )
+from cdp.domains.io.types import (
+    StreamHandle
+)
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -51,8 +60,8 @@ class Fetch(BaseDomain):
         error_reason: ErrorReason
     ):
         params = {
-            ""requestId"": request_id,
-            ""errorReason"": error_reason,
+            "requestId": request_id,
+            "errorReason": error_reason,
         }
 
         return self._send_command(
@@ -70,8 +79,8 @@ class Fetch(BaseDomain):
         response_phrase: str = UNDEFINED
     ):
         params = {
-            ""requestId"": request_id,
-            ""responseCode"": response_code,
+            "requestId": request_id,
+            "responseCode": response_code,
         }
 
         if is_defined(
@@ -109,7 +118,7 @@ class Fetch(BaseDomain):
         intercept_response: bool = UNDEFINED
     ):
         params = {
-            ""requestId"": request_id,
+            "requestId": request_id,
         }
 
         if is_defined(
@@ -148,8 +157,8 @@ class Fetch(BaseDomain):
         auth_challenge_response: AuthChallengeResponse
     ):
         params = {
-            ""requestId"": request_id,
-            ""authChallengeResponse"": auth_challenge_response,
+            "requestId": request_id,
+            "authChallengeResponse": auth_challenge_response,
         }
 
         return self._send_command(
@@ -166,7 +175,7 @@ class Fetch(BaseDomain):
         binary_response_headers: str = UNDEFINED
     ):
         params = {
-            ""requestId"": request_id,
+            "requestId": request_id,
         }
 
         if is_defined(
@@ -199,7 +208,7 @@ class Fetch(BaseDomain):
         request_id: RequestId
     ):
         params = {
-            ""requestId"": request_id,
+            "requestId": request_id,
         }
 
         return self._send_command(
@@ -212,7 +221,7 @@ class Fetch(BaseDomain):
         request_id: RequestId
     ):
         params = {
-            ""requestId"": request_id,
+            "requestId": request_id,
         }
 
         return self._send_command(

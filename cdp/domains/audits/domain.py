@@ -1,3 +1,6 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
@@ -6,7 +9,6 @@ from cdp.domains.network.types import (
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -21,8 +23,8 @@ class Audits(BaseDomain):
         size_only: bool = UNDEFINED
     ):
         params = {
-            ""requestId"": request_id,
-            ""encoding"": encoding,
+            "requestId": request_id,
+            "encoding": encoding,
         }
 
         if is_defined(

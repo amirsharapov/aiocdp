@@ -1,8 +1,17 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.domains.dom.types import (
     RGBA
+)
+from cdp.domains.emulation.types import (
+    DisplayFeature,
+    ScreenOrientation,
+    UserAgentMetadata,
+    VirtualTimePolicy
 )
 from cdp.domains.page.types import (
     Viewport
@@ -12,7 +21,6 @@ from cdp.domains.network.types import (
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -64,7 +72,7 @@ class Emulation(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(
@@ -93,7 +101,7 @@ class Emulation(BaseDomain):
         rate: float
     ):
         params = {
-            ""rate"": rate,
+            "rate": rate,
         }
 
         return self._send_command(
@@ -134,10 +142,10 @@ class Emulation(BaseDomain):
         display_feature: DisplayFeature = UNDEFINED
     ):
         params = {
-            ""width"": width,
-            ""height"": height,
-            ""deviceScaleFactor"": device_scale_factor,
-            ""mobile"": mobile,
+            "width": width,
+            "height": height,
+            "deviceScaleFactor": device_scale_factor,
+            "mobile": mobile,
         }
 
         if is_defined(
@@ -195,7 +203,7 @@ class Emulation(BaseDomain):
         hidden: bool
     ):
         params = {
-            ""hidden"": hidden,
+            "hidden": hidden,
         }
 
         return self._send_command(
@@ -208,7 +216,7 @@ class Emulation(BaseDomain):
         disabled: bool
     ):
         params = {
-            ""disabled"": disabled,
+            "disabled": disabled,
         }
 
         return self._send_command(
@@ -222,7 +230,7 @@ class Emulation(BaseDomain):
         configuration: str = UNDEFINED
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         if is_defined(
@@ -262,7 +270,7 @@ class Emulation(BaseDomain):
         type_: str
     ):
         params = {
-            ""type"": type_,
+            "type": type_,
         }
 
         return self._send_command(
@@ -304,8 +312,8 @@ class Emulation(BaseDomain):
         is_screen_unlocked: bool
     ):
         params = {
-            ""isUserActive"": is_user_active,
-            ""isScreenUnlocked"": is_screen_unlocked,
+            "isUserActive": is_user_active,
+            "isScreenUnlocked": is_screen_unlocked,
         }
 
         return self._send_command(
@@ -328,7 +336,7 @@ class Emulation(BaseDomain):
         platform: str
     ):
         params = {
-            ""platform"": platform,
+            "platform": platform,
         }
 
         return self._send_command(
@@ -341,7 +349,7 @@ class Emulation(BaseDomain):
         page_scale_factor: float
     ):
         params = {
-            ""pageScaleFactor"": page_scale_factor,
+            "pageScaleFactor": page_scale_factor,
         }
 
         return self._send_command(
@@ -354,7 +362,7 @@ class Emulation(BaseDomain):
         value: bool
     ):
         params = {
-            ""value"": value,
+            "value": value,
         }
 
         return self._send_command(
@@ -368,7 +376,7 @@ class Emulation(BaseDomain):
         max_touch_points: int = UNDEFINED
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         if is_defined(
@@ -389,7 +397,7 @@ class Emulation(BaseDomain):
         initial_virtual_time: TimeSinceEpoch = UNDEFINED
     ):
         params = {
-            ""policy"": policy,
+            "policy": policy,
         }
 
         if is_defined(
@@ -433,7 +441,7 @@ class Emulation(BaseDomain):
         timezone_id: str
     ):
         params = {
-            ""timezoneId"": timezone_id,
+            "timezoneId": timezone_id,
         }
 
         return self._send_command(
@@ -447,8 +455,8 @@ class Emulation(BaseDomain):
         height: int
     ):
         params = {
-            ""width"": width,
-            ""height"": height,
+            "width": width,
+            "height": height,
         }
 
         return self._send_command(
@@ -461,7 +469,7 @@ class Emulation(BaseDomain):
         image_types: list
     ):
         params = {
-            ""imageTypes"": image_types,
+            "imageTypes": image_types,
         }
 
         return self._send_command(
@@ -474,7 +482,7 @@ class Emulation(BaseDomain):
         hardware_concurrency: int
     ):
         params = {
-            ""hardwareConcurrency"": hardware_concurrency,
+            "hardwareConcurrency": hardware_concurrency,
         }
 
         return self._send_command(
@@ -490,7 +498,7 @@ class Emulation(BaseDomain):
         user_agent_metadata: UserAgentMetadata = UNDEFINED
     ):
         params = {
-            ""userAgent"": user_agent,
+            "userAgent": user_agent,
         }
 
         if is_defined(
@@ -518,7 +526,7 @@ class Emulation(BaseDomain):
         enabled: bool
     ):
         params = {
-            ""enabled"": enabled,
+            "enabled": enabled,
         }
 
         return self._send_command(

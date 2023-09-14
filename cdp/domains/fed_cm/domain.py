@@ -1,9 +1,11 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -42,8 +44,8 @@ class FedCm(BaseDomain):
         account_index: int
     ):
         params = {
-            ""dialogId"": dialog_id,
-            ""accountIndex"": account_index,
+            "dialogId": dialog_id,
+            "accountIndex": account_index,
         }
 
         return self._send_command(
@@ -56,7 +58,7 @@ class FedCm(BaseDomain):
         dialog_id: str
     ):
         params = {
-            ""dialogId"": dialog_id,
+            "dialogId": dialog_id,
         }
 
         return self._send_command(
@@ -70,7 +72,7 @@ class FedCm(BaseDomain):
         trigger_cooldown: bool = UNDEFINED
     ):
         params = {
-            ""dialogId"": dialog_id,
+            "dialogId": dialog_id,
         }
 
         if is_defined(

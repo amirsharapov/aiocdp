@@ -4,6 +4,9 @@ from dataclasses import (
 from cdp.domains.runtime.types import (
     RemoteObject
 )
+from cdp.domains.storage.types import (
+    StorageBucket
+)
 
 
 @dataclass
@@ -58,3 +61,25 @@ class KeyPath:
     type: str
     string: str
     array: list
+
+
+@dataclass
+class RequestDataReturnT:
+    object_store_data_entries: list
+    has_more: bool
+
+
+@dataclass
+class GetMetadataReturnT:
+    entries_count: float
+    key_generator_value: float
+
+
+@dataclass
+class RequestDatabaseReturnT:
+    database_with_object_stores: "DatabaseWithObjectStores"
+
+
+@dataclass
+class RequestDatabaseNamesReturnT:
+    database_names: list

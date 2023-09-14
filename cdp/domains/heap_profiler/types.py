@@ -2,7 +2,9 @@ from dataclasses import (
     dataclass
 )
 from cdp.domains.runtime.types import (
-    CallFrame
+    CallFrame,
+    RemoteObject,
+    RemoteObjectId
 )
 
 HeapSnapshotObjectId = str
@@ -27,3 +29,23 @@ class SamplingHeapProfileSample:
 class SamplingHeapProfile:
     head: "SamplingHeapProfileNode"
     samples: list
+
+
+@dataclass
+class GetHeapObjectIdReturnT:
+    heap_snapshot_object_id: "HeapSnapshotObjectId"
+
+
+@dataclass
+class GetObjectByHeapObjectIdReturnT:
+    result: "RemoteObject"
+
+
+@dataclass
+class GetSamplingProfileReturnT:
+    profile: "SamplingHeapProfile"
+
+
+@dataclass
+class StopSamplingReturnT:
+    profile: "SamplingHeapProfile"

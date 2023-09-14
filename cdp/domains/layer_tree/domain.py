@@ -1,12 +1,18 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
+)
+from cdp.domains.layer_tree.types import (
+    LayerId,
+    SnapshotId
 )
 from cdp.domains.dom.types import (
     Rect
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -18,7 +24,7 @@ class LayerTree(BaseDomain):
         layer_id: LayerId
     ):
         params = {
-            ""layerId"": layer_id,
+            "layerId": layer_id,
         }
 
         return self._send_command(
@@ -51,7 +57,7 @@ class LayerTree(BaseDomain):
         tiles: list
     ):
         params = {
-            ""tiles"": tiles,
+            "tiles": tiles,
         }
 
         return self._send_command(
@@ -64,7 +70,7 @@ class LayerTree(BaseDomain):
         layer_id: LayerId
     ):
         params = {
-            ""layerId"": layer_id,
+            "layerId": layer_id,
         }
 
         return self._send_command(
@@ -80,7 +86,7 @@ class LayerTree(BaseDomain):
         clip_rect: Rect = UNDEFINED
     ):
         params = {
-            ""snapshotId"": snapshot_id,
+            "snapshotId": snapshot_id,
         }
 
         if is_defined(
@@ -108,7 +114,7 @@ class LayerTree(BaseDomain):
         snapshot_id: SnapshotId
     ):
         params = {
-            ""snapshotId"": snapshot_id,
+            "snapshotId": snapshot_id,
         }
 
         return self._send_command(
@@ -124,7 +130,7 @@ class LayerTree(BaseDomain):
         scale: float = UNDEFINED
     ):
         params = {
-            ""snapshotId"": snapshot_id,
+            "snapshotId": snapshot_id,
         }
 
         if is_defined(
@@ -152,7 +158,7 @@ class LayerTree(BaseDomain):
         snapshot_id: SnapshotId
     ):
         params = {
-            ""snapshotId"": snapshot_id,
+            "snapshotId": snapshot_id,
         }
 
         return self._send_command(

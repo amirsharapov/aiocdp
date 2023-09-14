@@ -1,12 +1,23 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
+)
+from cdp.domains.browser.types import (
+    Bounds,
+    BrowserCommandId,
+    BrowserContextID,
+    Histogram,
+    PermissionDescriptor,
+    PermissionSetting,
+    WindowID
 )
 from cdp.domains.target.types import (
     TargetID
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -21,8 +32,8 @@ class Browser(BaseDomain):
         browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {
-            ""permission"": permission,
-            ""setting"": setting,
+            "permission": permission,
+            "setting": setting,
         }
 
         if is_defined(
@@ -47,7 +58,7 @@ class Browser(BaseDomain):
         browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {
-            ""permissions"": permissions,
+            "permissions": permissions,
         }
 
         if is_defined(
@@ -89,7 +100,7 @@ class Browser(BaseDomain):
         events_enabled: bool = UNDEFINED
     ):
         params = {
-            ""behavior"": behavior,
+            "behavior": behavior,
         }
 
         if is_defined(
@@ -118,7 +129,7 @@ class Browser(BaseDomain):
         browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {
-            ""guid"": guid,
+            "guid": guid,
         }
 
         if is_defined(
@@ -209,7 +220,7 @@ class Browser(BaseDomain):
         delta: bool = UNDEFINED
     ):
         params = {
-            ""name"": name,
+            "name": name,
         }
 
         if is_defined(
@@ -227,7 +238,7 @@ class Browser(BaseDomain):
         window_id: WindowID
     ):
         params = {
-            ""windowId"": window_id,
+            "windowId": window_id,
         }
 
         return self._send_command(
@@ -257,8 +268,8 @@ class Browser(BaseDomain):
         bounds: Bounds
     ):
         params = {
-            ""windowId"": window_id,
-            ""bounds"": bounds,
+            "windowId": window_id,
+            "bounds": bounds,
         }
 
         return self._send_command(
@@ -293,7 +304,7 @@ class Browser(BaseDomain):
         command_id: BrowserCommandId
     ):
         params = {
-            ""commandId"": command_id,
+            "commandId": command_id,
         }
 
         return self._send_command(
@@ -306,7 +317,7 @@ class Browser(BaseDomain):
         url: str
     ):
         params = {
-            ""url"": url,
+            "url": url,
         }
 
         return self._send_command(

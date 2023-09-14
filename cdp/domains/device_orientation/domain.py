@@ -1,9 +1,11 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -27,9 +29,9 @@ class DeviceOrientation(BaseDomain):
         gamma: float
     ):
         params = {
-            ""alpha"": alpha,
-            ""beta"": beta,
-            ""gamma"": gamma,
+            "alpha": alpha,
+            "beta": beta,
+            "gamma": gamma,
         }
 
         return self._send_command(

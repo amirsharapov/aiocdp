@@ -1,12 +1,19 @@
+from cdp.domains.base import (
+    BaseDomain
+)
 from dataclasses import (
     dataclass
 )
+from cdp.domains.heap_profiler.types import (
+    HeapSnapshotObjectId,
+    SamplingHeapProfile
+)
 from cdp.domains.runtime.types import (
+    RemoteObject,
     RemoteObjectId
 )
 from cdp.utils import (
     is_defined,
-    MaybeUndefined,
     UNDEFINED
 )
 
@@ -18,7 +25,7 @@ class HeapProfiler(BaseDomain):
         heap_object_id: HeapSnapshotObjectId
     ):
         params = {
-            ""heapObjectId"": heap_object_id,
+            "heapObjectId": heap_object_id,
         }
 
         return self._send_command(
@@ -61,7 +68,7 @@ class HeapProfiler(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            ""objectId"": object_id,
+            "objectId": object_id,
         }
 
         return self._send_command(
@@ -75,7 +82,7 @@ class HeapProfiler(BaseDomain):
         object_group: str = UNDEFINED
     ):
         params = {
-            ""objectId"": object_id,
+            "objectId": object_id,
         }
 
         if is_defined(

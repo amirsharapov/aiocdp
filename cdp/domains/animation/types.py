@@ -4,6 +4,9 @@ from dataclasses import (
 from cdp.domains.dom.types import (
     BackendNodeId
 )
+from cdp.domains.runtime.types import (
+    RemoteObject
+)
 
 
 @dataclass
@@ -44,3 +47,18 @@ class KeyframesRule:
 class KeyframeStyle:
     offset: str
     easing: str
+
+
+@dataclass
+class GetCurrentTimeReturnT:
+    current_time: float
+
+
+@dataclass
+class GetPlaybackRateReturnT:
+    playback_rate: float
+
+
+@dataclass
+class ResolveAnimationReturnT:
+    remote_object: "RemoteObject"

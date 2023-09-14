@@ -39,3 +39,14 @@ class TraceConfig:
     excluded_categories: list
     synthetic_delays: list
     memory_dump_config: "MemoryDumpConfig"
+
+
+@dataclass
+class GetCategoriesReturnT:
+    categories: list
+
+
+@dataclass
+class RequestMemoryDumpReturnT:
+    dump_guid: str
+    success: bool
