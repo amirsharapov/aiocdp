@@ -16,7 +16,7 @@ class Property(ComplexNode):
     deprecated: MaybeUndefined[bool]
 
     @property
-    def snake_name(self):
+    def name_snake_cased(self):
         return snake_case(self.name)
 
     @classmethod

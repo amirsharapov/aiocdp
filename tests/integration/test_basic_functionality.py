@@ -10,9 +10,7 @@ class Tests(TestCase):
         target = chrome.get_targets()[0]
         target.open_session()
 
-        target.page.enable()
-        target.page.navigate('https://google.com')
-        target.page.wait_until_event(target.page.events.DOMContentLoaded)
+        target.domains.runtime.enable()
 
         response = target.runtime.evaluate('console.log("Hello, world!")')
         print(response)

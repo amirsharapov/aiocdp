@@ -172,7 +172,7 @@ def _generate_dataclass_definition(type_):
         class_.body.append(
             ast.AnnAssign(
                 target=ast.Name(
-                    id=property_.snake_name,
+                    id=property_.name_snake_cased,
                     ctx=ast.Store()
                 ),
                 annotation=annotation,
@@ -181,7 +181,20 @@ def _generate_dataclass_definition(type_):
             )
         )
 
+    class_.body.extend([
+        _generate_dataclass_from_json_method(type_),
+        _generate_dataclass_to_json_method(type_)
+    ])
+
     return class_
+
+
+def _generate_dataclass_to_json_method(type_: 'Type'):
+    return ast.FunctionDef()
+
+
+def _generate_dataclass_from_json_method(type_: 'Type'):
+    return ast.FunctionDef()
 
 
 def generate(domain: Domain):
@@ -199,18 +212,18 @@ def generate(domain: Domain):
         root.body += imports
 
     type_aliases = []
-    dataclass_definitions = []
     string_literals = []
+    dataclass_definitions = []
 
     for type_ in domain.types:
-        if type_alias := _generate_type_alias(type_):
-            type_aliases.append(type_alias)
+        if type_definition := _generate_type_alias(type_):
+            type_aliases.append(type_definition)
 
-        if dataclass_definition := _generate_dataclass_definition(type_):
-            dataclass_definitions.append(dataclass_definition)
+        if type_definition := _generate_dataclass_definition(type_):
+            dataclass_definitions.append(type_definition)
 
-        if string_literal := _generate_string_literal(type_):
-            string_literals.append(string_literal)
+        if type_definition := _generate_string_literal(type_):
+            string_literals.append(type_definition)
 
     root.body += type_aliases
     root.body += string_literals

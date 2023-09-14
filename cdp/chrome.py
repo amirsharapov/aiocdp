@@ -16,5 +16,5 @@ class Chrome:
         )
 
     @classmethod
-    def get_targets(cls) -> Target:
+    def get_targets(cls) -> list[Target]:
         pass

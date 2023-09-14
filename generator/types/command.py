@@ -1,5 +1,6 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
+from generator.types import Domain
 from generator.types.base import ComplexNode
 from generator.types.property import Parameter, Return
 from generator.utils import UNDEFINED, MaybeUndefined
@@ -7,6 +8,8 @@ from generator.utils import UNDEFINED, MaybeUndefined
 
 @dataclass
 class Command(ComplexNode):
+    parent: 'Domain' = field(init=False)
+
     name: str
     description: MaybeUndefined[str]
     parameters: list['Parameter']
@@ -20,7 +23,7 @@ class Command(ComplexNode):
             name=data['name'],
             description=data.get('description', UNDEFINED),
             parameters=[Parameter.from_dict(parameter) for parameter in data.get('parameters', [])],
-            returns=[Return.from_dict(parameter) for parameter in data.get('returns', [])],
+            returns=[Return.from_dict(return_) for return_ in data.get('returns', [])],
             experimental=data.get('experimental', UNDEFINED),
             deprecated=data.get('deprecated', UNDEFINED)
         )
