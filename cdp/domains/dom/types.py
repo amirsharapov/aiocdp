@@ -13,9 +13,6 @@ from cdp.domains.runtime.types import (
     RemoteObjectId,
     StackTrace
 )
-from cdp.domains.dom.types import (
-    BackendNodeId
-)
 
 NodeId = int
 

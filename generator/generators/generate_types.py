@@ -48,7 +48,7 @@ def _generate_external_type_imports(domain: Domain):
 
     for type_ in domain.types:
         for ref in type_.get_refs():
-            if ref.domain:
+            if ref.domain and ref.domain != domain.domain:
                 module_name = ref.domain_snake_case or domain.module_name
                 import_tree[module_name].add(
                     ref.type
@@ -56,7 +56,7 @@ def _generate_external_type_imports(domain: Domain):
 
     for command in domain.commands:
         for ref in command.get_refs():
-            if ref.domain:
+            if ref.domain and ref.domain != domain.domain:
                 module_name = ref.domain_snake_case or domain.module_name
                 import_tree[module_name].add(
                     ref.type

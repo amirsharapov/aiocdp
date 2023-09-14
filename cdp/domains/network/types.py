@@ -12,10 +12,6 @@ from cdp.domains.security.types import (
 from cdp.domains.runtime.types import (
     StackTrace
 )
-from cdp.domains.network.types import (
-    Headers,
-    TimeSinceEpoch
-)
 from cdp.domains.io.types import (
     StreamHandle
 )
