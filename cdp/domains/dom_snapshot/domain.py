@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,22 +10,22 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom.types import (
-    Rect,
     BackendNodeId,
+    PseudoType,
     ShadowRootType,
-    PseudoType
+    Rect
 )
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.dom_snapshot.types import (
-    RareIntegerData,
-    TextBoxSnapshot,
     NodeTreeSnapshot,
+    LayoutTreeSnapshot,
     StringIndex,
-    RareStringData,
     RareBooleanData,
-    LayoutTreeSnapshot
+    RareIntegerData,
+    RareStringData,
+    TextBoxSnapshot
 )
 
 
@@ -51,9 +54,9 @@ class DOMSnapshot(BaseDomain):
     def get_snapshot(
         self,
         computed_style_whitelist: list,
-        include_event_listeners: MaybeUndefined[bool],
-        include_paint_order: MaybeUndefined[bool],
-        include_user_agent_shadow_tree: MaybeUndefined[bool]
+        include_event_listeners: MaybeUndefined[],
+        include_paint_order: MaybeUndefined[],
+        include_user_agent_shadow_tree: MaybeUndefined[]
     ):
         params = {
             "computedStyleWhitelist": computed_style_whitelist,
@@ -62,17 +65,17 @@ class DOMSnapshot(BaseDomain):
         if is_defined(
             include_event_listeners
         ):
-            params["includeEventListeners"] = include_event_listeners
+            params[] = include_event_listeners
 
         if is_defined(
             include_paint_order
         ):
-            params["includePaintOrder"] = include_paint_order
+            params[] = include_paint_order
 
         if is_defined(
             include_user_agent_shadow_tree
         ):
-            params["includeUserAgentShadowTree"] = include_user_agent_shadow_tree
+            params[] = include_user_agent_shadow_tree
 
         return self._send_command(
             "DOMSnapshot.getSnapshot",
@@ -82,10 +85,10 @@ class DOMSnapshot(BaseDomain):
     def capture_snapshot(
         self,
         computed_styles: list,
-        include_paint_order: MaybeUndefined[bool],
-        include_dom_rects: MaybeUndefined[bool],
-        include_blended_background_colors: MaybeUndefined[bool],
-        include_text_color_opacities: MaybeUndefined[bool]
+        include_paint_order: MaybeUndefined[],
+        include_dom_rects: MaybeUndefined[],
+        include_blended_background_colors: MaybeUndefined[],
+        include_text_color_opacities: MaybeUndefined[]
     ):
         params = {
             "computedStyles": computed_styles,
@@ -94,22 +97,22 @@ class DOMSnapshot(BaseDomain):
         if is_defined(
             include_paint_order
         ):
-            params["includePaintOrder"] = include_paint_order
+            params[] = include_paint_order
 
         if is_defined(
             include_dom_rects
         ):
-            params["includeDOMRects"] = include_dom_rects
+            params[] = include_dom_rects
 
         if is_defined(
             include_blended_background_colors
         ):
-            params["includeBlendedBackgroundColors"] = include_blended_background_colors
+            params[] = include_blended_background_colors
 
         if is_defined(
             include_text_color_opacities
         ):
-            params["includeTextColorOpacities"] = include_text_color_opacities
+            params[] = include_text_color_opacities
 
         return self._send_command(
             "DOMSnapshot.captureSnapshot",

@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -8,8 +11,8 @@ from cdp.utils import (
 )
 from cdp.domains.database.types import (
     Database,
-    DatabaseId,
-    Error
+    Error,
+    DatabaseId
 )
 
 

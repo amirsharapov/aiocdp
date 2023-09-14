@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -8,9 +11,9 @@ from cdp.utils import (
 )
 from cdp.domains.input.types import (
     GestureSourceType,
-    MouseButton,
+    DragData,
     TimeSinceEpoch,
-    DragData
+    MouseButton
 )
 
 
@@ -22,7 +25,7 @@ class Input(BaseDomain):
         x: float,
         y: float,
         data: DragData,
-        modifiers: MaybeUndefined[int]
+        modifiers: MaybeUndefined[]
     ):
         params = {
             "type": type_,
@@ -34,7 +37,7 @@ class Input(BaseDomain):
         if is_defined(
             modifiers
         ):
-            params["modifiers"] = modifiers
+            params[] = modifiers
 
         return self._send_command(
             "Input.dispatchDragEvent",
@@ -44,20 +47,20 @@ class Input(BaseDomain):
     def dispatch_key_event(
         self,
         type_: str,
-        modifiers: MaybeUndefined[int],
-        timestamp: MaybeUndefined[TimeSinceEpoch],
-        text: MaybeUndefined[str],
-        unmodified_text: MaybeUndefined[str],
-        key_identifier: MaybeUndefined[str],
-        code: MaybeUndefined[str],
-        key: MaybeUndefined[str],
-        windows_virtual_key_code: MaybeUndefined[int],
-        native_virtual_key_code: MaybeUndefined[int],
-        auto_repeat: MaybeUndefined[bool],
-        is_keypad: MaybeUndefined[bool],
-        is_system_key: MaybeUndefined[bool],
-        location: MaybeUndefined[int],
-        commands: MaybeUndefined[list]
+        modifiers: MaybeUndefined[],
+        timestamp: MaybeUndefined[],
+        text: MaybeUndefined[],
+        unmodified_text: MaybeUndefined[],
+        key_identifier: MaybeUndefined[],
+        code: MaybeUndefined[],
+        key: MaybeUndefined[],
+        windows_virtual_key_code: MaybeUndefined[],
+        native_virtual_key_code: MaybeUndefined[],
+        auto_repeat: MaybeUndefined[],
+        is_keypad: MaybeUndefined[],
+        is_system_key: MaybeUndefined[],
+        location: MaybeUndefined[],
+        commands: MaybeUndefined[]
     ):
         params = {
             "type": type_,
@@ -66,72 +69,72 @@ class Input(BaseDomain):
         if is_defined(
             modifiers
         ):
-            params["modifiers"] = modifiers
+            params[] = modifiers
 
         if is_defined(
             timestamp
         ):
-            params["timestamp"] = timestamp
+            params[] = timestamp
 
         if is_defined(
             text
         ):
-            params["text"] = text
+            params[] = text
 
         if is_defined(
             unmodified_text
         ):
-            params["unmodifiedText"] = unmodified_text
+            params[] = unmodified_text
 
         if is_defined(
             key_identifier
         ):
-            params["keyIdentifier"] = key_identifier
+            params[] = key_identifier
 
         if is_defined(
             code
         ):
-            params["code"] = code
+            params[] = code
 
         if is_defined(
             key
         ):
-            params["key"] = key
+            params[] = key
 
         if is_defined(
             windows_virtual_key_code
         ):
-            params["windowsVirtualKeyCode"] = windows_virtual_key_code
+            params[] = windows_virtual_key_code
 
         if is_defined(
             native_virtual_key_code
         ):
-            params["nativeVirtualKeyCode"] = native_virtual_key_code
+            params[] = native_virtual_key_code
 
         if is_defined(
             auto_repeat
         ):
-            params["autoRepeat"] = auto_repeat
+            params[] = auto_repeat
 
         if is_defined(
             is_keypad
         ):
-            params["isKeypad"] = is_keypad
+            params[] = is_keypad
 
         if is_defined(
             is_system_key
         ):
-            params["isSystemKey"] = is_system_key
+            params[] = is_system_key
 
         if is_defined(
             location
         ):
-            params["location"] = location
+            params[] = location
 
         if is_defined(
             commands
         ):
-            params["commands"] = commands
+            params[] = commands
 
         return self._send_command(
             "Input.dispatchKeyEvent",
@@ -156,8 +159,8 @@ class Input(BaseDomain):
         text: str,
         selection_start: int,
         selection_end: int,
-        replacement_start: MaybeUndefined[int],
-        replacement_end: MaybeUndefined[int]
+        replacement_start: MaybeUndefined[],
+        replacement_end: MaybeUndefined[]
     ):
         params = {
             "text": text,
@@ -168,12 +171,12 @@ class Input(BaseDomain):
         if is_defined(
             replacement_start
         ):
-            params["replacementStart"] = replacement_start
+            params[] = replacement_start
 
         if is_defined(
             replacement_end
         ):
-            params["replacementEnd"] = replacement_end
+            params[] = replacement_end
 
         return self._send_command(
             "Input.imeSetComposition",
@@ -185,19 +188,19 @@ class Input(BaseDomain):
         type_: str,
         x: float,
         y: float,
-        modifiers: MaybeUndefined[int],
-        timestamp: MaybeUndefined[TimeSinceEpoch],
-        button: MaybeUndefined[MouseButton],
-        buttons: MaybeUndefined[int],
-        click_count: MaybeUndefined[int],
-        force: MaybeUndefined[float],
-        tangential_pressure: MaybeUndefined[float],
-        tilt_x: MaybeUndefined[int],
-        tilt_y: MaybeUndefined[int],
-        twist: MaybeUndefined[int],
-        delta_x: MaybeUndefined[float],
-        delta_y: MaybeUndefined[float],
-        pointer_type: MaybeUndefined[str]
+        modifiers: MaybeUndefined[],
+        timestamp: MaybeUndefined[],
+        button: MaybeUndefined[],
+        buttons: MaybeUndefined[],
+        click_count: MaybeUndefined[],
+        force: MaybeUndefined[],
+        tangential_pressure: MaybeUndefined[],
+        tilt_x: MaybeUndefined[],
+        tilt_y: MaybeUndefined[],
+        twist: MaybeUndefined[],
+        delta_x: MaybeUndefined[],
+        delta_y: MaybeUndefined[],
+        pointer_type: MaybeUndefined[]
     ):
         params = {
             "type": type_,
@@ -208,67 +211,67 @@ class Input(BaseDomain):
         if is_defined(
             modifiers
         ):
-            params["modifiers"] = modifiers
+            params[] = modifiers
 
         if is_defined(
             timestamp
         ):
-            params["timestamp"] = timestamp
+            params[] = timestamp
 
         if is_defined(
             button
         ):
-            params["button"] = button
+            params[] = button
 
         if is_defined(
             buttons
         ):
-            params["buttons"] = buttons
+            params[] = buttons
 
         if is_defined(
             click_count
         ):
-            params["clickCount"] = click_count
+            params[] = click_count
 
         if is_defined(
             force
         ):
-            params["force"] = force
+            params[] = force
 
         if is_defined(
             tangential_pressure
         ):
-            params["tangentialPressure"] = tangential_pressure
+            params[] = tangential_pressure
 
         if is_defined(
             tilt_x
         ):
-            params["tiltX"] = tilt_x
+            params[] = tilt_x
 
         if is_defined(
             tilt_y
         ):
-            params["tiltY"] = tilt_y
+            params[] = tilt_y
 
         if is_defined(
             twist
         ):
-            params["twist"] = twist
+            params[] = twist
 
         if is_defined(
             delta_x
         ):
-            params["deltaX"] = delta_x
+            params[] = delta_x
 
         if is_defined(
             delta_y
         ):
-            params["deltaY"] = delta_y
+            params[] = delta_y
 
         if is_defined(
             pointer_type
         ):
-            params["pointerType"] = pointer_type
+            params[] = pointer_type
 
         return self._send_command(
             "Input.dispatchMouseEvent",
@@ -279,8 +282,8 @@ class Input(BaseDomain):
         self,
         type_: str,
         touch_points: list,
-        modifiers: MaybeUndefined[int],
-        timestamp: MaybeUndefined[TimeSinceEpoch]
+        modifiers: MaybeUndefined[],
+        timestamp: MaybeUndefined[]
     ):
         params = {
             "type": type_,
@@ -290,12 +293,12 @@ class Input(BaseDomain):
         if is_defined(
             modifiers
         ):
-            params["modifiers"] = modifiers
+            params[] = modifiers
 
         if is_defined(
             timestamp
         ):
-            params["timestamp"] = timestamp
+            params[] = timestamp
 
         return self._send_command(
             "Input.dispatchTouchEvent",
@@ -318,11 +321,11 @@ class Input(BaseDomain):
         x: int,
         y: int,
         button: MouseButton,
-        timestamp: MaybeUndefined[TimeSinceEpoch],
-        delta_x: MaybeUndefined[float],
-        delta_y: MaybeUndefined[float],
-        modifiers: MaybeUndefined[int],
-        click_count: MaybeUndefined[int]
+        timestamp: MaybeUndefined[],
+        delta_x: MaybeUndefined[],
+        delta_y: MaybeUndefined[],
+        modifiers: MaybeUndefined[],
+        click_count: MaybeUndefined[]
     ):
         params = {
             "type": type_,
@@ -334,27 +337,27 @@ class Input(BaseDomain):
         if is_defined(
             timestamp
         ):
-            params["timestamp"] = timestamp
+            params[] = timestamp
 
         if is_defined(
             delta_x
         ):
-            params["deltaX"] = delta_x
+            params[] = delta_x
 
         if is_defined(
             delta_y
         ):
-            params["deltaY"] = delta_y
+            params[] = delta_y
 
         if is_defined(
             modifiers
         ):
-            params["modifiers"] = modifiers
+            params[] = modifiers
 
         if is_defined(
             click_count
         ):
-            params["clickCount"] = click_count
+            params[] = click_count
 
         return self._send_command(
             "Input.emulateTouchFromMouseEvent",
@@ -392,8 +395,8 @@ class Input(BaseDomain):
         x: float,
         y: float,
         scale_factor: float,
-        relative_speed: MaybeUndefined[int],
-        gesture_source_type: MaybeUndefined[GestureSourceType]
+        relative_speed: MaybeUndefined[],
+        gesture_source_type: MaybeUndefined[]
     ):
         params = {
             "x": x,
@@ -404,12 +407,12 @@ class Input(BaseDomain):
         if is_defined(
             relative_speed
         ):
-            params["relativeSpeed"] = relative_speed
+            params[] = relative_speed
 
         if is_defined(
             gesture_source_type
         ):
-            params["gestureSourceType"] = gesture_source_type
+            params[] = gesture_source_type
 
         return self._send_command(
             "Input.synthesizePinchGesture",
@@ -420,16 +423,16 @@ class Input(BaseDomain):
         self,
         x: float,
         y: float,
-        x_distance: MaybeUndefined[float],
-        y_distance: MaybeUndefined[float],
-        x_overscroll: MaybeUndefined[float],
-        y_overscroll: MaybeUndefined[float],
-        prevent_fling: MaybeUndefined[bool],
-        speed: MaybeUndefined[int],
-        gesture_source_type: MaybeUndefined[GestureSourceType],
-        repeat_count: MaybeUndefined[int],
-        repeat_delay_ms: MaybeUndefined[int],
-        interaction_marker_name: MaybeUndefined[str]
+        x_distance: MaybeUndefined[],
+        y_distance: MaybeUndefined[],
+        x_overscroll: MaybeUndefined[],
+        y_overscroll: MaybeUndefined[],
+        prevent_fling: MaybeUndefined[],
+        speed: MaybeUndefined[],
+        gesture_source_type: MaybeUndefined[],
+        repeat_count: MaybeUndefined[],
+        repeat_delay_ms: MaybeUndefined[],
+        interaction_marker_name: MaybeUndefined[]
     ):
         params = {
             "x": x,
@@ -439,52 +442,52 @@ class Input(BaseDomain):
         if is_defined(
             x_distance
         ):
-            params["xDistance"] = x_distance
+            params[] = x_distance
 
         if is_defined(
             y_distance
         ):
-            params["yDistance"] = y_distance
+            params[] = y_distance
 
         if is_defined(
             x_overscroll
         ):
-            params["xOverscroll"] = x_overscroll
+            params[] = x_overscroll
 
         if is_defined(
             y_overscroll
         ):
-            params["yOverscroll"] = y_overscroll
+            params[] = y_overscroll
 
         if is_defined(
             prevent_fling
         ):
-            params["preventFling"] = prevent_fling
+            params[] = prevent_fling
 
         if is_defined(
             speed
         ):
-            params["speed"] = speed
+            params[] = speed
 
         if is_defined(
             gesture_source_type
         ):
-            params["gestureSourceType"] = gesture_source_type
+            params[] = gesture_source_type
 
         if is_defined(
             repeat_count
         ):
-            params["repeatCount"] = repeat_count
+            params[] = repeat_count
 
         if is_defined(
             repeat_delay_ms
         ):
-            params["repeatDelayMs"] = repeat_delay_ms
+            params[] = repeat_delay_ms
 
         if is_defined(
             interaction_marker_name
         ):
-            params["interactionMarkerName"] = interaction_marker_name
+            params[] = interaction_marker_name
 
         return self._send_command(
             "Input.synthesizeScrollGesture",
@@ -495,9 +498,9 @@ class Input(BaseDomain):
         self,
         x: float,
         y: float,
-        duration: MaybeUndefined[int],
-        tap_count: MaybeUndefined[int],
-        gesture_source_type: MaybeUndefined[GestureSourceType]
+        duration: MaybeUndefined[],
+        tap_count: MaybeUndefined[],
+        gesture_source_type: MaybeUndefined[]
     ):
         params = {
             "x": x,
@@ -507,17 +510,17 @@ class Input(BaseDomain):
         if is_defined(
             duration
         ):
-            params["duration"] = duration
+            params[] = duration
 
         if is_defined(
             tap_count
         ):
-            params["tapCount"] = tap_count
+            params[] = tap_count
 
         if is_defined(
             gesture_source_type
         ):
-            params["gestureSourceType"] = gesture_source_type
+            params[] = gesture_source_type
 
         return self._send_command(
             "Input.synthesizeTapGesture",

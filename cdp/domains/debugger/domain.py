@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,21 +10,21 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.runtime.types import (
-    RemoteObject,
-    StackTrace,
     CallArgument,
-    ScriptId,
-    StackTraceId,
     ExecutionContextId,
-    ExceptionDetails,
+    ScriptId,
     TimeDelta,
+    StackTrace,
+    RemoteObjectId,
+    ExceptionDetails,
     UniqueDebuggerId,
-    RemoteObjectId
+    StackTraceId,
+    RemoteObject
 )
 from cdp.domains.debugger.types import (
+    Location,
     CallFrameId,
-    BreakpointId,
-    Location
+    BreakpointId
 )
 
 
@@ -30,7 +33,7 @@ class Debugger(BaseDomain):
     def continue_to_location(
         self,
         location: Location,
-        target_call_frames: MaybeUndefined[str]
+        target_call_frames: MaybeUndefined[]
     ):
         params = {
             "location": location,
@@ -39,7 +42,7 @@ class Debugger(BaseDomain):
         if is_defined(
             target_call_frames
         ):
-            params["targetCallFrames"] = target_call_frames
+            params[] = target_call_frames
 
         return self._send_command(
             "Debugger.continueToLocation",
@@ -58,14 +61,14 @@ class Debugger(BaseDomain):
 
     def enable(
         self,
-        max_scripts_cache_size: MaybeUndefined[float]
+        max_scripts_cache_size: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             max_scripts_cache_size
         ):
-            params["maxScriptsCacheSize"] = max_scripts_cache_size
+            params[] = max_scripts_cache_size
 
         return self._send_command(
             "Debugger.enable",
@@ -76,13 +79,13 @@ class Debugger(BaseDomain):
         self,
         call_frame_id: CallFrameId,
         expression: str,
-        object_group: MaybeUndefined[str],
-        include_command_line_api: MaybeUndefined[bool],
-        silent: MaybeUndefined[bool],
-        return_by_value: MaybeUndefined[bool],
-        generate_preview: MaybeUndefined[bool],
-        throw_on_side_effect: MaybeUndefined[bool],
-        timeout: MaybeUndefined[TimeDelta]
+        object_group: MaybeUndefined[],
+        include_command_line_api: MaybeUndefined[],
+        silent: MaybeUndefined[],
+        return_by_value: MaybeUndefined[],
+        generate_preview: MaybeUndefined[],
+        throw_on_side_effect: MaybeUndefined[],
+        timeout: MaybeUndefined[]
     ):
         params = {
             "callFrameId": call_frame_id,
@@ -92,37 +95,37 @@ class Debugger(BaseDomain):
         if is_defined(
             object_group
         ):
-            params["objectGroup"] = object_group
+            params[] = object_group
 
         if is_defined(
             include_command_line_api
         ):
-            params["includeCommandLineAPI"] = include_command_line_api
+            params[] = include_command_line_api
 
         if is_defined(
             silent
         ):
-            params["silent"] = silent
+            params[] = silent
 
         if is_defined(
             return_by_value
         ):
-            params["returnByValue"] = return_by_value
+            params[] = return_by_value
 
         if is_defined(
             generate_preview
         ):
-            params["generatePreview"] = generate_preview
+            params[] = generate_preview
 
         if is_defined(
             throw_on_side_effect
         ):
-            params["throwOnSideEffect"] = throw_on_side_effect
+            params[] = throw_on_side_effect
 
         if is_defined(
             timeout
         ):
-            params["timeout"] = timeout
+            params[] = timeout
 
         return self._send_command(
             "Debugger.evaluateOnCallFrame",
@@ -132,8 +135,8 @@ class Debugger(BaseDomain):
     def get_possible_breakpoints(
         self,
         start: Location,
-        end: MaybeUndefined[Location],
-        restrict_to_function: MaybeUndefined[bool]
+        end: MaybeUndefined[],
+        restrict_to_function: MaybeUndefined[]
     ):
         params = {
             "start": start,
@@ -142,12 +145,12 @@ class Debugger(BaseDomain):
         if is_defined(
             end
         ):
-            params["end"] = end
+            params[] = end
 
         if is_defined(
             restrict_to_function
         ):
-            params["restrictToFunction"] = restrict_to_function
+            params[] = restrict_to_function
 
         return self._send_command(
             "Debugger.getPossibleBreakpoints",
@@ -243,8 +246,8 @@ class Debugger(BaseDomain):
         self,
         script_id: ScriptId,
         query: str,
-        case_sensitive: MaybeUndefined[bool],
-        is_regex: MaybeUndefined[bool]
+        case_sensitive: MaybeUndefined[],
+        is_regex: MaybeUndefined[]
     ):
         params = {
             "scriptId": script_id,
@@ -254,12 +257,12 @@ class Debugger(BaseDomain):
         if is_defined(
             case_sensitive
         ):
-            params["caseSensitive"] = case_sensitive
+            params[] = case_sensitive
 
         if is_defined(
             is_regex
         ):
-            params["isRegex"] = is_regex
+            params[] = is_regex
 
         return self._send_command(
             "Debugger.searchInContent",
@@ -310,7 +313,7 @@ class Debugger(BaseDomain):
     def set_breakpoint(
         self,
         location: Location,
-        condition: MaybeUndefined[str]
+        condition: MaybeUndefined[]
     ):
         params = {
             "location": location,
@@ -319,7 +322,7 @@ class Debugger(BaseDomain):
         if is_defined(
             condition
         ):
-            params["condition"] = condition
+            params[] = condition
 
         return self._send_command(
             "Debugger.setBreakpoint",
@@ -342,11 +345,11 @@ class Debugger(BaseDomain):
     def set_breakpoint_by_url(
         self,
         line_number: int,
-        url: MaybeUndefined[str],
-        url_regex: MaybeUndefined[str],
-        script_hash: MaybeUndefined[str],
-        column_number: MaybeUndefined[int],
-        condition: MaybeUndefined[str]
+        url: MaybeUndefined[],
+        url_regex: MaybeUndefined[],
+        script_hash: MaybeUndefined[],
+        column_number: MaybeUndefined[],
+        condition: MaybeUndefined[]
     ):
         params = {
             "lineNumber": line_number,
@@ -355,27 +358,27 @@ class Debugger(BaseDomain):
         if is_defined(
             url
         ):
-            params["url"] = url
+            params[] = url
 
         if is_defined(
             url_regex
         ):
-            params["urlRegex"] = url_regex
+            params[] = url_regex
 
         if is_defined(
             script_hash
         ):
-            params["scriptHash"] = script_hash
+            params[] = script_hash
 
         if is_defined(
             column_number
         ):
-            params["columnNumber"] = column_number
+            params[] = column_number
 
         if is_defined(
             condition
         ):
-            params["condition"] = condition
+            params[] = condition
 
         return self._send_command(
             "Debugger.setBreakpointByUrl",
@@ -385,7 +388,7 @@ class Debugger(BaseDomain):
     def set_breakpoint_on_function_call(
         self,
         object_id: RemoteObjectId,
-        condition: MaybeUndefined[str]
+        condition: MaybeUndefined[]
     ):
         params = {
             "objectId": object_id,
@@ -394,7 +397,7 @@ class Debugger(BaseDomain):
         if is_defined(
             condition
         ):
-            params["condition"] = condition
+            params[] = condition
 
         return self._send_command(
             "Debugger.setBreakpointOnFunctionCall",
@@ -444,7 +447,7 @@ class Debugger(BaseDomain):
         self,
         script_id: ScriptId,
         script_source: str,
-        dry_run: MaybeUndefined[bool]
+        dry_run: MaybeUndefined[]
     ):
         params = {
             "scriptId": script_id,
@@ -454,7 +457,7 @@ class Debugger(BaseDomain):
         if is_defined(
             dry_run
         ):
-            params["dryRun"] = dry_run
+            params[] = dry_run
 
         return self._send_command(
             "Debugger.setScriptSource",
@@ -495,14 +498,14 @@ class Debugger(BaseDomain):
 
     def step_into(
         self,
-        break_on_async_call: MaybeUndefined[bool]
+        break_on_async_call: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             break_on_async_call
         ):
-            params["breakOnAsyncCall"] = break_on_async_call
+            params[] = break_on_async_call
 
         return self._send_command(
             "Debugger.stepInto",

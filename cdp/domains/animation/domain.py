@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -8,8 +11,8 @@ from cdp.utils import (
 )
 from cdp.domains.animation.types import (
     Animation,
-    AnimationEffect,
-    KeyframesRule
+    KeyframesRule,
+    AnimationEffect
 )
 from cdp.domains.dom.types import (
     BackendNodeId

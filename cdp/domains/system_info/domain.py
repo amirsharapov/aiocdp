@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,9 +10,9 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.system_info.types import (
-    GPUInfo,
     ImageType,
-    Size
+    Size,
+    GPUInfo
 )
 
 

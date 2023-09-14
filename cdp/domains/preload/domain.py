@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,15 +10,15 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.preload.types import (
-    SpeculationAction,
-    SpeculationTargetHint,
-    PreloadingAttemptKey,
     PrerenderFinalStatus,
     PreloadingStatus,
-    PrefetchStatus,
+    SpeculationAction,
+    PreloadingAttemptKey,
+    RuleSet,
     RuleSetId,
+    PrefetchStatus,
     RuleSetErrorType,
-    RuleSet
+    SpeculationTargetHint
 )
 from cdp.domains.network.types import (
     RequestId,

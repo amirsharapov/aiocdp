@@ -36,7 +36,7 @@ def main():
     Path('cdp/domains/__init__.py').touch()
 
     for item in Path('cdp/domains').iterdir():
-        if item.name not in ['__init__.py', 'base.py']:
+        if item.name not in ('__init__.py', 'base.py'):
             if item.is_dir():
                 shutil.rmtree(item)
             else:
@@ -44,18 +44,26 @@ def main():
 
     for protocol in protocols:
         for domain in protocol.domains:
-            base_path = Path(f'cdp/domains/{convert_to_snake_case(domain.domain)}')
-            base_path.mkdir(parents=True, exist_ok=True)
+            module_name = convert_to_snake_case(domain.domain)
 
-            (base_path / '__init__.py').touch()
+            Path(f'cdp/domains/{module_name}').mkdir(parents=True, exist_ok=True)
+            Path(f'cdp/domains/{module_name}/__init__.py').touch()
 
             module = generators.generate_domain.generate(domain)
             module = SourceCodeGenerator().generate(module)
 
             print(module)
 
-            path = base_path / 'domain.py'
-            path.write_text(module)
+            Path(f'cdp/domains/{module_name}/domain.py').write_text(module)
+
+            module = generators.generate_types.generate(domain)
+            module = SourceCodeGenerator().generate(module)
+
+            print(module)
+
+            Path(f'cdp/domains/{module_name}/types.py').write_text(module)
+
+
 
 
 if __name__ == '__main__':

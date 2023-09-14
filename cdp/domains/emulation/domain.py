@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -10,10 +13,10 @@ from cdp.domains.dom.types import (
     RGBA
 )
 from cdp.domains.emulation.types import (
-    UserAgentMetadata,
+    ScreenOrientation,
     VirtualTimePolicy,
-    DisplayFeature,
-    ScreenOrientation
+    UserAgentMetadata,
+    DisplayFeature
 )
 from cdp.domains.page.types import (
     Viewport
@@ -80,14 +83,14 @@ class Emulation(BaseDomain):
 
     def set_auto_dark_mode_override(
         self,
-        enabled: MaybeUndefined[bool]
+        enabled: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             enabled
         ):
-            params["enabled"] = enabled
+            params[] = enabled
 
         return self._send_command(
             "Emulation.setAutoDarkModeOverride",
@@ -109,14 +112,14 @@ class Emulation(BaseDomain):
 
     def set_default_background_color_override(
         self,
-        color: MaybeUndefined[RGBA]
+        color: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             color
         ):
-            params["color"] = color
+            params[] = color
 
         return self._send_command(
             "Emulation.setDefaultBackgroundColorOverride",
@@ -129,15 +132,15 @@ class Emulation(BaseDomain):
         height: int,
         device_scale_factor: float,
         mobile: bool,
-        scale: MaybeUndefined[float],
-        screen_width: MaybeUndefined[int],
-        screen_height: MaybeUndefined[int],
-        position_x: MaybeUndefined[int],
-        position_y: MaybeUndefined[int],
-        dont_set_visible_size: MaybeUndefined[bool],
-        screen_orientation: MaybeUndefined[ScreenOrientation],
-        viewport: MaybeUndefined[Viewport],
-        display_feature: MaybeUndefined[DisplayFeature]
+        scale: MaybeUndefined[],
+        screen_width: MaybeUndefined[],
+        screen_height: MaybeUndefined[],
+        position_x: MaybeUndefined[],
+        position_y: MaybeUndefined[],
+        dont_set_visible_size: MaybeUndefined[],
+        screen_orientation: MaybeUndefined[],
+        viewport: MaybeUndefined[],
+        display_feature: MaybeUndefined[]
     ):
         params = {
             "width": width,
@@ -149,47 +152,47 @@ class Emulation(BaseDomain):
         if is_defined(
             scale
         ):
-            params["scale"] = scale
+            params[] = scale
 
         if is_defined(
             screen_width
         ):
-            params["screenWidth"] = screen_width
+            params[] = screen_width
 
         if is_defined(
             screen_height
         ):
-            params["screenHeight"] = screen_height
+            params[] = screen_height
 
         if is_defined(
             position_x
         ):
-            params["positionX"] = position_x
+            params[] = position_x
 
         if is_defined(
             position_y
         ):
-            params["positionY"] = position_y
+            params[] = position_y
 
         if is_defined(
             dont_set_visible_size
         ):
-            params["dontSetVisibleSize"] = dont_set_visible_size
+            params[] = dont_set_visible_size
 
         if is_defined(
             screen_orientation
         ):
-            params["screenOrientation"] = screen_orientation
+            params[] = screen_orientation
 
         if is_defined(
             viewport
         ):
-            params["viewport"] = viewport
+            params[] = viewport
 
         if is_defined(
             display_feature
         ):
-            params["displayFeature"] = display_feature
+            params[] = display_feature
 
         return self._send_command(
             "Emulation.setDeviceMetricsOverride",
@@ -225,7 +228,7 @@ class Emulation(BaseDomain):
     def set_emit_touch_events_for_mouse(
         self,
         enabled: bool,
-        configuration: MaybeUndefined[str]
+        configuration: MaybeUndefined[]
     ):
         params = {
             "enabled": enabled,
@@ -234,7 +237,7 @@ class Emulation(BaseDomain):
         if is_defined(
             configuration
         ):
-            params["configuration"] = configuration
+            params[] = configuration
 
         return self._send_command(
             "Emulation.setEmitTouchEventsForMouse",
@@ -243,20 +246,20 @@ class Emulation(BaseDomain):
 
     def set_emulated_media(
         self,
-        media: MaybeUndefined[str],
-        features: MaybeUndefined[list]
+        media: MaybeUndefined[],
+        features: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             media
         ):
-            params["media"] = media
+            params[] = media
 
         if is_defined(
             features
         ):
-            params["features"] = features
+            params[] = features
 
         return self._send_command(
             "Emulation.setEmulatedMedia",
@@ -278,26 +281,26 @@ class Emulation(BaseDomain):
 
     def set_geolocation_override(
         self,
-        latitude: MaybeUndefined[float],
-        longitude: MaybeUndefined[float],
-        accuracy: MaybeUndefined[float]
+        latitude: MaybeUndefined[],
+        longitude: MaybeUndefined[],
+        accuracy: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             latitude
         ):
-            params["latitude"] = latitude
+            params[] = latitude
 
         if is_defined(
             longitude
         ):
-            params["longitude"] = longitude
+            params[] = longitude
 
         if is_defined(
             accuracy
         ):
-            params["accuracy"] = accuracy
+            params[] = accuracy
 
         return self._send_command(
             "Emulation.setGeolocationOverride",
@@ -371,7 +374,7 @@ class Emulation(BaseDomain):
     def set_touch_emulation_enabled(
         self,
         enabled: bool,
-        max_touch_points: MaybeUndefined[int]
+        max_touch_points: MaybeUndefined[]
     ):
         params = {
             "enabled": enabled,
@@ -380,7 +383,7 @@ class Emulation(BaseDomain):
         if is_defined(
             max_touch_points
         ):
-            params["maxTouchPoints"] = max_touch_points
+            params[] = max_touch_points
 
         return self._send_command(
             "Emulation.setTouchEmulationEnabled",
@@ -390,9 +393,9 @@ class Emulation(BaseDomain):
     def set_virtual_time_policy(
         self,
         policy: VirtualTimePolicy,
-        budget: MaybeUndefined[float],
-        max_virtual_time_task_starvation_count: MaybeUndefined[int],
-        initial_virtual_time: MaybeUndefined[TimeSinceEpoch]
+        budget: MaybeUndefined[],
+        max_virtual_time_task_starvation_count: MaybeUndefined[],
+        initial_virtual_time: MaybeUndefined[]
     ):
         params = {
             "policy": policy,
@@ -401,17 +404,17 @@ class Emulation(BaseDomain):
         if is_defined(
             budget
         ):
-            params["budget"] = budget
+            params[] = budget
 
         if is_defined(
             max_virtual_time_task_starvation_count
         ):
-            params["maxVirtualTimeTaskStarvationCount"] = max_virtual_time_task_starvation_count
+            params[] = max_virtual_time_task_starvation_count
 
         if is_defined(
             initial_virtual_time
         ):
-            params["initialVirtualTime"] = initial_virtual_time
+            params[] = initial_virtual_time
 
         return self._send_command(
             "Emulation.setVirtualTimePolicy",
@@ -420,14 +423,14 @@ class Emulation(BaseDomain):
 
     def set_locale_override(
         self,
-        locale: MaybeUndefined[str]
+        locale: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             locale
         ):
-            params["locale"] = locale
+            params[] = locale
 
         return self._send_command(
             "Emulation.setLocaleOverride",
@@ -491,9 +494,9 @@ class Emulation(BaseDomain):
     def set_user_agent_override(
         self,
         user_agent: str,
-        accept_language: MaybeUndefined[str],
-        platform: MaybeUndefined[str],
-        user_agent_metadata: MaybeUndefined[UserAgentMetadata]
+        accept_language: MaybeUndefined[],
+        platform: MaybeUndefined[],
+        user_agent_metadata: MaybeUndefined[]
     ):
         params = {
             "userAgent": user_agent,
@@ -502,17 +505,17 @@ class Emulation(BaseDomain):
         if is_defined(
             accept_language
         ):
-            params["acceptLanguage"] = accept_language
+            params[] = accept_language
 
         if is_defined(
             platform
         ):
-            params["platform"] = platform
+            params[] = platform
 
         if is_defined(
             user_agent_metadata
         ):
-            params["userAgentMetadata"] = user_agent_metadata
+            params[] = user_agent_metadata
 
         return self._send_command(
             "Emulation.setUserAgentOverride",

@@ -16,31 +16,6 @@ def indent_lines(lines: str | list[str], indent: int) -> str:
     ])
 
 
-def concat_lines(lines: list[str], trailing_newline: bool = False) -> str:
-    lines = '\n'.join(lines)
-
-    if trailing_newline:
-        lines += '\n'
-
-    return lines
-
-
-def create_vertical_comma_separated_list(
-        items: list[str],
-        indent: int,
-        trailing_comma: bool = True
-) -> str:
-    items = ',\n'.join(items)
-
-    if trailing_comma:
-        items += ','
-
-    return indent_lines(
-        items,
-        indent
-    )
-
-
 # noinspection PyTypeChecker
 class SourceCodeGenerator(ast.NodeVisitor):
     def __init__(self):
@@ -85,6 +60,18 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += '\n'
         self.source += f'{self.indent})'
 
+    def visit_AnnAssign(self, node: ast.AnnAssign) -> Any:
+        self.source += self.indent
+
+        if node.value:
+            self.source += f'{node.target.id}: '
+            self.visit(node.annotation)
+            self.source += ' = '
+            self.visit(node.value)
+        else:
+            self.source += f'{node.target.id}: '
+            self.visit(node.annotation)
+
     def visit_Assign(self, node: ast.Assign) -> Any:
         self.source += self.indent
         self.visit(node.targets[0])
@@ -118,12 +105,15 @@ class SourceCodeGenerator(ast.NodeVisitor):
             self.visit(decorator)
             self.source += '\n'
 
-        self.source += f'{self.indent}class {node.name}('
+        self.source += f'{self.indent}class {node.name}'
 
-        for base in node.bases:
-            self.visit(base)
+        if hasattr(node, 'bases') and node.bases:
+            self.source += '('
+            for base in node.bases:
+                self.visit(base)
+            self.source += ')'
 
-        self.source += '):\n'
+        self.source += ':\n'
 
         with self.indent_context():
             for item in node.body:
@@ -149,7 +139,10 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.visit(node.comparators[0])
 
     def visit_Constant(self, node: ast.Constant) -> Any:
-        self.source += node.value
+        if node.kind == 'str':
+            self.source += f'"{node.value}"'
+        else:
+            self.source += node.value
 
     def visit_Dict(self, node: ast.Dict) -> Any:
         self.source += '{'
@@ -225,6 +218,8 @@ class SourceCodeGenerator(ast.NodeVisitor):
         for item in node.body:
             if isinstance(item, (ast.ClassDef, ast.FunctionDef)):
                 self.source += '\n\n'
+            if isinstance(item, ast.Assign):
+                self.source += '\n'
             self.visit(item)
 
     def visit_Name(self, node: ast.Name) -> Any:
@@ -237,5 +232,18 @@ class SourceCodeGenerator(ast.NodeVisitor):
     def visit_Subscript(self, node: ast.Subscript) -> Any:
         self.visit(node.value)
         self.source += '['
-        self.visit(node.slice)
+
+        if isinstance(node.slice, ast.Tuple):
+            self.source += '\n'
+
+            with self.indent_context():
+                for i, elt in enumerate(node.slice.elts):
+                    self.source += self.indent
+                    self.visit(elt)
+
+                    if i != len(node.slice.elts) - 1:
+                        self.source += ',\n'
+
+            self.source += '\n'
+
         self.source += ']'

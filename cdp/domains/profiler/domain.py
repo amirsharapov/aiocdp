@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,8 +10,8 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.runtime.types import (
-    CallFrame,
-    ScriptId
+    ScriptId,
+    CallFrame
 )
 from cdp.domains.profiler.types import (
     Profile
@@ -75,20 +78,20 @@ class Profiler(BaseDomain):
 
     def start_precise_coverage(
         self,
-        call_count: MaybeUndefined[bool],
-        detailed: MaybeUndefined[bool]
+        call_count: MaybeUndefined[],
+        detailed: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             call_count
         ):
-            params["callCount"] = call_count
+            params[] = call_count
 
         if is_defined(
             detailed
         ):
-            params["detailed"] = detailed
+            params[] = detailed
 
         return self._send_command(
             "Profiler.startPreciseCoverage",

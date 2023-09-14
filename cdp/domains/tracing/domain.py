@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,12 +10,12 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.tracing.types import (
-    TracingBackend,
-    MemoryDumpLevelOfDetail,
-    StreamFormat,
+    MemoryDumpConfig,
     TraceConfig,
     StreamCompression,
-    MemoryDumpConfig
+    TracingBackend,
+    MemoryDumpLevelOfDetail,
+    StreamFormat
 )
 from cdp.domains.io.types import (
     StreamHandle
@@ -56,20 +59,20 @@ class Tracing(BaseDomain):
 
     def request_memory_dump(
         self,
-        deterministic: MaybeUndefined[bool],
-        level_of_detail: MaybeUndefined[MemoryDumpLevelOfDetail]
+        deterministic: MaybeUndefined[],
+        level_of_detail: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             deterministic
         ):
-            params["deterministic"] = deterministic
+            params[] = deterministic
 
         if is_defined(
             level_of_detail
         ):
-            params["levelOfDetail"] = level_of_detail
+            params[] = level_of_detail
 
         return self._send_command(
             "Tracing.requestMemoryDump",
@@ -78,62 +81,62 @@ class Tracing(BaseDomain):
 
     def start(
         self,
-        categories: MaybeUndefined[str],
-        options: MaybeUndefined[str],
-        buffer_usage_reporting_interval: MaybeUndefined[float],
-        transfer_mode: MaybeUndefined[str],
-        stream_format: MaybeUndefined[StreamFormat],
-        stream_compression: MaybeUndefined[StreamCompression],
-        trace_config: MaybeUndefined[TraceConfig],
-        perfetto_config: MaybeUndefined[str],
-        tracing_backend: MaybeUndefined[TracingBackend]
+        categories: MaybeUndefined[],
+        options: MaybeUndefined[],
+        buffer_usage_reporting_interval: MaybeUndefined[],
+        transfer_mode: MaybeUndefined[],
+        stream_format: MaybeUndefined[],
+        stream_compression: MaybeUndefined[],
+        trace_config: MaybeUndefined[],
+        perfetto_config: MaybeUndefined[],
+        tracing_backend: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             categories
         ):
-            params["categories"] = categories
+            params[] = categories
 
         if is_defined(
             options
         ):
-            params["options"] = options
+            params[] = options
 
         if is_defined(
             buffer_usage_reporting_interval
         ):
-            params["bufferUsageReportingInterval"] = buffer_usage_reporting_interval
+            params[] = buffer_usage_reporting_interval
 
         if is_defined(
             transfer_mode
         ):
-            params["transferMode"] = transfer_mode
+            params[] = transfer_mode
 
         if is_defined(
             stream_format
         ):
-            params["streamFormat"] = stream_format
+            params[] = stream_format
 
         if is_defined(
             stream_compression
         ):
-            params["streamCompression"] = stream_compression
+            params[] = stream_compression
 
         if is_defined(
             trace_config
         ):
-            params["traceConfig"] = trace_config
+            params[] = trace_config
 
         if is_defined(
             perfetto_config
         ):
-            params["perfettoConfig"] = perfetto_config
+            params[] = perfetto_config
 
         if is_defined(
             tracing_backend
         ):
-            params["tracingBackend"] = tracing_backend
+            params[] = tracing_backend
 
         return self._send_command(
             "Tracing.start",

@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,14 +10,14 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.browser.types import (
-    BrowserContextID,
-    Bounds,
-    BrowserCommandId,
     PermissionDescriptor,
-    PermissionSetting,
     WindowID,
+    WindowState,
+    BrowserContextID,
+    BrowserCommandId,
+    PermissionSetting,
     Histogram,
-    WindowState
+    Bounds
 )
 from cdp.domains.target.types import (
     TargetID
@@ -30,8 +33,8 @@ class Browser(BaseDomain):
         self,
         permission: PermissionDescriptor,
         setting: PermissionSetting,
-        origin: MaybeUndefined[str],
-        browser_context_id: MaybeUndefined[BrowserContextID]
+        origin: MaybeUndefined[],
+        browser_context_id: MaybeUndefined[]
     ):
         params = {
             "permission": permission,
@@ -41,12 +44,12 @@ class Browser(BaseDomain):
         if is_defined(
             origin
         ):
-            params["origin"] = origin
+            params[] = origin
 
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params[] = browser_context_id
 
         return self._send_command(
             "Browser.setPermission",
@@ -56,8 +59,8 @@ class Browser(BaseDomain):
     def grant_permissions(
         self,
         permissions: list,
-        origin: MaybeUndefined[str],
-        browser_context_id: MaybeUndefined[BrowserContextID]
+        origin: MaybeUndefined[],
+        browser_context_id: MaybeUndefined[]
     ):
         params = {
             "permissions": permissions,
@@ -66,12 +69,12 @@ class Browser(BaseDomain):
         if is_defined(
             origin
         ):
-            params["origin"] = origin
+            params[] = origin
 
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params[] = browser_context_id
 
         return self._send_command(
             "Browser.grantPermissions",
@@ -80,14 +83,14 @@ class Browser(BaseDomain):
 
     def reset_permissions(
         self,
-        browser_context_id: MaybeUndefined[BrowserContextID]
+        browser_context_id: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params[] = browser_context_id
 
         return self._send_command(
             "Browser.resetPermissions",
@@ -97,9 +100,9 @@ class Browser(BaseDomain):
     def set_download_behavior(
         self,
         behavior: str,
-        browser_context_id: MaybeUndefined[BrowserContextID],
-        download_path: MaybeUndefined[str],
-        events_enabled: MaybeUndefined[bool]
+        browser_context_id: MaybeUndefined[],
+        download_path: MaybeUndefined[],
+        events_enabled: MaybeUndefined[]
     ):
         params = {
             "behavior": behavior,
@@ -108,17 +111,17 @@ class Browser(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params[] = browser_context_id
 
         if is_defined(
             download_path
         ):
-            params["downloadPath"] = download_path
+            params[] = download_path
 
         if is_defined(
             events_enabled
         ):
-            params["eventsEnabled"] = events_enabled
+            params[] = events_enabled
 
         return self._send_command(
             "Browser.setDownloadBehavior",
@@ -128,7 +131,7 @@ class Browser(BaseDomain):
     def cancel_download(
         self,
         guid: str,
-        browser_context_id: MaybeUndefined[BrowserContextID]
+        browser_context_id: MaybeUndefined[]
     ):
         params = {
             "guid": guid,
@@ -137,7 +140,7 @@ class Browser(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params[] = browser_context_id
 
         return self._send_command(
             "Browser.cancelDownload",
@@ -196,20 +199,20 @@ class Browser(BaseDomain):
 
     def get_histograms(
         self,
-        query: MaybeUndefined[str],
-        delta: MaybeUndefined[bool]
+        query: MaybeUndefined[],
+        delta: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             query
         ):
-            params["query"] = query
+            params[] = query
 
         if is_defined(
             delta
         ):
-            params["delta"] = delta
+            params[] = delta
 
         return self._send_command(
             "Browser.getHistograms",
@@ -219,7 +222,7 @@ class Browser(BaseDomain):
     def get_histogram(
         self,
         name: str,
-        delta: MaybeUndefined[bool]
+        delta: MaybeUndefined[]
     ):
         params = {
             "name": name,
@@ -228,7 +231,7 @@ class Browser(BaseDomain):
         if is_defined(
             delta
         ):
-            params["delta"] = delta
+            params[] = delta
 
         return self._send_command(
             "Browser.getHistogram",
@@ -250,14 +253,14 @@ class Browser(BaseDomain):
 
     def get_window_for_target(
         self,
-        target_id: MaybeUndefined[TargetID]
+        target_id: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             target_id
         ):
-            params["targetId"] = target_id
+            params[] = target_id
 
         return self._send_command(
             "Browser.getWindowForTarget",
@@ -281,20 +284,20 @@ class Browser(BaseDomain):
 
     def set_dock_tile(
         self,
-        badge_label: MaybeUndefined[str],
-        image: MaybeUndefined[str]
+        badge_label: MaybeUndefined[],
+        image: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             badge_label
         ):
-            params["badgeLabel"] = badge_label
+            params[] = badge_label
 
         if is_defined(
             image
         ):
-            params["image"] = image
+            params[] = image
 
         return self._send_command(
             "Browser.setDockTile",

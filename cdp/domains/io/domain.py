@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -32,8 +35,8 @@ class IO(BaseDomain):
     def read(
         self,
         handle: StreamHandle,
-        offset: MaybeUndefined[int],
-        size: MaybeUndefined[int]
+        offset: MaybeUndefined[],
+        size: MaybeUndefined[]
     ):
         params = {
             "handle": handle,
@@ -42,12 +45,12 @@ class IO(BaseDomain):
         if is_defined(
             offset
         ):
-            params["offset"] = offset
+            params[] = offset
 
         if is_defined(
             size
         ):
-            params["size"] = size
+            params[] = size
 
         return self._send_command(
             "IO.read",

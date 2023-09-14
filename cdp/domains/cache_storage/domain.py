@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,8 +10,8 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.cache_storage.types import (
-    CachedResponseType,
     CacheId,
+    CachedResponseType,
     CachedResponse
 )
 from cdp.domains.storage.types import (
@@ -48,26 +51,26 @@ class CacheStorage(BaseDomain):
 
     def request_cache_names(
         self,
-        security_origin: MaybeUndefined[str],
-        storage_key: MaybeUndefined[str],
-        storage_bucket: MaybeUndefined[StorageBucket]
+        security_origin: MaybeUndefined[],
+        storage_key: MaybeUndefined[],
+        storage_bucket: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             security_origin
         ):
-            params["securityOrigin"] = security_origin
+            params[] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params["storageKey"] = storage_key
+            params[] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params["storageBucket"] = storage_bucket
+            params[] = storage_bucket
 
         return self._send_command(
             "CacheStorage.requestCacheNames",
@@ -94,9 +97,9 @@ class CacheStorage(BaseDomain):
     def request_entries(
         self,
         cache_id: CacheId,
-        skip_count: MaybeUndefined[int],
-        page_size: MaybeUndefined[int],
-        path_filter: MaybeUndefined[str]
+        skip_count: MaybeUndefined[],
+        page_size: MaybeUndefined[],
+        path_filter: MaybeUndefined[]
     ):
         params = {
             "cacheId": cache_id,
@@ -105,17 +108,17 @@ class CacheStorage(BaseDomain):
         if is_defined(
             skip_count
         ):
-            params["skipCount"] = skip_count
+            params[] = skip_count
 
         if is_defined(
             page_size
         ):
-            params["pageSize"] = page_size
+            params[] = page_size
 
         if is_defined(
             path_filter
         ):
-            params["pathFilter"] = path_filter
+            params[] = path_filter
 
         return self._send_command(
             "CacheStorage.requestEntries",

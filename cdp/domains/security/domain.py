@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -10,14 +13,14 @@ from cdp.domains.network.types import (
     TimeSinceEpoch
 )
 from cdp.domains.security.types import (
-    SafetyTipStatus,
-    CertificateSecurityState,
-    SafetyTipInfo,
-    InsecureContentStatus,
     SecurityState,
-    VisibleSecurityState,
+    CertificateSecurityState,
+    SafetyTipStatus,
     CertificateErrorAction,
-    MixedContentType
+    InsecureContentStatus,
+    SafetyTipInfo,
+    MixedContentType,
+    VisibleSecurityState
 )
 
 

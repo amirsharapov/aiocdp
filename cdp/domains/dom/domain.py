@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,27 +10,27 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom.types import (
-    NodeId,
+    BackendNodeId,
+    PseudoType,
     BackendNode,
-    ShadowRootType,
     PhysicalAxes,
     Quad,
-    BackendNodeId,
+    Rect,
+    Node,
+    ShadowRootType,
+    NodeId,
     ShapeOutsideInfo,
     LogicalAxes,
     CompatibilityMode,
-    BoxModel,
-    Node,
-    Rect,
-    PseudoType
+    BoxModel
 )
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.runtime.types import (
-    ExecutionContextId,
     StackTrace,
     RemoteObject,
+    ExecutionContextId,
     RemoteObjectId
 )
 
@@ -51,7 +54,7 @@ class DOM(BaseDomain):
         self,
         node_id: NodeId,
         target_node_id: NodeId,
-        insert_before_node_id: MaybeUndefined[NodeId]
+        insert_before_node_id: MaybeUndefined[]
     ):
         params = {
             "nodeId": node_id,
@@ -61,7 +64,7 @@ class DOM(BaseDomain):
         if is_defined(
             insert_before_node_id
         ):
-            params["insertBeforeNodeId"] = insert_before_node_id
+            params[] = insert_before_node_id
 
         return self._send_command(
             "DOM.copyTo",
@@ -70,38 +73,38 @@ class DOM(BaseDomain):
 
     def describe_node(
         self,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_id: MaybeUndefined[RemoteObjectId],
-        depth: MaybeUndefined[int],
-        pierce: MaybeUndefined[bool]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_id: MaybeUndefined[],
+        depth: MaybeUndefined[],
+        pierce: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params[] = object_id
 
         if is_defined(
             depth
         ):
-            params["depth"] = depth
+            params[] = depth
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params[] = pierce
 
         return self._send_command(
             "DOM.describeNode",
@@ -110,32 +113,32 @@ class DOM(BaseDomain):
 
     def scroll_into_view_if_needed(
         self,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_id: MaybeUndefined[RemoteObjectId],
-        rect: MaybeUndefined[Rect]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_id: MaybeUndefined[],
+        rect: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params[] = object_id
 
         if is_defined(
             rect
         ):
-            params["rect"] = rect
+            params[] = rect
 
         return self._send_command(
             "DOM.scrollIntoViewIfNeeded",
@@ -167,14 +170,14 @@ class DOM(BaseDomain):
 
     def enable(
         self,
-        include_whitespace: MaybeUndefined[str]
+        include_whitespace: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             include_whitespace
         ):
-            params["includeWhitespace"] = include_whitespace
+            params[] = include_whitespace
 
         return self._send_command(
             "DOM.enable",
@@ -183,26 +186,26 @@ class DOM(BaseDomain):
 
     def focus(
         self,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_id: MaybeUndefined[RemoteObjectId]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_id: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params[] = object_id
 
         return self._send_command(
             "DOM.focus",
@@ -224,26 +227,26 @@ class DOM(BaseDomain):
 
     def get_box_model(
         self,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_id: MaybeUndefined[RemoteObjectId]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_id: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params[] = object_id
 
         return self._send_command(
             "DOM.getBoxModel",
@@ -252,26 +255,26 @@ class DOM(BaseDomain):
 
     def get_content_quads(
         self,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_id: MaybeUndefined[RemoteObjectId]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_id: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params[] = object_id
 
         return self._send_command(
             "DOM.getContentQuads",
@@ -280,20 +283,20 @@ class DOM(BaseDomain):
 
     def get_document(
         self,
-        depth: MaybeUndefined[int],
-        pierce: MaybeUndefined[bool]
+        depth: MaybeUndefined[],
+        pierce: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             depth
         ):
-            params["depth"] = depth
+            params[] = depth
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params[] = pierce
 
         return self._send_command(
             "DOM.getDocument",
@@ -302,20 +305,20 @@ class DOM(BaseDomain):
 
     def get_flattened_document(
         self,
-        depth: MaybeUndefined[int],
-        pierce: MaybeUndefined[bool]
+        depth: MaybeUndefined[],
+        pierce: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             depth
         ):
-            params["depth"] = depth
+            params[] = depth
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params[] = pierce
 
         return self._send_command(
             "DOM.getFlattenedDocument",
@@ -326,7 +329,7 @@ class DOM(BaseDomain):
         self,
         node_id: NodeId,
         computed_styles: list,
-        pierce: MaybeUndefined[bool]
+        pierce: MaybeUndefined[]
     ):
         params = {
             "nodeId": node_id,
@@ -336,7 +339,7 @@ class DOM(BaseDomain):
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params[] = pierce
 
         return self._send_command(
             "DOM.getNodesForSubtreeByStyle",
@@ -347,8 +350,8 @@ class DOM(BaseDomain):
         self,
         x: int,
         y: int,
-        include_user_agent_shadow_dom: MaybeUndefined[bool],
-        ignore_pointer_events_none: MaybeUndefined[bool]
+        include_user_agent_shadow_dom: MaybeUndefined[],
+        ignore_pointer_events_none: MaybeUndefined[]
     ):
         params = {
             "x": x,
@@ -358,12 +361,12 @@ class DOM(BaseDomain):
         if is_defined(
             include_user_agent_shadow_dom
         ):
-            params["includeUserAgentShadowDOM"] = include_user_agent_shadow_dom
+            params[] = include_user_agent_shadow_dom
 
         if is_defined(
             ignore_pointer_events_none
         ):
-            params["ignorePointerEventsNone"] = ignore_pointer_events_none
+            params[] = ignore_pointer_events_none
 
         return self._send_command(
             "DOM.getNodeForLocation",
@@ -372,26 +375,26 @@ class DOM(BaseDomain):
 
     def get_outer_html(
         self,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_id: MaybeUndefined[RemoteObjectId]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_id: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params[] = object_id
 
         return self._send_command(
             "DOM.getOuterHTML",
@@ -472,7 +475,7 @@ class DOM(BaseDomain):
         self,
         node_id: NodeId,
         target_node_id: NodeId,
-        insert_before_node_id: MaybeUndefined[NodeId]
+        insert_before_node_id: MaybeUndefined[]
     ):
         params = {
             "nodeId": node_id,
@@ -482,7 +485,7 @@ class DOM(BaseDomain):
         if is_defined(
             insert_before_node_id
         ):
-            params["insertBeforeNodeId"] = insert_before_node_id
+            params[] = insert_before_node_id
 
         return self._send_command(
             "DOM.moveTo",
@@ -492,7 +495,7 @@ class DOM(BaseDomain):
     def perform_search(
         self,
         query: str,
-        include_user_agent_shadow_dom: MaybeUndefined[bool]
+        include_user_agent_shadow_dom: MaybeUndefined[]
     ):
         params = {
             "query": query,
@@ -501,7 +504,7 @@ class DOM(BaseDomain):
         if is_defined(
             include_user_agent_shadow_dom
         ):
-            params["includeUserAgentShadowDOM"] = include_user_agent_shadow_dom
+            params[] = include_user_agent_shadow_dom
 
         return self._send_command(
             "DOM.performSearch",
@@ -615,8 +618,8 @@ class DOM(BaseDomain):
     def request_child_nodes(
         self,
         node_id: NodeId,
-        depth: MaybeUndefined[int],
-        pierce: MaybeUndefined[bool]
+        depth: MaybeUndefined[],
+        pierce: MaybeUndefined[]
     ):
         params = {
             "nodeId": node_id,
@@ -625,12 +628,12 @@ class DOM(BaseDomain):
         if is_defined(
             depth
         ):
-            params["depth"] = depth
+            params[] = depth
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params[] = pierce
 
         return self._send_command(
             "DOM.requestChildNodes",
@@ -652,32 +655,32 @@ class DOM(BaseDomain):
 
     def resolve_node(
         self,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_group: MaybeUndefined[str],
-        execution_context_id: MaybeUndefined[ExecutionContextId]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_group: MaybeUndefined[],
+        execution_context_id: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_group
         ):
-            params["objectGroup"] = object_group
+            params[] = object_group
 
         if is_defined(
             execution_context_id
         ):
-            params["executionContextId"] = execution_context_id
+            params[] = execution_context_id
 
         return self._send_command(
             "DOM.resolveNode",
@@ -705,7 +708,7 @@ class DOM(BaseDomain):
         self,
         node_id: NodeId,
         text: str,
-        name: MaybeUndefined[str]
+        name: MaybeUndefined[]
     ):
         params = {
             "nodeId": node_id,
@@ -715,7 +718,7 @@ class DOM(BaseDomain):
         if is_defined(
             name
         ):
-            params["name"] = name
+            params[] = name
 
         return self._send_command(
             "DOM.setAttributesAsText",
@@ -725,9 +728,9 @@ class DOM(BaseDomain):
     def set_file_input_files(
         self,
         files: list,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_id: MaybeUndefined[RemoteObjectId]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_id: MaybeUndefined[]
     ):
         params = {
             "files": files,
@@ -736,17 +739,17 @@ class DOM(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params[] = object_id
 
         return self._send_command(
             "DOM.setFileInputFiles",
@@ -876,9 +879,9 @@ class DOM(BaseDomain):
     def get_container_for_node(
         self,
         node_id: NodeId,
-        container_name: MaybeUndefined[str],
-        physical_axes: MaybeUndefined[PhysicalAxes],
-        logical_axes: MaybeUndefined[LogicalAxes]
+        container_name: MaybeUndefined[],
+        physical_axes: MaybeUndefined[],
+        logical_axes: MaybeUndefined[]
     ):
         params = {
             "nodeId": node_id,
@@ -887,17 +890,17 @@ class DOM(BaseDomain):
         if is_defined(
             container_name
         ):
-            params["containerName"] = container_name
+            params[] = container_name
 
         if is_defined(
             physical_axes
         ):
-            params["physicalAxes"] = physical_axes
+            params[] = physical_axes
 
         if is_defined(
             logical_axes
         ):
-            params["logicalAxes"] = logical_axes
+            params[] = logical_axes
 
         return self._send_command(
             "DOM.getContainerForNode",

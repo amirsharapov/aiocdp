@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -15,32 +18,32 @@ from cdp.domains.headless_experimental.types import (
 class HeadlessExperimental(BaseDomain):
     def begin_frame(
         self,
-        frame_time_ticks: MaybeUndefined[float],
-        interval: MaybeUndefined[float],
-        no_display_updates: MaybeUndefined[bool],
-        screenshot: MaybeUndefined[ScreenshotParams]
+        frame_time_ticks: MaybeUndefined[],
+        interval: MaybeUndefined[],
+        no_display_updates: MaybeUndefined[],
+        screenshot: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             frame_time_ticks
         ):
-            params["frameTimeTicks"] = frame_time_ticks
+            params[] = frame_time_ticks
 
         if is_defined(
             interval
         ):
-            params["interval"] = interval
+            params[] = interval
 
         if is_defined(
             no_display_updates
         ):
-            params["noDisplayUpdates"] = no_display_updates
+            params[] = no_display_updates
 
         if is_defined(
             screenshot
         ):
-            params["screenshot"] = screenshot
+            params[] = screenshot
 
         return self._send_command(
             "HeadlessExperimental.beginFrame",

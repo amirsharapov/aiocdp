@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -12,14 +15,14 @@ from cdp.utils import (
 class Cast(BaseDomain):
     def enable(
         self,
-        presentation_url: MaybeUndefined[str]
+        presentation_url: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             presentation_url
         ):
-            params["presentationUrl"] = presentation_url
+            params[] = presentation_url
 
         return self._send_command(
             "Cast.enable",

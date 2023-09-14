@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -10,8 +13,8 @@ from cdp.domains.network.types import (
     TimeSinceEpoch
 )
 from cdp.domains.dom.types import (
-    Rect,
-    BackendNodeId
+    BackendNodeId,
+    Rect
 )
 from cdp.domains.page.types import (
     FrameId

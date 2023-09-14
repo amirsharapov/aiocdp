@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,10 +10,10 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.service_worker.types import (
-    ServiceWorkerVersionRunningStatus,
     ServiceWorkerVersionStatus,
-    RegistrationID,
-    ServiceWorkerErrorMessage
+    ServiceWorkerVersionRunningStatus,
+    ServiceWorkerErrorMessage,
+    RegistrationID
 )
 from cdp.domains.target.types import (
     TargetID

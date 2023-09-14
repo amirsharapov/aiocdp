@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,8 +10,8 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom_storage.types import (
-    SerializedStorageKey,
-    StorageId
+    StorageId,
+    SerializedStorageKey
 )
 
 

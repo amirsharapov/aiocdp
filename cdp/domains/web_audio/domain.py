@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,19 +10,19 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.web_audio.types import (
-    ChannelInterpretation,
-    BaseAudioContext,
+    AutomationRate,
     ParamType,
-    ContextState,
     AudioNode,
+    ChannelInterpretation,
+    ChannelCountMode,
+    BaseAudioContext,
+    ContextRealtimeData,
     NodeType,
     AudioParam,
-    GraphObjectId,
-    ContextRealtimeData,
-    AutomationRate,
+    ContextState,
     ContextType,
-    ChannelCountMode,
-    AudioListener
+    AudioListener,
+    GraphObjectId
 )
 
 

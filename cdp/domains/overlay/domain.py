@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,31 +10,31 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom.types import (
-    NodeId,
     BackendNodeId,
+    Quad,
     Rect,
-    RGBA,
-    Quad
+    NodeId,
+    RGBA
 )
 from cdp.domains.overlay.types import (
-    FlexContainerHighlightConfig,
-    ContrastAlgorithm,
-    SourceOrderConfig,
-    InspectMode,
-    HingeConfig,
-    LineStyle,
-    ContainerQueryContainerHighlightConfig,
     FlexItemHighlightConfig,
-    IsolationModeHighlightConfig,
-    ColorFormat,
     ScrollSnapContainerHighlightConfig,
-    BoxStyle,
+    FlexContainerHighlightConfig,
     HighlightConfig,
-    GridHighlightConfig
+    LineStyle,
+    BoxStyle,
+    HingeConfig,
+    SourceOrderConfig,
+    ContrastAlgorithm,
+    ContainerQueryContainerHighlightConfig,
+    InspectMode,
+    ColorFormat,
+    GridHighlightConfig,
+    IsolationModeHighlightConfig
 )
 from cdp.domains.page.types import (
-    Viewport,
-    FrameId
+    FrameId,
+    Viewport
 )
 from cdp.domains.runtime.types import (
     RemoteObjectId
@@ -63,10 +66,10 @@ class Overlay(BaseDomain):
     def get_highlight_object_for_test(
         self,
         node_id: NodeId,
-        include_distance: MaybeUndefined[bool],
-        include_style: MaybeUndefined[bool],
-        color_format: MaybeUndefined[ColorFormat],
-        show_accessibility_info: MaybeUndefined[bool]
+        include_distance: MaybeUndefined[],
+        include_style: MaybeUndefined[],
+        color_format: MaybeUndefined[],
+        show_accessibility_info: MaybeUndefined[]
     ):
         params = {
             "nodeId": node_id,
@@ -75,22 +78,22 @@ class Overlay(BaseDomain):
         if is_defined(
             include_distance
         ):
-            params["includeDistance"] = include_distance
+            params[] = include_distance
 
         if is_defined(
             include_style
         ):
-            params["includeStyle"] = include_style
+            params[] = include_style
 
         if is_defined(
             color_format
         ):
-            params["colorFormat"] = color_format
+            params[] = color_format
 
         if is_defined(
             show_accessibility_info
         ):
-            params["showAccessibilityInfo"] = show_accessibility_info
+            params[] = show_accessibility_info
 
         return self._send_command(
             "Overlay.getHighlightObjectForTest",
@@ -136,8 +139,8 @@ class Overlay(BaseDomain):
     def highlight_frame(
         self,
         frame_id: FrameId,
-        content_color: MaybeUndefined[RGBA],
-        content_outline_color: MaybeUndefined[RGBA]
+        content_color: MaybeUndefined[],
+        content_outline_color: MaybeUndefined[]
     ):
         params = {
             "frameId": frame_id,
@@ -146,12 +149,12 @@ class Overlay(BaseDomain):
         if is_defined(
             content_color
         ):
-            params["contentColor"] = content_color
+            params[] = content_color
 
         if is_defined(
             content_outline_color
         ):
-            params["contentOutlineColor"] = content_outline_color
+            params[] = content_outline_color
 
         return self._send_command(
             "Overlay.highlightFrame",
@@ -161,10 +164,10 @@ class Overlay(BaseDomain):
     def highlight_node(
         self,
         highlight_config: HighlightConfig,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_id: MaybeUndefined[RemoteObjectId],
-        selector: MaybeUndefined[str]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_id: MaybeUndefined[],
+        selector: MaybeUndefined[]
     ):
         params = {
             "highlightConfig": highlight_config,
@@ -173,22 +176,22 @@ class Overlay(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params[] = object_id
 
         if is_defined(
             selector
         ):
-            params["selector"] = selector
+            params[] = selector
 
         return self._send_command(
             "Overlay.highlightNode",
@@ -198,8 +201,8 @@ class Overlay(BaseDomain):
     def highlight_quad(
         self,
         quad: Quad,
-        color: MaybeUndefined[RGBA],
-        outline_color: MaybeUndefined[RGBA]
+        color: MaybeUndefined[],
+        outline_color: MaybeUndefined[]
     ):
         params = {
             "quad": quad,
@@ -208,12 +211,12 @@ class Overlay(BaseDomain):
         if is_defined(
             color
         ):
-            params["color"] = color
+            params[] = color
 
         if is_defined(
             outline_color
         ):
-            params["outlineColor"] = outline_color
+            params[] = outline_color
 
         return self._send_command(
             "Overlay.highlightQuad",
@@ -226,8 +229,8 @@ class Overlay(BaseDomain):
         y: int,
         width: int,
         height: int,
-        color: MaybeUndefined[RGBA],
-        outline_color: MaybeUndefined[RGBA]
+        color: MaybeUndefined[],
+        outline_color: MaybeUndefined[]
     ):
         params = {
             "x": x,
@@ -239,12 +242,12 @@ class Overlay(BaseDomain):
         if is_defined(
             color
         ):
-            params["color"] = color
+            params[] = color
 
         if is_defined(
             outline_color
         ):
-            params["outlineColor"] = outline_color
+            params[] = outline_color
 
         return self._send_command(
             "Overlay.highlightRect",
@@ -254,9 +257,9 @@ class Overlay(BaseDomain):
     def highlight_source_order(
         self,
         source_order_config: SourceOrderConfig,
-        node_id: MaybeUndefined[NodeId],
-        backend_node_id: MaybeUndefined[BackendNodeId],
-        object_id: MaybeUndefined[RemoteObjectId]
+        node_id: MaybeUndefined[],
+        backend_node_id: MaybeUndefined[],
+        object_id: MaybeUndefined[]
     ):
         params = {
             "sourceOrderConfig": source_order_config,
@@ -265,17 +268,17 @@ class Overlay(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params[] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params[] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params[] = object_id
 
         return self._send_command(
             "Overlay.highlightSourceOrder",
@@ -285,7 +288,7 @@ class Overlay(BaseDomain):
     def set_inspect_mode(
         self,
         mode: InspectMode,
-        highlight_config: MaybeUndefined[HighlightConfig]
+        highlight_config: MaybeUndefined[]
     ):
         params = {
             "mode": mode,
@@ -294,7 +297,7 @@ class Overlay(BaseDomain):
         if is_defined(
             highlight_config
         ):
-            params["highlightConfig"] = highlight_config
+            params[] = highlight_config
 
         return self._send_command(
             "Overlay.setInspectMode",
@@ -316,14 +319,14 @@ class Overlay(BaseDomain):
 
     def set_paused_in_debugger_message(
         self,
-        message: MaybeUndefined[str]
+        message: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             message
         ):
-            params["message"] = message
+            params[] = message
 
         return self._send_command(
             "Overlay.setPausedInDebuggerMessage",
@@ -488,14 +491,14 @@ class Overlay(BaseDomain):
 
     def set_show_hinge(
         self,
-        hinge_config: MaybeUndefined[HingeConfig]
+        hinge_config: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             hinge_config
         ):
-            params["hingeConfig"] = hinge_config
+            params[] = hinge_config
 
         return self._send_command(
             "Overlay.setShowHinge",

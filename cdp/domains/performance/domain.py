@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -22,14 +25,14 @@ class Performance(BaseDomain):
 
     def enable(
         self,
-        time_domain: MaybeUndefined[str]
+        time_domain: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             time_domain
         ):
-            params["timeDomain"] = time_domain
+            params[] = time_domain
 
         return self._send_command(
             "Performance.enable",

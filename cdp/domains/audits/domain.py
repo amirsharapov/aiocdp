@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,57 +10,57 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.network.types import (
-    IPAddressSpace,
     CorsErrorStatus,
+    RequestId,
     ClientSecurityState,
     LoaderId,
-    RequestId
+    IPAddressSpace
 )
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.audits.types import (
-    ContentSecurityPolicyViolationType,
-    AttributionReportingIssueType,
-    HeavyAdResolutionStatus,
-    ClientHintIssueReason,
-    NavigatorUserAgentIssueDetails,
-    BounceTrackingIssueDetails,
-    FederatedAuthUserInfoRequestIssueReason,
-    ContentSecurityPolicyIssueDetails,
-    AttributionReportingIssueDetails,
-    ClientHintIssueDetails,
-    InspectorIssue,
-    BlockedByResponseReason,
-    SharedArrayBufferIssueType,
-    SourceCodeLocation,
     StylesheetLoadingIssueDetails,
-    CookieOperation,
+    ContentSecurityPolicyViolationType,
+    LowTextContrastIssueDetails,
+    MixedContentIssueDetails,
+    BlockedByResponseReason,
+    BlockedByResponseIssueDetails,
+    ClientHintIssueDetails,
+    FailedRequestInfo,
+    NavigatorUserAgentIssueDetails,
+    ClientHintIssueReason,
+    AffectedRequest,
+    AttributionReportingIssueType,
     SharedArrayBufferIssueDetails,
     FederatedAuthUserInfoRequestIssueDetails,
-    FederatedAuthRequestIssueReason,
-    FailedRequestInfo,
-    LowTextContrastIssueDetails,
-    HeavyAdReason,
-    HeavyAdIssueDetails,
-    InspectorIssueCode,
-    BlockedByResponseIssueDetails,
-    QuirksModeIssueDetails,
-    StyleSheetLoadingIssueReason,
-    MixedContentResourceType,
-    AffectedRequest,
-    GenericIssueDetails,
-    CookieIssueDetails,
-    GenericIssueErrorType,
-    CorsIssueDetails,
-    FederatedAuthRequestIssueDetails,
-    MixedContentResolutionStatus,
-    InspectorIssueDetails,
-    MixedContentIssueDetails,
-    IssueId,
-    DeprecationIssueDetails,
     AffectedFrame,
-    AffectedCookie
+    HeavyAdReason,
+    DeprecationIssueDetails,
+    CookieIssueDetails,
+    CorsIssueDetails,
+    HeavyAdResolutionStatus,
+    SharedArrayBufferIssueType,
+    InspectorIssue,
+    CookieOperation,
+    ContentSecurityPolicyIssueDetails,
+    SourceCodeLocation,
+    AttributionReportingIssueDetails,
+    InspectorIssueDetails,
+    GenericIssueDetails,
+    IssueId,
+    FederatedAuthUserInfoRequestIssueReason,
+    MixedContentResourceType,
+    AffectedCookie,
+    HeavyAdIssueDetails,
+    MixedContentResolutionStatus,
+    StyleSheetLoadingIssueReason,
+    BounceTrackingIssueDetails,
+    InspectorIssueCode,
+    FederatedAuthRequestIssueReason,
+    GenericIssueErrorType,
+    QuirksModeIssueDetails,
+    FederatedAuthRequestIssueDetails
 )
 from cdp.domains.runtime.types import (
     ScriptId
@@ -73,8 +76,8 @@ class Audits(BaseDomain):
         self,
         request_id: RequestId,
         encoding: str,
-        quality: MaybeUndefined[float],
-        size_only: MaybeUndefined[bool]
+        quality: MaybeUndefined[],
+        size_only: MaybeUndefined[]
     ):
         params = {
             "requestId": request_id,
@@ -84,12 +87,12 @@ class Audits(BaseDomain):
         if is_defined(
             quality
         ):
-            params["quality"] = quality
+            params[] = quality
 
         if is_defined(
             size_only
         ):
-            params["sizeOnly"] = size_only
+            params[] = size_only
 
         return self._send_command(
             "Audits.getEncodedResponse",
@@ -118,14 +121,14 @@ class Audits(BaseDomain):
 
     def check_contrast(
         self,
-        report_aaa: MaybeUndefined[bool]
+        report_aaa: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             report_aaa
         ):
-            params["reportAAA"] = report_aaa
+            params[] = report_aaa
 
         return self._send_command(
             "Audits.checkContrast",

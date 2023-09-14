@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,8 +10,8 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.autofill.types import (
-    AddressUI,
     CreditCard,
+    AddressUI,
     FillingStrategy
 )
 from cdp.domains.dom.types import (
@@ -24,7 +27,7 @@ class Autofill(BaseDomain):
     def trigger(
         self,
         field_id: BackendNodeId,
-        frame_id: MaybeUndefined[FrameId],
+        frame_id: MaybeUndefined[],
         card: CreditCard
     ):
         params = {
@@ -35,7 +38,7 @@ class Autofill(BaseDomain):
         if is_defined(
             frame_id
         ):
-            params["frameId"] = frame_id
+            params[] = frame_id
 
         return self._send_command(
             "Autofill.trigger",

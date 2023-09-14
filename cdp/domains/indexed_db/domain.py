@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,10 +10,10 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.indexed_db.types import (
-    KeyRange,
     DatabaseWithObjectStores,
-    KeyPath,
-    Key
+    Key,
+    KeyRange,
+    KeyPath
 )
 from cdp.domains.runtime.types import (
     RemoteObject
@@ -24,9 +27,9 @@ from cdp.domains.storage.types import (
 class IndexedDB(BaseDomain):
     def clear_object_store(
         self,
-        security_origin: MaybeUndefined[str],
-        storage_key: MaybeUndefined[str],
-        storage_bucket: MaybeUndefined[StorageBucket],
+        security_origin: MaybeUndefined[],
+        storage_key: MaybeUndefined[],
+        storage_bucket: MaybeUndefined[],
         database_name: str,
         object_store_name: str
     ):
@@ -38,17 +41,17 @@ class IndexedDB(BaseDomain):
         if is_defined(
             security_origin
         ):
-            params["securityOrigin"] = security_origin
+            params[] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params["storageKey"] = storage_key
+            params[] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params["storageBucket"] = storage_bucket
+            params[] = storage_bucket
 
         return self._send_command(
             "IndexedDB.clearObjectStore",
@@ -57,9 +60,9 @@ class IndexedDB(BaseDomain):
 
     def delete_database(
         self,
-        security_origin: MaybeUndefined[str],
-        storage_key: MaybeUndefined[str],
-        storage_bucket: MaybeUndefined[StorageBucket],
+        security_origin: MaybeUndefined[],
+        storage_key: MaybeUndefined[],
+        storage_bucket: MaybeUndefined[],
         database_name: str
     ):
         params = {
@@ -69,17 +72,17 @@ class IndexedDB(BaseDomain):
         if is_defined(
             security_origin
         ):
-            params["securityOrigin"] = security_origin
+            params[] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params["storageKey"] = storage_key
+            params[] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params["storageBucket"] = storage_bucket
+            params[] = storage_bucket
 
         return self._send_command(
             "IndexedDB.deleteDatabase",
@@ -88,9 +91,9 @@ class IndexedDB(BaseDomain):
 
     def delete_object_store_entries(
         self,
-        security_origin: MaybeUndefined[str],
-        storage_key: MaybeUndefined[str],
-        storage_bucket: MaybeUndefined[StorageBucket],
+        security_origin: MaybeUndefined[],
+        storage_key: MaybeUndefined[],
+        storage_bucket: MaybeUndefined[],
         database_name: str,
         object_store_name: str,
         key_range: KeyRange
@@ -104,17 +107,17 @@ class IndexedDB(BaseDomain):
         if is_defined(
             security_origin
         ):
-            params["securityOrigin"] = security_origin
+            params[] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params["storageKey"] = storage_key
+            params[] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params["storageBucket"] = storage_bucket
+            params[] = storage_bucket
 
         return self._send_command(
             "IndexedDB.deleteObjectStoreEntries",
@@ -143,15 +146,15 @@ class IndexedDB(BaseDomain):
 
     def request_data(
         self,
-        security_origin: MaybeUndefined[str],
-        storage_key: MaybeUndefined[str],
-        storage_bucket: MaybeUndefined[StorageBucket],
+        security_origin: MaybeUndefined[],
+        storage_key: MaybeUndefined[],
+        storage_bucket: MaybeUndefined[],
         database_name: str,
         object_store_name: str,
         index_name: str,
         skip_count: int,
         page_size: int,
-        key_range: MaybeUndefined[KeyRange]
+        key_range: MaybeUndefined[]
     ):
         params = {
             "databaseName": database_name,
@@ -164,22 +167,22 @@ class IndexedDB(BaseDomain):
         if is_defined(
             security_origin
         ):
-            params["securityOrigin"] = security_origin
+            params[] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params["storageKey"] = storage_key
+            params[] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params["storageBucket"] = storage_bucket
+            params[] = storage_bucket
 
         if is_defined(
             key_range
         ):
-            params["keyRange"] = key_range
+            params[] = key_range
 
         return self._send_command(
             "IndexedDB.requestData",
@@ -188,9 +191,9 @@ class IndexedDB(BaseDomain):
 
     def get_metadata(
         self,
-        security_origin: MaybeUndefined[str],
-        storage_key: MaybeUndefined[str],
-        storage_bucket: MaybeUndefined[StorageBucket],
+        security_origin: MaybeUndefined[],
+        storage_key: MaybeUndefined[],
+        storage_bucket: MaybeUndefined[],
         database_name: str,
         object_store_name: str
     ):
@@ -202,17 +205,17 @@ class IndexedDB(BaseDomain):
         if is_defined(
             security_origin
         ):
-            params["securityOrigin"] = security_origin
+            params[] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params["storageKey"] = storage_key
+            params[] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params["storageBucket"] = storage_bucket
+            params[] = storage_bucket
 
         return self._send_command(
             "IndexedDB.getMetadata",
@@ -221,9 +224,9 @@ class IndexedDB(BaseDomain):
 
     def request_database(
         self,
-        security_origin: MaybeUndefined[str],
-        storage_key: MaybeUndefined[str],
-        storage_bucket: MaybeUndefined[StorageBucket],
+        security_origin: MaybeUndefined[],
+        storage_key: MaybeUndefined[],
+        storage_bucket: MaybeUndefined[],
         database_name: str
     ):
         params = {
@@ -233,17 +236,17 @@ class IndexedDB(BaseDomain):
         if is_defined(
             security_origin
         ):
-            params["securityOrigin"] = security_origin
+            params[] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params["storageKey"] = storage_key
+            params[] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params["storageBucket"] = storage_bucket
+            params[] = storage_bucket
 
         return self._send_command(
             "IndexedDB.requestDatabase",
@@ -252,26 +255,26 @@ class IndexedDB(BaseDomain):
 
     def request_database_names(
         self,
-        security_origin: MaybeUndefined[str],
-        storage_key: MaybeUndefined[str],
-        storage_bucket: MaybeUndefined[StorageBucket]
+        security_origin: MaybeUndefined[],
+        storage_key: MaybeUndefined[],
+        storage_bucket: MaybeUndefined[]
     ):
         params = {}
 
         if is_defined(
             security_origin
         ):
-            params["securityOrigin"] = security_origin
+            params[] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params["storageKey"] = storage_key
+            params[] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params["storageBucket"] = storage_bucket
+            params[] = storage_bucket
 
         return self._send_command(
             "IndexedDB.requestDatabaseNames",

@@ -1,3 +1,6 @@
+from dataclasses import (
+    dataclass
+)
 from cdp.domains.base import (
     BaseDomain
 )
@@ -7,28 +10,28 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom.types import (
-    NodeId,
-    PhysicalAxes,
     BackendNodeId,
-    LogicalAxes,
-    PseudoType
+    PseudoType,
+    PhysicalAxes,
+    NodeId,
+    LogicalAxes
 )
 from cdp.domains.css.types import (
-    CSSStyle,
-    CSSRule,
-    Value,
-    CSSSupports,
-    SourceRange,
-    CSSContainerQuery,
-    StyleSheetOrigin,
-    StyleSheetId,
-    SelectorList,
-    CSSMedia,
     CSSScope,
     CSSStyleSheetHeader,
+    SourceRange,
+    CSSRule,
     Specificity,
-    CSSLayerData,
-    FontFace
+    SelectorList,
+    StyleSheetOrigin,
+    CSSMedia,
+    FontFace,
+    StyleSheetId,
+    CSSContainerQuery,
+    CSSSupports,
+    CSSStyle,
+    Value,
+    CSSLayerData
 )
 from cdp.domains.page.types import (
     FrameId
