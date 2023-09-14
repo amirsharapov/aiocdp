@@ -1,9 +1,12 @@
+from typing import TYPE_CHECKING
 from dataclasses import dataclass, field
 
-from generator.types import Domain
 from generator.types.base import ComplexNode
 from generator.types.property import Parameter, Return
 from generator.utils import UNDEFINED, MaybeUndefined
+
+if TYPE_CHECKING:
+    from generator.types.domain import Domain
 
 
 @dataclass

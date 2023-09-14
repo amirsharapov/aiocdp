@@ -181,10 +181,10 @@ def _generate_dataclass_definition(type_):
             )
         )
 
-    class_.body.extend([
-        _generate_dataclass_from_json_method(type_),
-        _generate_dataclass_to_json_method(type_)
-    ])
+    # class_.body.extend([
+    #     _generate_dataclass_from_json_method(type_),
+    #     _generate_dataclass_to_json_method(type_)
+    # ])
 
     return class_
 
