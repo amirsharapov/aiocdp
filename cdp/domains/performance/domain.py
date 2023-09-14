@@ -25,14 +25,14 @@ class Performance(BaseDomain):
 
     def enable(
         self,
-        time_domain: MaybeUndefined[]
+        time_domain: str = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             time_domain
         ):
-            params[] = time_domain
+            params["timeDomain"] = time_domain
 
         return self._send_command(
             "Performance.enable",

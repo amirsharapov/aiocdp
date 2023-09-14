@@ -1,14 +1,13 @@
 from dataclasses import (
     dataclass
 )
-from typing import (
-    Literal
-)
+
+DatabaseId = str
 
 
 @dataclass
 class Database:
-    id: DatabaseId
+    id: "DatabaseId"
     domain: str
     name: str
     version: str

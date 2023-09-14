@@ -9,15 +9,8 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.network.types import (
-    TimeSinceEpoch
-)
-from cdp.domains.service_worker.types import (
-    RegistrationID
-)
 from cdp.domains.background_service.types import (
-    ServiceName,
-    BackgroundServiceEvent
+    ServiceName
 )
 
 

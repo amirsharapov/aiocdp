@@ -9,30 +9,14 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.storage.types import (
-    StorageType,
-    SharedStorageAccessType,
-    SharedStorageAccessParams,
-    StorageBucketInfo,
-    AttributionReportingSourceRegistrationResult,
-    InterestGroupAccessType,
-    SignedInt64AsBase10,
-    StorageBucketsDurability,
-    AttributionReportingSourceType,
-    AttributionReportingEventReportWindows,
-    UnsignedInt64AsBase10,
-    StorageBucket,
-    InterestGroupDetails,
-    SerializedStorageKey,
-    AttributionReportingSourceRegistration,
-    UnsignedInt128AsBase16,
-    SharedStorageMetadata
-)
-from cdp.domains.network.types import (
-    TimeSinceEpoch
-)
 from cdp.domains.page.types import (
     FrameId
+)
+from cdp.domains.storage.types import (
+    InterestGroupDetails,
+    StorageBucket,
+    SerializedStorageKey,
+    SharedStorageMetadata
 )
 from cdp.domains.browser.types import (
     BrowserContextID
@@ -86,14 +70,14 @@ class Storage(BaseDomain):
 
     def get_cookies(
         self,
-        browser_context_id: MaybeUndefined[]
+        browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             browser_context_id
         ):
-            params[] = browser_context_id
+            params["browserContextId"] = browser_context_id
 
         return self._send_command(
             "Storage.getCookies",
@@ -103,7 +87,7 @@ class Storage(BaseDomain):
     def set_cookies(
         self,
         cookies: list,
-        browser_context_id: MaybeUndefined[]
+        browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {
             "cookies": cookies,
@@ -112,7 +96,7 @@ class Storage(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params[] = browser_context_id
+            params["browserContextId"] = browser_context_id
 
         return self._send_command(
             "Storage.setCookies",
@@ -121,14 +105,14 @@ class Storage(BaseDomain):
 
     def clear_cookies(
         self,
-        browser_context_id: MaybeUndefined[]
+        browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             browser_context_id
         ):
-            params[] = browser_context_id
+            params["browserContextId"] = browser_context_id
 
         return self._send_command(
             "Storage.clearCookies",
@@ -151,7 +135,7 @@ class Storage(BaseDomain):
     def override_quota_for_origin(
         self,
         origin: str,
-        quota_size: MaybeUndefined[]
+        quota_size: float = UNDEFINED
     ):
         params = {
             "origin": origin,
@@ -160,7 +144,7 @@ class Storage(BaseDomain):
         if is_defined(
             quota_size
         ):
-            params[] = quota_size
+            params["quotaSize"] = quota_size
 
         return self._send_command(
             "Storage.overrideQuotaForOrigin",
@@ -353,7 +337,7 @@ class Storage(BaseDomain):
         owner_origin: str,
         key: str,
         value: str,
-        ignore_if_present: MaybeUndefined[]
+        ignore_if_present: bool = UNDEFINED
     ):
         params = {
             "ownerOrigin": owner_origin,
@@ -364,7 +348,7 @@ class Storage(BaseDomain):
         if is_defined(
             ignore_if_present
         ):
-            params[] = ignore_if_present
+            params["ignoreIfPresent"] = ignore_if_present
 
         return self._send_command(
             "Storage.setSharedStorageEntry",

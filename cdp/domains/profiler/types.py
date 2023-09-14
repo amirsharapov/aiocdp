@@ -1,23 +1,29 @@
 from dataclasses import (
     dataclass
 )
-from typing import (
-    Literal
+from cdp.domains.runtime.types import (
+    CallFrame,
+    ScriptId
 )
 
 
 @dataclass
-class CoverageRange:
-    startOffset: int
-    endOffset: int
-    count: int
+class ProfileNode:
+    id: int
+    call_frame: "CallFrame"
+    hit_count: int
+    children: list
+    deopt_reason: str
+    position_ticks: list
 
 
 @dataclass
-class FunctionCoverage:
-    functionName: str
-    ranges: list
-    isBlockCoverage: bool
+class Profile:
+    nodes: list
+    start_time: float
+    end_time: float
+    samples: list
+    time_deltas: list
 
 
 @dataclass
@@ -27,36 +33,24 @@ class PositionTickInfo:
 
 
 @dataclass
-class Profile:
-    nodes: list
-    startTime: float
-    endTime: float
-    samples: list
-    timeDeltas: list
+class CoverageRange:
+    start_offset: int
+    end_offset: int
+    count: int
 
 
 @dataclass
-class ProfileNode:
-    id: int
-    callFrame: CallFrame
-    hitCount: int
-    children: list
-    deoptReason: str
-    positionTicks: list
+class FunctionCoverage:
+    function_name: str
+    ranges: list
+    is_block_coverage: bool
 
 
 @dataclass
 class ScriptCoverage:
-    scriptId: ScriptId
+    script_id: "ScriptId"
     url: str
     functions: list
-
-
-@dataclass
-class ScriptTypeProfile:
-    scriptId: ScriptId
-    url: str
-    entries: list
 
 
 @dataclass
@@ -68,3 +62,10 @@ class TypeObject:
 class TypeProfileEntry:
     offset: int
     types: list
+
+
+@dataclass
+class ScriptTypeProfile:
+    script_id: "ScriptId"
+    url: str
+    entries: list

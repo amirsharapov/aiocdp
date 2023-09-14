@@ -10,8 +10,7 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.dom_storage.types import (
-    StorageId,
-    SerializedStorageKey
+    StorageId
 )
 
 

@@ -3,13 +3,19 @@ from collections import defaultdict
 
 from generator.types import Domain
 from generator.utils import (
-    convert_to_snake_case,
+    snake_case,
     is_undefined,
     is_defined,
     coalesce_undefined,
-    convert_to_python_type,
+    cdp_to_python_type,
     is_builtin
 )
+
+
+config = {
+    'condition': '',
+    'engine': 'jinja'  # 'static', 'ast'
+}
 
 
 def generate(domain: Domain):
@@ -40,11 +46,12 @@ def generate(domain: Domain):
 
     import_tree = defaultdict(set)
 
-    for ref in domain.get_refs():
-        module_name = ref.domain if is_defined(ref.domain) else domain.domain
-        module_name = convert_to_snake_case(module_name)
+    for command in domain.commands:
+        for ref in command.get_refs():
+            module_name = ref.domain if is_defined(ref.domain) else domain.domain
+            module_name = snake_case(module_name)
 
-        import_tree[module_name].add(ref.type)
+            import_tree[module_name].add(ref.type)
 
     for module_name, names in import_tree.items():
         root.body.append(
@@ -67,11 +74,12 @@ def generate(domain: Domain):
 
     for command in domain.commands:
         function = ast.FunctionDef(
-            name=convert_to_snake_case(command.name),
+            name=snake_case(command.name),
             args=ast.arguments(
                 args=[
                     ast.arg('self')
-                ]
+                ],
+                defaults=[]
             ),
             body=[]
         )
@@ -86,7 +94,7 @@ def generate(domain: Domain):
                 parameter_name += '_'
 
             arg = ast.arg(
-                arg=convert_to_snake_case(parameter_name)
+                arg=snake_case(parameter_name)
             )
 
             if is_defined(parameter.type) and is_defined(parameter.ref):
@@ -95,25 +103,28 @@ def generate(domain: Domain):
             if is_undefined(parameter.type) and is_undefined(parameter.ref):
                 print('Both type and ref are undefined. Not sure how to handle')
 
-            annotation = convert_to_python_type(
+            annotation = cdp_to_python_type(
                 coalesce_undefined([
                     parameter.type,
                     parameter.ref.type
                 ])
             )
 
+            arg.annotation = ast.Name(annotation)
+
             if parameter.optional:
-                arg.annotation = ast.Subscript(
-                    value=ast.Name('MaybeUndefined'),
-                    slice=ast.Name(annotation)
-                )
                 optional_args.append((
                     parameter,
                     arg
                 ))
 
+                function.args.defaults.append(
+                    ast.Name(
+                        id='UNDEFINED'
+                    )
+                )
+
             else:
-                arg.annotation = ast.Name(annotation)
                 required_args.append((
                     parameter,
                     arg

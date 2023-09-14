@@ -7,7 +7,7 @@ from generator.types.event import Event
 from generator.types.ref import Ref
 from generator.types.type import Type
 from generator.utils import (
-    convert_to_snake_case,
+    snake_case,
     UNDEFINED,
     MaybeUndefined
 )
@@ -47,7 +47,7 @@ class Domain(ComplexNode):
 
     @property
     def module_name(self):
-        return convert_to_snake_case(self.domain)
+        return snake_case(self.domain)
 
     def get_refs(self) -> list[Ref]:
         refs = []

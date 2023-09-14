@@ -4,6 +4,11 @@ from dataclasses import (
 from typing import (
     Literal
 )
+from cdp.domains.target.types import (
+    TargetID
+)
+
+RegistrationID = str
 
 ServiceWorkerVersionRunningStatus = Literal[
     "stopped",
@@ -23,30 +28,30 @@ ServiceWorkerVersionStatus = Literal[
 
 
 @dataclass
-class ServiceWorkerErrorMessage:
-    errorMessage: str
-    registrationId: RegistrationID
-    versionId: str
-    sourceURL: str
-    lineNumber: int
-    columnNumber: int
-
-
-@dataclass
 class ServiceWorkerRegistration:
-    registrationId: RegistrationID
-    scopeURL: str
-    isDeleted: bool
+    registration_id: "RegistrationID"
+    scope_url: str
+    is_deleted: bool
 
 
 @dataclass
 class ServiceWorkerVersion:
-    versionId: str
-    registrationId: RegistrationID
-    scriptURL: str
-    runningStatus: ServiceWorkerVersionRunningStatus
-    status: ServiceWorkerVersionStatus
-    scriptLastModified: float
-    scriptResponseTime: float
-    controlledClients: list
-    targetId: TargetID
+    version_id: str
+    registration_id: "RegistrationID"
+    script_url: str
+    running_status: "ServiceWorkerVersionRunningStatus"
+    status: "ServiceWorkerVersionStatus"
+    script_last_modified: float
+    script_response_time: float
+    controlled_clients: list
+    target_id: "TargetID"
+
+
+@dataclass
+class ServiceWorkerErrorMessage:
+    error_message: str
+    registration_id: "RegistrationID"
+    version_id: str
+    source_url: str
+    line_number: int
+    column_number: int

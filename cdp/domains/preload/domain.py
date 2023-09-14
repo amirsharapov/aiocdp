@@ -9,27 +9,6 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.preload.types import (
-    PrerenderFinalStatus,
-    PreloadingStatus,
-    SpeculationAction,
-    PreloadingAttemptKey,
-    RuleSet,
-    RuleSetId,
-    PrefetchStatus,
-    RuleSetErrorType,
-    SpeculationTargetHint
-)
-from cdp.domains.network.types import (
-    RequestId,
-    LoaderId
-)
-from cdp.domains.dom.types import (
-    BackendNodeId
-)
-from cdp.domains.page.types import (
-    FrameId
-)
 
 
 @dataclass

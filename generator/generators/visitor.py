@@ -21,20 +21,38 @@ class SourceCodeGenerator(ast.NodeVisitor):
     def __init__(self):
         self.source = ''
         self.indent_length = 0
+        self.hierarchy = []
 
     @property
     def indent(self):
         return ' ' * self.indent_length
 
     @contextlib.contextmanager
-    def indent_context(self):
+    def _indent_context(self):
         self.indent_length += 4
         yield
         self.indent_length -= 4
 
+    def _zip_args_and_defaults(self, node: ast.arguments):
+        defaults = getattr(node, 'defaults', [])
+        args = getattr(node, 'args', [])
+
+        while len(defaults) < len(args):
+            defaults.insert(
+                0,
+                None
+            )
+
+        return zip(args, defaults)
+
     def generate(self, module: ast.Module):
         self.visit(module)
         return self.source
+
+    def visit(self, node: ast.AST) -> Any:
+        self.hierarchy.append(node)
+        super().visit(node)
+        self.hierarchy.pop()
 
     def visit_alias(self, node: ast.alias) -> Any:
         self.source += f'{self.indent}{node.name}'
@@ -46,13 +64,22 @@ class SourceCodeGenerator(ast.NodeVisitor):
             self.source += ': '
             self.visit(node.annotation)
 
+    def visit_arg_with_default(self, node: ast.arg, default: ast.AST = None) -> Any:
+        self.visit(node)
+        if default:
+            self.source += ' = '
+            self.visit(default)
+
     def visit_arguments(self, node: ast.arguments) -> Any:
         self.source += '('
 
-        with self.indent_context():
-            for i, arg_ in enumerate(node.args):
+        with self._indent_context():
+            for i, (arg, default) in enumerate(self._zip_args_and_defaults(node)):
                 self.source += '\n'
-                self.visit(arg_)
+                self.visit_arg_with_default(
+                    arg,
+                    default
+                )
 
                 if i != len(node.args) - 1:
                     self.source += ','
@@ -87,7 +114,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.visit(node.func)
         self.source += '('
 
-        with self.indent_context():
+        with self._indent_context():
             for i, arg_ in enumerate(node.args):
                 self.source += '\n'
                 self.source += self.indent
@@ -115,7 +142,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         self.source += ':\n'
 
-        with self.indent_context():
+        with self._indent_context():
             for item in node.body:
                 self.visit(item)
                 self.source += '\n'
@@ -150,7 +177,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
         if node.keys:
             self.source += '\n'
 
-        with self.indent_context():
+        with self._indent_context():
             for key, value in zip(node.keys, node.values):
                 self.source += f'{self.indent}"'
                 self.visit(key)
@@ -170,7 +197,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         prev = None
 
-        with self.indent_context():
+        with self._indent_context():
             for body in node.body:
                 if isinstance(body, ast.If):
                     self.source += '\n'
@@ -188,7 +215,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
     def visit_ImportFrom(self, node: ast.ImportFrom) -> Any:
         self.source += f'from {node.module} import ('
 
-        with self.indent_context():
+        with self._indent_context():
             for i, name in enumerate(node.names):
                 self.source += '\n'
                 self.visit(name)
@@ -203,14 +230,14 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.visit(node.test)
         self.source += ':\n'
 
-        with self.indent_context():
+        with self._indent_context():
             for body in node.body:
                 self.visit(body)
 
         if hasattr(node, 'orelse'):
             self.source += f'{self.indent}else:\n'
 
-            with self.indent_context():
+            with self._indent_context():
                 for body in node.orelse:
                     self.visit(body)
 
@@ -236,7 +263,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
         if isinstance(node.slice, ast.Tuple):
             self.source += '\n'
 
-            with self.indent_context():
+            with self._indent_context():
                 for i, elt in enumerate(node.slice.elts):
                     self.source += self.indent
                     self.visit(elt)
@@ -245,5 +272,8 @@ class SourceCodeGenerator(ast.NodeVisitor):
                         self.source += ',\n'
 
             self.source += '\n'
+
+        else:
+            self.visit(node.slice)
 
         self.source += ']'

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from generator.types.base import ComplexNode
 from generator.types.ref import Ref
-from generator.utils import UNDEFINED, MaybeUndefined, is_defined, convert_to_snake_case
+from generator.utils import UNDEFINED, MaybeUndefined, is_defined, snake_case
 
 
 @dataclass
@@ -17,7 +17,7 @@ class Property(ComplexNode):
 
     @property
     def snake_name(self):
-        return convert_to_snake_case(self.name)
+        return snake_case(self.name)
 
     @classmethod
     def from_dict(cls, data):

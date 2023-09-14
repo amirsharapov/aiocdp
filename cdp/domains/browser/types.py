@@ -5,15 +5,15 @@ from typing import (
     Literal
 )
 
-BrowserCommandId = Literal[
-    "openTabSearch",
-    "closeTabSearch"
-]
+BrowserContextID = str
 
-PermissionSetting = Literal[
-    "granted",
-    "denied",
-    "prompt"
+WindowID = int
+
+WindowState = Literal[
+    "normal",
+    "minimized",
+    "maximized",
+    "fullscreen"
 ]
 
 PermissionType = Literal[
@@ -46,11 +46,15 @@ PermissionType = Literal[
     "windowManagement"
 ]
 
-WindowState = Literal[
-    "normal",
-    "minimized",
-    "maximized",
-    "fullscreen"
+PermissionSetting = Literal[
+    "granted",
+    "denied",
+    "prompt"
+]
+
+BrowserCommandId = Literal[
+    "openTabSearch",
+    "closeTabSearch"
 ]
 
 
@@ -60,7 +64,16 @@ class Bounds:
     top: int
     width: int
     height: int
-    windowState: WindowState
+    window_state: "WindowState"
+
+
+@dataclass
+class PermissionDescriptor:
+    name: str
+    sysex: bool
+    user_visible_only: bool
+    allow_without_sanitization: bool
+    pan_tilt_zoom: bool
 
 
 @dataclass
@@ -76,12 +89,3 @@ class Histogram:
     sum: int
     count: int
     buckets: list
-
-
-@dataclass
-class PermissionDescriptor:
-    name: str
-    sysex: bool
-    userVisibleOnly: bool
-    allowWithoutSanitization: bool
-    panTiltZoom: bool

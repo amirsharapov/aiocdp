@@ -9,24 +9,20 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.fed_cm.types import (
-    LoginState,
-    DialogType
-)
 
 
 @dataclass
 class FedCm(BaseDomain):
     def enable(
         self,
-        disable_rejection_delay: MaybeUndefined[]
+        disable_rejection_delay: bool = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             disable_rejection_delay
         ):
-            params[] = disable_rejection_delay
+            params["disableRejectionDelay"] = disable_rejection_delay
 
         return self._send_command(
             "FedCm.enable",
@@ -74,7 +70,7 @@ class FedCm(BaseDomain):
     def dismiss_dialog(
         self,
         dialog_id: str,
-        trigger_cooldown: MaybeUndefined[]
+        trigger_cooldown: bool = UNDEFINED
     ):
         params = {
             "dialogId": dialog_id,
@@ -83,7 +79,7 @@ class FedCm(BaseDomain):
         if is_defined(
             trigger_cooldown
         ):
-            params[] = trigger_cooldown
+            params["triggerCooldown"] = trigger_cooldown
 
         return self._send_command(
             "FedCm.dismissDialog",

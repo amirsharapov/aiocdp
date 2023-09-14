@@ -9,16 +9,6 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.runtime.types import (
-    Timestamp,
-    StackTrace
-)
-from cdp.domains.network.types import (
-    RequestId
-)
-from cdp.domains.log.types import (
-    LogEntry
-)
 
 
 @dataclass

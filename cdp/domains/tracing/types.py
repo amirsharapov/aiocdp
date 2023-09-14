@@ -5,10 +5,9 @@ from typing import (
     Literal
 )
 
-MemoryDumpLevelOfDetail = Literal[
-    "background",
-    "light",
-    "detailed"
+StreamFormat = Literal[
+    "json",
+    "proto"
 ]
 
 StreamCompression = Literal[
@@ -16,9 +15,10 @@ StreamCompression = Literal[
     "gzip"
 ]
 
-StreamFormat = Literal[
-    "json",
-    "proto"
+MemoryDumpLevelOfDetail = Literal[
+    "background",
+    "light",
+    "detailed"
 ]
 
 TracingBackend = Literal[
@@ -30,12 +30,12 @@ TracingBackend = Literal[
 
 @dataclass
 class TraceConfig:
-    recordMode: str
-    traceBufferSizeInKb: float
-    enableSampling: bool
-    enableSystrace: bool
-    enableArgumentFilter: bool
-    includedCategories: list
-    excludedCategories: list
-    syntheticDelays: list
-    memoryDumpConfig: MemoryDumpConfig
+    record_mode: str
+    trace_buffer_size_in_kb: float
+    enable_sampling: bool
+    enable_systrace: bool
+    enable_argument_filter: bool
+    included_categories: list
+    excluded_categories: list
+    synthetic_delays: list
+    memory_dump_config: "MemoryDumpConfig"

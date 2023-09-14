@@ -10,63 +10,7 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.network.types import (
-    CorsErrorStatus,
-    RequestId,
-    ClientSecurityState,
-    LoaderId,
-    IPAddressSpace
-)
-from cdp.domains.page.types import (
-    FrameId
-)
-from cdp.domains.audits.types import (
-    StylesheetLoadingIssueDetails,
-    ContentSecurityPolicyViolationType,
-    LowTextContrastIssueDetails,
-    MixedContentIssueDetails,
-    BlockedByResponseReason,
-    BlockedByResponseIssueDetails,
-    ClientHintIssueDetails,
-    FailedRequestInfo,
-    NavigatorUserAgentIssueDetails,
-    ClientHintIssueReason,
-    AffectedRequest,
-    AttributionReportingIssueType,
-    SharedArrayBufferIssueDetails,
-    FederatedAuthUserInfoRequestIssueDetails,
-    AffectedFrame,
-    HeavyAdReason,
-    DeprecationIssueDetails,
-    CookieIssueDetails,
-    CorsIssueDetails,
-    HeavyAdResolutionStatus,
-    SharedArrayBufferIssueType,
-    InspectorIssue,
-    CookieOperation,
-    ContentSecurityPolicyIssueDetails,
-    SourceCodeLocation,
-    AttributionReportingIssueDetails,
-    InspectorIssueDetails,
-    GenericIssueDetails,
-    IssueId,
-    FederatedAuthUserInfoRequestIssueReason,
-    MixedContentResourceType,
-    AffectedCookie,
-    HeavyAdIssueDetails,
-    MixedContentResolutionStatus,
-    StyleSheetLoadingIssueReason,
-    BounceTrackingIssueDetails,
-    InspectorIssueCode,
-    FederatedAuthRequestIssueReason,
-    GenericIssueErrorType,
-    QuirksModeIssueDetails,
-    FederatedAuthRequestIssueDetails
-)
-from cdp.domains.runtime.types import (
-    ScriptId
-)
-from cdp.domains.dom.types import (
-    BackendNodeId
+    RequestId
 )
 
 
@@ -76,8 +20,8 @@ class Audits(BaseDomain):
         self,
         request_id: RequestId,
         encoding: str,
-        quality: MaybeUndefined[],
-        size_only: MaybeUndefined[]
+        quality: float = UNDEFINED,
+        size_only: bool = UNDEFINED
     ):
         params = {
             "requestId": request_id,
@@ -87,12 +31,12 @@ class Audits(BaseDomain):
         if is_defined(
             quality
         ):
-            params[] = quality
+            params["quality"] = quality
 
         if is_defined(
             size_only
         ):
-            params[] = size_only
+            params["sizeOnly"] = size_only
 
         return self._send_command(
             "Audits.getEncodedResponse",
@@ -121,14 +65,14 @@ class Audits(BaseDomain):
 
     def check_contrast(
         self,
-        report_aaa: MaybeUndefined[]
+        report_aaa: bool = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             report_aaa
         ):
-            params[] = report_aaa
+            params["reportAAA"] = report_aaa
 
         return self._send_command(
             "Audits.checkContrast",

@@ -12,11 +12,10 @@ PressureLevel = Literal[
 
 
 @dataclass
-class Module:
-    name: str
-    uuid: str
-    baseAddress: str
+class SamplingProfileNode:
     size: float
+    total: float
+    stack: list
 
 
 @dataclass
@@ -26,7 +25,8 @@ class SamplingProfile:
 
 
 @dataclass
-class SamplingProfileNode:
+class Module:
+    name: str
+    uuid: str
+    base_address: str
     size: float
-    total: float
-    stack: list

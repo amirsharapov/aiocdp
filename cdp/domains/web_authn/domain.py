@@ -10,12 +10,9 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.web_authn.types import (
-    Ctap2Version,
-    AuthenticatorTransport,
-    Credential,
-    AuthenticatorProtocol,
     VirtualAuthenticatorOptions,
-    AuthenticatorId
+    AuthenticatorId,
+    Credential
 )
 
 
@@ -23,14 +20,14 @@ from cdp.domains.web_authn.types import (
 class WebAuthn(BaseDomain):
     def enable(
         self,
-        enable_ui: MaybeUndefined[]
+        enable_ui: bool = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             enable_ui
         ):
-            params[] = enable_ui
+            params["enableUI"] = enable_ui
 
         return self._send_command(
             "WebAuthn.enable",
@@ -63,9 +60,9 @@ class WebAuthn(BaseDomain):
     def set_response_override_bits(
         self,
         authenticator_id: AuthenticatorId,
-        is_bogus_signature: MaybeUndefined[],
-        is_bad_uv: MaybeUndefined[],
-        is_bad_up: MaybeUndefined[]
+        is_bogus_signature: bool = UNDEFINED,
+        is_bad_uv: bool = UNDEFINED,
+        is_bad_up: bool = UNDEFINED
     ):
         params = {
             "authenticatorId": authenticator_id,
@@ -74,17 +71,17 @@ class WebAuthn(BaseDomain):
         if is_defined(
             is_bogus_signature
         ):
-            params[] = is_bogus_signature
+            params["isBogusSignature"] = is_bogus_signature
 
         if is_defined(
             is_bad_uv
         ):
-            params[] = is_bad_uv
+            params["isBadUV"] = is_bad_uv
 
         if is_defined(
             is_bad_up
         ):
-            params[] = is_bad_up
+            params["isBadUP"] = is_bad_up
 
         return self._send_command(
             "WebAuthn.setResponseOverrideBits",

@@ -10,13 +10,10 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.target.types import (
-    TargetID,
-    TargetFilter,
     TargetInfo,
-    SessionID
-)
-from cdp.domains.page.types import (
-    FrameId
+    SessionID,
+    TargetID,
+    TargetFilter
 )
 from cdp.domains.browser.types import (
     BrowserContextID
@@ -41,7 +38,7 @@ class Target(BaseDomain):
     def attach_to_target(
         self,
         target_id: TargetID,
-        flatten: MaybeUndefined[]
+        flatten: bool = UNDEFINED
     ):
         params = {
             "targetId": target_id,
@@ -50,7 +47,7 @@ class Target(BaseDomain):
         if is_defined(
             flatten
         ):
-            params[] = flatten
+            params["flatten"] = flatten
 
         return self._send_command(
             "Target.attachToTarget",
@@ -83,7 +80,7 @@ class Target(BaseDomain):
     def expose_dev_tools_protocol(
         self,
         target_id: TargetID,
-        binding_name: MaybeUndefined[]
+        binding_name: str = UNDEFINED
     ):
         params = {
             "targetId": target_id,
@@ -92,7 +89,7 @@ class Target(BaseDomain):
         if is_defined(
             binding_name
         ):
-            params[] = binding_name
+            params["bindingName"] = binding_name
 
         return self._send_command(
             "Target.exposeDevToolsProtocol",
@@ -101,32 +98,32 @@ class Target(BaseDomain):
 
     def create_browser_context(
         self,
-        dispose_on_detach: MaybeUndefined[],
-        proxy_server: MaybeUndefined[],
-        proxy_bypass_list: MaybeUndefined[],
-        origins_with_universal_network_access: MaybeUndefined[]
+        dispose_on_detach: bool = UNDEFINED,
+        proxy_server: str = UNDEFINED,
+        proxy_bypass_list: str = UNDEFINED,
+        origins_with_universal_network_access: list = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             dispose_on_detach
         ):
-            params[] = dispose_on_detach
+            params["disposeOnDetach"] = dispose_on_detach
 
         if is_defined(
             proxy_server
         ):
-            params[] = proxy_server
+            params["proxyServer"] = proxy_server
 
         if is_defined(
             proxy_bypass_list
         ):
-            params[] = proxy_bypass_list
+            params["proxyBypassList"] = proxy_bypass_list
 
         if is_defined(
             origins_with_universal_network_access
         ):
-            params[] = origins_with_universal_network_access
+            params["originsWithUniversalNetworkAccess"] = origins_with_universal_network_access
 
         return self._send_command(
             "Target.createBrowserContext",
@@ -146,13 +143,13 @@ class Target(BaseDomain):
     def create_target(
         self,
         url: str,
-        width: MaybeUndefined[],
-        height: MaybeUndefined[],
-        browser_context_id: MaybeUndefined[],
-        enable_begin_frame_control: MaybeUndefined[],
-        new_window: MaybeUndefined[],
-        background: MaybeUndefined[],
-        for_tab: MaybeUndefined[]
+        width: int = UNDEFINED,
+        height: int = UNDEFINED,
+        browser_context_id: BrowserContextID = UNDEFINED,
+        enable_begin_frame_control: bool = UNDEFINED,
+        new_window: bool = UNDEFINED,
+        background: bool = UNDEFINED,
+        for_tab: bool = UNDEFINED
     ):
         params = {
             "url": url,
@@ -161,37 +158,37 @@ class Target(BaseDomain):
         if is_defined(
             width
         ):
-            params[] = width
+            params["width"] = width
 
         if is_defined(
             height
         ):
-            params[] = height
+            params["height"] = height
 
         if is_defined(
             browser_context_id
         ):
-            params[] = browser_context_id
+            params["browserContextId"] = browser_context_id
 
         if is_defined(
             enable_begin_frame_control
         ):
-            params[] = enable_begin_frame_control
+            params["enableBeginFrameControl"] = enable_begin_frame_control
 
         if is_defined(
             new_window
         ):
-            params[] = new_window
+            params["newWindow"] = new_window
 
         if is_defined(
             background
         ):
-            params[] = background
+            params["background"] = background
 
         if is_defined(
             for_tab
         ):
-            params[] = for_tab
+            params["forTab"] = for_tab
 
         return self._send_command(
             "Target.createTarget",
@@ -200,20 +197,20 @@ class Target(BaseDomain):
 
     def detach_from_target(
         self,
-        session_id: MaybeUndefined[],
-        target_id: MaybeUndefined[]
+        session_id: SessionID = UNDEFINED,
+        target_id: TargetID = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             session_id
         ):
-            params[] = session_id
+            params["sessionId"] = session_id
 
         if is_defined(
             target_id
         ):
-            params[] = target_id
+            params["targetId"] = target_id
 
         return self._send_command(
             "Target.detachFromTarget",
@@ -235,14 +232,14 @@ class Target(BaseDomain):
 
     def get_target_info(
         self,
-        target_id: MaybeUndefined[]
+        target_id: TargetID = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             target_id
         ):
-            params[] = target_id
+            params["targetId"] = target_id
 
         return self._send_command(
             "Target.getTargetInfo",
@@ -251,14 +248,14 @@ class Target(BaseDomain):
 
     def get_targets(
         self,
-        filter_: MaybeUndefined[]
+        filter_: TargetFilter = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             filter_
         ):
-            params[] = filter_
+            params["filter"] = filter_
 
         return self._send_command(
             "Target.getTargets",
@@ -268,8 +265,8 @@ class Target(BaseDomain):
     def send_message_to_target(
         self,
         message: str,
-        session_id: MaybeUndefined[],
-        target_id: MaybeUndefined[]
+        session_id: SessionID = UNDEFINED,
+        target_id: TargetID = UNDEFINED
     ):
         params = {
             "message": message,
@@ -278,12 +275,12 @@ class Target(BaseDomain):
         if is_defined(
             session_id
         ):
-            params[] = session_id
+            params["sessionId"] = session_id
 
         if is_defined(
             target_id
         ):
-            params[] = target_id
+            params["targetId"] = target_id
 
         return self._send_command(
             "Target.sendMessageToTarget",
@@ -294,8 +291,8 @@ class Target(BaseDomain):
         self,
         auto_attach: bool,
         wait_for_debugger_on_start: bool,
-        flatten: MaybeUndefined[],
-        filter_: MaybeUndefined[]
+        flatten: bool = UNDEFINED,
+        filter_: TargetFilter = UNDEFINED
     ):
         params = {
             "autoAttach": auto_attach,
@@ -305,12 +302,12 @@ class Target(BaseDomain):
         if is_defined(
             flatten
         ):
-            params[] = flatten
+            params["flatten"] = flatten
 
         if is_defined(
             filter_
         ):
-            params[] = filter_
+            params["filter"] = filter_
 
         return self._send_command(
             "Target.setAutoAttach",
@@ -321,7 +318,7 @@ class Target(BaseDomain):
         self,
         target_id: TargetID,
         wait_for_debugger_on_start: bool,
-        filter_: MaybeUndefined[]
+        filter_: TargetFilter = UNDEFINED
     ):
         params = {
             "targetId": target_id,
@@ -331,7 +328,7 @@ class Target(BaseDomain):
         if is_defined(
             filter_
         ):
-            params[] = filter_
+            params["filter"] = filter_
 
         return self._send_command(
             "Target.autoAttachRelated",
@@ -341,7 +338,7 @@ class Target(BaseDomain):
     def set_discover_targets(
         self,
         discover: bool,
-        filter_: MaybeUndefined[]
+        filter_: TargetFilter = UNDEFINED
     ):
         params = {
             "discover": discover,
@@ -350,7 +347,7 @@ class Target(BaseDomain):
         if is_defined(
             filter_
         ):
-            params[] = filter_
+            params["filter"] = filter_
 
         return self._send_command(
             "Target.setDiscoverTargets",

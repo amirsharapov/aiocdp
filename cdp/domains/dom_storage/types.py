@@ -1,13 +1,14 @@
 from dataclasses import (
     dataclass
 )
-from typing import (
-    Literal
-)
+
+SerializedStorageKey = str
+
+Item = list[str]
 
 
 @dataclass
 class StorageId:
-    securityOrigin: str
-    storageKey: SerializedStorageKey
-    isLocalStorage: bool
+    security_origin: str
+    storage_key: "SerializedStorageKey"
+    is_local_storage: bool

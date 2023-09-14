@@ -9,14 +9,6 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.animation.types import (
-    Animation,
-    KeyframesRule,
-    AnimationEffect
-)
-from cdp.domains.dom.types import (
-    BackendNodeId
-)
 from cdp.domains.runtime.types import (
     RemoteObject
 )

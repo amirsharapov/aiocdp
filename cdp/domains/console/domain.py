@@ -9,9 +9,6 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.console.types import (
-    ConsoleMessage
-)
 
 
 @dataclass

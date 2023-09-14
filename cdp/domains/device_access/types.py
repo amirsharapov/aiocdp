@@ -1,12 +1,13 @@
 from dataclasses import (
     dataclass
 )
-from typing import (
-    Literal
-)
+
+RequestId = str
+
+DeviceId = str
 
 
 @dataclass
 class PromptDevice:
-    id: DeviceId
+    id: "DeviceId"
     name: str

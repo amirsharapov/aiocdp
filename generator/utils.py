@@ -14,11 +14,11 @@ direct_python_type_map = {
 }
 
 
-def convert_to_snake_case(value):
+def snake_case(value):
     return inflection.underscore(value)
 
 
-def convert_to_python_type(value):
+def cdp_to_python_type(value):
     return direct_python_type_map.get(value, value)
 
 
@@ -63,3 +63,11 @@ def coalesce_undefined(args):
             return arg
 
     return UNDEFINED
+
+
+def first_non_none(args):
+    for arg in args:
+        if arg is not None:
+            return arg
+
+    return None

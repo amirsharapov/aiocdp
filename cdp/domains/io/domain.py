@@ -35,8 +35,8 @@ class IO(BaseDomain):
     def read(
         self,
         handle: StreamHandle,
-        offset: MaybeUndefined[],
-        size: MaybeUndefined[]
+        offset: int = UNDEFINED,
+        size: int = UNDEFINED
     ):
         params = {
             "handle": handle,
@@ -45,12 +45,12 @@ class IO(BaseDomain):
         if is_defined(
             offset
         ):
-            params[] = offset
+            params["offset"] = offset
 
         if is_defined(
             size
         ):
-            params[] = size
+            params["size"] = size
 
         return self._send_command(
             "IO.read",

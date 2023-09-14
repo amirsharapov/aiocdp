@@ -9,10 +9,6 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.media.types import (
-    Timestamp,
-    PlayerId
-)
 
 
 @dataclass

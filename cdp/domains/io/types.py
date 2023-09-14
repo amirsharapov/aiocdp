@@ -1,6 +1,2 @@
-from dataclasses import (
-    dataclass
-)
-from typing import (
-    Literal
-)
+
+StreamHandle = str

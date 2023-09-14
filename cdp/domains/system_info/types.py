@@ -5,55 +5,29 @@ from typing import (
     Literal
 )
 
-ImageType = Literal[
-    "jpeg",
-    "webp",
-    "unknown"
-]
-
 SubsamplingFormat = Literal[
     "yuv420",
     "yuv422",
     "yuv444"
 ]
 
+ImageType = Literal[
+    "jpeg",
+    "webp",
+    "unknown"
+]
+
 
 @dataclass
 class GPUDevice:
-    vendorId: float
-    deviceId: float
-    subSysId: float
+    vendor_id: float
+    device_id: float
+    sub_sys_id: float
     revision: float
-    vendorString: str
-    deviceString: str
-    driverVendor: str
-    driverVersion: str
-
-
-@dataclass
-class GPUInfo:
-    devices: list
-    auxAttributes: object
-    featureStatus: object
-    driverBugWorkarounds: list
-    videoDecoding: list
-    videoEncoding: list
-    imageDecoding: list
-
-
-@dataclass
-class ImageDecodeAcceleratorCapability:
-    imageType: ImageType
-    maxDimensions: Size
-    minDimensions: Size
-    subsamplings: list
-
-
-@dataclass
-class ProcessInfo:
-    type: str
-    id: int
-    cpuTime: float
+    vendor_string: str
+    device_string: str
+    driver_vendor: str
+    driver_version: str
 
 
 @dataclass
@@ -65,13 +39,39 @@ class Size:
 @dataclass
 class VideoDecodeAcceleratorCapability:
     profile: str
-    maxResolution: Size
-    minResolution: Size
+    max_resolution: "Size"
+    min_resolution: "Size"
 
 
 @dataclass
 class VideoEncodeAcceleratorCapability:
     profile: str
-    maxResolution: Size
-    maxFramerateNumerator: int
-    maxFramerateDenominator: int
+    max_resolution: "Size"
+    max_framerate_numerator: int
+    max_framerate_denominator: int
+
+
+@dataclass
+class ImageDecodeAcceleratorCapability:
+    image_type: "ImageType"
+    max_dimensions: "Size"
+    min_dimensions: "Size"
+    subsamplings: list
+
+
+@dataclass
+class GPUInfo:
+    devices: list
+    aux_attributes: object
+    feature_status: object
+    driver_bug_workarounds: list
+    video_decoding: list
+    video_encoding: list
+    image_decoding: list
+
+
+@dataclass
+class ProcessInfo:
+    type: str
+    id: int
+    cpu_time: float

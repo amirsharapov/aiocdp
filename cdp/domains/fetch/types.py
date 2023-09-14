@@ -4,11 +4,29 @@ from dataclasses import (
 from typing import (
     Literal
 )
+from cdp.domains.network.types import (
+    ResourceType
+)
+
+RequestId = str
 
 RequestStage = Literal[
     "Request",
     "Response"
 ]
+
+
+@dataclass
+class RequestPattern:
+    url_pattern: str
+    resource_type: "ResourceType"
+    request_stage: "RequestStage"
+
+
+@dataclass
+class HeaderEntry:
+    name: str
+    value: str
 
 
 @dataclass
@@ -24,16 +42,3 @@ class AuthChallengeResponse:
     response: str
     username: str
     password: str
-
-
-@dataclass
-class HeaderEntry:
-    name: str
-    value: str
-
-
-@dataclass
-class RequestPattern:
-    urlPattern: str
-    resourceType: ResourceType
-    requestStage: RequestStage

@@ -1,54 +1,59 @@
 from dataclasses import (
     dataclass
 )
-from typing import (
-    Literal
+from cdp.domains.runtime.types import (
+    RemoteObject,
+    ScriptId
 )
 
+BreakpointId = str
 
-@dataclass
-class BreakLocation:
-    scriptId: ScriptId
-    lineNumber: int
-    columnNumber: int
-    type: str
-
-
-@dataclass
-class CallFrame:
-    callFrameId: CallFrameId
-    functionName: str
-    functionLocation: Location
-    location: Location
-    url: str
-    scopeChain: list
-    this: RemoteObject
-    returnValue: RemoteObject
+CallFrameId = str
 
 
 @dataclass
 class Location:
-    scriptId: ScriptId
-    lineNumber: int
-    columnNumber: int
+    script_id: "ScriptId"
+    line_number: int
+    column_number: int
+
+
+@dataclass
+class ScriptPosition:
+    line_number: int
+    column_number: int
+
+
+@dataclass
+class CallFrame:
+    call_frame_id: "CallFrameId"
+    function_name: str
+    function_location: "Location"
+    location: "Location"
+    url: str
+    scope_chain: list
+    this: "RemoteObject"
+    return_value: "RemoteObject"
 
 
 @dataclass
 class Scope:
     type: str
-    object: RemoteObject
+    object: "RemoteObject"
     name: str
-    startLocation: Location
-    endLocation: Location
-
-
-@dataclass
-class ScriptPosition:
-    lineNumber: int
-    columnNumber: int
+    start_location: "Location"
+    end_location: "Location"
 
 
 @dataclass
 class SearchMatch:
-    lineNumber: float
-    lineContent: str
+    line_number: float
+    line_content: str
+
+
+@dataclass
+class BreakLocation:
+    script_id: "ScriptId"
+    line_number: int
+    column_number: int
+    type: str

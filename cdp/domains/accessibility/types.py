@@ -4,6 +4,56 @@ from dataclasses import (
 from typing import (
     Literal
 )
+from cdp.domains.dom.types import (
+    BackendNodeId
+)
+from cdp.domains.page.types import (
+    FrameId
+)
+
+AXNodeId = str
+
+AXValueType = Literal[
+    "boolean",
+    "tristate",
+    "booleanOrUndefined",
+    "idref",
+    "idrefList",
+    "integer",
+    "node",
+    "nodeList",
+    "number",
+    "string",
+    "computedString",
+    "token",
+    "tokenList",
+    "domRelation",
+    "role",
+    "internalRole",
+    "valueUndefined"
+]
+
+AXValueSourceType = Literal[
+    "attribute",
+    "implicit",
+    "style",
+    "contents",
+    "placeholder",
+    "relatedElement"
+]
+
+AXValueNativeSourceType = Literal[
+    "description",
+    "figcaption",
+    "label",
+    "labelfor",
+    "labelwrapped",
+    "legend",
+    "rubyannotation",
+    "tablecaption",
+    "title",
+    "other"
+]
 
 AXPropertyName = Literal[
     "busy",
@@ -47,95 +97,53 @@ AXPropertyName = Literal[
     "owns"
 ]
 
-AXValueNativeSourceType = Literal[
-    "description",
-    "figcaption",
-    "label",
-    "labelfor",
-    "labelwrapped",
-    "legend",
-    "rubyannotation",
-    "tablecaption",
-    "title",
-    "other"
-]
-
-AXValueSourceType = Literal[
-    "attribute",
-    "implicit",
-    "style",
-    "contents",
-    "placeholder",
-    "relatedElement"
-]
-
-AXValueType = Literal[
-    "boolean",
-    "tristate",
-    "booleanOrUndefined",
-    "idref",
-    "idrefList",
-    "integer",
-    "node",
-    "nodeList",
-    "number",
-    "string",
-    "computedString",
-    "token",
-    "tokenList",
-    "domRelation",
-    "role",
-    "internalRole",
-    "valueUndefined"
-]
-
 
 @dataclass
-class AXNode:
-    nodeId: AXNodeId
-    ignored: bool
-    ignoredReasons: list
-    role: AXValue
-    chromeRole: AXValue
-    name: AXValue
-    description: AXValue
-    value: AXValue
-    properties: list
-    parentId: AXNodeId
-    childIds: list
-    backendDOMNodeId: BackendNodeId
-    frameId: FrameId
-
-
-@dataclass
-class AXProperty:
-    name: AXPropertyName
-    value: AXValue
+class AXValueSource:
+    type: "AXValueSourceType"
+    value: "AXValue"
+    attribute: str
+    attribute_value: "AXValue"
+    superseded: bool
+    native_source: "AXValueNativeSourceType"
+    native_source_value: "AXValue"
+    invalid: bool
+    invalid_reason: str
 
 
 @dataclass
 class AXRelatedNode:
-    backendDOMNodeId: BackendNodeId
+    backend_dom_node_id: "BackendNodeId"
     idref: str
     text: str
 
 
 @dataclass
+class AXProperty:
+    name: "AXPropertyName"
+    value: "AXValue"
+
+
+@dataclass
 class AXValue:
-    type: AXValueType
+    type: "AXValueType"
     value: Any
-    relatedNodes: list
+    related_nodes: list
     sources: list
 
 
 @dataclass
-class AXValueSource:
-    type: AXValueSourceType
-    value: AXValue
-    attribute: str
-    attributeValue: AXValue
-    superseded: bool
-    nativeSource: AXValueNativeSourceType
-    nativeSourceValue: AXValue
-    invalid: bool
-    invalidReason: str
+class AXNode:
+    node_id: "AXNodeId"
+    ignored: bool
+    ignored_reasons: list
+    role: "AXValue"
+    chrome_role: "AXValue"
+    name: "AXValue"
+    description: "AXValue"
+    value: "AXValue"
+    properties: list
+    parent_id: "AXNodeId"
+    child_ids: list
+    backend_dom_node_id: "BackendNodeId"
+    frame_id: "FrameId"

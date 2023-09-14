@@ -1,8 +1,12 @@
 from dataclasses import (
     dataclass
 )
-from typing import (
-    Literal
+from cdp.domains.runtime.types import (
+    StackTrace,
+    Timestamp
+)
+from cdp.domains.network.types import (
+    RequestId
 )
 
 
@@ -12,12 +16,12 @@ class LogEntry:
     level: str
     text: str
     category: str
-    timestamp: Timestamp
+    timestamp: "Timestamp"
     url: str
-    lineNumber: int
-    stackTrace: StackTrace
-    networkRequestId: RequestId
-    workerId: str
+    line_number: int
+    stack_trace: "StackTrace"
+    network_request_id: "RequestId"
+    worker_id: str
     args: list
 
 

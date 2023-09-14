@@ -9,32 +9,24 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.dom.types import (
-    BackendNodeId,
-    PseudoType,
-    PhysicalAxes,
-    NodeId,
-    LogicalAxes
-)
 from cdp.domains.css.types import (
     CSSScope,
-    CSSStyleSheetHeader,
-    SourceRange,
-    CSSRule,
-    Specificity,
-    SelectorList,
-    StyleSheetOrigin,
-    CSSMedia,
-    FontFace,
     StyleSheetId,
     CSSContainerQuery,
-    CSSSupports,
-    CSSStyle,
+    SelectorList,
+    CSSMedia,
+    SourceRange,
+    CSSRule,
     Value,
-    CSSLayerData
+    CSSLayerData,
+    CSSStyle,
+    CSSSupports
 )
 from cdp.domains.page.types import (
     FrameId
+)
+from cdp.domains.dom.types import (
+    NodeId
 )
 
 

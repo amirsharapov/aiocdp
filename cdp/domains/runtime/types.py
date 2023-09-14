@@ -1,64 +1,39 @@
 from dataclasses import (
     dataclass
 )
-from typing import (
-    Literal
-)
+
+ScriptId = str
+
+RemoteObjectId = str
+
+UnserializableValue = str
+
+ExecutionContextId = int
+
+Timestamp = float
+
+TimeDelta = float
+
+UniqueDebuggerId = str
 
 
 @dataclass
-class CallArgument:
+class RemoteObject:
+    type: str
+    subtype: str
+    class_name: str
     value: Any
-    unserializableValue: UnserializableValue
-    objectId: RemoteObjectId
-
-
-@dataclass
-class CallFrame:
-    functionName: str
-    scriptId: ScriptId
-    url: str
-    lineNumber: int
-    columnNumber: int
+    unserializable_value: "UnserializableValue"
+    description: str
+    object_id: "RemoteObjectId"
+    preview: "ObjectPreview"
+    custom_preview: "CustomPreview"
 
 
 @dataclass
 class CustomPreview:
     header: str
-    bodyGetterId: RemoteObjectId
-
-
-@dataclass
-class EntryPreview:
-    key: ObjectPreview
-    value: ObjectPreview
-
-
-@dataclass
-class ExceptionDetails:
-    exceptionId: int
-    text: str
-    lineNumber: int
-    columnNumber: int
-    scriptId: ScriptId
-    url: str
-    stackTrace: StackTrace
-    exception: RemoteObject
-    executionContextId: ExecutionContextId
-
-
-@dataclass
-class ExecutionContextDescription:
-    id: ExecutionContextId
-    origin: str
-    name: str
-    auxData: object
-
-
-@dataclass
-class InternalPropertyDescriptor:
-    name: str
-    value: RemoteObject
+    body_getter_id: "RemoteObjectId"
 
 
 @dataclass
@@ -72,56 +47,92 @@ class ObjectPreview:
 
 
 @dataclass
-class PrivatePropertyDescriptor:
+class PropertyPreview:
     name: str
-    value: RemoteObject
+    type: str
+    value: str
+    value_preview: "ObjectPreview"
+    subtype: str
+
+
+@dataclass
+class EntryPreview:
+    key: "ObjectPreview"
+    value: "ObjectPreview"
 
 
 @dataclass
 class PropertyDescriptor:
     name: str
-    value: RemoteObject
+    value: "RemoteObject"
     writable: bool
-    get: RemoteObject
-    set: RemoteObject
+    get: "RemoteObject"
+    set: "RemoteObject"
     configurable: bool
     enumerable: bool
-    wasThrown: bool
-    isOwn: bool
-    symbol: RemoteObject
+    was_thrown: bool
+    is_own: bool
+    symbol: "RemoteObject"
 
 
 @dataclass
-class PropertyPreview:
+class InternalPropertyDescriptor:
     name: str
-    type: str
-    value: str
-    valuePreview: ObjectPreview
-    subtype: str
+    value: "RemoteObject"
 
 
 @dataclass
-class RemoteObject:
-    type: str
-    subtype: str
-    className: str
+class PrivatePropertyDescriptor:
+    name: str
+    value: "RemoteObject"
+
+
+@dataclass
+class CallArgument:
     value: Any
-    unserializableValue: UnserializableValue
-    description: str
-    objectId: RemoteObjectId
-    preview: ObjectPreview
-    customPreview: CustomPreview
+    unserializable_value: "UnserializableValue"
+    object_id: "RemoteObjectId"
+
+
+@dataclass
+class ExecutionContextDescription:
+    id: "ExecutionContextId"
+    origin: str
+    name: str
+    aux_data: object
+
+
+@dataclass
+class ExceptionDetails:
+    exception_id: int
+    text: str
+    line_number: int
+    column_number: int
+    script_id: "ScriptId"
+    url: str
+    stack_trace: "StackTrace"
+    exception: "RemoteObject"
+    execution_context_id: "ExecutionContextId"
+
+
+@dataclass
+class CallFrame:
+    function_name: str
+    script_id: "ScriptId"
+    url: str
+    line_number: int
+    column_number: int
 
 
 @dataclass
 class StackTrace:
     description: str
-    callFrames: list
-    parent: StackTrace
-    parentId: StackTraceId
+    call_frames: list
+    parent: "StackTrace"
+    parent_id: "StackTraceId"
 
 
 @dataclass
 class StackTraceId:
     id: str
-    debuggerId: UniqueDebuggerId
+    debugger_id: "UniqueDebuggerId"

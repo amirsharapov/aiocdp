@@ -4,25 +4,33 @@ from dataclasses import (
 from typing import (
     Literal
 )
+from cdp.domains.network.types import (
+    TimeSinceEpoch
+)
 
-AttributionReportingSourceRegistrationResult = Literal[
-    "success",
-    "internalError",
-    "insufficientSourceCapacity",
-    "insufficientUniqueDestinationCapacity",
-    "excessiveReportingOrigins",
-    "prohibitedByBrowserPolicy",
-    "successNoised",
-    "destinationReportingLimitReached",
-    "destinationGlobalLimitReached",
-    "destinationBothLimitsReached",
-    "reportingOriginsPerSiteLimitReached",
-    "exceedsMaxChannelCapacity"
-]
+SerializedStorageKey = str
 
-AttributionReportingSourceType = Literal[
-    "navigation",
-    "event"
+UnsignedInt64AsBase10 = str
+
+UnsignedInt128AsBase16 = str
+
+SignedInt64AsBase10 = str
+
+StorageType = Literal[
+    "appcache",
+    "cookies",
+    "file_systems",
+    "indexeddb",
+    "local_storage",
+    "shader_cache",
+    "websql",
+    "service_workers",
+    "cache_storage",
+    "interest_groups",
+    "shared_storage",
+    "storage_buckets",
+    "all",
+    "other"
 ]
 
 InterestGroupAccessType = Literal[
@@ -58,91 +66,59 @@ StorageBucketsDurability = Literal[
     "strict"
 ]
 
-StorageType = Literal[
-    "appcache",
-    "cookies",
-    "file_systems",
-    "indexeddb",
-    "local_storage",
-    "shader_cache",
-    "websql",
-    "service_workers",
-    "cache_storage",
-    "interest_groups",
-    "shared_storage",
-    "storage_buckets",
-    "all",
-    "other"
+AttributionReportingSourceType = Literal[
+    "navigation",
+    "event"
+]
+
+AttributionReportingSourceRegistrationResult = Literal[
+    "success",
+    "internalError",
+    "insufficientSourceCapacity",
+    "insufficientUniqueDestinationCapacity",
+    "excessiveReportingOrigins",
+    "prohibitedByBrowserPolicy",
+    "successNoised",
+    "destinationReportingLimitReached",
+    "destinationGlobalLimitReached",
+    "destinationBothLimitsReached",
+    "reportingOriginsPerSiteLimitReached",
+    "exceedsMaxChannelCapacity"
 ]
 
 
 @dataclass
-class AttributionReportingAggregationKeysEntry:
-    key: str
-    value: UnsignedInt128AsBase16
+class UsageForType:
+    storage_type: "StorageType"
+    usage: float
 
 
 @dataclass
-class AttributionReportingEventReportWindows:
-    start: int
-    ends: list
-
-
-@dataclass
-class AttributionReportingFilterDataEntry:
-    key: str
-    values: list
-
-
-@dataclass
-class AttributionReportingSourceRegistration:
-    time: TimeSinceEpoch
-    expiry: int
-    eventReportWindow: int
-    eventReportWindows: AttributionReportingEventReportWindows
-    aggregatableReportWindow: int
-    type: AttributionReportingSourceType
-    sourceOrigin: str
-    reportingOrigin: str
-    destinationSites: list
-    eventId: UnsignedInt64AsBase10
-    priority: SignedInt64AsBase10
-    filterData: list
-    aggregationKeys: list
-    debugKey: UnsignedInt64AsBase10
+class TrustTokens:
+    issuer_origin: str
+    count: float
 
 
 @dataclass
 class InterestGroupAd:
-    renderUrl: str
+    render_url: str
     metadata: str
 
 
 @dataclass
 class InterestGroupDetails:
-    ownerOrigin: str
+    owner_origin: str
     name: str
-    expirationTime: TimeSinceEpoch
-    joiningOrigin: str
-    biddingUrl: str
-    biddingWasmHelperUrl: str
-    updateUrl: str
-    trustedBiddingSignalsUrl: str
-    trustedBiddingSignalsKeys: list
-    userBiddingSignals: str
+    expiration_time: "TimeSinceEpoch"
+    joining_origin: str
+    bidding_url: str
+    bidding_wasm_helper_url: str
+    update_url: str
+    trusted_bidding_signals_url: str
+    trusted_bidding_signals_keys: list
+    user_bidding_signals: str
     ads: list
-    adComponents: list
-
-
-@dataclass
-class SharedStorageAccessParams:
-    scriptSourceUrl: str
-    operationName: str
-    serializedData: str
-    urlsWithMetadata: list
-    key: str
-    value: str
-    ignoreIfPresent: bool
+    ad_components: list
 
 
 @dataclass
@@ -153,46 +129,81 @@ class SharedStorageEntry:
 
 @dataclass
 class SharedStorageMetadata:
-    creationTime: TimeSinceEpoch
+    creation_time: "TimeSinceEpoch"
     length: int
-    remainingBudget: float
+    remaining_budget: float
 
 
 @dataclass
 class SharedStorageReportingMetadata:
-    eventType: str
-    reportingUrl: str
+    event_type: str
+    reporting_url: str
 
 
 @dataclass
 class SharedStorageUrlWithMetadata:
     url: str
-    reportingMetadata: list
+    reporting_metadata: list
+
+
+@dataclass
+class SharedStorageAccessParams:
+    script_source_url: str
+    operation_name: str
+    serialized_data: str
+    urls_with_metadata: list
+    key: str
+    value: str
+    ignore_if_present: bool
 
 
 @dataclass
 class StorageBucket:
-    storageKey: SerializedStorageKey
+    storage_key: "SerializedStorageKey"
     name: str
 
 
 @dataclass
 class StorageBucketInfo:
-    bucket: StorageBucket
+    bucket: "StorageBucket"
     id: str
-    expiration: TimeSinceEpoch
+    expiration: "TimeSinceEpoch"
     quota: float
     persistent: bool
-    durability: StorageBucketsDurability
+    durability: "StorageBucketsDurability"
 
 
 @dataclass
-class TrustTokens:
-    issuerOrigin: str
-    count: float
+class AttributionReportingFilterDataEntry:
+    key: str
+    values: list
 
 
 @dataclass
-class UsageForType:
-    storageType: StorageType
-    usage: float
+class AttributionReportingAggregationKeysEntry:
+    key: str
+    value: "UnsignedInt128AsBase16"
+
+
+@dataclass
+class AttributionReportingEventReportWindows:
+    start: int
+    ends: list
+
+
+@dataclass
+class AttributionReportingSourceRegistration:
+    time: "TimeSinceEpoch"
+    expiry: int
+    event_report_window: int
+    event_report_windows: "AttributionReportingEventReportWindows"
+    aggregatable_report_window: int
+    type: "AttributionReportingSourceType"
+    source_origin: str
+    reporting_origin: str
+    destination_sites: list
+    event_id: "UnsignedInt64AsBase10"
+    priority: "SignedInt64AsBase10"
+    filter_data: list
+    aggregation_keys: list
+    debug_key: "UnsignedInt64AsBase10"

@@ -9,23 +9,15 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.network.types import (
-    ResourceType,
-    ErrorReason,
-    RequestId,
-    Request
-)
 from cdp.domains.fetch.types import (
-    AuthChallenge,
-    RequestStage,
     RequestId,
     AuthChallengeResponse
 )
+from cdp.domains.network.types import (
+    ErrorReason
+)
 from cdp.domains.io.types import (
     StreamHandle
-)
-from cdp.domains.page.types import (
-    FrameId
 )
 
 
@@ -43,20 +35,20 @@ class Fetch(BaseDomain):
 
     def enable(
         self,
-        patterns: MaybeUndefined[],
-        handle_auth_requests: MaybeUndefined[]
+        patterns: list = UNDEFINED,
+        handle_auth_requests: bool = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             patterns
         ):
-            params[] = patterns
+            params["patterns"] = patterns
 
         if is_defined(
             handle_auth_requests
         ):
-            params[] = handle_auth_requests
+            params["handleAuthRequests"] = handle_auth_requests
 
         return self._send_command(
             "Fetch.enable",
@@ -82,10 +74,10 @@ class Fetch(BaseDomain):
         self,
         request_id: RequestId,
         response_code: int,
-        response_headers: MaybeUndefined[],
-        binary_response_headers: MaybeUndefined[],
-        body: MaybeUndefined[],
-        response_phrase: MaybeUndefined[]
+        response_headers: list = UNDEFINED,
+        binary_response_headers: str = UNDEFINED,
+        body: str = UNDEFINED,
+        response_phrase: str = UNDEFINED
     ):
         params = {
             "requestId": request_id,
@@ -95,22 +87,22 @@ class Fetch(BaseDomain):
         if is_defined(
             response_headers
         ):
-            params[] = response_headers
+            params["responseHeaders"] = response_headers
 
         if is_defined(
             binary_response_headers
         ):
-            params[] = binary_response_headers
+            params["binaryResponseHeaders"] = binary_response_headers
 
         if is_defined(
             body
         ):
-            params[] = body
+            params["body"] = body
 
         if is_defined(
             response_phrase
         ):
-            params[] = response_phrase
+            params["responsePhrase"] = response_phrase
 
         return self._send_command(
             "Fetch.fulfillRequest",
@@ -120,11 +112,11 @@ class Fetch(BaseDomain):
     def continue_request(
         self,
         request_id: RequestId,
-        url: MaybeUndefined[],
-        method: MaybeUndefined[],
-        post_data: MaybeUndefined[],
-        headers: MaybeUndefined[],
-        intercept_response: MaybeUndefined[]
+        url: str = UNDEFINED,
+        method: str = UNDEFINED,
+        post_data: str = UNDEFINED,
+        headers: list = UNDEFINED,
+        intercept_response: bool = UNDEFINED
     ):
         params = {
             "requestId": request_id,
@@ -133,27 +125,27 @@ class Fetch(BaseDomain):
         if is_defined(
             url
         ):
-            params[] = url
+            params["url"] = url
 
         if is_defined(
             method
         ):
-            params[] = method
+            params["method"] = method
 
         if is_defined(
             post_data
         ):
-            params[] = post_data
+            params["postData"] = post_data
 
         if is_defined(
             headers
         ):
-            params[] = headers
+            params["headers"] = headers
 
         if is_defined(
             intercept_response
         ):
-            params[] = intercept_response
+            params["interceptResponse"] = intercept_response
 
         return self._send_command(
             "Fetch.continueRequest",
@@ -178,10 +170,10 @@ class Fetch(BaseDomain):
     def continue_response(
         self,
         request_id: RequestId,
-        response_code: MaybeUndefined[],
-        response_phrase: MaybeUndefined[],
-        response_headers: MaybeUndefined[],
-        binary_response_headers: MaybeUndefined[]
+        response_code: int = UNDEFINED,
+        response_phrase: str = UNDEFINED,
+        response_headers: list = UNDEFINED,
+        binary_response_headers: str = UNDEFINED
     ):
         params = {
             "requestId": request_id,
@@ -190,22 +182,22 @@ class Fetch(BaseDomain):
         if is_defined(
             response_code
         ):
-            params[] = response_code
+            params["responseCode"] = response_code
 
         if is_defined(
             response_phrase
         ):
-            params[] = response_phrase
+            params["responsePhrase"] = response_phrase
 
         if is_defined(
             response_headers
         ):
-            params[] = response_headers
+            params["responseHeaders"] = response_headers
 
         if is_defined(
             binary_response_headers
         ):
-            params[] = binary_response_headers
+            params["binaryResponseHeaders"] = binary_response_headers
 
         return self._send_command(
             "Fetch.continueResponse",

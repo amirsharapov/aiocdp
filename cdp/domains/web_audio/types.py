@@ -5,9 +5,21 @@ from typing import (
     Literal
 )
 
-AutomationRate = Literal[
-    "a-rate",
-    "k-rate"
+GraphObjectId = str
+
+NodeType = str
+
+ParamType = str
+
+ContextType = Literal[
+    "realtime",
+    "offline"
+]
+
+ContextState = Literal[
+    "suspended",
+    "running",
+    "closed"
 ]
 
 ChannelCountMode = Literal[
@@ -21,62 +33,56 @@ ChannelInterpretation = Literal[
     "speakers"
 ]
 
-ContextState = Literal[
-    "suspended",
-    "running",
-    "closed"
+AutomationRate = Literal[
+    "a-rate",
+    "k-rate"
 ]
-
-ContextType = Literal[
-    "realtime",
-    "offline"
-]
-
-
-@dataclass
-class AudioListener:
-    listenerId: GraphObjectId
-    contextId: GraphObjectId
-
-
-@dataclass
-class AudioNode:
-    nodeId: GraphObjectId
-    contextId: GraphObjectId
-    nodeType: NodeType
-    numberOfInputs: float
-    numberOfOutputs: float
-    channelCount: float
-    channelCountMode: ChannelCountMode
-    channelInterpretation: ChannelInterpretation
-
-
-@dataclass
-class AudioParam:
-    paramId: GraphObjectId
-    nodeId: GraphObjectId
-    contextId: GraphObjectId
-    paramType: ParamType
-    rate: AutomationRate
-    defaultValue: float
-    minValue: float
-    maxValue: float
-
-
-@dataclass
-class BaseAudioContext:
-    contextId: GraphObjectId
-    contextType: ContextType
-    contextState: ContextState
-    realtimeData: ContextRealtimeData
-    callbackBufferSize: float
-    maxOutputChannelCount: float
-    sampleRate: float
 
 
 @dataclass
 class ContextRealtimeData:
-    currentTime: float
-    renderCapacity: float
-    callbackIntervalMean: float
-    callbackIntervalVariance: float
+    current_time: float
+    render_capacity: float
+    callback_interval_mean: float
+    callback_interval_variance: float
+
+
+@dataclass
+class BaseAudioContext:
+    context_id: "GraphObjectId"
+    context_type: "ContextType"
+    context_state: "ContextState"
+    realtime_data: "ContextRealtimeData"
+    callback_buffer_size: float
+    max_output_channel_count: float
+    sample_rate: float
+
+
+@dataclass
+class AudioListener:
+    listener_id: "GraphObjectId"
+    context_id: "GraphObjectId"
+
+
+@dataclass
+class AudioNode:
+    node_id: "GraphObjectId"
+    context_id: "GraphObjectId"
+    node_type: "NodeType"
+    number_of_inputs: float
+    number_of_outputs: float
+    channel_count: float
+    channel_count_mode: "ChannelCountMode"
+    channel_interpretation: "ChannelInterpretation"
+
+
+@dataclass
+class AudioParam:
+    param_id: "GraphObjectId"
+    node_id: "GraphObjectId"
+    context_id: "GraphObjectId"
+    param_type: "ParamType"
+    rate: "AutomationRate"
+    default_value: float
+    min_value: float
+    max_value: float

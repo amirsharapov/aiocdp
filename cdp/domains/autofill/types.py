@@ -12,8 +12,12 @@ FillingStrategy = Literal[
 
 
 @dataclass
-class Address:
-    fields: list
+class CreditCard:
+    number: str
+    name: str
+    expiry_month: str
+    expiry_year: str
+    cvc: str
 
 
 @dataclass
@@ -28,24 +32,20 @@ class AddressFields:
 
 
 @dataclass
-class AddressUI:
-    addressFields: list
+class Address:
+    fields: list
 
 
 @dataclass
-class CreditCard:
-    number: str
-    name: str
-    expiryMonth: str
-    expiryYear: str
-    cvc: str
+class AddressUI:
+    address_fields: list
 
 
 @dataclass
 class FilledField:
-    htmlType: str
+    html_type: str
     id: str
     name: str
     value: str
-    autofillType: str
-    fillingStrategy: FillingStrategy
+    autofill_type: str
+    filling_strategy: "FillingStrategy"

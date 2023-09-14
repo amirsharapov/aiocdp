@@ -5,7 +5,7 @@ from pathlib import Path
 
 from generator.types.protocol import Protocol
 from generator import generators
-from generator.utils import convert_to_snake_case
+from generator.utils import snake_case
 from generator.generators.visitor import SourceCodeGenerator
 
 logging.basicConfig(
@@ -44,7 +44,7 @@ def main():
 
     for protocol in protocols:
         for domain in protocol.domains:
-            module_name = convert_to_snake_case(domain.domain)
+            module_name = snake_case(domain.domain)
 
             Path(f'cdp/domains/{module_name}').mkdir(parents=True, exist_ok=True)
             Path(f'cdp/domains/{module_name}/__init__.py').touch()
@@ -62,8 +62,6 @@ def main():
             print(module)
 
             Path(f'cdp/domains/{module_name}/types.py').write_text(module)
-
-
 
 
 if __name__ == '__main__':

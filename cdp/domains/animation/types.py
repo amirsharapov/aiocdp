@@ -1,8 +1,8 @@
 from dataclasses import (
     dataclass
 )
-from typing import (
-    Literal
+from cdp.domains.dom.types import (
+    BackendNodeId
 )
 
 
@@ -10,33 +10,27 @@ from typing import (
 class Animation:
     id: str
     name: str
-    pausedState: bool
-    playState: str
-    playbackRate: float
-    startTime: float
-    currentTime: float
+    paused_state: bool
+    play_state: str
+    playback_rate: float
+    start_time: float
+    current_time: float
     type: str
-    source: AnimationEffect
-    cssId: str
+    source: "AnimationEffect"
+    css_id: str
 
 
 @dataclass
 class AnimationEffect:
     delay: float
-    endDelay: float
-    iterationStart: float
+    end_delay: float
+    iteration_start: float
     iterations: float
     duration: float
     direction: str
     fill: str
-    backendNodeId: BackendNodeId
-    keyframesRule: KeyframesRule
-    easing: str
-
-
-@dataclass
-class KeyframeStyle:
-    offset: str
+    backend_node_id: "BackendNodeId"
+    keyframes_rule: "KeyframesRule"
     easing: str
 
 
@@ -44,3 +38,9 @@ class KeyframeStyle:
 class KeyframesRule:
     name: str
     keyframes: list
+
+
+@dataclass
+class KeyframeStyle:
+    offset: str
+    easing: str

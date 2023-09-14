@@ -4,47 +4,29 @@ from dataclasses import (
 from typing import (
     Literal
 )
+from cdp.domains.network.types import (
+    LoaderId,
+    RequestId
+)
+from cdp.domains.dom.types import (
+    BackendNodeId
+)
 
-PrefetchStatus = Literal[
-    "PrefetchAllowed",
-    "PrefetchFailedIneligibleRedirect",
-    "PrefetchFailedInvalidRedirect",
-    "PrefetchFailedMIMENotSupported",
-    "PrefetchFailedNetError",
-    "PrefetchFailedNon2XX",
-    "PrefetchFailedPerPageLimitExceeded",
-    "PrefetchEvicted",
-    "PrefetchHeldback",
-    "PrefetchIneligibleRetryAfter",
-    "PrefetchIsPrivacyDecoy",
-    "PrefetchIsStale",
-    "PrefetchNotEligibleBrowserContextOffTheRecord",
-    "PrefetchNotEligibleDataSaverEnabled",
-    "PrefetchNotEligibleExistingProxy",
-    "PrefetchNotEligibleHostIsNonUnique",
-    "PrefetchNotEligibleNonDefaultStoragePartition",
-    "PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy",
-    "PrefetchNotEligibleSchemeIsNotHttps",
-    "PrefetchNotEligibleUserHasCookies",
-    "PrefetchNotEligibleUserHasServiceWorker",
-    "PrefetchNotEligibleBatterySaverEnabled",
-    "PrefetchNotEligiblePreloadingDisabled",
-    "PrefetchNotFinishedInTime",
-    "PrefetchNotStarted",
-    "PrefetchNotUsedCookiesChanged",
-    "PrefetchProxyNotAvailable",
-    "PrefetchResponseUsed",
-    "PrefetchSuccessfulButNotUsed",
-    "PrefetchNotUsedProbeFailed"
+RuleSetId = str
+
+RuleSetErrorType = Literal[
+    "SourceIsNotJsonObject",
+    "InvalidRulesSkipped"
 ]
 
-PreloadingStatus = Literal[
-    "Pending",
-    "Running",
-    "Ready",
-    "Success",
-    "Failure",
-    "NotSupported"
+SpeculationAction = Literal[
+    "Prefetch",
+    "Prerender"
+]
+
+SpeculationTargetHint = Literal[
+    "Blank",
+    "Self"
 ]
 
 PrerenderFinalStatus = Literal[
@@ -112,44 +94,71 @@ PrerenderFinalStatus = Literal[
     "ActivatedWithAuxiliaryBrowsingContexts"
 ]
 
-RuleSetErrorType = Literal[
-    "SourceIsNotJsonObject",
-    "InvalidRulesSkipped"
+PreloadingStatus = Literal[
+    "Pending",
+    "Running",
+    "Ready",
+    "Success",
+    "Failure",
+    "NotSupported"
 ]
 
-SpeculationAction = Literal[
-    "Prefetch",
-    "Prerender"
+PrefetchStatus = Literal[
+    "PrefetchAllowed",
+    "PrefetchFailedIneligibleRedirect",
+    "PrefetchFailedInvalidRedirect",
+    "PrefetchFailedMIMENotSupported",
+    "PrefetchFailedNetError",
+    "PrefetchFailedNon2XX",
+    "PrefetchFailedPerPageLimitExceeded",
+    "PrefetchEvicted",
+    "PrefetchHeldback",
+    "PrefetchIneligibleRetryAfter",
+    "PrefetchIsPrivacyDecoy",
+    "PrefetchIsStale",
+    "PrefetchNotEligibleBrowserContextOffTheRecord",
+    "PrefetchNotEligibleDataSaverEnabled",
+    "PrefetchNotEligibleExistingProxy",
+    "PrefetchNotEligibleHostIsNonUnique",
+    "PrefetchNotEligibleNonDefaultStoragePartition",
+    "PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy",
+    "PrefetchNotEligibleSchemeIsNotHttps",
+    "PrefetchNotEligibleUserHasCookies",
+    "PrefetchNotEligibleUserHasServiceWorker",
+    "PrefetchNotEligibleBatterySaverEnabled",
+    "PrefetchNotEligiblePreloadingDisabled",
+    "PrefetchNotFinishedInTime",
+    "PrefetchNotStarted",
+    "PrefetchNotUsedCookiesChanged",
+    "PrefetchProxyNotAvailable",
+    "PrefetchResponseUsed",
+    "PrefetchSuccessfulButNotUsed",
+    "PrefetchNotUsedProbeFailed"
 ]
-
-SpeculationTargetHint = Literal[
-    "Blank",
-    "Self"
-]
-
-
-@dataclass
-class PreloadingAttemptKey:
-    loaderId: LoaderId
-    action: SpeculationAction
-    url: str
-    targetHint: SpeculationTargetHint
-
-
-@dataclass
-class PreloadingAttemptSource:
-    key: PreloadingAttemptKey
-    ruleSetIds: list
-    nodeIds: list
 
 
 @dataclass
 class RuleSet:
-    id: RuleSetId
-    loaderId: LoaderId
-    sourceText: str
-    backendNodeId: BackendNodeId
+    id: "RuleSetId"
+    loader_id: "LoaderId"
+    source_text: str
+    backend_node_id: "BackendNodeId"
     url: str
-    requestId: RequestId
-    errorType: RuleSetErrorType
-    errorMessage: str
+    request_id: "RequestId"
+    error_type: "RuleSetErrorType"
+    error_message: str
+
+
+@dataclass
+class PreloadingAttemptKey:
+    loader_id: "LoaderId"
+    action: "SpeculationAction"
+    url: str
+    target_hint: "SpeculationTargetHint"
+
+
+@dataclass
+class PreloadingAttemptSource:
+    key: "PreloadingAttemptKey"
+    rule_set_ids: list
+    node_ids: list

@@ -9,14 +9,12 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.dom.types import (
-    Rect,
-    BackendNodeId
-)
 from cdp.domains.layer_tree.types import (
-    SnapshotId,
     LayerId,
-    StickyPositionConstraint
+    SnapshotId
+)
+from cdp.domains.dom.types import (
+    Rect
 )
 
 
@@ -84,9 +82,9 @@ class LayerTree(BaseDomain):
     def profile_snapshot(
         self,
         snapshot_id: SnapshotId,
-        min_repeat_count: MaybeUndefined[],
-        min_duration: MaybeUndefined[],
-        clip_rect: MaybeUndefined[]
+        min_repeat_count: int = UNDEFINED,
+        min_duration: float = UNDEFINED,
+        clip_rect: Rect = UNDEFINED
     ):
         params = {
             "snapshotId": snapshot_id,
@@ -95,17 +93,17 @@ class LayerTree(BaseDomain):
         if is_defined(
             min_repeat_count
         ):
-            params[] = min_repeat_count
+            params["minRepeatCount"] = min_repeat_count
 
         if is_defined(
             min_duration
         ):
-            params[] = min_duration
+            params["minDuration"] = min_duration
 
         if is_defined(
             clip_rect
         ):
-            params[] = clip_rect
+            params["clipRect"] = clip_rect
 
         return self._send_command(
             "LayerTree.profileSnapshot",
@@ -128,9 +126,9 @@ class LayerTree(BaseDomain):
     def replay_snapshot(
         self,
         snapshot_id: SnapshotId,
-        from_step: MaybeUndefined[],
-        to_step: MaybeUndefined[],
-        scale: MaybeUndefined[]
+        from_step: int = UNDEFINED,
+        to_step: int = UNDEFINED,
+        scale: float = UNDEFINED
     ):
         params = {
             "snapshotId": snapshot_id,
@@ -139,17 +137,17 @@ class LayerTree(BaseDomain):
         if is_defined(
             from_step
         ):
-            params[] = from_step
+            params["fromStep"] = from_step
 
         if is_defined(
             to_step
         ):
-            params[] = to_step
+            params["toStep"] = to_step
 
         if is_defined(
             scale
         ):
-            params[] = scale
+            params["scale"] = scale
 
         return self._send_command(
             "LayerTree.replaySnapshot",

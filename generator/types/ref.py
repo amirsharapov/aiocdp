@@ -1,13 +1,17 @@
 from dataclasses import dataclass
 
 from generator.types.base import Node
-from generator.utils import UNDEFINED, MaybeUndefined
+from generator.utils import UNDEFINED, MaybeUndefined, snake_case
 
 
 @dataclass
 class Ref(Node):
     domain: MaybeUndefined[str]
     type: str
+
+    @property
+    def domain_snake_case(self):
+        return snake_case(self.domain)
 
     @classmethod
     def from_str(cls, s: str):

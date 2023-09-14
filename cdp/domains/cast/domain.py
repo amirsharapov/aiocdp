@@ -15,14 +15,14 @@ from cdp.utils import (
 class Cast(BaseDomain):
     def enable(
         self,
-        presentation_url: MaybeUndefined[]
+        presentation_url: str = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             presentation_url
         ):
-            params[] = presentation_url
+            params["presentationUrl"] = presentation_url
 
         return self._send_command(
             "Cast.enable",

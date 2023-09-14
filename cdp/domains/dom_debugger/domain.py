@@ -10,12 +10,9 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.runtime.types import (
-    RemoteObjectId,
-    ScriptId,
-    RemoteObject
+    RemoteObjectId
 )
 from cdp.domains.dom.types import (
-    BackendNodeId,
     NodeId
 )
 from cdp.domains.dom_debugger.types import (
@@ -28,8 +25,8 @@ class DOMDebugger(BaseDomain):
     def get_event_listeners(
         self,
         object_id: RemoteObjectId,
-        depth: MaybeUndefined[],
-        pierce: MaybeUndefined[]
+        depth: int = UNDEFINED,
+        pierce: bool = UNDEFINED
     ):
         params = {
             "objectId": object_id,
@@ -38,12 +35,12 @@ class DOMDebugger(BaseDomain):
         if is_defined(
             depth
         ):
-            params[] = depth
+            params["depth"] = depth
 
         if is_defined(
             pierce
         ):
-            params[] = pierce
+            params["pierce"] = pierce
 
         return self._send_command(
             "DOMDebugger.getEventListeners",
@@ -68,7 +65,7 @@ class DOMDebugger(BaseDomain):
     def remove_event_listener_breakpoint(
         self,
         event_name: str,
-        target_name: MaybeUndefined[]
+        target_name: str = UNDEFINED
     ):
         params = {
             "eventName": event_name,
@@ -77,7 +74,7 @@ class DOMDebugger(BaseDomain):
         if is_defined(
             target_name
         ):
-            params[] = target_name
+            params["targetName"] = target_name
 
         return self._send_command(
             "DOMDebugger.removeEventListenerBreakpoint",
@@ -141,7 +138,7 @@ class DOMDebugger(BaseDomain):
     def set_event_listener_breakpoint(
         self,
         event_name: str,
-        target_name: MaybeUndefined[]
+        target_name: str = UNDEFINED
     ):
         params = {
             "eventName": event_name,
@@ -150,7 +147,7 @@ class DOMDebugger(BaseDomain):
         if is_defined(
             target_name
         ):
-            params[] = target_name
+            params["targetName"] = target_name
 
         return self._send_command(
             "DOMDebugger.setEventListenerBreakpoint",

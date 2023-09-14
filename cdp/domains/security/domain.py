@@ -9,18 +9,8 @@ from cdp.utils import (
     MaybeUndefined,
     UNDEFINED
 )
-from cdp.domains.network.types import (
-    TimeSinceEpoch
-)
 from cdp.domains.security.types import (
-    SecurityState,
-    CertificateSecurityState,
-    SafetyTipStatus,
-    CertificateErrorAction,
-    InsecureContentStatus,
-    SafetyTipInfo,
-    MixedContentType,
-    VisibleSecurityState
+    CertificateErrorAction
 )
 
 

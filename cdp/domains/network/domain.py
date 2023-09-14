@@ -11,64 +11,18 @@ from cdp.utils import (
 )
 from cdp.domains.network.types import (
     RequestId,
-    ConnectionType,
-    ContentSecurityPolicySource,
-    LoadNetworkResourcePageResult,
-    ClientSecurityState,
-    InterceptionId,
-    Initiator,
-    ResourcePriority,
-    SignedExchangeHeader,
-    CrossOriginEmbedderPolicyStatus,
-    ErrorReason,
-    Request,
-    CorsError,
-    PrivateNetworkRequestPolicy,
-    SecurityIsolationStatus,
-    CertificateTransparencyCompliance,
-    CrossOriginEmbedderPolicyValue,
-    CrossOriginOpenerPolicyStatus,
-    ServiceWorkerResponseSource,
-    ReportStatus,
-    AuthChallenge,
-    LoaderId,
-    SignedExchangeErrorField,
-    WebSocketFrame,
-    MonotonicTime,
-    TrustTokenOperationType,
-    CookieSourceScheme,
-    CrossOriginOpenerPolicyValue,
-    InterceptionStage,
-    CookiePriority,
-    IPAddressSpace,
-    ConnectTiming,
-    LoadNetworkResourceOptions,
-    ReportingApiReport,
-    CorsErrorStatus,
-    SignedExchangeInfo,
-    TimeSinceEpoch,
-    Response,
-    ResourceType,
-    WebSocketRequest,
-    SecurityDetails,
-    ReportId,
-    ResourceTiming,
-    Headers,
-    BlockedReason,
-    WebSocketResponse,
-    AlternateProtocolUsage,
     CookieSameSite,
-    TrustTokenParams,
+    CookieSourceScheme,
+    LoadNetworkResourcePageResult,
+    ErrorReason,
+    TimeSinceEpoch,
+    CookiePriority,
+    InterceptionId,
+    ConnectionType,
+    SecurityIsolationStatus,
+    Headers,
     AuthChallengeResponse,
-    Cookie
-)
-from cdp.domains.security.types import (
-    CertificateId,
-    MixedContentType,
-    SecurityState
-)
-from cdp.domains.runtime.types import (
-    StackTrace
+    LoadNetworkResourceOptions
 )
 from cdp.domains.io.types import (
     StreamHandle
@@ -159,13 +113,13 @@ class Network(BaseDomain):
     def continue_intercepted_request(
         self,
         interception_id: InterceptionId,
-        error_reason: MaybeUndefined[],
-        raw_response: MaybeUndefined[],
-        url: MaybeUndefined[],
-        method: MaybeUndefined[],
-        post_data: MaybeUndefined[],
-        headers: MaybeUndefined[],
-        auth_challenge_response: MaybeUndefined[]
+        error_reason: ErrorReason = UNDEFINED,
+        raw_response: str = UNDEFINED,
+        url: str = UNDEFINED,
+        method: str = UNDEFINED,
+        post_data: str = UNDEFINED,
+        headers: Headers = UNDEFINED,
+        auth_challenge_response: AuthChallengeResponse = UNDEFINED
     ):
         params = {
             "interceptionId": interception_id,
@@ -174,37 +128,37 @@ class Network(BaseDomain):
         if is_defined(
             error_reason
         ):
-            params[] = error_reason
+            params["errorReason"] = error_reason
 
         if is_defined(
             raw_response
         ):
-            params[] = raw_response
+            params["rawResponse"] = raw_response
 
         if is_defined(
             url
         ):
-            params[] = url
+            params["url"] = url
 
         if is_defined(
             method
         ):
-            params[] = method
+            params["method"] = method
 
         if is_defined(
             post_data
         ):
-            params[] = post_data
+            params["postData"] = post_data
 
         if is_defined(
             headers
         ):
-            params[] = headers
+            params["headers"] = headers
 
         if is_defined(
             auth_challenge_response
         ):
-            params[] = auth_challenge_response
+            params["authChallengeResponse"] = auth_challenge_response
 
         return self._send_command(
             "Network.continueInterceptedRequest",
@@ -214,9 +168,9 @@ class Network(BaseDomain):
     def delete_cookies(
         self,
         name: str,
-        url: MaybeUndefined[],
-        domain: MaybeUndefined[],
-        path: MaybeUndefined[]
+        url: str = UNDEFINED,
+        domain: str = UNDEFINED,
+        path: str = UNDEFINED
     ):
         params = {
             "name": name,
@@ -225,17 +179,17 @@ class Network(BaseDomain):
         if is_defined(
             url
         ):
-            params[] = url
+            params["url"] = url
 
         if is_defined(
             domain
         ):
-            params[] = domain
+            params["domain"] = domain
 
         if is_defined(
             path
         ):
-            params[] = path
+            params["path"] = path
 
         return self._send_command(
             "Network.deleteCookies",
@@ -258,7 +212,7 @@ class Network(BaseDomain):
         latency: float,
         download_throughput: float,
         upload_throughput: float,
-        connection_type: MaybeUndefined[]
+        connection_type: ConnectionType = UNDEFINED
     ):
         params = {
             "offline": offline,
@@ -270,7 +224,7 @@ class Network(BaseDomain):
         if is_defined(
             connection_type
         ):
-            params[] = connection_type
+            params["connectionType"] = connection_type
 
         return self._send_command(
             "Network.emulateNetworkConditions",
@@ -279,26 +233,26 @@ class Network(BaseDomain):
 
     def enable(
         self,
-        max_total_buffer_size: MaybeUndefined[],
-        max_resource_buffer_size: MaybeUndefined[],
-        max_post_data_size: MaybeUndefined[]
+        max_total_buffer_size: int = UNDEFINED,
+        max_resource_buffer_size: int = UNDEFINED,
+        max_post_data_size: int = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             max_total_buffer_size
         ):
-            params[] = max_total_buffer_size
+            params["maxTotalBufferSize"] = max_total_buffer_size
 
         if is_defined(
             max_resource_buffer_size
         ):
-            params[] = max_resource_buffer_size
+            params["maxResourceBufferSize"] = max_resource_buffer_size
 
         if is_defined(
             max_post_data_size
         ):
-            params[] = max_post_data_size
+            params["maxPostDataSize"] = max_post_data_size
 
         return self._send_command(
             "Network.enable",
@@ -330,14 +284,14 @@ class Network(BaseDomain):
 
     def get_cookies(
         self,
-        urls: MaybeUndefined[]
+        urls: list = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             urls
         ):
-            params[] = urls
+            params["urls"] = urls
 
         return self._send_command(
             "Network.getCookies",
@@ -413,8 +367,8 @@ class Network(BaseDomain):
         self,
         request_id: RequestId,
         query: str,
-        case_sensitive: MaybeUndefined[],
-        is_regex: MaybeUndefined[]
+        case_sensitive: bool = UNDEFINED,
+        is_regex: bool = UNDEFINED
     ):
         params = {
             "requestId": request_id,
@@ -424,12 +378,12 @@ class Network(BaseDomain):
         if is_defined(
             case_sensitive
         ):
-            params[] = case_sensitive
+            params["caseSensitive"] = case_sensitive
 
         if is_defined(
             is_regex
         ):
-            params[] = is_regex
+            params["isRegex"] = is_regex
 
         return self._send_command(
             "Network.searchInResponseBody",
@@ -479,18 +433,18 @@ class Network(BaseDomain):
         self,
         name: str,
         value: str,
-        url: MaybeUndefined[],
-        domain: MaybeUndefined[],
-        path: MaybeUndefined[],
-        secure: MaybeUndefined[],
-        http_only: MaybeUndefined[],
-        same_site: MaybeUndefined[],
-        expires: MaybeUndefined[],
-        priority: MaybeUndefined[],
-        same_party: MaybeUndefined[],
-        source_scheme: MaybeUndefined[],
-        source_port: MaybeUndefined[],
-        partition_key: MaybeUndefined[]
+        url: str = UNDEFINED,
+        domain: str = UNDEFINED,
+        path: str = UNDEFINED,
+        secure: bool = UNDEFINED,
+        http_only: bool = UNDEFINED,
+        same_site: CookieSameSite = UNDEFINED,
+        expires: TimeSinceEpoch = UNDEFINED,
+        priority: CookiePriority = UNDEFINED,
+        same_party: bool = UNDEFINED,
+        source_scheme: CookieSourceScheme = UNDEFINED,
+        source_port: int = UNDEFINED,
+        partition_key: str = UNDEFINED
     ):
         params = {
             "name": name,
@@ -500,62 +454,62 @@ class Network(BaseDomain):
         if is_defined(
             url
         ):
-            params[] = url
+            params["url"] = url
 
         if is_defined(
             domain
         ):
-            params[] = domain
+            params["domain"] = domain
 
         if is_defined(
             path
         ):
-            params[] = path
+            params["path"] = path
 
         if is_defined(
             secure
         ):
-            params[] = secure
+            params["secure"] = secure
 
         if is_defined(
             http_only
         ):
-            params[] = http_only
+            params["httpOnly"] = http_only
 
         if is_defined(
             same_site
         ):
-            params[] = same_site
+            params["sameSite"] = same_site
 
         if is_defined(
             expires
         ):
-            params[] = expires
+            params["expires"] = expires
 
         if is_defined(
             priority
         ):
-            params[] = priority
+            params["priority"] = priority
 
         if is_defined(
             same_party
         ):
-            params[] = same_party
+            params["sameParty"] = same_party
 
         if is_defined(
             source_scheme
         ):
-            params[] = source_scheme
+            params["sourceScheme"] = source_scheme
 
         if is_defined(
             source_port
         ):
-            params[] = source_port
+            params["sourcePort"] = source_port
 
         if is_defined(
             partition_key
         ):
-            params[] = partition_key
+            params["partitionKey"] = partition_key
 
         return self._send_command(
             "Network.setCookie",
@@ -617,9 +571,9 @@ class Network(BaseDomain):
     def set_user_agent_override(
         self,
         user_agent: str,
-        accept_language: MaybeUndefined[],
-        platform: MaybeUndefined[],
-        user_agent_metadata: MaybeUndefined[]
+        accept_language: str = UNDEFINED,
+        platform: str = UNDEFINED,
+        user_agent_metadata: UserAgentMetadata = UNDEFINED
     ):
         params = {
             "userAgent": user_agent,
@@ -628,17 +582,17 @@ class Network(BaseDomain):
         if is_defined(
             accept_language
         ):
-            params[] = accept_language
+            params["acceptLanguage"] = accept_language
 
         if is_defined(
             platform
         ):
-            params[] = platform
+            params["platform"] = platform
 
         if is_defined(
             user_agent_metadata
         ):
-            params[] = user_agent_metadata
+            params["userAgentMetadata"] = user_agent_metadata
 
         return self._send_command(
             "Network.setUserAgentOverride",
@@ -647,14 +601,14 @@ class Network(BaseDomain):
 
     def get_security_isolation_status(
         self,
-        frame_id: MaybeUndefined[]
+        frame_id: FrameId = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             frame_id
         ):
-            params[] = frame_id
+            params["frameId"] = frame_id
 
         return self._send_command(
             "Network.getSecurityIsolationStatus",
@@ -676,9 +630,9 @@ class Network(BaseDomain):
 
     def load_network_resource(
         self,
-        frame_id: MaybeUndefined[],
+        frame_id: FrameId,
         url: str,
-        options: LoadNetworkResourceOptions
+        options: LoadNetworkResourceOptions = UNDEFINED
     ):
         params = {
             "url": url,
@@ -688,7 +642,7 @@ class Network(BaseDomain):
         if is_defined(
             frame_id
         ):
-            params[] = frame_id
+            params["frameId"] = frame_id
 
         return self._send_command(
             "Network.loadNetworkResource",

@@ -10,56 +10,29 @@ from cdp.utils import (
     UNDEFINED
 )
 from cdp.domains.page.types import (
-    AppManifestParsedProperties,
-    FrameTree,
-    BackForwardCacheNotRestoredReasonType,
-    LayoutViewport,
-    FrameResourceTree,
     FrameId,
-    OriginTrialStatus,
-    PermissionsPolicyBlockLocator,
-    AdFrameType,
-    BackForwardCacheNotRestoredExplanationTree,
-    Viewport,
-    ScreencastFrameMetadata,
-    OriginTrialToken,
-    CrossOriginIsolatedContextType,
-    AdFrameStatus,
-    SecureContextType,
-    PermissionsPolicyBlockReason,
-    ScriptIdentifier,
-    ClientNavigationReason,
-    ClientNavigationDisposition,
-    Frame,
     VisualViewport,
-    FontFamilies,
-    BackForwardCacheNotRestoredReason,
-    NavigationType,
     TransitionType,
-    FontSizes,
-    OriginTrialUsageRestriction,
-    ReferrerPolicy,
-    DialogType,
-    PermissionsPolicyFeature,
-    OriginTrialTokenStatus,
+    AppManifestParsedProperties,
+    FontFamilies,
+    AdScriptId,
+    Viewport,
     AutoResponseMode,
-    AdScriptId
+    LayoutViewport,
+    FrameTree,
+    FrameResourceTree,
+    ReferrerPolicy,
+    FontSizes,
+    ScriptIdentifier
 )
 from cdp.domains.runtime.types import (
-    UniqueDebuggerId,
-    ScriptId,
-    ExecutionContextId,
-    StackTrace
-)
-from cdp.domains.network.types import (
-    ResourceType,
-    TimeSinceEpoch,
-    MonotonicTime,
-    LoaderId
+    ExecutionContextId
 )
 from cdp.domains.dom.types import (
-    Rect,
-    BackendNodeId
+    Rect
+)
+from cdp.domains.network.types import (
+    LoaderId
 )
 from cdp.domains.io.types import (
     StreamHandle
@@ -87,9 +60,9 @@ class Page(BaseDomain):
     def add_script_to_evaluate_on_new_document(
         self,
         source: str,
-        world_name: MaybeUndefined[],
-        include_command_line_api: MaybeUndefined[],
-        run_immediately: MaybeUndefined[]
+        world_name: str = UNDEFINED,
+        include_command_line_api: bool = UNDEFINED,
+        run_immediately: bool = UNDEFINED
     ):
         params = {
             "source": source,
@@ -98,17 +71,17 @@ class Page(BaseDomain):
         if is_defined(
             world_name
         ):
-            params[] = world_name
+            params["worldName"] = world_name
 
         if is_defined(
             include_command_line_api
         ):
-            params[] = include_command_line_api
+            params["includeCommandLineAPI"] = include_command_line_api
 
         if is_defined(
             run_immediately
         ):
-            params[] = run_immediately
+            params["runImmediately"] = run_immediately
 
         return self._send_command(
             "Page.addScriptToEvaluateOnNewDocument",
@@ -127,44 +100,44 @@ class Page(BaseDomain):
 
     def capture_screenshot(
         self,
-        format_: MaybeUndefined[],
-        quality: MaybeUndefined[],
-        clip: MaybeUndefined[],
-        from_surface: MaybeUndefined[],
-        capture_beyond_viewport: MaybeUndefined[],
-        optimize_for_speed: MaybeUndefined[]
+        format_: str = UNDEFINED,
+        quality: int = UNDEFINED,
+        clip: Viewport = UNDEFINED,
+        from_surface: bool = UNDEFINED,
+        capture_beyond_viewport: bool = UNDEFINED,
+        optimize_for_speed: bool = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             format_
         ):
-            params[] = format_
+            params["format"] = format_
 
         if is_defined(
             quality
         ):
-            params[] = quality
+            params["quality"] = quality
 
         if is_defined(
             clip
         ):
-            params[] = clip
+            params["clip"] = clip
 
         if is_defined(
             from_surface
         ):
-            params[] = from_surface
+            params["fromSurface"] = from_surface
 
         if is_defined(
             capture_beyond_viewport
         ):
-            params[] = capture_beyond_viewport
+            params["captureBeyondViewport"] = capture_beyond_viewport
 
         if is_defined(
             optimize_for_speed
         ):
-            params[] = optimize_for_speed
+            params["optimizeForSpeed"] = optimize_for_speed
 
         return self._send_command(
             "Page.captureScreenshot",
@@ -173,14 +146,14 @@ class Page(BaseDomain):
 
     def capture_snapshot(
         self,
-        format_: MaybeUndefined[]
+        format_: str = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             format_
         ):
-            params[] = format_
+            params["format"] = format_
 
         return self._send_command(
             "Page.captureSnapshot",
@@ -220,8 +193,8 @@ class Page(BaseDomain):
     def create_isolated_world(
         self,
         frame_id: FrameId,
-        world_name: MaybeUndefined[],
-        grant_univeral_access: MaybeUndefined[]
+        world_name: str = UNDEFINED,
+        grant_univeral_access: bool = UNDEFINED
     ):
         params = {
             "frameId": frame_id,
@@ -230,12 +203,12 @@ class Page(BaseDomain):
         if is_defined(
             world_name
         ):
-            params[] = world_name
+            params["worldName"] = world_name
 
         if is_defined(
             grant_univeral_access
         ):
-            params[] = grant_univeral_access
+            params["grantUniveralAccess"] = grant_univeral_access
 
         return self._send_command(
             "Page.createIsolatedWorld",
@@ -408,7 +381,7 @@ class Page(BaseDomain):
     def handle_java_script_dialog(
         self,
         accept: bool,
-        prompt_text: MaybeUndefined[]
+        prompt_text: str = UNDEFINED
     ):
         params = {
             "accept": accept,
@@ -417,7 +390,7 @@ class Page(BaseDomain):
         if is_defined(
             prompt_text
         ):
-            params[] = prompt_text
+            params["promptText"] = prompt_text
 
         return self._send_command(
             "Page.handleJavaScriptDialog",
@@ -427,10 +400,10 @@ class Page(BaseDomain):
     def navigate(
         self,
         url: str,
-        referrer: MaybeUndefined[],
-        transition_type: MaybeUndefined[],
-        frame_id: MaybeUndefined[],
-        referrer_policy: MaybeUndefined[]
+        referrer: str = UNDEFINED,
+        transition_type: TransitionType = UNDEFINED,
+        frame_id: FrameId = UNDEFINED,
+        referrer_policy: ReferrerPolicy = UNDEFINED
     ):
         params = {
             "url": url,
@@ -439,22 +412,22 @@ class Page(BaseDomain):
         if is_defined(
             referrer
         ):
-            params[] = referrer
+            params["referrer"] = referrer
 
         if is_defined(
             transition_type
         ):
-            params[] = transition_type
+            params["transitionType"] = transition_type
 
         if is_defined(
             frame_id
         ):
-            params[] = frame_id
+            params["frameId"] = frame_id
 
         if is_defined(
             referrer_policy
         ):
-            params[] = referrer_policy
+            params["referrerPolicy"] = referrer_policy
 
         return self._send_command(
             "Page.navigate",
@@ -476,104 +449,104 @@ class Page(BaseDomain):
 
     def print_to_pdf(
         self,
-        landscape: MaybeUndefined[],
-        display_header_footer: MaybeUndefined[],
-        print_background: MaybeUndefined[],
-        scale: MaybeUndefined[],
-        paper_width: MaybeUndefined[],
-        paper_height: MaybeUndefined[],
-        margin_top: MaybeUndefined[],
-        margin_bottom: MaybeUndefined[],
-        margin_left: MaybeUndefined[],
-        margin_right: MaybeUndefined[],
-        page_ranges: MaybeUndefined[],
-        header_template: MaybeUndefined[],
-        footer_template: MaybeUndefined[],
-        prefer_css_page_size: MaybeUndefined[],
-        transfer_mode: MaybeUndefined[],
-        generate_tagged_pdf: MaybeUndefined[]
+        landscape: bool = UNDEFINED,
+        display_header_footer: bool = UNDEFINED,
+        print_background: bool = UNDEFINED,
+        scale: float = UNDEFINED,
+        paper_width: float = UNDEFINED,
+        paper_height: float = UNDEFINED,
+        margin_top: float = UNDEFINED,
+        margin_bottom: float = UNDEFINED,
+        margin_left: float = UNDEFINED,
+        margin_right: float = UNDEFINED,
+        page_ranges: str = UNDEFINED,
+        header_template: str = UNDEFINED,
+        footer_template: str = UNDEFINED,
+        prefer_css_page_size: bool = UNDEFINED,
+        transfer_mode: str = UNDEFINED,
+        generate_tagged_pdf: bool = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             landscape
         ):
-            params[] = landscape
+            params["landscape"] = landscape
 
         if is_defined(
             display_header_footer
         ):
-            params[] = display_header_footer
+            params["displayHeaderFooter"] = display_header_footer
 
         if is_defined(
             print_background
         ):
-            params[] = print_background
+            params["printBackground"] = print_background
 
         if is_defined(
             scale
         ):
-            params[] = scale
+            params["scale"] = scale
 
         if is_defined(
             paper_width
         ):
-            params[] = paper_width
+            params["paperWidth"] = paper_width
 
         if is_defined(
             paper_height
         ):
-            params[] = paper_height
+            params["paperHeight"] = paper_height
 
         if is_defined(
             margin_top
         ):
-            params[] = margin_top
+            params["marginTop"] = margin_top
 
         if is_defined(
             margin_bottom
         ):
-            params[] = margin_bottom
+            params["marginBottom"] = margin_bottom
 
         if is_defined(
             margin_left
         ):
-            params[] = margin_left
+            params["marginLeft"] = margin_left
 
         if is_defined(
             margin_right
         ):
-            params[] = margin_right
+            params["marginRight"] = margin_right
 
         if is_defined(
             page_ranges
         ):
-            params[] = page_ranges
+            params["pageRanges"] = page_ranges
 
         if is_defined(
             header_template
         ):
-            params[] = header_template
+            params["headerTemplate"] = header_template
 
         if is_defined(
             footer_template
         ):
-            params[] = footer_template
+            params["footerTemplate"] = footer_template
 
         if is_defined(
             prefer_css_page_size
         ):
-            params[] = prefer_css_page_size
+            params["preferCSSPageSize"] = prefer_css_page_size
 
         if is_defined(
             transfer_mode
         ):
-            params[] = transfer_mode
+            params["transferMode"] = transfer_mode
 
         if is_defined(
             generate_tagged_pdf
         ):
-            params[] = generate_tagged_pdf
+            params["generateTaggedPDF"] = generate_tagged_pdf
 
         return self._send_command(
             "Page.printToPDF",
@@ -582,20 +555,20 @@ class Page(BaseDomain):
 
     def reload(
         self,
-        ignore_cache: MaybeUndefined[],
-        script_to_evaluate_on_load: MaybeUndefined[]
+        ignore_cache: bool = UNDEFINED,
+        script_to_evaluate_on_load: str = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             ignore_cache
         ):
-            params[] = ignore_cache
+            params["ignoreCache"] = ignore_cache
 
         if is_defined(
             script_to_evaluate_on_load
         ):
-            params[] = script_to_evaluate_on_load
+            params["scriptToEvaluateOnLoad"] = script_to_evaluate_on_load
 
         return self._send_command(
             "Page.reload",
@@ -646,8 +619,8 @@ class Page(BaseDomain):
         frame_id: FrameId,
         url: str,
         query: str,
-        case_sensitive: MaybeUndefined[],
-        is_regex: MaybeUndefined[]
+        case_sensitive: bool = UNDEFINED,
+        is_regex: bool = UNDEFINED
     ):
         params = {
             "frameId": frame_id,
@@ -658,12 +631,12 @@ class Page(BaseDomain):
         if is_defined(
             case_sensitive
         ):
-            params[] = case_sensitive
+            params["caseSensitive"] = case_sensitive
 
         if is_defined(
             is_regex
         ):
-            params[] = is_regex
+            params["isRegex"] = is_regex
 
         return self._send_command(
             "Page.searchInResource",
@@ -728,14 +701,14 @@ class Page(BaseDomain):
         height: int,
         device_scale_factor: float,
         mobile: bool,
-        scale: MaybeUndefined[],
-        screen_width: MaybeUndefined[],
-        screen_height: MaybeUndefined[],
-        position_x: MaybeUndefined[],
-        position_y: MaybeUndefined[],
-        dont_set_visible_size: MaybeUndefined[],
-        screen_orientation: MaybeUndefined[],
-        viewport: MaybeUndefined[]
+        scale: float = UNDEFINED,
+        screen_width: int = UNDEFINED,
+        screen_height: int = UNDEFINED,
+        position_x: int = UNDEFINED,
+        position_y: int = UNDEFINED,
+        dont_set_visible_size: bool = UNDEFINED,
+        screen_orientation: ScreenOrientation = UNDEFINED,
+        viewport: Viewport = UNDEFINED
     ):
         params = {
             "width": width,
@@ -747,42 +720,42 @@ class Page(BaseDomain):
         if is_defined(
             scale
         ):
-            params[] = scale
+            params["scale"] = scale
 
         if is_defined(
             screen_width
         ):
-            params[] = screen_width
+            params["screenWidth"] = screen_width
 
         if is_defined(
             screen_height
         ):
-            params[] = screen_height
+            params["screenHeight"] = screen_height
 
         if is_defined(
             position_x
         ):
-            params[] = position_x
+            params["positionX"] = position_x
 
         if is_defined(
             position_y
         ):
-            params[] = position_y
+            params["positionY"] = position_y
 
         if is_defined(
             dont_set_visible_size
         ):
-            params[] = dont_set_visible_size
+            params["dontSetVisibleSize"] = dont_set_visible_size
 
         if is_defined(
             screen_orientation
         ):
-            params[] = screen_orientation
+            params["screenOrientation"] = screen_orientation
 
         if is_defined(
             viewport
         ):
-            params[] = viewport
+            params["viewport"] = viewport
 
         return self._send_command(
             "Page.setDeviceMetricsOverride",
@@ -809,7 +782,7 @@ class Page(BaseDomain):
     def set_font_families(
         self,
         font_families: FontFamilies,
-        for_scripts: MaybeUndefined[]
+        for_scripts: list = UNDEFINED
     ):
         params = {
             "fontFamilies": font_families,
@@ -818,7 +791,7 @@ class Page(BaseDomain):
         if is_defined(
             for_scripts
         ):
-            params[] = for_scripts
+            params["forScripts"] = for_scripts
 
         return self._send_command(
             "Page.setFontFamilies",
@@ -856,7 +829,7 @@ class Page(BaseDomain):
     def set_download_behavior(
         self,
         behavior: str,
-        download_path: MaybeUndefined[]
+        download_path: str = UNDEFINED
     ):
         params = {
             "behavior": behavior,
@@ -865,7 +838,7 @@ class Page(BaseDomain):
         if is_defined(
             download_path
         ):
-            params[] = download_path
+            params["downloadPath"] = download_path
 
         return self._send_command(
             "Page.setDownloadBehavior",
@@ -874,26 +847,26 @@ class Page(BaseDomain):
 
     def set_geolocation_override(
         self,
-        latitude: MaybeUndefined[],
-        longitude: MaybeUndefined[],
-        accuracy: MaybeUndefined[]
+        latitude: float = UNDEFINED,
+        longitude: float = UNDEFINED,
+        accuracy: float = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             latitude
         ):
-            params[] = latitude
+            params["latitude"] = latitude
 
         if is_defined(
             longitude
         ):
-            params[] = longitude
+            params["longitude"] = longitude
 
         if is_defined(
             accuracy
         ):
-            params[] = accuracy
+            params["accuracy"] = accuracy
 
         return self._send_command(
             "Page.setGeolocationOverride",
@@ -916,7 +889,7 @@ class Page(BaseDomain):
     def set_touch_emulation_enabled(
         self,
         enabled: bool,
-        configuration: MaybeUndefined[]
+        configuration: str = UNDEFINED
     ):
         params = {
             "enabled": enabled,
@@ -925,7 +898,7 @@ class Page(BaseDomain):
         if is_defined(
             configuration
         ):
-            params[] = configuration
+            params["configuration"] = configuration
 
         return self._send_command(
             "Page.setTouchEmulationEnabled",
@@ -934,38 +907,38 @@ class Page(BaseDomain):
 
     def start_screencast(
         self,
-        format_: MaybeUndefined[],
-        quality: MaybeUndefined[],
-        max_width: MaybeUndefined[],
-        max_height: MaybeUndefined[],
-        every_nth_frame: MaybeUndefined[]
+        format_: str = UNDEFINED,
+        quality: int = UNDEFINED,
+        max_width: int = UNDEFINED,
+        max_height: int = UNDEFINED,
+        every_nth_frame: int = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             format_
         ):
-            params[] = format_
+            params["format"] = format_
 
         if is_defined(
             quality
         ):
-            params[] = quality
+            params["quality"] = quality
 
         if is_defined(
             max_width
         ):
-            params[] = max_width
+            params["maxWidth"] = max_width
 
         if is_defined(
             max_height
         ):
-            params[] = max_height
+            params["maxHeight"] = max_height
 
         if is_defined(
             every_nth_frame
         ):
-            params[] = every_nth_frame
+            params["everyNthFrame"] = every_nth_frame
 
         return self._send_command(
             "Page.startScreencast",
@@ -1092,7 +1065,7 @@ class Page(BaseDomain):
     def generate_test_report(
         self,
         message: str,
-        group: MaybeUndefined[]
+        group: str = UNDEFINED
     ):
         params = {
             "message": message,
@@ -1101,7 +1074,7 @@ class Page(BaseDomain):
         if is_defined(
             group
         ):
-            params[] = group
+            params["group"] = group
 
         return self._send_command(
             "Page.generateTestReport",

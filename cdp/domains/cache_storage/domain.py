@@ -11,7 +11,6 @@ from cdp.utils import (
 )
 from cdp.domains.cache_storage.types import (
     CacheId,
-    CachedResponseType,
     CachedResponse
 )
 from cdp.domains.storage.types import (
@@ -51,26 +50,26 @@ class CacheStorage(BaseDomain):
 
     def request_cache_names(
         self,
-        security_origin: MaybeUndefined[],
-        storage_key: MaybeUndefined[],
-        storage_bucket: MaybeUndefined[]
+        security_origin: str = UNDEFINED,
+        storage_key: str = UNDEFINED,
+        storage_bucket: StorageBucket = UNDEFINED
     ):
         params = {}
 
         if is_defined(
             security_origin
         ):
-            params[] = security_origin
+            params["securityOrigin"] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params[] = storage_key
+            params["storageKey"] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params[] = storage_bucket
+            params["storageBucket"] = storage_bucket
 
         return self._send_command(
             "CacheStorage.requestCacheNames",
@@ -97,9 +96,9 @@ class CacheStorage(BaseDomain):
     def request_entries(
         self,
         cache_id: CacheId,
-        skip_count: MaybeUndefined[],
-        page_size: MaybeUndefined[],
-        path_filter: MaybeUndefined[]
+        skip_count: int = UNDEFINED,
+        page_size: int = UNDEFINED,
+        path_filter: str = UNDEFINED
     ):
         params = {
             "cacheId": cache_id,
@@ -108,17 +107,17 @@ class CacheStorage(BaseDomain):
         if is_defined(
             skip_count
         ):
-            params[] = skip_count
+            params["skipCount"] = skip_count
 
         if is_defined(
             page_size
         ):
-            params[] = page_size
+            params["pageSize"] = page_size
 
         if is_defined(
             path_filter
         ):
-            params[] = path_filter
+            params["pathFilter"] = path_filter
 
         return self._send_command(
             "CacheStorage.requestEntries",
