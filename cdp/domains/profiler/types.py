@@ -44,9 +44,11 @@ class ProfileNode:
                 'hit_count': self.hit_count,
                 'children': self.children,
                 'deopt_reason': self.deopt_reason,
-                'position_ticks': _.to_dict(
+                'position_ticks': [_.to_dict(
                     casing_strategy
-                )_position_ticks,
+                )
+                    for _ in self.position_ticks
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -57,9 +59,11 @@ class ProfileNode:
                 'hitCount': self.hit_count,
                 'children': self.children,
                 'deoptReason': self.deopt_reason,
-                'positionTicks': _.to_dict(
+                'positionTicks': [_.to_dict(
                     casing_strategy
-                )_position_ticks,
+                )
+                    for _ in self.position_ticks
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -70,9 +74,11 @@ class ProfileNode:
                 'HitCount': self.hit_count,
                 'Children': self.children,
                 'DeoptReason': self.deopt_reason,
-                'PositionTicks': _.to_dict(
+                'PositionTicks': [_.to_dict(
                     casing_strategy
-                )_position_ticks,
+                )
+                    for _ in self.position_ticks
+                ],
             }
 
 
@@ -94,9 +100,11 @@ class Profile:
 
         if casing_strategy == 'snake':
             return {
-                'nodes': _.to_dict(
+                'nodes': [_.to_dict(
                     casing_strategy
-                )_nodes,
+                )
+                    for _ in self.nodes
+                ],
                 'start_time': self.start_time,
                 'end_time': self.end_time,
                 'samples': self.samples,
@@ -104,9 +112,11 @@ class Profile:
             }
         if casing_strategy == 'camel':
             return {
-                'nodes': _.to_dict(
+                'nodes': [_.to_dict(
                     casing_strategy
-                )_nodes,
+                )
+                    for _ in self.nodes
+                ],
                 'startTime': self.start_time,
                 'endTime': self.end_time,
                 'samples': self.samples,
@@ -114,9 +124,11 @@ class Profile:
             }
         if casing_strategy == 'pascal':
             return {
-                'Nodes': _.to_dict(
+                'Nodes': [_.to_dict(
                     casing_strategy
-                )_nodes,
+                )
+                    for _ in self.nodes
+                ],
                 'StartTime': self.start_time,
                 'EndTime': self.end_time,
                 'Samples': self.samples,
@@ -205,25 +217,31 @@ class FunctionCoverage:
         if casing_strategy == 'snake':
             return {
                 'function_name': self.function_name,
-                'ranges': _.to_dict(
+                'ranges': [_.to_dict(
                     casing_strategy
-                )_ranges,
+                )
+                    for _ in self.ranges
+                ],
                 'is_block_coverage': self.is_block_coverage,
             }
         if casing_strategy == 'camel':
             return {
                 'functionName': self.function_name,
-                'ranges': _.to_dict(
+                'ranges': [_.to_dict(
                     casing_strategy
-                )_ranges,
+                )
+                    for _ in self.ranges
+                ],
                 'isBlockCoverage': self.is_block_coverage,
             }
         if casing_strategy == 'pascal':
             return {
                 'FunctionName': self.function_name,
-                'Ranges': _.to_dict(
+                'Ranges': [_.to_dict(
                     casing_strategy
-                )_ranges,
+                )
+                    for _ in self.ranges
+                ],
                 'IsBlockCoverage': self.is_block_coverage,
             }
 
@@ -248,9 +266,11 @@ class ScriptCoverage:
                     casing_strategy
                 ),
                 'url': self.url,
-                'functions': _.to_dict(
+                'functions': [_.to_dict(
                     casing_strategy
-                )_functions,
+                )
+                    for _ in self.functions
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -258,9 +278,11 @@ class ScriptCoverage:
                     casing_strategy
                 ),
                 'url': self.url,
-                'functions': _.to_dict(
+                'functions': [_.to_dict(
                     casing_strategy
-                )_functions,
+                )
+                    for _ in self.functions
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -268,9 +290,11 @@ class ScriptCoverage:
                     casing_strategy
                 ),
                 'Url': self.url,
-                'Functions': _.to_dict(
+                'Functions': [_.to_dict(
                     casing_strategy
-                )_functions,
+                )
+                    for _ in self.functions
+                ],
             }
 
 
@@ -316,23 +340,29 @@ class TypeProfileEntry:
         if casing_strategy == 'snake':
             return {
                 'offset': self.offset,
-                'types': _.to_dict(
+                'types': [_.to_dict(
                     casing_strategy
-                )_types,
+                )
+                    for _ in self.types
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'offset': self.offset,
-                'types': _.to_dict(
+                'types': [_.to_dict(
                     casing_strategy
-                )_types,
+                )
+                    for _ in self.types
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Offset': self.offset,
-                'Types': _.to_dict(
+                'Types': [_.to_dict(
                     casing_strategy
-                )_types,
+                )
+                    for _ in self.types
+                ],
             }
 
 
@@ -356,9 +386,11 @@ class ScriptTypeProfile:
                     casing_strategy
                 ),
                 'url': self.url,
-                'entries': _.to_dict(
+                'entries': [_.to_dict(
                     casing_strategy
-                )_entries,
+                )
+                    for _ in self.entries
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -366,9 +398,11 @@ class ScriptTypeProfile:
                     casing_strategy
                 ),
                 'url': self.url,
-                'entries': _.to_dict(
+                'entries': [_.to_dict(
                     casing_strategy
-                )_entries,
+                )
+                    for _ in self.entries
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -376,9 +410,11 @@ class ScriptTypeProfile:
                     casing_strategy
                 ),
                 'Url': self.url,
-                'Entries': _.to_dict(
+                'Entries': [_.to_dict(
                     casing_strategy
-                )_entries,
+                )
+                    for _ in self.entries
+                ],
             }
 
 

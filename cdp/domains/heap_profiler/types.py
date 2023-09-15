@@ -43,9 +43,11 @@ class SamplingHeapProfileNode:
                 ),
                 'self_size': self.self_size,
                 'id': self.id_,
-                'children': _.to_dict(
+                'children': [_.to_dict(
                     casing_strategy
-                )_children,
+                )
+                    for _ in self.children
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -54,9 +56,11 @@ class SamplingHeapProfileNode:
                 ),
                 'selfSize': self.self_size,
                 'id': self.id_,
-                'children': _.to_dict(
+                'children': [_.to_dict(
                     casing_strategy
-                )_children,
+                )
+                    for _ in self.children
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -65,9 +69,11 @@ class SamplingHeapProfileNode:
                 ),
                 'SelfSize': self.self_size,
                 'Id': self.id_,
-                'Children': _.to_dict(
+                'Children': [_.to_dict(
                     casing_strategy
-                )_children,
+                )
+                    for _ in self.children
+                ],
             }
 
 
@@ -123,27 +129,33 @@ class SamplingHeapProfile:
                 'head': self.head.to_dict(
                     casing_strategy
                 ),
-                'samples': _.to_dict(
+                'samples': [_.to_dict(
                     casing_strategy
-                )_samples,
+                )
+                    for _ in self.samples
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'head': self.head.to_dict(
                     casing_strategy
                 ),
-                'samples': _.to_dict(
+                'samples': [_.to_dict(
                     casing_strategy
-                )_samples,
+                )
+                    for _ in self.samples
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Head': self.head.to_dict(
                     casing_strategy
                 ),
-                'Samples': _.to_dict(
+                'Samples': [_.to_dict(
                     casing_strategy
-                )_samples,
+                )
+                    for _ in self.samples
+                ],
             }
 
 

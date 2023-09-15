@@ -60,25 +60,31 @@ class PseudoElementMatches:
             return {
                 'pseudo_type': self.pseudo_type,
                 'pseudo_identifier': self.pseudo_identifier,
-                'matches': _.to_dict(
+                'matches': [_.to_dict(
                     casing_strategy
-                )_matches,
+                )
+                    for _ in self.matches
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'pseudoType': self.pseudo_type,
                 'pseudoIdentifier': self.pseudo_identifier,
-                'matches': _.to_dict(
+                'matches': [_.to_dict(
                     casing_strategy
-                )_matches,
+                )
+                    for _ in self.matches
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'PseudoType': self.pseudo_type,
                 'PseudoIdentifier': self.pseudo_identifier,
-                'Matches': _.to_dict(
+                'Matches': [_.to_dict(
                     casing_strategy
-                )_matches,
+                )
+                    for _ in self.matches
+                ],
             }
 
 
@@ -100,27 +106,33 @@ class InheritedStyleEntry:
                 'inline_style': self.inline_style.to_dict(
                     casing_strategy
                 ),
-                'matched_css_rules': _.to_dict(
+                'matched_css_rules': [_.to_dict(
                     casing_strategy
-                )_matched_css_rules,
+                )
+                    for _ in self.matched_css_rules
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'inlineStyle': self.inline_style.to_dict(
                     casing_strategy
                 ),
-                'matchedCSSRules': _.to_dict(
+                'matchedCSSRules': [_.to_dict(
                     casing_strategy
-                )_matched_css_rules,
+                )
+                    for _ in self.matched_css_rules
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'InlineStyle': self.inline_style.to_dict(
                     casing_strategy
                 ),
-                'MatchedCSSRules': _.to_dict(
+                'MatchedCSSRules': [_.to_dict(
                     casing_strategy
-                )_matched_css_rules,
+                )
+                    for _ in self.matched_css_rules
+                ],
             }
 
 
@@ -138,21 +150,27 @@ class InheritedPseudoElementMatches:
 
         if casing_strategy == 'snake':
             return {
-                'pseudo_elements': _.to_dict(
+                'pseudo_elements': [_.to_dict(
                     casing_strategy
-                )_pseudo_elements,
+                )
+                    for _ in self.pseudo_elements
+                ],
             }
         if casing_strategy == 'camel':
             return {
-                'pseudoElements': _.to_dict(
+                'pseudoElements': [_.to_dict(
                     casing_strategy
-                )_pseudo_elements,
+                )
+                    for _ in self.pseudo_elements
+                ],
             }
         if casing_strategy == 'pascal':
             return {
-                'PseudoElements': _.to_dict(
+                'PseudoElements': [_.to_dict(
                     casing_strategy
-                )_pseudo_elements,
+                )
+                    for _ in self.pseudo_elements
+                ],
             }
 
 
@@ -287,23 +305,29 @@ class SelectorList:
 
         if casing_strategy == 'snake':
             return {
-                'selectors': _.to_dict(
+                'selectors': [_.to_dict(
                     casing_strategy
-                )_selectors,
+                )
+                    for _ in self.selectors
+                ],
                 'text': self.text,
             }
         if casing_strategy == 'camel':
             return {
-                'selectors': _.to_dict(
+                'selectors': [_.to_dict(
                     casing_strategy
-                )_selectors,
+                )
+                    for _ in self.selectors
+                ],
                 'text': self.text,
             }
         if casing_strategy == 'pascal':
             return {
-                'Selectors': _.to_dict(
+                'Selectors': [_.to_dict(
                     casing_strategy
-                )_selectors,
+                )
+                    for _ in self.selectors
+                ],
                 'Text': self.text,
             }
 
@@ -455,24 +479,36 @@ class CSSRule:
                 'style': self.style.to_dict(
                     casing_strategy
                 ),
-                'media': _.to_dict(
+                'media': [_.to_dict(
                     casing_strategy
-                )_media,
-                'container_queries': _.to_dict(
+                )
+                    for _ in self.media
+                ],
+                'container_queries': [_.to_dict(
                     casing_strategy
-                )_container_queries,
-                'supports': _.to_dict(
+                )
+                    for _ in self.container_queries
+                ],
+                'supports': [_.to_dict(
                     casing_strategy
-                )_supports,
-                'layers': _.to_dict(
+                )
+                    for _ in self.supports
+                ],
+                'layers': [_.to_dict(
                     casing_strategy
-                )_layers,
-                'scopes': _.to_dict(
+                )
+                    for _ in self.layers
+                ],
+                'scopes': [_.to_dict(
                     casing_strategy
-                )_scopes,
-                'rule_types': _.to_dict(
+                )
+                    for _ in self.scopes
+                ],
+                'rule_types': [_.to_dict(
                     casing_strategy
-                )_rule_types,
+                )
+                    for _ in self.rule_types
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -487,24 +523,36 @@ class CSSRule:
                 'style': self.style.to_dict(
                     casing_strategy
                 ),
-                'media': _.to_dict(
+                'media': [_.to_dict(
                     casing_strategy
-                )_media,
-                'containerQueries': _.to_dict(
+                )
+                    for _ in self.media
+                ],
+                'containerQueries': [_.to_dict(
                     casing_strategy
-                )_container_queries,
-                'supports': _.to_dict(
+                )
+                    for _ in self.container_queries
+                ],
+                'supports': [_.to_dict(
                     casing_strategy
-                )_supports,
-                'layers': _.to_dict(
+                )
+                    for _ in self.supports
+                ],
+                'layers': [_.to_dict(
                     casing_strategy
-                )_layers,
-                'scopes': _.to_dict(
+                )
+                    for _ in self.layers
+                ],
+                'scopes': [_.to_dict(
                     casing_strategy
-                )_scopes,
-                'ruleTypes': _.to_dict(
+                )
+                    for _ in self.scopes
+                ],
+                'ruleTypes': [_.to_dict(
                     casing_strategy
-                )_rule_types,
+                )
+                    for _ in self.rule_types
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -519,24 +567,36 @@ class CSSRule:
                 'Style': self.style.to_dict(
                     casing_strategy
                 ),
-                'Media': _.to_dict(
+                'Media': [_.to_dict(
                     casing_strategy
-                )_media,
-                'ContainerQueries': _.to_dict(
+                )
+                    for _ in self.media
+                ],
+                'ContainerQueries': [_.to_dict(
                     casing_strategy
-                )_container_queries,
-                'Supports': _.to_dict(
+                )
+                    for _ in self.container_queries
+                ],
+                'Supports': [_.to_dict(
                     casing_strategy
-                )_supports,
-                'Layers': _.to_dict(
+                )
+                    for _ in self.supports
+                ],
+                'Layers': [_.to_dict(
                     casing_strategy
-                )_layers,
-                'Scopes': _.to_dict(
+                )
+                    for _ in self.layers
+                ],
+                'Scopes': [_.to_dict(
                     casing_strategy
-                )_scopes,
-                'RuleTypes': _.to_dict(
+                )
+                    for _ in self.scopes
+                ],
+                'RuleTypes': [_.to_dict(
                     casing_strategy
-                )_rule_types,
+                )
+                    for _ in self.rule_types
+                ],
             }
 
 
@@ -707,12 +767,16 @@ class CSSStyle:
                 'style_sheet_id': self.style_sheet_id.to_dict(
                     casing_strategy
                 ),
-                'css_properties': _.to_dict(
+                'css_properties': [_.to_dict(
                     casing_strategy
-                )_css_properties,
-                'shorthand_entries': _.to_dict(
+                )
+                    for _ in self.css_properties
+                ],
+                'shorthand_entries': [_.to_dict(
                     casing_strategy
-                )_shorthand_entries,
+                )
+                    for _ in self.shorthand_entries
+                ],
                 'css_text': self.css_text,
                 'range': self.range_.to_dict(
                     casing_strategy
@@ -723,12 +787,16 @@ class CSSStyle:
                 'styleSheetId': self.style_sheet_id.to_dict(
                     casing_strategy
                 ),
-                'cssProperties': _.to_dict(
+                'cssProperties': [_.to_dict(
                     casing_strategy
-                )_css_properties,
-                'shorthandEntries': _.to_dict(
+                )
+                    for _ in self.css_properties
+                ],
+                'shorthandEntries': [_.to_dict(
                     casing_strategy
-                )_shorthand_entries,
+                )
+                    for _ in self.shorthand_entries
+                ],
                 'cssText': self.css_text,
                 'range': self.range_.to_dict(
                     casing_strategy
@@ -739,12 +807,16 @@ class CSSStyle:
                 'StyleSheetId': self.style_sheet_id.to_dict(
                     casing_strategy
                 ),
-                'CssProperties': _.to_dict(
+                'CssProperties': [_.to_dict(
                     casing_strategy
-                )_css_properties,
-                'ShorthandEntries': _.to_dict(
+                )
+                    for _ in self.css_properties
+                ],
+                'ShorthandEntries': [_.to_dict(
                     casing_strategy
-                )_shorthand_entries,
+                )
+                    for _ in self.shorthand_entries
+                ],
                 'CssText': self.css_text,
                 'Range': self.range_.to_dict(
                     casing_strategy
@@ -784,9 +856,11 @@ class CSSProperty:
                 'range': self.range_.to_dict(
                     casing_strategy
                 ),
-                'longhand_properties': _.to_dict(
+                'longhand_properties': [_.to_dict(
                     casing_strategy
-                )_longhand_properties,
+                )
+                    for _ in self.longhand_properties
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -800,9 +874,11 @@ class CSSProperty:
                 'range': self.range_.to_dict(
                     casing_strategy
                 ),
-                'longhandProperties': _.to_dict(
+                'longhandProperties': [_.to_dict(
                     casing_strategy
-                )_longhand_properties,
+                )
+                    for _ in self.longhand_properties
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -816,9 +892,11 @@ class CSSProperty:
                 'Range': self.range_.to_dict(
                     casing_strategy
                 ),
-                'LonghandProperties': _.to_dict(
+                'LonghandProperties': [_.to_dict(
                     casing_strategy
-                )_longhand_properties,
+                )
+                    for _ in self.longhand_properties
+                ],
             }
 
 
@@ -850,9 +928,11 @@ class CSSMedia:
                 'style_sheet_id': self.style_sheet_id.to_dict(
                     casing_strategy
                 ),
-                'media_list': _.to_dict(
+                'media_list': [_.to_dict(
                     casing_strategy
-                )_media_list,
+                )
+                    for _ in self.media_list
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -865,9 +945,11 @@ class CSSMedia:
                 'styleSheetId': self.style_sheet_id.to_dict(
                     casing_strategy
                 ),
-                'mediaList': _.to_dict(
+                'mediaList': [_.to_dict(
                     casing_strategy
-                )_media_list,
+                )
+                    for _ in self.media_list
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -880,9 +962,11 @@ class CSSMedia:
                 'StyleSheetId': self.style_sheet_id.to_dict(
                     casing_strategy
                 ),
-                'MediaList': _.to_dict(
+                'MediaList': [_.to_dict(
                     casing_strategy
-                )_media_list,
+                )
+                    for _ in self.media_list
+                ],
             }
 
 
@@ -901,23 +985,29 @@ class MediaQuery:
 
         if casing_strategy == 'snake':
             return {
-                'expressions': _.to_dict(
+                'expressions': [_.to_dict(
                     casing_strategy
-                )_expressions,
+                )
+                    for _ in self.expressions
+                ],
                 'active': self.active,
             }
         if casing_strategy == 'camel':
             return {
-                'expressions': _.to_dict(
+                'expressions': [_.to_dict(
                     casing_strategy
-                )_expressions,
+                )
+                    for _ in self.expressions
+                ],
                 'active': self.active,
             }
         if casing_strategy == 'pascal':
             return {
-                'Expressions': _.to_dict(
+                'Expressions': [_.to_dict(
                     casing_strategy
-                )_expressions,
+                )
+                    for _ in self.expressions
+                ],
                 'Active': self.active,
             }
 
@@ -1187,25 +1277,31 @@ class CSSLayerData:
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
-                'sub_layers': _.to_dict(
+                'sub_layers': [_.to_dict(
                     casing_strategy
-                )_sub_layers,
+                )
+                    for _ in self.sub_layers
+                ],
                 'order': self.order,
             }
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
-                'subLayers': _.to_dict(
+                'subLayers': [_.to_dict(
                     casing_strategy
-                )_sub_layers,
+                )
+                    for _ in self.sub_layers
+                ],
                 'order': self.order,
             }
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
-                'SubLayers': _.to_dict(
+                'SubLayers': [_.to_dict(
                     casing_strategy
-                )_sub_layers,
+                )
+                    for _ in self.sub_layers
+                ],
                 'Order': self.order,
             }
 
@@ -1318,9 +1414,11 @@ class FontFace:
                 'unicode_range': self.unicode_range,
                 'src': self.src,
                 'platform_font_family': self.platform_font_family,
-                'font_variation_axes': _.to_dict(
+                'font_variation_axes': [_.to_dict(
                     casing_strategy
-                )_font_variation_axes,
+                )
+                    for _ in self.font_variation_axes
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -1333,9 +1431,11 @@ class FontFace:
                 'unicodeRange': self.unicode_range,
                 'src': self.src,
                 'platformFontFamily': self.platform_font_family,
-                'fontVariationAxes': _.to_dict(
+                'fontVariationAxes': [_.to_dict(
                     casing_strategy
-                )_font_variation_axes,
+                )
+                    for _ in self.font_variation_axes
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -1348,9 +1448,11 @@ class FontFace:
                 'UnicodeRange': self.unicode_range,
                 'Src': self.src,
                 'PlatformFontFamily': self.platform_font_family,
-                'FontVariationAxes': _.to_dict(
+                'FontVariationAxes': [_.to_dict(
                     casing_strategy
-                )_font_variation_axes,
+                )
+                    for _ in self.font_variation_axes
+                ],
             }
 
 
@@ -1418,27 +1520,33 @@ class CSSPositionFallbackRule:
                 'name': self.name.to_dict(
                     casing_strategy
                 ),
-                'try_rules': _.to_dict(
+                'try_rules': [_.to_dict(
                     casing_strategy
-                )_try_rules,
+                )
+                    for _ in self.try_rules
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'name': self.name.to_dict(
                     casing_strategy
                 ),
-                'tryRules': _.to_dict(
+                'tryRules': [_.to_dict(
                     casing_strategy
-                )_try_rules,
+                )
+                    for _ in self.try_rules
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name.to_dict(
                     casing_strategy
                 ),
-                'TryRules': _.to_dict(
+                'TryRules': [_.to_dict(
                     casing_strategy
-                )_try_rules,
+                )
+                    for _ in self.try_rules
+                ],
             }
 
 
@@ -1460,27 +1568,33 @@ class CSSKeyframesRule:
                 'animation_name': self.animation_name.to_dict(
                     casing_strategy
                 ),
-                'keyframes': _.to_dict(
+                'keyframes': [_.to_dict(
                     casing_strategy
-                )_keyframes,
+                )
+                    for _ in self.keyframes
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'animationName': self.animation_name.to_dict(
                     casing_strategy
                 ),
-                'keyframes': _.to_dict(
+                'keyframes': [_.to_dict(
                     casing_strategy
-                )_keyframes,
+                )
+                    for _ in self.keyframes
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'AnimationName': self.animation_name.to_dict(
                     casing_strategy
                 ),
-                'Keyframes': _.to_dict(
+                'Keyframes': [_.to_dict(
                     casing_strategy
-                )_keyframes,
+                )
+                    for _ in self.keyframes
+                ],
             }
 
 

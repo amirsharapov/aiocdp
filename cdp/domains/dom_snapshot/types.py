@@ -81,9 +81,11 @@ class DOMNode:
                     casing_strategy
                 ),
                 'child_node_indexes': self.child_node_indexes,
-                'attributes': _.to_dict(
+                'attributes': [_.to_dict(
                     casing_strategy
-                )_attributes,
+                )
+                    for _ in self.attributes
+                ],
                 'pseudo_element_indexes': self.pseudo_element_indexes,
                 'layout_node_index': self.layout_node_index,
                 'document_url': self.document_url,
@@ -99,9 +101,11 @@ class DOMNode:
                 'pseudo_type': self.pseudo_type,
                 'shadow_root_type': self.shadow_root_type,
                 'is_clickable': self.is_clickable,
-                'event_listeners': _.to_dict(
+                'event_listeners': [_.to_dict(
                     casing_strategy
-                )_event_listeners,
+                )
+                    for _ in self.event_listeners
+                ],
                 'current_source_url': self.current_source_url,
                 'origin_url': self.origin_url,
                 'scroll_offset_x': self.scroll_offset_x,
@@ -120,9 +124,11 @@ class DOMNode:
                     casing_strategy
                 ),
                 'childNodeIndexes': self.child_node_indexes,
-                'attributes': _.to_dict(
+                'attributes': [_.to_dict(
                     casing_strategy
-                )_attributes,
+                )
+                    for _ in self.attributes
+                ],
                 'pseudoElementIndexes': self.pseudo_element_indexes,
                 'layoutNodeIndex': self.layout_node_index,
                 'documentURL': self.document_url,
@@ -138,9 +144,11 @@ class DOMNode:
                 'pseudoType': self.pseudo_type,
                 'shadowRootType': self.shadow_root_type,
                 'isClickable': self.is_clickable,
-                'eventListeners': _.to_dict(
+                'eventListeners': [_.to_dict(
                     casing_strategy
-                )_event_listeners,
+                )
+                    for _ in self.event_listeners
+                ],
                 'currentSourceURL': self.current_source_url,
                 'originURL': self.origin_url,
                 'scrollOffsetX': self.scroll_offset_x,
@@ -159,9 +167,11 @@ class DOMNode:
                     casing_strategy
                 ),
                 'ChildNodeIndexes': self.child_node_indexes,
-                'Attributes': _.to_dict(
+                'Attributes': [_.to_dict(
                     casing_strategy
-                )_attributes,
+                )
+                    for _ in self.attributes
+                ],
                 'PseudoElementIndexes': self.pseudo_element_indexes,
                 'LayoutNodeIndex': self.layout_node_index,
                 'DocumentURL': self.document_url,
@@ -177,9 +187,11 @@ class DOMNode:
                 'PseudoType': self.pseudo_type,
                 'ShadowRootType': self.shadow_root_type,
                 'IsClickable': self.is_clickable,
-                'EventListeners': _.to_dict(
+                'EventListeners': [_.to_dict(
                     casing_strategy
-                )_event_listeners,
+                )
+                    for _ in self.event_listeners
+                ],
                 'CurrentSourceURL': self.current_source_url,
                 'OriginURL': self.origin_url,
                 'ScrollOffsetX': self.scroll_offset_x,
@@ -252,9 +264,11 @@ class LayoutTreeNode:
                     casing_strategy
                 ),
                 'layout_text': self.layout_text,
-                'inline_text_nodes': _.to_dict(
+                'inline_text_nodes': [_.to_dict(
                     casing_strategy
-                )_inline_text_nodes,
+                )
+                    for _ in self.inline_text_nodes
+                ],
                 'style_index': self.style_index,
                 'paint_order': self.paint_order,
                 'is_stacking_context': self.is_stacking_context,
@@ -266,9 +280,11 @@ class LayoutTreeNode:
                     casing_strategy
                 ),
                 'layoutText': self.layout_text,
-                'inlineTextNodes': _.to_dict(
+                'inlineTextNodes': [_.to_dict(
                     casing_strategy
-                )_inline_text_nodes,
+                )
+                    for _ in self.inline_text_nodes
+                ],
                 'styleIndex': self.style_index,
                 'paintOrder': self.paint_order,
                 'isStackingContext': self.is_stacking_context,
@@ -280,9 +296,11 @@ class LayoutTreeNode:
                     casing_strategy
                 ),
                 'LayoutText': self.layout_text,
-                'InlineTextNodes': _.to_dict(
+                'InlineTextNodes': [_.to_dict(
                     casing_strategy
-                )_inline_text_nodes,
+                )
+                    for _ in self.inline_text_nodes
+                ],
                 'StyleIndex': self.style_index,
                 'PaintOrder': self.paint_order,
                 'IsStackingContext': self.is_stacking_context,
@@ -303,21 +321,27 @@ class ComputedStyle:
 
         if casing_strategy == 'snake':
             return {
-                'properties': _.to_dict(
+                'properties': [_.to_dict(
                     casing_strategy
-                )_properties,
+                )
+                    for _ in self.properties
+                ],
             }
         if casing_strategy == 'camel':
             return {
-                'properties': _.to_dict(
+                'properties': [_.to_dict(
                     casing_strategy
-                )_properties,
+                )
+                    for _ in self.properties
+                ],
             }
         if casing_strategy == 'pascal':
             return {
-                'Properties': _.to_dict(
+                'Properties': [_.to_dict(
                     casing_strategy
-                )_properties,
+                )
+                    for _ in self.properties
+                ],
             }
 
 
@@ -367,23 +391,29 @@ class RareStringData:
         if casing_strategy == 'snake':
             return {
                 'index': self.index,
-                'value': _.to_dict(
+                'value': [_.to_dict(
                     casing_strategy
-                )_value,
+                )
+                    for _ in self.value
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'index': self.index,
-                'value': _.to_dict(
+                'value': [_.to_dict(
                     casing_strategy
-                )_value,
+                )
+                    for _ in self.value
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Index': self.index,
-                'Value': _.to_dict(
+                'Value': [_.to_dict(
                     casing_strategy
-                )_value,
+                )
+                    for _ in self.value
+                ],
             }
 
 
@@ -626,18 +656,26 @@ class NodeTreeSnapshot:
                 'shadow_root_type': self.shadow_root_type.to_dict(
                     casing_strategy
                 ),
-                'node_name': _.to_dict(
+                'node_name': [_.to_dict(
                     casing_strategy
-                )_node_name,
-                'node_value': _.to_dict(
+                )
+                    for _ in self.node_name
+                ],
+                'node_value': [_.to_dict(
                     casing_strategy
-                )_node_value,
-                'backend_node_id': _.to_dict(
+                )
+                    for _ in self.node_value
+                ],
+                'backend_node_id': [_.to_dict(
                     casing_strategy
-                )_backend_node_id,
-                'attributes': _.to_dict(
+                )
+                    for _ in self.backend_node_id
+                ],
+                'attributes': [_.to_dict(
                     casing_strategy
-                )_attributes,
+                )
+                    for _ in self.attributes
+                ],
                 'text_value': self.text_value.to_dict(
                     casing_strategy
                 ),
@@ -676,18 +714,26 @@ class NodeTreeSnapshot:
                 'shadowRootType': self.shadow_root_type.to_dict(
                     casing_strategy
                 ),
-                'nodeName': _.to_dict(
+                'nodeName': [_.to_dict(
                     casing_strategy
-                )_node_name,
-                'nodeValue': _.to_dict(
+                )
+                    for _ in self.node_name
+                ],
+                'nodeValue': [_.to_dict(
                     casing_strategy
-                )_node_value,
-                'backendNodeId': _.to_dict(
+                )
+                    for _ in self.node_value
+                ],
+                'backendNodeId': [_.to_dict(
                     casing_strategy
-                )_backend_node_id,
-                'attributes': _.to_dict(
+                )
+                    for _ in self.backend_node_id
+                ],
+                'attributes': [_.to_dict(
                     casing_strategy
-                )_attributes,
+                )
+                    for _ in self.attributes
+                ],
                 'textValue': self.text_value.to_dict(
                     casing_strategy
                 ),
@@ -726,18 +772,26 @@ class NodeTreeSnapshot:
                 'ShadowRootType': self.shadow_root_type.to_dict(
                     casing_strategy
                 ),
-                'NodeName': _.to_dict(
+                'NodeName': [_.to_dict(
                     casing_strategy
-                )_node_name,
-                'NodeValue': _.to_dict(
+                )
+                    for _ in self.node_name
+                ],
+                'NodeValue': [_.to_dict(
                     casing_strategy
-                )_node_value,
-                'BackendNodeId': _.to_dict(
+                )
+                    for _ in self.node_value
+                ],
+                'BackendNodeId': [_.to_dict(
                     casing_strategy
-                )_backend_node_id,
-                'Attributes': _.to_dict(
+                )
+                    for _ in self.backend_node_id
+                ],
+                'Attributes': [_.to_dict(
                     casing_strategy
-                )_attributes,
+                )
+                    for _ in self.attributes
+                ],
                 'TextValue': self.text_value.to_dict(
                     casing_strategy
                 ),
@@ -796,91 +850,133 @@ class LayoutTreeSnapshot:
         if casing_strategy == 'snake':
             return {
                 'node_index': self.node_index,
-                'styles': _.to_dict(
+                'styles': [_.to_dict(
                     casing_strategy
-                )_styles,
-                'bounds': _.to_dict(
+                )
+                    for _ in self.styles
+                ],
+                'bounds': [_.to_dict(
                     casing_strategy
-                )_bounds,
-                'text': _.to_dict(
+                )
+                    for _ in self.bounds
+                ],
+                'text': [_.to_dict(
                     casing_strategy
-                )_text,
+                )
+                    for _ in self.text
+                ],
                 'stacking_contexts': self.stacking_contexts.to_dict(
                     casing_strategy
                 ),
                 'paint_orders': self.paint_orders,
-                'offset_rects': _.to_dict(
+                'offset_rects': [_.to_dict(
                     casing_strategy
-                )_offset_rects,
-                'scroll_rects': _.to_dict(
+                )
+                    for _ in self.offset_rects
+                ],
+                'scroll_rects': [_.to_dict(
                     casing_strategy
-                )_scroll_rects,
-                'client_rects': _.to_dict(
+                )
+                    for _ in self.scroll_rects
+                ],
+                'client_rects': [_.to_dict(
                     casing_strategy
-                )_client_rects,
-                'blended_background_colors': _.to_dict(
+                )
+                    for _ in self.client_rects
+                ],
+                'blended_background_colors': [_.to_dict(
                     casing_strategy
-                )_blended_background_colors,
+                )
+                    for _ in self.blended_background_colors
+                ],
                 'text_color_opacities': self.text_color_opacities,
             }
         if casing_strategy == 'camel':
             return {
                 'nodeIndex': self.node_index,
-                'styles': _.to_dict(
+                'styles': [_.to_dict(
                     casing_strategy
-                )_styles,
-                'bounds': _.to_dict(
+                )
+                    for _ in self.styles
+                ],
+                'bounds': [_.to_dict(
                     casing_strategy
-                )_bounds,
-                'text': _.to_dict(
+                )
+                    for _ in self.bounds
+                ],
+                'text': [_.to_dict(
                     casing_strategy
-                )_text,
+                )
+                    for _ in self.text
+                ],
                 'stackingContexts': self.stacking_contexts.to_dict(
                     casing_strategy
                 ),
                 'paintOrders': self.paint_orders,
-                'offsetRects': _.to_dict(
+                'offsetRects': [_.to_dict(
                     casing_strategy
-                )_offset_rects,
-                'scrollRects': _.to_dict(
+                )
+                    for _ in self.offset_rects
+                ],
+                'scrollRects': [_.to_dict(
                     casing_strategy
-                )_scroll_rects,
-                'clientRects': _.to_dict(
+                )
+                    for _ in self.scroll_rects
+                ],
+                'clientRects': [_.to_dict(
                     casing_strategy
-                )_client_rects,
-                'blendedBackgroundColors': _.to_dict(
+                )
+                    for _ in self.client_rects
+                ],
+                'blendedBackgroundColors': [_.to_dict(
                     casing_strategy
-                )_blended_background_colors,
+                )
+                    for _ in self.blended_background_colors
+                ],
                 'textColorOpacities': self.text_color_opacities,
             }
         if casing_strategy == 'pascal':
             return {
                 'NodeIndex': self.node_index,
-                'Styles': _.to_dict(
+                'Styles': [_.to_dict(
                     casing_strategy
-                )_styles,
-                'Bounds': _.to_dict(
+                )
+                    for _ in self.styles
+                ],
+                'Bounds': [_.to_dict(
                     casing_strategy
-                )_bounds,
-                'Text': _.to_dict(
+                )
+                    for _ in self.bounds
+                ],
+                'Text': [_.to_dict(
                     casing_strategy
-                )_text,
+                )
+                    for _ in self.text
+                ],
                 'StackingContexts': self.stacking_contexts.to_dict(
                     casing_strategy
                 ),
                 'PaintOrders': self.paint_orders,
-                'OffsetRects': _.to_dict(
+                'OffsetRects': [_.to_dict(
                     casing_strategy
-                )_offset_rects,
-                'ScrollRects': _.to_dict(
+                )
+                    for _ in self.offset_rects
+                ],
+                'ScrollRects': [_.to_dict(
                     casing_strategy
-                )_scroll_rects,
-                'ClientRects': _.to_dict(
+                )
+                    for _ in self.scroll_rects
+                ],
+                'ClientRects': [_.to_dict(
                     casing_strategy
-                )_client_rects,
-                'BlendedBackgroundColors': _.to_dict(
+                )
+                    for _ in self.client_rects
+                ],
+                'BlendedBackgroundColors': [_.to_dict(
                     casing_strategy
-                )_blended_background_colors,
+                )
+                    for _ in self.blended_background_colors
+                ],
                 'TextColorOpacities': self.text_color_opacities,
             }
 
@@ -903,27 +999,33 @@ class TextBoxSnapshot:
         if casing_strategy == 'snake':
             return {
                 'layout_index': self.layout_index,
-                'bounds': _.to_dict(
+                'bounds': [_.to_dict(
                     casing_strategy
-                )_bounds,
+                )
+                    for _ in self.bounds
+                ],
                 'start': self.start,
                 'length': self.length,
             }
         if casing_strategy == 'camel':
             return {
                 'layoutIndex': self.layout_index,
-                'bounds': _.to_dict(
+                'bounds': [_.to_dict(
                     casing_strategy
-                )_bounds,
+                )
+                    for _ in self.bounds
+                ],
                 'start': self.start,
                 'length': self.length,
             }
         if casing_strategy == 'pascal':
             return {
                 'LayoutIndex': self.layout_index,
-                'Bounds': _.to_dict(
+                'Bounds': [_.to_dict(
                     casing_strategy
-                )_bounds,
+                )
+                    for _ in self.bounds
+                ],
                 'Start': self.start,
                 'Length': self.length,
             }

@@ -68,30 +68,42 @@ class SamplingProfile:
 
         if casing_strategy == 'snake':
             return {
-                'samples': _.to_dict(
+                'samples': [_.to_dict(
                     casing_strategy
-                )_samples,
-                'modules': _.to_dict(
+                )
+                    for _ in self.samples
+                ],
+                'modules': [_.to_dict(
                     casing_strategy
-                )_modules,
+                )
+                    for _ in self.modules
+                ],
             }
         if casing_strategy == 'camel':
             return {
-                'samples': _.to_dict(
+                'samples': [_.to_dict(
                     casing_strategy
-                )_samples,
-                'modules': _.to_dict(
+                )
+                    for _ in self.samples
+                ],
+                'modules': [_.to_dict(
                     casing_strategy
-                )_modules,
+                )
+                    for _ in self.modules
+                ],
             }
         if casing_strategy == 'pascal':
             return {
-                'Samples': _.to_dict(
+                'Samples': [_.to_dict(
                     casing_strategy
-                )_samples,
-                'Modules': _.to_dict(
+                )
+                    for _ in self.samples
+                ],
+                'Modules': [_.to_dict(
                     casing_strategy
-                )_modules,
+                )
+                    for _ in self.modules
+                ],
             }
 
 

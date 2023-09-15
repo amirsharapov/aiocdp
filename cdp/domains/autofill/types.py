@@ -111,21 +111,27 @@ class AddressFields:
 
         if casing_strategy == 'snake':
             return {
-                'fields': _.to_dict(
+                'fields': [_.to_dict(
                     casing_strategy
-                )_fields,
+                )
+                    for _ in self.fields
+                ],
             }
         if casing_strategy == 'camel':
             return {
-                'fields': _.to_dict(
+                'fields': [_.to_dict(
                     casing_strategy
-                )_fields,
+                )
+                    for _ in self.fields
+                ],
             }
         if casing_strategy == 'pascal':
             return {
-                'Fields': _.to_dict(
+                'Fields': [_.to_dict(
                     casing_strategy
-                )_fields,
+                )
+                    for _ in self.fields
+                ],
             }
 
 
@@ -143,21 +149,27 @@ class Address:
 
         if casing_strategy == 'snake':
             return {
-                'fields': _.to_dict(
+                'fields': [_.to_dict(
                     casing_strategy
-                )_fields,
+                )
+                    for _ in self.fields
+                ],
             }
         if casing_strategy == 'camel':
             return {
-                'fields': _.to_dict(
+                'fields': [_.to_dict(
                     casing_strategy
-                )_fields,
+                )
+                    for _ in self.fields
+                ],
             }
         if casing_strategy == 'pascal':
             return {
-                'Fields': _.to_dict(
+                'Fields': [_.to_dict(
                     casing_strategy
-                )_fields,
+                )
+                    for _ in self.fields
+                ],
             }
 
 
@@ -175,21 +187,27 @@ class AddressUI:
 
         if casing_strategy == 'snake':
             return {
-                'address_fields': _.to_dict(
+                'address_fields': [_.to_dict(
                     casing_strategy
-                )_address_fields,
+                )
+                    for _ in self.address_fields
+                ],
             }
         if casing_strategy == 'camel':
             return {
-                'addressFields': _.to_dict(
+                'addressFields': [_.to_dict(
                     casing_strategy
-                )_address_fields,
+                )
+                    for _ in self.address_fields
+                ],
             }
         if casing_strategy == 'pascal':
             return {
-                'AddressFields': _.to_dict(
+                'AddressFields': [_.to_dict(
                     casing_strategy
-                )_address_fields,
+                )
+                    for _ in self.address_fields
+                ],
             }
 
 

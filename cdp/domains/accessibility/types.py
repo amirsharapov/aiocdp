@@ -281,34 +281,46 @@ class AXValue:
             return {
                 'type': self.type_,
                 'value': self.value,
-                'related_nodes': _.to_dict(
+                'related_nodes': [_.to_dict(
                     casing_strategy
-                )_related_nodes,
-                'sources': _.to_dict(
+                )
+                    for _ in self.related_nodes
+                ],
+                'sources': [_.to_dict(
                     casing_strategy
-                )_sources,
+                )
+                    for _ in self.sources
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'type': self.type_,
                 'value': self.value,
-                'relatedNodes': _.to_dict(
+                'relatedNodes': [_.to_dict(
                     casing_strategy
-                )_related_nodes,
-                'sources': _.to_dict(
+                )
+                    for _ in self.related_nodes
+                ],
+                'sources': [_.to_dict(
                     casing_strategy
-                )_sources,
+                )
+                    for _ in self.sources
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Type': self.type_,
                 'Value': self.value,
-                'RelatedNodes': _.to_dict(
+                'RelatedNodes': [_.to_dict(
                     casing_strategy
-                )_related_nodes,
-                'Sources': _.to_dict(
+                )
+                    for _ in self.related_nodes
+                ],
+                'Sources': [_.to_dict(
                     casing_strategy
-                )_sources,
+                )
+                    for _ in self.sources
+                ],
             }
 
 
@@ -342,9 +354,11 @@ class AXNode:
                     casing_strategy
                 ),
                 'ignored': self.ignored,
-                'ignored_reasons': _.to_dict(
+                'ignored_reasons': [_.to_dict(
                     casing_strategy
-                )_ignored_reasons,
+                )
+                    for _ in self.ignored_reasons
+                ],
                 'role': self.role.to_dict(
                     casing_strategy
                 ),
@@ -360,15 +374,19 @@ class AXNode:
                 'value': self.value.to_dict(
                     casing_strategy
                 ),
-                'properties': _.to_dict(
+                'properties': [_.to_dict(
                     casing_strategy
-                )_properties,
+                )
+                    for _ in self.properties
+                ],
                 'parent_id': self.parent_id.to_dict(
                     casing_strategy
                 ),
-                'child_ids': _.to_dict(
+                'child_ids': [_.to_dict(
                     casing_strategy
-                )_child_ids,
+                )
+                    for _ in self.child_ids
+                ],
                 'backend_dom_node_id': self.backend_dom_node_id.to_dict(
                     casing_strategy
                 ),
@@ -382,9 +400,11 @@ class AXNode:
                     casing_strategy
                 ),
                 'ignored': self.ignored,
-                'ignoredReasons': _.to_dict(
+                'ignoredReasons': [_.to_dict(
                     casing_strategy
-                )_ignored_reasons,
+                )
+                    for _ in self.ignored_reasons
+                ],
                 'role': self.role.to_dict(
                     casing_strategy
                 ),
@@ -400,15 +420,19 @@ class AXNode:
                 'value': self.value.to_dict(
                     casing_strategy
                 ),
-                'properties': _.to_dict(
+                'properties': [_.to_dict(
                     casing_strategy
-                )_properties,
+                )
+                    for _ in self.properties
+                ],
                 'parentId': self.parent_id.to_dict(
                     casing_strategy
                 ),
-                'childIds': _.to_dict(
+                'childIds': [_.to_dict(
                     casing_strategy
-                )_child_ids,
+                )
+                    for _ in self.child_ids
+                ],
                 'backendDOMNodeId': self.backend_dom_node_id.to_dict(
                     casing_strategy
                 ),
@@ -422,9 +446,11 @@ class AXNode:
                     casing_strategy
                 ),
                 'Ignored': self.ignored,
-                'IgnoredReasons': _.to_dict(
+                'IgnoredReasons': [_.to_dict(
                     casing_strategy
-                )_ignored_reasons,
+                )
+                    for _ in self.ignored_reasons
+                ],
                 'Role': self.role.to_dict(
                     casing_strategy
                 ),
@@ -440,15 +466,19 @@ class AXNode:
                 'Value': self.value.to_dict(
                     casing_strategy
                 ),
-                'Properties': _.to_dict(
+                'Properties': [_.to_dict(
                     casing_strategy
-                )_properties,
+                )
+                    for _ in self.properties
+                ],
                 'ParentId': self.parent_id.to_dict(
                     casing_strategy
                 ),
-                'ChildIds': _.to_dict(
+                'ChildIds': [_.to_dict(
                     casing_strategy
-                )_child_ids,
+                )
+                    for _ in self.child_ids
+                ],
                 'BackendDOMNodeId': self.backend_dom_node_id.to_dict(
                     casing_strategy
                 ),

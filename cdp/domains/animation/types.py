@@ -178,23 +178,29 @@ class KeyframesRule:
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
-                'keyframes': _.to_dict(
+                'keyframes': [_.to_dict(
                     casing_strategy
-                )_keyframes,
+                )
+                    for _ in self.keyframes
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
-                'keyframes': _.to_dict(
+                'keyframes': [_.to_dict(
                     casing_strategy
-                )_keyframes,
+                )
+                    for _ in self.keyframes
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
-                'Keyframes': _.to_dict(
+                'Keyframes': [_.to_dict(
                     casing_strategy
-                )_keyframes,
+                )
+                    for _ in self.keyframes
+                ],
             }
 
 

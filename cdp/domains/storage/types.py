@@ -228,12 +228,16 @@ class InterestGroupDetails:
                 'trusted_bidding_signals_url': self.trusted_bidding_signals_url,
                 'trusted_bidding_signals_keys': self.trusted_bidding_signals_keys,
                 'user_bidding_signals': self.user_bidding_signals,
-                'ads': _.to_dict(
+                'ads': [_.to_dict(
                     casing_strategy
-                )_ads,
-                'ad_components': _.to_dict(
+                )
+                    for _ in self.ads
+                ],
+                'ad_components': [_.to_dict(
                     casing_strategy
-                )_ad_components,
+                )
+                    for _ in self.ad_components
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -249,12 +253,16 @@ class InterestGroupDetails:
                 'trustedBiddingSignalsUrl': self.trusted_bidding_signals_url,
                 'trustedBiddingSignalsKeys': self.trusted_bidding_signals_keys,
                 'userBiddingSignals': self.user_bidding_signals,
-                'ads': _.to_dict(
+                'ads': [_.to_dict(
                     casing_strategy
-                )_ads,
-                'adComponents': _.to_dict(
+                )
+                    for _ in self.ads
+                ],
+                'adComponents': [_.to_dict(
                     casing_strategy
-                )_ad_components,
+                )
+                    for _ in self.ad_components
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -270,12 +278,16 @@ class InterestGroupDetails:
                 'TrustedBiddingSignalsUrl': self.trusted_bidding_signals_url,
                 'TrustedBiddingSignalsKeys': self.trusted_bidding_signals_keys,
                 'UserBiddingSignals': self.user_bidding_signals,
-                'Ads': _.to_dict(
+                'Ads': [_.to_dict(
                     casing_strategy
-                )_ads,
-                'AdComponents': _.to_dict(
+                )
+                    for _ in self.ads
+                ],
+                'AdComponents': [_.to_dict(
                     casing_strategy
-                )_ad_components,
+                )
+                    for _ in self.ad_components
+                ],
             }
 
 
@@ -395,23 +407,29 @@ class SharedStorageUrlWithMetadata:
         if casing_strategy == 'snake':
             return {
                 'url': self.url,
-                'reporting_metadata': _.to_dict(
+                'reporting_metadata': [_.to_dict(
                     casing_strategy
-                )_reporting_metadata,
+                )
+                    for _ in self.reporting_metadata
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'url': self.url,
-                'reportingMetadata': _.to_dict(
+                'reportingMetadata': [_.to_dict(
                     casing_strategy
-                )_reporting_metadata,
+                )
+                    for _ in self.reporting_metadata
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Url': self.url,
-                'ReportingMetadata': _.to_dict(
+                'ReportingMetadata': [_.to_dict(
                     casing_strategy
-                )_reporting_metadata,
+                )
+                    for _ in self.reporting_metadata
+                ],
             }
 
 
@@ -438,9 +456,11 @@ class SharedStorageAccessParams:
                 'script_source_url': self.script_source_url,
                 'operation_name': self.operation_name,
                 'serialized_data': self.serialized_data,
-                'urls_with_metadata': _.to_dict(
+                'urls_with_metadata': [_.to_dict(
                     casing_strategy
-                )_urls_with_metadata,
+                )
+                    for _ in self.urls_with_metadata
+                ],
                 'key': self.key,
                 'value': self.value,
                 'ignore_if_present': self.ignore_if_present,
@@ -450,9 +470,11 @@ class SharedStorageAccessParams:
                 'scriptSourceUrl': self.script_source_url,
                 'operationName': self.operation_name,
                 'serializedData': self.serialized_data,
-                'urlsWithMetadata': _.to_dict(
+                'urlsWithMetadata': [_.to_dict(
                     casing_strategy
-                )_urls_with_metadata,
+                )
+                    for _ in self.urls_with_metadata
+                ],
                 'key': self.key,
                 'value': self.value,
                 'ignoreIfPresent': self.ignore_if_present,
@@ -462,9 +484,11 @@ class SharedStorageAccessParams:
                 'ScriptSourceUrl': self.script_source_url,
                 'OperationName': self.operation_name,
                 'SerializedData': self.serialized_data,
-                'UrlsWithMetadata': _.to_dict(
+                'UrlsWithMetadata': [_.to_dict(
                     casing_strategy
-                )_urls_with_metadata,
+                )
+                    for _ in self.urls_with_metadata
+                ],
                 'Key': self.key,
                 'Value': self.value,
                 'IgnoreIfPresent': self.ignore_if_present,
@@ -707,12 +731,16 @@ class AttributionReportingSourceRegistration:
                 'priority': self.priority.to_dict(
                     casing_strategy
                 ),
-                'filter_data': _.to_dict(
+                'filter_data': [_.to_dict(
                     casing_strategy
-                )_filter_data,
-                'aggregation_keys': _.to_dict(
+                )
+                    for _ in self.filter_data
+                ],
+                'aggregation_keys': [_.to_dict(
                     casing_strategy
-                )_aggregation_keys,
+                )
+                    for _ in self.aggregation_keys
+                ],
                 'debug_key': self.debug_key.to_dict(
                     casing_strategy
                 ),
@@ -738,12 +766,16 @@ class AttributionReportingSourceRegistration:
                 'priority': self.priority.to_dict(
                     casing_strategy
                 ),
-                'filterData': _.to_dict(
+                'filterData': [_.to_dict(
                     casing_strategy
-                )_filter_data,
-                'aggregationKeys': _.to_dict(
+                )
+                    for _ in self.filter_data
+                ],
+                'aggregationKeys': [_.to_dict(
                     casing_strategy
-                )_aggregation_keys,
+                )
+                    for _ in self.aggregation_keys
+                ],
                 'debugKey': self.debug_key.to_dict(
                     casing_strategy
                 ),
@@ -769,12 +801,16 @@ class AttributionReportingSourceRegistration:
                 'Priority': self.priority.to_dict(
                     casing_strategy
                 ),
-                'FilterData': _.to_dict(
+                'FilterData': [_.to_dict(
                     casing_strategy
-                )_filter_data,
-                'AggregationKeys': _.to_dict(
+                )
+                    for _ in self.filter_data
+                ],
+                'AggregationKeys': [_.to_dict(
                     casing_strategy
-                )_aggregation_keys,
+                )
+                    for _ in self.aggregation_keys
+                ],
                 'DebugKey': self.debug_key.to_dict(
                     casing_strategy
                 ),

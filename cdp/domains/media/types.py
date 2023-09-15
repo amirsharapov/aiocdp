@@ -164,35 +164,47 @@ class PlayerError:
             return {
                 'error_type': self.error_type,
                 'code': self.code,
-                'stack': _.to_dict(
+                'stack': [_.to_dict(
                     casing_strategy
-                )_stack,
-                'cause': _.to_dict(
+                )
+                    for _ in self.stack
+                ],
+                'cause': [_.to_dict(
                     casing_strategy
-                )_cause,
+                )
+                    for _ in self.cause
+                ],
                 'data': self.data,
             }
         if casing_strategy == 'camel':
             return {
                 'errorType': self.error_type,
                 'code': self.code,
-                'stack': _.to_dict(
+                'stack': [_.to_dict(
                     casing_strategy
-                )_stack,
-                'cause': _.to_dict(
+                )
+                    for _ in self.stack
+                ],
+                'cause': [_.to_dict(
                     casing_strategy
-                )_cause,
+                )
+                    for _ in self.cause
+                ],
                 'data': self.data,
             }
         if casing_strategy == 'pascal':
             return {
                 'ErrorType': self.error_type,
                 'Code': self.code,
-                'Stack': _.to_dict(
+                'Stack': [_.to_dict(
                     casing_strategy
-                )_stack,
-                'Cause': _.to_dict(
+                )
+                    for _ in self.stack
+                ],
+                'Cause': [_.to_dict(
                     casing_strategy
-                )_cause,
+                )
+                    for _ in self.cause
+                ],
                 'Data': self.data,
             }

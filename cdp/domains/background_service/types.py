@@ -90,9 +90,11 @@ class BackgroundServiceEvent:
                 'service': self.service,
                 'event_name': self.event_name,
                 'instance_id': self.instance_id,
-                'event_metadata': _.to_dict(
+                'event_metadata': [_.to_dict(
                     casing_strategy
-                )_event_metadata,
+                )
+                    for _ in self.event_metadata
+                ],
                 'storage_key': self.storage_key,
             }
         if casing_strategy == 'camel':
@@ -107,9 +109,11 @@ class BackgroundServiceEvent:
                 'service': self.service,
                 'eventName': self.event_name,
                 'instanceId': self.instance_id,
-                'eventMetadata': _.to_dict(
+                'eventMetadata': [_.to_dict(
                     casing_strategy
-                )_event_metadata,
+                )
+                    for _ in self.event_metadata
+                ],
                 'storageKey': self.storage_key,
             }
         if casing_strategy == 'pascal':
@@ -124,8 +128,10 @@ class BackgroundServiceEvent:
                 'Service': self.service,
                 'EventName': self.event_name,
                 'InstanceId': self.instance_id,
-                'EventMetadata': _.to_dict(
+                'EventMetadata': [_.to_dict(
                     casing_strategy
-                )_event_metadata,
+                )
+                    for _ in self.event_metadata
+                ],
                 'StorageKey': self.storage_key,
             }

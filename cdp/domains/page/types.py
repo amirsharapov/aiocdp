@@ -402,23 +402,29 @@ class AdFrameStatus:
         if casing_strategy == 'snake':
             return {
                 'ad_frame_type': self.ad_frame_type,
-                'explanations': _.to_dict(
+                'explanations': [_.to_dict(
                     casing_strategy
-                )_explanations,
+                )
+                    for _ in self.explanations
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'adFrameType': self.ad_frame_type,
-                'explanations': _.to_dict(
+                'explanations': [_.to_dict(
                     casing_strategy
-                )_explanations,
+                )
+                    for _ in self.explanations
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'AdFrameType': self.ad_frame_type,
-                'Explanations': _.to_dict(
+                'Explanations': [_.to_dict(
                     casing_strategy
-                )_explanations,
+                )
+                    for _ in self.explanations
+                ],
             }
 
 
@@ -650,25 +656,31 @@ class OriginTrial:
             return {
                 'trial_name': self.trial_name,
                 'status': self.status,
-                'tokens_with_status': _.to_dict(
+                'tokens_with_status': [_.to_dict(
                     casing_strategy
-                )_tokens_with_status,
+                )
+                    for _ in self.tokens_with_status
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'trialName': self.trial_name,
                 'status': self.status,
-                'tokensWithStatus': _.to_dict(
+                'tokensWithStatus': [_.to_dict(
                     casing_strategy
-                )_tokens_with_status,
+                )
+                    for _ in self.tokens_with_status
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'TrialName': self.trial_name,
                 'Status': self.status,
-                'TokensWithStatus': _.to_dict(
+                'TokensWithStatus': [_.to_dict(
                     casing_strategy
-                )_tokens_with_status,
+                )
+                    for _ in self.tokens_with_status
+                ],
             }
 
 
@@ -720,9 +732,11 @@ class Frame:
                 ),
                 'secure_context_type': self.secure_context_type,
                 'cross_origin_isolated_context_type': self.cross_origin_isolated_context_type,
-                'gated_api_features': _.to_dict(
+                'gated_api_features': [_.to_dict(
                     casing_strategy
-                )_gated_api_features,
+                )
+                    for _ in self.gated_api_features
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -747,9 +761,11 @@ class Frame:
                 ),
                 'secureContextType': self.secure_context_type,
                 'crossOriginIsolatedContextType': self.cross_origin_isolated_context_type,
-                'gatedAPIFeatures': _.to_dict(
+                'gatedAPIFeatures': [_.to_dict(
                     casing_strategy
-                )_gated_api_features,
+                )
+                    for _ in self.gated_api_features
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -774,9 +790,11 @@ class Frame:
                 ),
                 'SecureContextType': self.secure_context_type,
                 'CrossOriginIsolatedContextType': self.cross_origin_isolated_context_type,
-                'GatedAPIFeatures': _.to_dict(
+                'GatedAPIFeatures': [_.to_dict(
                     casing_strategy
-                )_gated_api_features,
+                )
+                    for _ in self.gated_api_features
+                ],
             }
 
 
@@ -855,36 +873,48 @@ class FrameResourceTree:
                 'frame': self.frame.to_dict(
                     casing_strategy
                 ),
-                'child_frames': _.to_dict(
+                'child_frames': [_.to_dict(
                     casing_strategy
-                )_child_frames,
-                'resources': _.to_dict(
+                )
+                    for _ in self.child_frames
+                ],
+                'resources': [_.to_dict(
                     casing_strategy
-                )_resources,
+                )
+                    for _ in self.resources
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'frame': self.frame.to_dict(
                     casing_strategy
                 ),
-                'childFrames': _.to_dict(
+                'childFrames': [_.to_dict(
                     casing_strategy
-                )_child_frames,
-                'resources': _.to_dict(
+                )
+                    for _ in self.child_frames
+                ],
+                'resources': [_.to_dict(
                     casing_strategy
-                )_resources,
+                )
+                    for _ in self.resources
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Frame': self.frame.to_dict(
                     casing_strategy
                 ),
-                'ChildFrames': _.to_dict(
+                'ChildFrames': [_.to_dict(
                     casing_strategy
-                )_child_frames,
-                'Resources': _.to_dict(
+                )
+                    for _ in self.child_frames
+                ],
+                'Resources': [_.to_dict(
                     casing_strategy
-                )_resources,
+                )
+                    for _ in self.resources
+                ],
             }
 
 
@@ -906,27 +936,33 @@ class FrameTree:
                 'frame': self.frame.to_dict(
                     casing_strategy
                 ),
-                'child_frames': _.to_dict(
+                'child_frames': [_.to_dict(
                     casing_strategy
-                )_child_frames,
+                )
+                    for _ in self.child_frames
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'frame': self.frame.to_dict(
                     casing_strategy
                 ),
-                'childFrames': _.to_dict(
+                'childFrames': [_.to_dict(
                     casing_strategy
-                )_child_frames,
+                )
+                    for _ in self.child_frames
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Frame': self.frame.to_dict(
                     casing_strategy
                 ),
-                'ChildFrames': _.to_dict(
+                'ChildFrames': [_.to_dict(
                     casing_strategy
-                )_child_frames,
+                )
+                    for _ in self.child_frames
+                ],
             }
 
 
@@ -1388,23 +1424,29 @@ class InstallabilityError:
         if casing_strategy == 'snake':
             return {
                 'error_id': self.error_id,
-                'error_arguments': _.to_dict(
+                'error_arguments': [_.to_dict(
                     casing_strategy
-                )_error_arguments,
+                )
+                    for _ in self.error_arguments
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'errorId': self.error_id,
-                'errorArguments': _.to_dict(
+                'errorArguments': [_.to_dict(
                     casing_strategy
-                )_error_arguments,
+                )
+                    for _ in self.error_arguments
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'ErrorId': self.error_id,
-                'ErrorArguments': _.to_dict(
+                'ErrorArguments': [_.to_dict(
                     casing_strategy
-                )_error_arguments,
+                )
+                    for _ in self.error_arguments
+                ],
             }
 
 
@@ -1489,32 +1531,44 @@ class BackForwardCacheNotRestoredExplanationTree:
         if casing_strategy == 'snake':
             return {
                 'url': self.url,
-                'explanations': _.to_dict(
+                'explanations': [_.to_dict(
                     casing_strategy
-                )_explanations,
-                'children': _.to_dict(
+                )
+                    for _ in self.explanations
+                ],
+                'children': [_.to_dict(
                     casing_strategy
-                )_children,
+                )
+                    for _ in self.children
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'url': self.url,
-                'explanations': _.to_dict(
+                'explanations': [_.to_dict(
                     casing_strategy
-                )_explanations,
-                'children': _.to_dict(
+                )
+                    for _ in self.explanations
+                ],
+                'children': [_.to_dict(
                     casing_strategy
-                )_children,
+                )
+                    for _ in self.children
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Url': self.url,
-                'Explanations': _.to_dict(
+                'Explanations': [_.to_dict(
                     casing_strategy
-                )_explanations,
-                'Children': _.to_dict(
+                )
+                    for _ in self.explanations
+                ],
+                'Children': [_.to_dict(
                     casing_strategy
-                )_children,
+                )
+                    for _ in self.children
+                ],
             }
 
 

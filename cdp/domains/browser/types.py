@@ -207,27 +207,33 @@ class Histogram:
                 'name': self.name,
                 'sum': self.sum_,
                 'count': self.count,
-                'buckets': _.to_dict(
+                'buckets': [_.to_dict(
                     casing_strategy
-                )_buckets,
+                )
+                    for _ in self.buckets
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
                 'sum': self.sum_,
                 'count': self.count,
-                'buckets': _.to_dict(
+                'buckets': [_.to_dict(
                     casing_strategy
-                )_buckets,
+                )
+                    for _ in self.buckets
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
                 'Sum': self.sum_,
                 'Count': self.count,
-                'Buckets': _.to_dict(
+                'Buckets': [_.to_dict(
                     casing_strategy
-                )_buckets,
+                )
+                    for _ in self.buckets
+                ],
             }
 
 

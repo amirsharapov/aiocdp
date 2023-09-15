@@ -61,9 +61,11 @@ class LogEntry:
                     casing_strategy
                 ),
                 'worker_id': self.worker_id,
-                'args': _.to_dict(
+                'args': [_.to_dict(
                     casing_strategy
-                )_args,
+                )
+                    for _ in self.args
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -83,9 +85,11 @@ class LogEntry:
                     casing_strategy
                 ),
                 'workerId': self.worker_id,
-                'args': _.to_dict(
+                'args': [_.to_dict(
                     casing_strategy
-                )_args,
+                )
+                    for _ in self.args
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -105,9 +109,11 @@ class LogEntry:
                     casing_strategy
                 ),
                 'WorkerId': self.worker_id,
-                'Args': _.to_dict(
+                'Args': [_.to_dict(
                     casing_strategy
-                )_args,
+                )
+                    for _ in self.args
+                ],
             }
 
 

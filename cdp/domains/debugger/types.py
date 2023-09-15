@@ -131,9 +131,11 @@ class CallFrame:
                     casing_strategy
                 ),
                 'url': self.url,
-                'scope_chain': _.to_dict(
+                'scope_chain': [_.to_dict(
                     casing_strategy
-                )_scope_chain,
+                )
+                    for _ in self.scope_chain
+                ],
                 'this': self.this.to_dict(
                     casing_strategy
                 ),
@@ -154,9 +156,11 @@ class CallFrame:
                     casing_strategy
                 ),
                 'url': self.url,
-                'scopeChain': _.to_dict(
+                'scopeChain': [_.to_dict(
                     casing_strategy
-                )_scope_chain,
+                )
+                    for _ in self.scope_chain
+                ],
                 'this': self.this.to_dict(
                     casing_strategy
                 ),
@@ -177,9 +181,11 @@ class CallFrame:
                     casing_strategy
                 ),
                 'Url': self.url,
-                'ScopeChain': _.to_dict(
+                'ScopeChain': [_.to_dict(
                     casing_strategy
-                )_scope_chain,
+                )
+                    for _ in self.scope_chain
+                ],
                 'This': self.this.to_dict(
                     casing_strategy
                 ),

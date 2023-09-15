@@ -181,12 +181,16 @@ class UserAgentMetadata:
 
         if casing_strategy == 'snake':
             return {
-                'brands': _.to_dict(
+                'brands': [_.to_dict(
                     casing_strategy
-                )_brands,
-                'full_version_list': _.to_dict(
+                )
+                    for _ in self.brands
+                ],
+                'full_version_list': [_.to_dict(
                     casing_strategy
-                )_full_version_list,
+                )
+                    for _ in self.full_version_list
+                ],
                 'full_version': self.full_version,
                 'platform': self.platform,
                 'platform_version': self.platform_version,
@@ -198,12 +202,16 @@ class UserAgentMetadata:
             }
         if casing_strategy == 'camel':
             return {
-                'brands': _.to_dict(
+                'brands': [_.to_dict(
                     casing_strategy
-                )_brands,
-                'fullVersionList': _.to_dict(
+                )
+                    for _ in self.brands
+                ],
+                'fullVersionList': [_.to_dict(
                     casing_strategy
-                )_full_version_list,
+                )
+                    for _ in self.full_version_list
+                ],
                 'fullVersion': self.full_version,
                 'platform': self.platform,
                 'platformVersion': self.platform_version,
@@ -215,12 +223,16 @@ class UserAgentMetadata:
             }
         if casing_strategy == 'pascal':
             return {
-                'Brands': _.to_dict(
+                'Brands': [_.to_dict(
                     casing_strategy
-                )_brands,
-                'FullVersionList': _.to_dict(
+                )
+                    for _ in self.brands
+                ],
+                'FullVersionList': [_.to_dict(
                     casing_strategy
-                )_full_version_list,
+                )
+                    for _ in self.full_version_list
+                ],
                 'FullVersion': self.full_version,
                 'Platform': self.platform,
                 'PlatformVersion': self.platform_version,

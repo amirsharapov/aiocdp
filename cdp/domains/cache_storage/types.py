@@ -51,46 +51,58 @@ class DataEntry:
             return {
                 'request_url': self.request_url,
                 'request_method': self.request_method,
-                'request_headers': _.to_dict(
+                'request_headers': [_.to_dict(
                     casing_strategy
-                )_request_headers,
+                )
+                    for _ in self.request_headers
+                ],
                 'response_time': self.response_time,
                 'response_status': self.response_status,
                 'response_status_text': self.response_status_text,
                 'response_type': self.response_type,
-                'response_headers': _.to_dict(
+                'response_headers': [_.to_dict(
                     casing_strategy
-                )_response_headers,
+                )
+                    for _ in self.response_headers
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'requestURL': self.request_url,
                 'requestMethod': self.request_method,
-                'requestHeaders': _.to_dict(
+                'requestHeaders': [_.to_dict(
                     casing_strategy
-                )_request_headers,
+                )
+                    for _ in self.request_headers
+                ],
                 'responseTime': self.response_time,
                 'responseStatus': self.response_status,
                 'responseStatusText': self.response_status_text,
                 'responseType': self.response_type,
-                'responseHeaders': _.to_dict(
+                'responseHeaders': [_.to_dict(
                     casing_strategy
-                )_response_headers,
+                )
+                    for _ in self.response_headers
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'RequestURL': self.request_url,
                 'RequestMethod': self.request_method,
-                'RequestHeaders': _.to_dict(
+                'RequestHeaders': [_.to_dict(
                     casing_strategy
-                )_request_headers,
+                )
+                    for _ in self.request_headers
+                ],
                 'ResponseTime': self.response_time,
                 'ResponseStatus': self.response_status,
                 'ResponseStatusText': self.response_status_text,
                 'ResponseType': self.response_type,
-                'ResponseHeaders': _.to_dict(
+                'ResponseHeaders': [_.to_dict(
                     casing_strategy
-                )_response_headers,
+                )
+                    for _ in self.response_headers
+                ],
             }
 
 

@@ -465,9 +465,11 @@ class Request:
                 ),
                 'post_data': self.post_data,
                 'has_post_data': self.has_post_data,
-                'post_data_entries': _.to_dict(
+                'post_data_entries': [_.to_dict(
                     casing_strategy
-                )_post_data_entries,
+                )
+                    for _ in self.post_data_entries
+                ],
                 'mixed_content_type': self.mixed_content_type,
                 'initial_priority': self.initial_priority,
                 'referrer_policy': self.referrer_policy,
@@ -487,9 +489,11 @@ class Request:
                 ),
                 'postData': self.post_data,
                 'hasPostData': self.has_post_data,
-                'postDataEntries': _.to_dict(
+                'postDataEntries': [_.to_dict(
                     casing_strategy
-                )_post_data_entries,
+                )
+                    for _ in self.post_data_entries
+                ],
                 'mixedContentType': self.mixed_content_type,
                 'initialPriority': self.initial_priority,
                 'referrerPolicy': self.referrer_policy,
@@ -509,9 +513,11 @@ class Request:
                 ),
                 'PostData': self.post_data,
                 'HasPostData': self.has_post_data,
-                'PostDataEntries': _.to_dict(
+                'PostDataEntries': [_.to_dict(
                     casing_strategy
-                )_post_data_entries,
+                )
+                    for _ in self.post_data_entries
+                ],
                 'MixedContentType': self.mixed_content_type,
                 'InitialPriority': self.initial_priority,
                 'ReferrerPolicy': self.referrer_policy,
@@ -622,9 +628,11 @@ class SecurityDetails:
                 'valid_to': self.valid_to.to_dict(
                     casing_strategy
                 ),
-                'signed_certificate_timestamp_list': _.to_dict(
+                'signed_certificate_timestamp_list': [_.to_dict(
                     casing_strategy
-                )_signed_certificate_timestamp_list,
+                )
+                    for _ in self.signed_certificate_timestamp_list
+                ],
                 'certificate_transparency_compliance': self.certificate_transparency_compliance,
                 'server_signature_algorithm': self.server_signature_algorithm,
                 'encrypted_client_hello': self.encrypted_client_hello,
@@ -648,9 +656,11 @@ class SecurityDetails:
                 'validTo': self.valid_to.to_dict(
                     casing_strategy
                 ),
-                'signedCertificateTimestampList': _.to_dict(
+                'signedCertificateTimestampList': [_.to_dict(
                     casing_strategy
-                )_signed_certificate_timestamp_list,
+                )
+                    for _ in self.signed_certificate_timestamp_list
+                ],
                 'certificateTransparencyCompliance': self.certificate_transparency_compliance,
                 'serverSignatureAlgorithm': self.server_signature_algorithm,
                 'encryptedClientHello': self.encrypted_client_hello,
@@ -674,9 +684,11 @@ class SecurityDetails:
                 'ValidTo': self.valid_to.to_dict(
                     casing_strategy
                 ),
-                'SignedCertificateTimestampList': _.to_dict(
+                'SignedCertificateTimestampList': [_.to_dict(
                     casing_strategy
-                )_signed_certificate_timestamp_list,
+                )
+                    for _ in self.signed_certificate_timestamp_list
+                ],
                 'CertificateTransparencyCompliance': self.certificate_transparency_compliance,
                 'ServerSignatureAlgorithm': self.server_signature_algorithm,
                 'EncryptedClientHello': self.encrypted_client_hello,
@@ -1223,9 +1235,11 @@ class BlockedSetCookieWithReason:
 
         if casing_strategy == 'snake':
             return {
-                'blocked_reasons': _.to_dict(
+                'blocked_reasons': [_.to_dict(
                     casing_strategy
-                )_blocked_reasons,
+                )
+                    for _ in self.blocked_reasons
+                ],
                 'cookie_line': self.cookie_line,
                 'cookie': self.cookie.to_dict(
                     casing_strategy
@@ -1233,9 +1247,11 @@ class BlockedSetCookieWithReason:
             }
         if casing_strategy == 'camel':
             return {
-                'blockedReasons': _.to_dict(
+                'blockedReasons': [_.to_dict(
                     casing_strategy
-                )_blocked_reasons,
+                )
+                    for _ in self.blocked_reasons
+                ],
                 'cookieLine': self.cookie_line,
                 'cookie': self.cookie.to_dict(
                     casing_strategy
@@ -1243,9 +1259,11 @@ class BlockedSetCookieWithReason:
             }
         if casing_strategy == 'pascal':
             return {
-                'BlockedReasons': _.to_dict(
+                'BlockedReasons': [_.to_dict(
                     casing_strategy
-                )_blocked_reasons,
+                )
+                    for _ in self.blocked_reasons
+                ],
                 'CookieLine': self.cookie_line,
                 'Cookie': self.cookie.to_dict(
                     casing_strategy
@@ -1268,27 +1286,33 @@ class BlockedCookieWithReason:
 
         if casing_strategy == 'snake':
             return {
-                'blocked_reasons': _.to_dict(
+                'blocked_reasons': [_.to_dict(
                     casing_strategy
-                )_blocked_reasons,
+                )
+                    for _ in self.blocked_reasons
+                ],
                 'cookie': self.cookie.to_dict(
                     casing_strategy
                 ),
             }
         if casing_strategy == 'camel':
             return {
-                'blockedReasons': _.to_dict(
+                'blockedReasons': [_.to_dict(
                     casing_strategy
-                )_blocked_reasons,
+                )
+                    for _ in self.blocked_reasons
+                ],
                 'cookie': self.cookie.to_dict(
                     casing_strategy
                 ),
             }
         if casing_strategy == 'pascal':
             return {
-                'BlockedReasons': _.to_dict(
+                'BlockedReasons': [_.to_dict(
                     casing_strategy
-                )_blocked_reasons,
+                )
+                    for _ in self.blocked_reasons
+                ],
                 'Cookie': self.cookie.to_dict(
                     casing_strategy
                 ),
@@ -1566,9 +1590,11 @@ class SignedExchangeHeader:
                 'response_headers': self.response_headers.to_dict(
                     casing_strategy
                 ),
-                'signatures': _.to_dict(
+                'signatures': [_.to_dict(
                     casing_strategy
-                )_signatures,
+                )
+                    for _ in self.signatures
+                ],
                 'header_integrity': self.header_integrity,
             }
         if casing_strategy == 'camel':
@@ -1578,9 +1604,11 @@ class SignedExchangeHeader:
                 'responseHeaders': self.response_headers.to_dict(
                     casing_strategy
                 ),
-                'signatures': _.to_dict(
+                'signatures': [_.to_dict(
                     casing_strategy
-                )_signatures,
+                )
+                    for _ in self.signatures
+                ],
                 'headerIntegrity': self.header_integrity,
             }
         if casing_strategy == 'pascal':
@@ -1590,9 +1618,11 @@ class SignedExchangeHeader:
                 'ResponseHeaders': self.response_headers.to_dict(
                     casing_strategy
                 ),
-                'Signatures': _.to_dict(
+                'Signatures': [_.to_dict(
                     casing_strategy
-                )_signatures,
+                )
+                    for _ in self.signatures
+                ],
                 'HeaderIntegrity': self.header_integrity,
             }
 
@@ -1657,9 +1687,11 @@ class SignedExchangeInfo:
                 'security_details': self.security_details.to_dict(
                     casing_strategy
                 ),
-                'errors': _.to_dict(
+                'errors': [_.to_dict(
                     casing_strategy
-                )_errors,
+                )
+                    for _ in self.errors
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -1672,9 +1704,11 @@ class SignedExchangeInfo:
                 'securityDetails': self.security_details.to_dict(
                     casing_strategy
                 ),
-                'errors': _.to_dict(
+                'errors': [_.to_dict(
                     casing_strategy
-                )_errors,
+                )
+                    for _ in self.errors
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -1687,9 +1721,11 @@ class SignedExchangeInfo:
                 'SecurityDetails': self.security_details.to_dict(
                     casing_strategy
                 ),
-                'Errors': _.to_dict(
+                'Errors': [_.to_dict(
                     casing_strategy
-                )_errors,
+                )
+                    for _ in self.errors
+                ],
             }
 
 
@@ -1885,9 +1921,11 @@ class SecurityIsolationStatus:
                 'coep': self.coep.to_dict(
                     casing_strategy
                 ),
-                'csp': _.to_dict(
+                'csp': [_.to_dict(
                     casing_strategy
-                )_csp,
+                )
+                    for _ in self.csp
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -1897,9 +1935,11 @@ class SecurityIsolationStatus:
                 'coep': self.coep.to_dict(
                     casing_strategy
                 ),
-                'csp': _.to_dict(
+                'csp': [_.to_dict(
                     casing_strategy
-                )_csp,
+                )
+                    for _ in self.csp
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -1909,9 +1949,11 @@ class SecurityIsolationStatus:
                 'Coep': self.coep.to_dict(
                     casing_strategy
                 ),
-                'Csp': _.to_dict(
+                'Csp': [_.to_dict(
                     casing_strategy
-                )_csp,
+                )
+                    for _ in self.csp
+                ],
             }
 
 

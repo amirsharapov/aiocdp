@@ -179,9 +179,11 @@ class Node:
                 'local_name': self.local_name,
                 'node_value': self.node_value,
                 'child_node_count': self.child_node_count,
-                'children': _.to_dict(
+                'children': [_.to_dict(
                     casing_strategy
-                )_children,
+                )
+                    for _ in self.children
+                ],
                 'attributes': self.attributes,
                 'document_url': self.document_url,
                 'base_url': self.base_url,
@@ -200,21 +202,27 @@ class Node:
                 'content_document': self.content_document.to_dict(
                     casing_strategy
                 ),
-                'shadow_roots': _.to_dict(
+                'shadow_roots': [_.to_dict(
                     casing_strategy
-                )_shadow_roots,
+                )
+                    for _ in self.shadow_roots
+                ],
                 'template_content': self.template_content.to_dict(
                     casing_strategy
                 ),
-                'pseudo_elements': _.to_dict(
+                'pseudo_elements': [_.to_dict(
                     casing_strategy
-                )_pseudo_elements,
+                )
+                    for _ in self.pseudo_elements
+                ],
                 'imported_document': self.imported_document.to_dict(
                     casing_strategy
                 ),
-                'distributed_nodes': _.to_dict(
+                'distributed_nodes': [_.to_dict(
                     casing_strategy
-                )_distributed_nodes,
+                )
+                    for _ in self.distributed_nodes
+                ],
                 'is_svg': self.is_svg,
                 'compatibility_mode': self.compatibility_mode,
                 'assigned_slot': self.assigned_slot.to_dict(
@@ -237,9 +245,11 @@ class Node:
                 'localName': self.local_name,
                 'nodeValue': self.node_value,
                 'childNodeCount': self.child_node_count,
-                'children': _.to_dict(
+                'children': [_.to_dict(
                     casing_strategy
-                )_children,
+                )
+                    for _ in self.children
+                ],
                 'attributes': self.attributes,
                 'documentURL': self.document_url,
                 'baseURL': self.base_url,
@@ -258,21 +268,27 @@ class Node:
                 'contentDocument': self.content_document.to_dict(
                     casing_strategy
                 ),
-                'shadowRoots': _.to_dict(
+                'shadowRoots': [_.to_dict(
                     casing_strategy
-                )_shadow_roots,
+                )
+                    for _ in self.shadow_roots
+                ],
                 'templateContent': self.template_content.to_dict(
                     casing_strategy
                 ),
-                'pseudoElements': _.to_dict(
+                'pseudoElements': [_.to_dict(
                     casing_strategy
-                )_pseudo_elements,
+                )
+                    for _ in self.pseudo_elements
+                ],
                 'importedDocument': self.imported_document.to_dict(
                     casing_strategy
                 ),
-                'distributedNodes': _.to_dict(
+                'distributedNodes': [_.to_dict(
                     casing_strategy
-                )_distributed_nodes,
+                )
+                    for _ in self.distributed_nodes
+                ],
                 'isSVG': self.is_svg,
                 'compatibilityMode': self.compatibility_mode,
                 'assignedSlot': self.assigned_slot.to_dict(
@@ -295,9 +311,11 @@ class Node:
                 'LocalName': self.local_name,
                 'NodeValue': self.node_value,
                 'ChildNodeCount': self.child_node_count,
-                'Children': _.to_dict(
+                'Children': [_.to_dict(
                     casing_strategy
-                )_children,
+                )
+                    for _ in self.children
+                ],
                 'Attributes': self.attributes,
                 'DocumentURL': self.document_url,
                 'BaseURL': self.base_url,
@@ -316,21 +334,27 @@ class Node:
                 'ContentDocument': self.content_document.to_dict(
                     casing_strategy
                 ),
-                'ShadowRoots': _.to_dict(
+                'ShadowRoots': [_.to_dict(
                     casing_strategy
-                )_shadow_roots,
+                )
+                    for _ in self.shadow_roots
+                ],
                 'TemplateContent': self.template_content.to_dict(
                     casing_strategy
                 ),
-                'PseudoElements': _.to_dict(
+                'PseudoElements': [_.to_dict(
                     casing_strategy
-                )_pseudo_elements,
+                )
+                    for _ in self.pseudo_elements
+                ],
                 'ImportedDocument': self.imported_document.to_dict(
                     casing_strategy
                 ),
-                'DistributedNodes': _.to_dict(
+                'DistributedNodes': [_.to_dict(
                     casing_strategy
-                )_distributed_nodes,
+                )
+                    for _ in self.distributed_nodes
+                ],
                 'IsSVG': self.is_svg,
                 'CompatibilityMode': self.compatibility_mode,
                 'AssignedSlot': self.assigned_slot.to_dict(

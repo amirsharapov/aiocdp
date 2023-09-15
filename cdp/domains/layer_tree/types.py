@@ -205,9 +205,11 @@ class Layer:
                 'paint_count': self.paint_count,
                 'draws_content': self.draws_content,
                 'invisible': self.invisible,
-                'scroll_rects': _.to_dict(
+                'scroll_rects': [_.to_dict(
                     casing_strategy
-                )_scroll_rects,
+                )
+                    for _ in self.scroll_rects
+                ],
                 'sticky_position_constraint': self.sticky_position_constraint.to_dict(
                     casing_strategy
                 ),
@@ -234,9 +236,11 @@ class Layer:
                 'paintCount': self.paint_count,
                 'drawsContent': self.draws_content,
                 'invisible': self.invisible,
-                'scrollRects': _.to_dict(
+                'scrollRects': [_.to_dict(
                     casing_strategy
-                )_scroll_rects,
+                )
+                    for _ in self.scroll_rects
+                ],
                 'stickyPositionConstraint': self.sticky_position_constraint.to_dict(
                     casing_strategy
                 ),
@@ -263,9 +267,11 @@ class Layer:
                 'PaintCount': self.paint_count,
                 'DrawsContent': self.draws_content,
                 'Invisible': self.invisible,
-                'ScrollRects': _.to_dict(
+                'ScrollRects': [_.to_dict(
                     casing_strategy
-                )_scroll_rects,
+                )
+                    for _ in self.scroll_rects
+                ],
                 'StickyPositionConstraint': self.sticky_position_constraint.to_dict(
                     casing_strategy
                 ),

@@ -38,25 +38,31 @@ class DatabaseWithObjectStores:
             return {
                 'name': self.name,
                 'version': self.version,
-                'object_stores': _.to_dict(
+                'object_stores': [_.to_dict(
                     casing_strategy
-                )_object_stores,
+                )
+                    for _ in self.object_stores
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
                 'version': self.version,
-                'objectStores': _.to_dict(
+                'objectStores': [_.to_dict(
                     casing_strategy
-                )_object_stores,
+                )
+                    for _ in self.object_stores
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
                 'Version': self.version,
-                'ObjectStores': _.to_dict(
+                'ObjectStores': [_.to_dict(
                     casing_strategy
-                )_object_stores,
+                )
+                    for _ in self.object_stores
+                ],
             }
 
 
@@ -82,9 +88,11 @@ class ObjectStore:
                     casing_strategy
                 ),
                 'auto_increment': self.auto_increment,
-                'indexes': _.to_dict(
+                'indexes': [_.to_dict(
                     casing_strategy
-                )_indexes,
+                )
+                    for _ in self.indexes
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -93,9 +101,11 @@ class ObjectStore:
                     casing_strategy
                 ),
                 'autoIncrement': self.auto_increment,
-                'indexes': _.to_dict(
+                'indexes': [_.to_dict(
                     casing_strategy
-                )_indexes,
+                )
+                    for _ in self.indexes
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -104,9 +114,11 @@ class ObjectStore:
                     casing_strategy
                 ),
                 'AutoIncrement': self.auto_increment,
-                'Indexes': _.to_dict(
+                'Indexes': [_.to_dict(
                     casing_strategy
-                )_indexes,
+                )
+                    for _ in self.indexes
+                ],
             }
 
 
@@ -176,9 +188,11 @@ class Key:
                 'number': self.number,
                 'string': self.string,
                 'date': self.date,
-                'array': _.to_dict(
+                'array': [_.to_dict(
                     casing_strategy
-                )_array,
+                )
+                    for _ in self.array
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -186,9 +200,11 @@ class Key:
                 'number': self.number,
                 'string': self.string,
                 'date': self.date,
-                'array': _.to_dict(
+                'array': [_.to_dict(
                     casing_strategy
-                )_array,
+                )
+                    for _ in self.array
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -196,9 +212,11 @@ class Key:
                 'Number': self.number,
                 'String': self.string,
                 'Date': self.date,
-                'Array': _.to_dict(
+                'Array': [_.to_dict(
                     casing_strategy
-                )_array,
+                )
+                    for _ in self.array
+                ],
             }
 
 

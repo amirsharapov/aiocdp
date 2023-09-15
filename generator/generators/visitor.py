@@ -1,5 +1,6 @@
 import ast
 import contextlib
+from _ast import comprehension
 from typing import Any
 
 
@@ -86,6 +87,23 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         self.source += '\n'
         self.source += f'{self.indent})'
+
+    def visit_comprehension(self, node: comprehension) -> Any:
+        self.source += f'{self.indent}for '
+        self.visit(node.target)
+        self.source += ' in '
+        self.visit(node.iter)
+
+        if node.ifs:
+            self.source += '\n'
+
+            with self._indent_context():
+                for i, if_ in enumerate(node.ifs):
+                    self.source += self.indent
+                    self.visit(if_)
+
+                    if i != len(node.ifs) - 1:
+                        self.source += '\n'
 
     def visit_keyword(self, node: ast.keyword) -> Any:
         self.source += f'{self.indent}{node.arg}='
@@ -259,6 +277,23 @@ class SourceCodeGenerator(ast.NodeVisitor):
             with self._indent_context():
                 for body in node.orelse:
                     self.visit(body)
+
+    def visit_ListComp(self, node: ast.ListComp) -> Any:
+        self.source += '['
+        self.visit(node.elt)
+
+        if node.generators:
+            self.source += '\n'
+
+        with self._indent_context():
+            for i, generator in enumerate(node.generators):
+                self.visit(generator)
+
+                if i != len(node.generators) - 1:
+                    self.source += '\n'
+
+        self.source += '\n'
+        self.source += f'{self.indent}]'
 
     def visit_Module(self, node: ast.Module) -> Any:
         for item in node.body:

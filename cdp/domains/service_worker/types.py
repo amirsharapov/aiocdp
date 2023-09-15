@@ -106,9 +106,11 @@ class ServiceWorkerVersion:
                 'status': self.status,
                 'script_last_modified': self.script_last_modified,
                 'script_response_time': self.script_response_time,
-                'controlled_clients': _.to_dict(
+                'controlled_clients': [_.to_dict(
                     casing_strategy
-                )_controlled_clients,
+                )
+                    for _ in self.controlled_clients
+                ],
                 'target_id': self.target_id.to_dict(
                     casing_strategy
                 ),
@@ -124,9 +126,11 @@ class ServiceWorkerVersion:
                 'status': self.status,
                 'scriptLastModified': self.script_last_modified,
                 'scriptResponseTime': self.script_response_time,
-                'controlledClients': _.to_dict(
+                'controlledClients': [_.to_dict(
                     casing_strategy
-                )_controlled_clients,
+                )
+                    for _ in self.controlled_clients
+                ],
                 'targetId': self.target_id.to_dict(
                     casing_strategy
                 ),
@@ -142,9 +146,11 @@ class ServiceWorkerVersion:
                 'Status': self.status,
                 'ScriptLastModified': self.script_last_modified,
                 'ScriptResponseTime': self.script_response_time,
-                'ControlledClients': _.to_dict(
+                'ControlledClients': [_.to_dict(
                     casing_strategy
-                )_controlled_clients,
+                )
+                    for _ in self.controlled_clients
+                ],
                 'TargetId': self.target_id.to_dict(
                     casing_strategy
                 ),

@@ -373,12 +373,16 @@ class CookieIssueDetails:
                     casing_strategy
                 ),
                 'raw_cookie_line': self.raw_cookie_line,
-                'cookie_warning_reasons': _.to_dict(
+                'cookie_warning_reasons': [_.to_dict(
                     casing_strategy
-                )_cookie_warning_reasons,
-                'cookie_exclusion_reasons': _.to_dict(
+                )
+                    for _ in self.cookie_warning_reasons
+                ],
+                'cookie_exclusion_reasons': [_.to_dict(
                     casing_strategy
-                )_cookie_exclusion_reasons,
+                )
+                    for _ in self.cookie_exclusion_reasons
+                ],
                 'operation': self.operation,
                 'site_for_cookies': self.site_for_cookies,
                 'cookie_url': self.cookie_url,
@@ -392,12 +396,16 @@ class CookieIssueDetails:
                     casing_strategy
                 ),
                 'rawCookieLine': self.raw_cookie_line,
-                'cookieWarningReasons': _.to_dict(
+                'cookieWarningReasons': [_.to_dict(
                     casing_strategy
-                )_cookie_warning_reasons,
-                'cookieExclusionReasons': _.to_dict(
+                )
+                    for _ in self.cookie_warning_reasons
+                ],
+                'cookieExclusionReasons': [_.to_dict(
                     casing_strategy
-                )_cookie_exclusion_reasons,
+                )
+                    for _ in self.cookie_exclusion_reasons
+                ],
                 'operation': self.operation,
                 'siteForCookies': self.site_for_cookies,
                 'cookieUrl': self.cookie_url,
@@ -411,12 +419,16 @@ class CookieIssueDetails:
                     casing_strategy
                 ),
                 'RawCookieLine': self.raw_cookie_line,
-                'CookieWarningReasons': _.to_dict(
+                'CookieWarningReasons': [_.to_dict(
                     casing_strategy
-                )_cookie_warning_reasons,
-                'CookieExclusionReasons': _.to_dict(
+                )
+                    for _ in self.cookie_warning_reasons
+                ],
+                'CookieExclusionReasons': [_.to_dict(
                     casing_strategy
-                )_cookie_exclusion_reasons,
+                )
+                    for _ in self.cookie_exclusion_reasons
+                ],
                 'Operation': self.operation,
                 'SiteForCookies': self.site_for_cookies,
                 'CookieUrl': self.cookie_url,

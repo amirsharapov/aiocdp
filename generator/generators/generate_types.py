@@ -326,8 +326,13 @@ def _generate_dataclass_to_dict_body(
                         target=ast.Name(
                             id='_'
                         ),
-                        iter=ast.Name(
-                            id=property_name
+                        iter=ast.Attribute(
+                            value=ast.Name(
+                                id='self',
+                                ctx=ast.Load()
+                            ),
+                            attr=property_name,
+                            ctx=ast.Load()
                         ),
                         ifs=[]
                     )

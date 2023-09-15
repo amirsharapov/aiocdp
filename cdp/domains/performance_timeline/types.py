@@ -162,9 +162,11 @@ class LayoutShift:
                 'last_input_time': self.last_input_time.to_dict(
                     casing_strategy
                 ),
-                'sources': _.to_dict(
+                'sources': [_.to_dict(
                     casing_strategy
-                )_sources,
+                )
+                    for _ in self.sources
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -173,9 +175,11 @@ class LayoutShift:
                 'lastInputTime': self.last_input_time.to_dict(
                     casing_strategy
                 ),
-                'sources': _.to_dict(
+                'sources': [_.to_dict(
                     casing_strategy
-                )_sources,
+                )
+                    for _ in self.sources
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -184,9 +188,11 @@ class LayoutShift:
                 'LastInputTime': self.last_input_time.to_dict(
                     casing_strategy
                 ),
-                'Sources': _.to_dict(
+                'Sources': [_.to_dict(
                     casing_strategy
-                )_sources,
+                )
+                    for _ in self.sources
+                ],
             }
 
 

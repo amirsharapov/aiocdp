@@ -169,12 +169,16 @@ class ObjectPreview:
                 'subtype': self.subtype,
                 'description': self.description,
                 'overflow': self.overflow,
-                'properties': _.to_dict(
+                'properties': [_.to_dict(
                     casing_strategy
-                )_properties,
-                'entries': _.to_dict(
+                )
+                    for _ in self.properties
+                ],
+                'entries': [_.to_dict(
                     casing_strategy
-                )_entries,
+                )
+                    for _ in self.entries
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -182,12 +186,16 @@ class ObjectPreview:
                 'subtype': self.subtype,
                 'description': self.description,
                 'overflow': self.overflow,
-                'properties': _.to_dict(
+                'properties': [_.to_dict(
                     casing_strategy
-                )_properties,
-                'entries': _.to_dict(
+                )
+                    for _ in self.properties
+                ],
+                'entries': [_.to_dict(
                     casing_strategy
-                )_entries,
+                )
+                    for _ in self.entries
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -195,12 +203,16 @@ class ObjectPreview:
                 'Subtype': self.subtype,
                 'Description': self.description,
                 'Overflow': self.overflow,
-                'Properties': _.to_dict(
+                'Properties': [_.to_dict(
                     casing_strategy
-                )_properties,
-                'Entries': _.to_dict(
+                )
+                    for _ in self.properties
+                ],
+                'Entries': [_.to_dict(
                     casing_strategy
-                )_entries,
+                )
+                    for _ in self.entries
+                ],
             }
 
 
@@ -690,9 +702,11 @@ class StackTrace:
         if casing_strategy == 'snake':
             return {
                 'description': self.description,
-                'call_frames': _.to_dict(
+                'call_frames': [_.to_dict(
                     casing_strategy
-                )_call_frames,
+                )
+                    for _ in self.call_frames
+                ],
                 'parent': self.parent.to_dict(
                     casing_strategy
                 ),
@@ -703,9 +717,11 @@ class StackTrace:
         if casing_strategy == 'camel':
             return {
                 'description': self.description,
-                'callFrames': _.to_dict(
+                'callFrames': [_.to_dict(
                     casing_strategy
-                )_call_frames,
+                )
+                    for _ in self.call_frames
+                ],
                 'parent': self.parent.to_dict(
                     casing_strategy
                 ),
@@ -716,9 +732,11 @@ class StackTrace:
         if casing_strategy == 'pascal':
             return {
                 'Description': self.description,
-                'CallFrames': _.to_dict(
+                'CallFrames': [_.to_dict(
                     casing_strategy
-                )_call_frames,
+                )
+                    for _ in self.call_frames
+                ],
                 'Parent': self.parent.to_dict(
                     casing_strategy
                 ),

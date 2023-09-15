@@ -224,9 +224,11 @@ class ImageDecodeAcceleratorCapability:
                 'min_dimensions': self.min_dimensions.to_dict(
                     casing_strategy
                 ),
-                'subsamplings': _.to_dict(
+                'subsamplings': [_.to_dict(
                     casing_strategy
-                )_subsamplings,
+                )
+                    for _ in self.subsamplings
+                ],
             }
         if casing_strategy == 'camel':
             return {
@@ -237,9 +239,11 @@ class ImageDecodeAcceleratorCapability:
                 'minDimensions': self.min_dimensions.to_dict(
                     casing_strategy
                 ),
-                'subsamplings': _.to_dict(
+                'subsamplings': [_.to_dict(
                     casing_strategy
-                )_subsamplings,
+                )
+                    for _ in self.subsamplings
+                ],
             }
         if casing_strategy == 'pascal':
             return {
@@ -250,9 +254,11 @@ class ImageDecodeAcceleratorCapability:
                 'MinDimensions': self.min_dimensions.to_dict(
                     casing_strategy
                 ),
-                'Subsamplings': _.to_dict(
+                'Subsamplings': [_.to_dict(
                     casing_strategy
-                )_subsamplings,
+                )
+                    for _ in self.subsamplings
+                ],
             }
 
 
@@ -276,57 +282,81 @@ class GPUInfo:
 
         if casing_strategy == 'snake':
             return {
-                'devices': _.to_dict(
+                'devices': [_.to_dict(
                     casing_strategy
-                )_devices,
+                )
+                    for _ in self.devices
+                ],
                 'aux_attributes': self.aux_attributes,
                 'feature_status': self.feature_status,
                 'driver_bug_workarounds': self.driver_bug_workarounds,
-                'video_decoding': _.to_dict(
+                'video_decoding': [_.to_dict(
                     casing_strategy
-                )_video_decoding,
-                'video_encoding': _.to_dict(
+                )
+                    for _ in self.video_decoding
+                ],
+                'video_encoding': [_.to_dict(
                     casing_strategy
-                )_video_encoding,
-                'image_decoding': _.to_dict(
+                )
+                    for _ in self.video_encoding
+                ],
+                'image_decoding': [_.to_dict(
                     casing_strategy
-                )_image_decoding,
+                )
+                    for _ in self.image_decoding
+                ],
             }
         if casing_strategy == 'camel':
             return {
-                'devices': _.to_dict(
+                'devices': [_.to_dict(
                     casing_strategy
-                )_devices,
+                )
+                    for _ in self.devices
+                ],
                 'auxAttributes': self.aux_attributes,
                 'featureStatus': self.feature_status,
                 'driverBugWorkarounds': self.driver_bug_workarounds,
-                'videoDecoding': _.to_dict(
+                'videoDecoding': [_.to_dict(
                     casing_strategy
-                )_video_decoding,
-                'videoEncoding': _.to_dict(
+                )
+                    for _ in self.video_decoding
+                ],
+                'videoEncoding': [_.to_dict(
                     casing_strategy
-                )_video_encoding,
-                'imageDecoding': _.to_dict(
+                )
+                    for _ in self.video_encoding
+                ],
+                'imageDecoding': [_.to_dict(
                     casing_strategy
-                )_image_decoding,
+                )
+                    for _ in self.image_decoding
+                ],
             }
         if casing_strategy == 'pascal':
             return {
-                'Devices': _.to_dict(
+                'Devices': [_.to_dict(
                     casing_strategy
-                )_devices,
+                )
+                    for _ in self.devices
+                ],
                 'AuxAttributes': self.aux_attributes,
                 'FeatureStatus': self.feature_status,
                 'DriverBugWorkarounds': self.driver_bug_workarounds,
-                'VideoDecoding': _.to_dict(
+                'VideoDecoding': [_.to_dict(
                     casing_strategy
-                )_video_decoding,
-                'VideoEncoding': _.to_dict(
+                )
+                    for _ in self.video_decoding
+                ],
+                'VideoEncoding': [_.to_dict(
                     casing_strategy
-                )_video_encoding,
-                'ImageDecoding': _.to_dict(
+                )
+                    for _ in self.video_encoding
+                ],
+                'ImageDecoding': [_.to_dict(
                     casing_strategy
-                )_image_decoding,
+                )
+                    for _ in self.image_decoding
+                ],
             }
 
 

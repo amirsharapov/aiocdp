@@ -286,34 +286,46 @@ class PreloadingAttemptSource:
                 'key': self.key.to_dict(
                     casing_strategy
                 ),
-                'rule_set_ids': _.to_dict(
+                'rule_set_ids': [_.to_dict(
                     casing_strategy
-                )_rule_set_ids,
-                'node_ids': _.to_dict(
+                )
+                    for _ in self.rule_set_ids
+                ],
+                'node_ids': [_.to_dict(
                     casing_strategy
-                )_node_ids,
+                )
+                    for _ in self.node_ids
+                ],
             }
         if casing_strategy == 'camel':
             return {
                 'key': self.key.to_dict(
                     casing_strategy
                 ),
-                'ruleSetIds': _.to_dict(
+                'ruleSetIds': [_.to_dict(
                     casing_strategy
-                )_rule_set_ids,
-                'nodeIds': _.to_dict(
+                )
+                    for _ in self.rule_set_ids
+                ],
+                'nodeIds': [_.to_dict(
                     casing_strategy
-                )_node_ids,
+                )
+                    for _ in self.node_ids
+                ],
             }
         if casing_strategy == 'pascal':
             return {
                 'Key': self.key.to_dict(
                     casing_strategy
                 ),
-                'RuleSetIds': _.to_dict(
+                'RuleSetIds': [_.to_dict(
                     casing_strategy
-                )_rule_set_ids,
-                'NodeIds': _.to_dict(
+                )
+                    for _ in self.rule_set_ids
+                ],
+                'NodeIds': [_.to_dict(
                     casing_strategy
-                )_node_ids,
+                )
+                    for _ in self.node_ids
+                ],
             }

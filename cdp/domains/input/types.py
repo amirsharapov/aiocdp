@@ -151,25 +151,31 @@ class DragData:
 
         if casing_strategy == 'snake':
             return {
-                'items': _.to_dict(
+                'items': [_.to_dict(
                     casing_strategy
-                )_items,
+                )
+                    for _ in self.items
+                ],
                 'files': self.files,
                 'drag_operations_mask': self.drag_operations_mask,
             }
         if casing_strategy == 'camel':
             return {
-                'items': _.to_dict(
+                'items': [_.to_dict(
                     casing_strategy
-                )_items,
+                )
+                    for _ in self.items
+                ],
                 'files': self.files,
                 'dragOperationsMask': self.drag_operations_mask,
             }
         if casing_strategy == 'pascal':
             return {
-                'Items': _.to_dict(
+                'Items': [_.to_dict(
                     casing_strategy
-                )_items,
+                )
+                    for _ in self.items
+                ],
                 'Files': self.files,
                 'DragOperationsMask': self.drag_operations_mask,
             }
