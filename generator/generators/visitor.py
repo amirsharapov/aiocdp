@@ -295,4 +295,4 @@ class SourceCodeGenerator(ast.NodeVisitor):
         else:
             self.visit(node.slice)
 
-        self.source += ']'
+        self.source += f'{self.indent}]'

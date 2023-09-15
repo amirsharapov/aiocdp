@@ -41,7 +41,7 @@ class Input(BaseDomain):
         if is_defined(
             modifiers
         ):
-            params['modifiers'] = modifiers
+            params['modifiers'            ] = modifiers
 
         return self._send_command(
             '"Input.dispatchDragEvent"',
@@ -73,72 +73,72 @@ class Input(BaseDomain):
         if is_defined(
             modifiers
         ):
-            params['modifiers'] = modifiers
+            params['modifiers'            ] = modifiers
 
         if is_defined(
             timestamp
         ):
-            params['timestamp'] = timestamp
+            params['timestamp'            ] = timestamp
 
         if is_defined(
             text
         ):
-            params['text'] = text
+            params['text'            ] = text
 
         if is_defined(
             unmodified_text
         ):
-            params['unmodifiedText'] = unmodified_text
+            params['unmodifiedText'            ] = unmodified_text
 
         if is_defined(
             key_identifier
         ):
-            params['keyIdentifier'] = key_identifier
+            params['keyIdentifier'            ] = key_identifier
 
         if is_defined(
             code
         ):
-            params['code'] = code
+            params['code'            ] = code
 
         if is_defined(
             key
         ):
-            params['key'] = key
+            params['key'            ] = key
 
         if is_defined(
             windows_virtual_key_code
         ):
-            params['windowsVirtualKeyCode'] = windows_virtual_key_code
+            params['windowsVirtualKeyCode'            ] = windows_virtual_key_code
 
         if is_defined(
             native_virtual_key_code
         ):
-            params['nativeVirtualKeyCode'] = native_virtual_key_code
+            params['nativeVirtualKeyCode'            ] = native_virtual_key_code
 
         if is_defined(
             auto_repeat
         ):
-            params['autoRepeat'] = auto_repeat
+            params['autoRepeat'            ] = auto_repeat
 
         if is_defined(
             is_keypad
         ):
-            params['isKeypad'] = is_keypad
+            params['isKeypad'            ] = is_keypad
 
         if is_defined(
             is_system_key
         ):
-            params['isSystemKey'] = is_system_key
+            params['isSystemKey'            ] = is_system_key
 
         if is_defined(
             location
         ):
-            params['location'] = location
+            params['location'            ] = location
 
         if is_defined(
             commands
         ):
-            params['commands'] = commands
+            params['commands'            ] = commands
 
         return self._send_command(
             '"Input.dispatchKeyEvent"',
@@ -175,12 +175,12 @@ class Input(BaseDomain):
         if is_defined(
             replacement_start
         ):
-            params['replacementStart'] = replacement_start
+            params['replacementStart'            ] = replacement_start
 
         if is_defined(
             replacement_end
         ):
-            params['replacementEnd'] = replacement_end
+            params['replacementEnd'            ] = replacement_end
 
         return self._send_command(
             '"Input.imeSetComposition"',
@@ -215,67 +215,67 @@ class Input(BaseDomain):
         if is_defined(
             modifiers
         ):
-            params['modifiers'] = modifiers
+            params['modifiers'            ] = modifiers
 
         if is_defined(
             timestamp
         ):
-            params['timestamp'] = timestamp
+            params['timestamp'            ] = timestamp
 
         if is_defined(
             button
         ):
-            params['button'] = button
+            params['button'            ] = button
 
         if is_defined(
             buttons
         ):
-            params['buttons'] = buttons
+            params['buttons'            ] = buttons
 
         if is_defined(
             click_count
         ):
-            params['clickCount'] = click_count
+            params['clickCount'            ] = click_count
 
         if is_defined(
             force
         ):
-            params['force'] = force
+            params['force'            ] = force
 
         if is_defined(
             tangential_pressure
         ):
-            params['tangentialPressure'] = tangential_pressure
+            params['tangentialPressure'            ] = tangential_pressure
 
         if is_defined(
             tilt_x
         ):
-            params['tiltX'] = tilt_x
+            params['tiltX'            ] = tilt_x
 
         if is_defined(
             tilt_y
         ):
-            params['tiltY'] = tilt_y
+            params['tiltY'            ] = tilt_y
 
         if is_defined(
             twist
         ):
-            params['twist'] = twist
+            params['twist'            ] = twist
 
         if is_defined(
             delta_x
         ):
-            params['deltaX'] = delta_x
+            params['deltaX'            ] = delta_x
 
         if is_defined(
             delta_y
         ):
-            params['deltaY'] = delta_y
+            params['deltaY'            ] = delta_y
 
         if is_defined(
             pointer_type
         ):
-            params['pointerType'] = pointer_type
+            params['pointerType'            ] = pointer_type
 
         return self._send_command(
             '"Input.dispatchMouseEvent"',
@@ -297,12 +297,12 @@ class Input(BaseDomain):
         if is_defined(
             modifiers
         ):
-            params['modifiers'] = modifiers
+            params['modifiers'            ] = modifiers
 
         if is_defined(
             timestamp
         ):
-            params['timestamp'] = timestamp
+            params['timestamp'            ] = timestamp
 
         return self._send_command(
             '"Input.dispatchTouchEvent"',
@@ -341,27 +341,27 @@ class Input(BaseDomain):
         if is_defined(
             timestamp
         ):
-            params['timestamp'] = timestamp
+            params['timestamp'            ] = timestamp
 
         if is_defined(
             delta_x
         ):
-            params['deltaX'] = delta_x
+            params['deltaX'            ] = delta_x
 
         if is_defined(
             delta_y
         ):
-            params['deltaY'] = delta_y
+            params['deltaY'            ] = delta_y
 
         if is_defined(
             modifiers
         ):
-            params['modifiers'] = modifiers
+            params['modifiers'            ] = modifiers
 
         if is_defined(
             click_count
         ):
-            params['clickCount'] = click_count
+            params['clickCount'            ] = click_count
 
         return self._send_command(
             '"Input.emulateTouchFromMouseEvent"',
@@ -411,12 +411,12 @@ class Input(BaseDomain):
         if is_defined(
             relative_speed
         ):
-            params['relativeSpeed'] = relative_speed
+            params['relativeSpeed'            ] = relative_speed
 
         if is_defined(
             gesture_source_type
         ):
-            params['gestureSourceType'] = gesture_source_type
+            params['gestureSourceType'            ] = gesture_source_type
 
         return self._send_command(
             '"Input.synthesizePinchGesture"',
@@ -446,52 +446,52 @@ class Input(BaseDomain):
         if is_defined(
             x_distance
         ):
-            params['xDistance'] = x_distance
+            params['xDistance'            ] = x_distance
 
         if is_defined(
             y_distance
         ):
-            params['yDistance'] = y_distance
+            params['yDistance'            ] = y_distance
 
         if is_defined(
             x_overscroll
         ):
-            params['xOverscroll'] = x_overscroll
+            params['xOverscroll'            ] = x_overscroll
 
         if is_defined(
             y_overscroll
         ):
-            params['yOverscroll'] = y_overscroll
+            params['yOverscroll'            ] = y_overscroll
 
         if is_defined(
             prevent_fling
         ):
-            params['preventFling'] = prevent_fling
+            params['preventFling'            ] = prevent_fling
 
         if is_defined(
             speed
         ):
-            params['speed'] = speed
+            params['speed'            ] = speed
 
         if is_defined(
             gesture_source_type
         ):
-            params['gestureSourceType'] = gesture_source_type
+            params['gestureSourceType'            ] = gesture_source_type
 
         if is_defined(
             repeat_count
         ):
-            params['repeatCount'] = repeat_count
+            params['repeatCount'            ] = repeat_count
 
         if is_defined(
             repeat_delay_ms
         ):
-            params['repeatDelayMs'] = repeat_delay_ms
+            params['repeatDelayMs'            ] = repeat_delay_ms
 
         if is_defined(
             interaction_marker_name
         ):
-            params['interactionMarkerName'] = interaction_marker_name
+            params['interactionMarkerName'            ] = interaction_marker_name
 
         return self._send_command(
             '"Input.synthesizeScrollGesture"',
@@ -514,17 +514,17 @@ class Input(BaseDomain):
         if is_defined(
             duration
         ):
-            params['duration'] = duration
+            params['duration'            ] = duration
 
         if is_defined(
             tap_count
         ):
-            params['tapCount'] = tap_count
+            params['tapCount'            ] = tap_count
 
         if is_defined(
             gesture_source_type
         ):
-            params['gestureSourceType'] = gesture_source_type
+            params['gestureSourceType'            ] = gesture_source_type
 
         return self._send_command(
             '"Input.synthesizeTapGesture"',

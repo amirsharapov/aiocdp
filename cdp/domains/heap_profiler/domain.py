@@ -93,7 +93,7 @@ class HeapProfiler(BaseDomain):
         if is_defined(
             object_group
         ):
-            params['objectGroup'] = object_group
+            params['objectGroup'            ] = object_group
 
         return self._send_command(
             '"HeapProfiler.getObjectByHeapObjectId"',
@@ -119,7 +119,7 @@ class HeapProfiler(BaseDomain):
         if is_defined(
             sampling_interval
         ):
-            params['samplingInterval'] = sampling_interval
+            params['samplingInterval'            ] = sampling_interval
 
         return self._send_command(
             '"HeapProfiler.startSampling"',
@@ -135,7 +135,7 @@ class HeapProfiler(BaseDomain):
         if is_defined(
             track_allocations
         ):
-            params['trackAllocations'] = track_allocations
+            params['trackAllocations'            ] = track_allocations
 
         return self._send_command(
             '"HeapProfiler.startTrackingHeapObjects"',
@@ -161,7 +161,7 @@ class HeapProfiler(BaseDomain):
         if is_defined(
             report_progress
         ):
-            params['reportProgress'] = report_progress
+            params['reportProgress'            ] = report_progress
 
         return self._send_command(
             '"HeapProfiler.stopTrackingHeapObjects"',
@@ -177,7 +177,7 @@ class HeapProfiler(BaseDomain):
         if is_defined(
             report_progress
         ):
-            params['reportProgress'] = report_progress
+            params['reportProgress'            ] = report_progress
 
         return self._send_command(
             '"HeapProfiler.takeHeapSnapshot"',

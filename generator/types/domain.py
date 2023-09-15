@@ -1,5 +1,5 @@
-import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import TYPE_CHECKING
 
 from generator.types.base import ComplexNode
 from generator.types.command import Command
@@ -12,13 +12,16 @@ from generator.utils import (
     MaybeUndefined
 )
 
-logger = logging.getLogger(
-    'cdp.generator'
-)
+if TYPE_CHECKING:
+    from generator.types import Protocol
 
 
 @dataclass
 class Domain(ComplexNode):
+    parent: 'Protocol' = field(
+        init=False
+    )
+
     domain: str
     description: MaybeUndefined[str]
     types: list['Type']

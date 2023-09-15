@@ -35,12 +35,12 @@ class Audits(BaseDomain):
         if is_defined(
             quality
         ):
-            params['quality'] = quality
+            params['quality'            ] = quality
 
         if is_defined(
             size_only
         ):
-            params['sizeOnly'] = size_only
+            params['sizeOnly'            ] = size_only
 
         return self._send_command(
             '"Audits.getEncodedResponse"',
@@ -76,7 +76,7 @@ class Audits(BaseDomain):
         if is_defined(
             report_aaa
         ):
-            params['reportAAA'] = report_aaa
+            params['reportAAA'            ] = report_aaa
 
         return self._send_command(
             '"Audits.checkContrast"',

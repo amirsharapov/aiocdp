@@ -81,7 +81,7 @@ class Storage(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'            ] = browser_context_id
 
         return self._send_command(
             '"Storage.getCookies"',
@@ -100,7 +100,7 @@ class Storage(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'            ] = browser_context_id
 
         return self._send_command(
             '"Storage.setCookies"',
@@ -116,7 +116,7 @@ class Storage(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'            ] = browser_context_id
 
         return self._send_command(
             '"Storage.clearCookies"',
@@ -148,7 +148,7 @@ class Storage(BaseDomain):
         if is_defined(
             quota_size
         ):
-            params['quotaSize'] = quota_size
+            params['quotaSize'            ] = quota_size
 
         return self._send_command(
             '"Storage.overrideQuotaForOrigin"',
@@ -352,7 +352,7 @@ class Storage(BaseDomain):
         if is_defined(
             ignore_if_present
         ):
-            params['ignoreIfPresent'] = ignore_if_present
+            params['ignoreIfPresent'            ] = ignore_if_present
 
         return self._send_command(
             '"Storage.setSharedStorageEntry"',

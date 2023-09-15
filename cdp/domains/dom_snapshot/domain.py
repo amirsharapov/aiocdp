@@ -51,17 +51,17 @@ class DOMSnapshot(BaseDomain):
         if is_defined(
             include_event_listeners
         ):
-            params['includeEventListeners'] = include_event_listeners
+            params['includeEventListeners'            ] = include_event_listeners
 
         if is_defined(
             include_paint_order
         ):
-            params['includePaintOrder'] = include_paint_order
+            params['includePaintOrder'            ] = include_paint_order
 
         if is_defined(
             include_user_agent_shadow_tree
         ):
-            params['includeUserAgentShadowTree'] = include_user_agent_shadow_tree
+            params['includeUserAgentShadowTree'            ] = include_user_agent_shadow_tree
 
         return self._send_command(
             '"DOMSnapshot.getSnapshot"',
@@ -83,22 +83,22 @@ class DOMSnapshot(BaseDomain):
         if is_defined(
             include_paint_order
         ):
-            params['includePaintOrder'] = include_paint_order
+            params['includePaintOrder'            ] = include_paint_order
 
         if is_defined(
             include_dom_rects
         ):
-            params['includeDOMRects'] = include_dom_rects
+            params['includeDOMRects'            ] = include_dom_rects
 
         if is_defined(
             include_blended_background_colors
         ):
-            params['includeBlendedBackgroundColors'] = include_blended_background_colors
+            params['includeBlendedBackgroundColors'            ] = include_blended_background_colors
 
         if is_defined(
             include_text_color_opacities
         ):
-            params['includeTextColorOpacities'] = include_text_color_opacities
+            params['includeTextColorOpacities'            ] = include_text_color_opacities
 
         return self._send_command(
             '"DOMSnapshot.captureSnapshot"',

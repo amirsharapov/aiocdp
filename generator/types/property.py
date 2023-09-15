@@ -1,17 +1,27 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import TYPE_CHECKING
 
 from generator.types.base import ComplexNode
-from generator.types.items import Items
+from generator.types.items import PropertyItems
 from generator.types.ref import Ref
 from generator.utils import UNDEFINED, MaybeUndefined, is_defined, snake_case, camel_case, pascal_case
+
+if TYPE_CHECKING:
+    from generator.types import Type
+    from generator.types.command import Command
+    from generator.types.event import Event
 
 
 @dataclass
 class Property(ComplexNode):
+    parent: 'Type' = field(
+        init=False
+    )
+
     name: str
     type: MaybeUndefined[str]
     ref: MaybeUndefined[Ref]
-    items: MaybeUndefined['Items']
+    items: MaybeUndefined['PropertyItems']
     description: MaybeUndefined[str]
     optional: MaybeUndefined[bool]
     experimental: MaybeUndefined[bool]
@@ -39,7 +49,7 @@ class Property(ComplexNode):
         items = data.get('items', UNDEFINED)
 
         if is_defined(items):
-            items = Items.from_dict(items)
+            items = PropertyItems.from_dict(items)
 
         return cls(
             name=data['name'],
@@ -60,8 +70,17 @@ class Property(ComplexNode):
 
 
 @dataclass
-class Parameter(Property):
-    pass
+class CommandParameter(Property):
+    parent: 'Command' = field(
+        init=False
+    )
+
+
+@dataclass
+class EventParameter(Property):
+    parent: 'Event' = field(
+        init=False
+    )
 
 
 @dataclass

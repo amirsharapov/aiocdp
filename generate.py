@@ -4,7 +4,7 @@ import shutil
 from pathlib import Path
 
 from generator.types.protocol import Protocol
-from generator import generators
+from generator import generators, type_registry
 from generator.utils import snake_case
 from generator.generators.visitor import SourceCodeGenerator
 
@@ -27,9 +27,14 @@ def parse(protocol_paths: list[str | Path] = None) -> list['Protocol']:
     protocols = []
 
     for path in protocol_paths:
-        data = json.load(open(path))
-        protocol = Protocol.from_dict(data)
+        protocol = json.load(open(path))
+        protocol = Protocol.from_dict(protocol)
         protocol.resolve_parent_refs()
+
+        for domain in protocol.domains:
+            for type_ in domain.types:
+                type_registry.add_type(type_)
+
         protocols.append(protocol)
 
     return protocols

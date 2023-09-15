@@ -63,22 +63,22 @@ class Accessibility(BaseDomain):
         if is_defined(
             node_id
         ):
-            params['nodeId'] = node_id
+            params['nodeId'            ] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'            ] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params['objectId'] = object_id
+            params['objectId'            ] = object_id
 
         if is_defined(
             fetch_relatives
         ):
-            params['fetchRelatives'] = fetch_relatives
+            params['fetchRelatives'            ] = fetch_relatives
 
         return self._send_command(
             '"Accessibility.getPartialAXTree"',
@@ -95,12 +95,12 @@ class Accessibility(BaseDomain):
         if is_defined(
             depth
         ):
-            params['depth'] = depth
+            params['depth'            ] = depth
 
         if is_defined(
             frame_id
         ):
-            params['frameId'] = frame_id
+            params['frameId'            ] = frame_id
 
         return self._send_command(
             '"Accessibility.getFullAXTree"',
@@ -116,7 +116,7 @@ class Accessibility(BaseDomain):
         if is_defined(
             frame_id
         ):
-            params['frameId'] = frame_id
+            params['frameId'            ] = frame_id
 
         return self._send_command(
             '"Accessibility.getRootAXNode"',
@@ -134,17 +134,17 @@ class Accessibility(BaseDomain):
         if is_defined(
             node_id
         ):
-            params['nodeId'] = node_id
+            params['nodeId'            ] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'            ] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params['objectId'] = object_id
+            params['objectId'            ] = object_id
 
         return self._send_command(
             '"Accessibility.getAXNodeAndAncestors"',
@@ -163,7 +163,7 @@ class Accessibility(BaseDomain):
         if is_defined(
             frame_id
         ):
-            params['frameId'] = frame_id
+            params['frameId'            ] = frame_id
 
         return self._send_command(
             '"Accessibility.getChildAXNodes"',
@@ -183,27 +183,27 @@ class Accessibility(BaseDomain):
         if is_defined(
             node_id
         ):
-            params['nodeId'] = node_id
+            params['nodeId'            ] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'            ] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params['objectId'] = object_id
+            params['objectId'            ] = object_id
 
         if is_defined(
             accessible_name
         ):
-            params['accessibleName'] = accessible_name
+            params['accessibleName'            ] = accessible_name
 
         if is_defined(
             role
         ):
-            params['role'] = role
+            params['role'            ] = role
 
         return self._send_command(
             '"Accessibility.queryAXTree"',

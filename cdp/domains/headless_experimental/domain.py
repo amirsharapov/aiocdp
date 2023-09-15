@@ -32,22 +32,22 @@ class HeadlessExperimental(BaseDomain):
         if is_defined(
             frame_time_ticks
         ):
-            params['frameTimeTicks'] = frame_time_ticks
+            params['frameTimeTicks'            ] = frame_time_ticks
 
         if is_defined(
             interval
         ):
-            params['interval'] = interval
+            params['interval'            ] = interval
 
         if is_defined(
             no_display_updates
         ):
-            params['noDisplayUpdates'] = no_display_updates
+            params['noDisplayUpdates'            ] = no_display_updates
 
         if is_defined(
             screenshot
         ):
-            params['screenshot'] = screenshot
+            params['screenshot'            ] = screenshot
 
         return self._send_command(
             '"HeadlessExperimental.beginFrame"',

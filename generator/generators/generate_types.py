@@ -6,76 +6,7 @@ from generator.types import Domain, Type, Command
 from generator.utils import cdp_to_python_type, is_builtin
 
 
-def _generate_dataclass_import(domain: Domain):
-    should_generate = False
-
-    if domain.commands:
-        should_generate = True
-
-    else:
-        for type_ in domain.types:
-            if type_.properties:
-                should_generate = True
-                break
-
-    if not should_generate:
-        return
-
-    return ast.ImportFrom(
-        module='dataclasses',
-        names=[
-            ast.alias('dataclass')
-        ]
-    )
-
-
-def _generate_typing_imports(domain: Domain):
-    # TODO: Check first before adding type checking flag
-    imports = [ast.ImportFrom(
-        module='typing',
-        names=[
-            ast.alias('TYPE_CHECKING')
-        ]
-    )]
-
-    if import_ := _generate_literal_t_import(domain):
-        imports.append(import_)
-
-    if import_ := _generate_any_t_import(domain):
-        imports.append(import_)
-
-    return imports
-
-
-def _generate_literal_t_import(domain: Domain):
-    should_generate = False
-
-    for type_ in domain.types:
-        if type_.enum:
-            should_generate = True
-            break
-
-    if not should_generate:
-        return
-
-    return ast.ImportFrom(
-        module='typing',
-        names=[
-            ast.alias('Literal'),
-        ]
-    )
-
-
-def _generate_any_t_import(domain: Domain):
-    return ast.ImportFrom(
-        module='typing',
-        names=[
-            ast.alias('Any'),
-        ]
-    )
-
-
-def _generate_external_type_imports(domain: Domain):
+def _generate_domain_type_imports(domain: Domain):
     import_tree = defaultdict(set)
 
     for type_ in domain.types:
@@ -96,12 +27,42 @@ def _generate_external_type_imports(domain: Domain):
 
     imports = []
 
-    for domain, types in import_tree.items():
+    for module, types in import_tree.items():
         types = sorted(types)
 
         imports.append(
             ast.ImportFrom(
-                module=f'cdp.domains.{domain}.types',
+                module=f'cdp.domains.{module}.types',
+                names=[
+                    ast.alias(type_) for type_ in types
+                ]
+            )
+        )
+
+    return imports
+
+
+def _generate_basic_imports(domain: Domain):
+    import_tree = defaultdict(set)
+    import_tree['typing'].add('TYPE_CHECKING')
+    import_tree['typing'].add('Any')
+    import_tree['typing'].add('Literal')
+
+    if domain.commands:
+        import_tree['dataclasses'].add('dataclass')
+
+    for type_ in domain.types:
+        if type_.properties:
+            import_tree['dataclasses'].add('dataclass')
+
+    imports = []
+
+    for module, types in import_tree.items():
+        types = sorted(types)
+
+        imports.append(
+            ast.ImportFrom(
+                module=module,
                 names=[
                     ast.alias(type_) for type_ in types
                 ]
@@ -319,7 +280,7 @@ def _generate_dataclass_to_dict_body(
         if is_builtin(property_name):
             property_name += '_'
 
-        if property_.ref:
+        if property_.ref and not property_.ref.actual_type.enum:
             value = ast.Call(
                 func=ast.Attribute(
                     value=ast.Attribute(
@@ -424,8 +385,7 @@ def _generate_dataclass_to_dict_method(type_: 'Type'):
     ifs = []
 
     for casing_strategy in ['snake', 'camel', 'pascal']:
-        casing_strategy: Literal['snake', 'camel', 'pascal']
-
+        # noinspection PyTypeChecker
         ifs.append(
             ast.If(
                 test=ast.Compare(
@@ -437,7 +397,7 @@ def _generate_dataclass_to_dict_method(type_: 'Type'):
                         ast.Eq()
                     ],
                     comparators=[
-                        ast.Constant('snake')
+                        ast.Constant(casing_strategy)
                     ]
                 ),
                 body=[
@@ -459,22 +419,21 @@ def generate(domain: Domain):
         body=[]
     )
 
-    if import_ := _generate_dataclass_import(domain):
-        root.body.append(import_)
+    root.body.extend(
+        _generate_basic_imports(
+            domain
+        )
+    )
 
-    if imports := _generate_typing_imports(domain):
-        root.body += imports
-
-    if imports := _generate_external_type_imports(domain):
-        if_type_checking = ast.If(
+    root.body.append(
+        ast.If(
             test=ast.Name(
                 id='TYPE_CHECKING',
                 ctx=ast.Load()
             ),
-            body=imports
+            body=_generate_domain_type_imports(domain)
         )
-
-        root.body.append(if_type_checking)
+    )
 
     type_aliases = []
     string_literals = []

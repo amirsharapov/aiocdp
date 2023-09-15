@@ -97,17 +97,17 @@ class LayerTree(BaseDomain):
         if is_defined(
             min_repeat_count
         ):
-            params['minRepeatCount'] = min_repeat_count
+            params['minRepeatCount'            ] = min_repeat_count
 
         if is_defined(
             min_duration
         ):
-            params['minDuration'] = min_duration
+            params['minDuration'            ] = min_duration
 
         if is_defined(
             clip_rect
         ):
-            params['clipRect'] = clip_rect
+            params['clipRect'            ] = clip_rect
 
         return self._send_command(
             '"LayerTree.profileSnapshot"',
@@ -141,17 +141,17 @@ class LayerTree(BaseDomain):
         if is_defined(
             from_step
         ):
-            params['fromStep'] = from_step
+            params['fromStep'            ] = from_step
 
         if is_defined(
             to_step
         ):
-            params['toStep'] = to_step
+            params['toStep'            ] = to_step
 
         if is_defined(
             scale
         ):
-            params['scale'] = scale
+            params['scale'            ] = scale
 
         return self._send_command(
             '"LayerTree.replaySnapshot"',

@@ -83,12 +83,12 @@ class Profiler(BaseDomain):
         if is_defined(
             call_count
         ):
-            params['callCount'] = call_count
+            params['callCount'            ] = call_count
 
         if is_defined(
             detailed
         ):
-            params['detailed'] = detailed
+            params['detailed'            ] = detailed
 
         return self._send_command(
             '"Profiler.startPreciseCoverage"',

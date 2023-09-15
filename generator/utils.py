@@ -3,7 +3,6 @@ from typing import TypeVar
 
 import inflection
 
-
 direct_python_type_map = {
     'string': 'str',
     'integer': 'int',

@@ -39,12 +39,12 @@ class DOMDebugger(BaseDomain):
         if is_defined(
             depth
         ):
-            params['depth'] = depth
+            params['depth'            ] = depth
 
         if is_defined(
             pierce
         ):
-            params['pierce'] = pierce
+            params['pierce'            ] = pierce
 
         return self._send_command(
             '"DOMDebugger.getEventListeners"',
@@ -78,7 +78,7 @@ class DOMDebugger(BaseDomain):
         if is_defined(
             target_name
         ):
-            params['targetName'] = target_name
+            params['targetName'            ] = target_name
 
         return self._send_command(
             '"DOMDebugger.removeEventListenerBreakpoint"',
@@ -151,7 +151,7 @@ class DOMDebugger(BaseDomain):
         if is_defined(
             target_name
         ):
-            params['targetName'] = target_name
+            params['targetName'            ] = target_name
 
         return self._send_command(
             '"DOMDebugger.setEventListenerBreakpoint"',

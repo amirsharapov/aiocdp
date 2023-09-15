@@ -2,8 +2,8 @@ from typing import TYPE_CHECKING
 from dataclasses import dataclass, field
 
 from generator.types.base import ComplexNode
-from generator.types.property import Parameter, Return
-from generator.utils import UNDEFINED, MaybeUndefined, snake_case
+from generator.types.property import CommandParameter, Return
+from generator.utils import UNDEFINED, MaybeUndefined, snake_case, pascal_case
 
 if TYPE_CHECKING:
     from generator.types.domain import Domain
@@ -11,11 +11,13 @@ if TYPE_CHECKING:
 
 @dataclass
 class Command(ComplexNode):
-    parent: 'Domain' = field(init=False)
+    parent: 'Domain' = field(
+        init=False
+    )
 
     name: str
     description: MaybeUndefined[str]
-    parameters: list['Parameter']
+    parameters: list['CommandParameter']
     returns: list['Return']
     experimental: MaybeUndefined[bool]
     deprecated: MaybeUndefined[bool]
@@ -25,7 +27,7 @@ class Command(ComplexNode):
         return cls(
             name=data['name'],
             description=data.get('description', UNDEFINED),
-            parameters=[Parameter.from_dict(parameter) for parameter in data.get('parameters', [])],
+            parameters=[CommandParameter.from_dict(parameter) for parameter in data.get('parameters', [])],
             returns=[Return.from_dict(return_) for return_ in data.get('returns', [])],
             experimental=data.get('experimental', UNDEFINED),
             deprecated=data.get('deprecated', UNDEFINED)
@@ -37,7 +39,7 @@ class Command(ComplexNode):
 
     @property
     def name_pascal_case(self):
-        return self.name[0].upper() + self.name[1:]
+        return pascal_case(self.name)
 
     def get_refs(self):
         refs = []

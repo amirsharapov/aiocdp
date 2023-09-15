@@ -45,7 +45,7 @@ class Debugger(BaseDomain):
         if is_defined(
             target_call_frames
         ):
-            params['targetCallFrames'] = target_call_frames
+            params['targetCallFrames'            ] = target_call_frames
 
         return self._send_command(
             '"Debugger.continueToLocation"',
@@ -71,7 +71,7 @@ class Debugger(BaseDomain):
         if is_defined(
             max_scripts_cache_size
         ):
-            params['maxScriptsCacheSize'] = max_scripts_cache_size
+            params['maxScriptsCacheSize'            ] = max_scripts_cache_size
 
         return self._send_command(
             '"Debugger.enable"',
@@ -98,37 +98,37 @@ class Debugger(BaseDomain):
         if is_defined(
             object_group
         ):
-            params['objectGroup'] = object_group
+            params['objectGroup'            ] = object_group
 
         if is_defined(
             include_command_line_api
         ):
-            params['includeCommandLineAPI'] = include_command_line_api
+            params['includeCommandLineAPI'            ] = include_command_line_api
 
         if is_defined(
             silent
         ):
-            params['silent'] = silent
+            params['silent'            ] = silent
 
         if is_defined(
             return_by_value
         ):
-            params['returnByValue'] = return_by_value
+            params['returnByValue'            ] = return_by_value
 
         if is_defined(
             generate_preview
         ):
-            params['generatePreview'] = generate_preview
+            params['generatePreview'            ] = generate_preview
 
         if is_defined(
             throw_on_side_effect
         ):
-            params['throwOnSideEffect'] = throw_on_side_effect
+            params['throwOnSideEffect'            ] = throw_on_side_effect
 
         if is_defined(
             timeout
         ):
-            params['timeout'] = timeout
+            params['timeout'            ] = timeout
 
         return self._send_command(
             '"Debugger.evaluateOnCallFrame"',
@@ -148,12 +148,12 @@ class Debugger(BaseDomain):
         if is_defined(
             end
         ):
-            params['end'] = end
+            params['end'            ] = end
 
         if is_defined(
             restrict_to_function
         ):
-            params['restrictToFunction'] = restrict_to_function
+            params['restrictToFunction'            ] = restrict_to_function
 
         return self._send_command(
             '"Debugger.getPossibleBreakpoints"',
@@ -260,12 +260,12 @@ class Debugger(BaseDomain):
         if is_defined(
             case_sensitive
         ):
-            params['caseSensitive'] = case_sensitive
+            params['caseSensitive'            ] = case_sensitive
 
         if is_defined(
             is_regex
         ):
-            params['isRegex'] = is_regex
+            params['isRegex'            ] = is_regex
 
         return self._send_command(
             '"Debugger.searchInContent"',
@@ -325,7 +325,7 @@ class Debugger(BaseDomain):
         if is_defined(
             condition
         ):
-            params['condition'] = condition
+            params['condition'            ] = condition
 
         return self._send_command(
             '"Debugger.setBreakpoint"',
@@ -361,27 +361,27 @@ class Debugger(BaseDomain):
         if is_defined(
             url
         ):
-            params['url'] = url
+            params['url'            ] = url
 
         if is_defined(
             url_regex
         ):
-            params['urlRegex'] = url_regex
+            params['urlRegex'            ] = url_regex
 
         if is_defined(
             script_hash
         ):
-            params['scriptHash'] = script_hash
+            params['scriptHash'            ] = script_hash
 
         if is_defined(
             column_number
         ):
-            params['columnNumber'] = column_number
+            params['columnNumber'            ] = column_number
 
         if is_defined(
             condition
         ):
-            params['condition'] = condition
+            params['condition'            ] = condition
 
         return self._send_command(
             '"Debugger.setBreakpointByUrl"',
@@ -400,7 +400,7 @@ class Debugger(BaseDomain):
         if is_defined(
             condition
         ):
-            params['condition'] = condition
+            params['condition'            ] = condition
 
         return self._send_command(
             '"Debugger.setBreakpointOnFunctionCall"',
@@ -460,7 +460,7 @@ class Debugger(BaseDomain):
         if is_defined(
             dry_run
         ):
-            params['dryRun'] = dry_run
+            params['dryRun'            ] = dry_run
 
         return self._send_command(
             '"Debugger.setScriptSource"',
@@ -508,7 +508,7 @@ class Debugger(BaseDomain):
         if is_defined(
             break_on_async_call
         ):
-            params['breakOnAsyncCall'] = break_on_async_call
+            params['breakOnAsyncCall'            ] = break_on_async_call
 
         return self._send_command(
             '"Debugger.stepInto"',

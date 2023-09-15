@@ -44,12 +44,12 @@ class Browser(BaseDomain):
         if is_defined(
             origin
         ):
-            params['origin'] = origin
+            params['origin'            ] = origin
 
         if is_defined(
             browser_context_id
         ):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'            ] = browser_context_id
 
         return self._send_command(
             '"Browser.setPermission"',
@@ -69,12 +69,12 @@ class Browser(BaseDomain):
         if is_defined(
             origin
         ):
-            params['origin'] = origin
+            params['origin'            ] = origin
 
         if is_defined(
             browser_context_id
         ):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'            ] = browser_context_id
 
         return self._send_command(
             '"Browser.grantPermissions"',
@@ -90,7 +90,7 @@ class Browser(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'            ] = browser_context_id
 
         return self._send_command(
             '"Browser.resetPermissions"',
@@ -111,17 +111,17 @@ class Browser(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'            ] = browser_context_id
 
         if is_defined(
             download_path
         ):
-            params['downloadPath'] = download_path
+            params['downloadPath'            ] = download_path
 
         if is_defined(
             events_enabled
         ):
-            params['eventsEnabled'] = events_enabled
+            params['eventsEnabled'            ] = events_enabled
 
         return self._send_command(
             '"Browser.setDownloadBehavior"',
@@ -140,7 +140,7 @@ class Browser(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'            ] = browser_context_id
 
         return self._send_command(
             '"Browser.cancelDownload"',
@@ -207,12 +207,12 @@ class Browser(BaseDomain):
         if is_defined(
             query
         ):
-            params['query'] = query
+            params['query'            ] = query
 
         if is_defined(
             delta
         ):
-            params['delta'] = delta
+            params['delta'            ] = delta
 
         return self._send_command(
             '"Browser.getHistograms"',
@@ -231,7 +231,7 @@ class Browser(BaseDomain):
         if is_defined(
             delta
         ):
-            params['delta'] = delta
+            params['delta'            ] = delta
 
         return self._send_command(
             '"Browser.getHistogram"',
@@ -260,7 +260,7 @@ class Browser(BaseDomain):
         if is_defined(
             target_id
         ):
-            params['targetId'] = target_id
+            params['targetId'            ] = target_id
 
         return self._send_command(
             '"Browser.getWindowForTarget"',
@@ -292,12 +292,12 @@ class Browser(BaseDomain):
         if is_defined(
             badge_label
         ):
-            params['badgeLabel'] = badge_label
+            params['badgeLabel'            ] = badge_label
 
         if is_defined(
             image
         ):
-            params['image'] = image
+            params['image'            ] = image
 
         return self._send_command(
             '"Browser.setDockTile"',

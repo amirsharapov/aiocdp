@@ -31,7 +31,7 @@ class WebAuthn(BaseDomain):
         if is_defined(
             enable_ui
         ):
-            params['enableUI'] = enable_ui
+            params['enableUI'            ] = enable_ui
 
         return self._send_command(
             '"WebAuthn.enable"',
@@ -75,17 +75,17 @@ class WebAuthn(BaseDomain):
         if is_defined(
             is_bogus_signature
         ):
-            params['isBogusSignature'] = is_bogus_signature
+            params['isBogusSignature'            ] = is_bogus_signature
 
         if is_defined(
             is_bad_uv
         ):
-            params['isBadUV'] = is_bad_uv
+            params['isBadUV'            ] = is_bad_uv
 
         if is_defined(
             is_bad_up
         ):
-            params['isBadUP'] = is_bad_up
+            params['isBadUP'            ] = is_bad_up
 
         return self._send_command(
             '"WebAuthn.setResponseOverrideBits"',

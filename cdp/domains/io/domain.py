@@ -49,12 +49,12 @@ class IO(BaseDomain):
         if is_defined(
             offset
         ):
-            params['offset'] = offset
+            params['offset'            ] = offset
 
         if is_defined(
             size
         ):
-            params['size'] = size
+            params['size'            ] = size
 
         return self._send_command(
             '"IO.read"',

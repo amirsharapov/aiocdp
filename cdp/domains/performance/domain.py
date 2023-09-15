@@ -36,7 +36,7 @@ class Performance(BaseDomain):
         if is_defined(
             time_domain
         ):
-            params['timeDomain'] = time_domain
+            params['timeDomain'            ] = time_domain
 
         return self._send_command(
             '"Performance.enable"',

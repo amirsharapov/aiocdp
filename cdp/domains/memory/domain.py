@@ -87,12 +87,12 @@ class Memory(BaseDomain):
         if is_defined(
             sampling_interval
         ):
-            params['samplingInterval'] = sampling_interval
+            params['samplingInterval'            ] = sampling_interval
 
         if is_defined(
             suppress_randomness
         ):
-            params['suppressRandomness'] = suppress_randomness
+            params['suppressRandomness'            ] = suppress_randomness
 
         return self._send_command(
             '"Memory.startSampling"',
