@@ -33,6 +33,60 @@ class LargestContentfulPaint:
     element_id: str
     url: str
     node_id: 'BackendNodeId'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'render_time': self.render_time.to_dict(
+                    casing_strategy
+                ),
+                'load_time': self.load_time.to_dict(
+                    casing_strategy
+                ),
+                'size': self.size,
+                'element_id': self.element_id,
+                'url': self.url,
+                'node_id': self.node_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'renderTime': self.render_time.to_dict(
+                    casing_strategy
+                ),
+                'loadTime': self.load_time.to_dict(
+                    casing_strategy
+                ),
+                'size': self.size,
+                'elementId': self.element_id,
+                'url': self.url,
+                'nodeId': self.node_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'RenderTime': self.render_time.to_dict(
+                    casing_strategy
+                ),
+                'LoadTime': self.load_time.to_dict(
+                    casing_strategy
+                ),
+                'Size': self.size,
+                'ElementId': self.element_id,
+                'Url': self.url,
+                'NodeId': self.node_id.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -40,6 +94,51 @@ class LayoutShiftAttribution:
     previous_rect: 'Rect'
     current_rect: 'Rect'
     node_id: 'BackendNodeId'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'previous_rect': self.previous_rect.to_dict(
+                    casing_strategy
+                ),
+                'current_rect': self.current_rect.to_dict(
+                    casing_strategy
+                ),
+                'node_id': self.node_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'previousRect': self.previous_rect.to_dict(
+                    casing_strategy
+                ),
+                'currentRect': self.current_rect.to_dict(
+                    casing_strategy
+                ),
+                'nodeId': self.node_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'PreviousRect': self.previous_rect.to_dict(
+                    casing_strategy
+                ),
+                'CurrentRect': self.current_rect.to_dict(
+                    casing_strategy
+                ),
+                'NodeId': self.node_id.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -48,6 +147,48 @@ class LayoutShift:
     had_recent_input: bool
     last_input_time: 'TimeSinceEpoch'
     sources: list
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'value': self.value,
+                'had_recent_input': self.had_recent_input,
+                'last_input_time': self.last_input_time.to_dict(
+                    casing_strategy
+                ),
+                'sources': _.to_dict(
+                    casing_strategy
+                )_sources,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'value': self.value,
+                'hadRecentInput': self.had_recent_input,
+                'lastInputTime': self.last_input_time.to_dict(
+                    casing_strategy
+                ),
+                'sources': _.to_dict(
+                    casing_strategy
+                )_sources,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Value': self.value,
+                'HadRecentInput': self.had_recent_input,
+                'LastInputTime': self.last_input_time.to_dict(
+                    casing_strategy
+                ),
+                'Sources': _.to_dict(
+                    casing_strategy
+                )_sources,
+            }
 
 
 @dataclass
@@ -59,3 +200,66 @@ class TimelineEvent:
     duration: float
     lcp_details: 'LargestContentfulPaint'
     layout_shift_details: 'LayoutShift'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'frame_id': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+                'type': self.type_,
+                'name': self.name,
+                'time': self.time.to_dict(
+                    casing_strategy
+                ),
+                'duration': self.duration,
+                'lcp_details': self.lcp_details.to_dict(
+                    casing_strategy
+                ),
+                'layout_shift_details': self.layout_shift_details.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'frameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+                'type': self.type_,
+                'name': self.name,
+                'time': self.time.to_dict(
+                    casing_strategy
+                ),
+                'duration': self.duration,
+                'lcpDetails': self.lcp_details.to_dict(
+                    casing_strategy
+                ),
+                'layoutShiftDetails': self.layout_shift_details.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'FrameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+                'Type': self.type_,
+                'Name': self.name,
+                'Time': self.time.to_dict(
+                    casing_strategy
+                ),
+                'Duration': self.duration,
+                'LcpDetails': self.lcp_details.to_dict(
+                    casing_strategy
+                ),
+                'LayoutShiftDetails': self.layout_shift_details.to_dict(
+                    casing_strategy
+                ),
+            }

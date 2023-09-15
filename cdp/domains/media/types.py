@@ -22,24 +22,126 @@ Timestamp = float
 class PlayerMessage:
     level: str
     message: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'level': self.level,
+                'message': self.message,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'level': self.level,
+                'message': self.message,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Level': self.level,
+                'Message': self.message,
+            }
 
 
 @dataclass
 class PlayerProperty:
     name: str
     value: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name,
+                'value': self.value,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name,
+                'value': self.value,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Name': self.name,
+                'Value': self.value,
+            }
 
 
 @dataclass
 class PlayerEvent:
     timestamp: 'Timestamp'
     value: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'timestamp': self.timestamp.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'timestamp': self.timestamp.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Timestamp': self.timestamp.to_dict(
+                    casing_strategy
+                ),
+                'Value': self.value,
+            }
 
 
 @dataclass
 class PlayerErrorSourceLocation:
     file: str
     line: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'file': self.file,
+                'line': self.line,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'file': self.file,
+                'line': self.line,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'File': self.file,
+                'Line': self.line,
+            }
 
 
 @dataclass
@@ -49,3 +151,48 @@ class PlayerError:
     stack: list
     cause: list
     data: object
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'error_type': self.error_type,
+                'code': self.code,
+                'stack': _.to_dict(
+                    casing_strategy
+                )_stack,
+                'cause': _.to_dict(
+                    casing_strategy
+                )_cause,
+                'data': self.data,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'errorType': self.error_type,
+                'code': self.code,
+                'stack': _.to_dict(
+                    casing_strategy
+                )_stack,
+                'cause': _.to_dict(
+                    casing_strategy
+                )_cause,
+                'data': self.data,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'ErrorType': self.error_type,
+                'Code': self.code,
+                'Stack': _.to_dict(
+                    casing_strategy
+                )_stack,
+                'Cause': _.to_dict(
+                    casing_strategy
+                )_cause,
+                'Data': self.data,
+            }

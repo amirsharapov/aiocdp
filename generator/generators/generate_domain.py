@@ -119,7 +119,6 @@ def _generate_send_command_method_initial_params(command: Command):
         params.keys.append(
             ast.Constant(
                 value=parameter.name,
-                kind='str'
             )
         )
 
@@ -159,7 +158,7 @@ def _generate_send_command_method_optional_params(command: Command):
                         targets=[
                             ast.Subscript(
                                 value=ast.Name('params'),
-                                slice=ast.Constant(parameter.name, kind='str')
+                                slice=ast.Constant(parameter.name)
                             )
                         ],
                         value=ast.Name(parameter.name_snake_cased)

@@ -22,12 +22,72 @@ class Database:
     domain: str
     name: str
     version: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'id': self.id_.to_dict(
+                    casing_strategy
+                ),
+                'domain': self.domain,
+                'name': self.name,
+                'version': self.version,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'id': self.id_.to_dict(
+                    casing_strategy
+                ),
+                'domain': self.domain,
+                'name': self.name,
+                'version': self.version,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Id': self.id_.to_dict(
+                    casing_strategy
+                ),
+                'Domain': self.domain,
+                'Name': self.name,
+                'Version': self.version,
+            }
 
 
 @dataclass
 class Error:
     message: str
     code: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'message': self.message,
+                'code': self.code,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'message': self.message,
+                'code': self.code,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Message': self.message,
+                'Code': self.code,
+            }
 
 
 @dataclass

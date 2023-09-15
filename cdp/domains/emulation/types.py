@@ -42,6 +42,30 @@ DisabledImageType = Literal[
 class ScreenOrientation:
     type: str
     angle: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_,
+                'angle': self.angle,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_,
+                'angle': self.angle,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Type': self.type_,
+                'Angle': self.angle,
+            }
 
 
 @dataclass
@@ -49,18 +73,93 @@ class DisplayFeature:
     orientation: str
     offset: int
     mask_length: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'orientation': self.orientation,
+                'offset': self.offset,
+                'mask_length': self.mask_length,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'orientation': self.orientation,
+                'offset': self.offset,
+                'maskLength': self.mask_length,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Orientation': self.orientation,
+                'Offset': self.offset,
+                'MaskLength': self.mask_length,
+            }
 
 
 @dataclass
 class MediaFeature:
     name: str
     value: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name,
+                'value': self.value,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name,
+                'value': self.value,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Name': self.name,
+                'Value': self.value,
+            }
 
 
 @dataclass
 class UserAgentBrandVersion:
     brand: str
     version: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'brand': self.brand,
+                'version': self.version,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'brand': self.brand,
+                'version': self.version,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Brand': self.brand,
+                'Version': self.version,
+            }
 
 
 @dataclass
@@ -75,6 +174,66 @@ class UserAgentMetadata:
     mobile: bool
     bitness: str
     wow64: bool
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'brands': _.to_dict(
+                    casing_strategy
+                )_brands,
+                'full_version_list': _.to_dict(
+                    casing_strategy
+                )_full_version_list,
+                'full_version': self.full_version,
+                'platform': self.platform,
+                'platform_version': self.platform_version,
+                'architecture': self.architecture,
+                'model': self.model,
+                'mobile': self.mobile,
+                'bitness': self.bitness,
+                'wow64': self.wow64,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'brands': _.to_dict(
+                    casing_strategy
+                )_brands,
+                'fullVersionList': _.to_dict(
+                    casing_strategy
+                )_full_version_list,
+                'fullVersion': self.full_version,
+                'platform': self.platform,
+                'platformVersion': self.platform_version,
+                'architecture': self.architecture,
+                'model': self.model,
+                'mobile': self.mobile,
+                'bitness': self.bitness,
+                'wow64': self.wow64,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Brands': _.to_dict(
+                    casing_strategy
+                )_brands,
+                'FullVersionList': _.to_dict(
+                    casing_strategy
+                )_full_version_list,
+                'FullVersion': self.full_version,
+                'Platform': self.platform,
+                'PlatformVersion': self.platform_version,
+                'Architecture': self.architecture,
+                'Model': self.model,
+                'Mobile': self.mobile,
+                'Bitness': self.bitness,
+                'Wow64': self.wow64,
+            }
 
 
 @dataclass

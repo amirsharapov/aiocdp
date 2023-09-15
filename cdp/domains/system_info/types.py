@@ -39,12 +39,78 @@ class GPUDevice:
     device_string: str
     driver_vendor: str
     driver_version: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'vendor_id': self.vendor_id,
+                'device_id': self.device_id,
+                'sub_sys_id': self.sub_sys_id,
+                'revision': self.revision,
+                'vendor_string': self.vendor_string,
+                'device_string': self.device_string,
+                'driver_vendor': self.driver_vendor,
+                'driver_version': self.driver_version,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'vendorId': self.vendor_id,
+                'deviceId': self.device_id,
+                'subSysId': self.sub_sys_id,
+                'revision': self.revision,
+                'vendorString': self.vendor_string,
+                'deviceString': self.device_string,
+                'driverVendor': self.driver_vendor,
+                'driverVersion': self.driver_version,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'VendorId': self.vendor_id,
+                'DeviceId': self.device_id,
+                'SubSysId': self.sub_sys_id,
+                'Revision': self.revision,
+                'VendorString': self.vendor_string,
+                'DeviceString': self.device_string,
+                'DriverVendor': self.driver_vendor,
+                'DriverVersion': self.driver_version,
+            }
 
 
 @dataclass
 class Size:
     width: int
     height: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'width': self.width,
+                'height': self.height,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'width': self.width,
+                'height': self.height,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Width': self.width,
+                'Height': self.height,
+            }
 
 
 @dataclass
@@ -52,6 +118,45 @@ class VideoDecodeAcceleratorCapability:
     profile: str
     max_resolution: 'Size'
     min_resolution: 'Size'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'profile': self.profile,
+                'max_resolution': self.max_resolution.to_dict(
+                    casing_strategy
+                ),
+                'min_resolution': self.min_resolution.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'profile': self.profile,
+                'maxResolution': self.max_resolution.to_dict(
+                    casing_strategy
+                ),
+                'minResolution': self.min_resolution.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Profile': self.profile,
+                'MaxResolution': self.max_resolution.to_dict(
+                    casing_strategy
+                ),
+                'MinResolution': self.min_resolution.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -60,6 +165,42 @@ class VideoEncodeAcceleratorCapability:
     max_resolution: 'Size'
     max_framerate_numerator: int
     max_framerate_denominator: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'profile': self.profile,
+                'max_resolution': self.max_resolution.to_dict(
+                    casing_strategy
+                ),
+                'max_framerate_numerator': self.max_framerate_numerator,
+                'max_framerate_denominator': self.max_framerate_denominator,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'profile': self.profile,
+                'maxResolution': self.max_resolution.to_dict(
+                    casing_strategy
+                ),
+                'maxFramerateNumerator': self.max_framerate_numerator,
+                'maxFramerateDenominator': self.max_framerate_denominator,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Profile': self.profile,
+                'MaxResolution': self.max_resolution.to_dict(
+                    casing_strategy
+                ),
+                'MaxFramerateNumerator': self.max_framerate_numerator,
+                'MaxFramerateDenominator': self.max_framerate_denominator,
+            }
 
 
 @dataclass
@@ -68,6 +209,60 @@ class ImageDecodeAcceleratorCapability:
     max_dimensions: 'Size'
     min_dimensions: 'Size'
     subsamplings: list
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'image_type': self.image_type.to_dict(
+                    casing_strategy
+                ),
+                'max_dimensions': self.max_dimensions.to_dict(
+                    casing_strategy
+                ),
+                'min_dimensions': self.min_dimensions.to_dict(
+                    casing_strategy
+                ),
+                'subsamplings': _.to_dict(
+                    casing_strategy
+                )_subsamplings,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'imageType': self.image_type.to_dict(
+                    casing_strategy
+                ),
+                'maxDimensions': self.max_dimensions.to_dict(
+                    casing_strategy
+                ),
+                'minDimensions': self.min_dimensions.to_dict(
+                    casing_strategy
+                ),
+                'subsamplings': _.to_dict(
+                    casing_strategy
+                )_subsamplings,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'ImageType': self.image_type.to_dict(
+                    casing_strategy
+                ),
+                'MaxDimensions': self.max_dimensions.to_dict(
+                    casing_strategy
+                ),
+                'MinDimensions': self.min_dimensions.to_dict(
+                    casing_strategy
+                ),
+                'Subsamplings': _.to_dict(
+                    casing_strategy
+                )_subsamplings,
+            }
 
 
 @dataclass
@@ -79,6 +274,69 @@ class GPUInfo:
     video_decoding: list
     video_encoding: list
     image_decoding: list
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'devices': _.to_dict(
+                    casing_strategy
+                )_devices,
+                'aux_attributes': self.aux_attributes,
+                'feature_status': self.feature_status,
+                'driver_bug_workarounds': self.driver_bug_workarounds,
+                'video_decoding': _.to_dict(
+                    casing_strategy
+                )_video_decoding,
+                'video_encoding': _.to_dict(
+                    casing_strategy
+                )_video_encoding,
+                'image_decoding': _.to_dict(
+                    casing_strategy
+                )_image_decoding,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'devices': _.to_dict(
+                    casing_strategy
+                )_devices,
+                'auxAttributes': self.aux_attributes,
+                'featureStatus': self.feature_status,
+                'driverBugWorkarounds': self.driver_bug_workarounds,
+                'videoDecoding': _.to_dict(
+                    casing_strategy
+                )_video_decoding,
+                'videoEncoding': _.to_dict(
+                    casing_strategy
+                )_video_encoding,
+                'imageDecoding': _.to_dict(
+                    casing_strategy
+                )_image_decoding,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Devices': _.to_dict(
+                    casing_strategy
+                )_devices,
+                'AuxAttributes': self.aux_attributes,
+                'FeatureStatus': self.feature_status,
+                'DriverBugWorkarounds': self.driver_bug_workarounds,
+                'VideoDecoding': _.to_dict(
+                    casing_strategy
+                )_video_decoding,
+                'VideoEncoding': _.to_dict(
+                    casing_strategy
+                )_video_encoding,
+                'ImageDecoding': _.to_dict(
+                    casing_strategy
+                )_image_decoding,
+            }
 
 
 @dataclass
@@ -86,6 +344,33 @@ class ProcessInfo:
     type: str
     id: int
     cpu_time: float
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_,
+                'id': self.id_,
+                'cpu_time': self.cpu_time,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_,
+                'id': self.id_,
+                'cpuTime': self.cpu_time,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Type': self.type_,
+                'Id': self.id_,
+                'CpuTime': self.cpu_time,
+            }
 
 
 @dataclass

@@ -19,6 +19,33 @@ class ScreenshotParams:
     format: str
     quality: int
     optimize_for_speed: bool
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'format': self.format_,
+                'quality': self.quality,
+                'optimize_for_speed': self.optimize_for_speed,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'format': self.format_,
+                'quality': self.quality,
+                'optimizeForSpeed': self.optimize_for_speed,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Format': self.format_,
+                'Quality': self.quality,
+                'OptimizeForSpeed': self.optimize_for_speed,
+            }
 
 
 @dataclass

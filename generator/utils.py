@@ -18,6 +18,14 @@ def snake_case(value):
     return inflection.underscore(value)
 
 
+def camel_case(value):
+    return inflection.camelize(value, False)
+
+
+def pascal_case(value):
+    return inflection.camelize(value, True)
+
+
 def cdp_to_python_type(value):
     return direct_python_type_map.get(value, value)
 

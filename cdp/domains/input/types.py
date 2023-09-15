@@ -47,6 +47,57 @@ class TouchPoint:
     tilt_y: int
     twist: int
     id: float
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'x': self.x,
+                'y': self.y,
+                'radius_x': self.radius_x,
+                'radius_y': self.radius_y,
+                'rotation_angle': self.rotation_angle,
+                'force': self.force,
+                'tangential_pressure': self.tangential_pressure,
+                'tilt_x': self.tilt_x,
+                'tilt_y': self.tilt_y,
+                'twist': self.twist,
+                'id': self.id_,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'x': self.x,
+                'y': self.y,
+                'radiusX': self.radius_x,
+                'radiusY': self.radius_y,
+                'rotationAngle': self.rotation_angle,
+                'force': self.force,
+                'tangentialPressure': self.tangential_pressure,
+                'tiltX': self.tilt_x,
+                'tiltY': self.tilt_y,
+                'twist': self.twist,
+                'id': self.id_,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'X': self.x,
+                'Y': self.y,
+                'RadiusX': self.radius_x,
+                'RadiusY': self.radius_y,
+                'RotationAngle': self.rotation_angle,
+                'Force': self.force,
+                'TangentialPressure': self.tangential_pressure,
+                'TiltX': self.tilt_x,
+                'TiltY': self.tilt_y,
+                'Twist': self.twist,
+                'Id': self.id_,
+            }
 
 
 @dataclass
@@ -55,6 +106,36 @@ class DragDataItem:
     data: str
     title: str
     base_url: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'mime_type': self.mime_type,
+                'data': self.data,
+                'title': self.title,
+                'base_url': self.base_url,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'mimeType': self.mime_type,
+                'data': self.data,
+                'title': self.title,
+                'baseURL': self.base_url,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'MimeType': self.mime_type,
+                'Data': self.data,
+                'Title': self.title,
+                'BaseURL': self.base_url,
+            }
 
 
 @dataclass
@@ -62,3 +143,36 @@ class DragData:
     items: list
     files: list
     drag_operations_mask: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'items': _.to_dict(
+                    casing_strategy
+                )_items,
+                'files': self.files,
+                'drag_operations_mask': self.drag_operations_mask,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'items': _.to_dict(
+                    casing_strategy
+                )_items,
+                'files': self.files,
+                'dragOperationsMask': self.drag_operations_mask,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Items': _.to_dict(
+                    casing_strategy
+                )_items,
+                'Files': self.files,
+                'DragOperationsMask': self.drag_operations_mask,
+            }

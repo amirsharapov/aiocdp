@@ -125,6 +125,81 @@ class AXValueSource:
     native_source_value: 'AXValue'
     invalid: bool
     invalid_reason: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value.to_dict(
+                    casing_strategy
+                ),
+                'attribute': self.attribute,
+                'attribute_value': self.attribute_value.to_dict(
+                    casing_strategy
+                ),
+                'superseded': self.superseded,
+                'native_source': self.native_source.to_dict(
+                    casing_strategy
+                ),
+                'native_source_value': self.native_source_value.to_dict(
+                    casing_strategy
+                ),
+                'invalid': self.invalid,
+                'invalid_reason': self.invalid_reason,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value.to_dict(
+                    casing_strategy
+                ),
+                'attribute': self.attribute,
+                'attributeValue': self.attribute_value.to_dict(
+                    casing_strategy
+                ),
+                'superseded': self.superseded,
+                'nativeSource': self.native_source.to_dict(
+                    casing_strategy
+                ),
+                'nativeSourceValue': self.native_source_value.to_dict(
+                    casing_strategy
+                ),
+                'invalid': self.invalid,
+                'invalidReason': self.invalid_reason,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Type': self.type_.to_dict(
+                    casing_strategy
+                ),
+                'Value': self.value.to_dict(
+                    casing_strategy
+                ),
+                'Attribute': self.attribute,
+                'AttributeValue': self.attribute_value.to_dict(
+                    casing_strategy
+                ),
+                'Superseded': self.superseded,
+                'NativeSource': self.native_source.to_dict(
+                    casing_strategy
+                ),
+                'NativeSourceValue': self.native_source_value.to_dict(
+                    casing_strategy
+                ),
+                'Invalid': self.invalid,
+                'InvalidReason': self.invalid_reason,
+            }
 
 
 @dataclass
@@ -132,12 +207,81 @@ class AXRelatedNode:
     backend_dom_node_id: 'BackendNodeId'
     idref: str
     text: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'backend_dom_node_id': self.backend_dom_node_id.to_dict(
+                    casing_strategy
+                ),
+                'idref': self.idref,
+                'text': self.text,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'backendDOMNodeId': self.backend_dom_node_id.to_dict(
+                    casing_strategy
+                ),
+                'idref': self.idref,
+                'text': self.text,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'BackendDOMNodeId': self.backend_dom_node_id.to_dict(
+                    casing_strategy
+                ),
+                'Idref': self.idref,
+                'Text': self.text,
+            }
 
 
 @dataclass
 class AXProperty:
     name: 'AXPropertyName'
     value: 'AXValue'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Name': self.name.to_dict(
+                    casing_strategy
+                ),
+                'Value': self.value.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -146,6 +290,54 @@ class AXValue:
     value: Any
     related_nodes: list
     sources: list
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value,
+                'related_nodes': _.to_dict(
+                    casing_strategy
+                )_related_nodes,
+                'sources': _.to_dict(
+                    casing_strategy
+                )_sources,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value,
+                'relatedNodes': _.to_dict(
+                    casing_strategy
+                )_related_nodes,
+                'sources': _.to_dict(
+                    casing_strategy
+                )_sources,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Type': self.type_.to_dict(
+                    casing_strategy
+                ),
+                'Value': self.value,
+                'RelatedNodes': _.to_dict(
+                    casing_strategy
+                )_related_nodes,
+                'Sources': _.to_dict(
+                    casing_strategy
+                )_sources,
+            }
 
 
 @dataclass
@@ -163,6 +355,135 @@ class AXNode:
     child_ids: list
     backend_dom_node_id: 'BackendNodeId'
     frame_id: 'FrameId'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'node_id': self.node_id.to_dict(
+                    casing_strategy
+                ),
+                'ignored': self.ignored,
+                'ignored_reasons': _.to_dict(
+                    casing_strategy
+                )_ignored_reasons,
+                'role': self.role.to_dict(
+                    casing_strategy
+                ),
+                'chrome_role': self.chrome_role.to_dict(
+                    casing_strategy
+                ),
+                'name': self.name.to_dict(
+                    casing_strategy
+                ),
+                'description': self.description.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value.to_dict(
+                    casing_strategy
+                ),
+                'properties': _.to_dict(
+                    casing_strategy
+                )_properties,
+                'parent_id': self.parent_id.to_dict(
+                    casing_strategy
+                ),
+                'child_ids': _.to_dict(
+                    casing_strategy
+                )_child_ids,
+                'backend_dom_node_id': self.backend_dom_node_id.to_dict(
+                    casing_strategy
+                ),
+                'frame_id': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'nodeId': self.node_id.to_dict(
+                    casing_strategy
+                ),
+                'ignored': self.ignored,
+                'ignoredReasons': _.to_dict(
+                    casing_strategy
+                )_ignored_reasons,
+                'role': self.role.to_dict(
+                    casing_strategy
+                ),
+                'chromeRole': self.chrome_role.to_dict(
+                    casing_strategy
+                ),
+                'name': self.name.to_dict(
+                    casing_strategy
+                ),
+                'description': self.description.to_dict(
+                    casing_strategy
+                ),
+                'value': self.value.to_dict(
+                    casing_strategy
+                ),
+                'properties': _.to_dict(
+                    casing_strategy
+                )_properties,
+                'parentId': self.parent_id.to_dict(
+                    casing_strategy
+                ),
+                'childIds': _.to_dict(
+                    casing_strategy
+                )_child_ids,
+                'backendDOMNodeId': self.backend_dom_node_id.to_dict(
+                    casing_strategy
+                ),
+                'frameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'NodeId': self.node_id.to_dict(
+                    casing_strategy
+                ),
+                'Ignored': self.ignored,
+                'IgnoredReasons': _.to_dict(
+                    casing_strategy
+                )_ignored_reasons,
+                'Role': self.role.to_dict(
+                    casing_strategy
+                ),
+                'ChromeRole': self.chrome_role.to_dict(
+                    casing_strategy
+                ),
+                'Name': self.name.to_dict(
+                    casing_strategy
+                ),
+                'Description': self.description.to_dict(
+                    casing_strategy
+                ),
+                'Value': self.value.to_dict(
+                    casing_strategy
+                ),
+                'Properties': _.to_dict(
+                    casing_strategy
+                )_properties,
+                'ParentId': self.parent_id.to_dict(
+                    casing_strategy
+                ),
+                'ChildIds': _.to_dict(
+                    casing_strategy
+                )_child_ids,
+                'BackendDOMNodeId': self.backend_dom_node_id.to_dict(
+                    casing_strategy
+                ),
+                'FrameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass

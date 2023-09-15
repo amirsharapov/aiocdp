@@ -1,9 +1,9 @@
 import ast
 from collections import defaultdict
-from dataclasses import dataclass
+from typing import Literal
 
 from generator.types import Domain, Type, Command
-from generator.utils import cdp_to_python_type
+from generator.utils import cdp_to_python_type, is_builtin
 
 
 def _generate_dataclass_import(domain: Domain):
@@ -133,7 +133,6 @@ def _generate_type_alias(type_: 'Type'):
         if type_.items.ref:
             slice_ = ast.Constant(
                 value=inner_type,
-                kind='str'
             )
 
         else:
@@ -189,7 +188,6 @@ def _generate_string_literal(type_: 'Type'):
                 elts=[
                     ast.Constant(
                         value=enum,
-                        kind='str'
                     ) for enum in type_.enum
                 ],
                 ctx=ast.Load()
@@ -218,7 +216,6 @@ def _generate_complex_type_definitions(type_):
         if property_.ref:
             annotation = ast.Constant(
                 value=property_.ref.type,
-                kind='str'
             )
 
         else:
@@ -239,12 +236,9 @@ def _generate_complex_type_definitions(type_):
             )
         )
 
-    class_.body.extend([
-        _generate_dataclass_to_camel_json_method(type_),
-        _generate_dataclass_to_snake_json_method(type_),
-        _generate_dataclass_to_pascal_json_method(type_),
-        _generate_dataclass_to_json_method(type_)
-    ])
+    class_.body.append(
+        _generate_dataclass_to_dict_method(type_)
+    )
 
     return class_
 
@@ -269,7 +263,6 @@ def _generate_return_type_definition(command: Command):
         if return_.ref:
             annotation = ast.Constant(
                 value=return_.ref.type,
-                kind='str'
             )
 
         else:
@@ -293,9 +286,113 @@ def _generate_return_type_definition(command: Command):
     return class_
 
 
-def _generate_dataclass_to_json_method(type_: 'Type'):
+def _generate_dataclass_to_dict_body(
+        type_: 'Type',
+        casing_strategy: Literal['snake', 'camel', 'pascal']
+):
+    return_value = ast.Dict(
+        keys=[],
+        values=[]
+    )
+
+    for property_ in type_.properties:
+        if casing_strategy == 'camel':
+            key_name = property_.name_camel_cased
+
+        elif casing_strategy == 'snake':
+            key_name = property_.name_snake_cased
+
+        elif casing_strategy == 'pascal':
+            key_name = property_.name_pascal_cased
+
+        else:
+            raise NotImplementedError
+
+        return_value.keys.append(
+            ast.Constant(
+                key_name,
+            )
+        )
+
+        property_name = property_.name_snake_cased
+
+        if is_builtin(property_name):
+            property_name += '_'
+
+        if property_.ref:
+            value = ast.Call(
+                func=ast.Attribute(
+                    value=ast.Attribute(
+                        value=ast.Name(
+                            id='self',
+                            ctx=ast.Load()
+                        ),
+                        attr=property_name,
+                        ctx=ast.Load()
+                    ),
+                    attr='to_dict',
+                    ctx=ast.Load()
+                ),
+                args=[
+                    ast.Name(
+                        id='casing_strategy',
+                        ctx=ast.Load()
+                    )
+                ],
+            )
+
+        elif property_.type == 'array' and property_.items.ref:
+            value = ast.ListComp(
+                elt=ast.Call(
+                    func=ast.Attribute(
+                        value=ast.Name(
+                            id='_',
+                            ctx=ast.Load()
+                        ),
+                        attr='to_dict',
+                        ctx=ast.Load()
+                    ),
+                    args=[
+                        ast.Name(
+                            id='casing_strategy',
+                            ctx=ast.Load()
+                        )
+                    ],
+                    keywords=[]
+                ),
+                generators=[
+                    ast.comprehension(
+                        target=ast.Name(
+                            id='_'
+                        ),
+                        iter=ast.Name(
+                            id=property_name
+                        ),
+                        ifs=[]
+                    )
+                ]
+            )
+
+        else:
+            value = ast.Attribute(
+                value=ast.Name(
+                    id='self',
+                    ctx=ast.Load()
+                ),
+                attr=property_name,
+                ctx=ast.Load()
+            )
+
+        return_value.values.append(value)
+
+    return ast.Return(
+        value=return_value
+    )
+
+
+def _generate_dataclass_to_dict_method(type_: 'Type'):
     root = ast.FunctionDef(
-        name='to_json',
+        name='to_dict',
         args=ast.arguments(
             args=[
                 ast.arg('self'),
@@ -320,12 +417,41 @@ def _generate_dataclass_to_json_method(type_: 'Type'):
             defaults=[
                 ast.Constant('snake')
             ]
-        )
+        ),
+        body=[]
     )
 
+    ifs = []
 
-def _generate_dataclass_from_json_method(type_: 'Type'):
-    return ast.FunctionDef()
+    for casing_strategy in ['snake', 'camel', 'pascal']:
+        casing_strategy: Literal['snake', 'camel', 'pascal']
+
+        ifs.append(
+            ast.If(
+                test=ast.Compare(
+                    left=ast.Name(
+                        id='casing_strategy',
+                        ctx=ast.Load()
+                    ),
+                    ops=[
+                        ast.Eq()
+                    ],
+                    comparators=[
+                        ast.Constant('snake')
+                    ]
+                ),
+                body=[
+                    _generate_dataclass_to_dict_body(
+                        type_,
+                        casing_strategy
+                    )
+                ]
+            )
+        )
+
+    root.body.extend(ifs)
+
+    return root
 
 
 def generate(domain: Domain):

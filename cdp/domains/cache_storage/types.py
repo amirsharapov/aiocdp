@@ -42,6 +42,66 @@ class DataEntry:
     response_status_text: str
     response_type: 'CachedResponseType'
     response_headers: list
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'request_url': self.request_url,
+                'request_method': self.request_method,
+                'request_headers': _.to_dict(
+                    casing_strategy
+                )_request_headers,
+                'response_time': self.response_time,
+                'response_status': self.response_status,
+                'response_status_text': self.response_status_text,
+                'response_type': self.response_type.to_dict(
+                    casing_strategy
+                ),
+                'response_headers': _.to_dict(
+                    casing_strategy
+                )_response_headers,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'requestURL': self.request_url,
+                'requestMethod': self.request_method,
+                'requestHeaders': _.to_dict(
+                    casing_strategy
+                )_request_headers,
+                'responseTime': self.response_time,
+                'responseStatus': self.response_status,
+                'responseStatusText': self.response_status_text,
+                'responseType': self.response_type.to_dict(
+                    casing_strategy
+                ),
+                'responseHeaders': _.to_dict(
+                    casing_strategy
+                )_response_headers,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'RequestURL': self.request_url,
+                'RequestMethod': self.request_method,
+                'RequestHeaders': _.to_dict(
+                    casing_strategy
+                )_request_headers,
+                'ResponseTime': self.response_time,
+                'ResponseStatus': self.response_status,
+                'ResponseStatusText': self.response_status_text,
+                'ResponseType': self.response_type.to_dict(
+                    casing_strategy
+                ),
+                'ResponseHeaders': _.to_dict(
+                    casing_strategy
+                )_response_headers,
+            }
 
 
 @dataclass
@@ -51,17 +111,107 @@ class Cache:
     storage_key: str
     storage_bucket: 'StorageBucket'
     cache_name: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'cache_id': self.cache_id.to_dict(
+                    casing_strategy
+                ),
+                'security_origin': self.security_origin,
+                'storage_key': self.storage_key,
+                'storage_bucket': self.storage_bucket.to_dict(
+                    casing_strategy
+                ),
+                'cache_name': self.cache_name,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'cacheId': self.cache_id.to_dict(
+                    casing_strategy
+                ),
+                'securityOrigin': self.security_origin,
+                'storageKey': self.storage_key,
+                'storageBucket': self.storage_bucket.to_dict(
+                    casing_strategy
+                ),
+                'cacheName': self.cache_name,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'CacheId': self.cache_id.to_dict(
+                    casing_strategy
+                ),
+                'SecurityOrigin': self.security_origin,
+                'StorageKey': self.storage_key,
+                'StorageBucket': self.storage_bucket.to_dict(
+                    casing_strategy
+                ),
+                'CacheName': self.cache_name,
+            }
 
 
 @dataclass
 class Header:
     name: str
     value: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name,
+                'value': self.value,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name,
+                'value': self.value,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Name': self.name,
+                'Value': self.value,
+            }
 
 
 @dataclass
 class CachedResponse:
     body: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'body': self.body,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'body': self.body,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Body': self.body,
+            }
 
 
 @dataclass

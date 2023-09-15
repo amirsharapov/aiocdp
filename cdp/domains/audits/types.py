@@ -255,17 +255,101 @@ class AffectedCookie:
     name: str
     path: str
     domain: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name,
+                'path': self.path,
+                'domain': self.domain,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'name': self.name,
+                'path': self.path,
+                'domain': self.domain,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Name': self.name,
+                'Path': self.path,
+                'Domain': self.domain,
+            }
 
 
 @dataclass
 class AffectedRequest:
     request_id: 'RequestId'
     url: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'request_id': self.request_id.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'requestId': self.request_id.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'RequestId': self.request_id.to_dict(
+                    casing_strategy
+                ),
+                'Url': self.url,
+            }
 
 
 @dataclass
 class AffectedFrame:
     frame_id: 'FrameId'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'frame_id': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'frameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'FrameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -278,6 +362,78 @@ class CookieIssueDetails:
     site_for_cookies: str
     cookie_url: str
     request: 'AffectedRequest'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'cookie': self.cookie.to_dict(
+                    casing_strategy
+                ),
+                'raw_cookie_line': self.raw_cookie_line,
+                'cookie_warning_reasons': _.to_dict(
+                    casing_strategy
+                )_cookie_warning_reasons,
+                'cookie_exclusion_reasons': _.to_dict(
+                    casing_strategy
+                )_cookie_exclusion_reasons,
+                'operation': self.operation.to_dict(
+                    casing_strategy
+                ),
+                'site_for_cookies': self.site_for_cookies,
+                'cookie_url': self.cookie_url,
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'cookie': self.cookie.to_dict(
+                    casing_strategy
+                ),
+                'rawCookieLine': self.raw_cookie_line,
+                'cookieWarningReasons': _.to_dict(
+                    casing_strategy
+                )_cookie_warning_reasons,
+                'cookieExclusionReasons': _.to_dict(
+                    casing_strategy
+                )_cookie_exclusion_reasons,
+                'operation': self.operation.to_dict(
+                    casing_strategy
+                ),
+                'siteForCookies': self.site_for_cookies,
+                'cookieUrl': self.cookie_url,
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Cookie': self.cookie.to_dict(
+                    casing_strategy
+                ),
+                'RawCookieLine': self.raw_cookie_line,
+                'CookieWarningReasons': _.to_dict(
+                    casing_strategy
+                )_cookie_warning_reasons,
+                'CookieExclusionReasons': _.to_dict(
+                    casing_strategy
+                )_cookie_exclusion_reasons,
+                'Operation': self.operation.to_dict(
+                    casing_strategy
+                ),
+                'SiteForCookies': self.site_for_cookies,
+                'CookieUrl': self.cookie_url,
+                'Request': self.request.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -288,6 +444,66 @@ class MixedContentIssueDetails:
     main_resource_url: str
     request: 'AffectedRequest'
     frame: 'AffectedFrame'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'resource_type': self.resource_type.to_dict(
+                    casing_strategy
+                ),
+                'resolution_status': self.resolution_status.to_dict(
+                    casing_strategy
+                ),
+                'insecure_url': self.insecure_url,
+                'main_resource_url': self.main_resource_url,
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'frame': self.frame.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'resourceType': self.resource_type.to_dict(
+                    casing_strategy
+                ),
+                'resolutionStatus': self.resolution_status.to_dict(
+                    casing_strategy
+                ),
+                'insecureURL': self.insecure_url,
+                'mainResourceURL': self.main_resource_url,
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'frame': self.frame.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'ResourceType': self.resource_type.to_dict(
+                    casing_strategy
+                ),
+                'ResolutionStatus': self.resolution_status.to_dict(
+                    casing_strategy
+                ),
+                'InsecureURL': self.insecure_url,
+                'MainResourceURL': self.main_resource_url,
+                'Request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'Frame': self.frame.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -296,6 +512,60 @@ class BlockedByResponseIssueDetails:
     parent_frame: 'AffectedFrame'
     blocked_frame: 'AffectedFrame'
     reason: 'BlockedByResponseReason'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'parent_frame': self.parent_frame.to_dict(
+                    casing_strategy
+                ),
+                'blocked_frame': self.blocked_frame.to_dict(
+                    casing_strategy
+                ),
+                'reason': self.reason.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'parentFrame': self.parent_frame.to_dict(
+                    casing_strategy
+                ),
+                'blockedFrame': self.blocked_frame.to_dict(
+                    casing_strategy
+                ),
+                'reason': self.reason.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'ParentFrame': self.parent_frame.to_dict(
+                    casing_strategy
+                ),
+                'BlockedFrame': self.blocked_frame.to_dict(
+                    casing_strategy
+                ),
+                'Reason': self.reason.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -303,6 +573,51 @@ class HeavyAdIssueDetails:
     resolution: 'HeavyAdResolutionStatus'
     reason: 'HeavyAdReason'
     frame: 'AffectedFrame'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'resolution': self.resolution.to_dict(
+                    casing_strategy
+                ),
+                'reason': self.reason.to_dict(
+                    casing_strategy
+                ),
+                'frame': self.frame.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'resolution': self.resolution.to_dict(
+                    casing_strategy
+                ),
+                'reason': self.reason.to_dict(
+                    casing_strategy
+                ),
+                'frame': self.frame.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Resolution': self.resolution.to_dict(
+                    casing_strategy
+                ),
+                'Reason': self.reason.to_dict(
+                    casing_strategy
+                ),
+                'Frame': self.frame.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -311,6 +626,42 @@ class SourceCodeLocation:
     url: str
     line_number: int
     column_number: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'script_id': self.script_id.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'line_number': self.line_number,
+                'column_number': self.column_number,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'scriptId': self.script_id.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'lineNumber': self.line_number,
+                'columnNumber': self.column_number,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'ScriptId': self.script_id.to_dict(
+                    casing_strategy
+                ),
+                'Url': self.url,
+                'LineNumber': self.line_number,
+                'ColumnNumber': self.column_number,
+            }
 
 
 @dataclass
@@ -322,6 +673,69 @@ class ContentSecurityPolicyIssueDetails:
     frame_ancestor: 'AffectedFrame'
     source_code_location: 'SourceCodeLocation'
     violating_node_id: 'BackendNodeId'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'blocked_url': self.blocked_url,
+                'violated_directive': self.violated_directive,
+                'is_report_only': self.is_report_only,
+                'content_security_policy_violation_type': self.content_security_policy_violation_type.to_dict(
+                    casing_strategy
+                ),
+                'frame_ancestor': self.frame_ancestor.to_dict(
+                    casing_strategy
+                ),
+                'source_code_location': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'violating_node_id': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'blockedURL': self.blocked_url,
+                'violatedDirective': self.violated_directive,
+                'isReportOnly': self.is_report_only,
+                'contentSecurityPolicyViolationType': self.content_security_policy_violation_type.to_dict(
+                    casing_strategy
+                ),
+                'frameAncestor': self.frame_ancestor.to_dict(
+                    casing_strategy
+                ),
+                'sourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'violatingNodeId': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'BlockedURL': self.blocked_url,
+                'ViolatedDirective': self.violated_directive,
+                'IsReportOnly': self.is_report_only,
+                'ContentSecurityPolicyViolationType': self.content_security_policy_violation_type.to_dict(
+                    casing_strategy
+                ),
+                'FrameAncestor': self.frame_ancestor.to_dict(
+                    casing_strategy
+                ),
+                'SourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'ViolatingNodeId': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -329,6 +743,45 @@ class SharedArrayBufferIssueDetails:
     source_code_location: 'SourceCodeLocation'
     is_warning: bool
     type: 'SharedArrayBufferIssueType'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'source_code_location': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'is_warning': self.is_warning,
+                'type': self.type_.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'sourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'isWarning': self.is_warning,
+                'type': self.type_.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'SourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'IsWarning': self.is_warning,
+                'Type': self.type_.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -340,6 +793,51 @@ class LowTextContrastIssueDetails:
     threshold_aaa: float
     font_size: str
     font_weight: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'violating_node_id': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+                'violating_node_selector': self.violating_node_selector,
+                'contrast_ratio': self.contrast_ratio,
+                'threshold_aa': self.threshold_aa,
+                'threshold_aaa': self.threshold_aaa,
+                'font_size': self.font_size,
+                'font_weight': self.font_weight,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'violatingNodeId': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+                'violatingNodeSelector': self.violating_node_selector,
+                'contrastRatio': self.contrast_ratio,
+                'thresholdAA': self.threshold_aa,
+                'thresholdAAA': self.threshold_aaa,
+                'fontSize': self.font_size,
+                'fontWeight': self.font_weight,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'ViolatingNodeId': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+                'ViolatingNodeSelector': self.violating_node_selector,
+                'ContrastRatio': self.contrast_ratio,
+                'ThresholdAA': self.threshold_aa,
+                'ThresholdAAA': self.threshold_aaa,
+                'FontSize': self.font_size,
+                'FontWeight': self.font_weight,
+            }
 
 
 @dataclass
@@ -351,6 +849,75 @@ class CorsIssueDetails:
     initiator_origin: str
     resource_ip_address_space: 'IPAddressSpace'
     client_security_state: 'ClientSecurityState'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'cors_error_status': self.cors_error_status.to_dict(
+                    casing_strategy
+                ),
+                'is_warning': self.is_warning,
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'location': self.location.to_dict(
+                    casing_strategy
+                ),
+                'initiator_origin': self.initiator_origin,
+                'resource_ip_address_space': self.resource_ip_address_space.to_dict(
+                    casing_strategy
+                ),
+                'client_security_state': self.client_security_state.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'corsErrorStatus': self.cors_error_status.to_dict(
+                    casing_strategy
+                ),
+                'isWarning': self.is_warning,
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'location': self.location.to_dict(
+                    casing_strategy
+                ),
+                'initiatorOrigin': self.initiator_origin,
+                'resourceIPAddressSpace': self.resource_ip_address_space.to_dict(
+                    casing_strategy
+                ),
+                'clientSecurityState': self.client_security_state.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'CorsErrorStatus': self.cors_error_status.to_dict(
+                    casing_strategy
+                ),
+                'IsWarning': self.is_warning,
+                'Request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'Location': self.location.to_dict(
+                    casing_strategy
+                ),
+                'InitiatorOrigin': self.initiator_origin,
+                'ResourceIPAddressSpace': self.resource_ip_address_space.to_dict(
+                    casing_strategy
+                ),
+                'ClientSecurityState': self.client_security_state.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -359,6 +926,54 @@ class AttributionReportingIssueDetails:
     request: 'AffectedRequest'
     violating_node_id: 'BackendNodeId'
     invalid_parameter: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'violation_type': self.violation_type.to_dict(
+                    casing_strategy
+                ),
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'violating_node_id': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+                'invalid_parameter': self.invalid_parameter,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'violationType': self.violation_type.to_dict(
+                    casing_strategy
+                ),
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'violatingNodeId': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+                'invalidParameter': self.invalid_parameter,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'ViolationType': self.violation_type.to_dict(
+                    casing_strategy
+                ),
+                'Request': self.request.to_dict(
+                    casing_strategy
+                ),
+                'ViolatingNodeId': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+                'InvalidParameter': self.invalid_parameter,
+            }
 
 
 @dataclass
@@ -368,12 +983,93 @@ class QuirksModeIssueDetails:
     url: str
     frame_id: 'FrameId'
     loader_id: 'LoaderId'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'is_limited_quirks_mode': self.is_limited_quirks_mode,
+                'document_node_id': self.document_node_id.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'frame_id': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+                'loader_id': self.loader_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'isLimitedQuirksMode': self.is_limited_quirks_mode,
+                'documentNodeId': self.document_node_id.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'frameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+                'loaderId': self.loader_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'IsLimitedQuirksMode': self.is_limited_quirks_mode,
+                'DocumentNodeId': self.document_node_id.to_dict(
+                    casing_strategy
+                ),
+                'Url': self.url,
+                'FrameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+                'LoaderId': self.loader_id.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
 class NavigatorUserAgentIssueDetails:
     url: str
     location: 'SourceCodeLocation'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'url': self.url,
+                'location': self.location.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'url': self.url,
+                'location': self.location.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Url': self.url,
+                'Location': self.location.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -383,6 +1079,63 @@ class GenericIssueDetails:
     violating_node_id: 'BackendNodeId'
     violating_node_attribute: str
     request: 'AffectedRequest'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'error_type': self.error_type.to_dict(
+                    casing_strategy
+                ),
+                'frame_id': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+                'violating_node_id': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+                'violating_node_attribute': self.violating_node_attribute,
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'errorType': self.error_type.to_dict(
+                    casing_strategy
+                ),
+                'frameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+                'violatingNodeId': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+                'violatingNodeAttribute': self.violating_node_attribute,
+                'request': self.request.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'ErrorType': self.error_type.to_dict(
+                    casing_strategy
+                ),
+                'FrameId': self.frame_id.to_dict(
+                    casing_strategy
+                ),
+                'ViolatingNodeId': self.violating_node_id.to_dict(
+                    casing_strategy
+                ),
+                'ViolatingNodeAttribute': self.violating_node_attribute,
+                'Request': self.request.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -390,27 +1143,177 @@ class DeprecationIssueDetails:
     affected_frame: 'AffectedFrame'
     source_code_location: 'SourceCodeLocation'
     type: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'affected_frame': self.affected_frame.to_dict(
+                    casing_strategy
+                ),
+                'source_code_location': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'type': self.type_,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'affectedFrame': self.affected_frame.to_dict(
+                    casing_strategy
+                ),
+                'sourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'type': self.type_,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'AffectedFrame': self.affected_frame.to_dict(
+                    casing_strategy
+                ),
+                'SourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'Type': self.type_,
+            }
 
 
 @dataclass
 class BounceTrackingIssueDetails:
     tracking_sites: list
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'tracking_sites': self.tracking_sites,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'trackingSites': self.tracking_sites,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'TrackingSites': self.tracking_sites,
+            }
 
 
 @dataclass
 class FederatedAuthRequestIssueDetails:
     federated_auth_request_issue_reason: 'FederatedAuthRequestIssueReason'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'federated_auth_request_issue_reason': self.federated_auth_request_issue_reason.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'federatedAuthRequestIssueReason': self.federated_auth_request_issue_reason.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'FederatedAuthRequestIssueReason': self.federated_auth_request_issue_reason.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
 class FederatedAuthUserInfoRequestIssueDetails:
     federated_auth_user_info_request_issue_reason: 'FederatedAuthUserInfoRequestIssueReason'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'federated_auth_user_info_request_issue_reason': self.federated_auth_user_info_request_issue_reason.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'federatedAuthUserInfoRequestIssueReason': self.federated_auth_user_info_request_issue_reason.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'FederatedAuthUserInfoRequestIssueReason': self.federated_auth_user_info_request_issue_reason.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
 class ClientHintIssueDetails:
     source_code_location: 'SourceCodeLocation'
     client_hint_issue_reason: 'ClientHintIssueReason'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'source_code_location': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'client_hint_issue_reason': self.client_hint_issue_reason.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'sourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'clientHintIssueReason': self.client_hint_issue_reason.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'SourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'ClientHintIssueReason': self.client_hint_issue_reason.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -418,6 +1321,39 @@ class FailedRequestInfo:
     url: str
     failure_message: str
     request_id: 'RequestId'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'url': self.url,
+                'failure_message': self.failure_message,
+                'request_id': self.request_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'url': self.url,
+                'failureMessage': self.failure_message,
+                'requestId': self.request_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Url': self.url,
+                'FailureMessage': self.failure_message,
+                'RequestId': self.request_id.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -425,6 +1361,51 @@ class StylesheetLoadingIssueDetails:
     source_code_location: 'SourceCodeLocation'
     style_sheet_loading_issue_reason: 'StyleSheetLoadingIssueReason'
     failed_request_info: 'FailedRequestInfo'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'source_code_location': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'style_sheet_loading_issue_reason': self.style_sheet_loading_issue_reason.to_dict(
+                    casing_strategy
+                ),
+                'failed_request_info': self.failed_request_info.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'sourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'styleSheetLoadingIssueReason': self.style_sheet_loading_issue_reason.to_dict(
+                    casing_strategy
+                ),
+                'failedRequestInfo': self.failed_request_info.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'SourceCodeLocation': self.source_code_location.to_dict(
+                    casing_strategy
+                ),
+                'StyleSheetLoadingIssueReason': self.style_sheet_loading_issue_reason.to_dict(
+                    casing_strategy
+                ),
+                'FailedRequestInfo': self.failed_request_info.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -447,6 +1428,186 @@ class InspectorIssueDetails:
     bounce_tracking_issue_details: 'BounceTrackingIssueDetails'
     stylesheet_loading_issue_details: 'StylesheetLoadingIssueDetails'
     federated_auth_user_info_request_issue_details: 'FederatedAuthUserInfoRequestIssueDetails'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'cookie_issue_details': self.cookie_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'mixed_content_issue_details': self.mixed_content_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'blocked_by_response_issue_details': self.blocked_by_response_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'heavy_ad_issue_details': self.heavy_ad_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'content_security_policy_issue_details': self.content_security_policy_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'shared_array_buffer_issue_details': self.shared_array_buffer_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'low_text_contrast_issue_details': self.low_text_contrast_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'cors_issue_details': self.cors_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'attribution_reporting_issue_details': self.attribution_reporting_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'quirks_mode_issue_details': self.quirks_mode_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'navigator_user_agent_issue_details': self.navigator_user_agent_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'generic_issue_details': self.generic_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'deprecation_issue_details': self.deprecation_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'client_hint_issue_details': self.client_hint_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'federated_auth_request_issue_details': self.federated_auth_request_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'bounce_tracking_issue_details': self.bounce_tracking_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'stylesheet_loading_issue_details': self.stylesheet_loading_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'federated_auth_user_info_request_issue_details': self.federated_auth_user_info_request_issue_details.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'cookieIssueDetails': self.cookie_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'mixedContentIssueDetails': self.mixed_content_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'blockedByResponseIssueDetails': self.blocked_by_response_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'heavyAdIssueDetails': self.heavy_ad_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'contentSecurityPolicyIssueDetails': self.content_security_policy_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'sharedArrayBufferIssueDetails': self.shared_array_buffer_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'lowTextContrastIssueDetails': self.low_text_contrast_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'corsIssueDetails': self.cors_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'attributionReportingIssueDetails': self.attribution_reporting_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'quirksModeIssueDetails': self.quirks_mode_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'navigatorUserAgentIssueDetails': self.navigator_user_agent_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'genericIssueDetails': self.generic_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'deprecationIssueDetails': self.deprecation_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'clientHintIssueDetails': self.client_hint_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'federatedAuthRequestIssueDetails': self.federated_auth_request_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'bounceTrackingIssueDetails': self.bounce_tracking_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'stylesheetLoadingIssueDetails': self.stylesheet_loading_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'federatedAuthUserInfoRequestIssueDetails': self.federated_auth_user_info_request_issue_details.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'CookieIssueDetails': self.cookie_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'MixedContentIssueDetails': self.mixed_content_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'BlockedByResponseIssueDetails': self.blocked_by_response_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'HeavyAdIssueDetails': self.heavy_ad_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'ContentSecurityPolicyIssueDetails': self.content_security_policy_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'SharedArrayBufferIssueDetails': self.shared_array_buffer_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'LowTextContrastIssueDetails': self.low_text_contrast_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'CorsIssueDetails': self.cors_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'AttributionReportingIssueDetails': self.attribution_reporting_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'QuirksModeIssueDetails': self.quirks_mode_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'NavigatorUserAgentIssueDetails': self.navigator_user_agent_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'GenericIssueDetails': self.generic_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'DeprecationIssueDetails': self.deprecation_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'ClientHintIssueDetails': self.client_hint_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'FederatedAuthRequestIssueDetails': self.federated_auth_request_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'BounceTrackingIssueDetails': self.bounce_tracking_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'StylesheetLoadingIssueDetails': self.stylesheet_loading_issue_details.to_dict(
+                    casing_strategy
+                ),
+                'FederatedAuthUserInfoRequestIssueDetails': self.federated_auth_user_info_request_issue_details.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -454,6 +1615,51 @@ class InspectorIssue:
     code: 'InspectorIssueCode'
     details: 'InspectorIssueDetails'
     issue_id: 'IssueId'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'code': self.code.to_dict(
+                    casing_strategy
+                ),
+                'details': self.details.to_dict(
+                    casing_strategy
+                ),
+                'issue_id': self.issue_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'code': self.code.to_dict(
+                    casing_strategy
+                ),
+                'details': self.details.to_dict(
+                    casing_strategy
+                ),
+                'issueId': self.issue_id.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Code': self.code.to_dict(
+                    casing_strategy
+                ),
+                'Details': self.details.to_dict(
+                    casing_strategy
+                ),
+                'IssueId': self.issue_id.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass

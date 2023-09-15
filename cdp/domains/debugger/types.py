@@ -35,12 +35,69 @@ class Location:
     script_id: 'ScriptId'
     line_number: int
     column_number: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'script_id': self.script_id.to_dict(
+                    casing_strategy
+                ),
+                'line_number': self.line_number,
+                'column_number': self.column_number,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'scriptId': self.script_id.to_dict(
+                    casing_strategy
+                ),
+                'lineNumber': self.line_number,
+                'columnNumber': self.column_number,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'ScriptId': self.script_id.to_dict(
+                    casing_strategy
+                ),
+                'LineNumber': self.line_number,
+                'ColumnNumber': self.column_number,
+            }
 
 
 @dataclass
 class ScriptPosition:
     line_number: int
     column_number: int
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'line_number': self.line_number,
+                'column_number': self.column_number,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'lineNumber': self.line_number,
+                'columnNumber': self.column_number,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'LineNumber': self.line_number,
+                'ColumnNumber': self.column_number,
+            }
 
 
 @dataclass
@@ -53,6 +110,84 @@ class CallFrame:
     scope_chain: list
     this: 'RemoteObject'
     return_value: 'RemoteObject'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'call_frame_id': self.call_frame_id.to_dict(
+                    casing_strategy
+                ),
+                'function_name': self.function_name,
+                'function_location': self.function_location.to_dict(
+                    casing_strategy
+                ),
+                'location': self.location.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'scope_chain': _.to_dict(
+                    casing_strategy
+                )_scope_chain,
+                'this': self.this.to_dict(
+                    casing_strategy
+                ),
+                'return_value': self.return_value.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'callFrameId': self.call_frame_id.to_dict(
+                    casing_strategy
+                ),
+                'functionName': self.function_name,
+                'functionLocation': self.function_location.to_dict(
+                    casing_strategy
+                ),
+                'location': self.location.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'scopeChain': _.to_dict(
+                    casing_strategy
+                )_scope_chain,
+                'this': self.this.to_dict(
+                    casing_strategy
+                ),
+                'returnValue': self.return_value.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'CallFrameId': self.call_frame_id.to_dict(
+                    casing_strategy
+                ),
+                'FunctionName': self.function_name,
+                'FunctionLocation': self.function_location.to_dict(
+                    casing_strategy
+                ),
+                'Location': self.location.to_dict(
+                    casing_strategy
+                ),
+                'Url': self.url,
+                'ScopeChain': _.to_dict(
+                    casing_strategy
+                )_scope_chain,
+                'This': self.this.to_dict(
+                    casing_strategy
+                ),
+                'ReturnValue': self.return_value.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -62,12 +197,87 @@ class Scope:
     name: str
     start_location: 'Location'
     end_location: 'Location'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_,
+                'object': self.object_.to_dict(
+                    casing_strategy
+                ),
+                'name': self.name,
+                'start_location': self.start_location.to_dict(
+                    casing_strategy
+                ),
+                'end_location': self.end_location.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'type': self.type_,
+                'object': self.object_.to_dict(
+                    casing_strategy
+                ),
+                'name': self.name,
+                'startLocation': self.start_location.to_dict(
+                    casing_strategy
+                ),
+                'endLocation': self.end_location.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Type': self.type_,
+                'Object': self.object_.to_dict(
+                    casing_strategy
+                ),
+                'Name': self.name,
+                'StartLocation': self.start_location.to_dict(
+                    casing_strategy
+                ),
+                'EndLocation': self.end_location.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
 class SearchMatch:
     line_number: float
     line_content: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'line_number': self.line_number,
+                'line_content': self.line_content,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'lineNumber': self.line_number,
+                'lineContent': self.line_content,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'LineNumber': self.line_number,
+                'LineContent': self.line_content,
+            }
 
 
 @dataclass
@@ -76,6 +286,42 @@ class BreakLocation:
     line_number: int
     column_number: int
     type: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'script_id': self.script_id.to_dict(
+                    casing_strategy
+                ),
+                'line_number': self.line_number,
+                'column_number': self.column_number,
+                'type': self.type_,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'scriptId': self.script_id.to_dict(
+                    casing_strategy
+                ),
+                'lineNumber': self.line_number,
+                'columnNumber': self.column_number,
+                'type': self.type_,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'ScriptId': self.script_id.to_dict(
+                    casing_strategy
+                ),
+                'LineNumber': self.line_number,
+                'ColumnNumber': self.column_number,
+                'Type': self.type_,
+            }
 
 
 @dataclass

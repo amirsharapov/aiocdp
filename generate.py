@@ -82,14 +82,6 @@ def main():
         module
     )
 
-    module = generators.generate_mapper.generate(protocols)
-    module = SourceCodeGenerator().generate(module)
-
-    Path(f'cdp/domains/mapper.py').write_text(
-        GENERATED_MODULE_HEADER +
-        module
-    )
-
 
 if __name__ == '__main__':
     main()

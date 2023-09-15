@@ -22,3 +22,33 @@ DeviceId = str
 class PromptDevice:
     id: 'DeviceId'
     name: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'id': self.id_.to_dict(
+                    casing_strategy
+                ),
+                'name': self.name,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'id': self.id_.to_dict(
+                    casing_strategy
+                ),
+                'name': self.name,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Id': self.id_.to_dict(
+                    casing_strategy
+                ),
+                'Name': self.name,
+            }

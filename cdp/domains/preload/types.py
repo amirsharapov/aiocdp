@@ -159,6 +159,78 @@ class RuleSet:
     request_id: 'RequestId'
     error_type: 'RuleSetErrorType'
     error_message: str
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'id': self.id_.to_dict(
+                    casing_strategy
+                ),
+                'loader_id': self.loader_id.to_dict(
+                    casing_strategy
+                ),
+                'source_text': self.source_text,
+                'backend_node_id': self.backend_node_id.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'request_id': self.request_id.to_dict(
+                    casing_strategy
+                ),
+                'error_type': self.error_type.to_dict(
+                    casing_strategy
+                ),
+                'error_message': self.error_message,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'id': self.id_.to_dict(
+                    casing_strategy
+                ),
+                'loaderId': self.loader_id.to_dict(
+                    casing_strategy
+                ),
+                'sourceText': self.source_text,
+                'backendNodeId': self.backend_node_id.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'requestId': self.request_id.to_dict(
+                    casing_strategy
+                ),
+                'errorType': self.error_type.to_dict(
+                    casing_strategy
+                ),
+                'errorMessage': self.error_message,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Id': self.id_.to_dict(
+                    casing_strategy
+                ),
+                'LoaderId': self.loader_id.to_dict(
+                    casing_strategy
+                ),
+                'SourceText': self.source_text,
+                'BackendNodeId': self.backend_node_id.to_dict(
+                    casing_strategy
+                ),
+                'Url': self.url,
+                'RequestId': self.request_id.to_dict(
+                    casing_strategy
+                ),
+                'ErrorType': self.error_type.to_dict(
+                    casing_strategy
+                ),
+                'ErrorMessage': self.error_message,
+            }
 
 
 @dataclass
@@ -167,6 +239,54 @@ class PreloadingAttemptKey:
     action: 'SpeculationAction'
     url: str
     target_hint: 'SpeculationTargetHint'
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'loader_id': self.loader_id.to_dict(
+                    casing_strategy
+                ),
+                'action': self.action.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'target_hint': self.target_hint.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'loaderId': self.loader_id.to_dict(
+                    casing_strategy
+                ),
+                'action': self.action.to_dict(
+                    casing_strategy
+                ),
+                'url': self.url,
+                'targetHint': self.target_hint.to_dict(
+                    casing_strategy
+                ),
+            }
+        if casing_strategy == 'snake':
+            return {
+                'LoaderId': self.loader_id.to_dict(
+                    casing_strategy
+                ),
+                'Action': self.action.to_dict(
+                    casing_strategy
+                ),
+                'Url': self.url,
+                'TargetHint': self.target_hint.to_dict(
+                    casing_strategy
+                ),
+            }
 
 
 @dataclass
@@ -174,3 +294,48 @@ class PreloadingAttemptSource:
     key: 'PreloadingAttemptKey'
     rule_set_ids: list
     node_ids: list
+    def to_dict(
+        self,
+        casing_strategy: Literal[
+            'snake',
+            'camel',
+            'pascal'
+] = 'snake'
+    ):
+
+        if casing_strategy == 'snake':
+            return {
+                'key': self.key.to_dict(
+                    casing_strategy
+                ),
+                'rule_set_ids': _.to_dict(
+                    casing_strategy
+                )_rule_set_ids,
+                'node_ids': _.to_dict(
+                    casing_strategy
+                )_node_ids,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'key': self.key.to_dict(
+                    casing_strategy
+                ),
+                'ruleSetIds': _.to_dict(
+                    casing_strategy
+                )_rule_set_ids,
+                'nodeIds': _.to_dict(
+                    casing_strategy
+                )_node_ids,
+            }
+        if casing_strategy == 'snake':
+            return {
+                'Key': self.key.to_dict(
+                    casing_strategy
+                ),
+                'RuleSetIds': _.to_dict(
+                    casing_strategy
+                )_rule_set_ids,
+                'NodeIds': _.to_dict(
+                    casing_strategy
+                )_node_ids,
+            }
