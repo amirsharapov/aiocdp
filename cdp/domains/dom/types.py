@@ -7,17 +7,24 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.page.types import (
-    FrameId
+from typing import (
+    Any
 )
-from cdp.domains.runtime.types import (
-    ExecutionContextId,
-    RemoteObject,
-    RemoteObjectId,
-    StackTrace
-)
+if TYPE_CHECKING:
+    from cdp.domains.page.types import (
+        FrameId
+    )
+    from cdp.domains.runtime.types import (
+        ExecutionContextId,
+        RemoteObject,
+        RemoteObjectId,
+        StackTrace
+    )
 
 NodeId = int
 
@@ -26,55 +33,55 @@ BackendNodeId = int
 Quad = list[float]
 
 PseudoType = Literal[
-    "first-line",
-    "first-letter",
-    "before",
-    "after",
-    "marker",
-    "backdrop",
-    "selection",
-    "target-text",
-    "spelling-error",
-    "grammar-error",
-    "highlight",
-    "first-line-inherited",
-    "scrollbar",
-    "scrollbar-thumb",
-    "scrollbar-button",
-    "scrollbar-track",
-    "scrollbar-track-piece",
-    "scrollbar-corner",
-    "resizer",
-    "input-list-button",
-    "view-transition",
-    "view-transition-group",
-    "view-transition-image-pair",
-    "view-transition-old",
-    "view-transition-new"
+    'first-line',
+    'first-letter',
+    'before',
+    'after',
+    'marker',
+    'backdrop',
+    'selection',
+    'target-text',
+    'spelling-error',
+    'grammar-error',
+    'highlight',
+    'first-line-inherited',
+    'scrollbar',
+    'scrollbar-thumb',
+    'scrollbar-button',
+    'scrollbar-track',
+    'scrollbar-track-piece',
+    'scrollbar-corner',
+    'resizer',
+    'input-list-button',
+    'view-transition',
+    'view-transition-group',
+    'view-transition-image-pair',
+    'view-transition-old',
+    'view-transition-new'
 ]
 
 ShadowRootType = Literal[
-    "user-agent",
-    "open",
-    "closed"
+    'user-agent',
+    'open',
+    'closed'
 ]
 
 CompatibilityMode = Literal[
-    "QuirksMode",
-    "LimitedQuirksMode",
-    "NoQuirksMode"
+    'QuirksMode',
+    'LimitedQuirksMode',
+    'NoQuirksMode'
 ]
 
 PhysicalAxes = Literal[
-    "Horizontal",
-    "Vertical",
-    "Both"
+    'Horizontal',
+    'Vertical',
+    'Both'
 ]
 
 LogicalAxes = Literal[
-    "Inline",
-    "Block",
-    "Both"
+    'Inline',
+    'Block',
+    'Both'
 ]
 
 
@@ -82,14 +89,14 @@ LogicalAxes = Literal[
 class BackendNode:
     node_type: int
     node_name: str
-    backend_node_id: "BackendNodeId"
+    backend_node_id: 'BackendNodeId'
 
 
 @dataclass
 class Node:
-    node_id: "NodeId"
-    parent_id: "NodeId"
-    backend_node_id: "BackendNodeId"
+    node_id: 'NodeId'
+    parent_id: 'NodeId'
+    backend_node_id: 'BackendNodeId'
     node_type: int
     node_name: str
     local_name: str
@@ -105,19 +112,19 @@ class Node:
     xml_version: str
     name: str
     value: str
-    pseudo_type: "PseudoType"
+    pseudo_type: 'PseudoType'
     pseudo_identifier: str
-    shadow_root_type: "ShadowRootType"
-    frame_id: "FrameId"
-    content_document: "Node"
+    shadow_root_type: 'ShadowRootType'
+    frame_id: 'FrameId'
+    content_document: 'Node'
     shadow_roots: list
-    template_content: "Node"
+    template_content: 'Node'
     pseudo_elements: list
-    imported_document: "Node"
+    imported_document: 'Node'
     distributed_nodes: list
     is_svg: bool
-    compatibility_mode: "CompatibilityMode"
-    assigned_slot: "BackendNode"
+    compatibility_mode: 'CompatibilityMode'
+    assigned_slot: 'BackendNode'
 
 
 @dataclass
@@ -130,18 +137,18 @@ class RGBA:
 
 @dataclass
 class BoxModel:
-    content: "Quad"
-    padding: "Quad"
-    border: "Quad"
-    margin: "Quad"
+    content: 'Quad'
+    padding: 'Quad'
+    border: 'Quad'
+    margin: 'Quad'
     width: int
     height: int
-    shape_outside: "ShapeOutsideInfo"
+    shape_outside: 'ShapeOutsideInfo'
 
 
 @dataclass
 class ShapeOutsideInfo:
-    bounds: "Quad"
+    bounds: 'Quad'
     shape: list
     margin_shape: list
 
@@ -167,12 +174,12 @@ class CollectClassNamesFromSubtreeReturnT:
 
 @dataclass
 class CopyToReturnT:
-    node_id: "NodeId"
+    node_id: 'NodeId'
 
 
 @dataclass
 class DescribeNodeReturnT:
-    node: "Node"
+    node: 'Node'
 
 
 @dataclass
@@ -182,7 +189,7 @@ class GetAttributesReturnT:
 
 @dataclass
 class GetBoxModelReturnT:
-    model: "BoxModel"
+    model: 'BoxModel'
 
 
 @dataclass
@@ -192,7 +199,7 @@ class GetContentQuadsReturnT:
 
 @dataclass
 class GetDocumentReturnT:
-    root: "Node"
+    root: 'Node'
 
 
 @dataclass
@@ -207,9 +214,9 @@ class GetNodesForSubtreeByStyleReturnT:
 
 @dataclass
 class GetNodeForLocationReturnT:
-    backend_node_id: "BackendNodeId"
-    frame_id: "FrameId"
-    node_id: "NodeId"
+    backend_node_id: 'BackendNodeId'
+    frame_id: 'FrameId'
+    node_id: 'NodeId'
 
 
 @dataclass
@@ -219,7 +226,7 @@ class GetOuterHTMLReturnT:
 
 @dataclass
 class GetRelayoutBoundaryReturnT:
-    node_id: "NodeId"
+    node_id: 'NodeId'
 
 
 @dataclass
@@ -229,7 +236,7 @@ class GetSearchResultsReturnT:
 
 @dataclass
 class MoveToReturnT:
-    node_id: "NodeId"
+    node_id: 'NodeId'
 
 
 @dataclass
@@ -240,7 +247,7 @@ class PerformSearchReturnT:
 
 @dataclass
 class PushNodeByPathToFrontendReturnT:
-    node_id: "NodeId"
+    node_id: 'NodeId'
 
 
 @dataclass
@@ -250,7 +257,7 @@ class PushNodesByBackendIdsToFrontendReturnT:
 
 @dataclass
 class QuerySelectorReturnT:
-    node_id: "NodeId"
+    node_id: 'NodeId'
 
 
 @dataclass
@@ -265,17 +272,17 @@ class GetTopLayerElementsReturnT:
 
 @dataclass
 class RequestNodeReturnT:
-    node_id: "NodeId"
+    node_id: 'NodeId'
 
 
 @dataclass
 class ResolveNodeReturnT:
-    object: "RemoteObject"
+    object: 'RemoteObject'
 
 
 @dataclass
 class GetNodeStackTracesReturnT:
-    creation: "StackTrace"
+    creation: 'StackTrace'
 
 
 @dataclass
@@ -285,18 +292,18 @@ class GetFileInfoReturnT:
 
 @dataclass
 class SetNodeNameReturnT:
-    node_id: "NodeId"
+    node_id: 'NodeId'
 
 
 @dataclass
 class GetFrameOwnerReturnT:
-    backend_node_id: "BackendNodeId"
-    node_id: "NodeId"
+    backend_node_id: 'BackendNodeId'
+    node_id: 'NodeId'
 
 
 @dataclass
 class GetContainerForNodeReturnT:
-    node_id: "NodeId"
+    node_id: 'NodeId'
 
 
 @dataclass

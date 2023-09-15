@@ -6,10 +6,17 @@
 from dataclasses import (
     dataclass
 )
-from cdp.domains.dom.types import (
-    BackendNodeId,
-    Rect
+from typing import (
+    TYPE_CHECKING
 )
+from typing import (
+    Any
+)
+if TYPE_CHECKING:
+    from cdp.domains.dom.types import (
+        BackendNodeId,
+        Rect
+    )
 
 LayerId = str
 
@@ -20,16 +27,16 @@ PaintProfile = list[float]
 
 @dataclass
 class ScrollRect:
-    rect: "Rect"
+    rect: 'Rect'
     type: str
 
 
 @dataclass
 class StickyPositionConstraint:
-    sticky_box_rect: "Rect"
-    containing_block_rect: "Rect"
-    nearest_layer_shifting_sticky_box: "LayerId"
-    nearest_layer_shifting_containing_block: "LayerId"
+    sticky_box_rect: 'Rect'
+    containing_block_rect: 'Rect'
+    nearest_layer_shifting_sticky_box: 'LayerId'
+    nearest_layer_shifting_containing_block: 'LayerId'
 
 
 @dataclass
@@ -41,9 +48,9 @@ class PictureTile:
 
 @dataclass
 class Layer:
-    layer_id: "LayerId"
-    parent_layer_id: "LayerId"
-    backend_node_id: "BackendNodeId"
+    layer_id: 'LayerId'
+    parent_layer_id: 'LayerId'
+    backend_node_id: 'BackendNodeId'
     offset_x: float
     offset_y: float
     width: float
@@ -56,7 +63,7 @@ class Layer:
     draws_content: bool
     invisible: bool
     scroll_rects: list
-    sticky_position_constraint: "StickyPositionConstraint"
+    sticky_position_constraint: 'StickyPositionConstraint'
 
 
 @dataclass
@@ -67,12 +74,12 @@ class CompositingReasonsReturnT:
 
 @dataclass
 class LoadSnapshotReturnT:
-    snapshot_id: "SnapshotId"
+    snapshot_id: 'SnapshotId'
 
 
 @dataclass
 class MakeSnapshotReturnT:
-    snapshot_id: "SnapshotId"
+    snapshot_id: 'SnapshotId'
 
 
 @dataclass

@@ -7,62 +7,69 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.target.types import (
-    TargetID
+from typing import (
+    Any
 )
+if TYPE_CHECKING:
+    from cdp.domains.target.types import (
+        TargetID
+    )
 
 BrowserContextID = str
 
 WindowID = int
 
 WindowState = Literal[
-    "normal",
-    "minimized",
-    "maximized",
-    "fullscreen"
+    'normal',
+    'minimized',
+    'maximized',
+    'fullscreen'
 ]
 
 PermissionType = Literal[
-    "accessibilityEvents",
-    "audioCapture",
-    "backgroundSync",
-    "backgroundFetch",
-    "clipboardReadWrite",
-    "clipboardSanitizedWrite",
-    "displayCapture",
-    "durableStorage",
-    "flash",
-    "geolocation",
-    "idleDetection",
-    "localFonts",
-    "midi",
-    "midiSysex",
-    "nfc",
-    "notifications",
-    "paymentHandler",
-    "periodicBackgroundSync",
-    "protectedMediaIdentifier",
-    "sensors",
-    "storageAccess",
-    "topLevelStorageAccess",
-    "videoCapture",
-    "videoCapturePanTiltZoom",
-    "wakeLockScreen",
-    "wakeLockSystem",
-    "windowManagement"
+    'accessibilityEvents',
+    'audioCapture',
+    'backgroundSync',
+    'backgroundFetch',
+    'clipboardReadWrite',
+    'clipboardSanitizedWrite',
+    'displayCapture',
+    'durableStorage',
+    'flash',
+    'geolocation',
+    'idleDetection',
+    'localFonts',
+    'midi',
+    'midiSysex',
+    'nfc',
+    'notifications',
+    'paymentHandler',
+    'periodicBackgroundSync',
+    'protectedMediaIdentifier',
+    'sensors',
+    'storageAccess',
+    'topLevelStorageAccess',
+    'videoCapture',
+    'videoCapturePanTiltZoom',
+    'wakeLockScreen',
+    'wakeLockSystem',
+    'windowManagement'
 ]
 
 PermissionSetting = Literal[
-    "granted",
-    "denied",
-    "prompt"
+    'granted',
+    'denied',
+    'prompt'
 ]
 
 BrowserCommandId = Literal[
-    "openTabSearch",
-    "closeTabSearch"
+    'openTabSearch',
+    'closeTabSearch'
 ]
 
 
@@ -72,7 +79,7 @@ class Bounds:
     top: int
     width: int
     height: int
-    window_state: "WindowState"
+    window_state: 'WindowState'
 
 
 @dataclass
@@ -120,15 +127,15 @@ class GetHistogramsReturnT:
 
 @dataclass
 class GetHistogramReturnT:
-    histogram: "Histogram"
+    histogram: 'Histogram'
 
 
 @dataclass
 class GetWindowBoundsReturnT:
-    bounds: "Bounds"
+    bounds: 'Bounds'
 
 
 @dataclass
 class GetWindowForTargetReturnT:
-    window_id: "WindowID"
-    bounds: "Bounds"
+    window_id: 'WindowID'
+    bounds: 'Bounds'

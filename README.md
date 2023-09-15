@@ -1,24 +1,30 @@
-This library parses the Chrome DevTools Protocol JSON files and generates a
-thin wrapper around the API.
+# PYCDP
 
-The goal of the generator is to generate production ready package releases
-on a consistent interval based on the latest spec.
+### ** STATUS: UNDER DEVELOPMENT **
+
+This library will provide a thin, but functional wrapper around the Chrome DevTools Protocol.
+The library will be updated automatically on a regular interval to ensure that the latest
+version of the protocol is supported.
 
 ## Inspiration
 
-Heavy inspiration from the `python-chrome-devtools-protocol` package.
-This package follows the same idea of generating the wrapper code from the JSON,
-but uses a different approach and adds additional features.
+Heavy inspiration comes from the `python-chrome-devtools-protocol` package.
+This library follows the same idea (generating wrapper layer from the JSON spec),
+but uses a different approach and changes developer-facing interfaces.
 
 ## Internals:
 
 ### Generator
-- Python `requests` module for downloading the latest JSON files
+
+- Python `requests` module for downloading the latest JSON files (TODO)
 - Python `json` module for parsing the JSON
-- Custom algorithm to define dependencies between domains
-- Python `ast` module for code structure
-- Custom algorithm to walk the AST tree and generate the files
+- Python `ast` module for code structure and generation
 
 ### Package
-- Python `dataclass` decorator for mapped types
-- Python `typing` module for type hints and other goodies
+
+- Python `dataclass` decorator for complex types
+- Python `typing` module for type hints, enum literals, and other goodies
+
+### Releases
+
+- Github actions (or GitLab CI/CD - whichever is more cost effective) (TODO)

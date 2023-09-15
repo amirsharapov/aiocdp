@@ -33,21 +33,21 @@ class DOMDebugger(BaseDomain):
         pierce: bool = UNDEFINED
     ):
         params = {
-            "objectId": object_id,
+            'objectId': object_id,
         }
 
         if is_defined(
             depth
         ):
-            params["depth"] = depth
+            params['depth'] = depth
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params['pierce'] = pierce
 
         return self._send_command(
-            "DOMDebugger.getEventListeners",
+            '"DOMDebugger.getEventListeners"',
             params
         )
 
@@ -57,12 +57,12 @@ class DOMDebugger(BaseDomain):
         type_: DOMBreakpointType
     ):
         params = {
-            "nodeId": node_id,
-            "type": type_,
+            'nodeId': node_id,
+            'type': type_,
         }
 
         return self._send_command(
-            "DOMDebugger.removeDOMBreakpoint",
+            '"DOMDebugger.removeDOMBreakpoint"',
             params
         )
 
@@ -72,16 +72,16 @@ class DOMDebugger(BaseDomain):
         target_name: str = UNDEFINED
     ):
         params = {
-            "eventName": event_name,
+            'eventName': event_name,
         }
 
         if is_defined(
             target_name
         ):
-            params["targetName"] = target_name
+            params['targetName'] = target_name
 
         return self._send_command(
-            "DOMDebugger.removeEventListenerBreakpoint",
+            '"DOMDebugger.removeEventListenerBreakpoint"',
             params
         )
 
@@ -90,11 +90,11 @@ class DOMDebugger(BaseDomain):
         event_name: str
     ):
         params = {
-            "eventName": event_name,
+            'eventName': event_name,
         }
 
         return self._send_command(
-            "DOMDebugger.removeInstrumentationBreakpoint",
+            '"DOMDebugger.removeInstrumentationBreakpoint"',
             params
         )
 
@@ -103,11 +103,11 @@ class DOMDebugger(BaseDomain):
         url: str
     ):
         params = {
-            "url": url,
+            'url': url,
         }
 
         return self._send_command(
-            "DOMDebugger.removeXHRBreakpoint",
+            '"DOMDebugger.removeXHRBreakpoint"',
             params
         )
 
@@ -116,11 +116,11 @@ class DOMDebugger(BaseDomain):
         violation_types: list
     ):
         params = {
-            "violationTypes": violation_types,
+            'violationTypes': violation_types,
         }
 
         return self._send_command(
-            "DOMDebugger.setBreakOnCSPViolation",
+            '"DOMDebugger.setBreakOnCSPViolation"',
             params
         )
 
@@ -130,12 +130,12 @@ class DOMDebugger(BaseDomain):
         type_: DOMBreakpointType
     ):
         params = {
-            "nodeId": node_id,
-            "type": type_,
+            'nodeId': node_id,
+            'type': type_,
         }
 
         return self._send_command(
-            "DOMDebugger.setDOMBreakpoint",
+            '"DOMDebugger.setDOMBreakpoint"',
             params
         )
 
@@ -145,16 +145,16 @@ class DOMDebugger(BaseDomain):
         target_name: str = UNDEFINED
     ):
         params = {
-            "eventName": event_name,
+            'eventName': event_name,
         }
 
         if is_defined(
             target_name
         ):
-            params["targetName"] = target_name
+            params['targetName'] = target_name
 
         return self._send_command(
-            "DOMDebugger.setEventListenerBreakpoint",
+            '"DOMDebugger.setEventListenerBreakpoint"',
             params
         )
 
@@ -163,11 +163,11 @@ class DOMDebugger(BaseDomain):
         event_name: str
     ):
         params = {
-            "eventName": event_name,
+            'eventName': event_name,
         }
 
         return self._send_command(
-            "DOMDebugger.setInstrumentationBreakpoint",
+            '"DOMDebugger.setInstrumentationBreakpoint"',
             params
         )
 
@@ -176,11 +176,11 @@ class DOMDebugger(BaseDomain):
         url: str
     ):
         params = {
-            "url": url,
+            'url': url,
         }
 
         return self._send_command(
-            "DOMDebugger.setXHRBreakpoint",
+            '"DOMDebugger.setXHRBreakpoint"',
             params
         )
 

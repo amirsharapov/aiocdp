@@ -22,11 +22,11 @@ class Tethering(BaseDomain):
         port: int
     ):
         params = {
-            "port": port,
+            'port': port,
         }
 
         return self._send_command(
-            "Tethering.bind",
+            '"Tethering.bind"',
             params
         )
 
@@ -35,11 +35,11 @@ class Tethering(BaseDomain):
         port: int
     ):
         params = {
-            "port": port,
+            'port': port,
         }
 
         return self._send_command(
-            "Tethering.unbind",
+            '"Tethering.unbind"',
             params
         )
 

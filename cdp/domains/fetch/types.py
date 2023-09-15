@@ -7,29 +7,36 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.network.types import (
-    ErrorReason,
-    ResourceType
+from typing import (
+    Any
 )
-from cdp.domains.io.types import (
-    StreamHandle
-)
+if TYPE_CHECKING:
+    from cdp.domains.network.types import (
+        ErrorReason,
+        ResourceType
+    )
+    from cdp.domains.io.types import (
+        StreamHandle
+    )
 
 RequestId = str
 
 RequestStage = Literal[
-    "Request",
-    "Response"
+    'Request',
+    'Response'
 ]
 
 
 @dataclass
 class RequestPattern:
     url_pattern: str
-    resource_type: "ResourceType"
-    request_stage: "RequestStage"
+    resource_type: 'ResourceType'
+    request_stage: 'RequestStage'
 
 
 @dataclass
@@ -61,4 +68,4 @@ class GetResponseBodyReturnT:
 
 @dataclass
 class TakeResponseBodyAsStreamReturnT:
-    stream: "StreamHandle"
+    stream: 'StreamHandle'

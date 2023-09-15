@@ -23,7 +23,7 @@ class Performance(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Performance.disable",
+            '"Performance.disable"',
             params
         )
 
@@ -36,10 +36,10 @@ class Performance(BaseDomain):
         if is_defined(
             time_domain
         ):
-            params["timeDomain"] = time_domain
+            params['timeDomain'] = time_domain
 
         return self._send_command(
-            "Performance.enable",
+            '"Performance.enable"',
             params
         )
 
@@ -48,11 +48,11 @@ class Performance(BaseDomain):
         time_domain: str
     ):
         params = {
-            "timeDomain": time_domain,
+            'timeDomain': time_domain,
         }
 
         return self._send_command(
-            "Performance.setTimeDomain",
+            '"Performance.setTimeDomain"',
             params
         )
 
@@ -62,7 +62,7 @@ class Performance(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Performance.getMetrics",
+            '"Performance.getMetrics"',
             params
         )
 

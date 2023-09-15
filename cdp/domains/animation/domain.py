@@ -26,7 +26,7 @@ class Animation(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Animation.disable",
+            '"Animation.disable"',
             params
         )
 
@@ -36,7 +36,7 @@ class Animation(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Animation.enable",
+            '"Animation.enable"',
             params
         )
 
@@ -45,11 +45,11 @@ class Animation(BaseDomain):
         id_: str
     ):
         params = {
-            "id": id_,
+            'id': id_,
         }
 
         return self._send_command(
-            "Animation.getCurrentTime",
+            '"Animation.getCurrentTime"',
             params
         )
 
@@ -59,7 +59,7 @@ class Animation(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Animation.getPlaybackRate",
+            '"Animation.getPlaybackRate"',
             params
         )
 
@@ -68,11 +68,11 @@ class Animation(BaseDomain):
         animations: list
     ):
         params = {
-            "animations": animations,
+            'animations': animations,
         }
 
         return self._send_command(
-            "Animation.releaseAnimations",
+            '"Animation.releaseAnimations"',
             params
         )
 
@@ -81,11 +81,11 @@ class Animation(BaseDomain):
         animation_id: str
     ):
         params = {
-            "animationId": animation_id,
+            'animationId': animation_id,
         }
 
         return self._send_command(
-            "Animation.resolveAnimation",
+            '"Animation.resolveAnimation"',
             params
         )
 
@@ -95,12 +95,12 @@ class Animation(BaseDomain):
         current_time: float
     ):
         params = {
-            "animations": animations,
-            "currentTime": current_time,
+            'animations': animations,
+            'currentTime': current_time,
         }
 
         return self._send_command(
-            "Animation.seekAnimations",
+            '"Animation.seekAnimations"',
             params
         )
 
@@ -110,12 +110,12 @@ class Animation(BaseDomain):
         paused: bool
     ):
         params = {
-            "animations": animations,
-            "paused": paused,
+            'animations': animations,
+            'paused': paused,
         }
 
         return self._send_command(
-            "Animation.setPaused",
+            '"Animation.setPaused"',
             params
         )
 
@@ -124,11 +124,11 @@ class Animation(BaseDomain):
         playback_rate: float
     ):
         params = {
-            "playbackRate": playback_rate,
+            'playbackRate': playback_rate,
         }
 
         return self._send_command(
-            "Animation.setPlaybackRate",
+            '"Animation.setPlaybackRate"',
             params
         )
 
@@ -139,13 +139,13 @@ class Animation(BaseDomain):
         delay: float
     ):
         params = {
-            "animationId": animation_id,
-            "duration": duration,
-            "delay": delay,
+            'animationId': animation_id,
+            'duration': duration,
+            'delay': delay,
         }
 
         return self._send_command(
-            "Animation.setTiming",
+            '"Animation.setTiming"',
             params
         )
 

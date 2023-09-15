@@ -42,7 +42,7 @@ class Overlay(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Overlay.disable",
+            '"Overlay.disable"',
             params
         )
 
@@ -52,7 +52,7 @@ class Overlay(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Overlay.enable",
+            '"Overlay.enable"',
             params
         )
 
@@ -65,31 +65,31 @@ class Overlay(BaseDomain):
         show_accessibility_info: bool = UNDEFINED
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         if is_defined(
             include_distance
         ):
-            params["includeDistance"] = include_distance
+            params['includeDistance'] = include_distance
 
         if is_defined(
             include_style
         ):
-            params["includeStyle"] = include_style
+            params['includeStyle'] = include_style
 
         if is_defined(
             color_format
         ):
-            params["colorFormat"] = color_format
+            params['colorFormat'] = color_format
 
         if is_defined(
             show_accessibility_info
         ):
-            params["showAccessibilityInfo"] = show_accessibility_info
+            params['showAccessibilityInfo'] = show_accessibility_info
 
         return self._send_command(
-            "Overlay.getHighlightObjectForTest",
+            '"Overlay.getHighlightObjectForTest"',
             params
         )
 
@@ -98,11 +98,11 @@ class Overlay(BaseDomain):
         node_ids: list
     ):
         params = {
-            "nodeIds": node_ids,
+            'nodeIds': node_ids,
         }
 
         return self._send_command(
-            "Overlay.getGridHighlightObjectsForTest",
+            '"Overlay.getGridHighlightObjectsForTest"',
             params
         )
 
@@ -111,11 +111,11 @@ class Overlay(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         return self._send_command(
-            "Overlay.getSourceOrderHighlightObjectForTest",
+            '"Overlay.getSourceOrderHighlightObjectForTest"',
             params
         )
 
@@ -125,7 +125,7 @@ class Overlay(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Overlay.hideHighlight",
+            '"Overlay.hideHighlight"',
             params
         )
 
@@ -136,21 +136,21 @@ class Overlay(BaseDomain):
         content_outline_color: RGBA = UNDEFINED
     ):
         params = {
-            "frameId": frame_id,
+            'frameId': frame_id,
         }
 
         if is_defined(
             content_color
         ):
-            params["contentColor"] = content_color
+            params['contentColor'] = content_color
 
         if is_defined(
             content_outline_color
         ):
-            params["contentOutlineColor"] = content_outline_color
+            params['contentOutlineColor'] = content_outline_color
 
         return self._send_command(
-            "Overlay.highlightFrame",
+            '"Overlay.highlightFrame"',
             params
         )
 
@@ -163,31 +163,31 @@ class Overlay(BaseDomain):
         selector: str = UNDEFINED
     ):
         params = {
-            "highlightConfig": highlight_config,
+            'highlightConfig': highlight_config,
         }
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         if is_defined(
             selector
         ):
-            params["selector"] = selector
+            params['selector'] = selector
 
         return self._send_command(
-            "Overlay.highlightNode",
+            '"Overlay.highlightNode"',
             params
         )
 
@@ -198,21 +198,21 @@ class Overlay(BaseDomain):
         outline_color: RGBA = UNDEFINED
     ):
         params = {
-            "quad": quad,
+            'quad': quad,
         }
 
         if is_defined(
             color
         ):
-            params["color"] = color
+            params['color'] = color
 
         if is_defined(
             outline_color
         ):
-            params["outlineColor"] = outline_color
+            params['outlineColor'] = outline_color
 
         return self._send_command(
-            "Overlay.highlightQuad",
+            '"Overlay.highlightQuad"',
             params
         )
 
@@ -226,24 +226,24 @@ class Overlay(BaseDomain):
         outline_color: RGBA = UNDEFINED
     ):
         params = {
-            "x": x,
-            "y": y,
-            "width": width,
-            "height": height,
+            'x': x,
+            'y': y,
+            'width': width,
+            'height': height,
         }
 
         if is_defined(
             color
         ):
-            params["color"] = color
+            params['color'] = color
 
         if is_defined(
             outline_color
         ):
-            params["outlineColor"] = outline_color
+            params['outlineColor'] = outline_color
 
         return self._send_command(
-            "Overlay.highlightRect",
+            '"Overlay.highlightRect"',
             params
         )
 
@@ -255,26 +255,26 @@ class Overlay(BaseDomain):
         object_id: RemoteObjectId = UNDEFINED
     ):
         params = {
-            "sourceOrderConfig": source_order_config,
+            'sourceOrderConfig': source_order_config,
         }
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         return self._send_command(
-            "Overlay.highlightSourceOrder",
+            '"Overlay.highlightSourceOrder"',
             params
         )
 
@@ -284,16 +284,16 @@ class Overlay(BaseDomain):
         highlight_config: HighlightConfig = UNDEFINED
     ):
         params = {
-            "mode": mode,
+            'mode': mode,
         }
 
         if is_defined(
             highlight_config
         ):
-            params["highlightConfig"] = highlight_config
+            params['highlightConfig'] = highlight_config
 
         return self._send_command(
-            "Overlay.setInspectMode",
+            '"Overlay.setInspectMode"',
             params
         )
 
@@ -302,11 +302,11 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            "show": show,
+            'show': show,
         }
 
         return self._send_command(
-            "Overlay.setShowAdHighlights",
+            '"Overlay.setShowAdHighlights"',
             params
         )
 
@@ -319,10 +319,10 @@ class Overlay(BaseDomain):
         if is_defined(
             message
         ):
-            params["message"] = message
+            params['message'] = message
 
         return self._send_command(
-            "Overlay.setPausedInDebuggerMessage",
+            '"Overlay.setPausedInDebuggerMessage"',
             params
         )
 
@@ -331,11 +331,11 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            "show": show,
+            'show': show,
         }
 
         return self._send_command(
-            "Overlay.setShowDebugBorders",
+            '"Overlay.setShowDebugBorders"',
             params
         )
 
@@ -344,11 +344,11 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            "show": show,
+            'show': show,
         }
 
         return self._send_command(
-            "Overlay.setShowFPSCounter",
+            '"Overlay.setShowFPSCounter"',
             params
         )
 
@@ -357,11 +357,11 @@ class Overlay(BaseDomain):
         grid_node_highlight_configs: list
     ):
         params = {
-            "gridNodeHighlightConfigs": grid_node_highlight_configs,
+            'gridNodeHighlightConfigs': grid_node_highlight_configs,
         }
 
         return self._send_command(
-            "Overlay.setShowGridOverlays",
+            '"Overlay.setShowGridOverlays"',
             params
         )
 
@@ -370,11 +370,11 @@ class Overlay(BaseDomain):
         flex_node_highlight_configs: list
     ):
         params = {
-            "flexNodeHighlightConfigs": flex_node_highlight_configs,
+            'flexNodeHighlightConfigs': flex_node_highlight_configs,
         }
 
         return self._send_command(
-            "Overlay.setShowFlexOverlays",
+            '"Overlay.setShowFlexOverlays"',
             params
         )
 
@@ -383,11 +383,11 @@ class Overlay(BaseDomain):
         scroll_snap_highlight_configs: list
     ):
         params = {
-            "scrollSnapHighlightConfigs": scroll_snap_highlight_configs,
+            'scrollSnapHighlightConfigs': scroll_snap_highlight_configs,
         }
 
         return self._send_command(
-            "Overlay.setShowScrollSnapOverlays",
+            '"Overlay.setShowScrollSnapOverlays"',
             params
         )
 
@@ -396,11 +396,11 @@ class Overlay(BaseDomain):
         container_query_highlight_configs: list
     ):
         params = {
-            "containerQueryHighlightConfigs": container_query_highlight_configs,
+            'containerQueryHighlightConfigs': container_query_highlight_configs,
         }
 
         return self._send_command(
-            "Overlay.setShowContainerQueryOverlays",
+            '"Overlay.setShowContainerQueryOverlays"',
             params
         )
 
@@ -409,11 +409,11 @@ class Overlay(BaseDomain):
         result: bool
     ):
         params = {
-            "result": result,
+            'result': result,
         }
 
         return self._send_command(
-            "Overlay.setShowPaintRects",
+            '"Overlay.setShowPaintRects"',
             params
         )
 
@@ -422,11 +422,11 @@ class Overlay(BaseDomain):
         result: bool
     ):
         params = {
-            "result": result,
+            'result': result,
         }
 
         return self._send_command(
-            "Overlay.setShowLayoutShiftRegions",
+            '"Overlay.setShowLayoutShiftRegions"',
             params
         )
 
@@ -435,11 +435,11 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            "show": show,
+            'show': show,
         }
 
         return self._send_command(
-            "Overlay.setShowScrollBottleneckRects",
+            '"Overlay.setShowScrollBottleneckRects"',
             params
         )
 
@@ -448,11 +448,11 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            "show": show,
+            'show': show,
         }
 
         return self._send_command(
-            "Overlay.setShowHitTestBorders",
+            '"Overlay.setShowHitTestBorders"',
             params
         )
 
@@ -461,11 +461,11 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            "show": show,
+            'show': show,
         }
 
         return self._send_command(
-            "Overlay.setShowWebVitals",
+            '"Overlay.setShowWebVitals"',
             params
         )
 
@@ -474,11 +474,11 @@ class Overlay(BaseDomain):
         show: bool
     ):
         params = {
-            "show": show,
+            'show': show,
         }
 
         return self._send_command(
-            "Overlay.setShowViewportSizeOnResize",
+            '"Overlay.setShowViewportSizeOnResize"',
             params
         )
 
@@ -491,10 +491,10 @@ class Overlay(BaseDomain):
         if is_defined(
             hinge_config
         ):
-            params["hingeConfig"] = hinge_config
+            params['hingeConfig'] = hinge_config
 
         return self._send_command(
-            "Overlay.setShowHinge",
+            '"Overlay.setShowHinge"',
             params
         )
 
@@ -503,11 +503,11 @@ class Overlay(BaseDomain):
         isolated_element_highlight_configs: list
     ):
         params = {
-            "isolatedElementHighlightConfigs": isolated_element_highlight_configs,
+            'isolatedElementHighlightConfigs': isolated_element_highlight_configs,
         }
 
         return self._send_command(
-            "Overlay.setShowIsolatedElements",
+            '"Overlay.setShowIsolatedElements"',
             params
         )
 

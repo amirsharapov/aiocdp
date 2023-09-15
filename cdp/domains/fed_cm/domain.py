@@ -26,10 +26,10 @@ class FedCm(BaseDomain):
         if is_defined(
             disable_rejection_delay
         ):
-            params["disableRejectionDelay"] = disable_rejection_delay
+            params['disableRejectionDelay'] = disable_rejection_delay
 
         return self._send_command(
-            "FedCm.enable",
+            '"FedCm.enable"',
             params
         )
 
@@ -39,7 +39,7 @@ class FedCm(BaseDomain):
         params = {}
 
         return self._send_command(
-            "FedCm.disable",
+            '"FedCm.disable"',
             params
         )
 
@@ -49,12 +49,12 @@ class FedCm(BaseDomain):
         account_index: int
     ):
         params = {
-            "dialogId": dialog_id,
-            "accountIndex": account_index,
+            'dialogId': dialog_id,
+            'accountIndex': account_index,
         }
 
         return self._send_command(
-            "FedCm.selectAccount",
+            '"FedCm.selectAccount"',
             params
         )
 
@@ -63,11 +63,11 @@ class FedCm(BaseDomain):
         dialog_id: str
     ):
         params = {
-            "dialogId": dialog_id,
+            'dialogId': dialog_id,
         }
 
         return self._send_command(
-            "FedCm.confirmIdpSignin",
+            '"FedCm.confirmIdpSignin"',
             params
         )
 
@@ -77,16 +77,16 @@ class FedCm(BaseDomain):
         trigger_cooldown: bool = UNDEFINED
     ):
         params = {
-            "dialogId": dialog_id,
+            'dialogId': dialog_id,
         }
 
         if is_defined(
             trigger_cooldown
         ):
-            params["triggerCooldown"] = trigger_cooldown
+            params['triggerCooldown'] = trigger_cooldown
 
         return self._send_command(
-            "FedCm.dismissDialog",
+            '"FedCm.dismissDialog"',
             params
         )
 
@@ -96,7 +96,7 @@ class FedCm(BaseDomain):
         params = {}
 
         return self._send_command(
-            "FedCm.resetCooldown",
+            '"FedCm.resetCooldown"',
             params
         )
 

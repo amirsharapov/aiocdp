@@ -31,10 +31,10 @@ class WebAuthn(BaseDomain):
         if is_defined(
             enable_ui
         ):
-            params["enableUI"] = enable_ui
+            params['enableUI'] = enable_ui
 
         return self._send_command(
-            "WebAuthn.enable",
+            '"WebAuthn.enable"',
             params
         )
 
@@ -44,7 +44,7 @@ class WebAuthn(BaseDomain):
         params = {}
 
         return self._send_command(
-            "WebAuthn.disable",
+            '"WebAuthn.disable"',
             params
         )
 
@@ -53,11 +53,11 @@ class WebAuthn(BaseDomain):
         options: VirtualAuthenticatorOptions
     ):
         params = {
-            "options": options,
+            'options': options,
         }
 
         return self._send_command(
-            "WebAuthn.addVirtualAuthenticator",
+            '"WebAuthn.addVirtualAuthenticator"',
             params
         )
 
@@ -69,26 +69,26 @@ class WebAuthn(BaseDomain):
         is_bad_up: bool = UNDEFINED
     ):
         params = {
-            "authenticatorId": authenticator_id,
+            'authenticatorId': authenticator_id,
         }
 
         if is_defined(
             is_bogus_signature
         ):
-            params["isBogusSignature"] = is_bogus_signature
+            params['isBogusSignature'] = is_bogus_signature
 
         if is_defined(
             is_bad_uv
         ):
-            params["isBadUV"] = is_bad_uv
+            params['isBadUV'] = is_bad_uv
 
         if is_defined(
             is_bad_up
         ):
-            params["isBadUP"] = is_bad_up
+            params['isBadUP'] = is_bad_up
 
         return self._send_command(
-            "WebAuthn.setResponseOverrideBits",
+            '"WebAuthn.setResponseOverrideBits"',
             params
         )
 
@@ -97,11 +97,11 @@ class WebAuthn(BaseDomain):
         authenticator_id: AuthenticatorId
     ):
         params = {
-            "authenticatorId": authenticator_id,
+            'authenticatorId': authenticator_id,
         }
 
         return self._send_command(
-            "WebAuthn.removeVirtualAuthenticator",
+            '"WebAuthn.removeVirtualAuthenticator"',
             params
         )
 
@@ -111,12 +111,12 @@ class WebAuthn(BaseDomain):
         credential: Credential
     ):
         params = {
-            "authenticatorId": authenticator_id,
-            "credential": credential,
+            'authenticatorId': authenticator_id,
+            'credential': credential,
         }
 
         return self._send_command(
-            "WebAuthn.addCredential",
+            '"WebAuthn.addCredential"',
             params
         )
 
@@ -126,12 +126,12 @@ class WebAuthn(BaseDomain):
         credential_id: str
     ):
         params = {
-            "authenticatorId": authenticator_id,
-            "credentialId": credential_id,
+            'authenticatorId': authenticator_id,
+            'credentialId': credential_id,
         }
 
         return self._send_command(
-            "WebAuthn.getCredential",
+            '"WebAuthn.getCredential"',
             params
         )
 
@@ -140,11 +140,11 @@ class WebAuthn(BaseDomain):
         authenticator_id: AuthenticatorId
     ):
         params = {
-            "authenticatorId": authenticator_id,
+            'authenticatorId': authenticator_id,
         }
 
         return self._send_command(
-            "WebAuthn.getCredentials",
+            '"WebAuthn.getCredentials"',
             params
         )
 
@@ -154,12 +154,12 @@ class WebAuthn(BaseDomain):
         credential_id: str
     ):
         params = {
-            "authenticatorId": authenticator_id,
-            "credentialId": credential_id,
+            'authenticatorId': authenticator_id,
+            'credentialId': credential_id,
         }
 
         return self._send_command(
-            "WebAuthn.removeCredential",
+            '"WebAuthn.removeCredential"',
             params
         )
 
@@ -168,11 +168,11 @@ class WebAuthn(BaseDomain):
         authenticator_id: AuthenticatorId
     ):
         params = {
-            "authenticatorId": authenticator_id,
+            'authenticatorId': authenticator_id,
         }
 
         return self._send_command(
-            "WebAuthn.clearCredentials",
+            '"WebAuthn.clearCredentials"',
             params
         )
 
@@ -182,12 +182,12 @@ class WebAuthn(BaseDomain):
         is_user_verified: bool
     ):
         params = {
-            "authenticatorId": authenticator_id,
-            "isUserVerified": is_user_verified,
+            'authenticatorId': authenticator_id,
+            'isUserVerified': is_user_verified,
         }
 
         return self._send_command(
-            "WebAuthn.setUserVerified",
+            '"WebAuthn.setUserVerified"',
             params
         )
 
@@ -197,12 +197,12 @@ class WebAuthn(BaseDomain):
         enabled: bool
     ):
         params = {
-            "authenticatorId": authenticator_id,
-            "enabled": enabled,
+            'authenticatorId': authenticator_id,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "WebAuthn.setAutomaticPresenceSimulation",
+            '"WebAuthn.setAutomaticPresenceSimulation"',
             params
         )
 

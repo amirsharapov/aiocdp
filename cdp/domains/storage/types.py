@@ -7,17 +7,24 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.network.types import (
-    TimeSinceEpoch
+from typing import (
+    Any
 )
-from cdp.domains.page.types import (
-    FrameId
-)
-from cdp.domains.browser.types import (
-    BrowserContextID
-)
+if TYPE_CHECKING:
+    from cdp.domains.network.types import (
+        TimeSinceEpoch
+    )
+    from cdp.domains.page.types import (
+        FrameId
+    )
+    from cdp.domains.browser.types import (
+        BrowserContextID
+    )
 
 SerializedStorageKey = str
 
@@ -28,79 +35,79 @@ UnsignedInt128AsBase16 = str
 SignedInt64AsBase10 = str
 
 StorageType = Literal[
-    "appcache",
-    "cookies",
-    "file_systems",
-    "indexeddb",
-    "local_storage",
-    "shader_cache",
-    "websql",
-    "service_workers",
-    "cache_storage",
-    "interest_groups",
-    "shared_storage",
-    "storage_buckets",
-    "all",
-    "other"
+    'appcache',
+    'cookies',
+    'file_systems',
+    'indexeddb',
+    'local_storage',
+    'shader_cache',
+    'websql',
+    'service_workers',
+    'cache_storage',
+    'interest_groups',
+    'shared_storage',
+    'storage_buckets',
+    'all',
+    'other'
 ]
 
 InterestGroupAccessType = Literal[
-    "join",
-    "leave",
-    "update",
-    "loaded",
-    "bid",
-    "win"
+    'join',
+    'leave',
+    'update',
+    'loaded',
+    'bid',
+    'win'
 ]
 
 SharedStorageAccessType = Literal[
-    "documentAddModule",
-    "documentSelectURL",
-    "documentRun",
-    "documentSet",
-    "documentAppend",
-    "documentDelete",
-    "documentClear",
-    "workletSet",
-    "workletAppend",
-    "workletDelete",
-    "workletClear",
-    "workletGet",
-    "workletKeys",
-    "workletEntries",
-    "workletLength",
-    "workletRemainingBudget"
+    'documentAddModule',
+    'documentSelectURL',
+    'documentRun',
+    'documentSet',
+    'documentAppend',
+    'documentDelete',
+    'documentClear',
+    'workletSet',
+    'workletAppend',
+    'workletDelete',
+    'workletClear',
+    'workletGet',
+    'workletKeys',
+    'workletEntries',
+    'workletLength',
+    'workletRemainingBudget'
 ]
 
 StorageBucketsDurability = Literal[
-    "relaxed",
-    "strict"
+    'relaxed',
+    'strict'
 ]
 
 AttributionReportingSourceType = Literal[
-    "navigation",
-    "event"
+    'navigation',
+    'event'
 ]
 
 AttributionReportingSourceRegistrationResult = Literal[
-    "success",
-    "internalError",
-    "insufficientSourceCapacity",
-    "insufficientUniqueDestinationCapacity",
-    "excessiveReportingOrigins",
-    "prohibitedByBrowserPolicy",
-    "successNoised",
-    "destinationReportingLimitReached",
-    "destinationGlobalLimitReached",
-    "destinationBothLimitsReached",
-    "reportingOriginsPerSiteLimitReached",
-    "exceedsMaxChannelCapacity"
+    'success',
+    'internalError',
+    'insufficientSourceCapacity',
+    'insufficientUniqueDestinationCapacity',
+    'excessiveReportingOrigins',
+    'prohibitedByBrowserPolicy',
+    'successNoised',
+    'destinationReportingLimitReached',
+    'destinationGlobalLimitReached',
+    'destinationBothLimitsReached',
+    'reportingOriginsPerSiteLimitReached',
+    'exceedsMaxChannelCapacity'
 ]
 
 
 @dataclass
 class UsageForType:
-    storage_type: "StorageType"
+    storage_type: 'StorageType'
     usage: float
 
 
@@ -120,7 +127,7 @@ class InterestGroupAd:
 class InterestGroupDetails:
     owner_origin: str
     name: str
-    expiration_time: "TimeSinceEpoch"
+    expiration_time: 'TimeSinceEpoch'
     joining_origin: str
     bidding_url: str
     bidding_wasm_helper_url: str
@@ -140,7 +147,7 @@ class SharedStorageEntry:
 
 @dataclass
 class SharedStorageMetadata:
-    creation_time: "TimeSinceEpoch"
+    creation_time: 'TimeSinceEpoch'
     length: int
     remaining_budget: float
 
@@ -170,18 +177,18 @@ class SharedStorageAccessParams:
 
 @dataclass
 class StorageBucket:
-    storage_key: "SerializedStorageKey"
+    storage_key: 'SerializedStorageKey'
     name: str
 
 
 @dataclass
 class StorageBucketInfo:
-    bucket: "StorageBucket"
+    bucket: 'StorageBucket'
     id: str
-    expiration: "TimeSinceEpoch"
+    expiration: 'TimeSinceEpoch'
     quota: float
     persistent: bool
-    durability: "StorageBucketsDurability"
+    durability: 'StorageBucketsDurability'
 
 
 @dataclass
@@ -193,7 +200,7 @@ class AttributionReportingFilterDataEntry:
 @dataclass
 class AttributionReportingAggregationKeysEntry:
     key: str
-    value: "UnsignedInt128AsBase16"
+    value: 'UnsignedInt128AsBase16'
 
 
 @dataclass
@@ -204,25 +211,25 @@ class AttributionReportingEventReportWindows:
 
 @dataclass
 class AttributionReportingSourceRegistration:
-    time: "TimeSinceEpoch"
+    time: 'TimeSinceEpoch'
     expiry: int
     event_report_window: int
-    event_report_windows: "AttributionReportingEventReportWindows"
+    event_report_windows: 'AttributionReportingEventReportWindows'
     aggregatable_report_window: int
-    type: "AttributionReportingSourceType"
+    type: 'AttributionReportingSourceType'
     source_origin: str
     reporting_origin: str
     destination_sites: list
-    event_id: "UnsignedInt64AsBase10"
-    priority: "SignedInt64AsBase10"
+    event_id: 'UnsignedInt64AsBase10'
+    priority: 'SignedInt64AsBase10'
     filter_data: list
     aggregation_keys: list
-    debug_key: "UnsignedInt64AsBase10"
+    debug_key: 'UnsignedInt64AsBase10'
 
 
 @dataclass
 class GetStorageKeyForFrameReturnT:
-    storage_key: "SerializedStorageKey"
+    storage_key: 'SerializedStorageKey'
 
 
 @dataclass
@@ -250,12 +257,12 @@ class ClearTrustTokensReturnT:
 
 @dataclass
 class GetInterestGroupDetailsReturnT:
-    details: "InterestGroupDetails"
+    details: 'InterestGroupDetails'
 
 
 @dataclass
 class GetSharedStorageMetadataReturnT:
-    metadata: "SharedStorageMetadata"
+    metadata: 'SharedStorageMetadata'
 
 
 @dataclass

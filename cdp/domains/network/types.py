@@ -7,25 +7,32 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.security.types import (
-    CertificateId,
-    MixedContentType,
-    SecurityState
+from typing import (
+    Any
 )
-from cdp.domains.runtime.types import (
-    StackTrace
-)
-from cdp.domains.io.types import (
-    StreamHandle
-)
-from cdp.domains.emulation.types import (
-    UserAgentMetadata
-)
-from cdp.domains.page.types import (
-    FrameId
-)
+if TYPE_CHECKING:
+    from cdp.domains.security.types import (
+        CertificateId,
+        MixedContentType,
+        SecurityState
+    )
+    from cdp.domains.runtime.types import (
+        StackTrace
+    )
+    from cdp.domains.io.types import (
+        StreamHandle
+    )
+    from cdp.domains.emulation.types import (
+        UserAgentMetadata
+    )
+    from cdp.domains.page.types import (
+        FrameId
+    )
 
 LoaderId = str
 
@@ -37,268 +44,270 @@ TimeSinceEpoch = float
 
 MonotonicTime = float
 
+Headers = dict
+
 ReportId = str
 
 ResourceType = Literal[
-    "Document",
-    "Stylesheet",
-    "Image",
-    "Media",
-    "Font",
-    "Script",
-    "TextTrack",
-    "XHR",
-    "Fetch",
-    "Prefetch",
-    "EventSource",
-    "WebSocket",
-    "Manifest",
-    "SignedExchange",
-    "Ping",
-    "CSPViolationReport",
-    "Preflight",
-    "Other"
+    'Document',
+    'Stylesheet',
+    'Image',
+    'Media',
+    'Font',
+    'Script',
+    'TextTrack',
+    'XHR',
+    'Fetch',
+    'Prefetch',
+    'EventSource',
+    'WebSocket',
+    'Manifest',
+    'SignedExchange',
+    'Ping',
+    'CSPViolationReport',
+    'Preflight',
+    'Other'
 ]
 
 ErrorReason = Literal[
-    "Failed",
-    "Aborted",
-    "TimedOut",
-    "AccessDenied",
-    "ConnectionClosed",
-    "ConnectionReset",
-    "ConnectionRefused",
-    "ConnectionAborted",
-    "ConnectionFailed",
-    "NameNotResolved",
-    "InternetDisconnected",
-    "AddressUnreachable",
-    "BlockedByClient",
-    "BlockedByResponse"
+    'Failed',
+    'Aborted',
+    'TimedOut',
+    'AccessDenied',
+    'ConnectionClosed',
+    'ConnectionReset',
+    'ConnectionRefused',
+    'ConnectionAborted',
+    'ConnectionFailed',
+    'NameNotResolved',
+    'InternetDisconnected',
+    'AddressUnreachable',
+    'BlockedByClient',
+    'BlockedByResponse'
 ]
 
 ConnectionType = Literal[
-    "none",
-    "cellular2g",
-    "cellular3g",
-    "cellular4g",
-    "bluetooth",
-    "ethernet",
-    "wifi",
-    "wimax",
-    "other"
+    'none',
+    'cellular2g',
+    'cellular3g',
+    'cellular4g',
+    'bluetooth',
+    'ethernet',
+    'wifi',
+    'wimax',
+    'other'
 ]
 
 CookieSameSite = Literal[
-    "Strict",
-    "Lax",
-    "None"
+    'Strict',
+    'Lax',
+    'None'
 ]
 
 CookiePriority = Literal[
-    "Low",
-    "Medium",
-    "High"
+    'Low',
+    'Medium',
+    'High'
 ]
 
 CookieSourceScheme = Literal[
-    "Unset",
-    "NonSecure",
-    "Secure"
+    'Unset',
+    'NonSecure',
+    'Secure'
 ]
 
 ResourcePriority = Literal[
-    "VeryLow",
-    "Low",
-    "Medium",
-    "High",
-    "VeryHigh"
+    'VeryLow',
+    'Low',
+    'Medium',
+    'High',
+    'VeryHigh'
 ]
 
 CertificateTransparencyCompliance = Literal[
-    "unknown",
-    "not-compliant",
-    "compliant"
+    'unknown',
+    'not-compliant',
+    'compliant'
 ]
 
 BlockedReason = Literal[
-    "other",
-    "csp",
-    "mixed-content",
-    "origin",
-    "inspector",
-    "subresource-filter",
-    "content-type",
-    "coep-frame-resource-needs-coep-header",
-    "coop-sandboxed-iframe-cannot-navigate-to-coop-page",
-    "corp-not-same-origin",
-    "corp-not-same-origin-after-defaulted-to-same-origin-by-coep",
-    "corp-not-same-site"
+    'other',
+    'csp',
+    'mixed-content',
+    'origin',
+    'inspector',
+    'subresource-filter',
+    'content-type',
+    'coep-frame-resource-needs-coep-header',
+    'coop-sandboxed-iframe-cannot-navigate-to-coop-page',
+    'corp-not-same-origin',
+    'corp-not-same-origin-after-defaulted-to-same-origin-by-coep',
+    'corp-not-same-site'
 ]
 
 CorsError = Literal[
-    "DisallowedByMode",
-    "InvalidResponse",
-    "WildcardOriginNotAllowed",
-    "MissingAllowOriginHeader",
-    "MultipleAllowOriginValues",
-    "InvalidAllowOriginValue",
-    "AllowOriginMismatch",
-    "InvalidAllowCredentials",
-    "CorsDisabledScheme",
-    "PreflightInvalidStatus",
-    "PreflightDisallowedRedirect",
-    "PreflightWildcardOriginNotAllowed",
-    "PreflightMissingAllowOriginHeader",
-    "PreflightMultipleAllowOriginValues",
-    "PreflightInvalidAllowOriginValue",
-    "PreflightAllowOriginMismatch",
-    "PreflightInvalidAllowCredentials",
-    "PreflightMissingAllowExternal",
-    "PreflightInvalidAllowExternal",
-    "PreflightMissingAllowPrivateNetwork",
-    "PreflightInvalidAllowPrivateNetwork",
-    "InvalidAllowMethodsPreflightResponse",
-    "InvalidAllowHeadersPreflightResponse",
-    "MethodDisallowedByPreflightResponse",
-    "HeaderDisallowedByPreflightResponse",
-    "RedirectContainsCredentials",
-    "InsecurePrivateNetwork",
-    "InvalidPrivateNetworkAccess",
-    "UnexpectedPrivateNetworkAccess",
-    "NoCorsRedirectModeNotFollow",
-    "PreflightMissingPrivateNetworkAccessId",
-    "PreflightMissingPrivateNetworkAccessName",
-    "PrivateNetworkAccessPermissionUnavailable",
-    "PrivateNetworkAccessPermissionDenied"
+    'DisallowedByMode',
+    'InvalidResponse',
+    'WildcardOriginNotAllowed',
+    'MissingAllowOriginHeader',
+    'MultipleAllowOriginValues',
+    'InvalidAllowOriginValue',
+    'AllowOriginMismatch',
+    'InvalidAllowCredentials',
+    'CorsDisabledScheme',
+    'PreflightInvalidStatus',
+    'PreflightDisallowedRedirect',
+    'PreflightWildcardOriginNotAllowed',
+    'PreflightMissingAllowOriginHeader',
+    'PreflightMultipleAllowOriginValues',
+    'PreflightInvalidAllowOriginValue',
+    'PreflightAllowOriginMismatch',
+    'PreflightInvalidAllowCredentials',
+    'PreflightMissingAllowExternal',
+    'PreflightInvalidAllowExternal',
+    'PreflightMissingAllowPrivateNetwork',
+    'PreflightInvalidAllowPrivateNetwork',
+    'InvalidAllowMethodsPreflightResponse',
+    'InvalidAllowHeadersPreflightResponse',
+    'MethodDisallowedByPreflightResponse',
+    'HeaderDisallowedByPreflightResponse',
+    'RedirectContainsCredentials',
+    'InsecurePrivateNetwork',
+    'InvalidPrivateNetworkAccess',
+    'UnexpectedPrivateNetworkAccess',
+    'NoCorsRedirectModeNotFollow',
+    'PreflightMissingPrivateNetworkAccessId',
+    'PreflightMissingPrivateNetworkAccessName',
+    'PrivateNetworkAccessPermissionUnavailable',
+    'PrivateNetworkAccessPermissionDenied'
 ]
 
 ServiceWorkerResponseSource = Literal[
-    "cache-storage",
-    "http-cache",
-    "fallback-code",
-    "network"
+    'cache-storage',
+    'http-cache',
+    'fallback-code',
+    'network'
 ]
 
 TrustTokenOperationType = Literal[
-    "Issuance",
-    "Redemption",
-    "Signing"
+    'Issuance',
+    'Redemption',
+    'Signing'
 ]
 
 AlternateProtocolUsage = Literal[
-    "alternativeJobWonWithoutRace",
-    "alternativeJobWonRace",
-    "mainJobWonRace",
-    "mappingMissing",
-    "broken",
-    "dnsAlpnH3JobWonWithoutRace",
-    "dnsAlpnH3JobWonRace",
-    "unspecifiedReason"
+    'alternativeJobWonWithoutRace',
+    'alternativeJobWonRace',
+    'mainJobWonRace',
+    'mappingMissing',
+    'broken',
+    'dnsAlpnH3JobWonWithoutRace',
+    'dnsAlpnH3JobWonRace',
+    'unspecifiedReason'
 ]
 
 SetCookieBlockedReason = Literal[
-    "SecureOnly",
-    "SameSiteStrict",
-    "SameSiteLax",
-    "SameSiteUnspecifiedTreatedAsLax",
-    "SameSiteNoneInsecure",
-    "UserPreferences",
-    "ThirdPartyBlockedInFirstPartySet",
-    "SyntaxError",
-    "SchemeNotSupported",
-    "OverwriteSecure",
-    "InvalidDomain",
-    "InvalidPrefix",
-    "UnknownError",
-    "SchemefulSameSiteStrict",
-    "SchemefulSameSiteLax",
-    "SchemefulSameSiteUnspecifiedTreatedAsLax",
-    "SamePartyFromCrossPartyContext",
-    "SamePartyConflictsWithOtherAttributes",
-    "NameValuePairExceedsMaxSize",
-    "DisallowedCharacter"
+    'SecureOnly',
+    'SameSiteStrict',
+    'SameSiteLax',
+    'SameSiteUnspecifiedTreatedAsLax',
+    'SameSiteNoneInsecure',
+    'UserPreferences',
+    'ThirdPartyBlockedInFirstPartySet',
+    'SyntaxError',
+    'SchemeNotSupported',
+    'OverwriteSecure',
+    'InvalidDomain',
+    'InvalidPrefix',
+    'UnknownError',
+    'SchemefulSameSiteStrict',
+    'SchemefulSameSiteLax',
+    'SchemefulSameSiteUnspecifiedTreatedAsLax',
+    'SamePartyFromCrossPartyContext',
+    'SamePartyConflictsWithOtherAttributes',
+    'NameValuePairExceedsMaxSize',
+    'DisallowedCharacter'
 ]
 
 CookieBlockedReason = Literal[
-    "SecureOnly",
-    "NotOnPath",
-    "DomainMismatch",
-    "SameSiteStrict",
-    "SameSiteLax",
-    "SameSiteUnspecifiedTreatedAsLax",
-    "SameSiteNoneInsecure",
-    "UserPreferences",
-    "ThirdPartyBlockedInFirstPartySet",
-    "UnknownError",
-    "SchemefulSameSiteStrict",
-    "SchemefulSameSiteLax",
-    "SchemefulSameSiteUnspecifiedTreatedAsLax",
-    "SamePartyFromCrossPartyContext",
-    "NameValuePairExceedsMaxSize"
+    'SecureOnly',
+    'NotOnPath',
+    'DomainMismatch',
+    'SameSiteStrict',
+    'SameSiteLax',
+    'SameSiteUnspecifiedTreatedAsLax',
+    'SameSiteNoneInsecure',
+    'UserPreferences',
+    'ThirdPartyBlockedInFirstPartySet',
+    'UnknownError',
+    'SchemefulSameSiteStrict',
+    'SchemefulSameSiteLax',
+    'SchemefulSameSiteUnspecifiedTreatedAsLax',
+    'SamePartyFromCrossPartyContext',
+    'NameValuePairExceedsMaxSize'
 ]
 
 InterceptionStage = Literal[
-    "Request",
-    "HeadersReceived"
+    'Request',
+    'HeadersReceived'
 ]
 
 SignedExchangeErrorField = Literal[
-    "signatureSig",
-    "signatureIntegrity",
-    "signatureCertUrl",
-    "signatureCertSha256",
-    "signatureValidityUrl",
-    "signatureTimestamps"
+    'signatureSig',
+    'signatureIntegrity',
+    'signatureCertUrl',
+    'signatureCertSha256',
+    'signatureValidityUrl',
+    'signatureTimestamps'
 ]
 
 ContentEncoding = Literal[
-    "deflate",
-    "gzip",
-    "br",
-    "zstd"
+    'deflate',
+    'gzip',
+    'br',
+    'zstd'
 ]
 
 PrivateNetworkRequestPolicy = Literal[
-    "Allow",
-    "BlockFromInsecureToMorePrivate",
-    "WarnFromInsecureToMorePrivate",
-    "PreflightBlock",
-    "PreflightWarn"
+    'Allow',
+    'BlockFromInsecureToMorePrivate',
+    'WarnFromInsecureToMorePrivate',
+    'PreflightBlock',
+    'PreflightWarn'
 ]
 
 IPAddressSpace = Literal[
-    "Local",
-    "Private",
-    "Public",
-    "Unknown"
+    'Local',
+    'Private',
+    'Public',
+    'Unknown'
 ]
 
 CrossOriginOpenerPolicyValue = Literal[
-    "SameOrigin",
-    "SameOriginAllowPopups",
-    "RestrictProperties",
-    "UnsafeNone",
-    "SameOriginPlusCoep",
-    "RestrictPropertiesPlusCoep"
+    'SameOrigin',
+    'SameOriginAllowPopups',
+    'RestrictProperties',
+    'UnsafeNone',
+    'SameOriginPlusCoep',
+    'RestrictPropertiesPlusCoep'
 ]
 
 CrossOriginEmbedderPolicyValue = Literal[
-    "None",
-    "Credentialless",
-    "RequireCorp"
+    'None',
+    'Credentialless',
+    'RequireCorp'
 ]
 
 ContentSecurityPolicySource = Literal[
-    "HTTP",
-    "Meta"
+    'HTTP',
+    'Meta'
 ]
 
 ReportStatus = Literal[
-    "Queued",
-    "Pending",
-    "MarkedForRemoval",
-    "Success"
+    'Queued',
+    'Pending',
+    'MarkedForRemoval',
+    'Success'
 ]
 
 
@@ -335,15 +344,15 @@ class Request:
     url: str
     url_fragment: str
     method: str
-    headers: "Headers"
+    headers: 'Headers'
     post_data: str
     has_post_data: bool
     post_data_entries: list
-    mixed_content_type: "MixedContentType"
-    initial_priority: "ResourcePriority"
+    mixed_content_type: 'MixedContentType'
+    initial_priority: 'ResourcePriority'
     referrer_policy: str
     is_link_preload: bool
-    trust_token_params: "TrustTokenParams"
+    trust_token_params: 'TrustTokenParams'
     is_same_site: bool
 
 
@@ -366,27 +375,27 @@ class SecurityDetails:
     key_exchange_group: str
     cipher: str
     mac: str
-    certificate_id: "CertificateId"
+    certificate_id: 'CertificateId'
     subject_name: str
     san_list: list
     issuer: str
-    valid_from: "TimeSinceEpoch"
-    valid_to: "TimeSinceEpoch"
+    valid_from: 'TimeSinceEpoch'
+    valid_to: 'TimeSinceEpoch'
     signed_certificate_timestamp_list: list
-    certificate_transparency_compliance: "CertificateTransparencyCompliance"
+    certificate_transparency_compliance: 'CertificateTransparencyCompliance'
     server_signature_algorithm: int
     encrypted_client_hello: bool
 
 
 @dataclass
 class CorsErrorStatus:
-    cors_error: "CorsError"
+    cors_error: 'CorsError'
     failed_parameter: str
 
 
 @dataclass
 class TrustTokenParams:
-    operation: "TrustTokenOperationType"
+    operation: 'TrustTokenOperationType'
     refresh_policy: str
     issuers: list
 
@@ -396,10 +405,10 @@ class Response:
     url: str
     status: int
     status_text: str
-    headers: "Headers"
+    headers: 'Headers'
     headers_text: str
     mime_type: str
-    request_headers: "Headers"
+    request_headers: 'Headers'
     request_headers_text: str
     connection_reused: bool
     connection_id: float
@@ -409,28 +418,28 @@ class Response:
     from_service_worker: bool
     from_prefetch_cache: bool
     encoded_data_length: float
-    timing: "ResourceTiming"
-    service_worker_response_source: "ServiceWorkerResponseSource"
-    response_time: "TimeSinceEpoch"
+    timing: 'ResourceTiming'
+    service_worker_response_source: 'ServiceWorkerResponseSource'
+    response_time: 'TimeSinceEpoch'
     cache_storage_cache_name: str
     protocol: str
-    alternate_protocol_usage: "AlternateProtocolUsage"
-    security_state: "SecurityState"
-    security_details: "SecurityDetails"
+    alternate_protocol_usage: 'AlternateProtocolUsage'
+    security_state: 'SecurityState'
+    security_details: 'SecurityDetails'
 
 
 @dataclass
 class WebSocketRequest:
-    headers: "Headers"
+    headers: 'Headers'
 
 
 @dataclass
 class WebSocketResponse:
     status: int
     status_text: str
-    headers: "Headers"
+    headers: 'Headers'
     headers_text: str
-    request_headers: "Headers"
+    request_headers: 'Headers'
     request_headers_text: str
 
 
@@ -444,19 +453,19 @@ class WebSocketFrame:
 @dataclass
 class CachedResource:
     url: str
-    type: "ResourceType"
-    response: "Response"
+    type: 'ResourceType'
+    response: 'Response'
     body_size: float
 
 
 @dataclass
 class Initiator:
     type: str
-    stack: "StackTrace"
+    stack: 'StackTrace'
     url: str
     line_number: float
     column_number: float
-    request_id: "RequestId"
+    request_id: 'RequestId'
 
 
 @dataclass
@@ -470,10 +479,10 @@ class Cookie:
     http_only: bool
     secure: bool
     session: bool
-    same_site: "CookieSameSite"
-    priority: "CookiePriority"
+    same_site: 'CookieSameSite'
+    priority: 'CookiePriority'
     same_party: bool
-    source_scheme: "CookieSourceScheme"
+    source_scheme: 'CookieSourceScheme'
     source_port: int
     partition_key: str
     partition_key_opaque: bool
@@ -483,13 +492,13 @@ class Cookie:
 class BlockedSetCookieWithReason:
     blocked_reasons: list
     cookie_line: str
-    cookie: "Cookie"
+    cookie: 'Cookie'
 
 
 @dataclass
 class BlockedCookieWithReason:
     blocked_reasons: list
-    cookie: "Cookie"
+    cookie: 'Cookie'
 
 
 @dataclass
@@ -501,11 +510,11 @@ class CookieParam:
     path: str
     secure: bool
     http_only: bool
-    same_site: "CookieSameSite"
-    expires: "TimeSinceEpoch"
-    priority: "CookiePriority"
+    same_site: 'CookieSameSite'
+    expires: 'TimeSinceEpoch'
+    priority: 'CookiePriority'
     same_party: bool
-    source_scheme: "CookieSourceScheme"
+    source_scheme: 'CookieSourceScheme'
     source_port: int
     partition_key: str
 
@@ -528,8 +537,8 @@ class AuthChallengeResponse:
 @dataclass
 class RequestPattern:
     url_pattern: str
-    resource_type: "ResourceType"
-    interception_stage: "InterceptionStage"
+    resource_type: 'ResourceType'
+    interception_stage: 'InterceptionStage'
 
 
 @dataclass
@@ -549,7 +558,7 @@ class SignedExchangeSignature:
 class SignedExchangeHeader:
     request_url: str
     response_code: int
-    response_headers: "Headers"
+    response_headers: 'Headers'
     signatures: list
     header_integrity: str
 
@@ -558,14 +567,14 @@ class SignedExchangeHeader:
 class SignedExchangeError:
     message: str
     signature_index: int
-    error_field: "SignedExchangeErrorField"
+    error_field: 'SignedExchangeErrorField'
 
 
 @dataclass
 class SignedExchangeInfo:
-    outer_response: "Response"
-    header: "SignedExchangeHeader"
-    security_details: "SecurityDetails"
+    outer_response: 'Response'
+    header: 'SignedExchangeHeader'
+    security_details: 'SecurityDetails'
     errors: list
 
 
@@ -577,22 +586,22 @@ class ConnectTiming:
 @dataclass
 class ClientSecurityState:
     initiator_is_secure_context: bool
-    initiator_ip_address_space: "IPAddressSpace"
-    private_network_request_policy: "PrivateNetworkRequestPolicy"
+    initiator_ip_address_space: 'IPAddressSpace'
+    private_network_request_policy: 'PrivateNetworkRequestPolicy'
 
 
 @dataclass
 class CrossOriginOpenerPolicyStatus:
-    value: "CrossOriginOpenerPolicyValue"
-    report_only_value: "CrossOriginOpenerPolicyValue"
+    value: 'CrossOriginOpenerPolicyValue'
+    report_only_value: 'CrossOriginOpenerPolicyValue'
     reporting_endpoint: str
     report_only_reporting_endpoint: str
 
 
 @dataclass
 class CrossOriginEmbedderPolicyStatus:
-    value: "CrossOriginEmbedderPolicyValue"
-    report_only_value: "CrossOriginEmbedderPolicyValue"
+    value: 'CrossOriginEmbedderPolicyValue'
+    report_only_value: 'CrossOriginEmbedderPolicyValue'
     reporting_endpoint: str
     report_only_reporting_endpoint: str
 
@@ -601,27 +610,27 @@ class CrossOriginEmbedderPolicyStatus:
 class ContentSecurityPolicyStatus:
     effective_directives: str
     is_enforced: bool
-    source: "ContentSecurityPolicySource"
+    source: 'ContentSecurityPolicySource'
 
 
 @dataclass
 class SecurityIsolationStatus:
-    coop: "CrossOriginOpenerPolicyStatus"
-    coep: "CrossOriginEmbedderPolicyStatus"
+    coop: 'CrossOriginOpenerPolicyStatus'
+    coep: 'CrossOriginEmbedderPolicyStatus'
     csp: list
 
 
 @dataclass
 class ReportingApiReport:
-    id: "ReportId"
+    id: 'ReportId'
     initiator_url: str
     destination: str
     type: str
-    timestamp: "TimeSinceEpoch"
+    timestamp: 'TimeSinceEpoch'
     depth: int
     completed_attempts: int
     body: object
-    status: "ReportStatus"
+    status: 'ReportStatus'
 
 
 @dataclass
@@ -636,8 +645,8 @@ class LoadNetworkResourcePageResult:
     net_error: float
     net_error_name: str
     http_status_code: float
-    stream: "StreamHandle"
-    headers: "Headers"
+    stream: 'StreamHandle'
+    headers: 'Headers'
 
 
 @dataclass
@@ -695,7 +704,7 @@ class GetResponseBodyForInterceptionReturnT:
 
 @dataclass
 class TakeResponseBodyForInterceptionAsStreamReturnT:
-    stream: "StreamHandle"
+    stream: 'StreamHandle'
 
 
 @dataclass
@@ -710,9 +719,9 @@ class SetCookieReturnT:
 
 @dataclass
 class GetSecurityIsolationStatusReturnT:
-    status: "SecurityIsolationStatus"
+    status: 'SecurityIsolationStatus'
 
 
 @dataclass
 class LoadNetworkResourceReturnT:
-    resource: "LoadNetworkResourcePageResult"
+    resource: 'LoadNetworkResourcePageResult'

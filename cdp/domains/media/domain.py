@@ -23,7 +23,7 @@ class Media(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Media.enable",
+            '"Media.enable"',
             params
         )
 
@@ -33,7 +33,7 @@ class Media(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Media.disable",
+            '"Media.disable"',
             params
         )
 

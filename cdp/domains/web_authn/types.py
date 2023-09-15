@@ -7,35 +7,41 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
+)
+from typing import (
+    Any
 )
 
 AuthenticatorId = str
 
 AuthenticatorProtocol = Literal[
-    "u2f",
-    "ctap2"
+    'u2f',
+    'ctap2'
 ]
 
 Ctap2Version = Literal[
-    "ctap2_0",
-    "ctap2_1"
+    'ctap2_0',
+    'ctap2_1'
 ]
 
 AuthenticatorTransport = Literal[
-    "usb",
-    "nfc",
-    "ble",
-    "cable",
-    "internal"
+    'usb',
+    'nfc',
+    'ble',
+    'cable',
+    'internal'
 ]
 
 
 @dataclass
 class VirtualAuthenticatorOptions:
-    protocol: "AuthenticatorProtocol"
-    ctap2_version: "Ctap2Version"
-    transport: "AuthenticatorTransport"
+    protocol: 'AuthenticatorProtocol'
+    ctap2_version: 'Ctap2Version'
+    transport: 'AuthenticatorTransport'
     has_resident_key: bool
     has_user_verification: bool
     has_large_blob: bool
@@ -59,12 +65,12 @@ class Credential:
 
 @dataclass
 class AddVirtualAuthenticatorReturnT:
-    authenticator_id: "AuthenticatorId"
+    authenticator_id: 'AuthenticatorId'
 
 
 @dataclass
 class GetCredentialReturnT:
-    credential: "Credential"
+    credential: 'Credential'
 
 
 @dataclass

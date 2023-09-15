@@ -34,11 +34,11 @@ class Storage(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            "frameId": frame_id,
+            'frameId': frame_id,
         }
 
         return self._send_command(
-            "Storage.getStorageKeyForFrame",
+            '"Storage.getStorageKeyForFrame"',
             params
         )
 
@@ -48,12 +48,12 @@ class Storage(BaseDomain):
         storage_types: str
     ):
         params = {
-            "origin": origin,
-            "storageTypes": storage_types,
+            'origin': origin,
+            'storageTypes': storage_types,
         }
 
         return self._send_command(
-            "Storage.clearDataForOrigin",
+            '"Storage.clearDataForOrigin"',
             params
         )
 
@@ -63,12 +63,12 @@ class Storage(BaseDomain):
         storage_types: str
     ):
         params = {
-            "storageKey": storage_key,
-            "storageTypes": storage_types,
+            'storageKey': storage_key,
+            'storageTypes': storage_types,
         }
 
         return self._send_command(
-            "Storage.clearDataForStorageKey",
+            '"Storage.clearDataForStorageKey"',
             params
         )
 
@@ -81,10 +81,10 @@ class Storage(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params['browserContextId'] = browser_context_id
 
         return self._send_command(
-            "Storage.getCookies",
+            '"Storage.getCookies"',
             params
         )
 
@@ -94,16 +94,16 @@ class Storage(BaseDomain):
         browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {
-            "cookies": cookies,
+            'cookies': cookies,
         }
 
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params['browserContextId'] = browser_context_id
 
         return self._send_command(
-            "Storage.setCookies",
+            '"Storage.setCookies"',
             params
         )
 
@@ -116,10 +116,10 @@ class Storage(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params['browserContextId'] = browser_context_id
 
         return self._send_command(
-            "Storage.clearCookies",
+            '"Storage.clearCookies"',
             params
         )
 
@@ -128,11 +128,11 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            "origin": origin,
+            'origin': origin,
         }
 
         return self._send_command(
-            "Storage.getUsageAndQuota",
+            '"Storage.getUsageAndQuota"',
             params
         )
 
@@ -142,16 +142,16 @@ class Storage(BaseDomain):
         quota_size: float = UNDEFINED
     ):
         params = {
-            "origin": origin,
+            'origin': origin,
         }
 
         if is_defined(
             quota_size
         ):
-            params["quotaSize"] = quota_size
+            params['quotaSize'] = quota_size
 
         return self._send_command(
-            "Storage.overrideQuotaForOrigin",
+            '"Storage.overrideQuotaForOrigin"',
             params
         )
 
@@ -160,11 +160,11 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            "origin": origin,
+            'origin': origin,
         }
 
         return self._send_command(
-            "Storage.trackCacheStorageForOrigin",
+            '"Storage.trackCacheStorageForOrigin"',
             params
         )
 
@@ -173,11 +173,11 @@ class Storage(BaseDomain):
         storage_key: str
     ):
         params = {
-            "storageKey": storage_key,
+            'storageKey': storage_key,
         }
 
         return self._send_command(
-            "Storage.trackCacheStorageForStorageKey",
+            '"Storage.trackCacheStorageForStorageKey"',
             params
         )
 
@@ -186,11 +186,11 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            "origin": origin,
+            'origin': origin,
         }
 
         return self._send_command(
-            "Storage.trackIndexedDBForOrigin",
+            '"Storage.trackIndexedDBForOrigin"',
             params
         )
 
@@ -199,11 +199,11 @@ class Storage(BaseDomain):
         storage_key: str
     ):
         params = {
-            "storageKey": storage_key,
+            'storageKey': storage_key,
         }
 
         return self._send_command(
-            "Storage.trackIndexedDBForStorageKey",
+            '"Storage.trackIndexedDBForStorageKey"',
             params
         )
 
@@ -212,11 +212,11 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            "origin": origin,
+            'origin': origin,
         }
 
         return self._send_command(
-            "Storage.untrackCacheStorageForOrigin",
+            '"Storage.untrackCacheStorageForOrigin"',
             params
         )
 
@@ -225,11 +225,11 @@ class Storage(BaseDomain):
         storage_key: str
     ):
         params = {
-            "storageKey": storage_key,
+            'storageKey': storage_key,
         }
 
         return self._send_command(
-            "Storage.untrackCacheStorageForStorageKey",
+            '"Storage.untrackCacheStorageForStorageKey"',
             params
         )
 
@@ -238,11 +238,11 @@ class Storage(BaseDomain):
         origin: str
     ):
         params = {
-            "origin": origin,
+            'origin': origin,
         }
 
         return self._send_command(
-            "Storage.untrackIndexedDBForOrigin",
+            '"Storage.untrackIndexedDBForOrigin"',
             params
         )
 
@@ -251,11 +251,11 @@ class Storage(BaseDomain):
         storage_key: str
     ):
         params = {
-            "storageKey": storage_key,
+            'storageKey': storage_key,
         }
 
         return self._send_command(
-            "Storage.untrackIndexedDBForStorageKey",
+            '"Storage.untrackIndexedDBForStorageKey"',
             params
         )
 
@@ -265,7 +265,7 @@ class Storage(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Storage.getTrustTokens",
+            '"Storage.getTrustTokens"',
             params
         )
 
@@ -274,11 +274,11 @@ class Storage(BaseDomain):
         issuer_origin: str
     ):
         params = {
-            "issuerOrigin": issuer_origin,
+            'issuerOrigin': issuer_origin,
         }
 
         return self._send_command(
-            "Storage.clearTrustTokens",
+            '"Storage.clearTrustTokens"',
             params
         )
 
@@ -288,12 +288,12 @@ class Storage(BaseDomain):
         name: str
     ):
         params = {
-            "ownerOrigin": owner_origin,
-            "name": name,
+            'ownerOrigin': owner_origin,
+            'name': name,
         }
 
         return self._send_command(
-            "Storage.getInterestGroupDetails",
+            '"Storage.getInterestGroupDetails"',
             params
         )
 
@@ -302,11 +302,11 @@ class Storage(BaseDomain):
         enable: bool
     ):
         params = {
-            "enable": enable,
+            'enable': enable,
         }
 
         return self._send_command(
-            "Storage.setInterestGroupTracking",
+            '"Storage.setInterestGroupTracking"',
             params
         )
 
@@ -315,11 +315,11 @@ class Storage(BaseDomain):
         owner_origin: str
     ):
         params = {
-            "ownerOrigin": owner_origin,
+            'ownerOrigin': owner_origin,
         }
 
         return self._send_command(
-            "Storage.getSharedStorageMetadata",
+            '"Storage.getSharedStorageMetadata"',
             params
         )
 
@@ -328,11 +328,11 @@ class Storage(BaseDomain):
         owner_origin: str
     ):
         params = {
-            "ownerOrigin": owner_origin,
+            'ownerOrigin': owner_origin,
         }
 
         return self._send_command(
-            "Storage.getSharedStorageEntries",
+            '"Storage.getSharedStorageEntries"',
             params
         )
 
@@ -344,18 +344,18 @@ class Storage(BaseDomain):
         ignore_if_present: bool = UNDEFINED
     ):
         params = {
-            "ownerOrigin": owner_origin,
-            "key": key,
-            "value": value,
+            'ownerOrigin': owner_origin,
+            'key': key,
+            'value': value,
         }
 
         if is_defined(
             ignore_if_present
         ):
-            params["ignoreIfPresent"] = ignore_if_present
+            params['ignoreIfPresent'] = ignore_if_present
 
         return self._send_command(
-            "Storage.setSharedStorageEntry",
+            '"Storage.setSharedStorageEntry"',
             params
         )
 
@@ -365,12 +365,12 @@ class Storage(BaseDomain):
         key: str
     ):
         params = {
-            "ownerOrigin": owner_origin,
-            "key": key,
+            'ownerOrigin': owner_origin,
+            'key': key,
         }
 
         return self._send_command(
-            "Storage.deleteSharedStorageEntry",
+            '"Storage.deleteSharedStorageEntry"',
             params
         )
 
@@ -379,11 +379,11 @@ class Storage(BaseDomain):
         owner_origin: str
     ):
         params = {
-            "ownerOrigin": owner_origin,
+            'ownerOrigin': owner_origin,
         }
 
         return self._send_command(
-            "Storage.clearSharedStorageEntries",
+            '"Storage.clearSharedStorageEntries"',
             params
         )
 
@@ -392,11 +392,11 @@ class Storage(BaseDomain):
         owner_origin: str
     ):
         params = {
-            "ownerOrigin": owner_origin,
+            'ownerOrigin': owner_origin,
         }
 
         return self._send_command(
-            "Storage.resetSharedStorageBudget",
+            '"Storage.resetSharedStorageBudget"',
             params
         )
 
@@ -405,11 +405,11 @@ class Storage(BaseDomain):
         enable: bool
     ):
         params = {
-            "enable": enable,
+            'enable': enable,
         }
 
         return self._send_command(
-            "Storage.setSharedStorageTracking",
+            '"Storage.setSharedStorageTracking"',
             params
         )
 
@@ -419,12 +419,12 @@ class Storage(BaseDomain):
         enable: bool
     ):
         params = {
-            "storageKey": storage_key,
-            "enable": enable,
+            'storageKey': storage_key,
+            'enable': enable,
         }
 
         return self._send_command(
-            "Storage.setStorageBucketTracking",
+            '"Storage.setStorageBucketTracking"',
             params
         )
 
@@ -433,11 +433,11 @@ class Storage(BaseDomain):
         bucket: StorageBucket
     ):
         params = {
-            "bucket": bucket,
+            'bucket': bucket,
         }
 
         return self._send_command(
-            "Storage.deleteStorageBucket",
+            '"Storage.deleteStorageBucket"',
             params
         )
 
@@ -447,7 +447,7 @@ class Storage(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Storage.runBounceTrackingMitigations",
+            '"Storage.runBounceTrackingMitigations"',
             params
         )
 
@@ -456,11 +456,11 @@ class Storage(BaseDomain):
         enabled: bool
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "Storage.setAttributionReportingLocalTestingMode",
+            '"Storage.setAttributionReportingLocalTestingMode"',
             params
         )
 
@@ -469,11 +469,11 @@ class Storage(BaseDomain):
         enable: bool
     ):
         params = {
-            "enable": enable,
+            'enable': enable,
         }
 
         return self._send_command(
-            "Storage.setAttributionReportingTracking",
+            '"Storage.setAttributionReportingTracking"',
             params
         )
 

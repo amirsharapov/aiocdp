@@ -6,29 +6,38 @@
 from dataclasses import (
     dataclass
 )
-from cdp.domains.page.types import (
-    FrameId
+from typing import (
+    TYPE_CHECKING
 )
-from cdp.domains.browser.types import (
-    BrowserContextID
+from typing import (
+    Any
 )
+if TYPE_CHECKING:
+    from cdp.domains.page.types import (
+        FrameId
+    )
+    from cdp.domains.browser.types import (
+        BrowserContextID
+    )
 
 TargetID = str
 
 SessionID = str
 
+TargetFilter = list['FilterEntry']
+
 
 @dataclass
 class TargetInfo:
-    target_id: "TargetID"
+    target_id: 'TargetID'
     type: str
     title: str
     url: str
     attached: bool
-    opener_id: "TargetID"
+    opener_id: 'TargetID'
     can_access_opener: bool
-    opener_frame_id: "FrameId"
-    browser_context_id: "BrowserContextID"
+    opener_frame_id: 'FrameId'
+    browser_context_id: 'BrowserContextID'
     subtype: str
 
 
@@ -46,12 +55,12 @@ class RemoteLocation:
 
 @dataclass
 class AttachToTargetReturnT:
-    session_id: "SessionID"
+    session_id: 'SessionID'
 
 
 @dataclass
 class AttachToBrowserTargetReturnT:
-    session_id: "SessionID"
+    session_id: 'SessionID'
 
 
 @dataclass
@@ -61,7 +70,7 @@ class CloseTargetReturnT:
 
 @dataclass
 class CreateBrowserContextReturnT:
-    browser_context_id: "BrowserContextID"
+    browser_context_id: 'BrowserContextID'
 
 
 @dataclass
@@ -71,12 +80,12 @@ class GetBrowserContextsReturnT:
 
 @dataclass
 class CreateTargetReturnT:
-    target_id: "TargetID"
+    target_id: 'TargetID'
 
 
 @dataclass
 class GetTargetInfoReturnT:
-    target_info: "TargetInfo"
+    target_info: 'TargetInfo'
 
 
 @dataclass

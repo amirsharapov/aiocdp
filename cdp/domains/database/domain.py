@@ -27,7 +27,7 @@ class Database(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Database.disable",
+            '"Database.disable"',
             params
         )
 
@@ -37,7 +37,7 @@ class Database(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Database.enable",
+            '"Database.enable"',
             params
         )
 
@@ -47,12 +47,12 @@ class Database(BaseDomain):
         query: str
     ):
         params = {
-            "databaseId": database_id,
-            "query": query,
+            'databaseId': database_id,
+            'query': query,
         }
 
         return self._send_command(
-            "Database.executeSQL",
+            '"Database.executeSQL"',
             params
         )
 
@@ -61,11 +61,11 @@ class Database(BaseDomain):
         database_id: DatabaseId
     ):
         params = {
-            "databaseId": database_id,
+            'databaseId': database_id,
         }
 
         return self._send_command(
-            "Database.getDatabaseTableNames",
+            '"Database.getDatabaseTableNames"',
             params
         )
 

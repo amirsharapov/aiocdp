@@ -7,29 +7,37 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
+from typing import (
+    Any
+)
+
+MemoryDumpConfig = dict
 
 StreamFormat = Literal[
-    "json",
-    "proto"
+    'json',
+    'proto'
 ]
 
 StreamCompression = Literal[
-    "none",
-    "gzip"
+    'none',
+    'gzip'
 ]
 
 MemoryDumpLevelOfDetail = Literal[
-    "background",
-    "light",
-    "detailed"
+    'background',
+    'light',
+    'detailed'
 ]
 
 TracingBackend = Literal[
-    "auto",
-    "chrome",
-    "system"
+    'auto',
+    'chrome',
+    'system'
 ]
 
 
@@ -43,7 +51,7 @@ class TraceConfig:
     included_categories: list
     excluded_categories: list
     synthetic_delays: list
-    memory_dump_config: "MemoryDumpConfig"
+    memory_dump_config: 'MemoryDumpConfig'
 
 
 @dataclass

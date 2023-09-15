@@ -7,48 +7,55 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.dom.types import (
-    BackendNodeId,
-    LogicalAxes,
-    NodeId,
-    PhysicalAxes,
-    PseudoType
+from typing import (
+    Any
 )
-from cdp.domains.page.types import (
-    FrameId
-)
+if TYPE_CHECKING:
+    from cdp.domains.dom.types import (
+        BackendNodeId,
+        LogicalAxes,
+        NodeId,
+        PhysicalAxes,
+        PseudoType
+    )
+    from cdp.domains.page.types import (
+        FrameId
+    )
 
 StyleSheetId = str
 
 StyleSheetOrigin = Literal[
-    "injected",
-    "user-agent",
-    "inspector",
-    "regular"
+    'injected',
+    'user-agent',
+    'inspector',
+    'regular'
 ]
 
 CSSRuleType = Literal[
-    "MediaRule",
-    "SupportsRule",
-    "ContainerRule",
-    "LayerRule",
-    "ScopeRule",
-    "StyleRule"
+    'MediaRule',
+    'SupportsRule',
+    'ContainerRule',
+    'LayerRule',
+    'ScopeRule',
+    'StyleRule'
 ]
 
 
 @dataclass
 class PseudoElementMatches:
-    pseudo_type: "PseudoType"
+    pseudo_type: 'PseudoType'
     pseudo_identifier: str
     matches: list
 
 
 @dataclass
 class InheritedStyleEntry:
-    inline_style: "CSSStyle"
+    inline_style: 'CSSStyle'
     matched_css_rules: list
 
 
@@ -59,15 +66,15 @@ class InheritedPseudoElementMatches:
 
 @dataclass
 class RuleMatch:
-    rule: "CSSRule"
+    rule: 'CSSRule'
     matching_selectors: list
 
 
 @dataclass
 class Value:
     text: str
-    range: "SourceRange"
-    specificity: "Specificity"
+    range: 'SourceRange'
+    specificity: 'Specificity'
 
 
 @dataclass
@@ -85,13 +92,13 @@ class SelectorList:
 
 @dataclass
 class CSSStyleSheetHeader:
-    style_sheet_id: "StyleSheetId"
-    frame_id: "FrameId"
+    style_sheet_id: 'StyleSheetId'
+    frame_id: 'FrameId'
     source_url: str
     source_map_url: str
-    origin: "StyleSheetOrigin"
+    origin: 'StyleSheetOrigin'
     title: str
-    owner_node: "BackendNodeId"
+    owner_node: 'BackendNodeId'
     disabled: bool
     has_source_url: bool
     is_inline: bool
@@ -107,11 +114,11 @@ class CSSStyleSheetHeader:
 
 @dataclass
 class CSSRule:
-    style_sheet_id: "StyleSheetId"
-    selector_list: "SelectorList"
+    style_sheet_id: 'StyleSheetId'
+    selector_list: 'SelectorList'
     nesting_selectors: list
-    origin: "StyleSheetOrigin"
-    style: "CSSStyle"
+    origin: 'StyleSheetOrigin'
+    style: 'CSSStyle'
     media: list
     container_queries: list
     supports: list
@@ -122,7 +129,7 @@ class CSSRule:
 
 @dataclass
 class RuleUsage:
-    style_sheet_id: "StyleSheetId"
+    style_sheet_id: 'StyleSheetId'
     start_offset: float
     end_offset: float
     used: bool
@@ -151,11 +158,11 @@ class CSSComputedStyleProperty:
 
 @dataclass
 class CSSStyle:
-    style_sheet_id: "StyleSheetId"
+    style_sheet_id: 'StyleSheetId'
     css_properties: list
     shorthand_entries: list
     css_text: str
-    range: "SourceRange"
+    range: 'SourceRange'
 
 
 @dataclass
@@ -167,7 +174,7 @@ class CSSProperty:
     text: str
     parsed_ok: bool
     disabled: bool
-    range: "SourceRange"
+    range: 'SourceRange'
     longhand_properties: list
 
 
@@ -176,8 +183,8 @@ class CSSMedia:
     text: str
     source: str
     source_url: str
-    range: "SourceRange"
-    style_sheet_id: "StyleSheetId"
+    range: 'SourceRange'
+    style_sheet_id: 'StyleSheetId'
     media_list: list
 
 
@@ -192,40 +199,40 @@ class MediaQueryExpression:
     value: float
     unit: str
     feature: str
-    value_range: "SourceRange"
+    value_range: 'SourceRange'
     computed_length: float
 
 
 @dataclass
 class CSSContainerQuery:
     text: str
-    range: "SourceRange"
-    style_sheet_id: "StyleSheetId"
+    range: 'SourceRange'
+    style_sheet_id: 'StyleSheetId'
     name: str
-    physical_axes: "PhysicalAxes"
-    logical_axes: "LogicalAxes"
+    physical_axes: 'PhysicalAxes'
+    logical_axes: 'LogicalAxes'
 
 
 @dataclass
 class CSSSupports:
     text: str
     active: bool
-    range: "SourceRange"
-    style_sheet_id: "StyleSheetId"
+    range: 'SourceRange'
+    style_sheet_id: 'StyleSheetId'
 
 
 @dataclass
 class CSSScope:
     text: str
-    range: "SourceRange"
-    style_sheet_id: "StyleSheetId"
+    range: 'SourceRange'
+    style_sheet_id: 'StyleSheetId'
 
 
 @dataclass
 class CSSLayer:
     text: str
-    range: "SourceRange"
-    style_sheet_id: "StyleSheetId"
+    range: 'SourceRange'
+    style_sheet_id: 'StyleSheetId'
 
 
 @dataclass
@@ -267,57 +274,57 @@ class FontFace:
 
 @dataclass
 class CSSTryRule:
-    style_sheet_id: "StyleSheetId"
-    origin: "StyleSheetOrigin"
-    style: "CSSStyle"
+    style_sheet_id: 'StyleSheetId'
+    origin: 'StyleSheetOrigin'
+    style: 'CSSStyle'
 
 
 @dataclass
 class CSSPositionFallbackRule:
-    name: "Value"
+    name: 'Value'
     try_rules: list
 
 
 @dataclass
 class CSSKeyframesRule:
-    animation_name: "Value"
+    animation_name: 'Value'
     keyframes: list
 
 
 @dataclass
 class CSSPropertyRegistration:
     property_name: str
-    initial_value: "Value"
+    initial_value: 'Value'
     inherits: bool
     syntax: str
 
 
 @dataclass
 class CSSPropertyRule:
-    style_sheet_id: "StyleSheetId"
-    origin: "StyleSheetOrigin"
-    property_name: "Value"
-    style: "CSSStyle"
+    style_sheet_id: 'StyleSheetId'
+    origin: 'StyleSheetOrigin'
+    property_name: 'Value'
+    style: 'CSSStyle'
 
 
 @dataclass
 class CSSKeyframeRule:
-    style_sheet_id: "StyleSheetId"
-    origin: "StyleSheetOrigin"
-    key_text: "Value"
-    style: "CSSStyle"
+    style_sheet_id: 'StyleSheetId'
+    origin: 'StyleSheetOrigin'
+    key_text: 'Value'
+    style: 'CSSStyle'
 
 
 @dataclass
 class StyleDeclarationEdit:
-    style_sheet_id: "StyleSheetId"
-    range: "SourceRange"
+    style_sheet_id: 'StyleSheetId'
+    range: 'SourceRange'
     text: str
 
 
 @dataclass
 class AddRuleReturnT:
-    rule: "CSSRule"
+    rule: 'CSSRule'
 
 
 @dataclass
@@ -327,7 +334,7 @@ class CollectClassNamesReturnT:
 
 @dataclass
 class CreateStyleSheetReturnT:
-    style_sheet_id: "StyleSheetId"
+    style_sheet_id: 'StyleSheetId'
 
 
 @dataclass
@@ -344,14 +351,14 @@ class GetComputedStyleForNodeReturnT:
 
 @dataclass
 class GetInlineStylesForNodeReturnT:
-    inline_style: "CSSStyle"
-    attributes_style: "CSSStyle"
+    inline_style: 'CSSStyle'
+    attributes_style: 'CSSStyle'
 
 
 @dataclass
 class GetMatchedStylesForNodeReturnT:
-    inline_style: "CSSStyle"
-    attributes_style: "CSSStyle"
+    inline_style: 'CSSStyle'
+    attributes_style: 'CSSStyle'
     matched_css_rules: list
     pseudo_elements: list
     inherited: list
@@ -360,7 +367,7 @@ class GetMatchedStylesForNodeReturnT:
     css_position_fallback_rules: list
     css_property_rules: list
     css_property_registrations: list
-    parent_layout_node_id: "NodeId"
+    parent_layout_node_id: 'NodeId'
 
 
 @dataclass
@@ -380,7 +387,7 @@ class GetStyleSheetTextReturnT:
 
 @dataclass
 class GetLayersForNodeReturnT:
-    root_layer: "CSSLayerData"
+    root_layer: 'CSSLayerData'
 
 
 @dataclass
@@ -390,32 +397,32 @@ class TakeComputedStyleUpdatesReturnT:
 
 @dataclass
 class SetKeyframeKeyReturnT:
-    key_text: "Value"
+    key_text: 'Value'
 
 
 @dataclass
 class SetMediaTextReturnT:
-    media: "CSSMedia"
+    media: 'CSSMedia'
 
 
 @dataclass
 class SetContainerQueryTextReturnT:
-    container_query: "CSSContainerQuery"
+    container_query: 'CSSContainerQuery'
 
 
 @dataclass
 class SetSupportsTextReturnT:
-    supports: "CSSSupports"
+    supports: 'CSSSupports'
 
 
 @dataclass
 class SetScopeTextReturnT:
-    scope: "CSSScope"
+    scope: 'CSSScope'
 
 
 @dataclass
 class SetRuleSelectorReturnT:
-    selector_list: "SelectorList"
+    selector_list: 'SelectorList'
 
 
 @dataclass

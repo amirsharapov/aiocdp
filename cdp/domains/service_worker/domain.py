@@ -27,13 +27,13 @@ class ServiceWorker(BaseDomain):
         data: str
     ):
         params = {
-            "origin": origin,
-            "registrationId": registration_id,
-            "data": data,
+            'origin': origin,
+            'registrationId': registration_id,
+            'data': data,
         }
 
         return self._send_command(
-            "ServiceWorker.deliverPushMessage",
+            '"ServiceWorker.deliverPushMessage"',
             params
         )
 
@@ -43,7 +43,7 @@ class ServiceWorker(BaseDomain):
         params = {}
 
         return self._send_command(
-            "ServiceWorker.disable",
+            '"ServiceWorker.disable"',
             params
         )
 
@@ -55,14 +55,14 @@ class ServiceWorker(BaseDomain):
         last_chance: bool
     ):
         params = {
-            "origin": origin,
-            "registrationId": registration_id,
-            "tag": tag,
-            "lastChance": last_chance,
+            'origin': origin,
+            'registrationId': registration_id,
+            'tag': tag,
+            'lastChance': last_chance,
         }
 
         return self._send_command(
-            "ServiceWorker.dispatchSyncEvent",
+            '"ServiceWorker.dispatchSyncEvent"',
             params
         )
 
@@ -73,13 +73,13 @@ class ServiceWorker(BaseDomain):
         tag: str
     ):
         params = {
-            "origin": origin,
-            "registrationId": registration_id,
-            "tag": tag,
+            'origin': origin,
+            'registrationId': registration_id,
+            'tag': tag,
         }
 
         return self._send_command(
-            "ServiceWorker.dispatchPeriodicSyncEvent",
+            '"ServiceWorker.dispatchPeriodicSyncEvent"',
             params
         )
 
@@ -89,7 +89,7 @@ class ServiceWorker(BaseDomain):
         params = {}
 
         return self._send_command(
-            "ServiceWorker.enable",
+            '"ServiceWorker.enable"',
             params
         )
 
@@ -98,11 +98,11 @@ class ServiceWorker(BaseDomain):
         version_id: str
     ):
         params = {
-            "versionId": version_id,
+            'versionId': version_id,
         }
 
         return self._send_command(
-            "ServiceWorker.inspectWorker",
+            '"ServiceWorker.inspectWorker"',
             params
         )
 
@@ -111,11 +111,11 @@ class ServiceWorker(BaseDomain):
         force_update_on_page_load: bool
     ):
         params = {
-            "forceUpdateOnPageLoad": force_update_on_page_load,
+            'forceUpdateOnPageLoad': force_update_on_page_load,
         }
 
         return self._send_command(
-            "ServiceWorker.setForceUpdateOnPageLoad",
+            '"ServiceWorker.setForceUpdateOnPageLoad"',
             params
         )
 
@@ -124,11 +124,11 @@ class ServiceWorker(BaseDomain):
         scope_url: str
     ):
         params = {
-            "scopeURL": scope_url,
+            'scopeURL': scope_url,
         }
 
         return self._send_command(
-            "ServiceWorker.skipWaiting",
+            '"ServiceWorker.skipWaiting"',
             params
         )
 
@@ -137,11 +137,11 @@ class ServiceWorker(BaseDomain):
         scope_url: str
     ):
         params = {
-            "scopeURL": scope_url,
+            'scopeURL': scope_url,
         }
 
         return self._send_command(
-            "ServiceWorker.startWorker",
+            '"ServiceWorker.startWorker"',
             params
         )
 
@@ -151,7 +151,7 @@ class ServiceWorker(BaseDomain):
         params = {}
 
         return self._send_command(
-            "ServiceWorker.stopAllWorkers",
+            '"ServiceWorker.stopAllWorkers"',
             params
         )
 
@@ -160,11 +160,11 @@ class ServiceWorker(BaseDomain):
         version_id: str
     ):
         params = {
-            "versionId": version_id,
+            'versionId': version_id,
         }
 
         return self._send_command(
-            "ServiceWorker.stopWorker",
+            '"ServiceWorker.stopWorker"',
             params
         )
 
@@ -173,11 +173,11 @@ class ServiceWorker(BaseDomain):
         scope_url: str
     ):
         params = {
-            "scopeURL": scope_url,
+            'scopeURL': scope_url,
         }
 
         return self._send_command(
-            "ServiceWorker.unregister",
+            '"ServiceWorker.unregister"',
             params
         )
 
@@ -186,11 +186,11 @@ class ServiceWorker(BaseDomain):
         scope_url: str
     ):
         params = {
-            "scopeURL": scope_url,
+            'scopeURL': scope_url,
         }
 
         return self._send_command(
-            "ServiceWorker.updateRegistration",
+            '"ServiceWorker.updateRegistration"',
             params
         )
 

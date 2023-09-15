@@ -23,7 +23,7 @@ class Schema(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Schema.getDomains",
+            '"Schema.getDomains"',
             params
         )
 

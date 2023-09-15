@@ -7,21 +7,28 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.storage.types import (
-    StorageBucket
+from typing import (
+    Any
 )
+if TYPE_CHECKING:
+    from cdp.domains.storage.types import (
+        StorageBucket
+    )
 
 CacheId = str
 
 CachedResponseType = Literal[
-    "basic",
-    "cors",
-    "default",
-    "error",
-    "opaqueResponse",
-    "opaqueRedirect"
+    'basic',
+    'cors',
+    'default',
+    'error',
+    'opaqueResponse',
+    'opaqueRedirect'
 ]
 
 
@@ -33,16 +40,16 @@ class DataEntry:
     response_time: float
     response_status: int
     response_status_text: str
-    response_type: "CachedResponseType"
+    response_type: 'CachedResponseType'
     response_headers: list
 
 
 @dataclass
 class Cache:
-    cache_id: "CacheId"
+    cache_id: 'CacheId'
     security_origin: str
     storage_key: str
-    storage_bucket: "StorageBucket"
+    storage_bucket: 'StorageBucket'
     cache_name: str
 
 
@@ -64,7 +71,7 @@ class RequestCacheNamesReturnT:
 
 @dataclass
 class RequestCachedResponseReturnT:
-    response: "CachedResponse"
+    response: 'CachedResponse'
 
 
 @dataclass

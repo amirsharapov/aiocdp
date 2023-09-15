@@ -6,13 +6,20 @@
 from dataclasses import (
     dataclass
 )
-from cdp.domains.runtime.types import (
-    StackTrace,
-    Timestamp
+from typing import (
+    TYPE_CHECKING
 )
-from cdp.domains.network.types import (
-    RequestId
+from typing import (
+    Any
 )
+if TYPE_CHECKING:
+    from cdp.domains.runtime.types import (
+        StackTrace,
+        Timestamp
+    )
+    from cdp.domains.network.types import (
+        RequestId
+    )
 
 
 @dataclass
@@ -21,11 +28,11 @@ class LogEntry:
     level: str
     text: str
     category: str
-    timestamp: "Timestamp"
+    timestamp: 'Timestamp'
     url: str
     line_number: int
-    stack_trace: "StackTrace"
-    network_request_id: "RequestId"
+    stack_trace: 'StackTrace'
+    network_request_id: 'RequestId'
     worker_id: str
     args: list
 

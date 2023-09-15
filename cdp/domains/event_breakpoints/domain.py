@@ -22,11 +22,11 @@ class EventBreakpoints(BaseDomain):
         event_name: str
     ):
         params = {
-            "eventName": event_name,
+            'eventName': event_name,
         }
 
         return self._send_command(
-            "EventBreakpoints.setInstrumentationBreakpoint",
+            '"EventBreakpoints.setInstrumentationBreakpoint"',
             params
         )
 
@@ -35,11 +35,11 @@ class EventBreakpoints(BaseDomain):
         event_name: str
     ):
         params = {
-            "eventName": event_name,
+            'eventName': event_name,
         }
 
         return self._send_command(
-            "EventBreakpoints.removeInstrumentationBreakpoint",
+            '"EventBreakpoints.removeInstrumentationBreakpoint"',
             params
         )
 

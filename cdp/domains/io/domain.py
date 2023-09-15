@@ -28,11 +28,11 @@ class IO(BaseDomain):
         handle: StreamHandle
     ):
         params = {
-            "handle": handle,
+            'handle': handle,
         }
 
         return self._send_command(
-            "IO.close",
+            '"IO.close"',
             params
         )
 
@@ -43,21 +43,21 @@ class IO(BaseDomain):
         size: int = UNDEFINED
     ):
         params = {
-            "handle": handle,
+            'handle': handle,
         }
 
         if is_defined(
             offset
         ):
-            params["offset"] = offset
+            params['offset'] = offset
 
         if is_defined(
             size
         ):
-            params["size"] = size
+            params['size'] = size
 
         return self._send_command(
-            "IO.read",
+            '"IO.read"',
             params
         )
 
@@ -66,11 +66,11 @@ class IO(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            "objectId": object_id,
+            'objectId': object_id,
         }
 
         return self._send_command(
-            "IO.resolveBlob",
+            '"IO.resolveBlob"',
             params
         )
 

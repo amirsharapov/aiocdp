@@ -26,10 +26,10 @@ class Cast(BaseDomain):
         if is_defined(
             presentation_url
         ):
-            params["presentationUrl"] = presentation_url
+            params['presentationUrl'] = presentation_url
 
         return self._send_command(
-            "Cast.enable",
+            '"Cast.enable"',
             params
         )
 
@@ -39,7 +39,7 @@ class Cast(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Cast.disable",
+            '"Cast.disable"',
             params
         )
 
@@ -48,11 +48,11 @@ class Cast(BaseDomain):
         sink_name: str
     ):
         params = {
-            "sinkName": sink_name,
+            'sinkName': sink_name,
         }
 
         return self._send_command(
-            "Cast.setSinkToUse",
+            '"Cast.setSinkToUse"',
             params
         )
 
@@ -61,11 +61,11 @@ class Cast(BaseDomain):
         sink_name: str
     ):
         params = {
-            "sinkName": sink_name,
+            'sinkName': sink_name,
         }
 
         return self._send_command(
-            "Cast.startDesktopMirroring",
+            '"Cast.startDesktopMirroring"',
             params
         )
 
@@ -74,11 +74,11 @@ class Cast(BaseDomain):
         sink_name: str
     ):
         params = {
-            "sinkName": sink_name,
+            'sinkName': sink_name,
         }
 
         return self._send_command(
-            "Cast.startTabMirroring",
+            '"Cast.startTabMirroring"',
             params
         )
 
@@ -87,11 +87,11 @@ class Cast(BaseDomain):
         sink_name: str
     ):
         params = {
-            "sinkName": sink_name,
+            'sinkName': sink_name,
         }
 
         return self._send_command(
-            "Cast.stopCasting",
+            '"Cast.stopCasting"',
             params
         )
 

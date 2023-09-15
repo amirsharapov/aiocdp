@@ -7,22 +7,29 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.network.types import (
-    TimeSinceEpoch
+from typing import (
+    Any
 )
-from cdp.domains.service_worker.types import (
-    RegistrationID
-)
+if TYPE_CHECKING:
+    from cdp.domains.network.types import (
+        TimeSinceEpoch
+    )
+    from cdp.domains.service_worker.types import (
+        RegistrationID
+    )
 
 ServiceName = Literal[
-    "backgroundFetch",
-    "backgroundSync",
-    "pushMessaging",
-    "notifications",
-    "paymentHandler",
-    "periodicBackgroundSync"
+    'backgroundFetch',
+    'backgroundSync',
+    'pushMessaging',
+    'notifications',
+    'paymentHandler',
+    'periodicBackgroundSync'
 ]
 
 
@@ -34,10 +41,10 @@ class EventMetadata:
 
 @dataclass
 class BackgroundServiceEvent:
-    timestamp: "TimeSinceEpoch"
+    timestamp: 'TimeSinceEpoch'
     origin: str
-    service_worker_registration_id: "RegistrationID"
-    service: "ServiceName"
+    service_worker_registration_id: 'RegistrationID'
+    service: 'ServiceName'
     event_name: str
     instance_id: str
     event_metadata: list

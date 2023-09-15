@@ -1,7 +1,9 @@
 from abc import ABC
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
-from cdp.target import Target
+if TYPE_CHECKING:
+    from cdp.target import Target
 
 
 @dataclass

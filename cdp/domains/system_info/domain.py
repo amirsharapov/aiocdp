@@ -26,7 +26,7 @@ class SystemInfo(BaseDomain):
         params = {}
 
         return self._send_command(
-            "SystemInfo.getInfo",
+            '"SystemInfo.getInfo"',
             params
         )
 
@@ -35,11 +35,11 @@ class SystemInfo(BaseDomain):
         feature_state: str
     ):
         params = {
-            "featureState": feature_state,
+            'featureState': feature_state,
         }
 
         return self._send_command(
-            "SystemInfo.getFeatureState",
+            '"SystemInfo.getFeatureState"',
             params
         )
 
@@ -49,7 +49,7 @@ class SystemInfo(BaseDomain):
         params = {}
 
         return self._send_command(
-            "SystemInfo.getProcessInfo",
+            '"SystemInfo.getProcessInfo"',
             params
         )
 

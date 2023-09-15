@@ -46,11 +46,11 @@ class Network(BaseDomain):
         encodings: list
     ):
         params = {
-            "encodings": encodings,
+            'encodings': encodings,
         }
 
         return self._send_command(
-            "Network.setAcceptedEncodings",
+            '"Network.setAcceptedEncodings"',
             params
         )
 
@@ -60,7 +60,7 @@ class Network(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Network.clearAcceptedEncodingsOverride",
+            '"Network.clearAcceptedEncodingsOverride"',
             params
         )
 
@@ -70,7 +70,7 @@ class Network(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Network.canClearBrowserCache",
+            '"Network.canClearBrowserCache"',
             params
         )
 
@@ -80,7 +80,7 @@ class Network(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Network.canClearBrowserCookies",
+            '"Network.canClearBrowserCookies"',
             params
         )
 
@@ -90,7 +90,7 @@ class Network(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Network.canEmulateNetworkConditions",
+            '"Network.canEmulateNetworkConditions"',
             params
         )
 
@@ -100,7 +100,7 @@ class Network(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Network.clearBrowserCache",
+            '"Network.clearBrowserCache"',
             params
         )
 
@@ -110,7 +110,7 @@ class Network(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Network.clearBrowserCookies",
+            '"Network.clearBrowserCookies"',
             params
         )
 
@@ -126,46 +126,46 @@ class Network(BaseDomain):
         auth_challenge_response: AuthChallengeResponse = UNDEFINED
     ):
         params = {
-            "interceptionId": interception_id,
+            'interceptionId': interception_id,
         }
 
         if is_defined(
             error_reason
         ):
-            params["errorReason"] = error_reason
+            params['errorReason'] = error_reason
 
         if is_defined(
             raw_response
         ):
-            params["rawResponse"] = raw_response
+            params['rawResponse'] = raw_response
 
         if is_defined(
             url
         ):
-            params["url"] = url
+            params['url'] = url
 
         if is_defined(
             method
         ):
-            params["method"] = method
+            params['method'] = method
 
         if is_defined(
             post_data
         ):
-            params["postData"] = post_data
+            params['postData'] = post_data
 
         if is_defined(
             headers
         ):
-            params["headers"] = headers
+            params['headers'] = headers
 
         if is_defined(
             auth_challenge_response
         ):
-            params["authChallengeResponse"] = auth_challenge_response
+            params['authChallengeResponse'] = auth_challenge_response
 
         return self._send_command(
-            "Network.continueInterceptedRequest",
+            '"Network.continueInterceptedRequest"',
             params
         )
 
@@ -177,26 +177,26 @@ class Network(BaseDomain):
         path: str = UNDEFINED
     ):
         params = {
-            "name": name,
+            'name': name,
         }
 
         if is_defined(
             url
         ):
-            params["url"] = url
+            params['url'] = url
 
         if is_defined(
             domain
         ):
-            params["domain"] = domain
+            params['domain'] = domain
 
         if is_defined(
             path
         ):
-            params["path"] = path
+            params['path'] = path
 
         return self._send_command(
-            "Network.deleteCookies",
+            '"Network.deleteCookies"',
             params
         )
 
@@ -206,7 +206,7 @@ class Network(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Network.disable",
+            '"Network.disable"',
             params
         )
 
@@ -219,19 +219,19 @@ class Network(BaseDomain):
         connection_type: ConnectionType = UNDEFINED
     ):
         params = {
-            "offline": offline,
-            "latency": latency,
-            "downloadThroughput": download_throughput,
-            "uploadThroughput": upload_throughput,
+            'offline': offline,
+            'latency': latency,
+            'downloadThroughput': download_throughput,
+            'uploadThroughput': upload_throughput,
         }
 
         if is_defined(
             connection_type
         ):
-            params["connectionType"] = connection_type
+            params['connectionType'] = connection_type
 
         return self._send_command(
-            "Network.emulateNetworkConditions",
+            '"Network.emulateNetworkConditions"',
             params
         )
 
@@ -246,20 +246,20 @@ class Network(BaseDomain):
         if is_defined(
             max_total_buffer_size
         ):
-            params["maxTotalBufferSize"] = max_total_buffer_size
+            params['maxTotalBufferSize'] = max_total_buffer_size
 
         if is_defined(
             max_resource_buffer_size
         ):
-            params["maxResourceBufferSize"] = max_resource_buffer_size
+            params['maxResourceBufferSize'] = max_resource_buffer_size
 
         if is_defined(
             max_post_data_size
         ):
-            params["maxPostDataSize"] = max_post_data_size
+            params['maxPostDataSize'] = max_post_data_size
 
         return self._send_command(
-            "Network.enable",
+            '"Network.enable"',
             params
         )
 
@@ -269,7 +269,7 @@ class Network(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Network.getAllCookies",
+            '"Network.getAllCookies"',
             params
         )
 
@@ -278,11 +278,11 @@ class Network(BaseDomain):
         origin: str
     ):
         params = {
-            "origin": origin,
+            'origin': origin,
         }
 
         return self._send_command(
-            "Network.getCertificate",
+            '"Network.getCertificate"',
             params
         )
 
@@ -295,10 +295,10 @@ class Network(BaseDomain):
         if is_defined(
             urls
         ):
-            params["urls"] = urls
+            params['urls'] = urls
 
         return self._send_command(
-            "Network.getCookies",
+            '"Network.getCookies"',
             params
         )
 
@@ -307,11 +307,11 @@ class Network(BaseDomain):
         request_id: RequestId
     ):
         params = {
-            "requestId": request_id,
+            'requestId': request_id,
         }
 
         return self._send_command(
-            "Network.getResponseBody",
+            '"Network.getResponseBody"',
             params
         )
 
@@ -320,11 +320,11 @@ class Network(BaseDomain):
         request_id: RequestId
     ):
         params = {
-            "requestId": request_id,
+            'requestId': request_id,
         }
 
         return self._send_command(
-            "Network.getRequestPostData",
+            '"Network.getRequestPostData"',
             params
         )
 
@@ -333,11 +333,11 @@ class Network(BaseDomain):
         interception_id: InterceptionId
     ):
         params = {
-            "interceptionId": interception_id,
+            'interceptionId': interception_id,
         }
 
         return self._send_command(
-            "Network.getResponseBodyForInterception",
+            '"Network.getResponseBodyForInterception"',
             params
         )
 
@@ -346,11 +346,11 @@ class Network(BaseDomain):
         interception_id: InterceptionId
     ):
         params = {
-            "interceptionId": interception_id,
+            'interceptionId': interception_id,
         }
 
         return self._send_command(
-            "Network.takeResponseBodyForInterceptionAsStream",
+            '"Network.takeResponseBodyForInterceptionAsStream"',
             params
         )
 
@@ -359,11 +359,11 @@ class Network(BaseDomain):
         request_id: RequestId
     ):
         params = {
-            "requestId": request_id,
+            'requestId': request_id,
         }
 
         return self._send_command(
-            "Network.replayXHR",
+            '"Network.replayXHR"',
             params
         )
 
@@ -375,22 +375,22 @@ class Network(BaseDomain):
         is_regex: bool = UNDEFINED
     ):
         params = {
-            "requestId": request_id,
-            "query": query,
+            'requestId': request_id,
+            'query': query,
         }
 
         if is_defined(
             case_sensitive
         ):
-            params["caseSensitive"] = case_sensitive
+            params['caseSensitive'] = case_sensitive
 
         if is_defined(
             is_regex
         ):
-            params["isRegex"] = is_regex
+            params['isRegex'] = is_regex
 
         return self._send_command(
-            "Network.searchInResponseBody",
+            '"Network.searchInResponseBody"',
             params
         )
 
@@ -399,11 +399,11 @@ class Network(BaseDomain):
         urls: list
     ):
         params = {
-            "urls": urls,
+            'urls': urls,
         }
 
         return self._send_command(
-            "Network.setBlockedURLs",
+            '"Network.setBlockedURLs"',
             params
         )
 
@@ -412,11 +412,11 @@ class Network(BaseDomain):
         bypass: bool
     ):
         params = {
-            "bypass": bypass,
+            'bypass': bypass,
         }
 
         return self._send_command(
-            "Network.setBypassServiceWorker",
+            '"Network.setBypassServiceWorker"',
             params
         )
 
@@ -425,11 +425,11 @@ class Network(BaseDomain):
         cache_disabled: bool
     ):
         params = {
-            "cacheDisabled": cache_disabled,
+            'cacheDisabled': cache_disabled,
         }
 
         return self._send_command(
-            "Network.setCacheDisabled",
+            '"Network.setCacheDisabled"',
             params
         )
 
@@ -451,72 +451,72 @@ class Network(BaseDomain):
         partition_key: str = UNDEFINED
     ):
         params = {
-            "name": name,
-            "value": value,
+            'name': name,
+            'value': value,
         }
 
         if is_defined(
             url
         ):
-            params["url"] = url
+            params['url'] = url
 
         if is_defined(
             domain
         ):
-            params["domain"] = domain
+            params['domain'] = domain
 
         if is_defined(
             path
         ):
-            params["path"] = path
+            params['path'] = path
 
         if is_defined(
             secure
         ):
-            params["secure"] = secure
+            params['secure'] = secure
 
         if is_defined(
             http_only
         ):
-            params["httpOnly"] = http_only
+            params['httpOnly'] = http_only
 
         if is_defined(
             same_site
         ):
-            params["sameSite"] = same_site
+            params['sameSite'] = same_site
 
         if is_defined(
             expires
         ):
-            params["expires"] = expires
+            params['expires'] = expires
 
         if is_defined(
             priority
         ):
-            params["priority"] = priority
+            params['priority'] = priority
 
         if is_defined(
             same_party
         ):
-            params["sameParty"] = same_party
+            params['sameParty'] = same_party
 
         if is_defined(
             source_scheme
         ):
-            params["sourceScheme"] = source_scheme
+            params['sourceScheme'] = source_scheme
 
         if is_defined(
             source_port
         ):
-            params["sourcePort"] = source_port
+            params['sourcePort'] = source_port
 
         if is_defined(
             partition_key
         ):
-            params["partitionKey"] = partition_key
+            params['partitionKey'] = partition_key
 
         return self._send_command(
-            "Network.setCookie",
+            '"Network.setCookie"',
             params
         )
 
@@ -525,11 +525,11 @@ class Network(BaseDomain):
         cookies: list
     ):
         params = {
-            "cookies": cookies,
+            'cookies': cookies,
         }
 
         return self._send_command(
-            "Network.setCookies",
+            '"Network.setCookies"',
             params
         )
 
@@ -538,11 +538,11 @@ class Network(BaseDomain):
         headers: Headers
     ):
         params = {
-            "headers": headers,
+            'headers': headers,
         }
 
         return self._send_command(
-            "Network.setExtraHTTPHeaders",
+            '"Network.setExtraHTTPHeaders"',
             params
         )
 
@@ -551,11 +551,11 @@ class Network(BaseDomain):
         enabled: bool
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "Network.setAttachDebugStack",
+            '"Network.setAttachDebugStack"',
             params
         )
 
@@ -564,11 +564,11 @@ class Network(BaseDomain):
         patterns: list
     ):
         params = {
-            "patterns": patterns,
+            'patterns': patterns,
         }
 
         return self._send_command(
-            "Network.setRequestInterception",
+            '"Network.setRequestInterception"',
             params
         )
 
@@ -580,26 +580,26 @@ class Network(BaseDomain):
         user_agent_metadata: UserAgentMetadata = UNDEFINED
     ):
         params = {
-            "userAgent": user_agent,
+            'userAgent': user_agent,
         }
 
         if is_defined(
             accept_language
         ):
-            params["acceptLanguage"] = accept_language
+            params['acceptLanguage'] = accept_language
 
         if is_defined(
             platform
         ):
-            params["platform"] = platform
+            params['platform'] = platform
 
         if is_defined(
             user_agent_metadata
         ):
-            params["userAgentMetadata"] = user_agent_metadata
+            params['userAgentMetadata'] = user_agent_metadata
 
         return self._send_command(
-            "Network.setUserAgentOverride",
+            '"Network.setUserAgentOverride"',
             params
         )
 
@@ -612,10 +612,10 @@ class Network(BaseDomain):
         if is_defined(
             frame_id
         ):
-            params["frameId"] = frame_id
+            params['frameId'] = frame_id
 
         return self._send_command(
-            "Network.getSecurityIsolationStatus",
+            '"Network.getSecurityIsolationStatus"',
             params
         )
 
@@ -624,11 +624,11 @@ class Network(BaseDomain):
         enable: bool
     ):
         params = {
-            "enable": enable,
+            'enable': enable,
         }
 
         return self._send_command(
-            "Network.enableReportingApi",
+            '"Network.enableReportingApi"',
             params
         )
 
@@ -639,17 +639,17 @@ class Network(BaseDomain):
         options: LoadNetworkResourceOptions = UNDEFINED
     ):
         params = {
-            "url": url,
-            "options": options,
+            'url': url,
+            'options': options,
         }
 
         if is_defined(
             frame_id
         ):
-            params["frameId"] = frame_id
+            params['frameId'] = frame_id
 
         return self._send_command(
-            "Network.loadNetworkResource",
+            '"Network.loadNetworkResource"',
             params
         )
 

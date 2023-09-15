@@ -7,18 +7,24 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
+)
+from typing import (
+    Any
 )
 
 LoginState = Literal[
-    "SignIn",
-    "SignUp"
+    'SignIn',
+    'SignUp'
 ]
 
 DialogType = Literal[
-    "AccountChooser",
-    "AutoReauthn",
-    "ConfirmIdpSignin"
+    'AccountChooser',
+    'AutoReauthn',
+    'ConfirmIdpSignin'
 ]
 
 
@@ -31,6 +37,6 @@ class Account:
     picture_url: str
     idp_config_url: str
     idp_signin_url: str
-    login_state: "LoginState"
+    login_state: 'LoginState'
     terms_of_service_url: str
     privacy_policy_url: str

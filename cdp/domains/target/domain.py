@@ -31,11 +31,11 @@ class Target(BaseDomain):
         target_id: TargetID
     ):
         params = {
-            "targetId": target_id,
+            'targetId': target_id,
         }
 
         return self._send_command(
-            "Target.activateTarget",
+            '"Target.activateTarget"',
             params
         )
 
@@ -45,16 +45,16 @@ class Target(BaseDomain):
         flatten: bool = UNDEFINED
     ):
         params = {
-            "targetId": target_id,
+            'targetId': target_id,
         }
 
         if is_defined(
             flatten
         ):
-            params["flatten"] = flatten
+            params['flatten'] = flatten
 
         return self._send_command(
-            "Target.attachToTarget",
+            '"Target.attachToTarget"',
             params
         )
 
@@ -64,7 +64,7 @@ class Target(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Target.attachToBrowserTarget",
+            '"Target.attachToBrowserTarget"',
             params
         )
 
@@ -73,11 +73,11 @@ class Target(BaseDomain):
         target_id: TargetID
     ):
         params = {
-            "targetId": target_id,
+            'targetId': target_id,
         }
 
         return self._send_command(
-            "Target.closeTarget",
+            '"Target.closeTarget"',
             params
         )
 
@@ -87,16 +87,16 @@ class Target(BaseDomain):
         binding_name: str = UNDEFINED
     ):
         params = {
-            "targetId": target_id,
+            'targetId': target_id,
         }
 
         if is_defined(
             binding_name
         ):
-            params["bindingName"] = binding_name
+            params['bindingName'] = binding_name
 
         return self._send_command(
-            "Target.exposeDevToolsProtocol",
+            '"Target.exposeDevToolsProtocol"',
             params
         )
 
@@ -112,25 +112,25 @@ class Target(BaseDomain):
         if is_defined(
             dispose_on_detach
         ):
-            params["disposeOnDetach"] = dispose_on_detach
+            params['disposeOnDetach'] = dispose_on_detach
 
         if is_defined(
             proxy_server
         ):
-            params["proxyServer"] = proxy_server
+            params['proxyServer'] = proxy_server
 
         if is_defined(
             proxy_bypass_list
         ):
-            params["proxyBypassList"] = proxy_bypass_list
+            params['proxyBypassList'] = proxy_bypass_list
 
         if is_defined(
             origins_with_universal_network_access
         ):
-            params["originsWithUniversalNetworkAccess"] = origins_with_universal_network_access
+            params['originsWithUniversalNetworkAccess'] = origins_with_universal_network_access
 
         return self._send_command(
-            "Target.createBrowserContext",
+            '"Target.createBrowserContext"',
             params
         )
 
@@ -140,7 +140,7 @@ class Target(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Target.getBrowserContexts",
+            '"Target.getBrowserContexts"',
             params
         )
 
@@ -156,46 +156,46 @@ class Target(BaseDomain):
         for_tab: bool = UNDEFINED
     ):
         params = {
-            "url": url,
+            'url': url,
         }
 
         if is_defined(
             width
         ):
-            params["width"] = width
+            params['width'] = width
 
         if is_defined(
             height
         ):
-            params["height"] = height
+            params['height'] = height
 
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params['browserContextId'] = browser_context_id
 
         if is_defined(
             enable_begin_frame_control
         ):
-            params["enableBeginFrameControl"] = enable_begin_frame_control
+            params['enableBeginFrameControl'] = enable_begin_frame_control
 
         if is_defined(
             new_window
         ):
-            params["newWindow"] = new_window
+            params['newWindow'] = new_window
 
         if is_defined(
             background
         ):
-            params["background"] = background
+            params['background'] = background
 
         if is_defined(
             for_tab
         ):
-            params["forTab"] = for_tab
+            params['forTab'] = for_tab
 
         return self._send_command(
-            "Target.createTarget",
+            '"Target.createTarget"',
             params
         )
 
@@ -209,15 +209,15 @@ class Target(BaseDomain):
         if is_defined(
             session_id
         ):
-            params["sessionId"] = session_id
+            params['sessionId'] = session_id
 
         if is_defined(
             target_id
         ):
-            params["targetId"] = target_id
+            params['targetId'] = target_id
 
         return self._send_command(
-            "Target.detachFromTarget",
+            '"Target.detachFromTarget"',
             params
         )
 
@@ -226,11 +226,11 @@ class Target(BaseDomain):
         browser_context_id: BrowserContextID
     ):
         params = {
-            "browserContextId": browser_context_id,
+            'browserContextId': browser_context_id,
         }
 
         return self._send_command(
-            "Target.disposeBrowserContext",
+            '"Target.disposeBrowserContext"',
             params
         )
 
@@ -243,10 +243,10 @@ class Target(BaseDomain):
         if is_defined(
             target_id
         ):
-            params["targetId"] = target_id
+            params['targetId'] = target_id
 
         return self._send_command(
-            "Target.getTargetInfo",
+            '"Target.getTargetInfo"',
             params
         )
 
@@ -259,10 +259,10 @@ class Target(BaseDomain):
         if is_defined(
             filter
         ):
-            params["filter"] = filter
+            params['filter'] = filter
 
         return self._send_command(
-            "Target.getTargets",
+            '"Target.getTargets"',
             params
         )
 
@@ -273,21 +273,21 @@ class Target(BaseDomain):
         target_id: TargetID = UNDEFINED
     ):
         params = {
-            "message": message,
+            'message': message,
         }
 
         if is_defined(
             session_id
         ):
-            params["sessionId"] = session_id
+            params['sessionId'] = session_id
 
         if is_defined(
             target_id
         ):
-            params["targetId"] = target_id
+            params['targetId'] = target_id
 
         return self._send_command(
-            "Target.sendMessageToTarget",
+            '"Target.sendMessageToTarget"',
             params
         )
 
@@ -299,22 +299,22 @@ class Target(BaseDomain):
         filter_: TargetFilter = UNDEFINED
     ):
         params = {
-            "autoAttach": auto_attach,
-            "waitForDebuggerOnStart": wait_for_debugger_on_start,
+            'autoAttach': auto_attach,
+            'waitForDebuggerOnStart': wait_for_debugger_on_start,
         }
 
         if is_defined(
             flatten
         ):
-            params["flatten"] = flatten
+            params['flatten'] = flatten
 
         if is_defined(
             filter
         ):
-            params["filter"] = filter
+            params['filter'] = filter
 
         return self._send_command(
-            "Target.setAutoAttach",
+            '"Target.setAutoAttach"',
             params
         )
 
@@ -325,17 +325,17 @@ class Target(BaseDomain):
         filter_: TargetFilter = UNDEFINED
     ):
         params = {
-            "targetId": target_id,
-            "waitForDebuggerOnStart": wait_for_debugger_on_start,
+            'targetId': target_id,
+            'waitForDebuggerOnStart': wait_for_debugger_on_start,
         }
 
         if is_defined(
             filter
         ):
-            params["filter"] = filter
+            params['filter'] = filter
 
         return self._send_command(
-            "Target.autoAttachRelated",
+            '"Target.autoAttachRelated"',
             params
         )
 
@@ -345,16 +345,16 @@ class Target(BaseDomain):
         filter_: TargetFilter = UNDEFINED
     ):
         params = {
-            "discover": discover,
+            'discover': discover,
         }
 
         if is_defined(
             filter
         ):
-            params["filter"] = filter
+            params['filter'] = filter
 
         return self._send_command(
-            "Target.setDiscoverTargets",
+            '"Target.setDiscoverTargets"',
             params
         )
 
@@ -363,11 +363,11 @@ class Target(BaseDomain):
         locations: list
     ):
         params = {
-            "locations": locations,
+            'locations': locations,
         }
 
         return self._send_command(
-            "Target.setRemoteLocations",
+            '"Target.setRemoteLocations"',
             params
         )
 

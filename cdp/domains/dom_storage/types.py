@@ -6,6 +6,12 @@
 from dataclasses import (
     dataclass
 )
+from typing import (
+    TYPE_CHECKING
+)
+from typing import (
+    Any
+)
 
 SerializedStorageKey = str
 
@@ -15,7 +21,7 @@ Item = list[str]
 @dataclass
 class StorageId:
     security_origin: str
-    storage_key: "SerializedStorageKey"
+    storage_key: 'SerializedStorageKey'
     is_local_storage: bool
 
 

@@ -23,7 +23,7 @@ class Console(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Console.clearMessages",
+            '"Console.clearMessages"',
             params
         )
 
@@ -33,7 +33,7 @@ class Console(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Console.disable",
+            '"Console.disable"',
             params
         )
 
@@ -43,7 +43,7 @@ class Console(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Console.enable",
+            '"Console.enable"',
             params
         )
 

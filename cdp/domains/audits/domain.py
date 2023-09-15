@@ -28,22 +28,22 @@ class Audits(BaseDomain):
         size_only: bool = UNDEFINED
     ):
         params = {
-            "requestId": request_id,
-            "encoding": encoding,
+            'requestId': request_id,
+            'encoding': encoding,
         }
 
         if is_defined(
             quality
         ):
-            params["quality"] = quality
+            params['quality'] = quality
 
         if is_defined(
             size_only
         ):
-            params["sizeOnly"] = size_only
+            params['sizeOnly'] = size_only
 
         return self._send_command(
-            "Audits.getEncodedResponse",
+            '"Audits.getEncodedResponse"',
             params
         )
 
@@ -53,7 +53,7 @@ class Audits(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Audits.disable",
+            '"Audits.disable"',
             params
         )
 
@@ -63,7 +63,7 @@ class Audits(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Audits.enable",
+            '"Audits.enable"',
             params
         )
 
@@ -76,10 +76,10 @@ class Audits(BaseDomain):
         if is_defined(
             report_aaa
         ):
-            params["reportAAA"] = report_aaa
+            params['reportAAA'] = report_aaa
 
         return self._send_command(
-            "Audits.checkContrast",
+            '"Audits.checkContrast"',
             params
         )
 
@@ -89,7 +89,7 @@ class Audits(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Audits.checkFormsIssues",
+            '"Audits.checkFormsIssues"',
             params
         )
 

@@ -7,24 +7,30 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
+)
+from typing import (
+    Any
 )
 
 TimeSinceEpoch = float
 
 GestureSourceType = Literal[
-    "default",
-    "touch",
-    "mouse"
+    'default',
+    'touch',
+    'mouse'
 ]
 
 MouseButton = Literal[
-    "none",
-    "left",
-    "middle",
-    "right",
-    "back",
-    "forward"
+    'none',
+    'left',
+    'middle',
+    'right',
+    'back',
+    'forward'
 ]
 
 

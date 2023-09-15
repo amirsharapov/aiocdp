@@ -26,7 +26,7 @@ def _generate_external_type_imports(domain: Domain):
 
     for command in domain.commands:
         for ref in command.get_refs():
-            module_name = ref.domain_snake_case or domain.module_name
+            module_name = ref.domain_snake_case or domain.domain_snake_case
             import_tree[module_name].add(
                 ref.type
             )

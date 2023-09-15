@@ -26,7 +26,7 @@ class Security(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Security.disable",
+            '"Security.disable"',
             params
         )
 
@@ -36,7 +36,7 @@ class Security(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Security.enable",
+            '"Security.enable"',
             params
         )
 
@@ -45,11 +45,11 @@ class Security(BaseDomain):
         ignore: bool
     ):
         params = {
-            "ignore": ignore,
+            'ignore': ignore,
         }
 
         return self._send_command(
-            "Security.setIgnoreCertificateErrors",
+            '"Security.setIgnoreCertificateErrors"',
             params
         )
 
@@ -59,12 +59,12 @@ class Security(BaseDomain):
         action: CertificateErrorAction
     ):
         params = {
-            "eventId": event_id,
-            "action": action,
+            'eventId': event_id,
+            'action': action,
         }
 
         return self._send_command(
-            "Security.handleCertificateError",
+            '"Security.handleCertificateError"',
             params
         )
 
@@ -73,11 +73,11 @@ class Security(BaseDomain):
         override: bool
     ):
         params = {
-            "override": override,
+            'override': override,
         }
 
         return self._send_command(
-            "Security.setOverrideCertificateErrors",
+            '"Security.setOverrideCertificateErrors"',
             params
         )
 

@@ -37,22 +37,22 @@ class Browser(BaseDomain):
         browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {
-            "permission": permission,
-            "setting": setting,
+            'permission': permission,
+            'setting': setting,
         }
 
         if is_defined(
             origin
         ):
-            params["origin"] = origin
+            params['origin'] = origin
 
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params['browserContextId'] = browser_context_id
 
         return self._send_command(
-            "Browser.setPermission",
+            '"Browser.setPermission"',
             params
         )
 
@@ -63,21 +63,21 @@ class Browser(BaseDomain):
         browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {
-            "permissions": permissions,
+            'permissions': permissions,
         }
 
         if is_defined(
             origin
         ):
-            params["origin"] = origin
+            params['origin'] = origin
 
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params['browserContextId'] = browser_context_id
 
         return self._send_command(
-            "Browser.grantPermissions",
+            '"Browser.grantPermissions"',
             params
         )
 
@@ -90,10 +90,10 @@ class Browser(BaseDomain):
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params['browserContextId'] = browser_context_id
 
         return self._send_command(
-            "Browser.resetPermissions",
+            '"Browser.resetPermissions"',
             params
         )
 
@@ -105,26 +105,26 @@ class Browser(BaseDomain):
         events_enabled: bool = UNDEFINED
     ):
         params = {
-            "behavior": behavior,
+            'behavior': behavior,
         }
 
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params['browserContextId'] = browser_context_id
 
         if is_defined(
             download_path
         ):
-            params["downloadPath"] = download_path
+            params['downloadPath'] = download_path
 
         if is_defined(
             events_enabled
         ):
-            params["eventsEnabled"] = events_enabled
+            params['eventsEnabled'] = events_enabled
 
         return self._send_command(
-            "Browser.setDownloadBehavior",
+            '"Browser.setDownloadBehavior"',
             params
         )
 
@@ -134,16 +134,16 @@ class Browser(BaseDomain):
         browser_context_id: BrowserContextID = UNDEFINED
     ):
         params = {
-            "guid": guid,
+            'guid': guid,
         }
 
         if is_defined(
             browser_context_id
         ):
-            params["browserContextId"] = browser_context_id
+            params['browserContextId'] = browser_context_id
 
         return self._send_command(
-            "Browser.cancelDownload",
+            '"Browser.cancelDownload"',
             params
         )
 
@@ -153,7 +153,7 @@ class Browser(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Browser.close",
+            '"Browser.close"',
             params
         )
 
@@ -163,7 +163,7 @@ class Browser(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Browser.crash",
+            '"Browser.crash"',
             params
         )
 
@@ -173,7 +173,7 @@ class Browser(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Browser.crashGpuProcess",
+            '"Browser.crashGpuProcess"',
             params
         )
 
@@ -183,7 +183,7 @@ class Browser(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Browser.getVersion",
+            '"Browser.getVersion"',
             params
         )
 
@@ -193,7 +193,7 @@ class Browser(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Browser.getBrowserCommandLine",
+            '"Browser.getBrowserCommandLine"',
             params
         )
 
@@ -207,15 +207,15 @@ class Browser(BaseDomain):
         if is_defined(
             query
         ):
-            params["query"] = query
+            params['query'] = query
 
         if is_defined(
             delta
         ):
-            params["delta"] = delta
+            params['delta'] = delta
 
         return self._send_command(
-            "Browser.getHistograms",
+            '"Browser.getHistograms"',
             params
         )
 
@@ -225,16 +225,16 @@ class Browser(BaseDomain):
         delta: bool = UNDEFINED
     ):
         params = {
-            "name": name,
+            'name': name,
         }
 
         if is_defined(
             delta
         ):
-            params["delta"] = delta
+            params['delta'] = delta
 
         return self._send_command(
-            "Browser.getHistogram",
+            '"Browser.getHistogram"',
             params
         )
 
@@ -243,11 +243,11 @@ class Browser(BaseDomain):
         window_id: WindowID
     ):
         params = {
-            "windowId": window_id,
+            'windowId': window_id,
         }
 
         return self._send_command(
-            "Browser.getWindowBounds",
+            '"Browser.getWindowBounds"',
             params
         )
 
@@ -260,10 +260,10 @@ class Browser(BaseDomain):
         if is_defined(
             target_id
         ):
-            params["targetId"] = target_id
+            params['targetId'] = target_id
 
         return self._send_command(
-            "Browser.getWindowForTarget",
+            '"Browser.getWindowForTarget"',
             params
         )
 
@@ -273,12 +273,12 @@ class Browser(BaseDomain):
         bounds: Bounds
     ):
         params = {
-            "windowId": window_id,
-            "bounds": bounds,
+            'windowId': window_id,
+            'bounds': bounds,
         }
 
         return self._send_command(
-            "Browser.setWindowBounds",
+            '"Browser.setWindowBounds"',
             params
         )
 
@@ -292,15 +292,15 @@ class Browser(BaseDomain):
         if is_defined(
             badge_label
         ):
-            params["badgeLabel"] = badge_label
+            params['badgeLabel'] = badge_label
 
         if is_defined(
             image
         ):
-            params["image"] = image
+            params['image'] = image
 
         return self._send_command(
-            "Browser.setDockTile",
+            '"Browser.setDockTile"',
             params
         )
 
@@ -309,11 +309,11 @@ class Browser(BaseDomain):
         command_id: BrowserCommandId
     ):
         params = {
-            "commandId": command_id,
+            'commandId': command_id,
         }
 
         return self._send_command(
-            "Browser.executeBrowserCommand",
+            '"Browser.executeBrowserCommand"',
             params
         )
 
@@ -322,11 +322,11 @@ class Browser(BaseDomain):
         url: str
     ):
         params = {
-            "url": url,
+            'url': url,
         }
 
         return self._send_command(
-            "Browser.addPrivacySandboxEnrollmentOverride",
+            '"Browser.addPrivacySandboxEnrollmentOverride"',
             params
         )
 

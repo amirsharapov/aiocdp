@@ -6,6 +6,12 @@
 from dataclasses import (
     dataclass
 )
+from typing import (
+    TYPE_CHECKING
+)
+from typing import (
+    Any
+)
 
 PlayerId = str
 
@@ -26,7 +32,7 @@ class PlayerProperty:
 
 @dataclass
 class PlayerEvent:
-    timestamp: "Timestamp"
+    timestamp: 'Timestamp'
     value: str
 
 

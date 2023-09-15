@@ -32,21 +32,21 @@ class Runtime(BaseDomain):
         generate_preview: bool = UNDEFINED
     ):
         params = {
-            "promiseObjectId": promise_object_id,
+            'promiseObjectId': promise_object_id,
         }
 
         if is_defined(
             return_by_value
         ):
-            params["returnByValue"] = return_by_value
+            params['returnByValue'] = return_by_value
 
         if is_defined(
             generate_preview
         ):
-            params["generatePreview"] = generate_preview
+            params['generatePreview'] = generate_preview
 
         return self._send_command(
-            "Runtime.awaitPromise",
+            '"Runtime.awaitPromise"',
             params
         )
 
@@ -64,56 +64,56 @@ class Runtime(BaseDomain):
         object_group: str = UNDEFINED
     ):
         params = {
-            "functionDeclaration": function_declaration,
+            'functionDeclaration': function_declaration,
         }
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         if is_defined(
             arguments
         ):
-            params["arguments"] = arguments
+            params['arguments'] = arguments
 
         if is_defined(
             silent
         ):
-            params["silent"] = silent
+            params['silent'] = silent
 
         if is_defined(
             return_by_value
         ):
-            params["returnByValue"] = return_by_value
+            params['returnByValue'] = return_by_value
 
         if is_defined(
             generate_preview
         ):
-            params["generatePreview"] = generate_preview
+            params['generatePreview'] = generate_preview
 
         if is_defined(
             user_gesture
         ):
-            params["userGesture"] = user_gesture
+            params['userGesture'] = user_gesture
 
         if is_defined(
             await_promise
         ):
-            params["awaitPromise"] = await_promise
+            params['awaitPromise'] = await_promise
 
         if is_defined(
             execution_context_id
         ):
-            params["executionContextId"] = execution_context_id
+            params['executionContextId'] = execution_context_id
 
         if is_defined(
             object_group
         ):
-            params["objectGroup"] = object_group
+            params['objectGroup'] = object_group
 
         return self._send_command(
-            "Runtime.callFunctionOn",
+            '"Runtime.callFunctionOn"',
             params
         )
 
@@ -125,18 +125,18 @@ class Runtime(BaseDomain):
         execution_context_id: ExecutionContextId = UNDEFINED
     ):
         params = {
-            "expression": expression,
-            "sourceURL": source_url,
-            "persistScript": persist_script,
+            'expression': expression,
+            'sourceURL': source_url,
+            'persistScript': persist_script,
         }
 
         if is_defined(
             execution_context_id
         ):
-            params["executionContextId"] = execution_context_id
+            params['executionContextId'] = execution_context_id
 
         return self._send_command(
-            "Runtime.compileScript",
+            '"Runtime.compileScript"',
             params
         )
 
@@ -146,7 +146,7 @@ class Runtime(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Runtime.disable",
+            '"Runtime.disable"',
             params
         )
 
@@ -156,7 +156,7 @@ class Runtime(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Runtime.discardConsoleEntries",
+            '"Runtime.discardConsoleEntries"',
             params
         )
 
@@ -166,7 +166,7 @@ class Runtime(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Runtime.enable",
+            '"Runtime.enable"',
             params
         )
 
@@ -185,61 +185,61 @@ class Runtime(BaseDomain):
         timeout: TimeDelta = UNDEFINED
     ):
         params = {
-            "expression": expression,
+            'expression': expression,
         }
 
         if is_defined(
             object_group
         ):
-            params["objectGroup"] = object_group
+            params['objectGroup'] = object_group
 
         if is_defined(
             include_command_line_api
         ):
-            params["includeCommandLineAPI"] = include_command_line_api
+            params['includeCommandLineAPI'] = include_command_line_api
 
         if is_defined(
             silent
         ):
-            params["silent"] = silent
+            params['silent'] = silent
 
         if is_defined(
             context_id
         ):
-            params["contextId"] = context_id
+            params['contextId'] = context_id
 
         if is_defined(
             return_by_value
         ):
-            params["returnByValue"] = return_by_value
+            params['returnByValue'] = return_by_value
 
         if is_defined(
             generate_preview
         ):
-            params["generatePreview"] = generate_preview
+            params['generatePreview'] = generate_preview
 
         if is_defined(
             user_gesture
         ):
-            params["userGesture"] = user_gesture
+            params['userGesture'] = user_gesture
 
         if is_defined(
             await_promise
         ):
-            params["awaitPromise"] = await_promise
+            params['awaitPromise'] = await_promise
 
         if is_defined(
             throw_on_side_effect
         ):
-            params["throwOnSideEffect"] = throw_on_side_effect
+            params['throwOnSideEffect'] = throw_on_side_effect
 
         if is_defined(
             timeout
         ):
-            params["timeout"] = timeout
+            params['timeout'] = timeout
 
         return self._send_command(
-            "Runtime.evaluate",
+            '"Runtime.evaluate"',
             params
         )
 
@@ -249,7 +249,7 @@ class Runtime(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Runtime.getIsolateId",
+            '"Runtime.getIsolateId"',
             params
         )
 
@@ -259,7 +259,7 @@ class Runtime(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Runtime.getHeapUsage",
+            '"Runtime.getHeapUsage"',
             params
         )
 
@@ -271,26 +271,26 @@ class Runtime(BaseDomain):
         generate_preview: bool = UNDEFINED
     ):
         params = {
-            "objectId": object_id,
+            'objectId': object_id,
         }
 
         if is_defined(
             own_properties
         ):
-            params["ownProperties"] = own_properties
+            params['ownProperties'] = own_properties
 
         if is_defined(
             accessor_properties_only
         ):
-            params["accessorPropertiesOnly"] = accessor_properties_only
+            params['accessorPropertiesOnly'] = accessor_properties_only
 
         if is_defined(
             generate_preview
         ):
-            params["generatePreview"] = generate_preview
+            params['generatePreview'] = generate_preview
 
         return self._send_command(
-            "Runtime.getProperties",
+            '"Runtime.getProperties"',
             params
         )
 
@@ -303,10 +303,10 @@ class Runtime(BaseDomain):
         if is_defined(
             execution_context_id
         ):
-            params["executionContextId"] = execution_context_id
+            params['executionContextId'] = execution_context_id
 
         return self._send_command(
-            "Runtime.globalLexicalScopeNames",
+            '"Runtime.globalLexicalScopeNames"',
             params
         )
 
@@ -316,16 +316,16 @@ class Runtime(BaseDomain):
         object_group: str = UNDEFINED
     ):
         params = {
-            "prototypeObjectId": prototype_object_id,
+            'prototypeObjectId': prototype_object_id,
         }
 
         if is_defined(
             object_group
         ):
-            params["objectGroup"] = object_group
+            params['objectGroup'] = object_group
 
         return self._send_command(
-            "Runtime.queryObjects",
+            '"Runtime.queryObjects"',
             params
         )
 
@@ -334,11 +334,11 @@ class Runtime(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            "objectId": object_id,
+            'objectId': object_id,
         }
 
         return self._send_command(
-            "Runtime.releaseObject",
+            '"Runtime.releaseObject"',
             params
         )
 
@@ -347,11 +347,11 @@ class Runtime(BaseDomain):
         object_group: str
     ):
         params = {
-            "objectGroup": object_group,
+            'objectGroup': object_group,
         }
 
         return self._send_command(
-            "Runtime.releaseObjectGroup",
+            '"Runtime.releaseObjectGroup"',
             params
         )
 
@@ -361,7 +361,7 @@ class Runtime(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Runtime.runIfWaitingForDebugger",
+            '"Runtime.runIfWaitingForDebugger"',
             params
         )
 
@@ -377,46 +377,46 @@ class Runtime(BaseDomain):
         await_promise: bool = UNDEFINED
     ):
         params = {
-            "scriptId": script_id,
+            'scriptId': script_id,
         }
 
         if is_defined(
             execution_context_id
         ):
-            params["executionContextId"] = execution_context_id
+            params['executionContextId'] = execution_context_id
 
         if is_defined(
             object_group
         ):
-            params["objectGroup"] = object_group
+            params['objectGroup'] = object_group
 
         if is_defined(
             silent
         ):
-            params["silent"] = silent
+            params['silent'] = silent
 
         if is_defined(
             include_command_line_api
         ):
-            params["includeCommandLineAPI"] = include_command_line_api
+            params['includeCommandLineAPI'] = include_command_line_api
 
         if is_defined(
             return_by_value
         ):
-            params["returnByValue"] = return_by_value
+            params['returnByValue'] = return_by_value
 
         if is_defined(
             generate_preview
         ):
-            params["generatePreview"] = generate_preview
+            params['generatePreview'] = generate_preview
 
         if is_defined(
             await_promise
         ):
-            params["awaitPromise"] = await_promise
+            params['awaitPromise'] = await_promise
 
         return self._send_command(
-            "Runtime.runScript",
+            '"Runtime.runScript"',
             params
         )
 
@@ -425,11 +425,11 @@ class Runtime(BaseDomain):
         max_depth: int
     ):
         params = {
-            "maxDepth": max_depth,
+            'maxDepth': max_depth,
         }
 
         return self._send_command(
-            "Runtime.setAsyncCallStackDepth",
+            '"Runtime.setAsyncCallStackDepth"',
             params
         )
 
@@ -438,11 +438,11 @@ class Runtime(BaseDomain):
         enabled: bool
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "Runtime.setCustomObjectFormatterEnabled",
+            '"Runtime.setCustomObjectFormatterEnabled"',
             params
         )
 
@@ -451,11 +451,11 @@ class Runtime(BaseDomain):
         size: int
     ):
         params = {
-            "size": size,
+            'size': size,
         }
 
         return self._send_command(
-            "Runtime.setMaxCallStackSizeToCapture",
+            '"Runtime.setMaxCallStackSizeToCapture"',
             params
         )
 
@@ -465,7 +465,7 @@ class Runtime(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Runtime.terminateExecution",
+            '"Runtime.terminateExecution"',
             params
         )
 
@@ -475,16 +475,16 @@ class Runtime(BaseDomain):
         execution_context_id: ExecutionContextId = UNDEFINED
     ):
         params = {
-            "name": name,
+            'name': name,
         }
 
         if is_defined(
             execution_context_id
         ):
-            params["executionContextId"] = execution_context_id
+            params['executionContextId'] = execution_context_id
 
         return self._send_command(
-            "Runtime.addBinding",
+            '"Runtime.addBinding"',
             params
         )
 
@@ -493,11 +493,11 @@ class Runtime(BaseDomain):
         name: str
     ):
         params = {
-            "name": name,
+            'name': name,
         }
 
         return self._send_command(
-            "Runtime.removeBinding",
+            '"Runtime.removeBinding"',
             params
         )
 

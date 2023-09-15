@@ -6,17 +6,24 @@
 from dataclasses import (
     dataclass
 )
-from cdp.domains.runtime.types import (
-    CallArgument,
-    ExceptionDetails,
-    RemoteObject,
-    RemoteObjectId,
-    ScriptId,
-    StackTrace,
-    StackTraceId,
-    TimeDelta,
-    UniqueDebuggerId
+from typing import (
+    TYPE_CHECKING
 )
+from typing import (
+    Any
+)
+if TYPE_CHECKING:
+    from cdp.domains.runtime.types import (
+        CallArgument,
+        ExceptionDetails,
+        RemoteObject,
+        RemoteObjectId,
+        ScriptId,
+        StackTrace,
+        StackTraceId,
+        TimeDelta,
+        UniqueDebuggerId
+    )
 
 BreakpointId = str
 
@@ -25,7 +32,7 @@ CallFrameId = str
 
 @dataclass
 class Location:
-    script_id: "ScriptId"
+    script_id: 'ScriptId'
     line_number: int
     column_number: int
 
@@ -38,23 +45,23 @@ class ScriptPosition:
 
 @dataclass
 class CallFrame:
-    call_frame_id: "CallFrameId"
+    call_frame_id: 'CallFrameId'
     function_name: str
-    function_location: "Location"
-    location: "Location"
+    function_location: 'Location'
+    location: 'Location'
     url: str
     scope_chain: list
-    this: "RemoteObject"
-    return_value: "RemoteObject"
+    this: 'RemoteObject'
+    return_value: 'RemoteObject'
 
 
 @dataclass
 class Scope:
     type: str
-    object: "RemoteObject"
+    object: 'RemoteObject'
     name: str
-    start_location: "Location"
-    end_location: "Location"
+    start_location: 'Location'
+    end_location: 'Location'
 
 
 @dataclass
@@ -65,7 +72,7 @@ class SearchMatch:
 
 @dataclass
 class BreakLocation:
-    script_id: "ScriptId"
+    script_id: 'ScriptId'
     line_number: int
     column_number: int
     type: str
@@ -73,13 +80,13 @@ class BreakLocation:
 
 @dataclass
 class EnableReturnT:
-    debugger_id: "UniqueDebuggerId"
+    debugger_id: 'UniqueDebuggerId'
 
 
 @dataclass
 class EvaluateOnCallFrameReturnT:
-    result: "RemoteObject"
-    exception_details: "ExceptionDetails"
+    result: 'RemoteObject'
+    exception_details: 'ExceptionDetails'
 
 
 @dataclass
@@ -94,14 +101,14 @@ class GetScriptSourceReturnT:
 
 @dataclass
 class GetStackTraceReturnT:
-    stack_trace: "StackTrace"
+    stack_trace: 'StackTrace'
 
 
 @dataclass
 class RestartFrameReturnT:
     call_frames: list
-    async_stack_trace: "StackTrace"
-    async_stack_trace_id: "StackTraceId"
+    async_stack_trace: 'StackTrace'
+    async_stack_trace_id: 'StackTraceId'
 
 
 @dataclass
@@ -111,30 +118,30 @@ class SearchInContentReturnT:
 
 @dataclass
 class SetBreakpointReturnT:
-    breakpoint_id: "BreakpointId"
-    actual_location: "Location"
+    breakpoint_id: 'BreakpointId'
+    actual_location: 'Location'
 
 
 @dataclass
 class SetInstrumentationBreakpointReturnT:
-    breakpoint_id: "BreakpointId"
+    breakpoint_id: 'BreakpointId'
 
 
 @dataclass
 class SetBreakpointByUrlReturnT:
-    breakpoint_id: "BreakpointId"
+    breakpoint_id: 'BreakpointId'
     locations: list
 
 
 @dataclass
 class SetBreakpointOnFunctionCallReturnT:
-    breakpoint_id: "BreakpointId"
+    breakpoint_id: 'BreakpointId'
 
 
 @dataclass
 class SetScriptSourceReturnT:
     call_frames: list
     stack_changed: bool
-    async_stack_trace: "StackTrace"
-    async_stack_trace_id: "StackTraceId"
-    exception_details: "ExceptionDetails"
+    async_stack_trace: 'StackTrace'
+    async_stack_trace_id: 'StackTraceId'
+    exception_details: 'ExceptionDetails'

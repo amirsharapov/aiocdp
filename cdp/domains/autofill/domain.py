@@ -33,17 +33,17 @@ class Autofill(BaseDomain):
         card: CreditCard = UNDEFINED
     ):
         params = {
-            "fieldId": field_id,
-            "card": card,
+            'fieldId': field_id,
+            'card': card,
         }
 
         if is_defined(
             frame_id
         ):
-            params["frameId"] = frame_id
+            params['frameId'] = frame_id
 
         return self._send_command(
-            "Autofill.trigger",
+            '"Autofill.trigger"',
             params
         )
 
@@ -52,11 +52,11 @@ class Autofill(BaseDomain):
         addresses: list
     ):
         params = {
-            "addresses": addresses,
+            'addresses': addresses,
         }
 
         return self._send_command(
-            "Autofill.setAddresses",
+            '"Autofill.setAddresses"',
             params
         )
 
@@ -66,7 +66,7 @@ class Autofill(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Autofill.disable",
+            '"Autofill.disable"',
             params
         )
 
@@ -76,7 +76,7 @@ class Autofill(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Autofill.enable",
+            '"Autofill.enable"',
             params
         )
 

@@ -23,7 +23,7 @@ class Preload(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Preload.enable",
+            '"Preload.enable"',
             params
         )
 
@@ -33,7 +33,7 @@ class Preload(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Preload.disable",
+            '"Preload.disable"',
             params
         )
 

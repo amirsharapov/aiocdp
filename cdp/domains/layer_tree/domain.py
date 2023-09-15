@@ -29,11 +29,11 @@ class LayerTree(BaseDomain):
         layer_id: LayerId
     ):
         params = {
-            "layerId": layer_id,
+            'layerId': layer_id,
         }
 
         return self._send_command(
-            "LayerTree.compositingReasons",
+            '"LayerTree.compositingReasons"',
             params
         )
 
@@ -43,7 +43,7 @@ class LayerTree(BaseDomain):
         params = {}
 
         return self._send_command(
-            "LayerTree.disable",
+            '"LayerTree.disable"',
             params
         )
 
@@ -53,7 +53,7 @@ class LayerTree(BaseDomain):
         params = {}
 
         return self._send_command(
-            "LayerTree.enable",
+            '"LayerTree.enable"',
             params
         )
 
@@ -62,11 +62,11 @@ class LayerTree(BaseDomain):
         tiles: list
     ):
         params = {
-            "tiles": tiles,
+            'tiles': tiles,
         }
 
         return self._send_command(
-            "LayerTree.loadSnapshot",
+            '"LayerTree.loadSnapshot"',
             params
         )
 
@@ -75,11 +75,11 @@ class LayerTree(BaseDomain):
         layer_id: LayerId
     ):
         params = {
-            "layerId": layer_id,
+            'layerId': layer_id,
         }
 
         return self._send_command(
-            "LayerTree.makeSnapshot",
+            '"LayerTree.makeSnapshot"',
             params
         )
 
@@ -91,26 +91,26 @@ class LayerTree(BaseDomain):
         clip_rect: Rect = UNDEFINED
     ):
         params = {
-            "snapshotId": snapshot_id,
+            'snapshotId': snapshot_id,
         }
 
         if is_defined(
             min_repeat_count
         ):
-            params["minRepeatCount"] = min_repeat_count
+            params['minRepeatCount'] = min_repeat_count
 
         if is_defined(
             min_duration
         ):
-            params["minDuration"] = min_duration
+            params['minDuration'] = min_duration
 
         if is_defined(
             clip_rect
         ):
-            params["clipRect"] = clip_rect
+            params['clipRect'] = clip_rect
 
         return self._send_command(
-            "LayerTree.profileSnapshot",
+            '"LayerTree.profileSnapshot"',
             params
         )
 
@@ -119,11 +119,11 @@ class LayerTree(BaseDomain):
         snapshot_id: SnapshotId
     ):
         params = {
-            "snapshotId": snapshot_id,
+            'snapshotId': snapshot_id,
         }
 
         return self._send_command(
-            "LayerTree.releaseSnapshot",
+            '"LayerTree.releaseSnapshot"',
             params
         )
 
@@ -135,26 +135,26 @@ class LayerTree(BaseDomain):
         scale: float = UNDEFINED
     ):
         params = {
-            "snapshotId": snapshot_id,
+            'snapshotId': snapshot_id,
         }
 
         if is_defined(
             from_step
         ):
-            params["fromStep"] = from_step
+            params['fromStep'] = from_step
 
         if is_defined(
             to_step
         ):
-            params["toStep"] = to_step
+            params['toStep'] = to_step
 
         if is_defined(
             scale
         ):
-            params["scale"] = scale
+            params['scale'] = scale
 
         return self._send_command(
-            "LayerTree.replaySnapshot",
+            '"LayerTree.replaySnapshot"',
             params
         )
 
@@ -163,11 +163,11 @@ class LayerTree(BaseDomain):
         snapshot_id: SnapshotId
     ):
         params = {
-            "snapshotId": snapshot_id,
+            'snapshotId': snapshot_id,
         }
 
         return self._send_command(
-            "LayerTree.snapshotCommandLog",
+            '"LayerTree.snapshotCommandLog"',
             params
         )
 

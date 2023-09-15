@@ -39,16 +39,16 @@ class Debugger(BaseDomain):
         target_call_frames: str = UNDEFINED
     ):
         params = {
-            "location": location,
+            'location': location,
         }
 
         if is_defined(
             target_call_frames
         ):
-            params["targetCallFrames"] = target_call_frames
+            params['targetCallFrames'] = target_call_frames
 
         return self._send_command(
-            "Debugger.continueToLocation",
+            '"Debugger.continueToLocation"',
             params
         )
 
@@ -58,7 +58,7 @@ class Debugger(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Debugger.disable",
+            '"Debugger.disable"',
             params
         )
 
@@ -71,10 +71,10 @@ class Debugger(BaseDomain):
         if is_defined(
             max_scripts_cache_size
         ):
-            params["maxScriptsCacheSize"] = max_scripts_cache_size
+            params['maxScriptsCacheSize'] = max_scripts_cache_size
 
         return self._send_command(
-            "Debugger.enable",
+            '"Debugger.enable"',
             params
         )
 
@@ -91,47 +91,47 @@ class Debugger(BaseDomain):
         timeout: TimeDelta = UNDEFINED
     ):
         params = {
-            "callFrameId": call_frame_id,
-            "expression": expression,
+            'callFrameId': call_frame_id,
+            'expression': expression,
         }
 
         if is_defined(
             object_group
         ):
-            params["objectGroup"] = object_group
+            params['objectGroup'] = object_group
 
         if is_defined(
             include_command_line_api
         ):
-            params["includeCommandLineAPI"] = include_command_line_api
+            params['includeCommandLineAPI'] = include_command_line_api
 
         if is_defined(
             silent
         ):
-            params["silent"] = silent
+            params['silent'] = silent
 
         if is_defined(
             return_by_value
         ):
-            params["returnByValue"] = return_by_value
+            params['returnByValue'] = return_by_value
 
         if is_defined(
             generate_preview
         ):
-            params["generatePreview"] = generate_preview
+            params['generatePreview'] = generate_preview
 
         if is_defined(
             throw_on_side_effect
         ):
-            params["throwOnSideEffect"] = throw_on_side_effect
+            params['throwOnSideEffect'] = throw_on_side_effect
 
         if is_defined(
             timeout
         ):
-            params["timeout"] = timeout
+            params['timeout'] = timeout
 
         return self._send_command(
-            "Debugger.evaluateOnCallFrame",
+            '"Debugger.evaluateOnCallFrame"',
             params
         )
 
@@ -142,21 +142,21 @@ class Debugger(BaseDomain):
         restrict_to_function: bool = UNDEFINED
     ):
         params = {
-            "start": start,
+            'start': start,
         }
 
         if is_defined(
             end
         ):
-            params["end"] = end
+            params['end'] = end
 
         if is_defined(
             restrict_to_function
         ):
-            params["restrictToFunction"] = restrict_to_function
+            params['restrictToFunction'] = restrict_to_function
 
         return self._send_command(
-            "Debugger.getPossibleBreakpoints",
+            '"Debugger.getPossibleBreakpoints"',
             params
         )
 
@@ -165,11 +165,11 @@ class Debugger(BaseDomain):
         script_id: ScriptId
     ):
         params = {
-            "scriptId": script_id,
+            'scriptId': script_id,
         }
 
         return self._send_command(
-            "Debugger.getScriptSource",
+            '"Debugger.getScriptSource"',
             params
         )
 
@@ -178,11 +178,11 @@ class Debugger(BaseDomain):
         stack_trace_id: StackTraceId
     ):
         params = {
-            "stackTraceId": stack_trace_id,
+            'stackTraceId': stack_trace_id,
         }
 
         return self._send_command(
-            "Debugger.getStackTrace",
+            '"Debugger.getStackTrace"',
             params
         )
 
@@ -192,7 +192,7 @@ class Debugger(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Debugger.pause",
+            '"Debugger.pause"',
             params
         )
 
@@ -201,11 +201,11 @@ class Debugger(BaseDomain):
         parent_stack_trace_id: StackTraceId
     ):
         params = {
-            "parentStackTraceId": parent_stack_trace_id,
+            'parentStackTraceId': parent_stack_trace_id,
         }
 
         return self._send_command(
-            "Debugger.pauseOnAsyncCall",
+            '"Debugger.pauseOnAsyncCall"',
             params
         )
 
@@ -214,11 +214,11 @@ class Debugger(BaseDomain):
         breakpoint_id: BreakpointId
     ):
         params = {
-            "breakpointId": breakpoint_id,
+            'breakpointId': breakpoint_id,
         }
 
         return self._send_command(
-            "Debugger.removeBreakpoint",
+            '"Debugger.removeBreakpoint"',
             params
         )
 
@@ -227,11 +227,11 @@ class Debugger(BaseDomain):
         call_frame_id: CallFrameId
     ):
         params = {
-            "callFrameId": call_frame_id,
+            'callFrameId': call_frame_id,
         }
 
         return self._send_command(
-            "Debugger.restartFrame",
+            '"Debugger.restartFrame"',
             params
         )
 
@@ -241,7 +241,7 @@ class Debugger(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Debugger.resume",
+            '"Debugger.resume"',
             params
         )
 
@@ -253,22 +253,22 @@ class Debugger(BaseDomain):
         is_regex: bool = UNDEFINED
     ):
         params = {
-            "scriptId": script_id,
-            "query": query,
+            'scriptId': script_id,
+            'query': query,
         }
 
         if is_defined(
             case_sensitive
         ):
-            params["caseSensitive"] = case_sensitive
+            params['caseSensitive'] = case_sensitive
 
         if is_defined(
             is_regex
         ):
-            params["isRegex"] = is_regex
+            params['isRegex'] = is_regex
 
         return self._send_command(
-            "Debugger.searchInContent",
+            '"Debugger.searchInContent"',
             params
         )
 
@@ -277,11 +277,11 @@ class Debugger(BaseDomain):
         max_depth: int
     ):
         params = {
-            "maxDepth": max_depth,
+            'maxDepth': max_depth,
         }
 
         return self._send_command(
-            "Debugger.setAsyncCallStackDepth",
+            '"Debugger.setAsyncCallStackDepth"',
             params
         )
 
@@ -290,11 +290,11 @@ class Debugger(BaseDomain):
         patterns: list
     ):
         params = {
-            "patterns": patterns,
+            'patterns': patterns,
         }
 
         return self._send_command(
-            "Debugger.setBlackboxPatterns",
+            '"Debugger.setBlackboxPatterns"',
             params
         )
 
@@ -304,12 +304,12 @@ class Debugger(BaseDomain):
         positions: list
     ):
         params = {
-            "scriptId": script_id,
-            "positions": positions,
+            'scriptId': script_id,
+            'positions': positions,
         }
 
         return self._send_command(
-            "Debugger.setBlackboxedRanges",
+            '"Debugger.setBlackboxedRanges"',
             params
         )
 
@@ -319,16 +319,16 @@ class Debugger(BaseDomain):
         condition: str = UNDEFINED
     ):
         params = {
-            "location": location,
+            'location': location,
         }
 
         if is_defined(
             condition
         ):
-            params["condition"] = condition
+            params['condition'] = condition
 
         return self._send_command(
-            "Debugger.setBreakpoint",
+            '"Debugger.setBreakpoint"',
             params
         )
 
@@ -337,11 +337,11 @@ class Debugger(BaseDomain):
         instrumentation: str
     ):
         params = {
-            "instrumentation": instrumentation,
+            'instrumentation': instrumentation,
         }
 
         return self._send_command(
-            "Debugger.setInstrumentationBreakpoint",
+            '"Debugger.setInstrumentationBreakpoint"',
             params
         )
 
@@ -355,36 +355,36 @@ class Debugger(BaseDomain):
         condition: str = UNDEFINED
     ):
         params = {
-            "lineNumber": line_number,
+            'lineNumber': line_number,
         }
 
         if is_defined(
             url
         ):
-            params["url"] = url
+            params['url'] = url
 
         if is_defined(
             url_regex
         ):
-            params["urlRegex"] = url_regex
+            params['urlRegex'] = url_regex
 
         if is_defined(
             script_hash
         ):
-            params["scriptHash"] = script_hash
+            params['scriptHash'] = script_hash
 
         if is_defined(
             column_number
         ):
-            params["columnNumber"] = column_number
+            params['columnNumber'] = column_number
 
         if is_defined(
             condition
         ):
-            params["condition"] = condition
+            params['condition'] = condition
 
         return self._send_command(
-            "Debugger.setBreakpointByUrl",
+            '"Debugger.setBreakpointByUrl"',
             params
         )
 
@@ -394,16 +394,16 @@ class Debugger(BaseDomain):
         condition: str = UNDEFINED
     ):
         params = {
-            "objectId": object_id,
+            'objectId': object_id,
         }
 
         if is_defined(
             condition
         ):
-            params["condition"] = condition
+            params['condition'] = condition
 
         return self._send_command(
-            "Debugger.setBreakpointOnFunctionCall",
+            '"Debugger.setBreakpointOnFunctionCall"',
             params
         )
 
@@ -412,11 +412,11 @@ class Debugger(BaseDomain):
         active: bool
     ):
         params = {
-            "active": active,
+            'active': active,
         }
 
         return self._send_command(
-            "Debugger.setBreakpointsActive",
+            '"Debugger.setBreakpointsActive"',
             params
         )
 
@@ -425,11 +425,11 @@ class Debugger(BaseDomain):
         state: str
     ):
         params = {
-            "state": state,
+            'state': state,
         }
 
         return self._send_command(
-            "Debugger.setPauseOnExceptions",
+            '"Debugger.setPauseOnExceptions"',
             params
         )
 
@@ -438,11 +438,11 @@ class Debugger(BaseDomain):
         new_value: CallArgument
     ):
         params = {
-            "newValue": new_value,
+            'newValue': new_value,
         }
 
         return self._send_command(
-            "Debugger.setReturnValue",
+            '"Debugger.setReturnValue"',
             params
         )
 
@@ -453,17 +453,17 @@ class Debugger(BaseDomain):
         dry_run: bool = UNDEFINED
     ):
         params = {
-            "scriptId": script_id,
-            "scriptSource": script_source,
+            'scriptId': script_id,
+            'scriptSource': script_source,
         }
 
         if is_defined(
             dry_run
         ):
-            params["dryRun"] = dry_run
+            params['dryRun'] = dry_run
 
         return self._send_command(
-            "Debugger.setScriptSource",
+            '"Debugger.setScriptSource"',
             params
         )
 
@@ -472,11 +472,11 @@ class Debugger(BaseDomain):
         skip: bool
     ):
         params = {
-            "skip": skip,
+            'skip': skip,
         }
 
         return self._send_command(
-            "Debugger.setSkipAllPauses",
+            '"Debugger.setSkipAllPauses"',
             params
         )
 
@@ -488,14 +488,14 @@ class Debugger(BaseDomain):
         call_frame_id: CallFrameId
     ):
         params = {
-            "scopeNumber": scope_number,
-            "variableName": variable_name,
-            "newValue": new_value,
-            "callFrameId": call_frame_id,
+            'scopeNumber': scope_number,
+            'variableName': variable_name,
+            'newValue': new_value,
+            'callFrameId': call_frame_id,
         }
 
         return self._send_command(
-            "Debugger.setVariableValue",
+            '"Debugger.setVariableValue"',
             params
         )
 
@@ -508,10 +508,10 @@ class Debugger(BaseDomain):
         if is_defined(
             break_on_async_call
         ):
-            params["breakOnAsyncCall"] = break_on_async_call
+            params['breakOnAsyncCall'] = break_on_async_call
 
         return self._send_command(
-            "Debugger.stepInto",
+            '"Debugger.stepInto"',
             params
         )
 
@@ -521,7 +521,7 @@ class Debugger(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Debugger.stepOut",
+            '"Debugger.stepOut"',
             params
         )
 
@@ -531,7 +531,7 @@ class Debugger(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Debugger.stepOver",
+            '"Debugger.stepOver"',
             params
         )
 

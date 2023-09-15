@@ -6,6 +6,12 @@
 from dataclasses import (
     dataclass
 )
+from typing import (
+    TYPE_CHECKING
+)
+from typing import (
+    Any
+)
 
 ScriptId = str
 
@@ -28,17 +34,17 @@ class RemoteObject:
     subtype: str
     class_name: str
     value: Any
-    unserializable_value: "UnserializableValue"
+    unserializable_value: 'UnserializableValue'
     description: str
-    object_id: "RemoteObjectId"
-    preview: "ObjectPreview"
-    custom_preview: "CustomPreview"
+    object_id: 'RemoteObjectId'
+    preview: 'ObjectPreview'
+    custom_preview: 'CustomPreview'
 
 
 @dataclass
 class CustomPreview:
     header: str
-    body_getter_id: "RemoteObjectId"
+    body_getter_id: 'RemoteObjectId'
 
 
 @dataclass
@@ -56,52 +62,52 @@ class PropertyPreview:
     name: str
     type: str
     value: str
-    value_preview: "ObjectPreview"
+    value_preview: 'ObjectPreview'
     subtype: str
 
 
 @dataclass
 class EntryPreview:
-    key: "ObjectPreview"
-    value: "ObjectPreview"
+    key: 'ObjectPreview'
+    value: 'ObjectPreview'
 
 
 @dataclass
 class PropertyDescriptor:
     name: str
-    value: "RemoteObject"
+    value: 'RemoteObject'
     writable: bool
-    get: "RemoteObject"
-    set: "RemoteObject"
+    get: 'RemoteObject'
+    set: 'RemoteObject'
     configurable: bool
     enumerable: bool
     was_thrown: bool
     is_own: bool
-    symbol: "RemoteObject"
+    symbol: 'RemoteObject'
 
 
 @dataclass
 class InternalPropertyDescriptor:
     name: str
-    value: "RemoteObject"
+    value: 'RemoteObject'
 
 
 @dataclass
 class PrivatePropertyDescriptor:
     name: str
-    value: "RemoteObject"
+    value: 'RemoteObject'
 
 
 @dataclass
 class CallArgument:
     value: Any
-    unserializable_value: "UnserializableValue"
-    object_id: "RemoteObjectId"
+    unserializable_value: 'UnserializableValue'
+    object_id: 'RemoteObjectId'
 
 
 @dataclass
 class ExecutionContextDescription:
-    id: "ExecutionContextId"
+    id: 'ExecutionContextId'
     origin: str
     name: str
     aux_data: object
@@ -113,17 +119,17 @@ class ExceptionDetails:
     text: str
     line_number: int
     column_number: int
-    script_id: "ScriptId"
+    script_id: 'ScriptId'
     url: str
-    stack_trace: "StackTrace"
-    exception: "RemoteObject"
-    execution_context_id: "ExecutionContextId"
+    stack_trace: 'StackTrace'
+    exception: 'RemoteObject'
+    execution_context_id: 'ExecutionContextId'
 
 
 @dataclass
 class CallFrame:
     function_name: str
-    script_id: "ScriptId"
+    script_id: 'ScriptId'
     url: str
     line_number: int
     column_number: int
@@ -133,38 +139,38 @@ class CallFrame:
 class StackTrace:
     description: str
     call_frames: list
-    parent: "StackTrace"
-    parent_id: "StackTraceId"
+    parent: 'StackTrace'
+    parent_id: 'StackTraceId'
 
 
 @dataclass
 class StackTraceId:
     id: str
-    debugger_id: "UniqueDebuggerId"
+    debugger_id: 'UniqueDebuggerId'
 
 
 @dataclass
 class AwaitPromiseReturnT:
-    result: "RemoteObject"
-    exception_details: "ExceptionDetails"
+    result: 'RemoteObject'
+    exception_details: 'ExceptionDetails'
 
 
 @dataclass
 class CallFunctionOnReturnT:
-    result: "RemoteObject"
-    exception_details: "ExceptionDetails"
+    result: 'RemoteObject'
+    exception_details: 'ExceptionDetails'
 
 
 @dataclass
 class CompileScriptReturnT:
-    script_id: "ScriptId"
-    exception_details: "ExceptionDetails"
+    script_id: 'ScriptId'
+    exception_details: 'ExceptionDetails'
 
 
 @dataclass
 class EvaluateReturnT:
-    result: "RemoteObject"
-    exception_details: "ExceptionDetails"
+    result: 'RemoteObject'
+    exception_details: 'ExceptionDetails'
 
 
 @dataclass
@@ -183,7 +189,7 @@ class GetPropertiesReturnT:
     result: list
     internal_properties: list
     private_properties: list
-    exception_details: "ExceptionDetails"
+    exception_details: 'ExceptionDetails'
 
 
 @dataclass
@@ -193,10 +199,10 @@ class GlobalLexicalScopeNamesReturnT:
 
 @dataclass
 class QueryObjectsReturnT:
-    objects: "RemoteObject"
+    objects: 'RemoteObject'
 
 
 @dataclass
 class RunScriptReturnT:
-    result: "RemoteObject"
-    exception_details: "ExceptionDetails"
+    result: 'RemoteObject'
+    exception_details: 'ExceptionDetails'

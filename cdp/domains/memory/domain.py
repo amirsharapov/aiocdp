@@ -27,7 +27,7 @@ class Memory(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Memory.getDOMCounters",
+            '"Memory.getDOMCounters"',
             params
         )
 
@@ -37,7 +37,7 @@ class Memory(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Memory.prepareForLeakDetection",
+            '"Memory.prepareForLeakDetection"',
             params
         )
 
@@ -47,7 +47,7 @@ class Memory(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Memory.forciblyPurgeJavaScriptMemory",
+            '"Memory.forciblyPurgeJavaScriptMemory"',
             params
         )
 
@@ -56,11 +56,11 @@ class Memory(BaseDomain):
         suppressed: bool
     ):
         params = {
-            "suppressed": suppressed,
+            'suppressed': suppressed,
         }
 
         return self._send_command(
-            "Memory.setPressureNotificationsSuppressed",
+            '"Memory.setPressureNotificationsSuppressed"',
             params
         )
 
@@ -69,11 +69,11 @@ class Memory(BaseDomain):
         level: PressureLevel
     ):
         params = {
-            "level": level,
+            'level': level,
         }
 
         return self._send_command(
-            "Memory.simulatePressureNotification",
+            '"Memory.simulatePressureNotification"',
             params
         )
 
@@ -87,15 +87,15 @@ class Memory(BaseDomain):
         if is_defined(
             sampling_interval
         ):
-            params["samplingInterval"] = sampling_interval
+            params['samplingInterval'] = sampling_interval
 
         if is_defined(
             suppress_randomness
         ):
-            params["suppressRandomness"] = suppress_randomness
+            params['suppressRandomness'] = suppress_randomness
 
         return self._send_command(
-            "Memory.startSampling",
+            '"Memory.startSampling"',
             params
         )
 
@@ -105,7 +105,7 @@ class Memory(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Memory.stopSampling",
+            '"Memory.stopSampling"',
             params
         )
 
@@ -115,7 +115,7 @@ class Memory(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Memory.getAllTimeSamplingProfile",
+            '"Memory.getAllTimeSamplingProfile"',
             params
         )
 
@@ -125,7 +125,7 @@ class Memory(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Memory.getBrowserSamplingProfile",
+            '"Memory.getBrowserSamplingProfile"',
             params
         )
 
@@ -135,7 +135,7 @@ class Memory(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Memory.getSamplingProfile",
+            '"Memory.getSamplingProfile"',
             params
         )
 

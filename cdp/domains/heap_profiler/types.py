@@ -6,18 +6,25 @@
 from dataclasses import (
     dataclass
 )
-from cdp.domains.runtime.types import (
-    CallFrame,
-    RemoteObject,
-    RemoteObjectId
+from typing import (
+    TYPE_CHECKING
 )
+from typing import (
+    Any
+)
+if TYPE_CHECKING:
+    from cdp.domains.runtime.types import (
+        CallFrame,
+        RemoteObject,
+        RemoteObjectId
+    )
 
 HeapSnapshotObjectId = str
 
 
 @dataclass
 class SamplingHeapProfileNode:
-    call_frame: "CallFrame"
+    call_frame: 'CallFrame'
     self_size: float
     id: int
     children: list
@@ -32,25 +39,25 @@ class SamplingHeapProfileSample:
 
 @dataclass
 class SamplingHeapProfile:
-    head: "SamplingHeapProfileNode"
+    head: 'SamplingHeapProfileNode'
     samples: list
 
 
 @dataclass
 class GetHeapObjectIdReturnT:
-    heap_snapshot_object_id: "HeapSnapshotObjectId"
+    heap_snapshot_object_id: 'HeapSnapshotObjectId'
 
 
 @dataclass
 class GetObjectByHeapObjectIdReturnT:
-    result: "RemoteObject"
+    result: 'RemoteObject'
 
 
 @dataclass
 class GetSamplingProfileReturnT:
-    profile: "SamplingHeapProfile"
+    profile: 'SamplingHeapProfile'
 
 
 @dataclass
 class StopSamplingReturnT:
-    profile: "SamplingHeapProfile"
+    profile: 'SamplingHeapProfile'

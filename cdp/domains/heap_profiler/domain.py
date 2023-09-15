@@ -30,11 +30,11 @@ class HeapProfiler(BaseDomain):
         heap_object_id: HeapSnapshotObjectId
     ):
         params = {
-            "heapObjectId": heap_object_id,
+            'heapObjectId': heap_object_id,
         }
 
         return self._send_command(
-            "HeapProfiler.addInspectedHeapObject",
+            '"HeapProfiler.addInspectedHeapObject"',
             params
         )
 
@@ -44,7 +44,7 @@ class HeapProfiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "HeapProfiler.collectGarbage",
+            '"HeapProfiler.collectGarbage"',
             params
         )
 
@@ -54,7 +54,7 @@ class HeapProfiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "HeapProfiler.disable",
+            '"HeapProfiler.disable"',
             params
         )
 
@@ -64,7 +64,7 @@ class HeapProfiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "HeapProfiler.enable",
+            '"HeapProfiler.enable"',
             params
         )
 
@@ -73,11 +73,11 @@ class HeapProfiler(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            "objectId": object_id,
+            'objectId': object_id,
         }
 
         return self._send_command(
-            "HeapProfiler.getHeapObjectId",
+            '"HeapProfiler.getHeapObjectId"',
             params
         )
 
@@ -87,16 +87,16 @@ class HeapProfiler(BaseDomain):
         object_group: str = UNDEFINED
     ):
         params = {
-            "objectId": object_id,
+            'objectId': object_id,
         }
 
         if is_defined(
             object_group
         ):
-            params["objectGroup"] = object_group
+            params['objectGroup'] = object_group
 
         return self._send_command(
-            "HeapProfiler.getObjectByHeapObjectId",
+            '"HeapProfiler.getObjectByHeapObjectId"',
             params
         )
 
@@ -106,7 +106,7 @@ class HeapProfiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "HeapProfiler.getSamplingProfile",
+            '"HeapProfiler.getSamplingProfile"',
             params
         )
 
@@ -119,10 +119,10 @@ class HeapProfiler(BaseDomain):
         if is_defined(
             sampling_interval
         ):
-            params["samplingInterval"] = sampling_interval
+            params['samplingInterval'] = sampling_interval
 
         return self._send_command(
-            "HeapProfiler.startSampling",
+            '"HeapProfiler.startSampling"',
             params
         )
 
@@ -135,10 +135,10 @@ class HeapProfiler(BaseDomain):
         if is_defined(
             track_allocations
         ):
-            params["trackAllocations"] = track_allocations
+            params['trackAllocations'] = track_allocations
 
         return self._send_command(
-            "HeapProfiler.startTrackingHeapObjects",
+            '"HeapProfiler.startTrackingHeapObjects"',
             params
         )
 
@@ -148,7 +148,7 @@ class HeapProfiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "HeapProfiler.stopSampling",
+            '"HeapProfiler.stopSampling"',
             params
         )
 
@@ -161,10 +161,10 @@ class HeapProfiler(BaseDomain):
         if is_defined(
             report_progress
         ):
-            params["reportProgress"] = report_progress
+            params['reportProgress'] = report_progress
 
         return self._send_command(
-            "HeapProfiler.stopTrackingHeapObjects",
+            '"HeapProfiler.stopTrackingHeapObjects"',
             params
         )
 
@@ -177,10 +177,10 @@ class HeapProfiler(BaseDomain):
         if is_defined(
             report_progress
         ):
-            params["reportProgress"] = report_progress
+            params['reportProgress'] = report_progress
 
         return self._send_command(
-            "HeapProfiler.takeHeapSnapshot",
+            '"HeapProfiler.takeHeapSnapshot"',
             params
         )
 

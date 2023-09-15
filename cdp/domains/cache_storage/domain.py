@@ -29,11 +29,11 @@ class CacheStorage(BaseDomain):
         cache_id: CacheId
     ):
         params = {
-            "cacheId": cache_id,
+            'cacheId': cache_id,
         }
 
         return self._send_command(
-            "CacheStorage.deleteCache",
+            '"CacheStorage.deleteCache"',
             params
         )
 
@@ -43,12 +43,12 @@ class CacheStorage(BaseDomain):
         request: str
     ):
         params = {
-            "cacheId": cache_id,
-            "request": request,
+            'cacheId': cache_id,
+            'request': request,
         }
 
         return self._send_command(
-            "CacheStorage.deleteEntry",
+            '"CacheStorage.deleteEntry"',
             params
         )
 
@@ -63,20 +63,20 @@ class CacheStorage(BaseDomain):
         if is_defined(
             security_origin
         ):
-            params["securityOrigin"] = security_origin
+            params['securityOrigin'] = security_origin
 
         if is_defined(
             storage_key
         ):
-            params["storageKey"] = storage_key
+            params['storageKey'] = storage_key
 
         if is_defined(
             storage_bucket
         ):
-            params["storageBucket"] = storage_bucket
+            params['storageBucket'] = storage_bucket
 
         return self._send_command(
-            "CacheStorage.requestCacheNames",
+            '"CacheStorage.requestCacheNames"',
             params
         )
 
@@ -87,13 +87,13 @@ class CacheStorage(BaseDomain):
         request_headers: list
     ):
         params = {
-            "cacheId": cache_id,
-            "requestURL": request_url,
-            "requestHeaders": request_headers,
+            'cacheId': cache_id,
+            'requestURL': request_url,
+            'requestHeaders': request_headers,
         }
 
         return self._send_command(
-            "CacheStorage.requestCachedResponse",
+            '"CacheStorage.requestCachedResponse"',
             params
         )
 
@@ -105,26 +105,26 @@ class CacheStorage(BaseDomain):
         path_filter: str = UNDEFINED
     ):
         params = {
-            "cacheId": cache_id,
+            'cacheId': cache_id,
         }
 
         if is_defined(
             skip_count
         ):
-            params["skipCount"] = skip_count
+            params['skipCount'] = skip_count
 
         if is_defined(
             page_size
         ):
-            params["pageSize"] = page_size
+            params['pageSize'] = page_size
 
         if is_defined(
             path_filter
         ):
-            params["pathFilter"] = path_filter
+            params['pathFilter'] = path_filter
 
         return self._send_command(
-            "CacheStorage.requestEntries",
+            '"CacheStorage.requestEntries"',
             params
         )
 

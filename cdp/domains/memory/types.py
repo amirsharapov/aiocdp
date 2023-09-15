@@ -7,12 +7,18 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
+)
+from typing import (
+    Any
 )
 
 PressureLevel = Literal[
-    "moderate",
-    "critical"
+    'moderate',
+    'critical'
 ]
 
 
@@ -46,14 +52,14 @@ class GetDOMCountersReturnT:
 
 @dataclass
 class GetAllTimeSamplingProfileReturnT:
-    profile: "SamplingProfile"
+    profile: 'SamplingProfile'
 
 
 @dataclass
 class GetBrowserSamplingProfileReturnT:
-    profile: "SamplingProfile"
+    profile: 'SamplingProfile'
 
 
 @dataclass
 class GetSamplingProfileReturnT:
-    profile: "SamplingProfile"
+    profile: 'SamplingProfile'

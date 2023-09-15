@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from generator.types.base import ComplexNode
 from generator.types.items import Items
 from generator.types.property import Property
-from generator.utils import UNDEFINED, MaybeUndefined
+from generator.utils import UNDEFINED, MaybeUndefined, snake_case
 
 
 @dataclass
@@ -13,7 +13,7 @@ class Type(ComplexNode):
     description: MaybeUndefined[str]
     properties: list['Property']
     enum: list[str]
-    items: MaybeUndefined['Type']
+    items: MaybeUndefined['Items']
     experimental: MaybeUndefined[bool]
     deprecated: MaybeUndefined[bool]
 
@@ -34,6 +34,10 @@ class Type(ComplexNode):
             experimental=data.get('experimental', UNDEFINED),
             deprecated=data.get('deprecated', UNDEFINED)
         )
+
+    @property
+    def id_snake_case(self):
+        return snake_case(self.id)
 
     def get_refs(self):
         refs = []

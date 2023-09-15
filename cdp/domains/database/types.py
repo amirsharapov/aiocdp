@@ -6,13 +6,19 @@
 from dataclasses import (
     dataclass
 )
+from typing import (
+    TYPE_CHECKING
+)
+from typing import (
+    Any
+)
 
 DatabaseId = str
 
 
 @dataclass
 class Database:
-    id: "DatabaseId"
+    id: 'DatabaseId'
     domain: str
     name: str
     version: str
@@ -28,7 +34,7 @@ class Error:
 class ExecuteSQLReturnT:
     column_names: list
     values: list
-    sql_error: "Error"
+    sql_error: 'Error'
 
 
 @dataclass

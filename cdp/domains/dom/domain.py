@@ -40,11 +40,11 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         return self._send_command(
-            "DOM.collectClassNamesFromSubtree",
+            '"DOM.collectClassNamesFromSubtree"',
             params
         )
 
@@ -55,17 +55,17 @@ class DOM(BaseDomain):
         insert_before_node_id: NodeId = UNDEFINED
     ):
         params = {
-            "nodeId": node_id,
-            "targetNodeId": target_node_id,
+            'nodeId': node_id,
+            'targetNodeId': target_node_id,
         }
 
         if is_defined(
             insert_before_node_id
         ):
-            params["insertBeforeNodeId"] = insert_before_node_id
+            params['insertBeforeNodeId'] = insert_before_node_id
 
         return self._send_command(
-            "DOM.copyTo",
+            '"DOM.copyTo"',
             params
         )
 
@@ -82,30 +82,30 @@ class DOM(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         if is_defined(
             depth
         ):
-            params["depth"] = depth
+            params['depth'] = depth
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params['pierce'] = pierce
 
         return self._send_command(
-            "DOM.describeNode",
+            '"DOM.describeNode"',
             params
         )
 
@@ -121,25 +121,25 @@ class DOM(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         if is_defined(
             rect
         ):
-            params["rect"] = rect
+            params['rect'] = rect
 
         return self._send_command(
-            "DOM.scrollIntoViewIfNeeded",
+            '"DOM.scrollIntoViewIfNeeded"',
             params
         )
 
@@ -149,7 +149,7 @@ class DOM(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOM.disable",
+            '"DOM.disable"',
             params
         )
 
@@ -158,11 +158,11 @@ class DOM(BaseDomain):
         search_id: str
     ):
         params = {
-            "searchId": search_id,
+            'searchId': search_id,
         }
 
         return self._send_command(
-            "DOM.discardSearchResults",
+            '"DOM.discardSearchResults"',
             params
         )
 
@@ -175,10 +175,10 @@ class DOM(BaseDomain):
         if is_defined(
             include_whitespace
         ):
-            params["includeWhitespace"] = include_whitespace
+            params['includeWhitespace'] = include_whitespace
 
         return self._send_command(
-            "DOM.enable",
+            '"DOM.enable"',
             params
         )
 
@@ -193,20 +193,20 @@ class DOM(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         return self._send_command(
-            "DOM.focus",
+            '"DOM.focus"',
             params
         )
 
@@ -215,11 +215,11 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         return self._send_command(
-            "DOM.getAttributes",
+            '"DOM.getAttributes"',
             params
         )
 
@@ -234,20 +234,20 @@ class DOM(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         return self._send_command(
-            "DOM.getBoxModel",
+            '"DOM.getBoxModel"',
             params
         )
 
@@ -262,20 +262,20 @@ class DOM(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         return self._send_command(
-            "DOM.getContentQuads",
+            '"DOM.getContentQuads"',
             params
         )
 
@@ -289,15 +289,15 @@ class DOM(BaseDomain):
         if is_defined(
             depth
         ):
-            params["depth"] = depth
+            params['depth'] = depth
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params['pierce'] = pierce
 
         return self._send_command(
-            "DOM.getDocument",
+            '"DOM.getDocument"',
             params
         )
 
@@ -311,15 +311,15 @@ class DOM(BaseDomain):
         if is_defined(
             depth
         ):
-            params["depth"] = depth
+            params['depth'] = depth
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params['pierce'] = pierce
 
         return self._send_command(
-            "DOM.getFlattenedDocument",
+            '"DOM.getFlattenedDocument"',
             params
         )
 
@@ -330,17 +330,17 @@ class DOM(BaseDomain):
         pierce: bool = UNDEFINED
     ):
         params = {
-            "nodeId": node_id,
-            "computedStyles": computed_styles,
+            'nodeId': node_id,
+            'computedStyles': computed_styles,
         }
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params['pierce'] = pierce
 
         return self._send_command(
-            "DOM.getNodesForSubtreeByStyle",
+            '"DOM.getNodesForSubtreeByStyle"',
             params
         )
 
@@ -352,22 +352,22 @@ class DOM(BaseDomain):
         ignore_pointer_events_none: bool = UNDEFINED
     ):
         params = {
-            "x": x,
-            "y": y,
+            'x': x,
+            'y': y,
         }
 
         if is_defined(
             include_user_agent_shadow_dom
         ):
-            params["includeUserAgentShadowDOM"] = include_user_agent_shadow_dom
+            params['includeUserAgentShadowDOM'] = include_user_agent_shadow_dom
 
         if is_defined(
             ignore_pointer_events_none
         ):
-            params["ignorePointerEventsNone"] = ignore_pointer_events_none
+            params['ignorePointerEventsNone'] = ignore_pointer_events_none
 
         return self._send_command(
-            "DOM.getNodeForLocation",
+            '"DOM.getNodeForLocation"',
             params
         )
 
@@ -382,20 +382,20 @@ class DOM(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         return self._send_command(
-            "DOM.getOuterHTML",
+            '"DOM.getOuterHTML"',
             params
         )
 
@@ -404,11 +404,11 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         return self._send_command(
-            "DOM.getRelayoutBoundary",
+            '"DOM.getRelayoutBoundary"',
             params
         )
 
@@ -419,13 +419,13 @@ class DOM(BaseDomain):
         to_index: int
     ):
         params = {
-            "searchId": search_id,
-            "fromIndex": from_index,
-            "toIndex": to_index,
+            'searchId': search_id,
+            'fromIndex': from_index,
+            'toIndex': to_index,
         }
 
         return self._send_command(
-            "DOM.getSearchResults",
+            '"DOM.getSearchResults"',
             params
         )
 
@@ -435,7 +435,7 @@ class DOM(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOM.hideHighlight",
+            '"DOM.hideHighlight"',
             params
         )
 
@@ -445,7 +445,7 @@ class DOM(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOM.highlightNode",
+            '"DOM.highlightNode"',
             params
         )
 
@@ -455,7 +455,7 @@ class DOM(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOM.highlightRect",
+            '"DOM.highlightRect"',
             params
         )
 
@@ -465,7 +465,7 @@ class DOM(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOM.markUndoableState",
+            '"DOM.markUndoableState"',
             params
         )
 
@@ -476,17 +476,17 @@ class DOM(BaseDomain):
         insert_before_node_id: NodeId = UNDEFINED
     ):
         params = {
-            "nodeId": node_id,
-            "targetNodeId": target_node_id,
+            'nodeId': node_id,
+            'targetNodeId': target_node_id,
         }
 
         if is_defined(
             insert_before_node_id
         ):
-            params["insertBeforeNodeId"] = insert_before_node_id
+            params['insertBeforeNodeId'] = insert_before_node_id
 
         return self._send_command(
-            "DOM.moveTo",
+            '"DOM.moveTo"',
             params
         )
 
@@ -496,16 +496,16 @@ class DOM(BaseDomain):
         include_user_agent_shadow_dom: bool = UNDEFINED
     ):
         params = {
-            "query": query,
+            'query': query,
         }
 
         if is_defined(
             include_user_agent_shadow_dom
         ):
-            params["includeUserAgentShadowDOM"] = include_user_agent_shadow_dom
+            params['includeUserAgentShadowDOM'] = include_user_agent_shadow_dom
 
         return self._send_command(
-            "DOM.performSearch",
+            '"DOM.performSearch"',
             params
         )
 
@@ -514,11 +514,11 @@ class DOM(BaseDomain):
         path: str
     ):
         params = {
-            "path": path,
+            'path': path,
         }
 
         return self._send_command(
-            "DOM.pushNodeByPathToFrontend",
+            '"DOM.pushNodeByPathToFrontend"',
             params
         )
 
@@ -527,11 +527,11 @@ class DOM(BaseDomain):
         backend_node_ids: list
     ):
         params = {
-            "backendNodeIds": backend_node_ids,
+            'backendNodeIds': backend_node_ids,
         }
 
         return self._send_command(
-            "DOM.pushNodesByBackendIdsToFrontend",
+            '"DOM.pushNodesByBackendIdsToFrontend"',
             params
         )
 
@@ -541,12 +541,12 @@ class DOM(BaseDomain):
         selector: str
     ):
         params = {
-            "nodeId": node_id,
-            "selector": selector,
+            'nodeId': node_id,
+            'selector': selector,
         }
 
         return self._send_command(
-            "DOM.querySelector",
+            '"DOM.querySelector"',
             params
         )
 
@@ -556,12 +556,12 @@ class DOM(BaseDomain):
         selector: str
     ):
         params = {
-            "nodeId": node_id,
-            "selector": selector,
+            'nodeId': node_id,
+            'selector': selector,
         }
 
         return self._send_command(
-            "DOM.querySelectorAll",
+            '"DOM.querySelectorAll"',
             params
         )
 
@@ -571,7 +571,7 @@ class DOM(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOM.getTopLayerElements",
+            '"DOM.getTopLayerElements"',
             params
         )
 
@@ -581,7 +581,7 @@ class DOM(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOM.redo",
+            '"DOM.redo"',
             params
         )
 
@@ -591,12 +591,12 @@ class DOM(BaseDomain):
         name: str
     ):
         params = {
-            "nodeId": node_id,
-            "name": name,
+            'nodeId': node_id,
+            'name': name,
         }
 
         return self._send_command(
-            "DOM.removeAttribute",
+            '"DOM.removeAttribute"',
             params
         )
 
@@ -605,11 +605,11 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         return self._send_command(
-            "DOM.removeNode",
+            '"DOM.removeNode"',
             params
         )
 
@@ -620,21 +620,21 @@ class DOM(BaseDomain):
         pierce: bool = UNDEFINED
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         if is_defined(
             depth
         ):
-            params["depth"] = depth
+            params['depth'] = depth
 
         if is_defined(
             pierce
         ):
-            params["pierce"] = pierce
+            params['pierce'] = pierce
 
         return self._send_command(
-            "DOM.requestChildNodes",
+            '"DOM.requestChildNodes"',
             params
         )
 
@@ -643,11 +643,11 @@ class DOM(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            "objectId": object_id,
+            'objectId': object_id,
         }
 
         return self._send_command(
-            "DOM.requestNode",
+            '"DOM.requestNode"',
             params
         )
 
@@ -663,25 +663,25 @@ class DOM(BaseDomain):
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_group
         ):
-            params["objectGroup"] = object_group
+            params['objectGroup'] = object_group
 
         if is_defined(
             execution_context_id
         ):
-            params["executionContextId"] = execution_context_id
+            params['executionContextId'] = execution_context_id
 
         return self._send_command(
-            "DOM.resolveNode",
+            '"DOM.resolveNode"',
             params
         )
 
@@ -692,13 +692,13 @@ class DOM(BaseDomain):
         value: str
     ):
         params = {
-            "nodeId": node_id,
-            "name": name,
-            "value": value,
+            'nodeId': node_id,
+            'name': name,
+            'value': value,
         }
 
         return self._send_command(
-            "DOM.setAttributeValue",
+            '"DOM.setAttributeValue"',
             params
         )
 
@@ -709,17 +709,17 @@ class DOM(BaseDomain):
         name: str = UNDEFINED
     ):
         params = {
-            "nodeId": node_id,
-            "text": text,
+            'nodeId': node_id,
+            'text': text,
         }
 
         if is_defined(
             name
         ):
-            params["name"] = name
+            params['name'] = name
 
         return self._send_command(
-            "DOM.setAttributesAsText",
+            '"DOM.setAttributesAsText"',
             params
         )
 
@@ -731,26 +731,26 @@ class DOM(BaseDomain):
         object_id: RemoteObjectId = UNDEFINED
     ):
         params = {
-            "files": files,
+            'files': files,
         }
 
         if is_defined(
             node_id
         ):
-            params["nodeId"] = node_id
+            params['nodeId'] = node_id
 
         if is_defined(
             backend_node_id
         ):
-            params["backendNodeId"] = backend_node_id
+            params['backendNodeId'] = backend_node_id
 
         if is_defined(
             object_id
         ):
-            params["objectId"] = object_id
+            params['objectId'] = object_id
 
         return self._send_command(
-            "DOM.setFileInputFiles",
+            '"DOM.setFileInputFiles"',
             params
         )
 
@@ -759,11 +759,11 @@ class DOM(BaseDomain):
         enable: bool
     ):
         params = {
-            "enable": enable,
+            'enable': enable,
         }
 
         return self._send_command(
-            "DOM.setNodeStackTracesEnabled",
+            '"DOM.setNodeStackTracesEnabled"',
             params
         )
 
@@ -772,11 +772,11 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         return self._send_command(
-            "DOM.getNodeStackTraces",
+            '"DOM.getNodeStackTraces"',
             params
         )
 
@@ -785,11 +785,11 @@ class DOM(BaseDomain):
         object_id: RemoteObjectId
     ):
         params = {
-            "objectId": object_id,
+            'objectId': object_id,
         }
 
         return self._send_command(
-            "DOM.getFileInfo",
+            '"DOM.getFileInfo"',
             params
         )
 
@@ -798,11 +798,11 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         return self._send_command(
-            "DOM.setInspectedNode",
+            '"DOM.setInspectedNode"',
             params
         )
 
@@ -812,12 +812,12 @@ class DOM(BaseDomain):
         name: str
     ):
         params = {
-            "nodeId": node_id,
-            "name": name,
+            'nodeId': node_id,
+            'name': name,
         }
 
         return self._send_command(
-            "DOM.setNodeName",
+            '"DOM.setNodeName"',
             params
         )
 
@@ -827,12 +827,12 @@ class DOM(BaseDomain):
         value: str
     ):
         params = {
-            "nodeId": node_id,
-            "value": value,
+            'nodeId': node_id,
+            'value': value,
         }
 
         return self._send_command(
-            "DOM.setNodeValue",
+            '"DOM.setNodeValue"',
             params
         )
 
@@ -842,12 +842,12 @@ class DOM(BaseDomain):
         outer_html: str
     ):
         params = {
-            "nodeId": node_id,
-            "outerHTML": outer_html,
+            'nodeId': node_id,
+            'outerHTML': outer_html,
         }
 
         return self._send_command(
-            "DOM.setOuterHTML",
+            '"DOM.setOuterHTML"',
             params
         )
 
@@ -857,7 +857,7 @@ class DOM(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOM.undo",
+            '"DOM.undo"',
             params
         )
 
@@ -866,11 +866,11 @@ class DOM(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            "frameId": frame_id,
+            'frameId': frame_id,
         }
 
         return self._send_command(
-            "DOM.getFrameOwner",
+            '"DOM.getFrameOwner"',
             params
         )
 
@@ -882,26 +882,26 @@ class DOM(BaseDomain):
         logical_axes: LogicalAxes = UNDEFINED
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         if is_defined(
             container_name
         ):
-            params["containerName"] = container_name
+            params['containerName'] = container_name
 
         if is_defined(
             physical_axes
         ):
-            params["physicalAxes"] = physical_axes
+            params['physicalAxes'] = physical_axes
 
         if is_defined(
             logical_axes
         ):
-            params["logicalAxes"] = logical_axes
+            params['logicalAxes'] = logical_axes
 
         return self._send_command(
-            "DOM.getContainerForNode",
+            '"DOM.getContainerForNode"',
             params
         )
 
@@ -910,11 +910,11 @@ class DOM(BaseDomain):
         node_id: NodeId
     ):
         params = {
-            "nodeId": node_id,
+            'nodeId': node_id,
         }
 
         return self._send_command(
-            "DOM.getQueryingDescendantsForContainer",
+            '"DOM.getQueryingDescendantsForContainer"',
             params
         )
 

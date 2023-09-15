@@ -25,11 +25,11 @@ class DOMStorage(BaseDomain):
         storage_id: StorageId
     ):
         params = {
-            "storageId": storage_id,
+            'storageId': storage_id,
         }
 
         return self._send_command(
-            "DOMStorage.clear",
+            '"DOMStorage.clear"',
             params
         )
 
@@ -39,7 +39,7 @@ class DOMStorage(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOMStorage.disable",
+            '"DOMStorage.disable"',
             params
         )
 
@@ -49,7 +49,7 @@ class DOMStorage(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DOMStorage.enable",
+            '"DOMStorage.enable"',
             params
         )
 
@@ -58,11 +58,11 @@ class DOMStorage(BaseDomain):
         storage_id: StorageId
     ):
         params = {
-            "storageId": storage_id,
+            'storageId': storage_id,
         }
 
         return self._send_command(
-            "DOMStorage.getDOMStorageItems",
+            '"DOMStorage.getDOMStorageItems"',
             params
         )
 
@@ -72,12 +72,12 @@ class DOMStorage(BaseDomain):
         key: str
     ):
         params = {
-            "storageId": storage_id,
-            "key": key,
+            'storageId': storage_id,
+            'key': key,
         }
 
         return self._send_command(
-            "DOMStorage.removeDOMStorageItem",
+            '"DOMStorage.removeDOMStorageItem"',
             params
         )
 
@@ -88,13 +88,13 @@ class DOMStorage(BaseDomain):
         value: str
     ):
         params = {
-            "storageId": storage_id,
-            "key": key,
-            "value": value,
+            'storageId': storage_id,
+            'key': key,
+            'value': value,
         }
 
         return self._send_command(
-            "DOMStorage.setDOMStorageItem",
+            '"DOMStorage.setDOMStorageItem"',
             params
         )
 

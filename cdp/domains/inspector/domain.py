@@ -23,7 +23,7 @@ class Inspector(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Inspector.disable",
+            '"Inspector.disable"',
             params
         )
 
@@ -33,7 +33,7 @@ class Inspector(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Inspector.enable",
+            '"Inspector.enable"',
             params
         )
 

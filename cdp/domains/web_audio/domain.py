@@ -27,7 +27,7 @@ class WebAudio(BaseDomain):
         params = {}
 
         return self._send_command(
-            "WebAudio.enable",
+            '"WebAudio.enable"',
             params
         )
 
@@ -37,7 +37,7 @@ class WebAudio(BaseDomain):
         params = {}
 
         return self._send_command(
-            "WebAudio.disable",
+            '"WebAudio.disable"',
             params
         )
 
@@ -46,11 +46,11 @@ class WebAudio(BaseDomain):
         context_id: GraphObjectId
     ):
         params = {
-            "contextId": context_id,
+            'contextId': context_id,
         }
 
         return self._send_command(
-            "WebAudio.getRealtimeData",
+            '"WebAudio.getRealtimeData"',
             params
         )
 

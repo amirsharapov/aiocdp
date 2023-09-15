@@ -30,7 +30,7 @@ class Tracing(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Tracing.end",
+            '"Tracing.end"',
             params
         )
 
@@ -40,7 +40,7 @@ class Tracing(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Tracing.getCategories",
+            '"Tracing.getCategories"',
             params
         )
 
@@ -49,11 +49,11 @@ class Tracing(BaseDomain):
         sync_id: str
     ):
         params = {
-            "syncId": sync_id,
+            'syncId': sync_id,
         }
 
         return self._send_command(
-            "Tracing.recordClockSyncMarker",
+            '"Tracing.recordClockSyncMarker"',
             params
         )
 
@@ -67,15 +67,15 @@ class Tracing(BaseDomain):
         if is_defined(
             deterministic
         ):
-            params["deterministic"] = deterministic
+            params['deterministic'] = deterministic
 
         if is_defined(
             level_of_detail
         ):
-            params["levelOfDetail"] = level_of_detail
+            params['levelOfDetail'] = level_of_detail
 
         return self._send_command(
-            "Tracing.requestMemoryDump",
+            '"Tracing.requestMemoryDump"',
             params
         )
 
@@ -96,50 +96,50 @@ class Tracing(BaseDomain):
         if is_defined(
             categories
         ):
-            params["categories"] = categories
+            params['categories'] = categories
 
         if is_defined(
             options
         ):
-            params["options"] = options
+            params['options'] = options
 
         if is_defined(
             buffer_usage_reporting_interval
         ):
-            params["bufferUsageReportingInterval"] = buffer_usage_reporting_interval
+            params['bufferUsageReportingInterval'] = buffer_usage_reporting_interval
 
         if is_defined(
             transfer_mode
         ):
-            params["transferMode"] = transfer_mode
+            params['transferMode'] = transfer_mode
 
         if is_defined(
             stream_format
         ):
-            params["streamFormat"] = stream_format
+            params['streamFormat'] = stream_format
 
         if is_defined(
             stream_compression
         ):
-            params["streamCompression"] = stream_compression
+            params['streamCompression'] = stream_compression
 
         if is_defined(
             trace_config
         ):
-            params["traceConfig"] = trace_config
+            params['traceConfig'] = trace_config
 
         if is_defined(
             perfetto_config
         ):
-            params["perfettoConfig"] = perfetto_config
+            params['perfettoConfig'] = perfetto_config
 
         if is_defined(
             tracing_backend
         ):
-            params["tracingBackend"] = tracing_backend
+            params['tracingBackend'] = tracing_backend
 
         return self._send_command(
-            "Tracing.start",
+            '"Tracing.start"',
             params
         )
 

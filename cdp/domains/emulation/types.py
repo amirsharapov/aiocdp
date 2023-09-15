@@ -7,27 +7,34 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.dom.types import (
-    RGBA
+from typing import (
+    Any
 )
-from cdp.domains.page.types import (
-    Viewport
-)
-from cdp.domains.network.types import (
-    TimeSinceEpoch
-)
+if TYPE_CHECKING:
+    from cdp.domains.dom.types import (
+        RGBA
+    )
+    from cdp.domains.page.types import (
+        Viewport
+    )
+    from cdp.domains.network.types import (
+        TimeSinceEpoch
+    )
 
 VirtualTimePolicy = Literal[
-    "advance",
-    "pause",
-    "pauseIfNetworkFetchesPending"
+    'advance',
+    'pause',
+    'pauseIfNetworkFetchesPending'
 ]
 
 DisabledImageType = Literal[
-    "avif",
-    "webp"
+    'avif',
+    'webp'
 ]
 
 

@@ -46,7 +46,7 @@ class Domain(ComplexNode):
         return self.domain
 
     @property
-    def module_name(self):
+    def domain_snake_case(self):
         return snake_case(self.domain)
 
     def get_refs(self) -> list[Ref]:

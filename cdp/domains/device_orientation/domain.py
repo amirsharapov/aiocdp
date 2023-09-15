@@ -23,7 +23,7 @@ class DeviceOrientation(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DeviceOrientation.clearDeviceOrientationOverride",
+            '"DeviceOrientation.clearDeviceOrientationOverride"',
             params
         )
 
@@ -34,13 +34,13 @@ class DeviceOrientation(BaseDomain):
         gamma: float
     ):
         params = {
-            "alpha": alpha,
-            "beta": beta,
-            "gamma": gamma,
+            'alpha': alpha,
+            'beta': beta,
+            'gamma': gamma,
         }
 
         return self._send_command(
-            "DeviceOrientation.setDeviceOrientationOverride",
+            '"DeviceOrientation.setDeviceOrientationOverride"',
             params
         )
 

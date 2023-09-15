@@ -38,7 +38,7 @@ class Emulation(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Emulation.canEmulate",
+            '"Emulation.canEmulate"',
             params
         )
 
@@ -48,7 +48,7 @@ class Emulation(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Emulation.clearDeviceMetricsOverride",
+            '"Emulation.clearDeviceMetricsOverride"',
             params
         )
 
@@ -58,7 +58,7 @@ class Emulation(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Emulation.clearGeolocationOverride",
+            '"Emulation.clearGeolocationOverride"',
             params
         )
 
@@ -68,7 +68,7 @@ class Emulation(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Emulation.resetPageScaleFactor",
+            '"Emulation.resetPageScaleFactor"',
             params
         )
 
@@ -77,11 +77,11 @@ class Emulation(BaseDomain):
         enabled: bool
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "Emulation.setFocusEmulationEnabled",
+            '"Emulation.setFocusEmulationEnabled"',
             params
         )
 
@@ -94,10 +94,10 @@ class Emulation(BaseDomain):
         if is_defined(
             enabled
         ):
-            params["enabled"] = enabled
+            params['enabled'] = enabled
 
         return self._send_command(
-            "Emulation.setAutoDarkModeOverride",
+            '"Emulation.setAutoDarkModeOverride"',
             params
         )
 
@@ -106,11 +106,11 @@ class Emulation(BaseDomain):
         rate: float
     ):
         params = {
-            "rate": rate,
+            'rate': rate,
         }
 
         return self._send_command(
-            "Emulation.setCPUThrottlingRate",
+            '"Emulation.setCPUThrottlingRate"',
             params
         )
 
@@ -123,10 +123,10 @@ class Emulation(BaseDomain):
         if is_defined(
             color
         ):
-            params["color"] = color
+            params['color'] = color
 
         return self._send_command(
-            "Emulation.setDefaultBackgroundColorOverride",
+            '"Emulation.setDefaultBackgroundColorOverride"',
             params
         )
 
@@ -147,59 +147,59 @@ class Emulation(BaseDomain):
         display_feature: DisplayFeature = UNDEFINED
     ):
         params = {
-            "width": width,
-            "height": height,
-            "deviceScaleFactor": device_scale_factor,
-            "mobile": mobile,
+            'width': width,
+            'height': height,
+            'deviceScaleFactor': device_scale_factor,
+            'mobile': mobile,
         }
 
         if is_defined(
             scale
         ):
-            params["scale"] = scale
+            params['scale'] = scale
 
         if is_defined(
             screen_width
         ):
-            params["screenWidth"] = screen_width
+            params['screenWidth'] = screen_width
 
         if is_defined(
             screen_height
         ):
-            params["screenHeight"] = screen_height
+            params['screenHeight'] = screen_height
 
         if is_defined(
             position_x
         ):
-            params["positionX"] = position_x
+            params['positionX'] = position_x
 
         if is_defined(
             position_y
         ):
-            params["positionY"] = position_y
+            params['positionY'] = position_y
 
         if is_defined(
             dont_set_visible_size
         ):
-            params["dontSetVisibleSize"] = dont_set_visible_size
+            params['dontSetVisibleSize'] = dont_set_visible_size
 
         if is_defined(
             screen_orientation
         ):
-            params["screenOrientation"] = screen_orientation
+            params['screenOrientation'] = screen_orientation
 
         if is_defined(
             viewport
         ):
-            params["viewport"] = viewport
+            params['viewport'] = viewport
 
         if is_defined(
             display_feature
         ):
-            params["displayFeature"] = display_feature
+            params['displayFeature'] = display_feature
 
         return self._send_command(
-            "Emulation.setDeviceMetricsOverride",
+            '"Emulation.setDeviceMetricsOverride"',
             params
         )
 
@@ -208,11 +208,11 @@ class Emulation(BaseDomain):
         hidden: bool
     ):
         params = {
-            "hidden": hidden,
+            'hidden': hidden,
         }
 
         return self._send_command(
-            "Emulation.setScrollbarsHidden",
+            '"Emulation.setScrollbarsHidden"',
             params
         )
 
@@ -221,11 +221,11 @@ class Emulation(BaseDomain):
         disabled: bool
     ):
         params = {
-            "disabled": disabled,
+            'disabled': disabled,
         }
 
         return self._send_command(
-            "Emulation.setDocumentCookieDisabled",
+            '"Emulation.setDocumentCookieDisabled"',
             params
         )
 
@@ -235,16 +235,16 @@ class Emulation(BaseDomain):
         configuration: str = UNDEFINED
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         if is_defined(
             configuration
         ):
-            params["configuration"] = configuration
+            params['configuration'] = configuration
 
         return self._send_command(
-            "Emulation.setEmitTouchEventsForMouse",
+            '"Emulation.setEmitTouchEventsForMouse"',
             params
         )
 
@@ -258,15 +258,15 @@ class Emulation(BaseDomain):
         if is_defined(
             media
         ):
-            params["media"] = media
+            params['media'] = media
 
         if is_defined(
             features
         ):
-            params["features"] = features
+            params['features'] = features
 
         return self._send_command(
-            "Emulation.setEmulatedMedia",
+            '"Emulation.setEmulatedMedia"',
             params
         )
 
@@ -275,11 +275,11 @@ class Emulation(BaseDomain):
         type_: str
     ):
         params = {
-            "type": type_,
+            'type': type_,
         }
 
         return self._send_command(
-            "Emulation.setEmulatedVisionDeficiency",
+            '"Emulation.setEmulatedVisionDeficiency"',
             params
         )
 
@@ -294,20 +294,20 @@ class Emulation(BaseDomain):
         if is_defined(
             latitude
         ):
-            params["latitude"] = latitude
+            params['latitude'] = latitude
 
         if is_defined(
             longitude
         ):
-            params["longitude"] = longitude
+            params['longitude'] = longitude
 
         if is_defined(
             accuracy
         ):
-            params["accuracy"] = accuracy
+            params['accuracy'] = accuracy
 
         return self._send_command(
-            "Emulation.setGeolocationOverride",
+            '"Emulation.setGeolocationOverride"',
             params
         )
 
@@ -317,12 +317,12 @@ class Emulation(BaseDomain):
         is_screen_unlocked: bool
     ):
         params = {
-            "isUserActive": is_user_active,
-            "isScreenUnlocked": is_screen_unlocked,
+            'isUserActive': is_user_active,
+            'isScreenUnlocked': is_screen_unlocked,
         }
 
         return self._send_command(
-            "Emulation.setIdleOverride",
+            '"Emulation.setIdleOverride"',
             params
         )
 
@@ -332,7 +332,7 @@ class Emulation(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Emulation.clearIdleOverride",
+            '"Emulation.clearIdleOverride"',
             params
         )
 
@@ -341,11 +341,11 @@ class Emulation(BaseDomain):
         platform: str
     ):
         params = {
-            "platform": platform,
+            'platform': platform,
         }
 
         return self._send_command(
-            "Emulation.setNavigatorOverrides",
+            '"Emulation.setNavigatorOverrides"',
             params
         )
 
@@ -354,11 +354,11 @@ class Emulation(BaseDomain):
         page_scale_factor: float
     ):
         params = {
-            "pageScaleFactor": page_scale_factor,
+            'pageScaleFactor': page_scale_factor,
         }
 
         return self._send_command(
-            "Emulation.setPageScaleFactor",
+            '"Emulation.setPageScaleFactor"',
             params
         )
 
@@ -367,11 +367,11 @@ class Emulation(BaseDomain):
         value: bool
     ):
         params = {
-            "value": value,
+            'value': value,
         }
 
         return self._send_command(
-            "Emulation.setScriptExecutionDisabled",
+            '"Emulation.setScriptExecutionDisabled"',
             params
         )
 
@@ -381,16 +381,16 @@ class Emulation(BaseDomain):
         max_touch_points: int = UNDEFINED
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         if is_defined(
             max_touch_points
         ):
-            params["maxTouchPoints"] = max_touch_points
+            params['maxTouchPoints'] = max_touch_points
 
         return self._send_command(
-            "Emulation.setTouchEmulationEnabled",
+            '"Emulation.setTouchEmulationEnabled"',
             params
         )
 
@@ -402,26 +402,26 @@ class Emulation(BaseDomain):
         initial_virtual_time: TimeSinceEpoch = UNDEFINED
     ):
         params = {
-            "policy": policy,
+            'policy': policy,
         }
 
         if is_defined(
             budget
         ):
-            params["budget"] = budget
+            params['budget'] = budget
 
         if is_defined(
             max_virtual_time_task_starvation_count
         ):
-            params["maxVirtualTimeTaskStarvationCount"] = max_virtual_time_task_starvation_count
+            params['maxVirtualTimeTaskStarvationCount'] = max_virtual_time_task_starvation_count
 
         if is_defined(
             initial_virtual_time
         ):
-            params["initialVirtualTime"] = initial_virtual_time
+            params['initialVirtualTime'] = initial_virtual_time
 
         return self._send_command(
-            "Emulation.setVirtualTimePolicy",
+            '"Emulation.setVirtualTimePolicy"',
             params
         )
 
@@ -434,10 +434,10 @@ class Emulation(BaseDomain):
         if is_defined(
             locale
         ):
-            params["locale"] = locale
+            params['locale'] = locale
 
         return self._send_command(
-            "Emulation.setLocaleOverride",
+            '"Emulation.setLocaleOverride"',
             params
         )
 
@@ -446,11 +446,11 @@ class Emulation(BaseDomain):
         timezone_id: str
     ):
         params = {
-            "timezoneId": timezone_id,
+            'timezoneId': timezone_id,
         }
 
         return self._send_command(
-            "Emulation.setTimezoneOverride",
+            '"Emulation.setTimezoneOverride"',
             params
         )
 
@@ -460,12 +460,12 @@ class Emulation(BaseDomain):
         height: int
     ):
         params = {
-            "width": width,
-            "height": height,
+            'width': width,
+            'height': height,
         }
 
         return self._send_command(
-            "Emulation.setVisibleSize",
+            '"Emulation.setVisibleSize"',
             params
         )
 
@@ -474,11 +474,11 @@ class Emulation(BaseDomain):
         image_types: list
     ):
         params = {
-            "imageTypes": image_types,
+            'imageTypes': image_types,
         }
 
         return self._send_command(
-            "Emulation.setDisabledImageTypes",
+            '"Emulation.setDisabledImageTypes"',
             params
         )
 
@@ -487,11 +487,11 @@ class Emulation(BaseDomain):
         hardware_concurrency: int
     ):
         params = {
-            "hardwareConcurrency": hardware_concurrency,
+            'hardwareConcurrency': hardware_concurrency,
         }
 
         return self._send_command(
-            "Emulation.setHardwareConcurrencyOverride",
+            '"Emulation.setHardwareConcurrencyOverride"',
             params
         )
 
@@ -503,26 +503,26 @@ class Emulation(BaseDomain):
         user_agent_metadata: UserAgentMetadata = UNDEFINED
     ):
         params = {
-            "userAgent": user_agent,
+            'userAgent': user_agent,
         }
 
         if is_defined(
             accept_language
         ):
-            params["acceptLanguage"] = accept_language
+            params['acceptLanguage'] = accept_language
 
         if is_defined(
             platform
         ):
-            params["platform"] = platform
+            params['platform'] = platform
 
         if is_defined(
             user_agent_metadata
         ):
-            params["userAgentMetadata"] = user_agent_metadata
+            params['userAgentMetadata'] = user_agent_metadata
 
         return self._send_command(
-            "Emulation.setUserAgentOverride",
+            '"Emulation.setUserAgentOverride"',
             params
         )
 
@@ -531,11 +531,11 @@ class Emulation(BaseDomain):
         enabled: bool
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "Emulation.setAutomationOverride",
+            '"Emulation.setAutomationOverride"',
             params
         )
 

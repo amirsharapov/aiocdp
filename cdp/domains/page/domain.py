@@ -53,11 +53,11 @@ class Page(BaseDomain):
         script_source: str
     ):
         params = {
-            "scriptSource": script_source,
+            'scriptSource': script_source,
         }
 
         return self._send_command(
-            "Page.addScriptToEvaluateOnLoad",
+            '"Page.addScriptToEvaluateOnLoad"',
             params
         )
 
@@ -69,26 +69,26 @@ class Page(BaseDomain):
         run_immediately: bool = UNDEFINED
     ):
         params = {
-            "source": source,
+            'source': source,
         }
 
         if is_defined(
             world_name
         ):
-            params["worldName"] = world_name
+            params['worldName'] = world_name
 
         if is_defined(
             include_command_line_api
         ):
-            params["includeCommandLineAPI"] = include_command_line_api
+            params['includeCommandLineAPI'] = include_command_line_api
 
         if is_defined(
             run_immediately
         ):
-            params["runImmediately"] = run_immediately
+            params['runImmediately'] = run_immediately
 
         return self._send_command(
-            "Page.addScriptToEvaluateOnNewDocument",
+            '"Page.addScriptToEvaluateOnNewDocument"',
             params
         )
 
@@ -98,7 +98,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.bringToFront",
+            '"Page.bringToFront"',
             params
         )
 
@@ -116,35 +116,35 @@ class Page(BaseDomain):
         if is_defined(
             format
         ):
-            params["format"] = format
+            params['format'] = format
 
         if is_defined(
             quality
         ):
-            params["quality"] = quality
+            params['quality'] = quality
 
         if is_defined(
             clip
         ):
-            params["clip"] = clip
+            params['clip'] = clip
 
         if is_defined(
             from_surface
         ):
-            params["fromSurface"] = from_surface
+            params['fromSurface'] = from_surface
 
         if is_defined(
             capture_beyond_viewport
         ):
-            params["captureBeyondViewport"] = capture_beyond_viewport
+            params['captureBeyondViewport'] = capture_beyond_viewport
 
         if is_defined(
             optimize_for_speed
         ):
-            params["optimizeForSpeed"] = optimize_for_speed
+            params['optimizeForSpeed'] = optimize_for_speed
 
         return self._send_command(
-            "Page.captureScreenshot",
+            '"Page.captureScreenshot"',
             params
         )
 
@@ -157,10 +157,10 @@ class Page(BaseDomain):
         if is_defined(
             format
         ):
-            params["format"] = format
+            params['format'] = format
 
         return self._send_command(
-            "Page.captureSnapshot",
+            '"Page.captureSnapshot"',
             params
         )
 
@@ -170,7 +170,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.clearDeviceMetricsOverride",
+            '"Page.clearDeviceMetricsOverride"',
             params
         )
 
@@ -180,7 +180,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.clearDeviceOrientationOverride",
+            '"Page.clearDeviceOrientationOverride"',
             params
         )
 
@@ -190,7 +190,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.clearGeolocationOverride",
+            '"Page.clearGeolocationOverride"',
             params
         )
 
@@ -201,21 +201,21 @@ class Page(BaseDomain):
         grant_univeral_access: bool = UNDEFINED
     ):
         params = {
-            "frameId": frame_id,
+            'frameId': frame_id,
         }
 
         if is_defined(
             world_name
         ):
-            params["worldName"] = world_name
+            params['worldName'] = world_name
 
         if is_defined(
             grant_univeral_access
         ):
-            params["grantUniveralAccess"] = grant_univeral_access
+            params['grantUniveralAccess'] = grant_univeral_access
 
         return self._send_command(
-            "Page.createIsolatedWorld",
+            '"Page.createIsolatedWorld"',
             params
         )
 
@@ -225,12 +225,12 @@ class Page(BaseDomain):
         url: str
     ):
         params = {
-            "cookieName": cookie_name,
-            "url": url,
+            'cookieName': cookie_name,
+            'url': url,
         }
 
         return self._send_command(
-            "Page.deleteCookie",
+            '"Page.deleteCookie"',
             params
         )
 
@@ -240,7 +240,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.disable",
+            '"Page.disable"',
             params
         )
 
@@ -250,7 +250,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.enable",
+            '"Page.enable"',
             params
         )
 
@@ -260,7 +260,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.getAppManifest",
+            '"Page.getAppManifest"',
             params
         )
 
@@ -270,7 +270,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.getInstallabilityErrors",
+            '"Page.getInstallabilityErrors"',
             params
         )
 
@@ -280,7 +280,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.getManifestIcons",
+            '"Page.getManifestIcons"',
             params
         )
 
@@ -290,7 +290,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.getAppId",
+            '"Page.getAppId"',
             params
         )
 
@@ -299,11 +299,11 @@ class Page(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            "frameId": frame_id,
+            'frameId': frame_id,
         }
 
         return self._send_command(
-            "Page.getAdScriptId",
+            '"Page.getAdScriptId"',
             params
         )
 
@@ -313,7 +313,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.getCookies",
+            '"Page.getCookies"',
             params
         )
 
@@ -323,7 +323,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.getFrameTree",
+            '"Page.getFrameTree"',
             params
         )
 
@@ -333,7 +333,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.getLayoutMetrics",
+            '"Page.getLayoutMetrics"',
             params
         )
 
@@ -343,7 +343,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.getNavigationHistory",
+            '"Page.getNavigationHistory"',
             params
         )
 
@@ -353,7 +353,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.resetNavigationHistory",
+            '"Page.resetNavigationHistory"',
             params
         )
 
@@ -363,12 +363,12 @@ class Page(BaseDomain):
         url: str
     ):
         params = {
-            "frameId": frame_id,
-            "url": url,
+            'frameId': frame_id,
+            'url': url,
         }
 
         return self._send_command(
-            "Page.getResourceContent",
+            '"Page.getResourceContent"',
             params
         )
 
@@ -378,7 +378,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.getResourceTree",
+            '"Page.getResourceTree"',
             params
         )
 
@@ -388,16 +388,16 @@ class Page(BaseDomain):
         prompt_text: str = UNDEFINED
     ):
         params = {
-            "accept": accept,
+            'accept': accept,
         }
 
         if is_defined(
             prompt_text
         ):
-            params["promptText"] = prompt_text
+            params['promptText'] = prompt_text
 
         return self._send_command(
-            "Page.handleJavaScriptDialog",
+            '"Page.handleJavaScriptDialog"',
             params
         )
 
@@ -410,31 +410,31 @@ class Page(BaseDomain):
         referrer_policy: ReferrerPolicy = UNDEFINED
     ):
         params = {
-            "url": url,
+            'url': url,
         }
 
         if is_defined(
             referrer
         ):
-            params["referrer"] = referrer
+            params['referrer'] = referrer
 
         if is_defined(
             transition_type
         ):
-            params["transitionType"] = transition_type
+            params['transitionType'] = transition_type
 
         if is_defined(
             frame_id
         ):
-            params["frameId"] = frame_id
+            params['frameId'] = frame_id
 
         if is_defined(
             referrer_policy
         ):
-            params["referrerPolicy"] = referrer_policy
+            params['referrerPolicy'] = referrer_policy
 
         return self._send_command(
-            "Page.navigate",
+            '"Page.navigate"',
             params
         )
 
@@ -443,11 +443,11 @@ class Page(BaseDomain):
         entry_id: int
     ):
         params = {
-            "entryId": entry_id,
+            'entryId': entry_id,
         }
 
         return self._send_command(
-            "Page.navigateToHistoryEntry",
+            '"Page.navigateToHistoryEntry"',
             params
         )
 
@@ -475,85 +475,85 @@ class Page(BaseDomain):
         if is_defined(
             landscape
         ):
-            params["landscape"] = landscape
+            params['landscape'] = landscape
 
         if is_defined(
             display_header_footer
         ):
-            params["displayHeaderFooter"] = display_header_footer
+            params['displayHeaderFooter'] = display_header_footer
 
         if is_defined(
             print_background
         ):
-            params["printBackground"] = print_background
+            params['printBackground'] = print_background
 
         if is_defined(
             scale
         ):
-            params["scale"] = scale
+            params['scale'] = scale
 
         if is_defined(
             paper_width
         ):
-            params["paperWidth"] = paper_width
+            params['paperWidth'] = paper_width
 
         if is_defined(
             paper_height
         ):
-            params["paperHeight"] = paper_height
+            params['paperHeight'] = paper_height
 
         if is_defined(
             margin_top
         ):
-            params["marginTop"] = margin_top
+            params['marginTop'] = margin_top
 
         if is_defined(
             margin_bottom
         ):
-            params["marginBottom"] = margin_bottom
+            params['marginBottom'] = margin_bottom
 
         if is_defined(
             margin_left
         ):
-            params["marginLeft"] = margin_left
+            params['marginLeft'] = margin_left
 
         if is_defined(
             margin_right
         ):
-            params["marginRight"] = margin_right
+            params['marginRight'] = margin_right
 
         if is_defined(
             page_ranges
         ):
-            params["pageRanges"] = page_ranges
+            params['pageRanges'] = page_ranges
 
         if is_defined(
             header_template
         ):
-            params["headerTemplate"] = header_template
+            params['headerTemplate'] = header_template
 
         if is_defined(
             footer_template
         ):
-            params["footerTemplate"] = footer_template
+            params['footerTemplate'] = footer_template
 
         if is_defined(
             prefer_css_page_size
         ):
-            params["preferCSSPageSize"] = prefer_css_page_size
+            params['preferCSSPageSize'] = prefer_css_page_size
 
         if is_defined(
             transfer_mode
         ):
-            params["transferMode"] = transfer_mode
+            params['transferMode'] = transfer_mode
 
         if is_defined(
             generate_tagged_pdf
         ):
-            params["generateTaggedPDF"] = generate_tagged_pdf
+            params['generateTaggedPDF'] = generate_tagged_pdf
 
         return self._send_command(
-            "Page.printToPDF",
+            '"Page.printToPDF"',
             params
         )
 
@@ -567,15 +567,15 @@ class Page(BaseDomain):
         if is_defined(
             ignore_cache
         ):
-            params["ignoreCache"] = ignore_cache
+            params['ignoreCache'] = ignore_cache
 
         if is_defined(
             script_to_evaluate_on_load
         ):
-            params["scriptToEvaluateOnLoad"] = script_to_evaluate_on_load
+            params['scriptToEvaluateOnLoad'] = script_to_evaluate_on_load
 
         return self._send_command(
-            "Page.reload",
+            '"Page.reload"',
             params
         )
 
@@ -584,11 +584,11 @@ class Page(BaseDomain):
         identifier: ScriptIdentifier
     ):
         params = {
-            "identifier": identifier,
+            'identifier': identifier,
         }
 
         return self._send_command(
-            "Page.removeScriptToEvaluateOnLoad",
+            '"Page.removeScriptToEvaluateOnLoad"',
             params
         )
 
@@ -597,11 +597,11 @@ class Page(BaseDomain):
         identifier: ScriptIdentifier
     ):
         params = {
-            "identifier": identifier,
+            'identifier': identifier,
         }
 
         return self._send_command(
-            "Page.removeScriptToEvaluateOnNewDocument",
+            '"Page.removeScriptToEvaluateOnNewDocument"',
             params
         )
 
@@ -610,11 +610,11 @@ class Page(BaseDomain):
         session_id: int
     ):
         params = {
-            "sessionId": session_id,
+            'sessionId': session_id,
         }
 
         return self._send_command(
-            "Page.screencastFrameAck",
+            '"Page.screencastFrameAck"',
             params
         )
 
@@ -627,23 +627,23 @@ class Page(BaseDomain):
         is_regex: bool = UNDEFINED
     ):
         params = {
-            "frameId": frame_id,
-            "url": url,
-            "query": query,
+            'frameId': frame_id,
+            'url': url,
+            'query': query,
         }
 
         if is_defined(
             case_sensitive
         ):
-            params["caseSensitive"] = case_sensitive
+            params['caseSensitive'] = case_sensitive
 
         if is_defined(
             is_regex
         ):
-            params["isRegex"] = is_regex
+            params['isRegex'] = is_regex
 
         return self._send_command(
-            "Page.searchInResource",
+            '"Page.searchInResource"',
             params
         )
 
@@ -652,11 +652,11 @@ class Page(BaseDomain):
         enabled: bool
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "Page.setAdBlockingEnabled",
+            '"Page.setAdBlockingEnabled"',
             params
         )
 
@@ -665,11 +665,11 @@ class Page(BaseDomain):
         enabled: bool
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "Page.setBypassCSP",
+            '"Page.setBypassCSP"',
             params
         )
 
@@ -678,11 +678,11 @@ class Page(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            "frameId": frame_id,
+            'frameId': frame_id,
         }
 
         return self._send_command(
-            "Page.getPermissionsPolicyState",
+            '"Page.getPermissionsPolicyState"',
             params
         )
 
@@ -691,11 +691,11 @@ class Page(BaseDomain):
         frame_id: FrameId
     ):
         params = {
-            "frameId": frame_id,
+            'frameId': frame_id,
         }
 
         return self._send_command(
-            "Page.getOriginTrials",
+            '"Page.getOriginTrials"',
             params
         )
 
@@ -715,54 +715,54 @@ class Page(BaseDomain):
         viewport: Viewport = UNDEFINED
     ):
         params = {
-            "width": width,
-            "height": height,
-            "deviceScaleFactor": device_scale_factor,
-            "mobile": mobile,
+            'width': width,
+            'height': height,
+            'deviceScaleFactor': device_scale_factor,
+            'mobile': mobile,
         }
 
         if is_defined(
             scale
         ):
-            params["scale"] = scale
+            params['scale'] = scale
 
         if is_defined(
             screen_width
         ):
-            params["screenWidth"] = screen_width
+            params['screenWidth'] = screen_width
 
         if is_defined(
             screen_height
         ):
-            params["screenHeight"] = screen_height
+            params['screenHeight'] = screen_height
 
         if is_defined(
             position_x
         ):
-            params["positionX"] = position_x
+            params['positionX'] = position_x
 
         if is_defined(
             position_y
         ):
-            params["positionY"] = position_y
+            params['positionY'] = position_y
 
         if is_defined(
             dont_set_visible_size
         ):
-            params["dontSetVisibleSize"] = dont_set_visible_size
+            params['dontSetVisibleSize'] = dont_set_visible_size
 
         if is_defined(
             screen_orientation
         ):
-            params["screenOrientation"] = screen_orientation
+            params['screenOrientation'] = screen_orientation
 
         if is_defined(
             viewport
         ):
-            params["viewport"] = viewport
+            params['viewport'] = viewport
 
         return self._send_command(
-            "Page.setDeviceMetricsOverride",
+            '"Page.setDeviceMetricsOverride"',
             params
         )
 
@@ -773,13 +773,13 @@ class Page(BaseDomain):
         gamma: float
     ):
         params = {
-            "alpha": alpha,
-            "beta": beta,
-            "gamma": gamma,
+            'alpha': alpha,
+            'beta': beta,
+            'gamma': gamma,
         }
 
         return self._send_command(
-            "Page.setDeviceOrientationOverride",
+            '"Page.setDeviceOrientationOverride"',
             params
         )
 
@@ -789,16 +789,16 @@ class Page(BaseDomain):
         for_scripts: list = UNDEFINED
     ):
         params = {
-            "fontFamilies": font_families,
+            'fontFamilies': font_families,
         }
 
         if is_defined(
             for_scripts
         ):
-            params["forScripts"] = for_scripts
+            params['forScripts'] = for_scripts
 
         return self._send_command(
-            "Page.setFontFamilies",
+            '"Page.setFontFamilies"',
             params
         )
 
@@ -807,11 +807,11 @@ class Page(BaseDomain):
         font_sizes: FontSizes
     ):
         params = {
-            "fontSizes": font_sizes,
+            'fontSizes': font_sizes,
         }
 
         return self._send_command(
-            "Page.setFontSizes",
+            '"Page.setFontSizes"',
             params
         )
 
@@ -821,12 +821,12 @@ class Page(BaseDomain):
         html: str
     ):
         params = {
-            "frameId": frame_id,
-            "html": html,
+            'frameId': frame_id,
+            'html': html,
         }
 
         return self._send_command(
-            "Page.setDocumentContent",
+            '"Page.setDocumentContent"',
             params
         )
 
@@ -836,16 +836,16 @@ class Page(BaseDomain):
         download_path: str = UNDEFINED
     ):
         params = {
-            "behavior": behavior,
+            'behavior': behavior,
         }
 
         if is_defined(
             download_path
         ):
-            params["downloadPath"] = download_path
+            params['downloadPath'] = download_path
 
         return self._send_command(
-            "Page.setDownloadBehavior",
+            '"Page.setDownloadBehavior"',
             params
         )
 
@@ -860,20 +860,20 @@ class Page(BaseDomain):
         if is_defined(
             latitude
         ):
-            params["latitude"] = latitude
+            params['latitude'] = latitude
 
         if is_defined(
             longitude
         ):
-            params["longitude"] = longitude
+            params['longitude'] = longitude
 
         if is_defined(
             accuracy
         ):
-            params["accuracy"] = accuracy
+            params['accuracy'] = accuracy
 
         return self._send_command(
-            "Page.setGeolocationOverride",
+            '"Page.setGeolocationOverride"',
             params
         )
 
@@ -882,11 +882,11 @@ class Page(BaseDomain):
         enabled: bool
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "Page.setLifecycleEventsEnabled",
+            '"Page.setLifecycleEventsEnabled"',
             params
         )
 
@@ -896,16 +896,16 @@ class Page(BaseDomain):
         configuration: str = UNDEFINED
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         if is_defined(
             configuration
         ):
-            params["configuration"] = configuration
+            params['configuration'] = configuration
 
         return self._send_command(
-            "Page.setTouchEmulationEnabled",
+            '"Page.setTouchEmulationEnabled"',
             params
         )
 
@@ -922,30 +922,30 @@ class Page(BaseDomain):
         if is_defined(
             format
         ):
-            params["format"] = format
+            params['format'] = format
 
         if is_defined(
             quality
         ):
-            params["quality"] = quality
+            params['quality'] = quality
 
         if is_defined(
             max_width
         ):
-            params["maxWidth"] = max_width
+            params['maxWidth'] = max_width
 
         if is_defined(
             max_height
         ):
-            params["maxHeight"] = max_height
+            params['maxHeight'] = max_height
 
         if is_defined(
             every_nth_frame
         ):
-            params["everyNthFrame"] = every_nth_frame
+            params['everyNthFrame'] = every_nth_frame
 
         return self._send_command(
-            "Page.startScreencast",
+            '"Page.startScreencast"',
             params
         )
 
@@ -955,7 +955,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.stopLoading",
+            '"Page.stopLoading"',
             params
         )
 
@@ -965,7 +965,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.crash",
+            '"Page.crash"',
             params
         )
 
@@ -975,7 +975,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.close",
+            '"Page.close"',
             params
         )
 
@@ -984,11 +984,11 @@ class Page(BaseDomain):
         state: str
     ):
         params = {
-            "state": state,
+            'state': state,
         }
 
         return self._send_command(
-            "Page.setWebLifecycleState",
+            '"Page.setWebLifecycleState"',
             params
         )
 
@@ -998,7 +998,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.stopScreencast",
+            '"Page.stopScreencast"',
             params
         )
 
@@ -1007,11 +1007,11 @@ class Page(BaseDomain):
         scripts: list
     ):
         params = {
-            "scripts": scripts,
+            'scripts': scripts,
         }
 
         return self._send_command(
-            "Page.produceCompilationCache",
+            '"Page.produceCompilationCache"',
             params
         )
 
@@ -1021,12 +1021,12 @@ class Page(BaseDomain):
         data: str
     ):
         params = {
-            "url": url,
-            "data": data,
+            'url': url,
+            'data': data,
         }
 
         return self._send_command(
-            "Page.addCompilationCache",
+            '"Page.addCompilationCache"',
             params
         )
 
@@ -1036,7 +1036,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.clearCompilationCache",
+            '"Page.clearCompilationCache"',
             params
         )
 
@@ -1045,11 +1045,11 @@ class Page(BaseDomain):
         mode: AutoResponseMode
     ):
         params = {
-            "mode": mode,
+            'mode': mode,
         }
 
         return self._send_command(
-            "Page.setSPCTransactionMode",
+            '"Page.setSPCTransactionMode"',
             params
         )
 
@@ -1058,11 +1058,11 @@ class Page(BaseDomain):
         mode: AutoResponseMode
     ):
         params = {
-            "mode": mode,
+            'mode': mode,
         }
 
         return self._send_command(
-            "Page.setRPHRegistrationMode",
+            '"Page.setRPHRegistrationMode"',
             params
         )
 
@@ -1072,16 +1072,16 @@ class Page(BaseDomain):
         group: str = UNDEFINED
     ):
         params = {
-            "message": message,
+            'message': message,
         }
 
         if is_defined(
             group
         ):
-            params["group"] = group
+            params['group'] = group
 
         return self._send_command(
-            "Page.generateTestReport",
+            '"Page.generateTestReport"',
             params
         )
 
@@ -1091,7 +1091,7 @@ class Page(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Page.waitForDebugger",
+            '"Page.waitForDebugger"',
             params
         )
 
@@ -1100,11 +1100,11 @@ class Page(BaseDomain):
         enabled: bool
     ):
         params = {
-            "enabled": enabled,
+            'enabled': enabled,
         }
 
         return self._send_command(
-            "Page.setInterceptFileChooserDialog",
+            '"Page.setInterceptFileChooserDialog"',
             params
         )
 
@@ -1113,11 +1113,11 @@ class Page(BaseDomain):
         is_allowed: bool
     ):
         params = {
-            "isAllowed": is_allowed,
+            'isAllowed': is_allowed,
         }
 
         return self._send_command(
-            "Page.setPrerenderingAllowed",
+            '"Page.setPrerenderingAllowed"',
             params
         )
 

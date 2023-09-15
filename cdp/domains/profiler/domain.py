@@ -26,7 +26,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.disable",
+            '"Profiler.disable"',
             params
         )
 
@@ -36,7 +36,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.enable",
+            '"Profiler.enable"',
             params
         )
 
@@ -46,7 +46,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.getBestEffortCoverage",
+            '"Profiler.getBestEffortCoverage"',
             params
         )
 
@@ -55,11 +55,11 @@ class Profiler(BaseDomain):
         interval: int
     ):
         params = {
-            "interval": interval,
+            'interval': interval,
         }
 
         return self._send_command(
-            "Profiler.setSamplingInterval",
+            '"Profiler.setSamplingInterval"',
             params
         )
 
@@ -69,7 +69,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.start",
+            '"Profiler.start"',
             params
         )
 
@@ -83,15 +83,15 @@ class Profiler(BaseDomain):
         if is_defined(
             call_count
         ):
-            params["callCount"] = call_count
+            params['callCount'] = call_count
 
         if is_defined(
             detailed
         ):
-            params["detailed"] = detailed
+            params['detailed'] = detailed
 
         return self._send_command(
-            "Profiler.startPreciseCoverage",
+            '"Profiler.startPreciseCoverage"',
             params
         )
 
@@ -101,7 +101,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.startTypeProfile",
+            '"Profiler.startTypeProfile"',
             params
         )
 
@@ -111,7 +111,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.stop",
+            '"Profiler.stop"',
             params
         )
 
@@ -121,7 +121,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.stopPreciseCoverage",
+            '"Profiler.stopPreciseCoverage"',
             params
         )
 
@@ -131,7 +131,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.stopTypeProfile",
+            '"Profiler.stopTypeProfile"',
             params
         )
 
@@ -141,7 +141,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.takePreciseCoverage",
+            '"Profiler.takePreciseCoverage"',
             params
         )
 
@@ -151,7 +151,7 @@ class Profiler(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Profiler.takeTypeProfile",
+            '"Profiler.takeTypeProfile"',
             params
         )
 

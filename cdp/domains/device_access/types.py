@@ -6,6 +6,12 @@
 from dataclasses import (
     dataclass
 )
+from typing import (
+    TYPE_CHECKING
+)
+from typing import (
+    Any
+)
 
 RequestId = str
 
@@ -14,5 +20,5 @@ DeviceId = str
 
 @dataclass
 class PromptDevice:
-    id: "DeviceId"
+    id: 'DeviceId'
     name: str

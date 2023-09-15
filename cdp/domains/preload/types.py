@@ -7,163 +7,170 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.network.types import (
-    LoaderId,
-    RequestId
+from typing import (
+    Any
 )
-from cdp.domains.dom.types import (
-    BackendNodeId
-)
+if TYPE_CHECKING:
+    from cdp.domains.network.types import (
+        LoaderId,
+        RequestId
+    )
+    from cdp.domains.dom.types import (
+        BackendNodeId
+    )
 
 RuleSetId = str
 
 RuleSetErrorType = Literal[
-    "SourceIsNotJsonObject",
-    "InvalidRulesSkipped"
+    'SourceIsNotJsonObject',
+    'InvalidRulesSkipped'
 ]
 
 SpeculationAction = Literal[
-    "Prefetch",
-    "Prerender"
+    'Prefetch',
+    'Prerender'
 ]
 
 SpeculationTargetHint = Literal[
-    "Blank",
-    "Self"
+    'Blank',
+    'Self'
 ]
 
 PrerenderFinalStatus = Literal[
-    "Activated",
-    "Destroyed",
-    "LowEndDevice",
-    "InvalidSchemeRedirect",
-    "InvalidSchemeNavigation",
-    "InProgressNavigation",
-    "NavigationRequestBlockedByCsp",
-    "MainFrameNavigation",
-    "MojoBinderPolicy",
-    "RendererProcessCrashed",
-    "RendererProcessKilled",
-    "Download",
-    "TriggerDestroyed",
-    "NavigationNotCommitted",
-    "NavigationBadHttpStatus",
-    "ClientCertRequested",
-    "NavigationRequestNetworkError",
-    "MaxNumOfRunningPrerendersExceeded",
-    "CancelAllHostsForTesting",
-    "DidFailLoad",
-    "Stop",
-    "SslCertificateError",
-    "LoginAuthRequested",
-    "UaChangeRequiresReload",
-    "BlockedByClient",
-    "AudioOutputDeviceRequested",
-    "MixedContent",
-    "TriggerBackgrounded",
-    "MemoryLimitExceeded",
-    "DataSaverEnabled",
-    "HasEffectiveUrl",
-    "ActivatedBeforeStarted",
-    "InactivePageRestriction",
-    "StartFailed",
-    "TimeoutBackgrounded",
-    "CrossSiteRedirectInInitialNavigation",
-    "CrossSiteNavigationInInitialNavigation",
-    "SameSiteCrossOriginRedirectNotOptInInInitialNavigation",
-    "SameSiteCrossOriginNavigationNotOptInInInitialNavigation",
-    "ActivationNavigationParameterMismatch",
-    "ActivatedInBackground",
-    "EmbedderHostDisallowed",
-    "ActivationNavigationDestroyedBeforeSuccess",
-    "TabClosedByUserGesture",
-    "TabClosedWithoutUserGesture",
-    "PrimaryMainFrameRendererProcessCrashed",
-    "PrimaryMainFrameRendererProcessKilled",
-    "ActivationFramePolicyNotCompatible",
-    "PreloadingDisabled",
-    "BatterySaverEnabled",
-    "ActivatedDuringMainFrameNavigation",
-    "PreloadingUnsupportedByWebContents",
-    "CrossSiteRedirectInMainFrameNavigation",
-    "CrossSiteNavigationInMainFrameNavigation",
-    "SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation",
-    "SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation",
-    "MemoryPressureOnTrigger",
-    "MemoryPressureAfterTriggered",
-    "PrerenderingDisabledByDevTools",
-    "ResourceLoadBlockedByClient",
-    "SpeculationRuleRemoved",
-    "ActivatedWithAuxiliaryBrowsingContexts"
+    'Activated',
+    'Destroyed',
+    'LowEndDevice',
+    'InvalidSchemeRedirect',
+    'InvalidSchemeNavigation',
+    'InProgressNavigation',
+    'NavigationRequestBlockedByCsp',
+    'MainFrameNavigation',
+    'MojoBinderPolicy',
+    'RendererProcessCrashed',
+    'RendererProcessKilled',
+    'Download',
+    'TriggerDestroyed',
+    'NavigationNotCommitted',
+    'NavigationBadHttpStatus',
+    'ClientCertRequested',
+    'NavigationRequestNetworkError',
+    'MaxNumOfRunningPrerendersExceeded',
+    'CancelAllHostsForTesting',
+    'DidFailLoad',
+    'Stop',
+    'SslCertificateError',
+    'LoginAuthRequested',
+    'UaChangeRequiresReload',
+    'BlockedByClient',
+    'AudioOutputDeviceRequested',
+    'MixedContent',
+    'TriggerBackgrounded',
+    'MemoryLimitExceeded',
+    'DataSaverEnabled',
+    'HasEffectiveUrl',
+    'ActivatedBeforeStarted',
+    'InactivePageRestriction',
+    'StartFailed',
+    'TimeoutBackgrounded',
+    'CrossSiteRedirectInInitialNavigation',
+    'CrossSiteNavigationInInitialNavigation',
+    'SameSiteCrossOriginRedirectNotOptInInInitialNavigation',
+    'SameSiteCrossOriginNavigationNotOptInInInitialNavigation',
+    'ActivationNavigationParameterMismatch',
+    'ActivatedInBackground',
+    'EmbedderHostDisallowed',
+    'ActivationNavigationDestroyedBeforeSuccess',
+    'TabClosedByUserGesture',
+    'TabClosedWithoutUserGesture',
+    'PrimaryMainFrameRendererProcessCrashed',
+    'PrimaryMainFrameRendererProcessKilled',
+    'ActivationFramePolicyNotCompatible',
+    'PreloadingDisabled',
+    'BatterySaverEnabled',
+    'ActivatedDuringMainFrameNavigation',
+    'PreloadingUnsupportedByWebContents',
+    'CrossSiteRedirectInMainFrameNavigation',
+    'CrossSiteNavigationInMainFrameNavigation',
+    'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation',
+    'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation',
+    'MemoryPressureOnTrigger',
+    'MemoryPressureAfterTriggered',
+    'PrerenderingDisabledByDevTools',
+    'ResourceLoadBlockedByClient',
+    'SpeculationRuleRemoved',
+    'ActivatedWithAuxiliaryBrowsingContexts'
 ]
 
 PreloadingStatus = Literal[
-    "Pending",
-    "Running",
-    "Ready",
-    "Success",
-    "Failure",
-    "NotSupported"
+    'Pending',
+    'Running',
+    'Ready',
+    'Success',
+    'Failure',
+    'NotSupported'
 ]
 
 PrefetchStatus = Literal[
-    "PrefetchAllowed",
-    "PrefetchFailedIneligibleRedirect",
-    "PrefetchFailedInvalidRedirect",
-    "PrefetchFailedMIMENotSupported",
-    "PrefetchFailedNetError",
-    "PrefetchFailedNon2XX",
-    "PrefetchFailedPerPageLimitExceeded",
-    "PrefetchEvicted",
-    "PrefetchHeldback",
-    "PrefetchIneligibleRetryAfter",
-    "PrefetchIsPrivacyDecoy",
-    "PrefetchIsStale",
-    "PrefetchNotEligibleBrowserContextOffTheRecord",
-    "PrefetchNotEligibleDataSaverEnabled",
-    "PrefetchNotEligibleExistingProxy",
-    "PrefetchNotEligibleHostIsNonUnique",
-    "PrefetchNotEligibleNonDefaultStoragePartition",
-    "PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy",
-    "PrefetchNotEligibleSchemeIsNotHttps",
-    "PrefetchNotEligibleUserHasCookies",
-    "PrefetchNotEligibleUserHasServiceWorker",
-    "PrefetchNotEligibleBatterySaverEnabled",
-    "PrefetchNotEligiblePreloadingDisabled",
-    "PrefetchNotFinishedInTime",
-    "PrefetchNotStarted",
-    "PrefetchNotUsedCookiesChanged",
-    "PrefetchProxyNotAvailable",
-    "PrefetchResponseUsed",
-    "PrefetchSuccessfulButNotUsed",
-    "PrefetchNotUsedProbeFailed"
+    'PrefetchAllowed',
+    'PrefetchFailedIneligibleRedirect',
+    'PrefetchFailedInvalidRedirect',
+    'PrefetchFailedMIMENotSupported',
+    'PrefetchFailedNetError',
+    'PrefetchFailedNon2XX',
+    'PrefetchFailedPerPageLimitExceeded',
+    'PrefetchEvicted',
+    'PrefetchHeldback',
+    'PrefetchIneligibleRetryAfter',
+    'PrefetchIsPrivacyDecoy',
+    'PrefetchIsStale',
+    'PrefetchNotEligibleBrowserContextOffTheRecord',
+    'PrefetchNotEligibleDataSaverEnabled',
+    'PrefetchNotEligibleExistingProxy',
+    'PrefetchNotEligibleHostIsNonUnique',
+    'PrefetchNotEligibleNonDefaultStoragePartition',
+    'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy',
+    'PrefetchNotEligibleSchemeIsNotHttps',
+    'PrefetchNotEligibleUserHasCookies',
+    'PrefetchNotEligibleUserHasServiceWorker',
+    'PrefetchNotEligibleBatterySaverEnabled',
+    'PrefetchNotEligiblePreloadingDisabled',
+    'PrefetchNotFinishedInTime',
+    'PrefetchNotStarted',
+    'PrefetchNotUsedCookiesChanged',
+    'PrefetchProxyNotAvailable',
+    'PrefetchResponseUsed',
+    'PrefetchSuccessfulButNotUsed',
+    'PrefetchNotUsedProbeFailed'
 ]
 
 
 @dataclass
 class RuleSet:
-    id: "RuleSetId"
-    loader_id: "LoaderId"
+    id: 'RuleSetId'
+    loader_id: 'LoaderId'
     source_text: str
-    backend_node_id: "BackendNodeId"
+    backend_node_id: 'BackendNodeId'
     url: str
-    request_id: "RequestId"
-    error_type: "RuleSetErrorType"
+    request_id: 'RequestId'
+    error_type: 'RuleSetErrorType'
     error_message: str
 
 
 @dataclass
 class PreloadingAttemptKey:
-    loader_id: "LoaderId"
-    action: "SpeculationAction"
+    loader_id: 'LoaderId'
+    action: 'SpeculationAction'
     url: str
-    target_hint: "SpeculationTargetHint"
+    target_hint: 'SpeculationTargetHint'
 
 
 @dataclass
 class PreloadingAttemptSource:
-    key: "PreloadingAttemptKey"
+    key: 'PreloadingAttemptKey'
     rule_set_ids: list
     node_ids: list

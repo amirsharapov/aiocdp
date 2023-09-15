@@ -6,16 +6,23 @@
 from dataclasses import (
     dataclass
 )
-from cdp.domains.runtime.types import (
-    CallFrame,
-    ScriptId
+from typing import (
+    TYPE_CHECKING
 )
+from typing import (
+    Any
+)
+if TYPE_CHECKING:
+    from cdp.domains.runtime.types import (
+        CallFrame,
+        ScriptId
+    )
 
 
 @dataclass
 class ProfileNode:
     id: int
-    call_frame: "CallFrame"
+    call_frame: 'CallFrame'
     hit_count: int
     children: list
     deopt_reason: str
@@ -53,7 +60,7 @@ class FunctionCoverage:
 
 @dataclass
 class ScriptCoverage:
-    script_id: "ScriptId"
+    script_id: 'ScriptId'
     url: str
     functions: list
 
@@ -71,7 +78,7 @@ class TypeProfileEntry:
 
 @dataclass
 class ScriptTypeProfile:
-    script_id: "ScriptId"
+    script_id: 'ScriptId'
     url: str
     entries: list
 
@@ -83,7 +90,7 @@ class GetBestEffortCoverageReturnT:
 
 @dataclass
 class StopReturnT:
-    profile: "Profile"
+    profile: 'Profile'
 
 
 @dataclass

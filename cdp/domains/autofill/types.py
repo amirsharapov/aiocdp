@@ -7,18 +7,25 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.dom.types import (
-    BackendNodeId
+from typing import (
+    Any
 )
-from cdp.domains.page.types import (
-    FrameId
-)
+if TYPE_CHECKING:
+    from cdp.domains.dom.types import (
+        BackendNodeId
+    )
+    from cdp.domains.page.types import (
+        FrameId
+    )
 
 FillingStrategy = Literal[
-    "autocompleteAttribute",
-    "autofillInferred"
+    'autocompleteAttribute',
+    'autofillInferred'
 ]
 
 
@@ -59,4 +66,4 @@ class FilledField:
     name: str
     value: str
     autofill_type: str
-    filling_strategy: "FillingStrategy"
+    filling_strategy: 'FillingStrategy'

@@ -23,7 +23,7 @@ class Log(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Log.clear",
+            '"Log.clear"',
             params
         )
 
@@ -33,7 +33,7 @@ class Log(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Log.disable",
+            '"Log.disable"',
             params
         )
 
@@ -43,7 +43,7 @@ class Log(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Log.enable",
+            '"Log.enable"',
             params
         )
 
@@ -52,11 +52,11 @@ class Log(BaseDomain):
         config: list
     ):
         params = {
-            "config": config,
+            'config': config,
         }
 
         return self._send_command(
-            "Log.startViolationsReport",
+            '"Log.startViolationsReport"',
             params
         )
 
@@ -66,7 +66,7 @@ class Log(BaseDomain):
         params = {}
 
         return self._send_command(
-            "Log.stopViolationsReport",
+            '"Log.stopViolationsReport"',
             params
         )
 

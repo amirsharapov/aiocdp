@@ -7,19 +7,25 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
+)
+from typing import (
+    Any
 )
 
 SubsamplingFormat = Literal[
-    "yuv420",
-    "yuv422",
-    "yuv444"
+    'yuv420',
+    'yuv422',
+    'yuv444'
 ]
 
 ImageType = Literal[
-    "jpeg",
-    "webp",
-    "unknown"
+    'jpeg',
+    'webp',
+    'unknown'
 ]
 
 
@@ -44,23 +50,23 @@ class Size:
 @dataclass
 class VideoDecodeAcceleratorCapability:
     profile: str
-    max_resolution: "Size"
-    min_resolution: "Size"
+    max_resolution: 'Size'
+    min_resolution: 'Size'
 
 
 @dataclass
 class VideoEncodeAcceleratorCapability:
     profile: str
-    max_resolution: "Size"
+    max_resolution: 'Size'
     max_framerate_numerator: int
     max_framerate_denominator: int
 
 
 @dataclass
 class ImageDecodeAcceleratorCapability:
-    image_type: "ImageType"
-    max_dimensions: "Size"
-    min_dimensions: "Size"
+    image_type: 'ImageType'
+    max_dimensions: 'Size'
+    min_dimensions: 'Size'
     subsamplings: list
 
 
@@ -84,7 +90,7 @@ class ProcessInfo:
 
 @dataclass
 class GetInfoReturnT:
-    gpu: "GPUInfo"
+    gpu: 'GPUInfo'
     model_name: str
     model_version: str
     command_line: str

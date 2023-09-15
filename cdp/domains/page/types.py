@@ -7,405 +7,412 @@ from dataclasses import (
     dataclass
 )
 from typing import (
+    TYPE_CHECKING
+)
+from typing import (
     Literal
 )
-from cdp.domains.runtime.types import (
-    ExecutionContextId,
-    ScriptId,
-    UniqueDebuggerId
+from typing import (
+    Any
 )
-from cdp.domains.network.types import (
-    LoaderId,
-    ResourceType,
-    TimeSinceEpoch
-)
-from cdp.domains.dom.types import (
-    Rect
-)
-from cdp.domains.io.types import (
-    StreamHandle
-)
-from cdp.domains.emulation.types import (
-    ScreenOrientation
-)
+if TYPE_CHECKING:
+    from cdp.domains.runtime.types import (
+        ExecutionContextId,
+        ScriptId,
+        UniqueDebuggerId
+    )
+    from cdp.domains.network.types import (
+        LoaderId,
+        ResourceType,
+        TimeSinceEpoch
+    )
+    from cdp.domains.dom.types import (
+        Rect
+    )
+    from cdp.domains.io.types import (
+        StreamHandle
+    )
+    from cdp.domains.emulation.types import (
+        ScreenOrientation
+    )
 
 FrameId = str
 
 ScriptIdentifier = str
 
 AdFrameType = Literal[
-    "none",
-    "child",
-    "root"
+    'none',
+    'child',
+    'root'
 ]
 
 AdFrameExplanation = Literal[
-    "ParentIsAd",
-    "CreatedByAdScript",
-    "MatchedBlockingRule"
+    'ParentIsAd',
+    'CreatedByAdScript',
+    'MatchedBlockingRule'
 ]
 
 SecureContextType = Literal[
-    "Secure",
-    "SecureLocalhost",
-    "InsecureScheme",
-    "InsecureAncestor"
+    'Secure',
+    'SecureLocalhost',
+    'InsecureScheme',
+    'InsecureAncestor'
 ]
 
 CrossOriginIsolatedContextType = Literal[
-    "Isolated",
-    "NotIsolated",
-    "NotIsolatedFeatureDisabled"
+    'Isolated',
+    'NotIsolated',
+    'NotIsolatedFeatureDisabled'
 ]
 
 GatedAPIFeatures = Literal[
-    "SharedArrayBuffers",
-    "SharedArrayBuffersTransferAllowed",
-    "PerformanceMeasureMemory",
-    "PerformanceProfile"
+    'SharedArrayBuffers',
+    'SharedArrayBuffersTransferAllowed',
+    'PerformanceMeasureMemory',
+    'PerformanceProfile'
 ]
 
 PermissionsPolicyFeature = Literal[
-    "accelerometer",
-    "ambient-light-sensor",
-    "attribution-reporting",
-    "autoplay",
-    "bluetooth",
-    "browsing-topics",
-    "camera",
-    "ch-dpr",
-    "ch-device-memory",
-    "ch-downlink",
-    "ch-ect",
-    "ch-prefers-color-scheme",
-    "ch-prefers-reduced-motion",
-    "ch-prefers-reduced-transparency",
-    "ch-rtt",
-    "ch-save-data",
-    "ch-ua",
-    "ch-ua-arch",
-    "ch-ua-bitness",
-    "ch-ua-platform",
-    "ch-ua-model",
-    "ch-ua-mobile",
-    "ch-ua-form-factor",
-    "ch-ua-full-version",
-    "ch-ua-full-version-list",
-    "ch-ua-platform-version",
-    "ch-ua-wow64",
-    "ch-viewport-height",
-    "ch-viewport-width",
-    "ch-width",
-    "clipboard-read",
-    "clipboard-write",
-    "compute-pressure",
-    "cross-origin-isolated",
-    "direct-sockets",
-    "display-capture",
-    "document-domain",
-    "encrypted-media",
-    "execution-while-out-of-viewport",
-    "execution-while-not-rendered",
-    "focus-without-user-activation",
-    "fullscreen",
-    "frobulate",
-    "gamepad",
-    "geolocation",
-    "gyroscope",
-    "hid",
-    "identity-credentials-get",
-    "idle-detection",
-    "interest-cohort",
-    "join-ad-interest-group",
-    "keyboard-map",
-    "local-fonts",
-    "magnetometer",
-    "microphone",
-    "midi",
-    "otp-credentials",
-    "payment",
-    "picture-in-picture",
-    "private-aggregation",
-    "private-state-token-issuance",
-    "private-state-token-redemption",
-    "publickey-credentials-get",
-    "run-ad-auction",
-    "screen-wake-lock",
-    "serial",
-    "shared-autofill",
-    "shared-storage",
-    "shared-storage-select-url",
-    "smart-card",
-    "storage-access",
-    "sync-xhr",
-    "unload",
-    "usb",
-    "vertical-scroll",
-    "web-share",
-    "window-management",
-    "window-placement",
-    "xr-spatial-tracking"
+    'accelerometer',
+    'ambient-light-sensor',
+    'attribution-reporting',
+    'autoplay',
+    'bluetooth',
+    'browsing-topics',
+    'camera',
+    'ch-dpr',
+    'ch-device-memory',
+    'ch-downlink',
+    'ch-ect',
+    'ch-prefers-color-scheme',
+    'ch-prefers-reduced-motion',
+    'ch-prefers-reduced-transparency',
+    'ch-rtt',
+    'ch-save-data',
+    'ch-ua',
+    'ch-ua-arch',
+    'ch-ua-bitness',
+    'ch-ua-platform',
+    'ch-ua-model',
+    'ch-ua-mobile',
+    'ch-ua-form-factor',
+    'ch-ua-full-version',
+    'ch-ua-full-version-list',
+    'ch-ua-platform-version',
+    'ch-ua-wow64',
+    'ch-viewport-height',
+    'ch-viewport-width',
+    'ch-width',
+    'clipboard-read',
+    'clipboard-write',
+    'compute-pressure',
+    'cross-origin-isolated',
+    'direct-sockets',
+    'display-capture',
+    'document-domain',
+    'encrypted-media',
+    'execution-while-out-of-viewport',
+    'execution-while-not-rendered',
+    'focus-without-user-activation',
+    'fullscreen',
+    'frobulate',
+    'gamepad',
+    'geolocation',
+    'gyroscope',
+    'hid',
+    'identity-credentials-get',
+    'idle-detection',
+    'interest-cohort',
+    'join-ad-interest-group',
+    'keyboard-map',
+    'local-fonts',
+    'magnetometer',
+    'microphone',
+    'midi',
+    'otp-credentials',
+    'payment',
+    'picture-in-picture',
+    'private-aggregation',
+    'private-state-token-issuance',
+    'private-state-token-redemption',
+    'publickey-credentials-get',
+    'run-ad-auction',
+    'screen-wake-lock',
+    'serial',
+    'shared-autofill',
+    'shared-storage',
+    'shared-storage-select-url',
+    'smart-card',
+    'storage-access',
+    'sync-xhr',
+    'unload',
+    'usb',
+    'vertical-scroll',
+    'web-share',
+    'window-management',
+    'window-placement',
+    'xr-spatial-tracking'
 ]
 
 PermissionsPolicyBlockReason = Literal[
-    "Header",
-    "IframeAttribute",
-    "InFencedFrameTree",
-    "InIsolatedApp"
+    'Header',
+    'IframeAttribute',
+    'InFencedFrameTree',
+    'InIsolatedApp'
 ]
 
 OriginTrialTokenStatus = Literal[
-    "Success",
-    "NotSupported",
-    "Insecure",
-    "Expired",
-    "WrongOrigin",
-    "InvalidSignature",
-    "Malformed",
-    "WrongVersion",
-    "FeatureDisabled",
-    "TokenDisabled",
-    "FeatureDisabledForUser",
-    "UnknownTrial"
+    'Success',
+    'NotSupported',
+    'Insecure',
+    'Expired',
+    'WrongOrigin',
+    'InvalidSignature',
+    'Malformed',
+    'WrongVersion',
+    'FeatureDisabled',
+    'TokenDisabled',
+    'FeatureDisabledForUser',
+    'UnknownTrial'
 ]
 
 OriginTrialStatus = Literal[
-    "Enabled",
-    "ValidTokenNotProvided",
-    "OSNotSupported",
-    "TrialNotAllowed"
+    'Enabled',
+    'ValidTokenNotProvided',
+    'OSNotSupported',
+    'TrialNotAllowed'
 ]
 
 OriginTrialUsageRestriction = Literal[
-    "None",
-    "Subset"
+    'None',
+    'Subset'
 ]
 
 TransitionType = Literal[
-    "link",
-    "typed",
-    "address_bar",
-    "auto_bookmark",
-    "auto_subframe",
-    "manual_subframe",
-    "generated",
-    "auto_toplevel",
-    "form_submit",
-    "reload",
-    "keyword",
-    "keyword_generated",
-    "other"
+    'link',
+    'typed',
+    'address_bar',
+    'auto_bookmark',
+    'auto_subframe',
+    'manual_subframe',
+    'generated',
+    'auto_toplevel',
+    'form_submit',
+    'reload',
+    'keyword',
+    'keyword_generated',
+    'other'
 ]
 
 DialogType = Literal[
-    "alert",
-    "confirm",
-    "prompt",
-    "beforeunload"
+    'alert',
+    'confirm',
+    'prompt',
+    'beforeunload'
 ]
 
 ClientNavigationReason = Literal[
-    "formSubmissionGet",
-    "formSubmissionPost",
-    "httpHeaderRefresh",
-    "scriptInitiated",
-    "metaTagRefresh",
-    "pageBlockInterstitial",
-    "reload",
-    "anchorClick"
+    'formSubmissionGet',
+    'formSubmissionPost',
+    'httpHeaderRefresh',
+    'scriptInitiated',
+    'metaTagRefresh',
+    'pageBlockInterstitial',
+    'reload',
+    'anchorClick'
 ]
 
 ClientNavigationDisposition = Literal[
-    "currentTab",
-    "newTab",
-    "newWindow",
-    "download"
+    'currentTab',
+    'newTab',
+    'newWindow',
+    'download'
 ]
 
 ReferrerPolicy = Literal[
-    "noReferrer",
-    "noReferrerWhenDowngrade",
-    "origin",
-    "originWhenCrossOrigin",
-    "sameOrigin",
-    "strictOrigin",
-    "strictOriginWhenCrossOrigin",
-    "unsafeUrl"
+    'noReferrer',
+    'noReferrerWhenDowngrade',
+    'origin',
+    'originWhenCrossOrigin',
+    'sameOrigin',
+    'strictOrigin',
+    'strictOriginWhenCrossOrigin',
+    'unsafeUrl'
 ]
 
 AutoResponseMode = Literal[
-    "none",
-    "autoAccept",
-    "autoReject",
-    "autoOptOut"
+    'none',
+    'autoAccept',
+    'autoReject',
+    'autoOptOut'
 ]
 
 NavigationType = Literal[
-    "Navigation",
-    "BackForwardCacheRestore"
+    'Navigation',
+    'BackForwardCacheRestore'
 ]
 
 BackForwardCacheNotRestoredReason = Literal[
-    "NotPrimaryMainFrame",
-    "BackForwardCacheDisabled",
-    "RelatedActiveContentsExist",
-    "HTTPStatusNotOK",
-    "SchemeNotHTTPOrHTTPS",
-    "Loading",
-    "WasGrantedMediaAccess",
-    "DisableForRenderFrameHostCalled",
-    "DomainNotAllowed",
-    "HTTPMethodNotGET",
-    "SubframeIsNavigating",
-    "Timeout",
-    "CacheLimit",
-    "JavaScriptExecution",
-    "RendererProcessKilled",
-    "RendererProcessCrashed",
-    "SchedulerTrackedFeatureUsed",
-    "ConflictingBrowsingInstance",
-    "CacheFlushed",
-    "ServiceWorkerVersionActivation",
-    "SessionRestored",
-    "ServiceWorkerPostMessage",
-    "EnteredBackForwardCacheBeforeServiceWorkerHostAdded",
-    "RenderFrameHostReused_SameSite",
-    "RenderFrameHostReused_CrossSite",
-    "ServiceWorkerClaim",
-    "IgnoreEventAndEvict",
-    "HaveInnerContents",
-    "TimeoutPuttingInCache",
-    "BackForwardCacheDisabledByLowMemory",
-    "BackForwardCacheDisabledByCommandLine",
-    "NetworkRequestDatapipeDrainedAsBytesConsumer",
-    "NetworkRequestRedirected",
-    "NetworkRequestTimeout",
-    "NetworkExceedsBufferLimit",
-    "NavigationCancelledWhileRestoring",
-    "NotMostRecentNavigationEntry",
-    "BackForwardCacheDisabledForPrerender",
-    "UserAgentOverrideDiffers",
-    "ForegroundCacheLimit",
-    "BrowsingInstanceNotSwapped",
-    "BackForwardCacheDisabledForDelegate",
-    "UnloadHandlerExistsInMainFrame",
-    "UnloadHandlerExistsInSubFrame",
-    "ServiceWorkerUnregistration",
-    "CacheControlNoStore",
-    "CacheControlNoStoreCookieModified",
-    "CacheControlNoStoreHTTPOnlyCookieModified",
-    "NoResponseHead",
-    "Unknown",
-    "ActivationNavigationsDisallowedForBug1234857",
-    "ErrorDocument",
-    "FencedFramesEmbedder",
-    "CookieDisabled",
-    "HTTPAuthRequired",
-    "CookieFlushed",
-    "WebSocket",
-    "WebTransport",
-    "WebRTC",
-    "MainResourceHasCacheControlNoStore",
-    "MainResourceHasCacheControlNoCache",
-    "SubresourceHasCacheControlNoStore",
-    "SubresourceHasCacheControlNoCache",
-    "ContainsPlugins",
-    "DocumentLoaded",
-    "DedicatedWorkerOrWorklet",
-    "OutstandingNetworkRequestOthers",
-    "RequestedMIDIPermission",
-    "RequestedAudioCapturePermission",
-    "RequestedVideoCapturePermission",
-    "RequestedBackForwardCacheBlockedSensors",
-    "RequestedBackgroundWorkPermission",
-    "BroadcastChannel",
-    "WebXR",
-    "SharedWorker",
-    "WebLocks",
-    "WebHID",
-    "WebShare",
-    "RequestedStorageAccessGrant",
-    "WebNfc",
-    "OutstandingNetworkRequestFetch",
-    "OutstandingNetworkRequestXHR",
-    "AppBanner",
-    "Printing",
-    "WebDatabase",
-    "PictureInPicture",
-    "Portal",
-    "SpeechRecognizer",
-    "IdleManager",
-    "PaymentManager",
-    "SpeechSynthesis",
-    "KeyboardLock",
-    "WebOTPService",
-    "OutstandingNetworkRequestDirectSocket",
-    "InjectedJavascript",
-    "InjectedStyleSheet",
-    "KeepaliveRequest",
-    "IndexedDBEvent",
-    "Dummy",
-    "JsNetworkRequestReceivedCacheControlNoStoreResource",
-    "WebRTCSticky",
-    "WebTransportSticky",
-    "WebSocketSticky",
-    "ContentSecurityHandler",
-    "ContentWebAuthenticationAPI",
-    "ContentFileChooser",
-    "ContentSerial",
-    "ContentFileSystemAccess",
-    "ContentMediaDevicesDispatcherHost",
-    "ContentWebBluetooth",
-    "ContentWebUSB",
-    "ContentMediaSessionService",
-    "ContentScreenReader",
-    "EmbedderPopupBlockerTabHelper",
-    "EmbedderSafeBrowsingTriggeredPopupBlocker",
-    "EmbedderSafeBrowsingThreatDetails",
-    "EmbedderAppBannerManager",
-    "EmbedderDomDistillerViewerSource",
-    "EmbedderDomDistillerSelfDeletingRequestDelegate",
-    "EmbedderOomInterventionTabHelper",
-    "EmbedderOfflinePage",
-    "EmbedderChromePasswordManagerClientBindCredentialManager",
-    "EmbedderPermissionRequestManager",
-    "EmbedderModalDialog",
-    "EmbedderExtensions",
-    "EmbedderExtensionMessaging",
-    "EmbedderExtensionMessagingForOpenPort",
-    "EmbedderExtensionSentMessageToCachedFrame"
+    'NotPrimaryMainFrame',
+    'BackForwardCacheDisabled',
+    'RelatedActiveContentsExist',
+    'HTTPStatusNotOK',
+    'SchemeNotHTTPOrHTTPS',
+    'Loading',
+    'WasGrantedMediaAccess',
+    'DisableForRenderFrameHostCalled',
+    'DomainNotAllowed',
+    'HTTPMethodNotGET',
+    'SubframeIsNavigating',
+    'Timeout',
+    'CacheLimit',
+    'JavaScriptExecution',
+    'RendererProcessKilled',
+    'RendererProcessCrashed',
+    'SchedulerTrackedFeatureUsed',
+    'ConflictingBrowsingInstance',
+    'CacheFlushed',
+    'ServiceWorkerVersionActivation',
+    'SessionRestored',
+    'ServiceWorkerPostMessage',
+    'EnteredBackForwardCacheBeforeServiceWorkerHostAdded',
+    'RenderFrameHostReused_SameSite',
+    'RenderFrameHostReused_CrossSite',
+    'ServiceWorkerClaim',
+    'IgnoreEventAndEvict',
+    'HaveInnerContents',
+    'TimeoutPuttingInCache',
+    'BackForwardCacheDisabledByLowMemory',
+    'BackForwardCacheDisabledByCommandLine',
+    'NetworkRequestDatapipeDrainedAsBytesConsumer',
+    'NetworkRequestRedirected',
+    'NetworkRequestTimeout',
+    'NetworkExceedsBufferLimit',
+    'NavigationCancelledWhileRestoring',
+    'NotMostRecentNavigationEntry',
+    'BackForwardCacheDisabledForPrerender',
+    'UserAgentOverrideDiffers',
+    'ForegroundCacheLimit',
+    'BrowsingInstanceNotSwapped',
+    'BackForwardCacheDisabledForDelegate',
+    'UnloadHandlerExistsInMainFrame',
+    'UnloadHandlerExistsInSubFrame',
+    'ServiceWorkerUnregistration',
+    'CacheControlNoStore',
+    'CacheControlNoStoreCookieModified',
+    'CacheControlNoStoreHTTPOnlyCookieModified',
+    'NoResponseHead',
+    'Unknown',
+    'ActivationNavigationsDisallowedForBug1234857',
+    'ErrorDocument',
+    'FencedFramesEmbedder',
+    'CookieDisabled',
+    'HTTPAuthRequired',
+    'CookieFlushed',
+    'WebSocket',
+    'WebTransport',
+    'WebRTC',
+    'MainResourceHasCacheControlNoStore',
+    'MainResourceHasCacheControlNoCache',
+    'SubresourceHasCacheControlNoStore',
+    'SubresourceHasCacheControlNoCache',
+    'ContainsPlugins',
+    'DocumentLoaded',
+    'DedicatedWorkerOrWorklet',
+    'OutstandingNetworkRequestOthers',
+    'RequestedMIDIPermission',
+    'RequestedAudioCapturePermission',
+    'RequestedVideoCapturePermission',
+    'RequestedBackForwardCacheBlockedSensors',
+    'RequestedBackgroundWorkPermission',
+    'BroadcastChannel',
+    'WebXR',
+    'SharedWorker',
+    'WebLocks',
+    'WebHID',
+    'WebShare',
+    'RequestedStorageAccessGrant',
+    'WebNfc',
+    'OutstandingNetworkRequestFetch',
+    'OutstandingNetworkRequestXHR',
+    'AppBanner',
+    'Printing',
+    'WebDatabase',
+    'PictureInPicture',
+    'Portal',
+    'SpeechRecognizer',
+    'IdleManager',
+    'PaymentManager',
+    'SpeechSynthesis',
+    'KeyboardLock',
+    'WebOTPService',
+    'OutstandingNetworkRequestDirectSocket',
+    'InjectedJavascript',
+    'InjectedStyleSheet',
+    'KeepaliveRequest',
+    'IndexedDBEvent',
+    'Dummy',
+    'JsNetworkRequestReceivedCacheControlNoStoreResource',
+    'WebRTCSticky',
+    'WebTransportSticky',
+    'WebSocketSticky',
+    'ContentSecurityHandler',
+    'ContentWebAuthenticationAPI',
+    'ContentFileChooser',
+    'ContentSerial',
+    'ContentFileSystemAccess',
+    'ContentMediaDevicesDispatcherHost',
+    'ContentWebBluetooth',
+    'ContentWebUSB',
+    'ContentMediaSessionService',
+    'ContentScreenReader',
+    'EmbedderPopupBlockerTabHelper',
+    'EmbedderSafeBrowsingTriggeredPopupBlocker',
+    'EmbedderSafeBrowsingThreatDetails',
+    'EmbedderAppBannerManager',
+    'EmbedderDomDistillerViewerSource',
+    'EmbedderDomDistillerSelfDeletingRequestDelegate',
+    'EmbedderOomInterventionTabHelper',
+    'EmbedderOfflinePage',
+    'EmbedderChromePasswordManagerClientBindCredentialManager',
+    'EmbedderPermissionRequestManager',
+    'EmbedderModalDialog',
+    'EmbedderExtensions',
+    'EmbedderExtensionMessaging',
+    'EmbedderExtensionMessagingForOpenPort',
+    'EmbedderExtensionSentMessageToCachedFrame'
 ]
 
 BackForwardCacheNotRestoredReasonType = Literal[
-    "SupportPending",
-    "PageSupportNeeded",
-    "Circumstantial"
+    'SupportPending',
+    'PageSupportNeeded',
+    'Circumstantial'
 ]
 
 
 @dataclass
 class AdFrameStatus:
-    ad_frame_type: "AdFrameType"
+    ad_frame_type: 'AdFrameType'
     explanations: list
 
 
 @dataclass
 class AdScriptId:
-    script_id: "ScriptId"
-    debugger_id: "UniqueDebuggerId"
+    script_id: 'ScriptId'
+    debugger_id: 'UniqueDebuggerId'
 
 
 @dataclass
 class PermissionsPolicyBlockLocator:
-    frame_id: "FrameId"
-    block_reason: "PermissionsPolicyBlockReason"
+    frame_id: 'FrameId'
+    block_reason: 'PermissionsPolicyBlockReason'
 
 
 @dataclass
 class PermissionsPolicyFeatureState:
-    feature: "PermissionsPolicyFeature"
+    feature: 'PermissionsPolicyFeature'
     allowed: bool
-    locator: "PermissionsPolicyBlockLocator"
+    locator: 'PermissionsPolicyBlockLocator'
 
 
 @dataclass
@@ -413,30 +420,30 @@ class OriginTrialToken:
     origin: str
     match_sub_domains: bool
     trial_name: str
-    expiry_time: "TimeSinceEpoch"
+    expiry_time: 'TimeSinceEpoch'
     is_third_party: bool
-    usage_restriction: "OriginTrialUsageRestriction"
+    usage_restriction: 'OriginTrialUsageRestriction'
 
 
 @dataclass
 class OriginTrialTokenWithStatus:
     raw_token_text: str
-    parsed_token: "OriginTrialToken"
-    status: "OriginTrialTokenStatus"
+    parsed_token: 'OriginTrialToken'
+    status: 'OriginTrialTokenStatus'
 
 
 @dataclass
 class OriginTrial:
     trial_name: str
-    status: "OriginTrialStatus"
+    status: 'OriginTrialStatus'
     tokens_with_status: list
 
 
 @dataclass
 class Frame:
-    id: "FrameId"
-    parent_id: "FrameId"
-    loader_id: "LoaderId"
+    id: 'FrameId'
+    parent_id: 'FrameId'
+    loader_id: 'LoaderId'
     name: str
     url: str
     url_fragment: str
@@ -444,18 +451,18 @@ class Frame:
     security_origin: str
     mime_type: str
     unreachable_url: str
-    ad_frame_status: "AdFrameStatus"
-    secure_context_type: "SecureContextType"
-    cross_origin_isolated_context_type: "CrossOriginIsolatedContextType"
+    ad_frame_status: 'AdFrameStatus'
+    secure_context_type: 'SecureContextType'
+    cross_origin_isolated_context_type: 'CrossOriginIsolatedContextType'
     gated_api_features: list
 
 
 @dataclass
 class FrameResource:
     url: str
-    type: "ResourceType"
+    type: 'ResourceType'
     mime_type: str
-    last_modified: "TimeSinceEpoch"
+    last_modified: 'TimeSinceEpoch'
     content_size: float
     failed: bool
     canceled: bool
@@ -463,14 +470,14 @@ class FrameResource:
 
 @dataclass
 class FrameResourceTree:
-    frame: "Frame"
+    frame: 'Frame'
     child_frames: list
     resources: list
 
 
 @dataclass
 class FrameTree:
-    frame: "Frame"
+    frame: 'Frame'
     child_frames: list
 
 
@@ -480,7 +487,7 @@ class NavigationEntry:
     url: str
     user_typed_url: str
     title: str
-    transition_type: "TransitionType"
+    transition_type: 'TransitionType'
 
 
 @dataclass
@@ -491,7 +498,7 @@ class ScreencastFrameMetadata:
     device_height: float
     scroll_offset_x: float
     scroll_offset_y: float
-    timestamp: "TimeSinceEpoch"
+    timestamp: 'TimeSinceEpoch'
 
 
 @dataclass
@@ -550,7 +557,7 @@ class FontFamilies:
 @dataclass
 class ScriptFontFamilies:
     script: str
-    font_families: "FontFamilies"
+    font_families: 'FontFamilies'
 
 
 @dataclass
@@ -579,8 +586,8 @@ class CompilationCacheParams:
 
 @dataclass
 class BackForwardCacheNotRestoredExplanation:
-    type: "BackForwardCacheNotRestoredReasonType"
-    reason: "BackForwardCacheNotRestoredReason"
+    type: 'BackForwardCacheNotRestoredReasonType'
+    reason: 'BackForwardCacheNotRestoredReason'
     context: str
 
 
@@ -593,12 +600,12 @@ class BackForwardCacheNotRestoredExplanationTree:
 
 @dataclass
 class AddScriptToEvaluateOnLoadReturnT:
-    identifier: "ScriptIdentifier"
+    identifier: 'ScriptIdentifier'
 
 
 @dataclass
 class AddScriptToEvaluateOnNewDocumentReturnT:
-    identifier: "ScriptIdentifier"
+    identifier: 'ScriptIdentifier'
 
 
 @dataclass
@@ -613,7 +620,7 @@ class CaptureSnapshotReturnT:
 
 @dataclass
 class CreateIsolatedWorldReturnT:
-    execution_context_id: "ExecutionContextId"
+    execution_context_id: 'ExecutionContextId'
 
 
 @dataclass
@@ -621,7 +628,7 @@ class GetAppManifestReturnT:
     url: str
     errors: list
     data: str
-    parsed: "AppManifestParsedProperties"
+    parsed: 'AppManifestParsedProperties'
 
 
 @dataclass
@@ -642,7 +649,7 @@ class GetAppIdReturnT:
 
 @dataclass
 class GetAdScriptIdReturnT:
-    ad_script_id: "AdScriptId"
+    ad_script_id: 'AdScriptId'
 
 
 @dataclass
@@ -652,17 +659,17 @@ class GetCookiesReturnT:
 
 @dataclass
 class GetFrameTreeReturnT:
-    frame_tree: "FrameTree"
+    frame_tree: 'FrameTree'
 
 
 @dataclass
 class GetLayoutMetricsReturnT:
-    layout_viewport: "LayoutViewport"
-    visual_viewport: "VisualViewport"
-    content_size: "Rect"
-    css_layout_viewport: "LayoutViewport"
-    css_visual_viewport: "VisualViewport"
-    css_content_size: "Rect"
+    layout_viewport: 'LayoutViewport'
+    visual_viewport: 'VisualViewport'
+    content_size: 'Rect'
+    css_layout_viewport: 'LayoutViewport'
+    css_visual_viewport: 'VisualViewport'
+    css_content_size: 'Rect'
 
 
 @dataclass
@@ -679,20 +686,20 @@ class GetResourceContentReturnT:
 
 @dataclass
 class GetResourceTreeReturnT:
-    frame_tree: "FrameResourceTree"
+    frame_tree: 'FrameResourceTree'
 
 
 @dataclass
 class NavigateReturnT:
-    frame_id: "FrameId"
-    loader_id: "LoaderId"
+    frame_id: 'FrameId'
+    loader_id: 'LoaderId'
     error_text: str
 
 
 @dataclass
 class PrintToPDFReturnT:
     data: str
-    stream: "StreamHandle"
+    stream: 'StreamHandle'
 
 
 @dataclass

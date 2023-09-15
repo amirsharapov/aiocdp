@@ -6,12 +6,19 @@
 from dataclasses import (
     dataclass
 )
-from cdp.domains.runtime.types import (
-    RemoteObject
+from typing import (
+    TYPE_CHECKING
 )
-from cdp.domains.storage.types import (
-    StorageBucket
+from typing import (
+    Any
 )
+if TYPE_CHECKING:
+    from cdp.domains.runtime.types import (
+        RemoteObject
+    )
+    from cdp.domains.storage.types import (
+        StorageBucket
+    )
 
 
 @dataclass
@@ -24,7 +31,7 @@ class DatabaseWithObjectStores:
 @dataclass
 class ObjectStore:
     name: str
-    key_path: "KeyPath"
+    key_path: 'KeyPath'
     auto_increment: bool
     indexes: list
 
@@ -32,7 +39,7 @@ class ObjectStore:
 @dataclass
 class ObjectStoreIndex:
     name: str
-    key_path: "KeyPath"
+    key_path: 'KeyPath'
     unique: bool
     multi_entry: bool
 
@@ -48,17 +55,17 @@ class Key:
 
 @dataclass
 class KeyRange:
-    lower: "Key"
-    upper: "Key"
+    lower: 'Key'
+    upper: 'Key'
     lower_open: bool
     upper_open: bool
 
 
 @dataclass
 class DataEntry:
-    key: "RemoteObject"
-    primary_key: "RemoteObject"
-    value: "RemoteObject"
+    key: 'RemoteObject'
+    primary_key: 'RemoteObject'
+    value: 'RemoteObject'
 
 
 @dataclass
@@ -82,7 +89,7 @@ class GetMetadataReturnT:
 
 @dataclass
 class RequestDatabaseReturnT:
-    database_with_object_stores: "DatabaseWithObjectStores"
+    database_with_object_stores: 'DatabaseWithObjectStores'
 
 
 @dataclass

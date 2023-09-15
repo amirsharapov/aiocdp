@@ -6,12 +6,19 @@
 from dataclasses import (
     dataclass
 )
-from cdp.domains.dom.types import (
-    BackendNodeId
+from typing import (
+    TYPE_CHECKING
 )
-from cdp.domains.runtime.types import (
-    RemoteObject
+from typing import (
+    Any
 )
+if TYPE_CHECKING:
+    from cdp.domains.dom.types import (
+        BackendNodeId
+    )
+    from cdp.domains.runtime.types import (
+        RemoteObject
+    )
 
 
 @dataclass
@@ -24,7 +31,7 @@ class Animation:
     start_time: float
     current_time: float
     type: str
-    source: "AnimationEffect"
+    source: 'AnimationEffect'
     css_id: str
 
 
@@ -37,8 +44,8 @@ class AnimationEffect:
     duration: float
     direction: str
     fill: str
-    backend_node_id: "BackendNodeId"
-    keyframes_rule: "KeyframesRule"
+    backend_node_id: 'BackendNodeId'
+    keyframes_rule: 'KeyframesRule'
     easing: str
 
 
@@ -66,4 +73,4 @@ class GetPlaybackRateReturnT:
 
 @dataclass
 class ResolveAnimationReturnT:
-    remote_object: "RemoteObject"
+    remote_object: 'RemoteObject'

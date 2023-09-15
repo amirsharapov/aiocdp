@@ -27,7 +27,7 @@ class DeviceAccess(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DeviceAccess.enable",
+            '"DeviceAccess.enable"',
             params
         )
 
@@ -37,7 +37,7 @@ class DeviceAccess(BaseDomain):
         params = {}
 
         return self._send_command(
-            "DeviceAccess.disable",
+            '"DeviceAccess.disable"',
             params
         )
 
@@ -47,12 +47,12 @@ class DeviceAccess(BaseDomain):
         device_id: DeviceId
     ):
         params = {
-            "id": id_,
-            "deviceId": device_id,
+            'id': id_,
+            'deviceId': device_id,
         }
 
         return self._send_command(
-            "DeviceAccess.selectPrompt",
+            '"DeviceAccess.selectPrompt"',
             params
         )
 
@@ -61,11 +61,11 @@ class DeviceAccess(BaseDomain):
         id_: RequestId
     ):
         params = {
-            "id": id_,
+            'id': id_,
         }
 
         return self._send_command(
-            "DeviceAccess.cancelPrompt",
+            '"DeviceAccess.cancelPrompt"',
             params
         )
 

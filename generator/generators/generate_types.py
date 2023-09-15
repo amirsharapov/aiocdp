@@ -1,5 +1,6 @@
 import ast
 from collections import defaultdict
+from dataclasses import dataclass
 
 from generator.types import Domain, Type, Command
 from generator.utils import cdp_to_python_type
@@ -8,10 +9,14 @@ from generator.utils import cdp_to_python_type
 def _generate_dataclass_import(domain: Domain):
     should_generate = False
 
-    for type_ in domain.types:
-        if type_.properties:
-            should_generate = True
-            break
+    if domain.commands:
+        should_generate = True
+
+    else:
+        for type_ in domain.types:
+            if type_.properties:
+                should_generate = True
+                break
 
     if not should_generate:
         return
@@ -22,6 +27,24 @@ def _generate_dataclass_import(domain: Domain):
             ast.alias('dataclass')
         ]
     )
+
+
+def _generate_typing_imports(domain: Domain):
+    # TODO: Check first before adding type checking flag
+    imports = [ast.ImportFrom(
+        module='typing',
+        names=[
+            ast.alias('TYPE_CHECKING')
+        ]
+    )]
+
+    if import_ := _generate_literal_t_import(domain):
+        imports.append(import_)
+
+    if import_ := _generate_any_t_import(domain):
+        imports.append(import_)
+
+    return imports
 
 
 def _generate_literal_t_import(domain: Domain):
@@ -38,7 +61,16 @@ def _generate_literal_t_import(domain: Domain):
     return ast.ImportFrom(
         module='typing',
         names=[
-            ast.alias('Literal')
+            ast.alias('Literal'),
+        ]
+    )
+
+
+def _generate_any_t_import(domain: Domain):
+    return ast.ImportFrom(
+        module='typing',
+        names=[
+            ast.alias('Any'),
         ]
     )
 
@@ -49,7 +81,7 @@ def _generate_external_type_imports(domain: Domain):
     for type_ in domain.types:
         for ref in type_.get_refs():
             if ref.domain and ref.domain != domain.domain:
-                module_name = ref.domain_snake_case or domain.module_name
+                module_name = ref.domain_snake_case or domain.domain_snake_case
                 import_tree[module_name].add(
                     ref.type
                 )
@@ -57,7 +89,7 @@ def _generate_external_type_imports(domain: Domain):
     for command in domain.commands:
         for ref in command.get_refs():
             if ref.domain and ref.domain != domain.domain:
-                module_name = ref.domain_snake_case or domain.module_name
+                module_name = ref.domain_snake_case or domain.domain_snake_case
                 import_tree[module_name].add(
                     ref.type
                 )
@@ -80,26 +112,43 @@ def _generate_external_type_imports(domain: Domain):
 
 
 def _generate_type_alias(type_: 'Type'):
-    if type_.type not in ('string', 'integer', 'number', 'boolean', 'array'):
+    if type_.type not in ('string', 'integer', 'number', 'boolean', 'array', 'object'):
         return
 
     if type_.enum:
         return
 
-    if type_.type == 'array':
+    if type_.type == 'object' and type_.properties:
+        return
+
+    if type_.type == 'object':
+        value = ast.Name(
+            id='dict',
+            ctx=ast.Load()
+        )
+
+    elif type_.type == 'array':
         inner_type = type_.items.type or type_.items.ref.type
 
-        if inner_type not in ('string', 'integer', 'number', 'boolean'):
-            return
+        if type_.items.ref:
+            slice_ = ast.Constant(
+                value=inner_type,
+                kind='str'
+            )
+
+        else:
+            slice_ = ast.Name(
+                id=cdp_to_python_type(inner_type),
+                ctx=ast.Load()
+            )
 
         value = ast.Subscript(
             value=ast.Name(
                 id='list',
                 ctx=ast.Load()
             ),
-            slice=ast.Name(
-                id=cdp_to_python_type(inner_type),
-                ctx=ast.Load()
+            slice=ast.Index(
+                value=slice_
             )
         )
 
@@ -190,10 +239,12 @@ def _generate_complex_type_definitions(type_):
             )
         )
 
-    # class_.body.extend([
-    #     _generate_dataclass_from_json_method(type_),
-    #     _generate_dataclass_to_json_method(type_)
-    # ])
+    class_.body.extend([
+        _generate_dataclass_to_camel_json_method(type_),
+        _generate_dataclass_to_snake_json_method(type_),
+        _generate_dataclass_to_pascal_json_method(type_),
+        _generate_dataclass_to_json_method(type_)
+    ])
 
     return class_
 
@@ -243,7 +294,34 @@ def _generate_return_type_definition(command: Command):
 
 
 def _generate_dataclass_to_json_method(type_: 'Type'):
-    return ast.FunctionDef()
+    root = ast.FunctionDef(
+        name='to_json',
+        args=ast.arguments(
+            args=[
+                ast.arg('self'),
+                ast.arg(
+                    arg='casing_strategy',
+                    annotation=ast.Subscript(
+                        value=ast.Name(
+                            id='Literal',
+                            ctx=ast.Load()
+                        ),
+                        slice=ast.Tuple(
+                            elts=[
+                                ast.Constant('snake'),
+                                ast.Constant('camel'),
+                                ast.Constant('pascal')
+                            ],
+                            ctx=ast.Load()
+                        )
+                    )
+                )
+            ],
+            defaults=[
+                ast.Constant('snake')
+            ]
+        )
+    )
 
 
 def _generate_dataclass_from_json_method(type_: 'Type'):
@@ -258,11 +336,19 @@ def generate(domain: Domain):
     if import_ := _generate_dataclass_import(domain):
         root.body.append(import_)
 
-    if import_ := _generate_literal_t_import(domain):
-        root.body.append(import_)
+    if imports := _generate_typing_imports(domain):
+        root.body += imports
 
     if imports := _generate_external_type_imports(domain):
-        root.body += imports
+        if_type_checking = ast.If(
+            test=ast.Name(
+                id='TYPE_CHECKING',
+                ctx=ast.Load()
+            ),
+            body=imports
+        )
+
+        root.body.append(if_type_checking)
 
     type_aliases = []
     string_literals = []

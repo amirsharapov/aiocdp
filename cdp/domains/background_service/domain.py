@@ -25,11 +25,11 @@ class BackgroundService(BaseDomain):
         service: ServiceName
     ):
         params = {
-            "service": service,
+            'service': service,
         }
 
         return self._send_command(
-            "BackgroundService.startObserving",
+            '"BackgroundService.startObserving"',
             params
         )
 
@@ -38,11 +38,11 @@ class BackgroundService(BaseDomain):
         service: ServiceName
     ):
         params = {
-            "service": service,
+            'service': service,
         }
 
         return self._send_command(
-            "BackgroundService.stopObserving",
+            '"BackgroundService.stopObserving"',
             params
         )
 
@@ -52,12 +52,12 @@ class BackgroundService(BaseDomain):
         service: ServiceName
     ):
         params = {
-            "shouldRecord": should_record,
-            "service": service,
+            'shouldRecord': should_record,
+            'service': service,
         }
 
         return self._send_command(
-            "BackgroundService.setRecording",
+            '"BackgroundService.setRecording"',
             params
         )
 
@@ -66,11 +66,11 @@ class BackgroundService(BaseDomain):
         service: ServiceName
     ):
         params = {
-            "service": service,
+            'service': service,
         }
 
         return self._send_command(
-            "BackgroundService.clearEvents",
+            '"BackgroundService.clearEvents"',
             params
         )
 
