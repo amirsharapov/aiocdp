@@ -11,25 +11,16 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.network.types import (
+    from cdp.domains.network.types import (
         TimeSinceEpoch
-    )
-        from cdp.domains.page.types import (
-        FrameId
-    )
-        from cdp.domains.browser.types import (
-        BrowserContextID
     )
 
 SerializedStorageKey = str
-
 UnsignedInt64AsBase10 = str
-
 UnsignedInt128AsBase16 = str
-
 SignedInt64AsBase10 = str
-
 StorageType = Literal[
     'appcache',
     'cookies',
@@ -46,7 +37,6 @@ StorageType = Literal[
     'all',
     'other'
 ]
-
 InterestGroupAccessType = Literal[
     'join',
     'leave',
@@ -55,7 +45,6 @@ InterestGroupAccessType = Literal[
     'bid',
     'win'
 ]
-
 SharedStorageAccessType = Literal[
     'documentAddModule',
     'documentSelectURL',
@@ -74,17 +63,14 @@ SharedStorageAccessType = Literal[
     'workletLength',
     'workletRemainingBudget'
 ]
-
 StorageBucketsDurability = Literal[
     'relaxed',
     'strict'
 ]
-
 AttributionReportingSourceType = Literal[
     'navigation',
     'event'
 ]
-
 AttributionReportingSourceRegistrationResult = Literal[
     'success',
     'internalError',
@@ -99,7 +85,6 @@ AttributionReportingSourceRegistrationResult = Literal[
     'reportingOriginsPerSiteLimitReached',
     'exceedsMaxChannelCapacity'
 ]
-
 
 @dataclass
 class UsageForType:
@@ -129,10 +114,10 @@ class InterestGroupDetails:
     bidding_wasm_helper_url: str
     update_url: str
     trusted_bidding_signals_url: str
-    trusted_bidding_signals_keys: list
+    trusted_bidding_signals_keys: list[str]
     user_bidding_signals: str
-    ads: list
-    ad_components: list
+    ads: list['InterestGroupAd']
+    ad_components: list['InterestGroupAd']
 
 
 @dataclass
@@ -157,7 +142,7 @@ class SharedStorageReportingMetadata:
 @dataclass
 class SharedStorageUrlWithMetadata:
     url: str
-    reporting_metadata: list
+    reporting_metadata: list['SharedStorageReportingMetadata']
 
 
 @dataclass
@@ -165,7 +150,7 @@ class SharedStorageAccessParams:
     script_source_url: str
     operation_name: str
     serialized_data: str
-    urls_with_metadata: list
+    urls_with_metadata: list['SharedStorageUrlWithMetadata']
     key: str
     value: str
     ignore_if_present: bool
@@ -190,7 +175,7 @@ class StorageBucketInfo:
 @dataclass
 class AttributionReportingFilterDataEntry:
     key: str
-    values: list
+    values: list[str]
 
 
 @dataclass
@@ -202,7 +187,7 @@ class AttributionReportingAggregationKeysEntry:
 @dataclass
 class AttributionReportingEventReportWindows:
     start: int
-    ends: list
+    ends: list[int]
 
 
 @dataclass
@@ -215,11 +200,11 @@ class AttributionReportingSourceRegistration:
     type: 'AttributionReportingSourceType'
     source_origin: str
     reporting_origin: str
-    destination_sites: list
+    destination_sites: list[str]
     event_id: 'UnsignedInt64AsBase10'
     priority: 'SignedInt64AsBase10'
-    filter_data: list
-    aggregation_keys: list
+    filter_data: list['AttributionReportingFilterDataEntry']
+    aggregation_keys: list['AttributionReportingAggregationKeysEntry']
     debug_key: 'UnsignedInt64AsBase10'
 
 

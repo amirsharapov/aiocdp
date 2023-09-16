@@ -18,31 +18,28 @@ from cdp.utils import (
 @dataclass
 class DeviceOrientation(BaseDomain):
     def clear_device_orientation_override(
-        self
-    ) -> 'ClearDeviceOrientationOverrideReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'DeviceOrientation.clearDeviceOrientationOverride',
-
             params
         )
 
     def set_device_orientation_override(
-        self,
-        alpha: float,
-        beta: float,
-        gamma: float
-    ) -> 'SetDeviceOrientationOverrideReturnT':
+            self,
+            alpha: float,
+            beta: float,
+            gamma: float
+    ) -> None:
         params = {
             'alpha': alpha,
             'beta': beta,
             'gamma': gamma,
         }
-        
+
         return self._send_command(
             'DeviceOrientation.setDeviceOrientationOverride',
-
             params
         )
-

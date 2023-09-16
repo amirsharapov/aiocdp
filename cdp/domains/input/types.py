@@ -13,13 +13,11 @@ from dataclasses import (
 )
 
 TimeSinceEpoch = float
-
 GestureSourceType = Literal[
     'default',
     'touch',
     'mouse'
 ]
-
 MouseButton = Literal[
     'none',
     'left',
@@ -28,7 +26,6 @@ MouseButton = Literal[
     'back',
     'forward'
 ]
-
 
 @dataclass
 class TouchPoint:
@@ -55,6 +52,6 @@ class DragDataItem:
 
 @dataclass
 class DragData:
-    items: list
-    files: list
+    items: list['DragDataItem']
+    files: list[str]
     drag_operations_mask: int

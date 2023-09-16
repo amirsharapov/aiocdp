@@ -11,15 +11,14 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.runtime.types import (
+    from cdp.domains.runtime.types import (
         RemoteObject,
-        RemoteObjectId,
         ScriptId
     )
-        from cdp.domains.dom.types import (
-        BackendNodeId,
-        NodeId
+    from cdp.domains.dom.types import (
+        BackendNodeId
     )
 
 DOMBreakpointType = Literal[
@@ -27,12 +26,10 @@ DOMBreakpointType = Literal[
     'attribute-modified',
     'node-removed'
 ]
-
 CSPViolationType = Literal[
     'trustedtype-sink-violation',
     'trustedtype-policy-violation'
 ]
-
 
 @dataclass
 class EventListener:

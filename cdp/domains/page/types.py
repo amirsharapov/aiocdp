@@ -11,63 +11,47 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.runtime.types import (
-        ExecutionContextId,
+    from cdp.domains.runtime.types import (
         ScriptId,
         UniqueDebuggerId
     )
-        from cdp.domains.network.types import (
+    from cdp.domains.network.types import (
         LoaderId,
         ResourceType,
         TimeSinceEpoch
     )
-        from cdp.domains.dom.types import (
-        Rect
-    )
-        from cdp.domains.io.types import (
-        StreamHandle
-    )
-        from cdp.domains.emulation.types import (
-        ScreenOrientation
-    )
 
 FrameId = str
-
 ScriptIdentifier = str
-
 AdFrameType = Literal[
     'none',
     'child',
     'root'
 ]
-
 AdFrameExplanation = Literal[
     'ParentIsAd',
     'CreatedByAdScript',
     'MatchedBlockingRule'
 ]
-
 SecureContextType = Literal[
     'Secure',
     'SecureLocalhost',
     'InsecureScheme',
     'InsecureAncestor'
 ]
-
 CrossOriginIsolatedContextType = Literal[
     'Isolated',
     'NotIsolated',
     'NotIsolatedFeatureDisabled'
 ]
-
 GatedAPIFeatures = Literal[
     'SharedArrayBuffers',
     'SharedArrayBuffersTransferAllowed',
     'PerformanceMeasureMemory',
     'PerformanceProfile'
 ]
-
 PermissionsPolicyFeature = Literal[
     'accelerometer',
     'ambient-light-sensor',
@@ -149,14 +133,12 @@ PermissionsPolicyFeature = Literal[
     'window-placement',
     'xr-spatial-tracking'
 ]
-
 PermissionsPolicyBlockReason = Literal[
     'Header',
     'IframeAttribute',
     'InFencedFrameTree',
     'InIsolatedApp'
 ]
-
 OriginTrialTokenStatus = Literal[
     'Success',
     'NotSupported',
@@ -171,19 +153,16 @@ OriginTrialTokenStatus = Literal[
     'FeatureDisabledForUser',
     'UnknownTrial'
 ]
-
 OriginTrialStatus = Literal[
     'Enabled',
     'ValidTokenNotProvided',
     'OSNotSupported',
     'TrialNotAllowed'
 ]
-
 OriginTrialUsageRestriction = Literal[
     'None',
     'Subset'
 ]
-
 TransitionType = Literal[
     'link',
     'typed',
@@ -199,14 +178,12 @@ TransitionType = Literal[
     'keyword_generated',
     'other'
 ]
-
 DialogType = Literal[
     'alert',
     'confirm',
     'prompt',
     'beforeunload'
 ]
-
 ClientNavigationReason = Literal[
     'formSubmissionGet',
     'formSubmissionPost',
@@ -217,14 +194,12 @@ ClientNavigationReason = Literal[
     'reload',
     'anchorClick'
 ]
-
 ClientNavigationDisposition = Literal[
     'currentTab',
     'newTab',
     'newWindow',
     'download'
 ]
-
 ReferrerPolicy = Literal[
     'noReferrer',
     'noReferrerWhenDowngrade',
@@ -235,19 +210,16 @@ ReferrerPolicy = Literal[
     'strictOriginWhenCrossOrigin',
     'unsafeUrl'
 ]
-
 AutoResponseMode = Literal[
     'none',
     'autoAccept',
     'autoReject',
     'autoOptOut'
 ]
-
 NavigationType = Literal[
     'Navigation',
     'BackForwardCacheRestore'
 ]
-
 BackForwardCacheNotRestoredReason = Literal[
     'NotPrimaryMainFrame',
     'BackForwardCacheDisabled',
@@ -378,18 +350,16 @@ BackForwardCacheNotRestoredReason = Literal[
     'EmbedderExtensionMessagingForOpenPort',
     'EmbedderExtensionSentMessageToCachedFrame'
 ]
-
 BackForwardCacheNotRestoredReasonType = Literal[
     'SupportPending',
     'PageSupportNeeded',
     'Circumstantial'
 ]
 
-
 @dataclass
 class AdFrameStatus:
     ad_frame_type: 'AdFrameType'
-    explanations: list
+    explanations: list['AdFrameExplanation']
 
 
 @dataclass
@@ -432,7 +402,7 @@ class OriginTrialTokenWithStatus:
 class OriginTrial:
     trial_name: str
     status: 'OriginTrialStatus'
-    tokens_with_status: list
+    tokens_with_status: list['OriginTrialTokenWithStatus']
 
 
 @dataclass
@@ -450,7 +420,7 @@ class Frame:
     ad_frame_status: 'AdFrameStatus'
     secure_context_type: 'SecureContextType'
     cross_origin_isolated_context_type: 'CrossOriginIsolatedContextType'
-    gated_api_features: list
+    gated_api_features: list['GatedAPIFeatures']
 
 
 @dataclass
@@ -467,14 +437,14 @@ class FrameResource:
 @dataclass
 class FrameResourceTree:
     frame: 'Frame'
-    child_frames: list
-    resources: list
+    child_frames: list['FrameResourceTree']
+    resources: list['FrameResource']
 
 
 @dataclass
 class FrameTree:
     frame: 'Frame'
-    child_frames: list
+    child_frames: list['FrameTree']
 
 
 @dataclass
@@ -571,7 +541,7 @@ class InstallabilityErrorArgument:
 @dataclass
 class InstallabilityError:
     error_id: str
-    error_arguments: list
+    error_arguments: list['InstallabilityErrorArgument']
 
 
 @dataclass
@@ -590,8 +560,8 @@ class BackForwardCacheNotRestoredExplanation:
 @dataclass
 class BackForwardCacheNotRestoredExplanationTree:
     url: str
-    explanations: list
-    children: list
+    explanations: list['BackForwardCacheNotRestoredExplanation']
+    children: list['BackForwardCacheNotRestoredExplanationTree']
 
 
 @dataclass

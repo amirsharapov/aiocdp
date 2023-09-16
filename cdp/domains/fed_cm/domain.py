@@ -18,87 +18,80 @@ from cdp.utils import (
 @dataclass
 class FedCm(BaseDomain):
     def enable(
-        self,
-        disable_rejection_delay: bool = UNDEFINED
-    ) -> 'EnableReturnT':
+            self,
+            disable_rejection_delay: bool = UNDEFINED
+    ) -> None:
         params = {}
-        
+
         if is_defined(disable_rejection_delay):
             params['disableRejectionDelay'] = disable_rejection_delay
-        
+
         return self._send_command(
             'FedCm.enable',
-
             params
         )
 
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'FedCm.disable',
-
             params
         )
 
     def select_account(
-        self,
-        dialog_id: str,
-        account_index: int
-    ) -> 'SelectAccountReturnT':
+            self,
+            dialog_id: str,
+            account_index: int
+    ) -> None:
         params = {
             'dialogId': dialog_id,
             'accountIndex': account_index,
         }
-        
+
         return self._send_command(
             'FedCm.selectAccount',
-
             params
         )
 
     def confirm_idp_signin(
-        self,
-        dialog_id: str
-    ) -> 'ConfirmIdpSigninReturnT':
+            self,
+            dialog_id: str
+    ) -> None:
         params = {
             'dialogId': dialog_id,
         }
-        
+
         return self._send_command(
             'FedCm.confirmIdpSignin',
-
             params
         )
 
     def dismiss_dialog(
-        self,
-        dialog_id: str,
-        trigger_cooldown: bool = UNDEFINED
-    ) -> 'DismissDialogReturnT':
+            self,
+            dialog_id: str,
+            trigger_cooldown: bool = UNDEFINED
+    ) -> None:
         params = {
             'dialogId': dialog_id,
         }
-        
+
         if is_defined(trigger_cooldown):
             params['triggerCooldown'] = trigger_cooldown
-        
+
         return self._send_command(
             'FedCm.dismissDialog',
-
             params
         )
 
     def reset_cooldown(
-        self
-    ) -> 'ResetCooldownReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'FedCm.resetCooldown',
-
             params
         )
-

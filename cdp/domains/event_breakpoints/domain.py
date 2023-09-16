@@ -18,30 +18,27 @@ from cdp.utils import (
 @dataclass
 class EventBreakpoints(BaseDomain):
     def set_instrumentation_breakpoint(
-        self,
-        event_name: str
-    ) -> 'SetInstrumentationBreakpointReturnT':
+            self,
+            event_name: str
+    ) -> None:
         params = {
             'eventName': event_name,
         }
-        
+
         return self._send_command(
             'EventBreakpoints.setInstrumentationBreakpoint',
-
             params
         )
 
     def remove_instrumentation_breakpoint(
-        self,
-        event_name: str
-    ) -> 'RemoveInstrumentationBreakpointReturnT':
+            self,
+            event_name: str
+    ) -> None:
         params = {
             'eventName': event_name,
         }
-        
+
         return self._send_command(
             'EventBreakpoints.removeInstrumentationBreakpoint',
-
             params
         )
-

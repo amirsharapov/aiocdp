@@ -18,16 +18,14 @@ from cdp.utils import (
 @dataclass
 class PerformanceTimeline(BaseDomain):
     def enable(
-        self,
-        event_types: list
-    ) -> 'EnableReturnT':
+            self,
+            event_types: list
+    ) -> None:
         params = {
             'eventTypes': event_types,
         }
-        
+
         return self._send_command(
             'PerformanceTimeline.enable',
-
             params
         )
-

@@ -11,15 +11,7 @@ def _generate_domain_type_imports(domain: Domain):
 
     for type_ in domain.types:
         for ref in type_.get_refs():
-            if ref.domain and ref.domain != domain.domain:
-                module_name = ref.actual_domain.domain_snake_case
-                import_tree[module_name].add(
-                    ref.type
-                )
-
-    for command in domain.commands:
-        for ref in command.get_refs():
-            if ref.domain and ref.domain != domain.domain:
+            if ref.actual_domain.domain != domain.domain:
                 module_name = ref.actual_domain.domain_snake_case
                 import_tree[module_name].add(
                     ref.type
@@ -125,7 +117,10 @@ def _generate_type_alias(type_: 'Type'):
                 ctx=ast.Store()
             )
         ],
-        value=value
+        value=value,
+        render_context={
+            'lines_before': 1,
+        }
     )
 
 
@@ -156,7 +151,10 @@ def _generate_string_literal(type_: 'Type'):
             render_context={
                 'expand': True
             }
-        )
+        ),
+        render_context={
+            'lines_before': 1,
+        }
     )
 
 
@@ -173,20 +171,45 @@ def _generate_complex_type_definitions(type_):
             )
         ],
         body=[],
-        bases=[]
+        bases=[],
+        render_context={
+            'lines_before': 2,
+        }
     )
 
     for property_ in type_.properties:
-        if property_.ref:
-            annotation = ast.Constant(
-                value=property_.ref.type,
+
+        if property_.type == 'array':
+            if property_.items.type:
+                slice_ = ast.Name(
+                    id=cdp_to_python_type(property_.items.type),
+                    ctx=ast.Load()
+                )
+
+            else:
+                slice_ = ast.Constant(
+                    value=property_.items.ref.type
+                )
+
+            annotation = ast.Subscript(
+                value=ast.Name(
+                    id='list',
+                    ctx=ast.Load()
+                ),
+                slice=slice_
             )
 
         else:
-            annotation = ast.Name(
-                id=cdp_to_python_type(property_.type),
-                ctx=ast.Load()
-            )
+            if property_.type:
+                annotation = ast.Name(
+                    id=cdp_to_python_type(property_.type),
+                    ctx=ast.Load()
+                )
+
+            else:
+                annotation = ast.Constant(
+                    value=property_.ref.type
+                )
 
         class_.body.append(
             ast.AnnAssign(
@@ -216,7 +239,10 @@ def _generate_return_type_definition(command: Command):
             )
         ],
         body=[],
-        bases=[]
+        bases=[],
+        render_context={
+            'lines_before': 2,
+        }
     )
 
     for return_ in command.returns:
@@ -264,7 +290,10 @@ def generate(domain: Domain):
                     id='TYPE_CHECKING',
                     ctx=ast.Load()
                 ),
-                body=imports_
+                body=imports_,
+                render_context={
+                    'lines_before': 1
+                }
             )
         )
 

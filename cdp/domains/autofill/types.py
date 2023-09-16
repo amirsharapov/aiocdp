@@ -11,19 +11,11 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
-        from cdp.domains.dom.types import (
-        BackendNodeId
-    )
-        from cdp.domains.page.types import (
-        FrameId
-    )
 
 FillingStrategy = Literal[
     'autocompleteAttribute',
     'autofillInferred'
 ]
-
 
 @dataclass
 class CreditCard:
@@ -42,17 +34,17 @@ class AddressField:
 
 @dataclass
 class AddressFields:
-    fields: list
+    fields: list['AddressField']
 
 
 @dataclass
 class Address:
-    fields: list
+    fields: list['AddressField']
 
 
 @dataclass
 class AddressUI:
-    address_fields: list
+    address_fields: list['AddressFields']
 
 
 @dataclass

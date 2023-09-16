@@ -28,162 +28,151 @@ from cdp.domains.dom.types import (
 @dataclass
 class DOMDebugger(BaseDomain):
     def get_event_listeners(
-        self,
-        object_id: RemoteObjectId,
-        depth: int = UNDEFINED,
-        pierce: bool = UNDEFINED
+            self,
+            object_id: RemoteObjectId,
+            depth: int = UNDEFINED,
+            pierce: bool = UNDEFINED
     ) -> 'GetEventListenersReturnT':
         params = {
             'objectId': object_id,
         }
-        
+
         if is_defined(depth):
             params['depth'] = depth
-        
+
         if is_defined(pierce):
             params['pierce'] = pierce
-        
+
         return self._send_command(
             'DOMDebugger.getEventListeners',
-
             params
         )
 
     def remove_dom_breakpoint(
-        self,
-        node_id: NodeId,
-        type_: DOMBreakpointType
-    ) -> 'RemoveDOMBreakpointReturnT':
+            self,
+            node_id: NodeId,
+            type_: DOMBreakpointType
+    ) -> None:
         params = {
             'nodeId': node_id,
             'type': type_,
         }
-        
+
         return self._send_command(
             'DOMDebugger.removeDOMBreakpoint',
-
             params
         )
 
     def remove_event_listener_breakpoint(
-        self,
-        event_name: str,
-        target_name: str = UNDEFINED
-    ) -> 'RemoveEventListenerBreakpointReturnT':
+            self,
+            event_name: str,
+            target_name: str = UNDEFINED
+    ) -> None:
         params = {
             'eventName': event_name,
         }
-        
+
         if is_defined(target_name):
             params['targetName'] = target_name
-        
+
         return self._send_command(
             'DOMDebugger.removeEventListenerBreakpoint',
-
             params
         )
 
     def remove_instrumentation_breakpoint(
-        self,
-        event_name: str
-    ) -> 'RemoveInstrumentationBreakpointReturnT':
+            self,
+            event_name: str
+    ) -> None:
         params = {
             'eventName': event_name,
         }
-        
+
         return self._send_command(
             'DOMDebugger.removeInstrumentationBreakpoint',
-
             params
         )
 
     def remove_xhr_breakpoint(
-        self,
-        url: str
-    ) -> 'RemoveXHRBreakpointReturnT':
+            self,
+            url: str
+    ) -> None:
         params = {
             'url': url,
         }
-        
+
         return self._send_command(
             'DOMDebugger.removeXHRBreakpoint',
-
             params
         )
 
     def set_break_on_csp_violation(
-        self,
-        violation_types: list
-    ) -> 'SetBreakOnCSPViolationReturnT':
+            self,
+            violation_types: list
+    ) -> None:
         params = {
             'violationTypes': violation_types,
         }
-        
+
         return self._send_command(
             'DOMDebugger.setBreakOnCSPViolation',
-
             params
         )
 
     def set_dom_breakpoint(
-        self,
-        node_id: NodeId,
-        type_: DOMBreakpointType
-    ) -> 'SetDOMBreakpointReturnT':
+            self,
+            node_id: NodeId,
+            type_: DOMBreakpointType
+    ) -> None:
         params = {
             'nodeId': node_id,
             'type': type_,
         }
-        
+
         return self._send_command(
             'DOMDebugger.setDOMBreakpoint',
-
             params
         )
 
     def set_event_listener_breakpoint(
-        self,
-        event_name: str,
-        target_name: str = UNDEFINED
-    ) -> 'SetEventListenerBreakpointReturnT':
+            self,
+            event_name: str,
+            target_name: str = UNDEFINED
+    ) -> None:
         params = {
             'eventName': event_name,
         }
-        
+
         if is_defined(target_name):
             params['targetName'] = target_name
-        
+
         return self._send_command(
             'DOMDebugger.setEventListenerBreakpoint',
-
             params
         )
 
     def set_instrumentation_breakpoint(
-        self,
-        event_name: str
-    ) -> 'SetInstrumentationBreakpointReturnT':
+            self,
+            event_name: str
+    ) -> None:
         params = {
             'eventName': event_name,
         }
-        
+
         return self._send_command(
             'DOMDebugger.setInstrumentationBreakpoint',
-
             params
         )
 
     def set_xhr_breakpoint(
-        self,
-        url: str
-    ) -> 'SetXHRBreakpointReturnT':
+            self,
+            url: str
+    ) -> None:
         params = {
             'url': url,
         }
-        
+
         return self._send_command(
             'DOMDebugger.setXHRBreakpoint',
-
             params
         )
-

@@ -11,19 +11,18 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.network.types import (
+    from cdp.domains.network.types import (
         TimeSinceEpoch
     )
 
 CertificateId = int
-
 MixedContentType = Literal[
     'blockable',
     'optionally-blockable',
     'none'
 ]
-
 SecurityState = Literal[
     'unknown',
     'neutral',
@@ -32,17 +31,14 @@ SecurityState = Literal[
     'info',
     'insecure-broken'
 ]
-
 SafetyTipStatus = Literal[
     'badReputation',
     'lookalike'
 ]
-
 CertificateErrorAction = Literal[
     'continue',
     'cancel'
 ]
-
 
 @dataclass
 class CertificateSecurityState:
@@ -51,7 +47,7 @@ class CertificateSecurityState:
     key_exchange_group: str
     cipher: str
     mac: str
-    certificate: list
+    certificate: list[str]
     subject_name: str
     issuer: str
     valid_from: 'TimeSinceEpoch'
@@ -77,7 +73,7 @@ class VisibleSecurityState:
     security_state: 'SecurityState'
     certificate_security_state: 'CertificateSecurityState'
     safety_tip_info: 'SafetyTipInfo'
-    security_state_issue_ids: list
+    security_state_issue_ids: list[str]
 
 
 @dataclass
@@ -87,8 +83,8 @@ class SecurityStateExplanation:
     summary: str
     description: str
     mixed_content_type: 'MixedContentType'
-    certificate: list
-    recommendations: list
+    certificate: list[str]
+    recommendations: list[str]
 
 
 @dataclass

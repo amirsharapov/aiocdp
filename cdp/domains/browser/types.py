@@ -11,22 +11,15 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
-        from cdp.domains.target.types import (
-        TargetID
-    )
 
 BrowserContextID = str
-
 WindowID = int
-
 WindowState = Literal[
     'normal',
     'minimized',
     'maximized',
     'fullscreen'
 ]
-
 PermissionType = Literal[
     'accessibilityEvents',
     'audioCapture',
@@ -56,18 +49,15 @@ PermissionType = Literal[
     'wakeLockSystem',
     'windowManagement'
 ]
-
 PermissionSetting = Literal[
     'granted',
     'denied',
     'prompt'
 ]
-
 BrowserCommandId = Literal[
     'openTabSearch',
     'closeTabSearch'
 ]
-
 
 @dataclass
 class Bounds:
@@ -99,7 +89,7 @@ class Histogram:
     name: str
     sum: int
     count: int
-    buckets: list
+    buckets: list['Bucket']
 
 
 @dataclass

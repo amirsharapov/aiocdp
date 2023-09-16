@@ -11,12 +11,13 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.runtime.types import (
+    from cdp.domains.runtime.types import (
         StackTrace,
         Timestamp
     )
-        from cdp.domains.network.types import (
+    from cdp.domains.network.types import (
         RequestId
     )
 
@@ -33,7 +34,7 @@ class LogEntry:
     stack_trace: 'StackTrace'
     network_request_id: 'RequestId'
     worker_id: str
-    args: list
+    args: list['RemoteObject']
 
 
 @dataclass

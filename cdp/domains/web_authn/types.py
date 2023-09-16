@@ -13,17 +13,14 @@ from dataclasses import (
 )
 
 AuthenticatorId = str
-
 AuthenticatorProtocol = Literal[
     'u2f',
     'ctap2'
 ]
-
 Ctap2Version = Literal[
     'ctap2_0',
     'ctap2_1'
 ]
-
 AuthenticatorTransport = Literal[
     'usb',
     'nfc',
@@ -31,7 +28,6 @@ AuthenticatorTransport = Literal[
     'cable',
     'internal'
 ]
-
 
 @dataclass
 class VirtualAuthenticatorOptions:

@@ -23,54 +23,49 @@ from cdp.domains.database.types import (
 @dataclass
 class Database(BaseDomain):
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Database.disable',
-
             params
         )
 
     def enable(
-        self
-    ) -> 'EnableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Database.enable',
-
             params
         )
 
     def execute_sql(
-        self,
-        database_id: DatabaseId,
-        query: str
+            self,
+            database_id: DatabaseId,
+            query: str
     ) -> 'ExecuteSQLReturnT':
         params = {
             'databaseId': database_id,
             'query': query,
         }
-        
+
         return self._send_command(
             'Database.executeSQL',
-
             params
         )
 
     def get_database_table_names(
-        self,
-        database_id: DatabaseId
+            self,
+            database_id: DatabaseId
     ) -> 'GetDatabaseTableNamesReturnT':
         params = {
             'databaseId': database_id,
         }
-        
+
         return self._send_command(
             'Database.getDatabaseTableNames',
-
             params
         )
-

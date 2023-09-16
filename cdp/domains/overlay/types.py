@@ -11,19 +11,12 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.dom.types import (
-        BackendNodeId,
+    from cdp.domains.dom.types import (
         NodeId,
-        Quad,
         RGBA,
         Rect
-    )
-        from cdp.domains.page.types import (
-        FrameId
-    )
-        from cdp.domains.runtime.types import (
-        RemoteObjectId
     )
 
 ContrastAlgorithm = Literal[
@@ -31,14 +24,12 @@ ContrastAlgorithm = Literal[
     'aaa',
     'apca'
 ]
-
 ColorFormat = Literal[
     'rgb',
     'hsl',
     'hwb',
     'hex'
 ]
-
 InspectMode = Literal[
     'searchForNode',
     'searchForUAShadowDOM',
@@ -46,7 +37,6 @@ InspectMode = Literal[
     'showDistances',
     'none'
 ]
-
 
 @dataclass
 class SourceOrderConfig:

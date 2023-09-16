@@ -11,15 +11,16 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.network.types import (
+    from cdp.domains.network.types import (
         TimeSinceEpoch
     )
-        from cdp.domains.dom.types import (
+    from cdp.domains.dom.types import (
         BackendNodeId,
         Rect
     )
-        from cdp.domains.page.types import (
+    from cdp.domains.page.types import (
         FrameId
     )
 
@@ -46,7 +47,7 @@ class LayoutShift:
     value: float
     had_recent_input: bool
     last_input_time: 'TimeSinceEpoch'
-    sources: list
+    sources: list['LayoutShiftAttribution']
 
 
 @dataclass

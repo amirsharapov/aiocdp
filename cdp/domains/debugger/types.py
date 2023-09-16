@@ -11,23 +11,15 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.runtime.types import (
-        CallArgument,
-        ExceptionDetails,
+    from cdp.domains.runtime.types import (
         RemoteObject,
-        RemoteObjectId,
-        ScriptId,
-        StackTrace,
-        StackTraceId,
-        TimeDelta,
-        UniqueDebuggerId
+        ScriptId
     )
 
 BreakpointId = str
-
 CallFrameId = str
-
 
 @dataclass
 class Location:
@@ -49,7 +41,7 @@ class CallFrame:
     function_location: 'Location'
     location: 'Location'
     url: str
-    scope_chain: list
+    scope_chain: list['Scope']
     this: 'RemoteObject'
     return_value: 'RemoteObject'
 

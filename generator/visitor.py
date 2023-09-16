@@ -6,6 +6,8 @@ from typing import Any, TypedDict
 
 class RenderContextDict(TypedDict):
     expand: bool
+    lines_before: int
+    lines_after: int
 
 
 def get_render_context(node: ast.AST) -> RenderContextDict:
@@ -14,12 +16,16 @@ def get_render_context(node: ast.AST) -> RenderContextDict:
 
         return {
             'expand': False,
+            'lines_before': 0,
+            'lines_after': 0,
             **node.render_context
         }
 
     else:
         return {
-            'expand': False
+            'expand': False,
+            'lines_before': 0,
+            'lines_after': 0,
         }
 
 
@@ -34,11 +40,31 @@ class SourceCodeGenerator(ast.NodeVisitor):
     def indent(self):
         return ' ' * self.indent_length
 
+    @property
+    def last_line(self):
+        return self.source.split('\n')[-1]
+
     @contextlib.contextmanager
     def _indent_context(self):
         self.indent_length += 4
         yield
         self.indent_length -= 4
+
+    def _add_lines_before(self, node: ast.AST):
+        render_context = get_render_context(node)
+
+        for _ in range(render_context['lines_before']):
+            self.source += '\n'
+
+    def _add_lines_after(self, node: ast.AST):
+        render_context = get_render_context(node)
+
+        for _ in range(render_context['lines_after']):
+            self.source += '\n'
+
+    def _add_new_line_if_prev_line_not_empty(self):
+        if self.last_line:
+            self.source += '\n'
 
     def _zip_args_and_defaults(self, node: ast.arguments):
         defaults = getattr(node, 'defaults', [])
@@ -75,7 +101,6 @@ class SourceCodeGenerator(ast.NodeVisitor):
             self.visit(node.annotation)
 
     def visit_arg_with_default(self, node: ast.arg, default: ast.AST = None) -> Any:
-        self.source += self.indent
         self.visit(node)
         if default:
             self.source += ' = '
@@ -85,6 +110,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
         with self._indent_context():
             for i, (arg, default) in enumerate(self._zip_args_and_defaults(node)):
                 self.source += '\n'
+                self.source += self.indent + ' ' * 4
                 self.visit_arg_with_default(
                     arg,
                     default
@@ -117,22 +143,19 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.visit(node.value)
 
     def visit_AnnAssign(self, node: ast.AnnAssign) -> Any:
-        self.source += self.indent
+        assert isinstance(node.target, ast.Name)
+
+        self.source += f'{node.target.id}: '
+        self.visit(node.annotation)
 
         if node.value:
-            self.source += f'{node.target.id}: '
-            self.visit(node.annotation)
             self.source += ' = '
             self.visit(node.value)
-        else:
-            self.source += f'{node.target.id}: '
-            self.visit(node.annotation)
 
     def visit_Assign(self, node: ast.Assign) -> Any:
         self.visit(node.targets[0])
         self.source += ' = '
         self.visit(node.value)
-        self.source += '\n'
 
     def visit_Attribute(self, node: ast.Attribute) -> Any:
         self.visit(node.value)
@@ -156,9 +179,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
                     if i != len(node.args) - 1:
                         self.source += ','
 
-                        if render_context['expand']:
-                            self.source += '\n'
-                        else:
+                        if not render_context['expand']:
                             self.source += ' '
 
             if hasattr(node, 'keywords') and node.keywords:
@@ -184,12 +205,13 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += ')'
 
     def visit_ClassDef(self, node: ast.ClassDef) -> Any:
-        for decorator in node.decorator_list:
-            self.source += f'{self.indent}@'
-            self.visit(decorator)
-            self.source += '\n'
+        if decorators := getattr(node, 'decorator_list', None):
+            for decorator in decorators:
+                self.source += f'@'
+                self.visit(decorator)
+                self.source += '\n'
 
-        self.source += f'{self.indent}class {node.name}'
+        self.source += f'class {node.name}'
 
         if hasattr(node, 'bases') and node.bases:
             self.source += '('
@@ -201,8 +223,11 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         with self._indent_context():
             for item in node.body:
+                self._add_lines_before(item)
+                self.source += self.indent
                 self.visit(item)
-                self.source += '\n'
+                self._add_new_line_if_prev_line_not_empty()
+                self._add_lines_after(item)
 
     def visit_Compare(self, node: ast.Compare) -> Any:
         lookup = {
@@ -238,13 +263,13 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         with self._indent_context():
             for key, value in zip(node.keys, node.values):
-                self.source += f'{self.indent}'
+                self.source += self.indent
                 self.visit(key)
                 self.source += ': '
 
                 if render_context['expand']:
                     self.source += '(\n'
-                    self.source += self.indent + 4 * ' '
+                    self.source += self.indent + ' ' * 4
 
                 self.visit(value)
 
@@ -260,13 +285,12 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += '}'
 
     def visit_FunctionDef(self, node: ast.FunctionDef) -> Any:
-        self.source += f'{self.indent}def {node.name}('
+        self.source += f'def {node.name}('
 
         if hasattr(node, 'args') and node.args:
             self.visit(node.args)
-            self.source += self.indent
 
-        self.source += ')'
+        self.source += self.indent + ')'
 
         if hasattr(node, 'returns') and node.returns:
             self.source += ' -> '
@@ -274,27 +298,15 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         self.source += ':\n'
 
-        prev = None
-
         with self._indent_context():
-            for body in node.body:
+            for item in node.body:
+                self._add_lines_before(item)
                 self.source += self.indent
-
-                if isinstance(body, ast.If):
-                    self.source += '\n'
-
-                elif prev and type(prev) != type(body):
-                    self.source += '\n'
-
-                self.visit(body)
-
-                if isinstance(body, (ast.Return, ast.Call)):
-                    self.source += '\n'
-
-                prev = body
+                self.visit(item)
+                self._add_new_line_if_prev_line_not_empty()
+                self._add_lines_after(item)
 
     def visit_ImportFrom(self, node: ast.ImportFrom) -> Any:
-        self.source += self.indent
         self.source += f'from {node.module} import ('
 
         with self._indent_context():
@@ -306,26 +318,24 @@ class SourceCodeGenerator(ast.NodeVisitor):
                 if i != len(node.names) - 1:
                     self.source += ','
 
-            self.source += '\n'
-
-        self.source += f'{self.indent})\n'
+        self.source += f'\n{self.indent})\n'
 
     def visit_If(self, node: ast.If) -> Any:
-        self.source += f'{self.indent}if '
+        self.source += f'if '
         self.visit(node.test)
         self.source += ':\n'
 
         with self._indent_context():
-            for body in node.body:
+            for item in node.body:
                 self.source += self.indent
-                self.visit(body)
+                self.visit(item)
 
         if hasattr(node, 'orelse'):
             self.source += f'{self.indent}else:\n'
 
             with self._indent_context():
-                for body in node.orelse:
-                    self.visit(body)
+                for item in node.orelse:
+                    self.visit(item)
 
     def visit_ListComp(self, node: ast.ListComp) -> Any:
         self.source += f'['
@@ -348,17 +358,15 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
     def visit_Module(self, node: ast.Module) -> Any:
         for item in node.body:
-            if isinstance(item, (ast.ClassDef, ast.FunctionDef)):
-                self.source += '\n\n'
-            if isinstance(item, ast.Assign):
-                self.source += '\n'
+            self._add_lines_before(item)
             self.visit(item)
+            self._add_lines_after(item)
 
     def visit_Name(self, node: ast.Name) -> Any:
         self.source += node.id
 
     def visit_Return(self, node: ast.Return) -> Any:
-        self.source += f'{self.indent}return '
+        self.source += 'return '
         self.visit(node.value)
 
     def visit_Subscript(self, node: ast.Subscript) -> Any:

@@ -35,488 +35,458 @@ from cdp.domains.network.types import (
 @dataclass
 class Emulation(BaseDomain):
     def can_emulate(
-        self
+            self
     ) -> 'CanEmulateReturnT':
         params = {}
-        
+
         return self._send_command(
             'Emulation.canEmulate',
-
             params
         )
 
     def clear_device_metrics_override(
-        self
-    ) -> 'ClearDeviceMetricsOverrideReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Emulation.clearDeviceMetricsOverride',
-
             params
         )
 
     def clear_geolocation_override(
-        self
-    ) -> 'ClearGeolocationOverrideReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Emulation.clearGeolocationOverride',
-
             params
         )
 
     def reset_page_scale_factor(
-        self
-    ) -> 'ResetPageScaleFactorReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Emulation.resetPageScaleFactor',
-
             params
         )
 
     def set_focus_emulation_enabled(
-        self,
-        enabled: bool
-    ) -> 'SetFocusEmulationEnabledReturnT':
+            self,
+            enabled: bool
+    ) -> None:
         params = {
             'enabled': enabled,
         }
-        
+
         return self._send_command(
             'Emulation.setFocusEmulationEnabled',
-
             params
         )
 
     def set_auto_dark_mode_override(
-        self,
-        enabled: bool = UNDEFINED
-    ) -> 'SetAutoDarkModeOverrideReturnT':
+            self,
+            enabled: bool = UNDEFINED
+    ) -> None:
         params = {}
-        
+
         if is_defined(enabled):
             params['enabled'] = enabled
-        
+
         return self._send_command(
             'Emulation.setAutoDarkModeOverride',
-
             params
         )
 
     def set_cpu_throttling_rate(
-        self,
-        rate: float
-    ) -> 'SetCPUThrottlingRateReturnT':
+            self,
+            rate: float
+    ) -> None:
         params = {
             'rate': rate,
         }
-        
+
         return self._send_command(
             'Emulation.setCPUThrottlingRate',
-
             params
         )
 
     def set_default_background_color_override(
-        self,
-        color: RGBA = UNDEFINED
-    ) -> 'SetDefaultBackgroundColorOverrideReturnT':
+            self,
+            color: RGBA = UNDEFINED
+    ) -> None:
         params = {}
-        
+
         if is_defined(color):
             params['color'] = color
-        
+
         return self._send_command(
             'Emulation.setDefaultBackgroundColorOverride',
-
             params
         )
 
     def set_device_metrics_override(
-        self,
-        width: int,
-        height: int,
-        device_scale_factor: float,
-        mobile: bool,
-        scale: float = UNDEFINED,
-        screen_width: int = UNDEFINED,
-        screen_height: int = UNDEFINED,
-        position_x: int = UNDEFINED,
-        position_y: int = UNDEFINED,
-        dont_set_visible_size: bool = UNDEFINED,
-        screen_orientation: ScreenOrientation = UNDEFINED,
-        viewport: Viewport = UNDEFINED,
-        display_feature: DisplayFeature = UNDEFINED
-    ) -> 'SetDeviceMetricsOverrideReturnT':
+            self,
+            width: int,
+            height: int,
+            device_scale_factor: float,
+            mobile: bool,
+            scale: float = UNDEFINED,
+            screen_width: int = UNDEFINED,
+            screen_height: int = UNDEFINED,
+            position_x: int = UNDEFINED,
+            position_y: int = UNDEFINED,
+            dont_set_visible_size: bool = UNDEFINED,
+            screen_orientation: ScreenOrientation = UNDEFINED,
+            viewport: Viewport = UNDEFINED,
+            display_feature: DisplayFeature = UNDEFINED
+    ) -> None:
         params = {
             'width': width,
             'height': height,
             'deviceScaleFactor': device_scale_factor,
             'mobile': mobile,
         }
-        
+
         if is_defined(scale):
             params['scale'] = scale
-        
+
         if is_defined(screen_width):
             params['screenWidth'] = screen_width
-        
+
         if is_defined(screen_height):
             params['screenHeight'] = screen_height
-        
+
         if is_defined(position_x):
             params['positionX'] = position_x
-        
+
         if is_defined(position_y):
             params['positionY'] = position_y
-        
+
         if is_defined(dont_set_visible_size):
             params['dontSetVisibleSize'] = dont_set_visible_size
-        
+
         if is_defined(screen_orientation):
             params['screenOrientation'] = screen_orientation
-        
+
         if is_defined(viewport):
             params['viewport'] = viewport
-        
+
         if is_defined(display_feature):
             params['displayFeature'] = display_feature
-        
+
         return self._send_command(
             'Emulation.setDeviceMetricsOverride',
-
             params
         )
 
     def set_scrollbars_hidden(
-        self,
-        hidden: bool
-    ) -> 'SetScrollbarsHiddenReturnT':
+            self,
+            hidden: bool
+    ) -> None:
         params = {
             'hidden': hidden,
         }
-        
+
         return self._send_command(
             'Emulation.setScrollbarsHidden',
-
             params
         )
 
     def set_document_cookie_disabled(
-        self,
-        disabled: bool
-    ) -> 'SetDocumentCookieDisabledReturnT':
+            self,
+            disabled: bool
+    ) -> None:
         params = {
             'disabled': disabled,
         }
-        
+
         return self._send_command(
             'Emulation.setDocumentCookieDisabled',
-
             params
         )
 
     def set_emit_touch_events_for_mouse(
-        self,
-        enabled: bool,
-        configuration: str = UNDEFINED
-    ) -> 'SetEmitTouchEventsForMouseReturnT':
+            self,
+            enabled: bool,
+            configuration: str = UNDEFINED
+    ) -> None:
         params = {
             'enabled': enabled,
         }
-        
+
         if is_defined(configuration):
             params['configuration'] = configuration
-        
+
         return self._send_command(
             'Emulation.setEmitTouchEventsForMouse',
-
             params
         )
 
     def set_emulated_media(
-        self,
-        media: str = UNDEFINED,
-        features: list = UNDEFINED
-    ) -> 'SetEmulatedMediaReturnT':
+            self,
+            media: str = UNDEFINED,
+            features: list = UNDEFINED
+    ) -> None:
         params = {}
-        
+
         if is_defined(media):
             params['media'] = media
-        
+
         if is_defined(features):
             params['features'] = features
-        
+
         return self._send_command(
             'Emulation.setEmulatedMedia',
-
             params
         )
 
     def set_emulated_vision_deficiency(
-        self,
-        type_: str
-    ) -> 'SetEmulatedVisionDeficiencyReturnT':
+            self,
+            type_: str
+    ) -> None:
         params = {
             'type': type_,
         }
-        
+
         return self._send_command(
             'Emulation.setEmulatedVisionDeficiency',
-
             params
         )
 
     def set_geolocation_override(
-        self,
-        latitude: float = UNDEFINED,
-        longitude: float = UNDEFINED,
-        accuracy: float = UNDEFINED
-    ) -> 'SetGeolocationOverrideReturnT':
+            self,
+            latitude: float = UNDEFINED,
+            longitude: float = UNDEFINED,
+            accuracy: float = UNDEFINED
+    ) -> None:
         params = {}
-        
+
         if is_defined(latitude):
             params['latitude'] = latitude
-        
+
         if is_defined(longitude):
             params['longitude'] = longitude
-        
+
         if is_defined(accuracy):
             params['accuracy'] = accuracy
-        
+
         return self._send_command(
             'Emulation.setGeolocationOverride',
-
             params
         )
 
     def set_idle_override(
-        self,
-        is_user_active: bool,
-        is_screen_unlocked: bool
-    ) -> 'SetIdleOverrideReturnT':
+            self,
+            is_user_active: bool,
+            is_screen_unlocked: bool
+    ) -> None:
         params = {
             'isUserActive': is_user_active,
             'isScreenUnlocked': is_screen_unlocked,
         }
-        
+
         return self._send_command(
             'Emulation.setIdleOverride',
-
             params
         )
 
     def clear_idle_override(
-        self
-    ) -> 'ClearIdleOverrideReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Emulation.clearIdleOverride',
-
             params
         )
 
     def set_navigator_overrides(
-        self,
-        platform: str
-    ) -> 'SetNavigatorOverridesReturnT':
+            self,
+            platform: str
+    ) -> None:
         params = {
             'platform': platform,
         }
-        
+
         return self._send_command(
             'Emulation.setNavigatorOverrides',
-
             params
         )
 
     def set_page_scale_factor(
-        self,
-        page_scale_factor: float
-    ) -> 'SetPageScaleFactorReturnT':
+            self,
+            page_scale_factor: float
+    ) -> None:
         params = {
             'pageScaleFactor': page_scale_factor,
         }
-        
+
         return self._send_command(
             'Emulation.setPageScaleFactor',
-
             params
         )
 
     def set_script_execution_disabled(
-        self,
-        value: bool
-    ) -> 'SetScriptExecutionDisabledReturnT':
+            self,
+            value: bool
+    ) -> None:
         params = {
             'value': value,
         }
-        
+
         return self._send_command(
             'Emulation.setScriptExecutionDisabled',
-
             params
         )
 
     def set_touch_emulation_enabled(
-        self,
-        enabled: bool,
-        max_touch_points: int = UNDEFINED
-    ) -> 'SetTouchEmulationEnabledReturnT':
+            self,
+            enabled: bool,
+            max_touch_points: int = UNDEFINED
+    ) -> None:
         params = {
             'enabled': enabled,
         }
-        
+
         if is_defined(max_touch_points):
             params['maxTouchPoints'] = max_touch_points
-        
+
         return self._send_command(
             'Emulation.setTouchEmulationEnabled',
-
             params
         )
 
     def set_virtual_time_policy(
-        self,
-        policy: VirtualTimePolicy,
-        budget: float = UNDEFINED,
-        max_virtual_time_task_starvation_count: int = UNDEFINED,
-        initial_virtual_time: TimeSinceEpoch = UNDEFINED
+            self,
+            policy: VirtualTimePolicy,
+            budget: float = UNDEFINED,
+            max_virtual_time_task_starvation_count: int = UNDEFINED,
+            initial_virtual_time: TimeSinceEpoch = UNDEFINED
     ) -> 'SetVirtualTimePolicyReturnT':
         params = {
             'policy': policy,
         }
-        
+
         if is_defined(budget):
             params['budget'] = budget
-        
+
         if is_defined(max_virtual_time_task_starvation_count):
             params['maxVirtualTimeTaskStarvationCount'] = max_virtual_time_task_starvation_count
-        
+
         if is_defined(initial_virtual_time):
             params['initialVirtualTime'] = initial_virtual_time
-        
+
         return self._send_command(
             'Emulation.setVirtualTimePolicy',
-
             params
         )
 
     def set_locale_override(
-        self,
-        locale: str = UNDEFINED
-    ) -> 'SetLocaleOverrideReturnT':
+            self,
+            locale: str = UNDEFINED
+    ) -> None:
         params = {}
-        
+
         if is_defined(locale):
             params['locale'] = locale
-        
+
         return self._send_command(
             'Emulation.setLocaleOverride',
-
             params
         )
 
     def set_timezone_override(
-        self,
-        timezone_id: str
-    ) -> 'SetTimezoneOverrideReturnT':
+            self,
+            timezone_id: str
+    ) -> None:
         params = {
             'timezoneId': timezone_id,
         }
-        
+
         return self._send_command(
             'Emulation.setTimezoneOverride',
-
             params
         )
 
     def set_visible_size(
-        self,
-        width: int,
-        height: int
-    ) -> 'SetVisibleSizeReturnT':
+            self,
+            width: int,
+            height: int
+    ) -> None:
         params = {
             'width': width,
             'height': height,
         }
-        
+
         return self._send_command(
             'Emulation.setVisibleSize',
-
             params
         )
 
     def set_disabled_image_types(
-        self,
-        image_types: list
-    ) -> 'SetDisabledImageTypesReturnT':
+            self,
+            image_types: list
+    ) -> None:
         params = {
             'imageTypes': image_types,
         }
-        
+
         return self._send_command(
             'Emulation.setDisabledImageTypes',
-
             params
         )
 
     def set_hardware_concurrency_override(
-        self,
-        hardware_concurrency: int
-    ) -> 'SetHardwareConcurrencyOverrideReturnT':
+            self,
+            hardware_concurrency: int
+    ) -> None:
         params = {
             'hardwareConcurrency': hardware_concurrency,
         }
-        
+
         return self._send_command(
             'Emulation.setHardwareConcurrencyOverride',
-
             params
         )
 
     def set_user_agent_override(
-        self,
-        user_agent: str,
-        accept_language: str = UNDEFINED,
-        platform: str = UNDEFINED,
-        user_agent_metadata: UserAgentMetadata = UNDEFINED
-    ) -> 'SetUserAgentOverrideReturnT':
+            self,
+            user_agent: str,
+            accept_language: str = UNDEFINED,
+            platform: str = UNDEFINED,
+            user_agent_metadata: UserAgentMetadata = UNDEFINED
+    ) -> None:
         params = {
             'userAgent': user_agent,
         }
-        
+
         if is_defined(accept_language):
             params['acceptLanguage'] = accept_language
-        
+
         if is_defined(platform):
             params['platform'] = platform
-        
+
         if is_defined(user_agent_metadata):
             params['userAgentMetadata'] = user_agent_metadata
-        
+
         return self._send_command(
             'Emulation.setUserAgentOverride',
-
             params
         )
 
     def set_automation_override(
-        self,
-        enabled: bool
-    ) -> 'SetAutomationOverrideReturnT':
+            self,
+            enabled: bool
+    ) -> None:
         params = {
             'enabled': enabled,
         }
-        
+
         return self._send_command(
             'Emulation.setAutomationOverride',
-
             params
         )
-

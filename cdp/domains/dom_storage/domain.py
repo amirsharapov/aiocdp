@@ -22,86 +22,79 @@ from cdp.domains.dom_storage.types import (
 @dataclass
 class DOMStorage(BaseDomain):
     def clear(
-        self,
-        storage_id: StorageId
-    ) -> 'ClearReturnT':
+            self,
+            storage_id: StorageId
+    ) -> None:
         params = {
             'storageId': storage_id,
         }
-        
+
         return self._send_command(
             'DOMStorage.clear',
-
             params
         )
 
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'DOMStorage.disable',
-
             params
         )
 
     def enable(
-        self
-    ) -> 'EnableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'DOMStorage.enable',
-
             params
         )
 
     def get_dom_storage_items(
-        self,
-        storage_id: StorageId
+            self,
+            storage_id: StorageId
     ) -> 'GetDOMStorageItemsReturnT':
         params = {
             'storageId': storage_id,
         }
-        
+
         return self._send_command(
             'DOMStorage.getDOMStorageItems',
-
             params
         )
 
     def remove_dom_storage_item(
-        self,
-        storage_id: StorageId,
-        key: str
-    ) -> 'RemoveDOMStorageItemReturnT':
+            self,
+            storage_id: StorageId,
+            key: str
+    ) -> None:
         params = {
             'storageId': storage_id,
             'key': key,
         }
-        
+
         return self._send_command(
             'DOMStorage.removeDOMStorageItem',
-
             params
         )
 
     def set_dom_storage_item(
-        self,
-        storage_id: StorageId,
-        key: str,
-        value: str
-    ) -> 'SetDOMStorageItemReturnT':
+            self,
+            storage_id: StorageId,
+            key: str,
+            value: str
+    ) -> None:
         params = {
             'storageId': storage_id,
             'key': key,
             'value': value,
         }
-        
+
         return self._send_command(
             'DOMStorage.setDOMStorageItem',
-
             params
         )
-

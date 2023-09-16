@@ -18,30 +18,27 @@ from cdp.utils import (
 @dataclass
 class Tethering(BaseDomain):
     def bind(
-        self,
-        port: int
-    ) -> 'BindReturnT':
+            self,
+            port: int
+    ) -> None:
         params = {
             'port': port,
         }
-        
+
         return self._send_command(
             'Tethering.bind',
-
             params
         )
 
     def unbind(
-        self,
-        port: int
-    ) -> 'UnbindReturnT':
+            self,
+            port: int
+    ) -> None:
         params = {
             'port': port,
         }
-        
+
         return self._send_command(
             'Tethering.unbind',
-
             params
         )
-

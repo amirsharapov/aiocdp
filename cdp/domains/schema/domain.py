@@ -21,13 +21,11 @@ from cdp.domains.schema.types import (
 @dataclass
 class Schema(BaseDomain):
     def get_domains(
-        self
+            self
     ) -> 'GetDomainsReturnT':
         params = {}
-        
+
         return self._send_command(
             'Schema.getDomains',
-
             params
         )
-

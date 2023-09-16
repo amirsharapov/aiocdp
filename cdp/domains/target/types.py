@@ -11,20 +11,18 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.page.types import (
+    from cdp.domains.page.types import (
         FrameId
     )
-        from cdp.domains.browser.types import (
+    from cdp.domains.browser.types import (
         BrowserContextID
     )
 
 TargetID = str
-
 SessionID = str
-
 TargetFilter = list['FilterEntry']
-
 
 @dataclass
 class TargetInfo:

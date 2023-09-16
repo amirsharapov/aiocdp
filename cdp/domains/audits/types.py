@@ -11,26 +11,26 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.network.types import (
+    from cdp.domains.network.types import (
         ClientSecurityState,
         CorsErrorStatus,
         IPAddressSpace,
         LoaderId,
         RequestId
     )
-        from cdp.domains.page.types import (
+    from cdp.domains.page.types import (
         FrameId
     )
-        from cdp.domains.runtime.types import (
+    from cdp.domains.runtime.types import (
         ScriptId
     )
-        from cdp.domains.dom.types import (
+    from cdp.domains.dom.types import (
         BackendNodeId
     )
 
 IssueId = str
-
 CookieExclusionReason = Literal[
     'ExcludeSameSiteUnspecifiedTreatedAsLax',
     'ExcludeSameSiteNoneInsecure',
@@ -42,7 +42,6 @@ CookieExclusionReason = Literal[
     'ExcludeThirdPartyCookieBlockedInFirstPartySet',
     'ExcludeThirdPartyPhaseout'
 ]
-
 CookieWarningReason = Literal[
     'WarnSameSiteUnspecifiedCrossSiteContext',
     'WarnSameSiteNoneInsecure',
@@ -56,18 +55,15 @@ CookieWarningReason = Literal[
     'WarnDomainNonASCII',
     'WarnThirdPartyPhaseout'
 ]
-
 CookieOperation = Literal[
     'SetCookie',
     'ReadCookie'
 ]
-
 MixedContentResolutionStatus = Literal[
     'MixedContentBlocked',
     'MixedContentAutomaticallyUpgraded',
     'MixedContentWarning'
 ]
-
 MixedContentResourceType = Literal[
     'AttributionSrc',
     'Audio',
@@ -97,7 +93,6 @@ MixedContentResourceType = Literal[
     'XMLHttpRequest',
     'XSLT'
 ]
-
 BlockedByResponseReason = Literal[
     'CoepFrameResourceNeedsCoepHeader',
     'CoopSandboxedIFrameCannotNavigateToCoopPage',
@@ -105,18 +100,15 @@ BlockedByResponseReason = Literal[
     'CorpNotSameOriginAfterDefaultedToSameOriginByCoep',
     'CorpNotSameSite'
 ]
-
 HeavyAdResolutionStatus = Literal[
     'HeavyAdBlocked',
     'HeavyAdWarning'
 ]
-
 HeavyAdReason = Literal[
     'NetworkTotalLimit',
     'CpuTotalLimit',
     'CpuPeakLimit'
 ]
-
 ContentSecurityPolicyViolationType = Literal[
     'kInlineViolation',
     'kEvalViolation',
@@ -125,12 +117,10 @@ ContentSecurityPolicyViolationType = Literal[
     'kTrustedTypesPolicyViolation',
     'kWasmEvalViolation'
 ]
-
 SharedArrayBufferIssueType = Literal[
     'TransferIssue',
     'CreationIssue'
 ]
-
 AttributionReportingIssueType = Literal[
     'PermissionPolicyDisabled',
     'UntrustworthyReportingOrigin',
@@ -148,7 +138,6 @@ AttributionReportingIssueType = Literal[
     'NoWebOrOsSupport',
     'NavigationRegistrationWithoutTransientUserActivation'
 ]
-
 GenericIssueErrorType = Literal[
     'CrossOriginPortalPostMessageError',
     'FormLabelForNameError',
@@ -163,12 +152,10 @@ GenericIssueErrorType = Literal[
     'FormInputHasWrongButWellIntendedAutocompleteValueError',
     'ResponseWasBlockedByORB'
 ]
-
 ClientHintIssueReason = Literal[
     'MetaTagAllowListInvalidOrigin',
     'MetaTagModifiedHTML'
 ]
-
 FederatedAuthRequestIssueReason = Literal[
     'ShouldEmbargo',
     'TooManyRequests',
@@ -206,7 +193,6 @@ FederatedAuthRequestIssueReason = Literal[
     'SilentMediationFailure',
     'ThirdPartyCookiesBlocked'
 ]
-
 FederatedAuthUserInfoRequestIssueReason = Literal[
     'NotSameOrigin',
     'NotIframe',
@@ -218,12 +204,10 @@ FederatedAuthUserInfoRequestIssueReason = Literal[
     'InvalidAccountsResponse',
     'NoReturningUserFromFetchedAccounts'
 ]
-
 StyleSheetLoadingIssueReason = Literal[
     'LateImportRule',
     'RequestFailed'
 ]
-
 InspectorIssueCode = Literal[
     'CookieIssue',
     'MixedContentIssue',
@@ -244,7 +228,6 @@ InspectorIssueCode = Literal[
     'StylesheetLoadingIssue',
     'FederatedAuthUserInfoRequestIssue'
 ]
-
 
 @dataclass
 class AffectedCookie:
@@ -268,8 +251,8 @@ class AffectedFrame:
 class CookieIssueDetails:
     cookie: 'AffectedCookie'
     raw_cookie_line: str
-    cookie_warning_reasons: list
-    cookie_exclusion_reasons: list
+    cookie_warning_reasons: list['CookieWarningReason']
+    cookie_exclusion_reasons: list['CookieExclusionReason']
     operation: 'CookieOperation'
     site_for_cookies: str
     cookie_url: str
@@ -390,7 +373,7 @@ class DeprecationIssueDetails:
 
 @dataclass
 class BounceTrackingIssueDetails:
-    tracking_sites: list
+    tracking_sites: list[str]
 
 
 @dataclass

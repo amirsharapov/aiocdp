@@ -47,7 +47,7 @@ def main():
             Path(f'cdp/domains/{module_name}').mkdir(parents=True, exist_ok=True)
             Path(f'cdp/domains/{module_name}/__init__.py').touch()
 
-            module = ast.generic_domain.generate(domain)
+            module = ast.domain.generate(domain)
             module = SourceCodeGenerator().generate(module)
 
             Path(f'cdp/domains/{module_name}/domain.py').write_text(
@@ -55,7 +55,7 @@ def main():
                 module
             )
 
-            module = ast.generic_types.generate(domain)
+            module = ast.types.generate(domain)
             module = SourceCodeGenerator().generate(module)
 
             Path(f'cdp/domains/{module_name}/types.py').write_text(

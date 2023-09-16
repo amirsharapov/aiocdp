@@ -11,23 +11,15 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.page.types import (
+    from cdp.domains.page.types import (
         FrameId
-    )
-        from cdp.domains.runtime.types import (
-        ExecutionContextId,
-        RemoteObject,
-        RemoteObjectId,
-        StackTrace
     )
 
 NodeId = int
-
 BackendNodeId = int
-
 Quad = list[float]
-
 PseudoType = Literal[
     'first-line',
     'first-letter',
@@ -55,31 +47,26 @@ PseudoType = Literal[
     'view-transition-old',
     'view-transition-new'
 ]
-
 ShadowRootType = Literal[
     'user-agent',
     'open',
     'closed'
 ]
-
 CompatibilityMode = Literal[
     'QuirksMode',
     'LimitedQuirksMode',
     'NoQuirksMode'
 ]
-
 PhysicalAxes = Literal[
     'Horizontal',
     'Vertical',
     'Both'
 ]
-
 LogicalAxes = Literal[
     'Inline',
     'Block',
     'Both'
 ]
-
 
 @dataclass
 class BackendNode:
@@ -98,8 +85,8 @@ class Node:
     local_name: str
     node_value: str
     child_node_count: int
-    children: list
-    attributes: list
+    children: list['Node']
+    attributes: list[str]
     document_url: str
     base_url: str
     public_id: str
@@ -113,11 +100,11 @@ class Node:
     shadow_root_type: 'ShadowRootType'
     frame_id: 'FrameId'
     content_document: 'Node'
-    shadow_roots: list
+    shadow_roots: list['Node']
     template_content: 'Node'
-    pseudo_elements: list
+    pseudo_elements: list['Node']
     imported_document: 'Node'
-    distributed_nodes: list
+    distributed_nodes: list['BackendNode']
     is_svg: bool
     compatibility_mode: 'CompatibilityMode'
     assigned_slot: 'BackendNode'
@@ -145,8 +132,8 @@ class BoxModel:
 @dataclass
 class ShapeOutsideInfo:
     bounds: 'Quad'
-    shape: list
-    margin_shape: list
+    shape: list[Any]
+    margin_shape: list[Any]
 
 
 @dataclass

@@ -11,18 +11,16 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.dom.types import (
+    from cdp.domains.dom.types import (
         BackendNodeId,
         Rect
     )
 
 LayerId = str
-
 SnapshotId = str
-
 PaintProfile = list[float]
-
 
 @dataclass
 class ScrollRect:
@@ -54,14 +52,14 @@ class Layer:
     offset_y: float
     width: float
     height: float
-    transform: list
+    transform: list[float]
     anchor_x: float
     anchor_y: float
     anchor_z: float
     paint_count: int
     draws_content: bool
     invisible: bool
-    scroll_rects: list
+    scroll_rects: list['ScrollRect']
     sticky_position_constraint: 'StickyPositionConstraint'
 
 

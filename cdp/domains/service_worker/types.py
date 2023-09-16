@@ -11,20 +11,19 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.target.types import (
+    from cdp.domains.target.types import (
         TargetID
     )
 
 RegistrationID = str
-
 ServiceWorkerVersionRunningStatus = Literal[
     'stopped',
     'starting',
     'running',
     'stopping'
 ]
-
 ServiceWorkerVersionStatus = Literal[
     'new',
     'installing',
@@ -33,7 +32,6 @@ ServiceWorkerVersionStatus = Literal[
     'activated',
     'redundant'
 ]
-
 
 @dataclass
 class ServiceWorkerRegistration:
@@ -51,7 +49,7 @@ class ServiceWorkerVersion:
     status: 'ServiceWorkerVersionStatus'
     script_last_modified: float
     script_response_time: float
-    controlled_clients: list
+    controlled_clients: list['TargetID']
     target_id: 'TargetID'
 
 

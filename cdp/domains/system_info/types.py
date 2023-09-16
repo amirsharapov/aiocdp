@@ -17,13 +17,11 @@ SubsamplingFormat = Literal[
     'yuv422',
     'yuv444'
 ]
-
 ImageType = Literal[
     'jpeg',
     'webp',
     'unknown'
 ]
-
 
 @dataclass
 class GPUDevice:
@@ -63,18 +61,18 @@ class ImageDecodeAcceleratorCapability:
     image_type: 'ImageType'
     max_dimensions: 'Size'
     min_dimensions: 'Size'
-    subsamplings: list
+    subsamplings: list['SubsamplingFormat']
 
 
 @dataclass
 class GPUInfo:
-    devices: list
+    devices: list['GPUDevice']
     aux_attributes: object
     feature_status: object
-    driver_bug_workarounds: list
-    video_decoding: list
-    video_encoding: list
-    image_decoding: list
+    driver_bug_workarounds: list[str]
+    video_decoding: list['VideoDecodeAcceleratorCapability']
+    video_encoding: list['VideoEncodeAcceleratorCapability']
+    image_decoding: list['ImageDecodeAcceleratorCapability']
 
 
 @dataclass

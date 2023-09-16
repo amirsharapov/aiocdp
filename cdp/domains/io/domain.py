@@ -26,52 +26,48 @@ from cdp.domains.runtime.types import (
 @dataclass
 class IO(BaseDomain):
     def close(
-        self,
-        handle: StreamHandle
-    ) -> 'CloseReturnT':
+            self,
+            handle: StreamHandle
+    ) -> None:
         params = {
             'handle': handle,
         }
-        
+
         return self._send_command(
             'IO.close',
-
             params
         )
 
     def read(
-        self,
-        handle: StreamHandle,
-        offset: int = UNDEFINED,
-        size: int = UNDEFINED
+            self,
+            handle: StreamHandle,
+            offset: int = UNDEFINED,
+            size: int = UNDEFINED
     ) -> 'ReadReturnT':
         params = {
             'handle': handle,
         }
-        
+
         if is_defined(offset):
             params['offset'] = offset
-        
+
         if is_defined(size):
             params['size'] = size
-        
+
         return self._send_command(
             'IO.read',
-
             params
         )
 
     def resolve_blob(
-        self,
-        object_id: RemoteObjectId
+            self,
+            object_id: RemoteObjectId
     ) -> 'ResolveBlobReturnT':
         params = {
             'objectId': object_id,
         }
-        
+
         return self._send_command(
             'IO.resolveBlob',
-
             params
         )
-

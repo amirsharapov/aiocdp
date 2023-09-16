@@ -42,10 +42,15 @@ def _generate_type_constants():
             targets=[
                 ast.Name('_T')
             ],
-            value=ast.Subscript(
-                value=ast.Name('TypeVar'),
-                slice=ast.Constant('_T')
-            )
+            value=ast.Call(
+                func=ast.Name('TypeVar'),
+                args=[
+                    ast.Constant('_T')
+                ]
+            ),
+            render_context={
+                'lines_before': 1
+            }
         )
     ]
 
@@ -89,7 +94,10 @@ def _generate_type_specific_to_dict_mapper_body(
             args=[
                 attribute_access,
                 ast.Name('casing_strategy')
-            ]
+            ],
+            render_context={
+                'expand': True
+            }
         )
 
         attribute_access_list_comp = ast.ListComp(
@@ -171,7 +179,10 @@ def _generate_type_specific_to_dict_mappers(protocols: list['Protocol']):
                     body=[],
                     returns=ast.Name(
                         id='dict'
-                    )
+                    ),
+                    render_context={
+                        'lines_before': 2
+                    }
                 )
 
                 for casing_strategy in ['snake', 'camel', 'pascal']:
@@ -222,6 +233,10 @@ def _generate_generic_to_dict_mapper(protocols: list['Protocol']):
             )
         ],
         body=[ast.Name('pass')],
+        returns=ast.Name('dict'),
+        render_context={
+            'lines_before': 2
+        }
     )
 
     return function
@@ -260,7 +275,10 @@ def _generate_type_specific_from_dict_mappers(protocols: list['Protocol']):
                     returns=ast.Constant((
                         f'{type_.actual_domain.domain_snake_case_collision_safe}.'
                         f'{type_.id_pascal_case}'
-                    ))
+                    )),
+                    render_context={
+                        'lines_before': 2
+                    }
                 )
 
                 functions.append(
@@ -275,7 +293,13 @@ def _generate_generic_from_dict_mapper(protocols: list['Protocol']):
         name='from_dict',
         args=ast.arguments(
             args=[
-                ast.arg('dataclass_type'),
+                ast.arg(
+                    arg='dataclass_type',
+                    annotation=ast.Subscript(
+                        value=ast.Name('type'),
+                        slice=ast.Name('_T')
+                    )
+                ),
                 ast.arg(
                     arg='data',
                     annotation=ast.Name('dict')
@@ -287,6 +311,10 @@ def _generate_generic_from_dict_mapper(protocols: list['Protocol']):
             ]
         ),
         body=[],
+        returns=ast.Name('_T'),
+        render_context={
+            'lines_before': 2
+        }
     )
 
     lookup = ast.Dict(
@@ -344,11 +372,11 @@ def _generate_generic_from_dict_mapper(protocols: list['Protocol']):
                 args=[
                     ast.Name('data'),
                     ast.Name('casing_strategy')
-                ]
+                ],
+                render_context={
+                    'expand': True
+                }
             ),
-            render_context={
-                'expand': True
-            }
         )
     )
 
@@ -364,6 +392,10 @@ def generate(protocols: list['Protocol']):
         _generate_imports(
             protocols
         )
+    )
+
+    root.body.extend(
+        _generate_type_constants()
     )
 
     root.body.extend(

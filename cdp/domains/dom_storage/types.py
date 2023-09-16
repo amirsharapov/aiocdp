@@ -13,9 +13,7 @@ from dataclasses import (
 )
 
 SerializedStorageKey = str
-
 Item = list[str]
-
 
 @dataclass
 class StorageId:

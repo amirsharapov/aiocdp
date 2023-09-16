@@ -164,7 +164,10 @@ def _generate_send_command_method_optional_params(command: Command):
                         ],
                         value=ast.Name(parameter.name_snake_cased)
                     )
-                ]
+                ],
+                render_context={
+                    'lines_before': 1
+                }
             )
         )
 
@@ -186,23 +189,28 @@ def _generate_send_command_method_return_call(command: Command):
             render_context={
                 'expand': True
             }
-        )
+        ),
+        render_context={
+            'lines_before': 1
+        }
     )
 
 
 def _generate_send_command_method_return_signature(command: Command):
-    return ast.Constant(
-        value=command.name_pascal_case + 'ReturnT'
-    )
+    if command.returns:
+        return ast.Constant(command.name_pascal_case + 'ReturnT')
+    else:
+        return ast.Name('None')
 
 
-def _generate_send_command_method(command: Command):
+def _generate_send_command_method(command: Command, index: int):
     function = ast.FunctionDef(
         name=snake_case(command.name),
         args=None,
         body=[],
         render_context={
-            'expand': True
+            'expand': True,
+            'lines_before': 1 if index > 0 else 0
         }
     )
 
@@ -244,12 +252,18 @@ def _generate_class_definition(domain: Domain):
         body=[],
         decorator_list=[
             ast.Name('dataclass')
-        ]
+        ],
+        render_context={
+            'lines_before': 2
+        }
     )
 
-    for command in domain.commands:
+    for i, command in enumerate(domain.commands):
         class_.body.append(
-            _generate_send_command_method(command)
+            _generate_send_command_method(
+                command,
+                i
+            )
         )
 
     return class_

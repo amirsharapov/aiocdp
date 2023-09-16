@@ -13,29 +13,24 @@ from dataclasses import (
 )
 
 MemoryDumpConfig = dict
-
 StreamFormat = Literal[
     'json',
     'proto'
 ]
-
 StreamCompression = Literal[
     'none',
     'gzip'
 ]
-
 MemoryDumpLevelOfDetail = Literal[
     'background',
     'light',
     'detailed'
 ]
-
 TracingBackend = Literal[
     'auto',
     'chrome',
     'system'
 ]
-
 
 @dataclass
 class TraceConfig:
@@ -44,9 +39,9 @@ class TraceConfig:
     enable_sampling: bool
     enable_systrace: bool
     enable_argument_filter: bool
-    included_categories: list
-    excluded_categories: list
-    synthetic_delays: list
+    included_categories: list[str]
+    excluded_categories: list[str]
+    synthetic_delays: list[str]
     memory_dump_config: 'MemoryDumpConfig'
 
 

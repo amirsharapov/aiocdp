@@ -22,54 +22,49 @@ from cdp.domains.device_access.types import (
 @dataclass
 class DeviceAccess(BaseDomain):
     def enable(
-        self
-    ) -> 'EnableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'DeviceAccess.enable',
-
             params
         )
 
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'DeviceAccess.disable',
-
             params
         )
 
     def select_prompt(
-        self,
-        id_: RequestId,
-        device_id: DeviceId
-    ) -> 'SelectPromptReturnT':
+            self,
+            id_: RequestId,
+            device_id: DeviceId
+    ) -> None:
         params = {
             'id': id_,
             'deviceId': device_id,
         }
-        
+
         return self._send_command(
             'DeviceAccess.selectPrompt',
-
             params
         )
 
     def cancel_prompt(
-        self,
-        id_: RequestId
-    ) -> 'CancelPromptReturnT':
+            self,
+            id_: RequestId
+    ) -> None:
         params = {
             'id': id_,
         }
-        
+
         return self._send_command(
             'DeviceAccess.cancelPrompt',
-
             params
         )
-

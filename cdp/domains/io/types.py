@@ -11,13 +11,8 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
-        from cdp.domains.runtime.types import (
-        RemoteObjectId
-    )
 
 StreamHandle = str
-
 
 @dataclass
 class ReadReturnT:

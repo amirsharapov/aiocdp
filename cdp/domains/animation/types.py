@@ -11,12 +11,10 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.dom.types import (
+    from cdp.domains.dom.types import (
         BackendNodeId
-    )
-        from cdp.domains.runtime.types import (
-        RemoteObject
     )
 
 
@@ -51,7 +49,7 @@ class AnimationEffect:
 @dataclass
 class KeyframesRule:
     name: str
-    keyframes: list
+    keyframes: list['KeyframeStyle']
 
 
 @dataclass

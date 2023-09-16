@@ -21,53 +21,48 @@ from cdp.domains.performance.types import (
 @dataclass
 class Performance(BaseDomain):
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Performance.disable',
-
             params
         )
 
     def enable(
-        self,
-        time_domain: str = UNDEFINED
-    ) -> 'EnableReturnT':
+            self,
+            time_domain: str = UNDEFINED
+    ) -> None:
         params = {}
-        
+
         if is_defined(time_domain):
             params['timeDomain'] = time_domain
-        
+
         return self._send_command(
             'Performance.enable',
-
             params
         )
 
     def set_time_domain(
-        self,
-        time_domain: str
-    ) -> 'SetTimeDomainReturnT':
+            self,
+            time_domain: str
+    ) -> None:
         params = {
             'timeDomain': time_domain,
         }
-        
+
         return self._send_command(
             'Performance.setTimeDomain',
-
             params
         )
 
     def get_metrics(
-        self
+            self
     ) -> 'GetMetricsReturnT':
         params = {}
-        
+
         return self._send_command(
             'Performance.getMetrics',
-
             params
         )
-

@@ -13,9 +13,7 @@ from dataclasses import (
 )
 
 RequestId = str
-
 DeviceId = str
-
 
 @dataclass
 class PromptDevice:

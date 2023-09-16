@@ -11,13 +11,13 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.storage.types import (
+    from cdp.domains.storage.types import (
         StorageBucket
     )
 
 CacheId = str
-
 CachedResponseType = Literal[
     'basic',
     'cors',
@@ -27,17 +27,16 @@ CachedResponseType = Literal[
     'opaqueRedirect'
 ]
 
-
 @dataclass
 class DataEntry:
     request_url: str
     request_method: str
-    request_headers: list
+    request_headers: list['Header']
     response_time: float
     response_status: int
     response_status_text: str
     response_type: 'CachedResponseType'
-    response_headers: list
+    response_headers: list['Header']
 
 
 @dataclass

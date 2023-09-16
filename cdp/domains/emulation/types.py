@@ -11,28 +11,16 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
-        from cdp.domains.dom.types import (
-        RGBA
-    )
-        from cdp.domains.page.types import (
-        Viewport
-    )
-        from cdp.domains.network.types import (
-        TimeSinceEpoch
-    )
 
 VirtualTimePolicy = Literal[
     'advance',
     'pause',
     'pauseIfNetworkFetchesPending'
 ]
-
 DisabledImageType = Literal[
     'avif',
     'webp'
 ]
-
 
 @dataclass
 class ScreenOrientation:
@@ -61,8 +49,8 @@ class UserAgentBrandVersion:
 
 @dataclass
 class UserAgentMetadata:
-    brands: list
-    full_version_list: list
+    brands: list['UserAgentBrandVersion']
+    full_version_list: list['UserAgentBrandVersion']
     full_version: str
     platform: str
     platform_version: str

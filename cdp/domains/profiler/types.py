@@ -11,8 +11,9 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.runtime.types import (
+    from cdp.domains.runtime.types import (
         CallFrame,
         ScriptId
     )
@@ -23,18 +24,18 @@ class ProfileNode:
     id: int
     call_frame: 'CallFrame'
     hit_count: int
-    children: list
+    children: list[int]
     deopt_reason: str
-    position_ticks: list
+    position_ticks: list['PositionTickInfo']
 
 
 @dataclass
 class Profile:
-    nodes: list
+    nodes: list['ProfileNode']
     start_time: float
     end_time: float
-    samples: list
-    time_deltas: list
+    samples: list[int]
+    time_deltas: list[int]
 
 
 @dataclass
@@ -53,7 +54,7 @@ class CoverageRange:
 @dataclass
 class FunctionCoverage:
     function_name: str
-    ranges: list
+    ranges: list['CoverageRange']
     is_block_coverage: bool
 
 
@@ -61,7 +62,7 @@ class FunctionCoverage:
 class ScriptCoverage:
     script_id: 'ScriptId'
     url: str
-    functions: list
+    functions: list['FunctionCoverage']
 
 
 @dataclass
@@ -72,14 +73,14 @@ class TypeObject:
 @dataclass
 class TypeProfileEntry:
     offset: int
-    types: list
+    types: list['TypeObject']
 
 
 @dataclass
 class ScriptTypeProfile:
     script_id: 'ScriptId'
     url: str
-    entries: list
+    entries: list['TypeProfileEntry']
 
 
 @dataclass

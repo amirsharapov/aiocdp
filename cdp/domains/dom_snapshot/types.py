@@ -11,23 +11,21 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.dom.types import (
+    from cdp.domains.dom.types import (
         BackendNodeId,
         PseudoType,
         Rect,
         ShadowRootType
     )
-        from cdp.domains.page.types import (
+    from cdp.domains.page.types import (
         FrameId
     )
 
 StringIndex = int
-
 ArrayOfStrings = list['StringIndex']
-
 Rectangle = list[float]
-
 
 @dataclass
 class DOMNode:
@@ -39,9 +37,9 @@ class DOMNode:
     input_checked: bool
     option_selected: bool
     backend_node_id: 'BackendNodeId'
-    child_node_indexes: list
-    attributes: list
-    pseudo_element_indexes: list
+    child_node_indexes: list[int]
+    attributes: list['NameValue']
+    pseudo_element_indexes: list[int]
     layout_node_index: int
     document_url: str
     base_url: str
@@ -54,7 +52,7 @@ class DOMNode:
     pseudo_type: 'PseudoType'
     shadow_root_type: 'ShadowRootType'
     is_clickable: bool
-    event_listeners: list
+    event_listeners: list['EventListener']
     current_source_url: str
     origin_url: str
     scroll_offset_x: float
@@ -73,7 +71,7 @@ class LayoutTreeNode:
     dom_node_index: int
     bounding_box: 'Rect'
     layout_text: str
-    inline_text_nodes: list
+    inline_text_nodes: list['InlineTextBox']
     style_index: int
     paint_order: int
     is_stacking_context: bool
@@ -81,7 +79,7 @@ class LayoutTreeNode:
 
 @dataclass
 class ComputedStyle:
-    properties: list
+    properties: list['NameValue']
 
 
 @dataclass
@@ -92,19 +90,19 @@ class NameValue:
 
 @dataclass
 class RareStringData:
-    index: list
-    value: list
+    index: list[int]
+    value: list['StringIndex']
 
 
 @dataclass
 class RareBooleanData:
-    index: list
+    index: list[int]
 
 
 @dataclass
 class RareIntegerData:
-    index: list
-    value: list
+    index: list[int]
+    value: list[int]
 
 
 @dataclass
@@ -128,13 +126,13 @@ class DocumentSnapshot:
 
 @dataclass
 class NodeTreeSnapshot:
-    parent_index: list
-    node_type: list
+    parent_index: list[int]
+    node_type: list[int]
     shadow_root_type: 'RareStringData'
-    node_name: list
-    node_value: list
-    backend_node_id: list
-    attributes: list
+    node_name: list['StringIndex']
+    node_value: list['StringIndex']
+    backend_node_id: list['BackendNodeId']
+    attributes: list['ArrayOfStrings']
     text_value: 'RareStringData'
     input_value: 'RareStringData'
     input_checked: 'RareBooleanData'
@@ -149,25 +147,25 @@ class NodeTreeSnapshot:
 
 @dataclass
 class LayoutTreeSnapshot:
-    node_index: list
-    styles: list
-    bounds: list
-    text: list
+    node_index: list[int]
+    styles: list['ArrayOfStrings']
+    bounds: list['Rectangle']
+    text: list['StringIndex']
     stacking_contexts: 'RareBooleanData'
-    paint_orders: list
-    offset_rects: list
-    scroll_rects: list
-    client_rects: list
-    blended_background_colors: list
-    text_color_opacities: list
+    paint_orders: list[int]
+    offset_rects: list['Rectangle']
+    scroll_rects: list['Rectangle']
+    client_rects: list['Rectangle']
+    blended_background_colors: list['StringIndex']
+    text_color_opacities: list[float]
 
 
 @dataclass
 class TextBoxSnapshot:
-    layout_index: list
-    bounds: list
-    start: list
-    length: list
+    layout_index: list[int]
+    bounds: list['Rectangle']
+    start: list[int]
+    length: list[int]
 
 
 @dataclass

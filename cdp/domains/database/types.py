@@ -14,7 +14,6 @@ from dataclasses import (
 
 DatabaseId = str
 
-
 @dataclass
 class Database:
     id: 'DatabaseId'

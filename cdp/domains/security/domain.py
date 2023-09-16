@@ -21,68 +21,62 @@ from cdp.domains.security.types import (
 @dataclass
 class Security(BaseDomain):
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Security.disable',
-
             params
         )
 
     def enable(
-        self
-    ) -> 'EnableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Security.enable',
-
             params
         )
 
     def set_ignore_certificate_errors(
-        self,
-        ignore: bool
-    ) -> 'SetIgnoreCertificateErrorsReturnT':
+            self,
+            ignore: bool
+    ) -> None:
         params = {
             'ignore': ignore,
         }
-        
+
         return self._send_command(
             'Security.setIgnoreCertificateErrors',
-
             params
         )
 
     def handle_certificate_error(
-        self,
-        event_id: int,
-        action: CertificateErrorAction
-    ) -> 'HandleCertificateErrorReturnT':
+            self,
+            event_id: int,
+            action: CertificateErrorAction
+    ) -> None:
         params = {
             'eventId': event_id,
             'action': action,
         }
-        
+
         return self._send_command(
             'Security.handleCertificateError',
-
             params
         )
 
     def set_override_certificate_errors(
-        self,
-        override: bool
-    ) -> 'SetOverrideCertificateErrorsReturnT':
+            self,
+            override: bool
+    ) -> None:
         params = {
             'override': override,
         }
-        
+
         return self._send_command(
             'Security.setOverrideCertificateErrors',
-
             params
         )
-

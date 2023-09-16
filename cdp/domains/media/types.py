@@ -13,9 +13,7 @@ from dataclasses import (
 )
 
 PlayerId = str
-
 Timestamp = float
-
 
 @dataclass
 class PlayerMessage:
@@ -45,6 +43,6 @@ class PlayerErrorSourceLocation:
 class PlayerError:
     error_type: str
     code: int
-    stack: list
-    cause: list
+    stack: list['PlayerErrorSourceLocation']
+    cause: list['PlayerError']
     data: object

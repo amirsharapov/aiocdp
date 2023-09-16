@@ -11,32 +11,29 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.network.types import (
+    from cdp.domains.network.types import (
         LoaderId,
         RequestId
     )
-        from cdp.domains.dom.types import (
+    from cdp.domains.dom.types import (
         BackendNodeId
     )
 
 RuleSetId = str
-
 RuleSetErrorType = Literal[
     'SourceIsNotJsonObject',
     'InvalidRulesSkipped'
 ]
-
 SpeculationAction = Literal[
     'Prefetch',
     'Prerender'
 ]
-
 SpeculationTargetHint = Literal[
     'Blank',
     'Self'
 ]
-
 PrerenderFinalStatus = Literal[
     'Activated',
     'Destroyed',
@@ -101,7 +98,6 @@ PrerenderFinalStatus = Literal[
     'SpeculationRuleRemoved',
     'ActivatedWithAuxiliaryBrowsingContexts'
 ]
-
 PreloadingStatus = Literal[
     'Pending',
     'Running',
@@ -110,7 +106,6 @@ PreloadingStatus = Literal[
     'Failure',
     'NotSupported'
 ]
-
 PrefetchStatus = Literal[
     'PrefetchAllowed',
     'PrefetchFailedIneligibleRedirect',
@@ -144,7 +139,6 @@ PrefetchStatus = Literal[
     'PrefetchNotUsedProbeFailed'
 ]
 
-
 @dataclass
 class RuleSet:
     id: 'RuleSetId'
@@ -168,5 +162,5 @@ class PreloadingAttemptKey:
 @dataclass
 class PreloadingAttemptSource:
     key: 'PreloadingAttemptKey'
-    rule_set_ids: list
-    node_ids: list
+    rule_set_ids: list['RuleSetId']
+    node_ids: list['BackendNodeId']

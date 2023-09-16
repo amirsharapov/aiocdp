@@ -11,20 +11,16 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.dom.types import (
-        BackendNodeId,
-        NodeId
+    from cdp.domains.dom.types import (
+        BackendNodeId
     )
-        from cdp.domains.page.types import (
+    from cdp.domains.page.types import (
         FrameId
-    )
-        from cdp.domains.runtime.types import (
-        RemoteObjectId
     )
 
 AXNodeId = str
-
 AXValueType = Literal[
     'boolean',
     'tristate',
@@ -44,7 +40,6 @@ AXValueType = Literal[
     'internalRole',
     'valueUndefined'
 ]
-
 AXValueSourceType = Literal[
     'attribute',
     'implicit',
@@ -53,7 +48,6 @@ AXValueSourceType = Literal[
     'placeholder',
     'relatedElement'
 ]
-
 AXValueNativeSourceType = Literal[
     'description',
     'figcaption',
@@ -66,7 +60,6 @@ AXValueNativeSourceType = Literal[
     'title',
     'other'
 ]
-
 AXPropertyName = Literal[
     'busy',
     'disabled',
@@ -109,7 +102,6 @@ AXPropertyName = Literal[
     'owns'
 ]
 
-
 @dataclass
 class AXValueSource:
     type: 'AXValueSourceType'
@@ -140,23 +132,23 @@ class AXProperty:
 class AXValue:
     type: 'AXValueType'
     value: Any
-    related_nodes: list
-    sources: list
+    related_nodes: list['AXRelatedNode']
+    sources: list['AXValueSource']
 
 
 @dataclass
 class AXNode:
     node_id: 'AXNodeId'
     ignored: bool
-    ignored_reasons: list
+    ignored_reasons: list['AXProperty']
     role: 'AXValue'
     chrome_role: 'AXValue'
     name: 'AXValue'
     description: 'AXValue'
     value: 'AXValue'
-    properties: list
+    properties: list['AXProperty']
     parent_id: 'AXNodeId'
-    child_ids: list
+    child_ids: list['AXNodeId']
     backend_dom_node_id: 'BackendNodeId'
     frame_id: 'FrameId'
 

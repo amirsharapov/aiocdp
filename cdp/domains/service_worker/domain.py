@@ -21,189 +21,175 @@ from cdp.domains.service_worker.types import (
 @dataclass
 class ServiceWorker(BaseDomain):
     def deliver_push_message(
-        self,
-        origin: str,
-        registration_id: RegistrationID,
-        data: str
-    ) -> 'DeliverPushMessageReturnT':
+            self,
+            origin: str,
+            registration_id: RegistrationID,
+            data: str
+    ) -> None:
         params = {
             'origin': origin,
             'registrationId': registration_id,
             'data': data,
         }
-        
+
         return self._send_command(
             'ServiceWorker.deliverPushMessage',
-
             params
         )
 
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'ServiceWorker.disable',
-
             params
         )
 
     def dispatch_sync_event(
-        self,
-        origin: str,
-        registration_id: RegistrationID,
-        tag: str,
-        last_chance: bool
-    ) -> 'DispatchSyncEventReturnT':
+            self,
+            origin: str,
+            registration_id: RegistrationID,
+            tag: str,
+            last_chance: bool
+    ) -> None:
         params = {
             'origin': origin,
             'registrationId': registration_id,
             'tag': tag,
             'lastChance': last_chance,
         }
-        
+
         return self._send_command(
             'ServiceWorker.dispatchSyncEvent',
-
             params
         )
 
     def dispatch_periodic_sync_event(
-        self,
-        origin: str,
-        registration_id: RegistrationID,
-        tag: str
-    ) -> 'DispatchPeriodicSyncEventReturnT':
+            self,
+            origin: str,
+            registration_id: RegistrationID,
+            tag: str
+    ) -> None:
         params = {
             'origin': origin,
             'registrationId': registration_id,
             'tag': tag,
         }
-        
+
         return self._send_command(
             'ServiceWorker.dispatchPeriodicSyncEvent',
-
             params
         )
 
     def enable(
-        self
-    ) -> 'EnableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'ServiceWorker.enable',
-
             params
         )
 
     def inspect_worker(
-        self,
-        version_id: str
-    ) -> 'InspectWorkerReturnT':
+            self,
+            version_id: str
+    ) -> None:
         params = {
             'versionId': version_id,
         }
-        
+
         return self._send_command(
             'ServiceWorker.inspectWorker',
-
             params
         )
 
     def set_force_update_on_page_load(
-        self,
-        force_update_on_page_load: bool
-    ) -> 'SetForceUpdateOnPageLoadReturnT':
+            self,
+            force_update_on_page_load: bool
+    ) -> None:
         params = {
             'forceUpdateOnPageLoad': force_update_on_page_load,
         }
-        
+
         return self._send_command(
             'ServiceWorker.setForceUpdateOnPageLoad',
-
             params
         )
 
     def skip_waiting(
-        self,
-        scope_url: str
-    ) -> 'SkipWaitingReturnT':
+            self,
+            scope_url: str
+    ) -> None:
         params = {
             'scopeURL': scope_url,
         }
-        
+
         return self._send_command(
             'ServiceWorker.skipWaiting',
-
             params
         )
 
     def start_worker(
-        self,
-        scope_url: str
-    ) -> 'StartWorkerReturnT':
+            self,
+            scope_url: str
+    ) -> None:
         params = {
             'scopeURL': scope_url,
         }
-        
+
         return self._send_command(
             'ServiceWorker.startWorker',
-
             params
         )
 
     def stop_all_workers(
-        self
-    ) -> 'StopAllWorkersReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'ServiceWorker.stopAllWorkers',
-
             params
         )
 
     def stop_worker(
-        self,
-        version_id: str
-    ) -> 'StopWorkerReturnT':
+            self,
+            version_id: str
+    ) -> None:
         params = {
             'versionId': version_id,
         }
-        
+
         return self._send_command(
             'ServiceWorker.stopWorker',
-
             params
         )
 
     def unregister(
-        self,
-        scope_url: str
-    ) -> 'UnregisterReturnT':
+            self,
+            scope_url: str
+    ) -> None:
         params = {
             'scopeURL': scope_url,
         }
-        
+
         return self._send_command(
             'ServiceWorker.unregister',
-
             params
         )
 
     def update_registration(
-        self,
-        scope_url: str
-    ) -> 'UpdateRegistrationReturnT':
+            self,
+            scope_url: str
+    ) -> None:
         params = {
             'scopeURL': scope_url,
         }
-        
+
         return self._send_command(
             'ServiceWorker.updateRegistration',
-
             params
         )
-

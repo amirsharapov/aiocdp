@@ -27,58 +27,53 @@ from cdp.domains.autofill.types import (
 @dataclass
 class Autofill(BaseDomain):
     def trigger(
-        self,
-        field_id: BackendNodeId,
-        frame_id: FrameId,
-        card: CreditCard = UNDEFINED
-    ) -> 'TriggerReturnT':
+            self,
+            field_id: BackendNodeId,
+            frame_id: FrameId,
+            card: CreditCard = UNDEFINED
+    ) -> None:
         params = {
             'fieldId': field_id,
             'card': card,
         }
-        
+
         if is_defined(frame_id):
             params['frameId'] = frame_id
-        
+
         return self._send_command(
             'Autofill.trigger',
-
             params
         )
 
     def set_addresses(
-        self,
-        addresses: list
-    ) -> 'SetAddressesReturnT':
+            self,
+            addresses: list
+    ) -> None:
         params = {
             'addresses': addresses,
         }
-        
+
         return self._send_command(
             'Autofill.setAddresses',
-
             params
         )
 
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Autofill.disable',
-
             params
         )
 
     def enable(
-        self
-    ) -> 'EnableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Autofill.enable',
-
             params
         )
-

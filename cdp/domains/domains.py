@@ -164,10 +164,9 @@ if TYPE_CHECKING:
     from cdp.target.target import (
         Target
     )
-
-
 @dataclass
 class Domains:
+    target: 'Target'
     accessibility: Accessibility = field(init=False)
     animation: Animation = field(init=False)
     audits: Audits = field(init=False)
@@ -218,10 +217,8 @@ class Domains:
     profiler: Profiler = field(init=False)
     runtime: Runtime = field(init=False)
     schema: Schema = field(init=False)
-    target: 'Target'
-
     def __post_init__(
-        self
+            self
     ):
         self.accessibility = Accessibility(self.target)
         self.animation = Animation(self.target)

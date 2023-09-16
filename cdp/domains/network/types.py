@@ -11,39 +11,27 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.security.types import (
+    from cdp.domains.security.types import (
         CertificateId,
         MixedContentType,
         SecurityState
     )
-        from cdp.domains.runtime.types import (
+    from cdp.domains.runtime.types import (
         StackTrace
     )
-        from cdp.domains.io.types import (
+    from cdp.domains.io.types import (
         StreamHandle
-    )
-        from cdp.domains.emulation.types import (
-        UserAgentMetadata
-    )
-        from cdp.domains.page.types import (
-        FrameId
     )
 
 LoaderId = str
-
 RequestId = str
-
 InterceptionId = str
-
 TimeSinceEpoch = float
-
 MonotonicTime = float
-
 Headers = dict
-
 ReportId = str
-
 ResourceType = Literal[
     'Document',
     'Stylesheet',
@@ -64,7 +52,6 @@ ResourceType = Literal[
     'Preflight',
     'Other'
 ]
-
 ErrorReason = Literal[
     'Failed',
     'Aborted',
@@ -81,7 +68,6 @@ ErrorReason = Literal[
     'BlockedByClient',
     'BlockedByResponse'
 ]
-
 ConnectionType = Literal[
     'none',
     'cellular2g',
@@ -93,25 +79,21 @@ ConnectionType = Literal[
     'wimax',
     'other'
 ]
-
 CookieSameSite = Literal[
     'Strict',
     'Lax',
     'None'
 ]
-
 CookiePriority = Literal[
     'Low',
     'Medium',
     'High'
 ]
-
 CookieSourceScheme = Literal[
     'Unset',
     'NonSecure',
     'Secure'
 ]
-
 ResourcePriority = Literal[
     'VeryLow',
     'Low',
@@ -119,13 +101,11 @@ ResourcePriority = Literal[
     'High',
     'VeryHigh'
 ]
-
 CertificateTransparencyCompliance = Literal[
     'unknown',
     'not-compliant',
     'compliant'
 ]
-
 BlockedReason = Literal[
     'other',
     'csp',
@@ -140,7 +120,6 @@ BlockedReason = Literal[
     'corp-not-same-origin-after-defaulted-to-same-origin-by-coep',
     'corp-not-same-site'
 ]
-
 CorsError = Literal[
     'DisallowedByMode',
     'InvalidResponse',
@@ -177,20 +156,17 @@ CorsError = Literal[
     'PrivateNetworkAccessPermissionUnavailable',
     'PrivateNetworkAccessPermissionDenied'
 ]
-
 ServiceWorkerResponseSource = Literal[
     'cache-storage',
     'http-cache',
     'fallback-code',
     'network'
 ]
-
 TrustTokenOperationType = Literal[
     'Issuance',
     'Redemption',
     'Signing'
 ]
-
 AlternateProtocolUsage = Literal[
     'alternativeJobWonWithoutRace',
     'alternativeJobWonRace',
@@ -201,7 +177,6 @@ AlternateProtocolUsage = Literal[
     'dnsAlpnH3JobWonRace',
     'unspecifiedReason'
 ]
-
 SetCookieBlockedReason = Literal[
     'SecureOnly',
     'SameSiteStrict',
@@ -224,7 +199,6 @@ SetCookieBlockedReason = Literal[
     'NameValuePairExceedsMaxSize',
     'DisallowedCharacter'
 ]
-
 CookieBlockedReason = Literal[
     'SecureOnly',
     'NotOnPath',
@@ -242,12 +216,10 @@ CookieBlockedReason = Literal[
     'SamePartyFromCrossPartyContext',
     'NameValuePairExceedsMaxSize'
 ]
-
 InterceptionStage = Literal[
     'Request',
     'HeadersReceived'
 ]
-
 SignedExchangeErrorField = Literal[
     'signatureSig',
     'signatureIntegrity',
@@ -256,14 +228,12 @@ SignedExchangeErrorField = Literal[
     'signatureValidityUrl',
     'signatureTimestamps'
 ]
-
 ContentEncoding = Literal[
     'deflate',
     'gzip',
     'br',
     'zstd'
 ]
-
 PrivateNetworkRequestPolicy = Literal[
     'Allow',
     'BlockFromInsecureToMorePrivate',
@@ -271,14 +241,12 @@ PrivateNetworkRequestPolicy = Literal[
     'PreflightBlock',
     'PreflightWarn'
 ]
-
 IPAddressSpace = Literal[
     'Local',
     'Private',
     'Public',
     'Unknown'
 ]
-
 CrossOriginOpenerPolicyValue = Literal[
     'SameOrigin',
     'SameOriginAllowPopups',
@@ -287,25 +255,21 @@ CrossOriginOpenerPolicyValue = Literal[
     'SameOriginPlusCoep',
     'RestrictPropertiesPlusCoep'
 ]
-
 CrossOriginEmbedderPolicyValue = Literal[
     'None',
     'Credentialless',
     'RequireCorp'
 ]
-
 ContentSecurityPolicySource = Literal[
     'HTTP',
     'Meta'
 ]
-
 ReportStatus = Literal[
     'Queued',
     'Pending',
     'MarkedForRemoval',
     'Success'
 ]
-
 
 @dataclass
 class ResourceTiming:
@@ -343,7 +307,7 @@ class Request:
     headers: 'Headers'
     post_data: str
     has_post_data: bool
-    post_data_entries: list
+    post_data_entries: list['PostDataEntry']
     mixed_content_type: 'MixedContentType'
     initial_priority: 'ResourcePriority'
     referrer_policy: str
@@ -373,11 +337,11 @@ class SecurityDetails:
     mac: str
     certificate_id: 'CertificateId'
     subject_name: str
-    san_list: list
+    san_list: list[str]
     issuer: str
     valid_from: 'TimeSinceEpoch'
     valid_to: 'TimeSinceEpoch'
-    signed_certificate_timestamp_list: list
+    signed_certificate_timestamp_list: list['SignedCertificateTimestamp']
     certificate_transparency_compliance: 'CertificateTransparencyCompliance'
     server_signature_algorithm: int
     encrypted_client_hello: bool
@@ -393,7 +357,7 @@ class CorsErrorStatus:
 class TrustTokenParams:
     operation: 'TrustTokenOperationType'
     refresh_policy: str
-    issuers: list
+    issuers: list[str]
 
 
 @dataclass
@@ -486,14 +450,14 @@ class Cookie:
 
 @dataclass
 class BlockedSetCookieWithReason:
-    blocked_reasons: list
+    blocked_reasons: list['SetCookieBlockedReason']
     cookie_line: str
     cookie: 'Cookie'
 
 
 @dataclass
 class BlockedCookieWithReason:
-    blocked_reasons: list
+    blocked_reasons: list['CookieBlockedReason']
     cookie: 'Cookie'
 
 
@@ -547,7 +511,7 @@ class SignedExchangeSignature:
     validity_url: str
     date: int
     expires: int
-    certificates: list
+    certificates: list[str]
 
 
 @dataclass
@@ -555,7 +519,7 @@ class SignedExchangeHeader:
     request_url: str
     response_code: int
     response_headers: 'Headers'
-    signatures: list
+    signatures: list['SignedExchangeSignature']
     header_integrity: str
 
 
@@ -571,7 +535,7 @@ class SignedExchangeInfo:
     outer_response: 'Response'
     header: 'SignedExchangeHeader'
     security_details: 'SecurityDetails'
-    errors: list
+    errors: list['SignedExchangeError']
 
 
 @dataclass
@@ -613,7 +577,7 @@ class ContentSecurityPolicyStatus:
 class SecurityIsolationStatus:
     coop: 'CrossOriginOpenerPolicyStatus'
     coep: 'CrossOriginEmbedderPolicyStatus'
-    csp: list
+    csp: list['ContentSecurityPolicyStatus']
 
 
 @dataclass

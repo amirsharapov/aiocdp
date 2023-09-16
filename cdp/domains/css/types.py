@@ -11,27 +11,25 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.dom.types import (
+    from cdp.domains.dom.types import (
         BackendNodeId,
         LogicalAxes,
-        NodeId,
         PhysicalAxes,
         PseudoType
     )
-        from cdp.domains.page.types import (
+    from cdp.domains.page.types import (
         FrameId
     )
 
 StyleSheetId = str
-
 StyleSheetOrigin = Literal[
     'injected',
     'user-agent',
     'inspector',
     'regular'
 ]
-
 CSSRuleType = Literal[
     'MediaRule',
     'SupportsRule',
@@ -41,29 +39,28 @@ CSSRuleType = Literal[
     'StyleRule'
 ]
 
-
 @dataclass
 class PseudoElementMatches:
     pseudo_type: 'PseudoType'
     pseudo_identifier: str
-    matches: list
+    matches: list['RuleMatch']
 
 
 @dataclass
 class InheritedStyleEntry:
     inline_style: 'CSSStyle'
-    matched_css_rules: list
+    matched_css_rules: list['RuleMatch']
 
 
 @dataclass
 class InheritedPseudoElementMatches:
-    pseudo_elements: list
+    pseudo_elements: list['PseudoElementMatches']
 
 
 @dataclass
 class RuleMatch:
     rule: 'CSSRule'
-    matching_selectors: list
+    matching_selectors: list[int]
 
 
 @dataclass
@@ -82,7 +79,7 @@ class Specificity:
 
 @dataclass
 class SelectorList:
-    selectors: list
+    selectors: list['Value']
     text: str
 
 
@@ -112,15 +109,15 @@ class CSSStyleSheetHeader:
 class CSSRule:
     style_sheet_id: 'StyleSheetId'
     selector_list: 'SelectorList'
-    nesting_selectors: list
+    nesting_selectors: list[str]
     origin: 'StyleSheetOrigin'
     style: 'CSSStyle'
-    media: list
-    container_queries: list
-    supports: list
-    layers: list
-    scopes: list
-    rule_types: list
+    media: list['CSSMedia']
+    container_queries: list['CSSContainerQuery']
+    supports: list['CSSSupports']
+    layers: list['CSSLayer']
+    scopes: list['CSSScope']
+    rule_types: list['CSSRuleType']
 
 
 @dataclass
@@ -155,8 +152,8 @@ class CSSComputedStyleProperty:
 @dataclass
 class CSSStyle:
     style_sheet_id: 'StyleSheetId'
-    css_properties: list
-    shorthand_entries: list
+    css_properties: list['CSSProperty']
+    shorthand_entries: list['ShorthandEntry']
     css_text: str
     range: 'SourceRange'
 
@@ -171,7 +168,7 @@ class CSSProperty:
     parsed_ok: bool
     disabled: bool
     range: 'SourceRange'
-    longhand_properties: list
+    longhand_properties: list['CSSProperty']
 
 
 @dataclass
@@ -181,12 +178,12 @@ class CSSMedia:
     source_url: str
     range: 'SourceRange'
     style_sheet_id: 'StyleSheetId'
-    media_list: list
+    media_list: list['MediaQuery']
 
 
 @dataclass
 class MediaQuery:
-    expressions: list
+    expressions: list['MediaQueryExpression']
     active: bool
 
 
@@ -234,7 +231,7 @@ class CSSLayer:
 @dataclass
 class CSSLayerData:
     name: str
-    sub_layers: list
+    sub_layers: list['CSSLayerData']
     order: float
 
 
@@ -265,7 +262,7 @@ class FontFace:
     unicode_range: str
     src: str
     platform_font_family: str
-    font_variation_axes: list
+    font_variation_axes: list['FontVariationAxis']
 
 
 @dataclass
@@ -278,13 +275,13 @@ class CSSTryRule:
 @dataclass
 class CSSPositionFallbackRule:
     name: 'Value'
-    try_rules: list
+    try_rules: list['CSSTryRule']
 
 
 @dataclass
 class CSSKeyframesRule:
     animation_name: 'Value'
-    keyframes: list
+    keyframes: list['CSSKeyframeRule']
 
 
 @dataclass

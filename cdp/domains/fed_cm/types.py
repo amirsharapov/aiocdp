@@ -16,13 +16,11 @@ LoginState = Literal[
     'SignIn',
     'SignUp'
 ]
-
 DialogType = Literal[
     'AccountChooser',
     'AutoReauthn',
     'ConfirmIdpSignin'
 ]
-
 
 @dataclass
 class Account:

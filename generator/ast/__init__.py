@@ -1,6 +1,6 @@
 from . import (
+    domain,
     domains,
-    generic_domain,
-    generic_types,
-    mapper
+    mapper,
+    types,
 )

@@ -18,24 +18,21 @@ from cdp.utils import (
 @dataclass
 class Preload(BaseDomain):
     def enable(
-        self
-    ) -> 'EnableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Preload.enable',
-
             params
         )
 
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'Preload.disable',
-
             params
         )
-

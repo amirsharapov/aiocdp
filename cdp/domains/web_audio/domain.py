@@ -22,38 +22,34 @@ from cdp.domains.web_audio.types import (
 @dataclass
 class WebAudio(BaseDomain):
     def enable(
-        self
-    ) -> 'EnableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'WebAudio.enable',
-
             params
         )
 
     def disable(
-        self
-    ) -> 'DisableReturnT':
+            self
+    ) -> None:
         params = {}
-        
+
         return self._send_command(
             'WebAudio.disable',
-
             params
         )
 
     def get_realtime_data(
-        self,
-        context_id: GraphObjectId
+            self,
+            context_id: GraphObjectId
     ) -> 'GetRealtimeDataReturnT':
         params = {
             'contextId': context_id,
         }
-        
+
         return self._send_command(
             'WebAudio.getRealtimeData',
-
             params
         )
-

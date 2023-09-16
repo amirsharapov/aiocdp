@@ -13,38 +13,30 @@ from dataclasses import (
 )
 
 GraphObjectId = str
-
 NodeType = str
-
 ParamType = str
-
 ContextType = Literal[
     'realtime',
     'offline'
 ]
-
 ContextState = Literal[
     'suspended',
     'running',
     'closed'
 ]
-
 ChannelCountMode = Literal[
     'clamped-max',
     'explicit',
     'max'
 ]
-
 ChannelInterpretation = Literal[
     'discrete',
     'speakers'
 ]
-
 AutomationRate = Literal[
     'a-rate',
     'k-rate'
 ]
-
 
 @dataclass
 class ContextRealtimeData:

@@ -13,19 +13,12 @@ from dataclasses import (
 )
 
 ScriptId = str
-
 RemoteObjectId = str
-
 UnserializableValue = str
-
 ExecutionContextId = int
-
 Timestamp = float
-
 TimeDelta = float
-
 UniqueDebuggerId = str
-
 
 @dataclass
 class RemoteObject:
@@ -52,8 +45,8 @@ class ObjectPreview:
     subtype: str
     description: str
     overflow: bool
-    properties: list
-    entries: list
+    properties: list['PropertyPreview']
+    entries: list['EntryPreview']
 
 
 @dataclass
@@ -137,7 +130,7 @@ class CallFrame:
 @dataclass
 class StackTrace:
     description: str
-    call_frames: list
+    call_frames: list['CallFrame']
     parent: 'StackTrace'
     parent_id: 'StackTraceId'
 

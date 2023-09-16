@@ -11,12 +11,10 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.runtime.types import (
+    from cdp.domains.runtime.types import (
         RemoteObject
-    )
-        from cdp.domains.storage.types import (
-        StorageBucket
     )
 
 
@@ -24,7 +22,7 @@ if TYPE_CHECKING:
 class DatabaseWithObjectStores:
     name: str
     version: float
-    object_stores: list
+    object_stores: list['ObjectStore']
 
 
 @dataclass
@@ -32,7 +30,7 @@ class ObjectStore:
     name: str
     key_path: 'KeyPath'
     auto_increment: bool
-    indexes: list
+    indexes: list['ObjectStoreIndex']
 
 
 @dataclass
@@ -49,7 +47,7 @@ class Key:
     number: float
     string: str
     date: float
-    array: list
+    array: list['Key']
 
 
 @dataclass
@@ -71,7 +69,7 @@ class DataEntry:
 class KeyPath:
     type: str
     string: str
-    array: list
+    array: list[str]
 
 
 @dataclass

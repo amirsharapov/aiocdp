@@ -17,18 +17,17 @@ PressureLevel = Literal[
     'critical'
 ]
 
-
 @dataclass
 class SamplingProfileNode:
     size: float
     total: float
-    stack: list
+    stack: list[str]
 
 
 @dataclass
 class SamplingProfile:
-    samples: list
-    modules: list
+    samples: list['SamplingProfileNode']
+    modules: list['Module']
 
 
 @dataclass

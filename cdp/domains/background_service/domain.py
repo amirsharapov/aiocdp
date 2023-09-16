@@ -21,60 +21,55 @@ from cdp.domains.background_service.types import (
 @dataclass
 class BackgroundService(BaseDomain):
     def start_observing(
-        self,
-        service: ServiceName
-    ) -> 'StartObservingReturnT':
+            self,
+            service: ServiceName
+    ) -> None:
         params = {
             'service': service,
         }
-        
+
         return self._send_command(
             'BackgroundService.startObserving',
-
             params
         )
 
     def stop_observing(
-        self,
-        service: ServiceName
-    ) -> 'StopObservingReturnT':
+            self,
+            service: ServiceName
+    ) -> None:
         params = {
             'service': service,
         }
-        
+
         return self._send_command(
             'BackgroundService.stopObserving',
-
             params
         )
 
     def set_recording(
-        self,
-        should_record: bool,
-        service: ServiceName
-    ) -> 'SetRecordingReturnT':
+            self,
+            should_record: bool,
+            service: ServiceName
+    ) -> None:
         params = {
             'shouldRecord': should_record,
             'service': service,
         }
-        
+
         return self._send_command(
             'BackgroundService.setRecording',
-
             params
         )
 
     def clear_events(
-        self,
-        service: ServiceName
-    ) -> 'ClearEventsReturnT':
+            self,
+            service: ServiceName
+    ) -> None:
         params = {
             'service': service,
         }
-        
+
         return self._send_command(
             'BackgroundService.clearEvents',
-
             params
         )
-

@@ -11,11 +11,12 @@ from typing import (
 from dataclasses import (
     dataclass
 )
+
 if TYPE_CHECKING:
-        from cdp.domains.network.types import (
+    from cdp.domains.network.types import (
         TimeSinceEpoch
     )
-        from cdp.domains.service_worker.types import (
+    from cdp.domains.service_worker.types import (
         RegistrationID
     )
 
@@ -27,7 +28,6 @@ ServiceName = Literal[
     'paymentHandler',
     'periodicBackgroundSync'
 ]
-
 
 @dataclass
 class EventMetadata:
@@ -43,5 +43,5 @@ class BackgroundServiceEvent:
     service: 'ServiceName'
     event_name: str
     instance_id: str
-    event_metadata: list
+    event_metadata: list['EventMetadata']
     storage_key: str
