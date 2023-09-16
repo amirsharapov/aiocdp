@@ -13,6 +13,9 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+from typing import (
+    TYPE_CHECKING
+)
 from cdp.domains.service_worker.types import (
     RegistrationID
 )

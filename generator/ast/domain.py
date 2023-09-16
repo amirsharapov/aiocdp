@@ -24,6 +24,12 @@ def _generate_imports():
                 ast.alias('is_defined'),
                 ast.alias('UNDEFINED')
             ]
+        ),
+        ast.ImportFrom(
+            module='typing',
+            names=[
+                ast.alias('TYPE_CHECKING')
+            ]
         )
     ]
 
