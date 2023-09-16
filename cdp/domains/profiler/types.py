@@ -12,7 +12,7 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
+        from cdp.domains.runtime.types import (
         CallFrame,
         ScriptId
     )
@@ -26,47 +26,6 @@ class ProfileNode:
     children: list
     deopt_reason: str
     position_ticks: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'id': self.id,
-                'call_frame': self.call_frame.to_dict(casing_strategy),
-                'hit_count': self.hit_count,
-                'children': self.children,
-                'deopt_reason': self.deopt_reason,
-                'position_ticks': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.position_ticks
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'id': self.id,
-                'callFrame': self.call_frame.to_dict(casing_strategy),
-                'hitCount': self.hit_count,
-                'children': self.children,
-                'deoptReason': self.deopt_reason,
-                'positionTicks': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.position_ticks
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Id': self.id,
-                'CallFrame': self.call_frame.to_dict(casing_strategy),
-                'HitCount': self.hit_count,
-                'Children': self.children,
-                'DeoptReason': self.deopt_reason,
-                'PositionTicks': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.position_ticks
-                ],
-            }
 
 
 @dataclass
@@ -76,70 +35,12 @@ class Profile:
     end_time: float
     samples: list
     time_deltas: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'nodes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.nodes
-                ],
-                'start_time': self.start_time,
-                'end_time': self.end_time,
-                'samples': self.samples,
-                'time_deltas': self.time_deltas,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'nodes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.nodes
-                ],
-                'startTime': self.start_time,
-                'endTime': self.end_time,
-                'samples': self.samples,
-                'timeDeltas': self.time_deltas,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Nodes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.nodes
-                ],
-                'StartTime': self.start_time,
-                'EndTime': self.end_time,
-                'Samples': self.samples,
-                'TimeDeltas': self.time_deltas,
-            }
 
 
 @dataclass
 class PositionTickInfo:
     line: int
     ticks: int
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'line': self.line,
-                'ticks': self.ticks,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'line': self.line,
-                'ticks': self.ticks,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Line': self.line,
-                'Ticks': self.ticks,
-            }
 
 
 @dataclass
@@ -147,29 +48,6 @@ class CoverageRange:
     start_offset: int
     end_offset: int
     count: int
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'start_offset': self.start_offset,
-                'end_offset': self.end_offset,
-                'count': self.count,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'startOffset': self.start_offset,
-                'endOffset': self.end_offset,
-                'count': self.count,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StartOffset': self.start_offset,
-                'EndOffset': self.end_offset,
-                'Count': self.count,
-            }
 
 
 @dataclass
@@ -177,38 +55,6 @@ class FunctionCoverage:
     function_name: str
     ranges: list
     is_block_coverage: bool
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'function_name': self.function_name,
-                'ranges': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.ranges
-                ],
-                'is_block_coverage': self.is_block_coverage,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'functionName': self.function_name,
-                'ranges': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.ranges
-                ],
-                'isBlockCoverage': self.is_block_coverage,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'FunctionName': self.function_name,
-                'Ranges': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.ranges
-                ],
-                'IsBlockCoverage': self.is_block_coverage,
-            }
 
 
 @dataclass
@@ -216,95 +62,17 @@ class ScriptCoverage:
     script_id: 'ScriptId'
     url: str
     functions: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'script_id': self.script_id,
-                'url': self.url,
-                'functions': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.functions
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'scriptId': self.script_id,
-                'url': self.url,
-                'functions': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.functions
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'ScriptId': self.script_id,
-                'Url': self.url,
-                'Functions': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.functions
-                ],
-            }
 
 
 @dataclass
 class TypeObject:
     name: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-            }
 
 
 @dataclass
 class TypeProfileEntry:
     offset: int
     types: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'offset': self.offset,
-                'types': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.types
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'offset': self.offset,
-                'types': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.types
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Offset': self.offset,
-                'Types': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.types
-                ],
-            }
 
 
 @dataclass
@@ -312,38 +80,6 @@ class ScriptTypeProfile:
     script_id: 'ScriptId'
     url: str
     entries: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'script_id': self.script_id,
-                'url': self.url,
-                'entries': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.entries
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'scriptId': self.script_id,
-                'url': self.url,
-                'entries': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.entries
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'ScriptId': self.script_id,
-                'Url': self.url,
-                'Entries': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.entries
-                ],
-            }
 
 
 @dataclass

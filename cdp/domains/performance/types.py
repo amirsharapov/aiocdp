@@ -17,26 +17,6 @@ from dataclasses import (
 class Metric:
     name: str
     value: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'value': self.value,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'value': self.value,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Value': self.value,
-            }
 
 
 @dataclass

@@ -9,17 +9,25 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.runtime.types import (
-    ExceptionDetails,
-    ExecutionContextId,
-    RemoteObject,
-    RemoteObjectId,
-    ScriptId,
-    TimeDelta
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.runtime.types import (
+    AwaitPromiseReturnT,
+    CallFunctionOnReturnT,
+    CompileScriptReturnT,
+    EvaluateReturnT,
+    ExecutionContextId,
+    GetHeapUsageReturnT,
+    GetIsolateIdReturnT,
+    GetPropertiesReturnT,
+    GlobalLexicalScopeNamesReturnT,
+    QueryObjectsReturnT,
+    RemoteObjectId,
+    RunScriptReturnT,
+    ScriptId,
+    TimeDelta
 )
 
 
@@ -36,10 +44,10 @@ class Runtime(BaseDomain):
         }
         
         if is_defined(return_by_value):
-params['returnByValue'] = return_by_value
+            params['returnByValue'] = return_by_value
         
         if is_defined(generate_preview):
-params['generatePreview'] = generate_preview
+            params['generatePreview'] = generate_preview
         
         return self._send_command(
             'Runtime.awaitPromise',
@@ -65,31 +73,31 @@ params['generatePreview'] = generate_preview
         }
         
         if is_defined(object_id):
-params['objectId'] = object_id
+            params['objectId'] = object_id
         
         if is_defined(arguments):
-params['arguments'] = arguments
+            params['arguments'] = arguments
         
         if is_defined(silent):
-params['silent'] = silent
+            params['silent'] = silent
         
         if is_defined(return_by_value):
-params['returnByValue'] = return_by_value
+            params['returnByValue'] = return_by_value
         
         if is_defined(generate_preview):
-params['generatePreview'] = generate_preview
+            params['generatePreview'] = generate_preview
         
         if is_defined(user_gesture):
-params['userGesture'] = user_gesture
+            params['userGesture'] = user_gesture
         
         if is_defined(await_promise):
-params['awaitPromise'] = await_promise
+            params['awaitPromise'] = await_promise
         
         if is_defined(execution_context_id):
-params['executionContextId'] = execution_context_id
+            params['executionContextId'] = execution_context_id
         
         if is_defined(object_group):
-params['objectGroup'] = object_group
+            params['objectGroup'] = object_group
         
         return self._send_command(
             'Runtime.callFunctionOn',
@@ -111,7 +119,7 @@ params['objectGroup'] = object_group
         }
         
         if is_defined(execution_context_id):
-params['executionContextId'] = execution_context_id
+            params['executionContextId'] = execution_context_id
         
         return self._send_command(
             'Runtime.compileScript',
@@ -171,34 +179,34 @@ params['executionContextId'] = execution_context_id
         }
         
         if is_defined(object_group):
-params['objectGroup'] = object_group
+            params['objectGroup'] = object_group
         
         if is_defined(include_command_line_api):
-params['includeCommandLineAPI'] = include_command_line_api
+            params['includeCommandLineAPI'] = include_command_line_api
         
         if is_defined(silent):
-params['silent'] = silent
+            params['silent'] = silent
         
         if is_defined(context_id):
-params['contextId'] = context_id
+            params['contextId'] = context_id
         
         if is_defined(return_by_value):
-params['returnByValue'] = return_by_value
+            params['returnByValue'] = return_by_value
         
         if is_defined(generate_preview):
-params['generatePreview'] = generate_preview
+            params['generatePreview'] = generate_preview
         
         if is_defined(user_gesture):
-params['userGesture'] = user_gesture
+            params['userGesture'] = user_gesture
         
         if is_defined(await_promise):
-params['awaitPromise'] = await_promise
+            params['awaitPromise'] = await_promise
         
         if is_defined(throw_on_side_effect):
-params['throwOnSideEffect'] = throw_on_side_effect
+            params['throwOnSideEffect'] = throw_on_side_effect
         
         if is_defined(timeout):
-params['timeout'] = timeout
+            params['timeout'] = timeout
         
         return self._send_command(
             'Runtime.evaluate',
@@ -240,13 +248,13 @@ params['timeout'] = timeout
         }
         
         if is_defined(own_properties):
-params['ownProperties'] = own_properties
+            params['ownProperties'] = own_properties
         
         if is_defined(accessor_properties_only):
-params['accessorPropertiesOnly'] = accessor_properties_only
+            params['accessorPropertiesOnly'] = accessor_properties_only
         
         if is_defined(generate_preview):
-params['generatePreview'] = generate_preview
+            params['generatePreview'] = generate_preview
         
         return self._send_command(
             'Runtime.getProperties',
@@ -261,7 +269,7 @@ params['generatePreview'] = generate_preview
         params = {}
         
         if is_defined(execution_context_id):
-params['executionContextId'] = execution_context_id
+            params['executionContextId'] = execution_context_id
         
         return self._send_command(
             'Runtime.globalLexicalScopeNames',
@@ -279,7 +287,7 @@ params['executionContextId'] = execution_context_id
         }
         
         if is_defined(object_group):
-params['objectGroup'] = object_group
+            params['objectGroup'] = object_group
         
         return self._send_command(
             'Runtime.queryObjects',
@@ -342,25 +350,25 @@ params['objectGroup'] = object_group
         }
         
         if is_defined(execution_context_id):
-params['executionContextId'] = execution_context_id
+            params['executionContextId'] = execution_context_id
         
         if is_defined(object_group):
-params['objectGroup'] = object_group
+            params['objectGroup'] = object_group
         
         if is_defined(silent):
-params['silent'] = silent
+            params['silent'] = silent
         
         if is_defined(include_command_line_api):
-params['includeCommandLineAPI'] = include_command_line_api
+            params['includeCommandLineAPI'] = include_command_line_api
         
         if is_defined(return_by_value):
-params['returnByValue'] = return_by_value
+            params['returnByValue'] = return_by_value
         
         if is_defined(generate_preview):
-params['generatePreview'] = generate_preview
+            params['generatePreview'] = generate_preview
         
         if is_defined(await_promise):
-params['awaitPromise'] = await_promise
+            params['awaitPromise'] = await_promise
         
         return self._send_command(
             'Runtime.runScript',
@@ -431,7 +439,7 @@ params['awaitPromise'] = await_promise
         }
         
         if is_defined(execution_context_id):
-params['executionContextId'] = execution_context_id
+            params['executionContextId'] = execution_context_id
         
         return self._send_command(
             'Runtime.addBinding',

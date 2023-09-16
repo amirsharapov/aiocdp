@@ -24,7 +24,7 @@ class Cast(BaseDomain):
         params = {}
         
         if is_defined(presentation_url):
-params['presentationUrl'] = presentation_url
+            params['presentationUrl'] = presentation_url
         
         return self._send_command(
             'Cast.enable',

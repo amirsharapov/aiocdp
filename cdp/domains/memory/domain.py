@@ -9,13 +9,16 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.memory.types import (
-    PressureLevel,
-    SamplingProfile
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.memory.types import (
+    GetAllTimeSamplingProfileReturnT,
+    GetBrowserSamplingProfileReturnT,
+    GetDOMCountersReturnT,
+    GetSamplingProfileReturnT,
+    PressureLevel
 )
 
 
@@ -90,10 +93,10 @@ class Memory(BaseDomain):
         params = {}
         
         if is_defined(sampling_interval):
-params['samplingInterval'] = sampling_interval
+            params['samplingInterval'] = sampling_interval
         
         if is_defined(suppress_randomness):
-params['suppressRandomness'] = suppress_randomness
+            params['suppressRandomness'] = suppress_randomness
         
         return self._send_command(
             'Memory.startSampling',

@@ -9,19 +9,18 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.fetch.types import (
-    AuthChallengeResponse,
-    RequestId
-)
-from cdp.domains.network.types import (
-    ErrorReason
-)
-from cdp.domains.io.types import (
-    StreamHandle
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.fetch.types import (
+    AuthChallengeResponse,
+    GetResponseBodyReturnT,
+    RequestId,
+    TakeResponseBodyAsStreamReturnT
+)
+from cdp.domains.network.types import (
+    ErrorReason
 )
 
 
@@ -46,10 +45,10 @@ class Fetch(BaseDomain):
         params = {}
         
         if is_defined(patterns):
-params['patterns'] = patterns
+            params['patterns'] = patterns
         
         if is_defined(handle_auth_requests):
-params['handleAuthRequests'] = handle_auth_requests
+            params['handleAuthRequests'] = handle_auth_requests
         
         return self._send_command(
             'Fetch.enable',
@@ -88,16 +87,16 @@ params['handleAuthRequests'] = handle_auth_requests
         }
         
         if is_defined(response_headers):
-params['responseHeaders'] = response_headers
+            params['responseHeaders'] = response_headers
         
         if is_defined(binary_response_headers):
-params['binaryResponseHeaders'] = binary_response_headers
+            params['binaryResponseHeaders'] = binary_response_headers
         
         if is_defined(body):
-params['body'] = body
+            params['body'] = body
         
         if is_defined(response_phrase):
-params['responsePhrase'] = response_phrase
+            params['responsePhrase'] = response_phrase
         
         return self._send_command(
             'Fetch.fulfillRequest',
@@ -119,19 +118,19 @@ params['responsePhrase'] = response_phrase
         }
         
         if is_defined(url):
-params['url'] = url
+            params['url'] = url
         
         if is_defined(method):
-params['method'] = method
+            params['method'] = method
         
         if is_defined(post_data):
-params['postData'] = post_data
+            params['postData'] = post_data
         
         if is_defined(headers):
-params['headers'] = headers
+            params['headers'] = headers
         
         if is_defined(intercept_response):
-params['interceptResponse'] = intercept_response
+            params['interceptResponse'] = intercept_response
         
         return self._send_command(
             'Fetch.continueRequest',
@@ -168,16 +167,16 @@ params['interceptResponse'] = intercept_response
         }
         
         if is_defined(response_code):
-params['responseCode'] = response_code
+            params['responseCode'] = response_code
         
         if is_defined(response_phrase):
-params['responsePhrase'] = response_phrase
+            params['responsePhrase'] = response_phrase
         
         if is_defined(response_headers):
-params['responseHeaders'] = response_headers
+            params['responseHeaders'] = response_headers
         
         if is_defined(binary_response_headers):
-params['binaryResponseHeaders'] = binary_response_headers
+            params['binaryResponseHeaders'] = binary_response_headers
         
         return self._send_command(
             'Fetch.continueResponse',

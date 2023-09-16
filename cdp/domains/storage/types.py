@@ -12,13 +12,13 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.network.types import (
+        from cdp.domains.network.types import (
         TimeSinceEpoch
     )
-    from cdp.domains.page.types import (
+        from cdp.domains.page.types import (
         FrameId
     )
-    from cdp.domains.browser.types import (
+        from cdp.domains.browser.types import (
         BrowserContextID
     )
 
@@ -105,78 +105,18 @@ AttributionReportingSourceRegistrationResult = Literal[
 class UsageForType:
     storage_type: 'StorageType'
     usage: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'storage_type': self.storage_type,
-                'usage': self.usage,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'storageType': self.storage_type,
-                'usage': self.usage,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StorageType': self.storage_type,
-                'Usage': self.usage,
-            }
 
 
 @dataclass
 class TrustTokens:
     issuer_origin: str
     count: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'issuer_origin': self.issuer_origin,
-                'count': self.count,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'issuerOrigin': self.issuer_origin,
-                'count': self.count,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'IssuerOrigin': self.issuer_origin,
-                'Count': self.count,
-            }
 
 
 @dataclass
 class InterestGroupAd:
     render_url: str
     metadata: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'render_url': self.render_url,
-                'metadata': self.metadata,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'renderUrl': self.render_url,
-                'metadata': self.metadata,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'RenderUrl': self.render_url,
-                'Metadata': self.metadata,
-            }
 
 
 @dataclass
@@ -193,100 +133,12 @@ class InterestGroupDetails:
     user_bidding_signals: str
     ads: list
     ad_components: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'owner_origin': self.owner_origin,
-                'name': self.name,
-                'expiration_time': self.expiration_time,
-                'joining_origin': self.joining_origin,
-                'bidding_url': self.bidding_url,
-                'bidding_wasm_helper_url': self.bidding_wasm_helper_url,
-                'update_url': self.update_url,
-                'trusted_bidding_signals_url': self.trusted_bidding_signals_url,
-                'trusted_bidding_signals_keys': self.trusted_bidding_signals_keys,
-                'user_bidding_signals': self.user_bidding_signals,
-                'ads': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.ads
-                ],
-                'ad_components': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.ad_components
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'ownerOrigin': self.owner_origin,
-                'name': self.name,
-                'expirationTime': self.expiration_time,
-                'joiningOrigin': self.joining_origin,
-                'biddingUrl': self.bidding_url,
-                'biddingWasmHelperUrl': self.bidding_wasm_helper_url,
-                'updateUrl': self.update_url,
-                'trustedBiddingSignalsUrl': self.trusted_bidding_signals_url,
-                'trustedBiddingSignalsKeys': self.trusted_bidding_signals_keys,
-                'userBiddingSignals': self.user_bidding_signals,
-                'ads': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.ads
-                ],
-                'adComponents': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.ad_components
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'OwnerOrigin': self.owner_origin,
-                'Name': self.name,
-                'ExpirationTime': self.expiration_time,
-                'JoiningOrigin': self.joining_origin,
-                'BiddingUrl': self.bidding_url,
-                'BiddingWasmHelperUrl': self.bidding_wasm_helper_url,
-                'UpdateUrl': self.update_url,
-                'TrustedBiddingSignalsUrl': self.trusted_bidding_signals_url,
-                'TrustedBiddingSignalsKeys': self.trusted_bidding_signals_keys,
-                'UserBiddingSignals': self.user_bidding_signals,
-                'Ads': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.ads
-                ],
-                'AdComponents': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.ad_components
-                ],
-            }
 
 
 @dataclass
 class SharedStorageEntry:
     key: str
     value: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'key': self.key,
-                'value': self.value,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'key': self.key,
-                'value': self.value,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Key': self.key,
-                'Value': self.value,
-            }
 
 
 @dataclass
@@ -294,90 +146,18 @@ class SharedStorageMetadata:
     creation_time: 'TimeSinceEpoch'
     length: int
     remaining_budget: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'creation_time': self.creation_time,
-                'length': self.length,
-                'remaining_budget': self.remaining_budget,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'creationTime': self.creation_time,
-                'length': self.length,
-                'remainingBudget': self.remaining_budget,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'CreationTime': self.creation_time,
-                'Length': self.length,
-                'RemainingBudget': self.remaining_budget,
-            }
 
 
 @dataclass
 class SharedStorageReportingMetadata:
     event_type: str
     reporting_url: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'event_type': self.event_type,
-                'reporting_url': self.reporting_url,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'eventType': self.event_type,
-                'reportingUrl': self.reporting_url,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'EventType': self.event_type,
-                'ReportingUrl': self.reporting_url,
-            }
 
 
 @dataclass
 class SharedStorageUrlWithMetadata:
     url: str
     reporting_metadata: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'url': self.url,
-                'reporting_metadata': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.reporting_metadata
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'url': self.url,
-                'reportingMetadata': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.reporting_metadata
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Url': self.url,
-                'ReportingMetadata': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.reporting_metadata
-                ],
-            }
 
 
 @dataclass
@@ -389,76 +169,12 @@ class SharedStorageAccessParams:
     key: str
     value: str
     ignore_if_present: bool
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'script_source_url': self.script_source_url,
-                'operation_name': self.operation_name,
-                'serialized_data': self.serialized_data,
-                'urls_with_metadata': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.urls_with_metadata
-                ],
-                'key': self.key,
-                'value': self.value,
-                'ignore_if_present': self.ignore_if_present,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'scriptSourceUrl': self.script_source_url,
-                'operationName': self.operation_name,
-                'serializedData': self.serialized_data,
-                'urlsWithMetadata': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.urls_with_metadata
-                ],
-                'key': self.key,
-                'value': self.value,
-                'ignoreIfPresent': self.ignore_if_present,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'ScriptSourceUrl': self.script_source_url,
-                'OperationName': self.operation_name,
-                'SerializedData': self.serialized_data,
-                'UrlsWithMetadata': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.urls_with_metadata
-                ],
-                'Key': self.key,
-                'Value': self.value,
-                'IgnoreIfPresent': self.ignore_if_present,
-            }
 
 
 @dataclass
 class StorageBucket:
     storage_key: 'SerializedStorageKey'
     name: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'storage_key': self.storage_key,
-                'name': self.name,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'storageKey': self.storage_key,
-                'name': self.name,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StorageKey': self.storage_key,
-                'Name': self.name,
-            }
 
 
 @dataclass
@@ -469,116 +185,24 @@ class StorageBucketInfo:
     quota: float
     persistent: bool
     durability: 'StorageBucketsDurability'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'bucket': self.bucket.to_dict(casing_strategy),
-                'id': self.id,
-                'expiration': self.expiration,
-                'quota': self.quota,
-                'persistent': self.persistent,
-                'durability': self.durability,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'bucket': self.bucket.to_dict(casing_strategy),
-                'id': self.id,
-                'expiration': self.expiration,
-                'quota': self.quota,
-                'persistent': self.persistent,
-                'durability': self.durability,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Bucket': self.bucket.to_dict(casing_strategy),
-                'Id': self.id,
-                'Expiration': self.expiration,
-                'Quota': self.quota,
-                'Persistent': self.persistent,
-                'Durability': self.durability,
-            }
 
 
 @dataclass
 class AttributionReportingFilterDataEntry:
     key: str
     values: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'key': self.key,
-                'values': self.values,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'key': self.key,
-                'values': self.values,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Key': self.key,
-                'Values': self.values,
-            }
 
 
 @dataclass
 class AttributionReportingAggregationKeysEntry:
     key: str
     value: 'UnsignedInt128AsBase16'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'key': self.key,
-                'value': self.value,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'key': self.key,
-                'value': self.value,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Key': self.key,
-                'Value': self.value,
-            }
 
 
 @dataclass
 class AttributionReportingEventReportWindows:
     start: int
     ends: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'start': self.start,
-                'ends': self.ends,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'start': self.start,
-                'ends': self.ends,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Start': self.start,
-                'Ends': self.ends,
-            }
 
 
 @dataclass
@@ -597,80 +221,6 @@ class AttributionReportingSourceRegistration:
     filter_data: list
     aggregation_keys: list
     debug_key: 'UnsignedInt64AsBase10'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'time': self.time,
-                'expiry': self.expiry,
-                'event_report_window': self.event_report_window,
-                'event_report_windows': self.event_report_windows.to_dict(casing_strategy),
-                'aggregatable_report_window': self.aggregatable_report_window,
-                'type': self.type,
-                'source_origin': self.source_origin,
-                'reporting_origin': self.reporting_origin,
-                'destination_sites': self.destination_sites,
-                'event_id': self.event_id,
-                'priority': self.priority,
-                'filter_data': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.filter_data
-                ],
-                'aggregation_keys': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.aggregation_keys
-                ],
-                'debug_key': self.debug_key,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'time': self.time,
-                'expiry': self.expiry,
-                'eventReportWindow': self.event_report_window,
-                'eventReportWindows': self.event_report_windows.to_dict(casing_strategy),
-                'aggregatableReportWindow': self.aggregatable_report_window,
-                'type': self.type,
-                'sourceOrigin': self.source_origin,
-                'reportingOrigin': self.reporting_origin,
-                'destinationSites': self.destination_sites,
-                'eventId': self.event_id,
-                'priority': self.priority,
-                'filterData': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.filter_data
-                ],
-                'aggregationKeys': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.aggregation_keys
-                ],
-                'debugKey': self.debug_key,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Time': self.time,
-                'Expiry': self.expiry,
-                'EventReportWindow': self.event_report_window,
-                'EventReportWindows': self.event_report_windows.to_dict(casing_strategy),
-                'AggregatableReportWindow': self.aggregatable_report_window,
-                'Type': self.type,
-                'SourceOrigin': self.source_origin,
-                'ReportingOrigin': self.reporting_origin,
-                'DestinationSites': self.destination_sites,
-                'EventId': self.event_id,
-                'Priority': self.priority,
-                'FilterData': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.filter_data
-                ],
-                'AggregationKeys': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.aggregation_keys
-                ],
-                'DebugKey': self.debug_key,
-            }
 
 
 @dataclass

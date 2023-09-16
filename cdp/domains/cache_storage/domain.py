@@ -9,16 +9,18 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.cache_storage.types import (
-    CacheId,
-    CachedResponse
-)
-from cdp.domains.storage.types import (
-    StorageBucket
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.cache_storage.types import (
+    CacheId,
+    RequestCacheNamesReturnT,
+    RequestCachedResponseReturnT,
+    RequestEntriesReturnT
+)
+from cdp.domains.storage.types import (
+    StorageBucket
 )
 
 
@@ -63,13 +65,13 @@ class CacheStorage(BaseDomain):
         params = {}
         
         if is_defined(security_origin):
-params['securityOrigin'] = security_origin
+            params['securityOrigin'] = security_origin
         
         if is_defined(storage_key):
-params['storageKey'] = storage_key
+            params['storageKey'] = storage_key
         
         if is_defined(storage_bucket):
-params['storageBucket'] = storage_bucket
+            params['storageBucket'] = storage_bucket
         
         return self._send_command(
             'CacheStorage.requestCacheNames',
@@ -107,13 +109,13 @@ params['storageBucket'] = storage_bucket
         }
         
         if is_defined(skip_count):
-params['skipCount'] = skip_count
+            params['skipCount'] = skip_count
         
         if is_defined(page_size):
-params['pageSize'] = page_size
+            params['pageSize'] = page_size
         
         if is_defined(path_filter):
-params['pathFilter'] = path_filter
+            params['pathFilter'] = path_filter
         
         return self._send_command(
             'CacheStorage.requestEntries',

@@ -12,10 +12,10 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.dom.types import (
+        from cdp.domains.dom.types import (
         BackendNodeId
     )
-    from cdp.domains.runtime.types import (
+        from cdp.domains.runtime.types import (
         RemoteObject
     )
 
@@ -32,50 +32,6 @@ class Animation:
     type: str
     source: 'AnimationEffect'
     css_id: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'id': self.id,
-                'name': self.name,
-                'paused_state': self.paused_state,
-                'play_state': self.play_state,
-                'playback_rate': self.playback_rate,
-                'start_time': self.start_time,
-                'current_time': self.current_time,
-                'type': self.type,
-                'source': self.source.to_dict(casing_strategy),
-                'css_id': self.css_id,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'id': self.id,
-                'name': self.name,
-                'pausedState': self.paused_state,
-                'playState': self.play_state,
-                'playbackRate': self.playback_rate,
-                'startTime': self.start_time,
-                'currentTime': self.current_time,
-                'type': self.type,
-                'source': self.source.to_dict(casing_strategy),
-                'cssId': self.css_id,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Id': self.id,
-                'Name': self.name,
-                'PausedState': self.paused_state,
-                'PlayState': self.play_state,
-                'PlaybackRate': self.playback_rate,
-                'StartTime': self.start_time,
-                'CurrentTime': self.current_time,
-                'Type': self.type,
-                'Source': self.source.to_dict(casing_strategy),
-                'CssId': self.css_id,
-            }
 
 
 @dataclass
@@ -90,111 +46,18 @@ class AnimationEffect:
     backend_node_id: 'BackendNodeId'
     keyframes_rule: 'KeyframesRule'
     easing: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'delay': self.delay,
-                'end_delay': self.end_delay,
-                'iteration_start': self.iteration_start,
-                'iterations': self.iterations,
-                'duration': self.duration,
-                'direction': self.direction,
-                'fill': self.fill,
-                'backend_node_id': self.backend_node_id,
-                'keyframes_rule': self.keyframes_rule.to_dict(casing_strategy),
-                'easing': self.easing,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'delay': self.delay,
-                'endDelay': self.end_delay,
-                'iterationStart': self.iteration_start,
-                'iterations': self.iterations,
-                'duration': self.duration,
-                'direction': self.direction,
-                'fill': self.fill,
-                'backendNodeId': self.backend_node_id,
-                'keyframesRule': self.keyframes_rule.to_dict(casing_strategy),
-                'easing': self.easing,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Delay': self.delay,
-                'EndDelay': self.end_delay,
-                'IterationStart': self.iteration_start,
-                'Iterations': self.iterations,
-                'Duration': self.duration,
-                'Direction': self.direction,
-                'Fill': self.fill,
-                'BackendNodeId': self.backend_node_id,
-                'KeyframesRule': self.keyframes_rule.to_dict(casing_strategy),
-                'Easing': self.easing,
-            }
 
 
 @dataclass
 class KeyframesRule:
     name: str
     keyframes: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'keyframes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.keyframes
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'keyframes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.keyframes
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Keyframes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.keyframes
-                ],
-            }
 
 
 @dataclass
 class KeyframeStyle:
     offset: str
     easing: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'offset': self.offset,
-                'easing': self.easing,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'offset': self.offset,
-                'easing': self.easing,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Offset': self.offset,
-                'Easing': self.easing,
-            }
 
 
 @dataclass

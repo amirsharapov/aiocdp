@@ -13,6 +13,9 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+from cdp.domains.schema.types import (
+    GetDomainsReturnT
+)
 
 
 @dataclass

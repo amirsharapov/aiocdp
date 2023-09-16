@@ -9,12 +9,14 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.runtime.types import (
-    RemoteObject
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.animation.types import (
+    GetCurrentTimeReturnT,
+    GetPlaybackRateReturnT,
+    ResolveAnimationReturnT
 )
 
 

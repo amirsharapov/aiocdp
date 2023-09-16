@@ -21,35 +21,3 @@ class ConsoleMessage:
     url: str
     line: int
     column: int
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'source': self.source,
-                'level': self.level,
-                'text': self.text,
-                'url': self.url,
-                'line': self.line,
-                'column': self.column,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'source': self.source,
-                'level': self.level,
-                'text': self.text,
-                'url': self.url,
-                'line': self.line,
-                'column': self.column,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Source': self.source,
-                'Level': self.level,
-                'Text': self.text,
-                'Url': self.url,
-                'Line': self.line,
-                'Column': self.column,
-            }

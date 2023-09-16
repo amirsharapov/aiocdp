@@ -13,6 +13,9 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+from cdp.domains.performance.types import (
+    GetMetricsReturnT
+)
 
 
 @dataclass
@@ -35,7 +38,7 @@ class Performance(BaseDomain):
         params = {}
         
         if is_defined(time_domain):
-params['timeDomain'] = time_domain
+            params['timeDomain'] = time_domain
         
         return self._send_command(
             'Performance.enable',

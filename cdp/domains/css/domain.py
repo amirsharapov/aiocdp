@@ -9,28 +9,41 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
+from cdp.utils import (
+    is_defined,
+    UNDEFINED
+)
 from cdp.domains.css.types import (
-    CSSContainerQuery,
-    CSSLayerData,
-    CSSMedia,
-    CSSRule,
-    CSSScope,
-    CSSStyle,
-    CSSSupports,
-    SelectorList,
+    AddRuleReturnT,
+    CollectClassNamesReturnT,
+    CreateStyleSheetReturnT,
+    GetBackgroundColorsReturnT,
+    GetComputedStyleForNodeReturnT,
+    GetInlineStylesForNodeReturnT,
+    GetLayersForNodeReturnT,
+    GetMatchedStylesForNodeReturnT,
+    GetMediaQueriesReturnT,
+    GetPlatformFontsForNodeReturnT,
+    GetStyleSheetTextReturnT,
+    SetContainerQueryTextReturnT,
+    SetKeyframeKeyReturnT,
+    SetMediaTextReturnT,
+    SetRuleSelectorReturnT,
+    SetScopeTextReturnT,
+    SetStyleSheetTextReturnT,
+    SetStyleTextsReturnT,
+    SetSupportsTextReturnT,
     SourceRange,
+    StopRuleUsageTrackingReturnT,
     StyleSheetId,
-    Value
+    TakeComputedStyleUpdatesReturnT,
+    TakeCoverageDeltaReturnT
 )
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.dom.types import (
     NodeId
-)
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
 )
 
 

@@ -9,18 +9,25 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.target.types import (
-    SessionID,
-    TargetFilter,
-    TargetID,
-    TargetInfo
-)
-from cdp.domains.browser.types import (
-    BrowserContextID
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.target.types import (
+    AttachToBrowserTargetReturnT,
+    AttachToTargetReturnT,
+    CloseTargetReturnT,
+    CreateBrowserContextReturnT,
+    CreateTargetReturnT,
+    GetBrowserContextsReturnT,
+    GetTargetInfoReturnT,
+    GetTargetsReturnT,
+    SessionID,
+    TargetFilter,
+    TargetID
+)
+from cdp.domains.browser.types import (
+    BrowserContextID
 )
 
 
@@ -50,7 +57,7 @@ class Target(BaseDomain):
         }
         
         if is_defined(flatten):
-params['flatten'] = flatten
+            params['flatten'] = flatten
         
         return self._send_command(
             'Target.attachToTarget',
@@ -93,7 +100,7 @@ params['flatten'] = flatten
         }
         
         if is_defined(binding_name):
-params['bindingName'] = binding_name
+            params['bindingName'] = binding_name
         
         return self._send_command(
             'Target.exposeDevToolsProtocol',
@@ -111,16 +118,16 @@ params['bindingName'] = binding_name
         params = {}
         
         if is_defined(dispose_on_detach):
-params['disposeOnDetach'] = dispose_on_detach
+            params['disposeOnDetach'] = dispose_on_detach
         
         if is_defined(proxy_server):
-params['proxyServer'] = proxy_server
+            params['proxyServer'] = proxy_server
         
         if is_defined(proxy_bypass_list):
-params['proxyBypassList'] = proxy_bypass_list
+            params['proxyBypassList'] = proxy_bypass_list
         
         if is_defined(origins_with_universal_network_access):
-params['originsWithUniversalNetworkAccess'] = origins_with_universal_network_access
+            params['originsWithUniversalNetworkAccess'] = origins_with_universal_network_access
         
         return self._send_command(
             'Target.createBrowserContext',
@@ -155,25 +162,25 @@ params['originsWithUniversalNetworkAccess'] = origins_with_universal_network_acc
         }
         
         if is_defined(width):
-params['width'] = width
+            params['width'] = width
         
         if is_defined(height):
-params['height'] = height
+            params['height'] = height
         
         if is_defined(browser_context_id):
-params['browserContextId'] = browser_context_id
+            params['browserContextId'] = browser_context_id
         
         if is_defined(enable_begin_frame_control):
-params['enableBeginFrameControl'] = enable_begin_frame_control
+            params['enableBeginFrameControl'] = enable_begin_frame_control
         
         if is_defined(new_window):
-params['newWindow'] = new_window
+            params['newWindow'] = new_window
         
         if is_defined(background):
-params['background'] = background
+            params['background'] = background
         
         if is_defined(for_tab):
-params['forTab'] = for_tab
+            params['forTab'] = for_tab
         
         return self._send_command(
             'Target.createTarget',
@@ -189,10 +196,10 @@ params['forTab'] = for_tab
         params = {}
         
         if is_defined(session_id):
-params['sessionId'] = session_id
+            params['sessionId'] = session_id
         
         if is_defined(target_id):
-params['targetId'] = target_id
+            params['targetId'] = target_id
         
         return self._send_command(
             'Target.detachFromTarget',
@@ -221,7 +228,7 @@ params['targetId'] = target_id
         params = {}
         
         if is_defined(target_id):
-params['targetId'] = target_id
+            params['targetId'] = target_id
         
         return self._send_command(
             'Target.getTargetInfo',
@@ -236,7 +243,7 @@ params['targetId'] = target_id
         params = {}
         
         if is_defined(filter):
-params['filter'] = filter
+            params['filter'] = filter
         
         return self._send_command(
             'Target.getTargets',
@@ -255,10 +262,10 @@ params['filter'] = filter
         }
         
         if is_defined(session_id):
-params['sessionId'] = session_id
+            params['sessionId'] = session_id
         
         if is_defined(target_id):
-params['targetId'] = target_id
+            params['targetId'] = target_id
         
         return self._send_command(
             'Target.sendMessageToTarget',
@@ -279,10 +286,10 @@ params['targetId'] = target_id
         }
         
         if is_defined(flatten):
-params['flatten'] = flatten
+            params['flatten'] = flatten
         
         if is_defined(filter):
-params['filter'] = filter
+            params['filter'] = filter
         
         return self._send_command(
             'Target.setAutoAttach',
@@ -302,7 +309,7 @@ params['filter'] = filter
         }
         
         if is_defined(filter):
-params['filter'] = filter
+            params['filter'] = filter
         
         return self._send_command(
             'Target.autoAttachRelated',
@@ -320,7 +327,7 @@ params['filter'] = filter
         }
         
         if is_defined(filter):
-params['filter'] = filter
+            params['filter'] = filter
         
         return self._send_command(
             'Target.setDiscoverTargets',

@@ -9,12 +9,16 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.network.types import (
-    RequestId
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.audits.types import (
+    CheckFormsIssuesReturnT,
+    GetEncodedResponseReturnT
+)
+from cdp.domains.network.types import (
+    RequestId
 )
 
 
@@ -33,10 +37,10 @@ class Audits(BaseDomain):
         }
         
         if is_defined(quality):
-params['quality'] = quality
+            params['quality'] = quality
         
         if is_defined(size_only):
-params['sizeOnly'] = size_only
+            params['sizeOnly'] = size_only
         
         return self._send_command(
             'Audits.getEncodedResponse',
@@ -73,7 +77,7 @@ params['sizeOnly'] = size_only
         params = {}
         
         if is_defined(report_aaa):
-params['reportAAA'] = report_aaa
+            params['reportAAA'] = report_aaa
         
         return self._send_command(
             'Audits.checkContrast',

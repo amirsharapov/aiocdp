@@ -18,26 +18,3 @@ class Sink:
     name: str
     id: str
     session: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'id': self.id,
-                'session': self.session,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'id': self.id,
-                'session': self.session,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Id': self.id,
-                'Session': self.session,
-            }

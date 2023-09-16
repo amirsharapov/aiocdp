@@ -9,15 +9,17 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
+from cdp.utils import (
+    is_defined,
+    UNDEFINED
+)
 from cdp.domains.io.types import (
+    ReadReturnT,
+    ResolveBlobReturnT,
     StreamHandle
 )
 from cdp.domains.runtime.types import (
     RemoteObjectId
-)
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
 )
 
 
@@ -48,10 +50,10 @@ class IO(BaseDomain):
         }
         
         if is_defined(offset):
-params['offset'] = offset
+            params['offset'] = offset
         
         if is_defined(size):
-params['size'] = size
+            params['size'] = size
         
         return self._send_command(
             'IO.read',

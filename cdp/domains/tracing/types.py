@@ -48,47 +48,6 @@ class TraceConfig:
     excluded_categories: list
     synthetic_delays: list
     memory_dump_config: 'MemoryDumpConfig'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'record_mode': self.record_mode,
-                'trace_buffer_size_in_kb': self.trace_buffer_size_in_kb,
-                'enable_sampling': self.enable_sampling,
-                'enable_systrace': self.enable_systrace,
-                'enable_argument_filter': self.enable_argument_filter,
-                'included_categories': self.included_categories,
-                'excluded_categories': self.excluded_categories,
-                'synthetic_delays': self.synthetic_delays,
-                'memory_dump_config': self.memory_dump_config,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'recordMode': self.record_mode,
-                'traceBufferSizeInKb': self.trace_buffer_size_in_kb,
-                'enableSampling': self.enable_sampling,
-                'enableSystrace': self.enable_systrace,
-                'enableArgumentFilter': self.enable_argument_filter,
-                'includedCategories': self.included_categories,
-                'excludedCategories': self.excluded_categories,
-                'syntheticDelays': self.synthetic_delays,
-                'memoryDumpConfig': self.memory_dump_config,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'RecordMode': self.record_mode,
-                'TraceBufferSizeInKb': self.trace_buffer_size_in_kb,
-                'EnableSampling': self.enable_sampling,
-                'EnableSystrace': self.enable_systrace,
-                'EnableArgumentFilter': self.enable_argument_filter,
-                'IncludedCategories': self.included_categories,
-                'ExcludedCategories': self.excluded_categories,
-                'SyntheticDelays': self.synthetic_delays,
-                'MemoryDumpConfig': self.memory_dump_config,
-            }
 
 
 @dataclass

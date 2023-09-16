@@ -9,21 +9,26 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
+from cdp.utils import (
+    is_defined,
+    UNDEFINED
+)
 from cdp.domains.browser.types import (
     Bounds,
     BrowserCommandId,
     BrowserContextID,
-    Histogram,
+    GetBrowserCommandLineReturnT,
+    GetHistogramReturnT,
+    GetHistogramsReturnT,
+    GetVersionReturnT,
+    GetWindowBoundsReturnT,
+    GetWindowForTargetReturnT,
     PermissionDescriptor,
     PermissionSetting,
     WindowID
 )
 from cdp.domains.target.types import (
     TargetID
-)
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
 )
 
 
@@ -42,10 +47,10 @@ class Browser(BaseDomain):
         }
         
         if is_defined(origin):
-params['origin'] = origin
+            params['origin'] = origin
         
         if is_defined(browser_context_id):
-params['browserContextId'] = browser_context_id
+            params['browserContextId'] = browser_context_id
         
         return self._send_command(
             'Browser.setPermission',
@@ -64,10 +69,10 @@ params['browserContextId'] = browser_context_id
         }
         
         if is_defined(origin):
-params['origin'] = origin
+            params['origin'] = origin
         
         if is_defined(browser_context_id):
-params['browserContextId'] = browser_context_id
+            params['browserContextId'] = browser_context_id
         
         return self._send_command(
             'Browser.grantPermissions',
@@ -82,7 +87,7 @@ params['browserContextId'] = browser_context_id
         params = {}
         
         if is_defined(browser_context_id):
-params['browserContextId'] = browser_context_id
+            params['browserContextId'] = browser_context_id
         
         return self._send_command(
             'Browser.resetPermissions',
@@ -102,13 +107,13 @@ params['browserContextId'] = browser_context_id
         }
         
         if is_defined(browser_context_id):
-params['browserContextId'] = browser_context_id
+            params['browserContextId'] = browser_context_id
         
         if is_defined(download_path):
-params['downloadPath'] = download_path
+            params['downloadPath'] = download_path
         
         if is_defined(events_enabled):
-params['eventsEnabled'] = events_enabled
+            params['eventsEnabled'] = events_enabled
         
         return self._send_command(
             'Browser.setDownloadBehavior',
@@ -126,7 +131,7 @@ params['eventsEnabled'] = events_enabled
         }
         
         if is_defined(browser_context_id):
-params['browserContextId'] = browser_context_id
+            params['browserContextId'] = browser_context_id
         
         return self._send_command(
             'Browser.cancelDownload',
@@ -197,10 +202,10 @@ params['browserContextId'] = browser_context_id
         params = {}
         
         if is_defined(query):
-params['query'] = query
+            params['query'] = query
         
         if is_defined(delta):
-params['delta'] = delta
+            params['delta'] = delta
         
         return self._send_command(
             'Browser.getHistograms',
@@ -218,7 +223,7 @@ params['delta'] = delta
         }
         
         if is_defined(delta):
-params['delta'] = delta
+            params['delta'] = delta
         
         return self._send_command(
             'Browser.getHistogram',
@@ -247,7 +252,7 @@ params['delta'] = delta
         params = {}
         
         if is_defined(target_id):
-params['targetId'] = target_id
+            params['targetId'] = target_id
         
         return self._send_command(
             'Browser.getWindowForTarget',
@@ -279,10 +284,10 @@ params['targetId'] = target_id
         params = {}
         
         if is_defined(badge_label):
-params['badgeLabel'] = badge_label
+            params['badgeLabel'] = badge_label
         
         if is_defined(image):
-params['image'] = image
+            params['image'] = image
         
         return self._send_command(
             'Browser.setDockTile',

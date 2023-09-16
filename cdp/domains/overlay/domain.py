@@ -9,28 +9,31 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
+from cdp.utils import (
+    is_defined,
+    UNDEFINED
+)
+from cdp.domains.overlay.types import (
+    ColorFormat,
+    GetGridHighlightObjectsForTestReturnT,
+    GetHighlightObjectForTestReturnT,
+    GetSourceOrderHighlightObjectForTestReturnT,
+    HighlightConfig,
+    HingeConfig,
+    InspectMode,
+    SourceOrderConfig
+)
 from cdp.domains.dom.types import (
     BackendNodeId,
     NodeId,
     Quad,
     RGBA
 )
-from cdp.domains.overlay.types import (
-    ColorFormat,
-    HighlightConfig,
-    HingeConfig,
-    InspectMode,
-    SourceOrderConfig
-)
 from cdp.domains.page.types import (
     FrameId
 )
 from cdp.domains.runtime.types import (
     RemoteObjectId
-)
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
 )
 
 
@@ -71,16 +74,16 @@ class Overlay(BaseDomain):
         }
         
         if is_defined(include_distance):
-params['includeDistance'] = include_distance
+            params['includeDistance'] = include_distance
         
         if is_defined(include_style):
-params['includeStyle'] = include_style
+            params['includeStyle'] = include_style
         
         if is_defined(color_format):
-params['colorFormat'] = color_format
+            params['colorFormat'] = color_format
         
         if is_defined(show_accessibility_info):
-params['showAccessibilityInfo'] = show_accessibility_info
+            params['showAccessibilityInfo'] = show_accessibility_info
         
         return self._send_command(
             'Overlay.getHighlightObjectForTest',
@@ -138,10 +141,10 @@ params['showAccessibilityInfo'] = show_accessibility_info
         }
         
         if is_defined(content_color):
-params['contentColor'] = content_color
+            params['contentColor'] = content_color
         
         if is_defined(content_outline_color):
-params['contentOutlineColor'] = content_outline_color
+            params['contentOutlineColor'] = content_outline_color
         
         return self._send_command(
             'Overlay.highlightFrame',
@@ -162,16 +165,16 @@ params['contentOutlineColor'] = content_outline_color
         }
         
         if is_defined(node_id):
-params['nodeId'] = node_id
+            params['nodeId'] = node_id
         
         if is_defined(backend_node_id):
-params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = backend_node_id
         
         if is_defined(object_id):
-params['objectId'] = object_id
+            params['objectId'] = object_id
         
         if is_defined(selector):
-params['selector'] = selector
+            params['selector'] = selector
         
         return self._send_command(
             'Overlay.highlightNode',
@@ -190,10 +193,10 @@ params['selector'] = selector
         }
         
         if is_defined(color):
-params['color'] = color
+            params['color'] = color
         
         if is_defined(outline_color):
-params['outlineColor'] = outline_color
+            params['outlineColor'] = outline_color
         
         return self._send_command(
             'Overlay.highlightQuad',
@@ -218,10 +221,10 @@ params['outlineColor'] = outline_color
         }
         
         if is_defined(color):
-params['color'] = color
+            params['color'] = color
         
         if is_defined(outline_color):
-params['outlineColor'] = outline_color
+            params['outlineColor'] = outline_color
         
         return self._send_command(
             'Overlay.highlightRect',
@@ -241,13 +244,13 @@ params['outlineColor'] = outline_color
         }
         
         if is_defined(node_id):
-params['nodeId'] = node_id
+            params['nodeId'] = node_id
         
         if is_defined(backend_node_id):
-params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = backend_node_id
         
         if is_defined(object_id):
-params['objectId'] = object_id
+            params['objectId'] = object_id
         
         return self._send_command(
             'Overlay.highlightSourceOrder',
@@ -265,7 +268,7 @@ params['objectId'] = object_id
         }
         
         if is_defined(highlight_config):
-params['highlightConfig'] = highlight_config
+            params['highlightConfig'] = highlight_config
         
         return self._send_command(
             'Overlay.setInspectMode',
@@ -294,7 +297,7 @@ params['highlightConfig'] = highlight_config
         params = {}
         
         if is_defined(message):
-params['message'] = message
+            params['message'] = message
         
         return self._send_command(
             'Overlay.setPausedInDebuggerMessage',
@@ -477,7 +480,7 @@ params['message'] = message
         params = {}
         
         if is_defined(hinge_config):
-params['hingeConfig'] = hinge_config
+            params['hingeConfig'] = hinge_config
         
         return self._send_command(
             'Overlay.setShowHinge',

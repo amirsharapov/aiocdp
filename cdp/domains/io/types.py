@@ -12,7 +12,7 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
+        from cdp.domains.runtime.types import (
         RemoteObjectId
     )
 

@@ -23,73 +23,12 @@ class SamplingProfileNode:
     size: float
     total: float
     stack: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'size': self.size,
-                'total': self.total,
-                'stack': self.stack,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'size': self.size,
-                'total': self.total,
-                'stack': self.stack,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Size': self.size,
-                'Total': self.total,
-                'Stack': self.stack,
-            }
 
 
 @dataclass
 class SamplingProfile:
     samples: list
     modules: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'samples': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.samples
-                ],
-                'modules': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.modules
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'samples': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.samples
-                ],
-                'modules': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.modules
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Samples': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.samples
-                ],
-                'Modules': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.modules
-                ],
-            }
 
 
 @dataclass
@@ -98,32 +37,6 @@ class Module:
     uuid: str
     base_address: str
     size: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'uuid': self.uuid,
-                'base_address': self.base_address,
-                'size': self.size,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'uuid': self.uuid,
-                'baseAddress': self.base_address,
-                'size': self.size,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Uuid': self.uuid,
-                'BaseAddress': self.base_address,
-                'Size': self.size,
-            }
 
 
 @dataclass

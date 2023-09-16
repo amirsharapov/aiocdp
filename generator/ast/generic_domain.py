@@ -10,24 +10,39 @@ from generator.utils import (
 )
 
 
-def _generate_dataclass_import():
-    return ast.ImportFrom(
-        module='dataclasses',
-        names=[
-            ast.alias('dataclass')
-        ]
-    )
+def _generate_imports():
+    return [
+        ast.ImportFrom(
+            module='dataclasses',
+            names=[
+                ast.alias('dataclass')
+            ]
+        ),
+        ast.ImportFrom(
+            module='cdp.utils',
+            names=[
+                ast.alias('is_defined'),
+                ast.alias('UNDEFINED')
+            ]
+        )
+    ]
 
 
 def _generate_external_type_imports(domain: Domain):
     import_tree = defaultdict(set)
 
     for command in domain.commands:
-        for ref in command.get_refs():
-            module_name = ref.actual_domain.domain_snake_case
-            import_tree[module_name].add(
-                ref.type
+        if command.returns:
+            import_tree[domain.domain_snake_case].add(
+                command.name_pascal_case + 'ReturnT'
             )
+
+        for parameter in command.parameters:
+            for ref in parameter.get_refs():
+                module_name = ref.actual_domain.domain_snake_case
+                import_tree[module_name].add(
+                    ref.type
+                )
 
     imports = []
 
@@ -42,18 +57,6 @@ def _generate_external_type_imports(domain: Domain):
         )
 
     return imports
-
-
-def _generate_util_imports(domain: Domain):
-    return [
-        ast.ImportFrom(
-            module='cdp.utils',
-            names=[
-                ast.alias('is_defined'),
-                ast.alias('UNDEFINED')
-            ]
-        )
-    ]
 
 
 def _generate_send_command_method_parameter_signature(command: Command):
@@ -264,13 +267,10 @@ def generate(domain: Domain):
         ]
     )
 
-    if import_ := _generate_dataclass_import():
-        root.body.append(import_)
+    if imports := _generate_imports():
+        root.body.extend(imports)
 
     if imports := _generate_external_type_imports(domain):
-        root.body += imports
-
-    if imports := _generate_util_imports(domain):
         root.body += imports
 
     root.body.append(

@@ -12,7 +12,7 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.network.types import (
+        from cdp.domains.network.types import (
         TimeSinceEpoch
     )
 
@@ -64,100 +64,12 @@ class CertificateSecurityState:
     obsolete_ssl_key_exchange: bool
     obsolete_ssl_cipher: bool
     obsolete_ssl_signature: bool
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'protocol': self.protocol,
-                'key_exchange': self.key_exchange,
-                'key_exchange_group': self.key_exchange_group,
-                'cipher': self.cipher,
-                'mac': self.mac,
-                'certificate': self.certificate,
-                'subject_name': self.subject_name,
-                'issuer': self.issuer,
-                'valid_from': self.valid_from,
-                'valid_to': self.valid_to,
-                'certificate_network_error': self.certificate_network_error,
-                'certificate_has_weak_signature': self.certificate_has_weak_signature,
-                'certificate_has_sha1_signature': self.certificate_has_sha1_signature,
-                'modern_ssl': self.modern_ssl,
-                'obsolete_ssl_protocol': self.obsolete_ssl_protocol,
-                'obsolete_ssl_key_exchange': self.obsolete_ssl_key_exchange,
-                'obsolete_ssl_cipher': self.obsolete_ssl_cipher,
-                'obsolete_ssl_signature': self.obsolete_ssl_signature,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'protocol': self.protocol,
-                'keyExchange': self.key_exchange,
-                'keyExchangeGroup': self.key_exchange_group,
-                'cipher': self.cipher,
-                'mac': self.mac,
-                'certificate': self.certificate,
-                'subjectName': self.subject_name,
-                'issuer': self.issuer,
-                'validFrom': self.valid_from,
-                'validTo': self.valid_to,
-                'certificateNetworkError': self.certificate_network_error,
-                'certificateHasWeakSignature': self.certificate_has_weak_signature,
-                'certificateHasSha1Signature': self.certificate_has_sha1_signature,
-                'modernSSL': self.modern_ssl,
-                'obsoleteSslProtocol': self.obsolete_ssl_protocol,
-                'obsoleteSslKeyExchange': self.obsolete_ssl_key_exchange,
-                'obsoleteSslCipher': self.obsolete_ssl_cipher,
-                'obsoleteSslSignature': self.obsolete_ssl_signature,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Protocol': self.protocol,
-                'KeyExchange': self.key_exchange,
-                'KeyExchangeGroup': self.key_exchange_group,
-                'Cipher': self.cipher,
-                'Mac': self.mac,
-                'Certificate': self.certificate,
-                'SubjectName': self.subject_name,
-                'Issuer': self.issuer,
-                'ValidFrom': self.valid_from,
-                'ValidTo': self.valid_to,
-                'CertificateNetworkError': self.certificate_network_error,
-                'CertificateHasWeakSignature': self.certificate_has_weak_signature,
-                'CertificateHasSha1Signature': self.certificate_has_sha1_signature,
-                'ModernSSL': self.modern_ssl,
-                'ObsoleteSslProtocol': self.obsolete_ssl_protocol,
-                'ObsoleteSslKeyExchange': self.obsolete_ssl_key_exchange,
-                'ObsoleteSslCipher': self.obsolete_ssl_cipher,
-                'ObsoleteSslSignature': self.obsolete_ssl_signature,
-            }
 
 
 @dataclass
 class SafetyTipInfo:
     safety_tip_status: 'SafetyTipStatus'
     safe_url: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'safety_tip_status': self.safety_tip_status,
-                'safe_url': self.safe_url,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'safetyTipStatus': self.safety_tip_status,
-                'safeUrl': self.safe_url,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'SafetyTipStatus': self.safety_tip_status,
-                'SafeUrl': self.safe_url,
-            }
 
 
 @dataclass
@@ -166,32 +78,6 @@ class VisibleSecurityState:
     certificate_security_state: 'CertificateSecurityState'
     safety_tip_info: 'SafetyTipInfo'
     security_state_issue_ids: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'security_state': self.security_state,
-                'certificate_security_state': self.certificate_security_state.to_dict(casing_strategy),
-                'safety_tip_info': self.safety_tip_info.to_dict(casing_strategy),
-                'security_state_issue_ids': self.security_state_issue_ids,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'securityState': self.security_state,
-                'certificateSecurityState': self.certificate_security_state.to_dict(casing_strategy),
-                'safetyTipInfo': self.safety_tip_info.to_dict(casing_strategy),
-                'securityStateIssueIds': self.security_state_issue_ids,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'SecurityState': self.security_state,
-                'CertificateSecurityState': self.certificate_security_state.to_dict(casing_strategy),
-                'SafetyTipInfo': self.safety_tip_info.to_dict(casing_strategy),
-                'SecurityStateIssueIds': self.security_state_issue_ids,
-            }
 
 
 @dataclass
@@ -203,41 +89,6 @@ class SecurityStateExplanation:
     mixed_content_type: 'MixedContentType'
     certificate: list
     recommendations: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'security_state': self.security_state,
-                'title': self.title,
-                'summary': self.summary,
-                'description': self.description,
-                'mixed_content_type': self.mixed_content_type,
-                'certificate': self.certificate,
-                'recommendations': self.recommendations,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'securityState': self.security_state,
-                'title': self.title,
-                'summary': self.summary,
-                'description': self.description,
-                'mixedContentType': self.mixed_content_type,
-                'certificate': self.certificate,
-                'recommendations': self.recommendations,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'SecurityState': self.security_state,
-                'Title': self.title,
-                'Summary': self.summary,
-                'Description': self.description,
-                'MixedContentType': self.mixed_content_type,
-                'Certificate': self.certificate,
-                'Recommendations': self.recommendations,
-            }
 
 
 @dataclass
@@ -249,38 +100,3 @@ class InsecureContentStatus:
     displayed_content_with_cert_errors: bool
     ran_insecure_content_style: 'SecurityState'
     displayed_insecure_content_style: 'SecurityState'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'ran_mixed_content': self.ran_mixed_content,
-                'displayed_mixed_content': self.displayed_mixed_content,
-                'contained_mixed_form': self.contained_mixed_form,
-                'ran_content_with_cert_errors': self.ran_content_with_cert_errors,
-                'displayed_content_with_cert_errors': self.displayed_content_with_cert_errors,
-                'ran_insecure_content_style': self.ran_insecure_content_style,
-                'displayed_insecure_content_style': self.displayed_insecure_content_style,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'ranMixedContent': self.ran_mixed_content,
-                'displayedMixedContent': self.displayed_mixed_content,
-                'containedMixedForm': self.contained_mixed_form,
-                'ranContentWithCertErrors': self.ran_content_with_cert_errors,
-                'displayedContentWithCertErrors': self.displayed_content_with_cert_errors,
-                'ranInsecureContentStyle': self.ran_insecure_content_style,
-                'displayedInsecureContentStyle': self.displayed_insecure_content_style,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'RanMixedContent': self.ran_mixed_content,
-                'DisplayedMixedContent': self.displayed_mixed_content,
-                'ContainedMixedForm': self.contained_mixed_form,
-                'RanContentWithCertErrors': self.ran_content_with_cert_errors,
-                'DisplayedContentWithCertErrors': self.displayed_content_with_cert_errors,
-                'RanInsecureContentStyle': self.ran_insecure_content_style,
-                'DisplayedInsecureContentStyle': self.displayed_insecure_content_style,
-            }

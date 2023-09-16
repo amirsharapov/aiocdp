@@ -9,18 +9,19 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
+from cdp.utils import (
+    is_defined,
+    UNDEFINED
+)
+from cdp.domains.dom_debugger.types import (
+    DOMBreakpointType,
+    GetEventListenersReturnT
+)
 from cdp.domains.runtime.types import (
     RemoteObjectId
 )
 from cdp.domains.dom.types import (
     NodeId
-)
-from cdp.domains.dom_debugger.types import (
-    DOMBreakpointType
-)
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
 )
 
 
@@ -37,10 +38,10 @@ class DOMDebugger(BaseDomain):
         }
         
         if is_defined(depth):
-params['depth'] = depth
+            params['depth'] = depth
         
         if is_defined(pierce):
-params['pierce'] = pierce
+            params['pierce'] = pierce
         
         return self._send_command(
             'DOMDebugger.getEventListeners',
@@ -74,7 +75,7 @@ params['pierce'] = pierce
         }
         
         if is_defined(target_name):
-params['targetName'] = target_name
+            params['targetName'] = target_name
         
         return self._send_command(
             'DOMDebugger.removeEventListenerBreakpoint',
@@ -150,7 +151,7 @@ params['targetName'] = target_name
         }
         
         if is_defined(target_name):
-params['targetName'] = target_name
+            params['targetName'] = target_name
         
         return self._send_command(
             'DOMDebugger.setEventListenerBreakpoint',

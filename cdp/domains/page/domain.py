@@ -9,40 +9,43 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.page.types import (
-    AdScriptId,
-    AppManifestParsedProperties,
-    AutoResponseMode,
-    FontFamilies,
-    FontSizes,
-    FrameId,
-    FrameResourceTree,
-    FrameTree,
-    LayoutViewport,
-    ReferrerPolicy,
-    ScriptIdentifier,
-    TransitionType,
-    Viewport,
-    VisualViewport
-)
-from cdp.domains.runtime.types import (
-    ExecutionContextId
-)
-from cdp.domains.dom.types import (
-    Rect
-)
-from cdp.domains.network.types import (
-    LoaderId
-)
-from cdp.domains.io.types import (
-    StreamHandle
-)
-from cdp.domains.emulation.types import (
-    ScreenOrientation
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.page.types import (
+    AddScriptToEvaluateOnLoadReturnT,
+    AddScriptToEvaluateOnNewDocumentReturnT,
+    AutoResponseMode,
+    CaptureScreenshotReturnT,
+    CaptureSnapshotReturnT,
+    CreateIsolatedWorldReturnT,
+    FontFamilies,
+    FontSizes,
+    FrameId,
+    GetAdScriptIdReturnT,
+    GetAppIdReturnT,
+    GetAppManifestReturnT,
+    GetCookiesReturnT,
+    GetFrameTreeReturnT,
+    GetInstallabilityErrorsReturnT,
+    GetLayoutMetricsReturnT,
+    GetManifestIconsReturnT,
+    GetNavigationHistoryReturnT,
+    GetOriginTrialsReturnT,
+    GetPermissionsPolicyStateReturnT,
+    GetResourceContentReturnT,
+    GetResourceTreeReturnT,
+    NavigateReturnT,
+    PrintToPDFReturnT,
+    ReferrerPolicy,
+    ScriptIdentifier,
+    SearchInResourceReturnT,
+    TransitionType,
+    Viewport
+)
+from cdp.domains.emulation.types import (
+    ScreenOrientation
 )
 
 
@@ -74,13 +77,13 @@ class Page(BaseDomain):
         }
         
         if is_defined(world_name):
-params['worldName'] = world_name
+            params['worldName'] = world_name
         
         if is_defined(include_command_line_api):
-params['includeCommandLineAPI'] = include_command_line_api
+            params['includeCommandLineAPI'] = include_command_line_api
         
         if is_defined(run_immediately):
-params['runImmediately'] = run_immediately
+            params['runImmediately'] = run_immediately
         
         return self._send_command(
             'Page.addScriptToEvaluateOnNewDocument',
@@ -111,22 +114,22 @@ params['runImmediately'] = run_immediately
         params = {}
         
         if is_defined(format):
-params['format'] = format
+            params['format'] = format
         
         if is_defined(quality):
-params['quality'] = quality
+            params['quality'] = quality
         
         if is_defined(clip):
-params['clip'] = clip
+            params['clip'] = clip
         
         if is_defined(from_surface):
-params['fromSurface'] = from_surface
+            params['fromSurface'] = from_surface
         
         if is_defined(capture_beyond_viewport):
-params['captureBeyondViewport'] = capture_beyond_viewport
+            params['captureBeyondViewport'] = capture_beyond_viewport
         
         if is_defined(optimize_for_speed):
-params['optimizeForSpeed'] = optimize_for_speed
+            params['optimizeForSpeed'] = optimize_for_speed
         
         return self._send_command(
             'Page.captureScreenshot',
@@ -141,7 +144,7 @@ params['optimizeForSpeed'] = optimize_for_speed
         params = {}
         
         if is_defined(format):
-params['format'] = format
+            params['format'] = format
         
         return self._send_command(
             'Page.captureSnapshot',
@@ -193,10 +196,10 @@ params['format'] = format
         }
         
         if is_defined(world_name):
-params['worldName'] = world_name
+            params['worldName'] = world_name
         
         if is_defined(grant_univeral_access):
-params['grantUniveralAccess'] = grant_univeral_access
+            params['grantUniveralAccess'] = grant_univeral_access
         
         return self._send_command(
             'Page.createIsolatedWorld',
@@ -392,7 +395,7 @@ params['grantUniveralAccess'] = grant_univeral_access
         }
         
         if is_defined(prompt_text):
-params['promptText'] = prompt_text
+            params['promptText'] = prompt_text
         
         return self._send_command(
             'Page.handleJavaScriptDialog',
@@ -413,16 +416,16 @@ params['promptText'] = prompt_text
         }
         
         if is_defined(referrer):
-params['referrer'] = referrer
+            params['referrer'] = referrer
         
         if is_defined(transition_type):
-params['transitionType'] = transition_type
+            params['transitionType'] = transition_type
         
         if is_defined(frame_id):
-params['frameId'] = frame_id
+            params['frameId'] = frame_id
         
         if is_defined(referrer_policy):
-params['referrerPolicy'] = referrer_policy
+            params['referrerPolicy'] = referrer_policy
         
         return self._send_command(
             'Page.navigate',
@@ -466,52 +469,52 @@ params['referrerPolicy'] = referrer_policy
         params = {}
         
         if is_defined(landscape):
-params['landscape'] = landscape
+            params['landscape'] = landscape
         
         if is_defined(display_header_footer):
-params['displayHeaderFooter'] = display_header_footer
+            params['displayHeaderFooter'] = display_header_footer
         
         if is_defined(print_background):
-params['printBackground'] = print_background
+            params['printBackground'] = print_background
         
         if is_defined(scale):
-params['scale'] = scale
+            params['scale'] = scale
         
         if is_defined(paper_width):
-params['paperWidth'] = paper_width
+            params['paperWidth'] = paper_width
         
         if is_defined(paper_height):
-params['paperHeight'] = paper_height
+            params['paperHeight'] = paper_height
         
         if is_defined(margin_top):
-params['marginTop'] = margin_top
+            params['marginTop'] = margin_top
         
         if is_defined(margin_bottom):
-params['marginBottom'] = margin_bottom
+            params['marginBottom'] = margin_bottom
         
         if is_defined(margin_left):
-params['marginLeft'] = margin_left
+            params['marginLeft'] = margin_left
         
         if is_defined(margin_right):
-params['marginRight'] = margin_right
+            params['marginRight'] = margin_right
         
         if is_defined(page_ranges):
-params['pageRanges'] = page_ranges
+            params['pageRanges'] = page_ranges
         
         if is_defined(header_template):
-params['headerTemplate'] = header_template
+            params['headerTemplate'] = header_template
         
         if is_defined(footer_template):
-params['footerTemplate'] = footer_template
+            params['footerTemplate'] = footer_template
         
         if is_defined(prefer_css_page_size):
-params['preferCSSPageSize'] = prefer_css_page_size
+            params['preferCSSPageSize'] = prefer_css_page_size
         
         if is_defined(transfer_mode):
-params['transferMode'] = transfer_mode
+            params['transferMode'] = transfer_mode
         
         if is_defined(generate_tagged_pdf):
-params['generateTaggedPDF'] = generate_tagged_pdf
+            params['generateTaggedPDF'] = generate_tagged_pdf
         
         return self._send_command(
             'Page.printToPDF',
@@ -527,10 +530,10 @@ params['generateTaggedPDF'] = generate_tagged_pdf
         params = {}
         
         if is_defined(ignore_cache):
-params['ignoreCache'] = ignore_cache
+            params['ignoreCache'] = ignore_cache
         
         if is_defined(script_to_evaluate_on_load):
-params['scriptToEvaluateOnLoad'] = script_to_evaluate_on_load
+            params['scriptToEvaluateOnLoad'] = script_to_evaluate_on_load
         
         return self._send_command(
             'Page.reload',
@@ -595,10 +598,10 @@ params['scriptToEvaluateOnLoad'] = script_to_evaluate_on_load
         }
         
         if is_defined(case_sensitive):
-params['caseSensitive'] = case_sensitive
+            params['caseSensitive'] = case_sensitive
         
         if is_defined(is_regex):
-params['isRegex'] = is_regex
+            params['isRegex'] = is_regex
         
         return self._send_command(
             'Page.searchInResource',
@@ -685,28 +688,28 @@ params['isRegex'] = is_regex
         }
         
         if is_defined(scale):
-params['scale'] = scale
+            params['scale'] = scale
         
         if is_defined(screen_width):
-params['screenWidth'] = screen_width
+            params['screenWidth'] = screen_width
         
         if is_defined(screen_height):
-params['screenHeight'] = screen_height
+            params['screenHeight'] = screen_height
         
         if is_defined(position_x):
-params['positionX'] = position_x
+            params['positionX'] = position_x
         
         if is_defined(position_y):
-params['positionY'] = position_y
+            params['positionY'] = position_y
         
         if is_defined(dont_set_visible_size):
-params['dontSetVisibleSize'] = dont_set_visible_size
+            params['dontSetVisibleSize'] = dont_set_visible_size
         
         if is_defined(screen_orientation):
-params['screenOrientation'] = screen_orientation
+            params['screenOrientation'] = screen_orientation
         
         if is_defined(viewport):
-params['viewport'] = viewport
+            params['viewport'] = viewport
         
         return self._send_command(
             'Page.setDeviceMetricsOverride',
@@ -742,7 +745,7 @@ params['viewport'] = viewport
         }
         
         if is_defined(for_scripts):
-params['forScripts'] = for_scripts
+            params['forScripts'] = for_scripts
         
         return self._send_command(
             'Page.setFontFamilies',
@@ -790,7 +793,7 @@ params['forScripts'] = for_scripts
         }
         
         if is_defined(download_path):
-params['downloadPath'] = download_path
+            params['downloadPath'] = download_path
         
         return self._send_command(
             'Page.setDownloadBehavior',
@@ -807,13 +810,13 @@ params['downloadPath'] = download_path
         params = {}
         
         if is_defined(latitude):
-params['latitude'] = latitude
+            params['latitude'] = latitude
         
         if is_defined(longitude):
-params['longitude'] = longitude
+            params['longitude'] = longitude
         
         if is_defined(accuracy):
-params['accuracy'] = accuracy
+            params['accuracy'] = accuracy
         
         return self._send_command(
             'Page.setGeolocationOverride',
@@ -845,7 +848,7 @@ params['accuracy'] = accuracy
         }
         
         if is_defined(configuration):
-params['configuration'] = configuration
+            params['configuration'] = configuration
         
         return self._send_command(
             'Page.setTouchEmulationEnabled',
@@ -864,19 +867,19 @@ params['configuration'] = configuration
         params = {}
         
         if is_defined(format):
-params['format'] = format
+            params['format'] = format
         
         if is_defined(quality):
-params['quality'] = quality
+            params['quality'] = quality
         
         if is_defined(max_width):
-params['maxWidth'] = max_width
+            params['maxWidth'] = max_width
         
         if is_defined(max_height):
-params['maxHeight'] = max_height
+            params['maxHeight'] = max_height
         
         if is_defined(every_nth_frame):
-params['everyNthFrame'] = every_nth_frame
+            params['everyNthFrame'] = every_nth_frame
         
         return self._send_command(
             'Page.startScreencast',
@@ -1021,7 +1024,7 @@ params['everyNthFrame'] = every_nth_frame
         }
         
         if is_defined(group):
-params['group'] = group
+            params['group'] = group
         
         return self._send_command(
             'Page.generateTestReport',

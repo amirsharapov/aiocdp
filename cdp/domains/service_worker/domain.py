@@ -9,12 +9,12 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.service_worker.types import (
-    RegistrationID
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.service_worker.types import (
+    RegistrationID
 )
 
 

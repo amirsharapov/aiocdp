@@ -52,32 +52,6 @@ class ContextRealtimeData:
     render_capacity: float
     callback_interval_mean: float
     callback_interval_variance: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'current_time': self.current_time,
-                'render_capacity': self.render_capacity,
-                'callback_interval_mean': self.callback_interval_mean,
-                'callback_interval_variance': self.callback_interval_variance,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'currentTime': self.current_time,
-                'renderCapacity': self.render_capacity,
-                'callbackIntervalMean': self.callback_interval_mean,
-                'callbackIntervalVariance': self.callback_interval_variance,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'CurrentTime': self.current_time,
-                'RenderCapacity': self.render_capacity,
-                'CallbackIntervalMean': self.callback_interval_mean,
-                'CallbackIntervalVariance': self.callback_interval_variance,
-            }
 
 
 @dataclass
@@ -89,67 +63,12 @@ class BaseAudioContext:
     callback_buffer_size: float
     max_output_channel_count: float
     sample_rate: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'context_id': self.context_id,
-                'context_type': self.context_type,
-                'context_state': self.context_state,
-                'realtime_data': self.realtime_data.to_dict(casing_strategy),
-                'callback_buffer_size': self.callback_buffer_size,
-                'max_output_channel_count': self.max_output_channel_count,
-                'sample_rate': self.sample_rate,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'contextId': self.context_id,
-                'contextType': self.context_type,
-                'contextState': self.context_state,
-                'realtimeData': self.realtime_data.to_dict(casing_strategy),
-                'callbackBufferSize': self.callback_buffer_size,
-                'maxOutputChannelCount': self.max_output_channel_count,
-                'sampleRate': self.sample_rate,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'ContextId': self.context_id,
-                'ContextType': self.context_type,
-                'ContextState': self.context_state,
-                'RealtimeData': self.realtime_data.to_dict(casing_strategy),
-                'CallbackBufferSize': self.callback_buffer_size,
-                'MaxOutputChannelCount': self.max_output_channel_count,
-                'SampleRate': self.sample_rate,
-            }
 
 
 @dataclass
 class AudioListener:
     listener_id: 'GraphObjectId'
     context_id: 'GraphObjectId'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'listener_id': self.listener_id,
-                'context_id': self.context_id,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'listenerId': self.listener_id,
-                'contextId': self.context_id,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'ListenerId': self.listener_id,
-                'ContextId': self.context_id,
-            }
 
 
 @dataclass
@@ -162,44 +81,6 @@ class AudioNode:
     channel_count: float
     channel_count_mode: 'ChannelCountMode'
     channel_interpretation: 'ChannelInterpretation'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'node_id': self.node_id,
-                'context_id': self.context_id,
-                'node_type': self.node_type,
-                'number_of_inputs': self.number_of_inputs,
-                'number_of_outputs': self.number_of_outputs,
-                'channel_count': self.channel_count,
-                'channel_count_mode': self.channel_count_mode,
-                'channel_interpretation': self.channel_interpretation,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'nodeId': self.node_id,
-                'contextId': self.context_id,
-                'nodeType': self.node_type,
-                'numberOfInputs': self.number_of_inputs,
-                'numberOfOutputs': self.number_of_outputs,
-                'channelCount': self.channel_count,
-                'channelCountMode': self.channel_count_mode,
-                'channelInterpretation': self.channel_interpretation,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'NodeId': self.node_id,
-                'ContextId': self.context_id,
-                'NodeType': self.node_type,
-                'NumberOfInputs': self.number_of_inputs,
-                'NumberOfOutputs': self.number_of_outputs,
-                'ChannelCount': self.channel_count,
-                'ChannelCountMode': self.channel_count_mode,
-                'ChannelInterpretation': self.channel_interpretation,
-            }
 
 
 @dataclass
@@ -212,44 +93,6 @@ class AudioParam:
     default_value: float
     min_value: float
     max_value: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'param_id': self.param_id,
-                'node_id': self.node_id,
-                'context_id': self.context_id,
-                'param_type': self.param_type,
-                'rate': self.rate,
-                'default_value': self.default_value,
-                'min_value': self.min_value,
-                'max_value': self.max_value,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'paramId': self.param_id,
-                'nodeId': self.node_id,
-                'contextId': self.context_id,
-                'paramType': self.param_type,
-                'rate': self.rate,
-                'defaultValue': self.default_value,
-                'minValue': self.min_value,
-                'maxValue': self.max_value,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'ParamId': self.param_id,
-                'NodeId': self.node_id,
-                'ContextId': self.context_id,
-                'ParamType': self.param_type,
-                'Rate': self.rate,
-                'DefaultValue': self.default_value,
-                'MinValue': self.min_value,
-                'MaxValue': self.max_value,
-            }
 
 
 @dataclass

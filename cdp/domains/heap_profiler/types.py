@@ -12,7 +12,7 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
+        from cdp.domains.runtime.types import (
         CallFrame,
         RemoteObject,
         RemoteObjectId
@@ -27,41 +27,6 @@ class SamplingHeapProfileNode:
     self_size: float
     id: int
     children: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'call_frame': self.call_frame.to_dict(casing_strategy),
-                'self_size': self.self_size,
-                'id': self.id,
-                'children': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.children
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'callFrame': self.call_frame.to_dict(casing_strategy),
-                'selfSize': self.self_size,
-                'id': self.id,
-                'children': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.children
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'CallFrame': self.call_frame.to_dict(casing_strategy),
-                'SelfSize': self.self_size,
-                'Id': self.id,
-                'Children': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.children
-                ],
-            }
 
 
 @dataclass
@@ -69,64 +34,12 @@ class SamplingHeapProfileSample:
     size: float
     node_id: int
     ordinal: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'size': self.size,
-                'node_id': self.node_id,
-                'ordinal': self.ordinal,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'size': self.size,
-                'nodeId': self.node_id,
-                'ordinal': self.ordinal,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Size': self.size,
-                'NodeId': self.node_id,
-                'Ordinal': self.ordinal,
-            }
 
 
 @dataclass
 class SamplingHeapProfile:
     head: 'SamplingHeapProfileNode'
     samples: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'head': self.head.to_dict(casing_strategy),
-                'samples': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.samples
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'head': self.head.to_dict(casing_strategy),
-                'samples': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.samples
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Head': self.head.to_dict(casing_strategy),
-                'Samples': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.samples
-                ],
-            }
 
 
 @dataclass

@@ -46,53 +46,6 @@ class VirtualAuthenticatorOptions:
     has_prf: bool
     automatic_presence_simulation: bool
     is_user_verified: bool
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'protocol': self.protocol,
-                'ctap2_version': self.ctap2_version,
-                'transport': self.transport,
-                'has_resident_key': self.has_resident_key,
-                'has_user_verification': self.has_user_verification,
-                'has_large_blob': self.has_large_blob,
-                'has_cred_blob': self.has_cred_blob,
-                'has_min_pin_length': self.has_min_pin_length,
-                'has_prf': self.has_prf,
-                'automatic_presence_simulation': self.automatic_presence_simulation,
-                'is_user_verified': self.is_user_verified,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'protocol': self.protocol,
-                'ctap2Version': self.ctap2_version,
-                'transport': self.transport,
-                'hasResidentKey': self.has_resident_key,
-                'hasUserVerification': self.has_user_verification,
-                'hasLargeBlob': self.has_large_blob,
-                'hasCredBlob': self.has_cred_blob,
-                'hasMinPinLength': self.has_min_pin_length,
-                'hasPrf': self.has_prf,
-                'automaticPresenceSimulation': self.automatic_presence_simulation,
-                'isUserVerified': self.is_user_verified,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Protocol': self.protocol,
-                'Ctap2Version': self.ctap2_version,
-                'Transport': self.transport,
-                'HasResidentKey': self.has_resident_key,
-                'HasUserVerification': self.has_user_verification,
-                'HasLargeBlob': self.has_large_blob,
-                'HasCredBlob': self.has_cred_blob,
-                'HasMinPinLength': self.has_min_pin_length,
-                'HasPrf': self.has_prf,
-                'AutomaticPresenceSimulation': self.automatic_presence_simulation,
-                'IsUserVerified': self.is_user_verified,
-            }
 
 
 @dataclass
@@ -104,41 +57,6 @@ class Credential:
     user_handle: str
     sign_count: int
     large_blob: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'credential_id': self.credential_id,
-                'is_resident_credential': self.is_resident_credential,
-                'rp_id': self.rp_id,
-                'private_key': self.private_key,
-                'user_handle': self.user_handle,
-                'sign_count': self.sign_count,
-                'large_blob': self.large_blob,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'credentialId': self.credential_id,
-                'isResidentCredential': self.is_resident_credential,
-                'rpId': self.rp_id,
-                'privateKey': self.private_key,
-                'userHandle': self.user_handle,
-                'signCount': self.sign_count,
-                'largeBlob': self.large_blob,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'CredentialId': self.credential_id,
-                'IsResidentCredential': self.is_resident_credential,
-                'RpId': self.rp_id,
-                'PrivateKey': self.private_key,
-                'UserHandle': self.user_handle,
-                'SignCount': self.sign_count,
-                'LargeBlob': self.large_blob,
-            }
 
 
 @dataclass

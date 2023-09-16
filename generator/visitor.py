@@ -317,6 +317,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         with self._indent_context():
             for body in node.body:
+                self.source += self.indent
                 self.visit(body)
 
         if hasattr(node, 'orelse'):

@@ -9,17 +9,19 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.heap_profiler.types import (
-    HeapSnapshotObjectId,
-    SamplingHeapProfile
-)
-from cdp.domains.runtime.types import (
-    RemoteObject,
-    RemoteObjectId
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.heap_profiler.types import (
+    GetHeapObjectIdReturnT,
+    GetObjectByHeapObjectIdReturnT,
+    GetSamplingProfileReturnT,
+    HeapSnapshotObjectId,
+    StopSamplingReturnT
+)
+from cdp.domains.runtime.types import (
+    RemoteObjectId
 )
 
 
@@ -96,7 +98,7 @@ class HeapProfiler(BaseDomain):
         }
         
         if is_defined(object_group):
-params['objectGroup'] = object_group
+            params['objectGroup'] = object_group
         
         return self._send_command(
             'HeapProfiler.getObjectByHeapObjectId',
@@ -122,7 +124,7 @@ params['objectGroup'] = object_group
         params = {}
         
         if is_defined(sampling_interval):
-params['samplingInterval'] = sampling_interval
+            params['samplingInterval'] = sampling_interval
         
         return self._send_command(
             'HeapProfiler.startSampling',
@@ -137,7 +139,7 @@ params['samplingInterval'] = sampling_interval
         params = {}
         
         if is_defined(track_allocations):
-params['trackAllocations'] = track_allocations
+            params['trackAllocations'] = track_allocations
         
         return self._send_command(
             'HeapProfiler.startTrackingHeapObjects',
@@ -163,7 +165,7 @@ params['trackAllocations'] = track_allocations
         params = {}
         
         if is_defined(report_progress):
-params['reportProgress'] = report_progress
+            params['reportProgress'] = report_progress
         
         return self._send_command(
             'HeapProfiler.stopTrackingHeapObjects',
@@ -178,7 +180,7 @@ params['reportProgress'] = report_progress
         params = {}
         
         if is_defined(report_progress):
-params['reportProgress'] = report_progress
+            params['reportProgress'] = report_progress
         
         return self._send_command(
             'HeapProfiler.takeHeapSnapshot',

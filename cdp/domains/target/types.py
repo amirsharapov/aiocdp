@@ -12,10 +12,10 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.page.types import (
+        from cdp.domains.page.types import (
         FrameId
     )
-    from cdp.domains.browser.types import (
+        from cdp.domains.browser.types import (
         BrowserContextID
     )
 
@@ -38,102 +38,18 @@ class TargetInfo:
     opener_frame_id: 'FrameId'
     browser_context_id: 'BrowserContextID'
     subtype: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'target_id': self.target_id,
-                'type': self.type,
-                'title': self.title,
-                'url': self.url,
-                'attached': self.attached,
-                'opener_id': self.opener_id,
-                'can_access_opener': self.can_access_opener,
-                'opener_frame_id': self.opener_frame_id,
-                'browser_context_id': self.browser_context_id,
-                'subtype': self.subtype,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'targetId': self.target_id,
-                'type': self.type,
-                'title': self.title,
-                'url': self.url,
-                'attached': self.attached,
-                'openerId': self.opener_id,
-                'canAccessOpener': self.can_access_opener,
-                'openerFrameId': self.opener_frame_id,
-                'browserContextId': self.browser_context_id,
-                'subtype': self.subtype,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'TargetId': self.target_id,
-                'Type': self.type,
-                'Title': self.title,
-                'Url': self.url,
-                'Attached': self.attached,
-                'OpenerId': self.opener_id,
-                'CanAccessOpener': self.can_access_opener,
-                'OpenerFrameId': self.opener_frame_id,
-                'BrowserContextId': self.browser_context_id,
-                'Subtype': self.subtype,
-            }
 
 
 @dataclass
 class FilterEntry:
     exclude: bool
     type: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'exclude': self.exclude,
-                'type': self.type,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'exclude': self.exclude,
-                'type': self.type,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Exclude': self.exclude,
-                'Type': self.type,
-            }
 
 
 @dataclass
 class RemoteLocation:
     host: str
     port: int
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'host': self.host,
-                'port': self.port,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'host': self.host,
-                'port': self.port,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Host': self.host,
-                'Port': self.port,
-            }
 
 
 @dataclass

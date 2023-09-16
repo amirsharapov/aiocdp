@@ -9,13 +9,14 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.database.types import (
-    DatabaseId,
-    Error
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.database.types import (
+    DatabaseId,
+    ExecuteSQLReturnT,
+    GetDatabaseTableNamesReturnT
 )
 
 

@@ -12,10 +12,10 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.dom.types import (
+        from cdp.domains.dom.types import (
         BackendNodeId
     )
-    from cdp.domains.page.types import (
+        from cdp.domains.page.types import (
         FrameId
     )
 
@@ -32,154 +32,27 @@ class CreditCard:
     expiry_month: str
     expiry_year: str
     cvc: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'number': self.number,
-                'name': self.name,
-                'expiry_month': self.expiry_month,
-                'expiry_year': self.expiry_year,
-                'cvc': self.cvc,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'number': self.number,
-                'name': self.name,
-                'expiryMonth': self.expiry_month,
-                'expiryYear': self.expiry_year,
-                'cvc': self.cvc,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Number': self.number,
-                'Name': self.name,
-                'ExpiryMonth': self.expiry_month,
-                'ExpiryYear': self.expiry_year,
-                'Cvc': self.cvc,
-            }
 
 
 @dataclass
 class AddressField:
     name: str
     value: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'value': self.value,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'value': self.value,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Value': self.value,
-            }
 
 
 @dataclass
 class AddressFields:
     fields: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'fields': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.fields
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'fields': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.fields
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Fields': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.fields
-                ],
-            }
 
 
 @dataclass
 class Address:
     fields: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'fields': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.fields
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'fields': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.fields
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Fields': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.fields
-                ],
-            }
 
 
 @dataclass
 class AddressUI:
     address_fields: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'address_fields': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.address_fields
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'addressFields': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.address_fields
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'AddressFields': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.address_fields
-                ],
-            }
 
 
 @dataclass
@@ -190,35 +63,3 @@ class FilledField:
     value: str
     autofill_type: str
     filling_strategy: 'FillingStrategy'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'html_type': self.html_type,
-                'id': self.id,
-                'name': self.name,
-                'value': self.value,
-                'autofill_type': self.autofill_type,
-                'filling_strategy': self.filling_strategy,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'htmlType': self.html_type,
-                'id': self.id,
-                'name': self.name,
-                'value': self.value,
-                'autofillType': self.autofill_type,
-                'fillingStrategy': self.filling_strategy,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'HtmlType': self.html_type,
-                'Id': self.id,
-                'Name': self.name,
-                'Value': self.value,
-                'AutofillType': self.autofill_type,
-                'FillingStrategy': self.filling_strategy,
-            }

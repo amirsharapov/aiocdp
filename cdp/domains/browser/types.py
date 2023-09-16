@@ -12,7 +12,7 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.target.types import (
+        from cdp.domains.target.types import (
         TargetID
     )
 
@@ -76,35 +76,6 @@ class Bounds:
     width: int
     height: int
     window_state: 'WindowState'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'left': self.left,
-                'top': self.top,
-                'width': self.width,
-                'height': self.height,
-                'window_state': self.window_state,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'left': self.left,
-                'top': self.top,
-                'width': self.width,
-                'height': self.height,
-                'windowState': self.window_state,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Left': self.left,
-                'Top': self.top,
-                'Width': self.width,
-                'Height': self.height,
-                'WindowState': self.window_state,
-            }
 
 
 @dataclass
@@ -114,35 +85,6 @@ class PermissionDescriptor:
     user_visible_only: bool
     allow_without_sanitization: bool
     pan_tilt_zoom: bool
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'sysex': self.sysex,
-                'user_visible_only': self.user_visible_only,
-                'allow_without_sanitization': self.allow_without_sanitization,
-                'pan_tilt_zoom': self.pan_tilt_zoom,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'sysex': self.sysex,
-                'userVisibleOnly': self.user_visible_only,
-                'allowWithoutSanitization': self.allow_without_sanitization,
-                'panTiltZoom': self.pan_tilt_zoom,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Sysex': self.sysex,
-                'UserVisibleOnly': self.user_visible_only,
-                'AllowWithoutSanitization': self.allow_without_sanitization,
-                'PanTiltZoom': self.pan_tilt_zoom,
-            }
 
 
 @dataclass
@@ -150,29 +92,6 @@ class Bucket:
     low: int
     high: int
     count: int
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'low': self.low,
-                'high': self.high,
-                'count': self.count,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'low': self.low,
-                'high': self.high,
-                'count': self.count,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Low': self.low,
-                'High': self.high,
-                'Count': self.count,
-            }
 
 
 @dataclass
@@ -181,41 +100,6 @@ class Histogram:
     sum: int
     count: int
     buckets: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'sum': self.sum,
-                'count': self.count,
-                'buckets': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.buckets
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'sum': self.sum,
-                'count': self.count,
-                'buckets': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.buckets
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Sum': self.sum,
-                'Count': self.count,
-                'Buckets': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.buckets
-                ],
-            }
 
 
 @dataclass

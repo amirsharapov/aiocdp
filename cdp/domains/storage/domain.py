@@ -9,21 +9,27 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.page.types import (
-    FrameId
-)
-from cdp.domains.storage.types import (
-    InterestGroupDetails,
-    SerializedStorageKey,
-    SharedStorageMetadata,
-    StorageBucket
-)
-from cdp.domains.browser.types import (
-    BrowserContextID
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.storage.types import (
+    ClearTrustTokensReturnT,
+    GetCookiesReturnT,
+    GetInterestGroupDetailsReturnT,
+    GetSharedStorageEntriesReturnT,
+    GetSharedStorageMetadataReturnT,
+    GetStorageKeyForFrameReturnT,
+    GetTrustTokensReturnT,
+    GetUsageAndQuotaReturnT,
+    RunBounceTrackingMitigationsReturnT,
+    StorageBucket
+)
+from cdp.domains.page.types import (
+    FrameId
+)
+from cdp.domains.browser.types import (
+    BrowserContextID
 )
 
 
@@ -82,7 +88,7 @@ class Storage(BaseDomain):
         params = {}
         
         if is_defined(browser_context_id):
-params['browserContextId'] = browser_context_id
+            params['browserContextId'] = browser_context_id
         
         return self._send_command(
             'Storage.getCookies',
@@ -100,7 +106,7 @@ params['browserContextId'] = browser_context_id
         }
         
         if is_defined(browser_context_id):
-params['browserContextId'] = browser_context_id
+            params['browserContextId'] = browser_context_id
         
         return self._send_command(
             'Storage.setCookies',
@@ -115,7 +121,7 @@ params['browserContextId'] = browser_context_id
         params = {}
         
         if is_defined(browser_context_id):
-params['browserContextId'] = browser_context_id
+            params['browserContextId'] = browser_context_id
         
         return self._send_command(
             'Storage.clearCookies',
@@ -147,7 +153,7 @@ params['browserContextId'] = browser_context_id
         }
         
         if is_defined(quota_size):
-params['quotaSize'] = quota_size
+            params['quotaSize'] = quota_size
         
         return self._send_command(
             'Storage.overrideQuotaForOrigin',
@@ -364,7 +370,7 @@ params['quotaSize'] = quota_size
         }
         
         if is_defined(ignore_if_present):
-params['ignoreIfPresent'] = ignore_if_present
+            params['ignoreIfPresent'] = ignore_if_present
         
         return self._send_command(
             'Storage.setSharedStorageEntry',

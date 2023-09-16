@@ -4,12 +4,11 @@ from typing import TYPE_CHECKING
 
 from generator.parser import registry
 from generator.parser.types.base import ComplexNode
-from generator.utils import MaybeUndefined, UNDEFINED, is_undefined
+from generator.utils import MaybeUndefined, UNDEFINED
 from generator.parser.types.ref import ItemsRef
 
 if TYPE_CHECKING:
     from generator.parser.types.property import Property
-    from generator.parser.types.type import Type
 
 
 @dataclass

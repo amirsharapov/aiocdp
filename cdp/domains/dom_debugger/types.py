@@ -12,12 +12,12 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
+        from cdp.domains.runtime.types import (
         RemoteObject,
         RemoteObjectId,
         ScriptId
     )
-    from cdp.domains.dom.types import (
+        from cdp.domains.dom.types import (
         BackendNodeId,
         NodeId
     )
@@ -46,50 +46,6 @@ class EventListener:
     handler: 'RemoteObject'
     original_handler: 'RemoteObject'
     backend_node_id: 'BackendNodeId'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'type': self.type,
-                'use_capture': self.use_capture,
-                'passive': self.passive,
-                'once': self.once,
-                'script_id': self.script_id,
-                'line_number': self.line_number,
-                'column_number': self.column_number,
-                'handler': self.handler.to_dict(casing_strategy),
-                'original_handler': self.original_handler.to_dict(casing_strategy),
-                'backend_node_id': self.backend_node_id,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'type': self.type,
-                'useCapture': self.use_capture,
-                'passive': self.passive,
-                'once': self.once,
-                'scriptId': self.script_id,
-                'lineNumber': self.line_number,
-                'columnNumber': self.column_number,
-                'handler': self.handler.to_dict(casing_strategy),
-                'originalHandler': self.original_handler.to_dict(casing_strategy),
-                'backendNodeId': self.backend_node_id,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Type': self.type,
-                'UseCapture': self.use_capture,
-                'Passive': self.passive,
-                'Once': self.once,
-                'ScriptId': self.script_id,
-                'LineNumber': self.line_number,
-                'ColumnNumber': self.column_number,
-                'Handler': self.handler.to_dict(casing_strategy),
-                'OriginalHandler': self.original_handler.to_dict(casing_strategy),
-                'BackendNodeId': self.backend_node_id,
-            }
 
 
 @dataclass

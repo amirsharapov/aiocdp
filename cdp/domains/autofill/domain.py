@@ -9,6 +9,10 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
+from cdp.utils import (
+    is_defined,
+    UNDEFINED
+)
 from cdp.domains.dom.types import (
     BackendNodeId
 )
@@ -17,10 +21,6 @@ from cdp.domains.page.types import (
 )
 from cdp.domains.autofill.types import (
     CreditCard
-)
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
 )
 
 
@@ -38,7 +38,7 @@ class Autofill(BaseDomain):
         }
         
         if is_defined(frame_id):
-params['frameId'] = frame_id
+            params['frameId'] = frame_id
         
         return self._send_command(
             'Autofill.trigger',

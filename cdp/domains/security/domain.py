@@ -9,12 +9,12 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.security.types import (
-    CertificateErrorAction
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.security.types import (
+    CertificateErrorAction
 )
 
 

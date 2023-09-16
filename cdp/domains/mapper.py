@@ -167,7 +167,7 @@ def _map_accessibility__ax_value_source__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'value': to_dict(data.value, casing_strategy),
             'attribute': data.attribute,
@@ -179,7 +179,7 @@ def _map_accessibility__ax_value_source__to_dict(
             'invalid_reason': data.invalid_reason,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'value': to_dict(data.value, casing_strategy),
             'attribute': data.attribute,
@@ -191,7 +191,7 @@ def _map_accessibility__ax_value_source__to_dict(
             'invalidReason': data.invalid_reason,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Value': to_dict(data.value, casing_strategy),
             'Attribute': data.attribute,
@@ -209,19 +209,19 @@ def _map_accessibility__ax_related_node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'backend_dom_node_id': data.backend_dom_node_id,
             'idref': data.idref,
             'text': data.text,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'backendDOMNodeId': data.backend_dom_node_id,
             'idref': data.idref,
             'text': data.text,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'BackendDOMNodeId': data.backend_dom_node_id,
             'Idref': data.idref,
             'Text': data.text,
@@ -233,17 +233,17 @@ def _map_accessibility__ax_property__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': to_dict(data.value, casing_strategy),
         }
@@ -254,7 +254,7 @@ def _map_accessibility__ax_value__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'value': data.value,
             'related_nodes': [
@@ -267,7 +267,7 @@ def _map_accessibility__ax_value__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'value': data.value,
             'relatedNodes': [
@@ -280,7 +280,7 @@ def _map_accessibility__ax_value__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Value': data.value,
             'RelatedNodes': [
@@ -299,7 +299,7 @@ def _map_accessibility__ax_node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'node_id': data.node_id,
             'ignored': data.ignored,
             'ignored_reasons': [
@@ -324,7 +324,7 @@ def _map_accessibility__ax_node__to_dict(
             'frame_id': data.frame_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'nodeId': data.node_id,
             'ignored': data.ignored,
             'ignoredReasons': [
@@ -349,7 +349,7 @@ def _map_accessibility__ax_node__to_dict(
             'frameId': data.frame_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'NodeId': data.node_id,
             'Ignored': data.ignored,
             'IgnoredReasons': [
@@ -380,7 +380,7 @@ def _map_animation__animation__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'name': data.name,
             'paused_state': data.paused_state,
@@ -393,7 +393,7 @@ def _map_animation__animation__to_dict(
             'css_id': data.css_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'name': data.name,
             'pausedState': data.paused_state,
@@ -406,7 +406,7 @@ def _map_animation__animation__to_dict(
             'cssId': data.css_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'Name': data.name,
             'PausedState': data.paused_state,
@@ -425,7 +425,7 @@ def _map_animation__animation_effect__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'delay': data.delay,
             'end_delay': data.end_delay,
             'iteration_start': data.iteration_start,
@@ -438,7 +438,7 @@ def _map_animation__animation_effect__to_dict(
             'easing': data.easing,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'delay': data.delay,
             'endDelay': data.end_delay,
             'iterationStart': data.iteration_start,
@@ -451,7 +451,7 @@ def _map_animation__animation_effect__to_dict(
             'easing': data.easing,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Delay': data.delay,
             'EndDelay': data.end_delay,
             'IterationStart': data.iteration_start,
@@ -470,7 +470,7 @@ def _map_animation__keyframes_rule__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'keyframes': [
                 to_dict(item, casing_strategy)
@@ -478,7 +478,7 @@ def _map_animation__keyframes_rule__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'keyframes': [
                 to_dict(item, casing_strategy)
@@ -486,7 +486,7 @@ def _map_animation__keyframes_rule__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Keyframes': [
                 to_dict(item, casing_strategy)
@@ -500,17 +500,17 @@ def _map_animation__keyframe_style__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'offset': data.offset,
             'easing': data.easing,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'offset': data.offset,
             'easing': data.easing,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Offset': data.offset,
             'Easing': data.easing,
         }
@@ -521,19 +521,19 @@ def _map_audits__affected_cookie__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'path': data.path,
             'domain': data.domain,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'path': data.path,
             'domain': data.domain,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Path': data.path,
             'Domain': data.domain,
@@ -545,17 +545,17 @@ def _map_audits__affected_request__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'request_id': data.request_id,
             'url': data.url,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'requestId': data.request_id,
             'url': data.url,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RequestId': data.request_id,
             'Url': data.url,
         }
@@ -566,15 +566,15 @@ def _map_audits__affected_frame__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'frame_id': data.frame_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'frameId': data.frame_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FrameId': data.frame_id,
         }
 
@@ -584,7 +584,7 @@ def _map_audits__cookie_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'cookie': to_dict(data.cookie, casing_strategy),
             'raw_cookie_line': data.raw_cookie_line,
             'cookie_warning_reasons': [
@@ -601,7 +601,7 @@ def _map_audits__cookie_issue_details__to_dict(
             'request': to_dict(data.request, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'cookie': to_dict(data.cookie, casing_strategy),
             'rawCookieLine': data.raw_cookie_line,
             'cookieWarningReasons': [
@@ -618,7 +618,7 @@ def _map_audits__cookie_issue_details__to_dict(
             'request': to_dict(data.request, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Cookie': to_dict(data.cookie, casing_strategy),
             'RawCookieLine': data.raw_cookie_line,
             'CookieWarningReasons': [
@@ -641,7 +641,7 @@ def _map_audits__mixed_content_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'resource_type': data.resource_type,
             'resolution_status': data.resolution_status,
             'insecure_url': data.insecure_url,
@@ -650,7 +650,7 @@ def _map_audits__mixed_content_issue_details__to_dict(
             'frame': to_dict(data.frame, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'resourceType': data.resource_type,
             'resolutionStatus': data.resolution_status,
             'insecureURL': data.insecure_url,
@@ -659,7 +659,7 @@ def _map_audits__mixed_content_issue_details__to_dict(
             'frame': to_dict(data.frame, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ResourceType': data.resource_type,
             'ResolutionStatus': data.resolution_status,
             'InsecureURL': data.insecure_url,
@@ -674,21 +674,21 @@ def _map_audits__blocked_by_response_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'request': to_dict(data.request, casing_strategy),
             'parent_frame': to_dict(data.parent_frame, casing_strategy),
             'blocked_frame': to_dict(data.blocked_frame, casing_strategy),
             'reason': data.reason,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'request': to_dict(data.request, casing_strategy),
             'parentFrame': to_dict(data.parent_frame, casing_strategy),
             'blockedFrame': to_dict(data.blocked_frame, casing_strategy),
             'reason': data.reason,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Request': to_dict(data.request, casing_strategy),
             'ParentFrame': to_dict(data.parent_frame, casing_strategy),
             'BlockedFrame': to_dict(data.blocked_frame, casing_strategy),
@@ -701,19 +701,19 @@ def _map_audits__heavy_ad_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'resolution': data.resolution,
             'reason': data.reason,
             'frame': to_dict(data.frame, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'resolution': data.resolution,
             'reason': data.reason,
             'frame': to_dict(data.frame, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Resolution': data.resolution,
             'Reason': data.reason,
             'Frame': to_dict(data.frame, casing_strategy),
@@ -725,21 +725,21 @@ def _map_audits__source_code_location__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'script_id': data.script_id,
             'url': data.url,
             'line_number': data.line_number,
             'column_number': data.column_number,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'scriptId': data.script_id,
             'url': data.url,
             'lineNumber': data.line_number,
             'columnNumber': data.column_number,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ScriptId': data.script_id,
             'Url': data.url,
             'LineNumber': data.line_number,
@@ -752,7 +752,7 @@ def _map_audits__content_security_policy_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'blocked_url': data.blocked_url,
             'violated_directive': data.violated_directive,
             'is_report_only': data.is_report_only,
@@ -762,7 +762,7 @@ def _map_audits__content_security_policy_issue_details__to_dict(
             'violating_node_id': data.violating_node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'blockedURL': data.blocked_url,
             'violatedDirective': data.violated_directive,
             'isReportOnly': data.is_report_only,
@@ -772,7 +772,7 @@ def _map_audits__content_security_policy_issue_details__to_dict(
             'violatingNodeId': data.violating_node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'BlockedURL': data.blocked_url,
             'ViolatedDirective': data.violated_directive,
             'IsReportOnly': data.is_report_only,
@@ -788,19 +788,19 @@ def _map_audits__shared_array_buffer_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'source_code_location': to_dict(data.source_code_location, casing_strategy),
             'is_warning': data.is_warning,
             'type': data.type,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'sourceCodeLocation': to_dict(data.source_code_location, casing_strategy),
             'isWarning': data.is_warning,
             'type': data.type,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'SourceCodeLocation': to_dict(data.source_code_location, casing_strategy),
             'IsWarning': data.is_warning,
             'Type': data.type,
@@ -812,7 +812,7 @@ def _map_audits__low_text_contrast_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'violating_node_id': data.violating_node_id,
             'violating_node_selector': data.violating_node_selector,
             'contrast_ratio': data.contrast_ratio,
@@ -822,7 +822,7 @@ def _map_audits__low_text_contrast_issue_details__to_dict(
             'font_weight': data.font_weight,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'violatingNodeId': data.violating_node_id,
             'violatingNodeSelector': data.violating_node_selector,
             'contrastRatio': data.contrast_ratio,
@@ -832,7 +832,7 @@ def _map_audits__low_text_contrast_issue_details__to_dict(
             'fontWeight': data.font_weight,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ViolatingNodeId': data.violating_node_id,
             'ViolatingNodeSelector': data.violating_node_selector,
             'ContrastRatio': data.contrast_ratio,
@@ -848,7 +848,7 @@ def _map_audits__cors_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'cors_error_status': to_dict(data.cors_error_status, casing_strategy),
             'is_warning': data.is_warning,
             'request': to_dict(data.request, casing_strategy),
@@ -858,7 +858,7 @@ def _map_audits__cors_issue_details__to_dict(
             'client_security_state': to_dict(data.client_security_state, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'corsErrorStatus': to_dict(data.cors_error_status, casing_strategy),
             'isWarning': data.is_warning,
             'request': to_dict(data.request, casing_strategy),
@@ -868,7 +868,7 @@ def _map_audits__cors_issue_details__to_dict(
             'clientSecurityState': to_dict(data.client_security_state, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'CorsErrorStatus': to_dict(data.cors_error_status, casing_strategy),
             'IsWarning': data.is_warning,
             'Request': to_dict(data.request, casing_strategy),
@@ -884,21 +884,21 @@ def _map_audits__attribution_reporting_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'violation_type': data.violation_type,
             'request': to_dict(data.request, casing_strategy),
             'violating_node_id': data.violating_node_id,
             'invalid_parameter': data.invalid_parameter,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'violationType': data.violation_type,
             'request': to_dict(data.request, casing_strategy),
             'violatingNodeId': data.violating_node_id,
             'invalidParameter': data.invalid_parameter,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ViolationType': data.violation_type,
             'Request': to_dict(data.request, casing_strategy),
             'ViolatingNodeId': data.violating_node_id,
@@ -911,7 +911,7 @@ def _map_audits__quirks_mode_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'is_limited_quirks_mode': data.is_limited_quirks_mode,
             'document_node_id': data.document_node_id,
             'url': data.url,
@@ -919,7 +919,7 @@ def _map_audits__quirks_mode_issue_details__to_dict(
             'loader_id': data.loader_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'isLimitedQuirksMode': data.is_limited_quirks_mode,
             'documentNodeId': data.document_node_id,
             'url': data.url,
@@ -927,7 +927,7 @@ def _map_audits__quirks_mode_issue_details__to_dict(
             'loaderId': data.loader_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'IsLimitedQuirksMode': data.is_limited_quirks_mode,
             'DocumentNodeId': data.document_node_id,
             'Url': data.url,
@@ -941,17 +941,17 @@ def _map_audits__navigator_user_agent_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'location': to_dict(data.location, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'location': to_dict(data.location, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'Location': to_dict(data.location, casing_strategy),
         }
@@ -962,7 +962,7 @@ def _map_audits__generic_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'error_type': data.error_type,
             'frame_id': data.frame_id,
             'violating_node_id': data.violating_node_id,
@@ -970,7 +970,7 @@ def _map_audits__generic_issue_details__to_dict(
             'request': to_dict(data.request, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'errorType': data.error_type,
             'frameId': data.frame_id,
             'violatingNodeId': data.violating_node_id,
@@ -978,7 +978,7 @@ def _map_audits__generic_issue_details__to_dict(
             'request': to_dict(data.request, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ErrorType': data.error_type,
             'FrameId': data.frame_id,
             'ViolatingNodeId': data.violating_node_id,
@@ -992,19 +992,19 @@ def _map_audits__deprecation_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'affected_frame': to_dict(data.affected_frame, casing_strategy),
             'source_code_location': to_dict(data.source_code_location, casing_strategy),
             'type': data.type,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'affectedFrame': to_dict(data.affected_frame, casing_strategy),
             'sourceCodeLocation': to_dict(data.source_code_location, casing_strategy),
             'type': data.type,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'AffectedFrame': to_dict(data.affected_frame, casing_strategy),
             'SourceCodeLocation': to_dict(data.source_code_location, casing_strategy),
             'Type': data.type,
@@ -1016,21 +1016,21 @@ def _map_audits__bounce_tracking_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'tracking_sites': [
                 item
                 for item in data.tracking_sites
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'trackingSites': [
                 item
                 for item in data.tracking_sites
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'TrackingSites': [
                 item
                 for item in data.tracking_sites
@@ -1043,15 +1043,15 @@ def _map_audits__federated_auth_request_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'federated_auth_request_issue_reason': data.federated_auth_request_issue_reason,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'federatedAuthRequestIssueReason': data.federated_auth_request_issue_reason,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FederatedAuthRequestIssueReason': data.federated_auth_request_issue_reason,
         }
 
@@ -1061,15 +1061,15 @@ def _map_audits__federated_auth_user_info_request_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'federated_auth_user_info_request_issue_reason': data.federated_auth_user_info_request_issue_reason,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'federatedAuthUserInfoRequestIssueReason': data.federated_auth_user_info_request_issue_reason,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FederatedAuthUserInfoRequestIssueReason': data.federated_auth_user_info_request_issue_reason,
         }
 
@@ -1079,17 +1079,17 @@ def _map_audits__client_hint_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'source_code_location': to_dict(data.source_code_location, casing_strategy),
             'client_hint_issue_reason': data.client_hint_issue_reason,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'sourceCodeLocation': to_dict(data.source_code_location, casing_strategy),
             'clientHintIssueReason': data.client_hint_issue_reason,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'SourceCodeLocation': to_dict(data.source_code_location, casing_strategy),
             'ClientHintIssueReason': data.client_hint_issue_reason,
         }
@@ -1100,19 +1100,19 @@ def _map_audits__failed_request_info__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'failure_message': data.failure_message,
             'request_id': data.request_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'failureMessage': data.failure_message,
             'requestId': data.request_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'FailureMessage': data.failure_message,
             'RequestId': data.request_id,
@@ -1124,19 +1124,19 @@ def _map_audits__stylesheet_loading_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'source_code_location': to_dict(data.source_code_location, casing_strategy),
             'style_sheet_loading_issue_reason': data.style_sheet_loading_issue_reason,
             'failed_request_info': to_dict(data.failed_request_info, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'sourceCodeLocation': to_dict(data.source_code_location, casing_strategy),
             'styleSheetLoadingIssueReason': data.style_sheet_loading_issue_reason,
             'failedRequestInfo': to_dict(data.failed_request_info, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'SourceCodeLocation': to_dict(data.source_code_location, casing_strategy),
             'StyleSheetLoadingIssueReason': data.style_sheet_loading_issue_reason,
             'FailedRequestInfo': to_dict(data.failed_request_info, casing_strategy),
@@ -1148,7 +1148,7 @@ def _map_audits__inspector_issue_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'cookie_issue_details': to_dict(data.cookie_issue_details, casing_strategy),
             'mixed_content_issue_details': to_dict(data.mixed_content_issue_details, casing_strategy),
             'blocked_by_response_issue_details': to_dict(data.blocked_by_response_issue_details, casing_strategy),
@@ -1169,7 +1169,7 @@ def _map_audits__inspector_issue_details__to_dict(
             'federated_auth_user_info_request_issue_details': to_dict(data.federated_auth_user_info_request_issue_details, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'cookieIssueDetails': to_dict(data.cookie_issue_details, casing_strategy),
             'mixedContentIssueDetails': to_dict(data.mixed_content_issue_details, casing_strategy),
             'blockedByResponseIssueDetails': to_dict(data.blocked_by_response_issue_details, casing_strategy),
@@ -1190,7 +1190,7 @@ def _map_audits__inspector_issue_details__to_dict(
             'federatedAuthUserInfoRequestIssueDetails': to_dict(data.federated_auth_user_info_request_issue_details, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'CookieIssueDetails': to_dict(data.cookie_issue_details, casing_strategy),
             'MixedContentIssueDetails': to_dict(data.mixed_content_issue_details, casing_strategy),
             'BlockedByResponseIssueDetails': to_dict(data.blocked_by_response_issue_details, casing_strategy),
@@ -1217,19 +1217,19 @@ def _map_audits__inspector_issue__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'code': data.code,
             'details': to_dict(data.details, casing_strategy),
             'issue_id': data.issue_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'code': data.code,
             'details': to_dict(data.details, casing_strategy),
             'issueId': data.issue_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Code': data.code,
             'Details': to_dict(data.details, casing_strategy),
             'IssueId': data.issue_id,
@@ -1241,7 +1241,7 @@ def _map_autofill__credit_card__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'number': data.number,
             'name': data.name,
             'expiry_month': data.expiry_month,
@@ -1249,7 +1249,7 @@ def _map_autofill__credit_card__to_dict(
             'cvc': data.cvc,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'number': data.number,
             'name': data.name,
             'expiryMonth': data.expiry_month,
@@ -1257,7 +1257,7 @@ def _map_autofill__credit_card__to_dict(
             'cvc': data.cvc,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Number': data.number,
             'Name': data.name,
             'ExpiryMonth': data.expiry_month,
@@ -1271,17 +1271,17 @@ def _map_autofill__address_field__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -1292,21 +1292,21 @@ def _map_autofill__address_fields__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'fields': [
                 to_dict(item, casing_strategy)
                 for item in data.fields
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'fields': [
                 to_dict(item, casing_strategy)
                 for item in data.fields
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Fields': [
                 to_dict(item, casing_strategy)
                 for item in data.fields
@@ -1319,21 +1319,21 @@ def _map_autofill__address__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'fields': [
                 to_dict(item, casing_strategy)
                 for item in data.fields
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'fields': [
                 to_dict(item, casing_strategy)
                 for item in data.fields
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Fields': [
                 to_dict(item, casing_strategy)
                 for item in data.fields
@@ -1346,21 +1346,21 @@ def _map_autofill__address_ui__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'address_fields': [
                 to_dict(item, casing_strategy)
                 for item in data.address_fields
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'addressFields': [
                 to_dict(item, casing_strategy)
                 for item in data.address_fields
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'AddressFields': [
                 to_dict(item, casing_strategy)
                 for item in data.address_fields
@@ -1373,7 +1373,7 @@ def _map_autofill__filled_field__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'html_type': data.html_type,
             'id': data.id,
             'name': data.name,
@@ -1382,7 +1382,7 @@ def _map_autofill__filled_field__to_dict(
             'filling_strategy': data.filling_strategy,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'htmlType': data.html_type,
             'id': data.id,
             'name': data.name,
@@ -1391,7 +1391,7 @@ def _map_autofill__filled_field__to_dict(
             'fillingStrategy': data.filling_strategy,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'HtmlType': data.html_type,
             'Id': data.id,
             'Name': data.name,
@@ -1406,17 +1406,17 @@ def _map_background_service__event_metadata__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'key': data.key,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'key': data.key,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Key': data.key,
             'Value': data.value,
         }
@@ -1427,7 +1427,7 @@ def _map_background_service__background_service_event__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'timestamp': data.timestamp,
             'origin': data.origin,
             'service_worker_registration_id': data.service_worker_registration_id,
@@ -1441,7 +1441,7 @@ def _map_background_service__background_service_event__to_dict(
             'storage_key': data.storage_key,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'timestamp': data.timestamp,
             'origin': data.origin,
             'serviceWorkerRegistrationId': data.service_worker_registration_id,
@@ -1455,7 +1455,7 @@ def _map_background_service__background_service_event__to_dict(
             'storageKey': data.storage_key,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Timestamp': data.timestamp,
             'Origin': data.origin,
             'ServiceWorkerRegistrationId': data.service_worker_registration_id,
@@ -1475,7 +1475,7 @@ def _map_browser__bounds__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'left': data.left,
             'top': data.top,
             'width': data.width,
@@ -1483,7 +1483,7 @@ def _map_browser__bounds__to_dict(
             'window_state': data.window_state,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'left': data.left,
             'top': data.top,
             'width': data.width,
@@ -1491,7 +1491,7 @@ def _map_browser__bounds__to_dict(
             'windowState': data.window_state,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Left': data.left,
             'Top': data.top,
             'Width': data.width,
@@ -1505,7 +1505,7 @@ def _map_browser__permission_descriptor__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'sysex': data.sysex,
             'user_visible_only': data.user_visible_only,
@@ -1513,7 +1513,7 @@ def _map_browser__permission_descriptor__to_dict(
             'pan_tilt_zoom': data.pan_tilt_zoom,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'sysex': data.sysex,
             'userVisibleOnly': data.user_visible_only,
@@ -1521,7 +1521,7 @@ def _map_browser__permission_descriptor__to_dict(
             'panTiltZoom': data.pan_tilt_zoom,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Sysex': data.sysex,
             'UserVisibleOnly': data.user_visible_only,
@@ -1535,19 +1535,19 @@ def _map_browser__bucket__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'low': data.low,
             'high': data.high,
             'count': data.count,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'low': data.low,
             'high': data.high,
             'count': data.count,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Low': data.low,
             'High': data.high,
             'Count': data.count,
@@ -1559,7 +1559,7 @@ def _map_browser__histogram__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'sum': data.sum,
             'count': data.count,
@@ -1569,7 +1569,7 @@ def _map_browser__histogram__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'sum': data.sum,
             'count': data.count,
@@ -1579,7 +1579,7 @@ def _map_browser__histogram__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Sum': data.sum,
             'Count': data.count,
@@ -1595,7 +1595,7 @@ def _map_css__pseudo_element_matches__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'pseudo_type': data.pseudo_type,
             'pseudo_identifier': data.pseudo_identifier,
             'matches': [
@@ -1604,7 +1604,7 @@ def _map_css__pseudo_element_matches__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'pseudoType': data.pseudo_type,
             'pseudoIdentifier': data.pseudo_identifier,
             'matches': [
@@ -1613,7 +1613,7 @@ def _map_css__pseudo_element_matches__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'PseudoType': data.pseudo_type,
             'PseudoIdentifier': data.pseudo_identifier,
             'Matches': [
@@ -1628,7 +1628,7 @@ def _map_css__inherited_style_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'inline_style': to_dict(data.inline_style, casing_strategy),
             'matched_css_rules': [
                 to_dict(item, casing_strategy)
@@ -1636,7 +1636,7 @@ def _map_css__inherited_style_entry__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'inlineStyle': to_dict(data.inline_style, casing_strategy),
             'matchedCSSRules': [
                 to_dict(item, casing_strategy)
@@ -1644,7 +1644,7 @@ def _map_css__inherited_style_entry__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'InlineStyle': to_dict(data.inline_style, casing_strategy),
             'MatchedCSSRules': [
                 to_dict(item, casing_strategy)
@@ -1658,21 +1658,21 @@ def _map_css__inherited_pseudo_element_matches__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'pseudo_elements': [
                 to_dict(item, casing_strategy)
                 for item in data.pseudo_elements
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'pseudoElements': [
                 to_dict(item, casing_strategy)
                 for item in data.pseudo_elements
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'PseudoElements': [
                 to_dict(item, casing_strategy)
                 for item in data.pseudo_elements
@@ -1685,7 +1685,7 @@ def _map_css__rule_match__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'rule': to_dict(data.rule, casing_strategy),
             'matching_selectors': [
                 item
@@ -1693,7 +1693,7 @@ def _map_css__rule_match__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'rule': to_dict(data.rule, casing_strategy),
             'matchingSelectors': [
                 item
@@ -1701,7 +1701,7 @@ def _map_css__rule_match__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Rule': to_dict(data.rule, casing_strategy),
             'MatchingSelectors': [
                 item
@@ -1715,19 +1715,19 @@ def _map_css__value__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'text': data.text,
             'range': to_dict(data.range, casing_strategy),
             'specificity': to_dict(data.specificity, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'text': data.text,
             'range': to_dict(data.range, casing_strategy),
             'specificity': to_dict(data.specificity, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Text': data.text,
             'Range': to_dict(data.range, casing_strategy),
             'Specificity': to_dict(data.specificity, casing_strategy),
@@ -1739,19 +1739,19 @@ def _map_css__specificity__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'a': data.a,
             'b': data.b,
             'c': data.c,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'a': data.a,
             'b': data.b,
             'c': data.c,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'A': data.a,
             'B': data.b,
             'C': data.c,
@@ -1763,7 +1763,7 @@ def _map_css__selector_list__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'selectors': [
                 to_dict(item, casing_strategy)
                 for item in data.selectors
@@ -1771,7 +1771,7 @@ def _map_css__selector_list__to_dict(
             'text': data.text,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'selectors': [
                 to_dict(item, casing_strategy)
                 for item in data.selectors
@@ -1779,7 +1779,7 @@ def _map_css__selector_list__to_dict(
             'text': data.text,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Selectors': [
                 to_dict(item, casing_strategy)
                 for item in data.selectors
@@ -1793,7 +1793,7 @@ def _map_css__css_style_sheet_header__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'style_sheet_id': data.style_sheet_id,
             'frame_id': data.frame_id,
             'source_url': data.source_url,
@@ -1814,7 +1814,7 @@ def _map_css__css_style_sheet_header__to_dict(
             'loading_failed': data.loading_failed,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'styleSheetId': data.style_sheet_id,
             'frameId': data.frame_id,
             'sourceURL': data.source_url,
@@ -1835,7 +1835,7 @@ def _map_css__css_style_sheet_header__to_dict(
             'loadingFailed': data.loading_failed,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StyleSheetId': data.style_sheet_id,
             'FrameId': data.frame_id,
             'SourceURL': data.source_url,
@@ -1862,7 +1862,7 @@ def _map_css__css_rule__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'style_sheet_id': data.style_sheet_id,
             'selector_list': to_dict(data.selector_list, casing_strategy),
             'nesting_selectors': [
@@ -1897,7 +1897,7 @@ def _map_css__css_rule__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'styleSheetId': data.style_sheet_id,
             'selectorList': to_dict(data.selector_list, casing_strategy),
             'nestingSelectors': [
@@ -1932,7 +1932,7 @@ def _map_css__css_rule__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StyleSheetId': data.style_sheet_id,
             'SelectorList': to_dict(data.selector_list, casing_strategy),
             'NestingSelectors': [
@@ -1973,21 +1973,21 @@ def _map_css__rule_usage__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'style_sheet_id': data.style_sheet_id,
             'start_offset': data.start_offset,
             'end_offset': data.end_offset,
             'used': data.used,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'styleSheetId': data.style_sheet_id,
             'startOffset': data.start_offset,
             'endOffset': data.end_offset,
             'used': data.used,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StyleSheetId': data.style_sheet_id,
             'StartOffset': data.start_offset,
             'EndOffset': data.end_offset,
@@ -2000,21 +2000,21 @@ def _map_css__source_range__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'start_line': data.start_line,
             'start_column': data.start_column,
             'end_line': data.end_line,
             'end_column': data.end_column,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'startLine': data.start_line,
             'startColumn': data.start_column,
             'endLine': data.end_line,
             'endColumn': data.end_column,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StartLine': data.start_line,
             'StartColumn': data.start_column,
             'EndLine': data.end_line,
@@ -2027,19 +2027,19 @@ def _map_css__shorthand_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
             'important': data.important,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
             'important': data.important,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
             'Important': data.important,
@@ -2051,17 +2051,17 @@ def _map_css__css_computed_style_property__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -2072,7 +2072,7 @@ def _map_css__css_style__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'style_sheet_id': data.style_sheet_id,
             'css_properties': [
                 to_dict(item, casing_strategy)
@@ -2086,7 +2086,7 @@ def _map_css__css_style__to_dict(
             'range': to_dict(data.range, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'styleSheetId': data.style_sheet_id,
             'cssProperties': [
                 to_dict(item, casing_strategy)
@@ -2100,7 +2100,7 @@ def _map_css__css_style__to_dict(
             'range': to_dict(data.range, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StyleSheetId': data.style_sheet_id,
             'CssProperties': [
                 to_dict(item, casing_strategy)
@@ -2120,7 +2120,7 @@ def _map_css__css_property__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
             'important': data.important,
@@ -2135,7 +2135,7 @@ def _map_css__css_property__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
             'important': data.important,
@@ -2150,7 +2150,7 @@ def _map_css__css_property__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
             'Important': data.important,
@@ -2171,7 +2171,7 @@ def _map_css__css_media__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'text': data.text,
             'source': data.source,
             'source_url': data.source_url,
@@ -2183,7 +2183,7 @@ def _map_css__css_media__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'text': data.text,
             'source': data.source,
             'sourceURL': data.source_url,
@@ -2195,7 +2195,7 @@ def _map_css__css_media__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Text': data.text,
             'Source': data.source,
             'SourceURL': data.source_url,
@@ -2213,7 +2213,7 @@ def _map_css__media_query__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'expressions': [
                 to_dict(item, casing_strategy)
                 for item in data.expressions
@@ -2221,7 +2221,7 @@ def _map_css__media_query__to_dict(
             'active': data.active,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'expressions': [
                 to_dict(item, casing_strategy)
                 for item in data.expressions
@@ -2229,7 +2229,7 @@ def _map_css__media_query__to_dict(
             'active': data.active,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Expressions': [
                 to_dict(item, casing_strategy)
                 for item in data.expressions
@@ -2243,7 +2243,7 @@ def _map_css__media_query_expression__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'value': data.value,
             'unit': data.unit,
             'feature': data.feature,
@@ -2251,7 +2251,7 @@ def _map_css__media_query_expression__to_dict(
             'computed_length': data.computed_length,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'value': data.value,
             'unit': data.unit,
             'feature': data.feature,
@@ -2259,7 +2259,7 @@ def _map_css__media_query_expression__to_dict(
             'computedLength': data.computed_length,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Value': data.value,
             'Unit': data.unit,
             'Feature': data.feature,
@@ -2273,7 +2273,7 @@ def _map_css__css_container_query__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'text': data.text,
             'range': to_dict(data.range, casing_strategy),
             'style_sheet_id': data.style_sheet_id,
@@ -2282,7 +2282,7 @@ def _map_css__css_container_query__to_dict(
             'logical_axes': data.logical_axes,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'text': data.text,
             'range': to_dict(data.range, casing_strategy),
             'styleSheetId': data.style_sheet_id,
@@ -2291,7 +2291,7 @@ def _map_css__css_container_query__to_dict(
             'logicalAxes': data.logical_axes,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Text': data.text,
             'Range': to_dict(data.range, casing_strategy),
             'StyleSheetId': data.style_sheet_id,
@@ -2306,21 +2306,21 @@ def _map_css__css_supports__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'text': data.text,
             'active': data.active,
             'range': to_dict(data.range, casing_strategy),
             'style_sheet_id': data.style_sheet_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'text': data.text,
             'active': data.active,
             'range': to_dict(data.range, casing_strategy),
             'styleSheetId': data.style_sheet_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Text': data.text,
             'Active': data.active,
             'Range': to_dict(data.range, casing_strategy),
@@ -2333,19 +2333,19 @@ def _map_css__css_scope__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'text': data.text,
             'range': to_dict(data.range, casing_strategy),
             'style_sheet_id': data.style_sheet_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'text': data.text,
             'range': to_dict(data.range, casing_strategy),
             'styleSheetId': data.style_sheet_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Text': data.text,
             'Range': to_dict(data.range, casing_strategy),
             'StyleSheetId': data.style_sheet_id,
@@ -2357,19 +2357,19 @@ def _map_css__css_layer__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'text': data.text,
             'range': to_dict(data.range, casing_strategy),
             'style_sheet_id': data.style_sheet_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'text': data.text,
             'range': to_dict(data.range, casing_strategy),
             'styleSheetId': data.style_sheet_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Text': data.text,
             'Range': to_dict(data.range, casing_strategy),
             'StyleSheetId': data.style_sheet_id,
@@ -2381,7 +2381,7 @@ def _map_css__css_layer_data__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'sub_layers': [
                 to_dict(item, casing_strategy)
@@ -2390,7 +2390,7 @@ def _map_css__css_layer_data__to_dict(
             'order': data.order,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'subLayers': [
                 to_dict(item, casing_strategy)
@@ -2399,7 +2399,7 @@ def _map_css__css_layer_data__to_dict(
             'order': data.order,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'SubLayers': [
                 to_dict(item, casing_strategy)
@@ -2414,19 +2414,19 @@ def _map_css__platform_font_usage__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'family_name': data.family_name,
             'is_custom_font': data.is_custom_font,
             'glyph_count': data.glyph_count,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'familyName': data.family_name,
             'isCustomFont': data.is_custom_font,
             'glyphCount': data.glyph_count,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FamilyName': data.family_name,
             'IsCustomFont': data.is_custom_font,
             'GlyphCount': data.glyph_count,
@@ -2438,7 +2438,7 @@ def _map_css__font_variation_axis__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'tag': data.tag,
             'name': data.name,
             'min_value': data.min_value,
@@ -2446,7 +2446,7 @@ def _map_css__font_variation_axis__to_dict(
             'default_value': data.default_value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'tag': data.tag,
             'name': data.name,
             'minValue': data.min_value,
@@ -2454,7 +2454,7 @@ def _map_css__font_variation_axis__to_dict(
             'defaultValue': data.default_value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Tag': data.tag,
             'Name': data.name,
             'MinValue': data.min_value,
@@ -2468,7 +2468,7 @@ def _map_css__font_face__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'font_family': data.font_family,
             'font_style': data.font_style,
             'font_variant': data.font_variant,
@@ -2484,7 +2484,7 @@ def _map_css__font_face__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'fontFamily': data.font_family,
             'fontStyle': data.font_style,
             'fontVariant': data.font_variant,
@@ -2500,7 +2500,7 @@ def _map_css__font_face__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FontFamily': data.font_family,
             'FontStyle': data.font_style,
             'FontVariant': data.font_variant,
@@ -2522,19 +2522,19 @@ def _map_css__css_try_rule__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'style_sheet_id': data.style_sheet_id,
             'origin': data.origin,
             'style': to_dict(data.style, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'styleSheetId': data.style_sheet_id,
             'origin': data.origin,
             'style': to_dict(data.style, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StyleSheetId': data.style_sheet_id,
             'Origin': data.origin,
             'Style': to_dict(data.style, casing_strategy),
@@ -2546,7 +2546,7 @@ def _map_css__css_position_fallback_rule__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': to_dict(data.name, casing_strategy),
             'try_rules': [
                 to_dict(item, casing_strategy)
@@ -2554,7 +2554,7 @@ def _map_css__css_position_fallback_rule__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': to_dict(data.name, casing_strategy),
             'tryRules': [
                 to_dict(item, casing_strategy)
@@ -2562,7 +2562,7 @@ def _map_css__css_position_fallback_rule__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': to_dict(data.name, casing_strategy),
             'TryRules': [
                 to_dict(item, casing_strategy)
@@ -2576,7 +2576,7 @@ def _map_css__css_keyframes_rule__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'animation_name': to_dict(data.animation_name, casing_strategy),
             'keyframes': [
                 to_dict(item, casing_strategy)
@@ -2584,7 +2584,7 @@ def _map_css__css_keyframes_rule__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'animationName': to_dict(data.animation_name, casing_strategy),
             'keyframes': [
                 to_dict(item, casing_strategy)
@@ -2592,7 +2592,7 @@ def _map_css__css_keyframes_rule__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'AnimationName': to_dict(data.animation_name, casing_strategy),
             'Keyframes': [
                 to_dict(item, casing_strategy)
@@ -2606,21 +2606,21 @@ def _map_css__css_property_registration__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'property_name': data.property_name,
             'initial_value': to_dict(data.initial_value, casing_strategy),
             'inherits': data.inherits,
             'syntax': data.syntax,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'propertyName': data.property_name,
             'initialValue': to_dict(data.initial_value, casing_strategy),
             'inherits': data.inherits,
             'syntax': data.syntax,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'PropertyName': data.property_name,
             'InitialValue': to_dict(data.initial_value, casing_strategy),
             'Inherits': data.inherits,
@@ -2633,21 +2633,21 @@ def _map_css__css_property_rule__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'style_sheet_id': data.style_sheet_id,
             'origin': data.origin,
             'property_name': to_dict(data.property_name, casing_strategy),
             'style': to_dict(data.style, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'styleSheetId': data.style_sheet_id,
             'origin': data.origin,
             'propertyName': to_dict(data.property_name, casing_strategy),
             'style': to_dict(data.style, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StyleSheetId': data.style_sheet_id,
             'Origin': data.origin,
             'PropertyName': to_dict(data.property_name, casing_strategy),
@@ -2660,21 +2660,21 @@ def _map_css__css_keyframe_rule__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'style_sheet_id': data.style_sheet_id,
             'origin': data.origin,
             'key_text': to_dict(data.key_text, casing_strategy),
             'style': to_dict(data.style, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'styleSheetId': data.style_sheet_id,
             'origin': data.origin,
             'keyText': to_dict(data.key_text, casing_strategy),
             'style': to_dict(data.style, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StyleSheetId': data.style_sheet_id,
             'Origin': data.origin,
             'KeyText': to_dict(data.key_text, casing_strategy),
@@ -2687,19 +2687,19 @@ def _map_css__style_declaration_edit__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'style_sheet_id': data.style_sheet_id,
             'range': to_dict(data.range, casing_strategy),
             'text': data.text,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'styleSheetId': data.style_sheet_id,
             'range': to_dict(data.range, casing_strategy),
             'text': data.text,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StyleSheetId': data.style_sheet_id,
             'Range': to_dict(data.range, casing_strategy),
             'Text': data.text,
@@ -2711,7 +2711,7 @@ def _map_cache_storage__data_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'request_url': data.request_url,
             'request_method': data.request_method,
             'request_headers': [
@@ -2728,7 +2728,7 @@ def _map_cache_storage__data_entry__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'requestURL': data.request_url,
             'requestMethod': data.request_method,
             'requestHeaders': [
@@ -2745,7 +2745,7 @@ def _map_cache_storage__data_entry__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RequestURL': data.request_url,
             'RequestMethod': data.request_method,
             'RequestHeaders': [
@@ -2768,7 +2768,7 @@ def _map_cache_storage__cache__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'cache_id': data.cache_id,
             'security_origin': data.security_origin,
             'storage_key': data.storage_key,
@@ -2776,7 +2776,7 @@ def _map_cache_storage__cache__to_dict(
             'cache_name': data.cache_name,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'cacheId': data.cache_id,
             'securityOrigin': data.security_origin,
             'storageKey': data.storage_key,
@@ -2784,7 +2784,7 @@ def _map_cache_storage__cache__to_dict(
             'cacheName': data.cache_name,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'CacheId': data.cache_id,
             'SecurityOrigin': data.security_origin,
             'StorageKey': data.storage_key,
@@ -2798,17 +2798,17 @@ def _map_cache_storage__header__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -2819,15 +2819,15 @@ def _map_cache_storage__cached_response__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'body': data.body,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'body': data.body,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Body': data.body,
         }
 
@@ -2837,19 +2837,19 @@ def _map_cast__sink__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'id': data.id,
             'session': data.session,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'id': data.id,
             'session': data.session,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Id': data.id,
             'Session': data.session,
@@ -2861,19 +2861,19 @@ def _map_dom__backend_node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'node_type': data.node_type,
             'node_name': data.node_name,
             'backend_node_id': data.backend_node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'nodeType': data.node_type,
             'nodeName': data.node_name,
             'backendNodeId': data.backend_node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'NodeType': data.node_type,
             'NodeName': data.node_name,
             'BackendNodeId': data.backend_node_id,
@@ -2885,7 +2885,7 @@ def _map_dom__node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'node_id': data.node_id,
             'parent_id': data.parent_id,
             'backend_node_id': data.backend_node_id,
@@ -2934,7 +2934,7 @@ def _map_dom__node__to_dict(
             'assigned_slot': to_dict(data.assigned_slot, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'nodeId': data.node_id,
             'parentId': data.parent_id,
             'backendNodeId': data.backend_node_id,
@@ -2983,7 +2983,7 @@ def _map_dom__node__to_dict(
             'assignedSlot': to_dict(data.assigned_slot, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'NodeId': data.node_id,
             'ParentId': data.parent_id,
             'BackendNodeId': data.backend_node_id,
@@ -3038,21 +3038,21 @@ def _map_dom__rgba__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'r': data.r,
             'g': data.g,
             'b': data.b,
             'a': data.a,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'r': data.r,
             'g': data.g,
             'b': data.b,
             'a': data.a,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'R': data.r,
             'G': data.g,
             'B': data.b,
@@ -3065,7 +3065,7 @@ def _map_dom__box_model__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'content': data.content,
             'padding': data.padding,
             'border': data.border,
@@ -3075,7 +3075,7 @@ def _map_dom__box_model__to_dict(
             'shape_outside': to_dict(data.shape_outside, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'content': data.content,
             'padding': data.padding,
             'border': data.border,
@@ -3085,7 +3085,7 @@ def _map_dom__box_model__to_dict(
             'shapeOutside': to_dict(data.shape_outside, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Content': data.content,
             'Padding': data.padding,
             'Border': data.border,
@@ -3101,7 +3101,7 @@ def _map_dom__shape_outside_info__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'bounds': data.bounds,
             'shape': [
                 item
@@ -3113,7 +3113,7 @@ def _map_dom__shape_outside_info__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'bounds': data.bounds,
             'shape': [
                 item
@@ -3125,7 +3125,7 @@ def _map_dom__shape_outside_info__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Bounds': data.bounds,
             'Shape': [
                 item
@@ -3143,21 +3143,21 @@ def _map_dom__rect__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'x': data.x,
             'y': data.y,
             'width': data.width,
             'height': data.height,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'x': data.x,
             'y': data.y,
             'width': data.width,
             'height': data.height,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'X': data.x,
             'Y': data.y,
             'Width': data.width,
@@ -3170,17 +3170,17 @@ def _map_dom__css_computed_style_property__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -3191,7 +3191,7 @@ def _map_dom_debugger__event_listener__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'use_capture': data.use_capture,
             'passive': data.passive,
@@ -3204,7 +3204,7 @@ def _map_dom_debugger__event_listener__to_dict(
             'backend_node_id': data.backend_node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'useCapture': data.use_capture,
             'passive': data.passive,
@@ -3217,7 +3217,7 @@ def _map_dom_debugger__event_listener__to_dict(
             'backendNodeId': data.backend_node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'UseCapture': data.use_capture,
             'Passive': data.passive,
@@ -3236,7 +3236,7 @@ def _map_dom_snapshot__dom_node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'node_type': data.node_type,
             'node_name': data.node_name,
             'node_value': data.node_value,
@@ -3279,7 +3279,7 @@ def _map_dom_snapshot__dom_node__to_dict(
             'scroll_offset_y': data.scroll_offset_y,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'nodeType': data.node_type,
             'nodeName': data.node_name,
             'nodeValue': data.node_value,
@@ -3322,7 +3322,7 @@ def _map_dom_snapshot__dom_node__to_dict(
             'scrollOffsetY': data.scroll_offset_y,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'NodeType': data.node_type,
             'NodeName': data.node_name,
             'NodeValue': data.node_value,
@@ -3371,19 +3371,19 @@ def _map_dom_snapshot__inline_text_box__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'bounding_box': to_dict(data.bounding_box, casing_strategy),
             'start_character_index': data.start_character_index,
             'num_characters': data.num_characters,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'boundingBox': to_dict(data.bounding_box, casing_strategy),
             'startCharacterIndex': data.start_character_index,
             'numCharacters': data.num_characters,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'BoundingBox': to_dict(data.bounding_box, casing_strategy),
             'StartCharacterIndex': data.start_character_index,
             'NumCharacters': data.num_characters,
@@ -3395,7 +3395,7 @@ def _map_dom_snapshot__layout_tree_node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'dom_node_index': data.dom_node_index,
             'bounding_box': to_dict(data.bounding_box, casing_strategy),
             'layout_text': data.layout_text,
@@ -3408,7 +3408,7 @@ def _map_dom_snapshot__layout_tree_node__to_dict(
             'is_stacking_context': data.is_stacking_context,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'domNodeIndex': data.dom_node_index,
             'boundingBox': to_dict(data.bounding_box, casing_strategy),
             'layoutText': data.layout_text,
@@ -3421,7 +3421,7 @@ def _map_dom_snapshot__layout_tree_node__to_dict(
             'isStackingContext': data.is_stacking_context,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'DomNodeIndex': data.dom_node_index,
             'BoundingBox': to_dict(data.bounding_box, casing_strategy),
             'LayoutText': data.layout_text,
@@ -3440,21 +3440,21 @@ def _map_dom_snapshot__computed_style__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'properties': [
                 to_dict(item, casing_strategy)
                 for item in data.properties
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'properties': [
                 to_dict(item, casing_strategy)
                 for item in data.properties
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Properties': [
                 to_dict(item, casing_strategy)
                 for item in data.properties
@@ -3467,17 +3467,17 @@ def _map_dom_snapshot__name_value__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -3488,7 +3488,7 @@ def _map_dom_snapshot__rare_string_data__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'index': [
                 item
                 for item in data.index
@@ -3499,7 +3499,7 @@ def _map_dom_snapshot__rare_string_data__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'index': [
                 item
                 for item in data.index
@@ -3510,7 +3510,7 @@ def _map_dom_snapshot__rare_string_data__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Index': [
                 item
                 for item in data.index
@@ -3527,21 +3527,21 @@ def _map_dom_snapshot__rare_boolean_data__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'index': [
                 item
                 for item in data.index
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'index': [
                 item
                 for item in data.index
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Index': [
                 item
                 for item in data.index
@@ -3554,7 +3554,7 @@ def _map_dom_snapshot__rare_integer_data__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'index': [
                 item
                 for item in data.index
@@ -3565,7 +3565,7 @@ def _map_dom_snapshot__rare_integer_data__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'index': [
                 item
                 for item in data.index
@@ -3576,7 +3576,7 @@ def _map_dom_snapshot__rare_integer_data__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Index': [
                 item
                 for item in data.index
@@ -3593,7 +3593,7 @@ def _map_dom_snapshot__document_snapshot__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'document_url': data.document_url,
             'title': data.title,
             'base_url': data.base_url,
@@ -3611,7 +3611,7 @@ def _map_dom_snapshot__document_snapshot__to_dict(
             'content_height': data.content_height,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'documentURL': data.document_url,
             'title': data.title,
             'baseURL': data.base_url,
@@ -3629,7 +3629,7 @@ def _map_dom_snapshot__document_snapshot__to_dict(
             'contentHeight': data.content_height,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'DocumentURL': data.document_url,
             'Title': data.title,
             'BaseURL': data.base_url,
@@ -3653,7 +3653,7 @@ def _map_dom_snapshot__node_tree_snapshot__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'parent_index': [
                 item
                 for item in data.parent_index
@@ -3691,7 +3691,7 @@ def _map_dom_snapshot__node_tree_snapshot__to_dict(
             'origin_url': to_dict(data.origin_url, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'parentIndex': [
                 item
                 for item in data.parent_index
@@ -3729,7 +3729,7 @@ def _map_dom_snapshot__node_tree_snapshot__to_dict(
             'originURL': to_dict(data.origin_url, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ParentIndex': [
                 item
                 for item in data.parent_index
@@ -3773,7 +3773,7 @@ def _map_dom_snapshot__layout_tree_snapshot__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'node_index': [
                 item
                 for item in data.node_index
@@ -3817,7 +3817,7 @@ def _map_dom_snapshot__layout_tree_snapshot__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'nodeIndex': [
                 item
                 for item in data.node_index
@@ -3861,7 +3861,7 @@ def _map_dom_snapshot__layout_tree_snapshot__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'NodeIndex': [
                 item
                 for item in data.node_index
@@ -3911,7 +3911,7 @@ def _map_dom_snapshot__text_box_snapshot__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'layout_index': [
                 item
                 for item in data.layout_index
@@ -3930,7 +3930,7 @@ def _map_dom_snapshot__text_box_snapshot__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'layoutIndex': [
                 item
                 for item in data.layout_index
@@ -3949,7 +3949,7 @@ def _map_dom_snapshot__text_box_snapshot__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'LayoutIndex': [
                 item
                 for item in data.layout_index
@@ -3974,19 +3974,19 @@ def _map_dom_storage__storage_id__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'security_origin': data.security_origin,
             'storage_key': data.storage_key,
             'is_local_storage': data.is_local_storage,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'securityOrigin': data.security_origin,
             'storageKey': data.storage_key,
             'isLocalStorage': data.is_local_storage,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'SecurityOrigin': data.security_origin,
             'StorageKey': data.storage_key,
             'IsLocalStorage': data.is_local_storage,
@@ -3998,21 +3998,21 @@ def _map_database__database__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'domain': data.domain,
             'name': data.name,
             'version': data.version,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'domain': data.domain,
             'name': data.name,
             'version': data.version,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'Domain': data.domain,
             'Name': data.name,
@@ -4025,17 +4025,17 @@ def _map_database__error__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'message': data.message,
             'code': data.code,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'message': data.message,
             'code': data.code,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Message': data.message,
             'Code': data.code,
         }
@@ -4046,17 +4046,17 @@ def _map_emulation__screen_orientation__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'angle': data.angle,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'angle': data.angle,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Angle': data.angle,
         }
@@ -4067,19 +4067,19 @@ def _map_emulation__display_feature__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'orientation': data.orientation,
             'offset': data.offset,
             'mask_length': data.mask_length,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'orientation': data.orientation,
             'offset': data.offset,
             'maskLength': data.mask_length,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Orientation': data.orientation,
             'Offset': data.offset,
             'MaskLength': data.mask_length,
@@ -4091,17 +4091,17 @@ def _map_emulation__media_feature__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -4112,17 +4112,17 @@ def _map_emulation__user_agent_brand_version__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'brand': data.brand,
             'version': data.version,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'brand': data.brand,
             'version': data.version,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Brand': data.brand,
             'Version': data.version,
         }
@@ -4133,7 +4133,7 @@ def _map_emulation__user_agent_metadata__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'brands': [
                 to_dict(item, casing_strategy)
                 for item in data.brands
@@ -4152,7 +4152,7 @@ def _map_emulation__user_agent_metadata__to_dict(
             'wow64': data.wow64,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'brands': [
                 to_dict(item, casing_strategy)
                 for item in data.brands
@@ -4171,7 +4171,7 @@ def _map_emulation__user_agent_metadata__to_dict(
             'wow64': data.wow64,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Brands': [
                 to_dict(item, casing_strategy)
                 for item in data.brands
@@ -4196,19 +4196,19 @@ def _map_headless_experimental__screenshot_params__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'format': data.format,
             'quality': data.quality,
             'optimize_for_speed': data.optimize_for_speed,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'format': data.format,
             'quality': data.quality,
             'optimizeForSpeed': data.optimize_for_speed,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Format': data.format,
             'Quality': data.quality,
             'OptimizeForSpeed': data.optimize_for_speed,
@@ -4220,7 +4220,7 @@ def _map_indexed_db__database_with_object_stores__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'version': data.version,
             'object_stores': [
@@ -4229,7 +4229,7 @@ def _map_indexed_db__database_with_object_stores__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'version': data.version,
             'objectStores': [
@@ -4238,7 +4238,7 @@ def _map_indexed_db__database_with_object_stores__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Version': data.version,
             'ObjectStores': [
@@ -4253,7 +4253,7 @@ def _map_indexed_db__object_store__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'key_path': to_dict(data.key_path, casing_strategy),
             'auto_increment': data.auto_increment,
@@ -4263,7 +4263,7 @@ def _map_indexed_db__object_store__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'keyPath': to_dict(data.key_path, casing_strategy),
             'autoIncrement': data.auto_increment,
@@ -4273,7 +4273,7 @@ def _map_indexed_db__object_store__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'KeyPath': to_dict(data.key_path, casing_strategy),
             'AutoIncrement': data.auto_increment,
@@ -4289,21 +4289,21 @@ def _map_indexed_db__object_store_index__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'key_path': to_dict(data.key_path, casing_strategy),
             'unique': data.unique,
             'multi_entry': data.multi_entry,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'keyPath': to_dict(data.key_path, casing_strategy),
             'unique': data.unique,
             'multiEntry': data.multi_entry,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'KeyPath': to_dict(data.key_path, casing_strategy),
             'Unique': data.unique,
@@ -4316,7 +4316,7 @@ def _map_indexed_db__key__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'number': data.number,
             'string': data.string,
@@ -4327,7 +4327,7 @@ def _map_indexed_db__key__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'number': data.number,
             'string': data.string,
@@ -4338,7 +4338,7 @@ def _map_indexed_db__key__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Number': data.number,
             'String': data.string,
@@ -4355,21 +4355,21 @@ def _map_indexed_db__key_range__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'lower': to_dict(data.lower, casing_strategy),
             'upper': to_dict(data.upper, casing_strategy),
             'lower_open': data.lower_open,
             'upper_open': data.upper_open,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'lower': to_dict(data.lower, casing_strategy),
             'upper': to_dict(data.upper, casing_strategy),
             'lowerOpen': data.lower_open,
             'upperOpen': data.upper_open,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Lower': to_dict(data.lower, casing_strategy),
             'Upper': to_dict(data.upper, casing_strategy),
             'LowerOpen': data.lower_open,
@@ -4382,19 +4382,19 @@ def _map_indexed_db__data_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'key': to_dict(data.key, casing_strategy),
             'primary_key': to_dict(data.primary_key, casing_strategy),
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'key': to_dict(data.key, casing_strategy),
             'primaryKey': to_dict(data.primary_key, casing_strategy),
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Key': to_dict(data.key, casing_strategy),
             'PrimaryKey': to_dict(data.primary_key, casing_strategy),
             'Value': to_dict(data.value, casing_strategy),
@@ -4406,7 +4406,7 @@ def _map_indexed_db__key_path__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'string': data.string,
             'array': [
@@ -4415,7 +4415,7 @@ def _map_indexed_db__key_path__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'string': data.string,
             'array': [
@@ -4424,7 +4424,7 @@ def _map_indexed_db__key_path__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'String': data.string,
             'Array': [
@@ -4439,7 +4439,7 @@ def _map_input__touch_point__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'x': data.x,
             'y': data.y,
             'radius_x': data.radius_x,
@@ -4453,7 +4453,7 @@ def _map_input__touch_point__to_dict(
             'id': data.id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'x': data.x,
             'y': data.y,
             'radiusX': data.radius_x,
@@ -4467,7 +4467,7 @@ def _map_input__touch_point__to_dict(
             'id': data.id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'X': data.x,
             'Y': data.y,
             'RadiusX': data.radius_x,
@@ -4487,21 +4487,21 @@ def _map_input__drag_data_item__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'mime_type': data.mime_type,
             'data': data.data,
             'title': data.title,
             'base_url': data.base_url,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'mimeType': data.mime_type,
             'data': data.data,
             'title': data.title,
             'baseURL': data.base_url,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'MimeType': data.mime_type,
             'Data': data.data,
             'Title': data.title,
@@ -4514,7 +4514,7 @@ def _map_input__drag_data__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'items': [
                 to_dict(item, casing_strategy)
                 for item in data.items
@@ -4526,7 +4526,7 @@ def _map_input__drag_data__to_dict(
             'drag_operations_mask': data.drag_operations_mask,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'items': [
                 to_dict(item, casing_strategy)
                 for item in data.items
@@ -4538,7 +4538,7 @@ def _map_input__drag_data__to_dict(
             'dragOperationsMask': data.drag_operations_mask,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Items': [
                 to_dict(item, casing_strategy)
                 for item in data.items
@@ -4556,17 +4556,17 @@ def _map_layer_tree__scroll_rect__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'rect': to_dict(data.rect, casing_strategy),
             'type': data.type,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'rect': to_dict(data.rect, casing_strategy),
             'type': data.type,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Rect': to_dict(data.rect, casing_strategy),
             'Type': data.type,
         }
@@ -4577,21 +4577,21 @@ def _map_layer_tree__sticky_position_constraint__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'sticky_box_rect': to_dict(data.sticky_box_rect, casing_strategy),
             'containing_block_rect': to_dict(data.containing_block_rect, casing_strategy),
             'nearest_layer_shifting_sticky_box': data.nearest_layer_shifting_sticky_box,
             'nearest_layer_shifting_containing_block': data.nearest_layer_shifting_containing_block,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'stickyBoxRect': to_dict(data.sticky_box_rect, casing_strategy),
             'containingBlockRect': to_dict(data.containing_block_rect, casing_strategy),
             'nearestLayerShiftingStickyBox': data.nearest_layer_shifting_sticky_box,
             'nearestLayerShiftingContainingBlock': data.nearest_layer_shifting_containing_block,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StickyBoxRect': to_dict(data.sticky_box_rect, casing_strategy),
             'ContainingBlockRect': to_dict(data.containing_block_rect, casing_strategy),
             'NearestLayerShiftingStickyBox': data.nearest_layer_shifting_sticky_box,
@@ -4604,19 +4604,19 @@ def _map_layer_tree__picture_tile__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'x': data.x,
             'y': data.y,
             'picture': data.picture,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'x': data.x,
             'y': data.y,
             'picture': data.picture,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'X': data.x,
             'Y': data.y,
             'Picture': data.picture,
@@ -4628,7 +4628,7 @@ def _map_layer_tree__layer__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'layer_id': data.layer_id,
             'parent_layer_id': data.parent_layer_id,
             'backend_node_id': data.backend_node_id,
@@ -4653,7 +4653,7 @@ def _map_layer_tree__layer__to_dict(
             'sticky_position_constraint': to_dict(data.sticky_position_constraint, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'layerId': data.layer_id,
             'parentLayerId': data.parent_layer_id,
             'backendNodeId': data.backend_node_id,
@@ -4678,7 +4678,7 @@ def _map_layer_tree__layer__to_dict(
             'stickyPositionConstraint': to_dict(data.sticky_position_constraint, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'LayerId': data.layer_id,
             'ParentLayerId': data.parent_layer_id,
             'BackendNodeId': data.backend_node_id,
@@ -4709,7 +4709,7 @@ def _map_log__log_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'source': data.source,
             'level': data.level,
             'text': data.text,
@@ -4726,7 +4726,7 @@ def _map_log__log_entry__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'source': data.source,
             'level': data.level,
             'text': data.text,
@@ -4743,7 +4743,7 @@ def _map_log__log_entry__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Source': data.source,
             'Level': data.level,
             'Text': data.text,
@@ -4766,17 +4766,17 @@ def _map_log__violation_setting__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'threshold': data.threshold,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'threshold': data.threshold,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Threshold': data.threshold,
         }
@@ -4787,7 +4787,7 @@ def _map_memory__sampling_profile_node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'size': data.size,
             'total': data.total,
             'stack': [
@@ -4796,7 +4796,7 @@ def _map_memory__sampling_profile_node__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'size': data.size,
             'total': data.total,
             'stack': [
@@ -4805,7 +4805,7 @@ def _map_memory__sampling_profile_node__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Size': data.size,
             'Total': data.total,
             'Stack': [
@@ -4820,7 +4820,7 @@ def _map_memory__sampling_profile__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'samples': [
                 to_dict(item, casing_strategy)
                 for item in data.samples
@@ -4831,7 +4831,7 @@ def _map_memory__sampling_profile__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'samples': [
                 to_dict(item, casing_strategy)
                 for item in data.samples
@@ -4842,7 +4842,7 @@ def _map_memory__sampling_profile__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Samples': [
                 to_dict(item, casing_strategy)
                 for item in data.samples
@@ -4859,21 +4859,21 @@ def _map_memory__module__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'uuid': data.uuid,
             'base_address': data.base_address,
             'size': data.size,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'uuid': data.uuid,
             'baseAddress': data.base_address,
             'size': data.size,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Uuid': data.uuid,
             'BaseAddress': data.base_address,
@@ -4886,7 +4886,7 @@ def _map_network__resource_timing__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'request_time': data.request_time,
             'proxy_start': data.proxy_start,
             'proxy_end': data.proxy_end,
@@ -4908,7 +4908,7 @@ def _map_network__resource_timing__to_dict(
             'receive_headers_end': data.receive_headers_end,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'requestTime': data.request_time,
             'proxyStart': data.proxy_start,
             'proxyEnd': data.proxy_end,
@@ -4930,7 +4930,7 @@ def _map_network__resource_timing__to_dict(
             'receiveHeadersEnd': data.receive_headers_end,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RequestTime': data.request_time,
             'ProxyStart': data.proxy_start,
             'ProxyEnd': data.proxy_end,
@@ -4958,15 +4958,15 @@ def _map_network__post_data_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'bytes': data.bytes,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'bytes': data.bytes,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Bytes': data.bytes,
         }
 
@@ -4976,7 +4976,7 @@ def _map_network__request__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'url_fragment': data.url_fragment,
             'method': data.method,
@@ -4995,7 +4995,7 @@ def _map_network__request__to_dict(
             'is_same_site': data.is_same_site,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'urlFragment': data.url_fragment,
             'method': data.method,
@@ -5014,7 +5014,7 @@ def _map_network__request__to_dict(
             'isSameSite': data.is_same_site,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'UrlFragment': data.url_fragment,
             'Method': data.method,
@@ -5039,7 +5039,7 @@ def _map_network__signed_certificate_timestamp__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'status': data.status,
             'origin': data.origin,
             'log_description': data.log_description,
@@ -5050,7 +5050,7 @@ def _map_network__signed_certificate_timestamp__to_dict(
             'signature_data': data.signature_data,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'status': data.status,
             'origin': data.origin,
             'logDescription': data.log_description,
@@ -5061,7 +5061,7 @@ def _map_network__signed_certificate_timestamp__to_dict(
             'signatureData': data.signature_data,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Status': data.status,
             'Origin': data.origin,
             'LogDescription': data.log_description,
@@ -5078,7 +5078,7 @@ def _map_network__security_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'protocol': data.protocol,
             'key_exchange': data.key_exchange,
             'key_exchange_group': data.key_exchange_group,
@@ -5102,7 +5102,7 @@ def _map_network__security_details__to_dict(
             'encrypted_client_hello': data.encrypted_client_hello,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'protocol': data.protocol,
             'keyExchange': data.key_exchange,
             'keyExchangeGroup': data.key_exchange_group,
@@ -5126,7 +5126,7 @@ def _map_network__security_details__to_dict(
             'encryptedClientHello': data.encrypted_client_hello,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Protocol': data.protocol,
             'KeyExchange': data.key_exchange,
             'KeyExchangeGroup': data.key_exchange_group,
@@ -5156,17 +5156,17 @@ def _map_network__cors_error_status__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'cors_error': data.cors_error,
             'failed_parameter': data.failed_parameter,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'corsError': data.cors_error,
             'failedParameter': data.failed_parameter,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'CorsError': data.cors_error,
             'FailedParameter': data.failed_parameter,
         }
@@ -5177,7 +5177,7 @@ def _map_network__trust_token_params__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'operation': data.operation,
             'refresh_policy': data.refresh_policy,
             'issuers': [
@@ -5186,7 +5186,7 @@ def _map_network__trust_token_params__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'operation': data.operation,
             'refreshPolicy': data.refresh_policy,
             'issuers': [
@@ -5195,7 +5195,7 @@ def _map_network__trust_token_params__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Operation': data.operation,
             'RefreshPolicy': data.refresh_policy,
             'Issuers': [
@@ -5210,7 +5210,7 @@ def _map_network__response__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'status': data.status,
             'status_text': data.status_text,
@@ -5237,7 +5237,7 @@ def _map_network__response__to_dict(
             'security_details': to_dict(data.security_details, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'status': data.status,
             'statusText': data.status_text,
@@ -5264,7 +5264,7 @@ def _map_network__response__to_dict(
             'securityDetails': to_dict(data.security_details, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'Status': data.status,
             'StatusText': data.status_text,
@@ -5297,15 +5297,15 @@ def _map_network__web_socket_request__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'headers': data.headers,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'headers': data.headers,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Headers': data.headers,
         }
 
@@ -5315,7 +5315,7 @@ def _map_network__web_socket_response__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'status': data.status,
             'status_text': data.status_text,
             'headers': data.headers,
@@ -5324,7 +5324,7 @@ def _map_network__web_socket_response__to_dict(
             'request_headers_text': data.request_headers_text,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'status': data.status,
             'statusText': data.status_text,
             'headers': data.headers,
@@ -5333,7 +5333,7 @@ def _map_network__web_socket_response__to_dict(
             'requestHeadersText': data.request_headers_text,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Status': data.status,
             'StatusText': data.status_text,
             'Headers': data.headers,
@@ -5348,19 +5348,19 @@ def _map_network__web_socket_frame__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'opcode': data.opcode,
             'mask': data.mask,
             'payload_data': data.payload_data,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'opcode': data.opcode,
             'mask': data.mask,
             'payloadData': data.payload_data,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Opcode': data.opcode,
             'Mask': data.mask,
             'PayloadData': data.payload_data,
@@ -5372,21 +5372,21 @@ def _map_network__cached_resource__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'type': data.type,
             'response': to_dict(data.response, casing_strategy),
             'body_size': data.body_size,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'type': data.type,
             'response': to_dict(data.response, casing_strategy),
             'bodySize': data.body_size,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'Type': data.type,
             'Response': to_dict(data.response, casing_strategy),
@@ -5399,7 +5399,7 @@ def _map_network__initiator__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'stack': to_dict(data.stack, casing_strategy),
             'url': data.url,
@@ -5408,7 +5408,7 @@ def _map_network__initiator__to_dict(
             'request_id': data.request_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'stack': to_dict(data.stack, casing_strategy),
             'url': data.url,
@@ -5417,7 +5417,7 @@ def _map_network__initiator__to_dict(
             'requestId': data.request_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Stack': to_dict(data.stack, casing_strategy),
             'Url': data.url,
@@ -5432,7 +5432,7 @@ def _map_network__cookie__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
             'domain': data.domain,
@@ -5451,7 +5451,7 @@ def _map_network__cookie__to_dict(
             'partition_key_opaque': data.partition_key_opaque,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
             'domain': data.domain,
@@ -5470,7 +5470,7 @@ def _map_network__cookie__to_dict(
             'partitionKeyOpaque': data.partition_key_opaque,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
             'Domain': data.domain,
@@ -5495,7 +5495,7 @@ def _map_network__blocked_set_cookie_with_reason__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'blocked_reasons': [
                 item
                 for item in data.blocked_reasons
@@ -5504,7 +5504,7 @@ def _map_network__blocked_set_cookie_with_reason__to_dict(
             'cookie': to_dict(data.cookie, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'blockedReasons': [
                 item
                 for item in data.blocked_reasons
@@ -5513,7 +5513,7 @@ def _map_network__blocked_set_cookie_with_reason__to_dict(
             'cookie': to_dict(data.cookie, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'BlockedReasons': [
                 item
                 for item in data.blocked_reasons
@@ -5528,7 +5528,7 @@ def _map_network__blocked_cookie_with_reason__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'blocked_reasons': [
                 item
                 for item in data.blocked_reasons
@@ -5536,7 +5536,7 @@ def _map_network__blocked_cookie_with_reason__to_dict(
             'cookie': to_dict(data.cookie, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'blockedReasons': [
                 item
                 for item in data.blocked_reasons
@@ -5544,7 +5544,7 @@ def _map_network__blocked_cookie_with_reason__to_dict(
             'cookie': to_dict(data.cookie, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'BlockedReasons': [
                 item
                 for item in data.blocked_reasons
@@ -5558,7 +5558,7 @@ def _map_network__cookie_param__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
             'url': data.url,
@@ -5575,7 +5575,7 @@ def _map_network__cookie_param__to_dict(
             'partition_key': data.partition_key,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
             'url': data.url,
@@ -5592,7 +5592,7 @@ def _map_network__cookie_param__to_dict(
             'partitionKey': data.partition_key,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
             'Url': data.url,
@@ -5615,21 +5615,21 @@ def _map_network__auth_challenge__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'source': data.source,
             'origin': data.origin,
             'scheme': data.scheme,
             'realm': data.realm,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'source': data.source,
             'origin': data.origin,
             'scheme': data.scheme,
             'realm': data.realm,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Source': data.source,
             'Origin': data.origin,
             'Scheme': data.scheme,
@@ -5642,19 +5642,19 @@ def _map_network__auth_challenge_response__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'response': data.response,
             'username': data.username,
             'password': data.password,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'response': data.response,
             'username': data.username,
             'password': data.password,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Response': data.response,
             'Username': data.username,
             'Password': data.password,
@@ -5666,19 +5666,19 @@ def _map_network__request_pattern__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url_pattern': data.url_pattern,
             'resource_type': data.resource_type,
             'interception_stage': data.interception_stage,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'urlPattern': data.url_pattern,
             'resourceType': data.resource_type,
             'interceptionStage': data.interception_stage,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'UrlPattern': data.url_pattern,
             'ResourceType': data.resource_type,
             'InterceptionStage': data.interception_stage,
@@ -5690,7 +5690,7 @@ def _map_network__signed_exchange_signature__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'label': data.label,
             'signature': data.signature,
             'integrity': data.integrity,
@@ -5705,7 +5705,7 @@ def _map_network__signed_exchange_signature__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'label': data.label,
             'signature': data.signature,
             'integrity': data.integrity,
@@ -5720,7 +5720,7 @@ def _map_network__signed_exchange_signature__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Label': data.label,
             'Signature': data.signature,
             'Integrity': data.integrity,
@@ -5741,7 +5741,7 @@ def _map_network__signed_exchange_header__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'request_url': data.request_url,
             'response_code': data.response_code,
             'response_headers': data.response_headers,
@@ -5752,7 +5752,7 @@ def _map_network__signed_exchange_header__to_dict(
             'header_integrity': data.header_integrity,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'requestUrl': data.request_url,
             'responseCode': data.response_code,
             'responseHeaders': data.response_headers,
@@ -5763,7 +5763,7 @@ def _map_network__signed_exchange_header__to_dict(
             'headerIntegrity': data.header_integrity,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RequestUrl': data.request_url,
             'ResponseCode': data.response_code,
             'ResponseHeaders': data.response_headers,
@@ -5780,19 +5780,19 @@ def _map_network__signed_exchange_error__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'message': data.message,
             'signature_index': data.signature_index,
             'error_field': data.error_field,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'message': data.message,
             'signatureIndex': data.signature_index,
             'errorField': data.error_field,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Message': data.message,
             'SignatureIndex': data.signature_index,
             'ErrorField': data.error_field,
@@ -5804,7 +5804,7 @@ def _map_network__signed_exchange_info__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'outer_response': to_dict(data.outer_response, casing_strategy),
             'header': to_dict(data.header, casing_strategy),
             'security_details': to_dict(data.security_details, casing_strategy),
@@ -5814,7 +5814,7 @@ def _map_network__signed_exchange_info__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'outerResponse': to_dict(data.outer_response, casing_strategy),
             'header': to_dict(data.header, casing_strategy),
             'securityDetails': to_dict(data.security_details, casing_strategy),
@@ -5824,7 +5824,7 @@ def _map_network__signed_exchange_info__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'OuterResponse': to_dict(data.outer_response, casing_strategy),
             'Header': to_dict(data.header, casing_strategy),
             'SecurityDetails': to_dict(data.security_details, casing_strategy),
@@ -5840,15 +5840,15 @@ def _map_network__connect_timing__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'request_time': data.request_time,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'requestTime': data.request_time,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RequestTime': data.request_time,
         }
 
@@ -5858,19 +5858,19 @@ def _map_network__client_security_state__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'initiator_is_secure_context': data.initiator_is_secure_context,
             'initiator_ip_address_space': data.initiator_ip_address_space,
             'private_network_request_policy': data.private_network_request_policy,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'initiatorIsSecureContext': data.initiator_is_secure_context,
             'initiatorIPAddressSpace': data.initiator_ip_address_space,
             'privateNetworkRequestPolicy': data.private_network_request_policy,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'InitiatorIsSecureContext': data.initiator_is_secure_context,
             'InitiatorIPAddressSpace': data.initiator_ip_address_space,
             'PrivateNetworkRequestPolicy': data.private_network_request_policy,
@@ -5882,21 +5882,21 @@ def _map_network__cross_origin_opener_policy_status__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'value': data.value,
             'report_only_value': data.report_only_value,
             'reporting_endpoint': data.reporting_endpoint,
             'report_only_reporting_endpoint': data.report_only_reporting_endpoint,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'value': data.value,
             'reportOnlyValue': data.report_only_value,
             'reportingEndpoint': data.reporting_endpoint,
             'reportOnlyReportingEndpoint': data.report_only_reporting_endpoint,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Value': data.value,
             'ReportOnlyValue': data.report_only_value,
             'ReportingEndpoint': data.reporting_endpoint,
@@ -5909,21 +5909,21 @@ def _map_network__cross_origin_embedder_policy_status__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'value': data.value,
             'report_only_value': data.report_only_value,
             'reporting_endpoint': data.reporting_endpoint,
             'report_only_reporting_endpoint': data.report_only_reporting_endpoint,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'value': data.value,
             'reportOnlyValue': data.report_only_value,
             'reportingEndpoint': data.reporting_endpoint,
             'reportOnlyReportingEndpoint': data.report_only_reporting_endpoint,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Value': data.value,
             'ReportOnlyValue': data.report_only_value,
             'ReportingEndpoint': data.reporting_endpoint,
@@ -5936,19 +5936,19 @@ def _map_network__content_security_policy_status__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'effective_directives': data.effective_directives,
             'is_enforced': data.is_enforced,
             'source': data.source,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'effectiveDirectives': data.effective_directives,
             'isEnforced': data.is_enforced,
             'source': data.source,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'EffectiveDirectives': data.effective_directives,
             'IsEnforced': data.is_enforced,
             'Source': data.source,
@@ -5960,7 +5960,7 @@ def _map_network__security_isolation_status__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'coop': to_dict(data.coop, casing_strategy),
             'coep': to_dict(data.coep, casing_strategy),
             'csp': [
@@ -5969,7 +5969,7 @@ def _map_network__security_isolation_status__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'coop': to_dict(data.coop, casing_strategy),
             'coep': to_dict(data.coep, casing_strategy),
             'csp': [
@@ -5978,7 +5978,7 @@ def _map_network__security_isolation_status__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Coop': to_dict(data.coop, casing_strategy),
             'Coep': to_dict(data.coep, casing_strategy),
             'Csp': [
@@ -5993,7 +5993,7 @@ def _map_network__reporting_api_report__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'initiator_url': data.initiator_url,
             'destination': data.destination,
@@ -6005,7 +6005,7 @@ def _map_network__reporting_api_report__to_dict(
             'status': data.status,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'initiatorUrl': data.initiator_url,
             'destination': data.destination,
@@ -6017,7 +6017,7 @@ def _map_network__reporting_api_report__to_dict(
             'status': data.status,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'InitiatorUrl': data.initiator_url,
             'Destination': data.destination,
@@ -6035,17 +6035,17 @@ def _map_network__reporting_api_endpoint__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'group_name': data.group_name,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'groupName': data.group_name,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'GroupName': data.group_name,
         }
@@ -6056,7 +6056,7 @@ def _map_network__load_network_resource_page_result__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'success': data.success,
             'net_error': data.net_error,
             'net_error_name': data.net_error_name,
@@ -6065,7 +6065,7 @@ def _map_network__load_network_resource_page_result__to_dict(
             'headers': data.headers,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'success': data.success,
             'netError': data.net_error,
             'netErrorName': data.net_error_name,
@@ -6074,7 +6074,7 @@ def _map_network__load_network_resource_page_result__to_dict(
             'headers': data.headers,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Success': data.success,
             'NetError': data.net_error,
             'NetErrorName': data.net_error_name,
@@ -6089,17 +6089,17 @@ def _map_network__load_network_resource_options__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'disable_cache': data.disable_cache,
             'include_credentials': data.include_credentials,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'disableCache': data.disable_cache,
             'includeCredentials': data.include_credentials,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'DisableCache': data.disable_cache,
             'IncludeCredentials': data.include_credentials,
         }
@@ -6110,17 +6110,17 @@ def _map_overlay__source_order_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'parent_outline_color': to_dict(data.parent_outline_color, casing_strategy),
             'child_outline_color': to_dict(data.child_outline_color, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'parentOutlineColor': to_dict(data.parent_outline_color, casing_strategy),
             'childOutlineColor': to_dict(data.child_outline_color, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ParentOutlineColor': to_dict(data.parent_outline_color, casing_strategy),
             'ChildOutlineColor': to_dict(data.child_outline_color, casing_strategy),
         }
@@ -6131,7 +6131,7 @@ def _map_overlay__grid_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'show_grid_extension_lines': data.show_grid_extension_lines,
             'show_positive_line_numbers': data.show_positive_line_numbers,
             'show_negative_line_numbers': data.show_negative_line_numbers,
@@ -6154,7 +6154,7 @@ def _map_overlay__grid_highlight_config__to_dict(
             'grid_background_color': to_dict(data.grid_background_color, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'showGridExtensionLines': data.show_grid_extension_lines,
             'showPositiveLineNumbers': data.show_positive_line_numbers,
             'showNegativeLineNumbers': data.show_negative_line_numbers,
@@ -6177,7 +6177,7 @@ def _map_overlay__grid_highlight_config__to_dict(
             'gridBackgroundColor': to_dict(data.grid_background_color, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ShowGridExtensionLines': data.show_grid_extension_lines,
             'ShowPositiveLineNumbers': data.show_positive_line_numbers,
             'ShowNegativeLineNumbers': data.show_negative_line_numbers,
@@ -6206,7 +6206,7 @@ def _map_overlay__flex_container_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'container_border': to_dict(data.container_border, casing_strategy),
             'line_separator': to_dict(data.line_separator, casing_strategy),
             'item_separator': to_dict(data.item_separator, casing_strategy),
@@ -6217,7 +6217,7 @@ def _map_overlay__flex_container_highlight_config__to_dict(
             'cross_alignment': to_dict(data.cross_alignment, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'containerBorder': to_dict(data.container_border, casing_strategy),
             'lineSeparator': to_dict(data.line_separator, casing_strategy),
             'itemSeparator': to_dict(data.item_separator, casing_strategy),
@@ -6228,7 +6228,7 @@ def _map_overlay__flex_container_highlight_config__to_dict(
             'crossAlignment': to_dict(data.cross_alignment, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ContainerBorder': to_dict(data.container_border, casing_strategy),
             'LineSeparator': to_dict(data.line_separator, casing_strategy),
             'ItemSeparator': to_dict(data.item_separator, casing_strategy),
@@ -6245,19 +6245,19 @@ def _map_overlay__flex_item_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'base_size_box': to_dict(data.base_size_box, casing_strategy),
             'base_size_border': to_dict(data.base_size_border, casing_strategy),
             'flexibility_arrow': to_dict(data.flexibility_arrow, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'baseSizeBox': to_dict(data.base_size_box, casing_strategy),
             'baseSizeBorder': to_dict(data.base_size_border, casing_strategy),
             'flexibilityArrow': to_dict(data.flexibility_arrow, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'BaseSizeBox': to_dict(data.base_size_box, casing_strategy),
             'BaseSizeBorder': to_dict(data.base_size_border, casing_strategy),
             'FlexibilityArrow': to_dict(data.flexibility_arrow, casing_strategy),
@@ -6269,17 +6269,17 @@ def _map_overlay__line_style__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'color': to_dict(data.color, casing_strategy),
             'pattern': data.pattern,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'color': to_dict(data.color, casing_strategy),
             'pattern': data.pattern,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Color': to_dict(data.color, casing_strategy),
             'Pattern': data.pattern,
         }
@@ -6290,17 +6290,17 @@ def _map_overlay__box_style__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'fill_color': to_dict(data.fill_color, casing_strategy),
             'hatch_color': to_dict(data.hatch_color, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'fillColor': to_dict(data.fill_color, casing_strategy),
             'hatchColor': to_dict(data.hatch_color, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FillColor': to_dict(data.fill_color, casing_strategy),
             'HatchColor': to_dict(data.hatch_color, casing_strategy),
         }
@@ -6311,7 +6311,7 @@ def _map_overlay__highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'show_info': data.show_info,
             'show_styles': data.show_styles,
             'show_rulers': data.show_rulers,
@@ -6333,7 +6333,7 @@ def _map_overlay__highlight_config__to_dict(
             'container_query_container_highlight_config': to_dict(data.container_query_container_highlight_config, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'showInfo': data.show_info,
             'showStyles': data.show_styles,
             'showRulers': data.show_rulers,
@@ -6355,7 +6355,7 @@ def _map_overlay__highlight_config__to_dict(
             'containerQueryContainerHighlightConfig': to_dict(data.container_query_container_highlight_config, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ShowInfo': data.show_info,
             'ShowStyles': data.show_styles,
             'ShowRulers': data.show_rulers,
@@ -6383,17 +6383,17 @@ def _map_overlay__grid_node_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'grid_highlight_config': to_dict(data.grid_highlight_config, casing_strategy),
             'node_id': data.node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'gridHighlightConfig': to_dict(data.grid_highlight_config, casing_strategy),
             'nodeId': data.node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'GridHighlightConfig': to_dict(data.grid_highlight_config, casing_strategy),
             'NodeId': data.node_id,
         }
@@ -6404,17 +6404,17 @@ def _map_overlay__flex_node_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'flex_container_highlight_config': to_dict(data.flex_container_highlight_config, casing_strategy),
             'node_id': data.node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'flexContainerHighlightConfig': to_dict(data.flex_container_highlight_config, casing_strategy),
             'nodeId': data.node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FlexContainerHighlightConfig': to_dict(data.flex_container_highlight_config, casing_strategy),
             'NodeId': data.node_id,
         }
@@ -6425,21 +6425,21 @@ def _map_overlay__scroll_snap_container_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'snapport_border': to_dict(data.snapport_border, casing_strategy),
             'snap_area_border': to_dict(data.snap_area_border, casing_strategy),
             'scroll_margin_color': to_dict(data.scroll_margin_color, casing_strategy),
             'scroll_padding_color': to_dict(data.scroll_padding_color, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'snapportBorder': to_dict(data.snapport_border, casing_strategy),
             'snapAreaBorder': to_dict(data.snap_area_border, casing_strategy),
             'scrollMarginColor': to_dict(data.scroll_margin_color, casing_strategy),
             'scrollPaddingColor': to_dict(data.scroll_padding_color, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'SnapportBorder': to_dict(data.snapport_border, casing_strategy),
             'SnapAreaBorder': to_dict(data.snap_area_border, casing_strategy),
             'ScrollMarginColor': to_dict(data.scroll_margin_color, casing_strategy),
@@ -6452,17 +6452,17 @@ def _map_overlay__scroll_snap_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'scroll_snap_container_highlight_config': to_dict(data.scroll_snap_container_highlight_config, casing_strategy),
             'node_id': data.node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'scrollSnapContainerHighlightConfig': to_dict(data.scroll_snap_container_highlight_config, casing_strategy),
             'nodeId': data.node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ScrollSnapContainerHighlightConfig': to_dict(data.scroll_snap_container_highlight_config, casing_strategy),
             'NodeId': data.node_id,
         }
@@ -6473,19 +6473,19 @@ def _map_overlay__hinge_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'rect': to_dict(data.rect, casing_strategy),
             'content_color': to_dict(data.content_color, casing_strategy),
             'outline_color': to_dict(data.outline_color, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'rect': to_dict(data.rect, casing_strategy),
             'contentColor': to_dict(data.content_color, casing_strategy),
             'outlineColor': to_dict(data.outline_color, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Rect': to_dict(data.rect, casing_strategy),
             'ContentColor': to_dict(data.content_color, casing_strategy),
             'OutlineColor': to_dict(data.outline_color, casing_strategy),
@@ -6497,17 +6497,17 @@ def _map_overlay__container_query_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'container_query_container_highlight_config': to_dict(data.container_query_container_highlight_config, casing_strategy),
             'node_id': data.node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'containerQueryContainerHighlightConfig': to_dict(data.container_query_container_highlight_config, casing_strategy),
             'nodeId': data.node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ContainerQueryContainerHighlightConfig': to_dict(data.container_query_container_highlight_config, casing_strategy),
             'NodeId': data.node_id,
         }
@@ -6518,17 +6518,17 @@ def _map_overlay__container_query_container_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'container_border': to_dict(data.container_border, casing_strategy),
             'descendant_border': to_dict(data.descendant_border, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'containerBorder': to_dict(data.container_border, casing_strategy),
             'descendantBorder': to_dict(data.descendant_border, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ContainerBorder': to_dict(data.container_border, casing_strategy),
             'DescendantBorder': to_dict(data.descendant_border, casing_strategy),
         }
@@ -6539,17 +6539,17 @@ def _map_overlay__isolated_element_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'isolation_mode_highlight_config': to_dict(data.isolation_mode_highlight_config, casing_strategy),
             'node_id': data.node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'isolationModeHighlightConfig': to_dict(data.isolation_mode_highlight_config, casing_strategy),
             'nodeId': data.node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'IsolationModeHighlightConfig': to_dict(data.isolation_mode_highlight_config, casing_strategy),
             'NodeId': data.node_id,
         }
@@ -6560,19 +6560,19 @@ def _map_overlay__isolation_mode_highlight_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'resizer_color': to_dict(data.resizer_color, casing_strategy),
             'resizer_handle_color': to_dict(data.resizer_handle_color, casing_strategy),
             'mask_color': to_dict(data.mask_color, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'resizerColor': to_dict(data.resizer_color, casing_strategy),
             'resizerHandleColor': to_dict(data.resizer_handle_color, casing_strategy),
             'maskColor': to_dict(data.mask_color, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ResizerColor': to_dict(data.resizer_color, casing_strategy),
             'ResizerHandleColor': to_dict(data.resizer_handle_color, casing_strategy),
             'MaskColor': to_dict(data.mask_color, casing_strategy),
@@ -6584,7 +6584,7 @@ def _map_page__ad_frame_status__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'ad_frame_type': data.ad_frame_type,
             'explanations': [
                 item
@@ -6592,7 +6592,7 @@ def _map_page__ad_frame_status__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'adFrameType': data.ad_frame_type,
             'explanations': [
                 item
@@ -6600,7 +6600,7 @@ def _map_page__ad_frame_status__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'AdFrameType': data.ad_frame_type,
             'Explanations': [
                 item
@@ -6614,17 +6614,17 @@ def _map_page__ad_script_id__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'script_id': data.script_id,
             'debugger_id': data.debugger_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'scriptId': data.script_id,
             'debuggerId': data.debugger_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ScriptId': data.script_id,
             'DebuggerId': data.debugger_id,
         }
@@ -6635,17 +6635,17 @@ def _map_page__permissions_policy_block_locator__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'frame_id': data.frame_id,
             'block_reason': data.block_reason,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'frameId': data.frame_id,
             'blockReason': data.block_reason,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FrameId': data.frame_id,
             'BlockReason': data.block_reason,
         }
@@ -6656,19 +6656,19 @@ def _map_page__permissions_policy_feature_state__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'feature': data.feature,
             'allowed': data.allowed,
             'locator': to_dict(data.locator, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'feature': data.feature,
             'allowed': data.allowed,
             'locator': to_dict(data.locator, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Feature': data.feature,
             'Allowed': data.allowed,
             'Locator': to_dict(data.locator, casing_strategy),
@@ -6680,7 +6680,7 @@ def _map_page__origin_trial_token__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'origin': data.origin,
             'match_sub_domains': data.match_sub_domains,
             'trial_name': data.trial_name,
@@ -6689,7 +6689,7 @@ def _map_page__origin_trial_token__to_dict(
             'usage_restriction': data.usage_restriction,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'origin': data.origin,
             'matchSubDomains': data.match_sub_domains,
             'trialName': data.trial_name,
@@ -6698,7 +6698,7 @@ def _map_page__origin_trial_token__to_dict(
             'usageRestriction': data.usage_restriction,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Origin': data.origin,
             'MatchSubDomains': data.match_sub_domains,
             'TrialName': data.trial_name,
@@ -6713,19 +6713,19 @@ def _map_page__origin_trial_token_with_status__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'raw_token_text': data.raw_token_text,
             'parsed_token': to_dict(data.parsed_token, casing_strategy),
             'status': data.status,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'rawTokenText': data.raw_token_text,
             'parsedToken': to_dict(data.parsed_token, casing_strategy),
             'status': data.status,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RawTokenText': data.raw_token_text,
             'ParsedToken': to_dict(data.parsed_token, casing_strategy),
             'Status': data.status,
@@ -6737,7 +6737,7 @@ def _map_page__origin_trial__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'trial_name': data.trial_name,
             'status': data.status,
             'tokens_with_status': [
@@ -6746,7 +6746,7 @@ def _map_page__origin_trial__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'trialName': data.trial_name,
             'status': data.status,
             'tokensWithStatus': [
@@ -6755,7 +6755,7 @@ def _map_page__origin_trial__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'TrialName': data.trial_name,
             'Status': data.status,
             'TokensWithStatus': [
@@ -6770,7 +6770,7 @@ def _map_page__frame__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'parent_id': data.parent_id,
             'loader_id': data.loader_id,
@@ -6790,7 +6790,7 @@ def _map_page__frame__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'parentId': data.parent_id,
             'loaderId': data.loader_id,
@@ -6810,7 +6810,7 @@ def _map_page__frame__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'ParentId': data.parent_id,
             'LoaderId': data.loader_id,
@@ -6836,7 +6836,7 @@ def _map_page__frame_resource__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'type': data.type,
             'mime_type': data.mime_type,
@@ -6846,7 +6846,7 @@ def _map_page__frame_resource__to_dict(
             'canceled': data.canceled,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'type': data.type,
             'mimeType': data.mime_type,
@@ -6856,7 +6856,7 @@ def _map_page__frame_resource__to_dict(
             'canceled': data.canceled,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'Type': data.type,
             'MimeType': data.mime_type,
@@ -6872,7 +6872,7 @@ def _map_page__frame_resource_tree__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'frame': to_dict(data.frame, casing_strategy),
             'child_frames': [
                 to_dict(item, casing_strategy)
@@ -6884,7 +6884,7 @@ def _map_page__frame_resource_tree__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'frame': to_dict(data.frame, casing_strategy),
             'childFrames': [
                 to_dict(item, casing_strategy)
@@ -6896,7 +6896,7 @@ def _map_page__frame_resource_tree__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Frame': to_dict(data.frame, casing_strategy),
             'ChildFrames': [
                 to_dict(item, casing_strategy)
@@ -6914,7 +6914,7 @@ def _map_page__frame_tree__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'frame': to_dict(data.frame, casing_strategy),
             'child_frames': [
                 to_dict(item, casing_strategy)
@@ -6922,7 +6922,7 @@ def _map_page__frame_tree__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'frame': to_dict(data.frame, casing_strategy),
             'childFrames': [
                 to_dict(item, casing_strategy)
@@ -6930,7 +6930,7 @@ def _map_page__frame_tree__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Frame': to_dict(data.frame, casing_strategy),
             'ChildFrames': [
                 to_dict(item, casing_strategy)
@@ -6944,7 +6944,7 @@ def _map_page__navigation_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'url': data.url,
             'user_typed_url': data.user_typed_url,
@@ -6952,7 +6952,7 @@ def _map_page__navigation_entry__to_dict(
             'transition_type': data.transition_type,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'url': data.url,
             'userTypedURL': data.user_typed_url,
@@ -6960,7 +6960,7 @@ def _map_page__navigation_entry__to_dict(
             'transitionType': data.transition_type,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'Url': data.url,
             'UserTypedURL': data.user_typed_url,
@@ -6974,7 +6974,7 @@ def _map_page__screencast_frame_metadata__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'offset_top': data.offset_top,
             'page_scale_factor': data.page_scale_factor,
             'device_width': data.device_width,
@@ -6984,7 +6984,7 @@ def _map_page__screencast_frame_metadata__to_dict(
             'timestamp': data.timestamp,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'offsetTop': data.offset_top,
             'pageScaleFactor': data.page_scale_factor,
             'deviceWidth': data.device_width,
@@ -6994,7 +6994,7 @@ def _map_page__screencast_frame_metadata__to_dict(
             'timestamp': data.timestamp,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'OffsetTop': data.offset_top,
             'PageScaleFactor': data.page_scale_factor,
             'DeviceWidth': data.device_width,
@@ -7010,21 +7010,21 @@ def _map_page__app_manifest_error__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'message': data.message,
             'critical': data.critical,
             'line': data.line,
             'column': data.column,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'message': data.message,
             'critical': data.critical,
             'line': data.line,
             'column': data.column,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Message': data.message,
             'Critical': data.critical,
             'Line': data.line,
@@ -7037,15 +7037,15 @@ def _map_page__app_manifest_parsed_properties__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'scope': data.scope,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'scope': data.scope,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Scope': data.scope,
         }
 
@@ -7055,21 +7055,21 @@ def _map_page__layout_viewport__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'page_x': data.page_x,
             'page_y': data.page_y,
             'client_width': data.client_width,
             'client_height': data.client_height,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'pageX': data.page_x,
             'pageY': data.page_y,
             'clientWidth': data.client_width,
             'clientHeight': data.client_height,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'PageX': data.page_x,
             'PageY': data.page_y,
             'ClientWidth': data.client_width,
@@ -7082,7 +7082,7 @@ def _map_page__visual_viewport__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'offset_x': data.offset_x,
             'offset_y': data.offset_y,
             'page_x': data.page_x,
@@ -7093,7 +7093,7 @@ def _map_page__visual_viewport__to_dict(
             'zoom': data.zoom,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'offsetX': data.offset_x,
             'offsetY': data.offset_y,
             'pageX': data.page_x,
@@ -7104,7 +7104,7 @@ def _map_page__visual_viewport__to_dict(
             'zoom': data.zoom,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'OffsetX': data.offset_x,
             'OffsetY': data.offset_y,
             'PageX': data.page_x,
@@ -7121,7 +7121,7 @@ def _map_page__viewport__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'x': data.x,
             'y': data.y,
             'width': data.width,
@@ -7129,7 +7129,7 @@ def _map_page__viewport__to_dict(
             'scale': data.scale,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'x': data.x,
             'y': data.y,
             'width': data.width,
@@ -7137,7 +7137,7 @@ def _map_page__viewport__to_dict(
             'scale': data.scale,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'X': data.x,
             'Y': data.y,
             'Width': data.width,
@@ -7151,7 +7151,7 @@ def _map_page__font_families__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'standard': data.standard,
             'fixed': data.fixed,
             'serif': data.serif,
@@ -7161,7 +7161,7 @@ def _map_page__font_families__to_dict(
             'math': data.math,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'standard': data.standard,
             'fixed': data.fixed,
             'serif': data.serif,
@@ -7171,7 +7171,7 @@ def _map_page__font_families__to_dict(
             'math': data.math,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Standard': data.standard,
             'Fixed': data.fixed,
             'Serif': data.serif,
@@ -7187,17 +7187,17 @@ def _map_page__script_font_families__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'script': data.script,
             'font_families': to_dict(data.font_families, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'script': data.script,
             'fontFamilies': to_dict(data.font_families, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Script': data.script,
             'FontFamilies': to_dict(data.font_families, casing_strategy),
         }
@@ -7208,17 +7208,17 @@ def _map_page__font_sizes__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'standard': data.standard,
             'fixed': data.fixed,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'standard': data.standard,
             'fixed': data.fixed,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Standard': data.standard,
             'Fixed': data.fixed,
         }
@@ -7229,17 +7229,17 @@ def _map_page__installability_error_argument__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -7250,7 +7250,7 @@ def _map_page__installability_error__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'error_id': data.error_id,
             'error_arguments': [
                 to_dict(item, casing_strategy)
@@ -7258,7 +7258,7 @@ def _map_page__installability_error__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'errorId': data.error_id,
             'errorArguments': [
                 to_dict(item, casing_strategy)
@@ -7266,7 +7266,7 @@ def _map_page__installability_error__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ErrorId': data.error_id,
             'ErrorArguments': [
                 to_dict(item, casing_strategy)
@@ -7280,17 +7280,17 @@ def _map_page__compilation_cache_params__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'eager': data.eager,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'eager': data.eager,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'Eager': data.eager,
         }
@@ -7301,19 +7301,19 @@ def _map_page__back_forward_cache_not_restored_explanation__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'reason': data.reason,
             'context': data.context,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'reason': data.reason,
             'context': data.context,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Reason': data.reason,
             'Context': data.context,
@@ -7325,7 +7325,7 @@ def _map_page__back_forward_cache_not_restored_explanation_tree__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'explanations': [
                 to_dict(item, casing_strategy)
@@ -7337,7 +7337,7 @@ def _map_page__back_forward_cache_not_restored_explanation_tree__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'explanations': [
                 to_dict(item, casing_strategy)
@@ -7349,7 +7349,7 @@ def _map_page__back_forward_cache_not_restored_explanation_tree__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'Explanations': [
                 to_dict(item, casing_strategy)
@@ -7367,17 +7367,17 @@ def _map_performance__metric__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -7388,7 +7388,7 @@ def _map_performance_timeline__largest_contentful_paint__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'render_time': data.render_time,
             'load_time': data.load_time,
             'size': data.size,
@@ -7397,7 +7397,7 @@ def _map_performance_timeline__largest_contentful_paint__to_dict(
             'node_id': data.node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'renderTime': data.render_time,
             'loadTime': data.load_time,
             'size': data.size,
@@ -7406,7 +7406,7 @@ def _map_performance_timeline__largest_contentful_paint__to_dict(
             'nodeId': data.node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RenderTime': data.render_time,
             'LoadTime': data.load_time,
             'Size': data.size,
@@ -7421,19 +7421,19 @@ def _map_performance_timeline__layout_shift_attribution__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'previous_rect': to_dict(data.previous_rect, casing_strategy),
             'current_rect': to_dict(data.current_rect, casing_strategy),
             'node_id': data.node_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'previousRect': to_dict(data.previous_rect, casing_strategy),
             'currentRect': to_dict(data.current_rect, casing_strategy),
             'nodeId': data.node_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'PreviousRect': to_dict(data.previous_rect, casing_strategy),
             'CurrentRect': to_dict(data.current_rect, casing_strategy),
             'NodeId': data.node_id,
@@ -7445,7 +7445,7 @@ def _map_performance_timeline__layout_shift__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'value': data.value,
             'had_recent_input': data.had_recent_input,
             'last_input_time': data.last_input_time,
@@ -7455,7 +7455,7 @@ def _map_performance_timeline__layout_shift__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'value': data.value,
             'hadRecentInput': data.had_recent_input,
             'lastInputTime': data.last_input_time,
@@ -7465,7 +7465,7 @@ def _map_performance_timeline__layout_shift__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Value': data.value,
             'HadRecentInput': data.had_recent_input,
             'LastInputTime': data.last_input_time,
@@ -7481,7 +7481,7 @@ def _map_performance_timeline__timeline_event__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'frame_id': data.frame_id,
             'type': data.type,
             'name': data.name,
@@ -7491,7 +7491,7 @@ def _map_performance_timeline__timeline_event__to_dict(
             'layout_shift_details': to_dict(data.layout_shift_details, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'frameId': data.frame_id,
             'type': data.type,
             'name': data.name,
@@ -7501,7 +7501,7 @@ def _map_performance_timeline__timeline_event__to_dict(
             'layoutShiftDetails': to_dict(data.layout_shift_details, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FrameId': data.frame_id,
             'Type': data.type,
             'Name': data.name,
@@ -7517,7 +7517,7 @@ def _map_security__certificate_security_state__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'protocol': data.protocol,
             'key_exchange': data.key_exchange,
             'key_exchange_group': data.key_exchange_group,
@@ -7541,7 +7541,7 @@ def _map_security__certificate_security_state__to_dict(
             'obsolete_ssl_signature': data.obsolete_ssl_signature,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'protocol': data.protocol,
             'keyExchange': data.key_exchange,
             'keyExchangeGroup': data.key_exchange_group,
@@ -7565,7 +7565,7 @@ def _map_security__certificate_security_state__to_dict(
             'obsoleteSslSignature': data.obsolete_ssl_signature,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Protocol': data.protocol,
             'KeyExchange': data.key_exchange,
             'KeyExchangeGroup': data.key_exchange_group,
@@ -7595,17 +7595,17 @@ def _map_security__safety_tip_info__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'safety_tip_status': data.safety_tip_status,
             'safe_url': data.safe_url,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'safetyTipStatus': data.safety_tip_status,
             'safeUrl': data.safe_url,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'SafetyTipStatus': data.safety_tip_status,
             'SafeUrl': data.safe_url,
         }
@@ -7616,7 +7616,7 @@ def _map_security__visible_security_state__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'security_state': data.security_state,
             'certificate_security_state': to_dict(data.certificate_security_state, casing_strategy),
             'safety_tip_info': to_dict(data.safety_tip_info, casing_strategy),
@@ -7626,7 +7626,7 @@ def _map_security__visible_security_state__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'securityState': data.security_state,
             'certificateSecurityState': to_dict(data.certificate_security_state, casing_strategy),
             'safetyTipInfo': to_dict(data.safety_tip_info, casing_strategy),
@@ -7636,7 +7636,7 @@ def _map_security__visible_security_state__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'SecurityState': data.security_state,
             'CertificateSecurityState': to_dict(data.certificate_security_state, casing_strategy),
             'SafetyTipInfo': to_dict(data.safety_tip_info, casing_strategy),
@@ -7652,7 +7652,7 @@ def _map_security__security_state_explanation__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'security_state': data.security_state,
             'title': data.title,
             'summary': data.summary,
@@ -7668,7 +7668,7 @@ def _map_security__security_state_explanation__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'securityState': data.security_state,
             'title': data.title,
             'summary': data.summary,
@@ -7684,7 +7684,7 @@ def _map_security__security_state_explanation__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'SecurityState': data.security_state,
             'Title': data.title,
             'Summary': data.summary,
@@ -7706,7 +7706,7 @@ def _map_security__insecure_content_status__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'ran_mixed_content': data.ran_mixed_content,
             'displayed_mixed_content': data.displayed_mixed_content,
             'contained_mixed_form': data.contained_mixed_form,
@@ -7716,7 +7716,7 @@ def _map_security__insecure_content_status__to_dict(
             'displayed_insecure_content_style': data.displayed_insecure_content_style,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'ranMixedContent': data.ran_mixed_content,
             'displayedMixedContent': data.displayed_mixed_content,
             'containedMixedForm': data.contained_mixed_form,
@@ -7726,7 +7726,7 @@ def _map_security__insecure_content_status__to_dict(
             'displayedInsecureContentStyle': data.displayed_insecure_content_style,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RanMixedContent': data.ran_mixed_content,
             'DisplayedMixedContent': data.displayed_mixed_content,
             'ContainedMixedForm': data.contained_mixed_form,
@@ -7742,19 +7742,19 @@ def _map_service_worker__service_worker_registration__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'registration_id': data.registration_id,
             'scope_url': data.scope_url,
             'is_deleted': data.is_deleted,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'registrationId': data.registration_id,
             'scopeURL': data.scope_url,
             'isDeleted': data.is_deleted,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RegistrationId': data.registration_id,
             'ScopeURL': data.scope_url,
             'IsDeleted': data.is_deleted,
@@ -7766,7 +7766,7 @@ def _map_service_worker__service_worker_version__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'version_id': data.version_id,
             'registration_id': data.registration_id,
             'script_url': data.script_url,
@@ -7781,7 +7781,7 @@ def _map_service_worker__service_worker_version__to_dict(
             'target_id': data.target_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'versionId': data.version_id,
             'registrationId': data.registration_id,
             'scriptURL': data.script_url,
@@ -7796,7 +7796,7 @@ def _map_service_worker__service_worker_version__to_dict(
             'targetId': data.target_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'VersionId': data.version_id,
             'RegistrationId': data.registration_id,
             'ScriptURL': data.script_url,
@@ -7817,7 +7817,7 @@ def _map_service_worker__service_worker_error_message__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'error_message': data.error_message,
             'registration_id': data.registration_id,
             'version_id': data.version_id,
@@ -7826,7 +7826,7 @@ def _map_service_worker__service_worker_error_message__to_dict(
             'column_number': data.column_number,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'errorMessage': data.error_message,
             'registrationId': data.registration_id,
             'versionId': data.version_id,
@@ -7835,7 +7835,7 @@ def _map_service_worker__service_worker_error_message__to_dict(
             'columnNumber': data.column_number,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ErrorMessage': data.error_message,
             'RegistrationId': data.registration_id,
             'VersionId': data.version_id,
@@ -7850,17 +7850,17 @@ def _map_storage__usage_for_type__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'storage_type': data.storage_type,
             'usage': data.usage,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'storageType': data.storage_type,
             'usage': data.usage,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StorageType': data.storage_type,
             'Usage': data.usage,
         }
@@ -7871,17 +7871,17 @@ def _map_storage__trust_tokens__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'issuer_origin': data.issuer_origin,
             'count': data.count,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'issuerOrigin': data.issuer_origin,
             'count': data.count,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'IssuerOrigin': data.issuer_origin,
             'Count': data.count,
         }
@@ -7892,17 +7892,17 @@ def _map_storage__interest_group_ad__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'render_url': data.render_url,
             'metadata': data.metadata,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'renderUrl': data.render_url,
             'metadata': data.metadata,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RenderUrl': data.render_url,
             'Metadata': data.metadata,
         }
@@ -7913,7 +7913,7 @@ def _map_storage__interest_group_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'owner_origin': data.owner_origin,
             'name': data.name,
             'expiration_time': data.expiration_time,
@@ -7937,7 +7937,7 @@ def _map_storage__interest_group_details__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'ownerOrigin': data.owner_origin,
             'name': data.name,
             'expirationTime': data.expiration_time,
@@ -7961,7 +7961,7 @@ def _map_storage__interest_group_details__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'OwnerOrigin': data.owner_origin,
             'Name': data.name,
             'ExpirationTime': data.expiration_time,
@@ -7991,17 +7991,17 @@ def _map_storage__shared_storage_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'key': data.key,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'key': data.key,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Key': data.key,
             'Value': data.value,
         }
@@ -8012,19 +8012,19 @@ def _map_storage__shared_storage_metadata__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'creation_time': data.creation_time,
             'length': data.length,
             'remaining_budget': data.remaining_budget,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'creationTime': data.creation_time,
             'length': data.length,
             'remainingBudget': data.remaining_budget,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'CreationTime': data.creation_time,
             'Length': data.length,
             'RemainingBudget': data.remaining_budget,
@@ -8036,17 +8036,17 @@ def _map_storage__shared_storage_reporting_metadata__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'event_type': data.event_type,
             'reporting_url': data.reporting_url,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'eventType': data.event_type,
             'reportingUrl': data.reporting_url,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'EventType': data.event_type,
             'ReportingUrl': data.reporting_url,
         }
@@ -8057,7 +8057,7 @@ def _map_storage__shared_storage_url_with_metadata__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url': data.url,
             'reporting_metadata': [
                 to_dict(item, casing_strategy)
@@ -8065,7 +8065,7 @@ def _map_storage__shared_storage_url_with_metadata__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'url': data.url,
             'reportingMetadata': [
                 to_dict(item, casing_strategy)
@@ -8073,7 +8073,7 @@ def _map_storage__shared_storage_url_with_metadata__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Url': data.url,
             'ReportingMetadata': [
                 to_dict(item, casing_strategy)
@@ -8087,7 +8087,7 @@ def _map_storage__shared_storage_access_params__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'script_source_url': data.script_source_url,
             'operation_name': data.operation_name,
             'serialized_data': data.serialized_data,
@@ -8100,7 +8100,7 @@ def _map_storage__shared_storage_access_params__to_dict(
             'ignore_if_present': data.ignore_if_present,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'scriptSourceUrl': data.script_source_url,
             'operationName': data.operation_name,
             'serializedData': data.serialized_data,
@@ -8113,7 +8113,7 @@ def _map_storage__shared_storage_access_params__to_dict(
             'ignoreIfPresent': data.ignore_if_present,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ScriptSourceUrl': data.script_source_url,
             'OperationName': data.operation_name,
             'SerializedData': data.serialized_data,
@@ -8132,17 +8132,17 @@ def _map_storage__storage_bucket__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'storage_key': data.storage_key,
             'name': data.name,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'storageKey': data.storage_key,
             'name': data.name,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StorageKey': data.storage_key,
             'Name': data.name,
         }
@@ -8153,7 +8153,7 @@ def _map_storage__storage_bucket_info__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'bucket': to_dict(data.bucket, casing_strategy),
             'id': data.id,
             'expiration': data.expiration,
@@ -8162,7 +8162,7 @@ def _map_storage__storage_bucket_info__to_dict(
             'durability': data.durability,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'bucket': to_dict(data.bucket, casing_strategy),
             'id': data.id,
             'expiration': data.expiration,
@@ -8171,7 +8171,7 @@ def _map_storage__storage_bucket_info__to_dict(
             'durability': data.durability,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Bucket': to_dict(data.bucket, casing_strategy),
             'Id': data.id,
             'Expiration': data.expiration,
@@ -8186,7 +8186,7 @@ def _map_storage__attribution_reporting_filter_data_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'key': data.key,
             'values': [
                 item
@@ -8194,7 +8194,7 @@ def _map_storage__attribution_reporting_filter_data_entry__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'key': data.key,
             'values': [
                 item
@@ -8202,7 +8202,7 @@ def _map_storage__attribution_reporting_filter_data_entry__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Key': data.key,
             'Values': [
                 item
@@ -8216,17 +8216,17 @@ def _map_storage__attribution_reporting_aggregation_keys_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'key': data.key,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'key': data.key,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Key': data.key,
             'Value': data.value,
         }
@@ -8237,7 +8237,7 @@ def _map_storage__attribution_reporting_event_report_windows__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'start': data.start,
             'ends': [
                 item
@@ -8245,7 +8245,7 @@ def _map_storage__attribution_reporting_event_report_windows__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'start': data.start,
             'ends': [
                 item
@@ -8253,7 +8253,7 @@ def _map_storage__attribution_reporting_event_report_windows__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Start': data.start,
             'Ends': [
                 item
@@ -8267,7 +8267,7 @@ def _map_storage__attribution_reporting_source_registration__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'time': data.time,
             'expiry': data.expiry,
             'event_report_window': data.event_report_window,
@@ -8293,7 +8293,7 @@ def _map_storage__attribution_reporting_source_registration__to_dict(
             'debug_key': data.debug_key,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'time': data.time,
             'expiry': data.expiry,
             'eventReportWindow': data.event_report_window,
@@ -8319,7 +8319,7 @@ def _map_storage__attribution_reporting_source_registration__to_dict(
             'debugKey': data.debug_key,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Time': data.time,
             'Expiry': data.expiry,
             'EventReportWindow': data.event_report_window,
@@ -8351,7 +8351,7 @@ def _map_system_info__gpu_device__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'vendor_id': data.vendor_id,
             'device_id': data.device_id,
             'sub_sys_id': data.sub_sys_id,
@@ -8362,7 +8362,7 @@ def _map_system_info__gpu_device__to_dict(
             'driver_version': data.driver_version,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'vendorId': data.vendor_id,
             'deviceId': data.device_id,
             'subSysId': data.sub_sys_id,
@@ -8373,7 +8373,7 @@ def _map_system_info__gpu_device__to_dict(
             'driverVersion': data.driver_version,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'VendorId': data.vendor_id,
             'DeviceId': data.device_id,
             'SubSysId': data.sub_sys_id,
@@ -8390,17 +8390,17 @@ def _map_system_info__size__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'width': data.width,
             'height': data.height,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'width': data.width,
             'height': data.height,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Width': data.width,
             'Height': data.height,
         }
@@ -8411,19 +8411,19 @@ def _map_system_info__video_decode_accelerator_capability__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'profile': data.profile,
             'max_resolution': to_dict(data.max_resolution, casing_strategy),
             'min_resolution': to_dict(data.min_resolution, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'profile': data.profile,
             'maxResolution': to_dict(data.max_resolution, casing_strategy),
             'minResolution': to_dict(data.min_resolution, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Profile': data.profile,
             'MaxResolution': to_dict(data.max_resolution, casing_strategy),
             'MinResolution': to_dict(data.min_resolution, casing_strategy),
@@ -8435,21 +8435,21 @@ def _map_system_info__video_encode_accelerator_capability__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'profile': data.profile,
             'max_resolution': to_dict(data.max_resolution, casing_strategy),
             'max_framerate_numerator': data.max_framerate_numerator,
             'max_framerate_denominator': data.max_framerate_denominator,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'profile': data.profile,
             'maxResolution': to_dict(data.max_resolution, casing_strategy),
             'maxFramerateNumerator': data.max_framerate_numerator,
             'maxFramerateDenominator': data.max_framerate_denominator,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Profile': data.profile,
             'MaxResolution': to_dict(data.max_resolution, casing_strategy),
             'MaxFramerateNumerator': data.max_framerate_numerator,
@@ -8462,7 +8462,7 @@ def _map_system_info__image_decode_accelerator_capability__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'image_type': data.image_type,
             'max_dimensions': to_dict(data.max_dimensions, casing_strategy),
             'min_dimensions': to_dict(data.min_dimensions, casing_strategy),
@@ -8472,7 +8472,7 @@ def _map_system_info__image_decode_accelerator_capability__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'imageType': data.image_type,
             'maxDimensions': to_dict(data.max_dimensions, casing_strategy),
             'minDimensions': to_dict(data.min_dimensions, casing_strategy),
@@ -8482,7 +8482,7 @@ def _map_system_info__image_decode_accelerator_capability__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ImageType': data.image_type,
             'MaxDimensions': to_dict(data.max_dimensions, casing_strategy),
             'MinDimensions': to_dict(data.min_dimensions, casing_strategy),
@@ -8498,7 +8498,7 @@ def _map_system_info__gpu_info__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'devices': [
                 to_dict(item, casing_strategy)
                 for item in data.devices
@@ -8523,7 +8523,7 @@ def _map_system_info__gpu_info__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'devices': [
                 to_dict(item, casing_strategy)
                 for item in data.devices
@@ -8548,7 +8548,7 @@ def _map_system_info__gpu_info__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Devices': [
                 to_dict(item, casing_strategy)
                 for item in data.devices
@@ -8579,19 +8579,19 @@ def _map_system_info__process_info__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'id': data.id,
             'cpu_time': data.cpu_time,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'id': data.id,
             'cpuTime': data.cpu_time,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Id': data.id,
             'CpuTime': data.cpu_time,
@@ -8603,7 +8603,7 @@ def _map_target__target_info__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'target_id': data.target_id,
             'type': data.type,
             'title': data.title,
@@ -8616,7 +8616,7 @@ def _map_target__target_info__to_dict(
             'subtype': data.subtype,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'targetId': data.target_id,
             'type': data.type,
             'title': data.title,
@@ -8629,7 +8629,7 @@ def _map_target__target_info__to_dict(
             'subtype': data.subtype,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'TargetId': data.target_id,
             'Type': data.type,
             'Title': data.title,
@@ -8648,17 +8648,17 @@ def _map_target__filter_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'exclude': data.exclude,
             'type': data.type,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'exclude': data.exclude,
             'type': data.type,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Exclude': data.exclude,
             'Type': data.type,
         }
@@ -8669,17 +8669,17 @@ def _map_target__remote_location__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'host': data.host,
             'port': data.port,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'host': data.host,
             'port': data.port,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Host': data.host,
             'Port': data.port,
         }
@@ -8690,7 +8690,7 @@ def _map_tracing__trace_config__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'record_mode': data.record_mode,
             'trace_buffer_size_in_kb': data.trace_buffer_size_in_kb,
             'enable_sampling': data.enable_sampling,
@@ -8711,7 +8711,7 @@ def _map_tracing__trace_config__to_dict(
             'memory_dump_config': data.memory_dump_config,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'recordMode': data.record_mode,
             'traceBufferSizeInKb': data.trace_buffer_size_in_kb,
             'enableSampling': data.enable_sampling,
@@ -8732,7 +8732,7 @@ def _map_tracing__trace_config__to_dict(
             'memoryDumpConfig': data.memory_dump_config,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'RecordMode': data.record_mode,
             'TraceBufferSizeInKb': data.trace_buffer_size_in_kb,
             'EnableSampling': data.enable_sampling,
@@ -8759,19 +8759,19 @@ def _map_fetch__request_pattern__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'url_pattern': data.url_pattern,
             'resource_type': data.resource_type,
             'request_stage': data.request_stage,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'urlPattern': data.url_pattern,
             'resourceType': data.resource_type,
             'requestStage': data.request_stage,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'UrlPattern': data.url_pattern,
             'ResourceType': data.resource_type,
             'RequestStage': data.request_stage,
@@ -8783,17 +8783,17 @@ def _map_fetch__header_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -8804,21 +8804,21 @@ def _map_fetch__auth_challenge__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'source': data.source,
             'origin': data.origin,
             'scheme': data.scheme,
             'realm': data.realm,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'source': data.source,
             'origin': data.origin,
             'scheme': data.scheme,
             'realm': data.realm,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Source': data.source,
             'Origin': data.origin,
             'Scheme': data.scheme,
@@ -8831,19 +8831,19 @@ def _map_fetch__auth_challenge_response__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'response': data.response,
             'username': data.username,
             'password': data.password,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'response': data.response,
             'username': data.username,
             'password': data.password,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Response': data.response,
             'Username': data.username,
             'Password': data.password,
@@ -8855,21 +8855,21 @@ def _map_web_audio__context_realtime_data__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'current_time': data.current_time,
             'render_capacity': data.render_capacity,
             'callback_interval_mean': data.callback_interval_mean,
             'callback_interval_variance': data.callback_interval_variance,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'currentTime': data.current_time,
             'renderCapacity': data.render_capacity,
             'callbackIntervalMean': data.callback_interval_mean,
             'callbackIntervalVariance': data.callback_interval_variance,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'CurrentTime': data.current_time,
             'RenderCapacity': data.render_capacity,
             'CallbackIntervalMean': data.callback_interval_mean,
@@ -8882,7 +8882,7 @@ def _map_web_audio__base_audio_context__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'context_id': data.context_id,
             'context_type': data.context_type,
             'context_state': data.context_state,
@@ -8892,7 +8892,7 @@ def _map_web_audio__base_audio_context__to_dict(
             'sample_rate': data.sample_rate,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'contextId': data.context_id,
             'contextType': data.context_type,
             'contextState': data.context_state,
@@ -8902,7 +8902,7 @@ def _map_web_audio__base_audio_context__to_dict(
             'sampleRate': data.sample_rate,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ContextId': data.context_id,
             'ContextType': data.context_type,
             'ContextState': data.context_state,
@@ -8918,17 +8918,17 @@ def _map_web_audio__audio_listener__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'listener_id': data.listener_id,
             'context_id': data.context_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'listenerId': data.listener_id,
             'contextId': data.context_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ListenerId': data.listener_id,
             'ContextId': data.context_id,
         }
@@ -8939,7 +8939,7 @@ def _map_web_audio__audio_node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'node_id': data.node_id,
             'context_id': data.context_id,
             'node_type': data.node_type,
@@ -8950,7 +8950,7 @@ def _map_web_audio__audio_node__to_dict(
             'channel_interpretation': data.channel_interpretation,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'nodeId': data.node_id,
             'contextId': data.context_id,
             'nodeType': data.node_type,
@@ -8961,7 +8961,7 @@ def _map_web_audio__audio_node__to_dict(
             'channelInterpretation': data.channel_interpretation,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'NodeId': data.node_id,
             'ContextId': data.context_id,
             'NodeType': data.node_type,
@@ -8978,7 +8978,7 @@ def _map_web_audio__audio_param__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'param_id': data.param_id,
             'node_id': data.node_id,
             'context_id': data.context_id,
@@ -8989,7 +8989,7 @@ def _map_web_audio__audio_param__to_dict(
             'max_value': data.max_value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'paramId': data.param_id,
             'nodeId': data.node_id,
             'contextId': data.context_id,
@@ -9000,7 +9000,7 @@ def _map_web_audio__audio_param__to_dict(
             'maxValue': data.max_value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ParamId': data.param_id,
             'NodeId': data.node_id,
             'ContextId': data.context_id,
@@ -9017,7 +9017,7 @@ def _map_web_authn__virtual_authenticator_options__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'protocol': data.protocol,
             'ctap2_version': data.ctap2_version,
             'transport': data.transport,
@@ -9031,7 +9031,7 @@ def _map_web_authn__virtual_authenticator_options__to_dict(
             'is_user_verified': data.is_user_verified,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'protocol': data.protocol,
             'ctap2Version': data.ctap2_version,
             'transport': data.transport,
@@ -9045,7 +9045,7 @@ def _map_web_authn__virtual_authenticator_options__to_dict(
             'isUserVerified': data.is_user_verified,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Protocol': data.protocol,
             'Ctap2Version': data.ctap2_version,
             'Transport': data.transport,
@@ -9065,7 +9065,7 @@ def _map_web_authn__credential__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'credential_id': data.credential_id,
             'is_resident_credential': data.is_resident_credential,
             'rp_id': data.rp_id,
@@ -9075,7 +9075,7 @@ def _map_web_authn__credential__to_dict(
             'large_blob': data.large_blob,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'credentialId': data.credential_id,
             'isResidentCredential': data.is_resident_credential,
             'rpId': data.rp_id,
@@ -9085,7 +9085,7 @@ def _map_web_authn__credential__to_dict(
             'largeBlob': data.large_blob,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'CredentialId': data.credential_id,
             'IsResidentCredential': data.is_resident_credential,
             'RpId': data.rp_id,
@@ -9101,17 +9101,17 @@ def _map_media__player_message__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'level': data.level,
             'message': data.message,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'level': data.level,
             'message': data.message,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Level': data.level,
             'Message': data.message,
         }
@@ -9122,17 +9122,17 @@ def _map_media__player_property__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': data.value,
         }
@@ -9143,17 +9143,17 @@ def _map_media__player_event__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'timestamp': data.timestamp,
             'value': data.value,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'timestamp': data.timestamp,
             'value': data.value,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Timestamp': data.timestamp,
             'Value': data.value,
         }
@@ -9164,17 +9164,17 @@ def _map_media__player_error_source_location__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'file': data.file,
             'line': data.line,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'file': data.file,
             'line': data.line,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'File': data.file,
             'Line': data.line,
         }
@@ -9185,7 +9185,7 @@ def _map_media__player_error__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'error_type': data.error_type,
             'code': data.code,
             'stack': [
@@ -9199,7 +9199,7 @@ def _map_media__player_error__to_dict(
             'data': data.data,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'errorType': data.error_type,
             'code': data.code,
             'stack': [
@@ -9213,7 +9213,7 @@ def _map_media__player_error__to_dict(
             'data': data.data,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ErrorType': data.error_type,
             'Code': data.code,
             'Stack': [
@@ -9233,17 +9233,17 @@ def _map_device_access__prompt_device__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'name': data.name,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'name': data.name,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'Name': data.name,
         }
@@ -9254,7 +9254,7 @@ def _map_preload__rule_set__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'loader_id': data.loader_id,
             'source_text': data.source_text,
@@ -9265,7 +9265,7 @@ def _map_preload__rule_set__to_dict(
             'error_message': data.error_message,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'loaderId': data.loader_id,
             'sourceText': data.source_text,
@@ -9276,7 +9276,7 @@ def _map_preload__rule_set__to_dict(
             'errorMessage': data.error_message,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'LoaderId': data.loader_id,
             'SourceText': data.source_text,
@@ -9293,21 +9293,21 @@ def _map_preload__preloading_attempt_key__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'loader_id': data.loader_id,
             'action': data.action,
             'url': data.url,
             'target_hint': data.target_hint,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'loaderId': data.loader_id,
             'action': data.action,
             'url': data.url,
             'targetHint': data.target_hint,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'LoaderId': data.loader_id,
             'Action': data.action,
             'Url': data.url,
@@ -9320,7 +9320,7 @@ def _map_preload__preloading_attempt_source__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'key': to_dict(data.key, casing_strategy),
             'rule_set_ids': [
                 item
@@ -9332,7 +9332,7 @@ def _map_preload__preloading_attempt_source__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'key': to_dict(data.key, casing_strategy),
             'ruleSetIds': [
                 item
@@ -9344,7 +9344,7 @@ def _map_preload__preloading_attempt_source__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Key': to_dict(data.key, casing_strategy),
             'RuleSetIds': [
                 item
@@ -9362,7 +9362,7 @@ def _map_fed_cm__account__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'account_id': data.account_id,
             'email': data.email,
             'name': data.name,
@@ -9375,7 +9375,7 @@ def _map_fed_cm__account__to_dict(
             'privacy_policy_url': data.privacy_policy_url,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'accountId': data.account_id,
             'email': data.email,
             'name': data.name,
@@ -9388,7 +9388,7 @@ def _map_fed_cm__account__to_dict(
             'privacyPolicyUrl': data.privacy_policy_url,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'AccountId': data.account_id,
             'Email': data.email,
             'Name': data.name,
@@ -9407,7 +9407,7 @@ def _map_console__console_message__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'source': data.source,
             'level': data.level,
             'text': data.text,
@@ -9416,7 +9416,7 @@ def _map_console__console_message__to_dict(
             'column': data.column,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'source': data.source,
             'level': data.level,
             'text': data.text,
@@ -9425,7 +9425,7 @@ def _map_console__console_message__to_dict(
             'column': data.column,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Source': data.source,
             'Level': data.level,
             'Text': data.text,
@@ -9440,19 +9440,19 @@ def _map_debugger__location__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'script_id': data.script_id,
             'line_number': data.line_number,
             'column_number': data.column_number,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'scriptId': data.script_id,
             'lineNumber': data.line_number,
             'columnNumber': data.column_number,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ScriptId': data.script_id,
             'LineNumber': data.line_number,
             'ColumnNumber': data.column_number,
@@ -9464,17 +9464,17 @@ def _map_debugger__script_position__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'line_number': data.line_number,
             'column_number': data.column_number,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'lineNumber': data.line_number,
             'columnNumber': data.column_number,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'LineNumber': data.line_number,
             'ColumnNumber': data.column_number,
         }
@@ -9485,7 +9485,7 @@ def _map_debugger__call_frame__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'call_frame_id': data.call_frame_id,
             'function_name': data.function_name,
             'function_location': to_dict(data.function_location, casing_strategy),
@@ -9499,7 +9499,7 @@ def _map_debugger__call_frame__to_dict(
             'return_value': to_dict(data.return_value, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'callFrameId': data.call_frame_id,
             'functionName': data.function_name,
             'functionLocation': to_dict(data.function_location, casing_strategy),
@@ -9513,7 +9513,7 @@ def _map_debugger__call_frame__to_dict(
             'returnValue': to_dict(data.return_value, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'CallFrameId': data.call_frame_id,
             'FunctionName': data.function_name,
             'FunctionLocation': to_dict(data.function_location, casing_strategy),
@@ -9533,7 +9533,7 @@ def _map_debugger__scope__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'object': to_dict(data.object, casing_strategy),
             'name': data.name,
@@ -9541,7 +9541,7 @@ def _map_debugger__scope__to_dict(
             'end_location': to_dict(data.end_location, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'object': to_dict(data.object, casing_strategy),
             'name': data.name,
@@ -9549,7 +9549,7 @@ def _map_debugger__scope__to_dict(
             'endLocation': to_dict(data.end_location, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Object': to_dict(data.object, casing_strategy),
             'Name': data.name,
@@ -9563,17 +9563,17 @@ def _map_debugger__search_match__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'line_number': data.line_number,
             'line_content': data.line_content,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'lineNumber': data.line_number,
             'lineContent': data.line_content,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'LineNumber': data.line_number,
             'LineContent': data.line_content,
         }
@@ -9584,21 +9584,21 @@ def _map_debugger__break_location__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'script_id': data.script_id,
             'line_number': data.line_number,
             'column_number': data.column_number,
             'type': data.type,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'scriptId': data.script_id,
             'lineNumber': data.line_number,
             'columnNumber': data.column_number,
             'type': data.type,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ScriptId': data.script_id,
             'LineNumber': data.line_number,
             'ColumnNumber': data.column_number,
@@ -9611,7 +9611,7 @@ def _map_heap_profiler__sampling_heap_profile_node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'call_frame': to_dict(data.call_frame, casing_strategy),
             'self_size': data.self_size,
             'id': data.id,
@@ -9621,7 +9621,7 @@ def _map_heap_profiler__sampling_heap_profile_node__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'callFrame': to_dict(data.call_frame, casing_strategy),
             'selfSize': data.self_size,
             'id': data.id,
@@ -9631,7 +9631,7 @@ def _map_heap_profiler__sampling_heap_profile_node__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'CallFrame': to_dict(data.call_frame, casing_strategy),
             'SelfSize': data.self_size,
             'Id': data.id,
@@ -9647,19 +9647,19 @@ def _map_heap_profiler__sampling_heap_profile_sample__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'size': data.size,
             'node_id': data.node_id,
             'ordinal': data.ordinal,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'size': data.size,
             'nodeId': data.node_id,
             'ordinal': data.ordinal,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Size': data.size,
             'NodeId': data.node_id,
             'Ordinal': data.ordinal,
@@ -9671,7 +9671,7 @@ def _map_heap_profiler__sampling_heap_profile__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'head': to_dict(data.head, casing_strategy),
             'samples': [
                 to_dict(item, casing_strategy)
@@ -9679,7 +9679,7 @@ def _map_heap_profiler__sampling_heap_profile__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'head': to_dict(data.head, casing_strategy),
             'samples': [
                 to_dict(item, casing_strategy)
@@ -9687,7 +9687,7 @@ def _map_heap_profiler__sampling_heap_profile__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Head': to_dict(data.head, casing_strategy),
             'Samples': [
                 to_dict(item, casing_strategy)
@@ -9701,7 +9701,7 @@ def _map_profiler__profile_node__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'call_frame': to_dict(data.call_frame, casing_strategy),
             'hit_count': data.hit_count,
@@ -9716,7 +9716,7 @@ def _map_profiler__profile_node__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'callFrame': to_dict(data.call_frame, casing_strategy),
             'hitCount': data.hit_count,
@@ -9731,7 +9731,7 @@ def _map_profiler__profile_node__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'CallFrame': to_dict(data.call_frame, casing_strategy),
             'HitCount': data.hit_count,
@@ -9752,7 +9752,7 @@ def _map_profiler__profile__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'nodes': [
                 to_dict(item, casing_strategy)
                 for item in data.nodes
@@ -9769,7 +9769,7 @@ def _map_profiler__profile__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'nodes': [
                 to_dict(item, casing_strategy)
                 for item in data.nodes
@@ -9786,7 +9786,7 @@ def _map_profiler__profile__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Nodes': [
                 to_dict(item, casing_strategy)
                 for item in data.nodes
@@ -9809,17 +9809,17 @@ def _map_profiler__position_tick_info__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'line': data.line,
             'ticks': data.ticks,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'line': data.line,
             'ticks': data.ticks,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Line': data.line,
             'Ticks': data.ticks,
         }
@@ -9830,19 +9830,19 @@ def _map_profiler__coverage_range__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'start_offset': data.start_offset,
             'end_offset': data.end_offset,
             'count': data.count,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'startOffset': data.start_offset,
             'endOffset': data.end_offset,
             'count': data.count,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'StartOffset': data.start_offset,
             'EndOffset': data.end_offset,
             'Count': data.count,
@@ -9854,7 +9854,7 @@ def _map_profiler__function_coverage__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'function_name': data.function_name,
             'ranges': [
                 to_dict(item, casing_strategy)
@@ -9863,7 +9863,7 @@ def _map_profiler__function_coverage__to_dict(
             'is_block_coverage': data.is_block_coverage,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'functionName': data.function_name,
             'ranges': [
                 to_dict(item, casing_strategy)
@@ -9872,7 +9872,7 @@ def _map_profiler__function_coverage__to_dict(
             'isBlockCoverage': data.is_block_coverage,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FunctionName': data.function_name,
             'Ranges': [
                 to_dict(item, casing_strategy)
@@ -9887,7 +9887,7 @@ def _map_profiler__script_coverage__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'script_id': data.script_id,
             'url': data.url,
             'functions': [
@@ -9896,7 +9896,7 @@ def _map_profiler__script_coverage__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'scriptId': data.script_id,
             'url': data.url,
             'functions': [
@@ -9905,7 +9905,7 @@ def _map_profiler__script_coverage__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ScriptId': data.script_id,
             'Url': data.url,
             'Functions': [
@@ -9920,15 +9920,15 @@ def _map_profiler__type_object__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
         }
 
@@ -9938,7 +9938,7 @@ def _map_profiler__type_profile_entry__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'offset': data.offset,
             'types': [
                 to_dict(item, casing_strategy)
@@ -9946,7 +9946,7 @@ def _map_profiler__type_profile_entry__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'offset': data.offset,
             'types': [
                 to_dict(item, casing_strategy)
@@ -9954,7 +9954,7 @@ def _map_profiler__type_profile_entry__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Offset': data.offset,
             'Types': [
                 to_dict(item, casing_strategy)
@@ -9968,7 +9968,7 @@ def _map_profiler__script_type_profile__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'script_id': data.script_id,
             'url': data.url,
             'entries': [
@@ -9977,7 +9977,7 @@ def _map_profiler__script_type_profile__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'scriptId': data.script_id,
             'url': data.url,
             'entries': [
@@ -9986,7 +9986,7 @@ def _map_profiler__script_type_profile__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ScriptId': data.script_id,
             'Url': data.url,
             'Entries': [
@@ -10001,7 +10001,7 @@ def _map_runtime__remote_object__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'subtype': data.subtype,
             'class_name': data.class_name,
@@ -10013,7 +10013,7 @@ def _map_runtime__remote_object__to_dict(
             'custom_preview': to_dict(data.custom_preview, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'subtype': data.subtype,
             'className': data.class_name,
@@ -10025,7 +10025,7 @@ def _map_runtime__remote_object__to_dict(
             'customPreview': to_dict(data.custom_preview, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Subtype': data.subtype,
             'ClassName': data.class_name,
@@ -10043,17 +10043,17 @@ def _map_runtime__custom_preview__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'header': data.header,
             'body_getter_id': data.body_getter_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'header': data.header,
             'bodyGetterId': data.body_getter_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Header': data.header,
             'BodyGetterId': data.body_getter_id,
         }
@@ -10064,7 +10064,7 @@ def _map_runtime__object_preview__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'type': data.type,
             'subtype': data.subtype,
             'description': data.description,
@@ -10079,7 +10079,7 @@ def _map_runtime__object_preview__to_dict(
             ],
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'type': data.type,
             'subtype': data.subtype,
             'description': data.description,
@@ -10094,7 +10094,7 @@ def _map_runtime__object_preview__to_dict(
             ],
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Type': data.type,
             'Subtype': data.subtype,
             'Description': data.description,
@@ -10115,7 +10115,7 @@ def _map_runtime__property_preview__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'type': data.type,
             'value': data.value,
@@ -10123,7 +10123,7 @@ def _map_runtime__property_preview__to_dict(
             'subtype': data.subtype,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'type': data.type,
             'value': data.value,
@@ -10131,7 +10131,7 @@ def _map_runtime__property_preview__to_dict(
             'subtype': data.subtype,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Type': data.type,
             'Value': data.value,
@@ -10145,17 +10145,17 @@ def _map_runtime__entry_preview__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'key': to_dict(data.key, casing_strategy),
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'key': to_dict(data.key, casing_strategy),
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Key': to_dict(data.key, casing_strategy),
             'Value': to_dict(data.value, casing_strategy),
         }
@@ -10166,7 +10166,7 @@ def _map_runtime__property_descriptor__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': to_dict(data.value, casing_strategy),
             'writable': data.writable,
@@ -10179,7 +10179,7 @@ def _map_runtime__property_descriptor__to_dict(
             'symbol': to_dict(data.symbol, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': to_dict(data.value, casing_strategy),
             'writable': data.writable,
@@ -10192,7 +10192,7 @@ def _map_runtime__property_descriptor__to_dict(
             'symbol': to_dict(data.symbol, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': to_dict(data.value, casing_strategy),
             'Writable': data.writable,
@@ -10211,17 +10211,17 @@ def _map_runtime__internal_property_descriptor__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': to_dict(data.value, casing_strategy),
         }
@@ -10232,17 +10232,17 @@ def _map_runtime__private_property_descriptor__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'value': to_dict(data.value, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Value': to_dict(data.value, casing_strategy),
         }
@@ -10253,19 +10253,19 @@ def _map_runtime__call_argument__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'value': data.value,
             'unserializable_value': data.unserializable_value,
             'object_id': data.object_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'value': data.value,
             'unserializableValue': data.unserializable_value,
             'objectId': data.object_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Value': data.value,
             'UnserializableValue': data.unserializable_value,
             'ObjectId': data.object_id,
@@ -10277,21 +10277,21 @@ def _map_runtime__execution_context_description__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'origin': data.origin,
             'name': data.name,
             'aux_data': data.aux_data,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'origin': data.origin,
             'name': data.name,
             'auxData': data.aux_data,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'Origin': data.origin,
             'Name': data.name,
@@ -10304,7 +10304,7 @@ def _map_runtime__exception_details__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'exception_id': data.exception_id,
             'text': data.text,
             'line_number': data.line_number,
@@ -10316,7 +10316,7 @@ def _map_runtime__exception_details__to_dict(
             'execution_context_id': data.execution_context_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'exceptionId': data.exception_id,
             'text': data.text,
             'lineNumber': data.line_number,
@@ -10328,7 +10328,7 @@ def _map_runtime__exception_details__to_dict(
             'executionContextId': data.execution_context_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'ExceptionId': data.exception_id,
             'Text': data.text,
             'LineNumber': data.line_number,
@@ -10346,7 +10346,7 @@ def _map_runtime__call_frame__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'function_name': data.function_name,
             'script_id': data.script_id,
             'url': data.url,
@@ -10354,7 +10354,7 @@ def _map_runtime__call_frame__to_dict(
             'column_number': data.column_number,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'functionName': data.function_name,
             'scriptId': data.script_id,
             'url': data.url,
@@ -10362,7 +10362,7 @@ def _map_runtime__call_frame__to_dict(
             'columnNumber': data.column_number,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'FunctionName': data.function_name,
             'ScriptId': data.script_id,
             'Url': data.url,
@@ -10376,7 +10376,7 @@ def _map_runtime__stack_trace__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'description': data.description,
             'call_frames': [
                 to_dict(item, casing_strategy)
@@ -10386,7 +10386,7 @@ def _map_runtime__stack_trace__to_dict(
             'parent_id': to_dict(data.parent_id, casing_strategy),
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'description': data.description,
             'callFrames': [
                 to_dict(item, casing_strategy)
@@ -10396,7 +10396,7 @@ def _map_runtime__stack_trace__to_dict(
             'parentId': to_dict(data.parent_id, casing_strategy),
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Description': data.description,
             'CallFrames': [
                 to_dict(item, casing_strategy)
@@ -10412,17 +10412,17 @@ def _map_runtime__stack_trace_id__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'id': data.id,
             'debugger_id': data.debugger_id,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'id': data.id,
             'debuggerId': data.debugger_id,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Id': data.id,
             'DebuggerId': data.debugger_id,
         }
@@ -10433,17 +10433,17 @@ def _map_schema__domain__to_dict(
 ) -> dict:
     
     if casing_strategy == 'snake':
-        return {
+                return {
             'name': data.name,
             'version': data.version,
         }    
     if casing_strategy == 'camel':
-        return {
+                return {
             'name': data.name,
             'version': data.version,
         }    
     if casing_strategy == 'pascal':
-        return {
+                return {
             'Name': data.name,
             'Version': data.version,
         }

@@ -12,10 +12,10 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.page.types import (
+        from cdp.domains.page.types import (
         FrameId
     )
-    from cdp.domains.runtime.types import (
+        from cdp.domains.runtime.types import (
         ExecutionContextId,
         RemoteObject,
         RemoteObjectId,
@@ -86,29 +86,6 @@ class BackendNode:
     node_type: int
     node_name: str
     backend_node_id: 'BackendNodeId'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'node_type': self.node_type,
-                'node_name': self.node_name,
-                'backend_node_id': self.backend_node_id,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'nodeType': self.node_type,
-                'nodeName': self.node_name,
-                'backendNodeId': self.backend_node_id,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'NodeType': self.node_type,
-                'NodeName': self.node_name,
-                'BackendNodeId': self.backend_node_id,
-            }
 
 
 @dataclass
@@ -144,149 +121,6 @@ class Node:
     is_svg: bool
     compatibility_mode: 'CompatibilityMode'
     assigned_slot: 'BackendNode'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'node_id': self.node_id,
-                'parent_id': self.parent_id,
-                'backend_node_id': self.backend_node_id,
-                'node_type': self.node_type,
-                'node_name': self.node_name,
-                'local_name': self.local_name,
-                'node_value': self.node_value,
-                'child_node_count': self.child_node_count,
-                'children': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.children
-                ],
-                'attributes': self.attributes,
-                'document_url': self.document_url,
-                'base_url': self.base_url,
-                'public_id': self.public_id,
-                'system_id': self.system_id,
-                'internal_subset': self.internal_subset,
-                'xml_version': self.xml_version,
-                'name': self.name,
-                'value': self.value,
-                'pseudo_type': self.pseudo_type,
-                'pseudo_identifier': self.pseudo_identifier,
-                'shadow_root_type': self.shadow_root_type,
-                'frame_id': self.frame_id,
-                'content_document': self.content_document.to_dict(casing_strategy),
-                'shadow_roots': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.shadow_roots
-                ],
-                'template_content': self.template_content.to_dict(casing_strategy),
-                'pseudo_elements': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.pseudo_elements
-                ],
-                'imported_document': self.imported_document.to_dict(casing_strategy),
-                'distributed_nodes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.distributed_nodes
-                ],
-                'is_svg': self.is_svg,
-                'compatibility_mode': self.compatibility_mode,
-                'assigned_slot': self.assigned_slot.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'nodeId': self.node_id,
-                'parentId': self.parent_id,
-                'backendNodeId': self.backend_node_id,
-                'nodeType': self.node_type,
-                'nodeName': self.node_name,
-                'localName': self.local_name,
-                'nodeValue': self.node_value,
-                'childNodeCount': self.child_node_count,
-                'children': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.children
-                ],
-                'attributes': self.attributes,
-                'documentURL': self.document_url,
-                'baseURL': self.base_url,
-                'publicId': self.public_id,
-                'systemId': self.system_id,
-                'internalSubset': self.internal_subset,
-                'xmlVersion': self.xml_version,
-                'name': self.name,
-                'value': self.value,
-                'pseudoType': self.pseudo_type,
-                'pseudoIdentifier': self.pseudo_identifier,
-                'shadowRootType': self.shadow_root_type,
-                'frameId': self.frame_id,
-                'contentDocument': self.content_document.to_dict(casing_strategy),
-                'shadowRoots': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.shadow_roots
-                ],
-                'templateContent': self.template_content.to_dict(casing_strategy),
-                'pseudoElements': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.pseudo_elements
-                ],
-                'importedDocument': self.imported_document.to_dict(casing_strategy),
-                'distributedNodes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.distributed_nodes
-                ],
-                'isSVG': self.is_svg,
-                'compatibilityMode': self.compatibility_mode,
-                'assignedSlot': self.assigned_slot.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'NodeId': self.node_id,
-                'ParentId': self.parent_id,
-                'BackendNodeId': self.backend_node_id,
-                'NodeType': self.node_type,
-                'NodeName': self.node_name,
-                'LocalName': self.local_name,
-                'NodeValue': self.node_value,
-                'ChildNodeCount': self.child_node_count,
-                'Children': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.children
-                ],
-                'Attributes': self.attributes,
-                'DocumentURL': self.document_url,
-                'BaseURL': self.base_url,
-                'PublicId': self.public_id,
-                'SystemId': self.system_id,
-                'InternalSubset': self.internal_subset,
-                'XmlVersion': self.xml_version,
-                'Name': self.name,
-                'Value': self.value,
-                'PseudoType': self.pseudo_type,
-                'PseudoIdentifier': self.pseudo_identifier,
-                'ShadowRootType': self.shadow_root_type,
-                'FrameId': self.frame_id,
-                'ContentDocument': self.content_document.to_dict(casing_strategy),
-                'ShadowRoots': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.shadow_roots
-                ],
-                'TemplateContent': self.template_content.to_dict(casing_strategy),
-                'PseudoElements': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.pseudo_elements
-                ],
-                'ImportedDocument': self.imported_document.to_dict(casing_strategy),
-                'DistributedNodes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.distributed_nodes
-                ],
-                'IsSVG': self.is_svg,
-                'CompatibilityMode': self.compatibility_mode,
-                'AssignedSlot': self.assigned_slot.to_dict(casing_strategy),
-            }
 
 
 @dataclass
@@ -295,32 +129,6 @@ class RGBA:
     g: int
     b: int
     a: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'r': self.r,
-                'g': self.g,
-                'b': self.b,
-                'a': self.a,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'r': self.r,
-                'g': self.g,
-                'b': self.b,
-                'a': self.a,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'R': self.r,
-                'G': self.g,
-                'B': self.b,
-                'A': self.a,
-            }
 
 
 @dataclass
@@ -332,41 +140,6 @@ class BoxModel:
     width: int
     height: int
     shape_outside: 'ShapeOutsideInfo'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'content': self.content,
-                'padding': self.padding,
-                'border': self.border,
-                'margin': self.margin,
-                'width': self.width,
-                'height': self.height,
-                'shape_outside': self.shape_outside.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'content': self.content,
-                'padding': self.padding,
-                'border': self.border,
-                'margin': self.margin,
-                'width': self.width,
-                'height': self.height,
-                'shapeOutside': self.shape_outside.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Content': self.content,
-                'Padding': self.padding,
-                'Border': self.border,
-                'Margin': self.margin,
-                'Width': self.width,
-                'Height': self.height,
-                'ShapeOutside': self.shape_outside.to_dict(casing_strategy),
-            }
 
 
 @dataclass
@@ -374,29 +147,6 @@ class ShapeOutsideInfo:
     bounds: 'Quad'
     shape: list
     margin_shape: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'bounds': self.bounds,
-                'shape': self.shape,
-                'margin_shape': self.margin_shape,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'bounds': self.bounds,
-                'shape': self.shape,
-                'marginShape': self.margin_shape,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Bounds': self.bounds,
-                'Shape': self.shape,
-                'MarginShape': self.margin_shape,
-            }
 
 
 @dataclass
@@ -405,58 +155,12 @@ class Rect:
     y: float
     width: float
     height: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'x': self.x,
-                'y': self.y,
-                'width': self.width,
-                'height': self.height,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'x': self.x,
-                'y': self.y,
-                'width': self.width,
-                'height': self.height,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'X': self.x,
-                'Y': self.y,
-                'Width': self.width,
-                'Height': self.height,
-            }
 
 
 @dataclass
 class CSSComputedStyleProperty:
     name: str
     value: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'value': self.value,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'value': self.value,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Value': self.value,
-            }
 
 
 @dataclass

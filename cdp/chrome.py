@@ -1,5 +1,5 @@
 import os
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import requests
 
@@ -10,10 +10,6 @@ from cdp.target import Target
 class Chrome:
     host: str
     port: int
-
-    _did_connect: bool = field(
-        init=False
-    )
 
     @classmethod
     def start(cls, host: str = '127.0.0.1', port: int = 9222):
@@ -27,22 +23,16 @@ class Chrome:
             port=port
         )
 
-        self.connect()
-
         return self
 
-    @classmethod
-    def get_targets(cls) -> list[Target]:
-        pass
+    @property
+    def http_url(self):
+        return f'http://{self.host}:{self.port}'
 
-    def __post_init__(self):
-        self._did_connect = False
+    def get_targets(self) -> list[Target]:
+        url = self.http_url + '/json/list'
 
-    def connect(self, force: bool = False):
-        if self._did_connect and not force:
-            return
-
-        response = requests.get('')
+        response = requests.get(url)
         response.raise_for_status()
 
-        self._did_connect = True
+        return [Target() for _ in response.json()]

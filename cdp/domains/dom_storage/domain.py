@@ -9,12 +9,13 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.dom_storage.types import (
-    StorageId
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.dom_storage.types import (
+    GetDOMStorageItemsReturnT,
+    StorageId
 )
 
 

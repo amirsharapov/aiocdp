@@ -9,12 +9,15 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.profiler.types import (
-    Profile
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.profiler.types import (
+    GetBestEffortCoverageReturnT,
+    StopReturnT,
+    TakePreciseCoverageReturnT,
+    TakeTypeProfileReturnT
 )
 
 
@@ -86,10 +89,10 @@ class Profiler(BaseDomain):
         params = {}
         
         if is_defined(call_count):
-params['callCount'] = call_count
+            params['callCount'] = call_count
         
         if is_defined(detailed):
-params['detailed'] = detailed
+            params['detailed'] = detailed
         
         return self._send_command(
             'Profiler.startPreciseCoverage',

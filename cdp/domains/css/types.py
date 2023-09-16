@@ -12,14 +12,14 @@ from dataclasses import (
     dataclass
 )
 if TYPE_CHECKING:
-    from cdp.domains.dom.types import (
+        from cdp.domains.dom.types import (
         BackendNodeId,
         LogicalAxes,
         NodeId,
         PhysicalAxes,
         PseudoType
     )
-    from cdp.domains.page.types import (
+        from cdp.domains.page.types import (
         FrameId
     )
 
@@ -47,130 +47,23 @@ class PseudoElementMatches:
     pseudo_type: 'PseudoType'
     pseudo_identifier: str
     matches: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'pseudo_type': self.pseudo_type,
-                'pseudo_identifier': self.pseudo_identifier,
-                'matches': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.matches
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'pseudoType': self.pseudo_type,
-                'pseudoIdentifier': self.pseudo_identifier,
-                'matches': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.matches
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'PseudoType': self.pseudo_type,
-                'PseudoIdentifier': self.pseudo_identifier,
-                'Matches': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.matches
-                ],
-            }
 
 
 @dataclass
 class InheritedStyleEntry:
     inline_style: 'CSSStyle'
     matched_css_rules: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'inline_style': self.inline_style.to_dict(casing_strategy),
-                'matched_css_rules': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.matched_css_rules
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'inlineStyle': self.inline_style.to_dict(casing_strategy),
-                'matchedCSSRules': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.matched_css_rules
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'InlineStyle': self.inline_style.to_dict(casing_strategy),
-                'MatchedCSSRules': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.matched_css_rules
-                ],
-            }
 
 
 @dataclass
 class InheritedPseudoElementMatches:
     pseudo_elements: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'pseudo_elements': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.pseudo_elements
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'pseudoElements': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.pseudo_elements
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'PseudoElements': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.pseudo_elements
-                ],
-            }
 
 
 @dataclass
 class RuleMatch:
     rule: 'CSSRule'
     matching_selectors: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'rule': self.rule.to_dict(casing_strategy),
-                'matching_selectors': self.matching_selectors,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'rule': self.rule.to_dict(casing_strategy),
-                'matchingSelectors': self.matching_selectors,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Rule': self.rule.to_dict(casing_strategy),
-                'MatchingSelectors': self.matching_selectors,
-            }
 
 
 @dataclass
@@ -178,29 +71,6 @@ class Value:
     text: str
     range: 'SourceRange'
     specificity: 'Specificity'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'text': self.text,
-                'range': self.range.to_dict(casing_strategy),
-                'specificity': self.specificity.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'text': self.text,
-                'range': self.range.to_dict(casing_strategy),
-                'specificity': self.specificity.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Text': self.text,
-                'Range': self.range.to_dict(casing_strategy),
-                'Specificity': self.specificity.to_dict(casing_strategy),
-            }
 
 
 @dataclass
@@ -208,64 +78,12 @@ class Specificity:
     a: int
     b: int
     c: int
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'a': self.a,
-                'b': self.b,
-                'c': self.c,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'a': self.a,
-                'b': self.b,
-                'c': self.c,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'A': self.a,
-                'B': self.b,
-                'C': self.c,
-            }
 
 
 @dataclass
 class SelectorList:
     selectors: list
     text: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'selectors': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.selectors
-                ],
-                'text': self.text,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'selectors': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.selectors
-                ],
-                'text': self.text,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Selectors': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.selectors
-                ],
-                'Text': self.text,
-            }
 
 
 @dataclass
@@ -288,74 +106,6 @@ class CSSStyleSheetHeader:
     end_line: float
     end_column: float
     loading_failed: bool
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'style_sheet_id': self.style_sheet_id,
-                'frame_id': self.frame_id,
-                'source_url': self.source_url,
-                'source_map_url': self.source_map_url,
-                'origin': self.origin,
-                'title': self.title,
-                'owner_node': self.owner_node,
-                'disabled': self.disabled,
-                'has_source_url': self.has_source_url,
-                'is_inline': self.is_inline,
-                'is_mutable': self.is_mutable,
-                'is_constructed': self.is_constructed,
-                'start_line': self.start_line,
-                'start_column': self.start_column,
-                'length': self.length,
-                'end_line': self.end_line,
-                'end_column': self.end_column,
-                'loading_failed': self.loading_failed,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'styleSheetId': self.style_sheet_id,
-                'frameId': self.frame_id,
-                'sourceURL': self.source_url,
-                'sourceMapURL': self.source_map_url,
-                'origin': self.origin,
-                'title': self.title,
-                'ownerNode': self.owner_node,
-                'disabled': self.disabled,
-                'hasSourceURL': self.has_source_url,
-                'isInline': self.is_inline,
-                'isMutable': self.is_mutable,
-                'isConstructed': self.is_constructed,
-                'startLine': self.start_line,
-                'startColumn': self.start_column,
-                'length': self.length,
-                'endLine': self.end_line,
-                'endColumn': self.end_column,
-                'loadingFailed': self.loading_failed,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StyleSheetId': self.style_sheet_id,
-                'FrameId': self.frame_id,
-                'SourceURL': self.source_url,
-                'SourceMapURL': self.source_map_url,
-                'Origin': self.origin,
-                'Title': self.title,
-                'OwnerNode': self.owner_node,
-                'Disabled': self.disabled,
-                'HasSourceURL': self.has_source_url,
-                'IsInline': self.is_inline,
-                'IsMutable': self.is_mutable,
-                'IsConstructed': self.is_constructed,
-                'StartLine': self.start_line,
-                'StartColumn': self.start_column,
-                'Length': self.length,
-                'EndLine': self.end_line,
-                'EndColumn': self.end_column,
-                'LoadingFailed': self.loading_failed,
-            }
 
 
 @dataclass
@@ -371,107 +121,6 @@ class CSSRule:
     layers: list
     scopes: list
     rule_types: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'style_sheet_id': self.style_sheet_id,
-                'selector_list': self.selector_list.to_dict(casing_strategy),
-                'nesting_selectors': self.nesting_selectors,
-                'origin': self.origin,
-                'style': self.style.to_dict(casing_strategy),
-                'media': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.media
-                ],
-                'container_queries': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.container_queries
-                ],
-                'supports': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.supports
-                ],
-                'layers': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.layers
-                ],
-                'scopes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.scopes
-                ],
-                'rule_types': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.rule_types
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'styleSheetId': self.style_sheet_id,
-                'selectorList': self.selector_list.to_dict(casing_strategy),
-                'nestingSelectors': self.nesting_selectors,
-                'origin': self.origin,
-                'style': self.style.to_dict(casing_strategy),
-                'media': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.media
-                ],
-                'containerQueries': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.container_queries
-                ],
-                'supports': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.supports
-                ],
-                'layers': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.layers
-                ],
-                'scopes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.scopes
-                ],
-                'ruleTypes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.rule_types
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StyleSheetId': self.style_sheet_id,
-                'SelectorList': self.selector_list.to_dict(casing_strategy),
-                'NestingSelectors': self.nesting_selectors,
-                'Origin': self.origin,
-                'Style': self.style.to_dict(casing_strategy),
-                'Media': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.media
-                ],
-                'ContainerQueries': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.container_queries
-                ],
-                'Supports': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.supports
-                ],
-                'Layers': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.layers
-                ],
-                'Scopes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.scopes
-                ],
-                'RuleTypes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.rule_types
-                ],
-            }
 
 
 @dataclass
@@ -480,32 +129,6 @@ class RuleUsage:
     start_offset: float
     end_offset: float
     used: bool
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'style_sheet_id': self.style_sheet_id,
-                'start_offset': self.start_offset,
-                'end_offset': self.end_offset,
-                'used': self.used,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'styleSheetId': self.style_sheet_id,
-                'startOffset': self.start_offset,
-                'endOffset': self.end_offset,
-                'used': self.used,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StyleSheetId': self.style_sheet_id,
-                'StartOffset': self.start_offset,
-                'EndOffset': self.end_offset,
-                'Used': self.used,
-            }
 
 
 @dataclass
@@ -514,32 +137,6 @@ class SourceRange:
     start_column: int
     end_line: int
     end_column: int
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'start_line': self.start_line,
-                'start_column': self.start_column,
-                'end_line': self.end_line,
-                'end_column': self.end_column,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'startLine': self.start_line,
-                'startColumn': self.start_column,
-                'endLine': self.end_line,
-                'endColumn': self.end_column,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StartLine': self.start_line,
-                'StartColumn': self.start_column,
-                'EndLine': self.end_line,
-                'EndColumn': self.end_column,
-            }
 
 
 @dataclass
@@ -547,55 +144,12 @@ class ShorthandEntry:
     name: str
     value: str
     important: bool
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'value': self.value,
-                'important': self.important,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'value': self.value,
-                'important': self.important,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Value': self.value,
-                'Important': self.important,
-            }
 
 
 @dataclass
 class CSSComputedStyleProperty:
     name: str
     value: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'value': self.value,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'value': self.value,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Value': self.value,
-            }
 
 
 @dataclass
@@ -605,53 +159,6 @@ class CSSStyle:
     shorthand_entries: list
     css_text: str
     range: 'SourceRange'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'style_sheet_id': self.style_sheet_id,
-                'css_properties': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.css_properties
-                ],
-                'shorthand_entries': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.shorthand_entries
-                ],
-                'css_text': self.css_text,
-                'range': self.range.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'styleSheetId': self.style_sheet_id,
-                'cssProperties': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.css_properties
-                ],
-                'shorthandEntries': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.shorthand_entries
-                ],
-                'cssText': self.css_text,
-                'range': self.range.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StyleSheetId': self.style_sheet_id,
-                'CssProperties': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.css_properties
-                ],
-                'ShorthandEntries': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.shorthand_entries
-                ],
-                'CssText': self.css_text,
-                'Range': self.range.to_dict(casing_strategy),
-            }
 
 
 @dataclass
@@ -665,56 +172,6 @@ class CSSProperty:
     disabled: bool
     range: 'SourceRange'
     longhand_properties: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'value': self.value,
-                'important': self.important,
-                'implicit': self.implicit,
-                'text': self.text,
-                'parsed_ok': self.parsed_ok,
-                'disabled': self.disabled,
-                'range': self.range.to_dict(casing_strategy),
-                'longhand_properties': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.longhand_properties
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'value': self.value,
-                'important': self.important,
-                'implicit': self.implicit,
-                'text': self.text,
-                'parsedOk': self.parsed_ok,
-                'disabled': self.disabled,
-                'range': self.range.to_dict(casing_strategy),
-                'longhandProperties': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.longhand_properties
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'Value': self.value,
-                'Important': self.important,
-                'Implicit': self.implicit,
-                'Text': self.text,
-                'ParsedOk': self.parsed_ok,
-                'Disabled': self.disabled,
-                'Range': self.range.to_dict(casing_strategy),
-                'LonghandProperties': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.longhand_properties
-                ],
-            }
 
 
 @dataclass
@@ -725,82 +182,12 @@ class CSSMedia:
     range: 'SourceRange'
     style_sheet_id: 'StyleSheetId'
     media_list: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'text': self.text,
-                'source': self.source,
-                'source_url': self.source_url,
-                'range': self.range.to_dict(casing_strategy),
-                'style_sheet_id': self.style_sheet_id,
-                'media_list': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.media_list
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'text': self.text,
-                'source': self.source,
-                'sourceURL': self.source_url,
-                'range': self.range.to_dict(casing_strategy),
-                'styleSheetId': self.style_sheet_id,
-                'mediaList': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.media_list
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Text': self.text,
-                'Source': self.source,
-                'SourceURL': self.source_url,
-                'Range': self.range.to_dict(casing_strategy),
-                'StyleSheetId': self.style_sheet_id,
-                'MediaList': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.media_list
-                ],
-            }
 
 
 @dataclass
 class MediaQuery:
     expressions: list
     active: bool
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'expressions': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.expressions
-                ],
-                'active': self.active,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'expressions': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.expressions
-                ],
-                'active': self.active,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Expressions': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.expressions
-                ],
-                'Active': self.active,
-            }
 
 
 @dataclass
@@ -810,35 +197,6 @@ class MediaQueryExpression:
     feature: str
     value_range: 'SourceRange'
     computed_length: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'value': self.value,
-                'unit': self.unit,
-                'feature': self.feature,
-                'value_range': self.value_range.to_dict(casing_strategy),
-                'computed_length': self.computed_length,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'value': self.value,
-                'unit': self.unit,
-                'feature': self.feature,
-                'valueRange': self.value_range.to_dict(casing_strategy),
-                'computedLength': self.computed_length,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Value': self.value,
-                'Unit': self.unit,
-                'Feature': self.feature,
-                'ValueRange': self.value_range.to_dict(casing_strategy),
-                'ComputedLength': self.computed_length,
-            }
 
 
 @dataclass
@@ -849,38 +207,6 @@ class CSSContainerQuery:
     name: str
     physical_axes: 'PhysicalAxes'
     logical_axes: 'LogicalAxes'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'text': self.text,
-                'range': self.range.to_dict(casing_strategy),
-                'style_sheet_id': self.style_sheet_id,
-                'name': self.name,
-                'physical_axes': self.physical_axes,
-                'logical_axes': self.logical_axes,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'text': self.text,
-                'range': self.range.to_dict(casing_strategy),
-                'styleSheetId': self.style_sheet_id,
-                'name': self.name,
-                'physicalAxes': self.physical_axes,
-                'logicalAxes': self.logical_axes,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Text': self.text,
-                'Range': self.range.to_dict(casing_strategy),
-                'StyleSheetId': self.style_sheet_id,
-                'Name': self.name,
-                'PhysicalAxes': self.physical_axes,
-                'LogicalAxes': self.logical_axes,
-            }
 
 
 @dataclass
@@ -889,32 +215,6 @@ class CSSSupports:
     active: bool
     range: 'SourceRange'
     style_sheet_id: 'StyleSheetId'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'text': self.text,
-                'active': self.active,
-                'range': self.range.to_dict(casing_strategy),
-                'style_sheet_id': self.style_sheet_id,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'text': self.text,
-                'active': self.active,
-                'range': self.range.to_dict(casing_strategy),
-                'styleSheetId': self.style_sheet_id,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Text': self.text,
-                'Active': self.active,
-                'Range': self.range.to_dict(casing_strategy),
-                'StyleSheetId': self.style_sheet_id,
-            }
 
 
 @dataclass
@@ -922,29 +222,6 @@ class CSSScope:
     text: str
     range: 'SourceRange'
     style_sheet_id: 'StyleSheetId'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'text': self.text,
-                'range': self.range.to_dict(casing_strategy),
-                'style_sheet_id': self.style_sheet_id,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'text': self.text,
-                'range': self.range.to_dict(casing_strategy),
-                'styleSheetId': self.style_sheet_id,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Text': self.text,
-                'Range': self.range.to_dict(casing_strategy),
-                'StyleSheetId': self.style_sheet_id,
-            }
 
 
 @dataclass
@@ -952,29 +229,6 @@ class CSSLayer:
     text: str
     range: 'SourceRange'
     style_sheet_id: 'StyleSheetId'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'text': self.text,
-                'range': self.range.to_dict(casing_strategy),
-                'style_sheet_id': self.style_sheet_id,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'text': self.text,
-                'range': self.range.to_dict(casing_strategy),
-                'styleSheetId': self.style_sheet_id,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Text': self.text,
-                'Range': self.range.to_dict(casing_strategy),
-                'StyleSheetId': self.style_sheet_id,
-            }
 
 
 @dataclass
@@ -982,38 +236,6 @@ class CSSLayerData:
     name: str
     sub_layers: list
     order: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name,
-                'sub_layers': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.sub_layers
-                ],
-                'order': self.order,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name,
-                'subLayers': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.sub_layers
-                ],
-                'order': self.order,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name,
-                'SubLayers': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.sub_layers
-                ],
-                'Order': self.order,
-            }
 
 
 @dataclass
@@ -1021,29 +243,6 @@ class PlatformFontUsage:
     family_name: str
     is_custom_font: bool
     glyph_count: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'family_name': self.family_name,
-                'is_custom_font': self.is_custom_font,
-                'glyph_count': self.glyph_count,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'familyName': self.family_name,
-                'isCustomFont': self.is_custom_font,
-                'glyphCount': self.glyph_count,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'FamilyName': self.family_name,
-                'IsCustomFont': self.is_custom_font,
-                'GlyphCount': self.glyph_count,
-            }
 
 
 @dataclass
@@ -1053,35 +252,6 @@ class FontVariationAxis:
     min_value: float
     max_value: float
     default_value: float
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'tag': self.tag,
-                'name': self.name,
-                'min_value': self.min_value,
-                'max_value': self.max_value,
-                'default_value': self.default_value,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'tag': self.tag,
-                'name': self.name,
-                'minValue': self.min_value,
-                'maxValue': self.max_value,
-                'defaultValue': self.default_value,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Tag': self.tag,
-                'Name': self.name,
-                'MinValue': self.min_value,
-                'MaxValue': self.max_value,
-                'DefaultValue': self.default_value,
-            }
 
 
 @dataclass
@@ -1096,59 +266,6 @@ class FontFace:
     src: str
     platform_font_family: str
     font_variation_axes: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'font_family': self.font_family,
-                'font_style': self.font_style,
-                'font_variant': self.font_variant,
-                'font_weight': self.font_weight,
-                'font_stretch': self.font_stretch,
-                'font_display': self.font_display,
-                'unicode_range': self.unicode_range,
-                'src': self.src,
-                'platform_font_family': self.platform_font_family,
-                'font_variation_axes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.font_variation_axes
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'fontFamily': self.font_family,
-                'fontStyle': self.font_style,
-                'fontVariant': self.font_variant,
-                'fontWeight': self.font_weight,
-                'fontStretch': self.font_stretch,
-                'fontDisplay': self.font_display,
-                'unicodeRange': self.unicode_range,
-                'src': self.src,
-                'platformFontFamily': self.platform_font_family,
-                'fontVariationAxes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.font_variation_axes
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'FontFamily': self.font_family,
-                'FontStyle': self.font_style,
-                'FontVariant': self.font_variant,
-                'FontWeight': self.font_weight,
-                'FontStretch': self.font_stretch,
-                'FontDisplay': self.font_display,
-                'UnicodeRange': self.unicode_range,
-                'Src': self.src,
-                'PlatformFontFamily': self.platform_font_family,
-                'FontVariationAxes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.font_variation_axes
-                ],
-            }
 
 
 @dataclass
@@ -1156,99 +273,18 @@ class CSSTryRule:
     style_sheet_id: 'StyleSheetId'
     origin: 'StyleSheetOrigin'
     style: 'CSSStyle'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'style_sheet_id': self.style_sheet_id,
-                'origin': self.origin,
-                'style': self.style.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'styleSheetId': self.style_sheet_id,
-                'origin': self.origin,
-                'style': self.style.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StyleSheetId': self.style_sheet_id,
-                'Origin': self.origin,
-                'Style': self.style.to_dict(casing_strategy),
-            }
 
 
 @dataclass
 class CSSPositionFallbackRule:
     name: 'Value'
     try_rules: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'name': self.name.to_dict(casing_strategy),
-                'try_rules': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.try_rules
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'name': self.name.to_dict(casing_strategy),
-                'tryRules': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.try_rules
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'Name': self.name.to_dict(casing_strategy),
-                'TryRules': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.try_rules
-                ],
-            }
 
 
 @dataclass
 class CSSKeyframesRule:
     animation_name: 'Value'
     keyframes: list
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'animation_name': self.animation_name.to_dict(casing_strategy),
-                'keyframes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.keyframes
-                ],
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'animationName': self.animation_name.to_dict(casing_strategy),
-                'keyframes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.keyframes
-                ],
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'AnimationName': self.animation_name.to_dict(casing_strategy),
-                'Keyframes': [
-                    _.to_dict(casing_strategy)
-                    for _ in self.keyframes
-                ],
-            }
 
 
 @dataclass
@@ -1257,32 +293,6 @@ class CSSPropertyRegistration:
     initial_value: 'Value'
     inherits: bool
     syntax: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'property_name': self.property_name,
-                'initial_value': self.initial_value.to_dict(casing_strategy),
-                'inherits': self.inherits,
-                'syntax': self.syntax,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'propertyName': self.property_name,
-                'initialValue': self.initial_value.to_dict(casing_strategy),
-                'inherits': self.inherits,
-                'syntax': self.syntax,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'PropertyName': self.property_name,
-                'InitialValue': self.initial_value.to_dict(casing_strategy),
-                'Inherits': self.inherits,
-                'Syntax': self.syntax,
-            }
 
 
 @dataclass
@@ -1291,32 +301,6 @@ class CSSPropertyRule:
     origin: 'StyleSheetOrigin'
     property_name: 'Value'
     style: 'CSSStyle'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'style_sheet_id': self.style_sheet_id,
-                'origin': self.origin,
-                'property_name': self.property_name.to_dict(casing_strategy),
-                'style': self.style.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'styleSheetId': self.style_sheet_id,
-                'origin': self.origin,
-                'propertyName': self.property_name.to_dict(casing_strategy),
-                'style': self.style.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StyleSheetId': self.style_sheet_id,
-                'Origin': self.origin,
-                'PropertyName': self.property_name.to_dict(casing_strategy),
-                'Style': self.style.to_dict(casing_strategy),
-            }
 
 
 @dataclass
@@ -1325,32 +309,6 @@ class CSSKeyframeRule:
     origin: 'StyleSheetOrigin'
     key_text: 'Value'
     style: 'CSSStyle'
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'style_sheet_id': self.style_sheet_id,
-                'origin': self.origin,
-                'key_text': self.key_text.to_dict(casing_strategy),
-                'style': self.style.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'styleSheetId': self.style_sheet_id,
-                'origin': self.origin,
-                'keyText': self.key_text.to_dict(casing_strategy),
-                'style': self.style.to_dict(casing_strategy),
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StyleSheetId': self.style_sheet_id,
-                'Origin': self.origin,
-                'KeyText': self.key_text.to_dict(casing_strategy),
-                'Style': self.style.to_dict(casing_strategy),
-            }
 
 
 @dataclass
@@ -1358,29 +316,6 @@ class StyleDeclarationEdit:
     style_sheet_id: 'StyleSheetId'
     range: 'SourceRange'
     text: str
-    def to_dict(
-        self,
-        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
-    ):
-        
-        if casing_strategy == 'snake':
-            return {
-                'style_sheet_id': self.style_sheet_id,
-                'range': self.range.to_dict(casing_strategy),
-                'text': self.text,
-            }        
-        if casing_strategy == 'camel':
-            return {
-                'styleSheetId': self.style_sheet_id,
-                'range': self.range.to_dict(casing_strategy),
-                'text': self.text,
-            }        
-        if casing_strategy == 'pascal':
-            return {
-                'StyleSheetId': self.style_sheet_id,
-                'Range': self.range.to_dict(casing_strategy),
-                'Text': self.text,
-            }
 
 
 @dataclass

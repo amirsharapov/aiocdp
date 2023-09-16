@@ -9,33 +9,42 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
+from cdp.utils import (
+    is_defined,
+    UNDEFINED
+)
 from cdp.domains.network.types import (
     AuthChallengeResponse,
+    CanClearBrowserCacheReturnT,
+    CanClearBrowserCookiesReturnT,
+    CanEmulateNetworkConditionsReturnT,
     ConnectionType,
     CookiePriority,
     CookieSameSite,
     CookieSourceScheme,
     ErrorReason,
+    GetAllCookiesReturnT,
+    GetCertificateReturnT,
+    GetCookiesReturnT,
+    GetRequestPostDataReturnT,
+    GetResponseBodyForInterceptionReturnT,
+    GetResponseBodyReturnT,
+    GetSecurityIsolationStatusReturnT,
     Headers,
     InterceptionId,
     LoadNetworkResourceOptions,
-    LoadNetworkResourcePageResult,
+    LoadNetworkResourceReturnT,
     RequestId,
-    SecurityIsolationStatus,
+    SearchInResponseBodyReturnT,
+    SetCookieReturnT,
+    TakeResponseBodyForInterceptionAsStreamReturnT,
     TimeSinceEpoch
-)
-from cdp.domains.io.types import (
-    StreamHandle
 )
 from cdp.domains.emulation.types import (
     UserAgentMetadata
 )
 from cdp.domains.page.types import (
     FrameId
-)
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
 )
 
 
@@ -137,25 +146,25 @@ class Network(BaseDomain):
         }
         
         if is_defined(error_reason):
-params['errorReason'] = error_reason
+            params['errorReason'] = error_reason
         
         if is_defined(raw_response):
-params['rawResponse'] = raw_response
+            params['rawResponse'] = raw_response
         
         if is_defined(url):
-params['url'] = url
+            params['url'] = url
         
         if is_defined(method):
-params['method'] = method
+            params['method'] = method
         
         if is_defined(post_data):
-params['postData'] = post_data
+            params['postData'] = post_data
         
         if is_defined(headers):
-params['headers'] = headers
+            params['headers'] = headers
         
         if is_defined(auth_challenge_response):
-params['authChallengeResponse'] = auth_challenge_response
+            params['authChallengeResponse'] = auth_challenge_response
         
         return self._send_command(
             'Network.continueInterceptedRequest',
@@ -175,13 +184,13 @@ params['authChallengeResponse'] = auth_challenge_response
         }
         
         if is_defined(url):
-params['url'] = url
+            params['url'] = url
         
         if is_defined(domain):
-params['domain'] = domain
+            params['domain'] = domain
         
         if is_defined(path):
-params['path'] = path
+            params['path'] = path
         
         return self._send_command(
             'Network.deleteCookies',
@@ -216,7 +225,7 @@ params['path'] = path
         }
         
         if is_defined(connection_type):
-params['connectionType'] = connection_type
+            params['connectionType'] = connection_type
         
         return self._send_command(
             'Network.emulateNetworkConditions',
@@ -233,13 +242,13 @@ params['connectionType'] = connection_type
         params = {}
         
         if is_defined(max_total_buffer_size):
-params['maxTotalBufferSize'] = max_total_buffer_size
+            params['maxTotalBufferSize'] = max_total_buffer_size
         
         if is_defined(max_resource_buffer_size):
-params['maxResourceBufferSize'] = max_resource_buffer_size
+            params['maxResourceBufferSize'] = max_resource_buffer_size
         
         if is_defined(max_post_data_size):
-params['maxPostDataSize'] = max_post_data_size
+            params['maxPostDataSize'] = max_post_data_size
         
         return self._send_command(
             'Network.enable',
@@ -279,7 +288,7 @@ params['maxPostDataSize'] = max_post_data_size
         params = {}
         
         if is_defined(urls):
-params['urls'] = urls
+            params['urls'] = urls
         
         return self._send_command(
             'Network.getCookies',
@@ -370,10 +379,10 @@ params['urls'] = urls
         }
         
         if is_defined(case_sensitive):
-params['caseSensitive'] = case_sensitive
+            params['caseSensitive'] = case_sensitive
         
         if is_defined(is_regex):
-params['isRegex'] = is_regex
+            params['isRegex'] = is_regex
         
         return self._send_command(
             'Network.searchInResponseBody',
@@ -446,40 +455,40 @@ params['isRegex'] = is_regex
         }
         
         if is_defined(url):
-params['url'] = url
+            params['url'] = url
         
         if is_defined(domain):
-params['domain'] = domain
+            params['domain'] = domain
         
         if is_defined(path):
-params['path'] = path
+            params['path'] = path
         
         if is_defined(secure):
-params['secure'] = secure
+            params['secure'] = secure
         
         if is_defined(http_only):
-params['httpOnly'] = http_only
+            params['httpOnly'] = http_only
         
         if is_defined(same_site):
-params['sameSite'] = same_site
+            params['sameSite'] = same_site
         
         if is_defined(expires):
-params['expires'] = expires
+            params['expires'] = expires
         
         if is_defined(priority):
-params['priority'] = priority
+            params['priority'] = priority
         
         if is_defined(same_party):
-params['sameParty'] = same_party
+            params['sameParty'] = same_party
         
         if is_defined(source_scheme):
-params['sourceScheme'] = source_scheme
+            params['sourceScheme'] = source_scheme
         
         if is_defined(source_port):
-params['sourcePort'] = source_port
+            params['sourcePort'] = source_port
         
         if is_defined(partition_key):
-params['partitionKey'] = partition_key
+            params['partitionKey'] = partition_key
         
         return self._send_command(
             'Network.setCookie',
@@ -555,13 +564,13 @@ params['partitionKey'] = partition_key
         }
         
         if is_defined(accept_language):
-params['acceptLanguage'] = accept_language
+            params['acceptLanguage'] = accept_language
         
         if is_defined(platform):
-params['platform'] = platform
+            params['platform'] = platform
         
         if is_defined(user_agent_metadata):
-params['userAgentMetadata'] = user_agent_metadata
+            params['userAgentMetadata'] = user_agent_metadata
         
         return self._send_command(
             'Network.setUserAgentOverride',
@@ -576,7 +585,7 @@ params['userAgentMetadata'] = user_agent_metadata
         params = {}
         
         if is_defined(frame_id):
-params['frameId'] = frame_id
+            params['frameId'] = frame_id
         
         return self._send_command(
             'Network.getSecurityIsolationStatus',
@@ -610,7 +619,7 @@ params['frameId'] = frame_id
         }
         
         if is_defined(frame_id):
-params['frameId'] = frame_id
+            params['frameId'] = frame_id
         
         return self._send_command(
             'Network.loadNetworkResource',

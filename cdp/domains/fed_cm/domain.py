@@ -24,7 +24,7 @@ class FedCm(BaseDomain):
         params = {}
         
         if is_defined(disable_rejection_delay):
-params['disableRejectionDelay'] = disable_rejection_delay
+            params['disableRejectionDelay'] = disable_rejection_delay
         
         return self._send_command(
             'FedCm.enable',
@@ -83,7 +83,7 @@ params['disableRejectionDelay'] = disable_rejection_delay
         }
         
         if is_defined(trigger_cooldown):
-params['triggerCooldown'] = trigger_cooldown
+            params['triggerCooldown'] = trigger_cooldown
         
         return self._send_command(
             'FedCm.dismissDialog',

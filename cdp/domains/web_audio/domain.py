@@ -9,13 +9,13 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.web_audio.types import (
-    ContextRealtimeData,
-    GraphObjectId
-)
 from cdp.utils import (
     is_defined,
     UNDEFINED
+)
+from cdp.domains.web_audio.types import (
+    GetRealtimeDataReturnT,
+    GraphObjectId
 )
 
 

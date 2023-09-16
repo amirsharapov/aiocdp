@@ -9,24 +9,26 @@ from cdp.domains.base import (
 from dataclasses import (
     dataclass
 )
-from cdp.domains.dom.types import (
-    RGBA
+from cdp.utils import (
+    is_defined,
+    UNDEFINED
 )
 from cdp.domains.emulation.types import (
+    CanEmulateReturnT,
     DisplayFeature,
     ScreenOrientation,
+    SetVirtualTimePolicyReturnT,
     UserAgentMetadata,
     VirtualTimePolicy
+)
+from cdp.domains.dom.types import (
+    RGBA
 )
 from cdp.domains.page.types import (
     Viewport
 )
 from cdp.domains.network.types import (
     TimeSinceEpoch
-)
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
 )
 
 
@@ -97,7 +99,7 @@ class Emulation(BaseDomain):
         params = {}
         
         if is_defined(enabled):
-params['enabled'] = enabled
+            params['enabled'] = enabled
         
         return self._send_command(
             'Emulation.setAutoDarkModeOverride',
@@ -126,7 +128,7 @@ params['enabled'] = enabled
         params = {}
         
         if is_defined(color):
-params['color'] = color
+            params['color'] = color
         
         return self._send_command(
             'Emulation.setDefaultBackgroundColorOverride',
@@ -158,31 +160,31 @@ params['color'] = color
         }
         
         if is_defined(scale):
-params['scale'] = scale
+            params['scale'] = scale
         
         if is_defined(screen_width):
-params['screenWidth'] = screen_width
+            params['screenWidth'] = screen_width
         
         if is_defined(screen_height):
-params['screenHeight'] = screen_height
+            params['screenHeight'] = screen_height
         
         if is_defined(position_x):
-params['positionX'] = position_x
+            params['positionX'] = position_x
         
         if is_defined(position_y):
-params['positionY'] = position_y
+            params['positionY'] = position_y
         
         if is_defined(dont_set_visible_size):
-params['dontSetVisibleSize'] = dont_set_visible_size
+            params['dontSetVisibleSize'] = dont_set_visible_size
         
         if is_defined(screen_orientation):
-params['screenOrientation'] = screen_orientation
+            params['screenOrientation'] = screen_orientation
         
         if is_defined(viewport):
-params['viewport'] = viewport
+            params['viewport'] = viewport
         
         if is_defined(display_feature):
-params['displayFeature'] = display_feature
+            params['displayFeature'] = display_feature
         
         return self._send_command(
             'Emulation.setDeviceMetricsOverride',
@@ -228,7 +230,7 @@ params['displayFeature'] = display_feature
         }
         
         if is_defined(configuration):
-params['configuration'] = configuration
+            params['configuration'] = configuration
         
         return self._send_command(
             'Emulation.setEmitTouchEventsForMouse',
@@ -244,10 +246,10 @@ params['configuration'] = configuration
         params = {}
         
         if is_defined(media):
-params['media'] = media
+            params['media'] = media
         
         if is_defined(features):
-params['features'] = features
+            params['features'] = features
         
         return self._send_command(
             'Emulation.setEmulatedMedia',
@@ -278,13 +280,13 @@ params['features'] = features
         params = {}
         
         if is_defined(latitude):
-params['latitude'] = latitude
+            params['latitude'] = latitude
         
         if is_defined(longitude):
-params['longitude'] = longitude
+            params['longitude'] = longitude
         
         if is_defined(accuracy):
-params['accuracy'] = accuracy
+            params['accuracy'] = accuracy
         
         return self._send_command(
             'Emulation.setGeolocationOverride',
@@ -371,7 +373,7 @@ params['accuracy'] = accuracy
         }
         
         if is_defined(max_touch_points):
-params['maxTouchPoints'] = max_touch_points
+            params['maxTouchPoints'] = max_touch_points
         
         return self._send_command(
             'Emulation.setTouchEmulationEnabled',
@@ -391,13 +393,13 @@ params['maxTouchPoints'] = max_touch_points
         }
         
         if is_defined(budget):
-params['budget'] = budget
+            params['budget'] = budget
         
         if is_defined(max_virtual_time_task_starvation_count):
-params['maxVirtualTimeTaskStarvationCount'] = max_virtual_time_task_starvation_count
+            params['maxVirtualTimeTaskStarvationCount'] = max_virtual_time_task_starvation_count
         
         if is_defined(initial_virtual_time):
-params['initialVirtualTime'] = initial_virtual_time
+            params['initialVirtualTime'] = initial_virtual_time
         
         return self._send_command(
             'Emulation.setVirtualTimePolicy',
@@ -412,7 +414,7 @@ params['initialVirtualTime'] = initial_virtual_time
         params = {}
         
         if is_defined(locale):
-params['locale'] = locale
+            params['locale'] = locale
         
         return self._send_command(
             'Emulation.setLocaleOverride',
@@ -490,13 +492,13 @@ params['locale'] = locale
         }
         
         if is_defined(accept_language):
-params['acceptLanguage'] = accept_language
+            params['acceptLanguage'] = accept_language
         
         if is_defined(platform):
-params['platform'] = platform
+            params['platform'] = platform
         
         if is_defined(user_agent_metadata):
-params['userAgentMetadata'] = user_agent_metadata
+            params['userAgentMetadata'] = user_agent_metadata
         
         return self._send_command(
             'Emulation.setUserAgentOverride',
