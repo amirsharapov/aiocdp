@@ -19,50 +19,52 @@ from cdp.utils import (
 class Performance(BaseDomain):
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Performance.disable"',
+            'Performance.disable',
+
             params
         )
 
     def enable(
         self,
         time_domain: str = UNDEFINED
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
-        if is_defined(
-            time_domain
-        ):
-            params['timeDomain'            ] = time_domain
-
+        
+        if is_defined(time_domain):
+params['timeDomain'] = time_domain
+        
         return self._send_command(
-            '"Performance.enable"',
+            'Performance.enable',
+
             params
         )
 
     def set_time_domain(
         self,
         time_domain: str
-    ):
+    ) -> 'SetTimeDomainReturnT':
         params = {
             'timeDomain': time_domain,
         }
-
+        
         return self._send_command(
-            '"Performance.setTimeDomain"',
+            'Performance.setTimeDomain',
+
             params
         )
 
     def get_metrics(
         self
-    ):
+    ) -> 'GetMetricsReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Performance.getMetrics"',
+            'Performance.getMetrics',
+
             params
         )
 

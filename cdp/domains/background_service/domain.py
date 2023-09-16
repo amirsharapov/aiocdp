@@ -23,26 +23,28 @@ class BackgroundService(BaseDomain):
     def start_observing(
         self,
         service: ServiceName
-    ):
+    ) -> 'StartObservingReturnT':
         params = {
             'service': service,
         }
-
+        
         return self._send_command(
-            '"BackgroundService.startObserving"',
+            'BackgroundService.startObserving',
+
             params
         )
 
     def stop_observing(
         self,
         service: ServiceName
-    ):
+    ) -> 'StopObservingReturnT':
         params = {
             'service': service,
         }
-
+        
         return self._send_command(
-            '"BackgroundService.stopObserving"',
+            'BackgroundService.stopObserving',
+
             params
         )
 
@@ -50,27 +52,29 @@ class BackgroundService(BaseDomain):
         self,
         should_record: bool,
         service: ServiceName
-    ):
+    ) -> 'SetRecordingReturnT':
         params = {
             'shouldRecord': should_record,
             'service': service,
         }
-
+        
         return self._send_command(
-            '"BackgroundService.setRecording"',
+            'BackgroundService.setRecording',
+
             params
         )
 
     def clear_events(
         self,
         service: ServiceName
-    ):
+    ) -> 'ClearEventsReturnT':
         params = {
             'service': service,
         }
-
+        
         return self._send_command(
-            '"BackgroundService.clearEvents"',
+            'BackgroundService.clearEvents',
+
             params
         )
 

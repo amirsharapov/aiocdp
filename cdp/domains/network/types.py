@@ -330,13 +330,9 @@ class ResourceTiming:
     receive_headers_end: float
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'request_time': self.request_time,
@@ -358,7 +354,7 @@ class ResourceTiming:
                 'push_end': self.push_end,
                 'receive_headers_start': self.receive_headers_start,
                 'receive_headers_end': self.receive_headers_end,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'requestTime': self.request_time,
@@ -380,7 +376,7 @@ class ResourceTiming:
                 'pushEnd': self.push_end,
                 'receiveHeadersStart': self.receive_headers_start,
                 'receiveHeadersEnd': self.receive_headers_end,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'RequestTime': self.request_time,
@@ -410,24 +406,20 @@ class PostDataEntry:
     bytes: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'bytes': self.bytes_,
-            }
+                'bytes': self.bytes,
+            }        
         if casing_strategy == 'camel':
             return {
-                'bytes': self.bytes_,
-            }
+                'bytes': self.bytes,
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Bytes': self.bytes_,
+                'Bytes': self.bytes,
             }
 
 
@@ -448,83 +440,64 @@ class Request:
     is_same_site: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'url': self.url,
                 'url_fragment': self.url_fragment,
                 'method': self.method,
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'headers': self.headers,
                 'post_data': self.post_data,
                 'has_post_data': self.has_post_data,
-                'post_data_entries': [_.to_dict(
-                    casing_strategy
-                )
+                'post_data_entries': [
+                    _.to_dict(casing_strategy)
                     for _ in self.post_data_entries
                 ],
                 'mixed_content_type': self.mixed_content_type,
                 'initial_priority': self.initial_priority,
                 'referrer_policy': self.referrer_policy,
                 'is_link_preload': self.is_link_preload,
-                'trust_token_params': self.trust_token_params.to_dict(
-                    casing_strategy
-                ),
+                'trust_token_params': self.trust_token_params.to_dict(casing_strategy),
                 'is_same_site': self.is_same_site,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'url': self.url,
                 'urlFragment': self.url_fragment,
                 'method': self.method,
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'headers': self.headers,
                 'postData': self.post_data,
                 'hasPostData': self.has_post_data,
-                'postDataEntries': [_.to_dict(
-                    casing_strategy
-                )
+                'postDataEntries': [
+                    _.to_dict(casing_strategy)
                     for _ in self.post_data_entries
                 ],
                 'mixedContentType': self.mixed_content_type,
                 'initialPriority': self.initial_priority,
                 'referrerPolicy': self.referrer_policy,
                 'isLinkPreload': self.is_link_preload,
-                'trustTokenParams': self.trust_token_params.to_dict(
-                    casing_strategy
-                ),
+                'trustTokenParams': self.trust_token_params.to_dict(casing_strategy),
                 'isSameSite': self.is_same_site,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Url': self.url,
                 'UrlFragment': self.url_fragment,
                 'Method': self.method,
-                'Headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'Headers': self.headers,
                 'PostData': self.post_data,
                 'HasPostData': self.has_post_data,
-                'PostDataEntries': [_.to_dict(
-                    casing_strategy
-                )
+                'PostDataEntries': [
+                    _.to_dict(casing_strategy)
                     for _ in self.post_data_entries
                 ],
                 'MixedContentType': self.mixed_content_type,
                 'InitialPriority': self.initial_priority,
                 'ReferrerPolicy': self.referrer_policy,
                 'IsLinkPreload': self.is_link_preload,
-                'TrustTokenParams': self.trust_token_params.to_dict(
-                    casing_strategy
-                ),
+                'TrustTokenParams': self.trust_token_params.to_dict(casing_strategy),
                 'IsSameSite': self.is_same_site,
             }
 
@@ -541,13 +514,9 @@ class SignedCertificateTimestamp:
     signature_data: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'status': self.status,
@@ -558,7 +527,7 @@ class SignedCertificateTimestamp:
                 'hash_algorithm': self.hash_algorithm,
                 'signature_algorithm': self.signature_algorithm,
                 'signature_data': self.signature_data,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'status': self.status,
@@ -569,7 +538,7 @@ class SignedCertificateTimestamp:
                 'hashAlgorithm': self.hash_algorithm,
                 'signatureAlgorithm': self.signature_algorithm,
                 'signatureData': self.signature_data,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Status': self.status,
@@ -602,13 +571,9 @@ class SecurityDetails:
     encrypted_client_hello: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'protocol': self.protocol,
@@ -616,27 +581,20 @@ class SecurityDetails:
                 'key_exchange_group': self.key_exchange_group,
                 'cipher': self.cipher,
                 'mac': self.mac,
-                'certificate_id': self.certificate_id.to_dict(
-                    casing_strategy
-                ),
+                'certificate_id': self.certificate_id,
                 'subject_name': self.subject_name,
                 'san_list': self.san_list,
                 'issuer': self.issuer,
-                'valid_from': self.valid_from.to_dict(
-                    casing_strategy
-                ),
-                'valid_to': self.valid_to.to_dict(
-                    casing_strategy
-                ),
-                'signed_certificate_timestamp_list': [_.to_dict(
-                    casing_strategy
-                )
+                'valid_from': self.valid_from,
+                'valid_to': self.valid_to,
+                'signed_certificate_timestamp_list': [
+                    _.to_dict(casing_strategy)
                     for _ in self.signed_certificate_timestamp_list
                 ],
                 'certificate_transparency_compliance': self.certificate_transparency_compliance,
                 'server_signature_algorithm': self.server_signature_algorithm,
                 'encrypted_client_hello': self.encrypted_client_hello,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'protocol': self.protocol,
@@ -644,27 +602,20 @@ class SecurityDetails:
                 'keyExchangeGroup': self.key_exchange_group,
                 'cipher': self.cipher,
                 'mac': self.mac,
-                'certificateId': self.certificate_id.to_dict(
-                    casing_strategy
-                ),
+                'certificateId': self.certificate_id,
                 'subjectName': self.subject_name,
                 'sanList': self.san_list,
                 'issuer': self.issuer,
-                'validFrom': self.valid_from.to_dict(
-                    casing_strategy
-                ),
-                'validTo': self.valid_to.to_dict(
-                    casing_strategy
-                ),
-                'signedCertificateTimestampList': [_.to_dict(
-                    casing_strategy
-                )
+                'validFrom': self.valid_from,
+                'validTo': self.valid_to,
+                'signedCertificateTimestampList': [
+                    _.to_dict(casing_strategy)
                     for _ in self.signed_certificate_timestamp_list
                 ],
                 'certificateTransparencyCompliance': self.certificate_transparency_compliance,
                 'serverSignatureAlgorithm': self.server_signature_algorithm,
                 'encryptedClientHello': self.encrypted_client_hello,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Protocol': self.protocol,
@@ -672,21 +623,14 @@ class SecurityDetails:
                 'KeyExchangeGroup': self.key_exchange_group,
                 'Cipher': self.cipher,
                 'Mac': self.mac,
-                'CertificateId': self.certificate_id.to_dict(
-                    casing_strategy
-                ),
+                'CertificateId': self.certificate_id,
                 'SubjectName': self.subject_name,
                 'SanList': self.san_list,
                 'Issuer': self.issuer,
-                'ValidFrom': self.valid_from.to_dict(
-                    casing_strategy
-                ),
-                'ValidTo': self.valid_to.to_dict(
-                    casing_strategy
-                ),
-                'SignedCertificateTimestampList': [_.to_dict(
-                    casing_strategy
-                )
+                'ValidFrom': self.valid_from,
+                'ValidTo': self.valid_to,
+                'SignedCertificateTimestampList': [
+                    _.to_dict(casing_strategy)
                     for _ in self.signed_certificate_timestamp_list
                 ],
                 'CertificateTransparencyCompliance': self.certificate_transparency_compliance,
@@ -701,23 +645,19 @@ class CorsErrorStatus:
     failed_parameter: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'cors_error': self.cors_error,
                 'failed_parameter': self.failed_parameter,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'corsError': self.cors_error,
                 'failedParameter': self.failed_parameter,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'CorsError': self.cors_error,
@@ -732,25 +672,21 @@ class TrustTokenParams:
     issuers: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'operation': self.operation,
                 'refresh_policy': self.refresh_policy,
                 'issuers': self.issuers,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'operation': self.operation,
                 'refreshPolicy': self.refresh_policy,
                 'issuers': self.issuers,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Operation': self.operation,
@@ -787,26 +723,18 @@ class Response:
     security_details: 'SecurityDetails'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'url': self.url,
                 'status': self.status,
                 'status_text': self.status_text,
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'headers': self.headers,
                 'headers_text': self.headers_text,
                 'mime_type': self.mime_type,
-                'request_headers': self.request_headers.to_dict(
-                    casing_strategy
-                ),
+                'request_headers': self.request_headers,
                 'request_headers_text': self.request_headers_text,
                 'connection_reused': self.connection_reused,
                 'connection_id': self.connection_id,
@@ -816,34 +744,24 @@ class Response:
                 'from_service_worker': self.from_service_worker,
                 'from_prefetch_cache': self.from_prefetch_cache,
                 'encoded_data_length': self.encoded_data_length,
-                'timing': self.timing.to_dict(
-                    casing_strategy
-                ),
+                'timing': self.timing.to_dict(casing_strategy),
                 'service_worker_response_source': self.service_worker_response_source,
-                'response_time': self.response_time.to_dict(
-                    casing_strategy
-                ),
+                'response_time': self.response_time,
                 'cache_storage_cache_name': self.cache_storage_cache_name,
                 'protocol': self.protocol,
                 'alternate_protocol_usage': self.alternate_protocol_usage,
                 'security_state': self.security_state,
-                'security_details': self.security_details.to_dict(
-                    casing_strategy
-                ),
-            }
+                'security_details': self.security_details.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
                 'url': self.url,
                 'status': self.status,
                 'statusText': self.status_text,
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'headers': self.headers,
                 'headersText': self.headers_text,
                 'mimeType': self.mime_type,
-                'requestHeaders': self.request_headers.to_dict(
-                    casing_strategy
-                ),
+                'requestHeaders': self.request_headers,
                 'requestHeadersText': self.request_headers_text,
                 'connectionReused': self.connection_reused,
                 'connectionId': self.connection_id,
@@ -853,34 +771,24 @@ class Response:
                 'fromServiceWorker': self.from_service_worker,
                 'fromPrefetchCache': self.from_prefetch_cache,
                 'encodedDataLength': self.encoded_data_length,
-                'timing': self.timing.to_dict(
-                    casing_strategy
-                ),
+                'timing': self.timing.to_dict(casing_strategy),
                 'serviceWorkerResponseSource': self.service_worker_response_source,
-                'responseTime': self.response_time.to_dict(
-                    casing_strategy
-                ),
+                'responseTime': self.response_time,
                 'cacheStorageCacheName': self.cache_storage_cache_name,
                 'protocol': self.protocol,
                 'alternateProtocolUsage': self.alternate_protocol_usage,
                 'securityState': self.security_state,
-                'securityDetails': self.security_details.to_dict(
-                    casing_strategy
-                ),
-            }
+                'securityDetails': self.security_details.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Url': self.url,
                 'Status': self.status,
                 'StatusText': self.status_text,
-                'Headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'Headers': self.headers,
                 'HeadersText': self.headers_text,
                 'MimeType': self.mime_type,
-                'RequestHeaders': self.request_headers.to_dict(
-                    casing_strategy
-                ),
+                'RequestHeaders': self.request_headers,
                 'RequestHeadersText': self.request_headers_text,
                 'ConnectionReused': self.connection_reused,
                 'ConnectionId': self.connection_id,
@@ -890,20 +798,14 @@ class Response:
                 'FromServiceWorker': self.from_service_worker,
                 'FromPrefetchCache': self.from_prefetch_cache,
                 'EncodedDataLength': self.encoded_data_length,
-                'Timing': self.timing.to_dict(
-                    casing_strategy
-                ),
+                'Timing': self.timing.to_dict(casing_strategy),
                 'ServiceWorkerResponseSource': self.service_worker_response_source,
-                'ResponseTime': self.response_time.to_dict(
-                    casing_strategy
-                ),
+                'ResponseTime': self.response_time,
                 'CacheStorageCacheName': self.cache_storage_cache_name,
                 'Protocol': self.protocol,
                 'AlternateProtocolUsage': self.alternate_protocol_usage,
                 'SecurityState': self.security_state,
-                'SecurityDetails': self.security_details.to_dict(
-                    casing_strategy
-                ),
+                'SecurityDetails': self.security_details.to_dict(casing_strategy),
             }
 
 
@@ -912,30 +814,20 @@ class WebSocketRequest:
     headers: 'Headers'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
-            }
+                'headers': self.headers,
+            }        
         if casing_strategy == 'camel':
             return {
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
-            }
+                'headers': self.headers,
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'Headers': self.headers,
             }
 
 
@@ -949,50 +841,34 @@ class WebSocketResponse:
     request_headers_text: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'status': self.status,
                 'status_text': self.status_text,
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'headers': self.headers,
                 'headers_text': self.headers_text,
-                'request_headers': self.request_headers.to_dict(
-                    casing_strategy
-                ),
+                'request_headers': self.request_headers,
                 'request_headers_text': self.request_headers_text,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'status': self.status,
                 'statusText': self.status_text,
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'headers': self.headers,
                 'headersText': self.headers_text,
-                'requestHeaders': self.request_headers.to_dict(
-                    casing_strategy
-                ),
+                'requestHeaders': self.request_headers,
                 'requestHeadersText': self.request_headers_text,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Status': self.status,
                 'StatusText': self.status_text,
-                'Headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'Headers': self.headers,
                 'HeadersText': self.headers_text,
-                'RequestHeaders': self.request_headers.to_dict(
-                    casing_strategy
-                ),
+                'RequestHeaders': self.request_headers,
                 'RequestHeadersText': self.request_headers_text,
             }
 
@@ -1004,25 +880,21 @@ class WebSocketFrame:
     payload_data: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'opcode': self.opcode,
                 'mask': self.mask,
                 'payload_data': self.payload_data,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'opcode': self.opcode,
                 'mask': self.mask,
                 'payloadData': self.payload_data,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Opcode': self.opcode,
@@ -1039,38 +911,28 @@ class CachedResource:
     body_size: float
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'url': self.url,
-                'type': self.type_,
-                'response': self.response.to_dict(
-                    casing_strategy
-                ),
+                'type': self.type,
+                'response': self.response.to_dict(casing_strategy),
                 'body_size': self.body_size,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'url': self.url,
-                'type': self.type_,
-                'response': self.response.to_dict(
-                    casing_strategy
-                ),
+                'type': self.type,
+                'response': self.response.to_dict(casing_strategy),
                 'bodySize': self.body_size,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Url': self.url,
-                'Type': self.type_,
-                'Response': self.response.to_dict(
-                    casing_strategy
-                ),
+                'Type': self.type,
+                'Response': self.response.to_dict(casing_strategy),
                 'BodySize': self.body_size,
             }
 
@@ -1085,51 +947,35 @@ class Initiator:
     request_id: 'RequestId'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'type': self.type_,
-                'stack': self.stack.to_dict(
-                    casing_strategy
-                ),
+                'type': self.type,
+                'stack': self.stack.to_dict(casing_strategy),
                 'url': self.url,
                 'line_number': self.line_number,
                 'column_number': self.column_number,
-                'request_id': self.request_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'request_id': self.request_id,
+            }        
         if casing_strategy == 'camel':
             return {
-                'type': self.type_,
-                'stack': self.stack.to_dict(
-                    casing_strategy
-                ),
+                'type': self.type,
+                'stack': self.stack.to_dict(casing_strategy),
                 'url': self.url,
                 'lineNumber': self.line_number,
                 'columnNumber': self.column_number,
-                'requestId': self.request_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'requestId': self.request_id,
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Type': self.type_,
-                'Stack': self.stack.to_dict(
-                    casing_strategy
-                ),
+                'Type': self.type,
+                'Stack': self.stack.to_dict(casing_strategy),
                 'Url': self.url,
                 'LineNumber': self.line_number,
                 'ColumnNumber': self.column_number,
-                'RequestId': self.request_id.to_dict(
-                    casing_strategy
-                ),
+                'RequestId': self.request_id,
             }
 
 
@@ -1153,13 +999,9 @@ class Cookie:
     partition_key_opaque: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
@@ -1178,7 +1020,7 @@ class Cookie:
                 'source_port': self.source_port,
                 'partition_key': self.partition_key,
                 'partition_key_opaque': self.partition_key_opaque,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
@@ -1197,7 +1039,7 @@ class Cookie:
                 'sourcePort': self.source_port,
                 'partitionKey': self.partition_key,
                 'partitionKeyOpaque': self.partition_key_opaque,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
@@ -1226,48 +1068,35 @@ class BlockedSetCookieWithReason:
     cookie: 'Cookie'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'blocked_reasons': [_.to_dict(
-                    casing_strategy
-                )
+                'blocked_reasons': [
+                    _.to_dict(casing_strategy)
                     for _ in self.blocked_reasons
                 ],
                 'cookie_line': self.cookie_line,
-                'cookie': self.cookie.to_dict(
-                    casing_strategy
-                ),
-            }
+                'cookie': self.cookie.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'blockedReasons': [_.to_dict(
-                    casing_strategy
-                )
+                'blockedReasons': [
+                    _.to_dict(casing_strategy)
                     for _ in self.blocked_reasons
                 ],
                 'cookieLine': self.cookie_line,
-                'cookie': self.cookie.to_dict(
-                    casing_strategy
-                ),
-            }
+                'cookie': self.cookie.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'BlockedReasons': [_.to_dict(
-                    casing_strategy
-                )
+                'BlockedReasons': [
+                    _.to_dict(casing_strategy)
                     for _ in self.blocked_reasons
                 ],
                 'CookieLine': self.cookie_line,
-                'Cookie': self.cookie.to_dict(
-                    casing_strategy
-                ),
+                'Cookie': self.cookie.to_dict(casing_strategy),
             }
 
 
@@ -1277,45 +1106,32 @@ class BlockedCookieWithReason:
     cookie: 'Cookie'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'blocked_reasons': [_.to_dict(
-                    casing_strategy
-                )
+                'blocked_reasons': [
+                    _.to_dict(casing_strategy)
                     for _ in self.blocked_reasons
                 ],
-                'cookie': self.cookie.to_dict(
-                    casing_strategy
-                ),
-            }
+                'cookie': self.cookie.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'blockedReasons': [_.to_dict(
-                    casing_strategy
-                )
+                'blockedReasons': [
+                    _.to_dict(casing_strategy)
                     for _ in self.blocked_reasons
                 ],
-                'cookie': self.cookie.to_dict(
-                    casing_strategy
-                ),
-            }
+                'cookie': self.cookie.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'BlockedReasons': [_.to_dict(
-                    casing_strategy
-                )
+                'BlockedReasons': [
+                    _.to_dict(casing_strategy)
                     for _ in self.blocked_reasons
                 ],
-                'Cookie': self.cookie.to_dict(
-                    casing_strategy
-                ),
+                'Cookie': self.cookie.to_dict(casing_strategy),
             }
 
 
@@ -1337,13 +1153,9 @@ class CookieParam:
     partition_key: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
@@ -1354,15 +1166,13 @@ class CookieParam:
                 'secure': self.secure,
                 'http_only': self.http_only,
                 'same_site': self.same_site,
-                'expires': self.expires.to_dict(
-                    casing_strategy
-                ),
+                'expires': self.expires,
                 'priority': self.priority,
                 'same_party': self.same_party,
                 'source_scheme': self.source_scheme,
                 'source_port': self.source_port,
                 'partition_key': self.partition_key,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
@@ -1373,15 +1183,13 @@ class CookieParam:
                 'secure': self.secure,
                 'httpOnly': self.http_only,
                 'sameSite': self.same_site,
-                'expires': self.expires.to_dict(
-                    casing_strategy
-                ),
+                'expires': self.expires,
                 'priority': self.priority,
                 'sameParty': self.same_party,
                 'sourceScheme': self.source_scheme,
                 'sourcePort': self.source_port,
                 'partitionKey': self.partition_key,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
@@ -1392,9 +1200,7 @@ class CookieParam:
                 'Secure': self.secure,
                 'HttpOnly': self.http_only,
                 'SameSite': self.same_site,
-                'Expires': self.expires.to_dict(
-                    casing_strategy
-                ),
+                'Expires': self.expires,
                 'Priority': self.priority,
                 'SameParty': self.same_party,
                 'SourceScheme': self.source_scheme,
@@ -1411,27 +1217,23 @@ class AuthChallenge:
     realm: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'source': self.source,
                 'origin': self.origin,
                 'scheme': self.scheme,
                 'realm': self.realm,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'source': self.source,
                 'origin': self.origin,
                 'scheme': self.scheme,
                 'realm': self.realm,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Source': self.source,
@@ -1448,25 +1250,21 @@ class AuthChallengeResponse:
     password: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'response': self.response,
                 'username': self.username,
                 'password': self.password,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'response': self.response,
                 'username': self.username,
                 'password': self.password,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Response': self.response,
@@ -1482,25 +1280,21 @@ class RequestPattern:
     interception_stage: 'InterceptionStage'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'url_pattern': self.url_pattern,
                 'resource_type': self.resource_type,
                 'interception_stage': self.interception_stage,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'urlPattern': self.url_pattern,
                 'resourceType': self.resource_type,
                 'interceptionStage': self.interception_stage,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'UrlPattern': self.url_pattern,
@@ -1522,13 +1316,9 @@ class SignedExchangeSignature:
     certificates: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'label': self.label,
@@ -1540,7 +1330,7 @@ class SignedExchangeSignature:
                 'date': self.date,
                 'expires': self.expires,
                 'certificates': self.certificates,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'label': self.label,
@@ -1552,7 +1342,7 @@ class SignedExchangeSignature:
                 'date': self.date,
                 'expires': self.expires,
                 'certificates': self.certificates,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Label': self.label,
@@ -1576,51 +1366,38 @@ class SignedExchangeHeader:
     header_integrity: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'request_url': self.request_url,
                 'response_code': self.response_code,
-                'response_headers': self.response_headers.to_dict(
-                    casing_strategy
-                ),
-                'signatures': [_.to_dict(
-                    casing_strategy
-                )
+                'response_headers': self.response_headers,
+                'signatures': [
+                    _.to_dict(casing_strategy)
                     for _ in self.signatures
                 ],
                 'header_integrity': self.header_integrity,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'requestUrl': self.request_url,
                 'responseCode': self.response_code,
-                'responseHeaders': self.response_headers.to_dict(
-                    casing_strategy
-                ),
-                'signatures': [_.to_dict(
-                    casing_strategy
-                )
+                'responseHeaders': self.response_headers,
+                'signatures': [
+                    _.to_dict(casing_strategy)
                     for _ in self.signatures
                 ],
                 'headerIntegrity': self.header_integrity,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'RequestUrl': self.request_url,
                 'ResponseCode': self.response_code,
-                'ResponseHeaders': self.response_headers.to_dict(
-                    casing_strategy
-                ),
-                'Signatures': [_.to_dict(
-                    casing_strategy
-                )
+                'ResponseHeaders': self.response_headers,
+                'Signatures': [
+                    _.to_dict(casing_strategy)
                     for _ in self.signatures
                 ],
                 'HeaderIntegrity': self.header_integrity,
@@ -1634,25 +1411,21 @@ class SignedExchangeError:
     error_field: 'SignedExchangeErrorField'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'message': self.message,
                 'signature_index': self.signature_index,
                 'error_field': self.error_field,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'message': self.message,
                 'signatureIndex': self.signature_index,
                 'errorField': self.error_field,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Message': self.message,
@@ -1669,61 +1442,36 @@ class SignedExchangeInfo:
     errors: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'outer_response': self.outer_response.to_dict(
-                    casing_strategy
-                ),
-                'header': self.header.to_dict(
-                    casing_strategy
-                ),
-                'security_details': self.security_details.to_dict(
-                    casing_strategy
-                ),
-                'errors': [_.to_dict(
-                    casing_strategy
-                )
+                'outer_response': self.outer_response.to_dict(casing_strategy),
+                'header': self.header.to_dict(casing_strategy),
+                'security_details': self.security_details.to_dict(casing_strategy),
+                'errors': [
+                    _.to_dict(casing_strategy)
                     for _ in self.errors
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'outerResponse': self.outer_response.to_dict(
-                    casing_strategy
-                ),
-                'header': self.header.to_dict(
-                    casing_strategy
-                ),
-                'securityDetails': self.security_details.to_dict(
-                    casing_strategy
-                ),
-                'errors': [_.to_dict(
-                    casing_strategy
-                )
+                'outerResponse': self.outer_response.to_dict(casing_strategy),
+                'header': self.header.to_dict(casing_strategy),
+                'securityDetails': self.security_details.to_dict(casing_strategy),
+                'errors': [
+                    _.to_dict(casing_strategy)
                     for _ in self.errors
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'OuterResponse': self.outer_response.to_dict(
-                    casing_strategy
-                ),
-                'Header': self.header.to_dict(
-                    casing_strategy
-                ),
-                'SecurityDetails': self.security_details.to_dict(
-                    casing_strategy
-                ),
-                'Errors': [_.to_dict(
-                    casing_strategy
-                )
+                'OuterResponse': self.outer_response.to_dict(casing_strategy),
+                'Header': self.header.to_dict(casing_strategy),
+                'SecurityDetails': self.security_details.to_dict(casing_strategy),
+                'Errors': [
+                    _.to_dict(casing_strategy)
                     for _ in self.errors
                 ],
             }
@@ -1734,21 +1482,17 @@ class ConnectTiming:
     request_time: float
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'request_time': self.request_time,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'requestTime': self.request_time,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'RequestTime': self.request_time,
@@ -1762,25 +1506,21 @@ class ClientSecurityState:
     private_network_request_policy: 'PrivateNetworkRequestPolicy'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'initiator_is_secure_context': self.initiator_is_secure_context,
                 'initiator_ip_address_space': self.initiator_ip_address_space,
                 'private_network_request_policy': self.private_network_request_policy,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'initiatorIsSecureContext': self.initiator_is_secure_context,
                 'initiatorIPAddressSpace': self.initiator_ip_address_space,
                 'privateNetworkRequestPolicy': self.private_network_request_policy,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'InitiatorIsSecureContext': self.initiator_is_secure_context,
@@ -1797,27 +1537,23 @@ class CrossOriginOpenerPolicyStatus:
     report_only_reporting_endpoint: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'value': self.value,
                 'report_only_value': self.report_only_value,
                 'reporting_endpoint': self.reporting_endpoint,
                 'report_only_reporting_endpoint': self.report_only_reporting_endpoint,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'value': self.value,
                 'reportOnlyValue': self.report_only_value,
                 'reportingEndpoint': self.reporting_endpoint,
                 'reportOnlyReportingEndpoint': self.report_only_reporting_endpoint,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Value': self.value,
@@ -1835,27 +1571,23 @@ class CrossOriginEmbedderPolicyStatus:
     report_only_reporting_endpoint: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'value': self.value,
                 'report_only_value': self.report_only_value,
                 'reporting_endpoint': self.reporting_endpoint,
                 'report_only_reporting_endpoint': self.report_only_reporting_endpoint,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'value': self.value,
                 'reportOnlyValue': self.report_only_value,
                 'reportingEndpoint': self.reporting_endpoint,
                 'reportOnlyReportingEndpoint': self.report_only_reporting_endpoint,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Value': self.value,
@@ -1872,25 +1604,21 @@ class ContentSecurityPolicyStatus:
     source: 'ContentSecurityPolicySource'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'effective_directives': self.effective_directives,
                 'is_enforced': self.is_enforced,
                 'source': self.source,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'effectiveDirectives': self.effective_directives,
                 'isEnforced': self.is_enforced,
                 'source': self.source,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'EffectiveDirectives': self.effective_directives,
@@ -1906,52 +1634,33 @@ class SecurityIsolationStatus:
     csp: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'coop': self.coop.to_dict(
-                    casing_strategy
-                ),
-                'coep': self.coep.to_dict(
-                    casing_strategy
-                ),
-                'csp': [_.to_dict(
-                    casing_strategy
-                )
+                'coop': self.coop.to_dict(casing_strategy),
+                'coep': self.coep.to_dict(casing_strategy),
+                'csp': [
+                    _.to_dict(casing_strategy)
                     for _ in self.csp
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'coop': self.coop.to_dict(
-                    casing_strategy
-                ),
-                'coep': self.coep.to_dict(
-                    casing_strategy
-                ),
-                'csp': [_.to_dict(
-                    casing_strategy
-                )
+                'coop': self.coop.to_dict(casing_strategy),
+                'coep': self.coep.to_dict(casing_strategy),
+                'csp': [
+                    _.to_dict(casing_strategy)
                     for _ in self.csp
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Coop': self.coop.to_dict(
-                    casing_strategy
-                ),
-                'Coep': self.coep.to_dict(
-                    casing_strategy
-                ),
-                'Csp': [_.to_dict(
-                    casing_strategy
-                )
+                'Coop': self.coop.to_dict(casing_strategy),
+                'Coep': self.coep.to_dict(casing_strategy),
+                'Csp': [
+                    _.to_dict(casing_strategy)
                     for _ in self.csp
                 ],
             }
@@ -1970,56 +1679,40 @@ class ReportingApiReport:
     status: 'ReportStatus'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'id': self.id_.to_dict(
-                    casing_strategy
-                ),
+                'id': self.id,
                 'initiator_url': self.initiator_url,
                 'destination': self.destination,
-                'type': self.type_,
-                'timestamp': self.timestamp.to_dict(
-                    casing_strategy
-                ),
+                'type': self.type,
+                'timestamp': self.timestamp,
                 'depth': self.depth,
                 'completed_attempts': self.completed_attempts,
                 'body': self.body,
                 'status': self.status,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'id': self.id_.to_dict(
-                    casing_strategy
-                ),
+                'id': self.id,
                 'initiatorUrl': self.initiator_url,
                 'destination': self.destination,
-                'type': self.type_,
-                'timestamp': self.timestamp.to_dict(
-                    casing_strategy
-                ),
+                'type': self.type,
+                'timestamp': self.timestamp,
                 'depth': self.depth,
                 'completedAttempts': self.completed_attempts,
                 'body': self.body,
                 'status': self.status,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Id': self.id_.to_dict(
-                    casing_strategy
-                ),
+                'Id': self.id,
                 'InitiatorUrl': self.initiator_url,
                 'Destination': self.destination,
-                'Type': self.type_,
-                'Timestamp': self.timestamp.to_dict(
-                    casing_strategy
-                ),
+                'Type': self.type,
+                'Timestamp': self.timestamp,
                 'Depth': self.depth,
                 'CompletedAttempts': self.completed_attempts,
                 'Body': self.body,
@@ -2033,23 +1726,19 @@ class ReportingApiEndpoint:
     group_name: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'url': self.url,
                 'group_name': self.group_name,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'url': self.url,
                 'groupName': self.group_name,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Url': self.url,
@@ -2067,51 +1756,35 @@ class LoadNetworkResourcePageResult:
     headers: 'Headers'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'success': self.success,
                 'net_error': self.net_error,
                 'net_error_name': self.net_error_name,
                 'http_status_code': self.http_status_code,
-                'stream': self.stream.to_dict(
-                    casing_strategy
-                ),
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
-            }
+                'stream': self.stream,
+                'headers': self.headers,
+            }        
         if casing_strategy == 'camel':
             return {
                 'success': self.success,
                 'netError': self.net_error,
                 'netErrorName': self.net_error_name,
                 'httpStatusCode': self.http_status_code,
-                'stream': self.stream.to_dict(
-                    casing_strategy
-                ),
-                'headers': self.headers.to_dict(
-                    casing_strategy
-                ),
-            }
+                'stream': self.stream,
+                'headers': self.headers,
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Success': self.success,
                 'NetError': self.net_error,
                 'NetErrorName': self.net_error_name,
                 'HttpStatusCode': self.http_status_code,
-                'Stream': self.stream.to_dict(
-                    casing_strategy
-                ),
-                'Headers': self.headers.to_dict(
-                    casing_strategy
-                ),
+                'Stream': self.stream,
+                'Headers': self.headers,
             }
 
 
@@ -2121,23 +1794,19 @@ class LoadNetworkResourceOptions:
     include_credentials: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'disable_cache': self.disable_cache,
                 'include_credentials': self.include_credentials,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'disableCache': self.disable_cache,
                 'includeCredentials': self.include_credentials,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'DisableCache': self.disable_cache,

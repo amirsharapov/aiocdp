@@ -22,34 +22,37 @@ from cdp.utils import (
 class Security(BaseDomain):
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Security.disable"',
+            'Security.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Security.enable"',
+            'Security.enable',
+
             params
         )
 
     def set_ignore_certificate_errors(
         self,
         ignore: bool
-    ):
+    ) -> 'SetIgnoreCertificateErrorsReturnT':
         params = {
             'ignore': ignore,
         }
-
+        
         return self._send_command(
-            '"Security.setIgnoreCertificateErrors"',
+            'Security.setIgnoreCertificateErrors',
+
             params
         )
 
@@ -57,27 +60,29 @@ class Security(BaseDomain):
         self,
         event_id: int,
         action: CertificateErrorAction
-    ):
+    ) -> 'HandleCertificateErrorReturnT':
         params = {
             'eventId': event_id,
             'action': action,
         }
-
+        
         return self._send_command(
-            '"Security.handleCertificateError"',
+            'Security.handleCertificateError',
+
             params
         )
 
     def set_override_certificate_errors(
         self,
         override: bool
-    ):
+    ) -> 'SetOverrideCertificateErrorsReturnT':
         params = {
             'override': override,
         }
-
+        
         return self._send_command(
-            '"Security.setOverrideCertificateErrors"',
+            'Security.setOverrideCertificateErrors',
+
             params
         )
 

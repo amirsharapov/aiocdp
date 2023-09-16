@@ -1,6 +1,6 @@
 import ast
 
-from generator.types import Protocol
+from generator.parser.types import Protocol
 
 
 def _generate_imports(protocols: list[Protocol]):
@@ -64,7 +64,10 @@ def _generate_class_definition(protocols: list[Protocol]):
                                 arg='init',
                                 value=ast.Constant(False)
                             )
-                        ]
+                        ],
+                        render_context={
+                            'expand': False
+                        }
                     ),
                     simple=1
                 )
@@ -74,7 +77,9 @@ def _generate_class_definition(protocols: list[Protocol]):
         name='__post_init__',
         args=ast.arguments(
             args=[
-                ast.arg('self')
+                ast.arg(
+                    arg='self'
+                )
             ]
         ),
         body=[],
@@ -94,7 +99,10 @@ def _generate_class_definition(protocols: list[Protocol]):
                     value=ast.Call(
                         func=ast.Name(domain.domain),
                         args=[
-                            ast.Name('self')
+                            ast.Attribute(
+                                value=ast.Name('self'),
+                                attr='target'
+                            )
                         ]
                     )
                 )

@@ -78,13 +78,9 @@ class Bounds:
     window_state: 'WindowState'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'left': self.left,
@@ -92,7 +88,7 @@ class Bounds:
                 'width': self.width,
                 'height': self.height,
                 'window_state': self.window_state,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'left': self.left,
@@ -100,7 +96,7 @@ class Bounds:
                 'width': self.width,
                 'height': self.height,
                 'windowState': self.window_state,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Left': self.left,
@@ -120,13 +116,9 @@ class PermissionDescriptor:
     pan_tilt_zoom: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
@@ -134,7 +126,7 @@ class PermissionDescriptor:
                 'user_visible_only': self.user_visible_only,
                 'allow_without_sanitization': self.allow_without_sanitization,
                 'pan_tilt_zoom': self.pan_tilt_zoom,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
@@ -142,7 +134,7 @@ class PermissionDescriptor:
                 'userVisibleOnly': self.user_visible_only,
                 'allowWithoutSanitization': self.allow_without_sanitization,
                 'panTiltZoom': self.pan_tilt_zoom,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
@@ -160,25 +152,21 @@ class Bucket:
     count: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'low': self.low,
                 'high': self.high,
                 'count': self.count,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'low': self.low,
                 'high': self.high,
                 'count': self.count,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Low': self.low,
@@ -195,43 +183,36 @@ class Histogram:
     buckets: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
-                'sum': self.sum_,
+                'sum': self.sum,
                 'count': self.count,
-                'buckets': [_.to_dict(
-                    casing_strategy
-                )
+                'buckets': [
+                    _.to_dict(casing_strategy)
                     for _ in self.buckets
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
-                'sum': self.sum_,
+                'sum': self.sum,
                 'count': self.count,
-                'buckets': [_.to_dict(
-                    casing_strategy
-                )
+                'buckets': [
+                    _.to_dict(casing_strategy)
                     for _ in self.buckets
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
-                'Sum': self.sum_,
+                'Sum': self.sum,
                 'Count': self.count,
-                'Buckets': [_.to_dict(
-                    casing_strategy
-                )
+                'Buckets': [
+                    _.to_dict(casing_strategy)
                     for _ in self.buckets
                 ],
             }

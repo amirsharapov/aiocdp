@@ -26,70 +26,69 @@ class Audits(BaseDomain):
         encoding: str,
         quality: float = UNDEFINED,
         size_only: bool = UNDEFINED
-    ):
+    ) -> 'GetEncodedResponseReturnT':
         params = {
             'requestId': request_id,
             'encoding': encoding,
         }
-
-        if is_defined(
-            quality
-        ):
-            params['quality'            ] = quality
-
-        if is_defined(
-            size_only
-        ):
-            params['sizeOnly'            ] = size_only
-
+        
+        if is_defined(quality):
+params['quality'] = quality
+        
+        if is_defined(size_only):
+params['sizeOnly'] = size_only
+        
         return self._send_command(
-            '"Audits.getEncodedResponse"',
+            'Audits.getEncodedResponse',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Audits.disable"',
+            'Audits.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Audits.enable"',
+            'Audits.enable',
+
             params
         )
 
     def check_contrast(
         self,
         report_aaa: bool = UNDEFINED
-    ):
+    ) -> 'CheckContrastReturnT':
         params = {}
-
-        if is_defined(
-            report_aaa
-        ):
-            params['reportAAA'            ] = report_aaa
-
+        
+        if is_defined(report_aaa):
+params['reportAAA'] = report_aaa
+        
         return self._send_command(
-            '"Audits.checkContrast"',
+            'Audits.checkContrast',
+
             params
         )
 
     def check_forms_issues(
         self
-    ):
+    ) -> 'CheckFormsIssuesReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Audits.checkFormsIssues"',
+            'Audits.checkFormsIssues',
+
             params
         )
 

@@ -33,21 +33,23 @@ from cdp.utils import (
 class Accessibility(BaseDomain):
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Accessibility.disable"',
+            'Accessibility.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Accessibility.enable"',
+            'Accessibility.enable',
+
             params
         )
 
@@ -57,31 +59,24 @@ class Accessibility(BaseDomain):
         backend_node_id: BackendNodeId = UNDEFINED,
         object_id: RemoteObjectId = UNDEFINED,
         fetch_relatives: bool = UNDEFINED
-    ):
+    ) -> 'GetPartialAXTreeReturnT':
         params = {}
-
-        if is_defined(
-            node_id
-        ):
-            params['nodeId'            ] = node_id
-
-        if is_defined(
-            backend_node_id
-        ):
-            params['backendNodeId'            ] = backend_node_id
-
-        if is_defined(
-            object_id
-        ):
-            params['objectId'            ] = object_id
-
-        if is_defined(
-            fetch_relatives
-        ):
-            params['fetchRelatives'            ] = fetch_relatives
-
+        
+        if is_defined(node_id):
+params['nodeId'] = node_id
+        
+        if is_defined(backend_node_id):
+params['backendNodeId'] = backend_node_id
+        
+        if is_defined(object_id):
+params['objectId'] = object_id
+        
+        if is_defined(fetch_relatives):
+params['fetchRelatives'] = fetch_relatives
+        
         return self._send_command(
-            '"Accessibility.getPartialAXTree"',
+            'Accessibility.getPartialAXTree',
+
             params
         )
 
@@ -89,37 +84,33 @@ class Accessibility(BaseDomain):
         self,
         depth: int = UNDEFINED,
         frame_id: FrameId = UNDEFINED
-    ):
+    ) -> 'GetFullAXTreeReturnT':
         params = {}
-
-        if is_defined(
-            depth
-        ):
-            params['depth'            ] = depth
-
-        if is_defined(
-            frame_id
-        ):
-            params['frameId'            ] = frame_id
-
+        
+        if is_defined(depth):
+params['depth'] = depth
+        
+        if is_defined(frame_id):
+params['frameId'] = frame_id
+        
         return self._send_command(
-            '"Accessibility.getFullAXTree"',
+            'Accessibility.getFullAXTree',
+
             params
         )
 
     def get_root_ax_node(
         self,
         frame_id: FrameId = UNDEFINED
-    ):
+    ) -> 'GetRootAXNodeReturnT':
         params = {}
-
-        if is_defined(
-            frame_id
-        ):
-            params['frameId'            ] = frame_id
-
+        
+        if is_defined(frame_id):
+params['frameId'] = frame_id
+        
         return self._send_command(
-            '"Accessibility.getRootAXNode"',
+            'Accessibility.getRootAXNode',
+
             params
         )
 
@@ -128,26 +119,21 @@ class Accessibility(BaseDomain):
         node_id: NodeId = UNDEFINED,
         backend_node_id: BackendNodeId = UNDEFINED,
         object_id: RemoteObjectId = UNDEFINED
-    ):
+    ) -> 'GetAXNodeAndAncestorsReturnT':
         params = {}
-
-        if is_defined(
-            node_id
-        ):
-            params['nodeId'            ] = node_id
-
-        if is_defined(
-            backend_node_id
-        ):
-            params['backendNodeId'            ] = backend_node_id
-
-        if is_defined(
-            object_id
-        ):
-            params['objectId'            ] = object_id
-
+        
+        if is_defined(node_id):
+params['nodeId'] = node_id
+        
+        if is_defined(backend_node_id):
+params['backendNodeId'] = backend_node_id
+        
+        if is_defined(object_id):
+params['objectId'] = object_id
+        
         return self._send_command(
-            '"Accessibility.getAXNodeAndAncestors"',
+            'Accessibility.getAXNodeAndAncestors',
+
             params
         )
 
@@ -155,18 +141,17 @@ class Accessibility(BaseDomain):
         self,
         id_: AXNodeId,
         frame_id: FrameId = UNDEFINED
-    ):
+    ) -> 'GetChildAXNodesReturnT':
         params = {
             'id': id_,
         }
-
-        if is_defined(
-            frame_id
-        ):
-            params['frameId'            ] = frame_id
-
+        
+        if is_defined(frame_id):
+params['frameId'] = frame_id
+        
         return self._send_command(
-            '"Accessibility.getChildAXNodes"',
+            'Accessibility.getChildAXNodes',
+
             params
         )
 
@@ -177,36 +162,27 @@ class Accessibility(BaseDomain):
         object_id: RemoteObjectId = UNDEFINED,
         accessible_name: str = UNDEFINED,
         role: str = UNDEFINED
-    ):
+    ) -> 'QueryAXTreeReturnT':
         params = {}
-
-        if is_defined(
-            node_id
-        ):
-            params['nodeId'            ] = node_id
-
-        if is_defined(
-            backend_node_id
-        ):
-            params['backendNodeId'            ] = backend_node_id
-
-        if is_defined(
-            object_id
-        ):
-            params['objectId'            ] = object_id
-
-        if is_defined(
-            accessible_name
-        ):
-            params['accessibleName'            ] = accessible_name
-
-        if is_defined(
-            role
-        ):
-            params['role'            ] = role
-
+        
+        if is_defined(node_id):
+params['nodeId'] = node_id
+        
+        if is_defined(backend_node_id):
+params['backendNodeId'] = backend_node_id
+        
+        if is_defined(object_id):
+params['objectId'] = object_id
+        
+        if is_defined(accessible_name):
+params['accessibleName'] = accessible_name
+        
+        if is_defined(role):
+params['role'] = role
+        
         return self._send_command(
-            '"Accessibility.queryAXTree"',
+            'Accessibility.queryAXTree',
+
             params
         )
 

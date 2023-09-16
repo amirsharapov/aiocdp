@@ -19,11 +19,12 @@ from cdp.utils import (
 class Schema(BaseDomain):
     def get_domains(
         self
-    ):
+    ) -> 'GetDomainsReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Schema.getDomains"',
+            'Schema.getDomains',
+
             params
         )
 

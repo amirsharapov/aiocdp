@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 TimeSinceEpoch = float
 
@@ -46,13 +45,9 @@ class TouchPoint:
     id: float
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'x': self.x,
@@ -65,8 +60,8 @@ class TouchPoint:
                 'tilt_x': self.tilt_x,
                 'tilt_y': self.tilt_y,
                 'twist': self.twist,
-                'id': self.id_,
-            }
+                'id': self.id,
+            }        
         if casing_strategy == 'camel':
             return {
                 'x': self.x,
@@ -79,8 +74,8 @@ class TouchPoint:
                 'tiltX': self.tilt_x,
                 'tiltY': self.tilt_y,
                 'twist': self.twist,
-                'id': self.id_,
-            }
+                'id': self.id,
+            }        
         if casing_strategy == 'pascal':
             return {
                 'X': self.x,
@@ -93,7 +88,7 @@ class TouchPoint:
                 'TiltX': self.tilt_x,
                 'TiltY': self.tilt_y,
                 'Twist': self.twist,
-                'Id': self.id_,
+                'Id': self.id,
             }
 
 
@@ -105,27 +100,23 @@ class DragDataItem:
     base_url: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'mime_type': self.mime_type,
                 'data': self.data,
                 'title': self.title,
                 'base_url': self.base_url,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'mimeType': self.mime_type,
                 'data': self.data,
                 'title': self.title,
                 'baseURL': self.base_url,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'MimeType': self.mime_type,
@@ -142,38 +133,31 @@ class DragData:
     drag_operations_mask: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'items': [_.to_dict(
-                    casing_strategy
-                )
+                'items': [
+                    _.to_dict(casing_strategy)
                     for _ in self.items
                 ],
                 'files': self.files,
                 'drag_operations_mask': self.drag_operations_mask,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'items': [_.to_dict(
-                    casing_strategy
-                )
+                'items': [
+                    _.to_dict(casing_strategy)
                     for _ in self.items
                 ],
                 'files': self.files,
                 'dragOperationsMask': self.drag_operations_mask,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Items': [_.to_dict(
-                    casing_strategy
-                )
+                'Items': [
+                    _.to_dict(casing_strategy)
                     for _ in self.items
                 ],
                 'Files': self.files,

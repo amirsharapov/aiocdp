@@ -23,57 +23,62 @@ from cdp.utils import (
 class Memory(BaseDomain):
     def get_dom_counters(
         self
-    ):
+    ) -> 'GetDOMCountersReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Memory.getDOMCounters"',
+            'Memory.getDOMCounters',
+
             params
         )
 
     def prepare_for_leak_detection(
         self
-    ):
+    ) -> 'PrepareForLeakDetectionReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Memory.prepareForLeakDetection"',
+            'Memory.prepareForLeakDetection',
+
             params
         )
 
     def forcibly_purge_java_script_memory(
         self
-    ):
+    ) -> 'ForciblyPurgeJavaScriptMemoryReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Memory.forciblyPurgeJavaScriptMemory"',
+            'Memory.forciblyPurgeJavaScriptMemory',
+
             params
         )
 
     def set_pressure_notifications_suppressed(
         self,
         suppressed: bool
-    ):
+    ) -> 'SetPressureNotificationsSuppressedReturnT':
         params = {
             'suppressed': suppressed,
         }
-
+        
         return self._send_command(
-            '"Memory.setPressureNotificationsSuppressed"',
+            'Memory.setPressureNotificationsSuppressed',
+
             params
         )
 
     def simulate_pressure_notification(
         self,
         level: PressureLevel
-    ):
+    ) -> 'SimulatePressureNotificationReturnT':
         params = {
             'level': level,
         }
-
+        
         return self._send_command(
-            '"Memory.simulatePressureNotification"',
+            'Memory.simulatePressureNotification',
+
             params
         )
 
@@ -81,61 +86,62 @@ class Memory(BaseDomain):
         self,
         sampling_interval: int = UNDEFINED,
         suppress_randomness: bool = UNDEFINED
-    ):
+    ) -> 'StartSamplingReturnT':
         params = {}
-
-        if is_defined(
-            sampling_interval
-        ):
-            params['samplingInterval'            ] = sampling_interval
-
-        if is_defined(
-            suppress_randomness
-        ):
-            params['suppressRandomness'            ] = suppress_randomness
-
+        
+        if is_defined(sampling_interval):
+params['samplingInterval'] = sampling_interval
+        
+        if is_defined(suppress_randomness):
+params['suppressRandomness'] = suppress_randomness
+        
         return self._send_command(
-            '"Memory.startSampling"',
+            'Memory.startSampling',
+
             params
         )
 
     def stop_sampling(
         self
-    ):
+    ) -> 'StopSamplingReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Memory.stopSampling"',
+            'Memory.stopSampling',
+
             params
         )
 
     def get_all_time_sampling_profile(
         self
-    ):
+    ) -> 'GetAllTimeSamplingProfileReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Memory.getAllTimeSamplingProfile"',
+            'Memory.getAllTimeSamplingProfile',
+
             params
         )
 
     def get_browser_sampling_profile(
         self
-    ):
+    ) -> 'GetBrowserSamplingProfileReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Memory.getBrowserSamplingProfile"',
+            'Memory.getBrowserSamplingProfile',
+
             params
         )
 
     def get_sampling_profile(
         self
-    ):
+    ) -> 'GetSamplingProfileReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Memory.getSamplingProfile"',
+            'Memory.getSamplingProfile',
+
             params
         )
 

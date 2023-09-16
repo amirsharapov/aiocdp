@@ -1,25 +1,26 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from generator.types.base import ComplexNode
-from generator.types.command import Command
-from generator.types.event import Event
-from generator.types.ref import Ref
-from generator.types.type import Type
+from generator.parser.types.base import ComplexNode
+from generator.parser.types.command import Command
+from generator.parser.types.event import Event
+from generator.parser.types.ref import Ref
+from generator.parser.types.type import Type
 from generator.utils import (
     snake_case,
     UNDEFINED,
-    MaybeUndefined
+    MaybeUndefined, is_builtin
 )
 
 if TYPE_CHECKING:
-    from generator.types import Protocol
+    from generator.parser.types import Protocol
 
 
 @dataclass
 class Domain(ComplexNode):
     parent: 'Protocol' = field(
-        init=False
+        init=False,
+        repr=False
     )
 
     domain: str
@@ -51,6 +52,15 @@ class Domain(ComplexNode):
     @property
     def domain_snake_case(self):
         return snake_case(self.domain)
+
+    @property
+    def domain_snake_case_collision_safe(self):
+        res = self.domain_snake_case
+
+        if is_builtin(res):
+            res += '_'
+
+        return res
 
     def get_refs(self) -> list[Ref]:
         refs = []

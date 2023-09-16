@@ -20,26 +20,28 @@ class EventBreakpoints(BaseDomain):
     def set_instrumentation_breakpoint(
         self,
         event_name: str
-    ):
+    ) -> 'SetInstrumentationBreakpointReturnT':
         params = {
             'eventName': event_name,
         }
-
+        
         return self._send_command(
-            '"EventBreakpoints.setInstrumentationBreakpoint"',
+            'EventBreakpoints.setInstrumentationBreakpoint',
+
             params
         )
 
     def remove_instrumentation_breakpoint(
         self,
         event_name: str
-    ):
+    ) -> 'RemoveInstrumentationBreakpointReturnT':
         params = {
             'eventName': event_name,
         }
-
+        
         return self._send_command(
-            '"EventBreakpoints.removeInstrumentationBreakpoint"',
+            'EventBreakpoints.removeInstrumentationBreakpoint',
+
             params
         )
 

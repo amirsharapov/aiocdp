@@ -31,29 +31,24 @@ class IndexedDB(BaseDomain):
         storage_bucket: StorageBucket = UNDEFINED,
         database_name: str = UNDEFINED,
         object_store_name: str = UNDEFINED
-    ):
+    ) -> 'ClearObjectStoreReturnT':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
         }
-
-        if is_defined(
-            security_origin
-        ):
-            params['securityOrigin'            ] = security_origin
-
-        if is_defined(
-            storage_key
-        ):
-            params['storageKey'            ] = storage_key
-
-        if is_defined(
-            storage_bucket
-        ):
-            params['storageBucket'            ] = storage_bucket
-
+        
+        if is_defined(security_origin):
+params['securityOrigin'] = security_origin
+        
+        if is_defined(storage_key):
+params['storageKey'] = storage_key
+        
+        if is_defined(storage_bucket):
+params['storageBucket'] = storage_bucket
+        
         return self._send_command(
-            '"IndexedDB.clearObjectStore"',
+            'IndexedDB.clearObjectStore',
+
             params
         )
 
@@ -63,28 +58,23 @@ class IndexedDB(BaseDomain):
         storage_key: str = UNDEFINED,
         storage_bucket: StorageBucket = UNDEFINED,
         database_name: str = UNDEFINED
-    ):
+    ) -> 'DeleteDatabaseReturnT':
         params = {
             'databaseName': database_name,
         }
-
-        if is_defined(
-            security_origin
-        ):
-            params['securityOrigin'            ] = security_origin
-
-        if is_defined(
-            storage_key
-        ):
-            params['storageKey'            ] = storage_key
-
-        if is_defined(
-            storage_bucket
-        ):
-            params['storageBucket'            ] = storage_bucket
-
+        
+        if is_defined(security_origin):
+params['securityOrigin'] = security_origin
+        
+        if is_defined(storage_key):
+params['storageKey'] = storage_key
+        
+        if is_defined(storage_bucket):
+params['storageBucket'] = storage_bucket
+        
         return self._send_command(
-            '"IndexedDB.deleteDatabase"',
+            'IndexedDB.deleteDatabase',
+
             params
         )
 
@@ -96,50 +86,47 @@ class IndexedDB(BaseDomain):
         database_name: str = UNDEFINED,
         object_store_name: str = UNDEFINED,
         key_range: KeyRange = UNDEFINED
-    ):
+    ) -> 'DeleteObjectStoreEntriesReturnT':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
             'keyRange': key_range,
         }
-
-        if is_defined(
-            security_origin
-        ):
-            params['securityOrigin'            ] = security_origin
-
-        if is_defined(
-            storage_key
-        ):
-            params['storageKey'            ] = storage_key
-
-        if is_defined(
-            storage_bucket
-        ):
-            params['storageBucket'            ] = storage_bucket
-
+        
+        if is_defined(security_origin):
+params['securityOrigin'] = security_origin
+        
+        if is_defined(storage_key):
+params['storageKey'] = storage_key
+        
+        if is_defined(storage_bucket):
+params['storageBucket'] = storage_bucket
+        
         return self._send_command(
-            '"IndexedDB.deleteObjectStoreEntries"',
+            'IndexedDB.deleteObjectStoreEntries',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"IndexedDB.disable"',
+            'IndexedDB.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"IndexedDB.enable"',
+            'IndexedDB.enable',
+
             params
         )
 
@@ -154,7 +141,7 @@ class IndexedDB(BaseDomain):
         skip_count: int = UNDEFINED,
         page_size: int = UNDEFINED,
         key_range: KeyRange = UNDEFINED
-    ):
+    ) -> 'RequestDataReturnT':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -162,29 +149,22 @@ class IndexedDB(BaseDomain):
             'skipCount': skip_count,
             'pageSize': page_size,
         }
-
-        if is_defined(
-            security_origin
-        ):
-            params['securityOrigin'            ] = security_origin
-
-        if is_defined(
-            storage_key
-        ):
-            params['storageKey'            ] = storage_key
-
-        if is_defined(
-            storage_bucket
-        ):
-            params['storageBucket'            ] = storage_bucket
-
-        if is_defined(
-            key_range
-        ):
-            params['keyRange'            ] = key_range
-
+        
+        if is_defined(security_origin):
+params['securityOrigin'] = security_origin
+        
+        if is_defined(storage_key):
+params['storageKey'] = storage_key
+        
+        if is_defined(storage_bucket):
+params['storageBucket'] = storage_bucket
+        
+        if is_defined(key_range):
+params['keyRange'] = key_range
+        
         return self._send_command(
-            '"IndexedDB.requestData"',
+            'IndexedDB.requestData',
+
             params
         )
 
@@ -195,29 +175,24 @@ class IndexedDB(BaseDomain):
         storage_bucket: StorageBucket = UNDEFINED,
         database_name: str = UNDEFINED,
         object_store_name: str = UNDEFINED
-    ):
+    ) -> 'GetMetadataReturnT':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
         }
-
-        if is_defined(
-            security_origin
-        ):
-            params['securityOrigin'            ] = security_origin
-
-        if is_defined(
-            storage_key
-        ):
-            params['storageKey'            ] = storage_key
-
-        if is_defined(
-            storage_bucket
-        ):
-            params['storageBucket'            ] = storage_bucket
-
+        
+        if is_defined(security_origin):
+params['securityOrigin'] = security_origin
+        
+        if is_defined(storage_key):
+params['storageKey'] = storage_key
+        
+        if is_defined(storage_bucket):
+params['storageBucket'] = storage_bucket
+        
         return self._send_command(
-            '"IndexedDB.getMetadata"',
+            'IndexedDB.getMetadata',
+
             params
         )
 
@@ -227,28 +202,23 @@ class IndexedDB(BaseDomain):
         storage_key: str = UNDEFINED,
         storage_bucket: StorageBucket = UNDEFINED,
         database_name: str = UNDEFINED
-    ):
+    ) -> 'RequestDatabaseReturnT':
         params = {
             'databaseName': database_name,
         }
-
-        if is_defined(
-            security_origin
-        ):
-            params['securityOrigin'            ] = security_origin
-
-        if is_defined(
-            storage_key
-        ):
-            params['storageKey'            ] = storage_key
-
-        if is_defined(
-            storage_bucket
-        ):
-            params['storageBucket'            ] = storage_bucket
-
+        
+        if is_defined(security_origin):
+params['securityOrigin'] = security_origin
+        
+        if is_defined(storage_key):
+params['storageKey'] = storage_key
+        
+        if is_defined(storage_bucket):
+params['storageBucket'] = storage_bucket
+        
         return self._send_command(
-            '"IndexedDB.requestDatabase"',
+            'IndexedDB.requestDatabase',
+
             params
         )
 
@@ -257,26 +227,21 @@ class IndexedDB(BaseDomain):
         security_origin: str = UNDEFINED,
         storage_key: str = UNDEFINED,
         storage_bucket: StorageBucket = UNDEFINED
-    ):
+    ) -> 'RequestDatabaseNamesReturnT':
         params = {}
-
-        if is_defined(
-            security_origin
-        ):
-            params['securityOrigin'            ] = security_origin
-
-        if is_defined(
-            storage_key
-        ):
-            params['storageKey'            ] = storage_key
-
-        if is_defined(
-            storage_bucket
-        ):
-            params['storageBucket'            ] = storage_bucket
-
+        
+        if is_defined(security_origin):
+params['securityOrigin'] = security_origin
+        
+        if is_defined(storage_key):
+params['storageKey'] = storage_key
+        
+        if is_defined(storage_bucket):
+params['storageBucket'] = storage_bucket
+        
         return self._send_command(
-            '"IndexedDB.requestDatabaseNames"',
+            'IndexedDB.requestDatabaseNames',
+
             params
         )
 

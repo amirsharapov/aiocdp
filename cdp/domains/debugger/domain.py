@@ -37,44 +37,43 @@ class Debugger(BaseDomain):
         self,
         location: Location,
         target_call_frames: str = UNDEFINED
-    ):
+    ) -> 'ContinueToLocationReturnT':
         params = {
             'location': location,
         }
-
-        if is_defined(
-            target_call_frames
-        ):
-            params['targetCallFrames'            ] = target_call_frames
-
+        
+        if is_defined(target_call_frames):
+params['targetCallFrames'] = target_call_frames
+        
         return self._send_command(
-            '"Debugger.continueToLocation"',
+            'Debugger.continueToLocation',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Debugger.disable"',
+            'Debugger.disable',
+
             params
         )
 
     def enable(
         self,
         max_scripts_cache_size: float = UNDEFINED
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
-        if is_defined(
-            max_scripts_cache_size
-        ):
-            params['maxScriptsCacheSize'            ] = max_scripts_cache_size
-
+        
+        if is_defined(max_scripts_cache_size):
+params['maxScriptsCacheSize'] = max_scripts_cache_size
+        
         return self._send_command(
-            '"Debugger.enable"',
+            'Debugger.enable',
+
             params
         )
 
@@ -89,49 +88,36 @@ class Debugger(BaseDomain):
         generate_preview: bool = UNDEFINED,
         throw_on_side_effect: bool = UNDEFINED,
         timeout: TimeDelta = UNDEFINED
-    ):
+    ) -> 'EvaluateOnCallFrameReturnT':
         params = {
             'callFrameId': call_frame_id,
             'expression': expression,
         }
-
-        if is_defined(
-            object_group
-        ):
-            params['objectGroup'            ] = object_group
-
-        if is_defined(
-            include_command_line_api
-        ):
-            params['includeCommandLineAPI'            ] = include_command_line_api
-
-        if is_defined(
-            silent
-        ):
-            params['silent'            ] = silent
-
-        if is_defined(
-            return_by_value
-        ):
-            params['returnByValue'            ] = return_by_value
-
-        if is_defined(
-            generate_preview
-        ):
-            params['generatePreview'            ] = generate_preview
-
-        if is_defined(
-            throw_on_side_effect
-        ):
-            params['throwOnSideEffect'            ] = throw_on_side_effect
-
-        if is_defined(
-            timeout
-        ):
-            params['timeout'            ] = timeout
-
+        
+        if is_defined(object_group):
+params['objectGroup'] = object_group
+        
+        if is_defined(include_command_line_api):
+params['includeCommandLineAPI'] = include_command_line_api
+        
+        if is_defined(silent):
+params['silent'] = silent
+        
+        if is_defined(return_by_value):
+params['returnByValue'] = return_by_value
+        
+        if is_defined(generate_preview):
+params['generatePreview'] = generate_preview
+        
+        if is_defined(throw_on_side_effect):
+params['throwOnSideEffect'] = throw_on_side_effect
+        
+        if is_defined(timeout):
+params['timeout'] = timeout
+        
         return self._send_command(
-            '"Debugger.evaluateOnCallFrame"',
+            'Debugger.evaluateOnCallFrame',
+
             params
         )
 
@@ -140,108 +126,112 @@ class Debugger(BaseDomain):
         start: Location,
         end: Location = UNDEFINED,
         restrict_to_function: bool = UNDEFINED
-    ):
+    ) -> 'GetPossibleBreakpointsReturnT':
         params = {
             'start': start,
         }
-
-        if is_defined(
-            end
-        ):
-            params['end'            ] = end
-
-        if is_defined(
-            restrict_to_function
-        ):
-            params['restrictToFunction'            ] = restrict_to_function
-
+        
+        if is_defined(end):
+params['end'] = end
+        
+        if is_defined(restrict_to_function):
+params['restrictToFunction'] = restrict_to_function
+        
         return self._send_command(
-            '"Debugger.getPossibleBreakpoints"',
+            'Debugger.getPossibleBreakpoints',
+
             params
         )
 
     def get_script_source(
         self,
         script_id: ScriptId
-    ):
+    ) -> 'GetScriptSourceReturnT':
         params = {
             'scriptId': script_id,
         }
-
+        
         return self._send_command(
-            '"Debugger.getScriptSource"',
+            'Debugger.getScriptSource',
+
             params
         )
 
     def get_stack_trace(
         self,
         stack_trace_id: StackTraceId
-    ):
+    ) -> 'GetStackTraceReturnT':
         params = {
             'stackTraceId': stack_trace_id,
         }
-
+        
         return self._send_command(
-            '"Debugger.getStackTrace"',
+            'Debugger.getStackTrace',
+
             params
         )
 
     def pause(
         self
-    ):
+    ) -> 'PauseReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Debugger.pause"',
+            'Debugger.pause',
+
             params
         )
 
     def pause_on_async_call(
         self,
         parent_stack_trace_id: StackTraceId
-    ):
+    ) -> 'PauseOnAsyncCallReturnT':
         params = {
             'parentStackTraceId': parent_stack_trace_id,
         }
-
+        
         return self._send_command(
-            '"Debugger.pauseOnAsyncCall"',
+            'Debugger.pauseOnAsyncCall',
+
             params
         )
 
     def remove_breakpoint(
         self,
         breakpoint_id: BreakpointId
-    ):
+    ) -> 'RemoveBreakpointReturnT':
         params = {
             'breakpointId': breakpoint_id,
         }
-
+        
         return self._send_command(
-            '"Debugger.removeBreakpoint"',
+            'Debugger.removeBreakpoint',
+
             params
         )
 
     def restart_frame(
         self,
         call_frame_id: CallFrameId
-    ):
+    ) -> 'RestartFrameReturnT':
         params = {
             'callFrameId': call_frame_id,
         }
-
+        
         return self._send_command(
-            '"Debugger.restartFrame"',
+            'Debugger.restartFrame',
+
             params
         )
 
     def resume(
         self
-    ):
+    ) -> 'ResumeReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Debugger.resume"',
+            'Debugger.resume',
+
             params
         )
 
@@ -251,50 +241,49 @@ class Debugger(BaseDomain):
         query: str,
         case_sensitive: bool = UNDEFINED,
         is_regex: bool = UNDEFINED
-    ):
+    ) -> 'SearchInContentReturnT':
         params = {
             'scriptId': script_id,
             'query': query,
         }
-
-        if is_defined(
-            case_sensitive
-        ):
-            params['caseSensitive'            ] = case_sensitive
-
-        if is_defined(
-            is_regex
-        ):
-            params['isRegex'            ] = is_regex
-
+        
+        if is_defined(case_sensitive):
+params['caseSensitive'] = case_sensitive
+        
+        if is_defined(is_regex):
+params['isRegex'] = is_regex
+        
         return self._send_command(
-            '"Debugger.searchInContent"',
+            'Debugger.searchInContent',
+
             params
         )
 
     def set_async_call_stack_depth(
         self,
         max_depth: int
-    ):
+    ) -> 'SetAsyncCallStackDepthReturnT':
         params = {
             'maxDepth': max_depth,
         }
-
+        
         return self._send_command(
-            '"Debugger.setAsyncCallStackDepth"',
+            'Debugger.setAsyncCallStackDepth',
+
             params
         )
 
     def set_blackbox_patterns(
         self,
         patterns: list
-    ):
+    ) -> 'SetBlackboxPatternsReturnT':
         params = {
             'patterns': patterns,
         }
-
+        
         return self._send_command(
-            '"Debugger.setBlackboxPatterns"',
+            'Debugger.setBlackboxPatterns',
+
             params
         )
 
@@ -302,14 +291,15 @@ class Debugger(BaseDomain):
         self,
         script_id: ScriptId,
         positions: list
-    ):
+    ) -> 'SetBlackboxedRangesReturnT':
         params = {
             'scriptId': script_id,
             'positions': positions,
         }
-
+        
         return self._send_command(
-            '"Debugger.setBlackboxedRanges"',
+            'Debugger.setBlackboxedRanges',
+
             params
         )
 
@@ -317,31 +307,31 @@ class Debugger(BaseDomain):
         self,
         location: Location,
         condition: str = UNDEFINED
-    ):
+    ) -> 'SetBreakpointReturnT':
         params = {
             'location': location,
         }
-
-        if is_defined(
-            condition
-        ):
-            params['condition'            ] = condition
-
+        
+        if is_defined(condition):
+params['condition'] = condition
+        
         return self._send_command(
-            '"Debugger.setBreakpoint"',
+            'Debugger.setBreakpoint',
+
             params
         )
 
     def set_instrumentation_breakpoint(
         self,
         instrumentation: str
-    ):
+    ) -> 'SetInstrumentationBreakpointReturnT':
         params = {
             'instrumentation': instrumentation,
         }
-
+        
         return self._send_command(
-            '"Debugger.setInstrumentationBreakpoint"',
+            'Debugger.setInstrumentationBreakpoint',
+
             params
         )
 
@@ -353,38 +343,29 @@ class Debugger(BaseDomain):
         script_hash: str = UNDEFINED,
         column_number: int = UNDEFINED,
         condition: str = UNDEFINED
-    ):
+    ) -> 'SetBreakpointByUrlReturnT':
         params = {
             'lineNumber': line_number,
         }
-
-        if is_defined(
-            url
-        ):
-            params['url'            ] = url
-
-        if is_defined(
-            url_regex
-        ):
-            params['urlRegex'            ] = url_regex
-
-        if is_defined(
-            script_hash
-        ):
-            params['scriptHash'            ] = script_hash
-
-        if is_defined(
-            column_number
-        ):
-            params['columnNumber'            ] = column_number
-
-        if is_defined(
-            condition
-        ):
-            params['condition'            ] = condition
-
+        
+        if is_defined(url):
+params['url'] = url
+        
+        if is_defined(url_regex):
+params['urlRegex'] = url_regex
+        
+        if is_defined(script_hash):
+params['scriptHash'] = script_hash
+        
+        if is_defined(column_number):
+params['columnNumber'] = column_number
+        
+        if is_defined(condition):
+params['condition'] = condition
+        
         return self._send_command(
-            '"Debugger.setBreakpointByUrl"',
+            'Debugger.setBreakpointByUrl',
+
             params
         )
 
@@ -392,57 +373,59 @@ class Debugger(BaseDomain):
         self,
         object_id: RemoteObjectId,
         condition: str = UNDEFINED
-    ):
+    ) -> 'SetBreakpointOnFunctionCallReturnT':
         params = {
             'objectId': object_id,
         }
-
-        if is_defined(
-            condition
-        ):
-            params['condition'            ] = condition
-
+        
+        if is_defined(condition):
+params['condition'] = condition
+        
         return self._send_command(
-            '"Debugger.setBreakpointOnFunctionCall"',
+            'Debugger.setBreakpointOnFunctionCall',
+
             params
         )
 
     def set_breakpoints_active(
         self,
         active: bool
-    ):
+    ) -> 'SetBreakpointsActiveReturnT':
         params = {
             'active': active,
         }
-
+        
         return self._send_command(
-            '"Debugger.setBreakpointsActive"',
+            'Debugger.setBreakpointsActive',
+
             params
         )
 
     def set_pause_on_exceptions(
         self,
         state: str
-    ):
+    ) -> 'SetPauseOnExceptionsReturnT':
         params = {
             'state': state,
         }
-
+        
         return self._send_command(
-            '"Debugger.setPauseOnExceptions"',
+            'Debugger.setPauseOnExceptions',
+
             params
         )
 
     def set_return_value(
         self,
         new_value: CallArgument
-    ):
+    ) -> 'SetReturnValueReturnT':
         params = {
             'newValue': new_value,
         }
-
+        
         return self._send_command(
-            '"Debugger.setReturnValue"',
+            'Debugger.setReturnValue',
+
             params
         )
 
@@ -451,32 +434,32 @@ class Debugger(BaseDomain):
         script_id: ScriptId,
         script_source: str,
         dry_run: bool = UNDEFINED
-    ):
+    ) -> 'SetScriptSourceReturnT':
         params = {
             'scriptId': script_id,
             'scriptSource': script_source,
         }
-
-        if is_defined(
-            dry_run
-        ):
-            params['dryRun'            ] = dry_run
-
+        
+        if is_defined(dry_run):
+params['dryRun'] = dry_run
+        
         return self._send_command(
-            '"Debugger.setScriptSource"',
+            'Debugger.setScriptSource',
+
             params
         )
 
     def set_skip_all_pauses(
         self,
         skip: bool
-    ):
+    ) -> 'SetSkipAllPausesReturnT':
         params = {
             'skip': skip,
         }
-
+        
         return self._send_command(
-            '"Debugger.setSkipAllPauses"',
+            'Debugger.setSkipAllPauses',
+
             params
         )
 
@@ -486,52 +469,54 @@ class Debugger(BaseDomain):
         variable_name: str,
         new_value: CallArgument,
         call_frame_id: CallFrameId
-    ):
+    ) -> 'SetVariableValueReturnT':
         params = {
             'scopeNumber': scope_number,
             'variableName': variable_name,
             'newValue': new_value,
             'callFrameId': call_frame_id,
         }
-
+        
         return self._send_command(
-            '"Debugger.setVariableValue"',
+            'Debugger.setVariableValue',
+
             params
         )
 
     def step_into(
         self,
         break_on_async_call: bool = UNDEFINED
-    ):
+    ) -> 'StepIntoReturnT':
         params = {}
-
-        if is_defined(
-            break_on_async_call
-        ):
-            params['breakOnAsyncCall'            ] = break_on_async_call
-
+        
+        if is_defined(break_on_async_call):
+params['breakOnAsyncCall'] = break_on_async_call
+        
         return self._send_command(
-            '"Debugger.stepInto"',
+            'Debugger.stepInto',
+
             params
         )
 
     def step_out(
         self
-    ):
+    ) -> 'StepOutReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Debugger.stepOut"',
+            'Debugger.stepOut',
+
             params
         )
 
     def step_over(
         self
-    ):
+    ) -> 'StepOverReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Debugger.stepOver"',
+            'Debugger.stepOver',
+
             params
         )
 

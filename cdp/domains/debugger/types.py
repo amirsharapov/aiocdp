@@ -36,34 +36,24 @@ class Location:
     column_number: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'script_id': self.script_id.to_dict(
-                    casing_strategy
-                ),
+                'script_id': self.script_id,
                 'line_number': self.line_number,
                 'column_number': self.column_number,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'scriptId': self.script_id.to_dict(
-                    casing_strategy
-                ),
+                'scriptId': self.script_id,
                 'lineNumber': self.line_number,
                 'columnNumber': self.column_number,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'ScriptId': self.script_id.to_dict(
-                    casing_strategy
-                ),
+                'ScriptId': self.script_id,
                 'LineNumber': self.line_number,
                 'ColumnNumber': self.column_number,
             }
@@ -75,23 +65,19 @@ class ScriptPosition:
     column_number: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'line_number': self.line_number,
                 'column_number': self.column_number,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'lineNumber': self.line_number,
                 'columnNumber': self.column_number,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'LineNumber': self.line_number,
@@ -111,87 +97,50 @@ class CallFrame:
     return_value: 'RemoteObject'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'call_frame_id': self.call_frame_id.to_dict(
-                    casing_strategy
-                ),
+                'call_frame_id': self.call_frame_id,
                 'function_name': self.function_name,
-                'function_location': self.function_location.to_dict(
-                    casing_strategy
-                ),
-                'location': self.location.to_dict(
-                    casing_strategy
-                ),
+                'function_location': self.function_location.to_dict(casing_strategy),
+                'location': self.location.to_dict(casing_strategy),
                 'url': self.url,
-                'scope_chain': [_.to_dict(
-                    casing_strategy
-                )
+                'scope_chain': [
+                    _.to_dict(casing_strategy)
                     for _ in self.scope_chain
                 ],
-                'this': self.this.to_dict(
-                    casing_strategy
-                ),
-                'return_value': self.return_value.to_dict(
-                    casing_strategy
-                ),
-            }
+                'this': self.this.to_dict(casing_strategy),
+                'return_value': self.return_value.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'callFrameId': self.call_frame_id.to_dict(
-                    casing_strategy
-                ),
+                'callFrameId': self.call_frame_id,
                 'functionName': self.function_name,
-                'functionLocation': self.function_location.to_dict(
-                    casing_strategy
-                ),
-                'location': self.location.to_dict(
-                    casing_strategy
-                ),
+                'functionLocation': self.function_location.to_dict(casing_strategy),
+                'location': self.location.to_dict(casing_strategy),
                 'url': self.url,
-                'scopeChain': [_.to_dict(
-                    casing_strategy
-                )
+                'scopeChain': [
+                    _.to_dict(casing_strategy)
                     for _ in self.scope_chain
                 ],
-                'this': self.this.to_dict(
-                    casing_strategy
-                ),
-                'returnValue': self.return_value.to_dict(
-                    casing_strategy
-                ),
-            }
+                'this': self.this.to_dict(casing_strategy),
+                'returnValue': self.return_value.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'CallFrameId': self.call_frame_id.to_dict(
-                    casing_strategy
-                ),
+                'CallFrameId': self.call_frame_id,
                 'FunctionName': self.function_name,
-                'FunctionLocation': self.function_location.to_dict(
-                    casing_strategy
-                ),
-                'Location': self.location.to_dict(
-                    casing_strategy
-                ),
+                'FunctionLocation': self.function_location.to_dict(casing_strategy),
+                'Location': self.location.to_dict(casing_strategy),
                 'Url': self.url,
-                'ScopeChain': [_.to_dict(
-                    casing_strategy
-                )
+                'ScopeChain': [
+                    _.to_dict(casing_strategy)
                     for _ in self.scope_chain
                 ],
-                'This': self.this.to_dict(
-                    casing_strategy
-                ),
-                'ReturnValue': self.return_value.to_dict(
-                    casing_strategy
-                ),
+                'This': self.this.to_dict(casing_strategy),
+                'ReturnValue': self.return_value.to_dict(casing_strategy),
             }
 
 
@@ -204,54 +153,32 @@ class Scope:
     end_location: 'Location'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'type': self.type_,
-                'object': self.object_.to_dict(
-                    casing_strategy
-                ),
+                'type': self.type,
+                'object': self.object.to_dict(casing_strategy),
                 'name': self.name,
-                'start_location': self.start_location.to_dict(
-                    casing_strategy
-                ),
-                'end_location': self.end_location.to_dict(
-                    casing_strategy
-                ),
-            }
+                'start_location': self.start_location.to_dict(casing_strategy),
+                'end_location': self.end_location.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'type': self.type_,
-                'object': self.object_.to_dict(
-                    casing_strategy
-                ),
+                'type': self.type,
+                'object': self.object.to_dict(casing_strategy),
                 'name': self.name,
-                'startLocation': self.start_location.to_dict(
-                    casing_strategy
-                ),
-                'endLocation': self.end_location.to_dict(
-                    casing_strategy
-                ),
-            }
+                'startLocation': self.start_location.to_dict(casing_strategy),
+                'endLocation': self.end_location.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Type': self.type_,
-                'Object': self.object_.to_dict(
-                    casing_strategy
-                ),
+                'Type': self.type,
+                'Object': self.object.to_dict(casing_strategy),
                 'Name': self.name,
-                'StartLocation': self.start_location.to_dict(
-                    casing_strategy
-                ),
-                'EndLocation': self.end_location.to_dict(
-                    casing_strategy
-                ),
+                'StartLocation': self.start_location.to_dict(casing_strategy),
+                'EndLocation': self.end_location.to_dict(casing_strategy),
             }
 
 
@@ -261,23 +188,19 @@ class SearchMatch:
     line_content: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'line_number': self.line_number,
                 'line_content': self.line_content,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'lineNumber': self.line_number,
                 'lineContent': self.line_content,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'LineNumber': self.line_number,
@@ -293,39 +216,29 @@ class BreakLocation:
     type: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'script_id': self.script_id.to_dict(
-                    casing_strategy
-                ),
+                'script_id': self.script_id,
                 'line_number': self.line_number,
                 'column_number': self.column_number,
-                'type': self.type_,
-            }
+                'type': self.type,
+            }        
         if casing_strategy == 'camel':
             return {
-                'scriptId': self.script_id.to_dict(
-                    casing_strategy
-                ),
+                'scriptId': self.script_id,
                 'lineNumber': self.line_number,
                 'columnNumber': self.column_number,
-                'type': self.type_,
-            }
+                'type': self.type,
+            }        
         if casing_strategy == 'pascal':
             return {
-                'ScriptId': self.script_id.to_dict(
-                    casing_strategy
-                ),
+                'ScriptId': self.script_id,
                 'LineNumber': self.line_number,
                 'ColumnNumber': self.column_number,
-                'Type': self.type_,
+                'Type': self.type,
             }
 
 

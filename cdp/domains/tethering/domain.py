@@ -20,26 +20,28 @@ class Tethering(BaseDomain):
     def bind(
         self,
         port: int
-    ):
+    ) -> 'BindReturnT':
         params = {
             'port': port,
         }
-
+        
         return self._send_command(
-            '"Tethering.bind"',
+            'Tethering.bind',
+
             params
         )
 
     def unbind(
         self,
         port: int
-    ):
+    ) -> 'UnbindReturnT':
         params = {
             'port': port,
         }
-
+        
         return self._send_command(
-            '"Tethering.unbind"',
+            'Tethering.unbind',
+
             params
         )
 

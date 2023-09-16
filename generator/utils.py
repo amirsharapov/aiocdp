@@ -43,7 +43,7 @@ T = TypeVar('T')
 
 class _Undefined:
     def __repr__(self):
-        return 'UNDEFINED'
+        return '?'
 
     def __getattr__(self, item):
         return self

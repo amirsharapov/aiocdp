@@ -27,40 +27,33 @@ class DatabaseWithObjectStores:
     object_stores: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
                 'version': self.version,
-                'object_stores': [_.to_dict(
-                    casing_strategy
-                )
+                'object_stores': [
+                    _.to_dict(casing_strategy)
                     for _ in self.object_stores
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
                 'version': self.version,
-                'objectStores': [_.to_dict(
-                    casing_strategy
-                )
+                'objectStores': [
+                    _.to_dict(casing_strategy)
                     for _ in self.object_stores
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
                 'Version': self.version,
-                'ObjectStores': [_.to_dict(
-                    casing_strategy
-                )
+                'ObjectStores': [
+                    _.to_dict(casing_strategy)
                     for _ in self.object_stores
                 ],
             }
@@ -74,49 +67,36 @@ class ObjectStore:
     indexes: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
-                'key_path': self.key_path.to_dict(
-                    casing_strategy
-                ),
+                'key_path': self.key_path.to_dict(casing_strategy),
                 'auto_increment': self.auto_increment,
-                'indexes': [_.to_dict(
-                    casing_strategy
-                )
+                'indexes': [
+                    _.to_dict(casing_strategy)
                     for _ in self.indexes
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
-                'keyPath': self.key_path.to_dict(
-                    casing_strategy
-                ),
+                'keyPath': self.key_path.to_dict(casing_strategy),
                 'autoIncrement': self.auto_increment,
-                'indexes': [_.to_dict(
-                    casing_strategy
-                )
+                'indexes': [
+                    _.to_dict(casing_strategy)
                     for _ in self.indexes
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
-                'KeyPath': self.key_path.to_dict(
-                    casing_strategy
-                ),
+                'KeyPath': self.key_path.to_dict(casing_strategy),
                 'AutoIncrement': self.auto_increment,
-                'Indexes': [_.to_dict(
-                    casing_strategy
-                )
+                'Indexes': [
+                    _.to_dict(casing_strategy)
                     for _ in self.indexes
                 ],
             }
@@ -130,37 +110,27 @@ class ObjectStoreIndex:
     multi_entry: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
-                'key_path': self.key_path.to_dict(
-                    casing_strategy
-                ),
+                'key_path': self.key_path.to_dict(casing_strategy),
                 'unique': self.unique,
                 'multi_entry': self.multi_entry,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
-                'keyPath': self.key_path.to_dict(
-                    casing_strategy
-                ),
+                'keyPath': self.key_path.to_dict(casing_strategy),
                 'unique': self.unique,
                 'multiEntry': self.multi_entry,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
-                'KeyPath': self.key_path.to_dict(
-                    casing_strategy
-                ),
+                'KeyPath': self.key_path.to_dict(casing_strategy),
                 'Unique': self.unique,
                 'MultiEntry': self.multi_entry,
             }
@@ -175,46 +145,39 @@ class Key:
     array: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'type': self.type_,
+                'type': self.type,
                 'number': self.number,
                 'string': self.string,
                 'date': self.date,
-                'array': [_.to_dict(
-                    casing_strategy
-                )
+                'array': [
+                    _.to_dict(casing_strategy)
                     for _ in self.array
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'type': self.type_,
+                'type': self.type,
                 'number': self.number,
                 'string': self.string,
                 'date': self.date,
-                'array': [_.to_dict(
-                    casing_strategy
-                )
+                'array': [
+                    _.to_dict(casing_strategy)
                     for _ in self.array
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Type': self.type_,
+                'Type': self.type,
                 'Number': self.number,
                 'String': self.string,
                 'Date': self.date,
-                'Array': [_.to_dict(
-                    casing_strategy
-                )
+                'Array': [
+                    _.to_dict(casing_strategy)
                     for _ in self.array
                 ],
             }
@@ -228,43 +191,27 @@ class KeyRange:
     upper_open: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'lower': self.lower.to_dict(
-                    casing_strategy
-                ),
-                'upper': self.upper.to_dict(
-                    casing_strategy
-                ),
+                'lower': self.lower.to_dict(casing_strategy),
+                'upper': self.upper.to_dict(casing_strategy),
                 'lower_open': self.lower_open,
                 'upper_open': self.upper_open,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'lower': self.lower.to_dict(
-                    casing_strategy
-                ),
-                'upper': self.upper.to_dict(
-                    casing_strategy
-                ),
+                'lower': self.lower.to_dict(casing_strategy),
+                'upper': self.upper.to_dict(casing_strategy),
                 'lowerOpen': self.lower_open,
                 'upperOpen': self.upper_open,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Lower': self.lower.to_dict(
-                    casing_strategy
-                ),
-                'Upper': self.upper.to_dict(
-                    casing_strategy
-                ),
+                'Lower': self.lower.to_dict(casing_strategy),
+                'Upper': self.upper.to_dict(casing_strategy),
                 'LowerOpen': self.lower_open,
                 'UpperOpen': self.upper_open,
             }
@@ -277,48 +224,26 @@ class DataEntry:
     value: 'RemoteObject'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'key': self.key.to_dict(
-                    casing_strategy
-                ),
-                'primary_key': self.primary_key.to_dict(
-                    casing_strategy
-                ),
-                'value': self.value.to_dict(
-                    casing_strategy
-                ),
-            }
+                'key': self.key.to_dict(casing_strategy),
+                'primary_key': self.primary_key.to_dict(casing_strategy),
+                'value': self.value.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'key': self.key.to_dict(
-                    casing_strategy
-                ),
-                'primaryKey': self.primary_key.to_dict(
-                    casing_strategy
-                ),
-                'value': self.value.to_dict(
-                    casing_strategy
-                ),
-            }
+                'key': self.key.to_dict(casing_strategy),
+                'primaryKey': self.primary_key.to_dict(casing_strategy),
+                'value': self.value.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Key': self.key.to_dict(
-                    casing_strategy
-                ),
-                'PrimaryKey': self.primary_key.to_dict(
-                    casing_strategy
-                ),
-                'Value': self.value.to_dict(
-                    casing_strategy
-                ),
+                'Key': self.key.to_dict(casing_strategy),
+                'PrimaryKey': self.primary_key.to_dict(casing_strategy),
+                'Value': self.value.to_dict(casing_strategy),
             }
 
 
@@ -329,28 +254,24 @@ class KeyPath:
     array: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'type': self.type_,
+                'type': self.type,
                 'string': self.string,
                 'array': self.array,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'type': self.type_,
+                'type': self.type,
                 'string': self.string,
                 'array': self.array,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Type': self.type_,
+                'Type': self.type,
                 'String': self.string,
                 'Array': self.array,
             }

@@ -27,59 +27,64 @@ class LayerTree(BaseDomain):
     def compositing_reasons(
         self,
         layer_id: LayerId
-    ):
+    ) -> 'CompositingReasonsReturnT':
         params = {
             'layerId': layer_id,
         }
-
+        
         return self._send_command(
-            '"LayerTree.compositingReasons"',
+            'LayerTree.compositingReasons',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"LayerTree.disable"',
+            'LayerTree.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"LayerTree.enable"',
+            'LayerTree.enable',
+
             params
         )
 
     def load_snapshot(
         self,
         tiles: list
-    ):
+    ) -> 'LoadSnapshotReturnT':
         params = {
             'tiles': tiles,
         }
-
+        
         return self._send_command(
-            '"LayerTree.loadSnapshot"',
+            'LayerTree.loadSnapshot',
+
             params
         )
 
     def make_snapshot(
         self,
         layer_id: LayerId
-    ):
+    ) -> 'MakeSnapshotReturnT':
         params = {
             'layerId': layer_id,
         }
-
+        
         return self._send_command(
-            '"LayerTree.makeSnapshot"',
+            'LayerTree.makeSnapshot',
+
             params
         )
 
@@ -89,41 +94,37 @@ class LayerTree(BaseDomain):
         min_repeat_count: int = UNDEFINED,
         min_duration: float = UNDEFINED,
         clip_rect: Rect = UNDEFINED
-    ):
+    ) -> 'ProfileSnapshotReturnT':
         params = {
             'snapshotId': snapshot_id,
         }
-
-        if is_defined(
-            min_repeat_count
-        ):
-            params['minRepeatCount'            ] = min_repeat_count
-
-        if is_defined(
-            min_duration
-        ):
-            params['minDuration'            ] = min_duration
-
-        if is_defined(
-            clip_rect
-        ):
-            params['clipRect'            ] = clip_rect
-
+        
+        if is_defined(min_repeat_count):
+params['minRepeatCount'] = min_repeat_count
+        
+        if is_defined(min_duration):
+params['minDuration'] = min_duration
+        
+        if is_defined(clip_rect):
+params['clipRect'] = clip_rect
+        
         return self._send_command(
-            '"LayerTree.profileSnapshot"',
+            'LayerTree.profileSnapshot',
+
             params
         )
 
     def release_snapshot(
         self,
         snapshot_id: SnapshotId
-    ):
+    ) -> 'ReleaseSnapshotReturnT':
         params = {
             'snapshotId': snapshot_id,
         }
-
+        
         return self._send_command(
-            '"LayerTree.releaseSnapshot"',
+            'LayerTree.releaseSnapshot',
+
             params
         )
 
@@ -133,41 +134,37 @@ class LayerTree(BaseDomain):
         from_step: int = UNDEFINED,
         to_step: int = UNDEFINED,
         scale: float = UNDEFINED
-    ):
+    ) -> 'ReplaySnapshotReturnT':
         params = {
             'snapshotId': snapshot_id,
         }
-
-        if is_defined(
-            from_step
-        ):
-            params['fromStep'            ] = from_step
-
-        if is_defined(
-            to_step
-        ):
-            params['toStep'            ] = to_step
-
-        if is_defined(
-            scale
-        ):
-            params['scale'            ] = scale
-
+        
+        if is_defined(from_step):
+params['fromStep'] = from_step
+        
+        if is_defined(to_step):
+params['toStep'] = to_step
+        
+        if is_defined(scale):
+params['scale'] = scale
+        
         return self._send_command(
-            '"LayerTree.replaySnapshot"',
+            'LayerTree.replaySnapshot',
+
             params
         )
 
     def snapshot_command_log(
         self,
         snapshot_id: SnapshotId
-    ):
+    ) -> 'SnapshotCommandLogReturnT':
         params = {
             'snapshotId': snapshot_id,
         }
-
+        
         return self._send_command(
-            '"LayerTree.snapshotCommandLog"',
+            'LayerTree.snapshotCommandLog',
+
             params
         )
 

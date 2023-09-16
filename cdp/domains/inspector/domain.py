@@ -19,21 +19,23 @@ from cdp.utils import (
 class Inspector(BaseDomain):
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Inspector.disable"',
+            'Inspector.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Inspector.enable"',
+            'Inspector.enable',
+
             params
         )
 

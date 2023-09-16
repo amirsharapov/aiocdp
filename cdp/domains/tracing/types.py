@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 MemoryDumpConfig = dict
 
@@ -51,13 +50,9 @@ class TraceConfig:
     memory_dump_config: 'MemoryDumpConfig'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'record_mode': self.record_mode,
@@ -68,10 +63,8 @@ class TraceConfig:
                 'included_categories': self.included_categories,
                 'excluded_categories': self.excluded_categories,
                 'synthetic_delays': self.synthetic_delays,
-                'memory_dump_config': self.memory_dump_config.to_dict(
-                    casing_strategy
-                ),
-            }
+                'memory_dump_config': self.memory_dump_config,
+            }        
         if casing_strategy == 'camel':
             return {
                 'recordMode': self.record_mode,
@@ -82,10 +75,8 @@ class TraceConfig:
                 'includedCategories': self.included_categories,
                 'excludedCategories': self.excluded_categories,
                 'syntheticDelays': self.synthetic_delays,
-                'memoryDumpConfig': self.memory_dump_config.to_dict(
-                    casing_strategy
-                ),
-            }
+                'memoryDumpConfig': self.memory_dump_config,
+            }        
         if casing_strategy == 'pascal':
             return {
                 'RecordMode': self.record_mode,
@@ -96,9 +87,7 @@ class TraceConfig:
                 'IncludedCategories': self.included_categories,
                 'ExcludedCategories': self.excluded_categories,
                 'SyntheticDelays': self.synthetic_delays,
-                'MemoryDumpConfig': self.memory_dump_config.to_dict(
-                    casing_strategy
-                ),
+                'MemoryDumpConfig': self.memory_dump_config,
             }
 
 

@@ -1,20 +1,26 @@
 import ast
 import contextlib
 from _ast import comprehension
-from typing import Any
+from typing import Any, TypedDict
 
 
-def indent_lines(lines: str | list[str], indent: int) -> str:
-    if isinstance(lines, str):
-        lines = lines.split('\n')
+class RenderContextDict(TypedDict):
+    expand: bool
 
-    indent_str = ' ' * indent
 
-    return '\n'.join([
-        f'{indent_str}{line}' for
-        line in
-        lines
-    ])
+def get_render_context(node: ast.AST) -> RenderContextDict:
+    if hasattr(node, 'render_context'):
+        assert isinstance(node.render_context, dict)
+
+        return {
+            'expand': False,
+            **node.render_context
+        }
+
+    else:
+        return {
+            'expand': False
+        }
 
 
 # noinspection PyTypeChecker
@@ -56,24 +62,26 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.hierarchy.pop()
 
     def visit_alias(self, node: ast.alias) -> Any:
-        self.source += f'{self.indent}{node.name}'
+        self.source += node.name
+
+        if hasattr(node, 'asname') and node.asname:
+            self.source += f' as {node.asname}'
 
     def visit_arg(self, node: ast.arg) -> Any:
-        self.source += f'{self.indent}{node.arg}'
+        self.source += node.arg
 
         if node.annotation:
             self.source += ': '
             self.visit(node.annotation)
 
     def visit_arg_with_default(self, node: ast.arg, default: ast.AST = None) -> Any:
+        self.source += self.indent
         self.visit(node)
         if default:
             self.source += ' = '
             self.visit(default)
 
     def visit_arguments(self, node: ast.arguments) -> Any:
-        self.source += '('
-
         with self._indent_context():
             for i, (arg, default) in enumerate(self._zip_args_and_defaults(node)):
                 self.source += '\n'
@@ -86,7 +94,6 @@ class SourceCodeGenerator(ast.NodeVisitor):
                     self.source += ','
 
         self.source += '\n'
-        self.source += f'{self.indent})'
 
     def visit_comprehension(self, node: comprehension) -> Any:
         self.source += f'{self.indent}for '
@@ -106,7 +113,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
                         self.source += '\n'
 
     def visit_keyword(self, node: ast.keyword) -> Any:
-        self.source += f'{self.indent}{node.arg}='
+        self.source += f'{node.arg}='
         self.visit(node.value)
 
     def visit_AnnAssign(self, node: ast.AnnAssign) -> Any:
@@ -122,7 +129,6 @@ class SourceCodeGenerator(ast.NodeVisitor):
             self.visit(node.annotation)
 
     def visit_Assign(self, node: ast.Assign) -> Any:
-        self.source += self.indent
         self.visit(node.targets[0])
         self.source += ' = '
         self.visit(node.value)
@@ -133,32 +139,49 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += f'.{node.attr}'
 
     def visit_Call(self, node: ast.Call) -> Any:
+        render_context = get_render_context(node)
+
         self.visit(node.func)
         self.source += '('
 
-        if hasattr(node, 'args') and node.args:
-            with self._indent_context():
+        with self._indent_context():
+            if hasattr(node, 'args') and node.args:
                 for i, arg_ in enumerate(node.args):
-                    self.source += '\n'
-                    self.source += self.indent
+                    if render_context['expand']:
+                        self.source += '\n'
+                        self.source += self.indent
+
                     self.visit(arg_)
 
                     if i != len(node.args) - 1:
                         self.source += ','
 
+                        if render_context['expand']:
+                            self.source += '\n'
+                        else:
+                            self.source += ' '
+
+            if hasattr(node, 'keywords') and node.keywords:
+                for i, keyword in enumerate(node.keywords):
+                    if render_context['expand']:
+                        self.source += '\n'
+                        self.source += self.indent
+
+                    self.visit(keyword)
+
+                    if i != len(node.keywords) - 1:
+                        self.source += ','
+
+                        if render_context['expand']:
+                            self.source += '\n'
+                        else:
+                            self.source += ' '
+
+        if render_context['expand']:
             self.source += '\n'
+            self.source += self.indent
 
-        if hasattr(node, 'keywords') and node.keywords:
-            for i, keyword in enumerate(node.keywords):
-                self.source += '\n'
-                self.source += self.indent
-                self.visit(keyword)
-
-                if i != len(node.keywords) - 1:
-                    self.source += ','
-
-            self.source += '\n'
-        self.source += f'{self.indent})'
+        self.source += ')'
 
     def visit_ClassDef(self, node: ast.ClassDef) -> Any:
         for decorator in node.decorator_list:
@@ -206,6 +229,8 @@ class SourceCodeGenerator(ast.NodeVisitor):
             self.source += str(node.value)
 
     def visit_Dict(self, node: ast.Dict) -> Any:
+        render_context = get_render_context(node)
+
         self.source += '{'
 
         if node.keys:
@@ -216,7 +241,17 @@ class SourceCodeGenerator(ast.NodeVisitor):
                 self.source += f'{self.indent}'
                 self.visit(key)
                 self.source += ': '
+
+                if render_context['expand']:
+                    self.source += '(\n'
+                    self.source += self.indent + 4 * ' '
+
                 self.visit(value)
+
+                if render_context['expand']:
+                    self.source += '\n'
+                    self.source += self.indent + ')'
+
                 self.source += ',\n'
 
         if node.keys:
@@ -225,14 +260,26 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += '}'
 
     def visit_FunctionDef(self, node: ast.FunctionDef) -> Any:
-        self.source += f'{self.indent}def {node.name}'
-        self.visit(node.args)
+        self.source += f'{self.indent}def {node.name}('
+
+        if hasattr(node, 'args') and node.args:
+            self.visit(node.args)
+            self.source += self.indent
+
+        self.source += ')'
+
+        if hasattr(node, 'returns') and node.returns:
+            self.source += ' -> '
+            self.visit(node.returns)
+
         self.source += ':\n'
 
         prev = None
 
         with self._indent_context():
             for body in node.body:
+                self.source += self.indent
+
                 if isinstance(body, ast.If):
                     self.source += '\n'
 
@@ -253,6 +300,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
         with self._indent_context():
             for i, name in enumerate(node.names):
                 self.source += '\n'
+                self.source += self.indent
                 self.visit(name)
 
                 if i != len(node.names) - 1:
@@ -279,13 +327,15 @@ class SourceCodeGenerator(ast.NodeVisitor):
                     self.visit(body)
 
     def visit_ListComp(self, node: ast.ListComp) -> Any:
-        self.source += '['
-        self.visit(node.elt)
-
-        if node.generators:
-            self.source += '\n'
+        self.source += f'['
 
         with self._indent_context():
+            self.source += f'\n{self.indent}'
+            self.visit(node.elt)
+
+            if node.generators:
+                self.source += '\n'
+
             for i, generator in enumerate(node.generators):
                 self.visit(generator)
 
@@ -311,23 +361,39 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.visit(node.value)
 
     def visit_Subscript(self, node: ast.Subscript) -> Any:
+        render_context = get_render_context(node)
+
         self.visit(node.value)
         self.source += '['
 
-        if isinstance(node.slice, ast.Tuple):
+        if render_context['expand']:
             self.source += '\n'
 
-            with self._indent_context():
-                for i, elt in enumerate(node.slice.elts):
-                    self.source += self.indent
-                    self.visit(elt)
+        with self._indent_context():
+
+            if isinstance(node.slice, ast.Tuple):
+                for i, element in enumerate(node.slice.elts):
+                    if render_context['expand']:
+                        self.source += self.indent
+
+                    self.visit(element)
 
                     if i != len(node.slice.elts) - 1:
-                        self.source += ',\n'
+                        self.source += ','
 
+                        if render_context['expand']:
+                            self.source += '\n'
+                        else:
+                            self.source += ' '
+
+            else:
+                if render_context['expand']:
+                    self.source += self.indent
+
+                self.visit(node.slice)
+
+        if render_context['expand']:
             self.source += '\n'
+            self.source += self.indent
 
-        else:
-            self.visit(node.slice)
-
-        self.source += f'{self.indent}]'
+        self.source += ']'

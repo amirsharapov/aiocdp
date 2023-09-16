@@ -31,52 +31,54 @@ class Autofill(BaseDomain):
         field_id: BackendNodeId,
         frame_id: FrameId,
         card: CreditCard = UNDEFINED
-    ):
+    ) -> 'TriggerReturnT':
         params = {
             'fieldId': field_id,
             'card': card,
         }
-
-        if is_defined(
-            frame_id
-        ):
-            params['frameId'            ] = frame_id
-
+        
+        if is_defined(frame_id):
+params['frameId'] = frame_id
+        
         return self._send_command(
-            '"Autofill.trigger"',
+            'Autofill.trigger',
+
             params
         )
 
     def set_addresses(
         self,
         addresses: list
-    ):
+    ) -> 'SetAddressesReturnT':
         params = {
             'addresses': addresses,
         }
-
+        
         return self._send_command(
-            '"Autofill.setAddresses"',
+            'Autofill.setAddresses',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Autofill.disable"',
+            'Autofill.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Autofill.enable"',
+            'Autofill.enable',
+
             params
         )
 

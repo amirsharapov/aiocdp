@@ -19,31 +19,34 @@ from cdp.utils import (
 class Console(BaseDomain):
     def clear_messages(
         self
-    ):
+    ) -> 'ClearMessagesReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Console.clearMessages"',
+            'Console.clearMessages',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Console.disable"',
+            'Console.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Console.enable"',
+            'Console.enable',
+
             params
         )
 

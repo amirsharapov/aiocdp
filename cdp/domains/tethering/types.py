@@ -11,4 +11,3 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:

@@ -34,13 +34,9 @@ class CreditCard:
     cvc: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'number': self.number,
@@ -48,7 +44,7 @@ class CreditCard:
                 'expiry_month': self.expiry_month,
                 'expiry_year': self.expiry_year,
                 'cvc': self.cvc,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'number': self.number,
@@ -56,7 +52,7 @@ class CreditCard:
                 'expiryMonth': self.expiry_month,
                 'expiryYear': self.expiry_year,
                 'cvc': self.cvc,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Number': self.number,
@@ -73,23 +69,19 @@ class AddressField:
     value: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
@@ -102,34 +94,27 @@ class AddressFields:
     fields: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'fields': [_.to_dict(
-                    casing_strategy
-                )
+                'fields': [
+                    _.to_dict(casing_strategy)
                     for _ in self.fields
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'fields': [_.to_dict(
-                    casing_strategy
-                )
+                'fields': [
+                    _.to_dict(casing_strategy)
                     for _ in self.fields
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Fields': [_.to_dict(
-                    casing_strategy
-                )
+                'Fields': [
+                    _.to_dict(casing_strategy)
                     for _ in self.fields
                 ],
             }
@@ -140,34 +125,27 @@ class Address:
     fields: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'fields': [_.to_dict(
-                    casing_strategy
-                )
+                'fields': [
+                    _.to_dict(casing_strategy)
                     for _ in self.fields
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'fields': [_.to_dict(
-                    casing_strategy
-                )
+                'fields': [
+                    _.to_dict(casing_strategy)
                     for _ in self.fields
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Fields': [_.to_dict(
-                    casing_strategy
-                )
+                'Fields': [
+                    _.to_dict(casing_strategy)
                     for _ in self.fields
                 ],
             }
@@ -178,34 +156,27 @@ class AddressUI:
     address_fields: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'address_fields': [_.to_dict(
-                    casing_strategy
-                )
+                'address_fields': [
+                    _.to_dict(casing_strategy)
                     for _ in self.address_fields
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'addressFields': [_.to_dict(
-                    casing_strategy
-                )
+                'addressFields': [
+                    _.to_dict(casing_strategy)
                     for _ in self.address_fields
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'AddressFields': [_.to_dict(
-                    casing_strategy
-                )
+                'AddressFields': [
+                    _.to_dict(casing_strategy)
                     for _ in self.address_fields
                 ],
             }
@@ -221,35 +192,31 @@ class FilledField:
     filling_strategy: 'FillingStrategy'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'html_type': self.html_type,
-                'id': self.id_,
+                'id': self.id,
                 'name': self.name,
                 'value': self.value,
                 'autofill_type': self.autofill_type,
                 'filling_strategy': self.filling_strategy,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'htmlType': self.html_type,
-                'id': self.id_,
+                'id': self.id,
                 'name': self.name,
                 'value': self.value,
                 'autofillType': self.autofill_type,
                 'fillingStrategy': self.filling_strategy,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'HtmlType': self.html_type,
-                'Id': self.id_,
+                'Id': self.id,
                 'Name': self.name,
                 'Value': self.value,
                 'AutofillType': self.autofill_type,

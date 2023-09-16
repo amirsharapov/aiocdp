@@ -22,34 +22,37 @@ from cdp.utils import (
 class SystemInfo(BaseDomain):
     def get_info(
         self
-    ):
+    ) -> 'GetInfoReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"SystemInfo.getInfo"',
+            'SystemInfo.getInfo',
+
             params
         )
 
     def get_feature_state(
         self,
         feature_state: str
-    ):
+    ) -> 'GetFeatureStateReturnT':
         params = {
             'featureState': feature_state,
         }
-
+        
         return self._send_command(
-            '"SystemInfo.getFeatureState"',
+            'SystemInfo.getFeatureState',
+
             params
         )
 
     def get_process_info(
         self
-    ):
+    ) -> 'GetProcessInfoReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"SystemInfo.getProcessInfo"',
+            'SystemInfo.getProcessInfo',
+
             params
         )
 

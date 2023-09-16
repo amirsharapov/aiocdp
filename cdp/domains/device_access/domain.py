@@ -23,21 +23,23 @@ from cdp.utils import (
 class DeviceAccess(BaseDomain):
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"DeviceAccess.enable"',
+            'DeviceAccess.enable',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"DeviceAccess.disable"',
+            'DeviceAccess.disable',
+
             params
         )
 
@@ -45,27 +47,29 @@ class DeviceAccess(BaseDomain):
         self,
         id_: RequestId,
         device_id: DeviceId
-    ):
+    ) -> 'SelectPromptReturnT':
         params = {
             'id': id_,
             'deviceId': device_id,
         }
-
+        
         return self._send_command(
-            '"DeviceAccess.selectPrompt"',
+            'DeviceAccess.selectPrompt',
+
             params
         )
 
     def cancel_prompt(
         self,
         id_: RequestId
-    ):
+    ) -> 'CancelPromptReturnT':
         params = {
             'id': id_,
         }
-
+        
         return self._send_command(
-            '"DeviceAccess.cancelPrompt"',
+            'DeviceAccess.cancelPrompt',
+
             params
         )
 

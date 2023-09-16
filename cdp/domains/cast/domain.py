@@ -20,78 +20,82 @@ class Cast(BaseDomain):
     def enable(
         self,
         presentation_url: str = UNDEFINED
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
-        if is_defined(
-            presentation_url
-        ):
-            params['presentationUrl'            ] = presentation_url
-
+        
+        if is_defined(presentation_url):
+params['presentationUrl'] = presentation_url
+        
         return self._send_command(
-            '"Cast.enable"',
+            'Cast.enable',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Cast.disable"',
+            'Cast.disable',
+
             params
         )
 
     def set_sink_to_use(
         self,
         sink_name: str
-    ):
+    ) -> 'SetSinkToUseReturnT':
         params = {
             'sinkName': sink_name,
         }
-
+        
         return self._send_command(
-            '"Cast.setSinkToUse"',
+            'Cast.setSinkToUse',
+
             params
         )
 
     def start_desktop_mirroring(
         self,
         sink_name: str
-    ):
+    ) -> 'StartDesktopMirroringReturnT':
         params = {
             'sinkName': sink_name,
         }
-
+        
         return self._send_command(
-            '"Cast.startDesktopMirroring"',
+            'Cast.startDesktopMirroring',
+
             params
         )
 
     def start_tab_mirroring(
         self,
         sink_name: str
-    ):
+    ) -> 'StartTabMirroringReturnT':
         params = {
             'sinkName': sink_name,
         }
-
+        
         return self._send_command(
-            '"Cast.startTabMirroring"',
+            'Cast.startTabMirroring',
+
             params
         )
 
     def stop_casting(
         self,
         sink_name: str
-    ):
+    ) -> 'StopCastingReturnT':
         params = {
             'sinkName': sink_name,
         }
-
+        
         return self._send_command(
-            '"Cast.stopCasting"',
+            'Cast.stopCasting',
+
             params
         )
 

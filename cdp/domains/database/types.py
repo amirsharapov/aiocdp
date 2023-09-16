@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 DatabaseId = str
 
@@ -24,36 +23,26 @@ class Database:
     version: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'id': self.id_.to_dict(
-                    casing_strategy
-                ),
+                'id': self.id,
                 'domain': self.domain,
                 'name': self.name,
                 'version': self.version,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'id': self.id_.to_dict(
-                    casing_strategy
-                ),
+                'id': self.id,
                 'domain': self.domain,
                 'name': self.name,
                 'version': self.version,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Id': self.id_.to_dict(
-                    casing_strategy
-                ),
+                'Id': self.id,
                 'Domain': self.domain,
                 'Name': self.name,
                 'Version': self.version,
@@ -66,23 +55,19 @@ class Error:
     code: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'message': self.message,
                 'code': self.code,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'message': self.message,
                 'code': self.code,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Message': self.message,

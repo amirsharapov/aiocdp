@@ -19,21 +19,23 @@ from cdp.utils import (
 class Media(BaseDomain):
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Media.enable"',
+            'Media.enable',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Media.disable"',
+            'Media.disable',
+
             params
         )
 

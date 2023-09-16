@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 LoginState = Literal[
     'SignIn',
@@ -39,13 +38,9 @@ class Account:
     privacy_policy_url: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'account_id': self.account_id,
@@ -58,7 +53,7 @@ class Account:
                 'login_state': self.login_state,
                 'terms_of_service_url': self.terms_of_service_url,
                 'privacy_policy_url': self.privacy_policy_url,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'accountId': self.account_id,
@@ -71,7 +66,7 @@ class Account:
                 'loginState': self.login_state,
                 'termsOfServiceUrl': self.terms_of_service_url,
                 'privacyPolicyUrl': self.privacy_policy_url,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'AccountId': self.account_id,

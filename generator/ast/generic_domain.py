@@ -1,11 +1,9 @@
 import ast
 from collections import defaultdict
 
-from generator.types import Domain, Command
+from generator.parser.types import Domain, Command
 from generator.utils import (
     snake_case,
-    is_undefined,
-    is_defined,
     coalesce_undefined,
     cdp_to_python_type,
     is_builtin
@@ -26,7 +24,7 @@ def _generate_external_type_imports(domain: Domain):
 
     for command in domain.commands:
         for ref in command.get_refs():
-            module_name = ref.domain_snake_case or domain.domain_snake_case
+            module_name = ref.actual_domain.domain_snake_case
             import_tree[module_name].add(
                 ref.type
             )
@@ -178,16 +176,20 @@ def _generate_send_command_method_return_call(command: Command):
                 attr='_send_command',
             ),
             args=[
-                ast.Constant(f'"{command.parent.domain}.{command.name}"'),
+                ast.Constant(f'{command.parent.domain}.{command.name}'),
                 ast.Name('params')
-            ]
+            ],
+            keywords=[],
+            render_context={
+                'expand': True
+            }
         )
     )
 
 
 def _generate_send_command_method_return_signature(command: Command):
-    return ast.Name(
-        command.returns
+    return ast.Constant(
+        value=command.name_pascal_case + 'ReturnT'
     )
 
 
@@ -195,7 +197,10 @@ def _generate_send_command_method(command: Command):
     function = ast.FunctionDef(
         name=snake_case(command.name),
         args=None,
-        body=[]
+        body=[],
+        render_context={
+            'expand': True
+        }
     )
 
     function.args = _generate_send_command_method_parameter_signature(

@@ -169,307 +169,107 @@ if TYPE_CHECKING:
 @dataclass
 class Domains:
     target: 'Target'
-    accessibility: Accessibility = field(
-        init=False
-    )
-    animation: Animation = field(
-        init=False
-    )
-    audits: Audits = field(
-        init=False
-    )
-    autofill: Autofill = field(
-        init=False
-    )
-    background_service: BackgroundService = field(
-        init=False
-    )
-    browser: Browser = field(
-        init=False
-    )
-    css: CSS = field(
-        init=False
-    )
-    cache_storage: CacheStorage = field(
-        init=False
-    )
-    cast: Cast = field(
-        init=False
-    )
-    dom: DOM = field(
-        init=False
-    )
-    dom_debugger: DOMDebugger = field(
-        init=False
-    )
-    event_breakpoints: EventBreakpoints = field(
-        init=False
-    )
-    dom_snapshot: DOMSnapshot = field(
-        init=False
-    )
-    dom_storage: DOMStorage = field(
-        init=False
-    )
-    database: Database = field(
-        init=False
-    )
-    device_orientation: DeviceOrientation = field(
-        init=False
-    )
-    emulation: Emulation = field(
-        init=False
-    )
-    headless_experimental: HeadlessExperimental = field(
-        init=False
-    )
-    io: IO = field(
-        init=False
-    )
-    indexed_db: IndexedDB = field(
-        init=False
-    )
-    input: Input = field(
-        init=False
-    )
-    inspector: Inspector = field(
-        init=False
-    )
-    layer_tree: LayerTree = field(
-        init=False
-    )
-    log: Log = field(
-        init=False
-    )
-    memory: Memory = field(
-        init=False
-    )
-    network: Network = field(
-        init=False
-    )
-    overlay: Overlay = field(
-        init=False
-    )
-    page: Page = field(
-        init=False
-    )
-    performance: Performance = field(
-        init=False
-    )
-    performance_timeline: PerformanceTimeline = field(
-        init=False
-    )
-    security: Security = field(
-        init=False
-    )
-    service_worker: ServiceWorker = field(
-        init=False
-    )
-    storage: Storage = field(
-        init=False
-    )
-    system_info: SystemInfo = field(
-        init=False
-    )
-    target: Target = field(
-        init=False
-    )
-    tethering: Tethering = field(
-        init=False
-    )
-    tracing: Tracing = field(
-        init=False
-    )
-    fetch: Fetch = field(
-        init=False
-    )
-    web_audio: WebAudio = field(
-        init=False
-    )
-    web_authn: WebAuthn = field(
-        init=False
-    )
-    media: Media = field(
-        init=False
-    )
-    device_access: DeviceAccess = field(
-        init=False
-    )
-    preload: Preload = field(
-        init=False
-    )
-    fed_cm: FedCm = field(
-        init=False
-    )
-    console: Console = field(
-        init=False
-    )
-    debugger: Debugger = field(
-        init=False
-    )
-    heap_profiler: HeapProfiler = field(
-        init=False
-    )
-    profiler: Profiler = field(
-        init=False
-    )
-    runtime: Runtime = field(
-        init=False
-    )
-    schema: Schema = field(
-        init=False
-    )
+    accessibility: Accessibility = field(init=False)
+    animation: Animation = field(init=False)
+    audits: Audits = field(init=False)
+    autofill: Autofill = field(init=False)
+    background_service: BackgroundService = field(init=False)
+    browser: Browser = field(init=False)
+    css: CSS = field(init=False)
+    cache_storage: CacheStorage = field(init=False)
+    cast: Cast = field(init=False)
+    dom: DOM = field(init=False)
+    dom_debugger: DOMDebugger = field(init=False)
+    event_breakpoints: EventBreakpoints = field(init=False)
+    dom_snapshot: DOMSnapshot = field(init=False)
+    dom_storage: DOMStorage = field(init=False)
+    database: Database = field(init=False)
+    device_orientation: DeviceOrientation = field(init=False)
+    emulation: Emulation = field(init=False)
+    headless_experimental: HeadlessExperimental = field(init=False)
+    io: IO = field(init=False)
+    indexed_db: IndexedDB = field(init=False)
+    input: Input = field(init=False)
+    inspector: Inspector = field(init=False)
+    layer_tree: LayerTree = field(init=False)
+    log: Log = field(init=False)
+    memory: Memory = field(init=False)
+    network: Network = field(init=False)
+    overlay: Overlay = field(init=False)
+    page: Page = field(init=False)
+    performance: Performance = field(init=False)
+    performance_timeline: PerformanceTimeline = field(init=False)
+    security: Security = field(init=False)
+    service_worker: ServiceWorker = field(init=False)
+    storage: Storage = field(init=False)
+    system_info: SystemInfo = field(init=False)
+    target: Target = field(init=False)
+    tethering: Tethering = field(init=False)
+    tracing: Tracing = field(init=False)
+    fetch: Fetch = field(init=False)
+    web_audio: WebAudio = field(init=False)
+    web_authn: WebAuthn = field(init=False)
+    media: Media = field(init=False)
+    device_access: DeviceAccess = field(init=False)
+    preload: Preload = field(init=False)
+    fed_cm: FedCm = field(init=False)
+    console: Console = field(init=False)
+    debugger: Debugger = field(init=False)
+    heap_profiler: HeapProfiler = field(init=False)
+    profiler: Profiler = field(init=False)
+    runtime: Runtime = field(init=False)
+    schema: Schema = field(init=False)
     def __post_init__(
         self
     ):
-        self.accessibility = Accessibility(
-            self
-        )
-        self.animation = Animation(
-            self
-        )
-        self.audits = Audits(
-            self
-        )
-        self.autofill = Autofill(
-            self
-        )
-        self.background_service = BackgroundService(
-            self
-        )
-        self.browser = Browser(
-            self
-        )
-        self.css = CSS(
-            self
-        )
-        self.cache_storage = CacheStorage(
-            self
-        )
-        self.cast = Cast(
-            self
-        )
-        self.dom = DOM(
-            self
-        )
-        self.dom_debugger = DOMDebugger(
-            self
-        )
-        self.event_breakpoints = EventBreakpoints(
-            self
-        )
-        self.dom_snapshot = DOMSnapshot(
-            self
-        )
-        self.dom_storage = DOMStorage(
-            self
-        )
-        self.database = Database(
-            self
-        )
-        self.device_orientation = DeviceOrientation(
-            self
-        )
-        self.emulation = Emulation(
-            self
-        )
-        self.headless_experimental = HeadlessExperimental(
-            self
-        )
-        self.io = IO(
-            self
-        )
-        self.indexed_db = IndexedDB(
-            self
-        )
-        self.input = Input(
-            self
-        )
-        self.inspector = Inspector(
-            self
-        )
-        self.layer_tree = LayerTree(
-            self
-        )
-        self.log = Log(
-            self
-        )
-        self.memory = Memory(
-            self
-        )
-        self.network = Network(
-            self
-        )
-        self.overlay = Overlay(
-            self
-        )
-        self.page = Page(
-            self
-        )
-        self.performance = Performance(
-            self
-        )
-        self.performance_timeline = PerformanceTimeline(
-            self
-        )
-        self.security = Security(
-            self
-        )
-        self.service_worker = ServiceWorker(
-            self
-        )
-        self.storage = Storage(
-            self
-        )
-        self.system_info = SystemInfo(
-            self
-        )
-        self.target = Target(
-            self
-        )
-        self.tethering = Tethering(
-            self
-        )
-        self.tracing = Tracing(
-            self
-        )
-        self.fetch = Fetch(
-            self
-        )
-        self.web_audio = WebAudio(
-            self
-        )
-        self.web_authn = WebAuthn(
-            self
-        )
-        self.media = Media(
-            self
-        )
-        self.device_access = DeviceAccess(
-            self
-        )
-        self.preload = Preload(
-            self
-        )
-        self.fed_cm = FedCm(
-            self
-        )
-        self.console = Console(
-            self
-        )
-        self.debugger = Debugger(
-            self
-        )
-        self.heap_profiler = HeapProfiler(
-            self
-        )
-        self.profiler = Profiler(
-            self
-        )
-        self.runtime = Runtime(
-            self
-        )
-        self.schema = Schema(
-            self
-        )
+        self.accessibility = Accessibility(self.target)
+        self.animation = Animation(self.target)
+        self.audits = Audits(self.target)
+        self.autofill = Autofill(self.target)
+        self.background_service = BackgroundService(self.target)
+        self.browser = Browser(self.target)
+        self.css = CSS(self.target)
+        self.cache_storage = CacheStorage(self.target)
+        self.cast = Cast(self.target)
+        self.dom = DOM(self.target)
+        self.dom_debugger = DOMDebugger(self.target)
+        self.event_breakpoints = EventBreakpoints(self.target)
+        self.dom_snapshot = DOMSnapshot(self.target)
+        self.dom_storage = DOMStorage(self.target)
+        self.database = Database(self.target)
+        self.device_orientation = DeviceOrientation(self.target)
+        self.emulation = Emulation(self.target)
+        self.headless_experimental = HeadlessExperimental(self.target)
+        self.io = IO(self.target)
+        self.indexed_db = IndexedDB(self.target)
+        self.input = Input(self.target)
+        self.inspector = Inspector(self.target)
+        self.layer_tree = LayerTree(self.target)
+        self.log = Log(self.target)
+        self.memory = Memory(self.target)
+        self.network = Network(self.target)
+        self.overlay = Overlay(self.target)
+        self.page = Page(self.target)
+        self.performance = Performance(self.target)
+        self.performance_timeline = PerformanceTimeline(self.target)
+        self.security = Security(self.target)
+        self.service_worker = ServiceWorker(self.target)
+        self.storage = Storage(self.target)
+        self.system_info = SystemInfo(self.target)
+        self.target = Target(self.target)
+        self.tethering = Tethering(self.target)
+        self.tracing = Tracing(self.target)
+        self.fetch = Fetch(self.target)
+        self.web_audio = WebAudio(self.target)
+        self.web_authn = WebAuthn(self.target)
+        self.media = Media(self.target)
+        self.device_access = DeviceAccess(self.target)
+        self.preload = Preload(self.target)
+        self.fed_cm = FedCm(self.target)
+        self.console = Console(self.target)
+        self.debugger = Debugger(self.target)
+        self.heap_profiler = HeapProfiler(self.target)
+        self.profiler = Profiler(self.target)
+        self.runtime = Runtime(self.target)
+        self.schema = Schema(self.target)
 

@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 AuthenticatorId = str
 
@@ -49,13 +48,9 @@ class VirtualAuthenticatorOptions:
     is_user_verified: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'protocol': self.protocol,
@@ -69,7 +64,7 @@ class VirtualAuthenticatorOptions:
                 'has_prf': self.has_prf,
                 'automatic_presence_simulation': self.automatic_presence_simulation,
                 'is_user_verified': self.is_user_verified,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'protocol': self.protocol,
@@ -83,7 +78,7 @@ class VirtualAuthenticatorOptions:
                 'hasPrf': self.has_prf,
                 'automaticPresenceSimulation': self.automatic_presence_simulation,
                 'isUserVerified': self.is_user_verified,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Protocol': self.protocol,
@@ -111,13 +106,9 @@ class Credential:
     large_blob: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'credential_id': self.credential_id,
@@ -127,7 +118,7 @@ class Credential:
                 'user_handle': self.user_handle,
                 'sign_count': self.sign_count,
                 'large_blob': self.large_blob,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'credentialId': self.credential_id,
@@ -137,7 +128,7 @@ class Credential:
                 'userHandle': self.user_handle,
                 'signCount': self.sign_count,
                 'largeBlob': self.large_blob,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'CredentialId': self.credential_id,

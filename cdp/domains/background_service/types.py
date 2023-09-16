@@ -35,23 +35,19 @@ class EventMetadata:
     value: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'key': self.key,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'key': self.key,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Key': self.key,
@@ -71,66 +67,47 @@ class BackgroundServiceEvent:
     storage_key: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'timestamp': self.timestamp.to_dict(
-                    casing_strategy
-                ),
+                'timestamp': self.timestamp,
                 'origin': self.origin,
-                'service_worker_registration_id': self.service_worker_registration_id.to_dict(
-                    casing_strategy
-                ),
+                'service_worker_registration_id': self.service_worker_registration_id,
                 'service': self.service,
                 'event_name': self.event_name,
                 'instance_id': self.instance_id,
-                'event_metadata': [_.to_dict(
-                    casing_strategy
-                )
+                'event_metadata': [
+                    _.to_dict(casing_strategy)
                     for _ in self.event_metadata
                 ],
                 'storage_key': self.storage_key,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'timestamp': self.timestamp.to_dict(
-                    casing_strategy
-                ),
+                'timestamp': self.timestamp,
                 'origin': self.origin,
-                'serviceWorkerRegistrationId': self.service_worker_registration_id.to_dict(
-                    casing_strategy
-                ),
+                'serviceWorkerRegistrationId': self.service_worker_registration_id,
                 'service': self.service,
                 'eventName': self.event_name,
                 'instanceId': self.instance_id,
-                'eventMetadata': [_.to_dict(
-                    casing_strategy
-                )
+                'eventMetadata': [
+                    _.to_dict(casing_strategy)
                     for _ in self.event_metadata
                 ],
                 'storageKey': self.storage_key,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Timestamp': self.timestamp.to_dict(
-                    casing_strategy
-                ),
+                'Timestamp': self.timestamp,
                 'Origin': self.origin,
-                'ServiceWorkerRegistrationId': self.service_worker_registration_id.to_dict(
-                    casing_strategy
-                ),
+                'ServiceWorkerRegistrationId': self.service_worker_registration_id,
                 'Service': self.service,
                 'EventName': self.event_name,
                 'InstanceId': self.instance_id,
-                'EventMetadata': [_.to_dict(
-                    casing_strategy
-                )
+                'EventMetadata': [
+                    _.to_dict(casing_strategy)
                     for _ in self.event_metadata
                 ],
                 'StorageKey': self.storage_key,

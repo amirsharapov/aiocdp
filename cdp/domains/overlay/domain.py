@@ -38,21 +38,23 @@ from cdp.utils import (
 class Overlay(BaseDomain):
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Overlay.disable"',
+            'Overlay.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Overlay.enable"',
+            'Overlay.enable',
+
             params
         )
 
@@ -63,69 +65,65 @@ class Overlay(BaseDomain):
         include_style: bool = UNDEFINED,
         color_format: ColorFormat = UNDEFINED,
         show_accessibility_info: bool = UNDEFINED
-    ):
+    ) -> 'GetHighlightObjectForTestReturnT':
         params = {
             'nodeId': node_id,
         }
-
-        if is_defined(
-            include_distance
-        ):
-            params['includeDistance'            ] = include_distance
-
-        if is_defined(
-            include_style
-        ):
-            params['includeStyle'            ] = include_style
-
-        if is_defined(
-            color_format
-        ):
-            params['colorFormat'            ] = color_format
-
-        if is_defined(
-            show_accessibility_info
-        ):
-            params['showAccessibilityInfo'            ] = show_accessibility_info
-
+        
+        if is_defined(include_distance):
+params['includeDistance'] = include_distance
+        
+        if is_defined(include_style):
+params['includeStyle'] = include_style
+        
+        if is_defined(color_format):
+params['colorFormat'] = color_format
+        
+        if is_defined(show_accessibility_info):
+params['showAccessibilityInfo'] = show_accessibility_info
+        
         return self._send_command(
-            '"Overlay.getHighlightObjectForTest"',
+            'Overlay.getHighlightObjectForTest',
+
             params
         )
 
     def get_grid_highlight_objects_for_test(
         self,
         node_ids: list
-    ):
+    ) -> 'GetGridHighlightObjectsForTestReturnT':
         params = {
             'nodeIds': node_ids,
         }
-
+        
         return self._send_command(
-            '"Overlay.getGridHighlightObjectsForTest"',
+            'Overlay.getGridHighlightObjectsForTest',
+
             params
         )
 
     def get_source_order_highlight_object_for_test(
         self,
         node_id: NodeId
-    ):
+    ) -> 'GetSourceOrderHighlightObjectForTestReturnT':
         params = {
             'nodeId': node_id,
         }
-
+        
         return self._send_command(
-            '"Overlay.getSourceOrderHighlightObjectForTest"',
+            'Overlay.getSourceOrderHighlightObjectForTest',
+
             params
         )
 
     def hide_highlight(
         self
-    ):
+    ) -> 'HideHighlightReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Overlay.hideHighlight"',
+            'Overlay.hideHighlight',
+
             params
         )
 
@@ -134,23 +132,20 @@ class Overlay(BaseDomain):
         frame_id: FrameId,
         content_color: RGBA = UNDEFINED,
         content_outline_color: RGBA = UNDEFINED
-    ):
+    ) -> 'HighlightFrameReturnT':
         params = {
             'frameId': frame_id,
         }
-
-        if is_defined(
-            content_color
-        ):
-            params['contentColor'            ] = content_color
-
-        if is_defined(
-            content_outline_color
-        ):
-            params['contentOutlineColor'            ] = content_outline_color
-
+        
+        if is_defined(content_color):
+params['contentColor'] = content_color
+        
+        if is_defined(content_outline_color):
+params['contentOutlineColor'] = content_outline_color
+        
         return self._send_command(
-            '"Overlay.highlightFrame"',
+            'Overlay.highlightFrame',
+
             params
         )
 
@@ -161,33 +156,26 @@ class Overlay(BaseDomain):
         backend_node_id: BackendNodeId = UNDEFINED,
         object_id: RemoteObjectId = UNDEFINED,
         selector: str = UNDEFINED
-    ):
+    ) -> 'HighlightNodeReturnT':
         params = {
             'highlightConfig': highlight_config,
         }
-
-        if is_defined(
-            node_id
-        ):
-            params['nodeId'            ] = node_id
-
-        if is_defined(
-            backend_node_id
-        ):
-            params['backendNodeId'            ] = backend_node_id
-
-        if is_defined(
-            object_id
-        ):
-            params['objectId'            ] = object_id
-
-        if is_defined(
-            selector
-        ):
-            params['selector'            ] = selector
-
+        
+        if is_defined(node_id):
+params['nodeId'] = node_id
+        
+        if is_defined(backend_node_id):
+params['backendNodeId'] = backend_node_id
+        
+        if is_defined(object_id):
+params['objectId'] = object_id
+        
+        if is_defined(selector):
+params['selector'] = selector
+        
         return self._send_command(
-            '"Overlay.highlightNode"',
+            'Overlay.highlightNode',
+
             params
         )
 
@@ -196,23 +184,20 @@ class Overlay(BaseDomain):
         quad: Quad,
         color: RGBA = UNDEFINED,
         outline_color: RGBA = UNDEFINED
-    ):
+    ) -> 'HighlightQuadReturnT':
         params = {
             'quad': quad,
         }
-
-        if is_defined(
-            color
-        ):
-            params['color'            ] = color
-
-        if is_defined(
-            outline_color
-        ):
-            params['outlineColor'            ] = outline_color
-
+        
+        if is_defined(color):
+params['color'] = color
+        
+        if is_defined(outline_color):
+params['outlineColor'] = outline_color
+        
         return self._send_command(
-            '"Overlay.highlightQuad"',
+            'Overlay.highlightQuad',
+
             params
         )
 
@@ -224,26 +209,23 @@ class Overlay(BaseDomain):
         height: int,
         color: RGBA = UNDEFINED,
         outline_color: RGBA = UNDEFINED
-    ):
+    ) -> 'HighlightRectReturnT':
         params = {
             'x': x,
             'y': y,
             'width': width,
             'height': height,
         }
-
-        if is_defined(
-            color
-        ):
-            params['color'            ] = color
-
-        if is_defined(
-            outline_color
-        ):
-            params['outlineColor'            ] = outline_color
-
+        
+        if is_defined(color):
+params['color'] = color
+        
+        if is_defined(outline_color):
+params['outlineColor'] = outline_color
+        
         return self._send_command(
-            '"Overlay.highlightRect"',
+            'Overlay.highlightRect',
+
             params
         )
 
@@ -253,28 +235,23 @@ class Overlay(BaseDomain):
         node_id: NodeId = UNDEFINED,
         backend_node_id: BackendNodeId = UNDEFINED,
         object_id: RemoteObjectId = UNDEFINED
-    ):
+    ) -> 'HighlightSourceOrderReturnT':
         params = {
             'sourceOrderConfig': source_order_config,
         }
-
-        if is_defined(
-            node_id
-        ):
-            params['nodeId'            ] = node_id
-
-        if is_defined(
-            backend_node_id
-        ):
-            params['backendNodeId'            ] = backend_node_id
-
-        if is_defined(
-            object_id
-        ):
-            params['objectId'            ] = object_id
-
+        
+        if is_defined(node_id):
+params['nodeId'] = node_id
+        
+        if is_defined(backend_node_id):
+params['backendNodeId'] = backend_node_id
+        
+        if is_defined(object_id):
+params['objectId'] = object_id
+        
         return self._send_command(
-            '"Overlay.highlightSourceOrder"',
+            'Overlay.highlightSourceOrder',
+
             params
         )
 
@@ -282,232 +259,243 @@ class Overlay(BaseDomain):
         self,
         mode: InspectMode,
         highlight_config: HighlightConfig = UNDEFINED
-    ):
+    ) -> 'SetInspectModeReturnT':
         params = {
             'mode': mode,
         }
-
-        if is_defined(
-            highlight_config
-        ):
-            params['highlightConfig'            ] = highlight_config
-
+        
+        if is_defined(highlight_config):
+params['highlightConfig'] = highlight_config
+        
         return self._send_command(
-            '"Overlay.setInspectMode"',
+            'Overlay.setInspectMode',
+
             params
         )
 
     def set_show_ad_highlights(
         self,
         show: bool
-    ):
+    ) -> 'SetShowAdHighlightsReturnT':
         params = {
             'show': show,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowAdHighlights"',
+            'Overlay.setShowAdHighlights',
+
             params
         )
 
     def set_paused_in_debugger_message(
         self,
         message: str = UNDEFINED
-    ):
+    ) -> 'SetPausedInDebuggerMessageReturnT':
         params = {}
-
-        if is_defined(
-            message
-        ):
-            params['message'            ] = message
-
+        
+        if is_defined(message):
+params['message'] = message
+        
         return self._send_command(
-            '"Overlay.setPausedInDebuggerMessage"',
+            'Overlay.setPausedInDebuggerMessage',
+
             params
         )
 
     def set_show_debug_borders(
         self,
         show: bool
-    ):
+    ) -> 'SetShowDebugBordersReturnT':
         params = {
             'show': show,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowDebugBorders"',
+            'Overlay.setShowDebugBorders',
+
             params
         )
 
     def set_show_fps_counter(
         self,
         show: bool
-    ):
+    ) -> 'SetShowFPSCounterReturnT':
         params = {
             'show': show,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowFPSCounter"',
+            'Overlay.setShowFPSCounter',
+
             params
         )
 
     def set_show_grid_overlays(
         self,
         grid_node_highlight_configs: list
-    ):
+    ) -> 'SetShowGridOverlaysReturnT':
         params = {
             'gridNodeHighlightConfigs': grid_node_highlight_configs,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowGridOverlays"',
+            'Overlay.setShowGridOverlays',
+
             params
         )
 
     def set_show_flex_overlays(
         self,
         flex_node_highlight_configs: list
-    ):
+    ) -> 'SetShowFlexOverlaysReturnT':
         params = {
             'flexNodeHighlightConfigs': flex_node_highlight_configs,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowFlexOverlays"',
+            'Overlay.setShowFlexOverlays',
+
             params
         )
 
     def set_show_scroll_snap_overlays(
         self,
         scroll_snap_highlight_configs: list
-    ):
+    ) -> 'SetShowScrollSnapOverlaysReturnT':
         params = {
             'scrollSnapHighlightConfigs': scroll_snap_highlight_configs,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowScrollSnapOverlays"',
+            'Overlay.setShowScrollSnapOverlays',
+
             params
         )
 
     def set_show_container_query_overlays(
         self,
         container_query_highlight_configs: list
-    ):
+    ) -> 'SetShowContainerQueryOverlaysReturnT':
         params = {
             'containerQueryHighlightConfigs': container_query_highlight_configs,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowContainerQueryOverlays"',
+            'Overlay.setShowContainerQueryOverlays',
+
             params
         )
 
     def set_show_paint_rects(
         self,
         result: bool
-    ):
+    ) -> 'SetShowPaintRectsReturnT':
         params = {
             'result': result,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowPaintRects"',
+            'Overlay.setShowPaintRects',
+
             params
         )
 
     def set_show_layout_shift_regions(
         self,
         result: bool
-    ):
+    ) -> 'SetShowLayoutShiftRegionsReturnT':
         params = {
             'result': result,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowLayoutShiftRegions"',
+            'Overlay.setShowLayoutShiftRegions',
+
             params
         )
 
     def set_show_scroll_bottleneck_rects(
         self,
         show: bool
-    ):
+    ) -> 'SetShowScrollBottleneckRectsReturnT':
         params = {
             'show': show,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowScrollBottleneckRects"',
+            'Overlay.setShowScrollBottleneckRects',
+
             params
         )
 
     def set_show_hit_test_borders(
         self,
         show: bool
-    ):
+    ) -> 'SetShowHitTestBordersReturnT':
         params = {
             'show': show,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowHitTestBorders"',
+            'Overlay.setShowHitTestBorders',
+
             params
         )
 
     def set_show_web_vitals(
         self,
         show: bool
-    ):
+    ) -> 'SetShowWebVitalsReturnT':
         params = {
             'show': show,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowWebVitals"',
+            'Overlay.setShowWebVitals',
+
             params
         )
 
     def set_show_viewport_size_on_resize(
         self,
         show: bool
-    ):
+    ) -> 'SetShowViewportSizeOnResizeReturnT':
         params = {
             'show': show,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowViewportSizeOnResize"',
+            'Overlay.setShowViewportSizeOnResize',
+
             params
         )
 
     def set_show_hinge(
         self,
         hinge_config: HingeConfig = UNDEFINED
-    ):
+    ) -> 'SetShowHingeReturnT':
         params = {}
-
-        if is_defined(
-            hinge_config
-        ):
-            params['hingeConfig'            ] = hinge_config
-
+        
+        if is_defined(hinge_config):
+params['hingeConfig'] = hinge_config
+        
         return self._send_command(
-            '"Overlay.setShowHinge"',
+            'Overlay.setShowHinge',
+
             params
         )
 
     def set_show_isolated_elements(
         self,
         isolated_element_highlight_configs: list
-    ):
+    ) -> 'SetShowIsolatedElementsReturnT':
         params = {
             'isolatedElementHighlightConfigs': isolated_element_highlight_configs,
         }
-
+        
         return self._send_command(
-            '"Overlay.setShowIsolatedElements"',
+            'Overlay.setShowIsolatedElements',
+
             params
         )
 

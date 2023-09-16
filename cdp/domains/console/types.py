@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 
 @dataclass
@@ -24,13 +23,9 @@ class ConsoleMessage:
     column: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'source': self.source,
@@ -39,7 +34,7 @@ class ConsoleMessage:
                 'url': self.url,
                 'line': self.line,
                 'column': self.column,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'source': self.source,
@@ -48,7 +43,7 @@ class ConsoleMessage:
                 'url': self.url,
                 'line': self.line,
                 'column': self.column,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Source': self.source,

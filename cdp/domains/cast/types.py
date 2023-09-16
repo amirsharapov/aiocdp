@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 
 @dataclass
@@ -21,28 +20,24 @@ class Sink:
     session: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
-                'id': self.id_,
+                'id': self.id,
                 'session': self.session,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
-                'id': self.id_,
+                'id': self.id,
                 'session': self.session,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
-                'Id': self.id_,
+                'Id': self.id,
                 'Session': self.session,
             }

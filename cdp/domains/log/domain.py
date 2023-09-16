@@ -19,54 +19,59 @@ from cdp.utils import (
 class Log(BaseDomain):
     def clear(
         self
-    ):
+    ) -> 'ClearReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Log.clear"',
+            'Log.clear',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Log.disable"',
+            'Log.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Log.enable"',
+            'Log.enable',
+
             params
         )
 
     def start_violations_report(
         self,
         config: list
-    ):
+    ) -> 'StartViolationsReportReturnT':
         params = {
             'config': config,
         }
-
+        
         return self._send_command(
-            '"Log.startViolationsReport"',
+            'Log.startViolationsReport',
+
             params
         )
 
     def stop_violations_report(
         self
-    ):
+    ) -> 'StopViolationsReportReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Log.stopViolationsReport"',
+            'Log.stopViolationsReport',
+
             params
         )
 

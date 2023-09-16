@@ -35,25 +35,21 @@ class RequestPattern:
     request_stage: 'RequestStage'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'url_pattern': self.url_pattern,
                 'resource_type': self.resource_type,
                 'request_stage': self.request_stage,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'urlPattern': self.url_pattern,
                 'resourceType': self.resource_type,
                 'requestStage': self.request_stage,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'UrlPattern': self.url_pattern,
@@ -68,23 +64,19 @@ class HeaderEntry:
     value: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
@@ -100,27 +92,23 @@ class AuthChallenge:
     realm: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'source': self.source,
                 'origin': self.origin,
                 'scheme': self.scheme,
                 'realm': self.realm,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'source': self.source,
                 'origin': self.origin,
                 'scheme': self.scheme,
                 'realm': self.realm,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Source': self.source,
@@ -137,25 +125,21 @@ class AuthChallengeResponse:
     password: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'response': self.response,
                 'username': self.username,
                 'password': self.password,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'response': self.response,
                 'username': self.username,
                 'password': self.password,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Response': self.response,

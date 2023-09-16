@@ -26,13 +26,14 @@ class IO(BaseDomain):
     def close(
         self,
         handle: StreamHandle
-    ):
+    ) -> 'CloseReturnT':
         params = {
             'handle': handle,
         }
-
+        
         return self._send_command(
-            '"IO.close"',
+            'IO.close',
+
             params
         )
 
@@ -41,36 +42,34 @@ class IO(BaseDomain):
         handle: StreamHandle,
         offset: int = UNDEFINED,
         size: int = UNDEFINED
-    ):
+    ) -> 'ReadReturnT':
         params = {
             'handle': handle,
         }
-
-        if is_defined(
-            offset
-        ):
-            params['offset'            ] = offset
-
-        if is_defined(
-            size
-        ):
-            params['size'            ] = size
-
+        
+        if is_defined(offset):
+params['offset'] = offset
+        
+        if is_defined(size):
+params['size'] = size
+        
         return self._send_command(
-            '"IO.read"',
+            'IO.read',
+
             params
         )
 
     def resolve_blob(
         self,
         object_id: RemoteObjectId
-    ):
+    ) -> 'ResolveBlobReturnT':
         params = {
             'objectId': object_id,
         }
-
+        
         return self._send_command(
-            '"IO.resolveBlob"',
+            'IO.resolveBlob',
+
             params
         )
 

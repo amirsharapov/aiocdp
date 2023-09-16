@@ -16,6 +16,7 @@ class Tests(TestCase):
         result.wait()
 
         result = target.domains.page.navigate('https://google.com')
+        target.domains.runtime.call_function_on()
         result.wait()
 
     def test_2(self):

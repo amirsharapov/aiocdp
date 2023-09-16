@@ -40,74 +40,46 @@ class TargetInfo:
     subtype: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'target_id': self.target_id.to_dict(
-                    casing_strategy
-                ),
-                'type': self.type_,
+                'target_id': self.target_id,
+                'type': self.type,
                 'title': self.title,
                 'url': self.url,
                 'attached': self.attached,
-                'opener_id': self.opener_id.to_dict(
-                    casing_strategy
-                ),
+                'opener_id': self.opener_id,
                 'can_access_opener': self.can_access_opener,
-                'opener_frame_id': self.opener_frame_id.to_dict(
-                    casing_strategy
-                ),
-                'browser_context_id': self.browser_context_id.to_dict(
-                    casing_strategy
-                ),
+                'opener_frame_id': self.opener_frame_id,
+                'browser_context_id': self.browser_context_id,
                 'subtype': self.subtype,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'targetId': self.target_id.to_dict(
-                    casing_strategy
-                ),
-                'type': self.type_,
+                'targetId': self.target_id,
+                'type': self.type,
                 'title': self.title,
                 'url': self.url,
                 'attached': self.attached,
-                'openerId': self.opener_id.to_dict(
-                    casing_strategy
-                ),
+                'openerId': self.opener_id,
                 'canAccessOpener': self.can_access_opener,
-                'openerFrameId': self.opener_frame_id.to_dict(
-                    casing_strategy
-                ),
-                'browserContextId': self.browser_context_id.to_dict(
-                    casing_strategy
-                ),
+                'openerFrameId': self.opener_frame_id,
+                'browserContextId': self.browser_context_id,
                 'subtype': self.subtype,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'TargetId': self.target_id.to_dict(
-                    casing_strategy
-                ),
-                'Type': self.type_,
+                'TargetId': self.target_id,
+                'Type': self.type,
                 'Title': self.title,
                 'Url': self.url,
                 'Attached': self.attached,
-                'OpenerId': self.opener_id.to_dict(
-                    casing_strategy
-                ),
+                'OpenerId': self.opener_id,
                 'CanAccessOpener': self.can_access_opener,
-                'OpenerFrameId': self.opener_frame_id.to_dict(
-                    casing_strategy
-                ),
-                'BrowserContextId': self.browser_context_id.to_dict(
-                    casing_strategy
-                ),
+                'OpenerFrameId': self.opener_frame_id,
+                'BrowserContextId': self.browser_context_id,
                 'Subtype': self.subtype,
             }
 
@@ -118,27 +90,23 @@ class FilterEntry:
     type: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'exclude': self.exclude,
-                'type': self.type_,
-            }
+                'type': self.type,
+            }        
         if casing_strategy == 'camel':
             return {
                 'exclude': self.exclude,
-                'type': self.type_,
-            }
+                'type': self.type,
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Exclude': self.exclude,
-                'Type': self.type_,
+                'Type': self.type,
             }
 
 
@@ -148,23 +116,19 @@ class RemoteLocation:
     port: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'host': self.host,
                 'port': self.port,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'host': self.host,
                 'port': self.port,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Host': self.host,

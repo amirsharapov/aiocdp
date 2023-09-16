@@ -29,11 +29,12 @@ from cdp.utils import (
 class Fetch(BaseDomain):
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Fetch.disable"',
+            'Fetch.disable',
+
             params
         )
 
@@ -41,21 +42,18 @@ class Fetch(BaseDomain):
         self,
         patterns: list = UNDEFINED,
         handle_auth_requests: bool = UNDEFINED
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
-        if is_defined(
-            patterns
-        ):
-            params['patterns'            ] = patterns
-
-        if is_defined(
-            handle_auth_requests
-        ):
-            params['handleAuthRequests'            ] = handle_auth_requests
-
+        
+        if is_defined(patterns):
+params['patterns'] = patterns
+        
+        if is_defined(handle_auth_requests):
+params['handleAuthRequests'] = handle_auth_requests
+        
         return self._send_command(
-            '"Fetch.enable"',
+            'Fetch.enable',
+
             params
         )
 
@@ -63,14 +61,15 @@ class Fetch(BaseDomain):
         self,
         request_id: RequestId,
         error_reason: ErrorReason
-    ):
+    ) -> 'FailRequestReturnT':
         params = {
             'requestId': request_id,
             'errorReason': error_reason,
         }
-
+        
         return self._send_command(
-            '"Fetch.failRequest"',
+            'Fetch.failRequest',
+
             params
         )
 
@@ -82,34 +81,27 @@ class Fetch(BaseDomain):
         binary_response_headers: str = UNDEFINED,
         body: str = UNDEFINED,
         response_phrase: str = UNDEFINED
-    ):
+    ) -> 'FulfillRequestReturnT':
         params = {
             'requestId': request_id,
             'responseCode': response_code,
         }
-
-        if is_defined(
-            response_headers
-        ):
-            params['responseHeaders'            ] = response_headers
-
-        if is_defined(
-            binary_response_headers
-        ):
-            params['binaryResponseHeaders'            ] = binary_response_headers
-
-        if is_defined(
-            body
-        ):
-            params['body'            ] = body
-
-        if is_defined(
-            response_phrase
-        ):
-            params['responsePhrase'            ] = response_phrase
-
+        
+        if is_defined(response_headers):
+params['responseHeaders'] = response_headers
+        
+        if is_defined(binary_response_headers):
+params['binaryResponseHeaders'] = binary_response_headers
+        
+        if is_defined(body):
+params['body'] = body
+        
+        if is_defined(response_phrase):
+params['responsePhrase'] = response_phrase
+        
         return self._send_command(
-            '"Fetch.fulfillRequest"',
+            'Fetch.fulfillRequest',
+
             params
         )
 
@@ -121,38 +113,29 @@ class Fetch(BaseDomain):
         post_data: str = UNDEFINED,
         headers: list = UNDEFINED,
         intercept_response: bool = UNDEFINED
-    ):
+    ) -> 'ContinueRequestReturnT':
         params = {
             'requestId': request_id,
         }
-
-        if is_defined(
-            url
-        ):
-            params['url'            ] = url
-
-        if is_defined(
-            method
-        ):
-            params['method'            ] = method
-
-        if is_defined(
-            post_data
-        ):
-            params['postData'            ] = post_data
-
-        if is_defined(
-            headers
-        ):
-            params['headers'            ] = headers
-
-        if is_defined(
-            intercept_response
-        ):
-            params['interceptResponse'            ] = intercept_response
-
+        
+        if is_defined(url):
+params['url'] = url
+        
+        if is_defined(method):
+params['method'] = method
+        
+        if is_defined(post_data):
+params['postData'] = post_data
+        
+        if is_defined(headers):
+params['headers'] = headers
+        
+        if is_defined(intercept_response):
+params['interceptResponse'] = intercept_response
+        
         return self._send_command(
-            '"Fetch.continueRequest"',
+            'Fetch.continueRequest',
+
             params
         )
 
@@ -160,14 +143,15 @@ class Fetch(BaseDomain):
         self,
         request_id: RequestId,
         auth_challenge_response: AuthChallengeResponse
-    ):
+    ) -> 'ContinueWithAuthReturnT':
         params = {
             'requestId': request_id,
             'authChallengeResponse': auth_challenge_response,
         }
-
+        
         return self._send_command(
-            '"Fetch.continueWithAuth"',
+            'Fetch.continueWithAuth',
+
             params
         )
 
@@ -178,59 +162,54 @@ class Fetch(BaseDomain):
         response_phrase: str = UNDEFINED,
         response_headers: list = UNDEFINED,
         binary_response_headers: str = UNDEFINED
-    ):
+    ) -> 'ContinueResponseReturnT':
         params = {
             'requestId': request_id,
         }
-
-        if is_defined(
-            response_code
-        ):
-            params['responseCode'            ] = response_code
-
-        if is_defined(
-            response_phrase
-        ):
-            params['responsePhrase'            ] = response_phrase
-
-        if is_defined(
-            response_headers
-        ):
-            params['responseHeaders'            ] = response_headers
-
-        if is_defined(
-            binary_response_headers
-        ):
-            params['binaryResponseHeaders'            ] = binary_response_headers
-
+        
+        if is_defined(response_code):
+params['responseCode'] = response_code
+        
+        if is_defined(response_phrase):
+params['responsePhrase'] = response_phrase
+        
+        if is_defined(response_headers):
+params['responseHeaders'] = response_headers
+        
+        if is_defined(binary_response_headers):
+params['binaryResponseHeaders'] = binary_response_headers
+        
         return self._send_command(
-            '"Fetch.continueResponse"',
+            'Fetch.continueResponse',
+
             params
         )
 
     def get_response_body(
         self,
         request_id: RequestId
-    ):
+    ) -> 'GetResponseBodyReturnT':
         params = {
             'requestId': request_id,
         }
-
+        
         return self._send_command(
-            '"Fetch.getResponseBody"',
+            'Fetch.getResponseBody',
+
             params
         )
 
     def take_response_body_as_stream(
         self,
         request_id: RequestId
-    ):
+    ) -> 'TakeResponseBodyAsStreamReturnT':
         params = {
             'requestId': request_id,
         }
-
+        
         return self._send_command(
-            '"Fetch.takeResponseBodyAsStream"',
+            'Fetch.takeResponseBodyAsStream',
+
             params
         )
 

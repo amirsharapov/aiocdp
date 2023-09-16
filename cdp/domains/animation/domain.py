@@ -22,70 +22,76 @@ from cdp.utils import (
 class Animation(BaseDomain):
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Animation.disable"',
+            'Animation.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Animation.enable"',
+            'Animation.enable',
+
             params
         )
 
     def get_current_time(
         self,
         id_: str
-    ):
+    ) -> 'GetCurrentTimeReturnT':
         params = {
             'id': id_,
         }
-
+        
         return self._send_command(
-            '"Animation.getCurrentTime"',
+            'Animation.getCurrentTime',
+
             params
         )
 
     def get_playback_rate(
         self
-    ):
+    ) -> 'GetPlaybackRateReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Animation.getPlaybackRate"',
+            'Animation.getPlaybackRate',
+
             params
         )
 
     def release_animations(
         self,
         animations: list
-    ):
+    ) -> 'ReleaseAnimationsReturnT':
         params = {
             'animations': animations,
         }
-
+        
         return self._send_command(
-            '"Animation.releaseAnimations"',
+            'Animation.releaseAnimations',
+
             params
         )
 
     def resolve_animation(
         self,
         animation_id: str
-    ):
+    ) -> 'ResolveAnimationReturnT':
         params = {
             'animationId': animation_id,
         }
-
+        
         return self._send_command(
-            '"Animation.resolveAnimation"',
+            'Animation.resolveAnimation',
+
             params
         )
 
@@ -93,14 +99,15 @@ class Animation(BaseDomain):
         self,
         animations: list,
         current_time: float
-    ):
+    ) -> 'SeekAnimationsReturnT':
         params = {
             'animations': animations,
             'currentTime': current_time,
         }
-
+        
         return self._send_command(
-            '"Animation.seekAnimations"',
+            'Animation.seekAnimations',
+
             params
         )
 
@@ -108,27 +115,29 @@ class Animation(BaseDomain):
         self,
         animations: list,
         paused: bool
-    ):
+    ) -> 'SetPausedReturnT':
         params = {
             'animations': animations,
             'paused': paused,
         }
-
+        
         return self._send_command(
-            '"Animation.setPaused"',
+            'Animation.setPaused',
+
             params
         )
 
     def set_playback_rate(
         self,
         playback_rate: float
-    ):
+    ) -> 'SetPlaybackRateReturnT':
         params = {
             'playbackRate': playback_rate,
         }
-
+        
         return self._send_command(
-            '"Animation.setPlaybackRate"',
+            'Animation.setPlaybackRate',
+
             params
         )
 
@@ -137,15 +146,16 @@ class Animation(BaseDomain):
         animation_id: str,
         duration: float,
         delay: float
-    ):
+    ) -> 'SetTimingReturnT':
         params = {
             'animationId': animation_id,
             'duration': duration,
             'delay': delay,
         }
-
+        
         return self._send_command(
-            '"Animation.setTiming"',
+            'Animation.setTiming',
+
             params
         )
 

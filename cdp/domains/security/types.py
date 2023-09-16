@@ -66,13 +66,9 @@ class CertificateSecurityState:
     obsolete_ssl_signature: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'protocol': self.protocol,
@@ -83,12 +79,8 @@ class CertificateSecurityState:
                 'certificate': self.certificate,
                 'subject_name': self.subject_name,
                 'issuer': self.issuer,
-                'valid_from': self.valid_from.to_dict(
-                    casing_strategy
-                ),
-                'valid_to': self.valid_to.to_dict(
-                    casing_strategy
-                ),
+                'valid_from': self.valid_from,
+                'valid_to': self.valid_to,
                 'certificate_network_error': self.certificate_network_error,
                 'certificate_has_weak_signature': self.certificate_has_weak_signature,
                 'certificate_has_sha1_signature': self.certificate_has_sha1_signature,
@@ -97,7 +89,7 @@ class CertificateSecurityState:
                 'obsolete_ssl_key_exchange': self.obsolete_ssl_key_exchange,
                 'obsolete_ssl_cipher': self.obsolete_ssl_cipher,
                 'obsolete_ssl_signature': self.obsolete_ssl_signature,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'protocol': self.protocol,
@@ -108,12 +100,8 @@ class CertificateSecurityState:
                 'certificate': self.certificate,
                 'subjectName': self.subject_name,
                 'issuer': self.issuer,
-                'validFrom': self.valid_from.to_dict(
-                    casing_strategy
-                ),
-                'validTo': self.valid_to.to_dict(
-                    casing_strategy
-                ),
+                'validFrom': self.valid_from,
+                'validTo': self.valid_to,
                 'certificateNetworkError': self.certificate_network_error,
                 'certificateHasWeakSignature': self.certificate_has_weak_signature,
                 'certificateHasSha1Signature': self.certificate_has_sha1_signature,
@@ -122,7 +110,7 @@ class CertificateSecurityState:
                 'obsoleteSslKeyExchange': self.obsolete_ssl_key_exchange,
                 'obsoleteSslCipher': self.obsolete_ssl_cipher,
                 'obsoleteSslSignature': self.obsolete_ssl_signature,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Protocol': self.protocol,
@@ -133,12 +121,8 @@ class CertificateSecurityState:
                 'Certificate': self.certificate,
                 'SubjectName': self.subject_name,
                 'Issuer': self.issuer,
-                'ValidFrom': self.valid_from.to_dict(
-                    casing_strategy
-                ),
-                'ValidTo': self.valid_to.to_dict(
-                    casing_strategy
-                ),
+                'ValidFrom': self.valid_from,
+                'ValidTo': self.valid_to,
                 'CertificateNetworkError': self.certificate_network_error,
                 'CertificateHasWeakSignature': self.certificate_has_weak_signature,
                 'CertificateHasSha1Signature': self.certificate_has_sha1_signature,
@@ -156,23 +140,19 @@ class SafetyTipInfo:
     safe_url: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'safety_tip_status': self.safety_tip_status,
                 'safe_url': self.safe_url,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'safetyTipStatus': self.safety_tip_status,
                 'safeUrl': self.safe_url,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'SafetyTipStatus': self.safety_tip_status,
@@ -188,44 +168,28 @@ class VisibleSecurityState:
     security_state_issue_ids: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'security_state': self.security_state,
-                'certificate_security_state': self.certificate_security_state.to_dict(
-                    casing_strategy
-                ),
-                'safety_tip_info': self.safety_tip_info.to_dict(
-                    casing_strategy
-                ),
+                'certificate_security_state': self.certificate_security_state.to_dict(casing_strategy),
+                'safety_tip_info': self.safety_tip_info.to_dict(casing_strategy),
                 'security_state_issue_ids': self.security_state_issue_ids,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'securityState': self.security_state,
-                'certificateSecurityState': self.certificate_security_state.to_dict(
-                    casing_strategy
-                ),
-                'safetyTipInfo': self.safety_tip_info.to_dict(
-                    casing_strategy
-                ),
+                'certificateSecurityState': self.certificate_security_state.to_dict(casing_strategy),
+                'safetyTipInfo': self.safety_tip_info.to_dict(casing_strategy),
                 'securityStateIssueIds': self.security_state_issue_ids,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'SecurityState': self.security_state,
-                'CertificateSecurityState': self.certificate_security_state.to_dict(
-                    casing_strategy
-                ),
-                'SafetyTipInfo': self.safety_tip_info.to_dict(
-                    casing_strategy
-                ),
+                'CertificateSecurityState': self.certificate_security_state.to_dict(casing_strategy),
+                'SafetyTipInfo': self.safety_tip_info.to_dict(casing_strategy),
                 'SecurityStateIssueIds': self.security_state_issue_ids,
             }
 
@@ -241,13 +205,9 @@ class SecurityStateExplanation:
     recommendations: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'security_state': self.security_state,
@@ -257,7 +217,7 @@ class SecurityStateExplanation:
                 'mixed_content_type': self.mixed_content_type,
                 'certificate': self.certificate,
                 'recommendations': self.recommendations,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'securityState': self.security_state,
@@ -267,7 +227,7 @@ class SecurityStateExplanation:
                 'mixedContentType': self.mixed_content_type,
                 'certificate': self.certificate,
                 'recommendations': self.recommendations,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'SecurityState': self.security_state,
@@ -291,13 +251,9 @@ class InsecureContentStatus:
     displayed_insecure_content_style: 'SecurityState'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'ran_mixed_content': self.ran_mixed_content,
@@ -307,7 +263,7 @@ class InsecureContentStatus:
                 'displayed_content_with_cert_errors': self.displayed_content_with_cert_errors,
                 'ran_insecure_content_style': self.ran_insecure_content_style,
                 'displayed_insecure_content_style': self.displayed_insecure_content_style,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'ranMixedContent': self.ran_mixed_content,
@@ -317,7 +273,7 @@ class InsecureContentStatus:
                 'displayedContentWithCertErrors': self.displayed_content_with_cert_errors,
                 'ranInsecureContentStyle': self.ran_insecure_content_style,
                 'displayedInsecureContentStyle': self.displayed_insecure_content_style,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'RanMixedContent': self.ran_mixed_content,

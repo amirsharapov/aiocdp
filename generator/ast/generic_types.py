@@ -2,8 +2,8 @@ import ast
 from collections import defaultdict
 from typing import Literal
 
-from generator.types import Domain, Type, Command
-from generator.utils import cdp_to_python_type, is_builtin
+from generator.parser.types import Domain, Type, Command
+from generator.utils import cdp_to_python_type
 
 
 def _generate_domain_type_imports(domain: Domain):
@@ -12,7 +12,7 @@ def _generate_domain_type_imports(domain: Domain):
     for type_ in domain.types:
         for ref in type_.get_refs():
             if ref.domain and ref.domain != domain.domain:
-                module_name = ref.domain_snake_case or domain.domain_snake_case
+                module_name = ref.actual_domain.domain_snake_case
                 import_tree[module_name].add(
                     ref.type
                 )
@@ -20,7 +20,7 @@ def _generate_domain_type_imports(domain: Domain):
     for command in domain.commands:
         for ref in command.get_refs():
             if ref.domain and ref.domain != domain.domain:
-                module_name = ref.domain_snake_case or domain.domain_snake_case
+                module_name = ref.actual_domain.domain_snake_case
                 import_tree[module_name].add(
                     ref.type
                 )
@@ -152,7 +152,10 @@ def _generate_string_literal(type_: 'Type'):
                     ) for enum in type_.enum
                 ],
                 ctx=ast.Load()
-            )
+            ),
+            render_context={
+                'expand': True
+            }
         )
     )
 
@@ -277,10 +280,7 @@ def _generate_dataclass_to_dict_body(
 
         property_name = property_.name_snake_cased
 
-        if is_builtin(property_name):
-            property_name += '_'
-
-        if property_.ref and not property_.ref.actual_type.enum:
+        if property_.ref and property_.ref.actual_type.properties:
             value = ast.Call(
                 func=ast.Attribute(
                     value=ast.Attribute(
@@ -319,7 +319,10 @@ def _generate_dataclass_to_dict_body(
                             ctx=ast.Load()
                         )
                     ],
-                    keywords=[]
+                    keywords=[],
+                    render_context={
+                        'expand': False
+                    }
                 ),
                 generators=[
                     ast.comprehension(
@@ -430,15 +433,16 @@ def generate(domain: Domain):
         )
     )
 
-    root.body.append(
-        ast.If(
-            test=ast.Name(
-                id='TYPE_CHECKING',
-                ctx=ast.Load()
-            ),
-            body=_generate_domain_type_imports(domain)
+    if imports_ := _generate_domain_type_imports(domain):
+        root.body.append(
+            ast.If(
+                test=ast.Name(
+                    id='TYPE_CHECKING',
+                    ctx=ast.Load()
+                ),
+                body=imports_
+            )
         )
-    )
 
     type_aliases = []
     string_literals = []

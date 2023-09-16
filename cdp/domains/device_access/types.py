@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 RequestId = str
 
@@ -24,31 +23,21 @@ class PromptDevice:
     name: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'id': self.id_.to_dict(
-                    casing_strategy
-                ),
+                'id': self.id,
                 'name': self.name,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'id': self.id_.to_dict(
-                    casing_strategy
-                ),
+                'id': self.id,
                 'name': self.name,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Id': self.id_.to_dict(
-                    casing_strategy
-                ),
+                'Id': self.id,
                 'Name': self.name,
             }

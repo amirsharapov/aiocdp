@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 PlayerId = str
 
@@ -24,23 +23,19 @@ class PlayerMessage:
     message: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'level': self.level,
                 'message': self.message,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'level': self.level,
                 'message': self.message,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Level': self.level,
@@ -54,23 +49,19 @@ class PlayerProperty:
     value: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
@@ -84,32 +75,22 @@ class PlayerEvent:
     value: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'timestamp': self.timestamp.to_dict(
-                    casing_strategy
-                ),
+                'timestamp': self.timestamp,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'timestamp': self.timestamp.to_dict(
-                    casing_strategy
-                ),
+                'timestamp': self.timestamp,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Timestamp': self.timestamp.to_dict(
-                    casing_strategy
-                ),
+                'Timestamp': self.timestamp,
                 'Value': self.value,
             }
 
@@ -120,23 +101,19 @@ class PlayerErrorSourceLocation:
     line: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'file': self.file,
                 'line': self.line,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'file': self.file,
                 'line': self.line,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'File': self.file,
@@ -153,57 +130,47 @@ class PlayerError:
     data: object
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'error_type': self.error_type,
                 'code': self.code,
-                'stack': [_.to_dict(
-                    casing_strategy
-                )
+                'stack': [
+                    _.to_dict(casing_strategy)
                     for _ in self.stack
                 ],
-                'cause': [_.to_dict(
-                    casing_strategy
-                )
+                'cause': [
+                    _.to_dict(casing_strategy)
                     for _ in self.cause
                 ],
                 'data': self.data,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'errorType': self.error_type,
                 'code': self.code,
-                'stack': [_.to_dict(
-                    casing_strategy
-                )
+                'stack': [
+                    _.to_dict(casing_strategy)
                     for _ in self.stack
                 ],
-                'cause': [_.to_dict(
-                    casing_strategy
-                )
+                'cause': [
+                    _.to_dict(casing_strategy)
                     for _ in self.cause
                 ],
                 'data': self.data,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'ErrorType': self.error_type,
                 'Code': self.code,
-                'Stack': [_.to_dict(
-                    casing_strategy
-                )
+                'Stack': [
+                    _.to_dict(casing_strategy)
                     for _ in self.stack
                 ],
-                'Cause': [_.to_dict(
-                    casing_strategy
-                )
+                'Cause': [
+                    _.to_dict(casing_strategy)
                     for _ in self.cause
                 ],
                 'Data': self.data,

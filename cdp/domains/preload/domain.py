@@ -19,21 +19,23 @@ from cdp.utils import (
 class Preload(BaseDomain):
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Preload.enable"',
+            'Preload.enable',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Preload.disable"',
+            'Preload.disable',
+
             params
         )
 

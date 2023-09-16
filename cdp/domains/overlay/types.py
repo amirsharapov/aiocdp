@@ -54,39 +54,23 @@ class SourceOrderConfig:
     child_outline_color: 'RGBA'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'parent_outline_color': self.parent_outline_color.to_dict(
-                    casing_strategy
-                ),
-                'child_outline_color': self.child_outline_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'parent_outline_color': self.parent_outline_color.to_dict(casing_strategy),
+                'child_outline_color': self.child_outline_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'parentOutlineColor': self.parent_outline_color.to_dict(
-                    casing_strategy
-                ),
-                'childOutlineColor': self.child_outline_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'parentOutlineColor': self.parent_outline_color.to_dict(casing_strategy),
+                'childOutlineColor': self.child_outline_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'ParentOutlineColor': self.parent_outline_color.to_dict(
-                    casing_strategy
-                ),
-                'ChildOutlineColor': self.child_outline_color.to_dict(
-                    casing_strategy
-                ),
+                'ParentOutlineColor': self.parent_outline_color.to_dict(casing_strategy),
+                'ChildOutlineColor': self.child_outline_color.to_dict(casing_strategy),
             }
 
 
@@ -114,13 +98,9 @@ class GridHighlightConfig:
     grid_background_color: 'RGBA'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'show_grid_extension_lines': self.show_grid_extension_lines,
@@ -129,41 +109,21 @@ class GridHighlightConfig:
                 'show_area_names': self.show_area_names,
                 'show_line_names': self.show_line_names,
                 'show_track_sizes': self.show_track_sizes,
-                'grid_border_color': self.grid_border_color.to_dict(
-                    casing_strategy
-                ),
-                'cell_border_color': self.cell_border_color.to_dict(
-                    casing_strategy
-                ),
-                'row_line_color': self.row_line_color.to_dict(
-                    casing_strategy
-                ),
-                'column_line_color': self.column_line_color.to_dict(
-                    casing_strategy
-                ),
+                'grid_border_color': self.grid_border_color.to_dict(casing_strategy),
+                'cell_border_color': self.cell_border_color.to_dict(casing_strategy),
+                'row_line_color': self.row_line_color.to_dict(casing_strategy),
+                'column_line_color': self.column_line_color.to_dict(casing_strategy),
                 'grid_border_dash': self.grid_border_dash,
                 'cell_border_dash': self.cell_border_dash,
                 'row_line_dash': self.row_line_dash,
                 'column_line_dash': self.column_line_dash,
-                'row_gap_color': self.row_gap_color.to_dict(
-                    casing_strategy
-                ),
-                'row_hatch_color': self.row_hatch_color.to_dict(
-                    casing_strategy
-                ),
-                'column_gap_color': self.column_gap_color.to_dict(
-                    casing_strategy
-                ),
-                'column_hatch_color': self.column_hatch_color.to_dict(
-                    casing_strategy
-                ),
-                'area_border_color': self.area_border_color.to_dict(
-                    casing_strategy
-                ),
-                'grid_background_color': self.grid_background_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'row_gap_color': self.row_gap_color.to_dict(casing_strategy),
+                'row_hatch_color': self.row_hatch_color.to_dict(casing_strategy),
+                'column_gap_color': self.column_gap_color.to_dict(casing_strategy),
+                'column_hatch_color': self.column_hatch_color.to_dict(casing_strategy),
+                'area_border_color': self.area_border_color.to_dict(casing_strategy),
+                'grid_background_color': self.grid_background_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
                 'showGridExtensionLines': self.show_grid_extension_lines,
@@ -172,41 +132,21 @@ class GridHighlightConfig:
                 'showAreaNames': self.show_area_names,
                 'showLineNames': self.show_line_names,
                 'showTrackSizes': self.show_track_sizes,
-                'gridBorderColor': self.grid_border_color.to_dict(
-                    casing_strategy
-                ),
-                'cellBorderColor': self.cell_border_color.to_dict(
-                    casing_strategy
-                ),
-                'rowLineColor': self.row_line_color.to_dict(
-                    casing_strategy
-                ),
-                'columnLineColor': self.column_line_color.to_dict(
-                    casing_strategy
-                ),
+                'gridBorderColor': self.grid_border_color.to_dict(casing_strategy),
+                'cellBorderColor': self.cell_border_color.to_dict(casing_strategy),
+                'rowLineColor': self.row_line_color.to_dict(casing_strategy),
+                'columnLineColor': self.column_line_color.to_dict(casing_strategy),
                 'gridBorderDash': self.grid_border_dash,
                 'cellBorderDash': self.cell_border_dash,
                 'rowLineDash': self.row_line_dash,
                 'columnLineDash': self.column_line_dash,
-                'rowGapColor': self.row_gap_color.to_dict(
-                    casing_strategy
-                ),
-                'rowHatchColor': self.row_hatch_color.to_dict(
-                    casing_strategy
-                ),
-                'columnGapColor': self.column_gap_color.to_dict(
-                    casing_strategy
-                ),
-                'columnHatchColor': self.column_hatch_color.to_dict(
-                    casing_strategy
-                ),
-                'areaBorderColor': self.area_border_color.to_dict(
-                    casing_strategy
-                ),
-                'gridBackgroundColor': self.grid_background_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'rowGapColor': self.row_gap_color.to_dict(casing_strategy),
+                'rowHatchColor': self.row_hatch_color.to_dict(casing_strategy),
+                'columnGapColor': self.column_gap_color.to_dict(casing_strategy),
+                'columnHatchColor': self.column_hatch_color.to_dict(casing_strategy),
+                'areaBorderColor': self.area_border_color.to_dict(casing_strategy),
+                'gridBackgroundColor': self.grid_background_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
                 'ShowGridExtensionLines': self.show_grid_extension_lines,
@@ -215,40 +155,20 @@ class GridHighlightConfig:
                 'ShowAreaNames': self.show_area_names,
                 'ShowLineNames': self.show_line_names,
                 'ShowTrackSizes': self.show_track_sizes,
-                'GridBorderColor': self.grid_border_color.to_dict(
-                    casing_strategy
-                ),
-                'CellBorderColor': self.cell_border_color.to_dict(
-                    casing_strategy
-                ),
-                'RowLineColor': self.row_line_color.to_dict(
-                    casing_strategy
-                ),
-                'ColumnLineColor': self.column_line_color.to_dict(
-                    casing_strategy
-                ),
+                'GridBorderColor': self.grid_border_color.to_dict(casing_strategy),
+                'CellBorderColor': self.cell_border_color.to_dict(casing_strategy),
+                'RowLineColor': self.row_line_color.to_dict(casing_strategy),
+                'ColumnLineColor': self.column_line_color.to_dict(casing_strategy),
                 'GridBorderDash': self.grid_border_dash,
                 'CellBorderDash': self.cell_border_dash,
                 'RowLineDash': self.row_line_dash,
                 'ColumnLineDash': self.column_line_dash,
-                'RowGapColor': self.row_gap_color.to_dict(
-                    casing_strategy
-                ),
-                'RowHatchColor': self.row_hatch_color.to_dict(
-                    casing_strategy
-                ),
-                'ColumnGapColor': self.column_gap_color.to_dict(
-                    casing_strategy
-                ),
-                'ColumnHatchColor': self.column_hatch_color.to_dict(
-                    casing_strategy
-                ),
-                'AreaBorderColor': self.area_border_color.to_dict(
-                    casing_strategy
-                ),
-                'GridBackgroundColor': self.grid_background_color.to_dict(
-                    casing_strategy
-                ),
+                'RowGapColor': self.row_gap_color.to_dict(casing_strategy),
+                'RowHatchColor': self.row_hatch_color.to_dict(casing_strategy),
+                'ColumnGapColor': self.column_gap_color.to_dict(casing_strategy),
+                'ColumnHatchColor': self.column_hatch_color.to_dict(casing_strategy),
+                'AreaBorderColor': self.area_border_color.to_dict(casing_strategy),
+                'GridBackgroundColor': self.grid_background_color.to_dict(casing_strategy),
             }
 
 
@@ -264,93 +184,41 @@ class FlexContainerHighlightConfig:
     cross_alignment: 'LineStyle'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'container_border': self.container_border.to_dict(
-                    casing_strategy
-                ),
-                'line_separator': self.line_separator.to_dict(
-                    casing_strategy
-                ),
-                'item_separator': self.item_separator.to_dict(
-                    casing_strategy
-                ),
-                'main_distributed_space': self.main_distributed_space.to_dict(
-                    casing_strategy
-                ),
-                'cross_distributed_space': self.cross_distributed_space.to_dict(
-                    casing_strategy
-                ),
-                'row_gap_space': self.row_gap_space.to_dict(
-                    casing_strategy
-                ),
-                'column_gap_space': self.column_gap_space.to_dict(
-                    casing_strategy
-                ),
-                'cross_alignment': self.cross_alignment.to_dict(
-                    casing_strategy
-                ),
-            }
+                'container_border': self.container_border.to_dict(casing_strategy),
+                'line_separator': self.line_separator.to_dict(casing_strategy),
+                'item_separator': self.item_separator.to_dict(casing_strategy),
+                'main_distributed_space': self.main_distributed_space.to_dict(casing_strategy),
+                'cross_distributed_space': self.cross_distributed_space.to_dict(casing_strategy),
+                'row_gap_space': self.row_gap_space.to_dict(casing_strategy),
+                'column_gap_space': self.column_gap_space.to_dict(casing_strategy),
+                'cross_alignment': self.cross_alignment.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'containerBorder': self.container_border.to_dict(
-                    casing_strategy
-                ),
-                'lineSeparator': self.line_separator.to_dict(
-                    casing_strategy
-                ),
-                'itemSeparator': self.item_separator.to_dict(
-                    casing_strategy
-                ),
-                'mainDistributedSpace': self.main_distributed_space.to_dict(
-                    casing_strategy
-                ),
-                'crossDistributedSpace': self.cross_distributed_space.to_dict(
-                    casing_strategy
-                ),
-                'rowGapSpace': self.row_gap_space.to_dict(
-                    casing_strategy
-                ),
-                'columnGapSpace': self.column_gap_space.to_dict(
-                    casing_strategy
-                ),
-                'crossAlignment': self.cross_alignment.to_dict(
-                    casing_strategy
-                ),
-            }
+                'containerBorder': self.container_border.to_dict(casing_strategy),
+                'lineSeparator': self.line_separator.to_dict(casing_strategy),
+                'itemSeparator': self.item_separator.to_dict(casing_strategy),
+                'mainDistributedSpace': self.main_distributed_space.to_dict(casing_strategy),
+                'crossDistributedSpace': self.cross_distributed_space.to_dict(casing_strategy),
+                'rowGapSpace': self.row_gap_space.to_dict(casing_strategy),
+                'columnGapSpace': self.column_gap_space.to_dict(casing_strategy),
+                'crossAlignment': self.cross_alignment.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'ContainerBorder': self.container_border.to_dict(
-                    casing_strategy
-                ),
-                'LineSeparator': self.line_separator.to_dict(
-                    casing_strategy
-                ),
-                'ItemSeparator': self.item_separator.to_dict(
-                    casing_strategy
-                ),
-                'MainDistributedSpace': self.main_distributed_space.to_dict(
-                    casing_strategy
-                ),
-                'CrossDistributedSpace': self.cross_distributed_space.to_dict(
-                    casing_strategy
-                ),
-                'RowGapSpace': self.row_gap_space.to_dict(
-                    casing_strategy
-                ),
-                'ColumnGapSpace': self.column_gap_space.to_dict(
-                    casing_strategy
-                ),
-                'CrossAlignment': self.cross_alignment.to_dict(
-                    casing_strategy
-                ),
+                'ContainerBorder': self.container_border.to_dict(casing_strategy),
+                'LineSeparator': self.line_separator.to_dict(casing_strategy),
+                'ItemSeparator': self.item_separator.to_dict(casing_strategy),
+                'MainDistributedSpace': self.main_distributed_space.to_dict(casing_strategy),
+                'CrossDistributedSpace': self.cross_distributed_space.to_dict(casing_strategy),
+                'RowGapSpace': self.row_gap_space.to_dict(casing_strategy),
+                'ColumnGapSpace': self.column_gap_space.to_dict(casing_strategy),
+                'CrossAlignment': self.cross_alignment.to_dict(casing_strategy),
             }
 
 
@@ -361,48 +229,26 @@ class FlexItemHighlightConfig:
     flexibility_arrow: 'LineStyle'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'base_size_box': self.base_size_box.to_dict(
-                    casing_strategy
-                ),
-                'base_size_border': self.base_size_border.to_dict(
-                    casing_strategy
-                ),
-                'flexibility_arrow': self.flexibility_arrow.to_dict(
-                    casing_strategy
-                ),
-            }
+                'base_size_box': self.base_size_box.to_dict(casing_strategy),
+                'base_size_border': self.base_size_border.to_dict(casing_strategy),
+                'flexibility_arrow': self.flexibility_arrow.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'baseSizeBox': self.base_size_box.to_dict(
-                    casing_strategy
-                ),
-                'baseSizeBorder': self.base_size_border.to_dict(
-                    casing_strategy
-                ),
-                'flexibilityArrow': self.flexibility_arrow.to_dict(
-                    casing_strategy
-                ),
-            }
+                'baseSizeBox': self.base_size_box.to_dict(casing_strategy),
+                'baseSizeBorder': self.base_size_border.to_dict(casing_strategy),
+                'flexibilityArrow': self.flexibility_arrow.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'BaseSizeBox': self.base_size_box.to_dict(
-                    casing_strategy
-                ),
-                'BaseSizeBorder': self.base_size_border.to_dict(
-                    casing_strategy
-                ),
-                'FlexibilityArrow': self.flexibility_arrow.to_dict(
-                    casing_strategy
-                ),
+                'BaseSizeBox': self.base_size_box.to_dict(casing_strategy),
+                'BaseSizeBorder': self.base_size_border.to_dict(casing_strategy),
+                'FlexibilityArrow': self.flexibility_arrow.to_dict(casing_strategy),
             }
 
 
@@ -412,32 +258,22 @@ class LineStyle:
     pattern: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'color': self.color.to_dict(
-                    casing_strategy
-                ),
+                'color': self.color.to_dict(casing_strategy),
                 'pattern': self.pattern,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'color': self.color.to_dict(
-                    casing_strategy
-                ),
+                'color': self.color.to_dict(casing_strategy),
                 'pattern': self.pattern,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Color': self.color.to_dict(
-                    casing_strategy
-                ),
+                'Color': self.color.to_dict(casing_strategy),
                 'Pattern': self.pattern,
             }
 
@@ -448,39 +284,23 @@ class BoxStyle:
     hatch_color: 'RGBA'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'fill_color': self.fill_color.to_dict(
-                    casing_strategy
-                ),
-                'hatch_color': self.hatch_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'fill_color': self.fill_color.to_dict(casing_strategy),
+                'hatch_color': self.hatch_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'fillColor': self.fill_color.to_dict(
-                    casing_strategy
-                ),
-                'hatchColor': self.hatch_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'fillColor': self.fill_color.to_dict(casing_strategy),
+                'hatchColor': self.hatch_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'FillColor': self.fill_color.to_dict(
-                    casing_strategy
-                ),
-                'HatchColor': self.hatch_color.to_dict(
-                    casing_strategy
-                ),
+                'FillColor': self.fill_color.to_dict(casing_strategy),
+                'HatchColor': self.hatch_color.to_dict(casing_strategy),
             }
 
 
@@ -507,13 +327,9 @@ class HighlightConfig:
     container_query_container_highlight_config: 'ContainerQueryContainerHighlightConfig'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'show_info': self.show_info,
@@ -521,45 +337,21 @@ class HighlightConfig:
                 'show_rulers': self.show_rulers,
                 'show_accessibility_info': self.show_accessibility_info,
                 'show_extension_lines': self.show_extension_lines,
-                'content_color': self.content_color.to_dict(
-                    casing_strategy
-                ),
-                'padding_color': self.padding_color.to_dict(
-                    casing_strategy
-                ),
-                'border_color': self.border_color.to_dict(
-                    casing_strategy
-                ),
-                'margin_color': self.margin_color.to_dict(
-                    casing_strategy
-                ),
-                'event_target_color': self.event_target_color.to_dict(
-                    casing_strategy
-                ),
-                'shape_color': self.shape_color.to_dict(
-                    casing_strategy
-                ),
-                'shape_margin_color': self.shape_margin_color.to_dict(
-                    casing_strategy
-                ),
-                'css_grid_color': self.css_grid_color.to_dict(
-                    casing_strategy
-                ),
+                'content_color': self.content_color.to_dict(casing_strategy),
+                'padding_color': self.padding_color.to_dict(casing_strategy),
+                'border_color': self.border_color.to_dict(casing_strategy),
+                'margin_color': self.margin_color.to_dict(casing_strategy),
+                'event_target_color': self.event_target_color.to_dict(casing_strategy),
+                'shape_color': self.shape_color.to_dict(casing_strategy),
+                'shape_margin_color': self.shape_margin_color.to_dict(casing_strategy),
+                'css_grid_color': self.css_grid_color.to_dict(casing_strategy),
                 'color_format': self.color_format,
-                'grid_highlight_config': self.grid_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'flex_container_highlight_config': self.flex_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'flex_item_highlight_config': self.flex_item_highlight_config.to_dict(
-                    casing_strategy
-                ),
+                'grid_highlight_config': self.grid_highlight_config.to_dict(casing_strategy),
+                'flex_container_highlight_config': self.flex_container_highlight_config.to_dict(casing_strategy),
+                'flex_item_highlight_config': self.flex_item_highlight_config.to_dict(casing_strategy),
                 'contrast_algorithm': self.contrast_algorithm,
-                'container_query_container_highlight_config': self.container_query_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-            }
+                'container_query_container_highlight_config': self.container_query_container_highlight_config.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
                 'showInfo': self.show_info,
@@ -567,45 +359,21 @@ class HighlightConfig:
                 'showRulers': self.show_rulers,
                 'showAccessibilityInfo': self.show_accessibility_info,
                 'showExtensionLines': self.show_extension_lines,
-                'contentColor': self.content_color.to_dict(
-                    casing_strategy
-                ),
-                'paddingColor': self.padding_color.to_dict(
-                    casing_strategy
-                ),
-                'borderColor': self.border_color.to_dict(
-                    casing_strategy
-                ),
-                'marginColor': self.margin_color.to_dict(
-                    casing_strategy
-                ),
-                'eventTargetColor': self.event_target_color.to_dict(
-                    casing_strategy
-                ),
-                'shapeColor': self.shape_color.to_dict(
-                    casing_strategy
-                ),
-                'shapeMarginColor': self.shape_margin_color.to_dict(
-                    casing_strategy
-                ),
-                'cssGridColor': self.css_grid_color.to_dict(
-                    casing_strategy
-                ),
+                'contentColor': self.content_color.to_dict(casing_strategy),
+                'paddingColor': self.padding_color.to_dict(casing_strategy),
+                'borderColor': self.border_color.to_dict(casing_strategy),
+                'marginColor': self.margin_color.to_dict(casing_strategy),
+                'eventTargetColor': self.event_target_color.to_dict(casing_strategy),
+                'shapeColor': self.shape_color.to_dict(casing_strategy),
+                'shapeMarginColor': self.shape_margin_color.to_dict(casing_strategy),
+                'cssGridColor': self.css_grid_color.to_dict(casing_strategy),
                 'colorFormat': self.color_format,
-                'gridHighlightConfig': self.grid_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'flexContainerHighlightConfig': self.flex_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'flexItemHighlightConfig': self.flex_item_highlight_config.to_dict(
-                    casing_strategy
-                ),
+                'gridHighlightConfig': self.grid_highlight_config.to_dict(casing_strategy),
+                'flexContainerHighlightConfig': self.flex_container_highlight_config.to_dict(casing_strategy),
+                'flexItemHighlightConfig': self.flex_item_highlight_config.to_dict(casing_strategy),
                 'contrastAlgorithm': self.contrast_algorithm,
-                'containerQueryContainerHighlightConfig': self.container_query_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-            }
+                'containerQueryContainerHighlightConfig': self.container_query_container_highlight_config.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
                 'ShowInfo': self.show_info,
@@ -613,44 +381,20 @@ class HighlightConfig:
                 'ShowRulers': self.show_rulers,
                 'ShowAccessibilityInfo': self.show_accessibility_info,
                 'ShowExtensionLines': self.show_extension_lines,
-                'ContentColor': self.content_color.to_dict(
-                    casing_strategy
-                ),
-                'PaddingColor': self.padding_color.to_dict(
-                    casing_strategy
-                ),
-                'BorderColor': self.border_color.to_dict(
-                    casing_strategy
-                ),
-                'MarginColor': self.margin_color.to_dict(
-                    casing_strategy
-                ),
-                'EventTargetColor': self.event_target_color.to_dict(
-                    casing_strategy
-                ),
-                'ShapeColor': self.shape_color.to_dict(
-                    casing_strategy
-                ),
-                'ShapeMarginColor': self.shape_margin_color.to_dict(
-                    casing_strategy
-                ),
-                'CssGridColor': self.css_grid_color.to_dict(
-                    casing_strategy
-                ),
+                'ContentColor': self.content_color.to_dict(casing_strategy),
+                'PaddingColor': self.padding_color.to_dict(casing_strategy),
+                'BorderColor': self.border_color.to_dict(casing_strategy),
+                'MarginColor': self.margin_color.to_dict(casing_strategy),
+                'EventTargetColor': self.event_target_color.to_dict(casing_strategy),
+                'ShapeColor': self.shape_color.to_dict(casing_strategy),
+                'ShapeMarginColor': self.shape_margin_color.to_dict(casing_strategy),
+                'CssGridColor': self.css_grid_color.to_dict(casing_strategy),
                 'ColorFormat': self.color_format,
-                'GridHighlightConfig': self.grid_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'FlexContainerHighlightConfig': self.flex_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'FlexItemHighlightConfig': self.flex_item_highlight_config.to_dict(
-                    casing_strategy
-                ),
+                'GridHighlightConfig': self.grid_highlight_config.to_dict(casing_strategy),
+                'FlexContainerHighlightConfig': self.flex_container_highlight_config.to_dict(casing_strategy),
+                'FlexItemHighlightConfig': self.flex_item_highlight_config.to_dict(casing_strategy),
                 'ContrastAlgorithm': self.contrast_algorithm,
-                'ContainerQueryContainerHighlightConfig': self.container_query_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
+                'ContainerQueryContainerHighlightConfig': self.container_query_container_highlight_config.to_dict(casing_strategy),
             }
 
 
@@ -660,39 +404,23 @@ class GridNodeHighlightConfig:
     node_id: 'NodeId'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'grid_highlight_config': self.grid_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'node_id': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'grid_highlight_config': self.grid_highlight_config.to_dict(casing_strategy),
+                'node_id': self.node_id,
+            }        
         if casing_strategy == 'camel':
             return {
-                'gridHighlightConfig': self.grid_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'nodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'gridHighlightConfig': self.grid_highlight_config.to_dict(casing_strategy),
+                'nodeId': self.node_id,
+            }        
         if casing_strategy == 'pascal':
             return {
-                'GridHighlightConfig': self.grid_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'NodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
+                'GridHighlightConfig': self.grid_highlight_config.to_dict(casing_strategy),
+                'NodeId': self.node_id,
             }
 
 
@@ -702,39 +430,23 @@ class FlexNodeHighlightConfig:
     node_id: 'NodeId'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'flex_container_highlight_config': self.flex_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'node_id': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'flex_container_highlight_config': self.flex_container_highlight_config.to_dict(casing_strategy),
+                'node_id': self.node_id,
+            }        
         if casing_strategy == 'camel':
             return {
-                'flexContainerHighlightConfig': self.flex_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'nodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'flexContainerHighlightConfig': self.flex_container_highlight_config.to_dict(casing_strategy),
+                'nodeId': self.node_id,
+            }        
         if casing_strategy == 'pascal':
             return {
-                'FlexContainerHighlightConfig': self.flex_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'NodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
+                'FlexContainerHighlightConfig': self.flex_container_highlight_config.to_dict(casing_strategy),
+                'NodeId': self.node_id,
             }
 
 
@@ -746,57 +458,29 @@ class ScrollSnapContainerHighlightConfig:
     scroll_padding_color: 'RGBA'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'snapport_border': self.snapport_border.to_dict(
-                    casing_strategy
-                ),
-                'snap_area_border': self.snap_area_border.to_dict(
-                    casing_strategy
-                ),
-                'scroll_margin_color': self.scroll_margin_color.to_dict(
-                    casing_strategy
-                ),
-                'scroll_padding_color': self.scroll_padding_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'snapport_border': self.snapport_border.to_dict(casing_strategy),
+                'snap_area_border': self.snap_area_border.to_dict(casing_strategy),
+                'scroll_margin_color': self.scroll_margin_color.to_dict(casing_strategy),
+                'scroll_padding_color': self.scroll_padding_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'snapportBorder': self.snapport_border.to_dict(
-                    casing_strategy
-                ),
-                'snapAreaBorder': self.snap_area_border.to_dict(
-                    casing_strategy
-                ),
-                'scrollMarginColor': self.scroll_margin_color.to_dict(
-                    casing_strategy
-                ),
-                'scrollPaddingColor': self.scroll_padding_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'snapportBorder': self.snapport_border.to_dict(casing_strategy),
+                'snapAreaBorder': self.snap_area_border.to_dict(casing_strategy),
+                'scrollMarginColor': self.scroll_margin_color.to_dict(casing_strategy),
+                'scrollPaddingColor': self.scroll_padding_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'SnapportBorder': self.snapport_border.to_dict(
-                    casing_strategy
-                ),
-                'SnapAreaBorder': self.snap_area_border.to_dict(
-                    casing_strategy
-                ),
-                'ScrollMarginColor': self.scroll_margin_color.to_dict(
-                    casing_strategy
-                ),
-                'ScrollPaddingColor': self.scroll_padding_color.to_dict(
-                    casing_strategy
-                ),
+                'SnapportBorder': self.snapport_border.to_dict(casing_strategy),
+                'SnapAreaBorder': self.snap_area_border.to_dict(casing_strategy),
+                'ScrollMarginColor': self.scroll_margin_color.to_dict(casing_strategy),
+                'ScrollPaddingColor': self.scroll_padding_color.to_dict(casing_strategy),
             }
 
 
@@ -806,39 +490,23 @@ class ScrollSnapHighlightConfig:
     node_id: 'NodeId'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'scroll_snap_container_highlight_config': self.scroll_snap_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'node_id': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'scroll_snap_container_highlight_config': self.scroll_snap_container_highlight_config.to_dict(casing_strategy),
+                'node_id': self.node_id,
+            }        
         if casing_strategy == 'camel':
             return {
-                'scrollSnapContainerHighlightConfig': self.scroll_snap_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'nodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'scrollSnapContainerHighlightConfig': self.scroll_snap_container_highlight_config.to_dict(casing_strategy),
+                'nodeId': self.node_id,
+            }        
         if casing_strategy == 'pascal':
             return {
-                'ScrollSnapContainerHighlightConfig': self.scroll_snap_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'NodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
+                'ScrollSnapContainerHighlightConfig': self.scroll_snap_container_highlight_config.to_dict(casing_strategy),
+                'NodeId': self.node_id,
             }
 
 
@@ -849,48 +517,26 @@ class HingeConfig:
     outline_color: 'RGBA'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'rect': self.rect.to_dict(
-                    casing_strategy
-                ),
-                'content_color': self.content_color.to_dict(
-                    casing_strategy
-                ),
-                'outline_color': self.outline_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'rect': self.rect.to_dict(casing_strategy),
+                'content_color': self.content_color.to_dict(casing_strategy),
+                'outline_color': self.outline_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'rect': self.rect.to_dict(
-                    casing_strategy
-                ),
-                'contentColor': self.content_color.to_dict(
-                    casing_strategy
-                ),
-                'outlineColor': self.outline_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'rect': self.rect.to_dict(casing_strategy),
+                'contentColor': self.content_color.to_dict(casing_strategy),
+                'outlineColor': self.outline_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Rect': self.rect.to_dict(
-                    casing_strategy
-                ),
-                'ContentColor': self.content_color.to_dict(
-                    casing_strategy
-                ),
-                'OutlineColor': self.outline_color.to_dict(
-                    casing_strategy
-                ),
+                'Rect': self.rect.to_dict(casing_strategy),
+                'ContentColor': self.content_color.to_dict(casing_strategy),
+                'OutlineColor': self.outline_color.to_dict(casing_strategy),
             }
 
 
@@ -900,39 +546,23 @@ class ContainerQueryHighlightConfig:
     node_id: 'NodeId'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'container_query_container_highlight_config': self.container_query_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'node_id': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'container_query_container_highlight_config': self.container_query_container_highlight_config.to_dict(casing_strategy),
+                'node_id': self.node_id,
+            }        
         if casing_strategy == 'camel':
             return {
-                'containerQueryContainerHighlightConfig': self.container_query_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'nodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'containerQueryContainerHighlightConfig': self.container_query_container_highlight_config.to_dict(casing_strategy),
+                'nodeId': self.node_id,
+            }        
         if casing_strategy == 'pascal':
             return {
-                'ContainerQueryContainerHighlightConfig': self.container_query_container_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'NodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
+                'ContainerQueryContainerHighlightConfig': self.container_query_container_highlight_config.to_dict(casing_strategy),
+                'NodeId': self.node_id,
             }
 
 
@@ -942,39 +572,23 @@ class ContainerQueryContainerHighlightConfig:
     descendant_border: 'LineStyle'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'container_border': self.container_border.to_dict(
-                    casing_strategy
-                ),
-                'descendant_border': self.descendant_border.to_dict(
-                    casing_strategy
-                ),
-            }
+                'container_border': self.container_border.to_dict(casing_strategy),
+                'descendant_border': self.descendant_border.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'containerBorder': self.container_border.to_dict(
-                    casing_strategy
-                ),
-                'descendantBorder': self.descendant_border.to_dict(
-                    casing_strategy
-                ),
-            }
+                'containerBorder': self.container_border.to_dict(casing_strategy),
+                'descendantBorder': self.descendant_border.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'ContainerBorder': self.container_border.to_dict(
-                    casing_strategy
-                ),
-                'DescendantBorder': self.descendant_border.to_dict(
-                    casing_strategy
-                ),
+                'ContainerBorder': self.container_border.to_dict(casing_strategy),
+                'DescendantBorder': self.descendant_border.to_dict(casing_strategy),
             }
 
 
@@ -984,39 +598,23 @@ class IsolatedElementHighlightConfig:
     node_id: 'NodeId'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'isolation_mode_highlight_config': self.isolation_mode_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'node_id': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'isolation_mode_highlight_config': self.isolation_mode_highlight_config.to_dict(casing_strategy),
+                'node_id': self.node_id,
+            }        
         if casing_strategy == 'camel':
             return {
-                'isolationModeHighlightConfig': self.isolation_mode_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'nodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
-            }
+                'isolationModeHighlightConfig': self.isolation_mode_highlight_config.to_dict(casing_strategy),
+                'nodeId': self.node_id,
+            }        
         if casing_strategy == 'pascal':
             return {
-                'IsolationModeHighlightConfig': self.isolation_mode_highlight_config.to_dict(
-                    casing_strategy
-                ),
-                'NodeId': self.node_id.to_dict(
-                    casing_strategy
-                ),
+                'IsolationModeHighlightConfig': self.isolation_mode_highlight_config.to_dict(casing_strategy),
+                'NodeId': self.node_id,
             }
 
 
@@ -1027,48 +625,26 @@ class IsolationModeHighlightConfig:
     mask_color: 'RGBA'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'resizer_color': self.resizer_color.to_dict(
-                    casing_strategy
-                ),
-                'resizer_handle_color': self.resizer_handle_color.to_dict(
-                    casing_strategy
-                ),
-                'mask_color': self.mask_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'resizer_color': self.resizer_color.to_dict(casing_strategy),
+                'resizer_handle_color': self.resizer_handle_color.to_dict(casing_strategy),
+                'mask_color': self.mask_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
-                'resizerColor': self.resizer_color.to_dict(
-                    casing_strategy
-                ),
-                'resizerHandleColor': self.resizer_handle_color.to_dict(
-                    casing_strategy
-                ),
-                'maskColor': self.mask_color.to_dict(
-                    casing_strategy
-                ),
-            }
+                'resizerColor': self.resizer_color.to_dict(casing_strategy),
+                'resizerHandleColor': self.resizer_handle_color.to_dict(casing_strategy),
+                'maskColor': self.mask_color.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
-                'ResizerColor': self.resizer_color.to_dict(
-                    casing_strategy
-                ),
-                'ResizerHandleColor': self.resizer_handle_color.to_dict(
-                    casing_strategy
-                ),
-                'MaskColor': self.mask_color.to_dict(
-                    casing_strategy
-                ),
+                'ResizerColor': self.resizer_color.to_dict(casing_strategy),
+                'ResizerHandleColor': self.resizer_handle_color.to_dict(casing_strategy),
+                'MaskColor': self.mask_color.to_dict(casing_strategy),
             }
 
 

@@ -40,26 +40,22 @@ class ScreenOrientation:
     angle: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'type': self.type_,
+                'type': self.type,
                 'angle': self.angle,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'type': self.type_,
+                'type': self.type,
                 'angle': self.angle,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Type': self.type_,
+                'Type': self.type,
                 'Angle': self.angle,
             }
 
@@ -71,25 +67,21 @@ class DisplayFeature:
     mask_length: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'orientation': self.orientation,
                 'offset': self.offset,
                 'mask_length': self.mask_length,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'orientation': self.orientation,
                 'offset': self.offset,
                 'maskLength': self.mask_length,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Orientation': self.orientation,
@@ -104,23 +96,19 @@ class MediaFeature:
     value: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
@@ -134,23 +122,19 @@ class UserAgentBrandVersion:
     version: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'brand': self.brand,
                 'version': self.version,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'brand': self.brand,
                 'version': self.version,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Brand': self.brand,
@@ -172,23 +156,17 @@ class UserAgentMetadata:
     wow64: bool
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'brands': [_.to_dict(
-                    casing_strategy
-                )
+                'brands': [
+                    _.to_dict(casing_strategy)
                     for _ in self.brands
                 ],
-                'full_version_list': [_.to_dict(
-                    casing_strategy
-                )
+                'full_version_list': [
+                    _.to_dict(casing_strategy)
                     for _ in self.full_version_list
                 ],
                 'full_version': self.full_version,
@@ -199,17 +177,15 @@ class UserAgentMetadata:
                 'mobile': self.mobile,
                 'bitness': self.bitness,
                 'wow64': self.wow64,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'brands': [_.to_dict(
-                    casing_strategy
-                )
+                'brands': [
+                    _.to_dict(casing_strategy)
                     for _ in self.brands
                 ],
-                'fullVersionList': [_.to_dict(
-                    casing_strategy
-                )
+                'fullVersionList': [
+                    _.to_dict(casing_strategy)
                     for _ in self.full_version_list
                 ],
                 'fullVersion': self.full_version,
@@ -220,17 +196,15 @@ class UserAgentMetadata:
                 'mobile': self.mobile,
                 'bitness': self.bitness,
                 'wow64': self.wow64,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Brands': [_.to_dict(
-                    casing_strategy
-                )
+                'Brands': [
+                    _.to_dict(casing_strategy)
                     for _ in self.brands
                 ],
-                'FullVersionList': [_.to_dict(
-                    casing_strategy
-                )
+                'FullVersionList': [
+                    _.to_dict(casing_strategy)
                     for _ in self.full_version_list
                 ],
                 'FullVersion': self.full_version,

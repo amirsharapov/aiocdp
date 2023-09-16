@@ -20,13 +20,14 @@ class PerformanceTimeline(BaseDomain):
     def enable(
         self,
         event_types: list
-    ):
+    ) -> 'EnableReturnT':
         params = {
             'eventTypes': event_types,
         }
-
+        
         return self._send_command(
-            '"PerformanceTimeline.enable"',
+            'PerformanceTimeline.enable',
+
             params
         )
 

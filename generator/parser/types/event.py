@@ -1,23 +1,24 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from generator.types.base import ComplexNode
-from generator.types.property import EventParameter
+from generator.parser.types.base import ComplexNode
+from generator.parser.types.property import EventProperty
 from generator.utils import UNDEFINED, MaybeUndefined
 
 if TYPE_CHECKING:
-    from generator.types.domain import Domain
+    from generator.parser.types.domain import Domain
 
 
 @dataclass
 class Event(ComplexNode):
     parent: 'Domain' = field(
-        init=False
+        init=False,
+        repr=False
     )
 
     name: str
     description: MaybeUndefined[str]
-    parameters: list['EventParameter']
+    parameters: list['EventProperty']
     experimental: MaybeUndefined[bool]
     deprecated: MaybeUndefined[bool]
 
@@ -26,7 +27,10 @@ class Event(ComplexNode):
         return cls(
             name=data['name'],
             description=data.get('description', UNDEFINED),
-            parameters=[EventParameter.from_dict(parameter) for parameter in data.get('parameters', [])],
+            parameters=[
+                EventProperty.from_dict(parameter)
+                for parameter in data.get('parameters', [])
+            ],
             experimental=data.get('experimental', UNDEFINED),
             deprecated=data.get('deprecated', UNDEFINED)
         )

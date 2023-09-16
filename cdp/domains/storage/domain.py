@@ -32,13 +32,14 @@ class Storage(BaseDomain):
     def get_storage_key_for_frame(
         self,
         frame_id: FrameId
-    ):
+    ) -> 'GetStorageKeyForFrameReturnT':
         params = {
             'frameId': frame_id,
         }
-
+        
         return self._send_command(
-            '"Storage.getStorageKeyForFrame"',
+            'Storage.getStorageKeyForFrame',
+
             params
         )
 
@@ -46,14 +47,15 @@ class Storage(BaseDomain):
         self,
         origin: str,
         storage_types: str
-    ):
+    ) -> 'ClearDataForOriginReturnT':
         params = {
             'origin': origin,
             'storageTypes': storage_types,
         }
-
+        
         return self._send_command(
-            '"Storage.clearDataForOrigin"',
+            'Storage.clearDataForOrigin',
+
             params
         )
 
@@ -61,30 +63,30 @@ class Storage(BaseDomain):
         self,
         storage_key: str,
         storage_types: str
-    ):
+    ) -> 'ClearDataForStorageKeyReturnT':
         params = {
             'storageKey': storage_key,
             'storageTypes': storage_types,
         }
-
+        
         return self._send_command(
-            '"Storage.clearDataForStorageKey"',
+            'Storage.clearDataForStorageKey',
+
             params
         )
 
     def get_cookies(
         self,
         browser_context_id: BrowserContextID = UNDEFINED
-    ):
+    ) -> 'GetCookiesReturnT':
         params = {}
-
-        if is_defined(
-            browser_context_id
-        ):
-            params['browserContextId'            ] = browser_context_id
-
+        
+        if is_defined(browser_context_id):
+params['browserContextId'] = browser_context_id
+        
         return self._send_command(
-            '"Storage.getCookies"',
+            'Storage.getCookies',
+
             params
         )
 
@@ -92,47 +94,46 @@ class Storage(BaseDomain):
         self,
         cookies: list,
         browser_context_id: BrowserContextID = UNDEFINED
-    ):
+    ) -> 'SetCookiesReturnT':
         params = {
             'cookies': cookies,
         }
-
-        if is_defined(
-            browser_context_id
-        ):
-            params['browserContextId'            ] = browser_context_id
-
+        
+        if is_defined(browser_context_id):
+params['browserContextId'] = browser_context_id
+        
         return self._send_command(
-            '"Storage.setCookies"',
+            'Storage.setCookies',
+
             params
         )
 
     def clear_cookies(
         self,
         browser_context_id: BrowserContextID = UNDEFINED
-    ):
+    ) -> 'ClearCookiesReturnT':
         params = {}
-
-        if is_defined(
-            browser_context_id
-        ):
-            params['browserContextId'            ] = browser_context_id
-
+        
+        if is_defined(browser_context_id):
+params['browserContextId'] = browser_context_id
+        
         return self._send_command(
-            '"Storage.clearCookies"',
+            'Storage.clearCookies',
+
             params
         )
 
     def get_usage_and_quota(
         self,
         origin: str
-    ):
+    ) -> 'GetUsageAndQuotaReturnT':
         params = {
             'origin': origin,
         }
-
+        
         return self._send_command(
-            '"Storage.getUsageAndQuota"',
+            'Storage.getUsageAndQuota',
+
             params
         )
 
@@ -140,145 +141,154 @@ class Storage(BaseDomain):
         self,
         origin: str,
         quota_size: float = UNDEFINED
-    ):
+    ) -> 'OverrideQuotaForOriginReturnT':
         params = {
             'origin': origin,
         }
-
-        if is_defined(
-            quota_size
-        ):
-            params['quotaSize'            ] = quota_size
-
+        
+        if is_defined(quota_size):
+params['quotaSize'] = quota_size
+        
         return self._send_command(
-            '"Storage.overrideQuotaForOrigin"',
+            'Storage.overrideQuotaForOrigin',
+
             params
         )
 
     def track_cache_storage_for_origin(
         self,
         origin: str
-    ):
+    ) -> 'TrackCacheStorageForOriginReturnT':
         params = {
             'origin': origin,
         }
-
+        
         return self._send_command(
-            '"Storage.trackCacheStorageForOrigin"',
+            'Storage.trackCacheStorageForOrigin',
+
             params
         )
 
     def track_cache_storage_for_storage_key(
         self,
         storage_key: str
-    ):
+    ) -> 'TrackCacheStorageForStorageKeyReturnT':
         params = {
             'storageKey': storage_key,
         }
-
+        
         return self._send_command(
-            '"Storage.trackCacheStorageForStorageKey"',
+            'Storage.trackCacheStorageForStorageKey',
+
             params
         )
 
     def track_indexed_db_for_origin(
         self,
         origin: str
-    ):
+    ) -> 'TrackIndexedDBForOriginReturnT':
         params = {
             'origin': origin,
         }
-
+        
         return self._send_command(
-            '"Storage.trackIndexedDBForOrigin"',
+            'Storage.trackIndexedDBForOrigin',
+
             params
         )
 
     def track_indexed_db_for_storage_key(
         self,
         storage_key: str
-    ):
+    ) -> 'TrackIndexedDBForStorageKeyReturnT':
         params = {
             'storageKey': storage_key,
         }
-
+        
         return self._send_command(
-            '"Storage.trackIndexedDBForStorageKey"',
+            'Storage.trackIndexedDBForStorageKey',
+
             params
         )
 
     def untrack_cache_storage_for_origin(
         self,
         origin: str
-    ):
+    ) -> 'UntrackCacheStorageForOriginReturnT':
         params = {
             'origin': origin,
         }
-
+        
         return self._send_command(
-            '"Storage.untrackCacheStorageForOrigin"',
+            'Storage.untrackCacheStorageForOrigin',
+
             params
         )
 
     def untrack_cache_storage_for_storage_key(
         self,
         storage_key: str
-    ):
+    ) -> 'UntrackCacheStorageForStorageKeyReturnT':
         params = {
             'storageKey': storage_key,
         }
-
+        
         return self._send_command(
-            '"Storage.untrackCacheStorageForStorageKey"',
+            'Storage.untrackCacheStorageForStorageKey',
+
             params
         )
 
     def untrack_indexed_db_for_origin(
         self,
         origin: str
-    ):
+    ) -> 'UntrackIndexedDBForOriginReturnT':
         params = {
             'origin': origin,
         }
-
+        
         return self._send_command(
-            '"Storage.untrackIndexedDBForOrigin"',
+            'Storage.untrackIndexedDBForOrigin',
+
             params
         )
 
     def untrack_indexed_db_for_storage_key(
         self,
         storage_key: str
-    ):
+    ) -> 'UntrackIndexedDBForStorageKeyReturnT':
         params = {
             'storageKey': storage_key,
         }
-
+        
         return self._send_command(
-            '"Storage.untrackIndexedDBForStorageKey"',
+            'Storage.untrackIndexedDBForStorageKey',
+
             params
         )
 
     def get_trust_tokens(
         self
-    ):
+    ) -> 'GetTrustTokensReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Storage.getTrustTokens"',
+            'Storage.getTrustTokens',
+
             params
         )
 
     def clear_trust_tokens(
         self,
         issuer_origin: str
-    ):
+    ) -> 'ClearTrustTokensReturnT':
         params = {
             'issuerOrigin': issuer_origin,
         }
-
+        
         return self._send_command(
-            '"Storage.clearTrustTokens"',
+            'Storage.clearTrustTokens',
+
             params
         )
 
@@ -286,53 +296,57 @@ class Storage(BaseDomain):
         self,
         owner_origin: str,
         name: str
-    ):
+    ) -> 'GetInterestGroupDetailsReturnT':
         params = {
             'ownerOrigin': owner_origin,
             'name': name,
         }
-
+        
         return self._send_command(
-            '"Storage.getInterestGroupDetails"',
+            'Storage.getInterestGroupDetails',
+
             params
         )
 
     def set_interest_group_tracking(
         self,
         enable: bool
-    ):
+    ) -> 'SetInterestGroupTrackingReturnT':
         params = {
             'enable': enable,
         }
-
+        
         return self._send_command(
-            '"Storage.setInterestGroupTracking"',
+            'Storage.setInterestGroupTracking',
+
             params
         )
 
     def get_shared_storage_metadata(
         self,
         owner_origin: str
-    ):
+    ) -> 'GetSharedStorageMetadataReturnT':
         params = {
             'ownerOrigin': owner_origin,
         }
-
+        
         return self._send_command(
-            '"Storage.getSharedStorageMetadata"',
+            'Storage.getSharedStorageMetadata',
+
             params
         )
 
     def get_shared_storage_entries(
         self,
         owner_origin: str
-    ):
+    ) -> 'GetSharedStorageEntriesReturnT':
         params = {
             'ownerOrigin': owner_origin,
         }
-
+        
         return self._send_command(
-            '"Storage.getSharedStorageEntries"',
+            'Storage.getSharedStorageEntries',
+
             params
         )
 
@@ -342,20 +356,19 @@ class Storage(BaseDomain):
         key: str,
         value: str,
         ignore_if_present: bool = UNDEFINED
-    ):
+    ) -> 'SetSharedStorageEntryReturnT':
         params = {
             'ownerOrigin': owner_origin,
             'key': key,
             'value': value,
         }
-
-        if is_defined(
-            ignore_if_present
-        ):
-            params['ignoreIfPresent'            ] = ignore_if_present
-
+        
+        if is_defined(ignore_if_present):
+params['ignoreIfPresent'] = ignore_if_present
+        
         return self._send_command(
-            '"Storage.setSharedStorageEntry"',
+            'Storage.setSharedStorageEntry',
+
             params
         )
 
@@ -363,53 +376,57 @@ class Storage(BaseDomain):
         self,
         owner_origin: str,
         key: str
-    ):
+    ) -> 'DeleteSharedStorageEntryReturnT':
         params = {
             'ownerOrigin': owner_origin,
             'key': key,
         }
-
+        
         return self._send_command(
-            '"Storage.deleteSharedStorageEntry"',
+            'Storage.deleteSharedStorageEntry',
+
             params
         )
 
     def clear_shared_storage_entries(
         self,
         owner_origin: str
-    ):
+    ) -> 'ClearSharedStorageEntriesReturnT':
         params = {
             'ownerOrigin': owner_origin,
         }
-
+        
         return self._send_command(
-            '"Storage.clearSharedStorageEntries"',
+            'Storage.clearSharedStorageEntries',
+
             params
         )
 
     def reset_shared_storage_budget(
         self,
         owner_origin: str
-    ):
+    ) -> 'ResetSharedStorageBudgetReturnT':
         params = {
             'ownerOrigin': owner_origin,
         }
-
+        
         return self._send_command(
-            '"Storage.resetSharedStorageBudget"',
+            'Storage.resetSharedStorageBudget',
+
             params
         )
 
     def set_shared_storage_tracking(
         self,
         enable: bool
-    ):
+    ) -> 'SetSharedStorageTrackingReturnT':
         params = {
             'enable': enable,
         }
-
+        
         return self._send_command(
-            '"Storage.setSharedStorageTracking"',
+            'Storage.setSharedStorageTracking',
+
             params
         )
 
@@ -417,63 +434,68 @@ class Storage(BaseDomain):
         self,
         storage_key: str,
         enable: bool
-    ):
+    ) -> 'SetStorageBucketTrackingReturnT':
         params = {
             'storageKey': storage_key,
             'enable': enable,
         }
-
+        
         return self._send_command(
-            '"Storage.setStorageBucketTracking"',
+            'Storage.setStorageBucketTracking',
+
             params
         )
 
     def delete_storage_bucket(
         self,
         bucket: StorageBucket
-    ):
+    ) -> 'DeleteStorageBucketReturnT':
         params = {
             'bucket': bucket,
         }
-
+        
         return self._send_command(
-            '"Storage.deleteStorageBucket"',
+            'Storage.deleteStorageBucket',
+
             params
         )
 
     def run_bounce_tracking_mitigations(
         self
-    ):
+    ) -> 'RunBounceTrackingMitigationsReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Storage.runBounceTrackingMitigations"',
+            'Storage.runBounceTrackingMitigations',
+
             params
         )
 
     def set_attribution_reporting_local_testing_mode(
         self,
         enabled: bool
-    ):
+    ) -> 'SetAttributionReportingLocalTestingModeReturnT':
         params = {
             'enabled': enabled,
         }
-
+        
         return self._send_command(
-            '"Storage.setAttributionReportingLocalTestingMode"',
+            'Storage.setAttributionReportingLocalTestingMode',
+
             params
         )
 
     def set_attribution_reporting_tracking(
         self,
         enable: bool
-    ):
+    ) -> 'SetAttributionReportingTrackingReturnT':
         params = {
             'enable': enable,
         }
-
+        
         return self._send_command(
-            '"Storage.setAttributionReportingTracking"',
+            'Storage.setAttributionReportingTracking',
+
             params
         )
 

@@ -41,61 +41,66 @@ class CSS(BaseDomain):
         style_sheet_id: StyleSheetId,
         rule_text: str,
         location: SourceRange
-    ):
+    ) -> 'AddRuleReturnT':
         params = {
             'styleSheetId': style_sheet_id,
             'ruleText': rule_text,
             'location': location,
         }
-
+        
         return self._send_command(
-            '"CSS.addRule"',
+            'CSS.addRule',
+
             params
         )
 
     def collect_class_names(
         self,
         style_sheet_id: StyleSheetId
-    ):
+    ) -> 'CollectClassNamesReturnT':
         params = {
             'styleSheetId': style_sheet_id,
         }
-
+        
         return self._send_command(
-            '"CSS.collectClassNames"',
+            'CSS.collectClassNames',
+
             params
         )
 
     def create_style_sheet(
         self,
         frame_id: FrameId
-    ):
+    ) -> 'CreateStyleSheetReturnT':
         params = {
             'frameId': frame_id,
         }
-
+        
         return self._send_command(
-            '"CSS.createStyleSheet"',
+            'CSS.createStyleSheet',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"CSS.disable"',
+            'CSS.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"CSS.enable"',
+            'CSS.enable',
+
             params
         )
 
@@ -103,138 +108,149 @@ class CSS(BaseDomain):
         self,
         node_id: NodeId,
         forced_pseudo_classes: list
-    ):
+    ) -> 'ForcePseudoStateReturnT':
         params = {
             'nodeId': node_id,
             'forcedPseudoClasses': forced_pseudo_classes,
         }
-
+        
         return self._send_command(
-            '"CSS.forcePseudoState"',
+            'CSS.forcePseudoState',
+
             params
         )
 
     def get_background_colors(
         self,
         node_id: NodeId
-    ):
+    ) -> 'GetBackgroundColorsReturnT':
         params = {
             'nodeId': node_id,
         }
-
+        
         return self._send_command(
-            '"CSS.getBackgroundColors"',
+            'CSS.getBackgroundColors',
+
             params
         )
 
     def get_computed_style_for_node(
         self,
         node_id: NodeId
-    ):
+    ) -> 'GetComputedStyleForNodeReturnT':
         params = {
             'nodeId': node_id,
         }
-
+        
         return self._send_command(
-            '"CSS.getComputedStyleForNode"',
+            'CSS.getComputedStyleForNode',
+
             params
         )
 
     def get_inline_styles_for_node(
         self,
         node_id: NodeId
-    ):
+    ) -> 'GetInlineStylesForNodeReturnT':
         params = {
             'nodeId': node_id,
         }
-
+        
         return self._send_command(
-            '"CSS.getInlineStylesForNode"',
+            'CSS.getInlineStylesForNode',
+
             params
         )
 
     def get_matched_styles_for_node(
         self,
         node_id: NodeId
-    ):
+    ) -> 'GetMatchedStylesForNodeReturnT':
         params = {
             'nodeId': node_id,
         }
-
+        
         return self._send_command(
-            '"CSS.getMatchedStylesForNode"',
+            'CSS.getMatchedStylesForNode',
+
             params
         )
 
     def get_media_queries(
         self
-    ):
+    ) -> 'GetMediaQueriesReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"CSS.getMediaQueries"',
+            'CSS.getMediaQueries',
+
             params
         )
 
     def get_platform_fonts_for_node(
         self,
         node_id: NodeId
-    ):
+    ) -> 'GetPlatformFontsForNodeReturnT':
         params = {
             'nodeId': node_id,
         }
-
+        
         return self._send_command(
-            '"CSS.getPlatformFontsForNode"',
+            'CSS.getPlatformFontsForNode',
+
             params
         )
 
     def get_style_sheet_text(
         self,
         style_sheet_id: StyleSheetId
-    ):
+    ) -> 'GetStyleSheetTextReturnT':
         params = {
             'styleSheetId': style_sheet_id,
         }
-
+        
         return self._send_command(
-            '"CSS.getStyleSheetText"',
+            'CSS.getStyleSheetText',
+
             params
         )
 
     def get_layers_for_node(
         self,
         node_id: NodeId
-    ):
+    ) -> 'GetLayersForNodeReturnT':
         params = {
             'nodeId': node_id,
         }
-
+        
         return self._send_command(
-            '"CSS.getLayersForNode"',
+            'CSS.getLayersForNode',
+
             params
         )
 
     def track_computed_style_updates(
         self,
         properties_to_track: list
-    ):
+    ) -> 'TrackComputedStyleUpdatesReturnT':
         params = {
             'propertiesToTrack': properties_to_track,
         }
-
+        
         return self._send_command(
-            '"CSS.trackComputedStyleUpdates"',
+            'CSS.trackComputedStyleUpdates',
+
             params
         )
 
     def take_computed_style_updates(
         self
-    ):
+    ) -> 'TakeComputedStyleUpdatesReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"CSS.takeComputedStyleUpdates"',
+            'CSS.takeComputedStyleUpdates',
+
             params
         )
 
@@ -243,15 +259,16 @@ class CSS(BaseDomain):
         node_id: NodeId,
         property_name: str,
         value: str
-    ):
+    ) -> 'SetEffectivePropertyValueForNodeReturnT':
         params = {
             'nodeId': node_id,
             'propertyName': property_name,
             'value': value,
         }
-
+        
         return self._send_command(
-            '"CSS.setEffectivePropertyValueForNode"',
+            'CSS.setEffectivePropertyValueForNode',
+
             params
         )
 
@@ -260,15 +277,16 @@ class CSS(BaseDomain):
         style_sheet_id: StyleSheetId,
         range_: SourceRange,
         key_text: str
-    ):
+    ) -> 'SetKeyframeKeyReturnT':
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
             'keyText': key_text,
         }
-
+        
         return self._send_command(
-            '"CSS.setKeyframeKey"',
+            'CSS.setKeyframeKey',
+
             params
         )
 
@@ -277,15 +295,16 @@ class CSS(BaseDomain):
         style_sheet_id: StyleSheetId,
         range_: SourceRange,
         text: str
-    ):
+    ) -> 'SetMediaTextReturnT':
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
             'text': text,
         }
-
+        
         return self._send_command(
-            '"CSS.setMediaText"',
+            'CSS.setMediaText',
+
             params
         )
 
@@ -294,15 +313,16 @@ class CSS(BaseDomain):
         style_sheet_id: StyleSheetId,
         range_: SourceRange,
         text: str
-    ):
+    ) -> 'SetContainerQueryTextReturnT':
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
             'text': text,
         }
-
+        
         return self._send_command(
-            '"CSS.setContainerQueryText"',
+            'CSS.setContainerQueryText',
+
             params
         )
 
@@ -311,15 +331,16 @@ class CSS(BaseDomain):
         style_sheet_id: StyleSheetId,
         range_: SourceRange,
         text: str
-    ):
+    ) -> 'SetSupportsTextReturnT':
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
             'text': text,
         }
-
+        
         return self._send_command(
-            '"CSS.setSupportsText"',
+            'CSS.setSupportsText',
+
             params
         )
 
@@ -328,15 +349,16 @@ class CSS(BaseDomain):
         style_sheet_id: StyleSheetId,
         range_: SourceRange,
         text: str
-    ):
+    ) -> 'SetScopeTextReturnT':
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
             'text': text,
         }
-
+        
         return self._send_command(
-            '"CSS.setScopeText"',
+            'CSS.setScopeText',
+
             params
         )
 
@@ -345,15 +367,16 @@ class CSS(BaseDomain):
         style_sheet_id: StyleSheetId,
         range_: SourceRange,
         selector: str
-    ):
+    ) -> 'SetRuleSelectorReturnT':
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
             'selector': selector,
         }
-
+        
         return self._send_command(
-            '"CSS.setRuleSelector"',
+            'CSS.setRuleSelector',
+
             params
         )
 
@@ -361,70 +384,76 @@ class CSS(BaseDomain):
         self,
         style_sheet_id: StyleSheetId,
         text: str
-    ):
+    ) -> 'SetStyleSheetTextReturnT':
         params = {
             'styleSheetId': style_sheet_id,
             'text': text,
         }
-
+        
         return self._send_command(
-            '"CSS.setStyleSheetText"',
+            'CSS.setStyleSheetText',
+
             params
         )
 
     def set_style_texts(
         self,
         edits: list
-    ):
+    ) -> 'SetStyleTextsReturnT':
         params = {
             'edits': edits,
         }
-
+        
         return self._send_command(
-            '"CSS.setStyleTexts"',
+            'CSS.setStyleTexts',
+
             params
         )
 
     def start_rule_usage_tracking(
         self
-    ):
+    ) -> 'StartRuleUsageTrackingReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"CSS.startRuleUsageTracking"',
+            'CSS.startRuleUsageTracking',
+
             params
         )
 
     def stop_rule_usage_tracking(
         self
-    ):
+    ) -> 'StopRuleUsageTrackingReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"CSS.stopRuleUsageTracking"',
+            'CSS.stopRuleUsageTracking',
+
             params
         )
 
     def take_coverage_delta(
         self
-    ):
+    ) -> 'TakeCoverageDeltaReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"CSS.takeCoverageDelta"',
+            'CSS.takeCoverageDelta',
+
             params
         )
 
     def set_local_fonts_enabled(
         self,
         enabled: bool
-    ):
+    ) -> 'SetLocalFontsEnabledReturnT':
         params = {
             'enabled': enabled,
         }
-
+        
         return self._send_command(
-            '"CSS.setLocalFontsEnabled"',
+            'CSS.setLocalFontsEnabled',
+
             params
         )
 

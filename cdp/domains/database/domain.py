@@ -23,21 +23,23 @@ from cdp.utils import (
 class Database(BaseDomain):
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Database.disable"',
+            'Database.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"Database.enable"',
+            'Database.enable',
+
             params
         )
 
@@ -45,27 +47,29 @@ class Database(BaseDomain):
         self,
         database_id: DatabaseId,
         query: str
-    ):
+    ) -> 'ExecuteSQLReturnT':
         params = {
             'databaseId': database_id,
             'query': query,
         }
-
+        
         return self._send_command(
-            '"Database.executeSQL"',
+            'Database.executeSQL',
+
             params
         )
 
     def get_database_table_names(
         self,
         database_id: DatabaseId
-    ):
+    ) -> 'GetDatabaseTableNamesReturnT':
         params = {
             'databaseId': database_id,
         }
-
+        
         return self._send_command(
-            '"Database.getDatabaseTableNames"',
+            'Database.getDatabaseTableNames',
+
             params
         )
 

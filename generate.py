@@ -3,10 +3,11 @@ import logging
 import shutil
 from pathlib import Path
 
-from generator.types.protocol import Protocol
-from generator import generators, type_registry
+from generator.parser.types.protocol import Protocol
+from generator import ast
+from generator.parser import registry, parser
 from generator.utils import snake_case
-from generator.generators.visitor import SourceCodeGenerator
+from generator.visitor import SourceCodeGenerator
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -23,25 +24,8 @@ GENERATED_MODULE_HEADER = '''\
 '''
 
 
-def parse(protocol_paths: list[str | Path] = None) -> list['Protocol']:
-    protocols = []
-
-    for path in protocol_paths:
-        protocol = json.load(open(path))
-        protocol = Protocol.from_dict(protocol)
-        protocol.resolve_parent_refs()
-
-        for domain in protocol.domains:
-            for type_ in domain.types:
-                type_registry.add_type(type_)
-
-        protocols.append(protocol)
-
-    return protocols
-
-
 def main():
-    protocols = parse([
+    protocols = parser.parse([
         'static/protocols/1.3/browser_protocol.json',
         'static/protocols/1.3/js_protocol.json'
     ])
@@ -50,7 +34,7 @@ def main():
     Path('cdp/domains/__init__.py').touch()
 
     for item in Path('cdp/domains').iterdir():
-        if item.name not in ('__init__.py', 'base.py'):
+        if item.name not in ('__init__.py', 'base.py', 'utils.py'):
             if item.is_dir():
                 shutil.rmtree(item)
             else:
@@ -63,7 +47,7 @@ def main():
             Path(f'cdp/domains/{module_name}').mkdir(parents=True, exist_ok=True)
             Path(f'cdp/domains/{module_name}/__init__.py').touch()
 
-            module = generators.generate_domain.generate(domain)
+            module = ast.generic_domain.generate(domain)
             module = SourceCodeGenerator().generate(module)
 
             Path(f'cdp/domains/{module_name}/domain.py').write_text(
@@ -71,7 +55,7 @@ def main():
                 module
             )
 
-            module = generators.generate_types.generate(domain)
+            module = ast.generic_types.generate(domain)
             module = SourceCodeGenerator().generate(module)
 
             Path(f'cdp/domains/{module_name}/types.py').write_text(
@@ -79,10 +63,18 @@ def main():
                 module
             )
 
-    module = generators.generate_domains.generate(protocols)
+    module = ast.domains.generate(protocols)
     module = SourceCodeGenerator().generate(module)
 
     Path(f'cdp/domains/domains.py').write_text(
+        GENERATED_MODULE_HEADER +
+        module
+    )
+
+    module = ast.mapper.generate(protocols)
+    module = SourceCodeGenerator().generate(module)
+
+    Path(f'cdp/domains/mapper.py').write_text(
         GENERATED_MODULE_HEADER +
         module
     )

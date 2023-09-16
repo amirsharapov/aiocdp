@@ -23,46 +23,50 @@ class DOMStorage(BaseDomain):
     def clear(
         self,
         storage_id: StorageId
-    ):
+    ) -> 'ClearReturnT':
         params = {
             'storageId': storage_id,
         }
-
+        
         return self._send_command(
-            '"DOMStorage.clear"',
+            'DOMStorage.clear',
+
             params
         )
 
     def disable(
         self
-    ):
+    ) -> 'DisableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"DOMStorage.disable"',
+            'DOMStorage.disable',
+
             params
         )
 
     def enable(
         self
-    ):
+    ) -> 'EnableReturnT':
         params = {}
-
+        
         return self._send_command(
-            '"DOMStorage.enable"',
+            'DOMStorage.enable',
+
             params
         )
 
     def get_dom_storage_items(
         self,
         storage_id: StorageId
-    ):
+    ) -> 'GetDOMStorageItemsReturnT':
         params = {
             'storageId': storage_id,
         }
-
+        
         return self._send_command(
-            '"DOMStorage.getDOMStorageItems"',
+            'DOMStorage.getDOMStorageItems',
+
             params
         )
 
@@ -70,14 +74,15 @@ class DOMStorage(BaseDomain):
         self,
         storage_id: StorageId,
         key: str
-    ):
+    ) -> 'RemoveDOMStorageItemReturnT':
         params = {
             'storageId': storage_id,
             'key': key,
         }
-
+        
         return self._send_command(
-            '"DOMStorage.removeDOMStorageItem"',
+            'DOMStorage.removeDOMStorageItem',
+
             params
         )
 
@@ -86,15 +91,16 @@ class DOMStorage(BaseDomain):
         storage_id: StorageId,
         key: str,
         value: str
-    ):
+    ) -> 'SetDOMStorageItemReturnT':
         params = {
             'storageId': storage_id,
             'key': key,
             'value': value,
         }
-
+        
         return self._send_command(
-            '"DOMStorage.setDOMStorageItem"',
+            'DOMStorage.setDOMStorageItem',
+
             params
         )
 

@@ -40,67 +40,57 @@ class DataEntry:
     response_headers: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'request_url': self.request_url,
                 'request_method': self.request_method,
-                'request_headers': [_.to_dict(
-                    casing_strategy
-                )
+                'request_headers': [
+                    _.to_dict(casing_strategy)
                     for _ in self.request_headers
                 ],
                 'response_time': self.response_time,
                 'response_status': self.response_status,
                 'response_status_text': self.response_status_text,
                 'response_type': self.response_type,
-                'response_headers': [_.to_dict(
-                    casing_strategy
-                )
+                'response_headers': [
+                    _.to_dict(casing_strategy)
                     for _ in self.response_headers
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'requestURL': self.request_url,
                 'requestMethod': self.request_method,
-                'requestHeaders': [_.to_dict(
-                    casing_strategy
-                )
+                'requestHeaders': [
+                    _.to_dict(casing_strategy)
                     for _ in self.request_headers
                 ],
                 'responseTime': self.response_time,
                 'responseStatus': self.response_status,
                 'responseStatusText': self.response_status_text,
                 'responseType': self.response_type,
-                'responseHeaders': [_.to_dict(
-                    casing_strategy
-                )
+                'responseHeaders': [
+                    _.to_dict(casing_strategy)
                     for _ in self.response_headers
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'RequestURL': self.request_url,
                 'RequestMethod': self.request_method,
-                'RequestHeaders': [_.to_dict(
-                    casing_strategy
-                )
+                'RequestHeaders': [
+                    _.to_dict(casing_strategy)
                     for _ in self.request_headers
                 ],
                 'ResponseTime': self.response_time,
                 'ResponseStatus': self.response_status,
                 'ResponseStatusText': self.response_status_text,
                 'ResponseType': self.response_type,
-                'ResponseHeaders': [_.to_dict(
-                    casing_strategy
-                )
+                'ResponseHeaders': [
+                    _.to_dict(casing_strategy)
                     for _ in self.response_headers
                 ],
             }
@@ -115,47 +105,31 @@ class Cache:
     cache_name: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'cache_id': self.cache_id.to_dict(
-                    casing_strategy
-                ),
+                'cache_id': self.cache_id,
                 'security_origin': self.security_origin,
                 'storage_key': self.storage_key,
-                'storage_bucket': self.storage_bucket.to_dict(
-                    casing_strategy
-                ),
+                'storage_bucket': self.storage_bucket.to_dict(casing_strategy),
                 'cache_name': self.cache_name,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'cacheId': self.cache_id.to_dict(
-                    casing_strategy
-                ),
+                'cacheId': self.cache_id,
                 'securityOrigin': self.security_origin,
                 'storageKey': self.storage_key,
-                'storageBucket': self.storage_bucket.to_dict(
-                    casing_strategy
-                ),
+                'storageBucket': self.storage_bucket.to_dict(casing_strategy),
                 'cacheName': self.cache_name,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'CacheId': self.cache_id.to_dict(
-                    casing_strategy
-                ),
+                'CacheId': self.cache_id,
                 'SecurityOrigin': self.security_origin,
                 'StorageKey': self.storage_key,
-                'StorageBucket': self.storage_bucket.to_dict(
-                    casing_strategy
-                ),
+                'StorageBucket': self.storage_bucket.to_dict(casing_strategy),
                 'CacheName': self.cache_name,
             }
 
@@ -166,23 +140,19 @@ class Header:
     value: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'name': self.name,
                 'value': self.value,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Name': self.name,
@@ -195,21 +165,17 @@ class CachedResponse:
     body: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'body': self.body,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'body': self.body,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Body': self.body,

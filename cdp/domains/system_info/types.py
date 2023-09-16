@@ -11,7 +11,6 @@ from typing import (
 from dataclasses import (
     dataclass
 )
-if TYPE_CHECKING:
 
 SubsamplingFormat = Literal[
     'yuv420',
@@ -38,13 +37,9 @@ class GPUDevice:
     driver_version: str
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'vendor_id': self.vendor_id,
@@ -55,7 +50,7 @@ class GPUDevice:
                 'device_string': self.device_string,
                 'driver_vendor': self.driver_vendor,
                 'driver_version': self.driver_version,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'vendorId': self.vendor_id,
@@ -66,7 +61,7 @@ class GPUDevice:
                 'deviceString': self.device_string,
                 'driverVendor': self.driver_vendor,
                 'driverVersion': self.driver_version,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'VendorId': self.vendor_id,
@@ -86,23 +81,19 @@ class Size:
     height: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'width': self.width,
                 'height': self.height,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'width': self.width,
                 'height': self.height,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Width': self.width,
@@ -117,42 +108,26 @@ class VideoDecodeAcceleratorCapability:
     min_resolution: 'Size'
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'profile': self.profile,
-                'max_resolution': self.max_resolution.to_dict(
-                    casing_strategy
-                ),
-                'min_resolution': self.min_resolution.to_dict(
-                    casing_strategy
-                ),
-            }
+                'max_resolution': self.max_resolution.to_dict(casing_strategy),
+                'min_resolution': self.min_resolution.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'camel':
             return {
                 'profile': self.profile,
-                'maxResolution': self.max_resolution.to_dict(
-                    casing_strategy
-                ),
-                'minResolution': self.min_resolution.to_dict(
-                    casing_strategy
-                ),
-            }
+                'maxResolution': self.max_resolution.to_dict(casing_strategy),
+                'minResolution': self.min_resolution.to_dict(casing_strategy),
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Profile': self.profile,
-                'MaxResolution': self.max_resolution.to_dict(
-                    casing_strategy
-                ),
-                'MinResolution': self.min_resolution.to_dict(
-                    casing_strategy
-                ),
+                'MaxResolution': self.max_resolution.to_dict(casing_strategy),
+                'MinResolution': self.min_resolution.to_dict(casing_strategy),
             }
 
 
@@ -164,37 +139,27 @@ class VideoEncodeAcceleratorCapability:
     max_framerate_denominator: int
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'profile': self.profile,
-                'max_resolution': self.max_resolution.to_dict(
-                    casing_strategy
-                ),
+                'max_resolution': self.max_resolution.to_dict(casing_strategy),
                 'max_framerate_numerator': self.max_framerate_numerator,
                 'max_framerate_denominator': self.max_framerate_denominator,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'profile': self.profile,
-                'maxResolution': self.max_resolution.to_dict(
-                    casing_strategy
-                ),
+                'maxResolution': self.max_resolution.to_dict(casing_strategy),
                 'maxFramerateNumerator': self.max_framerate_numerator,
                 'maxFramerateDenominator': self.max_framerate_denominator,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'Profile': self.profile,
-                'MaxResolution': self.max_resolution.to_dict(
-                    casing_strategy
-                ),
+                'MaxResolution': self.max_resolution.to_dict(casing_strategy),
                 'MaxFramerateNumerator': self.max_framerate_numerator,
                 'MaxFramerateDenominator': self.max_framerate_denominator,
             }
@@ -208,55 +173,36 @@ class ImageDecodeAcceleratorCapability:
     subsamplings: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
                 'image_type': self.image_type,
-                'max_dimensions': self.max_dimensions.to_dict(
-                    casing_strategy
-                ),
-                'min_dimensions': self.min_dimensions.to_dict(
-                    casing_strategy
-                ),
-                'subsamplings': [_.to_dict(
-                    casing_strategy
-                )
+                'max_dimensions': self.max_dimensions.to_dict(casing_strategy),
+                'min_dimensions': self.min_dimensions.to_dict(casing_strategy),
+                'subsamplings': [
+                    _.to_dict(casing_strategy)
                     for _ in self.subsamplings
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
                 'imageType': self.image_type,
-                'maxDimensions': self.max_dimensions.to_dict(
-                    casing_strategy
-                ),
-                'minDimensions': self.min_dimensions.to_dict(
-                    casing_strategy
-                ),
-                'subsamplings': [_.to_dict(
-                    casing_strategy
-                )
+                'maxDimensions': self.max_dimensions.to_dict(casing_strategy),
+                'minDimensions': self.min_dimensions.to_dict(casing_strategy),
+                'subsamplings': [
+                    _.to_dict(casing_strategy)
                     for _ in self.subsamplings
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
                 'ImageType': self.image_type,
-                'MaxDimensions': self.max_dimensions.to_dict(
-                    casing_strategy
-                ),
-                'MinDimensions': self.min_dimensions.to_dict(
-                    casing_strategy
-                ),
-                'Subsamplings': [_.to_dict(
-                    casing_strategy
-                )
+                'MaxDimensions': self.max_dimensions.to_dict(casing_strategy),
+                'MinDimensions': self.min_dimensions.to_dict(casing_strategy),
+                'Subsamplings': [
+                    _.to_dict(casing_strategy)
                     for _ in self.subsamplings
                 ],
             }
@@ -273,88 +219,72 @@ class GPUInfo:
     image_decoding: list
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'devices': [_.to_dict(
-                    casing_strategy
-                )
+                'devices': [
+                    _.to_dict(casing_strategy)
                     for _ in self.devices
                 ],
                 'aux_attributes': self.aux_attributes,
                 'feature_status': self.feature_status,
                 'driver_bug_workarounds': self.driver_bug_workarounds,
-                'video_decoding': [_.to_dict(
-                    casing_strategy
-                )
+                'video_decoding': [
+                    _.to_dict(casing_strategy)
                     for _ in self.video_decoding
                 ],
-                'video_encoding': [_.to_dict(
-                    casing_strategy
-                )
+                'video_encoding': [
+                    _.to_dict(casing_strategy)
                     for _ in self.video_encoding
                 ],
-                'image_decoding': [_.to_dict(
-                    casing_strategy
-                )
+                'image_decoding': [
+                    _.to_dict(casing_strategy)
                     for _ in self.image_decoding
                 ],
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'devices': [_.to_dict(
-                    casing_strategy
-                )
+                'devices': [
+                    _.to_dict(casing_strategy)
                     for _ in self.devices
                 ],
                 'auxAttributes': self.aux_attributes,
                 'featureStatus': self.feature_status,
                 'driverBugWorkarounds': self.driver_bug_workarounds,
-                'videoDecoding': [_.to_dict(
-                    casing_strategy
-                )
+                'videoDecoding': [
+                    _.to_dict(casing_strategy)
                     for _ in self.video_decoding
                 ],
-                'videoEncoding': [_.to_dict(
-                    casing_strategy
-                )
+                'videoEncoding': [
+                    _.to_dict(casing_strategy)
                     for _ in self.video_encoding
                 ],
-                'imageDecoding': [_.to_dict(
-                    casing_strategy
-                )
+                'imageDecoding': [
+                    _.to_dict(casing_strategy)
                     for _ in self.image_decoding
                 ],
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Devices': [_.to_dict(
-                    casing_strategy
-                )
+                'Devices': [
+                    _.to_dict(casing_strategy)
                     for _ in self.devices
                 ],
                 'AuxAttributes': self.aux_attributes,
                 'FeatureStatus': self.feature_status,
                 'DriverBugWorkarounds': self.driver_bug_workarounds,
-                'VideoDecoding': [_.to_dict(
-                    casing_strategy
-                )
+                'VideoDecoding': [
+                    _.to_dict(casing_strategy)
                     for _ in self.video_decoding
                 ],
-                'VideoEncoding': [_.to_dict(
-                    casing_strategy
-                )
+                'VideoEncoding': [
+                    _.to_dict(casing_strategy)
                     for _ in self.video_encoding
                 ],
-                'ImageDecoding': [_.to_dict(
-                    casing_strategy
-                )
+                'ImageDecoding': [
+                    _.to_dict(casing_strategy)
                     for _ in self.image_decoding
                 ],
             }
@@ -367,29 +297,25 @@ class ProcessInfo:
     cpu_time: float
     def to_dict(
         self,
-        casing_strategy: Literal[
-            'snake',
-            'camel',
-            'pascal'
-        ] = 'snake'
+        casing_strategy: Literal['snake', 'camel', 'pascal'] = 'snake'
     ):
-
+        
         if casing_strategy == 'snake':
             return {
-                'type': self.type_,
-                'id': self.id_,
+                'type': self.type,
+                'id': self.id,
                 'cpu_time': self.cpu_time,
-            }
+            }        
         if casing_strategy == 'camel':
             return {
-                'type': self.type_,
-                'id': self.id_,
+                'type': self.type,
+                'id': self.id,
                 'cpuTime': self.cpu_time,
-            }
+            }        
         if casing_strategy == 'pascal':
             return {
-                'Type': self.type_,
-                'Id': self.id_,
+                'Type': self.type,
+                'Id': self.id,
                 'CpuTime': self.cpu_time,
             }
 
