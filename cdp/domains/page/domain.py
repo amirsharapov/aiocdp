@@ -47,6 +47,10 @@ from cdp.domains.page.types import (
 from cdp.domains.emulation.types import (
     ScreenOrientation
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -54,14 +58,15 @@ class Page(BaseDomain):
     def add_script_to_evaluate_on_load(
             self,
             script_source: str
-    ) -> 'AddScriptToEvaluateOnLoadReturnT':
+    ) -> IResult['AddScriptToEvaluateOnLoadReturnT']:
         params = {
             'scriptSource': script_source,
         }
 
         return self._send_command(
             'Page.addScriptToEvaluateOnLoad',
-            params
+            params,
+            True
         )
 
     def add_script_to_evaluate_on_new_document(
@@ -70,7 +75,7 @@ class Page(BaseDomain):
             world_name: str = UNDEFINED,
             include_command_line_api: bool = UNDEFINED,
             run_immediately: bool = UNDEFINED
-    ) -> 'AddScriptToEvaluateOnNewDocumentReturnT':
+    ) -> IResult['AddScriptToEvaluateOnNewDocumentReturnT']:
         params = {
             'source': source,
         }
@@ -86,17 +91,19 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.addScriptToEvaluateOnNewDocument',
-            params
+            params,
+            True
         )
 
     def bring_to_front(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.bringToFront',
-            params
+            params,
+            False
         )
 
     def capture_screenshot(
@@ -107,7 +114,7 @@ class Page(BaseDomain):
             from_surface: bool = UNDEFINED,
             capture_beyond_viewport: bool = UNDEFINED,
             optimize_for_speed: bool = UNDEFINED
-    ) -> 'CaptureScreenshotReturnT':
+    ) -> IResult['CaptureScreenshotReturnT']:
         params = {}
 
         if is_defined(format):
@@ -130,13 +137,14 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.captureScreenshot',
-            params
+            params,
+            True
         )
 
     def capture_snapshot(
             self,
             format_: str = UNDEFINED
-    ) -> 'CaptureSnapshotReturnT':
+    ) -> IResult['CaptureSnapshotReturnT']:
         params = {}
 
         if is_defined(format):
@@ -144,37 +152,41 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.captureSnapshot',
-            params
+            params,
+            True
         )
 
     def clear_device_metrics_override(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.clearDeviceMetricsOverride',
-            params
+            params,
+            False
         )
 
     def clear_device_orientation_override(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.clearDeviceOrientationOverride',
-            params
+            params,
+            False
         )
 
     def clear_geolocation_override(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.clearGeolocationOverride',
-            params
+            params,
+            False
         )
 
     def create_isolated_world(
@@ -182,7 +194,7 @@ class Page(BaseDomain):
             frame_id: FrameId,
             world_name: str = UNDEFINED,
             grant_univeral_access: bool = UNDEFINED
-    ) -> 'CreateIsolatedWorldReturnT':
+    ) -> IResult['CreateIsolatedWorldReturnT']:
         params = {
             'frameId': frame_id,
         }
@@ -195,14 +207,15 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.createIsolatedWorld',
-            params
+            params,
+            True
         )
 
     def delete_cookie(
             self,
             cookie_name: str,
             url: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'cookieName': cookie_name,
             'url': url,
@@ -210,137 +223,150 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.deleteCookie',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.enable',
-            params
+            params,
+            False
         )
 
     def get_app_manifest(
             self
-    ) -> 'GetAppManifestReturnT':
+    ) -> IResult['GetAppManifestReturnT']:
         params = {}
 
         return self._send_command(
             'Page.getAppManifest',
-            params
+            params,
+            True
         )
 
     def get_installability_errors(
             self
-    ) -> 'GetInstallabilityErrorsReturnT':
+    ) -> IResult['GetInstallabilityErrorsReturnT']:
         params = {}
 
         return self._send_command(
             'Page.getInstallabilityErrors',
-            params
+            params,
+            True
         )
 
     def get_manifest_icons(
             self
-    ) -> 'GetManifestIconsReturnT':
+    ) -> IResult['GetManifestIconsReturnT']:
         params = {}
 
         return self._send_command(
             'Page.getManifestIcons',
-            params
+            params,
+            True
         )
 
     def get_app_id(
             self
-    ) -> 'GetAppIdReturnT':
+    ) -> IResult['GetAppIdReturnT']:
         params = {}
 
         return self._send_command(
             'Page.getAppId',
-            params
+            params,
+            True
         )
 
     def get_ad_script_id(
             self,
             frame_id: FrameId
-    ) -> 'GetAdScriptIdReturnT':
+    ) -> IResult['GetAdScriptIdReturnT']:
         params = {
             'frameId': frame_id,
         }
 
         return self._send_command(
             'Page.getAdScriptId',
-            params
+            params,
+            True
         )
 
     def get_cookies(
             self
-    ) -> 'GetCookiesReturnT':
+    ) -> IResult['GetCookiesReturnT']:
         params = {}
 
         return self._send_command(
             'Page.getCookies',
-            params
+            params,
+            True
         )
 
     def get_frame_tree(
             self
-    ) -> 'GetFrameTreeReturnT':
+    ) -> IResult['GetFrameTreeReturnT']:
         params = {}
 
         return self._send_command(
             'Page.getFrameTree',
-            params
+            params,
+            True
         )
 
     def get_layout_metrics(
             self
-    ) -> 'GetLayoutMetricsReturnT':
+    ) -> IResult['GetLayoutMetricsReturnT']:
         params = {}
 
         return self._send_command(
             'Page.getLayoutMetrics',
-            params
+            params,
+            True
         )
 
     def get_navigation_history(
             self
-    ) -> 'GetNavigationHistoryReturnT':
+    ) -> IResult['GetNavigationHistoryReturnT']:
         params = {}
 
         return self._send_command(
             'Page.getNavigationHistory',
-            params
+            params,
+            True
         )
 
     def reset_navigation_history(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.resetNavigationHistory',
-            params
+            params,
+            False
         )
 
     def get_resource_content(
             self,
             frame_id: FrameId,
             url: str
-    ) -> 'GetResourceContentReturnT':
+    ) -> IResult['GetResourceContentReturnT']:
         params = {
             'frameId': frame_id,
             'url': url,
@@ -348,24 +374,26 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.getResourceContent',
-            params
+            params,
+            True
         )
 
     def get_resource_tree(
             self
-    ) -> 'GetResourceTreeReturnT':
+    ) -> IResult['GetResourceTreeReturnT']:
         params = {}
 
         return self._send_command(
             'Page.getResourceTree',
-            params
+            params,
+            True
         )
 
     def handle_java_script_dialog(
             self,
             accept: bool,
             prompt_text: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'accept': accept,
         }
@@ -375,7 +403,8 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.handleJavaScriptDialog',
-            params
+            params,
+            False
         )
 
     def navigate(
@@ -385,7 +414,7 @@ class Page(BaseDomain):
             transition_type: TransitionType = UNDEFINED,
             frame_id: FrameId = UNDEFINED,
             referrer_policy: ReferrerPolicy = UNDEFINED
-    ) -> 'NavigateReturnT':
+    ) -> IResult['NavigateReturnT']:
         params = {
             'url': url,
         }
@@ -404,20 +433,22 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.navigate',
-            params
+            params,
+            True
         )
 
     def navigate_to_history_entry(
             self,
             entry_id: int
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'entryId': entry_id,
         }
 
         return self._send_command(
             'Page.navigateToHistoryEntry',
-            params
+            params,
+            False
         )
 
     def print_to_pdf(
@@ -438,7 +469,7 @@ class Page(BaseDomain):
             prefer_css_page_size: bool = UNDEFINED,
             transfer_mode: str = UNDEFINED,
             generate_tagged_pdf: bool = UNDEFINED
-    ) -> 'PrintToPDFReturnT':
+    ) -> IResult['PrintToPDFReturnT']:
         params = {}
 
         if is_defined(landscape):
@@ -491,14 +522,15 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.printToPDF',
-            params
+            params,
+            True
         )
 
     def reload(
             self,
             ignore_cache: bool = UNDEFINED,
             script_to_evaluate_on_load: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(ignore_cache):
@@ -509,46 +541,50 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.reload',
-            params
+            params,
+            False
         )
 
     def remove_script_to_evaluate_on_load(
             self,
             identifier: ScriptIdentifier
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'identifier': identifier,
         }
 
         return self._send_command(
             'Page.removeScriptToEvaluateOnLoad',
-            params
+            params,
+            False
         )
 
     def remove_script_to_evaluate_on_new_document(
             self,
             identifier: ScriptIdentifier
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'identifier': identifier,
         }
 
         return self._send_command(
             'Page.removeScriptToEvaluateOnNewDocument',
-            params
+            params,
+            False
         )
 
     def screencast_frame_ack(
             self,
             session_id: int
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'sessionId': session_id,
         }
 
         return self._send_command(
             'Page.screencastFrameAck',
-            params
+            params,
+            False
         )
 
     def search_in_resource(
@@ -558,7 +594,7 @@ class Page(BaseDomain):
             query: str,
             case_sensitive: bool = UNDEFINED,
             is_regex: bool = UNDEFINED
-    ) -> 'SearchInResourceReturnT':
+    ) -> IResult['SearchInResourceReturnT']:
         params = {
             'frameId': frame_id,
             'url': url,
@@ -573,59 +609,64 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.searchInResource',
-            params
+            params,
+            True
         )
 
     def set_ad_blocking_enabled(
             self,
             enabled: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'enabled': enabled,
         }
 
         return self._send_command(
             'Page.setAdBlockingEnabled',
-            params
+            params,
+            False
         )
 
     def set_bypass_csp(
             self,
             enabled: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'enabled': enabled,
         }
 
         return self._send_command(
             'Page.setBypassCSP',
-            params
+            params,
+            False
         )
 
     def get_permissions_policy_state(
             self,
             frame_id: FrameId
-    ) -> 'GetPermissionsPolicyStateReturnT':
+    ) -> IResult['GetPermissionsPolicyStateReturnT']:
         params = {
             'frameId': frame_id,
         }
 
         return self._send_command(
             'Page.getPermissionsPolicyState',
-            params
+            params,
+            True
         )
 
     def get_origin_trials(
             self,
             frame_id: FrameId
-    ) -> 'GetOriginTrialsReturnT':
+    ) -> IResult['GetOriginTrialsReturnT']:
         params = {
             'frameId': frame_id,
         }
 
         return self._send_command(
             'Page.getOriginTrials',
-            params
+            params,
+            True
         )
 
     def set_device_metrics_override(
@@ -642,7 +683,7 @@ class Page(BaseDomain):
             dont_set_visible_size: bool = UNDEFINED,
             screen_orientation: ScreenOrientation = UNDEFINED,
             viewport: Viewport = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'width': width,
             'height': height,
@@ -676,7 +717,8 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.setDeviceMetricsOverride',
-            params
+            params,
+            False
         )
 
     def set_device_orientation_override(
@@ -684,7 +726,7 @@ class Page(BaseDomain):
             alpha: float,
             beta: float,
             gamma: float
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'alpha': alpha,
             'beta': beta,
@@ -693,14 +735,15 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.setDeviceOrientationOverride',
-            params
+            params,
+            False
         )
 
     def set_font_families(
             self,
             font_families: FontFamilies,
             for_scripts: list = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'fontFamilies': font_families,
         }
@@ -710,27 +753,29 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.setFontFamilies',
-            params
+            params,
+            False
         )
 
     def set_font_sizes(
             self,
             font_sizes: FontSizes
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'fontSizes': font_sizes,
         }
 
         return self._send_command(
             'Page.setFontSizes',
-            params
+            params,
+            False
         )
 
     def set_document_content(
             self,
             frame_id: FrameId,
             html: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'frameId': frame_id,
             'html': html,
@@ -738,14 +783,15 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.setDocumentContent',
-            params
+            params,
+            False
         )
 
     def set_download_behavior(
             self,
             behavior: str,
             download_path: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'behavior': behavior,
         }
@@ -755,7 +801,8 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.setDownloadBehavior',
-            params
+            params,
+            False
         )
 
     def set_geolocation_override(
@@ -763,7 +810,7 @@ class Page(BaseDomain):
             latitude: float = UNDEFINED,
             longitude: float = UNDEFINED,
             accuracy: float = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(latitude):
@@ -777,27 +824,29 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.setGeolocationOverride',
-            params
+            params,
+            False
         )
 
     def set_lifecycle_events_enabled(
             self,
             enabled: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'enabled': enabled,
         }
 
         return self._send_command(
             'Page.setLifecycleEventsEnabled',
-            params
+            params,
+            False
         )
 
     def set_touch_emulation_enabled(
             self,
             enabled: bool,
             configuration: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'enabled': enabled,
         }
@@ -807,7 +856,8 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.setTouchEmulationEnabled',
-            params
+            params,
+            False
         )
 
     def start_screencast(
@@ -817,7 +867,7 @@ class Page(BaseDomain):
             max_width: int = UNDEFINED,
             max_height: int = UNDEFINED,
             every_nth_frame: int = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(format):
@@ -837,80 +887,87 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.startScreencast',
-            params
+            params,
+            False
         )
 
     def stop_loading(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.stopLoading',
-            params
+            params,
+            False
         )
 
     def crash(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.crash',
-            params
+            params,
+            False
         )
 
     def close(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.close',
-            params
+            params,
+            False
         )
 
     def set_web_lifecycle_state(
             self,
             state: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'state': state,
         }
 
         return self._send_command(
             'Page.setWebLifecycleState',
-            params
+            params,
+            False
         )
 
     def stop_screencast(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.stopScreencast',
-            params
+            params,
+            False
         )
 
     def produce_compilation_cache(
             self,
             scripts: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'scripts': scripts,
         }
 
         return self._send_command(
             'Page.produceCompilationCache',
-            params
+            params,
+            False
         )
 
     def add_compilation_cache(
             self,
             url: str,
             data: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'url': url,
             'data': data,
@@ -918,50 +975,54 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.addCompilationCache',
-            params
+            params,
+            False
         )
 
     def clear_compilation_cache(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.clearCompilationCache',
-            params
+            params,
+            False
         )
 
     def set_spc_transaction_mode(
             self,
             mode: AutoResponseMode
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'mode': mode,
         }
 
         return self._send_command(
             'Page.setSPCTransactionMode',
-            params
+            params,
+            False
         )
 
     def set_rph_registration_mode(
             self,
             mode: AutoResponseMode
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'mode': mode,
         }
 
         return self._send_command(
             'Page.setRPHRegistrationMode',
-            params
+            params,
+            False
         )
 
     def generate_test_report(
             self,
             message: str,
             group: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'message': message,
         }
@@ -971,41 +1032,45 @@ class Page(BaseDomain):
 
         return self._send_command(
             'Page.generateTestReport',
-            params
+            params,
+            False
         )
 
     def wait_for_debugger(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Page.waitForDebugger',
-            params
+            params,
+            False
         )
 
     def set_intercept_file_chooser_dialog(
             self,
             enabled: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'enabled': enabled,
         }
 
         return self._send_command(
             'Page.setInterceptFileChooserDialog',
-            params
+            params,
+            False
         )
 
     def set_prerendering_allowed(
             self,
             is_allowed: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'isAllowed': is_allowed,
         }
 
         return self._send_command(
             'Page.setPrerenderingAllowed',
-            params
+            params,
+            False
         )

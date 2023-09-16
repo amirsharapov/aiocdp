@@ -18,84 +18,94 @@ from cdp.domains.animation.types import (
     GetPlaybackRateReturnT,
     ResolveAnimationReturnT
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Animation(BaseDomain):
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Animation.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Animation.enable',
-            params
+            params,
+            False
         )
 
     def get_current_time(
             self,
             id_: str
-    ) -> 'GetCurrentTimeReturnT':
+    ) -> IResult['GetCurrentTimeReturnT']:
         params = {
             'id': id_,
         }
 
         return self._send_command(
             'Animation.getCurrentTime',
-            params
+            params,
+            True
         )
 
     def get_playback_rate(
             self
-    ) -> 'GetPlaybackRateReturnT':
+    ) -> IResult['GetPlaybackRateReturnT']:
         params = {}
 
         return self._send_command(
             'Animation.getPlaybackRate',
-            params
+            params,
+            True
         )
 
     def release_animations(
             self,
             animations: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'animations': animations,
         }
 
         return self._send_command(
             'Animation.releaseAnimations',
-            params
+            params,
+            False
         )
 
     def resolve_animation(
             self,
             animation_id: str
-    ) -> 'ResolveAnimationReturnT':
+    ) -> IResult['ResolveAnimationReturnT']:
         params = {
             'animationId': animation_id,
         }
 
         return self._send_command(
             'Animation.resolveAnimation',
-            params
+            params,
+            True
         )
 
     def seek_animations(
             self,
             animations: list,
             current_time: float
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'animations': animations,
             'currentTime': current_time,
@@ -103,14 +113,15 @@ class Animation(BaseDomain):
 
         return self._send_command(
             'Animation.seekAnimations',
-            params
+            params,
+            False
         )
 
     def set_paused(
             self,
             animations: list,
             paused: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'animations': animations,
             'paused': paused,
@@ -118,20 +129,22 @@ class Animation(BaseDomain):
 
         return self._send_command(
             'Animation.setPaused',
-            params
+            params,
+            False
         )
 
     def set_playback_rate(
             self,
             playback_rate: float
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'playbackRate': playback_rate,
         }
 
         return self._send_command(
             'Animation.setPlaybackRate',
-            params
+            params,
+            False
         )
 
     def set_timing(
@@ -139,7 +152,7 @@ class Animation(BaseDomain):
             animation_id: str,
             duration: float,
             delay: float
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'animationId': animation_id,
             'duration': duration,
@@ -148,5 +161,6 @@ class Animation(BaseDomain):
 
         return self._send_command(
             'Animation.setTiming',
-            params
+            params,
+            False
         )

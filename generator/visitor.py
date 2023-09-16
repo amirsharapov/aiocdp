@@ -1,6 +1,8 @@
 import ast
 import contextlib
+import time
 from _ast import comprehension
+from dataclasses import dataclass
 from typing import Any, TypedDict
 
 
@@ -27,6 +29,12 @@ def get_render_context(node: ast.AST) -> RenderContextDict:
             'lines_before': 0,
             'lines_after': 0,
         }
+
+
+@dataclass
+class GeneratedSourceCode:
+    source: str
+    generation_time: float
 
 
 # noinspection PyTypeChecker
@@ -78,9 +86,14 @@ class SourceCodeGenerator(ast.NodeVisitor):
 
         return zip(args, defaults)
 
-    def generate(self, module: ast.Module):
+    def generate(self, module: ast.Module) -> GeneratedSourceCode:
+        start = time.time()
         self.visit(module)
-        return self.source
+
+        return GeneratedSourceCode(
+            self.source,
+            time.time() - start
+        )
 
     def visit(self, node: ast.AST) -> Any:
         self.hierarchy.append(node)

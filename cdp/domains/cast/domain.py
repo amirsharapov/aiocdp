@@ -13,6 +13,10 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -20,7 +24,7 @@ class Cast(BaseDomain):
     def enable(
             self,
             presentation_url: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(presentation_url):
@@ -28,67 +32,73 @@ class Cast(BaseDomain):
 
         return self._send_command(
             'Cast.enable',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Cast.disable',
-            params
+            params,
+            False
         )
 
     def set_sink_to_use(
             self,
             sink_name: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'sinkName': sink_name,
         }
 
         return self._send_command(
             'Cast.setSinkToUse',
-            params
+            params,
+            False
         )
 
     def start_desktop_mirroring(
             self,
             sink_name: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'sinkName': sink_name,
         }
 
         return self._send_command(
             'Cast.startDesktopMirroring',
-            params
+            params,
+            False
         )
 
     def start_tab_mirroring(
             self,
             sink_name: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'sinkName': sink_name,
         }
 
         return self._send_command(
             'Cast.startTabMirroring',
-            params
+            params,
+            False
         )
 
     def stop_casting(
             self,
             sink_name: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'sinkName': sink_name,
         }
 
         return self._send_command(
             'Cast.stopCasting',
-            params
+            params,
+            False
         )

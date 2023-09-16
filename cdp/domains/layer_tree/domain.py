@@ -26,6 +26,10 @@ from cdp.domains.layer_tree.types import (
 from cdp.domains.dom.types import (
     Rect
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -33,60 +37,65 @@ class LayerTree(BaseDomain):
     def compositing_reasons(
             self,
             layer_id: LayerId
-    ) -> 'CompositingReasonsReturnT':
+    ) -> IResult['CompositingReasonsReturnT']:
         params = {
             'layerId': layer_id,
         }
 
         return self._send_command(
             'LayerTree.compositingReasons',
-            params
+            params,
+            True
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'LayerTree.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'LayerTree.enable',
-            params
+            params,
+            False
         )
 
     def load_snapshot(
             self,
             tiles: list
-    ) -> 'LoadSnapshotReturnT':
+    ) -> IResult['LoadSnapshotReturnT']:
         params = {
             'tiles': tiles,
         }
 
         return self._send_command(
             'LayerTree.loadSnapshot',
-            params
+            params,
+            True
         )
 
     def make_snapshot(
             self,
             layer_id: LayerId
-    ) -> 'MakeSnapshotReturnT':
+    ) -> IResult['MakeSnapshotReturnT']:
         params = {
             'layerId': layer_id,
         }
 
         return self._send_command(
             'LayerTree.makeSnapshot',
-            params
+            params,
+            True
         )
 
     def profile_snapshot(
@@ -95,7 +104,7 @@ class LayerTree(BaseDomain):
             min_repeat_count: int = UNDEFINED,
             min_duration: float = UNDEFINED,
             clip_rect: Rect = UNDEFINED
-    ) -> 'ProfileSnapshotReturnT':
+    ) -> IResult['ProfileSnapshotReturnT']:
         params = {
             'snapshotId': snapshot_id,
         }
@@ -111,20 +120,22 @@ class LayerTree(BaseDomain):
 
         return self._send_command(
             'LayerTree.profileSnapshot',
-            params
+            params,
+            True
         )
 
     def release_snapshot(
             self,
             snapshot_id: SnapshotId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'snapshotId': snapshot_id,
         }
 
         return self._send_command(
             'LayerTree.releaseSnapshot',
-            params
+            params,
+            False
         )
 
     def replay_snapshot(
@@ -133,7 +144,7 @@ class LayerTree(BaseDomain):
             from_step: int = UNDEFINED,
             to_step: int = UNDEFINED,
             scale: float = UNDEFINED
-    ) -> 'ReplaySnapshotReturnT':
+    ) -> IResult['ReplaySnapshotReturnT']:
         params = {
             'snapshotId': snapshot_id,
         }
@@ -149,18 +160,20 @@ class LayerTree(BaseDomain):
 
         return self._send_command(
             'LayerTree.replaySnapshot',
-            params
+            params,
+            True
         )
 
     def snapshot_command_log(
             self,
             snapshot_id: SnapshotId
-    ) -> 'SnapshotCommandLogReturnT':
+    ) -> IResult['SnapshotCommandLogReturnT']:
         params = {
             'snapshotId': snapshot_id,
         }
 
         return self._send_command(
             'LayerTree.snapshotCommandLog',
-            params
+            params,
+            True
         )

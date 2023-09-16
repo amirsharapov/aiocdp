@@ -10,10 +10,18 @@ if TYPE_CHECKING:
 class BaseDomain(ABC):
     target: 'Target'
 
-    def _send_command(self, method: str, params: dict = None):
+    def _send_command(
+            self,
+            method: str,
+            params: dict,
+            expect_response: bool,
+            response_type: type | None = None
+    ):
         params = params or {}
 
         return self.target.send_command(
             method,
-            params
+            params,
+            expect_response,
+            response_type
         )

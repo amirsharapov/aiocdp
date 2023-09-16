@@ -13,59 +13,68 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Log(BaseDomain):
     def clear(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Log.clear',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Log.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Log.enable',
-            params
+            params,
+            False
         )
 
     def start_violations_report(
             self,
             config: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'config': config,
         }
 
         return self._send_command(
             'Log.startViolationsReport',
-            params
+            params,
+            False
         )
 
     def stop_violations_report(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Log.stopViolationsReport',
-            params
+            params,
+            False
         )

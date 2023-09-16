@@ -17,35 +17,41 @@ from cdp.domains.device_access.types import (
     DeviceId,
     RequestId
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class DeviceAccess(BaseDomain):
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'DeviceAccess.enable',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'DeviceAccess.disable',
-            params
+            params,
+            False
         )
 
     def select_prompt(
             self,
             id_: RequestId,
             device_id: DeviceId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'id': id_,
             'deviceId': device_id,
@@ -53,18 +59,20 @@ class DeviceAccess(BaseDomain):
 
         return self._send_command(
             'DeviceAccess.selectPrompt',
-            params
+            params,
+            False
         )
 
     def cancel_prompt(
             self,
             id_: RequestId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'id': id_,
         }
 
         return self._send_command(
             'DeviceAccess.cancelPrompt',
-            params
+            params,
+            False
         )

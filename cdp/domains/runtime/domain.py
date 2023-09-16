@@ -29,6 +29,10 @@ from cdp.domains.runtime.types import (
     ScriptId,
     TimeDelta
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -38,7 +42,7 @@ class Runtime(BaseDomain):
             promise_object_id: RemoteObjectId,
             return_by_value: bool = UNDEFINED,
             generate_preview: bool = UNDEFINED
-    ) -> 'AwaitPromiseReturnT':
+    ) -> IResult['AwaitPromiseReturnT']:
         params = {
             'promiseObjectId': promise_object_id,
         }
@@ -51,7 +55,8 @@ class Runtime(BaseDomain):
 
         return self._send_command(
             'Runtime.awaitPromise',
-            params
+            params,
+            True
         )
 
     def call_function_on(
@@ -66,7 +71,7 @@ class Runtime(BaseDomain):
             await_promise: bool = UNDEFINED,
             execution_context_id: ExecutionContextId = UNDEFINED,
             object_group: str = UNDEFINED
-    ) -> 'CallFunctionOnReturnT':
+    ) -> IResult['CallFunctionOnReturnT']:
         params = {
             'functionDeclaration': function_declaration,
         }
@@ -100,7 +105,8 @@ class Runtime(BaseDomain):
 
         return self._send_command(
             'Runtime.callFunctionOn',
-            params
+            params,
+            True
         )
 
     def compile_script(
@@ -109,7 +115,7 @@ class Runtime(BaseDomain):
             source_url: str,
             persist_script: bool,
             execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> 'CompileScriptReturnT':
+    ) -> IResult['CompileScriptReturnT']:
         params = {
             'expression': expression,
             'sourceURL': source_url,
@@ -121,37 +127,41 @@ class Runtime(BaseDomain):
 
         return self._send_command(
             'Runtime.compileScript',
-            params
+            params,
+            True
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Runtime.disable',
-            params
+            params,
+            False
         )
 
     def discard_console_entries(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Runtime.discardConsoleEntries',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Runtime.enable',
-            params
+            params,
+            False
         )
 
     def evaluate(
@@ -167,7 +177,7 @@ class Runtime(BaseDomain):
             await_promise: bool = UNDEFINED,
             throw_on_side_effect: bool = UNDEFINED,
             timeout: TimeDelta = UNDEFINED
-    ) -> 'EvaluateReturnT':
+    ) -> IResult['EvaluateReturnT']:
         params = {
             'expression': expression,
         }
@@ -204,27 +214,30 @@ class Runtime(BaseDomain):
 
         return self._send_command(
             'Runtime.evaluate',
-            params
+            params,
+            True
         )
 
     def get_isolate_id(
             self
-    ) -> 'GetIsolateIdReturnT':
+    ) -> IResult['GetIsolateIdReturnT']:
         params = {}
 
         return self._send_command(
             'Runtime.getIsolateId',
-            params
+            params,
+            True
         )
 
     def get_heap_usage(
             self
-    ) -> 'GetHeapUsageReturnT':
+    ) -> IResult['GetHeapUsageReturnT']:
         params = {}
 
         return self._send_command(
             'Runtime.getHeapUsage',
-            params
+            params,
+            True
         )
 
     def get_properties(
@@ -233,7 +246,7 @@ class Runtime(BaseDomain):
             own_properties: bool = UNDEFINED,
             accessor_properties_only: bool = UNDEFINED,
             generate_preview: bool = UNDEFINED
-    ) -> 'GetPropertiesReturnT':
+    ) -> IResult['GetPropertiesReturnT']:
         params = {
             'objectId': object_id,
         }
@@ -249,13 +262,14 @@ class Runtime(BaseDomain):
 
         return self._send_command(
             'Runtime.getProperties',
-            params
+            params,
+            True
         )
 
     def global_lexical_scope_names(
             self,
             execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> 'GlobalLexicalScopeNamesReturnT':
+    ) -> IResult['GlobalLexicalScopeNamesReturnT']:
         params = {}
 
         if is_defined(execution_context_id):
@@ -263,14 +277,15 @@ class Runtime(BaseDomain):
 
         return self._send_command(
             'Runtime.globalLexicalScopeNames',
-            params
+            params,
+            True
         )
 
     def query_objects(
             self,
             prototype_object_id: RemoteObjectId,
             object_group: str = UNDEFINED
-    ) -> 'QueryObjectsReturnT':
+    ) -> IResult['QueryObjectsReturnT']:
         params = {
             'prototypeObjectId': prototype_object_id,
         }
@@ -280,43 +295,47 @@ class Runtime(BaseDomain):
 
         return self._send_command(
             'Runtime.queryObjects',
-            params
+            params,
+            True
         )
 
     def release_object(
             self,
             object_id: RemoteObjectId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'objectId': object_id,
         }
 
         return self._send_command(
             'Runtime.releaseObject',
-            params
+            params,
+            False
         )
 
     def release_object_group(
             self,
             object_group: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'objectGroup': object_group,
         }
 
         return self._send_command(
             'Runtime.releaseObjectGroup',
-            params
+            params,
+            False
         )
 
     def run_if_waiting_for_debugger(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Runtime.runIfWaitingForDebugger',
-            params
+            params,
+            False
         )
 
     def run_script(
@@ -329,7 +348,7 @@ class Runtime(BaseDomain):
             return_by_value: bool = UNDEFINED,
             generate_preview: bool = UNDEFINED,
             await_promise: bool = UNDEFINED
-    ) -> 'RunScriptReturnT':
+    ) -> IResult['RunScriptReturnT']:
         params = {
             'scriptId': script_id,
         }
@@ -357,63 +376,68 @@ class Runtime(BaseDomain):
 
         return self._send_command(
             'Runtime.runScript',
-            params
+            params,
+            True
         )
 
     def set_async_call_stack_depth(
             self,
             max_depth: int
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'maxDepth': max_depth,
         }
 
         return self._send_command(
             'Runtime.setAsyncCallStackDepth',
-            params
+            params,
+            False
         )
 
     def set_custom_object_formatter_enabled(
             self,
             enabled: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'enabled': enabled,
         }
 
         return self._send_command(
             'Runtime.setCustomObjectFormatterEnabled',
-            params
+            params,
+            False
         )
 
     def set_max_call_stack_size_to_capture(
             self,
             size: int
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'size': size,
         }
 
         return self._send_command(
             'Runtime.setMaxCallStackSizeToCapture',
-            params
+            params,
+            False
         )
 
     def terminate_execution(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Runtime.terminateExecution',
-            params
+            params,
+            False
         )
 
     def add_binding(
             self,
             name: str,
             execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'name': name,
         }
@@ -423,18 +447,20 @@ class Runtime(BaseDomain):
 
         return self._send_command(
             'Runtime.addBinding',
-            params
+            params,
+            False
         )
 
     def remove_binding(
             self,
             name: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'name': name,
         }
 
         return self._send_command(
             'Runtime.removeBinding',
-            params
+            params,
+            False
         )

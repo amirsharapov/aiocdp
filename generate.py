@@ -40,6 +40,8 @@ def main():
             else:
                 item.unlink()
 
+    elapsed = 0
+
     for protocol in protocols:
         for domain in protocol.domains:
             module_name = snake_case(domain.domain)
@@ -49,34 +51,49 @@ def main():
 
             module = ast.domain.generate(domain)
             module = SourceCodeGenerator().generate(module)
+            elapsed += module.generation_time
 
             Path(f'cdp/domains/{module_name}/domain.py').write_text(
                 GENERATED_MODULE_HEADER +
-                module
+                module.source
             )
 
             module = ast.types.generate(domain)
             module = SourceCodeGenerator().generate(module)
+            elapsed += module.generation_time
 
             Path(f'cdp/domains/{module_name}/types.py').write_text(
                 GENERATED_MODULE_HEADER +
-                module
+                module.source
             )
+
+    print(
+        f'Generated "cdp/domains/*" in '
+        f'{elapsed} seconds'
+    )
 
     module = ast.domains.generate(protocols)
     module = SourceCodeGenerator().generate(module)
+    print(
+        f'Generated "cdp/domains/domains.py" in '
+        f'{module.generation_time} seconds'
+    )
 
     Path(f'cdp/domains/domains.py').write_text(
         GENERATED_MODULE_HEADER +
-        module
+        module.source
     )
 
     module = ast.mapper.generate(protocols)
     module = SourceCodeGenerator().generate(module)
+    print(
+        f'Generated "cdp/domains/mapper.py" in '
+        f'{module.generation_time} seconds'
+    )
 
     Path(f'cdp/domains/mapper.py').write_text(
         GENERATED_MODULE_HEADER +
-        module
+        module.source
     )
 
 

@@ -17,28 +17,34 @@ from cdp.domains.dom_snapshot.types import (
     CaptureSnapshotReturnT,
     GetSnapshotReturnT
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class DOMSnapshot(BaseDomain):
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'DOMSnapshot.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'DOMSnapshot.enable',
-            params
+            params,
+            False
         )
 
     def get_snapshot(
@@ -47,7 +53,7 @@ class DOMSnapshot(BaseDomain):
             include_event_listeners: bool = UNDEFINED,
             include_paint_order: bool = UNDEFINED,
             include_user_agent_shadow_tree: bool = UNDEFINED
-    ) -> 'GetSnapshotReturnT':
+    ) -> IResult['GetSnapshotReturnT']:
         params = {
             'computedStyleWhitelist': computed_style_whitelist,
         }
@@ -63,7 +69,8 @@ class DOMSnapshot(BaseDomain):
 
         return self._send_command(
             'DOMSnapshot.getSnapshot',
-            params
+            params,
+            True
         )
 
     def capture_snapshot(
@@ -73,7 +80,7 @@ class DOMSnapshot(BaseDomain):
             include_dom_rects: bool = UNDEFINED,
             include_blended_background_colors: bool = UNDEFINED,
             include_text_color_opacities: bool = UNDEFINED
-    ) -> 'CaptureSnapshotReturnT':
+    ) -> IResult['CaptureSnapshotReturnT']:
         params = {
             'computedStyles': computed_styles,
         }
@@ -92,5 +99,6 @@ class DOMSnapshot(BaseDomain):
 
         return self._send_command(
             'DOMSnapshot.captureSnapshot',
-            params
+            params,
+            True
         )

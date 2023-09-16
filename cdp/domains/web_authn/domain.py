@@ -21,6 +21,10 @@ from cdp.domains.web_authn.types import (
     GetCredentialsReturnT,
     VirtualAuthenticatorOptions
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -28,7 +32,7 @@ class WebAuthn(BaseDomain):
     def enable(
             self,
             enable_ui: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(enable_ui):
@@ -36,30 +40,33 @@ class WebAuthn(BaseDomain):
 
         return self._send_command(
             'WebAuthn.enable',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'WebAuthn.disable',
-            params
+            params,
+            False
         )
 
     def add_virtual_authenticator(
             self,
             options: VirtualAuthenticatorOptions
-    ) -> 'AddVirtualAuthenticatorReturnT':
+    ) -> IResult['AddVirtualAuthenticatorReturnT']:
         params = {
             'options': options,
         }
 
         return self._send_command(
             'WebAuthn.addVirtualAuthenticator',
-            params
+            params,
+            True
         )
 
     def set_response_override_bits(
@@ -68,7 +75,7 @@ class WebAuthn(BaseDomain):
             is_bogus_signature: bool = UNDEFINED,
             is_bad_uv: bool = UNDEFINED,
             is_bad_up: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -84,27 +91,29 @@ class WebAuthn(BaseDomain):
 
         return self._send_command(
             'WebAuthn.setResponseOverrideBits',
-            params
+            params,
+            False
         )
 
     def remove_virtual_authenticator(
             self,
             authenticator_id: AuthenticatorId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'authenticatorId': authenticator_id,
         }
 
         return self._send_command(
             'WebAuthn.removeVirtualAuthenticator',
-            params
+            params,
+            False
         )
 
     def add_credential(
             self,
             authenticator_id: AuthenticatorId,
             credential: Credential
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'authenticatorId': authenticator_id,
             'credential': credential,
@@ -112,14 +121,15 @@ class WebAuthn(BaseDomain):
 
         return self._send_command(
             'WebAuthn.addCredential',
-            params
+            params,
+            False
         )
 
     def get_credential(
             self,
             authenticator_id: AuthenticatorId,
             credential_id: str
-    ) -> 'GetCredentialReturnT':
+    ) -> IResult['GetCredentialReturnT']:
         params = {
             'authenticatorId': authenticator_id,
             'credentialId': credential_id,
@@ -127,27 +137,29 @@ class WebAuthn(BaseDomain):
 
         return self._send_command(
             'WebAuthn.getCredential',
-            params
+            params,
+            True
         )
 
     def get_credentials(
             self,
             authenticator_id: AuthenticatorId
-    ) -> 'GetCredentialsReturnT':
+    ) -> IResult['GetCredentialsReturnT']:
         params = {
             'authenticatorId': authenticator_id,
         }
 
         return self._send_command(
             'WebAuthn.getCredentials',
-            params
+            params,
+            True
         )
 
     def remove_credential(
             self,
             authenticator_id: AuthenticatorId,
             credential_id: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'authenticatorId': authenticator_id,
             'credentialId': credential_id,
@@ -155,27 +167,29 @@ class WebAuthn(BaseDomain):
 
         return self._send_command(
             'WebAuthn.removeCredential',
-            params
+            params,
+            False
         )
 
     def clear_credentials(
             self,
             authenticator_id: AuthenticatorId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'authenticatorId': authenticator_id,
         }
 
         return self._send_command(
             'WebAuthn.clearCredentials',
-            params
+            params,
+            False
         )
 
     def set_user_verified(
             self,
             authenticator_id: AuthenticatorId,
             is_user_verified: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'authenticatorId': authenticator_id,
             'isUserVerified': is_user_verified,
@@ -183,14 +197,15 @@ class WebAuthn(BaseDomain):
 
         return self._send_command(
             'WebAuthn.setUserVerified',
-            params
+            params,
+            False
         )
 
     def set_automatic_presence_simulation(
             self,
             authenticator_id: AuthenticatorId,
             enabled: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'authenticatorId': authenticator_id,
             'enabled': enabled,
@@ -198,5 +213,6 @@ class WebAuthn(BaseDomain):
 
         return self._send_command(
             'WebAuthn.setAutomaticPresenceSimulation',
-            params
+            params,
+            False
         )

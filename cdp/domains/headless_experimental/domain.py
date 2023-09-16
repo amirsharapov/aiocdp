@@ -17,6 +17,10 @@ from cdp.domains.headless_experimental.types import (
     BeginFrameReturnT,
     ScreenshotParams
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -27,7 +31,7 @@ class HeadlessExperimental(BaseDomain):
             interval: float = UNDEFINED,
             no_display_updates: bool = UNDEFINED,
             screenshot: ScreenshotParams = UNDEFINED
-    ) -> 'BeginFrameReturnT':
+    ) -> IResult['BeginFrameReturnT']:
         params = {}
 
         if is_defined(frame_time_ticks):
@@ -44,25 +48,28 @@ class HeadlessExperimental(BaseDomain):
 
         return self._send_command(
             'HeadlessExperimental.beginFrame',
-            params
+            params,
+            True
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'HeadlessExperimental.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'HeadlessExperimental.enable',
-            params
+            params,
+            False
         )

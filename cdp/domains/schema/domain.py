@@ -16,16 +16,21 @@ from cdp.utils import (
 from cdp.domains.schema.types import (
     GetDomainsReturnT
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Schema(BaseDomain):
     def get_domains(
             self
-    ) -> 'GetDomainsReturnT':
+    ) -> IResult['GetDomainsReturnT']:
         params = {}
 
         return self._send_command(
             'Schema.getDomains',
-            params
+            params,
+            True
         )

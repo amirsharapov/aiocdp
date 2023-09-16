@@ -13,6 +13,10 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -20,12 +24,13 @@ class PerformanceTimeline(BaseDomain):
     def enable(
             self,
             event_types: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'eventTypes': event_types,
         }
 
         return self._send_command(
             'PerformanceTimeline.enable',
-            params
+            params,
+            False
         )

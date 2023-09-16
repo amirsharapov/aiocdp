@@ -22,6 +22,10 @@ from cdp.domains.cache_storage.types import (
 from cdp.domains.storage.types import (
     StorageBucket
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -29,21 +33,22 @@ class CacheStorage(BaseDomain):
     def delete_cache(
             self,
             cache_id: CacheId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'cacheId': cache_id,
         }
 
         return self._send_command(
             'CacheStorage.deleteCache',
-            params
+            params,
+            False
         )
 
     def delete_entry(
             self,
             cache_id: CacheId,
             request: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'cacheId': cache_id,
             'request': request,
@@ -51,7 +56,8 @@ class CacheStorage(BaseDomain):
 
         return self._send_command(
             'CacheStorage.deleteEntry',
-            params
+            params,
+            False
         )
 
     def request_cache_names(
@@ -59,7 +65,7 @@ class CacheStorage(BaseDomain):
             security_origin: str = UNDEFINED,
             storage_key: str = UNDEFINED,
             storage_bucket: StorageBucket = UNDEFINED
-    ) -> 'RequestCacheNamesReturnT':
+    ) -> IResult['RequestCacheNamesReturnT']:
         params = {}
 
         if is_defined(security_origin):
@@ -73,7 +79,8 @@ class CacheStorage(BaseDomain):
 
         return self._send_command(
             'CacheStorage.requestCacheNames',
-            params
+            params,
+            True
         )
 
     def request_cached_response(
@@ -81,7 +88,7 @@ class CacheStorage(BaseDomain):
             cache_id: CacheId,
             request_url: str,
             request_headers: list
-    ) -> 'RequestCachedResponseReturnT':
+    ) -> IResult['RequestCachedResponseReturnT']:
         params = {
             'cacheId': cache_id,
             'requestURL': request_url,
@@ -90,7 +97,8 @@ class CacheStorage(BaseDomain):
 
         return self._send_command(
             'CacheStorage.requestCachedResponse',
-            params
+            params,
+            True
         )
 
     def request_entries(
@@ -99,7 +107,7 @@ class CacheStorage(BaseDomain):
             skip_count: int = UNDEFINED,
             page_size: int = UNDEFINED,
             path_filter: str = UNDEFINED
-    ) -> 'RequestEntriesReturnT':
+    ) -> IResult['RequestEntriesReturnT']:
         params = {
             'cacheId': cache_id,
         }
@@ -115,5 +123,6 @@ class CacheStorage(BaseDomain):
 
         return self._send_command(
             'CacheStorage.requestEntries',
-            params
+            params,
+            True
         )

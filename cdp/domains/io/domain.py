@@ -21,6 +21,10 @@ from cdp.domains.io.types import (
 from cdp.domains.runtime.types import (
     RemoteObjectId
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -28,14 +32,15 @@ class IO(BaseDomain):
     def close(
             self,
             handle: StreamHandle
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'handle': handle,
         }
 
         return self._send_command(
             'IO.close',
-            params
+            params,
+            False
         )
 
     def read(
@@ -43,7 +48,7 @@ class IO(BaseDomain):
             handle: StreamHandle,
             offset: int = UNDEFINED,
             size: int = UNDEFINED
-    ) -> 'ReadReturnT':
+    ) -> IResult['ReadReturnT']:
         params = {
             'handle': handle,
         }
@@ -56,18 +61,20 @@ class IO(BaseDomain):
 
         return self._send_command(
             'IO.read',
-            params
+            params,
+            True
         )
 
     def resolve_blob(
             self,
             object_id: RemoteObjectId
-    ) -> 'ResolveBlobReturnT':
+    ) -> IResult['ResolveBlobReturnT']:
         params = {
             'objectId': object_id,
         }
 
         return self._send_command(
             'IO.resolveBlob',
-            params
+            params,
+            True
         )

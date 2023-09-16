@@ -20,6 +20,10 @@ from cdp.domains.audits.types import (
 from cdp.domains.network.types import (
     RequestId
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -30,7 +34,7 @@ class Audits(BaseDomain):
             encoding: str,
             quality: float = UNDEFINED,
             size_only: bool = UNDEFINED
-    ) -> 'GetEncodedResponseReturnT':
+    ) -> IResult['GetEncodedResponseReturnT']:
         params = {
             'requestId': request_id,
             'encoding': encoding,
@@ -44,33 +48,36 @@ class Audits(BaseDomain):
 
         return self._send_command(
             'Audits.getEncodedResponse',
-            params
+            params,
+            True
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Audits.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Audits.enable',
-            params
+            params,
+            False
         )
 
     def check_contrast(
             self,
             report_aaa: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(report_aaa):
@@ -78,15 +85,17 @@ class Audits(BaseDomain):
 
         return self._send_command(
             'Audits.checkContrast',
-            params
+            params,
+            False
         )
 
     def check_forms_issues(
             self
-    ) -> 'CheckFormsIssuesReturnT':
+    ) -> IResult['CheckFormsIssuesReturnT']:
         params = {}
 
         return self._send_command(
             'Audits.checkFormsIssues',
-            params
+            params,
+            True
         )

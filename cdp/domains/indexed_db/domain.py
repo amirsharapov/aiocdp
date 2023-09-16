@@ -23,6 +23,10 @@ from cdp.domains.indexed_db.types import (
     RequestDatabaseNamesReturnT,
     RequestDatabaseReturnT
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -34,7 +38,7 @@ class IndexedDB(BaseDomain):
             storage_bucket: StorageBucket = UNDEFINED,
             database_name: str = UNDEFINED,
             object_store_name: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -51,7 +55,8 @@ class IndexedDB(BaseDomain):
 
         return self._send_command(
             'IndexedDB.clearObjectStore',
-            params
+            params,
+            False
         )
 
     def delete_database(
@@ -60,7 +65,7 @@ class IndexedDB(BaseDomain):
             storage_key: str = UNDEFINED,
             storage_bucket: StorageBucket = UNDEFINED,
             database_name: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'databaseName': database_name,
         }
@@ -76,7 +81,8 @@ class IndexedDB(BaseDomain):
 
         return self._send_command(
             'IndexedDB.deleteDatabase',
-            params
+            params,
+            False
         )
 
     def delete_object_store_entries(
@@ -87,7 +93,7 @@ class IndexedDB(BaseDomain):
             database_name: str = UNDEFINED,
             object_store_name: str = UNDEFINED,
             key_range: KeyRange = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -105,27 +111,30 @@ class IndexedDB(BaseDomain):
 
         return self._send_command(
             'IndexedDB.deleteObjectStoreEntries',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'IndexedDB.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'IndexedDB.enable',
-            params
+            params,
+            False
         )
 
     def request_data(
@@ -139,7 +148,7 @@ class IndexedDB(BaseDomain):
             skip_count: int = UNDEFINED,
             page_size: int = UNDEFINED,
             key_range: KeyRange = UNDEFINED
-    ) -> 'RequestDataReturnT':
+    ) -> IResult['RequestDataReturnT']:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -162,7 +171,8 @@ class IndexedDB(BaseDomain):
 
         return self._send_command(
             'IndexedDB.requestData',
-            params
+            params,
+            True
         )
 
     def get_metadata(
@@ -172,7 +182,7 @@ class IndexedDB(BaseDomain):
             storage_bucket: StorageBucket = UNDEFINED,
             database_name: str = UNDEFINED,
             object_store_name: str = UNDEFINED
-    ) -> 'GetMetadataReturnT':
+    ) -> IResult['GetMetadataReturnT']:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -189,7 +199,8 @@ class IndexedDB(BaseDomain):
 
         return self._send_command(
             'IndexedDB.getMetadata',
-            params
+            params,
+            True
         )
 
     def request_database(
@@ -198,7 +209,7 @@ class IndexedDB(BaseDomain):
             storage_key: str = UNDEFINED,
             storage_bucket: StorageBucket = UNDEFINED,
             database_name: str = UNDEFINED
-    ) -> 'RequestDatabaseReturnT':
+    ) -> IResult['RequestDatabaseReturnT']:
         params = {
             'databaseName': database_name,
         }
@@ -214,7 +225,8 @@ class IndexedDB(BaseDomain):
 
         return self._send_command(
             'IndexedDB.requestDatabase',
-            params
+            params,
+            True
         )
 
     def request_database_names(
@@ -222,7 +234,7 @@ class IndexedDB(BaseDomain):
             security_origin: str = UNDEFINED,
             storage_key: str = UNDEFINED,
             storage_bucket: StorageBucket = UNDEFINED
-    ) -> 'RequestDatabaseNamesReturnT':
+    ) -> IResult['RequestDatabaseNamesReturnT']:
         params = {}
 
         if is_defined(security_origin):
@@ -236,5 +248,6 @@ class IndexedDB(BaseDomain):
 
         return self._send_command(
             'IndexedDB.requestDatabaseNames',
-            params
+            params,
+            True
         )

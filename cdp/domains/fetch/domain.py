@@ -22,25 +22,30 @@ from cdp.domains.fetch.types import (
 from cdp.domains.network.types import (
     ErrorReason
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Fetch(BaseDomain):
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Fetch.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self,
             patterns: list = UNDEFINED,
             handle_auth_requests: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(patterns):
@@ -51,14 +56,15 @@ class Fetch(BaseDomain):
 
         return self._send_command(
             'Fetch.enable',
-            params
+            params,
+            False
         )
 
     def fail_request(
             self,
             request_id: RequestId,
             error_reason: ErrorReason
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'requestId': request_id,
             'errorReason': error_reason,
@@ -66,7 +72,8 @@ class Fetch(BaseDomain):
 
         return self._send_command(
             'Fetch.failRequest',
-            params
+            params,
+            False
         )
 
     def fulfill_request(
@@ -77,7 +84,7 @@ class Fetch(BaseDomain):
             binary_response_headers: str = UNDEFINED,
             body: str = UNDEFINED,
             response_phrase: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'requestId': request_id,
             'responseCode': response_code,
@@ -97,7 +104,8 @@ class Fetch(BaseDomain):
 
         return self._send_command(
             'Fetch.fulfillRequest',
-            params
+            params,
+            False
         )
 
     def continue_request(
@@ -108,7 +116,7 @@ class Fetch(BaseDomain):
             post_data: str = UNDEFINED,
             headers: list = UNDEFINED,
             intercept_response: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'requestId': request_id,
         }
@@ -130,14 +138,15 @@ class Fetch(BaseDomain):
 
         return self._send_command(
             'Fetch.continueRequest',
-            params
+            params,
+            False
         )
 
     def continue_with_auth(
             self,
             request_id: RequestId,
             auth_challenge_response: AuthChallengeResponse
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'requestId': request_id,
             'authChallengeResponse': auth_challenge_response,
@@ -145,7 +154,8 @@ class Fetch(BaseDomain):
 
         return self._send_command(
             'Fetch.continueWithAuth',
-            params
+            params,
+            False
         )
 
     def continue_response(
@@ -155,7 +165,7 @@ class Fetch(BaseDomain):
             response_phrase: str = UNDEFINED,
             response_headers: list = UNDEFINED,
             binary_response_headers: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'requestId': request_id,
         }
@@ -174,31 +184,34 @@ class Fetch(BaseDomain):
 
         return self._send_command(
             'Fetch.continueResponse',
-            params
+            params,
+            False
         )
 
     def get_response_body(
             self,
             request_id: RequestId
-    ) -> 'GetResponseBodyReturnT':
+    ) -> IResult['GetResponseBodyReturnT']:
         params = {
             'requestId': request_id,
         }
 
         return self._send_command(
             'Fetch.getResponseBody',
-            params
+            params,
+            True
         )
 
     def take_response_body_as_stream(
             self,
             request_id: RequestId
-    ) -> 'TakeResponseBodyAsStreamReturnT':
+    ) -> IResult['TakeResponseBodyAsStreamReturnT']:
         params = {
             'requestId': request_id,
         }
 
         return self._send_command(
             'Fetch.takeResponseBodyAsStream',
-            params
+            params,
+            True
         )

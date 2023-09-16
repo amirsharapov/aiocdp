@@ -15,7 +15,8 @@ class Chrome:
     def start(cls, host: str = '127.0.0.1', port: int = 9222):
         os.system(
             f'start chrome '
-            f'--remote-debugging-port={port}'
+            f'--remote-debugging-port={port} '
+            f'--remote-allow-origins=*'
         )
 
         self = cls(
@@ -29,10 +30,16 @@ class Chrome:
     def http_url(self):
         return f'http://{self.host}:{self.port}'
 
-    def get_targets(self) -> list[Target]:
+    def get_targets(self):
         url = self.http_url + '/json/list'
 
         response = requests.get(url)
         response.raise_for_status()
 
-        return [Target() for _ in response.json()]
+        for target in response.json():
+            target_ = Target(
+                chrome=self,
+                id=target['id']
+            )
+
+            yield target_

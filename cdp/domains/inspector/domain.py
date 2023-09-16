@@ -13,26 +13,32 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Inspector(BaseDomain):
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Inspector.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Inspector.enable',
-            params
+            params,
+            False
         )

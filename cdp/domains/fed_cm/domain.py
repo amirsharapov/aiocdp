@@ -13,6 +13,10 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -20,7 +24,7 @@ class FedCm(BaseDomain):
     def enable(
             self,
             disable_rejection_delay: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(disable_rejection_delay):
@@ -28,24 +32,26 @@ class FedCm(BaseDomain):
 
         return self._send_command(
             'FedCm.enable',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'FedCm.disable',
-            params
+            params,
+            False
         )
 
     def select_account(
             self,
             dialog_id: str,
             account_index: int
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'dialogId': dialog_id,
             'accountIndex': account_index,
@@ -53,27 +59,29 @@ class FedCm(BaseDomain):
 
         return self._send_command(
             'FedCm.selectAccount',
-            params
+            params,
+            False
         )
 
     def confirm_idp_signin(
             self,
             dialog_id: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'dialogId': dialog_id,
         }
 
         return self._send_command(
             'FedCm.confirmIdpSignin',
-            params
+            params,
+            False
         )
 
     def dismiss_dialog(
             self,
             dialog_id: str,
             trigger_cooldown: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'dialogId': dialog_id,
         }
@@ -83,15 +91,17 @@ class FedCm(BaseDomain):
 
         return self._send_command(
             'FedCm.dismissDialog',
-            params
+            params,
+            False
         )
 
     def reset_cooldown(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'FedCm.resetCooldown',
-            params
+            params,
+            False
         )

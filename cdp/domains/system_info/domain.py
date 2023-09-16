@@ -18,39 +18,46 @@ from cdp.domains.system_info.types import (
     GetInfoReturnT,
     GetProcessInfoReturnT
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class SystemInfo(BaseDomain):
     def get_info(
             self
-    ) -> 'GetInfoReturnT':
+    ) -> IResult['GetInfoReturnT']:
         params = {}
 
         return self._send_command(
             'SystemInfo.getInfo',
-            params
+            params,
+            True
         )
 
     def get_feature_state(
             self,
             feature_state: str
-    ) -> 'GetFeatureStateReturnT':
+    ) -> IResult['GetFeatureStateReturnT']:
         params = {
             'featureState': feature_state,
         }
 
         return self._send_command(
             'SystemInfo.getFeatureState',
-            params
+            params,
+            True
         )
 
     def get_process_info(
             self
-    ) -> 'GetProcessInfoReturnT':
+    ) -> IResult['GetProcessInfoReturnT']:
         params = {}
 
         return self._send_command(
             'SystemInfo.getProcessInfo',
-            params
+            params,
+            True
         )

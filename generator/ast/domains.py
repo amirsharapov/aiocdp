@@ -40,12 +40,7 @@ def _generate_class_definition(protocols: list[Protocol]):
         name='Domains',
         bases=[],
         keywords=[],
-        body=[
-            ast.AnnAssign(
-                target=ast.Name('target'),
-                annotation=ast.Constant('Target'),
-            )
-        ],
+        body=[],
         decorator_list=[
             ast.Name('dataclass')
         ]
@@ -72,6 +67,13 @@ def _generate_class_definition(protocols: list[Protocol]):
                     simple=1
                 )
             )
+
+    root.body.append(
+        ast.AnnAssign(
+            target=ast.Name('target'),
+            annotation=ast.Constant('Target'),
+        )
+    )
 
     post_init = ast.FunctionDef(
         name='__post_init__',

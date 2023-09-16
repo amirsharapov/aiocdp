@@ -23,6 +23,10 @@ from cdp.domains.heap_profiler.types import (
 from cdp.domains.runtime.types import (
     RemoteObjectId
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -30,64 +34,69 @@ class HeapProfiler(BaseDomain):
     def add_inspected_heap_object(
             self,
             heap_object_id: HeapSnapshotObjectId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'heapObjectId': heap_object_id,
         }
 
         return self._send_command(
             'HeapProfiler.addInspectedHeapObject',
-            params
+            params,
+            False
         )
 
     def collect_garbage(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'HeapProfiler.collectGarbage',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'HeapProfiler.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'HeapProfiler.enable',
-            params
+            params,
+            False
         )
 
     def get_heap_object_id(
             self,
             object_id: RemoteObjectId
-    ) -> 'GetHeapObjectIdReturnT':
+    ) -> IResult['GetHeapObjectIdReturnT']:
         params = {
             'objectId': object_id,
         }
 
         return self._send_command(
             'HeapProfiler.getHeapObjectId',
-            params
+            params,
+            True
         )
 
     def get_object_by_heap_object_id(
             self,
             object_id: HeapSnapshotObjectId,
             object_group: str = UNDEFINED
-    ) -> 'GetObjectByHeapObjectIdReturnT':
+    ) -> IResult['GetObjectByHeapObjectIdReturnT']:
         params = {
             'objectId': object_id,
         }
@@ -97,23 +106,25 @@ class HeapProfiler(BaseDomain):
 
         return self._send_command(
             'HeapProfiler.getObjectByHeapObjectId',
-            params
+            params,
+            True
         )
 
     def get_sampling_profile(
             self
-    ) -> 'GetSamplingProfileReturnT':
+    ) -> IResult['GetSamplingProfileReturnT']:
         params = {}
 
         return self._send_command(
             'HeapProfiler.getSamplingProfile',
-            params
+            params,
+            True
         )
 
     def start_sampling(
             self,
             sampling_interval: float = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(sampling_interval):
@@ -121,13 +132,14 @@ class HeapProfiler(BaseDomain):
 
         return self._send_command(
             'HeapProfiler.startSampling',
-            params
+            params,
+            False
         )
 
     def start_tracking_heap_objects(
             self,
             track_allocations: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(track_allocations):
@@ -135,23 +147,25 @@ class HeapProfiler(BaseDomain):
 
         return self._send_command(
             'HeapProfiler.startTrackingHeapObjects',
-            params
+            params,
+            False
         )
 
     def stop_sampling(
             self
-    ) -> 'StopSamplingReturnT':
+    ) -> IResult['StopSamplingReturnT']:
         params = {}
 
         return self._send_command(
             'HeapProfiler.stopSampling',
-            params
+            params,
+            True
         )
 
     def stop_tracking_heap_objects(
             self,
             report_progress: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(report_progress):
@@ -159,13 +173,14 @@ class HeapProfiler(BaseDomain):
 
         return self._send_command(
             'HeapProfiler.stopTrackingHeapObjects',
-            params
+            params,
+            False
         )
 
     def take_heap_snapshot(
             self,
             report_progress: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(report_progress):
@@ -173,5 +188,6 @@ class HeapProfiler(BaseDomain):
 
         return self._send_command(
             'HeapProfiler.takeHeapSnapshot',
-            params
+            params,
+            False
         )

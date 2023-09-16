@@ -16,6 +16,10 @@ from cdp.utils import (
 from cdp.domains.background_service.types import (
     ServiceName
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -23,34 +27,36 @@ class BackgroundService(BaseDomain):
     def start_observing(
             self,
             service: ServiceName
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'service': service,
         }
 
         return self._send_command(
             'BackgroundService.startObserving',
-            params
+            params,
+            False
         )
 
     def stop_observing(
             self,
             service: ServiceName
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'service': service,
         }
 
         return self._send_command(
             'BackgroundService.stopObserving',
-            params
+            params,
+            False
         )
 
     def set_recording(
             self,
             should_record: bool,
             service: ServiceName
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'shouldRecord': should_record,
             'service': service,
@@ -58,18 +64,20 @@ class BackgroundService(BaseDomain):
 
         return self._send_command(
             'BackgroundService.setRecording',
-            params
+            params,
+            False
         )
 
     def clear_events(
             self,
             service: ServiceName
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'service': service,
         }
 
         return self._send_command(
             'BackgroundService.clearEvents',
-            params
+            params,
+            False
         )

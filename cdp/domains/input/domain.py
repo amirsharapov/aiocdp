@@ -19,6 +19,10 @@ from cdp.domains.input.types import (
     MouseButton,
     TimeSinceEpoch
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -30,7 +34,7 @@ class Input(BaseDomain):
             y: float,
             data: DragData,
             modifiers: int = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'type': type_,
             'x': x,
@@ -43,7 +47,8 @@ class Input(BaseDomain):
 
         return self._send_command(
             'Input.dispatchDragEvent',
-            params
+            params,
+            False
         )
 
     def dispatch_key_event(
@@ -63,7 +68,7 @@ class Input(BaseDomain):
             is_system_key: bool = UNDEFINED,
             location: int = UNDEFINED,
             commands: list = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'type': type_,
         }
@@ -112,20 +117,22 @@ class Input(BaseDomain):
 
         return self._send_command(
             'Input.dispatchKeyEvent',
-            params
+            params,
+            False
         )
 
     def insert_text(
             self,
             text: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'text': text,
         }
 
         return self._send_command(
             'Input.insertText',
-            params
+            params,
+            False
         )
 
     def ime_set_composition(
@@ -135,7 +142,7 @@ class Input(BaseDomain):
             selection_end: int,
             replacement_start: int = UNDEFINED,
             replacement_end: int = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'text': text,
             'selectionStart': selection_start,
@@ -150,7 +157,8 @@ class Input(BaseDomain):
 
         return self._send_command(
             'Input.imeSetComposition',
-            params
+            params,
+            False
         )
 
     def dispatch_mouse_event(
@@ -171,7 +179,7 @@ class Input(BaseDomain):
             delta_x: float = UNDEFINED,
             delta_y: float = UNDEFINED,
             pointer_type: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'type': type_,
             'x': x,
@@ -219,7 +227,8 @@ class Input(BaseDomain):
 
         return self._send_command(
             'Input.dispatchMouseEvent',
-            params
+            params,
+            False
         )
 
     def dispatch_touch_event(
@@ -228,7 +237,7 @@ class Input(BaseDomain):
             touch_points: list,
             modifiers: int = UNDEFINED,
             timestamp: TimeSinceEpoch = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'type': type_,
             'touchPoints': touch_points,
@@ -242,17 +251,19 @@ class Input(BaseDomain):
 
         return self._send_command(
             'Input.dispatchTouchEvent',
-            params
+            params,
+            False
         )
 
     def cancel_dragging(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Input.cancelDragging',
-            params
+            params,
+            False
         )
 
     def emulate_touch_from_mouse_event(
@@ -266,7 +277,7 @@ class Input(BaseDomain):
             delta_y: float = UNDEFINED,
             modifiers: int = UNDEFINED,
             click_count: int = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'type': type_,
             'x': x,
@@ -291,33 +302,36 @@ class Input(BaseDomain):
 
         return self._send_command(
             'Input.emulateTouchFromMouseEvent',
-            params
+            params,
+            False
         )
 
     def set_ignore_input_events(
             self,
             ignore: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'ignore': ignore,
         }
 
         return self._send_command(
             'Input.setIgnoreInputEvents',
-            params
+            params,
+            False
         )
 
     def set_intercept_drags(
             self,
             enabled: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'enabled': enabled,
         }
 
         return self._send_command(
             'Input.setInterceptDrags',
-            params
+            params,
+            False
         )
 
     def synthesize_pinch_gesture(
@@ -327,7 +341,7 @@ class Input(BaseDomain):
             scale_factor: float,
             relative_speed: int = UNDEFINED,
             gesture_source_type: GestureSourceType = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'x': x,
             'y': y,
@@ -342,7 +356,8 @@ class Input(BaseDomain):
 
         return self._send_command(
             'Input.synthesizePinchGesture',
-            params
+            params,
+            False
         )
 
     def synthesize_scroll_gesture(
@@ -359,7 +374,7 @@ class Input(BaseDomain):
             repeat_count: int = UNDEFINED,
             repeat_delay_ms: int = UNDEFINED,
             interaction_marker_name: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'x': x,
             'y': y,
@@ -397,7 +412,8 @@ class Input(BaseDomain):
 
         return self._send_command(
             'Input.synthesizeScrollGesture',
-            params
+            params,
+            False
         )
 
     def synthesize_tap_gesture(
@@ -407,7 +423,7 @@ class Input(BaseDomain):
             duration: int = UNDEFINED,
             tap_count: int = UNDEFINED,
             gesture_source_type: GestureSourceType = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'x': x,
             'y': y,
@@ -424,5 +440,6 @@ class Input(BaseDomain):
 
         return self._send_command(
             'Input.synthesizeTapGesture',
-            params
+            params,
+            False
         )

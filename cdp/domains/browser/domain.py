@@ -30,6 +30,10 @@ from cdp.domains.browser.types import (
 from cdp.domains.target.types import (
     TargetID
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -40,7 +44,7 @@ class Browser(BaseDomain):
             setting: PermissionSetting,
             origin: str = UNDEFINED,
             browser_context_id: BrowserContextID = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'permission': permission,
             'setting': setting,
@@ -54,7 +58,8 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.setPermission',
-            params
+            params,
+            False
         )
 
     def grant_permissions(
@@ -62,7 +67,7 @@ class Browser(BaseDomain):
             permissions: list,
             origin: str = UNDEFINED,
             browser_context_id: BrowserContextID = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'permissions': permissions,
         }
@@ -75,13 +80,14 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.grantPermissions',
-            params
+            params,
+            False
         )
 
     def reset_permissions(
             self,
             browser_context_id: BrowserContextID = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(browser_context_id):
@@ -89,7 +95,8 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.resetPermissions',
-            params
+            params,
+            False
         )
 
     def set_download_behavior(
@@ -98,7 +105,7 @@ class Browser(BaseDomain):
             browser_context_id: BrowserContextID = UNDEFINED,
             download_path: str = UNDEFINED,
             events_enabled: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'behavior': behavior,
         }
@@ -114,14 +121,15 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.setDownloadBehavior',
-            params
+            params,
+            False
         )
 
     def cancel_download(
             self,
             guid: str,
             browser_context_id: BrowserContextID = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'guid': guid,
         }
@@ -131,64 +139,70 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.cancelDownload',
-            params
+            params,
+            False
         )
 
     def close(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Browser.close',
-            params
+            params,
+            False
         )
 
     def crash(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Browser.crash',
-            params
+            params,
+            False
         )
 
     def crash_gpu_process(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Browser.crashGpuProcess',
-            params
+            params,
+            False
         )
 
     def get_version(
             self
-    ) -> 'GetVersionReturnT':
+    ) -> IResult['GetVersionReturnT']:
         params = {}
 
         return self._send_command(
             'Browser.getVersion',
-            params
+            params,
+            True
         )
 
     def get_browser_command_line(
             self
-    ) -> 'GetBrowserCommandLineReturnT':
+    ) -> IResult['GetBrowserCommandLineReturnT']:
         params = {}
 
         return self._send_command(
             'Browser.getBrowserCommandLine',
-            params
+            params,
+            True
         )
 
     def get_histograms(
             self,
             query: str = UNDEFINED,
             delta: bool = UNDEFINED
-    ) -> 'GetHistogramsReturnT':
+    ) -> IResult['GetHistogramsReturnT']:
         params = {}
 
         if is_defined(query):
@@ -199,14 +213,15 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.getHistograms',
-            params
+            params,
+            True
         )
 
     def get_histogram(
             self,
             name: str,
             delta: bool = UNDEFINED
-    ) -> 'GetHistogramReturnT':
+    ) -> IResult['GetHistogramReturnT']:
         params = {
             'name': name,
         }
@@ -216,26 +231,28 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.getHistogram',
-            params
+            params,
+            True
         )
 
     def get_window_bounds(
             self,
             window_id: WindowID
-    ) -> 'GetWindowBoundsReturnT':
+    ) -> IResult['GetWindowBoundsReturnT']:
         params = {
             'windowId': window_id,
         }
 
         return self._send_command(
             'Browser.getWindowBounds',
-            params
+            params,
+            True
         )
 
     def get_window_for_target(
             self,
             target_id: TargetID = UNDEFINED
-    ) -> 'GetWindowForTargetReturnT':
+    ) -> IResult['GetWindowForTargetReturnT']:
         params = {}
 
         if is_defined(target_id):
@@ -243,14 +260,15 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.getWindowForTarget',
-            params
+            params,
+            True
         )
 
     def set_window_bounds(
             self,
             window_id: WindowID,
             bounds: Bounds
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'windowId': window_id,
             'bounds': bounds,
@@ -258,14 +276,15 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.setWindowBounds',
-            params
+            params,
+            False
         )
 
     def set_dock_tile(
             self,
             badge_label: str = UNDEFINED,
             image: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(badge_label):
@@ -276,31 +295,34 @@ class Browser(BaseDomain):
 
         return self._send_command(
             'Browser.setDockTile',
-            params
+            params,
+            False
         )
 
     def execute_browser_command(
             self,
             command_id: BrowserCommandId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'commandId': command_id,
         }
 
         return self._send_command(
             'Browser.executeBrowserCommand',
-            params
+            params,
+            False
         )
 
     def add_privacy_sandbox_enrollment_override(
             self,
             url: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'url': url,
         }
 
         return self._send_command(
             'Browser.addPrivacySandboxEnrollmentOverride',
-            params
+            params,
+            False
         )

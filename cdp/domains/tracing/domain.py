@@ -22,48 +22,55 @@ from cdp.domains.tracing.types import (
     TraceConfig,
     TracingBackend
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Tracing(BaseDomain):
     def end(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Tracing.end',
-            params
+            params,
+            False
         )
 
     def get_categories(
             self
-    ) -> 'GetCategoriesReturnT':
+    ) -> IResult['GetCategoriesReturnT']:
         params = {}
 
         return self._send_command(
             'Tracing.getCategories',
-            params
+            params,
+            True
         )
 
     def record_clock_sync_marker(
             self,
             sync_id: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'syncId': sync_id,
         }
 
         return self._send_command(
             'Tracing.recordClockSyncMarker',
-            params
+            params,
+            False
         )
 
     def request_memory_dump(
             self,
             deterministic: bool = UNDEFINED,
             level_of_detail: MemoryDumpLevelOfDetail = UNDEFINED
-    ) -> 'RequestMemoryDumpReturnT':
+    ) -> IResult['RequestMemoryDumpReturnT']:
         params = {}
 
         if is_defined(deterministic):
@@ -74,7 +81,8 @@ class Tracing(BaseDomain):
 
         return self._send_command(
             'Tracing.requestMemoryDump',
-            params
+            params,
+            True
         )
 
     def start(
@@ -88,7 +96,7 @@ class Tracing(BaseDomain):
             trace_config: TraceConfig = UNDEFINED,
             perfetto_config: str = UNDEFINED,
             tracing_backend: TracingBackend = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(categories):
@@ -120,5 +128,6 @@ class Tracing(BaseDomain):
 
         return self._send_command(
             'Tracing.start',
-            params
+            params,
+            False
         )

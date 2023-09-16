@@ -22,6 +22,10 @@ from cdp.domains.page.types import (
 from cdp.domains.autofill.types import (
     CreditCard
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -31,7 +35,7 @@ class Autofill(BaseDomain):
             field_id: BackendNodeId,
             frame_id: FrameId,
             card: CreditCard = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'fieldId': field_id,
             'card': card,
@@ -42,38 +46,42 @@ class Autofill(BaseDomain):
 
         return self._send_command(
             'Autofill.trigger',
-            params
+            params,
+            False
         )
 
     def set_addresses(
             self,
             addresses: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'addresses': addresses,
         }
 
         return self._send_command(
             'Autofill.setAddresses',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Autofill.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Autofill.enable',
-            params
+            params,
+            False
         )

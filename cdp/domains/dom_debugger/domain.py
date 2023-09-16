@@ -23,6 +23,10 @@ from cdp.domains.runtime.types import (
 from cdp.domains.dom.types import (
     NodeId
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -32,7 +36,7 @@ class DOMDebugger(BaseDomain):
             object_id: RemoteObjectId,
             depth: int = UNDEFINED,
             pierce: bool = UNDEFINED
-    ) -> 'GetEventListenersReturnT':
+    ) -> IResult['GetEventListenersReturnT']:
         params = {
             'objectId': object_id,
         }
@@ -45,14 +49,15 @@ class DOMDebugger(BaseDomain):
 
         return self._send_command(
             'DOMDebugger.getEventListeners',
-            params
+            params,
+            True
         )
 
     def remove_dom_breakpoint(
             self,
             node_id: NodeId,
             type_: DOMBreakpointType
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'nodeId': node_id,
             'type': type_,
@@ -60,14 +65,15 @@ class DOMDebugger(BaseDomain):
 
         return self._send_command(
             'DOMDebugger.removeDOMBreakpoint',
-            params
+            params,
+            False
         )
 
     def remove_event_listener_breakpoint(
             self,
             event_name: str,
             target_name: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'eventName': event_name,
         }
@@ -77,53 +83,57 @@ class DOMDebugger(BaseDomain):
 
         return self._send_command(
             'DOMDebugger.removeEventListenerBreakpoint',
-            params
+            params,
+            False
         )
 
     def remove_instrumentation_breakpoint(
             self,
             event_name: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'eventName': event_name,
         }
 
         return self._send_command(
             'DOMDebugger.removeInstrumentationBreakpoint',
-            params
+            params,
+            False
         )
 
     def remove_xhr_breakpoint(
             self,
             url: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'url': url,
         }
 
         return self._send_command(
             'DOMDebugger.removeXHRBreakpoint',
-            params
+            params,
+            False
         )
 
     def set_break_on_csp_violation(
             self,
             violation_types: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'violationTypes': violation_types,
         }
 
         return self._send_command(
             'DOMDebugger.setBreakOnCSPViolation',
-            params
+            params,
+            False
         )
 
     def set_dom_breakpoint(
             self,
             node_id: NodeId,
             type_: DOMBreakpointType
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'nodeId': node_id,
             'type': type_,
@@ -131,14 +141,15 @@ class DOMDebugger(BaseDomain):
 
         return self._send_command(
             'DOMDebugger.setDOMBreakpoint',
-            params
+            params,
+            False
         )
 
     def set_event_listener_breakpoint(
             self,
             event_name: str,
             target_name: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'eventName': event_name,
         }
@@ -148,31 +159,34 @@ class DOMDebugger(BaseDomain):
 
         return self._send_command(
             'DOMDebugger.setEventListenerBreakpoint',
-            params
+            params,
+            False
         )
 
     def set_instrumentation_breakpoint(
             self,
             event_name: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'eventName': event_name,
         }
 
         return self._send_command(
             'DOMDebugger.setInstrumentationBreakpoint',
-            params
+            params,
+            False
         )
 
     def set_xhr_breakpoint(
             self,
             url: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'url': url,
         }
 
         return self._send_command(
             'DOMDebugger.setXHRBreakpoint',
-            params
+            params,
+            False
         )

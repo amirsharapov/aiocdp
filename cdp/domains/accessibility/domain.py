@@ -32,28 +32,34 @@ from cdp.domains.runtime.types import (
 from cdp.domains.page.types import (
     FrameId
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Accessibility(BaseDomain):
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Accessibility.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Accessibility.enable',
-            params
+            params,
+            False
         )
 
     def get_partial_ax_tree(
@@ -62,7 +68,7 @@ class Accessibility(BaseDomain):
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED,
             fetch_relatives: bool = UNDEFINED
-    ) -> 'GetPartialAXTreeReturnT':
+    ) -> IResult['GetPartialAXTreeReturnT']:
         params = {}
 
         if is_defined(node_id):
@@ -79,14 +85,15 @@ class Accessibility(BaseDomain):
 
         return self._send_command(
             'Accessibility.getPartialAXTree',
-            params
+            params,
+            True
         )
 
     def get_full_ax_tree(
             self,
             depth: int = UNDEFINED,
             frame_id: FrameId = UNDEFINED
-    ) -> 'GetFullAXTreeReturnT':
+    ) -> IResult['GetFullAXTreeReturnT']:
         params = {}
 
         if is_defined(depth):
@@ -97,13 +104,14 @@ class Accessibility(BaseDomain):
 
         return self._send_command(
             'Accessibility.getFullAXTree',
-            params
+            params,
+            True
         )
 
     def get_root_ax_node(
             self,
             frame_id: FrameId = UNDEFINED
-    ) -> 'GetRootAXNodeReturnT':
+    ) -> IResult['GetRootAXNodeReturnT']:
         params = {}
 
         if is_defined(frame_id):
@@ -111,7 +119,8 @@ class Accessibility(BaseDomain):
 
         return self._send_command(
             'Accessibility.getRootAXNode',
-            params
+            params,
+            True
         )
 
     def get_ax_node_and_ancestors(
@@ -119,7 +128,7 @@ class Accessibility(BaseDomain):
             node_id: NodeId = UNDEFINED,
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED
-    ) -> 'GetAXNodeAndAncestorsReturnT':
+    ) -> IResult['GetAXNodeAndAncestorsReturnT']:
         params = {}
 
         if is_defined(node_id):
@@ -133,14 +142,15 @@ class Accessibility(BaseDomain):
 
         return self._send_command(
             'Accessibility.getAXNodeAndAncestors',
-            params
+            params,
+            True
         )
 
     def get_child_ax_nodes(
             self,
             id_: AXNodeId,
             frame_id: FrameId = UNDEFINED
-    ) -> 'GetChildAXNodesReturnT':
+    ) -> IResult['GetChildAXNodesReturnT']:
         params = {
             'id': id_,
         }
@@ -150,7 +160,8 @@ class Accessibility(BaseDomain):
 
         return self._send_command(
             'Accessibility.getChildAXNodes',
-            params
+            params,
+            True
         )
 
     def query_ax_tree(
@@ -160,7 +171,7 @@ class Accessibility(BaseDomain):
             object_id: RemoteObjectId = UNDEFINED,
             accessible_name: str = UNDEFINED,
             role: str = UNDEFINED
-    ) -> 'QueryAXTreeReturnT':
+    ) -> IResult['QueryAXTreeReturnT']:
         params = {}
 
         if is_defined(node_id):
@@ -180,5 +191,6 @@ class Accessibility(BaseDomain):
 
         return self._send_command(
             'Accessibility.queryAXTree',
-            params
+            params,
+            True
         )

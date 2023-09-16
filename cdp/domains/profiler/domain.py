@@ -19,68 +19,77 @@ from cdp.domains.profiler.types import (
     TakePreciseCoverageReturnT,
     TakeTypeProfileReturnT
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Profiler(BaseDomain):
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Profiler.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Profiler.enable',
-            params
+            params,
+            False
         )
 
     def get_best_effort_coverage(
             self
-    ) -> 'GetBestEffortCoverageReturnT':
+    ) -> IResult['GetBestEffortCoverageReturnT']:
         params = {}
 
         return self._send_command(
             'Profiler.getBestEffortCoverage',
-            params
+            params,
+            True
         )
 
     def set_sampling_interval(
             self,
             interval: int
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'interval': interval,
         }
 
         return self._send_command(
             'Profiler.setSamplingInterval',
-            params
+            params,
+            False
         )
 
     def start(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Profiler.start',
-            params
+            params,
+            False
         )
 
     def start_precise_coverage(
             self,
             call_count: bool = UNDEFINED,
             detailed: bool = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(call_count):
@@ -91,65 +100,72 @@ class Profiler(BaseDomain):
 
         return self._send_command(
             'Profiler.startPreciseCoverage',
-            params
+            params,
+            False
         )
 
     def start_type_profile(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Profiler.startTypeProfile',
-            params
+            params,
+            False
         )
 
     def stop(
             self
-    ) -> 'StopReturnT':
+    ) -> IResult['StopReturnT']:
         params = {}
 
         return self._send_command(
             'Profiler.stop',
-            params
+            params,
+            True
         )
 
     def stop_precise_coverage(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Profiler.stopPreciseCoverage',
-            params
+            params,
+            False
         )
 
     def stop_type_profile(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Profiler.stopTypeProfile',
-            params
+            params,
+            False
         )
 
     def take_precise_coverage(
             self
-    ) -> 'TakePreciseCoverageReturnT':
+    ) -> IResult['TakePreciseCoverageReturnT']:
         params = {}
 
         return self._send_command(
             'Profiler.takePreciseCoverage',
-            params
+            params,
+            True
         )
 
     def take_type_profile(
             self
-    ) -> 'TakeTypeProfileReturnT':
+    ) -> IResult['TakeTypeProfileReturnT']:
         params = {}
 
         return self._send_command(
             'Profiler.takeTypeProfile',
-            params
+            params,
+            True
         )

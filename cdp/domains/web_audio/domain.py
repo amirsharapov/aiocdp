@@ -17,39 +17,46 @@ from cdp.domains.web_audio.types import (
     GetRealtimeDataReturnT,
     GraphObjectId
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class WebAudio(BaseDomain):
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'WebAudio.enable',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'WebAudio.disable',
-            params
+            params,
+            False
         )
 
     def get_realtime_data(
             self,
             context_id: GraphObjectId
-    ) -> 'GetRealtimeDataReturnT':
+    ) -> IResult['GetRealtimeDataReturnT']:
         params = {
             'contextId': context_id,
         }
 
         return self._send_command(
             'WebAudio.getRealtimeData',
-            params
+            params,
+            True
         )

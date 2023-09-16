@@ -16,48 +16,55 @@ from cdp.utils import (
 from cdp.domains.security.types import (
     CertificateErrorAction
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Security(BaseDomain):
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Security.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Security.enable',
-            params
+            params,
+            False
         )
 
     def set_ignore_certificate_errors(
             self,
             ignore: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'ignore': ignore,
         }
 
         return self._send_command(
             'Security.setIgnoreCertificateErrors',
-            params
+            params,
+            False
         )
 
     def handle_certificate_error(
             self,
             event_id: int,
             action: CertificateErrorAction
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'eventId': event_id,
             'action': action,
@@ -65,18 +72,20 @@ class Security(BaseDomain):
 
         return self._send_command(
             'Security.handleCertificateError',
-            params
+            params,
+            False
         )
 
     def set_override_certificate_errors(
             self,
             override: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'override': override,
         }
 
         return self._send_command(
             'Security.setOverrideCertificateErrors',
-            params
+            params,
+            False
         )

@@ -13,18 +13,23 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class DeviceOrientation(BaseDomain):
     def clear_device_orientation_override(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'DeviceOrientation.clearDeviceOrientationOverride',
-            params
+            params,
+            False
         )
 
     def set_device_orientation_override(
@@ -32,7 +37,7 @@ class DeviceOrientation(BaseDomain):
             alpha: float,
             beta: float,
             gamma: float
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'alpha': alpha,
             'beta': beta,
@@ -41,5 +46,6 @@ class DeviceOrientation(BaseDomain):
 
         return self._send_command(
             'DeviceOrientation.setDeviceOrientationOverride',
-            params
+            params,
+            False
         )

@@ -46,6 +46,10 @@ from cdp.domains.emulation.types import (
 from cdp.domains.page.types import (
     FrameId
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -53,74 +57,81 @@ class Network(BaseDomain):
     def set_accepted_encodings(
             self,
             encodings: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'encodings': encodings,
         }
 
         return self._send_command(
             'Network.setAcceptedEncodings',
-            params
+            params,
+            False
         )
 
     def clear_accepted_encodings_override(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Network.clearAcceptedEncodingsOverride',
-            params
+            params,
+            False
         )
 
     def can_clear_browser_cache(
             self
-    ) -> 'CanClearBrowserCacheReturnT':
+    ) -> IResult['CanClearBrowserCacheReturnT']:
         params = {}
 
         return self._send_command(
             'Network.canClearBrowserCache',
-            params
+            params,
+            True
         )
 
     def can_clear_browser_cookies(
             self
-    ) -> 'CanClearBrowserCookiesReturnT':
+    ) -> IResult['CanClearBrowserCookiesReturnT']:
         params = {}
 
         return self._send_command(
             'Network.canClearBrowserCookies',
-            params
+            params,
+            True
         )
 
     def can_emulate_network_conditions(
             self
-    ) -> 'CanEmulateNetworkConditionsReturnT':
+    ) -> IResult['CanEmulateNetworkConditionsReturnT']:
         params = {}
 
         return self._send_command(
             'Network.canEmulateNetworkConditions',
-            params
+            params,
+            True
         )
 
     def clear_browser_cache(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Network.clearBrowserCache',
-            params
+            params,
+            False
         )
 
     def clear_browser_cookies(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Network.clearBrowserCookies',
-            params
+            params,
+            False
         )
 
     def continue_intercepted_request(
@@ -133,7 +144,7 @@ class Network(BaseDomain):
             post_data: str = UNDEFINED,
             headers: Headers = UNDEFINED,
             auth_challenge_response: AuthChallengeResponse = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'interceptionId': interception_id,
         }
@@ -161,7 +172,8 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.continueInterceptedRequest',
-            params
+            params,
+            False
         )
 
     def delete_cookies(
@@ -170,7 +182,7 @@ class Network(BaseDomain):
             url: str = UNDEFINED,
             domain: str = UNDEFINED,
             path: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'name': name,
         }
@@ -186,17 +198,19 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.deleteCookies',
-            params
+            params,
+            False
         )
 
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Network.disable',
-            params
+            params,
+            False
         )
 
     def emulate_network_conditions(
@@ -206,7 +220,7 @@ class Network(BaseDomain):
             download_throughput: float,
             upload_throughput: float,
             connection_type: ConnectionType = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'offline': offline,
             'latency': latency,
@@ -219,7 +233,8 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.emulateNetworkConditions',
-            params
+            params,
+            False
         )
 
     def enable(
@@ -227,7 +242,7 @@ class Network(BaseDomain):
             max_total_buffer_size: int = UNDEFINED,
             max_resource_buffer_size: int = UNDEFINED,
             max_post_data_size: int = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(max_total_buffer_size):
@@ -241,36 +256,39 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.enable',
-            params
+            params,
+            False
         )
 
     def get_all_cookies(
             self
-    ) -> 'GetAllCookiesReturnT':
+    ) -> IResult['GetAllCookiesReturnT']:
         params = {}
 
         return self._send_command(
             'Network.getAllCookies',
-            params
+            params,
+            True
         )
 
     def get_certificate(
             self,
             origin: str
-    ) -> 'GetCertificateReturnT':
+    ) -> IResult['GetCertificateReturnT']:
         params = {
             'origin': origin,
         }
 
         return self._send_command(
             'Network.getCertificate',
-            params
+            params,
+            True
         )
 
     def get_cookies(
             self,
             urls: list = UNDEFINED
-    ) -> 'GetCookiesReturnT':
+    ) -> IResult['GetCookiesReturnT']:
         params = {}
 
         if is_defined(urls):
@@ -278,72 +296,78 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.getCookies',
-            params
+            params,
+            True
         )
 
     def get_response_body(
             self,
             request_id: RequestId
-    ) -> 'GetResponseBodyReturnT':
+    ) -> IResult['GetResponseBodyReturnT']:
         params = {
             'requestId': request_id,
         }
 
         return self._send_command(
             'Network.getResponseBody',
-            params
+            params,
+            True
         )
 
     def get_request_post_data(
             self,
             request_id: RequestId
-    ) -> 'GetRequestPostDataReturnT':
+    ) -> IResult['GetRequestPostDataReturnT']:
         params = {
             'requestId': request_id,
         }
 
         return self._send_command(
             'Network.getRequestPostData',
-            params
+            params,
+            True
         )
 
     def get_response_body_for_interception(
             self,
             interception_id: InterceptionId
-    ) -> 'GetResponseBodyForInterceptionReturnT':
+    ) -> IResult['GetResponseBodyForInterceptionReturnT']:
         params = {
             'interceptionId': interception_id,
         }
 
         return self._send_command(
             'Network.getResponseBodyForInterception',
-            params
+            params,
+            True
         )
 
     def take_response_body_for_interception_as_stream(
             self,
             interception_id: InterceptionId
-    ) -> 'TakeResponseBodyForInterceptionAsStreamReturnT':
+    ) -> IResult['TakeResponseBodyForInterceptionAsStreamReturnT']:
         params = {
             'interceptionId': interception_id,
         }
 
         return self._send_command(
             'Network.takeResponseBodyForInterceptionAsStream',
-            params
+            params,
+            True
         )
 
     def replay_xhr(
             self,
             request_id: RequestId
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'requestId': request_id,
         }
 
         return self._send_command(
             'Network.replayXHR',
-            params
+            params,
+            False
         )
 
     def search_in_response_body(
@@ -352,7 +376,7 @@ class Network(BaseDomain):
             query: str,
             case_sensitive: bool = UNDEFINED,
             is_regex: bool = UNDEFINED
-    ) -> 'SearchInResponseBodyReturnT':
+    ) -> IResult['SearchInResponseBodyReturnT']:
         params = {
             'requestId': request_id,
             'query': query,
@@ -366,46 +390,50 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.searchInResponseBody',
-            params
+            params,
+            True
         )
 
     def set_blocked_ur_ls(
             self,
             urls: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'urls': urls,
         }
 
         return self._send_command(
             'Network.setBlockedURLs',
-            params
+            params,
+            False
         )
 
     def set_bypass_service_worker(
             self,
             bypass: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'bypass': bypass,
         }
 
         return self._send_command(
             'Network.setBypassServiceWorker',
-            params
+            params,
+            False
         )
 
     def set_cache_disabled(
             self,
             cache_disabled: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'cacheDisabled': cache_disabled,
         }
 
         return self._send_command(
             'Network.setCacheDisabled',
-            params
+            params,
+            False
         )
 
     def set_cookie(
@@ -424,7 +452,7 @@ class Network(BaseDomain):
             source_scheme: CookieSourceScheme = UNDEFINED,
             source_port: int = UNDEFINED,
             partition_key: str = UNDEFINED
-    ) -> 'SetCookieReturnT':
+    ) -> IResult['SetCookieReturnT']:
         params = {
             'name': name,
             'value': value,
@@ -468,59 +496,64 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.setCookie',
-            params
+            params,
+            True
         )
 
     def set_cookies(
             self,
             cookies: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'cookies': cookies,
         }
 
         return self._send_command(
             'Network.setCookies',
-            params
+            params,
+            False
         )
 
     def set_extra_http_headers(
             self,
             headers: Headers
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'headers': headers,
         }
 
         return self._send_command(
             'Network.setExtraHTTPHeaders',
-            params
+            params,
+            False
         )
 
     def set_attach_debug_stack(
             self,
             enabled: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'enabled': enabled,
         }
 
         return self._send_command(
             'Network.setAttachDebugStack',
-            params
+            params,
+            False
         )
 
     def set_request_interception(
             self,
             patterns: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'patterns': patterns,
         }
 
         return self._send_command(
             'Network.setRequestInterception',
-            params
+            params,
+            False
         )
 
     def set_user_agent_override(
@@ -529,7 +562,7 @@ class Network(BaseDomain):
             accept_language: str = UNDEFINED,
             platform: str = UNDEFINED,
             user_agent_metadata: UserAgentMetadata = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'userAgent': user_agent,
         }
@@ -545,13 +578,14 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.setUserAgentOverride',
-            params
+            params,
+            False
         )
 
     def get_security_isolation_status(
             self,
             frame_id: FrameId = UNDEFINED
-    ) -> 'GetSecurityIsolationStatusReturnT':
+    ) -> IResult['GetSecurityIsolationStatusReturnT']:
         params = {}
 
         if is_defined(frame_id):
@@ -559,20 +593,22 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.getSecurityIsolationStatus',
-            params
+            params,
+            True
         )
 
     def enable_reporting_api(
             self,
             enable: bool
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'enable': enable,
         }
 
         return self._send_command(
             'Network.enableReportingApi',
-            params
+            params,
+            False
         )
 
     def load_network_resource(
@@ -580,7 +616,7 @@ class Network(BaseDomain):
             frame_id: FrameId,
             url: str,
             options: LoadNetworkResourceOptions = UNDEFINED
-    ) -> 'LoadNetworkResourceReturnT':
+    ) -> IResult['LoadNetworkResourceReturnT']:
         params = {
             'url': url,
             'options': options,
@@ -591,5 +627,6 @@ class Network(BaseDomain):
 
         return self._send_command(
             'Network.loadNetworkResource',
-            params
+            params,
+            True
         )

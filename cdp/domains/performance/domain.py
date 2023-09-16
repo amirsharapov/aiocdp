@@ -16,24 +16,29 @@ from cdp.utils import (
 from cdp.domains.performance.types import (
     GetMetricsReturnT
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Performance(BaseDomain):
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Performance.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self,
             time_domain: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(time_domain):
@@ -41,28 +46,31 @@ class Performance(BaseDomain):
 
         return self._send_command(
             'Performance.enable',
-            params
+            params,
+            False
         )
 
     def set_time_domain(
             self,
             time_domain: str
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'timeDomain': time_domain,
         }
 
         return self._send_command(
             'Performance.setTimeDomain',
-            params
+            params,
+            False
         )
 
     def get_metrics(
             self
-    ) -> 'GetMetricsReturnT':
+    ) -> IResult['GetMetricsReturnT']:
         params = {}
 
         return self._send_command(
             'Performance.getMetrics',
-            params
+            params,
+            True
         )

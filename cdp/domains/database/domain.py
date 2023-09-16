@@ -18,35 +18,41 @@ from cdp.domains.database.types import (
     ExecuteSQLReturnT,
     GetDatabaseTableNamesReturnT
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
 class Database(BaseDomain):
     def disable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Database.disable',
-            params
+            params,
+            False
         )
 
     def enable(
             self
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         return self._send_command(
             'Database.enable',
-            params
+            params,
+            False
         )
 
     def execute_sql(
             self,
             database_id: DatabaseId,
             query: str
-    ) -> 'ExecuteSQLReturnT':
+    ) -> IResult['ExecuteSQLReturnT']:
         params = {
             'databaseId': database_id,
             'query': query,
@@ -54,18 +60,20 @@ class Database(BaseDomain):
 
         return self._send_command(
             'Database.executeSQL',
-            params
+            params,
+            True
         )
 
     def get_database_table_names(
             self,
             database_id: DatabaseId
-    ) -> 'GetDatabaseTableNamesReturnT':
+    ) -> IResult['GetDatabaseTableNamesReturnT']:
         params = {
             'databaseId': database_id,
         }
 
         return self._send_command(
             'Database.getDatabaseTableNames',
-            params
+            params,
+            True
         )

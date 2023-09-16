@@ -13,6 +13,10 @@ from cdp.utils import (
     is_defined,
     UNDEFINED
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -20,25 +24,27 @@ class Tethering(BaseDomain):
     def bind(
             self,
             port: int
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'port': port,
         }
 
         return self._send_command(
             'Tethering.bind',
-            params
+            params,
+            False
         )
 
     def unbind(
             self,
             port: int
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'port': port,
         }
 
         return self._send_command(
             'Tethering.unbind',
-            params
+            params,
+            False
         )

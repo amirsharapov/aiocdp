@@ -183,7 +183,8 @@ def _generate_send_command_method_return_call(command: Command):
             ),
             args=[
                 ast.Constant(f'{command.parent.domain}.{command.name}'),
-                ast.Name('params')
+                ast.Name('params'),
+                ast.Constant(bool(command.returns))
             ],
             keywords=[],
             render_context={
@@ -198,9 +199,14 @@ def _generate_send_command_method_return_call(command: Command):
 
 def _generate_send_command_method_return_signature(command: Command):
     if command.returns:
-        return ast.Constant(command.name_pascal_case + 'ReturnT')
+        value = ast.Constant(command.name_pascal_case + 'ReturnT')
     else:
-        return ast.Name('None')
+        value = ast.Name('None')
+
+    return ast.Subscript(
+        value=ast.Name('IResult'),
+        slice=value
+    )
 
 
 def _generate_send_command_method(command: Command, index: int):
@@ -286,6 +292,20 @@ def generate(domain: Domain):
 
     if imports := _generate_external_type_imports(domain):
         root.body += imports
+
+    root.body.append(
+        ast.If(
+            test=ast.Name('TYPE_CHECKING'),
+            body=[
+                ast.ImportFrom(
+                    module='cdp.target.connection',
+                    names=[
+                        ast.alias('IResult')
+                    ]
+                )
+            ]
+        )
+    )
 
     root.body.append(
         _generate_class_definition(domain)

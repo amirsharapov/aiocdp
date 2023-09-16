@@ -29,6 +29,10 @@ from cdp.domains.target.types import (
 from cdp.domains.browser.types import (
     BrowserContextID
 )
+if TYPE_CHECKING:
+    from cdp.target.connection import (
+        IResult
+    )
 
 
 @dataclass
@@ -36,21 +40,22 @@ class Target(BaseDomain):
     def activate_target(
             self,
             target_id: TargetID
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'targetId': target_id,
         }
 
         return self._send_command(
             'Target.activateTarget',
-            params
+            params,
+            False
         )
 
     def attach_to_target(
             self,
             target_id: TargetID,
             flatten: bool = UNDEFINED
-    ) -> 'AttachToTargetReturnT':
+    ) -> IResult['AttachToTargetReturnT']:
         params = {
             'targetId': target_id,
         }
@@ -60,37 +65,40 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.attachToTarget',
-            params
+            params,
+            True
         )
 
     def attach_to_browser_target(
             self
-    ) -> 'AttachToBrowserTargetReturnT':
+    ) -> IResult['AttachToBrowserTargetReturnT']:
         params = {}
 
         return self._send_command(
             'Target.attachToBrowserTarget',
-            params
+            params,
+            True
         )
 
     def close_target(
             self,
             target_id: TargetID
-    ) -> 'CloseTargetReturnT':
+    ) -> IResult['CloseTargetReturnT']:
         params = {
             'targetId': target_id,
         }
 
         return self._send_command(
             'Target.closeTarget',
-            params
+            params,
+            True
         )
 
     def expose_dev_tools_protocol(
             self,
             target_id: TargetID,
             binding_name: str = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'targetId': target_id,
         }
@@ -100,7 +108,8 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.exposeDevToolsProtocol',
-            params
+            params,
+            False
         )
 
     def create_browser_context(
@@ -109,7 +118,7 @@ class Target(BaseDomain):
             proxy_server: str = UNDEFINED,
             proxy_bypass_list: str = UNDEFINED,
             origins_with_universal_network_access: list = UNDEFINED
-    ) -> 'CreateBrowserContextReturnT':
+    ) -> IResult['CreateBrowserContextReturnT']:
         params = {}
 
         if is_defined(dispose_on_detach):
@@ -126,17 +135,19 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.createBrowserContext',
-            params
+            params,
+            True
         )
 
     def get_browser_contexts(
             self
-    ) -> 'GetBrowserContextsReturnT':
+    ) -> IResult['GetBrowserContextsReturnT']:
         params = {}
 
         return self._send_command(
             'Target.getBrowserContexts',
-            params
+            params,
+            True
         )
 
     def create_target(
@@ -149,7 +160,7 @@ class Target(BaseDomain):
             new_window: bool = UNDEFINED,
             background: bool = UNDEFINED,
             for_tab: bool = UNDEFINED
-    ) -> 'CreateTargetReturnT':
+    ) -> IResult['CreateTargetReturnT']:
         params = {
             'url': url,
         }
@@ -177,14 +188,15 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.createTarget',
-            params
+            params,
+            True
         )
 
     def detach_from_target(
             self,
             session_id: SessionID = UNDEFINED,
             target_id: TargetID = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {}
 
         if is_defined(session_id):
@@ -195,26 +207,28 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.detachFromTarget',
-            params
+            params,
+            False
         )
 
     def dispose_browser_context(
             self,
             browser_context_id: BrowserContextID
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'browserContextId': browser_context_id,
         }
 
         return self._send_command(
             'Target.disposeBrowserContext',
-            params
+            params,
+            False
         )
 
     def get_target_info(
             self,
             target_id: TargetID = UNDEFINED
-    ) -> 'GetTargetInfoReturnT':
+    ) -> IResult['GetTargetInfoReturnT']:
         params = {}
 
         if is_defined(target_id):
@@ -222,13 +236,14 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.getTargetInfo',
-            params
+            params,
+            True
         )
 
     def get_targets(
             self,
             filter_: TargetFilter = UNDEFINED
-    ) -> 'GetTargetsReturnT':
+    ) -> IResult['GetTargetsReturnT']:
         params = {}
 
         if is_defined(filter):
@@ -236,7 +251,8 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.getTargets',
-            params
+            params,
+            True
         )
 
     def send_message_to_target(
@@ -244,7 +260,7 @@ class Target(BaseDomain):
             message: str,
             session_id: SessionID = UNDEFINED,
             target_id: TargetID = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'message': message,
         }
@@ -257,7 +273,8 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.sendMessageToTarget',
-            params
+            params,
+            False
         )
 
     def set_auto_attach(
@@ -266,7 +283,7 @@ class Target(BaseDomain):
             wait_for_debugger_on_start: bool,
             flatten: bool = UNDEFINED,
             filter_: TargetFilter = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'autoAttach': auto_attach,
             'waitForDebuggerOnStart': wait_for_debugger_on_start,
@@ -280,7 +297,8 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.setAutoAttach',
-            params
+            params,
+            False
         )
 
     def auto_attach_related(
@@ -288,7 +306,7 @@ class Target(BaseDomain):
             target_id: TargetID,
             wait_for_debugger_on_start: bool,
             filter_: TargetFilter = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'targetId': target_id,
             'waitForDebuggerOnStart': wait_for_debugger_on_start,
@@ -299,14 +317,15 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.autoAttachRelated',
-            params
+            params,
+            False
         )
 
     def set_discover_targets(
             self,
             discover: bool,
             filter_: TargetFilter = UNDEFINED
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'discover': discover,
         }
@@ -316,18 +335,20 @@ class Target(BaseDomain):
 
         return self._send_command(
             'Target.setDiscoverTargets',
-            params
+            params,
+            False
         )
 
     def set_remote_locations(
             self,
             locations: list
-    ) -> None:
+    ) -> IResult[None]:
         params = {
             'locations': locations,
         }
 
         return self._send_command(
             'Target.setRemoteLocations',
-            params
+            params,
+            False
         )
