@@ -14,8 +14,12 @@ from dataclasses import (
 
 if TYPE_CHECKING:
     from cdp.domains.runtime.types import (
+        ExceptionDetails,
         RemoteObject,
-        ScriptId
+        ScriptId,
+        StackTrace,
+        StackTraceId,
+        UniqueDebuggerId
     )
 
 BreakpointId = str

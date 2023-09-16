@@ -1,12 +1,11 @@
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Optional, Callable
 
 from cdp.domains.domains import Domains
-from cdp.target.connection import Connection
+from cdp.target.connection import Connection, IResult
 
 if TYPE_CHECKING:
     from cdp.chrome import Chrome
-
 
 @dataclass
 class Target:
@@ -41,12 +40,19 @@ class Target:
 
         self.active_session_id = result.session_id
 
-    def send_command(self, method: str, params: dict, expect_response: bool):
+    def send_command(
+            self,
+            method: str,
+            params: dict,
+            expect_response: bool,
+            response_hook: Callable = None
+    ) -> IResult:
         if self.active_session_id:
             params['sessionId'] = self.active_session_id
 
         return self.connection.send(
             method,
             params,
-            expect_response
+            expect_response,
+            response_hook
         )

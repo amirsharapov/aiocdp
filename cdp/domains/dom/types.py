@@ -16,6 +16,10 @@ if TYPE_CHECKING:
     from cdp.domains.page.types import (
         FrameId
     )
+    from cdp.domains.runtime.types import (
+        RemoteObject,
+        StackTrace
+    )
 
 NodeId = int
 BackendNodeId = int

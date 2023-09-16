@@ -14,6 +14,7 @@ from dataclasses import (
 
 if TYPE_CHECKING:
     from cdp.domains.runtime.types import (
+        ExecutionContextId,
         ScriptId,
         UniqueDebuggerId
     )
@@ -21,6 +22,12 @@ if TYPE_CHECKING:
         LoaderId,
         ResourceType,
         TimeSinceEpoch
+    )
+    from cdp.domains.dom.types import (
+        Rect
+    )
+    from cdp.domains.io.types import (
+        StreamHandle
     )
 
 FrameId = str

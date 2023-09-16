@@ -16,6 +16,9 @@ if TYPE_CHECKING:
     from cdp.domains.dom.types import (
         BackendNodeId
     )
+    from cdp.domains.runtime.types import (
+        RemoteObject
+    )
 
 
 @dataclass

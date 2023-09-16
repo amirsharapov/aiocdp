@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from cdp.domains.dom.types import (
         BackendNodeId,
         LogicalAxes,
+        NodeId,
         PhysicalAxes,
         PseudoType
     )

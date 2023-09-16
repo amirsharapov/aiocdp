@@ -3,7 +3,7 @@ import json
 import threading
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Optional, TypeVar, Generic
+from typing import Optional, TypeVar, Generic, Callable, Any
 
 from websocket import WebSocketApp
 
@@ -33,7 +33,13 @@ class IResult(ABC, Generic[_T]):
 @dataclass
 class IConnection(ABC):
     @abstractmethod
-    def send(self, method: str, params: dict, expect_response: bool) -> IResult[Optional[dict]]:
+    def send(
+            self,
+            method: str,
+            params: dict,
+            expect_response: bool,
+            response_hook: Callable[[dict], Any]
+    ) -> IResult[Optional[dict]]:
         ...
 
 
@@ -104,18 +110,24 @@ class Connection(IConnection):
         self.ws_thread_lock = threading.Lock()
         self.ws_thread_started = False
 
-    def _on_close(self, ws: 'WebSocketApp', status_code: int, message: str):
+    def _on_close(self, _ws: 'WebSocketApp', status_code: int, message: str):
         print(
             'Closed with context: '
             f'Status Code: {status_code}, '
             f'Message: {message}'
         )
 
-    def _on_error(self, ws: 'WebSocketApp', message: str):
-        print(message)
+    def _on_error(self, _ws: 'WebSocketApp', message: str):
+        print(
+            'Error with context: '
+            f'Message: {message}'
+        )
 
-    def _on_message(self, ws: 'WebSocketApp', message: str):
-        print(message)
+    def _on_message(self, _ws: 'WebSocketApp', message: str):
+        print(
+            'Message with context: '
+            f'Message: {message}'
+        )
 
         message = json.loads(message)
 
@@ -130,7 +142,13 @@ class Connection(IConnection):
             self.ws_thread.start()
             self.ws_thread_started = True
 
-    def send(self, method: str, params: dict, expect_response: bool) -> Result[Optional[dict]]:
+    def send(
+            self,
+            method: str,
+            params: dict,
+            expect_response: bool,
+            response_hook: Callable = None
+    ) -> Result:
         event_loop = asyncio.get_event_loop()
 
         request_id = JSONRPCRequestID.get()

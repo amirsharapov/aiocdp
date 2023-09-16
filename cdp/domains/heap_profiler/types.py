@@ -14,7 +14,8 @@ from dataclasses import (
 
 if TYPE_CHECKING:
     from cdp.domains.runtime.types import (
-        CallFrame
+        CallFrame,
+        RemoteObject
     )
 
 HeapSnapshotObjectId = str

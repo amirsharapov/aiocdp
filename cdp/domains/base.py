@@ -1,6 +1,6 @@
 from abc import ABC
 from dataclasses import dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Callable
 
 if TYPE_CHECKING:
     from cdp.target import Target
@@ -15,7 +15,7 @@ class BaseDomain(ABC):
             method: str,
             params: dict,
             expect_response: bool,
-            response_type: type | None = None
+            response_hook: Callable = None
     ):
         params = params or {}
 
@@ -23,5 +23,5 @@ class BaseDomain(ABC):
             method,
             params,
             expect_response,
-            response_type
+            response_hook
         )

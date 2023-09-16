@@ -1,6 +1,5 @@
 import ast
 from collections import defaultdict
-from typing import Literal
 
 from generator.parser.types import Domain, Type, Command
 from generator.utils import cdp_to_python_type
@@ -16,6 +15,15 @@ def _generate_domain_type_imports(domain: Domain):
                 import_tree[module_name].add(
                     ref.type
                 )
+
+    for command in domain.commands:
+        for return_ in command.returns:
+            for ref in return_.get_refs():
+                if ref.actual_domain.domain != domain.domain:
+                    module_name = ref.actual_domain.domain_snake_case
+                    import_tree[module_name].add(
+                        ref.type
+                    )
 
     imports = []
 
