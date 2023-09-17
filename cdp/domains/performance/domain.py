@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.performance.types import (
     GetMetricsReturnT
@@ -43,7 +44,7 @@ class Performance(BaseDomain):
 
     def enable(
             self,
-            time_domain: str = UNDEFINED
+            time_domain: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -58,7 +59,7 @@ class Performance(BaseDomain):
 
     def set_time_domain(
             self,
-            time_domain: str
+            time_domain: 'str'
     ) -> IResponse[None]:
         params = {
             'timeDomain': time_domain,
@@ -72,7 +73,7 @@ class Performance(BaseDomain):
 
     def get_metrics(
             self
-    ) -> IResponse['GetMetricsReturnT']:
+    ) -> IResponse[GetMetricsReturnT]:
         params = {}
 
         return self._send_command(

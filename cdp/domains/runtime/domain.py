@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.runtime.types import (
     AwaitPromiseReturnT,
@@ -45,10 +46,10 @@ if TYPE_CHECKING:
 class Runtime(BaseDomain):
     def await_promise(
             self,
-            promise_object_id: RemoteObjectId,
-            return_by_value: bool = UNDEFINED,
-            generate_preview: bool = UNDEFINED
-    ) -> IResponse['AwaitPromiseReturnT']:
+            promise_object_id: 'RemoteObjectId',
+            return_by_value: 'bool' = UNDEFINED,
+            generate_preview: 'bool' = UNDEFINED
+    ) -> IResponse[AwaitPromiseReturnT]:
         params = {
             'promiseObjectId': promise_object_id,
         }
@@ -72,17 +73,17 @@ class Runtime(BaseDomain):
 
     def call_function_on(
             self,
-            function_declaration: str,
-            object_id: RemoteObjectId = UNDEFINED,
-            arguments: list = UNDEFINED,
-            silent: bool = UNDEFINED,
-            return_by_value: bool = UNDEFINED,
-            generate_preview: bool = UNDEFINED,
-            user_gesture: bool = UNDEFINED,
-            await_promise: bool = UNDEFINED,
-            execution_context_id: ExecutionContextId = UNDEFINED,
-            object_group: str = UNDEFINED
-    ) -> IResponse['CallFunctionOnReturnT']:
+            function_declaration: 'str',
+            object_id: 'RemoteObjectId' = UNDEFINED,
+            arguments: 'list' = UNDEFINED,
+            silent: 'bool' = UNDEFINED,
+            return_by_value: 'bool' = UNDEFINED,
+            generate_preview: 'bool' = UNDEFINED,
+            user_gesture: 'bool' = UNDEFINED,
+            await_promise: 'bool' = UNDEFINED,
+            execution_context_id: 'ExecutionContextId' = UNDEFINED,
+            object_group: 'str' = UNDEFINED
+    ) -> IResponse[CallFunctionOnReturnT]:
         params = {
             'functionDeclaration': function_declaration,
         }
@@ -91,7 +92,10 @@ class Runtime(BaseDomain):
             params['objectId'] = object_id
 
         if is_defined(arguments):
-            params['arguments'] = arguments
+            params['arguments'] = [
+                to_dict(item, 'camel')
+                for item in arguments
+            ]
 
         if is_defined(silent):
             params['silent'] = silent
@@ -127,11 +131,11 @@ class Runtime(BaseDomain):
 
     def compile_script(
             self,
-            expression: str,
-            source_url: str,
-            persist_script: bool,
-            execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> IResponse['CompileScriptReturnT']:
+            expression: 'str',
+            source_url: 'str',
+            persist_script: 'bool',
+            execution_context_id: 'ExecutionContextId' = UNDEFINED
+    ) -> IResponse[CompileScriptReturnT]:
         params = {
             'expression': expression,
             'sourceURL': source_url,
@@ -187,18 +191,18 @@ class Runtime(BaseDomain):
 
     def evaluate(
             self,
-            expression: str,
-            object_group: str = UNDEFINED,
-            include_command_line_api: bool = UNDEFINED,
-            silent: bool = UNDEFINED,
-            context_id: ExecutionContextId = UNDEFINED,
-            return_by_value: bool = UNDEFINED,
-            generate_preview: bool = UNDEFINED,
-            user_gesture: bool = UNDEFINED,
-            await_promise: bool = UNDEFINED,
-            throw_on_side_effect: bool = UNDEFINED,
-            timeout: TimeDelta = UNDEFINED
-    ) -> IResponse['EvaluateReturnT']:
+            expression: 'str',
+            object_group: 'str' = UNDEFINED,
+            include_command_line_api: 'bool' = UNDEFINED,
+            silent: 'bool' = UNDEFINED,
+            context_id: 'ExecutionContextId' = UNDEFINED,
+            return_by_value: 'bool' = UNDEFINED,
+            generate_preview: 'bool' = UNDEFINED,
+            user_gesture: 'bool' = UNDEFINED,
+            await_promise: 'bool' = UNDEFINED,
+            throw_on_side_effect: 'bool' = UNDEFINED,
+            timeout: 'TimeDelta' = UNDEFINED
+    ) -> IResponse[EvaluateReturnT]:
         params = {
             'expression': expression,
         }
@@ -246,7 +250,7 @@ class Runtime(BaseDomain):
 
     def get_isolate_id(
             self
-    ) -> IResponse['GetIsolateIdReturnT']:
+    ) -> IResponse[GetIsolateIdReturnT]:
         params = {}
 
         return self._send_command(
@@ -262,7 +266,7 @@ class Runtime(BaseDomain):
 
     def get_heap_usage(
             self
-    ) -> IResponse['GetHeapUsageReturnT']:
+    ) -> IResponse[GetHeapUsageReturnT]:
         params = {}
 
         return self._send_command(
@@ -278,11 +282,11 @@ class Runtime(BaseDomain):
 
     def get_properties(
             self,
-            object_id: RemoteObjectId,
-            own_properties: bool = UNDEFINED,
-            accessor_properties_only: bool = UNDEFINED,
-            generate_preview: bool = UNDEFINED
-    ) -> IResponse['GetPropertiesReturnT']:
+            object_id: 'RemoteObjectId',
+            own_properties: 'bool' = UNDEFINED,
+            accessor_properties_only: 'bool' = UNDEFINED,
+            generate_preview: 'bool' = UNDEFINED
+    ) -> IResponse[GetPropertiesReturnT]:
         params = {
             'objectId': object_id,
         }
@@ -309,8 +313,8 @@ class Runtime(BaseDomain):
 
     def global_lexical_scope_names(
             self,
-            execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> IResponse['GlobalLexicalScopeNamesReturnT']:
+            execution_context_id: 'ExecutionContextId' = UNDEFINED
+    ) -> IResponse[GlobalLexicalScopeNamesReturnT]:
         params = {}
 
         if is_defined(execution_context_id):
@@ -329,9 +333,9 @@ class Runtime(BaseDomain):
 
     def query_objects(
             self,
-            prototype_object_id: RemoteObjectId,
-            object_group: str = UNDEFINED
-    ) -> IResponse['QueryObjectsReturnT']:
+            prototype_object_id: 'RemoteObjectId',
+            object_group: 'str' = UNDEFINED
+    ) -> IResponse[QueryObjectsReturnT]:
         params = {
             'prototypeObjectId': prototype_object_id,
         }
@@ -352,7 +356,7 @@ class Runtime(BaseDomain):
 
     def release_object(
             self,
-            object_id: RemoteObjectId
+            object_id: 'RemoteObjectId'
     ) -> IResponse[None]:
         params = {
             'objectId': object_id,
@@ -366,7 +370,7 @@ class Runtime(BaseDomain):
 
     def release_object_group(
             self,
-            object_group: str
+            object_group: 'str'
     ) -> IResponse[None]:
         params = {
             'objectGroup': object_group,
@@ -391,15 +395,15 @@ class Runtime(BaseDomain):
 
     def run_script(
             self,
-            script_id: ScriptId,
-            execution_context_id: ExecutionContextId = UNDEFINED,
-            object_group: str = UNDEFINED,
-            silent: bool = UNDEFINED,
-            include_command_line_api: bool = UNDEFINED,
-            return_by_value: bool = UNDEFINED,
-            generate_preview: bool = UNDEFINED,
-            await_promise: bool = UNDEFINED
-    ) -> IResponse['RunScriptReturnT']:
+            script_id: 'ScriptId',
+            execution_context_id: 'ExecutionContextId' = UNDEFINED,
+            object_group: 'str' = UNDEFINED,
+            silent: 'bool' = UNDEFINED,
+            include_command_line_api: 'bool' = UNDEFINED,
+            return_by_value: 'bool' = UNDEFINED,
+            generate_preview: 'bool' = UNDEFINED,
+            await_promise: 'bool' = UNDEFINED
+    ) -> IResponse[RunScriptReturnT]:
         params = {
             'scriptId': script_id,
         }
@@ -438,7 +442,7 @@ class Runtime(BaseDomain):
 
     def set_async_call_stack_depth(
             self,
-            max_depth: int
+            max_depth: 'int'
     ) -> IResponse[None]:
         params = {
             'maxDepth': max_depth,
@@ -452,7 +456,7 @@ class Runtime(BaseDomain):
 
     def set_custom_object_formatter_enabled(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -466,7 +470,7 @@ class Runtime(BaseDomain):
 
     def set_max_call_stack_size_to_capture(
             self,
-            size: int
+            size: 'int'
     ) -> IResponse[None]:
         params = {
             'size': size,
@@ -491,8 +495,8 @@ class Runtime(BaseDomain):
 
     def add_binding(
             self,
-            name: str,
-            execution_context_id: ExecutionContextId = UNDEFINED
+            name: 'str',
+            execution_context_id: 'ExecutionContextId' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'name': name,
@@ -509,7 +513,7 @@ class Runtime(BaseDomain):
 
     def remove_binding(
             self,
-            name: str
+            name: 'str'
     ) -> IResponse[None]:
         params = {
             'name': name,

@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -29,7 +30,7 @@ if TYPE_CHECKING:
 class Cast(BaseDomain):
     def enable(
             self,
-            presentation_url: str = UNDEFINED
+            presentation_url: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -55,7 +56,7 @@ class Cast(BaseDomain):
 
     def set_sink_to_use(
             self,
-            sink_name: str
+            sink_name: 'str'
     ) -> IResponse[None]:
         params = {
             'sinkName': sink_name,
@@ -69,7 +70,7 @@ class Cast(BaseDomain):
 
     def start_desktop_mirroring(
             self,
-            sink_name: str
+            sink_name: 'str'
     ) -> IResponse[None]:
         params = {
             'sinkName': sink_name,
@@ -83,7 +84,7 @@ class Cast(BaseDomain):
 
     def start_tab_mirroring(
             self,
-            sink_name: str
+            sink_name: 'str'
     ) -> IResponse[None]:
         params = {
             'sinkName': sink_name,
@@ -97,7 +98,7 @@ class Cast(BaseDomain):
 
     def stop_casting(
             self,
-            sink_name: str
+            sink_name: 'str'
     ) -> IResponse[None]:
         params = {
             'sinkName': sink_name,

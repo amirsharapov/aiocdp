@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.dom_storage.types import (
     GetDOMStorageItemsReturnT,
@@ -33,10 +34,13 @@ if TYPE_CHECKING:
 class DOMStorage(BaseDomain):
     def clear(
             self,
-            storage_id: StorageId
+            storage_id: 'StorageId'
     ) -> IResponse[None]:
         params = {
-            'storageId': storage_id,
+            'storageId': to_dict(
+                storage_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -69,10 +73,13 @@ class DOMStorage(BaseDomain):
 
     def get_dom_storage_items(
             self,
-            storage_id: StorageId
-    ) -> IResponse['GetDOMStorageItemsReturnT']:
+            storage_id: 'StorageId'
+    ) -> IResponse[GetDOMStorageItemsReturnT]:
         params = {
-            'storageId': storage_id,
+            'storageId': to_dict(
+                storage_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -88,11 +95,14 @@ class DOMStorage(BaseDomain):
 
     def remove_dom_storage_item(
             self,
-            storage_id: StorageId,
-            key: str
+            storage_id: 'StorageId',
+            key: 'str'
     ) -> IResponse[None]:
         params = {
-            'storageId': storage_id,
+            'storageId': to_dict(
+                storage_id,
+                'camel'
+            ),
             'key': key,
         }
 
@@ -104,12 +114,15 @@ class DOMStorage(BaseDomain):
 
     def set_dom_storage_item(
             self,
-            storage_id: StorageId,
-            key: str,
-            value: str
+            storage_id: 'StorageId',
+            key: 'str',
+            value: 'str'
     ) -> IResponse[None]:
         params = {
-            'storageId': storage_id,
+            'storageId': to_dict(
+                storage_id,
+                'camel'
+            ),
             'key': key,
             'value': value,
         }

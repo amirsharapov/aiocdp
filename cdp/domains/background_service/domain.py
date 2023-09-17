@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.background_service.types import (
     ServiceName
@@ -32,7 +33,7 @@ if TYPE_CHECKING:
 class BackgroundService(BaseDomain):
     def start_observing(
             self,
-            service: ServiceName
+            service: 'ServiceName'
     ) -> IResponse[None]:
         params = {
             'service': service,
@@ -46,7 +47,7 @@ class BackgroundService(BaseDomain):
 
     def stop_observing(
             self,
-            service: ServiceName
+            service: 'ServiceName'
     ) -> IResponse[None]:
         params = {
             'service': service,
@@ -60,8 +61,8 @@ class BackgroundService(BaseDomain):
 
     def set_recording(
             self,
-            should_record: bool,
-            service: ServiceName
+            should_record: 'bool',
+            service: 'ServiceName'
     ) -> IResponse[None]:
         params = {
             'shouldRecord': should_record,
@@ -76,7 +77,7 @@ class BackgroundService(BaseDomain):
 
     def clear_events(
             self,
-            service: ServiceName
+            service: 'ServiceName'
     ) -> IResponse[None]:
         params = {
             'service': service,

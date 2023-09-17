@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.storage.types import (
     ClearTrustTokensReturnT,
@@ -47,8 +48,8 @@ if TYPE_CHECKING:
 class Storage(BaseDomain):
     def get_storage_key_for_frame(
             self,
-            frame_id: FrameId
-    ) -> IResponse['GetStorageKeyForFrameReturnT']:
+            frame_id: 'FrameId'
+    ) -> IResponse[GetStorageKeyForFrameReturnT]:
         params = {
             'frameId': frame_id,
         }
@@ -66,8 +67,8 @@ class Storage(BaseDomain):
 
     def clear_data_for_origin(
             self,
-            origin: str,
-            storage_types: str
+            origin: 'str',
+            storage_types: 'str'
     ) -> IResponse[None]:
         params = {
             'origin': origin,
@@ -82,8 +83,8 @@ class Storage(BaseDomain):
 
     def clear_data_for_storage_key(
             self,
-            storage_key: str,
-            storage_types: str
+            storage_key: 'str',
+            storage_types: 'str'
     ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
@@ -98,8 +99,8 @@ class Storage(BaseDomain):
 
     def get_cookies(
             self,
-            browser_context_id: BrowserContextID = UNDEFINED
-    ) -> IResponse['GetCookiesReturnT']:
+            browser_context_id: 'BrowserContextID' = UNDEFINED
+    ) -> IResponse[GetCookiesReturnT]:
         params = {}
 
         if is_defined(browser_context_id):
@@ -118,11 +119,14 @@ class Storage(BaseDomain):
 
     def set_cookies(
             self,
-            cookies: list,
-            browser_context_id: BrowserContextID = UNDEFINED
+            cookies: 'list',
+            browser_context_id: 'BrowserContextID' = UNDEFINED
     ) -> IResponse[None]:
         params = {
-            'cookies': cookies,
+            'cookies': [
+                to_dict(item, 'camel')
+                for item in cookies
+            ],
         }
 
         if is_defined(browser_context_id):
@@ -136,7 +140,7 @@ class Storage(BaseDomain):
 
     def clear_cookies(
             self,
-            browser_context_id: BrowserContextID = UNDEFINED
+            browser_context_id: 'BrowserContextID' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -151,8 +155,8 @@ class Storage(BaseDomain):
 
     def get_usage_and_quota(
             self,
-            origin: str
-    ) -> IResponse['GetUsageAndQuotaReturnT']:
+            origin: 'str'
+    ) -> IResponse[GetUsageAndQuotaReturnT]:
         params = {
             'origin': origin,
         }
@@ -170,8 +174,8 @@ class Storage(BaseDomain):
 
     def override_quota_for_origin(
             self,
-            origin: str,
-            quota_size: float = UNDEFINED
+            origin: 'str',
+            quota_size: 'float' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'origin': origin,
@@ -188,7 +192,7 @@ class Storage(BaseDomain):
 
     def track_cache_storage_for_origin(
             self,
-            origin: str
+            origin: 'str'
     ) -> IResponse[None]:
         params = {
             'origin': origin,
@@ -202,7 +206,7 @@ class Storage(BaseDomain):
 
     def track_cache_storage_for_storage_key(
             self,
-            storage_key: str
+            storage_key: 'str'
     ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
@@ -216,7 +220,7 @@ class Storage(BaseDomain):
 
     def track_indexed_db_for_origin(
             self,
-            origin: str
+            origin: 'str'
     ) -> IResponse[None]:
         params = {
             'origin': origin,
@@ -230,7 +234,7 @@ class Storage(BaseDomain):
 
     def track_indexed_db_for_storage_key(
             self,
-            storage_key: str
+            storage_key: 'str'
     ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
@@ -244,7 +248,7 @@ class Storage(BaseDomain):
 
     def untrack_cache_storage_for_origin(
             self,
-            origin: str
+            origin: 'str'
     ) -> IResponse[None]:
         params = {
             'origin': origin,
@@ -258,7 +262,7 @@ class Storage(BaseDomain):
 
     def untrack_cache_storage_for_storage_key(
             self,
-            storage_key: str
+            storage_key: 'str'
     ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
@@ -272,7 +276,7 @@ class Storage(BaseDomain):
 
     def untrack_indexed_db_for_origin(
             self,
-            origin: str
+            origin: 'str'
     ) -> IResponse[None]:
         params = {
             'origin': origin,
@@ -286,7 +290,7 @@ class Storage(BaseDomain):
 
     def untrack_indexed_db_for_storage_key(
             self,
-            storage_key: str
+            storage_key: 'str'
     ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
@@ -300,7 +304,7 @@ class Storage(BaseDomain):
 
     def get_trust_tokens(
             self
-    ) -> IResponse['GetTrustTokensReturnT']:
+    ) -> IResponse[GetTrustTokensReturnT]:
         params = {}
 
         return self._send_command(
@@ -316,8 +320,8 @@ class Storage(BaseDomain):
 
     def clear_trust_tokens(
             self,
-            issuer_origin: str
-    ) -> IResponse['ClearTrustTokensReturnT']:
+            issuer_origin: 'str'
+    ) -> IResponse[ClearTrustTokensReturnT]:
         params = {
             'issuerOrigin': issuer_origin,
         }
@@ -335,9 +339,9 @@ class Storage(BaseDomain):
 
     def get_interest_group_details(
             self,
-            owner_origin: str,
-            name: str
-    ) -> IResponse['GetInterestGroupDetailsReturnT']:
+            owner_origin: 'str',
+            name: 'str'
+    ) -> IResponse[GetInterestGroupDetailsReturnT]:
         params = {
             'ownerOrigin': owner_origin,
             'name': name,
@@ -356,7 +360,7 @@ class Storage(BaseDomain):
 
     def set_interest_group_tracking(
             self,
-            enable: bool
+            enable: 'bool'
     ) -> IResponse[None]:
         params = {
             'enable': enable,
@@ -370,8 +374,8 @@ class Storage(BaseDomain):
 
     def get_shared_storage_metadata(
             self,
-            owner_origin: str
-    ) -> IResponse['GetSharedStorageMetadataReturnT']:
+            owner_origin: 'str'
+    ) -> IResponse[GetSharedStorageMetadataReturnT]:
         params = {
             'ownerOrigin': owner_origin,
         }
@@ -389,8 +393,8 @@ class Storage(BaseDomain):
 
     def get_shared_storage_entries(
             self,
-            owner_origin: str
-    ) -> IResponse['GetSharedStorageEntriesReturnT']:
+            owner_origin: 'str'
+    ) -> IResponse[GetSharedStorageEntriesReturnT]:
         params = {
             'ownerOrigin': owner_origin,
         }
@@ -408,10 +412,10 @@ class Storage(BaseDomain):
 
     def set_shared_storage_entry(
             self,
-            owner_origin: str,
-            key: str,
-            value: str,
-            ignore_if_present: bool = UNDEFINED
+            owner_origin: 'str',
+            key: 'str',
+            value: 'str',
+            ignore_if_present: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'ownerOrigin': owner_origin,
@@ -430,8 +434,8 @@ class Storage(BaseDomain):
 
     def delete_shared_storage_entry(
             self,
-            owner_origin: str,
-            key: str
+            owner_origin: 'str',
+            key: 'str'
     ) -> IResponse[None]:
         params = {
             'ownerOrigin': owner_origin,
@@ -446,7 +450,7 @@ class Storage(BaseDomain):
 
     def clear_shared_storage_entries(
             self,
-            owner_origin: str
+            owner_origin: 'str'
     ) -> IResponse[None]:
         params = {
             'ownerOrigin': owner_origin,
@@ -460,7 +464,7 @@ class Storage(BaseDomain):
 
     def reset_shared_storage_budget(
             self,
-            owner_origin: str
+            owner_origin: 'str'
     ) -> IResponse[None]:
         params = {
             'ownerOrigin': owner_origin,
@@ -474,7 +478,7 @@ class Storage(BaseDomain):
 
     def set_shared_storage_tracking(
             self,
-            enable: bool
+            enable: 'bool'
     ) -> IResponse[None]:
         params = {
             'enable': enable,
@@ -488,8 +492,8 @@ class Storage(BaseDomain):
 
     def set_storage_bucket_tracking(
             self,
-            storage_key: str,
-            enable: bool
+            storage_key: 'str',
+            enable: 'bool'
     ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
@@ -504,10 +508,13 @@ class Storage(BaseDomain):
 
     def delete_storage_bucket(
             self,
-            bucket: StorageBucket
+            bucket: 'StorageBucket'
     ) -> IResponse[None]:
         params = {
-            'bucket': bucket,
+            'bucket': to_dict(
+                bucket,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -518,7 +525,7 @@ class Storage(BaseDomain):
 
     def run_bounce_tracking_mitigations(
             self
-    ) -> IResponse['RunBounceTrackingMitigationsReturnT']:
+    ) -> IResponse[RunBounceTrackingMitigationsReturnT]:
         params = {}
 
         return self._send_command(
@@ -534,7 +541,7 @@ class Storage(BaseDomain):
 
     def set_attribution_reporting_local_testing_mode(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -548,7 +555,7 @@ class Storage(BaseDomain):
 
     def set_attribution_reporting_tracking(
             self,
-            enable: bool
+            enable: 'bool'
     ) -> IResponse[None]:
         params = {
             'enable': enable,

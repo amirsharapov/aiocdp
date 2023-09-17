@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.schema.types import (
     GetDomainsReturnT
@@ -32,7 +33,7 @@ if TYPE_CHECKING:
 class Schema(BaseDomain):
     def get_domains(
             self
-    ) -> IResponse['GetDomainsReturnT']:
+    ) -> IResponse[GetDomainsReturnT]:
         params = {}
 
         return self._send_command(

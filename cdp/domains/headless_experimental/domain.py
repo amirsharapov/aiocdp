@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.headless_experimental.types import (
     BeginFrameReturnT,
@@ -33,11 +34,11 @@ if TYPE_CHECKING:
 class HeadlessExperimental(BaseDomain):
     def begin_frame(
             self,
-            frame_time_ticks: float = UNDEFINED,
-            interval: float = UNDEFINED,
-            no_display_updates: bool = UNDEFINED,
-            screenshot: ScreenshotParams = UNDEFINED
-    ) -> IResponse['BeginFrameReturnT']:
+            frame_time_ticks: 'float' = UNDEFINED,
+            interval: 'float' = UNDEFINED,
+            no_display_updates: 'bool' = UNDEFINED,
+            screenshot: 'ScreenshotParams' = UNDEFINED
+    ) -> IResponse[BeginFrameReturnT]:
         params = {}
 
         if is_defined(frame_time_ticks):
@@ -50,7 +51,10 @@ class HeadlessExperimental(BaseDomain):
             params['noDisplayUpdates'] = no_display_updates
 
         if is_defined(screenshot):
-            params['screenshot'] = screenshot
+            params['screenshot'] = to_dict(
+                screenshot,
+                'camel'
+            )
 
         return self._send_command(
             'HeadlessExperimental.beginFrame',

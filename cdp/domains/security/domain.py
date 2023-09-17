@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.security.types import (
     CertificateErrorAction
@@ -54,7 +55,7 @@ class Security(BaseDomain):
 
     def set_ignore_certificate_errors(
             self,
-            ignore: bool
+            ignore: 'bool'
     ) -> IResponse[None]:
         params = {
             'ignore': ignore,
@@ -68,8 +69,8 @@ class Security(BaseDomain):
 
     def handle_certificate_error(
             self,
-            event_id: int,
-            action: CertificateErrorAction
+            event_id: 'int',
+            action: 'CertificateErrorAction'
     ) -> IResponse[None]:
         params = {
             'eventId': event_id,
@@ -84,7 +85,7 @@ class Security(BaseDomain):
 
     def set_override_certificate_errors(
             self,
-            override: bool
+            override: 'bool'
     ) -> IResponse[None]:
         params = {
             'override': override,

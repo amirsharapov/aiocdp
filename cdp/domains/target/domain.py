@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.target.types import (
     AttachToBrowserTargetReturnT,
@@ -45,7 +46,7 @@ if TYPE_CHECKING:
 class Target(BaseDomain):
     def activate_target(
             self,
-            target_id: TargetID
+            target_id: 'TargetID'
     ) -> IResponse[None]:
         params = {
             'targetId': target_id,
@@ -59,9 +60,9 @@ class Target(BaseDomain):
 
     def attach_to_target(
             self,
-            target_id: TargetID,
-            flatten: bool = UNDEFINED
-    ) -> IResponse['AttachToTargetReturnT']:
+            target_id: 'TargetID',
+            flatten: 'bool' = UNDEFINED
+    ) -> IResponse[AttachToTargetReturnT]:
         params = {
             'targetId': target_id,
         }
@@ -82,7 +83,7 @@ class Target(BaseDomain):
 
     def attach_to_browser_target(
             self
-    ) -> IResponse['AttachToBrowserTargetReturnT']:
+    ) -> IResponse[AttachToBrowserTargetReturnT]:
         params = {}
 
         return self._send_command(
@@ -98,8 +99,8 @@ class Target(BaseDomain):
 
     def close_target(
             self,
-            target_id: TargetID
-    ) -> IResponse['CloseTargetReturnT']:
+            target_id: 'TargetID'
+    ) -> IResponse[CloseTargetReturnT]:
         params = {
             'targetId': target_id,
         }
@@ -117,8 +118,8 @@ class Target(BaseDomain):
 
     def expose_dev_tools_protocol(
             self,
-            target_id: TargetID,
-            binding_name: str = UNDEFINED
+            target_id: 'TargetID',
+            binding_name: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'targetId': target_id,
@@ -135,11 +136,11 @@ class Target(BaseDomain):
 
     def create_browser_context(
             self,
-            dispose_on_detach: bool = UNDEFINED,
-            proxy_server: str = UNDEFINED,
-            proxy_bypass_list: str = UNDEFINED,
-            origins_with_universal_network_access: list = UNDEFINED
-    ) -> IResponse['CreateBrowserContextReturnT']:
+            dispose_on_detach: 'bool' = UNDEFINED,
+            proxy_server: 'str' = UNDEFINED,
+            proxy_bypass_list: 'str' = UNDEFINED,
+            origins_with_universal_network_access: 'list' = UNDEFINED
+    ) -> IResponse[CreateBrowserContextReturnT]:
         params = {}
 
         if is_defined(dispose_on_detach):
@@ -167,7 +168,7 @@ class Target(BaseDomain):
 
     def get_browser_contexts(
             self
-    ) -> IResponse['GetBrowserContextsReturnT']:
+    ) -> IResponse[GetBrowserContextsReturnT]:
         params = {}
 
         return self._send_command(
@@ -183,15 +184,15 @@ class Target(BaseDomain):
 
     def create_target(
             self,
-            url: str,
-            width: int = UNDEFINED,
-            height: int = UNDEFINED,
-            browser_context_id: BrowserContextID = UNDEFINED,
-            enable_begin_frame_control: bool = UNDEFINED,
-            new_window: bool = UNDEFINED,
-            background: bool = UNDEFINED,
-            for_tab: bool = UNDEFINED
-    ) -> IResponse['CreateTargetReturnT']:
+            url: 'str',
+            width: 'int' = UNDEFINED,
+            height: 'int' = UNDEFINED,
+            browser_context_id: 'BrowserContextID' = UNDEFINED,
+            enable_begin_frame_control: 'bool' = UNDEFINED,
+            new_window: 'bool' = UNDEFINED,
+            background: 'bool' = UNDEFINED,
+            for_tab: 'bool' = UNDEFINED
+    ) -> IResponse[CreateTargetReturnT]:
         params = {
             'url': url,
         }
@@ -230,8 +231,8 @@ class Target(BaseDomain):
 
     def detach_from_target(
             self,
-            session_id: SessionID = UNDEFINED,
-            target_id: TargetID = UNDEFINED
+            session_id: 'SessionID' = UNDEFINED,
+            target_id: 'TargetID' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -249,7 +250,7 @@ class Target(BaseDomain):
 
     def dispose_browser_context(
             self,
-            browser_context_id: BrowserContextID
+            browser_context_id: 'BrowserContextID'
     ) -> IResponse[None]:
         params = {
             'browserContextId': browser_context_id,
@@ -263,8 +264,8 @@ class Target(BaseDomain):
 
     def get_target_info(
             self,
-            target_id: TargetID = UNDEFINED
-    ) -> IResponse['GetTargetInfoReturnT']:
+            target_id: 'TargetID' = UNDEFINED
+    ) -> IResponse[GetTargetInfoReturnT]:
         params = {}
 
         if is_defined(target_id):
@@ -283,12 +284,12 @@ class Target(BaseDomain):
 
     def get_targets(
             self,
-            filter_: TargetFilter = UNDEFINED
-    ) -> IResponse['GetTargetsReturnT']:
+            filter_: 'TargetFilter' = UNDEFINED
+    ) -> IResponse[GetTargetsReturnT]:
         params = {}
 
-        if is_defined(filter):
-            params['filter'] = filter
+        if is_defined(filter_):
+            params['filter'] = filter_
 
         return self._send_command(
             'Target.getTargets',
@@ -303,9 +304,9 @@ class Target(BaseDomain):
 
     def send_message_to_target(
             self,
-            message: str,
-            session_id: SessionID = UNDEFINED,
-            target_id: TargetID = UNDEFINED
+            message: 'str',
+            session_id: 'SessionID' = UNDEFINED,
+            target_id: 'TargetID' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'message': message,
@@ -325,10 +326,10 @@ class Target(BaseDomain):
 
     def set_auto_attach(
             self,
-            auto_attach: bool,
-            wait_for_debugger_on_start: bool,
-            flatten: bool = UNDEFINED,
-            filter_: TargetFilter = UNDEFINED
+            auto_attach: 'bool',
+            wait_for_debugger_on_start: 'bool',
+            flatten: 'bool' = UNDEFINED,
+            filter_: 'TargetFilter' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'autoAttach': auto_attach,
@@ -338,8 +339,8 @@ class Target(BaseDomain):
         if is_defined(flatten):
             params['flatten'] = flatten
 
-        if is_defined(filter):
-            params['filter'] = filter
+        if is_defined(filter_):
+            params['filter'] = filter_
 
         return self._send_command(
             'Target.setAutoAttach',
@@ -349,17 +350,17 @@ class Target(BaseDomain):
 
     def auto_attach_related(
             self,
-            target_id: TargetID,
-            wait_for_debugger_on_start: bool,
-            filter_: TargetFilter = UNDEFINED
+            target_id: 'TargetID',
+            wait_for_debugger_on_start: 'bool',
+            filter_: 'TargetFilter' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'targetId': target_id,
             'waitForDebuggerOnStart': wait_for_debugger_on_start,
         }
 
-        if is_defined(filter):
-            params['filter'] = filter
+        if is_defined(filter_):
+            params['filter'] = filter_
 
         return self._send_command(
             'Target.autoAttachRelated',
@@ -369,15 +370,15 @@ class Target(BaseDomain):
 
     def set_discover_targets(
             self,
-            discover: bool,
-            filter_: TargetFilter = UNDEFINED
+            discover: 'bool',
+            filter_: 'TargetFilter' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'discover': discover,
         }
 
-        if is_defined(filter):
-            params['filter'] = filter
+        if is_defined(filter_):
+            params['filter'] = filter_
 
         return self._send_command(
             'Target.setDiscoverTargets',
@@ -387,10 +388,13 @@ class Target(BaseDomain):
 
     def set_remote_locations(
             self,
-            locations: list
+            locations: 'list'
     ) -> IResponse[None]:
         params = {
-            'locations': locations,
+            'locations': [
+                to_dict(item, 'camel')
+                for item in locations
+            ],
         }
 
         return self._send_command(

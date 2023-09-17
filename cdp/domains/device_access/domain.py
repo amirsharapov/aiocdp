@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.device_access.types import (
     DeviceId,
@@ -55,8 +56,8 @@ class DeviceAccess(BaseDomain):
 
     def select_prompt(
             self,
-            id_: RequestId,
-            device_id: DeviceId
+            id_: 'RequestId',
+            device_id: 'DeviceId'
     ) -> IResponse[None]:
         params = {
             'id': id_,
@@ -71,7 +72,7 @@ class DeviceAccess(BaseDomain):
 
     def cancel_prompt(
             self,
-            id_: RequestId
+            id_: 'RequestId'
     ) -> IResponse[None]:
         params = {
             'id': id_,

@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.audits.types import (
     CheckFormsIssuesReturnT,
@@ -36,11 +37,11 @@ if TYPE_CHECKING:
 class Audits(BaseDomain):
     def get_encoded_response(
             self,
-            request_id: RequestId,
-            encoding: str,
-            quality: float = UNDEFINED,
-            size_only: bool = UNDEFINED
-    ) -> IResponse['GetEncodedResponseReturnT']:
+            request_id: 'RequestId',
+            encoding: 'str',
+            quality: 'float' = UNDEFINED,
+            size_only: 'bool' = UNDEFINED
+    ) -> IResponse[GetEncodedResponseReturnT]:
         params = {
             'requestId': request_id,
             'encoding': encoding,
@@ -87,7 +88,7 @@ class Audits(BaseDomain):
 
     def check_contrast(
             self,
-            report_aaa: bool = UNDEFINED
+            report_aaa: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -102,7 +103,7 @@ class Audits(BaseDomain):
 
     def check_forms_issues(
             self
-    ) -> IResponse['CheckFormsIssuesReturnT']:
+    ) -> IResponse[CheckFormsIssuesReturnT]:
         params = {}
 
         return self._send_command(

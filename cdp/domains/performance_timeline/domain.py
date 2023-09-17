@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -29,7 +30,7 @@ if TYPE_CHECKING:
 class PerformanceTimeline(BaseDomain):
     def enable(
             self,
-            event_types: list
+            event_types: 'list'
     ) -> IResponse[None]:
         params = {
             'eventTypes': event_types,

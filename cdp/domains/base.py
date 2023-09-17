@@ -17,8 +17,6 @@ class BaseDomain(ABC):
             expect_response: bool,
             response_hook: Callable = None
     ):
-        params = params or {}
-
         return self.target.send_command(
             method,
             params,

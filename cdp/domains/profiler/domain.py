@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.profiler.types import (
     GetBestEffortCoverageReturnT,
@@ -57,7 +58,7 @@ class Profiler(BaseDomain):
 
     def get_best_effort_coverage(
             self
-    ) -> IResponse['GetBestEffortCoverageReturnT']:
+    ) -> IResponse[GetBestEffortCoverageReturnT]:
         params = {}
 
         return self._send_command(
@@ -73,7 +74,7 @@ class Profiler(BaseDomain):
 
     def set_sampling_interval(
             self,
-            interval: int
+            interval: 'int'
     ) -> IResponse[None]:
         params = {
             'interval': interval,
@@ -98,8 +99,8 @@ class Profiler(BaseDomain):
 
     def start_precise_coverage(
             self,
-            call_count: bool = UNDEFINED,
-            detailed: bool = UNDEFINED
+            call_count: 'bool' = UNDEFINED,
+            detailed: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -128,7 +129,7 @@ class Profiler(BaseDomain):
 
     def stop(
             self
-    ) -> IResponse['StopReturnT']:
+    ) -> IResponse[StopReturnT]:
         params = {}
 
         return self._send_command(
@@ -166,7 +167,7 @@ class Profiler(BaseDomain):
 
     def take_precise_coverage(
             self
-    ) -> IResponse['TakePreciseCoverageReturnT']:
+    ) -> IResponse[TakePreciseCoverageReturnT]:
         params = {}
 
         return self._send_command(
@@ -182,7 +183,7 @@ class Profiler(BaseDomain):
 
     def take_type_profile(
             self
-    ) -> IResponse['TakeTypeProfileReturnT']:
+    ) -> IResponse[TakeTypeProfileReturnT]:
         params = {}
 
         return self._send_command(

@@ -2,6 +2,7 @@ import ast
 from collections import defaultdict
 
 from generator.parser.types import Domain, Command
+from generator.parser.types.property import CommandParameter
 from generator.utils import (
     snake_case,
     coalesce_undefined,
@@ -34,13 +35,14 @@ def _generate_imports():
         ast.ImportFrom(
             module='cdp.domains.mapper',
             names=[
-                ast.alias('from_dict')
+                ast.alias('from_dict'),
+                ast.alias('to_dict')
             ]
         )
     ]
 
 
-def _generate_external_type_imports(domain: Domain):
+def _generate_type_imports(domain: Domain):
     import_tree = defaultdict(set)
 
     for command in domain.commands:
@@ -71,7 +73,7 @@ def _generate_external_type_imports(domain: Domain):
     return imports
 
 
-def _generate_send_command_method_parameter_signature(command: Command):
+def _generate_send_method_parameter_signature(command: Command):
     arguments = ast.arguments(
         args=[],
         defaults=[],
@@ -86,24 +88,27 @@ def _generate_send_command_method_parameter_signature(command: Command):
         )
     )
 
+    required = []
+    optional = []
+
     for parameter in command.parameters:
-        parameter_name = parameter.name_snake_cased
+        if parameter.optional:
+            optional.append(parameter)
+        else:
+            required.append(parameter)
 
-        if is_builtin(parameter_name):
-            parameter_name += '_'
-
+    for parameter in required + optional:
         arg = ast.arg(
-            arg=snake_case(parameter_name)
+            arg=parameter.name_snake_cased_collision_safe,
+            annotation=ast.Constant(
+                cdp_to_python_type(
+                    coalesce_undefined([
+                        parameter.type,
+                        parameter.ref.type
+                    ])
+                )
+            )
         )
-
-        annotation = cdp_to_python_type(
-            coalesce_undefined([
-                parameter.type,
-                parameter.ref.type
-            ])
-        )
-
-        arg.annotation = ast.Name(annotation)
 
         if parameter.optional:
             arguments.defaults.append(
@@ -117,7 +122,55 @@ def _generate_send_command_method_parameter_signature(command: Command):
     return arguments
 
 
-def _generate_send_command_method_initial_params(command: Command):
+def _generate_send_method_params_value(parameter: 'CommandParameter'):
+    parameter_name = parameter.name_snake_cased_collision_safe
+
+    basic_param = ast.Name(
+        id=parameter_name
+    )
+
+    basic_param_with_to_json = ast.Call(
+        func=ast.Name('to_dict'),
+        args=[
+            basic_param,
+            ast.Constant('camel')
+        ],
+        render_context={
+            'expand': True
+        }
+    )
+
+    list_comp_with_to_json = ast.ListComp(
+        elt=ast.Call(
+            func=ast.Name('to_dict'),
+            args=[
+                ast.Name('item'),
+                ast.Constant('camel')
+            ]
+        ),
+        generators=[
+            ast.comprehension(
+                target=ast.Name('item'),
+                iter=basic_param,
+                ifs=[]
+            )
+        ]
+    )
+
+    if parameter.type == 'array':
+        if parameter.items.ref.actual_type.properties:
+            return list_comp_with_to_json
+        else:
+            return basic_param
+
+    else:
+        if parameter.ref.actual_type.properties:
+            return basic_param_with_to_json
+        else:
+            return basic_param
+
+
+def _generate_send_method_initial_params(command: Command):
     params = ast.Dict(
         keys=[],
         values=[]
@@ -127,11 +180,6 @@ def _generate_send_command_method_initial_params(command: Command):
         if parameter.optional:
             continue
 
-        parameter_name = parameter.name_snake_cased
-
-        if is_builtin(parameter_name):
-            parameter_name += '_'
-
         params.keys.append(
             ast.Constant(
                 value=parameter.name,
@@ -139,8 +187,8 @@ def _generate_send_command_method_initial_params(command: Command):
         )
 
         params.values.append(
-            ast.Name(
-                id=parameter_name
+            _generate_send_method_params_value(
+                parameter
             )
         )
 
@@ -154,7 +202,7 @@ def _generate_send_command_method_initial_params(command: Command):
     )
 
 
-def _generate_send_command_method_optional_params(command: Command):
+def _generate_send_method_optional_params(command: Command):
     ifs = []
 
     for parameter in command.parameters:
@@ -166,7 +214,9 @@ def _generate_send_command_method_optional_params(command: Command):
                 test=ast.Call(
                     func=ast.Name('is_defined'),
                     args=[
-                        ast.Name(parameter.name_snake_cased)
+                        ast.Name(
+                            parameter.name_snake_cased_collision_safe
+                        )
                     ]
                 ),
                 body=[
@@ -177,7 +227,9 @@ def _generate_send_command_method_optional_params(command: Command):
                                 slice=ast.Constant(parameter.name)
                             )
                         ],
-                        value=ast.Name(parameter.name_snake_cased)
+                        value=_generate_send_method_params_value(
+                            parameter
+                        )
                     )
                 ],
                 render_context={
@@ -189,7 +241,7 @@ def _generate_send_command_method_optional_params(command: Command):
     return ifs
 
 
-def _generate_send_command_method_return_call(command: Command):
+def _generate_send_method_return_call(command: Command):
     call = ast.Call(
         func=ast.Attribute(
             value=ast.Name('self'),
@@ -236,19 +288,19 @@ def _generate_send_command_method_return_call(command: Command):
     )
 
 
-def _generate_send_command_method_return_signature(command: Command):
+def _generate_send_method_return_signature(command: 'Command'):
     if command.returns:
-        value = ast.Constant(command.name_pascal_case + 'ReturnT')
+        slice_ = ast.Name(command.name_pascal_case + 'ReturnT')
     else:
-        value = ast.Name('None')
+        slice_ = ast.Name('None')
 
     return ast.Subscript(
         value=ast.Name('IResponse'),
-        slice=value
+        slice=slice_
     )
 
 
-def _generate_send_command_method(command: Command, index: int):
+def _generate_send_method(command: Command, index: int):
     function = ast.FunctionDef(
         name=snake_case(command.name),
         args=None,
@@ -259,36 +311,36 @@ def _generate_send_command_method(command: Command, index: int):
         }
     )
 
-    function.args = _generate_send_command_method_parameter_signature(
+    function.args = _generate_send_method_parameter_signature(
         command
     )
 
     function.body.append(
-        _generate_send_command_method_initial_params(
+        _generate_send_method_initial_params(
             command
         ),
     )
 
     function.body.extend(
-        _generate_send_command_method_optional_params(
+        _generate_send_method_optional_params(
             command
         )
     )
 
     function.body.append(
-        _generate_send_command_method_return_call(
+        _generate_send_method_return_call(
             command
         )
     )
 
-    function.returns = _generate_send_command_method_return_signature(
+    function.returns = _generate_send_method_return_signature(
         command
     )
 
     return function
 
 
-def _generate_class_definition(domain: Domain):
+def _generate_class(domain: Domain):
     class_ = ast.ClassDef(
         name=domain.domain,
         bases=[
@@ -305,7 +357,7 @@ def _generate_class_definition(domain: Domain):
 
     for i, command in enumerate(domain.commands):
         class_.body.append(
-            _generate_send_command_method(
+            _generate_send_method(
                 command,
                 i
             )
@@ -329,7 +381,7 @@ def generate(domain: Domain):
     if imports := _generate_imports():
         root.body.extend(imports)
 
-    if imports := _generate_external_type_imports(domain):
+    if imports := _generate_type_imports(domain):
         root.body += imports
 
     root.body.append(
@@ -347,7 +399,7 @@ def generate(domain: Domain):
     )
 
     root.body.append(
-        _generate_class_definition(domain)
+        _generate_class(domain)
     )
 
     return root

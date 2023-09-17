@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.dom_snapshot.types import (
     CaptureSnapshotReturnT,
@@ -55,11 +56,11 @@ class DOMSnapshot(BaseDomain):
 
     def get_snapshot(
             self,
-            computed_style_whitelist: list,
-            include_event_listeners: bool = UNDEFINED,
-            include_paint_order: bool = UNDEFINED,
-            include_user_agent_shadow_tree: bool = UNDEFINED
-    ) -> IResponse['GetSnapshotReturnT']:
+            computed_style_whitelist: 'list',
+            include_event_listeners: 'bool' = UNDEFINED,
+            include_paint_order: 'bool' = UNDEFINED,
+            include_user_agent_shadow_tree: 'bool' = UNDEFINED
+    ) -> IResponse[GetSnapshotReturnT]:
         params = {
             'computedStyleWhitelist': computed_style_whitelist,
         }
@@ -86,12 +87,12 @@ class DOMSnapshot(BaseDomain):
 
     def capture_snapshot(
             self,
-            computed_styles: list,
-            include_paint_order: bool = UNDEFINED,
-            include_dom_rects: bool = UNDEFINED,
-            include_blended_background_colors: bool = UNDEFINED,
-            include_text_color_opacities: bool = UNDEFINED
-    ) -> IResponse['CaptureSnapshotReturnT']:
+            computed_styles: 'list',
+            include_paint_order: 'bool' = UNDEFINED,
+            include_dom_rects: 'bool' = UNDEFINED,
+            include_blended_background_colors: 'bool' = UNDEFINED,
+            include_text_color_opacities: 'bool' = UNDEFINED
+    ) -> IResponse[CaptureSnapshotReturnT]:
         params = {
             'computedStyles': computed_styles,
         }

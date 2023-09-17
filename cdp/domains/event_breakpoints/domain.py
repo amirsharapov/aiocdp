@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -29,7 +30,7 @@ if TYPE_CHECKING:
 class EventBreakpoints(BaseDomain):
     def set_instrumentation_breakpoint(
             self,
-            event_name: str
+            event_name: 'str'
     ) -> IResponse[None]:
         params = {
             'eventName': event_name,
@@ -43,7 +44,7 @@ class EventBreakpoints(BaseDomain):
 
     def remove_instrumentation_breakpoint(
             self,
-            event_name: str
+            event_name: 'str'
     ) -> IResponse[None]:
         params = {
             'eventName': event_name,

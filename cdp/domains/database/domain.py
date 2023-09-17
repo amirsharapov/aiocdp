@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.database.types import (
     DatabaseId,
@@ -56,9 +57,9 @@ class Database(BaseDomain):
 
     def execute_sql(
             self,
-            database_id: DatabaseId,
-            query: str
-    ) -> IResponse['ExecuteSQLReturnT']:
+            database_id: 'DatabaseId',
+            query: 'str'
+    ) -> IResponse[ExecuteSQLReturnT]:
         params = {
             'databaseId': database_id,
             'query': query,
@@ -77,8 +78,8 @@ class Database(BaseDomain):
 
     def get_database_table_names(
             self,
-            database_id: DatabaseId
-    ) -> IResponse['GetDatabaseTableNamesReturnT']:
+            database_id: 'DatabaseId'
+    ) -> IResponse[GetDatabaseTableNamesReturnT]:
         params = {
             'databaseId': database_id,
         }

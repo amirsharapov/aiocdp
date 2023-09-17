@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.layer_tree.types import (
     CompositingReasonsReturnT,
@@ -42,8 +43,8 @@ if TYPE_CHECKING:
 class LayerTree(BaseDomain):
     def compositing_reasons(
             self,
-            layer_id: LayerId
-    ) -> IResponse['CompositingReasonsReturnT']:
+            layer_id: 'LayerId'
+    ) -> IResponse[CompositingReasonsReturnT]:
         params = {
             'layerId': layer_id,
         }
@@ -83,10 +84,13 @@ class LayerTree(BaseDomain):
 
     def load_snapshot(
             self,
-            tiles: list
-    ) -> IResponse['LoadSnapshotReturnT']:
+            tiles: 'list'
+    ) -> IResponse[LoadSnapshotReturnT]:
         params = {
-            'tiles': tiles,
+            'tiles': [
+                to_dict(item, 'camel')
+                for item in tiles
+            ],
         }
 
         return self._send_command(
@@ -102,8 +106,8 @@ class LayerTree(BaseDomain):
 
     def make_snapshot(
             self,
-            layer_id: LayerId
-    ) -> IResponse['MakeSnapshotReturnT']:
+            layer_id: 'LayerId'
+    ) -> IResponse[MakeSnapshotReturnT]:
         params = {
             'layerId': layer_id,
         }
@@ -121,11 +125,11 @@ class LayerTree(BaseDomain):
 
     def profile_snapshot(
             self,
-            snapshot_id: SnapshotId,
-            min_repeat_count: int = UNDEFINED,
-            min_duration: float = UNDEFINED,
-            clip_rect: Rect = UNDEFINED
-    ) -> IResponse['ProfileSnapshotReturnT']:
+            snapshot_id: 'SnapshotId',
+            min_repeat_count: 'int' = UNDEFINED,
+            min_duration: 'float' = UNDEFINED,
+            clip_rect: 'Rect' = UNDEFINED
+    ) -> IResponse[ProfileSnapshotReturnT]:
         params = {
             'snapshotId': snapshot_id,
         }
@@ -137,7 +141,10 @@ class LayerTree(BaseDomain):
             params['minDuration'] = min_duration
 
         if is_defined(clip_rect):
-            params['clipRect'] = clip_rect
+            params['clipRect'] = to_dict(
+                clip_rect,
+                'camel'
+            )
 
         return self._send_command(
             'LayerTree.profileSnapshot',
@@ -152,7 +159,7 @@ class LayerTree(BaseDomain):
 
     def release_snapshot(
             self,
-            snapshot_id: SnapshotId
+            snapshot_id: 'SnapshotId'
     ) -> IResponse[None]:
         params = {
             'snapshotId': snapshot_id,
@@ -166,11 +173,11 @@ class LayerTree(BaseDomain):
 
     def replay_snapshot(
             self,
-            snapshot_id: SnapshotId,
-            from_step: int = UNDEFINED,
-            to_step: int = UNDEFINED,
-            scale: float = UNDEFINED
-    ) -> IResponse['ReplaySnapshotReturnT']:
+            snapshot_id: 'SnapshotId',
+            from_step: 'int' = UNDEFINED,
+            to_step: 'int' = UNDEFINED,
+            scale: 'float' = UNDEFINED
+    ) -> IResponse[ReplaySnapshotReturnT]:
         params = {
             'snapshotId': snapshot_id,
         }
@@ -197,8 +204,8 @@ class LayerTree(BaseDomain):
 
     def snapshot_command_log(
             self,
-            snapshot_id: SnapshotId
-    ) -> IResponse['SnapshotCommandLogReturnT']:
+            snapshot_id: 'SnapshotId'
+    ) -> IResponse[SnapshotCommandLogReturnT]:
         params = {
             'snapshotId': snapshot_id,
         }

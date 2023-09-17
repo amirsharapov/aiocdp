@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.accessibility.types import (
     AXNodeId,
@@ -70,11 +71,11 @@ class Accessibility(BaseDomain):
 
     def get_partial_ax_tree(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED,
-            fetch_relatives: bool = UNDEFINED
-    ) -> IResponse['GetPartialAXTreeReturnT']:
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED,
+            fetch_relatives: 'bool' = UNDEFINED
+    ) -> IResponse[GetPartialAXTreeReturnT]:
         params = {}
 
         if is_defined(node_id):
@@ -102,9 +103,9 @@ class Accessibility(BaseDomain):
 
     def get_full_ax_tree(
             self,
-            depth: int = UNDEFINED,
-            frame_id: FrameId = UNDEFINED
-    ) -> IResponse['GetFullAXTreeReturnT']:
+            depth: 'int' = UNDEFINED,
+            frame_id: 'FrameId' = UNDEFINED
+    ) -> IResponse[GetFullAXTreeReturnT]:
         params = {}
 
         if is_defined(depth):
@@ -126,8 +127,8 @@ class Accessibility(BaseDomain):
 
     def get_root_ax_node(
             self,
-            frame_id: FrameId = UNDEFINED
-    ) -> IResponse['GetRootAXNodeReturnT']:
+            frame_id: 'FrameId' = UNDEFINED
+    ) -> IResponse[GetRootAXNodeReturnT]:
         params = {}
 
         if is_defined(frame_id):
@@ -146,10 +147,10 @@ class Accessibility(BaseDomain):
 
     def get_ax_node_and_ancestors(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED
-    ) -> IResponse['GetAXNodeAndAncestorsReturnT']:
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED
+    ) -> IResponse[GetAXNodeAndAncestorsReturnT]:
         params = {}
 
         if is_defined(node_id):
@@ -174,9 +175,9 @@ class Accessibility(BaseDomain):
 
     def get_child_ax_nodes(
             self,
-            id_: AXNodeId,
-            frame_id: FrameId = UNDEFINED
-    ) -> IResponse['GetChildAXNodesReturnT']:
+            id_: 'AXNodeId',
+            frame_id: 'FrameId' = UNDEFINED
+    ) -> IResponse[GetChildAXNodesReturnT]:
         params = {
             'id': id_,
         }
@@ -197,12 +198,12 @@ class Accessibility(BaseDomain):
 
     def query_ax_tree(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED,
-            accessible_name: str = UNDEFINED,
-            role: str = UNDEFINED
-    ) -> IResponse['QueryAXTreeReturnT']:
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED,
+            accessible_name: 'str' = UNDEFINED,
+            role: 'str' = UNDEFINED
+    ) -> IResponse[QueryAXTreeReturnT]:
         params = {}
 
         if is_defined(node_id):

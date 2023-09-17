@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.animation.types import (
     GetCurrentTimeReturnT,
@@ -56,8 +57,8 @@ class Animation(BaseDomain):
 
     def get_current_time(
             self,
-            id_: str
-    ) -> IResponse['GetCurrentTimeReturnT']:
+            id_: 'str'
+    ) -> IResponse[GetCurrentTimeReturnT]:
         params = {
             'id': id_,
         }
@@ -75,7 +76,7 @@ class Animation(BaseDomain):
 
     def get_playback_rate(
             self
-    ) -> IResponse['GetPlaybackRateReturnT']:
+    ) -> IResponse[GetPlaybackRateReturnT]:
         params = {}
 
         return self._send_command(
@@ -91,7 +92,7 @@ class Animation(BaseDomain):
 
     def release_animations(
             self,
-            animations: list
+            animations: 'list'
     ) -> IResponse[None]:
         params = {
             'animations': animations,
@@ -105,8 +106,8 @@ class Animation(BaseDomain):
 
     def resolve_animation(
             self,
-            animation_id: str
-    ) -> IResponse['ResolveAnimationReturnT']:
+            animation_id: 'str'
+    ) -> IResponse[ResolveAnimationReturnT]:
         params = {
             'animationId': animation_id,
         }
@@ -124,8 +125,8 @@ class Animation(BaseDomain):
 
     def seek_animations(
             self,
-            animations: list,
-            current_time: float
+            animations: 'list',
+            current_time: 'float'
     ) -> IResponse[None]:
         params = {
             'animations': animations,
@@ -140,8 +141,8 @@ class Animation(BaseDomain):
 
     def set_paused(
             self,
-            animations: list,
-            paused: bool
+            animations: 'list',
+            paused: 'bool'
     ) -> IResponse[None]:
         params = {
             'animations': animations,
@@ -156,7 +157,7 @@ class Animation(BaseDomain):
 
     def set_playback_rate(
             self,
-            playback_rate: float
+            playback_rate: 'float'
     ) -> IResponse[None]:
         params = {
             'playbackRate': playback_rate,
@@ -170,9 +171,9 @@ class Animation(BaseDomain):
 
     def set_timing(
             self,
-            animation_id: str,
-            duration: float,
-            delay: float
+            animation_id: 'str',
+            duration: 'float',
+            delay: 'float'
     ) -> IResponse[None]:
         params = {
             'animationId': animation_id,

@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.input.types import (
     DragData,
@@ -35,17 +36,20 @@ if TYPE_CHECKING:
 class Input(BaseDomain):
     def dispatch_drag_event(
             self,
-            type_: str,
-            x: float,
-            y: float,
-            data: DragData,
-            modifiers: int = UNDEFINED
+            type_: 'str',
+            x: 'float',
+            y: 'float',
+            data: 'DragData',
+            modifiers: 'int' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'type': type_,
             'x': x,
             'y': y,
-            'data': data,
+            'data': to_dict(
+                data,
+                'camel'
+            ),
         }
 
         if is_defined(modifiers):
@@ -59,21 +63,21 @@ class Input(BaseDomain):
 
     def dispatch_key_event(
             self,
-            type_: str,
-            modifiers: int = UNDEFINED,
-            timestamp: TimeSinceEpoch = UNDEFINED,
-            text: str = UNDEFINED,
-            unmodified_text: str = UNDEFINED,
-            key_identifier: str = UNDEFINED,
-            code: str = UNDEFINED,
-            key: str = UNDEFINED,
-            windows_virtual_key_code: int = UNDEFINED,
-            native_virtual_key_code: int = UNDEFINED,
-            auto_repeat: bool = UNDEFINED,
-            is_keypad: bool = UNDEFINED,
-            is_system_key: bool = UNDEFINED,
-            location: int = UNDEFINED,
-            commands: list = UNDEFINED
+            type_: 'str',
+            modifiers: 'int' = UNDEFINED,
+            timestamp: 'TimeSinceEpoch' = UNDEFINED,
+            text: 'str' = UNDEFINED,
+            unmodified_text: 'str' = UNDEFINED,
+            key_identifier: 'str' = UNDEFINED,
+            code: 'str' = UNDEFINED,
+            key: 'str' = UNDEFINED,
+            windows_virtual_key_code: 'int' = UNDEFINED,
+            native_virtual_key_code: 'int' = UNDEFINED,
+            auto_repeat: 'bool' = UNDEFINED,
+            is_keypad: 'bool' = UNDEFINED,
+            is_system_key: 'bool' = UNDEFINED,
+            location: 'int' = UNDEFINED,
+            commands: 'list' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'type': type_,
@@ -129,7 +133,7 @@ class Input(BaseDomain):
 
     def insert_text(
             self,
-            text: str
+            text: 'str'
     ) -> IResponse[None]:
         params = {
             'text': text,
@@ -143,11 +147,11 @@ class Input(BaseDomain):
 
     def ime_set_composition(
             self,
-            text: str,
-            selection_start: int,
-            selection_end: int,
-            replacement_start: int = UNDEFINED,
-            replacement_end: int = UNDEFINED
+            text: 'str',
+            selection_start: 'int',
+            selection_end: 'int',
+            replacement_start: 'int' = UNDEFINED,
+            replacement_end: 'int' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'text': text,
@@ -169,22 +173,22 @@ class Input(BaseDomain):
 
     def dispatch_mouse_event(
             self,
-            type_: str,
-            x: float,
-            y: float,
-            modifiers: int = UNDEFINED,
-            timestamp: TimeSinceEpoch = UNDEFINED,
-            button: MouseButton = UNDEFINED,
-            buttons: int = UNDEFINED,
-            click_count: int = UNDEFINED,
-            force: float = UNDEFINED,
-            tangential_pressure: float = UNDEFINED,
-            tilt_x: int = UNDEFINED,
-            tilt_y: int = UNDEFINED,
-            twist: int = UNDEFINED,
-            delta_x: float = UNDEFINED,
-            delta_y: float = UNDEFINED,
-            pointer_type: str = UNDEFINED
+            type_: 'str',
+            x: 'float',
+            y: 'float',
+            modifiers: 'int' = UNDEFINED,
+            timestamp: 'TimeSinceEpoch' = UNDEFINED,
+            button: 'MouseButton' = UNDEFINED,
+            buttons: 'int' = UNDEFINED,
+            click_count: 'int' = UNDEFINED,
+            force: 'float' = UNDEFINED,
+            tangential_pressure: 'float' = UNDEFINED,
+            tilt_x: 'int' = UNDEFINED,
+            tilt_y: 'int' = UNDEFINED,
+            twist: 'int' = UNDEFINED,
+            delta_x: 'float' = UNDEFINED,
+            delta_y: 'float' = UNDEFINED,
+            pointer_type: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'type': type_,
@@ -239,14 +243,17 @@ class Input(BaseDomain):
 
     def dispatch_touch_event(
             self,
-            type_: str,
-            touch_points: list,
-            modifiers: int = UNDEFINED,
-            timestamp: TimeSinceEpoch = UNDEFINED
+            type_: 'str',
+            touch_points: 'list',
+            modifiers: 'int' = UNDEFINED,
+            timestamp: 'TimeSinceEpoch' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'type': type_,
-            'touchPoints': touch_points,
+            'touchPoints': [
+                to_dict(item, 'camel')
+                for item in touch_points
+            ],
         }
 
         if is_defined(modifiers):
@@ -274,15 +281,15 @@ class Input(BaseDomain):
 
     def emulate_touch_from_mouse_event(
             self,
-            type_: str,
-            x: int,
-            y: int,
-            button: MouseButton,
-            timestamp: TimeSinceEpoch = UNDEFINED,
-            delta_x: float = UNDEFINED,
-            delta_y: float = UNDEFINED,
-            modifiers: int = UNDEFINED,
-            click_count: int = UNDEFINED
+            type_: 'str',
+            x: 'int',
+            y: 'int',
+            button: 'MouseButton',
+            timestamp: 'TimeSinceEpoch' = UNDEFINED,
+            delta_x: 'float' = UNDEFINED,
+            delta_y: 'float' = UNDEFINED,
+            modifiers: 'int' = UNDEFINED,
+            click_count: 'int' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'type': type_,
@@ -314,7 +321,7 @@ class Input(BaseDomain):
 
     def set_ignore_input_events(
             self,
-            ignore: bool
+            ignore: 'bool'
     ) -> IResponse[None]:
         params = {
             'ignore': ignore,
@@ -328,7 +335,7 @@ class Input(BaseDomain):
 
     def set_intercept_drags(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -342,11 +349,11 @@ class Input(BaseDomain):
 
     def synthesize_pinch_gesture(
             self,
-            x: float,
-            y: float,
-            scale_factor: float,
-            relative_speed: int = UNDEFINED,
-            gesture_source_type: GestureSourceType = UNDEFINED
+            x: 'float',
+            y: 'float',
+            scale_factor: 'float',
+            relative_speed: 'int' = UNDEFINED,
+            gesture_source_type: 'GestureSourceType' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'x': x,
@@ -368,18 +375,18 @@ class Input(BaseDomain):
 
     def synthesize_scroll_gesture(
             self,
-            x: float,
-            y: float,
-            x_distance: float = UNDEFINED,
-            y_distance: float = UNDEFINED,
-            x_overscroll: float = UNDEFINED,
-            y_overscroll: float = UNDEFINED,
-            prevent_fling: bool = UNDEFINED,
-            speed: int = UNDEFINED,
-            gesture_source_type: GestureSourceType = UNDEFINED,
-            repeat_count: int = UNDEFINED,
-            repeat_delay_ms: int = UNDEFINED,
-            interaction_marker_name: str = UNDEFINED
+            x: 'float',
+            y: 'float',
+            x_distance: 'float' = UNDEFINED,
+            y_distance: 'float' = UNDEFINED,
+            x_overscroll: 'float' = UNDEFINED,
+            y_overscroll: 'float' = UNDEFINED,
+            prevent_fling: 'bool' = UNDEFINED,
+            speed: 'int' = UNDEFINED,
+            gesture_source_type: 'GestureSourceType' = UNDEFINED,
+            repeat_count: 'int' = UNDEFINED,
+            repeat_delay_ms: 'int' = UNDEFINED,
+            interaction_marker_name: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'x': x,
@@ -424,11 +431,11 @@ class Input(BaseDomain):
 
     def synthesize_tap_gesture(
             self,
-            x: float,
-            y: float,
-            duration: int = UNDEFINED,
-            tap_count: int = UNDEFINED,
-            gesture_source_type: GestureSourceType = UNDEFINED
+            x: 'float',
+            y: 'float',
+            duration: 'int' = UNDEFINED,
+            tap_count: 'int' = UNDEFINED,
+            gesture_source_type: 'GestureSourceType' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'x': x,

@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.tracing.types import (
     GetCategoriesReturnT,
@@ -49,7 +50,7 @@ class Tracing(BaseDomain):
 
     def get_categories(
             self
-    ) -> IResponse['GetCategoriesReturnT']:
+    ) -> IResponse[GetCategoriesReturnT]:
         params = {}
 
         return self._send_command(
@@ -65,7 +66,7 @@ class Tracing(BaseDomain):
 
     def record_clock_sync_marker(
             self,
-            sync_id: str
+            sync_id: 'str'
     ) -> IResponse[None]:
         params = {
             'syncId': sync_id,
@@ -79,9 +80,9 @@ class Tracing(BaseDomain):
 
     def request_memory_dump(
             self,
-            deterministic: bool = UNDEFINED,
-            level_of_detail: MemoryDumpLevelOfDetail = UNDEFINED
-    ) -> IResponse['RequestMemoryDumpReturnT']:
+            deterministic: 'bool' = UNDEFINED,
+            level_of_detail: 'MemoryDumpLevelOfDetail' = UNDEFINED
+    ) -> IResponse[RequestMemoryDumpReturnT]:
         params = {}
 
         if is_defined(deterministic):
@@ -103,15 +104,15 @@ class Tracing(BaseDomain):
 
     def start(
             self,
-            categories: str = UNDEFINED,
-            options: str = UNDEFINED,
-            buffer_usage_reporting_interval: float = UNDEFINED,
-            transfer_mode: str = UNDEFINED,
-            stream_format: StreamFormat = UNDEFINED,
-            stream_compression: StreamCompression = UNDEFINED,
-            trace_config: TraceConfig = UNDEFINED,
-            perfetto_config: str = UNDEFINED,
-            tracing_backend: TracingBackend = UNDEFINED
+            categories: 'str' = UNDEFINED,
+            options: 'str' = UNDEFINED,
+            buffer_usage_reporting_interval: 'float' = UNDEFINED,
+            transfer_mode: 'str' = UNDEFINED,
+            stream_format: 'StreamFormat' = UNDEFINED,
+            stream_compression: 'StreamCompression' = UNDEFINED,
+            trace_config: 'TraceConfig' = UNDEFINED,
+            perfetto_config: 'str' = UNDEFINED,
+            tracing_backend: 'TracingBackend' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -134,7 +135,10 @@ class Tracing(BaseDomain):
             params['streamCompression'] = stream_compression
 
         if is_defined(trace_config):
-            params['traceConfig'] = trace_config
+            params['traceConfig'] = to_dict(
+                trace_config,
+                'camel'
+            )
 
         if is_defined(perfetto_config):
             params['perfettoConfig'] = perfetto_config

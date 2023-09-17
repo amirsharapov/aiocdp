@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.cache_storage.types import (
     CacheId,
@@ -38,7 +39,7 @@ if TYPE_CHECKING:
 class CacheStorage(BaseDomain):
     def delete_cache(
             self,
-            cache_id: CacheId
+            cache_id: 'CacheId'
     ) -> IResponse[None]:
         params = {
             'cacheId': cache_id,
@@ -52,8 +53,8 @@ class CacheStorage(BaseDomain):
 
     def delete_entry(
             self,
-            cache_id: CacheId,
-            request: str
+            cache_id: 'CacheId',
+            request: 'str'
     ) -> IResponse[None]:
         params = {
             'cacheId': cache_id,
@@ -68,10 +69,10 @@ class CacheStorage(BaseDomain):
 
     def request_cache_names(
             self,
-            security_origin: str = UNDEFINED,
-            storage_key: str = UNDEFINED,
-            storage_bucket: StorageBucket = UNDEFINED
-    ) -> IResponse['RequestCacheNamesReturnT']:
+            security_origin: 'str' = UNDEFINED,
+            storage_key: 'str' = UNDEFINED,
+            storage_bucket: 'StorageBucket' = UNDEFINED
+    ) -> IResponse[RequestCacheNamesReturnT]:
         params = {}
 
         if is_defined(security_origin):
@@ -81,7 +82,10 @@ class CacheStorage(BaseDomain):
             params['storageKey'] = storage_key
 
         if is_defined(storage_bucket):
-            params['storageBucket'] = storage_bucket
+            params['storageBucket'] = to_dict(
+                storage_bucket,
+                'camel'
+            )
 
         return self._send_command(
             'CacheStorage.requestCacheNames',
@@ -96,14 +100,17 @@ class CacheStorage(BaseDomain):
 
     def request_cached_response(
             self,
-            cache_id: CacheId,
-            request_url: str,
-            request_headers: list
-    ) -> IResponse['RequestCachedResponseReturnT']:
+            cache_id: 'CacheId',
+            request_url: 'str',
+            request_headers: 'list'
+    ) -> IResponse[RequestCachedResponseReturnT]:
         params = {
             'cacheId': cache_id,
             'requestURL': request_url,
-            'requestHeaders': request_headers,
+            'requestHeaders': [
+                to_dict(item, 'camel')
+                for item in request_headers
+            ],
         }
 
         return self._send_command(
@@ -119,11 +126,11 @@ class CacheStorage(BaseDomain):
 
     def request_entries(
             self,
-            cache_id: CacheId,
-            skip_count: int = UNDEFINED,
-            page_size: int = UNDEFINED,
-            path_filter: str = UNDEFINED
-    ) -> IResponse['RequestEntriesReturnT']:
+            cache_id: 'CacheId',
+            skip_count: 'int' = UNDEFINED,
+            page_size: 'int' = UNDEFINED,
+            path_filter: 'str' = UNDEFINED
+    ) -> IResponse[RequestEntriesReturnT]:
         params = {
             'cacheId': cache_id,
         }

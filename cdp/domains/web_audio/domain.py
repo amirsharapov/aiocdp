@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.web_audio.types import (
     GetRealtimeDataReturnT,
@@ -55,8 +56,8 @@ class WebAudio(BaseDomain):
 
     def get_realtime_data(
             self,
-            context_id: GraphObjectId
-    ) -> IResponse['GetRealtimeDataReturnT']:
+            context_id: 'GraphObjectId'
+    ) -> IResponse[GetRealtimeDataReturnT]:
         params = {
             'contextId': context_id,
         }

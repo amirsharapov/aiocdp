@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from generator.parser.types.base import ComplexNode
 from generator.parser.types.items import Items
 from generator.parser.types.ref import PropertyRef
-from generator.utils import UNDEFINED, MaybeUndefined, is_defined, snake_case, camel_case, pascal_case
+from generator.utils import UNDEFINED, MaybeUndefined, is_defined, snake_case, camel_case, pascal_case, is_builtin
 
 if TYPE_CHECKING:
     from generator.parser.types import Type
@@ -55,6 +55,13 @@ class Property(ComplexNode, ABC):
     @property
     def name_snake_cased(self):
         return snake_case(self.name)
+
+    @property
+    def name_snake_cased_collision_safe(self):
+        name = self.name_snake_cased
+        if is_builtin(self.name_snake_cased):
+            name += '_'
+        return name
 
     @property
     def name_camel_cased(self):

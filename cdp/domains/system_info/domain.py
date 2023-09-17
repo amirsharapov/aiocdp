@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.system_info.types import (
     GetFeatureStateReturnT,
@@ -34,7 +35,7 @@ if TYPE_CHECKING:
 class SystemInfo(BaseDomain):
     def get_info(
             self
-    ) -> IResponse['GetInfoReturnT']:
+    ) -> IResponse[GetInfoReturnT]:
         params = {}
 
         return self._send_command(
@@ -50,8 +51,8 @@ class SystemInfo(BaseDomain):
 
     def get_feature_state(
             self,
-            feature_state: str
-    ) -> IResponse['GetFeatureStateReturnT']:
+            feature_state: 'str'
+    ) -> IResponse[GetFeatureStateReturnT]:
         params = {
             'featureState': feature_state,
         }
@@ -69,7 +70,7 @@ class SystemInfo(BaseDomain):
 
     def get_process_info(
             self
-    ) -> IResponse['GetProcessInfoReturnT']:
+    ) -> IResponse[GetProcessInfoReturnT]:
         params = {}
 
         return self._send_command(

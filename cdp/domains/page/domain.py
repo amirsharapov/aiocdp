@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.page.types import (
     AddScriptToEvaluateOnLoadReturnT,
@@ -63,8 +64,8 @@ if TYPE_CHECKING:
 class Page(BaseDomain):
     def add_script_to_evaluate_on_load(
             self,
-            script_source: str
-    ) -> IResponse['AddScriptToEvaluateOnLoadReturnT']:
+            script_source: 'str'
+    ) -> IResponse[AddScriptToEvaluateOnLoadReturnT]:
         params = {
             'scriptSource': script_source,
         }
@@ -82,11 +83,11 @@ class Page(BaseDomain):
 
     def add_script_to_evaluate_on_new_document(
             self,
-            source: str,
-            world_name: str = UNDEFINED,
-            include_command_line_api: bool = UNDEFINED,
-            run_immediately: bool = UNDEFINED
-    ) -> IResponse['AddScriptToEvaluateOnNewDocumentReturnT']:
+            source: 'str',
+            world_name: 'str' = UNDEFINED,
+            include_command_line_api: 'bool' = UNDEFINED,
+            run_immediately: 'bool' = UNDEFINED
+    ) -> IResponse[AddScriptToEvaluateOnNewDocumentReturnT]:
         params = {
             'source': source,
         }
@@ -124,23 +125,26 @@ class Page(BaseDomain):
 
     def capture_screenshot(
             self,
-            format_: str = UNDEFINED,
-            quality: int = UNDEFINED,
-            clip: Viewport = UNDEFINED,
-            from_surface: bool = UNDEFINED,
-            capture_beyond_viewport: bool = UNDEFINED,
-            optimize_for_speed: bool = UNDEFINED
-    ) -> IResponse['CaptureScreenshotReturnT']:
+            format_: 'str' = UNDEFINED,
+            quality: 'int' = UNDEFINED,
+            clip: 'Viewport' = UNDEFINED,
+            from_surface: 'bool' = UNDEFINED,
+            capture_beyond_viewport: 'bool' = UNDEFINED,
+            optimize_for_speed: 'bool' = UNDEFINED
+    ) -> IResponse[CaptureScreenshotReturnT]:
         params = {}
 
-        if is_defined(format):
-            params['format'] = format
+        if is_defined(format_):
+            params['format'] = format_
 
         if is_defined(quality):
             params['quality'] = quality
 
         if is_defined(clip):
-            params['clip'] = clip
+            params['clip'] = to_dict(
+                clip,
+                'camel'
+            )
 
         if is_defined(from_surface):
             params['fromSurface'] = from_surface
@@ -164,12 +168,12 @@ class Page(BaseDomain):
 
     def capture_snapshot(
             self,
-            format_: str = UNDEFINED
-    ) -> IResponse['CaptureSnapshotReturnT']:
+            format_: 'str' = UNDEFINED
+    ) -> IResponse[CaptureSnapshotReturnT]:
         params = {}
 
-        if is_defined(format):
-            params['format'] = format
+        if is_defined(format_):
+            params['format'] = format_
 
         return self._send_command(
             'Page.captureSnapshot',
@@ -217,10 +221,10 @@ class Page(BaseDomain):
 
     def create_isolated_world(
             self,
-            frame_id: FrameId,
-            world_name: str = UNDEFINED,
-            grant_univeral_access: bool = UNDEFINED
-    ) -> IResponse['CreateIsolatedWorldReturnT']:
+            frame_id: 'FrameId',
+            world_name: 'str' = UNDEFINED,
+            grant_univeral_access: 'bool' = UNDEFINED
+    ) -> IResponse[CreateIsolatedWorldReturnT]:
         params = {
             'frameId': frame_id,
         }
@@ -244,8 +248,8 @@ class Page(BaseDomain):
 
     def delete_cookie(
             self,
-            cookie_name: str,
-            url: str
+            cookie_name: 'str',
+            url: 'str'
     ) -> IResponse[None]:
         params = {
             'cookieName': cookie_name,
@@ -282,7 +286,7 @@ class Page(BaseDomain):
 
     def get_app_manifest(
             self
-    ) -> IResponse['GetAppManifestReturnT']:
+    ) -> IResponse[GetAppManifestReturnT]:
         params = {}
 
         return self._send_command(
@@ -298,7 +302,7 @@ class Page(BaseDomain):
 
     def get_installability_errors(
             self
-    ) -> IResponse['GetInstallabilityErrorsReturnT']:
+    ) -> IResponse[GetInstallabilityErrorsReturnT]:
         params = {}
 
         return self._send_command(
@@ -314,7 +318,7 @@ class Page(BaseDomain):
 
     def get_manifest_icons(
             self
-    ) -> IResponse['GetManifestIconsReturnT']:
+    ) -> IResponse[GetManifestIconsReturnT]:
         params = {}
 
         return self._send_command(
@@ -330,7 +334,7 @@ class Page(BaseDomain):
 
     def get_app_id(
             self
-    ) -> IResponse['GetAppIdReturnT']:
+    ) -> IResponse[GetAppIdReturnT]:
         params = {}
 
         return self._send_command(
@@ -346,8 +350,8 @@ class Page(BaseDomain):
 
     def get_ad_script_id(
             self,
-            frame_id: FrameId
-    ) -> IResponse['GetAdScriptIdReturnT']:
+            frame_id: 'FrameId'
+    ) -> IResponse[GetAdScriptIdReturnT]:
         params = {
             'frameId': frame_id,
         }
@@ -365,7 +369,7 @@ class Page(BaseDomain):
 
     def get_cookies(
             self
-    ) -> IResponse['GetCookiesReturnT']:
+    ) -> IResponse[GetCookiesReturnT]:
         params = {}
 
         return self._send_command(
@@ -381,7 +385,7 @@ class Page(BaseDomain):
 
     def get_frame_tree(
             self
-    ) -> IResponse['GetFrameTreeReturnT']:
+    ) -> IResponse[GetFrameTreeReturnT]:
         params = {}
 
         return self._send_command(
@@ -397,7 +401,7 @@ class Page(BaseDomain):
 
     def get_layout_metrics(
             self
-    ) -> IResponse['GetLayoutMetricsReturnT']:
+    ) -> IResponse[GetLayoutMetricsReturnT]:
         params = {}
 
         return self._send_command(
@@ -413,7 +417,7 @@ class Page(BaseDomain):
 
     def get_navigation_history(
             self
-    ) -> IResponse['GetNavigationHistoryReturnT']:
+    ) -> IResponse[GetNavigationHistoryReturnT]:
         params = {}
 
         return self._send_command(
@@ -440,9 +444,9 @@ class Page(BaseDomain):
 
     def get_resource_content(
             self,
-            frame_id: FrameId,
-            url: str
-    ) -> IResponse['GetResourceContentReturnT']:
+            frame_id: 'FrameId',
+            url: 'str'
+    ) -> IResponse[GetResourceContentReturnT]:
         params = {
             'frameId': frame_id,
             'url': url,
@@ -461,7 +465,7 @@ class Page(BaseDomain):
 
     def get_resource_tree(
             self
-    ) -> IResponse['GetResourceTreeReturnT']:
+    ) -> IResponse[GetResourceTreeReturnT]:
         params = {}
 
         return self._send_command(
@@ -477,8 +481,8 @@ class Page(BaseDomain):
 
     def handle_java_script_dialog(
             self,
-            accept: bool,
-            prompt_text: str = UNDEFINED
+            accept: 'bool',
+            prompt_text: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'accept': accept,
@@ -495,12 +499,12 @@ class Page(BaseDomain):
 
     def navigate(
             self,
-            url: str,
-            referrer: str = UNDEFINED,
-            transition_type: TransitionType = UNDEFINED,
-            frame_id: FrameId = UNDEFINED,
-            referrer_policy: ReferrerPolicy = UNDEFINED
-    ) -> IResponse['NavigateReturnT']:
+            url: 'str',
+            referrer: 'str' = UNDEFINED,
+            transition_type: 'TransitionType' = UNDEFINED,
+            frame_id: 'FrameId' = UNDEFINED,
+            referrer_policy: 'ReferrerPolicy' = UNDEFINED
+    ) -> IResponse[NavigateReturnT]:
         params = {
             'url': url,
         }
@@ -530,7 +534,7 @@ class Page(BaseDomain):
 
     def navigate_to_history_entry(
             self,
-            entry_id: int
+            entry_id: 'int'
     ) -> IResponse[None]:
         params = {
             'entryId': entry_id,
@@ -544,23 +548,23 @@ class Page(BaseDomain):
 
     def print_to_pdf(
             self,
-            landscape: bool = UNDEFINED,
-            display_header_footer: bool = UNDEFINED,
-            print_background: bool = UNDEFINED,
-            scale: float = UNDEFINED,
-            paper_width: float = UNDEFINED,
-            paper_height: float = UNDEFINED,
-            margin_top: float = UNDEFINED,
-            margin_bottom: float = UNDEFINED,
-            margin_left: float = UNDEFINED,
-            margin_right: float = UNDEFINED,
-            page_ranges: str = UNDEFINED,
-            header_template: str = UNDEFINED,
-            footer_template: str = UNDEFINED,
-            prefer_css_page_size: bool = UNDEFINED,
-            transfer_mode: str = UNDEFINED,
-            generate_tagged_pdf: bool = UNDEFINED
-    ) -> IResponse['PrintToPDFReturnT']:
+            landscape: 'bool' = UNDEFINED,
+            display_header_footer: 'bool' = UNDEFINED,
+            print_background: 'bool' = UNDEFINED,
+            scale: 'float' = UNDEFINED,
+            paper_width: 'float' = UNDEFINED,
+            paper_height: 'float' = UNDEFINED,
+            margin_top: 'float' = UNDEFINED,
+            margin_bottom: 'float' = UNDEFINED,
+            margin_left: 'float' = UNDEFINED,
+            margin_right: 'float' = UNDEFINED,
+            page_ranges: 'str' = UNDEFINED,
+            header_template: 'str' = UNDEFINED,
+            footer_template: 'str' = UNDEFINED,
+            prefer_css_page_size: 'bool' = UNDEFINED,
+            transfer_mode: 'str' = UNDEFINED,
+            generate_tagged_pdf: 'bool' = UNDEFINED
+    ) -> IResponse[PrintToPDFReturnT]:
         params = {}
 
         if is_defined(landscape):
@@ -624,8 +628,8 @@ class Page(BaseDomain):
 
     def reload(
             self,
-            ignore_cache: bool = UNDEFINED,
-            script_to_evaluate_on_load: str = UNDEFINED
+            ignore_cache: 'bool' = UNDEFINED,
+            script_to_evaluate_on_load: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -643,7 +647,7 @@ class Page(BaseDomain):
 
     def remove_script_to_evaluate_on_load(
             self,
-            identifier: ScriptIdentifier
+            identifier: 'ScriptIdentifier'
     ) -> IResponse[None]:
         params = {
             'identifier': identifier,
@@ -657,7 +661,7 @@ class Page(BaseDomain):
 
     def remove_script_to_evaluate_on_new_document(
             self,
-            identifier: ScriptIdentifier
+            identifier: 'ScriptIdentifier'
     ) -> IResponse[None]:
         params = {
             'identifier': identifier,
@@ -671,7 +675,7 @@ class Page(BaseDomain):
 
     def screencast_frame_ack(
             self,
-            session_id: int
+            session_id: 'int'
     ) -> IResponse[None]:
         params = {
             'sessionId': session_id,
@@ -685,12 +689,12 @@ class Page(BaseDomain):
 
     def search_in_resource(
             self,
-            frame_id: FrameId,
-            url: str,
-            query: str,
-            case_sensitive: bool = UNDEFINED,
-            is_regex: bool = UNDEFINED
-    ) -> IResponse['SearchInResourceReturnT']:
+            frame_id: 'FrameId',
+            url: 'str',
+            query: 'str',
+            case_sensitive: 'bool' = UNDEFINED,
+            is_regex: 'bool' = UNDEFINED
+    ) -> IResponse[SearchInResourceReturnT]:
         params = {
             'frameId': frame_id,
             'url': url,
@@ -716,7 +720,7 @@ class Page(BaseDomain):
 
     def set_ad_blocking_enabled(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -730,7 +734,7 @@ class Page(BaseDomain):
 
     def set_bypass_csp(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -744,8 +748,8 @@ class Page(BaseDomain):
 
     def get_permissions_policy_state(
             self,
-            frame_id: FrameId
-    ) -> IResponse['GetPermissionsPolicyStateReturnT']:
+            frame_id: 'FrameId'
+    ) -> IResponse[GetPermissionsPolicyStateReturnT]:
         params = {
             'frameId': frame_id,
         }
@@ -763,8 +767,8 @@ class Page(BaseDomain):
 
     def get_origin_trials(
             self,
-            frame_id: FrameId
-    ) -> IResponse['GetOriginTrialsReturnT']:
+            frame_id: 'FrameId'
+    ) -> IResponse[GetOriginTrialsReturnT]:
         params = {
             'frameId': frame_id,
         }
@@ -782,18 +786,18 @@ class Page(BaseDomain):
 
     def set_device_metrics_override(
             self,
-            width: int,
-            height: int,
-            device_scale_factor: float,
-            mobile: bool,
-            scale: float = UNDEFINED,
-            screen_width: int = UNDEFINED,
-            screen_height: int = UNDEFINED,
-            position_x: int = UNDEFINED,
-            position_y: int = UNDEFINED,
-            dont_set_visible_size: bool = UNDEFINED,
-            screen_orientation: ScreenOrientation = UNDEFINED,
-            viewport: Viewport = UNDEFINED
+            width: 'int',
+            height: 'int',
+            device_scale_factor: 'float',
+            mobile: 'bool',
+            scale: 'float' = UNDEFINED,
+            screen_width: 'int' = UNDEFINED,
+            screen_height: 'int' = UNDEFINED,
+            position_x: 'int' = UNDEFINED,
+            position_y: 'int' = UNDEFINED,
+            dont_set_visible_size: 'bool' = UNDEFINED,
+            screen_orientation: 'ScreenOrientation' = UNDEFINED,
+            viewport: 'Viewport' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'width': width,
@@ -821,10 +825,16 @@ class Page(BaseDomain):
             params['dontSetVisibleSize'] = dont_set_visible_size
 
         if is_defined(screen_orientation):
-            params['screenOrientation'] = screen_orientation
+            params['screenOrientation'] = to_dict(
+                screen_orientation,
+                'camel'
+            )
 
         if is_defined(viewport):
-            params['viewport'] = viewport
+            params['viewport'] = to_dict(
+                viewport,
+                'camel'
+            )
 
         return self._send_command(
             'Page.setDeviceMetricsOverride',
@@ -834,9 +844,9 @@ class Page(BaseDomain):
 
     def set_device_orientation_override(
             self,
-            alpha: float,
-            beta: float,
-            gamma: float
+            alpha: 'float',
+            beta: 'float',
+            gamma: 'float'
     ) -> IResponse[None]:
         params = {
             'alpha': alpha,
@@ -852,15 +862,21 @@ class Page(BaseDomain):
 
     def set_font_families(
             self,
-            font_families: FontFamilies,
-            for_scripts: list = UNDEFINED
+            font_families: 'FontFamilies',
+            for_scripts: 'list' = UNDEFINED
     ) -> IResponse[None]:
         params = {
-            'fontFamilies': font_families,
+            'fontFamilies': to_dict(
+                font_families,
+                'camel'
+            ),
         }
 
         if is_defined(for_scripts):
-            params['forScripts'] = for_scripts
+            params['forScripts'] = [
+                to_dict(item, 'camel')
+                for item in for_scripts
+            ]
 
         return self._send_command(
             'Page.setFontFamilies',
@@ -870,10 +886,13 @@ class Page(BaseDomain):
 
     def set_font_sizes(
             self,
-            font_sizes: FontSizes
+            font_sizes: 'FontSizes'
     ) -> IResponse[None]:
         params = {
-            'fontSizes': font_sizes,
+            'fontSizes': to_dict(
+                font_sizes,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -884,8 +903,8 @@ class Page(BaseDomain):
 
     def set_document_content(
             self,
-            frame_id: FrameId,
-            html: str
+            frame_id: 'FrameId',
+            html: 'str'
     ) -> IResponse[None]:
         params = {
             'frameId': frame_id,
@@ -900,8 +919,8 @@ class Page(BaseDomain):
 
     def set_download_behavior(
             self,
-            behavior: str,
-            download_path: str = UNDEFINED
+            behavior: 'str',
+            download_path: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'behavior': behavior,
@@ -918,9 +937,9 @@ class Page(BaseDomain):
 
     def set_geolocation_override(
             self,
-            latitude: float = UNDEFINED,
-            longitude: float = UNDEFINED,
-            accuracy: float = UNDEFINED
+            latitude: 'float' = UNDEFINED,
+            longitude: 'float' = UNDEFINED,
+            accuracy: 'float' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -941,7 +960,7 @@ class Page(BaseDomain):
 
     def set_lifecycle_events_enabled(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -955,8 +974,8 @@ class Page(BaseDomain):
 
     def set_touch_emulation_enabled(
             self,
-            enabled: bool,
-            configuration: str = UNDEFINED
+            enabled: 'bool',
+            configuration: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -973,16 +992,16 @@ class Page(BaseDomain):
 
     def start_screencast(
             self,
-            format_: str = UNDEFINED,
-            quality: int = UNDEFINED,
-            max_width: int = UNDEFINED,
-            max_height: int = UNDEFINED,
-            every_nth_frame: int = UNDEFINED
+            format_: 'str' = UNDEFINED,
+            quality: 'int' = UNDEFINED,
+            max_width: 'int' = UNDEFINED,
+            max_height: 'int' = UNDEFINED,
+            every_nth_frame: 'int' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
-        if is_defined(format):
-            params['format'] = format
+        if is_defined(format_):
+            params['format'] = format_
 
         if is_defined(quality):
             params['quality'] = quality
@@ -1037,7 +1056,7 @@ class Page(BaseDomain):
 
     def set_web_lifecycle_state(
             self,
-            state: str
+            state: 'str'
     ) -> IResponse[None]:
         params = {
             'state': state,
@@ -1062,10 +1081,13 @@ class Page(BaseDomain):
 
     def produce_compilation_cache(
             self,
-            scripts: list
+            scripts: 'list'
     ) -> IResponse[None]:
         params = {
-            'scripts': scripts,
+            'scripts': [
+                to_dict(item, 'camel')
+                for item in scripts
+            ],
         }
 
         return self._send_command(
@@ -1076,8 +1098,8 @@ class Page(BaseDomain):
 
     def add_compilation_cache(
             self,
-            url: str,
-            data: str
+            url: 'str',
+            data: 'str'
     ) -> IResponse[None]:
         params = {
             'url': url,
@@ -1103,7 +1125,7 @@ class Page(BaseDomain):
 
     def set_spc_transaction_mode(
             self,
-            mode: AutoResponseMode
+            mode: 'AutoResponseMode'
     ) -> IResponse[None]:
         params = {
             'mode': mode,
@@ -1117,7 +1139,7 @@ class Page(BaseDomain):
 
     def set_rph_registration_mode(
             self,
-            mode: AutoResponseMode
+            mode: 'AutoResponseMode'
     ) -> IResponse[None]:
         params = {
             'mode': mode,
@@ -1131,8 +1153,8 @@ class Page(BaseDomain):
 
     def generate_test_report(
             self,
-            message: str,
-            group: str = UNDEFINED
+            message: 'str',
+            group: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'message': message,
@@ -1160,7 +1182,7 @@ class Page(BaseDomain):
 
     def set_intercept_file_chooser_dialog(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -1174,7 +1196,7 @@ class Page(BaseDomain):
 
     def set_prerendering_allowed(
             self,
-            is_allowed: bool
+            is_allowed: 'bool'
     ) -> IResponse[None]:
         params = {
             'isAllowed': is_allowed,

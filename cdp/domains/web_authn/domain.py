@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.web_authn.types import (
     AddVirtualAuthenticatorReturnT,
@@ -37,7 +38,7 @@ if TYPE_CHECKING:
 class WebAuthn(BaseDomain):
     def enable(
             self,
-            enable_ui: bool = UNDEFINED
+            enable_ui: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -63,10 +64,13 @@ class WebAuthn(BaseDomain):
 
     def add_virtual_authenticator(
             self,
-            options: VirtualAuthenticatorOptions
-    ) -> IResponse['AddVirtualAuthenticatorReturnT']:
+            options: 'VirtualAuthenticatorOptions'
+    ) -> IResponse[AddVirtualAuthenticatorReturnT]:
         params = {
-            'options': options,
+            'options': to_dict(
+                options,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -82,10 +86,10 @@ class WebAuthn(BaseDomain):
 
     def set_response_override_bits(
             self,
-            authenticator_id: AuthenticatorId,
-            is_bogus_signature: bool = UNDEFINED,
-            is_bad_uv: bool = UNDEFINED,
-            is_bad_up: bool = UNDEFINED
+            authenticator_id: 'AuthenticatorId',
+            is_bogus_signature: 'bool' = UNDEFINED,
+            is_bad_uv: 'bool' = UNDEFINED,
+            is_bad_up: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
@@ -108,7 +112,7 @@ class WebAuthn(BaseDomain):
 
     def remove_virtual_authenticator(
             self,
-            authenticator_id: AuthenticatorId
+            authenticator_id: 'AuthenticatorId'
     ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
@@ -122,12 +126,15 @@ class WebAuthn(BaseDomain):
 
     def add_credential(
             self,
-            authenticator_id: AuthenticatorId,
-            credential: Credential
+            authenticator_id: 'AuthenticatorId',
+            credential: 'Credential'
     ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
-            'credential': credential,
+            'credential': to_dict(
+                credential,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -138,9 +145,9 @@ class WebAuthn(BaseDomain):
 
     def get_credential(
             self,
-            authenticator_id: AuthenticatorId,
-            credential_id: str
-    ) -> IResponse['GetCredentialReturnT']:
+            authenticator_id: 'AuthenticatorId',
+            credential_id: 'str'
+    ) -> IResponse[GetCredentialReturnT]:
         params = {
             'authenticatorId': authenticator_id,
             'credentialId': credential_id,
@@ -159,8 +166,8 @@ class WebAuthn(BaseDomain):
 
     def get_credentials(
             self,
-            authenticator_id: AuthenticatorId
-    ) -> IResponse['GetCredentialsReturnT']:
+            authenticator_id: 'AuthenticatorId'
+    ) -> IResponse[GetCredentialsReturnT]:
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -178,8 +185,8 @@ class WebAuthn(BaseDomain):
 
     def remove_credential(
             self,
-            authenticator_id: AuthenticatorId,
-            credential_id: str
+            authenticator_id: 'AuthenticatorId',
+            credential_id: 'str'
     ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
@@ -194,7 +201,7 @@ class WebAuthn(BaseDomain):
 
     def clear_credentials(
             self,
-            authenticator_id: AuthenticatorId
+            authenticator_id: 'AuthenticatorId'
     ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
@@ -208,8 +215,8 @@ class WebAuthn(BaseDomain):
 
     def set_user_verified(
             self,
-            authenticator_id: AuthenticatorId,
-            is_user_verified: bool
+            authenticator_id: 'AuthenticatorId',
+            is_user_verified: 'bool'
     ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
@@ -224,8 +231,8 @@ class WebAuthn(BaseDomain):
 
     def set_automatic_presence_simulation(
             self,
-            authenticator_id: AuthenticatorId,
-            enabled: bool
+            authenticator_id: 'AuthenticatorId',
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,

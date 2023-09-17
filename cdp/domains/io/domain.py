@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.io.types import (
     ReadReturnT,
@@ -37,7 +38,7 @@ if TYPE_CHECKING:
 class IO(BaseDomain):
     def close(
             self,
-            handle: StreamHandle
+            handle: 'StreamHandle'
     ) -> IResponse[None]:
         params = {
             'handle': handle,
@@ -51,10 +52,10 @@ class IO(BaseDomain):
 
     def read(
             self,
-            handle: StreamHandle,
-            offset: int = UNDEFINED,
-            size: int = UNDEFINED
-    ) -> IResponse['ReadReturnT']:
+            handle: 'StreamHandle',
+            offset: 'int' = UNDEFINED,
+            size: 'int' = UNDEFINED
+    ) -> IResponse[ReadReturnT]:
         params = {
             'handle': handle,
         }
@@ -78,8 +79,8 @@ class IO(BaseDomain):
 
     def resolve_blob(
             self,
-            object_id: RemoteObjectId
-    ) -> IResponse['ResolveBlobReturnT']:
+            object_id: 'RemoteObjectId'
+    ) -> IResponse[ResolveBlobReturnT]:
         params = {
             'objectId': object_id,
         }

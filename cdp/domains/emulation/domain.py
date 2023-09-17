@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.emulation.types import (
     CanEmulateReturnT,
@@ -46,7 +47,7 @@ if TYPE_CHECKING:
 class Emulation(BaseDomain):
     def can_emulate(
             self
-    ) -> IResponse['CanEmulateReturnT']:
+    ) -> IResponse[CanEmulateReturnT]:
         params = {}
 
         return self._send_command(
@@ -95,7 +96,7 @@ class Emulation(BaseDomain):
 
     def set_focus_emulation_enabled(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -109,7 +110,7 @@ class Emulation(BaseDomain):
 
     def set_auto_dark_mode_override(
             self,
-            enabled: bool = UNDEFINED
+            enabled: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -124,7 +125,7 @@ class Emulation(BaseDomain):
 
     def set_cpu_throttling_rate(
             self,
-            rate: float
+            rate: 'float'
     ) -> IResponse[None]:
         params = {
             'rate': rate,
@@ -138,12 +139,15 @@ class Emulation(BaseDomain):
 
     def set_default_background_color_override(
             self,
-            color: RGBA = UNDEFINED
+            color: 'RGBA' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
         if is_defined(color):
-            params['color'] = color
+            params['color'] = to_dict(
+                color,
+                'camel'
+            )
 
         return self._send_command(
             'Emulation.setDefaultBackgroundColorOverride',
@@ -153,19 +157,19 @@ class Emulation(BaseDomain):
 
     def set_device_metrics_override(
             self,
-            width: int,
-            height: int,
-            device_scale_factor: float,
-            mobile: bool,
-            scale: float = UNDEFINED,
-            screen_width: int = UNDEFINED,
-            screen_height: int = UNDEFINED,
-            position_x: int = UNDEFINED,
-            position_y: int = UNDEFINED,
-            dont_set_visible_size: bool = UNDEFINED,
-            screen_orientation: ScreenOrientation = UNDEFINED,
-            viewport: Viewport = UNDEFINED,
-            display_feature: DisplayFeature = UNDEFINED
+            width: 'int',
+            height: 'int',
+            device_scale_factor: 'float',
+            mobile: 'bool',
+            scale: 'float' = UNDEFINED,
+            screen_width: 'int' = UNDEFINED,
+            screen_height: 'int' = UNDEFINED,
+            position_x: 'int' = UNDEFINED,
+            position_y: 'int' = UNDEFINED,
+            dont_set_visible_size: 'bool' = UNDEFINED,
+            screen_orientation: 'ScreenOrientation' = UNDEFINED,
+            viewport: 'Viewport' = UNDEFINED,
+            display_feature: 'DisplayFeature' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'width': width,
@@ -193,13 +197,22 @@ class Emulation(BaseDomain):
             params['dontSetVisibleSize'] = dont_set_visible_size
 
         if is_defined(screen_orientation):
-            params['screenOrientation'] = screen_orientation
+            params['screenOrientation'] = to_dict(
+                screen_orientation,
+                'camel'
+            )
 
         if is_defined(viewport):
-            params['viewport'] = viewport
+            params['viewport'] = to_dict(
+                viewport,
+                'camel'
+            )
 
         if is_defined(display_feature):
-            params['displayFeature'] = display_feature
+            params['displayFeature'] = to_dict(
+                display_feature,
+                'camel'
+            )
 
         return self._send_command(
             'Emulation.setDeviceMetricsOverride',
@@ -209,7 +222,7 @@ class Emulation(BaseDomain):
 
     def set_scrollbars_hidden(
             self,
-            hidden: bool
+            hidden: 'bool'
     ) -> IResponse[None]:
         params = {
             'hidden': hidden,
@@ -223,7 +236,7 @@ class Emulation(BaseDomain):
 
     def set_document_cookie_disabled(
             self,
-            disabled: bool
+            disabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'disabled': disabled,
@@ -237,8 +250,8 @@ class Emulation(BaseDomain):
 
     def set_emit_touch_events_for_mouse(
             self,
-            enabled: bool,
-            configuration: str = UNDEFINED
+            enabled: 'bool',
+            configuration: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -255,8 +268,8 @@ class Emulation(BaseDomain):
 
     def set_emulated_media(
             self,
-            media: str = UNDEFINED,
-            features: list = UNDEFINED
+            media: 'str' = UNDEFINED,
+            features: 'list' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -264,7 +277,10 @@ class Emulation(BaseDomain):
             params['media'] = media
 
         if is_defined(features):
-            params['features'] = features
+            params['features'] = [
+                to_dict(item, 'camel')
+                for item in features
+            ]
 
         return self._send_command(
             'Emulation.setEmulatedMedia',
@@ -274,7 +290,7 @@ class Emulation(BaseDomain):
 
     def set_emulated_vision_deficiency(
             self,
-            type_: str
+            type_: 'str'
     ) -> IResponse[None]:
         params = {
             'type': type_,
@@ -288,9 +304,9 @@ class Emulation(BaseDomain):
 
     def set_geolocation_override(
             self,
-            latitude: float = UNDEFINED,
-            longitude: float = UNDEFINED,
-            accuracy: float = UNDEFINED
+            latitude: 'float' = UNDEFINED,
+            longitude: 'float' = UNDEFINED,
+            accuracy: 'float' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -311,8 +327,8 @@ class Emulation(BaseDomain):
 
     def set_idle_override(
             self,
-            is_user_active: bool,
-            is_screen_unlocked: bool
+            is_user_active: 'bool',
+            is_screen_unlocked: 'bool'
     ) -> IResponse[None]:
         params = {
             'isUserActive': is_user_active,
@@ -338,7 +354,7 @@ class Emulation(BaseDomain):
 
     def set_navigator_overrides(
             self,
-            platform: str
+            platform: 'str'
     ) -> IResponse[None]:
         params = {
             'platform': platform,
@@ -352,7 +368,7 @@ class Emulation(BaseDomain):
 
     def set_page_scale_factor(
             self,
-            page_scale_factor: float
+            page_scale_factor: 'float'
     ) -> IResponse[None]:
         params = {
             'pageScaleFactor': page_scale_factor,
@@ -366,7 +382,7 @@ class Emulation(BaseDomain):
 
     def set_script_execution_disabled(
             self,
-            value: bool
+            value: 'bool'
     ) -> IResponse[None]:
         params = {
             'value': value,
@@ -380,8 +396,8 @@ class Emulation(BaseDomain):
 
     def set_touch_emulation_enabled(
             self,
-            enabled: bool,
-            max_touch_points: int = UNDEFINED
+            enabled: 'bool',
+            max_touch_points: 'int' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -398,11 +414,11 @@ class Emulation(BaseDomain):
 
     def set_virtual_time_policy(
             self,
-            policy: VirtualTimePolicy,
-            budget: float = UNDEFINED,
-            max_virtual_time_task_starvation_count: int = UNDEFINED,
-            initial_virtual_time: TimeSinceEpoch = UNDEFINED
-    ) -> IResponse['SetVirtualTimePolicyReturnT']:
+            policy: 'VirtualTimePolicy',
+            budget: 'float' = UNDEFINED,
+            max_virtual_time_task_starvation_count: 'int' = UNDEFINED,
+            initial_virtual_time: 'TimeSinceEpoch' = UNDEFINED
+    ) -> IResponse[SetVirtualTimePolicyReturnT]:
         params = {
             'policy': policy,
         }
@@ -429,7 +445,7 @@ class Emulation(BaseDomain):
 
     def set_locale_override(
             self,
-            locale: str = UNDEFINED
+            locale: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -444,7 +460,7 @@ class Emulation(BaseDomain):
 
     def set_timezone_override(
             self,
-            timezone_id: str
+            timezone_id: 'str'
     ) -> IResponse[None]:
         params = {
             'timezoneId': timezone_id,
@@ -458,8 +474,8 @@ class Emulation(BaseDomain):
 
     def set_visible_size(
             self,
-            width: int,
-            height: int
+            width: 'int',
+            height: 'int'
     ) -> IResponse[None]:
         params = {
             'width': width,
@@ -474,7 +490,7 @@ class Emulation(BaseDomain):
 
     def set_disabled_image_types(
             self,
-            image_types: list
+            image_types: 'list'
     ) -> IResponse[None]:
         params = {
             'imageTypes': image_types,
@@ -488,7 +504,7 @@ class Emulation(BaseDomain):
 
     def set_hardware_concurrency_override(
             self,
-            hardware_concurrency: int
+            hardware_concurrency: 'int'
     ) -> IResponse[None]:
         params = {
             'hardwareConcurrency': hardware_concurrency,
@@ -502,10 +518,10 @@ class Emulation(BaseDomain):
 
     def set_user_agent_override(
             self,
-            user_agent: str,
-            accept_language: str = UNDEFINED,
-            platform: str = UNDEFINED,
-            user_agent_metadata: UserAgentMetadata = UNDEFINED
+            user_agent: 'str',
+            accept_language: 'str' = UNDEFINED,
+            platform: 'str' = UNDEFINED,
+            user_agent_metadata: 'UserAgentMetadata' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'userAgent': user_agent,
@@ -518,7 +534,10 @@ class Emulation(BaseDomain):
             params['platform'] = platform
 
         if is_defined(user_agent_metadata):
-            params['userAgentMetadata'] = user_agent_metadata
+            params['userAgentMetadata'] = to_dict(
+                user_agent_metadata,
+                'camel'
+            )
 
         return self._send_command(
             'Emulation.setUserAgentOverride',
@@ -528,7 +547,7 @@ class Emulation(BaseDomain):
 
     def set_automation_override(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,

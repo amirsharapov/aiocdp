@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.dom.types import (
     BackendNodeId
@@ -38,13 +39,16 @@ if TYPE_CHECKING:
 class Autofill(BaseDomain):
     def trigger(
             self,
-            field_id: BackendNodeId,
-            frame_id: FrameId,
-            card: CreditCard = UNDEFINED
+            field_id: 'BackendNodeId',
+            card: 'CreditCard',
+            frame_id: 'FrameId' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'fieldId': field_id,
-            'card': card,
+            'card': to_dict(
+                card,
+                'camel'
+            ),
         }
 
         if is_defined(frame_id):
@@ -58,10 +62,13 @@ class Autofill(BaseDomain):
 
     def set_addresses(
             self,
-            addresses: list
+            addresses: 'list'
     ) -> IResponse[None]:
         params = {
-            'addresses': addresses,
+            'addresses': [
+                to_dict(item, 'camel')
+                for item in addresses
+            ],
         }
 
         return self._send_command(

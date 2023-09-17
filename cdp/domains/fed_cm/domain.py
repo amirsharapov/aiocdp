@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -29,7 +30,7 @@ if TYPE_CHECKING:
 class FedCm(BaseDomain):
     def enable(
             self,
-            disable_rejection_delay: bool = UNDEFINED
+            disable_rejection_delay: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -55,8 +56,8 @@ class FedCm(BaseDomain):
 
     def select_account(
             self,
-            dialog_id: str,
-            account_index: int
+            dialog_id: 'str',
+            account_index: 'int'
     ) -> IResponse[None]:
         params = {
             'dialogId': dialog_id,
@@ -71,7 +72,7 @@ class FedCm(BaseDomain):
 
     def confirm_idp_signin(
             self,
-            dialog_id: str
+            dialog_id: 'str'
     ) -> IResponse[None]:
         params = {
             'dialogId': dialog_id,
@@ -85,8 +86,8 @@ class FedCm(BaseDomain):
 
     def dismiss_dialog(
             self,
-            dialog_id: str,
-            trigger_cooldown: bool = UNDEFINED
+            dialog_id: 'str',
+            trigger_cooldown: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'dialogId': dialog_id,

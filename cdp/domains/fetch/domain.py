@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.fetch.types import (
     AuthChallengeResponse,
@@ -49,13 +50,16 @@ class Fetch(BaseDomain):
 
     def enable(
             self,
-            patterns: list = UNDEFINED,
-            handle_auth_requests: bool = UNDEFINED
+            patterns: 'list' = UNDEFINED,
+            handle_auth_requests: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
         if is_defined(patterns):
-            params['patterns'] = patterns
+            params['patterns'] = [
+                to_dict(item, 'camel')
+                for item in patterns
+            ]
 
         if is_defined(handle_auth_requests):
             params['handleAuthRequests'] = handle_auth_requests
@@ -68,8 +72,8 @@ class Fetch(BaseDomain):
 
     def fail_request(
             self,
-            request_id: RequestId,
-            error_reason: ErrorReason
+            request_id: 'RequestId',
+            error_reason: 'ErrorReason'
     ) -> IResponse[None]:
         params = {
             'requestId': request_id,
@@ -84,12 +88,12 @@ class Fetch(BaseDomain):
 
     def fulfill_request(
             self,
-            request_id: RequestId,
-            response_code: int,
-            response_headers: list = UNDEFINED,
-            binary_response_headers: str = UNDEFINED,
-            body: str = UNDEFINED,
-            response_phrase: str = UNDEFINED
+            request_id: 'RequestId',
+            response_code: 'int',
+            response_headers: 'list' = UNDEFINED,
+            binary_response_headers: 'str' = UNDEFINED,
+            body: 'str' = UNDEFINED,
+            response_phrase: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'requestId': request_id,
@@ -97,7 +101,10 @@ class Fetch(BaseDomain):
         }
 
         if is_defined(response_headers):
-            params['responseHeaders'] = response_headers
+            params['responseHeaders'] = [
+                to_dict(item, 'camel')
+                for item in response_headers
+            ]
 
         if is_defined(binary_response_headers):
             params['binaryResponseHeaders'] = binary_response_headers
@@ -116,12 +123,12 @@ class Fetch(BaseDomain):
 
     def continue_request(
             self,
-            request_id: RequestId,
-            url: str = UNDEFINED,
-            method: str = UNDEFINED,
-            post_data: str = UNDEFINED,
-            headers: list = UNDEFINED,
-            intercept_response: bool = UNDEFINED
+            request_id: 'RequestId',
+            url: 'str' = UNDEFINED,
+            method: 'str' = UNDEFINED,
+            post_data: 'str' = UNDEFINED,
+            headers: 'list' = UNDEFINED,
+            intercept_response: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'requestId': request_id,
@@ -137,7 +144,10 @@ class Fetch(BaseDomain):
             params['postData'] = post_data
 
         if is_defined(headers):
-            params['headers'] = headers
+            params['headers'] = [
+                to_dict(item, 'camel')
+                for item in headers
+            ]
 
         if is_defined(intercept_response):
             params['interceptResponse'] = intercept_response
@@ -150,12 +160,15 @@ class Fetch(BaseDomain):
 
     def continue_with_auth(
             self,
-            request_id: RequestId,
-            auth_challenge_response: AuthChallengeResponse
+            request_id: 'RequestId',
+            auth_challenge_response: 'AuthChallengeResponse'
     ) -> IResponse[None]:
         params = {
             'requestId': request_id,
-            'authChallengeResponse': auth_challenge_response,
+            'authChallengeResponse': to_dict(
+                auth_challenge_response,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -166,11 +179,11 @@ class Fetch(BaseDomain):
 
     def continue_response(
             self,
-            request_id: RequestId,
-            response_code: int = UNDEFINED,
-            response_phrase: str = UNDEFINED,
-            response_headers: list = UNDEFINED,
-            binary_response_headers: str = UNDEFINED
+            request_id: 'RequestId',
+            response_code: 'int' = UNDEFINED,
+            response_phrase: 'str' = UNDEFINED,
+            response_headers: 'list' = UNDEFINED,
+            binary_response_headers: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'requestId': request_id,
@@ -183,7 +196,10 @@ class Fetch(BaseDomain):
             params['responsePhrase'] = response_phrase
 
         if is_defined(response_headers):
-            params['responseHeaders'] = response_headers
+            params['responseHeaders'] = [
+                to_dict(item, 'camel')
+                for item in response_headers
+            ]
 
         if is_defined(binary_response_headers):
             params['binaryResponseHeaders'] = binary_response_headers
@@ -196,8 +212,8 @@ class Fetch(BaseDomain):
 
     def get_response_body(
             self,
-            request_id: RequestId
-    ) -> IResponse['GetResponseBodyReturnT']:
+            request_id: 'RequestId'
+    ) -> IResponse[GetResponseBodyReturnT]:
         params = {
             'requestId': request_id,
         }
@@ -215,8 +231,8 @@ class Fetch(BaseDomain):
 
     def take_response_body_as_stream(
             self,
-            request_id: RequestId
-    ) -> IResponse['TakeResponseBodyAsStreamReturnT']:
+            request_id: 'RequestId'
+    ) -> IResponse[TakeResponseBodyAsStreamReturnT]:
         params = {
             'requestId': request_id,
         }

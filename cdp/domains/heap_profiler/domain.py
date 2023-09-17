@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.heap_profiler.types import (
     GetHeapObjectIdReturnT,
@@ -39,7 +40,7 @@ if TYPE_CHECKING:
 class HeapProfiler(BaseDomain):
     def add_inspected_heap_object(
             self,
-            heap_object_id: HeapSnapshotObjectId
+            heap_object_id: 'HeapSnapshotObjectId'
     ) -> IResponse[None]:
         params = {
             'heapObjectId': heap_object_id,
@@ -86,8 +87,8 @@ class HeapProfiler(BaseDomain):
 
     def get_heap_object_id(
             self,
-            object_id: RemoteObjectId
-    ) -> IResponse['GetHeapObjectIdReturnT']:
+            object_id: 'RemoteObjectId'
+    ) -> IResponse[GetHeapObjectIdReturnT]:
         params = {
             'objectId': object_id,
         }
@@ -105,9 +106,9 @@ class HeapProfiler(BaseDomain):
 
     def get_object_by_heap_object_id(
             self,
-            object_id: HeapSnapshotObjectId,
-            object_group: str = UNDEFINED
-    ) -> IResponse['GetObjectByHeapObjectIdReturnT']:
+            object_id: 'HeapSnapshotObjectId',
+            object_group: 'str' = UNDEFINED
+    ) -> IResponse[GetObjectByHeapObjectIdReturnT]:
         params = {
             'objectId': object_id,
         }
@@ -128,7 +129,7 @@ class HeapProfiler(BaseDomain):
 
     def get_sampling_profile(
             self
-    ) -> IResponse['GetSamplingProfileReturnT']:
+    ) -> IResponse[GetSamplingProfileReturnT]:
         params = {}
 
         return self._send_command(
@@ -144,7 +145,7 @@ class HeapProfiler(BaseDomain):
 
     def start_sampling(
             self,
-            sampling_interval: float = UNDEFINED
+            sampling_interval: 'float' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -159,7 +160,7 @@ class HeapProfiler(BaseDomain):
 
     def start_tracking_heap_objects(
             self,
-            track_allocations: bool = UNDEFINED
+            track_allocations: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -174,7 +175,7 @@ class HeapProfiler(BaseDomain):
 
     def stop_sampling(
             self
-    ) -> IResponse['StopSamplingReturnT']:
+    ) -> IResponse[StopSamplingReturnT]:
         params = {}
 
         return self._send_command(
@@ -190,7 +191,7 @@ class HeapProfiler(BaseDomain):
 
     def stop_tracking_heap_objects(
             self,
-            report_progress: bool = UNDEFINED
+            report_progress: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -205,7 +206,7 @@ class HeapProfiler(BaseDomain):
 
     def take_heap_snapshot(
             self,
-            report_progress: bool = UNDEFINED
+            report_progress: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 

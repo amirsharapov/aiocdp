@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.memory.types import (
     GetAllTimeSamplingProfileReturnT,
@@ -36,7 +37,7 @@ if TYPE_CHECKING:
 class Memory(BaseDomain):
     def get_dom_counters(
             self
-    ) -> IResponse['GetDOMCountersReturnT']:
+    ) -> IResponse[GetDOMCountersReturnT]:
         params = {}
 
         return self._send_command(
@@ -74,7 +75,7 @@ class Memory(BaseDomain):
 
     def set_pressure_notifications_suppressed(
             self,
-            suppressed: bool
+            suppressed: 'bool'
     ) -> IResponse[None]:
         params = {
             'suppressed': suppressed,
@@ -88,7 +89,7 @@ class Memory(BaseDomain):
 
     def simulate_pressure_notification(
             self,
-            level: PressureLevel
+            level: 'PressureLevel'
     ) -> IResponse[None]:
         params = {
             'level': level,
@@ -102,8 +103,8 @@ class Memory(BaseDomain):
 
     def start_sampling(
             self,
-            sampling_interval: int = UNDEFINED,
-            suppress_randomness: bool = UNDEFINED
+            sampling_interval: 'int' = UNDEFINED,
+            suppress_randomness: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -132,7 +133,7 @@ class Memory(BaseDomain):
 
     def get_all_time_sampling_profile(
             self
-    ) -> IResponse['GetAllTimeSamplingProfileReturnT']:
+    ) -> IResponse[GetAllTimeSamplingProfileReturnT]:
         params = {}
 
         return self._send_command(
@@ -148,7 +149,7 @@ class Memory(BaseDomain):
 
     def get_browser_sampling_profile(
             self
-    ) -> IResponse['GetBrowserSamplingProfileReturnT']:
+    ) -> IResponse[GetBrowserSamplingProfileReturnT]:
         params = {}
 
         return self._send_command(
@@ -164,7 +165,7 @@ class Memory(BaseDomain):
 
     def get_sampling_profile(
             self
-    ) -> IResponse['GetSamplingProfileReturnT']:
+    ) -> IResponse[GetSamplingProfileReturnT]:
         params = {}
 
         return self._send_command(

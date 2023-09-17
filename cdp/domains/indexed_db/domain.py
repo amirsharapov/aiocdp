@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.storage.types import (
     StorageBucket
@@ -39,11 +40,11 @@ if TYPE_CHECKING:
 class IndexedDB(BaseDomain):
     def clear_object_store(
             self,
-            security_origin: str,
-            storage_key: str,
-            storage_bucket: StorageBucket = UNDEFINED,
-            database_name: str = UNDEFINED,
-            object_store_name: str = UNDEFINED
+            database_name: 'str',
+            object_store_name: 'str',
+            security_origin: 'str' = UNDEFINED,
+            storage_key: 'str' = UNDEFINED,
+            storage_bucket: 'StorageBucket' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'databaseName': database_name,
@@ -57,7 +58,10 @@ class IndexedDB(BaseDomain):
             params['storageKey'] = storage_key
 
         if is_defined(storage_bucket):
-            params['storageBucket'] = storage_bucket
+            params['storageBucket'] = to_dict(
+                storage_bucket,
+                'camel'
+            )
 
         return self._send_command(
             'IndexedDB.clearObjectStore',
@@ -67,10 +71,10 @@ class IndexedDB(BaseDomain):
 
     def delete_database(
             self,
-            security_origin: str,
-            storage_key: str = UNDEFINED,
-            storage_bucket: StorageBucket = UNDEFINED,
-            database_name: str = UNDEFINED
+            database_name: 'str',
+            security_origin: 'str' = UNDEFINED,
+            storage_key: 'str' = UNDEFINED,
+            storage_bucket: 'StorageBucket' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'databaseName': database_name,
@@ -83,7 +87,10 @@ class IndexedDB(BaseDomain):
             params['storageKey'] = storage_key
 
         if is_defined(storage_bucket):
-            params['storageBucket'] = storage_bucket
+            params['storageBucket'] = to_dict(
+                storage_bucket,
+                'camel'
+            )
 
         return self._send_command(
             'IndexedDB.deleteDatabase',
@@ -93,17 +100,20 @@ class IndexedDB(BaseDomain):
 
     def delete_object_store_entries(
             self,
-            security_origin: str,
-            storage_key: str,
-            storage_bucket: StorageBucket,
-            database_name: str = UNDEFINED,
-            object_store_name: str = UNDEFINED,
-            key_range: KeyRange = UNDEFINED
+            database_name: 'str',
+            object_store_name: 'str',
+            key_range: 'KeyRange',
+            security_origin: 'str' = UNDEFINED,
+            storage_key: 'str' = UNDEFINED,
+            storage_bucket: 'StorageBucket' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
-            'keyRange': key_range,
+            'keyRange': to_dict(
+                key_range,
+                'camel'
+            ),
         }
 
         if is_defined(security_origin):
@@ -113,7 +123,10 @@ class IndexedDB(BaseDomain):
             params['storageKey'] = storage_key
 
         if is_defined(storage_bucket):
-            params['storageBucket'] = storage_bucket
+            params['storageBucket'] = to_dict(
+                storage_bucket,
+                'camel'
+            )
 
         return self._send_command(
             'IndexedDB.deleteObjectStoreEntries',
@@ -145,16 +158,16 @@ class IndexedDB(BaseDomain):
 
     def request_data(
             self,
-            security_origin: str,
-            storage_key: str,
-            storage_bucket: StorageBucket,
-            database_name: str,
-            object_store_name: str,
-            index_name: str = UNDEFINED,
-            skip_count: int = UNDEFINED,
-            page_size: int = UNDEFINED,
-            key_range: KeyRange = UNDEFINED
-    ) -> IResponse['RequestDataReturnT']:
+            database_name: 'str',
+            object_store_name: 'str',
+            index_name: 'str',
+            skip_count: 'int',
+            page_size: 'int',
+            security_origin: 'str' = UNDEFINED,
+            storage_key: 'str' = UNDEFINED,
+            storage_bucket: 'StorageBucket' = UNDEFINED,
+            key_range: 'KeyRange' = UNDEFINED
+    ) -> IResponse[RequestDataReturnT]:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -170,10 +183,16 @@ class IndexedDB(BaseDomain):
             params['storageKey'] = storage_key
 
         if is_defined(storage_bucket):
-            params['storageBucket'] = storage_bucket
+            params['storageBucket'] = to_dict(
+                storage_bucket,
+                'camel'
+            )
 
         if is_defined(key_range):
-            params['keyRange'] = key_range
+            params['keyRange'] = to_dict(
+                key_range,
+                'camel'
+            )
 
         return self._send_command(
             'IndexedDB.requestData',
@@ -188,12 +207,12 @@ class IndexedDB(BaseDomain):
 
     def get_metadata(
             self,
-            security_origin: str,
-            storage_key: str,
-            storage_bucket: StorageBucket = UNDEFINED,
-            database_name: str = UNDEFINED,
-            object_store_name: str = UNDEFINED
-    ) -> IResponse['GetMetadataReturnT']:
+            database_name: 'str',
+            object_store_name: 'str',
+            security_origin: 'str' = UNDEFINED,
+            storage_key: 'str' = UNDEFINED,
+            storage_bucket: 'StorageBucket' = UNDEFINED
+    ) -> IResponse[GetMetadataReturnT]:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -206,7 +225,10 @@ class IndexedDB(BaseDomain):
             params['storageKey'] = storage_key
 
         if is_defined(storage_bucket):
-            params['storageBucket'] = storage_bucket
+            params['storageBucket'] = to_dict(
+                storage_bucket,
+                'camel'
+            )
 
         return self._send_command(
             'IndexedDB.getMetadata',
@@ -221,11 +243,11 @@ class IndexedDB(BaseDomain):
 
     def request_database(
             self,
-            security_origin: str,
-            storage_key: str = UNDEFINED,
-            storage_bucket: StorageBucket = UNDEFINED,
-            database_name: str = UNDEFINED
-    ) -> IResponse['RequestDatabaseReturnT']:
+            database_name: 'str',
+            security_origin: 'str' = UNDEFINED,
+            storage_key: 'str' = UNDEFINED,
+            storage_bucket: 'StorageBucket' = UNDEFINED
+    ) -> IResponse[RequestDatabaseReturnT]:
         params = {
             'databaseName': database_name,
         }
@@ -237,7 +259,10 @@ class IndexedDB(BaseDomain):
             params['storageKey'] = storage_key
 
         if is_defined(storage_bucket):
-            params['storageBucket'] = storage_bucket
+            params['storageBucket'] = to_dict(
+                storage_bucket,
+                'camel'
+            )
 
         return self._send_command(
             'IndexedDB.requestDatabase',
@@ -252,10 +277,10 @@ class IndexedDB(BaseDomain):
 
     def request_database_names(
             self,
-            security_origin: str = UNDEFINED,
-            storage_key: str = UNDEFINED,
-            storage_bucket: StorageBucket = UNDEFINED
-    ) -> IResponse['RequestDatabaseNamesReturnT']:
+            security_origin: 'str' = UNDEFINED,
+            storage_key: 'str' = UNDEFINED,
+            storage_bucket: 'StorageBucket' = UNDEFINED
+    ) -> IResponse[RequestDatabaseNamesReturnT]:
         params = {}
 
         if is_defined(security_origin):
@@ -265,7 +290,10 @@ class IndexedDB(BaseDomain):
             params['storageKey'] = storage_key
 
         if is_defined(storage_bucket):
-            params['storageBucket'] = storage_bucket
+            params['storageBucket'] = to_dict(
+                storage_bucket,
+                'camel'
+            )
 
         return self._send_command(
             'IndexedDB.requestDatabaseNames',

@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -62,10 +63,13 @@ class Log(BaseDomain):
 
     def start_violations_report(
             self,
-            config: list
+            config: 'list'
     ) -> IResponse[None]:
         params = {
-            'config': config,
+            'config': [
+                to_dict(item, 'camel')
+                for item in config
+            ],
         }
 
         return self._send_command(

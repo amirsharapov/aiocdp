@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.network.types import (
     AuthChallengeResponse,
@@ -62,7 +63,7 @@ if TYPE_CHECKING:
 class Network(BaseDomain):
     def set_accepted_encodings(
             self,
-            encodings: list
+            encodings: 'list'
     ) -> IResponse[None]:
         params = {
             'encodings': encodings,
@@ -87,7 +88,7 @@ class Network(BaseDomain):
 
     def can_clear_browser_cache(
             self
-    ) -> IResponse['CanClearBrowserCacheReturnT']:
+    ) -> IResponse[CanClearBrowserCacheReturnT]:
         params = {}
 
         return self._send_command(
@@ -103,7 +104,7 @@ class Network(BaseDomain):
 
     def can_clear_browser_cookies(
             self
-    ) -> IResponse['CanClearBrowserCookiesReturnT']:
+    ) -> IResponse[CanClearBrowserCookiesReturnT]:
         params = {}
 
         return self._send_command(
@@ -119,7 +120,7 @@ class Network(BaseDomain):
 
     def can_emulate_network_conditions(
             self
-    ) -> IResponse['CanEmulateNetworkConditionsReturnT']:
+    ) -> IResponse[CanEmulateNetworkConditionsReturnT]:
         params = {}
 
         return self._send_command(
@@ -157,14 +158,14 @@ class Network(BaseDomain):
 
     def continue_intercepted_request(
             self,
-            interception_id: InterceptionId,
-            error_reason: ErrorReason = UNDEFINED,
-            raw_response: str = UNDEFINED,
-            url: str = UNDEFINED,
-            method: str = UNDEFINED,
-            post_data: str = UNDEFINED,
-            headers: Headers = UNDEFINED,
-            auth_challenge_response: AuthChallengeResponse = UNDEFINED
+            interception_id: 'InterceptionId',
+            error_reason: 'ErrorReason' = UNDEFINED,
+            raw_response: 'str' = UNDEFINED,
+            url: 'str' = UNDEFINED,
+            method: 'str' = UNDEFINED,
+            post_data: 'str' = UNDEFINED,
+            headers: 'Headers' = UNDEFINED,
+            auth_challenge_response: 'AuthChallengeResponse' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'interceptionId': interception_id,
@@ -189,7 +190,10 @@ class Network(BaseDomain):
             params['headers'] = headers
 
         if is_defined(auth_challenge_response):
-            params['authChallengeResponse'] = auth_challenge_response
+            params['authChallengeResponse'] = to_dict(
+                auth_challenge_response,
+                'camel'
+            )
 
         return self._send_command(
             'Network.continueInterceptedRequest',
@@ -199,10 +203,10 @@ class Network(BaseDomain):
 
     def delete_cookies(
             self,
-            name: str,
-            url: str = UNDEFINED,
-            domain: str = UNDEFINED,
-            path: str = UNDEFINED
+            name: 'str',
+            url: 'str' = UNDEFINED,
+            domain: 'str' = UNDEFINED,
+            path: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'name': name,
@@ -236,11 +240,11 @@ class Network(BaseDomain):
 
     def emulate_network_conditions(
             self,
-            offline: bool,
-            latency: float,
-            download_throughput: float,
-            upload_throughput: float,
-            connection_type: ConnectionType = UNDEFINED
+            offline: 'bool',
+            latency: 'float',
+            download_throughput: 'float',
+            upload_throughput: 'float',
+            connection_type: 'ConnectionType' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'offline': offline,
@@ -260,9 +264,9 @@ class Network(BaseDomain):
 
     def enable(
             self,
-            max_total_buffer_size: int = UNDEFINED,
-            max_resource_buffer_size: int = UNDEFINED,
-            max_post_data_size: int = UNDEFINED
+            max_total_buffer_size: 'int' = UNDEFINED,
+            max_resource_buffer_size: 'int' = UNDEFINED,
+            max_post_data_size: 'int' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -283,7 +287,7 @@ class Network(BaseDomain):
 
     def get_all_cookies(
             self
-    ) -> IResponse['GetAllCookiesReturnT']:
+    ) -> IResponse[GetAllCookiesReturnT]:
         params = {}
 
         return self._send_command(
@@ -299,8 +303,8 @@ class Network(BaseDomain):
 
     def get_certificate(
             self,
-            origin: str
-    ) -> IResponse['GetCertificateReturnT']:
+            origin: 'str'
+    ) -> IResponse[GetCertificateReturnT]:
         params = {
             'origin': origin,
         }
@@ -318,8 +322,8 @@ class Network(BaseDomain):
 
     def get_cookies(
             self,
-            urls: list = UNDEFINED
-    ) -> IResponse['GetCookiesReturnT']:
+            urls: 'list' = UNDEFINED
+    ) -> IResponse[GetCookiesReturnT]:
         params = {}
 
         if is_defined(urls):
@@ -338,8 +342,8 @@ class Network(BaseDomain):
 
     def get_response_body(
             self,
-            request_id: RequestId
-    ) -> IResponse['GetResponseBodyReturnT']:
+            request_id: 'RequestId'
+    ) -> IResponse[GetResponseBodyReturnT]:
         params = {
             'requestId': request_id,
         }
@@ -357,8 +361,8 @@ class Network(BaseDomain):
 
     def get_request_post_data(
             self,
-            request_id: RequestId
-    ) -> IResponse['GetRequestPostDataReturnT']:
+            request_id: 'RequestId'
+    ) -> IResponse[GetRequestPostDataReturnT]:
         params = {
             'requestId': request_id,
         }
@@ -376,8 +380,8 @@ class Network(BaseDomain):
 
     def get_response_body_for_interception(
             self,
-            interception_id: InterceptionId
-    ) -> IResponse['GetResponseBodyForInterceptionReturnT']:
+            interception_id: 'InterceptionId'
+    ) -> IResponse[GetResponseBodyForInterceptionReturnT]:
         params = {
             'interceptionId': interception_id,
         }
@@ -395,8 +399,8 @@ class Network(BaseDomain):
 
     def take_response_body_for_interception_as_stream(
             self,
-            interception_id: InterceptionId
-    ) -> IResponse['TakeResponseBodyForInterceptionAsStreamReturnT']:
+            interception_id: 'InterceptionId'
+    ) -> IResponse[TakeResponseBodyForInterceptionAsStreamReturnT]:
         params = {
             'interceptionId': interception_id,
         }
@@ -414,7 +418,7 @@ class Network(BaseDomain):
 
     def replay_xhr(
             self,
-            request_id: RequestId
+            request_id: 'RequestId'
     ) -> IResponse[None]:
         params = {
             'requestId': request_id,
@@ -428,11 +432,11 @@ class Network(BaseDomain):
 
     def search_in_response_body(
             self,
-            request_id: RequestId,
-            query: str,
-            case_sensitive: bool = UNDEFINED,
-            is_regex: bool = UNDEFINED
-    ) -> IResponse['SearchInResponseBodyReturnT']:
+            request_id: 'RequestId',
+            query: 'str',
+            case_sensitive: 'bool' = UNDEFINED,
+            is_regex: 'bool' = UNDEFINED
+    ) -> IResponse[SearchInResponseBodyReturnT]:
         params = {
             'requestId': request_id,
             'query': query,
@@ -457,7 +461,7 @@ class Network(BaseDomain):
 
     def set_blocked_ur_ls(
             self,
-            urls: list
+            urls: 'list'
     ) -> IResponse[None]:
         params = {
             'urls': urls,
@@ -471,7 +475,7 @@ class Network(BaseDomain):
 
     def set_bypass_service_worker(
             self,
-            bypass: bool
+            bypass: 'bool'
     ) -> IResponse[None]:
         params = {
             'bypass': bypass,
@@ -485,7 +489,7 @@ class Network(BaseDomain):
 
     def set_cache_disabled(
             self,
-            cache_disabled: bool
+            cache_disabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'cacheDisabled': cache_disabled,
@@ -499,21 +503,21 @@ class Network(BaseDomain):
 
     def set_cookie(
             self,
-            name: str,
-            value: str,
-            url: str = UNDEFINED,
-            domain: str = UNDEFINED,
-            path: str = UNDEFINED,
-            secure: bool = UNDEFINED,
-            http_only: bool = UNDEFINED,
-            same_site: CookieSameSite = UNDEFINED,
-            expires: TimeSinceEpoch = UNDEFINED,
-            priority: CookiePriority = UNDEFINED,
-            same_party: bool = UNDEFINED,
-            source_scheme: CookieSourceScheme = UNDEFINED,
-            source_port: int = UNDEFINED,
-            partition_key: str = UNDEFINED
-    ) -> IResponse['SetCookieReturnT']:
+            name: 'str',
+            value: 'str',
+            url: 'str' = UNDEFINED,
+            domain: 'str' = UNDEFINED,
+            path: 'str' = UNDEFINED,
+            secure: 'bool' = UNDEFINED,
+            http_only: 'bool' = UNDEFINED,
+            same_site: 'CookieSameSite' = UNDEFINED,
+            expires: 'TimeSinceEpoch' = UNDEFINED,
+            priority: 'CookiePriority' = UNDEFINED,
+            same_party: 'bool' = UNDEFINED,
+            source_scheme: 'CookieSourceScheme' = UNDEFINED,
+            source_port: 'int' = UNDEFINED,
+            partition_key: 'str' = UNDEFINED
+    ) -> IResponse[SetCookieReturnT]:
         params = {
             'name': name,
             'value': value,
@@ -568,10 +572,13 @@ class Network(BaseDomain):
 
     def set_cookies(
             self,
-            cookies: list
+            cookies: 'list'
     ) -> IResponse[None]:
         params = {
-            'cookies': cookies,
+            'cookies': [
+                to_dict(item, 'camel')
+                for item in cookies
+            ],
         }
 
         return self._send_command(
@@ -582,7 +589,7 @@ class Network(BaseDomain):
 
     def set_extra_http_headers(
             self,
-            headers: Headers
+            headers: 'Headers'
     ) -> IResponse[None]:
         params = {
             'headers': headers,
@@ -596,7 +603,7 @@ class Network(BaseDomain):
 
     def set_attach_debug_stack(
             self,
-            enabled: bool
+            enabled: 'bool'
     ) -> IResponse[None]:
         params = {
             'enabled': enabled,
@@ -610,10 +617,13 @@ class Network(BaseDomain):
 
     def set_request_interception(
             self,
-            patterns: list
+            patterns: 'list'
     ) -> IResponse[None]:
         params = {
-            'patterns': patterns,
+            'patterns': [
+                to_dict(item, 'camel')
+                for item in patterns
+            ],
         }
 
         return self._send_command(
@@ -624,10 +634,10 @@ class Network(BaseDomain):
 
     def set_user_agent_override(
             self,
-            user_agent: str,
-            accept_language: str = UNDEFINED,
-            platform: str = UNDEFINED,
-            user_agent_metadata: UserAgentMetadata = UNDEFINED
+            user_agent: 'str',
+            accept_language: 'str' = UNDEFINED,
+            platform: 'str' = UNDEFINED,
+            user_agent_metadata: 'UserAgentMetadata' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'userAgent': user_agent,
@@ -640,7 +650,10 @@ class Network(BaseDomain):
             params['platform'] = platform
 
         if is_defined(user_agent_metadata):
-            params['userAgentMetadata'] = user_agent_metadata
+            params['userAgentMetadata'] = to_dict(
+                user_agent_metadata,
+                'camel'
+            )
 
         return self._send_command(
             'Network.setUserAgentOverride',
@@ -650,8 +663,8 @@ class Network(BaseDomain):
 
     def get_security_isolation_status(
             self,
-            frame_id: FrameId = UNDEFINED
-    ) -> IResponse['GetSecurityIsolationStatusReturnT']:
+            frame_id: 'FrameId' = UNDEFINED
+    ) -> IResponse[GetSecurityIsolationStatusReturnT]:
         params = {}
 
         if is_defined(frame_id):
@@ -670,7 +683,7 @@ class Network(BaseDomain):
 
     def enable_reporting_api(
             self,
-            enable: bool
+            enable: 'bool'
     ) -> IResponse[None]:
         params = {
             'enable': enable,
@@ -684,13 +697,16 @@ class Network(BaseDomain):
 
     def load_network_resource(
             self,
-            frame_id: FrameId,
-            url: str,
-            options: LoadNetworkResourceOptions = UNDEFINED
-    ) -> IResponse['LoadNetworkResourceReturnT']:
+            url: 'str',
+            options: 'LoadNetworkResourceOptions',
+            frame_id: 'FrameId' = UNDEFINED
+    ) -> IResponse[LoadNetworkResourceReturnT]:
         params = {
             'url': url,
-            'options': options,
+            'options': to_dict(
+                options,
+                'camel'
+            ),
         }
 
         if is_defined(frame_id):

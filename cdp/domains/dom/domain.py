@@ -17,7 +17,8 @@ from typing import (
     TYPE_CHECKING
 )
 from cdp.domains.mapper import (
-    from_dict
+    from_dict,
+    to_dict
 )
 from cdp.domains.dom.types import (
     BackendNodeId,
@@ -71,8 +72,8 @@ if TYPE_CHECKING:
 class DOM(BaseDomain):
     def collect_class_names_from_subtree(
             self,
-            node_id: NodeId
-    ) -> IResponse['CollectClassNamesFromSubtreeReturnT']:
+            node_id: 'NodeId'
+    ) -> IResponse[CollectClassNamesFromSubtreeReturnT]:
         params = {
             'nodeId': node_id,
         }
@@ -90,10 +91,10 @@ class DOM(BaseDomain):
 
     def copy_to(
             self,
-            node_id: NodeId,
-            target_node_id: NodeId,
-            insert_before_node_id: NodeId = UNDEFINED
-    ) -> IResponse['CopyToReturnT']:
+            node_id: 'NodeId',
+            target_node_id: 'NodeId',
+            insert_before_node_id: 'NodeId' = UNDEFINED
+    ) -> IResponse[CopyToReturnT]:
         params = {
             'nodeId': node_id,
             'targetNodeId': target_node_id,
@@ -115,12 +116,12 @@ class DOM(BaseDomain):
 
     def describe_node(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED,
-            depth: int = UNDEFINED,
-            pierce: bool = UNDEFINED
-    ) -> IResponse['DescribeNodeReturnT']:
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED,
+            depth: 'int' = UNDEFINED,
+            pierce: 'bool' = UNDEFINED
+    ) -> IResponse[DescribeNodeReturnT]:
         params = {}
 
         if is_defined(node_id):
@@ -151,10 +152,10 @@ class DOM(BaseDomain):
 
     def scroll_into_view_if_needed(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED,
-            rect: Rect = UNDEFINED
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED,
+            rect: 'Rect' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -168,7 +169,10 @@ class DOM(BaseDomain):
             params['objectId'] = object_id
 
         if is_defined(rect):
-            params['rect'] = rect
+            params['rect'] = to_dict(
+                rect,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.scrollIntoViewIfNeeded',
@@ -189,7 +193,7 @@ class DOM(BaseDomain):
 
     def discard_search_results(
             self,
-            search_id: str
+            search_id: 'str'
     ) -> IResponse[None]:
         params = {
             'searchId': search_id,
@@ -203,7 +207,7 @@ class DOM(BaseDomain):
 
     def enable(
             self,
-            include_whitespace: str = UNDEFINED
+            include_whitespace: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -218,9 +222,9 @@ class DOM(BaseDomain):
 
     def focus(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED
     ) -> IResponse[None]:
         params = {}
 
@@ -241,8 +245,8 @@ class DOM(BaseDomain):
 
     def get_attributes(
             self,
-            node_id: NodeId
-    ) -> IResponse['GetAttributesReturnT']:
+            node_id: 'NodeId'
+    ) -> IResponse[GetAttributesReturnT]:
         params = {
             'nodeId': node_id,
         }
@@ -260,10 +264,10 @@ class DOM(BaseDomain):
 
     def get_box_model(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED
-    ) -> IResponse['GetBoxModelReturnT']:
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED
+    ) -> IResponse[GetBoxModelReturnT]:
         params = {}
 
         if is_defined(node_id):
@@ -288,10 +292,10 @@ class DOM(BaseDomain):
 
     def get_content_quads(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED
-    ) -> IResponse['GetContentQuadsReturnT']:
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED
+    ) -> IResponse[GetContentQuadsReturnT]:
         params = {}
 
         if is_defined(node_id):
@@ -316,9 +320,9 @@ class DOM(BaseDomain):
 
     def get_document(
             self,
-            depth: int = UNDEFINED,
-            pierce: bool = UNDEFINED
-    ) -> IResponse['GetDocumentReturnT']:
+            depth: 'int' = UNDEFINED,
+            pierce: 'bool' = UNDEFINED
+    ) -> IResponse[GetDocumentReturnT]:
         params = {}
 
         if is_defined(depth):
@@ -340,9 +344,9 @@ class DOM(BaseDomain):
 
     def get_flattened_document(
             self,
-            depth: int = UNDEFINED,
-            pierce: bool = UNDEFINED
-    ) -> IResponse['GetFlattenedDocumentReturnT']:
+            depth: 'int' = UNDEFINED,
+            pierce: 'bool' = UNDEFINED
+    ) -> IResponse[GetFlattenedDocumentReturnT]:
         params = {}
 
         if is_defined(depth):
@@ -364,13 +368,16 @@ class DOM(BaseDomain):
 
     def get_nodes_for_subtree_by_style(
             self,
-            node_id: NodeId,
-            computed_styles: list,
-            pierce: bool = UNDEFINED
-    ) -> IResponse['GetNodesForSubtreeByStyleReturnT']:
+            node_id: 'NodeId',
+            computed_styles: 'list',
+            pierce: 'bool' = UNDEFINED
+    ) -> IResponse[GetNodesForSubtreeByStyleReturnT]:
         params = {
             'nodeId': node_id,
-            'computedStyles': computed_styles,
+            'computedStyles': [
+                to_dict(item, 'camel')
+                for item in computed_styles
+            ],
         }
 
         if is_defined(pierce):
@@ -389,11 +396,11 @@ class DOM(BaseDomain):
 
     def get_node_for_location(
             self,
-            x: int,
-            y: int,
-            include_user_agent_shadow_dom: bool = UNDEFINED,
-            ignore_pointer_events_none: bool = UNDEFINED
-    ) -> IResponse['GetNodeForLocationReturnT']:
+            x: 'int',
+            y: 'int',
+            include_user_agent_shadow_dom: 'bool' = UNDEFINED,
+            ignore_pointer_events_none: 'bool' = UNDEFINED
+    ) -> IResponse[GetNodeForLocationReturnT]:
         params = {
             'x': x,
             'y': y,
@@ -418,10 +425,10 @@ class DOM(BaseDomain):
 
     def get_outer_html(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED
-    ) -> IResponse['GetOuterHTMLReturnT']:
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED
+    ) -> IResponse[GetOuterHTMLReturnT]:
         params = {}
 
         if is_defined(node_id):
@@ -446,8 +453,8 @@ class DOM(BaseDomain):
 
     def get_relayout_boundary(
             self,
-            node_id: NodeId
-    ) -> IResponse['GetRelayoutBoundaryReturnT']:
+            node_id: 'NodeId'
+    ) -> IResponse[GetRelayoutBoundaryReturnT]:
         params = {
             'nodeId': node_id,
         }
@@ -465,10 +472,10 @@ class DOM(BaseDomain):
 
     def get_search_results(
             self,
-            search_id: str,
-            from_index: int,
-            to_index: int
-    ) -> IResponse['GetSearchResultsReturnT']:
+            search_id: 'str',
+            from_index: 'int',
+            to_index: 'int'
+    ) -> IResponse[GetSearchResultsReturnT]:
         params = {
             'searchId': search_id,
             'fromIndex': from_index,
@@ -532,10 +539,10 @@ class DOM(BaseDomain):
 
     def move_to(
             self,
-            node_id: NodeId,
-            target_node_id: NodeId,
-            insert_before_node_id: NodeId = UNDEFINED
-    ) -> IResponse['MoveToReturnT']:
+            node_id: 'NodeId',
+            target_node_id: 'NodeId',
+            insert_before_node_id: 'NodeId' = UNDEFINED
+    ) -> IResponse[MoveToReturnT]:
         params = {
             'nodeId': node_id,
             'targetNodeId': target_node_id,
@@ -557,9 +564,9 @@ class DOM(BaseDomain):
 
     def perform_search(
             self,
-            query: str,
-            include_user_agent_shadow_dom: bool = UNDEFINED
-    ) -> IResponse['PerformSearchReturnT']:
+            query: 'str',
+            include_user_agent_shadow_dom: 'bool' = UNDEFINED
+    ) -> IResponse[PerformSearchReturnT]:
         params = {
             'query': query,
         }
@@ -580,8 +587,8 @@ class DOM(BaseDomain):
 
     def push_node_by_path_to_frontend(
             self,
-            path: str
-    ) -> IResponse['PushNodeByPathToFrontendReturnT']:
+            path: 'str'
+    ) -> IResponse[PushNodeByPathToFrontendReturnT]:
         params = {
             'path': path,
         }
@@ -599,8 +606,8 @@ class DOM(BaseDomain):
 
     def push_nodes_by_backend_ids_to_frontend(
             self,
-            backend_node_ids: list
-    ) -> IResponse['PushNodesByBackendIdsToFrontendReturnT']:
+            backend_node_ids: 'list'
+    ) -> IResponse[PushNodesByBackendIdsToFrontendReturnT]:
         params = {
             'backendNodeIds': backend_node_ids,
         }
@@ -618,9 +625,9 @@ class DOM(BaseDomain):
 
     def query_selector(
             self,
-            node_id: NodeId,
-            selector: str
-    ) -> IResponse['QuerySelectorReturnT']:
+            node_id: 'NodeId',
+            selector: 'str'
+    ) -> IResponse[QuerySelectorReturnT]:
         params = {
             'nodeId': node_id,
             'selector': selector,
@@ -639,9 +646,9 @@ class DOM(BaseDomain):
 
     def query_selector_all(
             self,
-            node_id: NodeId,
-            selector: str
-    ) -> IResponse['QuerySelectorAllReturnT']:
+            node_id: 'NodeId',
+            selector: 'str'
+    ) -> IResponse[QuerySelectorAllReturnT]:
         params = {
             'nodeId': node_id,
             'selector': selector,
@@ -660,7 +667,7 @@ class DOM(BaseDomain):
 
     def get_top_layer_elements(
             self
-    ) -> IResponse['GetTopLayerElementsReturnT']:
+    ) -> IResponse[GetTopLayerElementsReturnT]:
         params = {}
 
         return self._send_command(
@@ -687,8 +694,8 @@ class DOM(BaseDomain):
 
     def remove_attribute(
             self,
-            node_id: NodeId,
-            name: str
+            node_id: 'NodeId',
+            name: 'str'
     ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
@@ -703,7 +710,7 @@ class DOM(BaseDomain):
 
     def remove_node(
             self,
-            node_id: NodeId
+            node_id: 'NodeId'
     ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
@@ -717,9 +724,9 @@ class DOM(BaseDomain):
 
     def request_child_nodes(
             self,
-            node_id: NodeId,
-            depth: int = UNDEFINED,
-            pierce: bool = UNDEFINED
+            node_id: 'NodeId',
+            depth: 'int' = UNDEFINED,
+            pierce: 'bool' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
@@ -739,8 +746,8 @@ class DOM(BaseDomain):
 
     def request_node(
             self,
-            object_id: RemoteObjectId
-    ) -> IResponse['RequestNodeReturnT']:
+            object_id: 'RemoteObjectId'
+    ) -> IResponse[RequestNodeReturnT]:
         params = {
             'objectId': object_id,
         }
@@ -758,11 +765,11 @@ class DOM(BaseDomain):
 
     def resolve_node(
             self,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_group: str = UNDEFINED,
-            execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> IResponse['ResolveNodeReturnT']:
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_group: 'str' = UNDEFINED,
+            execution_context_id: 'ExecutionContextId' = UNDEFINED
+    ) -> IResponse[ResolveNodeReturnT]:
         params = {}
 
         if is_defined(node_id):
@@ -790,9 +797,9 @@ class DOM(BaseDomain):
 
     def set_attribute_value(
             self,
-            node_id: NodeId,
-            name: str,
-            value: str
+            node_id: 'NodeId',
+            name: 'str',
+            value: 'str'
     ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
@@ -808,9 +815,9 @@ class DOM(BaseDomain):
 
     def set_attributes_as_text(
             self,
-            node_id: NodeId,
-            text: str,
-            name: str = UNDEFINED
+            node_id: 'NodeId',
+            text: 'str',
+            name: 'str' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
@@ -828,10 +835,10 @@ class DOM(BaseDomain):
 
     def set_file_input_files(
             self,
-            files: list,
-            node_id: NodeId = UNDEFINED,
-            backend_node_id: BackendNodeId = UNDEFINED,
-            object_id: RemoteObjectId = UNDEFINED
+            files: 'list',
+            node_id: 'NodeId' = UNDEFINED,
+            backend_node_id: 'BackendNodeId' = UNDEFINED,
+            object_id: 'RemoteObjectId' = UNDEFINED
     ) -> IResponse[None]:
         params = {
             'files': files,
@@ -854,7 +861,7 @@ class DOM(BaseDomain):
 
     def set_node_stack_traces_enabled(
             self,
-            enable: bool
+            enable: 'bool'
     ) -> IResponse[None]:
         params = {
             'enable': enable,
@@ -868,8 +875,8 @@ class DOM(BaseDomain):
 
     def get_node_stack_traces(
             self,
-            node_id: NodeId
-    ) -> IResponse['GetNodeStackTracesReturnT']:
+            node_id: 'NodeId'
+    ) -> IResponse[GetNodeStackTracesReturnT]:
         params = {
             'nodeId': node_id,
         }
@@ -887,8 +894,8 @@ class DOM(BaseDomain):
 
     def get_file_info(
             self,
-            object_id: RemoteObjectId
-    ) -> IResponse['GetFileInfoReturnT']:
+            object_id: 'RemoteObjectId'
+    ) -> IResponse[GetFileInfoReturnT]:
         params = {
             'objectId': object_id,
         }
@@ -906,7 +913,7 @@ class DOM(BaseDomain):
 
     def set_inspected_node(
             self,
-            node_id: NodeId
+            node_id: 'NodeId'
     ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
@@ -920,9 +927,9 @@ class DOM(BaseDomain):
 
     def set_node_name(
             self,
-            node_id: NodeId,
-            name: str
-    ) -> IResponse['SetNodeNameReturnT']:
+            node_id: 'NodeId',
+            name: 'str'
+    ) -> IResponse[SetNodeNameReturnT]:
         params = {
             'nodeId': node_id,
             'name': name,
@@ -941,8 +948,8 @@ class DOM(BaseDomain):
 
     def set_node_value(
             self,
-            node_id: NodeId,
-            value: str
+            node_id: 'NodeId',
+            value: 'str'
     ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
@@ -957,8 +964,8 @@ class DOM(BaseDomain):
 
     def set_outer_html(
             self,
-            node_id: NodeId,
-            outer_html: str
+            node_id: 'NodeId',
+            outer_html: 'str'
     ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
@@ -984,8 +991,8 @@ class DOM(BaseDomain):
 
     def get_frame_owner(
             self,
-            frame_id: FrameId
-    ) -> IResponse['GetFrameOwnerReturnT']:
+            frame_id: 'FrameId'
+    ) -> IResponse[GetFrameOwnerReturnT]:
         params = {
             'frameId': frame_id,
         }
@@ -1003,11 +1010,11 @@ class DOM(BaseDomain):
 
     def get_container_for_node(
             self,
-            node_id: NodeId,
-            container_name: str = UNDEFINED,
-            physical_axes: PhysicalAxes = UNDEFINED,
-            logical_axes: LogicalAxes = UNDEFINED
-    ) -> IResponse['GetContainerForNodeReturnT']:
+            node_id: 'NodeId',
+            container_name: 'str' = UNDEFINED,
+            physical_axes: 'PhysicalAxes' = UNDEFINED,
+            logical_axes: 'LogicalAxes' = UNDEFINED
+    ) -> IResponse[GetContainerForNodeReturnT]:
         params = {
             'nodeId': node_id,
         }
@@ -1034,8 +1041,8 @@ class DOM(BaseDomain):
 
     def get_querying_descendants_for_container(
             self,
-            node_id: NodeId
-    ) -> IResponse['GetQueryingDescendantsForContainerReturnT']:
+            node_id: 'NodeId'
+    ) -> IResponse[GetQueryingDescendantsForContainerReturnT]:
         params = {
             'nodeId': node_id,
         }
