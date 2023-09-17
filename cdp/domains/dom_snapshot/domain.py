@@ -26,7 +26,7 @@ from cdp.domains.dom_snapshot.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -34,7 +34,7 @@ if TYPE_CHECKING:
 class DOMSnapshot(BaseDomain):
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -45,7 +45,7 @@ class DOMSnapshot(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -60,7 +60,7 @@ class DOMSnapshot(BaseDomain):
             include_event_listeners: 'bool' = UNDEFINED,
             include_paint_order: 'bool' = UNDEFINED,
             include_user_agent_shadow_tree: 'bool' = UNDEFINED
-    ) -> 'IResponse[GetSnapshotReturnT]':
+    ) -> 'IFutureResponse[GetSnapshotReturnT]':
         params = {
             'computedStyleWhitelist': computed_style_whitelist,
         }
@@ -92,7 +92,7 @@ class DOMSnapshot(BaseDomain):
             include_dom_rects: 'bool' = UNDEFINED,
             include_blended_background_colors: 'bool' = UNDEFINED,
             include_text_color_opacities: 'bool' = UNDEFINED
-    ) -> 'IResponse[CaptureSnapshotReturnT]':
+    ) -> 'IFutureResponse[CaptureSnapshotReturnT]':
         params = {
             'computedStyles': computed_styles,
         }

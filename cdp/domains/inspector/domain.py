@@ -22,7 +22,7 @@ from cdp.domains.mapper import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 class Inspector(BaseDomain):
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -41,7 +41,7 @@ class Inspector(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(

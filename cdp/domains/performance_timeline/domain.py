@@ -22,7 +22,7 @@ from cdp.domains.mapper import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -31,7 +31,7 @@ class PerformanceTimeline(BaseDomain):
     def enable(
             self,
             event_types: 'list'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'eventTypes': event_types,
         }

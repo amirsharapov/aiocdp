@@ -28,7 +28,7 @@ from cdp.domains.profiler.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -36,7 +36,7 @@ if TYPE_CHECKING:
 class Profiler(BaseDomain):
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -47,7 +47,7 @@ class Profiler(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -58,7 +58,7 @@ class Profiler(BaseDomain):
 
     def get_best_effort_coverage(
             self
-    ) -> 'IResponse[GetBestEffortCoverageReturnT]':
+    ) -> 'IFutureResponse[GetBestEffortCoverageReturnT]':
         params = {}
 
         return self._send_command(
@@ -75,7 +75,7 @@ class Profiler(BaseDomain):
     def set_sampling_interval(
             self,
             interval: 'int'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'interval': interval,
         }
@@ -88,7 +88,7 @@ class Profiler(BaseDomain):
 
     def start(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -101,7 +101,7 @@ class Profiler(BaseDomain):
             self,
             call_count: 'bool' = UNDEFINED,
             detailed: 'bool' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         if is_defined(call_count):
@@ -118,7 +118,7 @@ class Profiler(BaseDomain):
 
     def start_type_profile(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -129,7 +129,7 @@ class Profiler(BaseDomain):
 
     def stop(
             self
-    ) -> 'IResponse[StopReturnT]':
+    ) -> 'IFutureResponse[StopReturnT]':
         params = {}
 
         return self._send_command(
@@ -145,7 +145,7 @@ class Profiler(BaseDomain):
 
     def stop_precise_coverage(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -156,7 +156,7 @@ class Profiler(BaseDomain):
 
     def stop_type_profile(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -167,7 +167,7 @@ class Profiler(BaseDomain):
 
     def take_precise_coverage(
             self
-    ) -> 'IResponse[TakePreciseCoverageReturnT]':
+    ) -> 'IFutureResponse[TakePreciseCoverageReturnT]':
         params = {}
 
         return self._send_command(
@@ -183,7 +183,7 @@ class Profiler(BaseDomain):
 
     def take_type_profile(
             self
-    ) -> 'IResponse[TakeTypeProfileReturnT]':
+    ) -> 'IFutureResponse[TakeTypeProfileReturnT]':
         params = {}
 
         return self._send_command(

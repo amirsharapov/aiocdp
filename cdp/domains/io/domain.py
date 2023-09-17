@@ -30,7 +30,7 @@ from cdp.domains.runtime.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -39,7 +39,7 @@ class IO(BaseDomain):
     def close(
             self,
             handle: 'StreamHandle'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'handle': handle,
         }
@@ -55,7 +55,7 @@ class IO(BaseDomain):
             handle: 'StreamHandle',
             offset: 'int' = UNDEFINED,
             size: 'int' = UNDEFINED
-    ) -> 'IResponse[ReadReturnT]':
+    ) -> 'IFutureResponse[ReadReturnT]':
         params = {
             'handle': handle,
         }
@@ -80,7 +80,7 @@ class IO(BaseDomain):
     def resolve_blob(
             self,
             object_id: 'RemoteObjectId'
-    ) -> 'IResponse[ResolveBlobReturnT]':
+    ) -> 'IFutureResponse[ResolveBlobReturnT]':
         params = {
             'objectId': object_id,
         }

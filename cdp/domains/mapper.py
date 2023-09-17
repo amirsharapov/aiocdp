@@ -6232,7 +6232,7 @@ def _network__trust_token_params__to_dict(
 
 
 def _network__response__to_dict(
-        data: 'network.Response',
+        data: 'network.FutureResponse',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
     if casing_strategy == 'snake':
@@ -18168,7 +18168,7 @@ def _network__trust_token_params__from_dict(
 def _network__response__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.Response':
+) -> 'network.FutureResponse':
     if casing_strategy == 'snake':
         return network.Response(
             url=data['url'],

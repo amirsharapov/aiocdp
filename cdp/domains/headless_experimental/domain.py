@@ -26,7 +26,7 @@ from cdp.domains.headless_experimental.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -38,7 +38,7 @@ class HeadlessExperimental(BaseDomain):
             interval: 'float' = UNDEFINED,
             no_display_updates: 'bool' = UNDEFINED,
             screenshot: 'ScreenshotParams' = UNDEFINED
-    ) -> 'IResponse[BeginFrameReturnT]':
+    ) -> 'IFutureResponse[BeginFrameReturnT]':
         params = {}
 
         if is_defined(frame_time_ticks):
@@ -69,7 +69,7 @@ class HeadlessExperimental(BaseDomain):
 
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -80,7 +80,7 @@ class HeadlessExperimental(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(

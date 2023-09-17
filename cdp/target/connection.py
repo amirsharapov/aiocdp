@@ -23,7 +23,7 @@ class JSONRPCRequestID:
 
 
 @dataclass
-class IResponse(ABC, Generic[_T]):
+class IFutureResponse(ABC, Generic[_T]):
     value: _T
 
     @abstractmethod
@@ -53,7 +53,7 @@ class IConnection(ABC):
             params: dict,
             expect_response: bool,
             response_hook: Callable
-    ) -> IResponse:
+    ) -> IFutureResponse:
         ...
 
     @abstractmethod
@@ -65,7 +65,7 @@ class IConnection(ABC):
 
 
 @dataclass
-class Response(IResponse[_T]):
+class FutureResponse(IFutureResponse[_T]):
     future: Optional[asyncio.Future]
 
     async def _get(self, timeout: int = 10):
@@ -76,9 +76,8 @@ class Response(IResponse[_T]):
             )
 
         except asyncio.TimeoutError as e:
-            raise TimeoutError(
-                'Timed out waiting for response'
-            ) from e
+            message = 'Timed out waiting for response'
+            raise TimeoutError(message) from e
 
     def get(self) -> _T:
         if self.future is None:
@@ -123,6 +122,15 @@ class Connection(IConnection):
         self.ws_connected = None
         self.ws_receiver = None
 
+    async def _run_async(self):
+        async with websockets.connect(self.url) as ws:
+            self.ws = ws
+            self.ws_connected.set_result(None)
+
+            while True:
+                message = await ws.recv()
+                self._on_message(message)
+
     def _on_message(self, message: str):
         print(
             'Message with context: '
@@ -158,22 +166,6 @@ class Connection(IConnection):
                 message
             )
 
-    def _run(self):
-        event_loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(event_loop)
-
-        event_loop.run_until_complete(self._run_async())
-        event_loop.close()
-
-    async def _run_async(self):
-        async with websockets.connect(self.url) as ws:
-            self.ws = ws
-            self.ws_connected.set_result(None)
-
-            while True:
-                message = await ws.recv()
-                self._on_message(message)
-
     def connect(self):
         loop = asyncio.get_event_loop()
 
@@ -192,7 +184,7 @@ class Connection(IConnection):
             params: dict,
             expect_response: bool,
             response_hook: Callable = None
-    ) -> Response:
+    ) -> FutureResponse:
         event_loop = asyncio.get_event_loop()
 
         request_id = JSONRPCRequestID.get()
@@ -205,7 +197,7 @@ class Connection(IConnection):
         request = json.dumps(request)
 
         future = event_loop.create_future()
-        result = Response(
+        result = FutureResponse(
             None,
             future
         )
@@ -222,8 +214,9 @@ class Connection(IConnection):
             )
 
         try:
-            coroutine = self.ws.send(request)
-            event_loop.run_until_complete(coroutine)
+            event_loop.run_until_complete(
+                self.ws.send(request)
+            )
 
         except Exception as e:
             future.set_exception(e)

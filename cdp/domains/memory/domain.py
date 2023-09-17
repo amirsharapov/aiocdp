@@ -29,7 +29,7 @@ from cdp.domains.memory.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -37,7 +37,7 @@ if TYPE_CHECKING:
 class Memory(BaseDomain):
     def get_dom_counters(
             self
-    ) -> 'IResponse[GetDOMCountersReturnT]':
+    ) -> 'IFutureResponse[GetDOMCountersReturnT]':
         params = {}
 
         return self._send_command(
@@ -53,7 +53,7 @@ class Memory(BaseDomain):
 
     def prepare_for_leak_detection(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -64,7 +64,7 @@ class Memory(BaseDomain):
 
     def forcibly_purge_java_script_memory(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -76,7 +76,7 @@ class Memory(BaseDomain):
     def set_pressure_notifications_suppressed(
             self,
             suppressed: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'suppressed': suppressed,
         }
@@ -90,7 +90,7 @@ class Memory(BaseDomain):
     def simulate_pressure_notification(
             self,
             level: 'PressureLevel'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'level': level,
         }
@@ -105,7 +105,7 @@ class Memory(BaseDomain):
             self,
             sampling_interval: 'int' = UNDEFINED,
             suppress_randomness: 'bool' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         if is_defined(sampling_interval):
@@ -122,7 +122,7 @@ class Memory(BaseDomain):
 
     def stop_sampling(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -133,7 +133,7 @@ class Memory(BaseDomain):
 
     def get_all_time_sampling_profile(
             self
-    ) -> 'IResponse[GetAllTimeSamplingProfileReturnT]':
+    ) -> 'IFutureResponse[GetAllTimeSamplingProfileReturnT]':
         params = {}
 
         return self._send_command(
@@ -149,7 +149,7 @@ class Memory(BaseDomain):
 
     def get_browser_sampling_profile(
             self
-    ) -> 'IResponse[GetBrowserSamplingProfileReturnT]':
+    ) -> 'IFutureResponse[GetBrowserSamplingProfileReturnT]':
         params = {}
 
         return self._send_command(
@@ -165,7 +165,7 @@ class Memory(BaseDomain):
 
     def get_sampling_profile(
             self
-    ) -> 'IResponse[GetSamplingProfileReturnT]':
+    ) -> 'IFutureResponse[GetSamplingProfileReturnT]':
         params = {}
 
         return self._send_command(

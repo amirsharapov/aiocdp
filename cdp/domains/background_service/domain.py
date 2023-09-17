@@ -25,7 +25,7 @@ from cdp.domains.background_service.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -34,7 +34,7 @@ class BackgroundService(BaseDomain):
     def start_observing(
             self,
             service: 'ServiceName'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'service': service,
         }
@@ -48,7 +48,7 @@ class BackgroundService(BaseDomain):
     def stop_observing(
             self,
             service: 'ServiceName'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'service': service,
         }
@@ -63,7 +63,7 @@ class BackgroundService(BaseDomain):
             self,
             should_record: 'bool',
             service: 'ServiceName'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'shouldRecord': should_record,
             'service': service,
@@ -78,7 +78,7 @@ class BackgroundService(BaseDomain):
     def clear_events(
             self,
             service: 'ServiceName'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'service': service,
         }

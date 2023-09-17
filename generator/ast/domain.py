@@ -295,7 +295,7 @@ def _generate_send_method_return_signature(command: 'Command'):
         slice_ = 'None'
 
     return ast.Constant(
-        f'IResponse[{slice_}]'
+        f'IFutureResponse[{slice_}]'
     )
 
 
@@ -390,7 +390,7 @@ def generate(domain: Domain):
                 ast.ImportFrom(
                     module='cdp.target.connection',
                     names=[
-                        ast.alias('IResponse')
+                        ast.alias('IFutureResponse')
                     ]
                 )
             ]

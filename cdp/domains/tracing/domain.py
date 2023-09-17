@@ -31,7 +31,7 @@ from cdp.domains.tracing.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -39,7 +39,7 @@ if TYPE_CHECKING:
 class Tracing(BaseDomain):
     def end(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -50,7 +50,7 @@ class Tracing(BaseDomain):
 
     def get_categories(
             self
-    ) -> 'IResponse[GetCategoriesReturnT]':
+    ) -> 'IFutureResponse[GetCategoriesReturnT]':
         params = {}
 
         return self._send_command(
@@ -67,7 +67,7 @@ class Tracing(BaseDomain):
     def record_clock_sync_marker(
             self,
             sync_id: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'syncId': sync_id,
         }
@@ -82,7 +82,7 @@ class Tracing(BaseDomain):
             self,
             deterministic: 'bool' = UNDEFINED,
             level_of_detail: 'MemoryDumpLevelOfDetail' = UNDEFINED
-    ) -> 'IResponse[RequestMemoryDumpReturnT]':
+    ) -> 'IFutureResponse[RequestMemoryDumpReturnT]':
         params = {}
 
         if is_defined(deterministic):
@@ -113,7 +113,7 @@ class Tracing(BaseDomain):
             trace_config: 'TraceConfig' = UNDEFINED,
             perfetto_config: 'str' = UNDEFINED,
             tracing_backend: 'TracingBackend' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         if is_defined(categories):

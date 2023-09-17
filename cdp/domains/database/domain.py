@@ -27,7 +27,7 @@ from cdp.domains.database.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -35,7 +35,7 @@ if TYPE_CHECKING:
 class Database(BaseDomain):
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -46,7 +46,7 @@ class Database(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -59,7 +59,7 @@ class Database(BaseDomain):
             self,
             database_id: 'DatabaseId',
             query: 'str'
-    ) -> 'IResponse[ExecuteSQLReturnT]':
+    ) -> 'IFutureResponse[ExecuteSQLReturnT]':
         params = {
             'databaseId': database_id,
             'query': query,
@@ -79,7 +79,7 @@ class Database(BaseDomain):
     def get_database_table_names(
             self,
             database_id: 'DatabaseId'
-    ) -> 'IResponse[GetDatabaseTableNamesReturnT]':
+    ) -> 'IFutureResponse[GetDatabaseTableNamesReturnT]':
         params = {
             'databaseId': database_id,
         }

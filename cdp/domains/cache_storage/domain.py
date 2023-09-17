@@ -31,7 +31,7 @@ from cdp.domains.storage.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -40,7 +40,7 @@ class CacheStorage(BaseDomain):
     def delete_cache(
             self,
             cache_id: 'CacheId'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'cacheId': cache_id,
         }
@@ -55,7 +55,7 @@ class CacheStorage(BaseDomain):
             self,
             cache_id: 'CacheId',
             request: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'cacheId': cache_id,
             'request': request,
@@ -72,7 +72,7 @@ class CacheStorage(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> 'IResponse[RequestCacheNamesReturnT]':
+    ) -> 'IFutureResponse[RequestCacheNamesReturnT]':
         params = {}
 
         if is_defined(security_origin):
@@ -103,7 +103,7 @@ class CacheStorage(BaseDomain):
             cache_id: 'CacheId',
             request_url: 'str',
             request_headers: 'list'
-    ) -> 'IResponse[RequestCachedResponseReturnT]':
+    ) -> 'IFutureResponse[RequestCachedResponseReturnT]':
         params = {
             'cacheId': cache_id,
             'requestURL': request_url,
@@ -130,7 +130,7 @@ class CacheStorage(BaseDomain):
             skip_count: 'int' = UNDEFINED,
             page_size: 'int' = UNDEFINED,
             path_filter: 'str' = UNDEFINED
-    ) -> 'IResponse[RequestEntriesReturnT]':
+    ) -> 'IFutureResponse[RequestEntriesReturnT]':
         params = {
             'cacheId': cache_id,
         }

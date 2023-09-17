@@ -29,7 +29,7 @@ from cdp.domains.network.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -41,7 +41,7 @@ class Audits(BaseDomain):
             encoding: 'str',
             quality: 'float' = UNDEFINED,
             size_only: 'bool' = UNDEFINED
-    ) -> 'IResponse[GetEncodedResponseReturnT]':
+    ) -> 'IFutureResponse[GetEncodedResponseReturnT]':
         params = {
             'requestId': request_id,
             'encoding': encoding,
@@ -66,7 +66,7 @@ class Audits(BaseDomain):
 
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -77,7 +77,7 @@ class Audits(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -89,7 +89,7 @@ class Audits(BaseDomain):
     def check_contrast(
             self,
             report_aaa: 'bool' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         if is_defined(report_aaa):
@@ -103,7 +103,7 @@ class Audits(BaseDomain):
 
     def check_forms_issues(
             self
-    ) -> 'IResponse[CheckFormsIssuesReturnT]':
+    ) -> 'IFutureResponse[CheckFormsIssuesReturnT]':
         params = {}
 
         return self._send_command(

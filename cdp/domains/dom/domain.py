@@ -64,7 +64,7 @@ from cdp.domains.page.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -73,7 +73,7 @@ class DOM(BaseDomain):
     def collect_class_names_from_subtree(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[CollectClassNamesFromSubtreeReturnT]':
+    ) -> 'IFutureResponse[CollectClassNamesFromSubtreeReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -94,7 +94,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId',
             target_node_id: 'NodeId',
             insert_before_node_id: 'NodeId' = UNDEFINED
-    ) -> 'IResponse[CopyToReturnT]':
+    ) -> 'IFutureResponse[CopyToReturnT]':
         params = {
             'nodeId': node_id,
             'targetNodeId': target_node_id,
@@ -121,7 +121,7 @@ class DOM(BaseDomain):
             object_id: 'RemoteObjectId' = UNDEFINED,
             depth: 'int' = UNDEFINED,
             pierce: 'bool' = UNDEFINED
-    ) -> 'IResponse[DescribeNodeReturnT]':
+    ) -> 'IFutureResponse[DescribeNodeReturnT]':
         params = {}
 
         if is_defined(node_id):
@@ -156,7 +156,7 @@ class DOM(BaseDomain):
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED,
             rect: 'Rect' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         if is_defined(node_id):
@@ -182,7 +182,7 @@ class DOM(BaseDomain):
 
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -194,7 +194,7 @@ class DOM(BaseDomain):
     def discard_search_results(
             self,
             search_id: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'searchId': search_id,
         }
@@ -208,7 +208,7 @@ class DOM(BaseDomain):
     def enable(
             self,
             include_whitespace: 'str' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         if is_defined(include_whitespace):
@@ -225,7 +225,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         if is_defined(node_id):
@@ -246,7 +246,7 @@ class DOM(BaseDomain):
     def get_attributes(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetAttributesReturnT]':
+    ) -> 'IFutureResponse[GetAttributesReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -267,7 +267,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> 'IResponse[GetBoxModelReturnT]':
+    ) -> 'IFutureResponse[GetBoxModelReturnT]':
         params = {}
 
         if is_defined(node_id):
@@ -295,7 +295,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> 'IResponse[GetContentQuadsReturnT]':
+    ) -> 'IFutureResponse[GetContentQuadsReturnT]':
         params = {}
 
         if is_defined(node_id):
@@ -322,7 +322,7 @@ class DOM(BaseDomain):
             self,
             depth: 'int' = UNDEFINED,
             pierce: 'bool' = UNDEFINED
-    ) -> 'IResponse[GetDocumentReturnT]':
+    ) -> 'IFutureResponse[GetDocumentReturnT]':
         params = {}
 
         if is_defined(depth):
@@ -346,7 +346,7 @@ class DOM(BaseDomain):
             self,
             depth: 'int' = UNDEFINED,
             pierce: 'bool' = UNDEFINED
-    ) -> 'IResponse[GetFlattenedDocumentReturnT]':
+    ) -> 'IFutureResponse[GetFlattenedDocumentReturnT]':
         params = {}
 
         if is_defined(depth):
@@ -371,7 +371,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId',
             computed_styles: 'list',
             pierce: 'bool' = UNDEFINED
-    ) -> 'IResponse[GetNodesForSubtreeByStyleReturnT]':
+    ) -> 'IFutureResponse[GetNodesForSubtreeByStyleReturnT]':
         params = {
             'nodeId': node_id,
             'computedStyles': [
@@ -400,7 +400,7 @@ class DOM(BaseDomain):
             y: 'int',
             include_user_agent_shadow_dom: 'bool' = UNDEFINED,
             ignore_pointer_events_none: 'bool' = UNDEFINED
-    ) -> 'IResponse[GetNodeForLocationReturnT]':
+    ) -> 'IFutureResponse[GetNodeForLocationReturnT]':
         params = {
             'x': x,
             'y': y,
@@ -428,7 +428,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> 'IResponse[GetOuterHTMLReturnT]':
+    ) -> 'IFutureResponse[GetOuterHTMLReturnT]':
         params = {}
 
         if is_defined(node_id):
@@ -454,7 +454,7 @@ class DOM(BaseDomain):
     def get_relayout_boundary(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetRelayoutBoundaryReturnT]':
+    ) -> 'IFutureResponse[GetRelayoutBoundaryReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -475,7 +475,7 @@ class DOM(BaseDomain):
             search_id: 'str',
             from_index: 'int',
             to_index: 'int'
-    ) -> 'IResponse[GetSearchResultsReturnT]':
+    ) -> 'IFutureResponse[GetSearchResultsReturnT]':
         params = {
             'searchId': search_id,
             'fromIndex': from_index,
@@ -495,7 +495,7 @@ class DOM(BaseDomain):
 
     def hide_highlight(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -506,7 +506,7 @@ class DOM(BaseDomain):
 
     def highlight_node(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -517,7 +517,7 @@ class DOM(BaseDomain):
 
     def highlight_rect(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -528,7 +528,7 @@ class DOM(BaseDomain):
 
     def mark_undoable_state(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -542,7 +542,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId',
             target_node_id: 'NodeId',
             insert_before_node_id: 'NodeId' = UNDEFINED
-    ) -> 'IResponse[MoveToReturnT]':
+    ) -> 'IFutureResponse[MoveToReturnT]':
         params = {
             'nodeId': node_id,
             'targetNodeId': target_node_id,
@@ -566,7 +566,7 @@ class DOM(BaseDomain):
             self,
             query: 'str',
             include_user_agent_shadow_dom: 'bool' = UNDEFINED
-    ) -> 'IResponse[PerformSearchReturnT]':
+    ) -> 'IFutureResponse[PerformSearchReturnT]':
         params = {
             'query': query,
         }
@@ -588,7 +588,7 @@ class DOM(BaseDomain):
     def push_node_by_path_to_frontend(
             self,
             path: 'str'
-    ) -> 'IResponse[PushNodeByPathToFrontendReturnT]':
+    ) -> 'IFutureResponse[PushNodeByPathToFrontendReturnT]':
         params = {
             'path': path,
         }
@@ -607,7 +607,7 @@ class DOM(BaseDomain):
     def push_nodes_by_backend_ids_to_frontend(
             self,
             backend_node_ids: 'list'
-    ) -> 'IResponse[PushNodesByBackendIdsToFrontendReturnT]':
+    ) -> 'IFutureResponse[PushNodesByBackendIdsToFrontendReturnT]':
         params = {
             'backendNodeIds': backend_node_ids,
         }
@@ -627,7 +627,7 @@ class DOM(BaseDomain):
             self,
             node_id: 'NodeId',
             selector: 'str'
-    ) -> 'IResponse[QuerySelectorReturnT]':
+    ) -> 'IFutureResponse[QuerySelectorReturnT]':
         params = {
             'nodeId': node_id,
             'selector': selector,
@@ -648,7 +648,7 @@ class DOM(BaseDomain):
             self,
             node_id: 'NodeId',
             selector: 'str'
-    ) -> 'IResponse[QuerySelectorAllReturnT]':
+    ) -> 'IFutureResponse[QuerySelectorAllReturnT]':
         params = {
             'nodeId': node_id,
             'selector': selector,
@@ -667,7 +667,7 @@ class DOM(BaseDomain):
 
     def get_top_layer_elements(
             self
-    ) -> 'IResponse[GetTopLayerElementsReturnT]':
+    ) -> 'IFutureResponse[GetTopLayerElementsReturnT]':
         params = {}
 
         return self._send_command(
@@ -683,7 +683,7 @@ class DOM(BaseDomain):
 
     def redo(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -696,7 +696,7 @@ class DOM(BaseDomain):
             self,
             node_id: 'NodeId',
             name: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
             'name': name,
@@ -711,7 +711,7 @@ class DOM(BaseDomain):
     def remove_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
         }
@@ -727,7 +727,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId',
             depth: 'int' = UNDEFINED,
             pierce: 'bool' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
         }
@@ -747,7 +747,7 @@ class DOM(BaseDomain):
     def request_node(
             self,
             object_id: 'RemoteObjectId'
-    ) -> 'IResponse[RequestNodeReturnT]':
+    ) -> 'IFutureResponse[RequestNodeReturnT]':
         params = {
             'objectId': object_id,
         }
@@ -769,7 +769,7 @@ class DOM(BaseDomain):
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_group: 'str' = UNDEFINED,
             execution_context_id: 'ExecutionContextId' = UNDEFINED
-    ) -> 'IResponse[ResolveNodeReturnT]':
+    ) -> 'IFutureResponse[ResolveNodeReturnT]':
         params = {}
 
         if is_defined(node_id):
@@ -800,7 +800,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId',
             name: 'str',
             value: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
             'name': name,
@@ -818,7 +818,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId',
             text: 'str',
             name: 'str' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
             'text': text,
@@ -839,7 +839,7 @@ class DOM(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'files': files,
         }
@@ -862,7 +862,7 @@ class DOM(BaseDomain):
     def set_node_stack_traces_enabled(
             self,
             enable: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'enable': enable,
         }
@@ -876,7 +876,7 @@ class DOM(BaseDomain):
     def get_node_stack_traces(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetNodeStackTracesReturnT]':
+    ) -> 'IFutureResponse[GetNodeStackTracesReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -895,7 +895,7 @@ class DOM(BaseDomain):
     def get_file_info(
             self,
             object_id: 'RemoteObjectId'
-    ) -> 'IResponse[GetFileInfoReturnT]':
+    ) -> 'IFutureResponse[GetFileInfoReturnT]':
         params = {
             'objectId': object_id,
         }
@@ -914,7 +914,7 @@ class DOM(BaseDomain):
     def set_inspected_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
         }
@@ -929,7 +929,7 @@ class DOM(BaseDomain):
             self,
             node_id: 'NodeId',
             name: 'str'
-    ) -> 'IResponse[SetNodeNameReturnT]':
+    ) -> 'IFutureResponse[SetNodeNameReturnT]':
         params = {
             'nodeId': node_id,
             'name': name,
@@ -950,7 +950,7 @@ class DOM(BaseDomain):
             self,
             node_id: 'NodeId',
             value: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
             'value': value,
@@ -966,7 +966,7 @@ class DOM(BaseDomain):
             self,
             node_id: 'NodeId',
             outer_html: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
             'outerHTML': outer_html,
@@ -980,7 +980,7 @@ class DOM(BaseDomain):
 
     def undo(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -992,7 +992,7 @@ class DOM(BaseDomain):
     def get_frame_owner(
             self,
             frame_id: 'FrameId'
-    ) -> 'IResponse[GetFrameOwnerReturnT]':
+    ) -> 'IFutureResponse[GetFrameOwnerReturnT]':
         params = {
             'frameId': frame_id,
         }
@@ -1014,7 +1014,7 @@ class DOM(BaseDomain):
             container_name: 'str' = UNDEFINED,
             physical_axes: 'PhysicalAxes' = UNDEFINED,
             logical_axes: 'LogicalAxes' = UNDEFINED
-    ) -> 'IResponse[GetContainerForNodeReturnT]':
+    ) -> 'IFutureResponse[GetContainerForNodeReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -1042,7 +1042,7 @@ class DOM(BaseDomain):
     def get_querying_descendants_for_container(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetQueryingDescendantsForContainerReturnT]':
+    ) -> 'IFutureResponse[GetQueryingDescendantsForContainerReturnT]':
         params = {
             'nodeId': node_id,
         }

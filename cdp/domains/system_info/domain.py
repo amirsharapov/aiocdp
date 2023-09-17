@@ -27,7 +27,7 @@ from cdp.domains.system_info.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -35,7 +35,7 @@ if TYPE_CHECKING:
 class SystemInfo(BaseDomain):
     def get_info(
             self
-    ) -> 'IResponse[GetInfoReturnT]':
+    ) -> 'IFutureResponse[GetInfoReturnT]':
         params = {}
 
         return self._send_command(
@@ -52,7 +52,7 @@ class SystemInfo(BaseDomain):
     def get_feature_state(
             self,
             feature_state: 'str'
-    ) -> 'IResponse[GetFeatureStateReturnT]':
+    ) -> 'IFutureResponse[GetFeatureStateReturnT]':
         params = {
             'featureState': feature_state,
         }
@@ -70,7 +70,7 @@ class SystemInfo(BaseDomain):
 
     def get_process_info(
             self
-    ) -> 'IResponse[GetProcessInfoReturnT]':
+    ) -> 'IFutureResponse[GetProcessInfoReturnT]':
         params = {}
 
         return self._send_command(

@@ -26,7 +26,7 @@ from cdp.domains.device_access.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -34,7 +34,7 @@ if TYPE_CHECKING:
 class DeviceAccess(BaseDomain):
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -45,7 +45,7 @@ class DeviceAccess(BaseDomain):
 
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -58,7 +58,7 @@ class DeviceAccess(BaseDomain):
             self,
             id_: 'RequestId',
             device_id: 'DeviceId'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'id': id_,
             'deviceId': device_id,
@@ -73,7 +73,7 @@ class DeviceAccess(BaseDomain):
     def cancel_prompt(
             self,
             id_: 'RequestId'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'id': id_,
         }

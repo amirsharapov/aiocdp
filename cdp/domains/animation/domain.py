@@ -27,7 +27,7 @@ from cdp.domains.animation.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -35,7 +35,7 @@ if TYPE_CHECKING:
 class Animation(BaseDomain):
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -46,7 +46,7 @@ class Animation(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -58,7 +58,7 @@ class Animation(BaseDomain):
     def get_current_time(
             self,
             id_: 'str'
-    ) -> 'IResponse[GetCurrentTimeReturnT]':
+    ) -> 'IFutureResponse[GetCurrentTimeReturnT]':
         params = {
             'id': id_,
         }
@@ -76,7 +76,7 @@ class Animation(BaseDomain):
 
     def get_playback_rate(
             self
-    ) -> 'IResponse[GetPlaybackRateReturnT]':
+    ) -> 'IFutureResponse[GetPlaybackRateReturnT]':
         params = {}
 
         return self._send_command(
@@ -93,7 +93,7 @@ class Animation(BaseDomain):
     def release_animations(
             self,
             animations: 'list'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'animations': animations,
         }
@@ -107,7 +107,7 @@ class Animation(BaseDomain):
     def resolve_animation(
             self,
             animation_id: 'str'
-    ) -> 'IResponse[ResolveAnimationReturnT]':
+    ) -> 'IFutureResponse[ResolveAnimationReturnT]':
         params = {
             'animationId': animation_id,
         }
@@ -127,7 +127,7 @@ class Animation(BaseDomain):
             self,
             animations: 'list',
             current_time: 'float'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'animations': animations,
             'currentTime': current_time,
@@ -143,7 +143,7 @@ class Animation(BaseDomain):
             self,
             animations: 'list',
             paused: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'animations': animations,
             'paused': paused,
@@ -158,7 +158,7 @@ class Animation(BaseDomain):
     def set_playback_rate(
             self,
             playback_rate: 'float'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'playbackRate': playback_rate,
         }
@@ -174,7 +174,7 @@ class Animation(BaseDomain):
             animation_id: 'str',
             duration: 'float',
             delay: 'float'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'animationId': animation_id,
             'duration': duration,

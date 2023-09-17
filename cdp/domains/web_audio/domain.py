@@ -26,7 +26,7 @@ from cdp.domains.web_audio.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -34,7 +34,7 @@ if TYPE_CHECKING:
 class WebAudio(BaseDomain):
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -45,7 +45,7 @@ class WebAudio(BaseDomain):
 
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -57,7 +57,7 @@ class WebAudio(BaseDomain):
     def get_realtime_data(
             self,
             context_id: 'GraphObjectId'
-    ) -> 'IResponse[GetRealtimeDataReturnT]':
+    ) -> 'IFutureResponse[GetRealtimeDataReturnT]':
         params = {
             'contextId': context_id,
         }

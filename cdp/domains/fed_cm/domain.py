@@ -22,7 +22,7 @@ from cdp.domains.mapper import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -31,7 +31,7 @@ class FedCm(BaseDomain):
     def enable(
             self,
             disable_rejection_delay: 'bool' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         if is_defined(disable_rejection_delay):
@@ -45,7 +45,7 @@ class FedCm(BaseDomain):
 
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -58,7 +58,7 @@ class FedCm(BaseDomain):
             self,
             dialog_id: 'str',
             account_index: 'int'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'dialogId': dialog_id,
             'accountIndex': account_index,
@@ -73,7 +73,7 @@ class FedCm(BaseDomain):
     def confirm_idp_signin(
             self,
             dialog_id: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'dialogId': dialog_id,
         }
@@ -88,7 +88,7 @@ class FedCm(BaseDomain):
             self,
             dialog_id: 'str',
             trigger_cooldown: 'bool' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'dialogId': dialog_id,
         }
@@ -104,7 +104,7 @@ class FedCm(BaseDomain):
 
     def reset_cooldown(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(

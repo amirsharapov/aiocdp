@@ -22,7 +22,7 @@ from cdp.domains.mapper import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 class DeviceOrientation(BaseDomain):
     def clear_device_orientation_override(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -44,7 +44,7 @@ class DeviceOrientation(BaseDomain):
             alpha: 'float',
             beta: 'float',
             gamma: 'float'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'alpha': alpha,
             'beta': beta,

@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Optional, Callable
 
 from cdp.domains.domains import Domains
-from cdp.target.connection import Connection, IResponse
+from cdp.target.connection import Connection, IFutureResponse
 
 if TYPE_CHECKING:
     from cdp.chrome import Chrome
@@ -46,7 +46,7 @@ class Target:
             params: dict,
             expect_response: bool,
             response_hook: Callable = None
-    ) -> IResponse:
+    ) -> IFutureResponse:
         if self.active_session_id:
             params['sessionId'] = self.active_session_id
 

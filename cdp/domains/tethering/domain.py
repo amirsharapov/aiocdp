@@ -22,7 +22,7 @@ from cdp.domains.mapper import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -31,7 +31,7 @@ class Tethering(BaseDomain):
     def bind(
             self,
             port: 'int'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'port': port,
         }
@@ -45,7 +45,7 @@ class Tethering(BaseDomain):
     def unbind(
             self,
             port: 'int'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'port': port,
         }

@@ -54,7 +54,7 @@ from cdp.domains.dom.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -65,7 +65,7 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             rule_text: 'str',
             location: 'SourceRange'
-    ) -> 'IResponse[AddRuleReturnT]':
+    ) -> 'IFutureResponse[AddRuleReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
             'ruleText': rule_text,
@@ -89,7 +89,7 @@ class CSS(BaseDomain):
     def collect_class_names(
             self,
             style_sheet_id: 'StyleSheetId'
-    ) -> 'IResponse[CollectClassNamesReturnT]':
+    ) -> 'IFutureResponse[CollectClassNamesReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
         }
@@ -108,7 +108,7 @@ class CSS(BaseDomain):
     def create_style_sheet(
             self,
             frame_id: 'FrameId'
-    ) -> 'IResponse[CreateStyleSheetReturnT]':
+    ) -> 'IFutureResponse[CreateStyleSheetReturnT]':
         params = {
             'frameId': frame_id,
         }
@@ -126,7 +126,7 @@ class CSS(BaseDomain):
 
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -137,7 +137,7 @@ class CSS(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -150,7 +150,7 @@ class CSS(BaseDomain):
             self,
             node_id: 'NodeId',
             forced_pseudo_classes: 'list'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
             'forcedPseudoClasses': forced_pseudo_classes,
@@ -165,7 +165,7 @@ class CSS(BaseDomain):
     def get_background_colors(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetBackgroundColorsReturnT]':
+    ) -> 'IFutureResponse[GetBackgroundColorsReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -184,7 +184,7 @@ class CSS(BaseDomain):
     def get_computed_style_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetComputedStyleForNodeReturnT]':
+    ) -> 'IFutureResponse[GetComputedStyleForNodeReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -203,7 +203,7 @@ class CSS(BaseDomain):
     def get_inline_styles_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetInlineStylesForNodeReturnT]':
+    ) -> 'IFutureResponse[GetInlineStylesForNodeReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -222,7 +222,7 @@ class CSS(BaseDomain):
     def get_matched_styles_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetMatchedStylesForNodeReturnT]':
+    ) -> 'IFutureResponse[GetMatchedStylesForNodeReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -240,7 +240,7 @@ class CSS(BaseDomain):
 
     def get_media_queries(
             self
-    ) -> 'IResponse[GetMediaQueriesReturnT]':
+    ) -> 'IFutureResponse[GetMediaQueriesReturnT]':
         params = {}
 
         return self._send_command(
@@ -257,7 +257,7 @@ class CSS(BaseDomain):
     def get_platform_fonts_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetPlatformFontsForNodeReturnT]':
+    ) -> 'IFutureResponse[GetPlatformFontsForNodeReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -276,7 +276,7 @@ class CSS(BaseDomain):
     def get_style_sheet_text(
             self,
             style_sheet_id: 'StyleSheetId'
-    ) -> 'IResponse[GetStyleSheetTextReturnT]':
+    ) -> 'IFutureResponse[GetStyleSheetTextReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
         }
@@ -295,7 +295,7 @@ class CSS(BaseDomain):
     def get_layers_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IResponse[GetLayersForNodeReturnT]':
+    ) -> 'IFutureResponse[GetLayersForNodeReturnT]':
         params = {
             'nodeId': node_id,
         }
@@ -314,7 +314,7 @@ class CSS(BaseDomain):
     def track_computed_style_updates(
             self,
             properties_to_track: 'list'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'propertiesToTrack': [
                 to_dict(item, 'camel')
@@ -330,7 +330,7 @@ class CSS(BaseDomain):
 
     def take_computed_style_updates(
             self
-    ) -> 'IResponse[TakeComputedStyleUpdatesReturnT]':
+    ) -> 'IFutureResponse[TakeComputedStyleUpdatesReturnT]':
         params = {}
 
         return self._send_command(
@@ -349,7 +349,7 @@ class CSS(BaseDomain):
             node_id: 'NodeId',
             property_name: 'str',
             value: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'nodeId': node_id,
             'propertyName': property_name,
@@ -367,7 +367,7 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             key_text: 'str'
-    ) -> 'IResponse[SetKeyframeKeyReturnT]':
+    ) -> 'IFutureResponse[SetKeyframeKeyReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
             'range': to_dict(
@@ -393,7 +393,7 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             text: 'str'
-    ) -> 'IResponse[SetMediaTextReturnT]':
+    ) -> 'IFutureResponse[SetMediaTextReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
             'range': to_dict(
@@ -419,7 +419,7 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             text: 'str'
-    ) -> 'IResponse[SetContainerQueryTextReturnT]':
+    ) -> 'IFutureResponse[SetContainerQueryTextReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
             'range': to_dict(
@@ -445,7 +445,7 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             text: 'str'
-    ) -> 'IResponse[SetSupportsTextReturnT]':
+    ) -> 'IFutureResponse[SetSupportsTextReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
             'range': to_dict(
@@ -471,7 +471,7 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             text: 'str'
-    ) -> 'IResponse[SetScopeTextReturnT]':
+    ) -> 'IFutureResponse[SetScopeTextReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
             'range': to_dict(
@@ -497,7 +497,7 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             selector: 'str'
-    ) -> 'IResponse[SetRuleSelectorReturnT]':
+    ) -> 'IFutureResponse[SetRuleSelectorReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
             'range': to_dict(
@@ -522,7 +522,7 @@ class CSS(BaseDomain):
             self,
             style_sheet_id: 'StyleSheetId',
             text: 'str'
-    ) -> 'IResponse[SetStyleSheetTextReturnT]':
+    ) -> 'IFutureResponse[SetStyleSheetTextReturnT]':
         params = {
             'styleSheetId': style_sheet_id,
             'text': text,
@@ -542,7 +542,7 @@ class CSS(BaseDomain):
     def set_style_texts(
             self,
             edits: 'list'
-    ) -> 'IResponse[SetStyleTextsReturnT]':
+    ) -> 'IFutureResponse[SetStyleTextsReturnT]':
         params = {
             'edits': [
                 to_dict(item, 'camel')
@@ -563,7 +563,7 @@ class CSS(BaseDomain):
 
     def start_rule_usage_tracking(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -574,7 +574,7 @@ class CSS(BaseDomain):
 
     def stop_rule_usage_tracking(
             self
-    ) -> 'IResponse[StopRuleUsageTrackingReturnT]':
+    ) -> 'IFutureResponse[StopRuleUsageTrackingReturnT]':
         params = {}
 
         return self._send_command(
@@ -590,7 +590,7 @@ class CSS(BaseDomain):
 
     def take_coverage_delta(
             self
-    ) -> 'IResponse[TakeCoverageDeltaReturnT]':
+    ) -> 'IFutureResponse[TakeCoverageDeltaReturnT]':
         params = {}
 
         return self._send_command(
@@ -607,7 +607,7 @@ class CSS(BaseDomain):
     def set_local_fonts_enabled(
             self,
             enabled: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'enabled': enabled,
         }

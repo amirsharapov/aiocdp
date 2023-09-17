@@ -22,7 +22,7 @@ from cdp.domains.mapper import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -31,7 +31,7 @@ class EventBreakpoints(BaseDomain):
     def set_instrumentation_breakpoint(
             self,
             event_name: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'eventName': event_name,
         }
@@ -45,7 +45,7 @@ class EventBreakpoints(BaseDomain):
     def remove_instrumentation_breakpoint(
             self,
             event_name: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'eventName': event_name,
         }

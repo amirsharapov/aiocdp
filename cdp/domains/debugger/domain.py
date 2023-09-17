@@ -46,7 +46,7 @@ from cdp.domains.runtime.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -56,7 +56,7 @@ class Debugger(BaseDomain):
             self,
             location: 'Location',
             target_call_frames: 'str' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'location': to_dict(
                 location,
@@ -75,7 +75,7 @@ class Debugger(BaseDomain):
 
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -87,7 +87,7 @@ class Debugger(BaseDomain):
     def enable(
             self,
             max_scripts_cache_size: 'float' = UNDEFINED
-    ) -> 'IResponse[EnableReturnT]':
+    ) -> 'IFutureResponse[EnableReturnT]':
         params = {}
 
         if is_defined(max_scripts_cache_size):
@@ -115,7 +115,7 @@ class Debugger(BaseDomain):
             generate_preview: 'bool' = UNDEFINED,
             throw_on_side_effect: 'bool' = UNDEFINED,
             timeout: 'TimeDelta' = UNDEFINED
-    ) -> 'IResponse[EvaluateOnCallFrameReturnT]':
+    ) -> 'IFutureResponse[EvaluateOnCallFrameReturnT]':
         params = {
             'callFrameId': call_frame_id,
             'expression': expression,
@@ -158,7 +158,7 @@ class Debugger(BaseDomain):
             start: 'Location',
             end: 'Location' = UNDEFINED,
             restrict_to_function: 'bool' = UNDEFINED
-    ) -> 'IResponse[GetPossibleBreakpointsReturnT]':
+    ) -> 'IFutureResponse[GetPossibleBreakpointsReturnT]':
         params = {
             'start': to_dict(
                 start,
@@ -189,7 +189,7 @@ class Debugger(BaseDomain):
     def get_script_source(
             self,
             script_id: 'ScriptId'
-    ) -> 'IResponse[GetScriptSourceReturnT]':
+    ) -> 'IFutureResponse[GetScriptSourceReturnT]':
         params = {
             'scriptId': script_id,
         }
@@ -208,7 +208,7 @@ class Debugger(BaseDomain):
     def get_stack_trace(
             self,
             stack_trace_id: 'StackTraceId'
-    ) -> 'IResponse[GetStackTraceReturnT]':
+    ) -> 'IFutureResponse[GetStackTraceReturnT]':
         params = {
             'stackTraceId': to_dict(
                 stack_trace_id,
@@ -229,7 +229,7 @@ class Debugger(BaseDomain):
 
     def pause(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -241,7 +241,7 @@ class Debugger(BaseDomain):
     def pause_on_async_call(
             self,
             parent_stack_trace_id: 'StackTraceId'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'parentStackTraceId': to_dict(
                 parent_stack_trace_id,
@@ -258,7 +258,7 @@ class Debugger(BaseDomain):
     def remove_breakpoint(
             self,
             breakpoint_id: 'BreakpointId'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'breakpointId': breakpoint_id,
         }
@@ -272,7 +272,7 @@ class Debugger(BaseDomain):
     def restart_frame(
             self,
             call_frame_id: 'CallFrameId'
-    ) -> 'IResponse[RestartFrameReturnT]':
+    ) -> 'IFutureResponse[RestartFrameReturnT]':
         params = {
             'callFrameId': call_frame_id,
         }
@@ -290,7 +290,7 @@ class Debugger(BaseDomain):
 
     def resume(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -305,7 +305,7 @@ class Debugger(BaseDomain):
             query: 'str',
             case_sensitive: 'bool' = UNDEFINED,
             is_regex: 'bool' = UNDEFINED
-    ) -> 'IResponse[SearchInContentReturnT]':
+    ) -> 'IFutureResponse[SearchInContentReturnT]':
         params = {
             'scriptId': script_id,
             'query': query,
@@ -331,7 +331,7 @@ class Debugger(BaseDomain):
     def set_async_call_stack_depth(
             self,
             max_depth: 'int'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'maxDepth': max_depth,
         }
@@ -345,7 +345,7 @@ class Debugger(BaseDomain):
     def set_blackbox_patterns(
             self,
             patterns: 'list'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'patterns': patterns,
         }
@@ -360,7 +360,7 @@ class Debugger(BaseDomain):
             self,
             script_id: 'ScriptId',
             positions: 'list'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'scriptId': script_id,
             'positions': [
@@ -379,7 +379,7 @@ class Debugger(BaseDomain):
             self,
             location: 'Location',
             condition: 'str' = UNDEFINED
-    ) -> 'IResponse[SetBreakpointReturnT]':
+    ) -> 'IFutureResponse[SetBreakpointReturnT]':
         params = {
             'location': to_dict(
                 location,
@@ -404,7 +404,7 @@ class Debugger(BaseDomain):
     def set_instrumentation_breakpoint(
             self,
             instrumentation: 'str'
-    ) -> 'IResponse[SetInstrumentationBreakpointReturnT]':
+    ) -> 'IFutureResponse[SetInstrumentationBreakpointReturnT]':
         params = {
             'instrumentation': instrumentation,
         }
@@ -428,7 +428,7 @@ class Debugger(BaseDomain):
             script_hash: 'str' = UNDEFINED,
             column_number: 'int' = UNDEFINED,
             condition: 'str' = UNDEFINED
-    ) -> 'IResponse[SetBreakpointByUrlReturnT]':
+    ) -> 'IFutureResponse[SetBreakpointByUrlReturnT]':
         params = {
             'lineNumber': line_number,
         }
@@ -463,7 +463,7 @@ class Debugger(BaseDomain):
             self,
             object_id: 'RemoteObjectId',
             condition: 'str' = UNDEFINED
-    ) -> 'IResponse[SetBreakpointOnFunctionCallReturnT]':
+    ) -> 'IFutureResponse[SetBreakpointOnFunctionCallReturnT]':
         params = {
             'objectId': object_id,
         }
@@ -485,7 +485,7 @@ class Debugger(BaseDomain):
     def set_breakpoints_active(
             self,
             active: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'active': active,
         }
@@ -499,7 +499,7 @@ class Debugger(BaseDomain):
     def set_pause_on_exceptions(
             self,
             state: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'state': state,
         }
@@ -513,7 +513,7 @@ class Debugger(BaseDomain):
     def set_return_value(
             self,
             new_value: 'CallArgument'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'newValue': to_dict(
                 new_value,
@@ -532,7 +532,7 @@ class Debugger(BaseDomain):
             script_id: 'ScriptId',
             script_source: 'str',
             dry_run: 'bool' = UNDEFINED
-    ) -> 'IResponse[SetScriptSourceReturnT]':
+    ) -> 'IFutureResponse[SetScriptSourceReturnT]':
         params = {
             'scriptId': script_id,
             'scriptSource': script_source,
@@ -555,7 +555,7 @@ class Debugger(BaseDomain):
     def set_skip_all_pauses(
             self,
             skip: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'skip': skip,
         }
@@ -572,7 +572,7 @@ class Debugger(BaseDomain):
             variable_name: 'str',
             new_value: 'CallArgument',
             call_frame_id: 'CallFrameId'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'scopeNumber': scope_number,
             'variableName': variable_name,
@@ -592,7 +592,7 @@ class Debugger(BaseDomain):
     def step_into(
             self,
             break_on_async_call: 'bool' = UNDEFINED
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         if is_defined(break_on_async_call):
@@ -606,7 +606,7 @@ class Debugger(BaseDomain):
 
     def step_out(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -617,7 +617,7 @@ class Debugger(BaseDomain):
 
     def step_over(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(

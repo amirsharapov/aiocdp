@@ -25,7 +25,7 @@ from cdp.domains.service_worker.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -36,7 +36,7 @@ class ServiceWorker(BaseDomain):
             origin: 'str',
             registration_id: 'RegistrationID',
             data: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'origin': origin,
             'registrationId': registration_id,
@@ -51,7 +51,7 @@ class ServiceWorker(BaseDomain):
 
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -66,7 +66,7 @@ class ServiceWorker(BaseDomain):
             registration_id: 'RegistrationID',
             tag: 'str',
             last_chance: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'origin': origin,
             'registrationId': registration_id,
@@ -85,7 +85,7 @@ class ServiceWorker(BaseDomain):
             origin: 'str',
             registration_id: 'RegistrationID',
             tag: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'origin': origin,
             'registrationId': registration_id,
@@ -100,7 +100,7 @@ class ServiceWorker(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -112,7 +112,7 @@ class ServiceWorker(BaseDomain):
     def inspect_worker(
             self,
             version_id: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'versionId': version_id,
         }
@@ -126,7 +126,7 @@ class ServiceWorker(BaseDomain):
     def set_force_update_on_page_load(
             self,
             force_update_on_page_load: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'forceUpdateOnPageLoad': force_update_on_page_load,
         }
@@ -140,7 +140,7 @@ class ServiceWorker(BaseDomain):
     def skip_waiting(
             self,
             scope_url: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'scopeURL': scope_url,
         }
@@ -154,7 +154,7 @@ class ServiceWorker(BaseDomain):
     def start_worker(
             self,
             scope_url: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'scopeURL': scope_url,
         }
@@ -167,7 +167,7 @@ class ServiceWorker(BaseDomain):
 
     def stop_all_workers(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -179,7 +179,7 @@ class ServiceWorker(BaseDomain):
     def stop_worker(
             self,
             version_id: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'versionId': version_id,
         }
@@ -193,7 +193,7 @@ class ServiceWorker(BaseDomain):
     def unregister(
             self,
             scope_url: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'scopeURL': scope_url,
         }
@@ -207,7 +207,7 @@ class ServiceWorker(BaseDomain):
     def update_registration(
             self,
             scope_url: 'str'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'scopeURL': scope_url,
         }

@@ -25,7 +25,7 @@ from cdp.domains.security.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -33,7 +33,7 @@ if TYPE_CHECKING:
 class Security(BaseDomain):
     def disable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -44,7 +44,7 @@ class Security(BaseDomain):
 
     def enable(
             self
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {}
 
         return self._send_command(
@@ -56,7 +56,7 @@ class Security(BaseDomain):
     def set_ignore_certificate_errors(
             self,
             ignore: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'ignore': ignore,
         }
@@ -71,7 +71,7 @@ class Security(BaseDomain):
             self,
             event_id: 'int',
             action: 'CertificateErrorAction'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'eventId': event_id,
             'action': action,
@@ -86,7 +86,7 @@ class Security(BaseDomain):
     def set_override_certificate_errors(
             self,
             override: 'bool'
-    ) -> 'IResponse[None]':
+    ) -> 'IFutureResponse[None]':
         params = {
             'override': override,
         }

@@ -25,7 +25,7 @@ from cdp.domains.schema.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResponse
+        IFutureResponse
     )
 
 
@@ -33,7 +33,7 @@ if TYPE_CHECKING:
 class Schema(BaseDomain):
     def get_domains(
             self
-    ) -> 'IResponse[GetDomainsReturnT]':
+    ) -> 'IFutureResponse[GetDomainsReturnT]':
         params = {}
 
         return self._send_command(
