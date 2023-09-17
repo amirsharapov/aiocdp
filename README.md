@@ -3,8 +3,7 @@
 ### ** STATUS: UNDER DEVELOPMENT **
 
 This library will provide a thin, but functional wrapper around the Chrome DevTools Protocol.
-The library will be updated automatically on a regular interval to ensure that the latest
-version of the protocol is supported.
+Every week, a CICD pipeline will run to fetch the latest spec and regenerate the library.
 
 ## Inspiration
 
