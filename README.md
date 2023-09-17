@@ -7,9 +7,12 @@ Every week, a CICD pipeline will run to fetch the latest spec and regenerate the
 
 ## Inspiration
 
-Heavy inspiration comes from the `python-chrome-devtools-protocol` package.
-This library follows the same idea (generating wrapper layer from the JSON spec),
-but uses a different approach and changes developer-facing interfaces.
+Code generation methodology inspired by the `python-chrome-devtools-protocol` package.
+`pycdp` follows the same idea with several key additions:
+
+- Automatic CICD pipeline to refresh the library
+- Websocket communication implemented directly into this library
+- Changes to the key interfaces for a more fluent API
 
 ## Internals:
 
@@ -23,6 +26,8 @@ but uses a different approach and changes developer-facing interfaces.
 
 - Python `dataclass` decorator for complex types
 - Python `typing` module for type hints, enum literals, and other goodies
+- Python `asyncio` module for async futures (Support for other async libraries is TBD)
+- Python `websocket-client` module for websocket communication (Support for other WS libraries is TBD)
 
 ### Releases
 
