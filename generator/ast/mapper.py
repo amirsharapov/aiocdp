@@ -102,43 +102,41 @@ def _generate_return_type_from_dict_mapper_body(
                 slice=ast.Constant(key)
             )
 
-        from_dict_call = ast.Call(
-            func=ast.Name('from_dict'),
-            args=[
-                key_access,
-                ast.Name('casing_strategy')
-            ],
-            render_context={
-                'expand': True
-            }
-        )
-
-        from_dict_call_list_comp = ast.ListComp(
-            elt=ast.Call(
-                func=ast.Name('from_dict'),
-                args=[
-                    ast.Name('item'),
-                    ast.Name('casing_strategy')
-                ]
-            ),
-            generators=[
-                ast.comprehension(
-                    target=ast.Name('item'),
-                    iter=key_access,
-                    ifs=[]
-                )
-            ]
-        )
-
         if return_property.type == 'array':
             if return_property.items.ref.actual_type.properties:
-                value = from_dict_call_list_comp
+                value = ast.ListComp(
+                    elt=ast.Call(
+                        func=ast.Name('from_dict'),
+                        args=[
+                            ast.Name(return_property.items.ref.actual_type.id_pascal_case),
+                            ast.Name('item'),
+                            ast.Name('casing_strategy')
+                        ]
+                    ),
+                    generators=[
+                        ast.comprehension(
+                            target=ast.Name('item'),
+                            iter=key_access,
+                            ifs=[]
+                        )
+                    ]
+                )
             else:
                 value = key_access
 
         else:
             if return_property.ref.actual_type.properties:
-                value = from_dict_call
+                value = ast.Call(
+                    func=ast.Name('from_dict'),
+                    args=[
+                        ast.Name(return_property.ref.actual_type.id_pascal_case),
+                        key_access,
+                        ast.Name('casing_strategy')
+                    ],
+                    render_context={
+                        'expand': True
+                    }
+                )
             else:
                 value = key_access
 

@@ -1,8 +1,8 @@
 import asyncio
 import json
-import threading
 from abc import ABC, abstractmethod
 from asyncio import Future
+from collections import defaultdict
 from dataclasses import dataclass, field
 from typing import Optional, TypeVar, Generic, Callable
 
@@ -13,13 +13,11 @@ _T = TypeVar('_T')
 
 class JSONRPCRequestID:
     next_id = 0
-    lock = threading.Lock()
 
     @classmethod
     def get(cls):
-        with cls.lock:
-            cls.next_id += 1
-            return cls.next_id
+        cls.next_id += 1
+        return cls.next_id
 
 
 @dataclass
@@ -33,6 +31,7 @@ class IFutureResponse(ABC, Generic[_T]):
 
 @dataclass
 class IEventStream(ABC, Generic[_T]):
+    connection: 'Connection'
     events: list[_T]
 
     @abstractmethod
@@ -65,6 +64,15 @@ class IConnection(ABC):
 
 
 @dataclass
+class EventStream(IEventStream):
+    def get_next(self) -> _T:
+        pass
+
+    def close(self) -> None:
+        pass
+
+
+@dataclass
 class FutureResponse(IFutureResponse[_T]):
     future: Optional[asyncio.Future]
 
@@ -86,17 +94,22 @@ class FutureResponse(IFutureResponse[_T]):
         if self.future.done():
             return self.future.result()
 
-        event_loop = asyncio.get_event_loop()
+        try:
+            asyncio.run(self._get())
 
-        self.value = event_loop.run_until_complete(
-            self._get()
-        )
+        except Exception as e:
+            self.future.set_exception(e)
+            raise e
 
         return self.value
 
 
 @dataclass
 class Connection(IConnection):
+    event_streams: dict[str, list] = field(
+        init=False,
+        repr=False
+    )
     in_flight_futures: dict = field(
         init=False,
         repr=False
@@ -117,6 +130,7 @@ class Connection(IConnection):
     url: str
 
     def __post_init__(self):
+        self.event_streams = defaultdict(list)
         self.in_flight_futures = {}
         self.ws = None
         self.ws_connected = None
@@ -141,20 +155,20 @@ class Connection(IConnection):
 
         if 'id' in message:
             future_context = self.in_flight_futures[message['id']]
-
             future = future_context['future']
+
+            future: asyncio.Future
 
             if 'error' in message and message['error']:
                 error = message['error']
-
-                future.set_exception(
-                    Exception(
-                        'Received the following error: '
-                        f'Err Code: {error["code"]}, '
-                        f'Err Message: {error["message"]}, '
-                        f'Raw Message: {message}'
-                    )
+                error = (
+                    'Received the following error: '
+                    f'Err Code: {error["code"]}, '
+                    f'Err Message: {error["message"]}, '
+                    f'Raw Message: {message}'
                 )
+
+                future.set_result(error)
                 return
 
             response_hook = future_context['response_hook']
@@ -214,9 +228,8 @@ class Connection(IConnection):
             )
 
         try:
-            event_loop.run_until_complete(
-                self.ws.send(request)
-            )
+            coroutine = self.ws.send(request)
+            event_loop.run_until_complete(coroutine)
 
         except Exception as e:
             future.set_exception(e)

@@ -36,10 +36,14 @@ class Chrome:
         response = requests.get(url)
         response.raise_for_status()
 
+        targets = []
+
         for target in response.json():
             target_ = Target(
                 chrome=self,
                 id=target['id']
             )
 
-            yield target_
+            targets.append(target_)
+
+        return targets

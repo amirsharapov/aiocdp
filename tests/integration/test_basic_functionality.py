@@ -8,12 +8,17 @@ class Tests(TestCase):
     def test(self):
         chrome = Chrome.start()
 
-        target = next(chrome.get_targets(), None)
+        target = chrome.get_targets()[0]
         target.connect()
         target.open_session()
 
         result = target.domains.page.navigate('https://google.com')
         result.get()
+
+        result = target.domains.page.get_frame_tree()
+        result = result.get()
+
+        print(result)
 
     def test_2(self):
         pass
