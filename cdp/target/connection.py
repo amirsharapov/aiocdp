@@ -79,8 +79,8 @@ class FutureResponse(IFutureResponse[_T]):
     async def _get(self, timeout: int = 10):
         try:
             return await asyncio.wait_for(
-                fut=self.future,
-                timeout=timeout
+                self.future,
+                timeout
             )
 
         except asyncio.TimeoutError as e:
@@ -88,18 +88,17 @@ class FutureResponse(IFutureResponse[_T]):
             raise TimeoutError(message) from e
 
     def get(self) -> _T:
+        loop = asyncio.get_event_loop()
+
         if self.future is None:
             return self.value
 
         if self.future.done():
             return self.future.result()
 
-        try:
-            asyncio.run(self._get())
-
-        except Exception as e:
-            self.future.set_exception(e)
-            raise e
+        self.value = loop.run_until_complete(
+            self._get()
+        )
 
         return self.value
 
@@ -146,39 +145,36 @@ class Connection(IConnection):
                 self._on_message(message)
 
     def _on_message(self, message: str):
-        print(
-            'Message with context: '
-            f'Message: {message}'
-        )
+            print(f'Received message: {message}')
 
-        message = json.loads(message)
+            message = json.loads(message)
 
-        if 'id' in message:
-            future_context = self.in_flight_futures[message['id']]
-            future = future_context['future']
+            if 'id' in message:
+                future_context = self.in_flight_futures[message['id']]
+                future = future_context['future']
 
-            future: asyncio.Future
+                try:
 
-            if 'error' in message and message['error']:
-                error = message['error']
-                error = (
-                    'Received the following error: '
-                    f'Err Code: {error["code"]}, '
-                    f'Err Message: {error["message"]}, '
-                    f'Raw Message: {message}'
-                )
+                    if 'error' in message and message['error']:
+                        error = message['error']
+                        raise Exception(
+                            'Received the following error: '
+                            f'Err Code: {error["code"]}, '
+                            f'Err Message: {error["message"]}, '
+                            f'Raw Message: {message}'
+                        )
 
-                future.set_result(error)
-                return
+                    response_hook = future_context['response_hook']
 
-            response_hook = future_context['response_hook']
+                    if response_hook:
+                        message = response_hook(message['result'])
 
-            if response_hook:
-                message = response_hook(message['result'])
+                    future.set_result(
+                        message
+                    )
 
-            future.set_result(
-                message
-            )
+                except Exception as e:
+                    future.set_exception(e)
 
     def connect(self):
         loop = asyncio.get_event_loop()

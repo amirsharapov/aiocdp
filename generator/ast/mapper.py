@@ -93,6 +93,7 @@ def _generate_return_type_from_dict_mapper_body(
                 ),
                 args=[
                     ast.Constant(key),
+                    ast.Constant([]) if return_property.type == 'array' else ast.Constant(None)
                 ]
             )
 
@@ -108,7 +109,10 @@ def _generate_return_type_from_dict_mapper_body(
                     elt=ast.Call(
                         func=ast.Name('from_dict'),
                         args=[
-                            ast.Name(return_property.items.ref.actual_type.id_pascal_case),
+                            ast.Name(
+                                f'{command.actual_domain.domain_snake_case_collision_safe}.'
+                                f'{return_property.items.ref.actual_type.id_pascal_case}'
+                            ),
                             ast.Name('item'),
                             ast.Name('casing_strategy')
                         ]
@@ -129,7 +133,10 @@ def _generate_return_type_from_dict_mapper_body(
                 value = ast.Call(
                     func=ast.Name('from_dict'),
                     args=[
-                        ast.Name(return_property.ref.actual_type.id_pascal_case),
+                        ast.Name((
+                            f'{command.actual_domain.domain_snake_case_collision_safe}.'
+                            f'{return_property.ref.actual_type.id_pascal_case}'
+                        )),
                         key_access,
                         ast.Name('casing_strategy')
                     ],
@@ -247,48 +254,65 @@ def _generate_type_specific_from_dict_mapper_body(
         if casing_strategy == 'pascal':
             key = property_.name_pascal_cased
 
-        key_access = ast.Subscript(
-            value=ast.Name('data'),
-            slice=ast.Constant(key)
-        )
-
-        from_dict_call = ast.Call(
-            func=ast.Name('from_dict'),
-            args=[
-                key_access,
-                ast.Name('casing_strategy')
-            ],
-            render_context={
-                'expand': True
-            }
-        )
-
-        from_dict_call_list_comp = ast.ListComp(
-            elt=ast.Call(
-                func=ast.Name('from_dict'),
+        if property_.optional:
+            key_access = ast.Call(
+                func=ast.Attribute(
+                    value=ast.Name('data'),
+                    attr='get'
+                ),
                 args=[
-                    ast.Name('item'),
-                    ast.Name('casing_strategy')
+                    ast.Constant(key),
+                    ast.Constant([]) if property_.type == 'array' else ast.Constant(None)
                 ]
-            ),
-            generators=[
-                ast.comprehension(
-                    target=ast.Name('item'),
-                    iter=key_access,
-                    ifs=[]
-                )
-            ]
-        )
+            )
+
+        else:
+            key_access = ast.Subscript(
+                value=ast.Name('data'),
+                slice=ast.Constant(key)
+            )
 
         if property_.type == 'array':
             if property_.items.ref.actual_type.properties:
-                value = from_dict_call_list_comp
+                value = ast.ListComp(
+                    elt=ast.Call(
+                        func=ast.Name('from_dict'),
+                        args=[
+                            ast.Name((
+                                f'{property_.parent.actual_domain.domain_snake_case_collision_safe}.'
+                                f'{property_.items.ref.actual_type.id_pascal_case}'
+                            )),
+                            ast.Name('item'),
+                            ast.Name('casing_strategy')
+                        ]
+                    ),
+                    generators=[
+                        ast.comprehension(
+                            target=ast.Name('item'),
+                            iter=key_access,
+                            ifs=[]
+                        )
+                    ]
+                )
             else:
                 value = key_access
 
         else:
             if property_.ref.actual_type.properties:
-                value = from_dict_call
+                value = ast.Call(
+                    func=ast.Name('from_dict'),
+                    args=[
+                        ast.Name((
+                            f'{property_.parent.actual_domain.domain_snake_case_collision_safe}.'
+                            f'{property_.ref.actual_type.id_pascal_case}'
+                        )),
+                        key_access,
+                        ast.Name('casing_strategy')
+                    ],
+                    render_context={
+                        'expand': True
+                    }
+                )
             else:
                 value = key_access
 
