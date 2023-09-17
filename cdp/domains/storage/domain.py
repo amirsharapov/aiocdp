@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.storage.types import (
     ClearTrustTokensReturnT,
     GetCookiesReturnT,
@@ -36,7 +39,7 @@ from cdp.domains.browser.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -45,7 +48,7 @@ class Storage(BaseDomain):
     def get_storage_key_for_frame(
             self,
             frame_id: FrameId
-    ) -> IResult['GetStorageKeyForFrameReturnT']:
+    ) -> IResponse['GetStorageKeyForFrameReturnT']:
         params = {
             'frameId': frame_id,
         }
@@ -53,14 +56,19 @@ class Storage(BaseDomain):
         return self._send_command(
             'Storage.getStorageKeyForFrame',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetStorageKeyForFrameReturnT,
+                data,
+                'camel'
+            )
         )
 
     def clear_data_for_origin(
             self,
             origin: str,
             storage_types: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'origin': origin,
             'storageTypes': storage_types,
@@ -76,7 +84,7 @@ class Storage(BaseDomain):
             self,
             storage_key: str,
             storage_types: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
             'storageTypes': storage_types,
@@ -91,7 +99,7 @@ class Storage(BaseDomain):
     def get_cookies(
             self,
             browser_context_id: BrowserContextID = UNDEFINED
-    ) -> IResult['GetCookiesReturnT']:
+    ) -> IResponse['GetCookiesReturnT']:
         params = {}
 
         if is_defined(browser_context_id):
@@ -100,14 +108,19 @@ class Storage(BaseDomain):
         return self._send_command(
             'Storage.getCookies',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetCookiesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_cookies(
             self,
             cookies: list,
             browser_context_id: BrowserContextID = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'cookies': cookies,
         }
@@ -124,7 +137,7 @@ class Storage(BaseDomain):
     def clear_cookies(
             self,
             browser_context_id: BrowserContextID = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(browser_context_id):
@@ -139,7 +152,7 @@ class Storage(BaseDomain):
     def get_usage_and_quota(
             self,
             origin: str
-    ) -> IResult['GetUsageAndQuotaReturnT']:
+    ) -> IResponse['GetUsageAndQuotaReturnT']:
         params = {
             'origin': origin,
         }
@@ -147,14 +160,19 @@ class Storage(BaseDomain):
         return self._send_command(
             'Storage.getUsageAndQuota',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetUsageAndQuotaReturnT,
+                data,
+                'camel'
+            )
         )
 
     def override_quota_for_origin(
             self,
             origin: str,
             quota_size: float = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'origin': origin,
         }
@@ -171,7 +189,7 @@ class Storage(BaseDomain):
     def track_cache_storage_for_origin(
             self,
             origin: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'origin': origin,
         }
@@ -185,7 +203,7 @@ class Storage(BaseDomain):
     def track_cache_storage_for_storage_key(
             self,
             storage_key: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
         }
@@ -199,7 +217,7 @@ class Storage(BaseDomain):
     def track_indexed_db_for_origin(
             self,
             origin: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'origin': origin,
         }
@@ -213,7 +231,7 @@ class Storage(BaseDomain):
     def track_indexed_db_for_storage_key(
             self,
             storage_key: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
         }
@@ -227,7 +245,7 @@ class Storage(BaseDomain):
     def untrack_cache_storage_for_origin(
             self,
             origin: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'origin': origin,
         }
@@ -241,7 +259,7 @@ class Storage(BaseDomain):
     def untrack_cache_storage_for_storage_key(
             self,
             storage_key: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
         }
@@ -255,7 +273,7 @@ class Storage(BaseDomain):
     def untrack_indexed_db_for_origin(
             self,
             origin: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'origin': origin,
         }
@@ -269,7 +287,7 @@ class Storage(BaseDomain):
     def untrack_indexed_db_for_storage_key(
             self,
             storage_key: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
         }
@@ -282,19 +300,24 @@ class Storage(BaseDomain):
 
     def get_trust_tokens(
             self
-    ) -> IResult['GetTrustTokensReturnT']:
+    ) -> IResponse['GetTrustTokensReturnT']:
         params = {}
 
         return self._send_command(
             'Storage.getTrustTokens',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetTrustTokensReturnT,
+                data,
+                'camel'
+            )
         )
 
     def clear_trust_tokens(
             self,
             issuer_origin: str
-    ) -> IResult['ClearTrustTokensReturnT']:
+    ) -> IResponse['ClearTrustTokensReturnT']:
         params = {
             'issuerOrigin': issuer_origin,
         }
@@ -302,14 +325,19 @@ class Storage(BaseDomain):
         return self._send_command(
             'Storage.clearTrustTokens',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                ClearTrustTokensReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_interest_group_details(
             self,
             owner_origin: str,
             name: str
-    ) -> IResult['GetInterestGroupDetailsReturnT']:
+    ) -> IResponse['GetInterestGroupDetailsReturnT']:
         params = {
             'ownerOrigin': owner_origin,
             'name': name,
@@ -318,13 +346,18 @@ class Storage(BaseDomain):
         return self._send_command(
             'Storage.getInterestGroupDetails',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetInterestGroupDetailsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_interest_group_tracking(
             self,
             enable: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'enable': enable,
         }
@@ -338,7 +371,7 @@ class Storage(BaseDomain):
     def get_shared_storage_metadata(
             self,
             owner_origin: str
-    ) -> IResult['GetSharedStorageMetadataReturnT']:
+    ) -> IResponse['GetSharedStorageMetadataReturnT']:
         params = {
             'ownerOrigin': owner_origin,
         }
@@ -346,13 +379,18 @@ class Storage(BaseDomain):
         return self._send_command(
             'Storage.getSharedStorageMetadata',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetSharedStorageMetadataReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_shared_storage_entries(
             self,
             owner_origin: str
-    ) -> IResult['GetSharedStorageEntriesReturnT']:
+    ) -> IResponse['GetSharedStorageEntriesReturnT']:
         params = {
             'ownerOrigin': owner_origin,
         }
@@ -360,7 +398,12 @@ class Storage(BaseDomain):
         return self._send_command(
             'Storage.getSharedStorageEntries',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetSharedStorageEntriesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_shared_storage_entry(
@@ -369,7 +412,7 @@ class Storage(BaseDomain):
             key: str,
             value: str,
             ignore_if_present: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'ownerOrigin': owner_origin,
             'key': key,
@@ -389,7 +432,7 @@ class Storage(BaseDomain):
             self,
             owner_origin: str,
             key: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'ownerOrigin': owner_origin,
             'key': key,
@@ -404,7 +447,7 @@ class Storage(BaseDomain):
     def clear_shared_storage_entries(
             self,
             owner_origin: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'ownerOrigin': owner_origin,
         }
@@ -418,7 +461,7 @@ class Storage(BaseDomain):
     def reset_shared_storage_budget(
             self,
             owner_origin: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'ownerOrigin': owner_origin,
         }
@@ -432,7 +475,7 @@ class Storage(BaseDomain):
     def set_shared_storage_tracking(
             self,
             enable: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'enable': enable,
         }
@@ -447,7 +490,7 @@ class Storage(BaseDomain):
             self,
             storage_key: str,
             enable: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'storageKey': storage_key,
             'enable': enable,
@@ -462,7 +505,7 @@ class Storage(BaseDomain):
     def delete_storage_bucket(
             self,
             bucket: StorageBucket
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'bucket': bucket,
         }
@@ -475,19 +518,24 @@ class Storage(BaseDomain):
 
     def run_bounce_tracking_mitigations(
             self
-    ) -> IResult['RunBounceTrackingMitigationsReturnT']:
+    ) -> IResponse['RunBounceTrackingMitigationsReturnT']:
         params = {}
 
         return self._send_command(
             'Storage.runBounceTrackingMitigations',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                RunBounceTrackingMitigationsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_attribution_reporting_local_testing_mode(
             self,
             enabled: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'enabled': enabled,
         }
@@ -501,7 +549,7 @@ class Storage(BaseDomain):
     def set_attribution_reporting_tracking(
             self,
             enable: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'enable': enable,
         }

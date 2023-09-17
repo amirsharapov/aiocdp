@@ -30,6 +30,12 @@ def _generate_imports():
             names=[
                 ast.alias('TYPE_CHECKING')
             ]
+        ),
+        ast.ImportFrom(
+            module='cdp.domains.mapper',
+            names=[
+                ast.alias('from_dict')
+            ]
         )
     ]
 
@@ -68,7 +74,10 @@ def _generate_external_type_imports(domain: Domain):
 def _generate_send_command_method_parameter_signature(command: Command):
     arguments = ast.arguments(
         args=[],
-        defaults=[]
+        defaults=[],
+        render_context={
+            'expand': True
+        }
     )
 
     arguments.args.append(
@@ -181,22 +190,46 @@ def _generate_send_command_method_optional_params(command: Command):
 
 
 def _generate_send_command_method_return_call(command: Command):
-    return ast.Return(
-        value=ast.Call(
-            func=ast.Attribute(
-                value=ast.Name('self'),
-                attr='_send_command',
-            ),
-            args=[
-                ast.Constant(f'{command.parent.domain}.{command.name}'),
-                ast.Name('params'),
-                ast.Constant(bool(command.returns))
-            ],
-            keywords=[],
-            render_context={
-                'expand': True
-            }
+    call = ast.Call(
+        func=ast.Attribute(
+            value=ast.Name('self'),
+            attr='_send_command',
         ),
+        args=[
+            ast.Constant(f'{command.parent.domain}.{command.name}'),
+            ast.Name('params'),
+            ast.Constant(bool(command.returns))
+        ],
+        keywords=[],
+        render_context={
+            'expand': True
+        }
+    )
+
+    if command.returns:
+        call.args.append(
+            ast.Lambda(
+                args=ast.arguments(
+                    args=[
+                        ast.arg('data')
+                    ]
+                ),
+                body=ast.Call(
+                    func=ast.Name('from_dict'),
+                    args=[
+                        ast.Name(command.name_pascal_case + 'ReturnT'),
+                        ast.Name('data'),
+                        ast.Constant('camel')
+                    ],
+                    render_context={
+                        'expand': True
+                    }
+                )
+            )
+        )
+
+    return ast.Return(
+        value=call,
         render_context={
             'lines_before': 1
         }
@@ -210,7 +243,7 @@ def _generate_send_command_method_return_signature(command: Command):
         value = ast.Name('None')
 
     return ast.Subscript(
-        value=ast.Name('IResult'),
+        value=ast.Name('IResponse'),
         slice=value
     )
 
@@ -306,7 +339,7 @@ def generate(domain: Domain):
                 ast.ImportFrom(
                     module='cdp.target.connection',
                     names=[
-                        ast.alias('IResult')
+                        ast.alias('IResponse')
                     ]
                 )
             ]

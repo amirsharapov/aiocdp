@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.tracing.types import (
     GetCategoriesReturnT,
     MemoryDumpLevelOfDetail,
@@ -27,7 +30,7 @@ from cdp.domains.tracing.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -35,7 +38,7 @@ if TYPE_CHECKING:
 class Tracing(BaseDomain):
     def end(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -46,19 +49,24 @@ class Tracing(BaseDomain):
 
     def get_categories(
             self
-    ) -> IResult['GetCategoriesReturnT']:
+    ) -> IResponse['GetCategoriesReturnT']:
         params = {}
 
         return self._send_command(
             'Tracing.getCategories',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetCategoriesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def record_clock_sync_marker(
             self,
             sync_id: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'syncId': sync_id,
         }
@@ -73,7 +81,7 @@ class Tracing(BaseDomain):
             self,
             deterministic: bool = UNDEFINED,
             level_of_detail: MemoryDumpLevelOfDetail = UNDEFINED
-    ) -> IResult['RequestMemoryDumpReturnT']:
+    ) -> IResponse['RequestMemoryDumpReturnT']:
         params = {}
 
         if is_defined(deterministic):
@@ -85,7 +93,12 @@ class Tracing(BaseDomain):
         return self._send_command(
             'Tracing.requestMemoryDump',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                RequestMemoryDumpReturnT,
+                data,
+                'camel'
+            )
         )
 
     def start(
@@ -99,7 +112,7 @@ class Tracing(BaseDomain):
             trace_config: TraceConfig = UNDEFINED,
             perfetto_config: str = UNDEFINED,
             tracing_backend: TracingBackend = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(categories):

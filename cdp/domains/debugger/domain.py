@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.debugger.types import (
     BreakpointId,
     CallFrameId,
@@ -42,7 +45,7 @@ from cdp.domains.runtime.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -52,7 +55,7 @@ class Debugger(BaseDomain):
             self,
             location: Location,
             target_call_frames: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'location': location,
         }
@@ -68,7 +71,7 @@ class Debugger(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -80,7 +83,7 @@ class Debugger(BaseDomain):
     def enable(
             self,
             max_scripts_cache_size: float = UNDEFINED
-    ) -> IResult['EnableReturnT']:
+    ) -> IResponse['EnableReturnT']:
         params = {}
 
         if is_defined(max_scripts_cache_size):
@@ -89,7 +92,12 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.enable',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                EnableReturnT,
+                data,
+                'camel'
+            )
         )
 
     def evaluate_on_call_frame(
@@ -103,7 +111,7 @@ class Debugger(BaseDomain):
             generate_preview: bool = UNDEFINED,
             throw_on_side_effect: bool = UNDEFINED,
             timeout: TimeDelta = UNDEFINED
-    ) -> IResult['EvaluateOnCallFrameReturnT']:
+    ) -> IResponse['EvaluateOnCallFrameReturnT']:
         params = {
             'callFrameId': call_frame_id,
             'expression': expression,
@@ -133,7 +141,12 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.evaluateOnCallFrame',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                EvaluateOnCallFrameReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_possible_breakpoints(
@@ -141,7 +154,7 @@ class Debugger(BaseDomain):
             start: Location,
             end: Location = UNDEFINED,
             restrict_to_function: bool = UNDEFINED
-    ) -> IResult['GetPossibleBreakpointsReturnT']:
+    ) -> IResponse['GetPossibleBreakpointsReturnT']:
         params = {
             'start': start,
         }
@@ -155,13 +168,18 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.getPossibleBreakpoints',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetPossibleBreakpointsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_script_source(
             self,
             script_id: ScriptId
-    ) -> IResult['GetScriptSourceReturnT']:
+    ) -> IResponse['GetScriptSourceReturnT']:
         params = {
             'scriptId': script_id,
         }
@@ -169,13 +187,18 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.getScriptSource',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetScriptSourceReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_stack_trace(
             self,
             stack_trace_id: StackTraceId
-    ) -> IResult['GetStackTraceReturnT']:
+    ) -> IResponse['GetStackTraceReturnT']:
         params = {
             'stackTraceId': stack_trace_id,
         }
@@ -183,12 +206,17 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.getStackTrace',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetStackTraceReturnT,
+                data,
+                'camel'
+            )
         )
 
     def pause(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -200,7 +228,7 @@ class Debugger(BaseDomain):
     def pause_on_async_call(
             self,
             parent_stack_trace_id: StackTraceId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'parentStackTraceId': parent_stack_trace_id,
         }
@@ -214,7 +242,7 @@ class Debugger(BaseDomain):
     def remove_breakpoint(
             self,
             breakpoint_id: BreakpointId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'breakpointId': breakpoint_id,
         }
@@ -228,7 +256,7 @@ class Debugger(BaseDomain):
     def restart_frame(
             self,
             call_frame_id: CallFrameId
-    ) -> IResult['RestartFrameReturnT']:
+    ) -> IResponse['RestartFrameReturnT']:
         params = {
             'callFrameId': call_frame_id,
         }
@@ -236,12 +264,17 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.restartFrame',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                RestartFrameReturnT,
+                data,
+                'camel'
+            )
         )
 
     def resume(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -256,7 +289,7 @@ class Debugger(BaseDomain):
             query: str,
             case_sensitive: bool = UNDEFINED,
             is_regex: bool = UNDEFINED
-    ) -> IResult['SearchInContentReturnT']:
+    ) -> IResponse['SearchInContentReturnT']:
         params = {
             'scriptId': script_id,
             'query': query,
@@ -271,13 +304,18 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.searchInContent',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SearchInContentReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_async_call_stack_depth(
             self,
             max_depth: int
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'maxDepth': max_depth,
         }
@@ -291,7 +329,7 @@ class Debugger(BaseDomain):
     def set_blackbox_patterns(
             self,
             patterns: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'patterns': patterns,
         }
@@ -306,7 +344,7 @@ class Debugger(BaseDomain):
             self,
             script_id: ScriptId,
             positions: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'scriptId': script_id,
             'positions': positions,
@@ -322,7 +360,7 @@ class Debugger(BaseDomain):
             self,
             location: Location,
             condition: str = UNDEFINED
-    ) -> IResult['SetBreakpointReturnT']:
+    ) -> IResponse['SetBreakpointReturnT']:
         params = {
             'location': location,
         }
@@ -333,13 +371,18 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.setBreakpoint',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetBreakpointReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_instrumentation_breakpoint(
             self,
             instrumentation: str
-    ) -> IResult['SetInstrumentationBreakpointReturnT']:
+    ) -> IResponse['SetInstrumentationBreakpointReturnT']:
         params = {
             'instrumentation': instrumentation,
         }
@@ -347,7 +390,12 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.setInstrumentationBreakpoint',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetInstrumentationBreakpointReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_breakpoint_by_url(
@@ -358,7 +406,7 @@ class Debugger(BaseDomain):
             script_hash: str = UNDEFINED,
             column_number: int = UNDEFINED,
             condition: str = UNDEFINED
-    ) -> IResult['SetBreakpointByUrlReturnT']:
+    ) -> IResponse['SetBreakpointByUrlReturnT']:
         params = {
             'lineNumber': line_number,
         }
@@ -381,14 +429,19 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.setBreakpointByUrl',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetBreakpointByUrlReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_breakpoint_on_function_call(
             self,
             object_id: RemoteObjectId,
             condition: str = UNDEFINED
-    ) -> IResult['SetBreakpointOnFunctionCallReturnT']:
+    ) -> IResponse['SetBreakpointOnFunctionCallReturnT']:
         params = {
             'objectId': object_id,
         }
@@ -399,13 +452,18 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.setBreakpointOnFunctionCall',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetBreakpointOnFunctionCallReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_breakpoints_active(
             self,
             active: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'active': active,
         }
@@ -419,7 +477,7 @@ class Debugger(BaseDomain):
     def set_pause_on_exceptions(
             self,
             state: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'state': state,
         }
@@ -433,7 +491,7 @@ class Debugger(BaseDomain):
     def set_return_value(
             self,
             new_value: CallArgument
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'newValue': new_value,
         }
@@ -449,7 +507,7 @@ class Debugger(BaseDomain):
             script_id: ScriptId,
             script_source: str,
             dry_run: bool = UNDEFINED
-    ) -> IResult['SetScriptSourceReturnT']:
+    ) -> IResponse['SetScriptSourceReturnT']:
         params = {
             'scriptId': script_id,
             'scriptSource': script_source,
@@ -461,13 +519,18 @@ class Debugger(BaseDomain):
         return self._send_command(
             'Debugger.setScriptSource',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetScriptSourceReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_skip_all_pauses(
             self,
             skip: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'skip': skip,
         }
@@ -484,7 +547,7 @@ class Debugger(BaseDomain):
             variable_name: str,
             new_value: CallArgument,
             call_frame_id: CallFrameId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'scopeNumber': scope_number,
             'variableName': variable_name,
@@ -501,7 +564,7 @@ class Debugger(BaseDomain):
     def step_into(
             self,
             break_on_async_call: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(break_on_async_call):
@@ -515,7 +578,7 @@ class Debugger(BaseDomain):
 
     def step_out(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -526,7 +589,7 @@ class Debugger(BaseDomain):
 
     def step_over(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(

@@ -16,12 +16,15 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.schema.types import (
     GetDomainsReturnT
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -29,11 +32,16 @@ if TYPE_CHECKING:
 class Schema(BaseDomain):
     def get_domains(
             self
-    ) -> IResult['GetDomainsReturnT']:
+    ) -> IResponse['GetDomainsReturnT']:
         params = {}
 
         return self._send_command(
             'Schema.getDomains',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetDomainsReturnT,
+                data,
+                'camel'
+            )
         )

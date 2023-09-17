@@ -16,9 +16,12 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -26,7 +29,7 @@ if TYPE_CHECKING:
 class Console(BaseDomain):
     def clear_messages(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -37,7 +40,7 @@ class Console(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -48,7 +51,7 @@ class Console(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(

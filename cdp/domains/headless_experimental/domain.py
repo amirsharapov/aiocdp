@@ -16,13 +16,16 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.headless_experimental.types import (
     BeginFrameReturnT,
     ScreenshotParams
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -34,7 +37,7 @@ class HeadlessExperimental(BaseDomain):
             interval: float = UNDEFINED,
             no_display_updates: bool = UNDEFINED,
             screenshot: ScreenshotParams = UNDEFINED
-    ) -> IResult['BeginFrameReturnT']:
+    ) -> IResponse['BeginFrameReturnT']:
         params = {}
 
         if is_defined(frame_time_ticks):
@@ -52,12 +55,17 @@ class HeadlessExperimental(BaseDomain):
         return self._send_command(
             'HeadlessExperimental.beginFrame',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                BeginFrameReturnT,
+                data,
+                'camel'
+            )
         )
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -68,7 +76,7 @@ class HeadlessExperimental(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(

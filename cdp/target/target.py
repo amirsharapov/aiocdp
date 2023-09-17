@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Optional, Callable
 
 from cdp.domains.domains import Domains
-from cdp.target.connection import Connection, IResult
+from cdp.target.connection import Connection, IResponse
 
 if TYPE_CHECKING:
     from cdp.chrome import Chrome
@@ -46,13 +46,16 @@ class Target:
             params: dict,
             expect_response: bool,
             response_hook: Callable = None
-    ) -> IResult:
+    ) -> IResponse:
         if self.active_session_id:
             params['sessionId'] = self.active_session_id
 
-        return self.connection.send(
+        return self.connection.send_request(
             method,
             params,
             expect_response,
             response_hook
         )
+
+    def listen_for_event(self, event: type) -> EventStream:
+        pass

@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.memory.types import (
     GetAllTimeSamplingProfileReturnT,
     GetBrowserSamplingProfileReturnT,
@@ -25,7 +28,7 @@ from cdp.domains.memory.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -33,18 +36,23 @@ if TYPE_CHECKING:
 class Memory(BaseDomain):
     def get_dom_counters(
             self
-    ) -> IResult['GetDOMCountersReturnT']:
+    ) -> IResponse['GetDOMCountersReturnT']:
         params = {}
 
         return self._send_command(
             'Memory.getDOMCounters',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetDOMCountersReturnT,
+                data,
+                'camel'
+            )
         )
 
     def prepare_for_leak_detection(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -55,7 +63,7 @@ class Memory(BaseDomain):
 
     def forcibly_purge_java_script_memory(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -67,7 +75,7 @@ class Memory(BaseDomain):
     def set_pressure_notifications_suppressed(
             self,
             suppressed: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'suppressed': suppressed,
         }
@@ -81,7 +89,7 @@ class Memory(BaseDomain):
     def simulate_pressure_notification(
             self,
             level: PressureLevel
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'level': level,
         }
@@ -96,7 +104,7 @@ class Memory(BaseDomain):
             self,
             sampling_interval: int = UNDEFINED,
             suppress_randomness: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(sampling_interval):
@@ -113,7 +121,7 @@ class Memory(BaseDomain):
 
     def stop_sampling(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -124,33 +132,48 @@ class Memory(BaseDomain):
 
     def get_all_time_sampling_profile(
             self
-    ) -> IResult['GetAllTimeSamplingProfileReturnT']:
+    ) -> IResponse['GetAllTimeSamplingProfileReturnT']:
         params = {}
 
         return self._send_command(
             'Memory.getAllTimeSamplingProfile',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetAllTimeSamplingProfileReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_browser_sampling_profile(
             self
-    ) -> IResult['GetBrowserSamplingProfileReturnT']:
+    ) -> IResponse['GetBrowserSamplingProfileReturnT']:
         params = {}
 
         return self._send_command(
             'Memory.getBrowserSamplingProfile',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetBrowserSamplingProfileReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_sampling_profile(
             self
-    ) -> IResult['GetSamplingProfileReturnT']:
+    ) -> IResponse['GetSamplingProfileReturnT']:
         params = {}
 
         return self._send_command(
             'Memory.getSamplingProfile',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetSamplingProfileReturnT,
+                data,
+                'camel'
+            )
         )

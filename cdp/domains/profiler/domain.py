@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.profiler.types import (
     GetBestEffortCoverageReturnT,
     StopReturnT,
@@ -24,7 +27,7 @@ from cdp.domains.profiler.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -32,7 +35,7 @@ if TYPE_CHECKING:
 class Profiler(BaseDomain):
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -43,7 +46,7 @@ class Profiler(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -54,19 +57,24 @@ class Profiler(BaseDomain):
 
     def get_best_effort_coverage(
             self
-    ) -> IResult['GetBestEffortCoverageReturnT']:
+    ) -> IResponse['GetBestEffortCoverageReturnT']:
         params = {}
 
         return self._send_command(
             'Profiler.getBestEffortCoverage',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetBestEffortCoverageReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_sampling_interval(
             self,
             interval: int
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'interval': interval,
         }
@@ -79,7 +87,7 @@ class Profiler(BaseDomain):
 
     def start(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -92,7 +100,7 @@ class Profiler(BaseDomain):
             self,
             call_count: bool = UNDEFINED,
             detailed: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(call_count):
@@ -109,7 +117,7 @@ class Profiler(BaseDomain):
 
     def start_type_profile(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -120,18 +128,23 @@ class Profiler(BaseDomain):
 
     def stop(
             self
-    ) -> IResult['StopReturnT']:
+    ) -> IResponse['StopReturnT']:
         params = {}
 
         return self._send_command(
             'Profiler.stop',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                StopReturnT,
+                data,
+                'camel'
+            )
         )
 
     def stop_precise_coverage(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -142,7 +155,7 @@ class Profiler(BaseDomain):
 
     def stop_type_profile(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -153,22 +166,32 @@ class Profiler(BaseDomain):
 
     def take_precise_coverage(
             self
-    ) -> IResult['TakePreciseCoverageReturnT']:
+    ) -> IResponse['TakePreciseCoverageReturnT']:
         params = {}
 
         return self._send_command(
             'Profiler.takePreciseCoverage',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                TakePreciseCoverageReturnT,
+                data,
+                'camel'
+            )
         )
 
     def take_type_profile(
             self
-    ) -> IResult['TakeTypeProfileReturnT']:
+    ) -> IResponse['TakeTypeProfileReturnT']:
         params = {}
 
         return self._send_command(
             'Profiler.takeTypeProfile',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                TakeTypeProfileReturnT,
+                data,
+                'camel'
+            )
         )

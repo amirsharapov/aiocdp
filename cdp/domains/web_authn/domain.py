@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.web_authn.types import (
     AddVirtualAuthenticatorReturnT,
     AuthenticatorId,
@@ -26,7 +29,7 @@ from cdp.domains.web_authn.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -35,7 +38,7 @@ class WebAuthn(BaseDomain):
     def enable(
             self,
             enable_ui: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(enable_ui):
@@ -49,7 +52,7 @@ class WebAuthn(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -61,7 +64,7 @@ class WebAuthn(BaseDomain):
     def add_virtual_authenticator(
             self,
             options: VirtualAuthenticatorOptions
-    ) -> IResult['AddVirtualAuthenticatorReturnT']:
+    ) -> IResponse['AddVirtualAuthenticatorReturnT']:
         params = {
             'options': options,
         }
@@ -69,7 +72,12 @@ class WebAuthn(BaseDomain):
         return self._send_command(
             'WebAuthn.addVirtualAuthenticator',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                AddVirtualAuthenticatorReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_response_override_bits(
@@ -78,7 +86,7 @@ class WebAuthn(BaseDomain):
             is_bogus_signature: bool = UNDEFINED,
             is_bad_uv: bool = UNDEFINED,
             is_bad_up: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -101,7 +109,7 @@ class WebAuthn(BaseDomain):
     def remove_virtual_authenticator(
             self,
             authenticator_id: AuthenticatorId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -116,7 +124,7 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: AuthenticatorId,
             credential: Credential
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
             'credential': credential,
@@ -132,7 +140,7 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: AuthenticatorId,
             credential_id: str
-    ) -> IResult['GetCredentialReturnT']:
+    ) -> IResponse['GetCredentialReturnT']:
         params = {
             'authenticatorId': authenticator_id,
             'credentialId': credential_id,
@@ -141,13 +149,18 @@ class WebAuthn(BaseDomain):
         return self._send_command(
             'WebAuthn.getCredential',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetCredentialReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_credentials(
             self,
             authenticator_id: AuthenticatorId
-    ) -> IResult['GetCredentialsReturnT']:
+    ) -> IResponse['GetCredentialsReturnT']:
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -155,14 +168,19 @@ class WebAuthn(BaseDomain):
         return self._send_command(
             'WebAuthn.getCredentials',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetCredentialsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def remove_credential(
             self,
             authenticator_id: AuthenticatorId,
             credential_id: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
             'credentialId': credential_id,
@@ -177,7 +195,7 @@ class WebAuthn(BaseDomain):
     def clear_credentials(
             self,
             authenticator_id: AuthenticatorId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -192,7 +210,7 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: AuthenticatorId,
             is_user_verified: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
             'isUserVerified': is_user_verified,
@@ -208,7 +226,7 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: AuthenticatorId,
             enabled: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'authenticatorId': authenticator_id,
             'enabled': enabled,

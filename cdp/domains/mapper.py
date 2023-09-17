@@ -162,10 +162,7 @@ from cdp.domains.schema import (
 
 _T = TypeVar('_T')
 
-def _map_accessibility__ax_value_source__to_dict(
-        data: 'accessibility.AXValueSource',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_accessibility__ax_value_source__to_dict(data: 'accessibility.AXValueSource', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -231,10 +228,7 @@ def _map_accessibility__ax_value_source__to_dict(
         }
 
 
-def _map_accessibility__ax_related_node__to_dict(
-        data: 'accessibility.AXRelatedNode',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_accessibility__ax_related_node__to_dict(data: 'accessibility.AXRelatedNode', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'backend_dom_node_id': data.backend_dom_node_id,
@@ -255,10 +249,7 @@ def _map_accessibility__ax_related_node__to_dict(
         }
 
 
-def _map_accessibility__ax_property__to_dict(
-        data: 'accessibility.AXProperty',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_accessibility__ax_property__to_dict(data: 'accessibility.AXProperty', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -285,10 +276,7 @@ def _map_accessibility__ax_property__to_dict(
         }
 
 
-def _map_accessibility__ax_value__to_dict(
-        data: 'accessibility.AXValue',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_accessibility__ax_value__to_dict(data: 'accessibility.AXValue', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -330,10 +318,7 @@ def _map_accessibility__ax_value__to_dict(
         }
 
 
-def _map_accessibility__ax_node__to_dict(
-        data: 'accessibility.AXNode',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_accessibility__ax_node__to_dict(data: 'accessibility.AXNode', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'node_id': data.node_id,
@@ -456,10 +441,7 @@ def _map_accessibility__ax_node__to_dict(
         }
 
 
-def _map_animation__animation__to_dict(
-        data: 'animation.Animation',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_animation__animation__to_dict(data: 'animation.Animation', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -510,10 +492,7 @@ def _map_animation__animation__to_dict(
         }
 
 
-def _map_animation__animation_effect__to_dict(
-        data: 'animation.AnimationEffect',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_animation__animation_effect__to_dict(data: 'animation.AnimationEffect', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'delay': data.delay,
@@ -564,10 +543,7 @@ def _map_animation__animation_effect__to_dict(
         }
 
 
-def _map_animation__keyframes_rule__to_dict(
-        data: 'animation.KeyframesRule',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_animation__keyframes_rule__to_dict(data: 'animation.KeyframesRule', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -594,10 +570,7 @@ def _map_animation__keyframes_rule__to_dict(
         }
 
 
-def _map_animation__keyframe_style__to_dict(
-        data: 'animation.KeyframeStyle',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_animation__keyframe_style__to_dict(data: 'animation.KeyframeStyle', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'offset': data.offset,
@@ -615,10 +588,7 @@ def _map_animation__keyframe_style__to_dict(
         }
 
 
-def _map_audits__affected_cookie__to_dict(
-        data: 'audits.AffectedCookie',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__affected_cookie__to_dict(data: 'audits.AffectedCookie', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -639,10 +609,7 @@ def _map_audits__affected_cookie__to_dict(
         }
 
 
-def _map_audits__affected_request__to_dict(
-        data: 'audits.AffectedRequest',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__affected_request__to_dict(data: 'audits.AffectedRequest', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'request_id': data.request_id,
@@ -660,10 +627,7 @@ def _map_audits__affected_request__to_dict(
         }
 
 
-def _map_audits__affected_frame__to_dict(
-        data: 'audits.AffectedFrame',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__affected_frame__to_dict(data: 'audits.AffectedFrame', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'frame_id': data.frame_id,
@@ -678,10 +642,7 @@ def _map_audits__affected_frame__to_dict(
         }
 
 
-def _map_audits__cookie_issue_details__to_dict(
-        data: 'audits.CookieIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__cookie_issue_details__to_dict(data: 'audits.CookieIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'cookie': to_dict(
@@ -753,10 +714,7 @@ def _map_audits__cookie_issue_details__to_dict(
         }
 
 
-def _map_audits__mixed_content_issue_details__to_dict(
-        data: 'audits.MixedContentIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__mixed_content_issue_details__to_dict(data: 'audits.MixedContentIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'resource_type': data.resource_type,
@@ -804,10 +762,7 @@ def _map_audits__mixed_content_issue_details__to_dict(
         }
 
 
-def _map_audits__blocked_by_response_issue_details__to_dict(
-        data: 'audits.BlockedByResponseIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__blocked_by_response_issue_details__to_dict(data: 'audits.BlockedByResponseIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'request': to_dict(
@@ -858,10 +813,7 @@ def _map_audits__blocked_by_response_issue_details__to_dict(
         }
 
 
-def _map_audits__heavy_ad_issue_details__to_dict(
-        data: 'audits.HeavyAdIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__heavy_ad_issue_details__to_dict(data: 'audits.HeavyAdIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'resolution': data.resolution,
@@ -891,10 +843,7 @@ def _map_audits__heavy_ad_issue_details__to_dict(
         }
 
 
-def _map_audits__source_code_location__to_dict(
-        data: 'audits.SourceCodeLocation',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__source_code_location__to_dict(data: 'audits.SourceCodeLocation', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -918,10 +867,7 @@ def _map_audits__source_code_location__to_dict(
         }
 
 
-def _map_audits__content_security_policy_issue_details__to_dict(
-        data: 'audits.ContentSecurityPolicyIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__content_security_policy_issue_details__to_dict(data: 'audits.ContentSecurityPolicyIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'blocked_url': data.blocked_url,
@@ -972,10 +918,7 @@ def _map_audits__content_security_policy_issue_details__to_dict(
         }
 
 
-def _map_audits__shared_array_buffer_issue_details__to_dict(
-        data: 'audits.SharedArrayBufferIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__shared_array_buffer_issue_details__to_dict(data: 'audits.SharedArrayBufferIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'source_code_location': to_dict(
@@ -1005,10 +948,7 @@ def _map_audits__shared_array_buffer_issue_details__to_dict(
         }
 
 
-def _map_audits__low_text_contrast_issue_details__to_dict(
-        data: 'audits.LowTextContrastIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__low_text_contrast_issue_details__to_dict(data: 'audits.LowTextContrastIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'violating_node_id': data.violating_node_id,
@@ -1041,10 +981,7 @@ def _map_audits__low_text_contrast_issue_details__to_dict(
         }
 
 
-def _map_audits__cors_issue_details__to_dict(
-        data: 'audits.CorsIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__cors_issue_details__to_dict(data: 'audits.CorsIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'cors_error_status': to_dict(
@@ -1113,10 +1050,7 @@ def _map_audits__cors_issue_details__to_dict(
         }
 
 
-def _map_audits__attribution_reporting_issue_details__to_dict(
-        data: 'audits.AttributionReportingIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__attribution_reporting_issue_details__to_dict(data: 'audits.AttributionReportingIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'violation_type': data.violation_type,
@@ -1149,10 +1083,7 @@ def _map_audits__attribution_reporting_issue_details__to_dict(
         }
 
 
-def _map_audits__quirks_mode_issue_details__to_dict(
-        data: 'audits.QuirksModeIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__quirks_mode_issue_details__to_dict(data: 'audits.QuirksModeIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'is_limited_quirks_mode': data.is_limited_quirks_mode,
@@ -1179,10 +1110,7 @@ def _map_audits__quirks_mode_issue_details__to_dict(
         }
 
 
-def _map_audits__navigator_user_agent_issue_details__to_dict(
-        data: 'audits.NavigatorUserAgentIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__navigator_user_agent_issue_details__to_dict(data: 'audits.NavigatorUserAgentIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -1209,10 +1137,7 @@ def _map_audits__navigator_user_agent_issue_details__to_dict(
         }
 
 
-def _map_audits__generic_issue_details__to_dict(
-        data: 'audits.GenericIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__generic_issue_details__to_dict(data: 'audits.GenericIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'error_type': data.error_type,
@@ -1248,10 +1173,7 @@ def _map_audits__generic_issue_details__to_dict(
         }
 
 
-def _map_audits__deprecation_issue_details__to_dict(
-        data: 'audits.DeprecationIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__deprecation_issue_details__to_dict(data: 'audits.DeprecationIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'affected_frame': to_dict(
@@ -1290,10 +1212,7 @@ def _map_audits__deprecation_issue_details__to_dict(
         }
 
 
-def _map_audits__bounce_tracking_issue_details__to_dict(
-        data: 'audits.BounceTrackingIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__bounce_tracking_issue_details__to_dict(data: 'audits.BounceTrackingIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'tracking_sites': [
@@ -1317,10 +1236,7 @@ def _map_audits__bounce_tracking_issue_details__to_dict(
         }
 
 
-def _map_audits__federated_auth_request_issue_details__to_dict(
-        data: 'audits.FederatedAuthRequestIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__federated_auth_request_issue_details__to_dict(data: 'audits.FederatedAuthRequestIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'federated_auth_request_issue_reason': data.federated_auth_request_issue_reason,
@@ -1335,10 +1251,7 @@ def _map_audits__federated_auth_request_issue_details__to_dict(
         }
 
 
-def _map_audits__federated_auth_user_info_request_issue_details__to_dict(
-        data: 'audits.FederatedAuthUserInfoRequestIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__federated_auth_user_info_request_issue_details__to_dict(data: 'audits.FederatedAuthUserInfoRequestIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'federated_auth_user_info_request_issue_reason': data.federated_auth_user_info_request_issue_reason,
@@ -1353,10 +1266,7 @@ def _map_audits__federated_auth_user_info_request_issue_details__to_dict(
         }
 
 
-def _map_audits__client_hint_issue_details__to_dict(
-        data: 'audits.ClientHintIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__client_hint_issue_details__to_dict(data: 'audits.ClientHintIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'source_code_location': to_dict(
@@ -1383,10 +1293,7 @@ def _map_audits__client_hint_issue_details__to_dict(
         }
 
 
-def _map_audits__failed_request_info__to_dict(
-        data: 'audits.FailedRequestInfo',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__failed_request_info__to_dict(data: 'audits.FailedRequestInfo', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -1407,10 +1314,7 @@ def _map_audits__failed_request_info__to_dict(
         }
 
 
-def _map_audits__stylesheet_loading_issue_details__to_dict(
-        data: 'audits.StylesheetLoadingIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__stylesheet_loading_issue_details__to_dict(data: 'audits.StylesheetLoadingIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'source_code_location': to_dict(
@@ -1449,10 +1353,7 @@ def _map_audits__stylesheet_loading_issue_details__to_dict(
         }
 
 
-def _map_audits__inspector_issue_details__to_dict(
-        data: 'audits.InspectorIssueDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__inspector_issue_details__to_dict(data: 'audits.InspectorIssueDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'cookie_issue_details': to_dict(
@@ -1680,10 +1581,7 @@ def _map_audits__inspector_issue_details__to_dict(
         }
 
 
-def _map_audits__inspector_issue__to_dict(
-        data: 'audits.InspectorIssue',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_audits__inspector_issue__to_dict(data: 'audits.InspectorIssue', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'code': data.code,
@@ -1713,10 +1611,7 @@ def _map_audits__inspector_issue__to_dict(
         }
 
 
-def _map_autofill__credit_card__to_dict(
-        data: 'autofill.CreditCard',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_autofill__credit_card__to_dict(data: 'autofill.CreditCard', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'number': data.number,
@@ -1743,10 +1638,7 @@ def _map_autofill__credit_card__to_dict(
         }
 
 
-def _map_autofill__address_field__to_dict(
-        data: 'autofill.AddressField',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_autofill__address_field__to_dict(data: 'autofill.AddressField', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -1764,10 +1656,7 @@ def _map_autofill__address_field__to_dict(
         }
 
 
-def _map_autofill__address_fields__to_dict(
-        data: 'autofill.AddressFields',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_autofill__address_fields__to_dict(data: 'autofill.AddressFields', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'fields': [
@@ -1791,10 +1680,7 @@ def _map_autofill__address_fields__to_dict(
         }
 
 
-def _map_autofill__address__to_dict(
-        data: 'autofill.Address',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_autofill__address__to_dict(data: 'autofill.Address', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'fields': [
@@ -1818,10 +1704,7 @@ def _map_autofill__address__to_dict(
         }
 
 
-def _map_autofill__address_ui__to_dict(
-        data: 'autofill.AddressUI',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_autofill__address_ui__to_dict(data: 'autofill.AddressUI', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'address_fields': [
@@ -1845,10 +1728,7 @@ def _map_autofill__address_ui__to_dict(
         }
 
 
-def _map_autofill__filled_field__to_dict(
-        data: 'autofill.FilledField',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_autofill__filled_field__to_dict(data: 'autofill.FilledField', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'html_type': data.html_type,
@@ -1878,10 +1758,7 @@ def _map_autofill__filled_field__to_dict(
         }
 
 
-def _map_background_service__event_metadata__to_dict(
-        data: 'background_service.EventMetadata',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_background_service__event_metadata__to_dict(data: 'background_service.EventMetadata', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'key': data.key,
@@ -1899,10 +1776,7 @@ def _map_background_service__event_metadata__to_dict(
         }
 
 
-def _map_background_service__background_service_event__to_dict(
-        data: 'background_service.BackgroundServiceEvent',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_background_service__background_service_event__to_dict(data: 'background_service.BackgroundServiceEvent', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'timestamp': data.timestamp,
@@ -1947,10 +1821,7 @@ def _map_background_service__background_service_event__to_dict(
         }
 
 
-def _map_browser__bounds__to_dict(
-        data: 'browser.Bounds',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_browser__bounds__to_dict(data: 'browser.Bounds', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'left': data.left,
@@ -1977,10 +1848,7 @@ def _map_browser__bounds__to_dict(
         }
 
 
-def _map_browser__permission_descriptor__to_dict(
-        data: 'browser.PermissionDescriptor',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_browser__permission_descriptor__to_dict(data: 'browser.PermissionDescriptor', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -2007,10 +1875,7 @@ def _map_browser__permission_descriptor__to_dict(
         }
 
 
-def _map_browser__bucket__to_dict(
-        data: 'browser.Bucket',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_browser__bucket__to_dict(data: 'browser.Bucket', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'low': data.low,
@@ -2031,10 +1896,7 @@ def _map_browser__bucket__to_dict(
         }
 
 
-def _map_browser__histogram__to_dict(
-        data: 'browser.Histogram',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_browser__histogram__to_dict(data: 'browser.Histogram', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -2067,10 +1929,7 @@ def _map_browser__histogram__to_dict(
         }
 
 
-def _map_css__pseudo_element_matches__to_dict(
-        data: 'css.PseudoElementMatches',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__pseudo_element_matches__to_dict(data: 'css.PseudoElementMatches', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'pseudo_type': data.pseudo_type,
@@ -2100,10 +1959,7 @@ def _map_css__pseudo_element_matches__to_dict(
         }
 
 
-def _map_css__inherited_style_entry__to_dict(
-        data: 'css.InheritedStyleEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__inherited_style_entry__to_dict(data: 'css.InheritedStyleEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'inline_style': to_dict(
@@ -2139,10 +1995,7 @@ def _map_css__inherited_style_entry__to_dict(
         }
 
 
-def _map_css__inherited_pseudo_element_matches__to_dict(
-        data: 'css.InheritedPseudoElementMatches',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__inherited_pseudo_element_matches__to_dict(data: 'css.InheritedPseudoElementMatches', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'pseudo_elements': [
@@ -2166,10 +2019,7 @@ def _map_css__inherited_pseudo_element_matches__to_dict(
         }
 
 
-def _map_css__rule_match__to_dict(
-        data: 'css.RuleMatch',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__rule_match__to_dict(data: 'css.RuleMatch', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'rule': to_dict(
@@ -2205,10 +2055,7 @@ def _map_css__rule_match__to_dict(
         }
 
 
-def _map_css__value__to_dict(
-        data: 'css.Value',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__value__to_dict(data: 'css.Value', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2247,10 +2094,7 @@ def _map_css__value__to_dict(
         }
 
 
-def _map_css__specificity__to_dict(
-        data: 'css.Specificity',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__specificity__to_dict(data: 'css.Specificity', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'a': data.a,
@@ -2271,10 +2115,7 @@ def _map_css__specificity__to_dict(
         }
 
 
-def _map_css__selector_list__to_dict(
-        data: 'css.SelectorList',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__selector_list__to_dict(data: 'css.SelectorList', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'selectors': [
@@ -2301,10 +2142,7 @@ def _map_css__selector_list__to_dict(
         }
 
 
-def _map_css__css_style_sheet_header__to_dict(
-        data: 'css.CSSStyleSheetHeader',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_style_sheet_header__to_dict(data: 'css.CSSStyleSheetHeader', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -2370,10 +2208,7 @@ def _map_css__css_style_sheet_header__to_dict(
         }
 
 
-def _map_css__css_rule__to_dict(
-        data: 'css.CSSRule',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_rule__to_dict(data: 'css.CSSRule', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -2499,10 +2334,7 @@ def _map_css__css_rule__to_dict(
         }
 
 
-def _map_css__rule_usage__to_dict(
-        data: 'css.RuleUsage',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__rule_usage__to_dict(data: 'css.RuleUsage', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -2526,10 +2358,7 @@ def _map_css__rule_usage__to_dict(
         }
 
 
-def _map_css__source_range__to_dict(
-        data: 'css.SourceRange',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__source_range__to_dict(data: 'css.SourceRange', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'start_line': data.start_line,
@@ -2553,10 +2382,7 @@ def _map_css__source_range__to_dict(
         }
 
 
-def _map_css__shorthand_entry__to_dict(
-        data: 'css.ShorthandEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__shorthand_entry__to_dict(data: 'css.ShorthandEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -2577,10 +2403,7 @@ def _map_css__shorthand_entry__to_dict(
         }
 
 
-def _map_css__css_computed_style_property__to_dict(
-        data: 'css.CSSComputedStyleProperty',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_computed_style_property__to_dict(data: 'css.CSSComputedStyleProperty', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -2598,10 +2421,7 @@ def _map_css__css_computed_style_property__to_dict(
         }
 
 
-def _map_css__css_style__to_dict(
-        data: 'css.CSSStyle',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_style__to_dict(data: 'css.CSSStyle', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -2655,10 +2475,7 @@ def _map_css__css_style__to_dict(
         }
 
 
-def _map_css__css_property__to_dict(
-        data: 'css.CSSProperty',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_property__to_dict(data: 'css.CSSProperty', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -2715,10 +2532,7 @@ def _map_css__css_property__to_dict(
         }
 
 
-def _map_css__css_media__to_dict(
-        data: 'css.CSSMedia',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_media__to_dict(data: 'css.CSSMedia', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2766,10 +2580,7 @@ def _map_css__css_media__to_dict(
         }
 
 
-def _map_css__media_query__to_dict(
-        data: 'css.MediaQuery',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__media_query__to_dict(data: 'css.MediaQuery', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'expressions': [
@@ -2796,10 +2607,7 @@ def _map_css__media_query__to_dict(
         }
 
 
-def _map_css__media_query_expression__to_dict(
-        data: 'css.MediaQueryExpression',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__media_query_expression__to_dict(data: 'css.MediaQueryExpression', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'value': data.value,
@@ -2835,10 +2643,7 @@ def _map_css__media_query_expression__to_dict(
         }
 
 
-def _map_css__css_container_query__to_dict(
-        data: 'css.CSSContainerQuery',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_container_query__to_dict(data: 'css.CSSContainerQuery', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2877,10 +2682,7 @@ def _map_css__css_container_query__to_dict(
         }
 
 
-def _map_css__css_supports__to_dict(
-        data: 'css.CSSSupports',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_supports__to_dict(data: 'css.CSSSupports', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2913,10 +2715,7 @@ def _map_css__css_supports__to_dict(
         }
 
 
-def _map_css__css_scope__to_dict(
-        data: 'css.CSSScope',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_scope__to_dict(data: 'css.CSSScope', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2946,10 +2745,7 @@ def _map_css__css_scope__to_dict(
         }
 
 
-def _map_css__css_layer__to_dict(
-        data: 'css.CSSLayer',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_layer__to_dict(data: 'css.CSSLayer', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2979,10 +2775,7 @@ def _map_css__css_layer__to_dict(
         }
 
 
-def _map_css__css_layer_data__to_dict(
-        data: 'css.CSSLayerData',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_layer_data__to_dict(data: 'css.CSSLayerData', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -3012,10 +2805,7 @@ def _map_css__css_layer_data__to_dict(
         }
 
 
-def _map_css__platform_font_usage__to_dict(
-        data: 'css.PlatformFontUsage',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__platform_font_usage__to_dict(data: 'css.PlatformFontUsage', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'family_name': data.family_name,
@@ -3036,10 +2826,7 @@ def _map_css__platform_font_usage__to_dict(
         }
 
 
-def _map_css__font_variation_axis__to_dict(
-        data: 'css.FontVariationAxis',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__font_variation_axis__to_dict(data: 'css.FontVariationAxis', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'tag': data.tag,
@@ -3066,10 +2853,7 @@ def _map_css__font_variation_axis__to_dict(
         }
 
 
-def _map_css__font_face__to_dict(
-        data: 'css.FontFace',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__font_face__to_dict(data: 'css.FontFace', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'font_family': data.font_family,
@@ -3120,10 +2904,7 @@ def _map_css__font_face__to_dict(
         }
 
 
-def _map_css__css_try_rule__to_dict(
-        data: 'css.CSSTryRule',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_try_rule__to_dict(data: 'css.CSSTryRule', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -3153,10 +2934,7 @@ def _map_css__css_try_rule__to_dict(
         }
 
 
-def _map_css__css_position_fallback_rule__to_dict(
-        data: 'css.CSSPositionFallbackRule',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_position_fallback_rule__to_dict(data: 'css.CSSPositionFallbackRule', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': to_dict(
@@ -3192,10 +2970,7 @@ def _map_css__css_position_fallback_rule__to_dict(
         }
 
 
-def _map_css__css_keyframes_rule__to_dict(
-        data: 'css.CSSKeyframesRule',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_keyframes_rule__to_dict(data: 'css.CSSKeyframesRule', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'animation_name': to_dict(
@@ -3231,10 +3006,7 @@ def _map_css__css_keyframes_rule__to_dict(
         }
 
 
-def _map_css__css_property_registration__to_dict(
-        data: 'css.CSSPropertyRegistration',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_property_registration__to_dict(data: 'css.CSSPropertyRegistration', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'property_name': data.property_name,
@@ -3267,10 +3039,7 @@ def _map_css__css_property_registration__to_dict(
         }
 
 
-def _map_css__css_property_rule__to_dict(
-        data: 'css.CSSPropertyRule',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_property_rule__to_dict(data: 'css.CSSPropertyRule', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -3312,10 +3081,7 @@ def _map_css__css_property_rule__to_dict(
         }
 
 
-def _map_css__css_keyframe_rule__to_dict(
-        data: 'css.CSSKeyframeRule',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__css_keyframe_rule__to_dict(data: 'css.CSSKeyframeRule', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -3357,10 +3123,7 @@ def _map_css__css_keyframe_rule__to_dict(
         }
 
 
-def _map_css__style_declaration_edit__to_dict(
-        data: 'css.StyleDeclarationEdit',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_css__style_declaration_edit__to_dict(data: 'css.StyleDeclarationEdit', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -3390,10 +3153,7 @@ def _map_css__style_declaration_edit__to_dict(
         }
 
 
-def _map_cache_storage__data_entry__to_dict(
-        data: 'cache_storage.DataEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_cache_storage__data_entry__to_dict(data: 'cache_storage.DataEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'request_url': data.request_url,
@@ -3447,10 +3207,7 @@ def _map_cache_storage__data_entry__to_dict(
         }
 
 
-def _map_cache_storage__cache__to_dict(
-        data: 'cache_storage.Cache',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_cache_storage__cache__to_dict(data: 'cache_storage.Cache', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'cache_id': data.cache_id,
@@ -3486,10 +3243,7 @@ def _map_cache_storage__cache__to_dict(
         }
 
 
-def _map_cache_storage__header__to_dict(
-        data: 'cache_storage.Header',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_cache_storage__header__to_dict(data: 'cache_storage.Header', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -3507,10 +3261,7 @@ def _map_cache_storage__header__to_dict(
         }
 
 
-def _map_cache_storage__cached_response__to_dict(
-        data: 'cache_storage.CachedResponse',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_cache_storage__cached_response__to_dict(data: 'cache_storage.CachedResponse', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'body': data.body,
@@ -3525,10 +3276,7 @@ def _map_cache_storage__cached_response__to_dict(
         }
 
 
-def _map_cast__sink__to_dict(
-        data: 'cast.Sink',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_cast__sink__to_dict(data: 'cast.Sink', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -3549,10 +3297,7 @@ def _map_cast__sink__to_dict(
         }
 
 
-def _map_dom__backend_node__to_dict(
-        data: 'dom.BackendNode',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom__backend_node__to_dict(data: 'dom.BackendNode', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'node_type': data.node_type,
@@ -3573,10 +3318,7 @@ def _map_dom__backend_node__to_dict(
         }
 
 
-def _map_dom__node__to_dict(
-        data: 'dom.Node',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom__node__to_dict(data: 'dom.Node', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'node_id': data.node_id,
@@ -3762,10 +3504,7 @@ def _map_dom__node__to_dict(
         }
 
 
-def _map_dom__rgba__to_dict(
-        data: 'dom.RGBA',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom__rgba__to_dict(data: 'dom.RGBA', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'r': data.r,
@@ -3789,10 +3528,7 @@ def _map_dom__rgba__to_dict(
         }
 
 
-def _map_dom__box_model__to_dict(
-        data: 'dom.BoxModel',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom__box_model__to_dict(data: 'dom.BoxModel', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'content': data.content,
@@ -3834,10 +3570,7 @@ def _map_dom__box_model__to_dict(
         }
 
 
-def _map_dom__shape_outside_info__to_dict(
-        data: 'dom.ShapeOutsideInfo',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom__shape_outside_info__to_dict(data: 'dom.ShapeOutsideInfo', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'bounds': data.bounds,
@@ -3876,10 +3609,7 @@ def _map_dom__shape_outside_info__to_dict(
         }
 
 
-def _map_dom__rect__to_dict(
-        data: 'dom.Rect',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom__rect__to_dict(data: 'dom.Rect', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'x': data.x,
@@ -3903,10 +3633,7 @@ def _map_dom__rect__to_dict(
         }
 
 
-def _map_dom__css_computed_style_property__to_dict(
-        data: 'dom.CSSComputedStyleProperty',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom__css_computed_style_property__to_dict(data: 'dom.CSSComputedStyleProperty', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -3924,10 +3651,7 @@ def _map_dom__css_computed_style_property__to_dict(
         }
 
 
-def _map_dom_debugger__event_listener__to_dict(
-        data: 'dom_debugger.EventListener',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_debugger__event_listener__to_dict(data: 'dom_debugger.EventListener', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -3987,10 +3711,7 @@ def _map_dom_debugger__event_listener__to_dict(
         }
 
 
-def _map_dom_snapshot__dom_node__to_dict(
-        data: 'dom_snapshot.DOMNode',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__dom_node__to_dict(data: 'dom_snapshot.DOMNode', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'node_type': data.node_type,
@@ -4122,10 +3843,7 @@ def _map_dom_snapshot__dom_node__to_dict(
         }
 
 
-def _map_dom_snapshot__inline_text_box__to_dict(
-        data: 'dom_snapshot.InlineTextBox',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__inline_text_box__to_dict(data: 'dom_snapshot.InlineTextBox', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'bounding_box': to_dict(
@@ -4155,10 +3873,7 @@ def _map_dom_snapshot__inline_text_box__to_dict(
         }
 
 
-def _map_dom_snapshot__layout_tree_node__to_dict(
-        data: 'dom_snapshot.LayoutTreeNode',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__layout_tree_node__to_dict(data: 'dom_snapshot.LayoutTreeNode', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'dom_node_index': data.dom_node_index,
@@ -4209,10 +3924,7 @@ def _map_dom_snapshot__layout_tree_node__to_dict(
         }
 
 
-def _map_dom_snapshot__computed_style__to_dict(
-        data: 'dom_snapshot.ComputedStyle',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__computed_style__to_dict(data: 'dom_snapshot.ComputedStyle', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'properties': [
@@ -4236,10 +3948,7 @@ def _map_dom_snapshot__computed_style__to_dict(
         }
 
 
-def _map_dom_snapshot__name_value__to_dict(
-        data: 'dom_snapshot.NameValue',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__name_value__to_dict(data: 'dom_snapshot.NameValue', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -4257,10 +3966,7 @@ def _map_dom_snapshot__name_value__to_dict(
         }
 
 
-def _map_dom_snapshot__rare_string_data__to_dict(
-        data: 'dom_snapshot.RareStringData',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__rare_string_data__to_dict(data: 'dom_snapshot.RareStringData', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'index': [
@@ -4296,10 +4002,7 @@ def _map_dom_snapshot__rare_string_data__to_dict(
         }
 
 
-def _map_dom_snapshot__rare_boolean_data__to_dict(
-        data: 'dom_snapshot.RareBooleanData',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__rare_boolean_data__to_dict(data: 'dom_snapshot.RareBooleanData', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'index': [
@@ -4323,10 +4026,7 @@ def _map_dom_snapshot__rare_boolean_data__to_dict(
         }
 
 
-def _map_dom_snapshot__rare_integer_data__to_dict(
-        data: 'dom_snapshot.RareIntegerData',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__rare_integer_data__to_dict(data: 'dom_snapshot.RareIntegerData', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'index': [
@@ -4362,10 +4062,7 @@ def _map_dom_snapshot__rare_integer_data__to_dict(
         }
 
 
-def _map_dom_snapshot__document_snapshot__to_dict(
-        data: 'dom_snapshot.DocumentSnapshot',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__document_snapshot__to_dict(data: 'dom_snapshot.DocumentSnapshot', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'document_url': data.document_url,
@@ -4449,10 +4146,7 @@ def _map_dom_snapshot__document_snapshot__to_dict(
         }
 
 
-def _map_dom_snapshot__node_tree_snapshot__to_dict(
-        data: 'dom_snapshot.NodeTreeSnapshot',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__node_tree_snapshot__to_dict(data: 'dom_snapshot.NodeTreeSnapshot', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'parent_index': [
@@ -4668,10 +4362,7 @@ def _map_dom_snapshot__node_tree_snapshot__to_dict(
         }
 
 
-def _map_dom_snapshot__layout_tree_snapshot__to_dict(
-        data: 'dom_snapshot.LayoutTreeSnapshot',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__layout_tree_snapshot__to_dict(data: 'dom_snapshot.LayoutTreeSnapshot', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'node_index': [
@@ -4815,10 +4506,7 @@ def _map_dom_snapshot__layout_tree_snapshot__to_dict(
         }
 
 
-def _map_dom_snapshot__text_box_snapshot__to_dict(
-        data: 'dom_snapshot.TextBoxSnapshot',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_snapshot__text_box_snapshot__to_dict(data: 'dom_snapshot.TextBoxSnapshot', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'layout_index': [
@@ -4878,10 +4566,7 @@ def _map_dom_snapshot__text_box_snapshot__to_dict(
         }
 
 
-def _map_dom_storage__storage_id__to_dict(
-        data: 'dom_storage.StorageId',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_dom_storage__storage_id__to_dict(data: 'dom_storage.StorageId', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'security_origin': data.security_origin,
@@ -4902,10 +4587,7 @@ def _map_dom_storage__storage_id__to_dict(
         }
 
 
-def _map_database__database__to_dict(
-        data: 'database.Database',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_database__database__to_dict(data: 'database.Database', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -4929,10 +4611,7 @@ def _map_database__database__to_dict(
         }
 
 
-def _map_database__error__to_dict(
-        data: 'database.Error',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_database__error__to_dict(data: 'database.Error', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'message': data.message,
@@ -4950,10 +4629,7 @@ def _map_database__error__to_dict(
         }
 
 
-def _map_emulation__screen_orientation__to_dict(
-        data: 'emulation.ScreenOrientation',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_emulation__screen_orientation__to_dict(data: 'emulation.ScreenOrientation', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -4971,10 +4647,7 @@ def _map_emulation__screen_orientation__to_dict(
         }
 
 
-def _map_emulation__display_feature__to_dict(
-        data: 'emulation.DisplayFeature',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_emulation__display_feature__to_dict(data: 'emulation.DisplayFeature', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'orientation': data.orientation,
@@ -4995,10 +4668,7 @@ def _map_emulation__display_feature__to_dict(
         }
 
 
-def _map_emulation__media_feature__to_dict(
-        data: 'emulation.MediaFeature',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_emulation__media_feature__to_dict(data: 'emulation.MediaFeature', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5016,10 +4686,7 @@ def _map_emulation__media_feature__to_dict(
         }
 
 
-def _map_emulation__user_agent_brand_version__to_dict(
-        data: 'emulation.UserAgentBrandVersion',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_emulation__user_agent_brand_version__to_dict(data: 'emulation.UserAgentBrandVersion', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'brand': data.brand,
@@ -5037,10 +4704,7 @@ def _map_emulation__user_agent_brand_version__to_dict(
         }
 
 
-def _map_emulation__user_agent_metadata__to_dict(
-        data: 'emulation.UserAgentMetadata',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_emulation__user_agent_metadata__to_dict(data: 'emulation.UserAgentMetadata', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'brands': [
@@ -5100,10 +4764,7 @@ def _map_emulation__user_agent_metadata__to_dict(
         }
 
 
-def _map_headless_experimental__screenshot_params__to_dict(
-        data: 'headless_experimental.ScreenshotParams',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_headless_experimental__screenshot_params__to_dict(data: 'headless_experimental.ScreenshotParams', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'format': data.format,
@@ -5124,10 +4785,7 @@ def _map_headless_experimental__screenshot_params__to_dict(
         }
 
 
-def _map_indexed_db__database_with_object_stores__to_dict(
-        data: 'indexed_db.DatabaseWithObjectStores',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_indexed_db__database_with_object_stores__to_dict(data: 'indexed_db.DatabaseWithObjectStores', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5157,10 +4815,7 @@ def _map_indexed_db__database_with_object_stores__to_dict(
         }
 
 
-def _map_indexed_db__object_store__to_dict(
-        data: 'indexed_db.ObjectStore',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_indexed_db__object_store__to_dict(data: 'indexed_db.ObjectStore', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5202,10 +4857,7 @@ def _map_indexed_db__object_store__to_dict(
         }
 
 
-def _map_indexed_db__object_store_index__to_dict(
-        data: 'indexed_db.ObjectStoreIndex',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_indexed_db__object_store_index__to_dict(data: 'indexed_db.ObjectStoreIndex', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5238,10 +4890,7 @@ def _map_indexed_db__object_store_index__to_dict(
         }
 
 
-def _map_indexed_db__key__to_dict(
-        data: 'indexed_db.Key',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_indexed_db__key__to_dict(data: 'indexed_db.Key', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -5277,10 +4926,7 @@ def _map_indexed_db__key__to_dict(
         }
 
 
-def _map_indexed_db__key_range__to_dict(
-        data: 'indexed_db.KeyRange',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_indexed_db__key_range__to_dict(data: 'indexed_db.KeyRange', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'lower': to_dict(
@@ -5322,10 +4968,7 @@ def _map_indexed_db__key_range__to_dict(
         }
 
 
-def _map_indexed_db__data_entry__to_dict(
-        data: 'indexed_db.DataEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_indexed_db__data_entry__to_dict(data: 'indexed_db.DataEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'key': to_dict(
@@ -5373,10 +5016,7 @@ def _map_indexed_db__data_entry__to_dict(
         }
 
 
-def _map_indexed_db__key_path__to_dict(
-        data: 'indexed_db.KeyPath',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_indexed_db__key_path__to_dict(data: 'indexed_db.KeyPath', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -5406,10 +5046,7 @@ def _map_indexed_db__key_path__to_dict(
         }
 
 
-def _map_input__touch_point__to_dict(
-        data: 'input_.TouchPoint',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_input__touch_point__to_dict(data: 'input_.TouchPoint', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'x': data.x,
@@ -5454,10 +5091,7 @@ def _map_input__touch_point__to_dict(
         }
 
 
-def _map_input__drag_data_item__to_dict(
-        data: 'input_.DragDataItem',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_input__drag_data_item__to_dict(data: 'input_.DragDataItem', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'mime_type': data.mime_type,
@@ -5481,10 +5115,7 @@ def _map_input__drag_data_item__to_dict(
         }
 
 
-def _map_input__drag_data__to_dict(
-        data: 'input_.DragData',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_input__drag_data__to_dict(data: 'input_.DragData', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'items': [
@@ -5523,10 +5154,7 @@ def _map_input__drag_data__to_dict(
         }
 
 
-def _map_layer_tree__scroll_rect__to_dict(
-        data: 'layer_tree.ScrollRect',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_layer_tree__scroll_rect__to_dict(data: 'layer_tree.ScrollRect', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'rect': to_dict(
@@ -5553,10 +5181,7 @@ def _map_layer_tree__scroll_rect__to_dict(
         }
 
 
-def _map_layer_tree__sticky_position_constraint__to_dict(
-        data: 'layer_tree.StickyPositionConstraint',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_layer_tree__sticky_position_constraint__to_dict(data: 'layer_tree.StickyPositionConstraint', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'sticky_box_rect': to_dict(
@@ -5598,10 +5223,7 @@ def _map_layer_tree__sticky_position_constraint__to_dict(
         }
 
 
-def _map_layer_tree__picture_tile__to_dict(
-        data: 'layer_tree.PictureTile',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_layer_tree__picture_tile__to_dict(data: 'layer_tree.PictureTile', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'x': data.x,
@@ -5622,10 +5244,7 @@ def _map_layer_tree__picture_tile__to_dict(
         }
 
 
-def _map_layer_tree__layer__to_dict(
-        data: 'layer_tree.Layer',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_layer_tree__layer__to_dict(data: 'layer_tree.Layer', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'layer_id': data.layer_id,
@@ -5712,10 +5331,7 @@ def _map_layer_tree__layer__to_dict(
         }
 
 
-def _map_log__log_entry__to_dict(
-        data: 'log.LogEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_log__log_entry__to_dict(data: 'log.LogEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'source': data.source,
@@ -5778,10 +5394,7 @@ def _map_log__log_entry__to_dict(
         }
 
 
-def _map_log__violation_setting__to_dict(
-        data: 'log.ViolationSetting',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_log__violation_setting__to_dict(data: 'log.ViolationSetting', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5799,10 +5412,7 @@ def _map_log__violation_setting__to_dict(
         }
 
 
-def _map_memory__sampling_profile_node__to_dict(
-        data: 'memory.SamplingProfileNode',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_memory__sampling_profile_node__to_dict(data: 'memory.SamplingProfileNode', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'size': data.size,
@@ -5832,10 +5442,7 @@ def _map_memory__sampling_profile_node__to_dict(
         }
 
 
-def _map_memory__sampling_profile__to_dict(
-        data: 'memory.SamplingProfile',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_memory__sampling_profile__to_dict(data: 'memory.SamplingProfile', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'samples': [
@@ -5871,10 +5478,7 @@ def _map_memory__sampling_profile__to_dict(
         }
 
 
-def _map_memory__module__to_dict(
-        data: 'memory.Module',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_memory__module__to_dict(data: 'memory.Module', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5898,10 +5502,7 @@ def _map_memory__module__to_dict(
         }
 
 
-def _map_network__resource_timing__to_dict(
-        data: 'network.ResourceTiming',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__resource_timing__to_dict(data: 'network.ResourceTiming', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'request_time': data.request_time,
@@ -5970,10 +5571,7 @@ def _map_network__resource_timing__to_dict(
         }
 
 
-def _map_network__post_data_entry__to_dict(
-        data: 'network.PostDataEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__post_data_entry__to_dict(data: 'network.PostDataEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'bytes': data.bytes,
@@ -5988,10 +5586,7 @@ def _map_network__post_data_entry__to_dict(
         }
 
 
-def _map_network__request__to_dict(
-        data: 'network.Request',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__request__to_dict(data: 'network.Request', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -6060,10 +5655,7 @@ def _map_network__request__to_dict(
         }
 
 
-def _map_network__signed_certificate_timestamp__to_dict(
-        data: 'network.SignedCertificateTimestamp',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__signed_certificate_timestamp__to_dict(data: 'network.SignedCertificateTimestamp', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'status': data.status,
@@ -6099,10 +5691,7 @@ def _map_network__signed_certificate_timestamp__to_dict(
         }
 
 
-def _map_network__security_details__to_dict(
-        data: 'network.SecurityDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__security_details__to_dict(data: 'network.SecurityDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'protocol': data.protocol,
@@ -6177,10 +5766,7 @@ def _map_network__security_details__to_dict(
         }
 
 
-def _map_network__cors_error_status__to_dict(
-        data: 'network.CorsErrorStatus',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__cors_error_status__to_dict(data: 'network.CorsErrorStatus', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'cors_error': data.cors_error,
@@ -6198,10 +5784,7 @@ def _map_network__cors_error_status__to_dict(
         }
 
 
-def _map_network__trust_token_params__to_dict(
-        data: 'network.TrustTokenParams',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__trust_token_params__to_dict(data: 'network.TrustTokenParams', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'operation': data.operation,
@@ -6231,10 +5814,7 @@ def _map_network__trust_token_params__to_dict(
         }
 
 
-def _map_network__response__to_dict(
-        data: 'network.Response',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__response__to_dict(data: 'network.Response', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -6336,10 +5916,7 @@ def _map_network__response__to_dict(
         }
 
 
-def _map_network__web_socket_request__to_dict(
-        data: 'network.WebSocketRequest',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__web_socket_request__to_dict(data: 'network.WebSocketRequest', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'headers': data.headers,
@@ -6354,10 +5931,7 @@ def _map_network__web_socket_request__to_dict(
         }
 
 
-def _map_network__web_socket_response__to_dict(
-        data: 'network.WebSocketResponse',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__web_socket_response__to_dict(data: 'network.WebSocketResponse', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'status': data.status,
@@ -6387,10 +5961,7 @@ def _map_network__web_socket_response__to_dict(
         }
 
 
-def _map_network__web_socket_frame__to_dict(
-        data: 'network.WebSocketFrame',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__web_socket_frame__to_dict(data: 'network.WebSocketFrame', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'opcode': data.opcode,
@@ -6411,10 +5982,7 @@ def _map_network__web_socket_frame__to_dict(
         }
 
 
-def _map_network__cached_resource__to_dict(
-        data: 'network.CachedResource',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__cached_resource__to_dict(data: 'network.CachedResource', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -6447,10 +6015,7 @@ def _map_network__cached_resource__to_dict(
         }
 
 
-def _map_network__initiator__to_dict(
-        data: 'network.Initiator',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__initiator__to_dict(data: 'network.Initiator', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -6489,10 +6054,7 @@ def _map_network__initiator__to_dict(
         }
 
 
-def _map_network__cookie__to_dict(
-        data: 'network.Cookie',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__cookie__to_dict(data: 'network.Cookie', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -6552,10 +6114,7 @@ def _map_network__cookie__to_dict(
         }
 
 
-def _map_network__blocked_set_cookie_with_reason__to_dict(
-        data: 'network.BlockedSetCookieWithReason',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__blocked_set_cookie_with_reason__to_dict(data: 'network.BlockedSetCookieWithReason', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'blocked_reasons': [
@@ -6594,10 +6153,7 @@ def _map_network__blocked_set_cookie_with_reason__to_dict(
         }
 
 
-def _map_network__blocked_cookie_with_reason__to_dict(
-        data: 'network.BlockedCookieWithReason',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__blocked_cookie_with_reason__to_dict(data: 'network.BlockedCookieWithReason', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'blocked_reasons': [
@@ -6633,10 +6189,7 @@ def _map_network__blocked_cookie_with_reason__to_dict(
         }
 
 
-def _map_network__cookie_param__to_dict(
-        data: 'network.CookieParam',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__cookie_param__to_dict(data: 'network.CookieParam', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -6690,10 +6243,7 @@ def _map_network__cookie_param__to_dict(
         }
 
 
-def _map_network__auth_challenge__to_dict(
-        data: 'network.AuthChallenge',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__auth_challenge__to_dict(data: 'network.AuthChallenge', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'source': data.source,
@@ -6717,10 +6267,7 @@ def _map_network__auth_challenge__to_dict(
         }
 
 
-def _map_network__auth_challenge_response__to_dict(
-        data: 'network.AuthChallengeResponse',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__auth_challenge_response__to_dict(data: 'network.AuthChallengeResponse', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'response': data.response,
@@ -6741,10 +6288,7 @@ def _map_network__auth_challenge_response__to_dict(
         }
 
 
-def _map_network__request_pattern__to_dict(
-        data: 'network.RequestPattern',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__request_pattern__to_dict(data: 'network.RequestPattern', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url_pattern': data.url_pattern,
@@ -6765,10 +6309,7 @@ def _map_network__request_pattern__to_dict(
         }
 
 
-def _map_network__signed_exchange_signature__to_dict(
-        data: 'network.SignedExchangeSignature',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__signed_exchange_signature__to_dict(data: 'network.SignedExchangeSignature', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'label': data.label,
@@ -6816,10 +6357,7 @@ def _map_network__signed_exchange_signature__to_dict(
         }
 
 
-def _map_network__signed_exchange_header__to_dict(
-        data: 'network.SignedExchangeHeader',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__signed_exchange_header__to_dict(data: 'network.SignedExchangeHeader', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'request_url': data.request_url,
@@ -6855,10 +6393,7 @@ def _map_network__signed_exchange_header__to_dict(
         }
 
 
-def _map_network__signed_exchange_error__to_dict(
-        data: 'network.SignedExchangeError',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__signed_exchange_error__to_dict(data: 'network.SignedExchangeError', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'message': data.message,
@@ -6879,10 +6414,7 @@ def _map_network__signed_exchange_error__to_dict(
         }
 
 
-def _map_network__signed_exchange_info__to_dict(
-        data: 'network.SignedExchangeInfo',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__signed_exchange_info__to_dict(data: 'network.SignedExchangeInfo', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'outer_response': to_dict(
@@ -6942,10 +6474,7 @@ def _map_network__signed_exchange_info__to_dict(
         }
 
 
-def _map_network__connect_timing__to_dict(
-        data: 'network.ConnectTiming',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__connect_timing__to_dict(data: 'network.ConnectTiming', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'request_time': data.request_time,
@@ -6960,10 +6489,7 @@ def _map_network__connect_timing__to_dict(
         }
 
 
-def _map_network__client_security_state__to_dict(
-        data: 'network.ClientSecurityState',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__client_security_state__to_dict(data: 'network.ClientSecurityState', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'initiator_is_secure_context': data.initiator_is_secure_context,
@@ -6984,10 +6510,7 @@ def _map_network__client_security_state__to_dict(
         }
 
 
-def _map_network__cross_origin_opener_policy_status__to_dict(
-        data: 'network.CrossOriginOpenerPolicyStatus',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__cross_origin_opener_policy_status__to_dict(data: 'network.CrossOriginOpenerPolicyStatus', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'value': data.value,
@@ -7011,10 +6534,7 @@ def _map_network__cross_origin_opener_policy_status__to_dict(
         }
 
 
-def _map_network__cross_origin_embedder_policy_status__to_dict(
-        data: 'network.CrossOriginEmbedderPolicyStatus',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__cross_origin_embedder_policy_status__to_dict(data: 'network.CrossOriginEmbedderPolicyStatus', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'value': data.value,
@@ -7038,10 +6558,7 @@ def _map_network__cross_origin_embedder_policy_status__to_dict(
         }
 
 
-def _map_network__content_security_policy_status__to_dict(
-        data: 'network.ContentSecurityPolicyStatus',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__content_security_policy_status__to_dict(data: 'network.ContentSecurityPolicyStatus', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'effective_directives': data.effective_directives,
@@ -7062,10 +6579,7 @@ def _map_network__content_security_policy_status__to_dict(
         }
 
 
-def _map_network__security_isolation_status__to_dict(
-        data: 'network.SecurityIsolationStatus',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__security_isolation_status__to_dict(data: 'network.SecurityIsolationStatus', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'coop': to_dict(
@@ -7113,10 +6627,7 @@ def _map_network__security_isolation_status__to_dict(
         }
 
 
-def _map_network__reporting_api_report__to_dict(
-        data: 'network.ReportingApiReport',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__reporting_api_report__to_dict(data: 'network.ReportingApiReport', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -7155,10 +6666,7 @@ def _map_network__reporting_api_report__to_dict(
         }
 
 
-def _map_network__reporting_api_endpoint__to_dict(
-        data: 'network.ReportingApiEndpoint',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__reporting_api_endpoint__to_dict(data: 'network.ReportingApiEndpoint', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -7176,10 +6684,7 @@ def _map_network__reporting_api_endpoint__to_dict(
         }
 
 
-def _map_network__load_network_resource_page_result__to_dict(
-        data: 'network.LoadNetworkResourcePageResult',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__load_network_resource_page_result__to_dict(data: 'network.LoadNetworkResourcePageResult', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'success': data.success,
@@ -7209,10 +6714,7 @@ def _map_network__load_network_resource_page_result__to_dict(
         }
 
 
-def _map_network__load_network_resource_options__to_dict(
-        data: 'network.LoadNetworkResourceOptions',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_network__load_network_resource_options__to_dict(data: 'network.LoadNetworkResourceOptions', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'disable_cache': data.disable_cache,
@@ -7230,10 +6732,7 @@ def _map_network__load_network_resource_options__to_dict(
         }
 
 
-def _map_overlay__source_order_config__to_dict(
-        data: 'overlay.SourceOrderConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__source_order_config__to_dict(data: 'overlay.SourceOrderConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'parent_outline_color': to_dict(
@@ -7269,10 +6768,7 @@ def _map_overlay__source_order_config__to_dict(
         }
 
 
-def _map_overlay__grid_highlight_config__to_dict(
-        data: 'overlay.GridHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__grid_highlight_config__to_dict(data: 'overlay.GridHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'show_grid_extension_lines': data.show_grid_extension_lines,
@@ -7434,10 +6930,7 @@ def _map_overlay__grid_highlight_config__to_dict(
         }
 
 
-def _map_overlay__flex_container_highlight_config__to_dict(
-        data: 'overlay.FlexContainerHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__flex_container_highlight_config__to_dict(data: 'overlay.FlexContainerHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'container_border': to_dict(
@@ -7545,10 +7038,7 @@ def _map_overlay__flex_container_highlight_config__to_dict(
         }
 
 
-def _map_overlay__flex_item_highlight_config__to_dict(
-        data: 'overlay.FlexItemHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__flex_item_highlight_config__to_dict(data: 'overlay.FlexItemHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'base_size_box': to_dict(
@@ -7596,10 +7086,7 @@ def _map_overlay__flex_item_highlight_config__to_dict(
         }
 
 
-def _map_overlay__line_style__to_dict(
-        data: 'overlay.LineStyle',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__line_style__to_dict(data: 'overlay.LineStyle', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'color': to_dict(
@@ -7626,10 +7113,7 @@ def _map_overlay__line_style__to_dict(
         }
 
 
-def _map_overlay__box_style__to_dict(
-        data: 'overlay.BoxStyle',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__box_style__to_dict(data: 'overlay.BoxStyle', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'fill_color': to_dict(
@@ -7665,10 +7149,7 @@ def _map_overlay__box_style__to_dict(
         }
 
 
-def _map_overlay__highlight_config__to_dict(
-        data: 'overlay.HighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__highlight_config__to_dict(data: 'overlay.HighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'show_info': data.show_info,
@@ -7845,10 +7326,7 @@ def _map_overlay__highlight_config__to_dict(
         }
 
 
-def _map_overlay__grid_node_highlight_config__to_dict(
-        data: 'overlay.GridNodeHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__grid_node_highlight_config__to_dict(data: 'overlay.GridNodeHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'grid_highlight_config': to_dict(
@@ -7875,10 +7353,7 @@ def _map_overlay__grid_node_highlight_config__to_dict(
         }
 
 
-def _map_overlay__flex_node_highlight_config__to_dict(
-        data: 'overlay.FlexNodeHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__flex_node_highlight_config__to_dict(data: 'overlay.FlexNodeHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'flex_container_highlight_config': to_dict(
@@ -7905,10 +7380,7 @@ def _map_overlay__flex_node_highlight_config__to_dict(
         }
 
 
-def _map_overlay__scroll_snap_container_highlight_config__to_dict(
-        data: 'overlay.ScrollSnapContainerHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__scroll_snap_container_highlight_config__to_dict(data: 'overlay.ScrollSnapContainerHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'snapport_border': to_dict(
@@ -7968,10 +7440,7 @@ def _map_overlay__scroll_snap_container_highlight_config__to_dict(
         }
 
 
-def _map_overlay__scroll_snap_highlight_config__to_dict(
-        data: 'overlay.ScrollSnapHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__scroll_snap_highlight_config__to_dict(data: 'overlay.ScrollSnapHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'scroll_snap_container_highlight_config': to_dict(
@@ -7998,10 +7467,7 @@ def _map_overlay__scroll_snap_highlight_config__to_dict(
         }
 
 
-def _map_overlay__hinge_config__to_dict(
-        data: 'overlay.HingeConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__hinge_config__to_dict(data: 'overlay.HingeConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'rect': to_dict(
@@ -8049,10 +7515,7 @@ def _map_overlay__hinge_config__to_dict(
         }
 
 
-def _map_overlay__container_query_highlight_config__to_dict(
-        data: 'overlay.ContainerQueryHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__container_query_highlight_config__to_dict(data: 'overlay.ContainerQueryHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'container_query_container_highlight_config': to_dict(
@@ -8079,10 +7542,7 @@ def _map_overlay__container_query_highlight_config__to_dict(
         }
 
 
-def _map_overlay__container_query_container_highlight_config__to_dict(
-        data: 'overlay.ContainerQueryContainerHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__container_query_container_highlight_config__to_dict(data: 'overlay.ContainerQueryContainerHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'container_border': to_dict(
@@ -8118,10 +7578,7 @@ def _map_overlay__container_query_container_highlight_config__to_dict(
         }
 
 
-def _map_overlay__isolated_element_highlight_config__to_dict(
-        data: 'overlay.IsolatedElementHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__isolated_element_highlight_config__to_dict(data: 'overlay.IsolatedElementHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'isolation_mode_highlight_config': to_dict(
@@ -8148,10 +7605,7 @@ def _map_overlay__isolated_element_highlight_config__to_dict(
         }
 
 
-def _map_overlay__isolation_mode_highlight_config__to_dict(
-        data: 'overlay.IsolationModeHighlightConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_overlay__isolation_mode_highlight_config__to_dict(data: 'overlay.IsolationModeHighlightConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'resizer_color': to_dict(
@@ -8199,10 +7653,7 @@ def _map_overlay__isolation_mode_highlight_config__to_dict(
         }
 
 
-def _map_page__ad_frame_status__to_dict(
-        data: 'page.AdFrameStatus',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__ad_frame_status__to_dict(data: 'page.AdFrameStatus', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'ad_frame_type': data.ad_frame_type,
@@ -8229,10 +7680,7 @@ def _map_page__ad_frame_status__to_dict(
         }
 
 
-def _map_page__ad_script_id__to_dict(
-        data: 'page.AdScriptId',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__ad_script_id__to_dict(data: 'page.AdScriptId', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -8250,10 +7698,7 @@ def _map_page__ad_script_id__to_dict(
         }
 
 
-def _map_page__permissions_policy_block_locator__to_dict(
-        data: 'page.PermissionsPolicyBlockLocator',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__permissions_policy_block_locator__to_dict(data: 'page.PermissionsPolicyBlockLocator', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'frame_id': data.frame_id,
@@ -8271,10 +7716,7 @@ def _map_page__permissions_policy_block_locator__to_dict(
         }
 
 
-def _map_page__permissions_policy_feature_state__to_dict(
-        data: 'page.PermissionsPolicyFeatureState',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__permissions_policy_feature_state__to_dict(data: 'page.PermissionsPolicyFeatureState', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'feature': data.feature,
@@ -8304,10 +7746,7 @@ def _map_page__permissions_policy_feature_state__to_dict(
         }
 
 
-def _map_page__origin_trial_token__to_dict(
-        data: 'page.OriginTrialToken',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__origin_trial_token__to_dict(data: 'page.OriginTrialToken', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'origin': data.origin,
@@ -8337,10 +7776,7 @@ def _map_page__origin_trial_token__to_dict(
         }
 
 
-def _map_page__origin_trial_token_with_status__to_dict(
-        data: 'page.OriginTrialTokenWithStatus',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__origin_trial_token_with_status__to_dict(data: 'page.OriginTrialTokenWithStatus', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'raw_token_text': data.raw_token_text,
@@ -8370,10 +7806,7 @@ def _map_page__origin_trial_token_with_status__to_dict(
         }
 
 
-def _map_page__origin_trial__to_dict(
-        data: 'page.OriginTrial',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__origin_trial__to_dict(data: 'page.OriginTrial', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'trial_name': data.trial_name,
@@ -8403,10 +7836,7 @@ def _map_page__origin_trial__to_dict(
         }
 
 
-def _map_page__frame__to_dict(
-        data: 'page.Frame',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__frame__to_dict(data: 'page.Frame', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -8478,10 +7908,7 @@ def _map_page__frame__to_dict(
         }
 
 
-def _map_page__frame_resource__to_dict(
-        data: 'page.FrameResource',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__frame_resource__to_dict(data: 'page.FrameResource', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -8514,10 +7941,7 @@ def _map_page__frame_resource__to_dict(
         }
 
 
-def _map_page__frame_resource_tree__to_dict(
-        data: 'page.FrameResourceTree',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__frame_resource_tree__to_dict(data: 'page.FrameResourceTree', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'frame': to_dict(
@@ -8565,10 +7989,7 @@ def _map_page__frame_resource_tree__to_dict(
         }
 
 
-def _map_page__frame_tree__to_dict(
-        data: 'page.FrameTree',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__frame_tree__to_dict(data: 'page.FrameTree', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'frame': to_dict(
@@ -8604,10 +8025,7 @@ def _map_page__frame_tree__to_dict(
         }
 
 
-def _map_page__navigation_entry__to_dict(
-        data: 'page.NavigationEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__navigation_entry__to_dict(data: 'page.NavigationEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -8634,10 +8052,7 @@ def _map_page__navigation_entry__to_dict(
         }
 
 
-def _map_page__screencast_frame_metadata__to_dict(
-        data: 'page.ScreencastFrameMetadata',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__screencast_frame_metadata__to_dict(data: 'page.ScreencastFrameMetadata', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'offset_top': data.offset_top,
@@ -8670,10 +8085,7 @@ def _map_page__screencast_frame_metadata__to_dict(
         }
 
 
-def _map_page__app_manifest_error__to_dict(
-        data: 'page.AppManifestError',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__app_manifest_error__to_dict(data: 'page.AppManifestError', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'message': data.message,
@@ -8697,10 +8109,7 @@ def _map_page__app_manifest_error__to_dict(
         }
 
 
-def _map_page__app_manifest_parsed_properties__to_dict(
-        data: 'page.AppManifestParsedProperties',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__app_manifest_parsed_properties__to_dict(data: 'page.AppManifestParsedProperties', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'scope': data.scope,
@@ -8715,10 +8124,7 @@ def _map_page__app_manifest_parsed_properties__to_dict(
         }
 
 
-def _map_page__layout_viewport__to_dict(
-        data: 'page.LayoutViewport',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__layout_viewport__to_dict(data: 'page.LayoutViewport', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'page_x': data.page_x,
@@ -8742,10 +8148,7 @@ def _map_page__layout_viewport__to_dict(
         }
 
 
-def _map_page__visual_viewport__to_dict(
-        data: 'page.VisualViewport',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__visual_viewport__to_dict(data: 'page.VisualViewport', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'offset_x': data.offset_x,
@@ -8781,10 +8184,7 @@ def _map_page__visual_viewport__to_dict(
         }
 
 
-def _map_page__viewport__to_dict(
-        data: 'page.Viewport',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__viewport__to_dict(data: 'page.Viewport', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'x': data.x,
@@ -8811,10 +8211,7 @@ def _map_page__viewport__to_dict(
         }
 
 
-def _map_page__font_families__to_dict(
-        data: 'page.FontFamilies',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__font_families__to_dict(data: 'page.FontFamilies', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'standard': data.standard,
@@ -8847,10 +8244,7 @@ def _map_page__font_families__to_dict(
         }
 
 
-def _map_page__script_font_families__to_dict(
-        data: 'page.ScriptFontFamilies',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__script_font_families__to_dict(data: 'page.ScriptFontFamilies', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'script': data.script,
@@ -8877,10 +8271,7 @@ def _map_page__script_font_families__to_dict(
         }
 
 
-def _map_page__font_sizes__to_dict(
-        data: 'page.FontSizes',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__font_sizes__to_dict(data: 'page.FontSizes', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'standard': data.standard,
@@ -8898,10 +8289,7 @@ def _map_page__font_sizes__to_dict(
         }
 
 
-def _map_page__installability_error_argument__to_dict(
-        data: 'page.InstallabilityErrorArgument',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__installability_error_argument__to_dict(data: 'page.InstallabilityErrorArgument', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -8919,10 +8307,7 @@ def _map_page__installability_error_argument__to_dict(
         }
 
 
-def _map_page__installability_error__to_dict(
-        data: 'page.InstallabilityError',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__installability_error__to_dict(data: 'page.InstallabilityError', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'error_id': data.error_id,
@@ -8949,10 +8334,7 @@ def _map_page__installability_error__to_dict(
         }
 
 
-def _map_page__compilation_cache_params__to_dict(
-        data: 'page.CompilationCacheParams',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__compilation_cache_params__to_dict(data: 'page.CompilationCacheParams', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -8970,10 +8352,7 @@ def _map_page__compilation_cache_params__to_dict(
         }
 
 
-def _map_page__back_forward_cache_not_restored_explanation__to_dict(
-        data: 'page.BackForwardCacheNotRestoredExplanation',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__back_forward_cache_not_restored_explanation__to_dict(data: 'page.BackForwardCacheNotRestoredExplanation', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -8994,10 +8373,7 @@ def _map_page__back_forward_cache_not_restored_explanation__to_dict(
         }
 
 
-def _map_page__back_forward_cache_not_restored_explanation_tree__to_dict(
-        data: 'page.BackForwardCacheNotRestoredExplanationTree',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_page__back_forward_cache_not_restored_explanation_tree__to_dict(data: 'page.BackForwardCacheNotRestoredExplanationTree', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -9036,10 +8412,7 @@ def _map_page__back_forward_cache_not_restored_explanation_tree__to_dict(
         }
 
 
-def _map_performance__metric__to_dict(
-        data: 'performance.Metric',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_performance__metric__to_dict(data: 'performance.Metric', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -9057,10 +8430,7 @@ def _map_performance__metric__to_dict(
         }
 
 
-def _map_performance_timeline__largest_contentful_paint__to_dict(
-        data: 'performance_timeline.LargestContentfulPaint',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_performance_timeline__largest_contentful_paint__to_dict(data: 'performance_timeline.LargestContentfulPaint', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'render_time': data.render_time,
@@ -9090,10 +8460,7 @@ def _map_performance_timeline__largest_contentful_paint__to_dict(
         }
 
 
-def _map_performance_timeline__layout_shift_attribution__to_dict(
-        data: 'performance_timeline.LayoutShiftAttribution',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_performance_timeline__layout_shift_attribution__to_dict(data: 'performance_timeline.LayoutShiftAttribution', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'previous_rect': to_dict(
@@ -9132,10 +8499,7 @@ def _map_performance_timeline__layout_shift_attribution__to_dict(
         }
 
 
-def _map_performance_timeline__layout_shift__to_dict(
-        data: 'performance_timeline.LayoutShift',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_performance_timeline__layout_shift__to_dict(data: 'performance_timeline.LayoutShift', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'value': data.value,
@@ -9168,10 +8532,7 @@ def _map_performance_timeline__layout_shift__to_dict(
         }
 
 
-def _map_performance_timeline__timeline_event__to_dict(
-        data: 'performance_timeline.TimelineEvent',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_performance_timeline__timeline_event__to_dict(data: 'performance_timeline.TimelineEvent', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'frame_id': data.frame_id,
@@ -9222,10 +8583,7 @@ def _map_performance_timeline__timeline_event__to_dict(
         }
 
 
-def _map_security__certificate_security_state__to_dict(
-        data: 'security.CertificateSecurityState',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_security__certificate_security_state__to_dict(data: 'security.CertificateSecurityState', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'protocol': data.protocol,
@@ -9300,10 +8658,7 @@ def _map_security__certificate_security_state__to_dict(
         }
 
 
-def _map_security__safety_tip_info__to_dict(
-        data: 'security.SafetyTipInfo',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_security__safety_tip_info__to_dict(data: 'security.SafetyTipInfo', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'safety_tip_status': data.safety_tip_status,
@@ -9321,10 +8676,7 @@ def _map_security__safety_tip_info__to_dict(
         }
 
 
-def _map_security__visible_security_state__to_dict(
-        data: 'security.VisibleSecurityState',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_security__visible_security_state__to_dict(data: 'security.VisibleSecurityState', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'security_state': data.security_state,
@@ -9375,10 +8727,7 @@ def _map_security__visible_security_state__to_dict(
         }
 
 
-def _map_security__security_state_explanation__to_dict(
-        data: 'security.SecurityStateExplanation',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_security__security_state_explanation__to_dict(data: 'security.SecurityStateExplanation', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'security_state': data.security_state,
@@ -9429,10 +8778,7 @@ def _map_security__security_state_explanation__to_dict(
         }
 
 
-def _map_security__insecure_content_status__to_dict(
-        data: 'security.InsecureContentStatus',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_security__insecure_content_status__to_dict(data: 'security.InsecureContentStatus', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'ran_mixed_content': data.ran_mixed_content,
@@ -9465,10 +8811,7 @@ def _map_security__insecure_content_status__to_dict(
         }
 
 
-def _map_service_worker__service_worker_registration__to_dict(
-        data: 'service_worker.ServiceWorkerRegistration',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_service_worker__service_worker_registration__to_dict(data: 'service_worker.ServiceWorkerRegistration', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'registration_id': data.registration_id,
@@ -9489,10 +8832,7 @@ def _map_service_worker__service_worker_registration__to_dict(
         }
 
 
-def _map_service_worker__service_worker_version__to_dict(
-        data: 'service_worker.ServiceWorkerVersion',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_service_worker__service_worker_version__to_dict(data: 'service_worker.ServiceWorkerVersion', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'version_id': data.version_id,
@@ -9540,10 +8880,7 @@ def _map_service_worker__service_worker_version__to_dict(
         }
 
 
-def _map_service_worker__service_worker_error_message__to_dict(
-        data: 'service_worker.ServiceWorkerErrorMessage',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_service_worker__service_worker_error_message__to_dict(data: 'service_worker.ServiceWorkerErrorMessage', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'error_message': data.error_message,
@@ -9573,10 +8910,7 @@ def _map_service_worker__service_worker_error_message__to_dict(
         }
 
 
-def _map_storage__usage_for_type__to_dict(
-        data: 'storage.UsageForType',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__usage_for_type__to_dict(data: 'storage.UsageForType', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'storage_type': data.storage_type,
@@ -9594,10 +8928,7 @@ def _map_storage__usage_for_type__to_dict(
         }
 
 
-def _map_storage__trust_tokens__to_dict(
-        data: 'storage.TrustTokens',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__trust_tokens__to_dict(data: 'storage.TrustTokens', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'issuer_origin': data.issuer_origin,
@@ -9615,10 +8946,7 @@ def _map_storage__trust_tokens__to_dict(
         }
 
 
-def _map_storage__interest_group_ad__to_dict(
-        data: 'storage.InterestGroupAd',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__interest_group_ad__to_dict(data: 'storage.InterestGroupAd', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'render_url': data.render_url,
@@ -9636,10 +8964,7 @@ def _map_storage__interest_group_ad__to_dict(
         }
 
 
-def _map_storage__interest_group_details__to_dict(
-        data: 'storage.InterestGroupDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__interest_group_details__to_dict(data: 'storage.InterestGroupDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'owner_origin': data.owner_origin,
@@ -9714,10 +9039,7 @@ def _map_storage__interest_group_details__to_dict(
         }
 
 
-def _map_storage__shared_storage_entry__to_dict(
-        data: 'storage.SharedStorageEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__shared_storage_entry__to_dict(data: 'storage.SharedStorageEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'key': data.key,
@@ -9735,10 +9057,7 @@ def _map_storage__shared_storage_entry__to_dict(
         }
 
 
-def _map_storage__shared_storage_metadata__to_dict(
-        data: 'storage.SharedStorageMetadata',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__shared_storage_metadata__to_dict(data: 'storage.SharedStorageMetadata', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'creation_time': data.creation_time,
@@ -9759,10 +9078,7 @@ def _map_storage__shared_storage_metadata__to_dict(
         }
 
 
-def _map_storage__shared_storage_reporting_metadata__to_dict(
-        data: 'storage.SharedStorageReportingMetadata',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__shared_storage_reporting_metadata__to_dict(data: 'storage.SharedStorageReportingMetadata', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'event_type': data.event_type,
@@ -9780,10 +9096,7 @@ def _map_storage__shared_storage_reporting_metadata__to_dict(
         }
 
 
-def _map_storage__shared_storage_url_with_metadata__to_dict(
-        data: 'storage.SharedStorageUrlWithMetadata',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__shared_storage_url_with_metadata__to_dict(data: 'storage.SharedStorageUrlWithMetadata', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -9810,10 +9123,7 @@ def _map_storage__shared_storage_url_with_metadata__to_dict(
         }
 
 
-def _map_storage__shared_storage_access_params__to_dict(
-        data: 'storage.SharedStorageAccessParams',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__shared_storage_access_params__to_dict(data: 'storage.SharedStorageAccessParams', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'script_source_url': data.script_source_url,
@@ -9855,10 +9165,7 @@ def _map_storage__shared_storage_access_params__to_dict(
         }
 
 
-def _map_storage__storage_bucket__to_dict(
-        data: 'storage.StorageBucket',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__storage_bucket__to_dict(data: 'storage.StorageBucket', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'storage_key': data.storage_key,
@@ -9876,10 +9183,7 @@ def _map_storage__storage_bucket__to_dict(
         }
 
 
-def _map_storage__storage_bucket_info__to_dict(
-        data: 'storage.StorageBucketInfo',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__storage_bucket_info__to_dict(data: 'storage.StorageBucketInfo', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'bucket': to_dict(
@@ -9918,10 +9222,7 @@ def _map_storage__storage_bucket_info__to_dict(
         }
 
 
-def _map_storage__attribution_reporting_filter_data_entry__to_dict(
-        data: 'storage.AttributionReportingFilterDataEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__attribution_reporting_filter_data_entry__to_dict(data: 'storage.AttributionReportingFilterDataEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'key': data.key,
@@ -9948,10 +9249,7 @@ def _map_storage__attribution_reporting_filter_data_entry__to_dict(
         }
 
 
-def _map_storage__attribution_reporting_aggregation_keys_entry__to_dict(
-        data: 'storage.AttributionReportingAggregationKeysEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__attribution_reporting_aggregation_keys_entry__to_dict(data: 'storage.AttributionReportingAggregationKeysEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'key': data.key,
@@ -9969,10 +9267,7 @@ def _map_storage__attribution_reporting_aggregation_keys_entry__to_dict(
         }
 
 
-def _map_storage__attribution_reporting_event_report_windows__to_dict(
-        data: 'storage.AttributionReportingEventReportWindows',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__attribution_reporting_event_report_windows__to_dict(data: 'storage.AttributionReportingEventReportWindows', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'start': data.start,
@@ -9999,10 +9294,7 @@ def _map_storage__attribution_reporting_event_report_windows__to_dict(
         }
 
 
-def _map_storage__attribution_reporting_source_registration__to_dict(
-        data: 'storage.AttributionReportingSourceRegistration',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_storage__attribution_reporting_source_registration__to_dict(data: 'storage.AttributionReportingSourceRegistration', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'time': data.time,
@@ -10092,10 +9384,7 @@ def _map_storage__attribution_reporting_source_registration__to_dict(
         }
 
 
-def _map_system_info__gpu_device__to_dict(
-        data: 'system_info.GPUDevice',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_system_info__gpu_device__to_dict(data: 'system_info.GPUDevice', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'vendor_id': data.vendor_id,
@@ -10131,10 +9420,7 @@ def _map_system_info__gpu_device__to_dict(
         }
 
 
-def _map_system_info__size__to_dict(
-        data: 'system_info.Size',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_system_info__size__to_dict(data: 'system_info.Size', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'width': data.width,
@@ -10152,10 +9438,7 @@ def _map_system_info__size__to_dict(
         }
 
 
-def _map_system_info__video_decode_accelerator_capability__to_dict(
-        data: 'system_info.VideoDecodeAcceleratorCapability',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_system_info__video_decode_accelerator_capability__to_dict(data: 'system_info.VideoDecodeAcceleratorCapability', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'profile': data.profile,
@@ -10194,10 +9477,7 @@ def _map_system_info__video_decode_accelerator_capability__to_dict(
         }
 
 
-def _map_system_info__video_encode_accelerator_capability__to_dict(
-        data: 'system_info.VideoEncodeAcceleratorCapability',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_system_info__video_encode_accelerator_capability__to_dict(data: 'system_info.VideoEncodeAcceleratorCapability', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'profile': data.profile,
@@ -10230,10 +9510,7 @@ def _map_system_info__video_encode_accelerator_capability__to_dict(
         }
 
 
-def _map_system_info__image_decode_accelerator_capability__to_dict(
-        data: 'system_info.ImageDecodeAcceleratorCapability',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_system_info__image_decode_accelerator_capability__to_dict(data: 'system_info.ImageDecodeAcceleratorCapability', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'image_type': data.image_type,
@@ -10284,10 +9561,7 @@ def _map_system_info__image_decode_accelerator_capability__to_dict(
         }
 
 
-def _map_system_info__gpu_info__to_dict(
-        data: 'system_info.GPUInfo',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_system_info__gpu_info__to_dict(data: 'system_info.GPUInfo', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'devices': [
@@ -10365,10 +9639,7 @@ def _map_system_info__gpu_info__to_dict(
         }
 
 
-def _map_system_info__process_info__to_dict(
-        data: 'system_info.ProcessInfo',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_system_info__process_info__to_dict(data: 'system_info.ProcessInfo', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -10389,10 +9660,7 @@ def _map_system_info__process_info__to_dict(
         }
 
 
-def _map_target__target_info__to_dict(
-        data: 'target.TargetInfo',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_target__target_info__to_dict(data: 'target.TargetInfo', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'target_id': data.target_id,
@@ -10434,10 +9702,7 @@ def _map_target__target_info__to_dict(
         }
 
 
-def _map_target__filter_entry__to_dict(
-        data: 'target.FilterEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_target__filter_entry__to_dict(data: 'target.FilterEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'exclude': data.exclude,
@@ -10455,10 +9720,7 @@ def _map_target__filter_entry__to_dict(
         }
 
 
-def _map_target__remote_location__to_dict(
-        data: 'target.RemoteLocation',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_target__remote_location__to_dict(data: 'target.RemoteLocation', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'host': data.host,
@@ -10476,10 +9738,7 @@ def _map_target__remote_location__to_dict(
         }
 
 
-def _map_tracing__trace_config__to_dict(
-        data: 'tracing.TraceConfig',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_tracing__trace_config__to_dict(data: 'tracing.TraceConfig', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'record_mode': data.record_mode,
@@ -10545,10 +9804,7 @@ def _map_tracing__trace_config__to_dict(
         }
 
 
-def _map_fetch__request_pattern__to_dict(
-        data: 'fetch.RequestPattern',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_fetch__request_pattern__to_dict(data: 'fetch.RequestPattern', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'url_pattern': data.url_pattern,
@@ -10569,10 +9825,7 @@ def _map_fetch__request_pattern__to_dict(
         }
 
 
-def _map_fetch__header_entry__to_dict(
-        data: 'fetch.HeaderEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_fetch__header_entry__to_dict(data: 'fetch.HeaderEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -10590,10 +9843,7 @@ def _map_fetch__header_entry__to_dict(
         }
 
 
-def _map_fetch__auth_challenge__to_dict(
-        data: 'fetch.AuthChallenge',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_fetch__auth_challenge__to_dict(data: 'fetch.AuthChallenge', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'source': data.source,
@@ -10617,10 +9867,7 @@ def _map_fetch__auth_challenge__to_dict(
         }
 
 
-def _map_fetch__auth_challenge_response__to_dict(
-        data: 'fetch.AuthChallengeResponse',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_fetch__auth_challenge_response__to_dict(data: 'fetch.AuthChallengeResponse', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'response': data.response,
@@ -10641,10 +9888,7 @@ def _map_fetch__auth_challenge_response__to_dict(
         }
 
 
-def _map_web_audio__context_realtime_data__to_dict(
-        data: 'web_audio.ContextRealtimeData',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_web_audio__context_realtime_data__to_dict(data: 'web_audio.ContextRealtimeData', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'current_time': data.current_time,
@@ -10668,10 +9912,7 @@ def _map_web_audio__context_realtime_data__to_dict(
         }
 
 
-def _map_web_audio__base_audio_context__to_dict(
-        data: 'web_audio.BaseAudioContext',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_web_audio__base_audio_context__to_dict(data: 'web_audio.BaseAudioContext', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'context_id': data.context_id,
@@ -10713,10 +9954,7 @@ def _map_web_audio__base_audio_context__to_dict(
         }
 
 
-def _map_web_audio__audio_listener__to_dict(
-        data: 'web_audio.AudioListener',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_web_audio__audio_listener__to_dict(data: 'web_audio.AudioListener', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'listener_id': data.listener_id,
@@ -10734,10 +9972,7 @@ def _map_web_audio__audio_listener__to_dict(
         }
 
 
-def _map_web_audio__audio_node__to_dict(
-        data: 'web_audio.AudioNode',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_web_audio__audio_node__to_dict(data: 'web_audio.AudioNode', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'node_id': data.node_id,
@@ -10773,10 +10008,7 @@ def _map_web_audio__audio_node__to_dict(
         }
 
 
-def _map_web_audio__audio_param__to_dict(
-        data: 'web_audio.AudioParam',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_web_audio__audio_param__to_dict(data: 'web_audio.AudioParam', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'param_id': data.param_id,
@@ -10812,10 +10044,7 @@ def _map_web_audio__audio_param__to_dict(
         }
 
 
-def _map_web_authn__virtual_authenticator_options__to_dict(
-        data: 'web_authn.VirtualAuthenticatorOptions',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_web_authn__virtual_authenticator_options__to_dict(data: 'web_authn.VirtualAuthenticatorOptions', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'protocol': data.protocol,
@@ -10860,10 +10089,7 @@ def _map_web_authn__virtual_authenticator_options__to_dict(
         }
 
 
-def _map_web_authn__credential__to_dict(
-        data: 'web_authn.Credential',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_web_authn__credential__to_dict(data: 'web_authn.Credential', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'credential_id': data.credential_id,
@@ -10896,10 +10122,7 @@ def _map_web_authn__credential__to_dict(
         }
 
 
-def _map_media__player_message__to_dict(
-        data: 'media.PlayerMessage',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_media__player_message__to_dict(data: 'media.PlayerMessage', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'level': data.level,
@@ -10917,10 +10140,7 @@ def _map_media__player_message__to_dict(
         }
 
 
-def _map_media__player_property__to_dict(
-        data: 'media.PlayerProperty',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_media__player_property__to_dict(data: 'media.PlayerProperty', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -10938,10 +10158,7 @@ def _map_media__player_property__to_dict(
         }
 
 
-def _map_media__player_event__to_dict(
-        data: 'media.PlayerEvent',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_media__player_event__to_dict(data: 'media.PlayerEvent', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'timestamp': data.timestamp,
@@ -10959,10 +10176,7 @@ def _map_media__player_event__to_dict(
         }
 
 
-def _map_media__player_error_source_location__to_dict(
-        data: 'media.PlayerErrorSourceLocation',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_media__player_error_source_location__to_dict(data: 'media.PlayerErrorSourceLocation', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'file': data.file,
@@ -10980,10 +10194,7 @@ def _map_media__player_error_source_location__to_dict(
         }
 
 
-def _map_media__player_error__to_dict(
-        data: 'media.PlayerError',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_media__player_error__to_dict(data: 'media.PlayerError', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'error_type': data.error_type,
@@ -11028,10 +10239,7 @@ def _map_media__player_error__to_dict(
         }
 
 
-def _map_device_access__prompt_device__to_dict(
-        data: 'device_access.PromptDevice',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_device_access__prompt_device__to_dict(data: 'device_access.PromptDevice', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -11049,10 +10257,7 @@ def _map_device_access__prompt_device__to_dict(
         }
 
 
-def _map_preload__rule_set__to_dict(
-        data: 'preload.RuleSet',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_preload__rule_set__to_dict(data: 'preload.RuleSet', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -11088,10 +10293,7 @@ def _map_preload__rule_set__to_dict(
         }
 
 
-def _map_preload__preloading_attempt_key__to_dict(
-        data: 'preload.PreloadingAttemptKey',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_preload__preloading_attempt_key__to_dict(data: 'preload.PreloadingAttemptKey', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'loader_id': data.loader_id,
@@ -11115,10 +10317,7 @@ def _map_preload__preloading_attempt_key__to_dict(
         }
 
 
-def _map_preload__preloading_attempt_source__to_dict(
-        data: 'preload.PreloadingAttemptSource',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_preload__preloading_attempt_source__to_dict(data: 'preload.PreloadingAttemptSource', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'key': to_dict(
@@ -11166,10 +10365,7 @@ def _map_preload__preloading_attempt_source__to_dict(
         }
 
 
-def _map_fed_cm__account__to_dict(
-        data: 'fed_cm.Account',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_fed_cm__account__to_dict(data: 'fed_cm.Account', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'account_id': data.account_id,
@@ -11211,10 +10407,7 @@ def _map_fed_cm__account__to_dict(
         }
 
 
-def _map_console__console_message__to_dict(
-        data: 'console.ConsoleMessage',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_console__console_message__to_dict(data: 'console.ConsoleMessage', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'source': data.source,
@@ -11244,10 +10437,7 @@ def _map_console__console_message__to_dict(
         }
 
 
-def _map_debugger__location__to_dict(
-        data: 'debugger.Location',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_debugger__location__to_dict(data: 'debugger.Location', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -11268,10 +10458,7 @@ def _map_debugger__location__to_dict(
         }
 
 
-def _map_debugger__script_position__to_dict(
-        data: 'debugger.ScriptPosition',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_debugger__script_position__to_dict(data: 'debugger.ScriptPosition', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'line_number': data.line_number,
@@ -11289,10 +10476,7 @@ def _map_debugger__script_position__to_dict(
         }
 
 
-def _map_debugger__call_frame__to_dict(
-        data: 'debugger.CallFrame',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_debugger__call_frame__to_dict(data: 'debugger.CallFrame', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'call_frame_id': data.call_frame_id,
@@ -11373,10 +10557,7 @@ def _map_debugger__call_frame__to_dict(
         }
 
 
-def _map_debugger__scope__to_dict(
-        data: 'debugger.Scope',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_debugger__scope__to_dict(data: 'debugger.Scope', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -11430,10 +10611,7 @@ def _map_debugger__scope__to_dict(
         }
 
 
-def _map_debugger__search_match__to_dict(
-        data: 'debugger.SearchMatch',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_debugger__search_match__to_dict(data: 'debugger.SearchMatch', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'line_number': data.line_number,
@@ -11451,10 +10629,7 @@ def _map_debugger__search_match__to_dict(
         }
 
 
-def _map_debugger__break_location__to_dict(
-        data: 'debugger.BreakLocation',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_debugger__break_location__to_dict(data: 'debugger.BreakLocation', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -11478,10 +10653,7 @@ def _map_debugger__break_location__to_dict(
         }
 
 
-def _map_heap_profiler__sampling_heap_profile_node__to_dict(
-        data: 'heap_profiler.SamplingHeapProfileNode',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_heap_profiler__sampling_heap_profile_node__to_dict(data: 'heap_profiler.SamplingHeapProfileNode', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'call_frame': to_dict(
@@ -11523,10 +10695,7 @@ def _map_heap_profiler__sampling_heap_profile_node__to_dict(
         }
 
 
-def _map_heap_profiler__sampling_heap_profile_sample__to_dict(
-        data: 'heap_profiler.SamplingHeapProfileSample',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_heap_profiler__sampling_heap_profile_sample__to_dict(data: 'heap_profiler.SamplingHeapProfileSample', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'size': data.size,
@@ -11547,10 +10716,7 @@ def _map_heap_profiler__sampling_heap_profile_sample__to_dict(
         }
 
 
-def _map_heap_profiler__sampling_heap_profile__to_dict(
-        data: 'heap_profiler.SamplingHeapProfile',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_heap_profiler__sampling_heap_profile__to_dict(data: 'heap_profiler.SamplingHeapProfile', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'head': to_dict(
@@ -11586,10 +10752,7 @@ def _map_heap_profiler__sampling_heap_profile__to_dict(
         }
 
 
-def _map_profiler__profile_node__to_dict(
-        data: 'profiler.ProfileNode',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_profiler__profile_node__to_dict(data: 'profiler.ProfileNode', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -11646,10 +10809,7 @@ def _map_profiler__profile_node__to_dict(
         }
 
 
-def _map_profiler__profile__to_dict(
-        data: 'profiler.Profile',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_profiler__profile__to_dict(data: 'profiler.Profile', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'nodes': [
@@ -11703,10 +10863,7 @@ def _map_profiler__profile__to_dict(
         }
 
 
-def _map_profiler__position_tick_info__to_dict(
-        data: 'profiler.PositionTickInfo',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_profiler__position_tick_info__to_dict(data: 'profiler.PositionTickInfo', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'line': data.line,
@@ -11724,10 +10881,7 @@ def _map_profiler__position_tick_info__to_dict(
         }
 
 
-def _map_profiler__coverage_range__to_dict(
-        data: 'profiler.CoverageRange',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_profiler__coverage_range__to_dict(data: 'profiler.CoverageRange', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'start_offset': data.start_offset,
@@ -11748,10 +10902,7 @@ def _map_profiler__coverage_range__to_dict(
         }
 
 
-def _map_profiler__function_coverage__to_dict(
-        data: 'profiler.FunctionCoverage',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_profiler__function_coverage__to_dict(data: 'profiler.FunctionCoverage', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'function_name': data.function_name,
@@ -11781,10 +10932,7 @@ def _map_profiler__function_coverage__to_dict(
         }
 
 
-def _map_profiler__script_coverage__to_dict(
-        data: 'profiler.ScriptCoverage',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_profiler__script_coverage__to_dict(data: 'profiler.ScriptCoverage', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -11814,10 +10962,7 @@ def _map_profiler__script_coverage__to_dict(
         }
 
 
-def _map_profiler__type_object__to_dict(
-        data: 'profiler.TypeObject',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_profiler__type_object__to_dict(data: 'profiler.TypeObject', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -11832,10 +10977,7 @@ def _map_profiler__type_object__to_dict(
         }
 
 
-def _map_profiler__type_profile_entry__to_dict(
-        data: 'profiler.TypeProfileEntry',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_profiler__type_profile_entry__to_dict(data: 'profiler.TypeProfileEntry', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'offset': data.offset,
@@ -11862,10 +11004,7 @@ def _map_profiler__type_profile_entry__to_dict(
         }
 
 
-def _map_profiler__script_type_profile__to_dict(
-        data: 'profiler.ScriptTypeProfile',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_profiler__script_type_profile__to_dict(data: 'profiler.ScriptTypeProfile', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -11895,10 +11034,7 @@ def _map_profiler__script_type_profile__to_dict(
         }
 
 
-def _map_runtime__remote_object__to_dict(
-        data: 'runtime.RemoteObject',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__remote_object__to_dict(data: 'runtime.RemoteObject', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -11955,10 +11091,7 @@ def _map_runtime__remote_object__to_dict(
         }
 
 
-def _map_runtime__custom_preview__to_dict(
-        data: 'runtime.CustomPreview',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__custom_preview__to_dict(data: 'runtime.CustomPreview', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'header': data.header,
@@ -11976,10 +11109,7 @@ def _map_runtime__custom_preview__to_dict(
         }
 
 
-def _map_runtime__object_preview__to_dict(
-        data: 'runtime.ObjectPreview',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__object_preview__to_dict(data: 'runtime.ObjectPreview', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -12027,10 +11157,7 @@ def _map_runtime__object_preview__to_dict(
         }
 
 
-def _map_runtime__property_preview__to_dict(
-        data: 'runtime.PropertyPreview',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__property_preview__to_dict(data: 'runtime.PropertyPreview', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -12066,10 +11193,7 @@ def _map_runtime__property_preview__to_dict(
         }
 
 
-def _map_runtime__entry_preview__to_dict(
-        data: 'runtime.EntryPreview',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__entry_preview__to_dict(data: 'runtime.EntryPreview', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'key': to_dict(
@@ -12105,10 +11229,7 @@ def _map_runtime__entry_preview__to_dict(
         }
 
 
-def _map_runtime__property_descriptor__to_dict(
-        data: 'runtime.PropertyDescriptor',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__property_descriptor__to_dict(data: 'runtime.PropertyDescriptor', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -12186,10 +11307,7 @@ def _map_runtime__property_descriptor__to_dict(
         }
 
 
-def _map_runtime__internal_property_descriptor__to_dict(
-        data: 'runtime.InternalPropertyDescriptor',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__internal_property_descriptor__to_dict(data: 'runtime.InternalPropertyDescriptor', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -12216,10 +11334,7 @@ def _map_runtime__internal_property_descriptor__to_dict(
         }
 
 
-def _map_runtime__private_property_descriptor__to_dict(
-        data: 'runtime.PrivatePropertyDescriptor',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__private_property_descriptor__to_dict(data: 'runtime.PrivatePropertyDescriptor', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -12246,10 +11361,7 @@ def _map_runtime__private_property_descriptor__to_dict(
         }
 
 
-def _map_runtime__call_argument__to_dict(
-        data: 'runtime.CallArgument',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__call_argument__to_dict(data: 'runtime.CallArgument', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'value': data.value,
@@ -12270,10 +11382,7 @@ def _map_runtime__call_argument__to_dict(
         }
 
 
-def _map_runtime__execution_context_description__to_dict(
-        data: 'runtime.ExecutionContextDescription',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__execution_context_description__to_dict(data: 'runtime.ExecutionContextDescription', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -12297,10 +11406,7 @@ def _map_runtime__execution_context_description__to_dict(
         }
 
 
-def _map_runtime__exception_details__to_dict(
-        data: 'runtime.ExceptionDetails',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__exception_details__to_dict(data: 'runtime.ExceptionDetails', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'exception_id': data.exception_id,
@@ -12357,10 +11463,7 @@ def _map_runtime__exception_details__to_dict(
         }
 
 
-def _map_runtime__call_frame__to_dict(
-        data: 'runtime.CallFrame',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__call_frame__to_dict(data: 'runtime.CallFrame', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'function_name': data.function_name,
@@ -12387,10 +11490,7 @@ def _map_runtime__call_frame__to_dict(
         }
 
 
-def _map_runtime__stack_trace__to_dict(
-        data: 'runtime.StackTrace',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__stack_trace__to_dict(data: 'runtime.StackTrace', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'description': data.description,
@@ -12441,10 +11541,7 @@ def _map_runtime__stack_trace__to_dict(
         }
 
 
-def _map_runtime__stack_trace_id__to_dict(
-        data: 'runtime.StackTraceId',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_runtime__stack_trace_id__to_dict(data: 'runtime.StackTraceId', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -12462,10 +11559,7 @@ def _map_runtime__stack_trace_id__to_dict(
         }
 
 
-def _map_schema__domain__to_dict(
-        data: 'schema.Domain',
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> dict:
+def _map_schema__domain__to_dict(data: 'schema.Domain', casing_strategy: 'CasingStrategyT' = 'snake') -> dict:
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -12483,3406 +11577,2859 @@ def _map_schema__domain__to_dict(
         }
 
 
-def to_dict(
+def _map_accessibility__ax_node_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXNodeId':
+    pass
+
+
+def _map_accessibility__ax_value_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXValueType':
+    pass
+
+
+def _map_accessibility__ax_value_source_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXValueSourceType':
+    pass
+
+
+def _map_accessibility__ax_value_native_source_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXValueNativeSourceType':
+    pass
+
+
+def _map_accessibility__ax_value_source__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXValueSource':
+    pass
+
+
+def _map_accessibility__ax_related_node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXRelatedNode':
+    pass
+
+
+def _map_accessibility__ax_property__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXProperty':
+    pass
+
+
+def _map_accessibility__ax_value__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXValue':
+    pass
+
+
+def _map_accessibility__ax_property_name__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXPropertyName':
+    pass
+
+
+def _map_accessibility__ax_node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'accessibility.AXNode':
+    pass
+
+
+def _map_animation__animation__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'animation.Animation':
+    pass
+
+
+def _map_animation__animation_effect__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'animation.AnimationEffect':
+    pass
+
+
+def _map_animation__keyframes_rule__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'animation.KeyframesRule':
+    pass
+
+
+def _map_animation__keyframe_style__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'animation.KeyframeStyle':
+    pass
+
+
+def _map_audits__affected_cookie__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.AffectedCookie':
+    pass
+
+
+def _map_audits__affected_request__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.AffectedRequest':
+    pass
+
+
+def _map_audits__affected_frame__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.AffectedFrame':
+    pass
+
+
+def _map_audits__cookie_exclusion_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.CookieExclusionReason':
+    pass
+
+
+def _map_audits__cookie_warning_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.CookieWarningReason':
+    pass
+
+
+def _map_audits__cookie_operation__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.CookieOperation':
+    pass
+
+
+def _map_audits__cookie_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.CookieIssueDetails':
+    pass
+
+
+def _map_audits__mixed_content_resolution_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.MixedContentResolutionStatus':
+    pass
+
+
+def _map_audits__mixed_content_resource_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.MixedContentResourceType':
+    pass
+
+
+def _map_audits__mixed_content_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.MixedContentIssueDetails':
+    pass
+
+
+def _map_audits__blocked_by_response_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.BlockedByResponseReason':
+    pass
+
+
+def _map_audits__blocked_by_response_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.BlockedByResponseIssueDetails':
+    pass
+
+
+def _map_audits__heavy_ad_resolution_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.HeavyAdResolutionStatus':
+    pass
+
+
+def _map_audits__heavy_ad_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.HeavyAdReason':
+    pass
+
+
+def _map_audits__heavy_ad_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.HeavyAdIssueDetails':
+    pass
+
+
+def _map_audits__content_security_policy_violation_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.ContentSecurityPolicyViolationType':
+    pass
+
+
+def _map_audits__source_code_location__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.SourceCodeLocation':
+    pass
+
+
+def _map_audits__content_security_policy_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.ContentSecurityPolicyIssueDetails':
+    pass
+
+
+def _map_audits__shared_array_buffer_issue_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.SharedArrayBufferIssueType':
+    pass
+
+
+def _map_audits__shared_array_buffer_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.SharedArrayBufferIssueDetails':
+    pass
+
+
+def _map_audits__low_text_contrast_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.LowTextContrastIssueDetails':
+    pass
+
+
+def _map_audits__cors_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.CorsIssueDetails':
+    pass
+
+
+def _map_audits__attribution_reporting_issue_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.AttributionReportingIssueType':
+    pass
+
+
+def _map_audits__attribution_reporting_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.AttributionReportingIssueDetails':
+    pass
+
+
+def _map_audits__quirks_mode_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.QuirksModeIssueDetails':
+    pass
+
+
+def _map_audits__navigator_user_agent_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.NavigatorUserAgentIssueDetails':
+    pass
+
+
+def _map_audits__generic_issue_error_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.GenericIssueErrorType':
+    pass
+
+
+def _map_audits__generic_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.GenericIssueDetails':
+    pass
+
+
+def _map_audits__deprecation_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.DeprecationIssueDetails':
+    pass
+
+
+def _map_audits__bounce_tracking_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.BounceTrackingIssueDetails':
+    pass
+
+
+def _map_audits__client_hint_issue_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.ClientHintIssueReason':
+    pass
+
+
+def _map_audits__federated_auth_request_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.FederatedAuthRequestIssueDetails':
+    pass
+
+
+def _map_audits__federated_auth_request_issue_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.FederatedAuthRequestIssueReason':
+    pass
+
+
+def _map_audits__federated_auth_user_info_request_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.FederatedAuthUserInfoRequestIssueDetails':
+    pass
+
+
+def _map_audits__federated_auth_user_info_request_issue_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.FederatedAuthUserInfoRequestIssueReason':
+    pass
+
+
+def _map_audits__client_hint_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.ClientHintIssueDetails':
+    pass
+
+
+def _map_audits__failed_request_info__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.FailedRequestInfo':
+    pass
+
+
+def _map_audits__style_sheet_loading_issue_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.StyleSheetLoadingIssueReason':
+    pass
+
+
+def _map_audits__stylesheet_loading_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.StylesheetLoadingIssueDetails':
+    pass
+
+
+def _map_audits__inspector_issue_code__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.InspectorIssueCode':
+    pass
+
+
+def _map_audits__inspector_issue_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.InspectorIssueDetails':
+    pass
+
+
+def _map_audits__issue_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.IssueId':
+    pass
+
+
+def _map_audits__inspector_issue__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'audits.InspectorIssue':
+    pass
+
+
+def _map_autofill__credit_card__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'autofill.CreditCard':
+    pass
+
+
+def _map_autofill__address_field__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'autofill.AddressField':
+    pass
+
+
+def _map_autofill__address_fields__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'autofill.AddressFields':
+    pass
+
+
+def _map_autofill__address__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'autofill.Address':
+    pass
+
+
+def _map_autofill__address_ui__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'autofill.AddressUI':
+    pass
+
+
+def _map_autofill__filling_strategy__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'autofill.FillingStrategy':
+    pass
+
+
+def _map_autofill__filled_field__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'autofill.FilledField':
+    pass
+
+
+def _map_background_service__service_name__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'background_service.ServiceName':
+    pass
+
+
+def _map_background_service__event_metadata__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'background_service.EventMetadata':
+    pass
+
+
+def _map_background_service__background_service_event__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'background_service.BackgroundServiceEvent':
+    pass
+
+
+def _map_browser__browser_context_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.BrowserContextID':
+    pass
+
+
+def _map_browser__window_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.WindowID':
+    pass
+
+
+def _map_browser__window_state__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.WindowState':
+    pass
+
+
+def _map_browser__bounds__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.Bounds':
+    pass
+
+
+def _map_browser__permission_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.PermissionType':
+    pass
+
+
+def _map_browser__permission_setting__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.PermissionSetting':
+    pass
+
+
+def _map_browser__permission_descriptor__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.PermissionDescriptor':
+    pass
+
+
+def _map_browser__browser_command_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.BrowserCommandId':
+    pass
+
+
+def _map_browser__bucket__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.Bucket':
+    pass
+
+
+def _map_browser__histogram__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'browser.Histogram':
+    pass
+
+
+def _map_css__style_sheet_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.StyleSheetId':
+    pass
+
+
+def _map_css__style_sheet_origin__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.StyleSheetOrigin':
+    pass
+
+
+def _map_css__pseudo_element_matches__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.PseudoElementMatches':
+    pass
+
+
+def _map_css__inherited_style_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.InheritedStyleEntry':
+    pass
+
+
+def _map_css__inherited_pseudo_element_matches__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.InheritedPseudoElementMatches':
+    pass
+
+
+def _map_css__rule_match__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.RuleMatch':
+    pass
+
+
+def _map_css__value__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.Value':
+    pass
+
+
+def _map_css__specificity__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.Specificity':
+    pass
+
+
+def _map_css__selector_list__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.SelectorList':
+    pass
+
+
+def _map_css__css_style_sheet_header__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSStyleSheetHeader':
+    pass
+
+
+def _map_css__css_rule__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSRule':
+    pass
+
+
+def _map_css__css_rule_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSRuleType':
+    pass
+
+
+def _map_css__rule_usage__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.RuleUsage':
+    pass
+
+
+def _map_css__source_range__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.SourceRange':
+    pass
+
+
+def _map_css__shorthand_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.ShorthandEntry':
+    pass
+
+
+def _map_css__css_computed_style_property__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSComputedStyleProperty':
+    pass
+
+
+def _map_css__css_style__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSStyle':
+    pass
+
+
+def _map_css__css_property__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSProperty':
+    pass
+
+
+def _map_css__css_media__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSMedia':
+    pass
+
+
+def _map_css__media_query__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.MediaQuery':
+    pass
+
+
+def _map_css__media_query_expression__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.MediaQueryExpression':
+    pass
+
+
+def _map_css__css_container_query__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSContainerQuery':
+    pass
+
+
+def _map_css__css_supports__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSSupports':
+    pass
+
+
+def _map_css__css_scope__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSScope':
+    pass
+
+
+def _map_css__css_layer__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSLayer':
+    pass
+
+
+def _map_css__css_layer_data__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSLayerData':
+    pass
+
+
+def _map_css__platform_font_usage__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.PlatformFontUsage':
+    pass
+
+
+def _map_css__font_variation_axis__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.FontVariationAxis':
+    pass
+
+
+def _map_css__font_face__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.FontFace':
+    pass
+
+
+def _map_css__css_try_rule__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSTryRule':
+    pass
+
+
+def _map_css__css_position_fallback_rule__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSPositionFallbackRule':
+    pass
+
+
+def _map_css__css_keyframes_rule__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSKeyframesRule':
+    pass
+
+
+def _map_css__css_property_registration__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSPropertyRegistration':
+    pass
+
+
+def _map_css__css_property_rule__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSPropertyRule':
+    pass
+
+
+def _map_css__css_keyframe_rule__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.CSSKeyframeRule':
+    pass
+
+
+def _map_css__style_declaration_edit__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'css.StyleDeclarationEdit':
+    pass
+
+
+def _map_cache_storage__cache_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'cache_storage.CacheId':
+    pass
+
+
+def _map_cache_storage__cached_response_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'cache_storage.CachedResponseType':
+    pass
+
+
+def _map_cache_storage__data_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'cache_storage.DataEntry':
+    pass
+
+
+def _map_cache_storage__cache__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'cache_storage.Cache':
+    pass
+
+
+def _map_cache_storage__header__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'cache_storage.Header':
+    pass
+
+
+def _map_cache_storage__cached_response__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'cache_storage.CachedResponse':
+    pass
+
+
+def _map_cast__sink__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'cast.Sink':
+    pass
+
+
+def _map_dom__node_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.NodeId':
+    pass
+
+
+def _map_dom__backend_node_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.BackendNodeId':
+    pass
+
+
+def _map_dom__backend_node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.BackendNode':
+    pass
+
+
+def _map_dom__pseudo_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.PseudoType':
+    pass
+
+
+def _map_dom__shadow_root_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.ShadowRootType':
+    pass
+
+
+def _map_dom__compatibility_mode__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.CompatibilityMode':
+    pass
+
+
+def _map_dom__physical_axes__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.PhysicalAxes':
+    pass
+
+
+def _map_dom__logical_axes__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.LogicalAxes':
+    pass
+
+
+def _map_dom__node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.Node':
+    pass
+
+
+def _map_dom__rgba__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.RGBA':
+    pass
+
+
+def _map_dom__quad__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.Quad':
+    pass
+
+
+def _map_dom__box_model__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.BoxModel':
+    pass
+
+
+def _map_dom__shape_outside_info__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.ShapeOutsideInfo':
+    pass
+
+
+def _map_dom__rect__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.Rect':
+    pass
+
+
+def _map_dom__css_computed_style_property__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom.CSSComputedStyleProperty':
+    pass
+
+
+def _map_dom_debugger__dom_breakpoint_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_debugger.DOMBreakpointType':
+    pass
+
+
+def _map_dom_debugger__csp_violation_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_debugger.CSPViolationType':
+    pass
+
+
+def _map_dom_debugger__event_listener__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_debugger.EventListener':
+    pass
+
+
+def _map_dom_snapshot__dom_node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.DOMNode':
+    pass
+
+
+def _map_dom_snapshot__inline_text_box__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.InlineTextBox':
+    pass
+
+
+def _map_dom_snapshot__layout_tree_node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.LayoutTreeNode':
+    pass
+
+
+def _map_dom_snapshot__computed_style__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.ComputedStyle':
+    pass
+
+
+def _map_dom_snapshot__name_value__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.NameValue':
+    pass
+
+
+def _map_dom_snapshot__string_index__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.StringIndex':
+    pass
+
+
+def _map_dom_snapshot__array_of_strings__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.ArrayOfStrings':
+    pass
+
+
+def _map_dom_snapshot__rare_string_data__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.RareStringData':
+    pass
+
+
+def _map_dom_snapshot__rare_boolean_data__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.RareBooleanData':
+    pass
+
+
+def _map_dom_snapshot__rare_integer_data__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.RareIntegerData':
+    pass
+
+
+def _map_dom_snapshot__rectangle__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.Rectangle':
+    pass
+
+
+def _map_dom_snapshot__document_snapshot__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.DocumentSnapshot':
+    pass
+
+
+def _map_dom_snapshot__node_tree_snapshot__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.NodeTreeSnapshot':
+    pass
+
+
+def _map_dom_snapshot__layout_tree_snapshot__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.LayoutTreeSnapshot':
+    pass
+
+
+def _map_dom_snapshot__text_box_snapshot__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_snapshot.TextBoxSnapshot':
+    pass
+
+
+def _map_dom_storage__serialized_storage_key__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_storage.SerializedStorageKey':
+    pass
+
+
+def _map_dom_storage__storage_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_storage.StorageId':
+    pass
+
+
+def _map_dom_storage__item__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'dom_storage.Item':
+    pass
+
+
+def _map_database__database_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'database.DatabaseId':
+    pass
+
+
+def _map_database__database__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'database.Database':
+    pass
+
+
+def _map_database__error__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'database.Error':
+    pass
+
+
+def _map_emulation__screen_orientation__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'emulation.ScreenOrientation':
+    pass
+
+
+def _map_emulation__display_feature__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'emulation.DisplayFeature':
+    pass
+
+
+def _map_emulation__media_feature__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'emulation.MediaFeature':
+    pass
+
+
+def _map_emulation__virtual_time_policy__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'emulation.VirtualTimePolicy':
+    pass
+
+
+def _map_emulation__user_agent_brand_version__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'emulation.UserAgentBrandVersion':
+    pass
+
+
+def _map_emulation__user_agent_metadata__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'emulation.UserAgentMetadata':
+    pass
+
+
+def _map_emulation__disabled_image_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'emulation.DisabledImageType':
+    pass
+
+
+def _map_headless_experimental__screenshot_params__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'headless_experimental.ScreenshotParams':
+    pass
+
+
+def _map_io__stream_handle__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'io.StreamHandle':
+    pass
+
+
+def _map_indexed_db__database_with_object_stores__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'indexed_db.DatabaseWithObjectStores':
+    pass
+
+
+def _map_indexed_db__object_store__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'indexed_db.ObjectStore':
+    pass
+
+
+def _map_indexed_db__object_store_index__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'indexed_db.ObjectStoreIndex':
+    pass
+
+
+def _map_indexed_db__key__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'indexed_db.Key':
+    pass
+
+
+def _map_indexed_db__key_range__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'indexed_db.KeyRange':
+    pass
+
+
+def _map_indexed_db__data_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'indexed_db.DataEntry':
+    pass
+
+
+def _map_indexed_db__key_path__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'indexed_db.KeyPath':
+    pass
+
+
+def _map_input__touch_point__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'input_.TouchPoint':
+    pass
+
+
+def _map_input__gesture_source_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'input_.GestureSourceType':
+    pass
+
+
+def _map_input__mouse_button__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'input_.MouseButton':
+    pass
+
+
+def _map_input__time_since_epoch__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'input_.TimeSinceEpoch':
+    pass
+
+
+def _map_input__drag_data_item__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'input_.DragDataItem':
+    pass
+
+
+def _map_input__drag_data__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'input_.DragData':
+    pass
+
+
+def _map_layer_tree__layer_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'layer_tree.LayerId':
+    pass
+
+
+def _map_layer_tree__snapshot_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'layer_tree.SnapshotId':
+    pass
+
+
+def _map_layer_tree__scroll_rect__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'layer_tree.ScrollRect':
+    pass
+
+
+def _map_layer_tree__sticky_position_constraint__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'layer_tree.StickyPositionConstraint':
+    pass
+
+
+def _map_layer_tree__picture_tile__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'layer_tree.PictureTile':
+    pass
+
+
+def _map_layer_tree__layer__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'layer_tree.Layer':
+    pass
+
+
+def _map_layer_tree__paint_profile__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'layer_tree.PaintProfile':
+    pass
+
+
+def _map_log__log_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'log.LogEntry':
+    pass
+
+
+def _map_log__violation_setting__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'log.ViolationSetting':
+    pass
+
+
+def _map_memory__pressure_level__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'memory.PressureLevel':
+    pass
+
+
+def _map_memory__sampling_profile_node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'memory.SamplingProfileNode':
+    pass
+
+
+def _map_memory__sampling_profile__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'memory.SamplingProfile':
+    pass
+
+
+def _map_memory__module__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'memory.Module':
+    pass
+
+
+def _map_network__resource_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ResourceType':
+    pass
+
+
+def _map_network__loader_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.LoaderId':
+    pass
+
+
+def _map_network__request_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.RequestId':
+    pass
+
+
+def _map_network__interception_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.InterceptionId':
+    pass
+
+
+def _map_network__error_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ErrorReason':
+    pass
+
+
+def _map_network__time_since_epoch__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.TimeSinceEpoch':
+    pass
+
+
+def _map_network__monotonic_time__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.MonotonicTime':
+    pass
+
+
+def _map_network__headers__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.Headers':
+    pass
+
+
+def _map_network__connection_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ConnectionType':
+    pass
+
+
+def _map_network__cookie_same_site__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CookieSameSite':
+    pass
+
+
+def _map_network__cookie_priority__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CookiePriority':
+    pass
+
+
+def _map_network__cookie_source_scheme__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CookieSourceScheme':
+    pass
+
+
+def _map_network__resource_timing__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ResourceTiming':
+    pass
+
+
+def _map_network__resource_priority__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ResourcePriority':
+    pass
+
+
+def _map_network__post_data_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.PostDataEntry':
+    pass
+
+
+def _map_network__request__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.Request':
+    pass
+
+
+def _map_network__signed_certificate_timestamp__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.SignedCertificateTimestamp':
+    pass
+
+
+def _map_network__security_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.SecurityDetails':
+    pass
+
+
+def _map_network__certificate_transparency_compliance__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CertificateTransparencyCompliance':
+    pass
+
+
+def _map_network__blocked_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.BlockedReason':
+    pass
+
+
+def _map_network__cors_error__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CorsError':
+    pass
+
+
+def _map_network__cors_error_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CorsErrorStatus':
+    pass
+
+
+def _map_network__service_worker_response_source__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ServiceWorkerResponseSource':
+    pass
+
+
+def _map_network__trust_token_params__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.TrustTokenParams':
+    pass
+
+
+def _map_network__trust_token_operation_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.TrustTokenOperationType':
+    pass
+
+
+def _map_network__alternate_protocol_usage__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.AlternateProtocolUsage':
+    pass
+
+
+def _map_network__response__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.Response':
+    pass
+
+
+def _map_network__web_socket_request__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.WebSocketRequest':
+    pass
+
+
+def _map_network__web_socket_response__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.WebSocketResponse':
+    pass
+
+
+def _map_network__web_socket_frame__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.WebSocketFrame':
+    pass
+
+
+def _map_network__cached_resource__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CachedResource':
+    pass
+
+
+def _map_network__initiator__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.Initiator':
+    pass
+
+
+def _map_network__cookie__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.Cookie':
+    pass
+
+
+def _map_network__set_cookie_blocked_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.SetCookieBlockedReason':
+    pass
+
+
+def _map_network__cookie_blocked_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CookieBlockedReason':
+    pass
+
+
+def _map_network__blocked_set_cookie_with_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.BlockedSetCookieWithReason':
+    pass
+
+
+def _map_network__blocked_cookie_with_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.BlockedCookieWithReason':
+    pass
+
+
+def _map_network__cookie_param__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CookieParam':
+    pass
+
+
+def _map_network__auth_challenge__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.AuthChallenge':
+    pass
+
+
+def _map_network__auth_challenge_response__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.AuthChallengeResponse':
+    pass
+
+
+def _map_network__interception_stage__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.InterceptionStage':
+    pass
+
+
+def _map_network__request_pattern__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.RequestPattern':
+    pass
+
+
+def _map_network__signed_exchange_signature__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.SignedExchangeSignature':
+    pass
+
+
+def _map_network__signed_exchange_header__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.SignedExchangeHeader':
+    pass
+
+
+def _map_network__signed_exchange_error_field__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.SignedExchangeErrorField':
+    pass
+
+
+def _map_network__signed_exchange_error__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.SignedExchangeError':
+    pass
+
+
+def _map_network__signed_exchange_info__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.SignedExchangeInfo':
+    pass
+
+
+def _map_network__content_encoding__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ContentEncoding':
+    pass
+
+
+def _map_network__private_network_request_policy__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.PrivateNetworkRequestPolicy':
+    pass
+
+
+def _map_network__ip_address_space__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.IPAddressSpace':
+    pass
+
+
+def _map_network__connect_timing__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ConnectTiming':
+    pass
+
+
+def _map_network__client_security_state__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ClientSecurityState':
+    pass
+
+
+def _map_network__cross_origin_opener_policy_value__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CrossOriginOpenerPolicyValue':
+    pass
+
+
+def _map_network__cross_origin_opener_policy_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CrossOriginOpenerPolicyStatus':
+    pass
+
+
+def _map_network__cross_origin_embedder_policy_value__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CrossOriginEmbedderPolicyValue':
+    pass
+
+
+def _map_network__cross_origin_embedder_policy_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.CrossOriginEmbedderPolicyStatus':
+    pass
+
+
+def _map_network__content_security_policy_source__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ContentSecurityPolicySource':
+    pass
+
+
+def _map_network__content_security_policy_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ContentSecurityPolicyStatus':
+    pass
+
+
+def _map_network__security_isolation_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.SecurityIsolationStatus':
+    pass
+
+
+def _map_network__report_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ReportStatus':
+    pass
+
+
+def _map_network__report_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ReportId':
+    pass
+
+
+def _map_network__reporting_api_report__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ReportingApiReport':
+    pass
+
+
+def _map_network__reporting_api_endpoint__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.ReportingApiEndpoint':
+    pass
+
+
+def _map_network__load_network_resource_page_result__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.LoadNetworkResourcePageResult':
+    pass
+
+
+def _map_network__load_network_resource_options__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'network.LoadNetworkResourceOptions':
+    pass
+
+
+def _map_overlay__source_order_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.SourceOrderConfig':
+    pass
+
+
+def _map_overlay__grid_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.GridHighlightConfig':
+    pass
+
+
+def _map_overlay__flex_container_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.FlexContainerHighlightConfig':
+    pass
+
+
+def _map_overlay__flex_item_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.FlexItemHighlightConfig':
+    pass
+
+
+def _map_overlay__line_style__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.LineStyle':
+    pass
+
+
+def _map_overlay__box_style__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.BoxStyle':
+    pass
+
+
+def _map_overlay__contrast_algorithm__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.ContrastAlgorithm':
+    pass
+
+
+def _map_overlay__highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.HighlightConfig':
+    pass
+
+
+def _map_overlay__color_format__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.ColorFormat':
+    pass
+
+
+def _map_overlay__grid_node_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.GridNodeHighlightConfig':
+    pass
+
+
+def _map_overlay__flex_node_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.FlexNodeHighlightConfig':
+    pass
+
+
+def _map_overlay__scroll_snap_container_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.ScrollSnapContainerHighlightConfig':
+    pass
+
+
+def _map_overlay__scroll_snap_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.ScrollSnapHighlightConfig':
+    pass
+
+
+def _map_overlay__hinge_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.HingeConfig':
+    pass
+
+
+def _map_overlay__container_query_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.ContainerQueryHighlightConfig':
+    pass
+
+
+def _map_overlay__container_query_container_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.ContainerQueryContainerHighlightConfig':
+    pass
+
+
+def _map_overlay__isolated_element_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.IsolatedElementHighlightConfig':
+    pass
+
+
+def _map_overlay__isolation_mode_highlight_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.IsolationModeHighlightConfig':
+    pass
+
+
+def _map_overlay__inspect_mode__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'overlay.InspectMode':
+    pass
+
+
+def _map_page__frame_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.FrameId':
+    pass
+
+
+def _map_page__ad_frame_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.AdFrameType':
+    pass
+
+
+def _map_page__ad_frame_explanation__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.AdFrameExplanation':
+    pass
+
+
+def _map_page__ad_frame_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.AdFrameStatus':
+    pass
+
+
+def _map_page__ad_script_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.AdScriptId':
+    pass
+
+
+def _map_page__secure_context_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.SecureContextType':
+    pass
+
+
+def _map_page__cross_origin_isolated_context_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.CrossOriginIsolatedContextType':
+    pass
+
+
+def _map_page__gated_api_features__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.GatedAPIFeatures':
+    pass
+
+
+def _map_page__permissions_policy_feature__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.PermissionsPolicyFeature':
+    pass
+
+
+def _map_page__permissions_policy_block_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.PermissionsPolicyBlockReason':
+    pass
+
+
+def _map_page__permissions_policy_block_locator__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.PermissionsPolicyBlockLocator':
+    pass
+
+
+def _map_page__permissions_policy_feature_state__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.PermissionsPolicyFeatureState':
+    pass
+
+
+def _map_page__origin_trial_token_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.OriginTrialTokenStatus':
+    pass
+
+
+def _map_page__origin_trial_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.OriginTrialStatus':
+    pass
+
+
+def _map_page__origin_trial_usage_restriction__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.OriginTrialUsageRestriction':
+    pass
+
+
+def _map_page__origin_trial_token__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.OriginTrialToken':
+    pass
+
+
+def _map_page__origin_trial_token_with_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.OriginTrialTokenWithStatus':
+    pass
+
+
+def _map_page__origin_trial__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.OriginTrial':
+    pass
+
+
+def _map_page__frame__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.Frame':
+    pass
+
+
+def _map_page__frame_resource__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.FrameResource':
+    pass
+
+
+def _map_page__frame_resource_tree__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.FrameResourceTree':
+    pass
+
+
+def _map_page__frame_tree__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.FrameTree':
+    pass
+
+
+def _map_page__script_identifier__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.ScriptIdentifier':
+    pass
+
+
+def _map_page__transition_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.TransitionType':
+    pass
+
+
+def _map_page__navigation_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.NavigationEntry':
+    pass
+
+
+def _map_page__screencast_frame_metadata__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.ScreencastFrameMetadata':
+    pass
+
+
+def _map_page__dialog_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.DialogType':
+    pass
+
+
+def _map_page__app_manifest_error__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.AppManifestError':
+    pass
+
+
+def _map_page__app_manifest_parsed_properties__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.AppManifestParsedProperties':
+    pass
+
+
+def _map_page__layout_viewport__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.LayoutViewport':
+    pass
+
+
+def _map_page__visual_viewport__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.VisualViewport':
+    pass
+
+
+def _map_page__viewport__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.Viewport':
+    pass
+
+
+def _map_page__font_families__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.FontFamilies':
+    pass
+
+
+def _map_page__script_font_families__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.ScriptFontFamilies':
+    pass
+
+
+def _map_page__font_sizes__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.FontSizes':
+    pass
+
+
+def _map_page__client_navigation_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.ClientNavigationReason':
+    pass
+
+
+def _map_page__client_navigation_disposition__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.ClientNavigationDisposition':
+    pass
+
+
+def _map_page__installability_error_argument__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.InstallabilityErrorArgument':
+    pass
+
+
+def _map_page__installability_error__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.InstallabilityError':
+    pass
+
+
+def _map_page__referrer_policy__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.ReferrerPolicy':
+    pass
+
+
+def _map_page__compilation_cache_params__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.CompilationCacheParams':
+    pass
+
+
+def _map_page__auto_response_mode__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.AutoResponseMode':
+    pass
+
+
+def _map_page__navigation_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.NavigationType':
+    pass
+
+
+def _map_page__back_forward_cache_not_restored_reason__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.BackForwardCacheNotRestoredReason':
+    pass
+
+
+def _map_page__back_forward_cache_not_restored_reason_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.BackForwardCacheNotRestoredReasonType':
+    pass
+
+
+def _map_page__back_forward_cache_not_restored_explanation__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.BackForwardCacheNotRestoredExplanation':
+    pass
+
+
+def _map_page__back_forward_cache_not_restored_explanation_tree__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'page.BackForwardCacheNotRestoredExplanationTree':
+    pass
+
+
+def _map_performance__metric__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'performance.Metric':
+    pass
+
+
+def _map_performance_timeline__largest_contentful_paint__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'performance_timeline.LargestContentfulPaint':
+    pass
+
+
+def _map_performance_timeline__layout_shift_attribution__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'performance_timeline.LayoutShiftAttribution':
+    pass
+
+
+def _map_performance_timeline__layout_shift__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'performance_timeline.LayoutShift':
+    pass
+
+
+def _map_performance_timeline__timeline_event__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'performance_timeline.TimelineEvent':
+    pass
+
+
+def _map_security__certificate_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.CertificateId':
+    pass
+
+
+def _map_security__mixed_content_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.MixedContentType':
+    pass
+
+
+def _map_security__security_state__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.SecurityState':
+    pass
+
+
+def _map_security__certificate_security_state__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.CertificateSecurityState':
+    pass
+
+
+def _map_security__safety_tip_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.SafetyTipStatus':
+    pass
+
+
+def _map_security__safety_tip_info__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.SafetyTipInfo':
+    pass
+
+
+def _map_security__visible_security_state__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.VisibleSecurityState':
+    pass
+
+
+def _map_security__security_state_explanation__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.SecurityStateExplanation':
+    pass
+
+
+def _map_security__insecure_content_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.InsecureContentStatus':
+    pass
+
+
+def _map_security__certificate_error_action__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'security.CertificateErrorAction':
+    pass
+
+
+def _map_service_worker__registration_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'service_worker.RegistrationID':
+    pass
+
+
+def _map_service_worker__service_worker_registration__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'service_worker.ServiceWorkerRegistration':
+    pass
+
+
+def _map_service_worker__service_worker_version_running_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'service_worker.ServiceWorkerVersionRunningStatus':
+    pass
+
+
+def _map_service_worker__service_worker_version_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'service_worker.ServiceWorkerVersionStatus':
+    pass
+
+
+def _map_service_worker__service_worker_version__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'service_worker.ServiceWorkerVersion':
+    pass
+
+
+def _map_service_worker__service_worker_error_message__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'service_worker.ServiceWorkerErrorMessage':
+    pass
+
+
+def _map_storage__serialized_storage_key__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.SerializedStorageKey':
+    pass
+
+
+def _map_storage__storage_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.StorageType':
+    pass
+
+
+def _map_storage__usage_for_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.UsageForType':
+    pass
+
+
+def _map_storage__trust_tokens__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.TrustTokens':
+    pass
+
+
+def _map_storage__interest_group_access_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.InterestGroupAccessType':
+    pass
+
+
+def _map_storage__interest_group_ad__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.InterestGroupAd':
+    pass
+
+
+def _map_storage__interest_group_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.InterestGroupDetails':
+    pass
+
+
+def _map_storage__shared_storage_access_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.SharedStorageAccessType':
+    pass
+
+
+def _map_storage__shared_storage_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.SharedStorageEntry':
+    pass
+
+
+def _map_storage__shared_storage_metadata__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.SharedStorageMetadata':
+    pass
+
+
+def _map_storage__shared_storage_reporting_metadata__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.SharedStorageReportingMetadata':
+    pass
+
+
+def _map_storage__shared_storage_url_with_metadata__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.SharedStorageUrlWithMetadata':
+    pass
+
+
+def _map_storage__shared_storage_access_params__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.SharedStorageAccessParams':
+    pass
+
+
+def _map_storage__storage_buckets_durability__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.StorageBucketsDurability':
+    pass
+
+
+def _map_storage__storage_bucket__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.StorageBucket':
+    pass
+
+
+def _map_storage__storage_bucket_info__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.StorageBucketInfo':
+    pass
+
+
+def _map_storage__attribution_reporting_source_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.AttributionReportingSourceType':
+    pass
+
+
+def _map_storage__unsigned_int64_as_base10__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.UnsignedInt64AsBase10':
+    pass
+
+
+def _map_storage__unsigned_int128_as_base16__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.UnsignedInt128AsBase16':
+    pass
+
+
+def _map_storage__signed_int64_as_base10__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.SignedInt64AsBase10':
+    pass
+
+
+def _map_storage__attribution_reporting_filter_data_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.AttributionReportingFilterDataEntry':
+    pass
+
+
+def _map_storage__attribution_reporting_aggregation_keys_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.AttributionReportingAggregationKeysEntry':
+    pass
+
+
+def _map_storage__attribution_reporting_event_report_windows__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.AttributionReportingEventReportWindows':
+    pass
+
+
+def _map_storage__attribution_reporting_source_registration__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.AttributionReportingSourceRegistration':
+    pass
+
+
+def _map_storage__attribution_reporting_source_registration_result__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'storage.AttributionReportingSourceRegistrationResult':
+    pass
+
+
+def _map_system_info__gpu_device__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'system_info.GPUDevice':
+    pass
+
+
+def _map_system_info__size__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'system_info.Size':
+    pass
+
+
+def _map_system_info__video_decode_accelerator_capability__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'system_info.VideoDecodeAcceleratorCapability':
+    pass
+
+
+def _map_system_info__video_encode_accelerator_capability__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'system_info.VideoEncodeAcceleratorCapability':
+    pass
+
+
+def _map_system_info__subsampling_format__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'system_info.SubsamplingFormat':
+    pass
+
+
+def _map_system_info__image_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'system_info.ImageType':
+    pass
+
+
+def _map_system_info__image_decode_accelerator_capability__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'system_info.ImageDecodeAcceleratorCapability':
+    pass
+
+
+def _map_system_info__gpu_info__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'system_info.GPUInfo':
+    pass
+
+
+def _map_system_info__process_info__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'system_info.ProcessInfo':
+    pass
+
+
+def _map_target__target_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'target.TargetID':
+    pass
+
+
+def _map_target__session_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'target.SessionID':
+    pass
+
+
+def _map_target__target_info__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'target.TargetInfo':
+    pass
+
+
+def _map_target__filter_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'target.FilterEntry':
+    pass
+
+
+def _map_target__target_filter__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'target.TargetFilter':
+    pass
+
+
+def _map_target__remote_location__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'target.RemoteLocation':
+    pass
+
+
+def _map_tracing__memory_dump_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'tracing.MemoryDumpConfig':
+    pass
+
+
+def _map_tracing__trace_config__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'tracing.TraceConfig':
+    pass
+
+
+def _map_tracing__stream_format__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'tracing.StreamFormat':
+    pass
+
+
+def _map_tracing__stream_compression__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'tracing.StreamCompression':
+    pass
+
+
+def _map_tracing__memory_dump_level_of_detail__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'tracing.MemoryDumpLevelOfDetail':
+    pass
+
+
+def _map_tracing__tracing_backend__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'tracing.TracingBackend':
+    pass
+
+
+def _map_fetch__request_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'fetch.RequestId':
+    pass
+
+
+def _map_fetch__request_stage__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'fetch.RequestStage':
+    pass
+
+
+def _map_fetch__request_pattern__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'fetch.RequestPattern':
+    pass
+
+
+def _map_fetch__header_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'fetch.HeaderEntry':
+    pass
+
+
+def _map_fetch__auth_challenge__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'fetch.AuthChallenge':
+    pass
+
+
+def _map_fetch__auth_challenge_response__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'fetch.AuthChallengeResponse':
+    pass
+
+
+def _map_web_audio__graph_object_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.GraphObjectId':
+    pass
+
+
+def _map_web_audio__context_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.ContextType':
+    pass
+
+
+def _map_web_audio__context_state__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.ContextState':
+    pass
+
+
+def _map_web_audio__node_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.NodeType':
+    pass
+
+
+def _map_web_audio__channel_count_mode__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.ChannelCountMode':
+    pass
+
+
+def _map_web_audio__channel_interpretation__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.ChannelInterpretation':
+    pass
+
+
+def _map_web_audio__param_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.ParamType':
+    pass
+
+
+def _map_web_audio__automation_rate__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.AutomationRate':
+    pass
+
+
+def _map_web_audio__context_realtime_data__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.ContextRealtimeData':
+    pass
+
+
+def _map_web_audio__base_audio_context__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.BaseAudioContext':
+    pass
+
+
+def _map_web_audio__audio_listener__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.AudioListener':
+    pass
+
+
+def _map_web_audio__audio_node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.AudioNode':
+    pass
+
+
+def _map_web_audio__audio_param__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_audio.AudioParam':
+    pass
+
+
+def _map_web_authn__authenticator_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_authn.AuthenticatorId':
+    pass
+
+
+def _map_web_authn__authenticator_protocol__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_authn.AuthenticatorProtocol':
+    pass
+
+
+def _map_web_authn__ctap2_version__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_authn.Ctap2Version':
+    pass
+
+
+def _map_web_authn__authenticator_transport__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_authn.AuthenticatorTransport':
+    pass
+
+
+def _map_web_authn__virtual_authenticator_options__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_authn.VirtualAuthenticatorOptions':
+    pass
+
+
+def _map_web_authn__credential__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'web_authn.Credential':
+    pass
+
+
+def _map_media__player_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'media.PlayerId':
+    pass
+
+
+def _map_media__timestamp__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'media.Timestamp':
+    pass
+
+
+def _map_media__player_message__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'media.PlayerMessage':
+    pass
+
+
+def _map_media__player_property__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'media.PlayerProperty':
+    pass
+
+
+def _map_media__player_event__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'media.PlayerEvent':
+    pass
+
+
+def _map_media__player_error_source_location__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'media.PlayerErrorSourceLocation':
+    pass
+
+
+def _map_media__player_error__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'media.PlayerError':
+    pass
+
+
+def _map_device_access__request_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'device_access.RequestId':
+    pass
+
+
+def _map_device_access__device_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'device_access.DeviceId':
+    pass
+
+
+def _map_device_access__prompt_device__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'device_access.PromptDevice':
+    pass
+
+
+def _map_preload__rule_set_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.RuleSetId':
+    pass
+
+
+def _map_preload__rule_set__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.RuleSet':
+    pass
+
+
+def _map_preload__rule_set_error_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.RuleSetErrorType':
+    pass
+
+
+def _map_preload__speculation_action__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.SpeculationAction':
+    pass
+
+
+def _map_preload__speculation_target_hint__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.SpeculationTargetHint':
+    pass
+
+
+def _map_preload__preloading_attempt_key__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.PreloadingAttemptKey':
+    pass
+
+
+def _map_preload__preloading_attempt_source__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.PreloadingAttemptSource':
+    pass
+
+
+def _map_preload__prerender_final_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.PrerenderFinalStatus':
+    pass
+
+
+def _map_preload__preloading_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.PreloadingStatus':
+    pass
+
+
+def _map_preload__prefetch_status__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'preload.PrefetchStatus':
+    pass
+
+
+def _map_fed_cm__login_state__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'fed_cm.LoginState':
+    pass
+
+
+def _map_fed_cm__dialog_type__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'fed_cm.DialogType':
+    pass
+
+
+def _map_fed_cm__account__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'fed_cm.Account':
+    pass
+
+
+def _map_console__console_message__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'console.ConsoleMessage':
+    pass
+
+
+def _map_debugger__breakpoint_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'debugger.BreakpointId':
+    pass
+
+
+def _map_debugger__call_frame_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'debugger.CallFrameId':
+    pass
+
+
+def _map_debugger__location__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'debugger.Location':
+    pass
+
+
+def _map_debugger__script_position__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'debugger.ScriptPosition':
+    pass
+
+
+def _map_debugger__call_frame__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'debugger.CallFrame':
+    pass
+
+
+def _map_debugger__scope__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'debugger.Scope':
+    pass
+
+
+def _map_debugger__search_match__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'debugger.SearchMatch':
+    pass
+
+
+def _map_debugger__break_location__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'debugger.BreakLocation':
+    pass
+
+
+def _map_heap_profiler__heap_snapshot_object_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'heap_profiler.HeapSnapshotObjectId':
+    pass
+
+
+def _map_heap_profiler__sampling_heap_profile_node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'heap_profiler.SamplingHeapProfileNode':
+    pass
+
+
+def _map_heap_profiler__sampling_heap_profile_sample__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'heap_profiler.SamplingHeapProfileSample':
+    pass
+
+
+def _map_heap_profiler__sampling_heap_profile__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'heap_profiler.SamplingHeapProfile':
+    pass
+
+
+def _map_profiler__profile_node__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'profiler.ProfileNode':
+    pass
+
+
+def _map_profiler__profile__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'profiler.Profile':
+    pass
+
+
+def _map_profiler__position_tick_info__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'profiler.PositionTickInfo':
+    pass
+
+
+def _map_profiler__coverage_range__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'profiler.CoverageRange':
+    pass
+
+
+def _map_profiler__function_coverage__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'profiler.FunctionCoverage':
+    pass
+
+
+def _map_profiler__script_coverage__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'profiler.ScriptCoverage':
+    pass
+
+
+def _map_profiler__type_object__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'profiler.TypeObject':
+    pass
+
+
+def _map_profiler__type_profile_entry__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'profiler.TypeProfileEntry':
+    pass
+
+
+def _map_profiler__script_type_profile__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'profiler.ScriptTypeProfile':
+    pass
+
+
+def _map_runtime__script_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.ScriptId':
+    pass
+
+
+def _map_runtime__remote_object_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.RemoteObjectId':
+    pass
+
+
+def _map_runtime__unserializable_value__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.UnserializableValue':
+    pass
+
+
+def _map_runtime__remote_object__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.RemoteObject':
+    pass
+
+
+def _map_runtime__custom_preview__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.CustomPreview':
+    pass
+
+
+def _map_runtime__object_preview__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.ObjectPreview':
+    pass
+
+
+def _map_runtime__property_preview__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.PropertyPreview':
+    pass
+
+
+def _map_runtime__entry_preview__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.EntryPreview':
+    pass
+
+
+def _map_runtime__property_descriptor__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.PropertyDescriptor':
+    pass
+
+
+def _map_runtime__internal_property_descriptor__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.InternalPropertyDescriptor':
+    pass
+
+
+def _map_runtime__private_property_descriptor__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.PrivatePropertyDescriptor':
+    pass
+
+
+def _map_runtime__call_argument__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.CallArgument':
+    pass
+
+
+def _map_runtime__execution_context_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.ExecutionContextId':
+    pass
+
+
+def _map_runtime__execution_context_description__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.ExecutionContextDescription':
+    pass
+
+
+def _map_runtime__exception_details__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.ExceptionDetails':
+    pass
+
+
+def _map_runtime__timestamp__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.Timestamp':
+    pass
+
+
+def _map_runtime__time_delta__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.TimeDelta':
+    pass
+
+
+def _map_runtime__call_frame__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.CallFrame':
+    pass
+
+
+def _map_runtime__stack_trace__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.StackTrace':
+    pass
+
+
+def _map_runtime__unique_debugger_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.UniqueDebuggerId':
+    pass
+
+
+def _map_runtime__stack_trace_id__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'runtime.StackTraceId':
+    pass
+
+
+def _map_schema__domain__from_dict(data: dict, casing_strategy: 'CasingStrategyT' = 'snake') -> 'schema.Domain':
+    pass
+
+
+def to_dict(data, casing_strategy: CasingStrategyT) -> dict:
+    pass
+    lookup = {
+        accessibility.AXValueSource: (
+            _map_accessibility__ax_value_source__to_dict
+        ),
+        accessibility.AXRelatedNode: (
+            _map_accessibility__ax_related_node__to_dict
+        ),
+        accessibility.AXProperty: (
+            _map_accessibility__ax_property__to_dict
+        ),
+        accessibility.AXValue: (
+            _map_accessibility__ax_value__to_dict
+        ),
+        accessibility.AXNode: (
+            _map_accessibility__ax_node__to_dict
+        ),
+        animation.Animation: (
+            _map_animation__animation__to_dict
+        ),
+        animation.AnimationEffect: (
+            _map_animation__animation_effect__to_dict
+        ),
+        animation.KeyframesRule: (
+            _map_animation__keyframes_rule__to_dict
+        ),
+        animation.KeyframeStyle: (
+            _map_animation__keyframe_style__to_dict
+        ),
+        audits.AffectedCookie: (
+            _map_audits__affected_cookie__to_dict
+        ),
+        audits.AffectedRequest: (
+            _map_audits__affected_request__to_dict
+        ),
+        audits.AffectedFrame: (
+            _map_audits__affected_frame__to_dict
+        ),
+        audits.CookieIssueDetails: (
+            _map_audits__cookie_issue_details__to_dict
+        ),
+        audits.MixedContentIssueDetails: (
+            _map_audits__mixed_content_issue_details__to_dict
+        ),
+        audits.BlockedByResponseIssueDetails: (
+            _map_audits__blocked_by_response_issue_details__to_dict
+        ),
+        audits.HeavyAdIssueDetails: (
+            _map_audits__heavy_ad_issue_details__to_dict
+        ),
+        audits.SourceCodeLocation: (
+            _map_audits__source_code_location__to_dict
+        ),
+        audits.ContentSecurityPolicyIssueDetails: (
+            _map_audits__content_security_policy_issue_details__to_dict
+        ),
+        audits.SharedArrayBufferIssueDetails: (
+            _map_audits__shared_array_buffer_issue_details__to_dict
+        ),
+        audits.LowTextContrastIssueDetails: (
+            _map_audits__low_text_contrast_issue_details__to_dict
+        ),
+        audits.CorsIssueDetails: (
+            _map_audits__cors_issue_details__to_dict
+        ),
+        audits.AttributionReportingIssueDetails: (
+            _map_audits__attribution_reporting_issue_details__to_dict
+        ),
+        audits.QuirksModeIssueDetails: (
+            _map_audits__quirks_mode_issue_details__to_dict
+        ),
+        audits.NavigatorUserAgentIssueDetails: (
+            _map_audits__navigator_user_agent_issue_details__to_dict
+        ),
+        audits.GenericIssueDetails: (
+            _map_audits__generic_issue_details__to_dict
+        ),
+        audits.DeprecationIssueDetails: (
+            _map_audits__deprecation_issue_details__to_dict
+        ),
+        audits.BounceTrackingIssueDetails: (
+            _map_audits__bounce_tracking_issue_details__to_dict
+        ),
+        audits.FederatedAuthRequestIssueDetails: (
+            _map_audits__federated_auth_request_issue_details__to_dict
+        ),
+        audits.FederatedAuthUserInfoRequestIssueDetails: (
+            _map_audits__federated_auth_user_info_request_issue_details__to_dict
+        ),
+        audits.ClientHintIssueDetails: (
+            _map_audits__client_hint_issue_details__to_dict
+        ),
+        audits.FailedRequestInfo: (
+            _map_audits__failed_request_info__to_dict
+        ),
+        audits.StylesheetLoadingIssueDetails: (
+            _map_audits__stylesheet_loading_issue_details__to_dict
+        ),
+        audits.InspectorIssueDetails: (
+            _map_audits__inspector_issue_details__to_dict
+        ),
+        audits.InspectorIssue: (
+            _map_audits__inspector_issue__to_dict
+        ),
+        autofill.CreditCard: (
+            _map_autofill__credit_card__to_dict
+        ),
+        autofill.AddressField: (
+            _map_autofill__address_field__to_dict
+        ),
+        autofill.AddressFields: (
+            _map_autofill__address_fields__to_dict
+        ),
+        autofill.Address: (
+            _map_autofill__address__to_dict
+        ),
+        autofill.AddressUI: (
+            _map_autofill__address_ui__to_dict
+        ),
+        autofill.FilledField: (
+            _map_autofill__filled_field__to_dict
+        ),
+        background_service.EventMetadata: (
+            _map_background_service__event_metadata__to_dict
+        ),
+        background_service.BackgroundServiceEvent: (
+            _map_background_service__background_service_event__to_dict
+        ),
+        browser.Bounds: (
+            _map_browser__bounds__to_dict
+        ),
+        browser.PermissionDescriptor: (
+            _map_browser__permission_descriptor__to_dict
+        ),
+        browser.Bucket: (
+            _map_browser__bucket__to_dict
+        ),
+        browser.Histogram: (
+            _map_browser__histogram__to_dict
+        ),
+        css.PseudoElementMatches: (
+            _map_css__pseudo_element_matches__to_dict
+        ),
+        css.InheritedStyleEntry: (
+            _map_css__inherited_style_entry__to_dict
+        ),
+        css.InheritedPseudoElementMatches: (
+            _map_css__inherited_pseudo_element_matches__to_dict
+        ),
+        css.RuleMatch: (
+            _map_css__rule_match__to_dict
+        ),
+        css.Value: (
+            _map_css__value__to_dict
+        ),
+        css.Specificity: (
+            _map_css__specificity__to_dict
+        ),
+        css.SelectorList: (
+            _map_css__selector_list__to_dict
+        ),
+        css.CSSStyleSheetHeader: (
+            _map_css__css_style_sheet_header__to_dict
+        ),
+        css.CSSRule: (
+            _map_css__css_rule__to_dict
+        ),
+        css.RuleUsage: (
+            _map_css__rule_usage__to_dict
+        ),
+        css.SourceRange: (
+            _map_css__source_range__to_dict
+        ),
+        css.ShorthandEntry: (
+            _map_css__shorthand_entry__to_dict
+        ),
+        css.CSSComputedStyleProperty: (
+            _map_css__css_computed_style_property__to_dict
+        ),
+        css.CSSStyle: (
+            _map_css__css_style__to_dict
+        ),
+        css.CSSProperty: (
+            _map_css__css_property__to_dict
+        ),
+        css.CSSMedia: (
+            _map_css__css_media__to_dict
+        ),
+        css.MediaQuery: (
+            _map_css__media_query__to_dict
+        ),
+        css.MediaQueryExpression: (
+            _map_css__media_query_expression__to_dict
+        ),
+        css.CSSContainerQuery: (
+            _map_css__css_container_query__to_dict
+        ),
+        css.CSSSupports: (
+            _map_css__css_supports__to_dict
+        ),
+        css.CSSScope: (
+            _map_css__css_scope__to_dict
+        ),
+        css.CSSLayer: (
+            _map_css__css_layer__to_dict
+        ),
+        css.CSSLayerData: (
+            _map_css__css_layer_data__to_dict
+        ),
+        css.PlatformFontUsage: (
+            _map_css__platform_font_usage__to_dict
+        ),
+        css.FontVariationAxis: (
+            _map_css__font_variation_axis__to_dict
+        ),
+        css.FontFace: (
+            _map_css__font_face__to_dict
+        ),
+        css.CSSTryRule: (
+            _map_css__css_try_rule__to_dict
+        ),
+        css.CSSPositionFallbackRule: (
+            _map_css__css_position_fallback_rule__to_dict
+        ),
+        css.CSSKeyframesRule: (
+            _map_css__css_keyframes_rule__to_dict
+        ),
+        css.CSSPropertyRegistration: (
+            _map_css__css_property_registration__to_dict
+        ),
+        css.CSSPropertyRule: (
+            _map_css__css_property_rule__to_dict
+        ),
+        css.CSSKeyframeRule: (
+            _map_css__css_keyframe_rule__to_dict
+        ),
+        css.StyleDeclarationEdit: (
+            _map_css__style_declaration_edit__to_dict
+        ),
+        cache_storage.DataEntry: (
+            _map_cache_storage__data_entry__to_dict
+        ),
+        cache_storage.Cache: (
+            _map_cache_storage__cache__to_dict
+        ),
+        cache_storage.Header: (
+            _map_cache_storage__header__to_dict
+        ),
+        cache_storage.CachedResponse: (
+            _map_cache_storage__cached_response__to_dict
+        ),
+        cast.Sink: (
+            _map_cast__sink__to_dict
+        ),
+        dom.BackendNode: (
+            _map_dom__backend_node__to_dict
+        ),
+        dom.Node: (
+            _map_dom__node__to_dict
+        ),
+        dom.RGBA: (
+            _map_dom__rgba__to_dict
+        ),
+        dom.BoxModel: (
+            _map_dom__box_model__to_dict
+        ),
+        dom.ShapeOutsideInfo: (
+            _map_dom__shape_outside_info__to_dict
+        ),
+        dom.Rect: (
+            _map_dom__rect__to_dict
+        ),
+        dom.CSSComputedStyleProperty: (
+            _map_dom__css_computed_style_property__to_dict
+        ),
+        dom_debugger.EventListener: (
+            _map_dom_debugger__event_listener__to_dict
+        ),
+        dom_snapshot.DOMNode: (
+            _map_dom_snapshot__dom_node__to_dict
+        ),
+        dom_snapshot.InlineTextBox: (
+            _map_dom_snapshot__inline_text_box__to_dict
+        ),
+        dom_snapshot.LayoutTreeNode: (
+            _map_dom_snapshot__layout_tree_node__to_dict
+        ),
+        dom_snapshot.ComputedStyle: (
+            _map_dom_snapshot__computed_style__to_dict
+        ),
+        dom_snapshot.NameValue: (
+            _map_dom_snapshot__name_value__to_dict
+        ),
+        dom_snapshot.RareStringData: (
+            _map_dom_snapshot__rare_string_data__to_dict
+        ),
+        dom_snapshot.RareBooleanData: (
+            _map_dom_snapshot__rare_boolean_data__to_dict
+        ),
+        dom_snapshot.RareIntegerData: (
+            _map_dom_snapshot__rare_integer_data__to_dict
+        ),
+        dom_snapshot.DocumentSnapshot: (
+            _map_dom_snapshot__document_snapshot__to_dict
+        ),
+        dom_snapshot.NodeTreeSnapshot: (
+            _map_dom_snapshot__node_tree_snapshot__to_dict
+        ),
+        dom_snapshot.LayoutTreeSnapshot: (
+            _map_dom_snapshot__layout_tree_snapshot__to_dict
+        ),
+        dom_snapshot.TextBoxSnapshot: (
+            _map_dom_snapshot__text_box_snapshot__to_dict
+        ),
+        dom_storage.StorageId: (
+            _map_dom_storage__storage_id__to_dict
+        ),
+        database.Database: (
+            _map_database__database__to_dict
+        ),
+        database.Error: (
+            _map_database__error__to_dict
+        ),
+        emulation.ScreenOrientation: (
+            _map_emulation__screen_orientation__to_dict
+        ),
+        emulation.DisplayFeature: (
+            _map_emulation__display_feature__to_dict
+        ),
+        emulation.MediaFeature: (
+            _map_emulation__media_feature__to_dict
+        ),
+        emulation.UserAgentBrandVersion: (
+            _map_emulation__user_agent_brand_version__to_dict
+        ),
+        emulation.UserAgentMetadata: (
+            _map_emulation__user_agent_metadata__to_dict
+        ),
+        headless_experimental.ScreenshotParams: (
+            _map_headless_experimental__screenshot_params__to_dict
+        ),
+        indexed_db.DatabaseWithObjectStores: (
+            _map_indexed_db__database_with_object_stores__to_dict
+        ),
+        indexed_db.ObjectStore: (
+            _map_indexed_db__object_store__to_dict
+        ),
+        indexed_db.ObjectStoreIndex: (
+            _map_indexed_db__object_store_index__to_dict
+        ),
+        indexed_db.Key: (
+            _map_indexed_db__key__to_dict
+        ),
+        indexed_db.KeyRange: (
+            _map_indexed_db__key_range__to_dict
+        ),
+        indexed_db.DataEntry: (
+            _map_indexed_db__data_entry__to_dict
+        ),
+        indexed_db.KeyPath: (
+            _map_indexed_db__key_path__to_dict
+        ),
+        input_.TouchPoint: (
+            _map_input__touch_point__to_dict
+        ),
+        input_.DragDataItem: (
+            _map_input__drag_data_item__to_dict
+        ),
+        input_.DragData: (
+            _map_input__drag_data__to_dict
+        ),
+        layer_tree.ScrollRect: (
+            _map_layer_tree__scroll_rect__to_dict
+        ),
+        layer_tree.StickyPositionConstraint: (
+            _map_layer_tree__sticky_position_constraint__to_dict
+        ),
+        layer_tree.PictureTile: (
+            _map_layer_tree__picture_tile__to_dict
+        ),
+        layer_tree.Layer: (
+            _map_layer_tree__layer__to_dict
+        ),
+        log.LogEntry: (
+            _map_log__log_entry__to_dict
+        ),
+        log.ViolationSetting: (
+            _map_log__violation_setting__to_dict
+        ),
+        memory.SamplingProfileNode: (
+            _map_memory__sampling_profile_node__to_dict
+        ),
+        memory.SamplingProfile: (
+            _map_memory__sampling_profile__to_dict
+        ),
+        memory.Module: (
+            _map_memory__module__to_dict
+        ),
+        network.ResourceTiming: (
+            _map_network__resource_timing__to_dict
+        ),
+        network.PostDataEntry: (
+            _map_network__post_data_entry__to_dict
+        ),
+        network.Request: (
+            _map_network__request__to_dict
+        ),
+        network.SignedCertificateTimestamp: (
+            _map_network__signed_certificate_timestamp__to_dict
+        ),
+        network.SecurityDetails: (
+            _map_network__security_details__to_dict
+        ),
+        network.CorsErrorStatus: (
+            _map_network__cors_error_status__to_dict
+        ),
+        network.TrustTokenParams: (
+            _map_network__trust_token_params__to_dict
+        ),
+        network.Response: (
+            _map_network__response__to_dict
+        ),
+        network.WebSocketRequest: (
+            _map_network__web_socket_request__to_dict
+        ),
+        network.WebSocketResponse: (
+            _map_network__web_socket_response__to_dict
+        ),
+        network.WebSocketFrame: (
+            _map_network__web_socket_frame__to_dict
+        ),
+        network.CachedResource: (
+            _map_network__cached_resource__to_dict
+        ),
+        network.Initiator: (
+            _map_network__initiator__to_dict
+        ),
+        network.Cookie: (
+            _map_network__cookie__to_dict
+        ),
+        network.BlockedSetCookieWithReason: (
+            _map_network__blocked_set_cookie_with_reason__to_dict
+        ),
+        network.BlockedCookieWithReason: (
+            _map_network__blocked_cookie_with_reason__to_dict
+        ),
+        network.CookieParam: (
+            _map_network__cookie_param__to_dict
+        ),
+        network.AuthChallenge: (
+            _map_network__auth_challenge__to_dict
+        ),
+        network.AuthChallengeResponse: (
+            _map_network__auth_challenge_response__to_dict
+        ),
+        network.RequestPattern: (
+            _map_network__request_pattern__to_dict
+        ),
+        network.SignedExchangeSignature: (
+            _map_network__signed_exchange_signature__to_dict
+        ),
+        network.SignedExchangeHeader: (
+            _map_network__signed_exchange_header__to_dict
+        ),
+        network.SignedExchangeError: (
+            _map_network__signed_exchange_error__to_dict
+        ),
+        network.SignedExchangeInfo: (
+            _map_network__signed_exchange_info__to_dict
+        ),
+        network.ConnectTiming: (
+            _map_network__connect_timing__to_dict
+        ),
+        network.ClientSecurityState: (
+            _map_network__client_security_state__to_dict
+        ),
+        network.CrossOriginOpenerPolicyStatus: (
+            _map_network__cross_origin_opener_policy_status__to_dict
+        ),
+        network.CrossOriginEmbedderPolicyStatus: (
+            _map_network__cross_origin_embedder_policy_status__to_dict
+        ),
+        network.ContentSecurityPolicyStatus: (
+            _map_network__content_security_policy_status__to_dict
+        ),
+        network.SecurityIsolationStatus: (
+            _map_network__security_isolation_status__to_dict
+        ),
+        network.ReportingApiReport: (
+            _map_network__reporting_api_report__to_dict
+        ),
+        network.ReportingApiEndpoint: (
+            _map_network__reporting_api_endpoint__to_dict
+        ),
+        network.LoadNetworkResourcePageResult: (
+            _map_network__load_network_resource_page_result__to_dict
+        ),
+        network.LoadNetworkResourceOptions: (
+            _map_network__load_network_resource_options__to_dict
+        ),
+        overlay.SourceOrderConfig: (
+            _map_overlay__source_order_config__to_dict
+        ),
+        overlay.GridHighlightConfig: (
+            _map_overlay__grid_highlight_config__to_dict
+        ),
+        overlay.FlexContainerHighlightConfig: (
+            _map_overlay__flex_container_highlight_config__to_dict
+        ),
+        overlay.FlexItemHighlightConfig: (
+            _map_overlay__flex_item_highlight_config__to_dict
+        ),
+        overlay.LineStyle: (
+            _map_overlay__line_style__to_dict
+        ),
+        overlay.BoxStyle: (
+            _map_overlay__box_style__to_dict
+        ),
+        overlay.HighlightConfig: (
+            _map_overlay__highlight_config__to_dict
+        ),
+        overlay.GridNodeHighlightConfig: (
+            _map_overlay__grid_node_highlight_config__to_dict
+        ),
+        overlay.FlexNodeHighlightConfig: (
+            _map_overlay__flex_node_highlight_config__to_dict
+        ),
+        overlay.ScrollSnapContainerHighlightConfig: (
+            _map_overlay__scroll_snap_container_highlight_config__to_dict
+        ),
+        overlay.ScrollSnapHighlightConfig: (
+            _map_overlay__scroll_snap_highlight_config__to_dict
+        ),
+        overlay.HingeConfig: (
+            _map_overlay__hinge_config__to_dict
+        ),
+        overlay.ContainerQueryHighlightConfig: (
+            _map_overlay__container_query_highlight_config__to_dict
+        ),
+        overlay.ContainerQueryContainerHighlightConfig: (
+            _map_overlay__container_query_container_highlight_config__to_dict
+        ),
+        overlay.IsolatedElementHighlightConfig: (
+            _map_overlay__isolated_element_highlight_config__to_dict
+        ),
+        overlay.IsolationModeHighlightConfig: (
+            _map_overlay__isolation_mode_highlight_config__to_dict
+        ),
+        page.AdFrameStatus: (
+            _map_page__ad_frame_status__to_dict
+        ),
+        page.AdScriptId: (
+            _map_page__ad_script_id__to_dict
+        ),
+        page.PermissionsPolicyBlockLocator: (
+            _map_page__permissions_policy_block_locator__to_dict
+        ),
+        page.PermissionsPolicyFeatureState: (
+            _map_page__permissions_policy_feature_state__to_dict
+        ),
+        page.OriginTrialToken: (
+            _map_page__origin_trial_token__to_dict
+        ),
+        page.OriginTrialTokenWithStatus: (
+            _map_page__origin_trial_token_with_status__to_dict
+        ),
+        page.OriginTrial: (
+            _map_page__origin_trial__to_dict
+        ),
+        page.Frame: (
+            _map_page__frame__to_dict
+        ),
+        page.FrameResource: (
+            _map_page__frame_resource__to_dict
+        ),
+        page.FrameResourceTree: (
+            _map_page__frame_resource_tree__to_dict
+        ),
+        page.FrameTree: (
+            _map_page__frame_tree__to_dict
+        ),
+        page.NavigationEntry: (
+            _map_page__navigation_entry__to_dict
+        ),
+        page.ScreencastFrameMetadata: (
+            _map_page__screencast_frame_metadata__to_dict
+        ),
+        page.AppManifestError: (
+            _map_page__app_manifest_error__to_dict
+        ),
+        page.AppManifestParsedProperties: (
+            _map_page__app_manifest_parsed_properties__to_dict
+        ),
+        page.LayoutViewport: (
+            _map_page__layout_viewport__to_dict
+        ),
+        page.VisualViewport: (
+            _map_page__visual_viewport__to_dict
+        ),
+        page.Viewport: (
+            _map_page__viewport__to_dict
+        ),
+        page.FontFamilies: (
+            _map_page__font_families__to_dict
+        ),
+        page.ScriptFontFamilies: (
+            _map_page__script_font_families__to_dict
+        ),
+        page.FontSizes: (
+            _map_page__font_sizes__to_dict
+        ),
+        page.InstallabilityErrorArgument: (
+            _map_page__installability_error_argument__to_dict
+        ),
+        page.InstallabilityError: (
+            _map_page__installability_error__to_dict
+        ),
+        page.CompilationCacheParams: (
+            _map_page__compilation_cache_params__to_dict
+        ),
+        page.BackForwardCacheNotRestoredExplanation: (
+            _map_page__back_forward_cache_not_restored_explanation__to_dict
+        ),
+        page.BackForwardCacheNotRestoredExplanationTree: (
+            _map_page__back_forward_cache_not_restored_explanation_tree__to_dict
+        ),
+        performance.Metric: (
+            _map_performance__metric__to_dict
+        ),
+        performance_timeline.LargestContentfulPaint: (
+            _map_performance_timeline__largest_contentful_paint__to_dict
+        ),
+        performance_timeline.LayoutShiftAttribution: (
+            _map_performance_timeline__layout_shift_attribution__to_dict
+        ),
+        performance_timeline.LayoutShift: (
+            _map_performance_timeline__layout_shift__to_dict
+        ),
+        performance_timeline.TimelineEvent: (
+            _map_performance_timeline__timeline_event__to_dict
+        ),
+        security.CertificateSecurityState: (
+            _map_security__certificate_security_state__to_dict
+        ),
+        security.SafetyTipInfo: (
+            _map_security__safety_tip_info__to_dict
+        ),
+        security.VisibleSecurityState: (
+            _map_security__visible_security_state__to_dict
+        ),
+        security.SecurityStateExplanation: (
+            _map_security__security_state_explanation__to_dict
+        ),
+        security.InsecureContentStatus: (
+            _map_security__insecure_content_status__to_dict
+        ),
+        service_worker.ServiceWorkerRegistration: (
+            _map_service_worker__service_worker_registration__to_dict
+        ),
+        service_worker.ServiceWorkerVersion: (
+            _map_service_worker__service_worker_version__to_dict
+        ),
+        service_worker.ServiceWorkerErrorMessage: (
+            _map_service_worker__service_worker_error_message__to_dict
+        ),
+        storage.UsageForType: (
+            _map_storage__usage_for_type__to_dict
+        ),
+        storage.TrustTokens: (
+            _map_storage__trust_tokens__to_dict
+        ),
+        storage.InterestGroupAd: (
+            _map_storage__interest_group_ad__to_dict
+        ),
+        storage.InterestGroupDetails: (
+            _map_storage__interest_group_details__to_dict
+        ),
+        storage.SharedStorageEntry: (
+            _map_storage__shared_storage_entry__to_dict
+        ),
+        storage.SharedStorageMetadata: (
+            _map_storage__shared_storage_metadata__to_dict
+        ),
+        storage.SharedStorageReportingMetadata: (
+            _map_storage__shared_storage_reporting_metadata__to_dict
+        ),
+        storage.SharedStorageUrlWithMetadata: (
+            _map_storage__shared_storage_url_with_metadata__to_dict
+        ),
+        storage.SharedStorageAccessParams: (
+            _map_storage__shared_storage_access_params__to_dict
+        ),
+        storage.StorageBucket: (
+            _map_storage__storage_bucket__to_dict
+        ),
+        storage.StorageBucketInfo: (
+            _map_storage__storage_bucket_info__to_dict
+        ),
+        storage.AttributionReportingFilterDataEntry: (
+            _map_storage__attribution_reporting_filter_data_entry__to_dict
+        ),
+        storage.AttributionReportingAggregationKeysEntry: (
+            _map_storage__attribution_reporting_aggregation_keys_entry__to_dict
+        ),
+        storage.AttributionReportingEventReportWindows: (
+            _map_storage__attribution_reporting_event_report_windows__to_dict
+        ),
+        storage.AttributionReportingSourceRegistration: (
+            _map_storage__attribution_reporting_source_registration__to_dict
+        ),
+        system_info.GPUDevice: (
+            _map_system_info__gpu_device__to_dict
+        ),
+        system_info.Size: (
+            _map_system_info__size__to_dict
+        ),
+        system_info.VideoDecodeAcceleratorCapability: (
+            _map_system_info__video_decode_accelerator_capability__to_dict
+        ),
+        system_info.VideoEncodeAcceleratorCapability: (
+            _map_system_info__video_encode_accelerator_capability__to_dict
+        ),
+        system_info.ImageDecodeAcceleratorCapability: (
+            _map_system_info__image_decode_accelerator_capability__to_dict
+        ),
+        system_info.GPUInfo: (
+            _map_system_info__gpu_info__to_dict
+        ),
+        system_info.ProcessInfo: (
+            _map_system_info__process_info__to_dict
+        ),
+        target.TargetInfo: (
+            _map_target__target_info__to_dict
+        ),
+        target.FilterEntry: (
+            _map_target__filter_entry__to_dict
+        ),
+        target.RemoteLocation: (
+            _map_target__remote_location__to_dict
+        ),
+        tracing.TraceConfig: (
+            _map_tracing__trace_config__to_dict
+        ),
+        fetch.RequestPattern: (
+            _map_fetch__request_pattern__to_dict
+        ),
+        fetch.HeaderEntry: (
+            _map_fetch__header_entry__to_dict
+        ),
+        fetch.AuthChallenge: (
+            _map_fetch__auth_challenge__to_dict
+        ),
+        fetch.AuthChallengeResponse: (
+            _map_fetch__auth_challenge_response__to_dict
+        ),
+        web_audio.ContextRealtimeData: (
+            _map_web_audio__context_realtime_data__to_dict
+        ),
+        web_audio.BaseAudioContext: (
+            _map_web_audio__base_audio_context__to_dict
+        ),
+        web_audio.AudioListener: (
+            _map_web_audio__audio_listener__to_dict
+        ),
+        web_audio.AudioNode: (
+            _map_web_audio__audio_node__to_dict
+        ),
+        web_audio.AudioParam: (
+            _map_web_audio__audio_param__to_dict
+        ),
+        web_authn.VirtualAuthenticatorOptions: (
+            _map_web_authn__virtual_authenticator_options__to_dict
+        ),
+        web_authn.Credential: (
+            _map_web_authn__credential__to_dict
+        ),
+        media.PlayerMessage: (
+            _map_media__player_message__to_dict
+        ),
+        media.PlayerProperty: (
+            _map_media__player_property__to_dict
+        ),
+        media.PlayerEvent: (
+            _map_media__player_event__to_dict
+        ),
+        media.PlayerErrorSourceLocation: (
+            _map_media__player_error_source_location__to_dict
+        ),
+        media.PlayerError: (
+            _map_media__player_error__to_dict
+        ),
+        device_access.PromptDevice: (
+            _map_device_access__prompt_device__to_dict
+        ),
+        preload.RuleSet: (
+            _map_preload__rule_set__to_dict
+        ),
+        preload.PreloadingAttemptKey: (
+            _map_preload__preloading_attempt_key__to_dict
+        ),
+        preload.PreloadingAttemptSource: (
+            _map_preload__preloading_attempt_source__to_dict
+        ),
+        fed_cm.Account: (
+            _map_fed_cm__account__to_dict
+        ),
+        console.ConsoleMessage: (
+            _map_console__console_message__to_dict
+        ),
+        debugger.Location: (
+            _map_debugger__location__to_dict
+        ),
+        debugger.ScriptPosition: (
+            _map_debugger__script_position__to_dict
+        ),
+        debugger.CallFrame: (
+            _map_debugger__call_frame__to_dict
+        ),
+        debugger.Scope: (
+            _map_debugger__scope__to_dict
+        ),
+        debugger.SearchMatch: (
+            _map_debugger__search_match__to_dict
+        ),
+        debugger.BreakLocation: (
+            _map_debugger__break_location__to_dict
+        ),
+        heap_profiler.SamplingHeapProfileNode: (
+            _map_heap_profiler__sampling_heap_profile_node__to_dict
+        ),
+        heap_profiler.SamplingHeapProfileSample: (
+            _map_heap_profiler__sampling_heap_profile_sample__to_dict
+        ),
+        heap_profiler.SamplingHeapProfile: (
+            _map_heap_profiler__sampling_heap_profile__to_dict
+        ),
+        profiler.ProfileNode: (
+            _map_profiler__profile_node__to_dict
+        ),
+        profiler.Profile: (
+            _map_profiler__profile__to_dict
+        ),
+        profiler.PositionTickInfo: (
+            _map_profiler__position_tick_info__to_dict
+        ),
+        profiler.CoverageRange: (
+            _map_profiler__coverage_range__to_dict
+        ),
+        profiler.FunctionCoverage: (
+            _map_profiler__function_coverage__to_dict
+        ),
+        profiler.ScriptCoverage: (
+            _map_profiler__script_coverage__to_dict
+        ),
+        profiler.TypeObject: (
+            _map_profiler__type_object__to_dict
+        ),
+        profiler.TypeProfileEntry: (
+            _map_profiler__type_profile_entry__to_dict
+        ),
+        profiler.ScriptTypeProfile: (
+            _map_profiler__script_type_profile__to_dict
+        ),
+        runtime.RemoteObject: (
+            _map_runtime__remote_object__to_dict
+        ),
+        runtime.CustomPreview: (
+            _map_runtime__custom_preview__to_dict
+        ),
+        runtime.ObjectPreview: (
+            _map_runtime__object_preview__to_dict
+        ),
+        runtime.PropertyPreview: (
+            _map_runtime__property_preview__to_dict
+        ),
+        runtime.EntryPreview: (
+            _map_runtime__entry_preview__to_dict
+        ),
+        runtime.PropertyDescriptor: (
+            _map_runtime__property_descriptor__to_dict
+        ),
+        runtime.InternalPropertyDescriptor: (
+            _map_runtime__internal_property_descriptor__to_dict
+        ),
+        runtime.PrivatePropertyDescriptor: (
+            _map_runtime__private_property_descriptor__to_dict
+        ),
+        runtime.CallArgument: (
+            _map_runtime__call_argument__to_dict
+        ),
+        runtime.ExecutionContextDescription: (
+            _map_runtime__execution_context_description__to_dict
+        ),
+        runtime.ExceptionDetails: (
+            _map_runtime__exception_details__to_dict
+        ),
+        runtime.CallFrame: (
+            _map_runtime__call_frame__to_dict
+        ),
+        runtime.StackTrace: (
+            _map_runtime__stack_trace__to_dict
+        ),
+        runtime.StackTraceId: (
+            _map_runtime__stack_trace_id__to_dict
+        ),
+        schema.Domain: (
+            _map_schema__domain__to_dict
+        ),
+    }
+    return lookup[type(data)](
         data,
-        casing_strategy: CasingStrategyT
-) -> dict:
-    pass
+        casing_strategy
+    )
 
 
-def _map_accessibility__ax_node_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXNodeId':
-    pass
-
-
-def _map_accessibility__ax_value_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXValueType':
-    pass
-
-
-def _map_accessibility__ax_value_source_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXValueSourceType':
-    pass
-
-
-def _map_accessibility__ax_value_native_source_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXValueNativeSourceType':
-    pass
-
-
-def _map_accessibility__ax_value_source__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXValueSource':
-    pass
-
-
-def _map_accessibility__ax_related_node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXRelatedNode':
-    pass
-
-
-def _map_accessibility__ax_property__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXProperty':
-    pass
-
-
-def _map_accessibility__ax_value__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXValue':
-    pass
-
-
-def _map_accessibility__ax_property_name__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXPropertyName':
-    pass
-
-
-def _map_accessibility__ax_node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'accessibility.AXNode':
-    pass
-
-
-def _map_animation__animation__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'animation.Animation':
-    pass
-
-
-def _map_animation__animation_effect__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'animation.AnimationEffect':
-    pass
-
-
-def _map_animation__keyframes_rule__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'animation.KeyframesRule':
-    pass
-
-
-def _map_animation__keyframe_style__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'animation.KeyframeStyle':
-    pass
-
-
-def _map_audits__affected_cookie__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.AffectedCookie':
-    pass
-
-
-def _map_audits__affected_request__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.AffectedRequest':
-    pass
-
-
-def _map_audits__affected_frame__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.AffectedFrame':
-    pass
-
-
-def _map_audits__cookie_exclusion_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.CookieExclusionReason':
-    pass
-
-
-def _map_audits__cookie_warning_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.CookieWarningReason':
-    pass
-
-
-def _map_audits__cookie_operation__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.CookieOperation':
-    pass
-
-
-def _map_audits__cookie_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.CookieIssueDetails':
-    pass
-
-
-def _map_audits__mixed_content_resolution_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.MixedContentResolutionStatus':
-    pass
-
-
-def _map_audits__mixed_content_resource_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.MixedContentResourceType':
-    pass
-
-
-def _map_audits__mixed_content_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.MixedContentIssueDetails':
-    pass
-
-
-def _map_audits__blocked_by_response_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.BlockedByResponseReason':
-    pass
-
-
-def _map_audits__blocked_by_response_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.BlockedByResponseIssueDetails':
-    pass
-
-
-def _map_audits__heavy_ad_resolution_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.HeavyAdResolutionStatus':
-    pass
-
-
-def _map_audits__heavy_ad_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.HeavyAdReason':
-    pass
-
-
-def _map_audits__heavy_ad_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.HeavyAdIssueDetails':
-    pass
-
-
-def _map_audits__content_security_policy_violation_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.ContentSecurityPolicyViolationType':
-    pass
-
-
-def _map_audits__source_code_location__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.SourceCodeLocation':
-    pass
-
-
-def _map_audits__content_security_policy_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.ContentSecurityPolicyIssueDetails':
-    pass
-
-
-def _map_audits__shared_array_buffer_issue_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.SharedArrayBufferIssueType':
-    pass
-
-
-def _map_audits__shared_array_buffer_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.SharedArrayBufferIssueDetails':
-    pass
-
-
-def _map_audits__low_text_contrast_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.LowTextContrastIssueDetails':
-    pass
-
-
-def _map_audits__cors_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.CorsIssueDetails':
-    pass
-
-
-def _map_audits__attribution_reporting_issue_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.AttributionReportingIssueType':
-    pass
-
-
-def _map_audits__attribution_reporting_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.AttributionReportingIssueDetails':
-    pass
-
-
-def _map_audits__quirks_mode_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.QuirksModeIssueDetails':
-    pass
-
-
-def _map_audits__navigator_user_agent_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.NavigatorUserAgentIssueDetails':
-    pass
-
-
-def _map_audits__generic_issue_error_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.GenericIssueErrorType':
-    pass
-
-
-def _map_audits__generic_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.GenericIssueDetails':
-    pass
-
-
-def _map_audits__deprecation_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.DeprecationIssueDetails':
-    pass
-
-
-def _map_audits__bounce_tracking_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.BounceTrackingIssueDetails':
-    pass
-
-
-def _map_audits__client_hint_issue_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.ClientHintIssueReason':
-    pass
-
-
-def _map_audits__federated_auth_request_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.FederatedAuthRequestIssueDetails':
-    pass
-
-
-def _map_audits__federated_auth_request_issue_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.FederatedAuthRequestIssueReason':
-    pass
-
-
-def _map_audits__federated_auth_user_info_request_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.FederatedAuthUserInfoRequestIssueDetails':
-    pass
-
-
-def _map_audits__federated_auth_user_info_request_issue_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.FederatedAuthUserInfoRequestIssueReason':
-    pass
-
-
-def _map_audits__client_hint_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.ClientHintIssueDetails':
-    pass
-
-
-def _map_audits__failed_request_info__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.FailedRequestInfo':
-    pass
-
-
-def _map_audits__style_sheet_loading_issue_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.StyleSheetLoadingIssueReason':
-    pass
-
-
-def _map_audits__stylesheet_loading_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.StylesheetLoadingIssueDetails':
-    pass
-
-
-def _map_audits__inspector_issue_code__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.InspectorIssueCode':
-    pass
-
-
-def _map_audits__inspector_issue_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.InspectorIssueDetails':
-    pass
-
-
-def _map_audits__issue_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.IssueId':
-    pass
-
-
-def _map_audits__inspector_issue__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'audits.InspectorIssue':
-    pass
-
-
-def _map_autofill__credit_card__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'autofill.CreditCard':
-    pass
-
-
-def _map_autofill__address_field__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'autofill.AddressField':
-    pass
-
-
-def _map_autofill__address_fields__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'autofill.AddressFields':
-    pass
-
-
-def _map_autofill__address__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'autofill.Address':
-    pass
-
-
-def _map_autofill__address_ui__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'autofill.AddressUI':
-    pass
-
-
-def _map_autofill__filling_strategy__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'autofill.FillingStrategy':
-    pass
-
-
-def _map_autofill__filled_field__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'autofill.FilledField':
-    pass
-
-
-def _map_background_service__service_name__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'background_service.ServiceName':
-    pass
-
-
-def _map_background_service__event_metadata__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'background_service.EventMetadata':
-    pass
-
-
-def _map_background_service__background_service_event__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'background_service.BackgroundServiceEvent':
-    pass
-
-
-def _map_browser__browser_context_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.BrowserContextID':
-    pass
-
-
-def _map_browser__window_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.WindowID':
-    pass
-
-
-def _map_browser__window_state__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.WindowState':
-    pass
-
-
-def _map_browser__bounds__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.Bounds':
-    pass
-
-
-def _map_browser__permission_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.PermissionType':
-    pass
-
-
-def _map_browser__permission_setting__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.PermissionSetting':
-    pass
-
-
-def _map_browser__permission_descriptor__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.PermissionDescriptor':
-    pass
-
-
-def _map_browser__browser_command_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.BrowserCommandId':
-    pass
-
-
-def _map_browser__bucket__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.Bucket':
-    pass
-
-
-def _map_browser__histogram__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'browser.Histogram':
-    pass
-
-
-def _map_css__style_sheet_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.StyleSheetId':
-    pass
-
-
-def _map_css__style_sheet_origin__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.StyleSheetOrigin':
-    pass
-
-
-def _map_css__pseudo_element_matches__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.PseudoElementMatches':
-    pass
-
-
-def _map_css__inherited_style_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.InheritedStyleEntry':
-    pass
-
-
-def _map_css__inherited_pseudo_element_matches__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.InheritedPseudoElementMatches':
-    pass
-
-
-def _map_css__rule_match__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.RuleMatch':
-    pass
-
-
-def _map_css__value__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.Value':
-    pass
-
-
-def _map_css__specificity__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.Specificity':
-    pass
-
-
-def _map_css__selector_list__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.SelectorList':
-    pass
-
-
-def _map_css__css_style_sheet_header__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSStyleSheetHeader':
-    pass
-
-
-def _map_css__css_rule__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSRule':
-    pass
-
-
-def _map_css__css_rule_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSRuleType':
-    pass
-
-
-def _map_css__rule_usage__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.RuleUsage':
-    pass
-
-
-def _map_css__source_range__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.SourceRange':
-    pass
-
-
-def _map_css__shorthand_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.ShorthandEntry':
-    pass
-
-
-def _map_css__css_computed_style_property__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSComputedStyleProperty':
-    pass
-
-
-def _map_css__css_style__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSStyle':
-    pass
-
-
-def _map_css__css_property__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSProperty':
-    pass
-
-
-def _map_css__css_media__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSMedia':
-    pass
-
-
-def _map_css__media_query__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.MediaQuery':
-    pass
-
-
-def _map_css__media_query_expression__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.MediaQueryExpression':
-    pass
-
-
-def _map_css__css_container_query__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSContainerQuery':
-    pass
-
-
-def _map_css__css_supports__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSSupports':
-    pass
-
-
-def _map_css__css_scope__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSScope':
-    pass
-
-
-def _map_css__css_layer__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSLayer':
-    pass
-
-
-def _map_css__css_layer_data__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSLayerData':
-    pass
-
-
-def _map_css__platform_font_usage__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.PlatformFontUsage':
-    pass
-
-
-def _map_css__font_variation_axis__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.FontVariationAxis':
-    pass
-
-
-def _map_css__font_face__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.FontFace':
-    pass
-
-
-def _map_css__css_try_rule__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSTryRule':
-    pass
-
-
-def _map_css__css_position_fallback_rule__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSPositionFallbackRule':
-    pass
-
-
-def _map_css__css_keyframes_rule__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSKeyframesRule':
-    pass
-
-
-def _map_css__css_property_registration__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSPropertyRegistration':
-    pass
-
-
-def _map_css__css_property_rule__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSPropertyRule':
-    pass
-
-
-def _map_css__css_keyframe_rule__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.CSSKeyframeRule':
-    pass
-
-
-def _map_css__style_declaration_edit__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'css.StyleDeclarationEdit':
-    pass
-
-
-def _map_cache_storage__cache_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'cache_storage.CacheId':
-    pass
-
-
-def _map_cache_storage__cached_response_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'cache_storage.CachedResponseType':
-    pass
-
-
-def _map_cache_storage__data_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'cache_storage.DataEntry':
-    pass
-
-
-def _map_cache_storage__cache__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'cache_storage.Cache':
-    pass
-
-
-def _map_cache_storage__header__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'cache_storage.Header':
-    pass
-
-
-def _map_cache_storage__cached_response__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'cache_storage.CachedResponse':
-    pass
-
-
-def _map_cast__sink__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'cast.Sink':
-    pass
-
-
-def _map_dom__node_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.NodeId':
-    pass
-
-
-def _map_dom__backend_node_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.BackendNodeId':
-    pass
-
-
-def _map_dom__backend_node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.BackendNode':
-    pass
-
-
-def _map_dom__pseudo_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.PseudoType':
-    pass
-
-
-def _map_dom__shadow_root_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.ShadowRootType':
-    pass
-
-
-def _map_dom__compatibility_mode__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.CompatibilityMode':
-    pass
-
-
-def _map_dom__physical_axes__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.PhysicalAxes':
-    pass
-
-
-def _map_dom__logical_axes__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.LogicalAxes':
-    pass
-
-
-def _map_dom__node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.Node':
-    pass
-
-
-def _map_dom__rgba__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.RGBA':
-    pass
-
-
-def _map_dom__quad__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.Quad':
-    pass
-
-
-def _map_dom__box_model__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.BoxModel':
-    pass
-
-
-def _map_dom__shape_outside_info__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.ShapeOutsideInfo':
-    pass
-
-
-def _map_dom__rect__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.Rect':
-    pass
-
-
-def _map_dom__css_computed_style_property__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom.CSSComputedStyleProperty':
-    pass
-
-
-def _map_dom_debugger__dom_breakpoint_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_debugger.DOMBreakpointType':
-    pass
-
-
-def _map_dom_debugger__csp_violation_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_debugger.CSPViolationType':
-    pass
-
-
-def _map_dom_debugger__event_listener__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_debugger.EventListener':
-    pass
-
-
-def _map_dom_snapshot__dom_node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.DOMNode':
-    pass
-
-
-def _map_dom_snapshot__inline_text_box__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.InlineTextBox':
-    pass
-
-
-def _map_dom_snapshot__layout_tree_node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.LayoutTreeNode':
-    pass
-
-
-def _map_dom_snapshot__computed_style__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.ComputedStyle':
-    pass
-
-
-def _map_dom_snapshot__name_value__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.NameValue':
-    pass
-
-
-def _map_dom_snapshot__string_index__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.StringIndex':
-    pass
-
-
-def _map_dom_snapshot__array_of_strings__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.ArrayOfStrings':
-    pass
-
-
-def _map_dom_snapshot__rare_string_data__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.RareStringData':
-    pass
-
-
-def _map_dom_snapshot__rare_boolean_data__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.RareBooleanData':
-    pass
-
-
-def _map_dom_snapshot__rare_integer_data__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.RareIntegerData':
-    pass
-
-
-def _map_dom_snapshot__rectangle__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.Rectangle':
-    pass
-
-
-def _map_dom_snapshot__document_snapshot__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.DocumentSnapshot':
-    pass
-
-
-def _map_dom_snapshot__node_tree_snapshot__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.NodeTreeSnapshot':
-    pass
-
-
-def _map_dom_snapshot__layout_tree_snapshot__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.LayoutTreeSnapshot':
-    pass
-
-
-def _map_dom_snapshot__text_box_snapshot__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_snapshot.TextBoxSnapshot':
-    pass
-
-
-def _map_dom_storage__serialized_storage_key__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_storage.SerializedStorageKey':
-    pass
-
-
-def _map_dom_storage__storage_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_storage.StorageId':
-    pass
-
-
-def _map_dom_storage__item__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'dom_storage.Item':
-    pass
-
-
-def _map_database__database_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'database.DatabaseId':
-    pass
-
-
-def _map_database__database__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'database.Database':
-    pass
-
-
-def _map_database__error__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'database.Error':
-    pass
-
-
-def _map_emulation__screen_orientation__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'emulation.ScreenOrientation':
-    pass
-
-
-def _map_emulation__display_feature__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'emulation.DisplayFeature':
-    pass
-
-
-def _map_emulation__media_feature__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'emulation.MediaFeature':
-    pass
-
-
-def _map_emulation__virtual_time_policy__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'emulation.VirtualTimePolicy':
-    pass
-
-
-def _map_emulation__user_agent_brand_version__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'emulation.UserAgentBrandVersion':
-    pass
-
-
-def _map_emulation__user_agent_metadata__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'emulation.UserAgentMetadata':
-    pass
-
-
-def _map_emulation__disabled_image_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'emulation.DisabledImageType':
-    pass
-
-
-def _map_headless_experimental__screenshot_params__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'headless_experimental.ScreenshotParams':
-    pass
-
-
-def _map_io__stream_handle__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'io.StreamHandle':
-    pass
-
-
-def _map_indexed_db__database_with_object_stores__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'indexed_db.DatabaseWithObjectStores':
-    pass
-
-
-def _map_indexed_db__object_store__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'indexed_db.ObjectStore':
-    pass
-
-
-def _map_indexed_db__object_store_index__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'indexed_db.ObjectStoreIndex':
-    pass
-
-
-def _map_indexed_db__key__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'indexed_db.Key':
-    pass
-
-
-def _map_indexed_db__key_range__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'indexed_db.KeyRange':
-    pass
-
-
-def _map_indexed_db__data_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'indexed_db.DataEntry':
-    pass
-
-
-def _map_indexed_db__key_path__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'indexed_db.KeyPath':
-    pass
-
-
-def _map_input__touch_point__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'input_.TouchPoint':
-    pass
-
-
-def _map_input__gesture_source_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'input_.GestureSourceType':
-    pass
-
-
-def _map_input__mouse_button__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'input_.MouseButton':
-    pass
-
-
-def _map_input__time_since_epoch__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'input_.TimeSinceEpoch':
-    pass
-
-
-def _map_input__drag_data_item__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'input_.DragDataItem':
-    pass
-
-
-def _map_input__drag_data__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'input_.DragData':
-    pass
-
-
-def _map_layer_tree__layer_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'layer_tree.LayerId':
-    pass
-
-
-def _map_layer_tree__snapshot_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'layer_tree.SnapshotId':
-    pass
-
-
-def _map_layer_tree__scroll_rect__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'layer_tree.ScrollRect':
-    pass
-
-
-def _map_layer_tree__sticky_position_constraint__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'layer_tree.StickyPositionConstraint':
-    pass
-
-
-def _map_layer_tree__picture_tile__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'layer_tree.PictureTile':
-    pass
-
-
-def _map_layer_tree__layer__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'layer_tree.Layer':
-    pass
-
-
-def _map_layer_tree__paint_profile__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'layer_tree.PaintProfile':
-    pass
-
-
-def _map_log__log_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'log.LogEntry':
-    pass
-
-
-def _map_log__violation_setting__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'log.ViolationSetting':
-    pass
-
-
-def _map_memory__pressure_level__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'memory.PressureLevel':
-    pass
-
-
-def _map_memory__sampling_profile_node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'memory.SamplingProfileNode':
-    pass
-
-
-def _map_memory__sampling_profile__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'memory.SamplingProfile':
-    pass
-
-
-def _map_memory__module__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'memory.Module':
-    pass
-
-
-def _map_network__resource_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ResourceType':
-    pass
-
-
-def _map_network__loader_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.LoaderId':
-    pass
-
-
-def _map_network__request_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.RequestId':
-    pass
-
-
-def _map_network__interception_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.InterceptionId':
-    pass
-
-
-def _map_network__error_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ErrorReason':
-    pass
-
-
-def _map_network__time_since_epoch__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.TimeSinceEpoch':
-    pass
-
-
-def _map_network__monotonic_time__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.MonotonicTime':
-    pass
-
-
-def _map_network__headers__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.Headers':
-    pass
-
-
-def _map_network__connection_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ConnectionType':
-    pass
-
-
-def _map_network__cookie_same_site__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CookieSameSite':
-    pass
-
-
-def _map_network__cookie_priority__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CookiePriority':
-    pass
-
-
-def _map_network__cookie_source_scheme__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CookieSourceScheme':
-    pass
-
-
-def _map_network__resource_timing__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ResourceTiming':
-    pass
-
-
-def _map_network__resource_priority__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ResourcePriority':
-    pass
-
-
-def _map_network__post_data_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.PostDataEntry':
-    pass
-
-
-def _map_network__request__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.Request':
-    pass
-
-
-def _map_network__signed_certificate_timestamp__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.SignedCertificateTimestamp':
-    pass
-
-
-def _map_network__security_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.SecurityDetails':
-    pass
-
-
-def _map_network__certificate_transparency_compliance__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CertificateTransparencyCompliance':
-    pass
-
-
-def _map_network__blocked_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.BlockedReason':
-    pass
-
-
-def _map_network__cors_error__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CorsError':
-    pass
-
-
-def _map_network__cors_error_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CorsErrorStatus':
-    pass
-
-
-def _map_network__service_worker_response_source__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ServiceWorkerResponseSource':
-    pass
-
-
-def _map_network__trust_token_params__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.TrustTokenParams':
-    pass
-
-
-def _map_network__trust_token_operation_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.TrustTokenOperationType':
-    pass
-
-
-def _map_network__alternate_protocol_usage__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.AlternateProtocolUsage':
-    pass
-
-
-def _map_network__response__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.Response':
-    pass
-
-
-def _map_network__web_socket_request__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.WebSocketRequest':
-    pass
-
-
-def _map_network__web_socket_response__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.WebSocketResponse':
-    pass
-
-
-def _map_network__web_socket_frame__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.WebSocketFrame':
-    pass
-
-
-def _map_network__cached_resource__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CachedResource':
-    pass
-
-
-def _map_network__initiator__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.Initiator':
-    pass
-
-
-def _map_network__cookie__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.Cookie':
-    pass
-
-
-def _map_network__set_cookie_blocked_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.SetCookieBlockedReason':
-    pass
-
-
-def _map_network__cookie_blocked_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CookieBlockedReason':
-    pass
-
-
-def _map_network__blocked_set_cookie_with_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.BlockedSetCookieWithReason':
-    pass
-
-
-def _map_network__blocked_cookie_with_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.BlockedCookieWithReason':
-    pass
-
-
-def _map_network__cookie_param__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CookieParam':
-    pass
-
-
-def _map_network__auth_challenge__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.AuthChallenge':
-    pass
-
-
-def _map_network__auth_challenge_response__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.AuthChallengeResponse':
-    pass
-
-
-def _map_network__interception_stage__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.InterceptionStage':
-    pass
-
-
-def _map_network__request_pattern__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.RequestPattern':
-    pass
-
-
-def _map_network__signed_exchange_signature__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.SignedExchangeSignature':
-    pass
-
-
-def _map_network__signed_exchange_header__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.SignedExchangeHeader':
-    pass
-
-
-def _map_network__signed_exchange_error_field__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.SignedExchangeErrorField':
-    pass
-
-
-def _map_network__signed_exchange_error__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.SignedExchangeError':
-    pass
-
-
-def _map_network__signed_exchange_info__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.SignedExchangeInfo':
-    pass
-
-
-def _map_network__content_encoding__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ContentEncoding':
-    pass
-
-
-def _map_network__private_network_request_policy__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.PrivateNetworkRequestPolicy':
-    pass
-
-
-def _map_network__ip_address_space__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.IPAddressSpace':
-    pass
-
-
-def _map_network__connect_timing__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ConnectTiming':
-    pass
-
-
-def _map_network__client_security_state__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ClientSecurityState':
-    pass
-
-
-def _map_network__cross_origin_opener_policy_value__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CrossOriginOpenerPolicyValue':
-    pass
-
-
-def _map_network__cross_origin_opener_policy_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CrossOriginOpenerPolicyStatus':
-    pass
-
-
-def _map_network__cross_origin_embedder_policy_value__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CrossOriginEmbedderPolicyValue':
-    pass
-
-
-def _map_network__cross_origin_embedder_policy_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.CrossOriginEmbedderPolicyStatus':
-    pass
-
-
-def _map_network__content_security_policy_source__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ContentSecurityPolicySource':
-    pass
-
-
-def _map_network__content_security_policy_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ContentSecurityPolicyStatus':
-    pass
-
-
-def _map_network__security_isolation_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.SecurityIsolationStatus':
-    pass
-
-
-def _map_network__report_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ReportStatus':
-    pass
-
-
-def _map_network__report_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ReportId':
-    pass
-
-
-def _map_network__reporting_api_report__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ReportingApiReport':
-    pass
-
-
-def _map_network__reporting_api_endpoint__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.ReportingApiEndpoint':
-    pass
-
-
-def _map_network__load_network_resource_page_result__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.LoadNetworkResourcePageResult':
-    pass
-
-
-def _map_network__load_network_resource_options__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'network.LoadNetworkResourceOptions':
-    pass
-
-
-def _map_overlay__source_order_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.SourceOrderConfig':
-    pass
-
-
-def _map_overlay__grid_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.GridHighlightConfig':
-    pass
-
-
-def _map_overlay__flex_container_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.FlexContainerHighlightConfig':
-    pass
-
-
-def _map_overlay__flex_item_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.FlexItemHighlightConfig':
-    pass
-
-
-def _map_overlay__line_style__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.LineStyle':
-    pass
-
-
-def _map_overlay__box_style__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.BoxStyle':
-    pass
-
-
-def _map_overlay__contrast_algorithm__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.ContrastAlgorithm':
-    pass
-
-
-def _map_overlay__highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.HighlightConfig':
-    pass
-
-
-def _map_overlay__color_format__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.ColorFormat':
-    pass
-
-
-def _map_overlay__grid_node_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.GridNodeHighlightConfig':
-    pass
-
-
-def _map_overlay__flex_node_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.FlexNodeHighlightConfig':
-    pass
-
-
-def _map_overlay__scroll_snap_container_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.ScrollSnapContainerHighlightConfig':
-    pass
-
-
-def _map_overlay__scroll_snap_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.ScrollSnapHighlightConfig':
-    pass
-
-
-def _map_overlay__hinge_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.HingeConfig':
-    pass
-
-
-def _map_overlay__container_query_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.ContainerQueryHighlightConfig':
-    pass
-
-
-def _map_overlay__container_query_container_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.ContainerQueryContainerHighlightConfig':
-    pass
-
-
-def _map_overlay__isolated_element_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.IsolatedElementHighlightConfig':
-    pass
-
-
-def _map_overlay__isolation_mode_highlight_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.IsolationModeHighlightConfig':
-    pass
-
-
-def _map_overlay__inspect_mode__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'overlay.InspectMode':
-    pass
-
-
-def _map_page__frame_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.FrameId':
-    pass
-
-
-def _map_page__ad_frame_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.AdFrameType':
-    pass
-
-
-def _map_page__ad_frame_explanation__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.AdFrameExplanation':
-    pass
-
-
-def _map_page__ad_frame_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.AdFrameStatus':
-    pass
-
-
-def _map_page__ad_script_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.AdScriptId':
-    pass
-
-
-def _map_page__secure_context_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.SecureContextType':
-    pass
-
-
-def _map_page__cross_origin_isolated_context_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.CrossOriginIsolatedContextType':
-    pass
-
-
-def _map_page__gated_api_features__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.GatedAPIFeatures':
-    pass
-
-
-def _map_page__permissions_policy_feature__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.PermissionsPolicyFeature':
-    pass
-
-
-def _map_page__permissions_policy_block_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.PermissionsPolicyBlockReason':
-    pass
-
-
-def _map_page__permissions_policy_block_locator__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.PermissionsPolicyBlockLocator':
-    pass
-
-
-def _map_page__permissions_policy_feature_state__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.PermissionsPolicyFeatureState':
-    pass
-
-
-def _map_page__origin_trial_token_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.OriginTrialTokenStatus':
-    pass
-
-
-def _map_page__origin_trial_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.OriginTrialStatus':
-    pass
-
-
-def _map_page__origin_trial_usage_restriction__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.OriginTrialUsageRestriction':
-    pass
-
-
-def _map_page__origin_trial_token__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.OriginTrialToken':
-    pass
-
-
-def _map_page__origin_trial_token_with_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.OriginTrialTokenWithStatus':
-    pass
-
-
-def _map_page__origin_trial__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.OriginTrial':
-    pass
-
-
-def _map_page__frame__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.Frame':
-    pass
-
-
-def _map_page__frame_resource__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.FrameResource':
-    pass
-
-
-def _map_page__frame_resource_tree__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.FrameResourceTree':
-    pass
-
-
-def _map_page__frame_tree__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.FrameTree':
-    pass
-
-
-def _map_page__script_identifier__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.ScriptIdentifier':
-    pass
-
-
-def _map_page__transition_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.TransitionType':
-    pass
-
-
-def _map_page__navigation_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.NavigationEntry':
-    pass
-
-
-def _map_page__screencast_frame_metadata__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.ScreencastFrameMetadata':
-    pass
-
-
-def _map_page__dialog_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.DialogType':
-    pass
-
-
-def _map_page__app_manifest_error__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.AppManifestError':
-    pass
-
-
-def _map_page__app_manifest_parsed_properties__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.AppManifestParsedProperties':
-    pass
-
-
-def _map_page__layout_viewport__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.LayoutViewport':
-    pass
-
-
-def _map_page__visual_viewport__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.VisualViewport':
-    pass
-
-
-def _map_page__viewport__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.Viewport':
-    pass
-
-
-def _map_page__font_families__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.FontFamilies':
-    pass
-
-
-def _map_page__script_font_families__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.ScriptFontFamilies':
-    pass
-
-
-def _map_page__font_sizes__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.FontSizes':
-    pass
-
-
-def _map_page__client_navigation_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.ClientNavigationReason':
-    pass
-
-
-def _map_page__client_navigation_disposition__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.ClientNavigationDisposition':
-    pass
-
-
-def _map_page__installability_error_argument__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.InstallabilityErrorArgument':
-    pass
-
-
-def _map_page__installability_error__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.InstallabilityError':
-    pass
-
-
-def _map_page__referrer_policy__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.ReferrerPolicy':
-    pass
-
-
-def _map_page__compilation_cache_params__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.CompilationCacheParams':
-    pass
-
-
-def _map_page__auto_response_mode__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.AutoResponseMode':
-    pass
-
-
-def _map_page__navigation_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.NavigationType':
-    pass
-
-
-def _map_page__back_forward_cache_not_restored_reason__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.BackForwardCacheNotRestoredReason':
-    pass
-
-
-def _map_page__back_forward_cache_not_restored_reason_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.BackForwardCacheNotRestoredReasonType':
-    pass
-
-
-def _map_page__back_forward_cache_not_restored_explanation__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.BackForwardCacheNotRestoredExplanation':
-    pass
-
-
-def _map_page__back_forward_cache_not_restored_explanation_tree__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'page.BackForwardCacheNotRestoredExplanationTree':
-    pass
-
-
-def _map_performance__metric__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'performance.Metric':
-    pass
-
-
-def _map_performance_timeline__largest_contentful_paint__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'performance_timeline.LargestContentfulPaint':
-    pass
-
-
-def _map_performance_timeline__layout_shift_attribution__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'performance_timeline.LayoutShiftAttribution':
-    pass
-
-
-def _map_performance_timeline__layout_shift__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'performance_timeline.LayoutShift':
-    pass
-
-
-def _map_performance_timeline__timeline_event__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'performance_timeline.TimelineEvent':
-    pass
-
-
-def _map_security__certificate_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.CertificateId':
-    pass
-
-
-def _map_security__mixed_content_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.MixedContentType':
-    pass
-
-
-def _map_security__security_state__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.SecurityState':
-    pass
-
-
-def _map_security__certificate_security_state__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.CertificateSecurityState':
-    pass
-
-
-def _map_security__safety_tip_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.SafetyTipStatus':
-    pass
-
-
-def _map_security__safety_tip_info__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.SafetyTipInfo':
-    pass
-
-
-def _map_security__visible_security_state__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.VisibleSecurityState':
-    pass
-
-
-def _map_security__security_state_explanation__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.SecurityStateExplanation':
-    pass
-
-
-def _map_security__insecure_content_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.InsecureContentStatus':
-    pass
-
-
-def _map_security__certificate_error_action__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'security.CertificateErrorAction':
-    pass
-
-
-def _map_service_worker__registration_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'service_worker.RegistrationID':
-    pass
-
-
-def _map_service_worker__service_worker_registration__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'service_worker.ServiceWorkerRegistration':
-    pass
-
-
-def _map_service_worker__service_worker_version_running_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'service_worker.ServiceWorkerVersionRunningStatus':
-    pass
-
-
-def _map_service_worker__service_worker_version_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'service_worker.ServiceWorkerVersionStatus':
-    pass
-
-
-def _map_service_worker__service_worker_version__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'service_worker.ServiceWorkerVersion':
-    pass
-
-
-def _map_service_worker__service_worker_error_message__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'service_worker.ServiceWorkerErrorMessage':
-    pass
-
-
-def _map_storage__serialized_storage_key__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.SerializedStorageKey':
-    pass
-
-
-def _map_storage__storage_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.StorageType':
-    pass
-
-
-def _map_storage__usage_for_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.UsageForType':
-    pass
-
-
-def _map_storage__trust_tokens__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.TrustTokens':
-    pass
-
-
-def _map_storage__interest_group_access_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.InterestGroupAccessType':
-    pass
-
-
-def _map_storage__interest_group_ad__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.InterestGroupAd':
-    pass
-
-
-def _map_storage__interest_group_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.InterestGroupDetails':
-    pass
-
-
-def _map_storage__shared_storage_access_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.SharedStorageAccessType':
-    pass
-
-
-def _map_storage__shared_storage_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.SharedStorageEntry':
-    pass
-
-
-def _map_storage__shared_storage_metadata__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.SharedStorageMetadata':
-    pass
-
-
-def _map_storage__shared_storage_reporting_metadata__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.SharedStorageReportingMetadata':
-    pass
-
-
-def _map_storage__shared_storage_url_with_metadata__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.SharedStorageUrlWithMetadata':
-    pass
-
-
-def _map_storage__shared_storage_access_params__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.SharedStorageAccessParams':
-    pass
-
-
-def _map_storage__storage_buckets_durability__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.StorageBucketsDurability':
-    pass
-
-
-def _map_storage__storage_bucket__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.StorageBucket':
-    pass
-
-
-def _map_storage__storage_bucket_info__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.StorageBucketInfo':
-    pass
-
-
-def _map_storage__attribution_reporting_source_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.AttributionReportingSourceType':
-    pass
-
-
-def _map_storage__unsigned_int64_as_base10__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.UnsignedInt64AsBase10':
-    pass
-
-
-def _map_storage__unsigned_int128_as_base16__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.UnsignedInt128AsBase16':
-    pass
-
-
-def _map_storage__signed_int64_as_base10__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.SignedInt64AsBase10':
-    pass
-
-
-def _map_storage__attribution_reporting_filter_data_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.AttributionReportingFilterDataEntry':
-    pass
-
-
-def _map_storage__attribution_reporting_aggregation_keys_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.AttributionReportingAggregationKeysEntry':
-    pass
-
-
-def _map_storage__attribution_reporting_event_report_windows__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.AttributionReportingEventReportWindows':
-    pass
-
-
-def _map_storage__attribution_reporting_source_registration__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.AttributionReportingSourceRegistration':
-    pass
-
-
-def _map_storage__attribution_reporting_source_registration_result__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'storage.AttributionReportingSourceRegistrationResult':
-    pass
-
-
-def _map_system_info__gpu_device__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'system_info.GPUDevice':
-    pass
-
-
-def _map_system_info__size__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'system_info.Size':
-    pass
-
-
-def _map_system_info__video_decode_accelerator_capability__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'system_info.VideoDecodeAcceleratorCapability':
-    pass
-
-
-def _map_system_info__video_encode_accelerator_capability__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'system_info.VideoEncodeAcceleratorCapability':
-    pass
-
-
-def _map_system_info__subsampling_format__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'system_info.SubsamplingFormat':
-    pass
-
-
-def _map_system_info__image_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'system_info.ImageType':
-    pass
-
-
-def _map_system_info__image_decode_accelerator_capability__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'system_info.ImageDecodeAcceleratorCapability':
-    pass
-
-
-def _map_system_info__gpu_info__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'system_info.GPUInfo':
-    pass
-
-
-def _map_system_info__process_info__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'system_info.ProcessInfo':
-    pass
-
-
-def _map_target__target_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'target.TargetID':
-    pass
-
-
-def _map_target__session_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'target.SessionID':
-    pass
-
-
-def _map_target__target_info__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'target.TargetInfo':
-    pass
-
-
-def _map_target__filter_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'target.FilterEntry':
-    pass
-
-
-def _map_target__target_filter__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'target.TargetFilter':
-    pass
-
-
-def _map_target__remote_location__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'target.RemoteLocation':
-    pass
-
-
-def _map_tracing__memory_dump_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'tracing.MemoryDumpConfig':
-    pass
-
-
-def _map_tracing__trace_config__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'tracing.TraceConfig':
-    pass
-
-
-def _map_tracing__stream_format__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'tracing.StreamFormat':
-    pass
-
-
-def _map_tracing__stream_compression__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'tracing.StreamCompression':
-    pass
-
-
-def _map_tracing__memory_dump_level_of_detail__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'tracing.MemoryDumpLevelOfDetail':
-    pass
-
-
-def _map_tracing__tracing_backend__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'tracing.TracingBackend':
-    pass
-
-
-def _map_fetch__request_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'fetch.RequestId':
-    pass
-
-
-def _map_fetch__request_stage__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'fetch.RequestStage':
-    pass
-
-
-def _map_fetch__request_pattern__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'fetch.RequestPattern':
-    pass
-
-
-def _map_fetch__header_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'fetch.HeaderEntry':
-    pass
-
-
-def _map_fetch__auth_challenge__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'fetch.AuthChallenge':
-    pass
-
-
-def _map_fetch__auth_challenge_response__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'fetch.AuthChallengeResponse':
-    pass
-
-
-def _map_web_audio__graph_object_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.GraphObjectId':
-    pass
-
-
-def _map_web_audio__context_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.ContextType':
-    pass
-
-
-def _map_web_audio__context_state__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.ContextState':
-    pass
-
-
-def _map_web_audio__node_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.NodeType':
-    pass
-
-
-def _map_web_audio__channel_count_mode__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.ChannelCountMode':
-    pass
-
-
-def _map_web_audio__channel_interpretation__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.ChannelInterpretation':
-    pass
-
-
-def _map_web_audio__param_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.ParamType':
-    pass
-
-
-def _map_web_audio__automation_rate__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.AutomationRate':
-    pass
-
-
-def _map_web_audio__context_realtime_data__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.ContextRealtimeData':
-    pass
-
-
-def _map_web_audio__base_audio_context__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.BaseAudioContext':
-    pass
-
-
-def _map_web_audio__audio_listener__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.AudioListener':
-    pass
-
-
-def _map_web_audio__audio_node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.AudioNode':
-    pass
-
-
-def _map_web_audio__audio_param__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_audio.AudioParam':
-    pass
-
-
-def _map_web_authn__authenticator_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_authn.AuthenticatorId':
-    pass
-
-
-def _map_web_authn__authenticator_protocol__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_authn.AuthenticatorProtocol':
-    pass
-
-
-def _map_web_authn__ctap2_version__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_authn.Ctap2Version':
-    pass
-
-
-def _map_web_authn__authenticator_transport__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_authn.AuthenticatorTransport':
-    pass
-
-
-def _map_web_authn__virtual_authenticator_options__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_authn.VirtualAuthenticatorOptions':
-    pass
-
-
-def _map_web_authn__credential__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'web_authn.Credential':
-    pass
-
-
-def _map_media__player_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'media.PlayerId':
-    pass
-
-
-def _map_media__timestamp__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'media.Timestamp':
-    pass
-
-
-def _map_media__player_message__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'media.PlayerMessage':
-    pass
-
-
-def _map_media__player_property__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'media.PlayerProperty':
-    pass
-
-
-def _map_media__player_event__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'media.PlayerEvent':
-    pass
-
-
-def _map_media__player_error_source_location__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'media.PlayerErrorSourceLocation':
-    pass
-
-
-def _map_media__player_error__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'media.PlayerError':
-    pass
-
-
-def _map_device_access__request_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'device_access.RequestId':
-    pass
-
-
-def _map_device_access__device_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'device_access.DeviceId':
-    pass
-
-
-def _map_device_access__prompt_device__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'device_access.PromptDevice':
-    pass
-
-
-def _map_preload__rule_set_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.RuleSetId':
-    pass
-
-
-def _map_preload__rule_set__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.RuleSet':
-    pass
-
-
-def _map_preload__rule_set_error_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.RuleSetErrorType':
-    pass
-
-
-def _map_preload__speculation_action__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.SpeculationAction':
-    pass
-
-
-def _map_preload__speculation_target_hint__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.SpeculationTargetHint':
-    pass
-
-
-def _map_preload__preloading_attempt_key__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.PreloadingAttemptKey':
-    pass
-
-
-def _map_preload__preloading_attempt_source__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.PreloadingAttemptSource':
-    pass
-
-
-def _map_preload__prerender_final_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.PrerenderFinalStatus':
-    pass
-
-
-def _map_preload__preloading_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.PreloadingStatus':
-    pass
-
-
-def _map_preload__prefetch_status__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'preload.PrefetchStatus':
-    pass
-
-
-def _map_fed_cm__login_state__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'fed_cm.LoginState':
-    pass
-
-
-def _map_fed_cm__dialog_type__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'fed_cm.DialogType':
-    pass
-
-
-def _map_fed_cm__account__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'fed_cm.Account':
-    pass
-
-
-def _map_console__console_message__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'console.ConsoleMessage':
-    pass
-
-
-def _map_debugger__breakpoint_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'debugger.BreakpointId':
-    pass
-
-
-def _map_debugger__call_frame_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'debugger.CallFrameId':
-    pass
-
-
-def _map_debugger__location__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'debugger.Location':
-    pass
-
-
-def _map_debugger__script_position__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'debugger.ScriptPosition':
-    pass
-
-
-def _map_debugger__call_frame__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'debugger.CallFrame':
-    pass
-
-
-def _map_debugger__scope__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'debugger.Scope':
-    pass
-
-
-def _map_debugger__search_match__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'debugger.SearchMatch':
-    pass
-
-
-def _map_debugger__break_location__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'debugger.BreakLocation':
-    pass
-
-
-def _map_heap_profiler__heap_snapshot_object_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'heap_profiler.HeapSnapshotObjectId':
-    pass
-
-
-def _map_heap_profiler__sampling_heap_profile_node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'heap_profiler.SamplingHeapProfileNode':
-    pass
-
-
-def _map_heap_profiler__sampling_heap_profile_sample__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'heap_profiler.SamplingHeapProfileSample':
-    pass
-
-
-def _map_heap_profiler__sampling_heap_profile__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'heap_profiler.SamplingHeapProfile':
-    pass
-
-
-def _map_profiler__profile_node__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'profiler.ProfileNode':
-    pass
-
-
-def _map_profiler__profile__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'profiler.Profile':
-    pass
-
-
-def _map_profiler__position_tick_info__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'profiler.PositionTickInfo':
-    pass
-
-
-def _map_profiler__coverage_range__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'profiler.CoverageRange':
-    pass
-
-
-def _map_profiler__function_coverage__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'profiler.FunctionCoverage':
-    pass
-
-
-def _map_profiler__script_coverage__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'profiler.ScriptCoverage':
-    pass
-
-
-def _map_profiler__type_object__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'profiler.TypeObject':
-    pass
-
-
-def _map_profiler__type_profile_entry__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'profiler.TypeProfileEntry':
-    pass
-
-
-def _map_profiler__script_type_profile__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'profiler.ScriptTypeProfile':
-    pass
-
-
-def _map_runtime__script_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.ScriptId':
-    pass
-
-
-def _map_runtime__remote_object_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.RemoteObjectId':
-    pass
-
-
-def _map_runtime__unserializable_value__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.UnserializableValue':
-    pass
-
-
-def _map_runtime__remote_object__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.RemoteObject':
-    pass
-
-
-def _map_runtime__custom_preview__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.CustomPreview':
-    pass
-
-
-def _map_runtime__object_preview__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.ObjectPreview':
-    pass
-
-
-def _map_runtime__property_preview__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.PropertyPreview':
-    pass
-
-
-def _map_runtime__entry_preview__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.EntryPreview':
-    pass
-
-
-def _map_runtime__property_descriptor__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.PropertyDescriptor':
-    pass
-
-
-def _map_runtime__internal_property_descriptor__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.InternalPropertyDescriptor':
-    pass
-
-
-def _map_runtime__private_property_descriptor__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.PrivatePropertyDescriptor':
-    pass
-
-
-def _map_runtime__call_argument__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.CallArgument':
-    pass
-
-
-def _map_runtime__execution_context_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.ExecutionContextId':
-    pass
-
-
-def _map_runtime__execution_context_description__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.ExecutionContextDescription':
-    pass
-
-
-def _map_runtime__exception_details__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.ExceptionDetails':
-    pass
-
-
-def _map_runtime__timestamp__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.Timestamp':
-    pass
-
-
-def _map_runtime__time_delta__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.TimeDelta':
-    pass
-
-
-def _map_runtime__call_frame__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.CallFrame':
-    pass
-
-
-def _map_runtime__stack_trace__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.StackTrace':
-    pass
-
-
-def _map_runtime__unique_debugger_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.UniqueDebuggerId':
-    pass
-
-
-def _map_runtime__stack_trace_id__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'runtime.StackTraceId':
-    pass
-
-
-def _map_schema__domain__from_dict(
-        data: dict,
-        casing_strategy: 'CasingStrategyT' = 'snake'
-) -> 'schema.Domain':
-    pass
-
-
-def from_dict(
-        dataclass_type: type[_T],
-        data: dict,
-        casing_strategy: CasingStrategyT
-) -> _T:
+def from_dict(dataclass_type: type[_T], data: dict, casing_strategy: CasingStrategyT) -> _T:
     lookup = {
         accessibility.AXValueSource: (
             _map_accessibility__ax_value_source__from_dict

@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.dom.types import (
     BackendNodeId,
     CollectClassNamesFromSubtreeReturnT,
@@ -60,7 +63,7 @@ from cdp.domains.page.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -69,7 +72,7 @@ class DOM(BaseDomain):
     def collect_class_names_from_subtree(
             self,
             node_id: NodeId
-    ) -> IResult['CollectClassNamesFromSubtreeReturnT']:
+    ) -> IResponse['CollectClassNamesFromSubtreeReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -77,7 +80,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.collectClassNamesFromSubtree',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CollectClassNamesFromSubtreeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def copy_to(
@@ -85,7 +93,7 @@ class DOM(BaseDomain):
             node_id: NodeId,
             target_node_id: NodeId,
             insert_before_node_id: NodeId = UNDEFINED
-    ) -> IResult['CopyToReturnT']:
+    ) -> IResponse['CopyToReturnT']:
         params = {
             'nodeId': node_id,
             'targetNodeId': target_node_id,
@@ -97,7 +105,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.copyTo',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CopyToReturnT,
+                data,
+                'camel'
+            )
         )
 
     def describe_node(
@@ -107,7 +120,7 @@ class DOM(BaseDomain):
             object_id: RemoteObjectId = UNDEFINED,
             depth: int = UNDEFINED,
             pierce: bool = UNDEFINED
-    ) -> IResult['DescribeNodeReturnT']:
+    ) -> IResponse['DescribeNodeReturnT']:
         params = {}
 
         if is_defined(node_id):
@@ -128,7 +141,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.describeNode',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                DescribeNodeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def scroll_into_view_if_needed(
@@ -137,7 +155,7 @@ class DOM(BaseDomain):
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED,
             rect: Rect = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(node_id):
@@ -160,7 +178,7 @@ class DOM(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -172,7 +190,7 @@ class DOM(BaseDomain):
     def discard_search_results(
             self,
             search_id: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'searchId': search_id,
         }
@@ -186,7 +204,7 @@ class DOM(BaseDomain):
     def enable(
             self,
             include_whitespace: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(include_whitespace):
@@ -203,7 +221,7 @@ class DOM(BaseDomain):
             node_id: NodeId = UNDEFINED,
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(node_id):
@@ -224,7 +242,7 @@ class DOM(BaseDomain):
     def get_attributes(
             self,
             node_id: NodeId
-    ) -> IResult['GetAttributesReturnT']:
+    ) -> IResponse['GetAttributesReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -232,7 +250,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getAttributes',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetAttributesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_box_model(
@@ -240,7 +263,7 @@ class DOM(BaseDomain):
             node_id: NodeId = UNDEFINED,
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED
-    ) -> IResult['GetBoxModelReturnT']:
+    ) -> IResponse['GetBoxModelReturnT']:
         params = {}
 
         if is_defined(node_id):
@@ -255,7 +278,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getBoxModel',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetBoxModelReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_content_quads(
@@ -263,7 +291,7 @@ class DOM(BaseDomain):
             node_id: NodeId = UNDEFINED,
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED
-    ) -> IResult['GetContentQuadsReturnT']:
+    ) -> IResponse['GetContentQuadsReturnT']:
         params = {}
 
         if is_defined(node_id):
@@ -278,14 +306,19 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getContentQuads',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetContentQuadsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_document(
             self,
             depth: int = UNDEFINED,
             pierce: bool = UNDEFINED
-    ) -> IResult['GetDocumentReturnT']:
+    ) -> IResponse['GetDocumentReturnT']:
         params = {}
 
         if is_defined(depth):
@@ -297,14 +330,19 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getDocument',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetDocumentReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_flattened_document(
             self,
             depth: int = UNDEFINED,
             pierce: bool = UNDEFINED
-    ) -> IResult['GetFlattenedDocumentReturnT']:
+    ) -> IResponse['GetFlattenedDocumentReturnT']:
         params = {}
 
         if is_defined(depth):
@@ -316,7 +354,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getFlattenedDocument',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetFlattenedDocumentReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_nodes_for_subtree_by_style(
@@ -324,7 +367,7 @@ class DOM(BaseDomain):
             node_id: NodeId,
             computed_styles: list,
             pierce: bool = UNDEFINED
-    ) -> IResult['GetNodesForSubtreeByStyleReturnT']:
+    ) -> IResponse['GetNodesForSubtreeByStyleReturnT']:
         params = {
             'nodeId': node_id,
             'computedStyles': computed_styles,
@@ -336,7 +379,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getNodesForSubtreeByStyle',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetNodesForSubtreeByStyleReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_node_for_location(
@@ -345,7 +393,7 @@ class DOM(BaseDomain):
             y: int,
             include_user_agent_shadow_dom: bool = UNDEFINED,
             ignore_pointer_events_none: bool = UNDEFINED
-    ) -> IResult['GetNodeForLocationReturnT']:
+    ) -> IResponse['GetNodeForLocationReturnT']:
         params = {
             'x': x,
             'y': y,
@@ -360,7 +408,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getNodeForLocation',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetNodeForLocationReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_outer_html(
@@ -368,7 +421,7 @@ class DOM(BaseDomain):
             node_id: NodeId = UNDEFINED,
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED
-    ) -> IResult['GetOuterHTMLReturnT']:
+    ) -> IResponse['GetOuterHTMLReturnT']:
         params = {}
 
         if is_defined(node_id):
@@ -383,13 +436,18 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getOuterHTML',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetOuterHTMLReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_relayout_boundary(
             self,
             node_id: NodeId
-    ) -> IResult['GetRelayoutBoundaryReturnT']:
+    ) -> IResponse['GetRelayoutBoundaryReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -397,7 +455,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getRelayoutBoundary',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetRelayoutBoundaryReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_search_results(
@@ -405,7 +468,7 @@ class DOM(BaseDomain):
             search_id: str,
             from_index: int,
             to_index: int
-    ) -> IResult['GetSearchResultsReturnT']:
+    ) -> IResponse['GetSearchResultsReturnT']:
         params = {
             'searchId': search_id,
             'fromIndex': from_index,
@@ -415,12 +478,17 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getSearchResults',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetSearchResultsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def hide_highlight(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -431,7 +499,7 @@ class DOM(BaseDomain):
 
     def highlight_node(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -442,7 +510,7 @@ class DOM(BaseDomain):
 
     def highlight_rect(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -453,7 +521,7 @@ class DOM(BaseDomain):
 
     def mark_undoable_state(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -467,7 +535,7 @@ class DOM(BaseDomain):
             node_id: NodeId,
             target_node_id: NodeId,
             insert_before_node_id: NodeId = UNDEFINED
-    ) -> IResult['MoveToReturnT']:
+    ) -> IResponse['MoveToReturnT']:
         params = {
             'nodeId': node_id,
             'targetNodeId': target_node_id,
@@ -479,14 +547,19 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.moveTo',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                MoveToReturnT,
+                data,
+                'camel'
+            )
         )
 
     def perform_search(
             self,
             query: str,
             include_user_agent_shadow_dom: bool = UNDEFINED
-    ) -> IResult['PerformSearchReturnT']:
+    ) -> IResponse['PerformSearchReturnT']:
         params = {
             'query': query,
         }
@@ -497,13 +570,18 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.performSearch',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                PerformSearchReturnT,
+                data,
+                'camel'
+            )
         )
 
     def push_node_by_path_to_frontend(
             self,
             path: str
-    ) -> IResult['PushNodeByPathToFrontendReturnT']:
+    ) -> IResponse['PushNodeByPathToFrontendReturnT']:
         params = {
             'path': path,
         }
@@ -511,13 +589,18 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.pushNodeByPathToFrontend',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                PushNodeByPathToFrontendReturnT,
+                data,
+                'camel'
+            )
         )
 
     def push_nodes_by_backend_ids_to_frontend(
             self,
             backend_node_ids: list
-    ) -> IResult['PushNodesByBackendIdsToFrontendReturnT']:
+    ) -> IResponse['PushNodesByBackendIdsToFrontendReturnT']:
         params = {
             'backendNodeIds': backend_node_ids,
         }
@@ -525,14 +608,19 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.pushNodesByBackendIdsToFrontend',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                PushNodesByBackendIdsToFrontendReturnT,
+                data,
+                'camel'
+            )
         )
 
     def query_selector(
             self,
             node_id: NodeId,
             selector: str
-    ) -> IResult['QuerySelectorReturnT']:
+    ) -> IResponse['QuerySelectorReturnT']:
         params = {
             'nodeId': node_id,
             'selector': selector,
@@ -541,14 +629,19 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.querySelector',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                QuerySelectorReturnT,
+                data,
+                'camel'
+            )
         )
 
     def query_selector_all(
             self,
             node_id: NodeId,
             selector: str
-    ) -> IResult['QuerySelectorAllReturnT']:
+    ) -> IResponse['QuerySelectorAllReturnT']:
         params = {
             'nodeId': node_id,
             'selector': selector,
@@ -557,23 +650,33 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.querySelectorAll',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                QuerySelectorAllReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_top_layer_elements(
             self
-    ) -> IResult['GetTopLayerElementsReturnT']:
+    ) -> IResponse['GetTopLayerElementsReturnT']:
         params = {}
 
         return self._send_command(
             'DOM.getTopLayerElements',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetTopLayerElementsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def redo(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -586,7 +689,7 @@ class DOM(BaseDomain):
             self,
             node_id: NodeId,
             name: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
             'name': name,
@@ -601,7 +704,7 @@ class DOM(BaseDomain):
     def remove_node(
             self,
             node_id: NodeId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
         }
@@ -617,7 +720,7 @@ class DOM(BaseDomain):
             node_id: NodeId,
             depth: int = UNDEFINED,
             pierce: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
         }
@@ -637,7 +740,7 @@ class DOM(BaseDomain):
     def request_node(
             self,
             object_id: RemoteObjectId
-    ) -> IResult['RequestNodeReturnT']:
+    ) -> IResponse['RequestNodeReturnT']:
         params = {
             'objectId': object_id,
         }
@@ -645,7 +748,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.requestNode',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                RequestNodeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def resolve_node(
@@ -654,7 +762,7 @@ class DOM(BaseDomain):
             backend_node_id: BackendNodeId = UNDEFINED,
             object_group: str = UNDEFINED,
             execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> IResult['ResolveNodeReturnT']:
+    ) -> IResponse['ResolveNodeReturnT']:
         params = {}
 
         if is_defined(node_id):
@@ -672,7 +780,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.resolveNode',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                ResolveNodeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_attribute_value(
@@ -680,7 +793,7 @@ class DOM(BaseDomain):
             node_id: NodeId,
             name: str,
             value: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
             'name': name,
@@ -698,7 +811,7 @@ class DOM(BaseDomain):
             node_id: NodeId,
             text: str,
             name: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
             'text': text,
@@ -719,7 +832,7 @@ class DOM(BaseDomain):
             node_id: NodeId = UNDEFINED,
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'files': files,
         }
@@ -742,7 +855,7 @@ class DOM(BaseDomain):
     def set_node_stack_traces_enabled(
             self,
             enable: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'enable': enable,
         }
@@ -756,7 +869,7 @@ class DOM(BaseDomain):
     def get_node_stack_traces(
             self,
             node_id: NodeId
-    ) -> IResult['GetNodeStackTracesReturnT']:
+    ) -> IResponse['GetNodeStackTracesReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -764,13 +877,18 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getNodeStackTraces',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetNodeStackTracesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_file_info(
             self,
             object_id: RemoteObjectId
-    ) -> IResult['GetFileInfoReturnT']:
+    ) -> IResponse['GetFileInfoReturnT']:
         params = {
             'objectId': object_id,
         }
@@ -778,13 +896,18 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getFileInfo',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetFileInfoReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_inspected_node(
             self,
             node_id: NodeId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
         }
@@ -799,7 +922,7 @@ class DOM(BaseDomain):
             self,
             node_id: NodeId,
             name: str
-    ) -> IResult['SetNodeNameReturnT']:
+    ) -> IResponse['SetNodeNameReturnT']:
         params = {
             'nodeId': node_id,
             'name': name,
@@ -808,14 +931,19 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.setNodeName',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetNodeNameReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_node_value(
             self,
             node_id: NodeId,
             value: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
             'value': value,
@@ -831,7 +959,7 @@ class DOM(BaseDomain):
             self,
             node_id: NodeId,
             outer_html: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
             'outerHTML': outer_html,
@@ -845,7 +973,7 @@ class DOM(BaseDomain):
 
     def undo(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -857,7 +985,7 @@ class DOM(BaseDomain):
     def get_frame_owner(
             self,
             frame_id: FrameId
-    ) -> IResult['GetFrameOwnerReturnT']:
+    ) -> IResponse['GetFrameOwnerReturnT']:
         params = {
             'frameId': frame_id,
         }
@@ -865,7 +993,12 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getFrameOwner',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetFrameOwnerReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_container_for_node(
@@ -874,7 +1007,7 @@ class DOM(BaseDomain):
             container_name: str = UNDEFINED,
             physical_axes: PhysicalAxes = UNDEFINED,
             logical_axes: LogicalAxes = UNDEFINED
-    ) -> IResult['GetContainerForNodeReturnT']:
+    ) -> IResponse['GetContainerForNodeReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -891,13 +1024,18 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getContainerForNode',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetContainerForNodeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_querying_descendants_for_container(
             self,
             node_id: NodeId
-    ) -> IResult['GetQueryingDescendantsForContainerReturnT']:
+    ) -> IResponse['GetQueryingDescendantsForContainerReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -905,5 +1043,10 @@ class DOM(BaseDomain):
         return self._send_command(
             'DOM.getQueryingDescendantsForContainer',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetQueryingDescendantsForContainerReturnT,
+                data,
+                'camel'
+            )
         )

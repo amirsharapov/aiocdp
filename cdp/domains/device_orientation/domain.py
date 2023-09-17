@@ -16,9 +16,12 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -26,7 +29,7 @@ if TYPE_CHECKING:
 class DeviceOrientation(BaseDomain):
     def clear_device_orientation_override(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -40,7 +43,7 @@ class DeviceOrientation(BaseDomain):
             alpha: float,
             beta: float,
             gamma: float
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'alpha': alpha,
             'beta': beta,

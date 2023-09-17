@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.overlay.types import (
     ColorFormat,
     GetGridHighlightObjectsForTestReturnT,
@@ -40,7 +43,7 @@ from cdp.domains.runtime.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -48,7 +51,7 @@ if TYPE_CHECKING:
 class Overlay(BaseDomain):
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -59,7 +62,7 @@ class Overlay(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -75,7 +78,7 @@ class Overlay(BaseDomain):
             include_style: bool = UNDEFINED,
             color_format: ColorFormat = UNDEFINED,
             show_accessibility_info: bool = UNDEFINED
-    ) -> IResult['GetHighlightObjectForTestReturnT']:
+    ) -> IResponse['GetHighlightObjectForTestReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -95,13 +98,18 @@ class Overlay(BaseDomain):
         return self._send_command(
             'Overlay.getHighlightObjectForTest',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetHighlightObjectForTestReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_grid_highlight_objects_for_test(
             self,
             node_ids: list
-    ) -> IResult['GetGridHighlightObjectsForTestReturnT']:
+    ) -> IResponse['GetGridHighlightObjectsForTestReturnT']:
         params = {
             'nodeIds': node_ids,
         }
@@ -109,13 +117,18 @@ class Overlay(BaseDomain):
         return self._send_command(
             'Overlay.getGridHighlightObjectsForTest',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetGridHighlightObjectsForTestReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_source_order_highlight_object_for_test(
             self,
             node_id: NodeId
-    ) -> IResult['GetSourceOrderHighlightObjectForTestReturnT']:
+    ) -> IResponse['GetSourceOrderHighlightObjectForTestReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -123,12 +136,17 @@ class Overlay(BaseDomain):
         return self._send_command(
             'Overlay.getSourceOrderHighlightObjectForTest',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetSourceOrderHighlightObjectForTestReturnT,
+                data,
+                'camel'
+            )
         )
 
     def hide_highlight(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -142,7 +160,7 @@ class Overlay(BaseDomain):
             frame_id: FrameId,
             content_color: RGBA = UNDEFINED,
             content_outline_color: RGBA = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'frameId': frame_id,
         }
@@ -166,7 +184,7 @@ class Overlay(BaseDomain):
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED,
             selector: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'highlightConfig': highlight_config,
         }
@@ -194,7 +212,7 @@ class Overlay(BaseDomain):
             quad: Quad,
             color: RGBA = UNDEFINED,
             outline_color: RGBA = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'quad': quad,
         }
@@ -219,7 +237,7 @@ class Overlay(BaseDomain):
             height: int,
             color: RGBA = UNDEFINED,
             outline_color: RGBA = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'x': x,
             'y': y,
@@ -245,7 +263,7 @@ class Overlay(BaseDomain):
             node_id: NodeId = UNDEFINED,
             backend_node_id: BackendNodeId = UNDEFINED,
             object_id: RemoteObjectId = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'sourceOrderConfig': source_order_config,
         }
@@ -269,7 +287,7 @@ class Overlay(BaseDomain):
             self,
             mode: InspectMode,
             highlight_config: HighlightConfig = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'mode': mode,
         }
@@ -286,7 +304,7 @@ class Overlay(BaseDomain):
     def set_show_ad_highlights(
             self,
             show: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'show': show,
         }
@@ -300,7 +318,7 @@ class Overlay(BaseDomain):
     def set_paused_in_debugger_message(
             self,
             message: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(message):
@@ -315,7 +333,7 @@ class Overlay(BaseDomain):
     def set_show_debug_borders(
             self,
             show: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'show': show,
         }
@@ -329,7 +347,7 @@ class Overlay(BaseDomain):
     def set_show_fps_counter(
             self,
             show: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'show': show,
         }
@@ -343,7 +361,7 @@ class Overlay(BaseDomain):
     def set_show_grid_overlays(
             self,
             grid_node_highlight_configs: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'gridNodeHighlightConfigs': grid_node_highlight_configs,
         }
@@ -357,7 +375,7 @@ class Overlay(BaseDomain):
     def set_show_flex_overlays(
             self,
             flex_node_highlight_configs: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'flexNodeHighlightConfigs': flex_node_highlight_configs,
         }
@@ -371,7 +389,7 @@ class Overlay(BaseDomain):
     def set_show_scroll_snap_overlays(
             self,
             scroll_snap_highlight_configs: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'scrollSnapHighlightConfigs': scroll_snap_highlight_configs,
         }
@@ -385,7 +403,7 @@ class Overlay(BaseDomain):
     def set_show_container_query_overlays(
             self,
             container_query_highlight_configs: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'containerQueryHighlightConfigs': container_query_highlight_configs,
         }
@@ -399,7 +417,7 @@ class Overlay(BaseDomain):
     def set_show_paint_rects(
             self,
             result: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'result': result,
         }
@@ -413,7 +431,7 @@ class Overlay(BaseDomain):
     def set_show_layout_shift_regions(
             self,
             result: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'result': result,
         }
@@ -427,7 +445,7 @@ class Overlay(BaseDomain):
     def set_show_scroll_bottleneck_rects(
             self,
             show: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'show': show,
         }
@@ -441,7 +459,7 @@ class Overlay(BaseDomain):
     def set_show_hit_test_borders(
             self,
             show: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'show': show,
         }
@@ -455,7 +473,7 @@ class Overlay(BaseDomain):
     def set_show_web_vitals(
             self,
             show: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'show': show,
         }
@@ -469,7 +487,7 @@ class Overlay(BaseDomain):
     def set_show_viewport_size_on_resize(
             self,
             show: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'show': show,
         }
@@ -483,7 +501,7 @@ class Overlay(BaseDomain):
     def set_show_hinge(
             self,
             hinge_config: HingeConfig = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(hinge_config):
@@ -498,7 +516,7 @@ class Overlay(BaseDomain):
     def set_show_isolated_elements(
             self,
             isolated_element_highlight_configs: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'isolatedElementHighlightConfigs': isolated_element_highlight_configs,
         }

@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.animation.types import (
     GetCurrentTimeReturnT,
     GetPlaybackRateReturnT,
@@ -23,7 +26,7 @@ from cdp.domains.animation.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -31,7 +34,7 @@ if TYPE_CHECKING:
 class Animation(BaseDomain):
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -42,7 +45,7 @@ class Animation(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -54,7 +57,7 @@ class Animation(BaseDomain):
     def get_current_time(
             self,
             id_: str
-    ) -> IResult['GetCurrentTimeReturnT']:
+    ) -> IResponse['GetCurrentTimeReturnT']:
         params = {
             'id': id_,
         }
@@ -62,24 +65,34 @@ class Animation(BaseDomain):
         return self._send_command(
             'Animation.getCurrentTime',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetCurrentTimeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_playback_rate(
             self
-    ) -> IResult['GetPlaybackRateReturnT']:
+    ) -> IResponse['GetPlaybackRateReturnT']:
         params = {}
 
         return self._send_command(
             'Animation.getPlaybackRate',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetPlaybackRateReturnT,
+                data,
+                'camel'
+            )
         )
 
     def release_animations(
             self,
             animations: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'animations': animations,
         }
@@ -93,7 +106,7 @@ class Animation(BaseDomain):
     def resolve_animation(
             self,
             animation_id: str
-    ) -> IResult['ResolveAnimationReturnT']:
+    ) -> IResponse['ResolveAnimationReturnT']:
         params = {
             'animationId': animation_id,
         }
@@ -101,14 +114,19 @@ class Animation(BaseDomain):
         return self._send_command(
             'Animation.resolveAnimation',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                ResolveAnimationReturnT,
+                data,
+                'camel'
+            )
         )
 
     def seek_animations(
             self,
             animations: list,
             current_time: float
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'animations': animations,
             'currentTime': current_time,
@@ -124,7 +142,7 @@ class Animation(BaseDomain):
             self,
             animations: list,
             paused: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'animations': animations,
             'paused': paused,
@@ -139,7 +157,7 @@ class Animation(BaseDomain):
     def set_playback_rate(
             self,
             playback_rate: float
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'playbackRate': playback_rate,
         }
@@ -155,7 +173,7 @@ class Animation(BaseDomain):
             animation_id: str,
             duration: float,
             delay: float
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'animationId': animation_id,
             'duration': duration,

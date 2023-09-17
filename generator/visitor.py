@@ -71,7 +71,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
             self.source += '\n'
 
     def _add_new_line_if_prev_line_not_empty(self):
-        if self.last_line:
+        if self.last_line.strip():
             self.source += '\n'
 
     def _zip_args_and_defaults(self, node: ast.arguments):
@@ -120,10 +120,14 @@ class SourceCodeGenerator(ast.NodeVisitor):
             self.visit(default)
 
     def visit_arguments(self, node: ast.arguments) -> Any:
+        render_context = get_render_context(node)
+
         with self._indent_context():
             for i, (arg, default) in enumerate(self._zip_args_and_defaults(node)):
-                self.source += '\n'
-                self.source += self.indent + ' ' * 4
+                if render_context['expand']:
+                    self.source += '\n'
+                    self.source += self.indent + ' ' * 4
+
                 self.visit_arg_with_default(
                     arg,
                     default
@@ -132,7 +136,11 @@ class SourceCodeGenerator(ast.NodeVisitor):
                 if i != len(node.args) - 1:
                     self.source += ','
 
-        self.source += '\n'
+                    if not render_context['expand']:
+                        self.source += ' '
+
+        if render_context['expand']:
+            self.source += '\n'
 
     def visit_comprehension(self, node: comprehension) -> Any:
         self.source += f'{self.indent}for '
@@ -349,6 +357,15 @@ class SourceCodeGenerator(ast.NodeVisitor):
             with self._indent_context():
                 for item in node.orelse:
                     self.visit(item)
+
+    def visit_Lambda(self, node: ast.Lambda) -> Any:
+        self.source += 'lambda '
+
+        if hasattr(node, 'args') and node.args:
+            self.visit(node.args)
+
+        self.source += ': '
+        self.visit(node.body)
 
     def visit_ListComp(self, node: ast.ListComp) -> Any:
         self.source += f'['

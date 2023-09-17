@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.dom.types import (
     BackendNodeId
 )
@@ -27,7 +30,7 @@ from cdp.domains.autofill.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -38,7 +41,7 @@ class Autofill(BaseDomain):
             field_id: BackendNodeId,
             frame_id: FrameId,
             card: CreditCard = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'fieldId': field_id,
             'card': card,
@@ -56,7 +59,7 @@ class Autofill(BaseDomain):
     def set_addresses(
             self,
             addresses: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'addresses': addresses,
         }
@@ -69,7 +72,7 @@ class Autofill(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -80,7 +83,7 @@ class Autofill(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(

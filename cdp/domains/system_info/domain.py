@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.system_info.types import (
     GetFeatureStateReturnT,
     GetInfoReturnT,
@@ -23,7 +26,7 @@ from cdp.domains.system_info.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -31,19 +34,24 @@ if TYPE_CHECKING:
 class SystemInfo(BaseDomain):
     def get_info(
             self
-    ) -> IResult['GetInfoReturnT']:
+    ) -> IResponse['GetInfoReturnT']:
         params = {}
 
         return self._send_command(
             'SystemInfo.getInfo',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetInfoReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_feature_state(
             self,
             feature_state: str
-    ) -> IResult['GetFeatureStateReturnT']:
+    ) -> IResponse['GetFeatureStateReturnT']:
         params = {
             'featureState': feature_state,
         }
@@ -51,16 +59,26 @@ class SystemInfo(BaseDomain):
         return self._send_command(
             'SystemInfo.getFeatureState',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetFeatureStateReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_process_info(
             self
-    ) -> IResult['GetProcessInfoReturnT']:
+    ) -> IResponse['GetProcessInfoReturnT']:
         params = {}
 
         return self._send_command(
             'SystemInfo.getProcessInfo',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetProcessInfoReturnT,
+                data,
+                'camel'
+            )
         )

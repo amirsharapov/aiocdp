@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.io.types import (
     ReadReturnT,
     ResolveBlobReturnT,
@@ -26,7 +29,7 @@ from cdp.domains.runtime.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -35,7 +38,7 @@ class IO(BaseDomain):
     def close(
             self,
             handle: StreamHandle
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'handle': handle,
         }
@@ -51,7 +54,7 @@ class IO(BaseDomain):
             handle: StreamHandle,
             offset: int = UNDEFINED,
             size: int = UNDEFINED
-    ) -> IResult['ReadReturnT']:
+    ) -> IResponse['ReadReturnT']:
         params = {
             'handle': handle,
         }
@@ -65,13 +68,18 @@ class IO(BaseDomain):
         return self._send_command(
             'IO.read',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                ReadReturnT,
+                data,
+                'camel'
+            )
         )
 
     def resolve_blob(
             self,
             object_id: RemoteObjectId
-    ) -> IResult['ResolveBlobReturnT']:
+    ) -> IResponse['ResolveBlobReturnT']:
         params = {
             'objectId': object_id,
         }
@@ -79,5 +87,10 @@ class IO(BaseDomain):
         return self._send_command(
             'IO.resolveBlob',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                ResolveBlobReturnT,
+                data,
+                'camel'
+            )
         )

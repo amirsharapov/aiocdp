@@ -16,13 +16,16 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.dom_snapshot.types import (
     CaptureSnapshotReturnT,
     GetSnapshotReturnT
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -30,7 +33,7 @@ if TYPE_CHECKING:
 class DOMSnapshot(BaseDomain):
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -41,7 +44,7 @@ class DOMSnapshot(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -56,7 +59,7 @@ class DOMSnapshot(BaseDomain):
             include_event_listeners: bool = UNDEFINED,
             include_paint_order: bool = UNDEFINED,
             include_user_agent_shadow_tree: bool = UNDEFINED
-    ) -> IResult['GetSnapshotReturnT']:
+    ) -> IResponse['GetSnapshotReturnT']:
         params = {
             'computedStyleWhitelist': computed_style_whitelist,
         }
@@ -73,7 +76,12 @@ class DOMSnapshot(BaseDomain):
         return self._send_command(
             'DOMSnapshot.getSnapshot',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetSnapshotReturnT,
+                data,
+                'camel'
+            )
         )
 
     def capture_snapshot(
@@ -83,7 +91,7 @@ class DOMSnapshot(BaseDomain):
             include_dom_rects: bool = UNDEFINED,
             include_blended_background_colors: bool = UNDEFINED,
             include_text_color_opacities: bool = UNDEFINED
-    ) -> IResult['CaptureSnapshotReturnT']:
+    ) -> IResponse['CaptureSnapshotReturnT']:
         params = {
             'computedStyles': computed_styles,
         }
@@ -103,5 +111,10 @@ class DOMSnapshot(BaseDomain):
         return self._send_command(
             'DOMSnapshot.captureSnapshot',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CaptureSnapshotReturnT,
+                data,
+                'camel'
+            )
         )

@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.runtime.types import (
     AwaitPromiseReturnT,
     CallFunctionOnReturnT,
@@ -34,7 +37,7 @@ from cdp.domains.runtime.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -45,7 +48,7 @@ class Runtime(BaseDomain):
             promise_object_id: RemoteObjectId,
             return_by_value: bool = UNDEFINED,
             generate_preview: bool = UNDEFINED
-    ) -> IResult['AwaitPromiseReturnT']:
+    ) -> IResponse['AwaitPromiseReturnT']:
         params = {
             'promiseObjectId': promise_object_id,
         }
@@ -59,7 +62,12 @@ class Runtime(BaseDomain):
         return self._send_command(
             'Runtime.awaitPromise',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                AwaitPromiseReturnT,
+                data,
+                'camel'
+            )
         )
 
     def call_function_on(
@@ -74,7 +82,7 @@ class Runtime(BaseDomain):
             await_promise: bool = UNDEFINED,
             execution_context_id: ExecutionContextId = UNDEFINED,
             object_group: str = UNDEFINED
-    ) -> IResult['CallFunctionOnReturnT']:
+    ) -> IResponse['CallFunctionOnReturnT']:
         params = {
             'functionDeclaration': function_declaration,
         }
@@ -109,7 +117,12 @@ class Runtime(BaseDomain):
         return self._send_command(
             'Runtime.callFunctionOn',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CallFunctionOnReturnT,
+                data,
+                'camel'
+            )
         )
 
     def compile_script(
@@ -118,7 +131,7 @@ class Runtime(BaseDomain):
             source_url: str,
             persist_script: bool,
             execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> IResult['CompileScriptReturnT']:
+    ) -> IResponse['CompileScriptReturnT']:
         params = {
             'expression': expression,
             'sourceURL': source_url,
@@ -131,12 +144,17 @@ class Runtime(BaseDomain):
         return self._send_command(
             'Runtime.compileScript',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CompileScriptReturnT,
+                data,
+                'camel'
+            )
         )
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -147,7 +165,7 @@ class Runtime(BaseDomain):
 
     def discard_console_entries(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -158,7 +176,7 @@ class Runtime(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -180,7 +198,7 @@ class Runtime(BaseDomain):
             await_promise: bool = UNDEFINED,
             throw_on_side_effect: bool = UNDEFINED,
             timeout: TimeDelta = UNDEFINED
-    ) -> IResult['EvaluateReturnT']:
+    ) -> IResponse['EvaluateReturnT']:
         params = {
             'expression': expression,
         }
@@ -218,29 +236,44 @@ class Runtime(BaseDomain):
         return self._send_command(
             'Runtime.evaluate',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                EvaluateReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_isolate_id(
             self
-    ) -> IResult['GetIsolateIdReturnT']:
+    ) -> IResponse['GetIsolateIdReturnT']:
         params = {}
 
         return self._send_command(
             'Runtime.getIsolateId',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetIsolateIdReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_heap_usage(
             self
-    ) -> IResult['GetHeapUsageReturnT']:
+    ) -> IResponse['GetHeapUsageReturnT']:
         params = {}
 
         return self._send_command(
             'Runtime.getHeapUsage',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetHeapUsageReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_properties(
@@ -249,7 +282,7 @@ class Runtime(BaseDomain):
             own_properties: bool = UNDEFINED,
             accessor_properties_only: bool = UNDEFINED,
             generate_preview: bool = UNDEFINED
-    ) -> IResult['GetPropertiesReturnT']:
+    ) -> IResponse['GetPropertiesReturnT']:
         params = {
             'objectId': object_id,
         }
@@ -266,13 +299,18 @@ class Runtime(BaseDomain):
         return self._send_command(
             'Runtime.getProperties',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetPropertiesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def global_lexical_scope_names(
             self,
             execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> IResult['GlobalLexicalScopeNamesReturnT']:
+    ) -> IResponse['GlobalLexicalScopeNamesReturnT']:
         params = {}
 
         if is_defined(execution_context_id):
@@ -281,14 +319,19 @@ class Runtime(BaseDomain):
         return self._send_command(
             'Runtime.globalLexicalScopeNames',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GlobalLexicalScopeNamesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def query_objects(
             self,
             prototype_object_id: RemoteObjectId,
             object_group: str = UNDEFINED
-    ) -> IResult['QueryObjectsReturnT']:
+    ) -> IResponse['QueryObjectsReturnT']:
         params = {
             'prototypeObjectId': prototype_object_id,
         }
@@ -299,13 +342,18 @@ class Runtime(BaseDomain):
         return self._send_command(
             'Runtime.queryObjects',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                QueryObjectsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def release_object(
             self,
             object_id: RemoteObjectId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'objectId': object_id,
         }
@@ -319,7 +367,7 @@ class Runtime(BaseDomain):
     def release_object_group(
             self,
             object_group: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'objectGroup': object_group,
         }
@@ -332,7 +380,7 @@ class Runtime(BaseDomain):
 
     def run_if_waiting_for_debugger(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -351,7 +399,7 @@ class Runtime(BaseDomain):
             return_by_value: bool = UNDEFINED,
             generate_preview: bool = UNDEFINED,
             await_promise: bool = UNDEFINED
-    ) -> IResult['RunScriptReturnT']:
+    ) -> IResponse['RunScriptReturnT']:
         params = {
             'scriptId': script_id,
         }
@@ -380,13 +428,18 @@ class Runtime(BaseDomain):
         return self._send_command(
             'Runtime.runScript',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                RunScriptReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_async_call_stack_depth(
             self,
             max_depth: int
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'maxDepth': max_depth,
         }
@@ -400,7 +453,7 @@ class Runtime(BaseDomain):
     def set_custom_object_formatter_enabled(
             self,
             enabled: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'enabled': enabled,
         }
@@ -414,7 +467,7 @@ class Runtime(BaseDomain):
     def set_max_call_stack_size_to_capture(
             self,
             size: int
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'size': size,
         }
@@ -427,7 +480,7 @@ class Runtime(BaseDomain):
 
     def terminate_execution(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -440,7 +493,7 @@ class Runtime(BaseDomain):
             self,
             name: str,
             execution_context_id: ExecutionContextId = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'name': name,
         }
@@ -457,7 +510,7 @@ class Runtime(BaseDomain):
     def remove_binding(
             self,
             name: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'name': name,
         }

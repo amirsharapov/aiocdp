@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.css.types import (
     AddRuleReturnT,
     CollectClassNamesReturnT,
@@ -50,7 +53,7 @@ from cdp.domains.dom.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -61,7 +64,7 @@ class CSS(BaseDomain):
             style_sheet_id: StyleSheetId,
             rule_text: str,
             location: SourceRange
-    ) -> IResult['AddRuleReturnT']:
+    ) -> IResponse['AddRuleReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
             'ruleText': rule_text,
@@ -71,13 +74,18 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.addRule',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                AddRuleReturnT,
+                data,
+                'camel'
+            )
         )
 
     def collect_class_names(
             self,
             style_sheet_id: StyleSheetId
-    ) -> IResult['CollectClassNamesReturnT']:
+    ) -> IResponse['CollectClassNamesReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
         }
@@ -85,13 +93,18 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.collectClassNames',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CollectClassNamesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def create_style_sheet(
             self,
             frame_id: FrameId
-    ) -> IResult['CreateStyleSheetReturnT']:
+    ) -> IResponse['CreateStyleSheetReturnT']:
         params = {
             'frameId': frame_id,
         }
@@ -99,12 +112,17 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.createStyleSheet',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CreateStyleSheetReturnT,
+                data,
+                'camel'
+            )
         )
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -115,7 +133,7 @@ class CSS(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -128,7 +146,7 @@ class CSS(BaseDomain):
             self,
             node_id: NodeId,
             forced_pseudo_classes: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
             'forcedPseudoClasses': forced_pseudo_classes,
@@ -143,7 +161,7 @@ class CSS(BaseDomain):
     def get_background_colors(
             self,
             node_id: NodeId
-    ) -> IResult['GetBackgroundColorsReturnT']:
+    ) -> IResponse['GetBackgroundColorsReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -151,13 +169,18 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.getBackgroundColors',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetBackgroundColorsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_computed_style_for_node(
             self,
             node_id: NodeId
-    ) -> IResult['GetComputedStyleForNodeReturnT']:
+    ) -> IResponse['GetComputedStyleForNodeReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -165,13 +188,18 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.getComputedStyleForNode',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetComputedStyleForNodeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_inline_styles_for_node(
             self,
             node_id: NodeId
-    ) -> IResult['GetInlineStylesForNodeReturnT']:
+    ) -> IResponse['GetInlineStylesForNodeReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -179,13 +207,18 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.getInlineStylesForNode',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetInlineStylesForNodeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_matched_styles_for_node(
             self,
             node_id: NodeId
-    ) -> IResult['GetMatchedStylesForNodeReturnT']:
+    ) -> IResponse['GetMatchedStylesForNodeReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -193,24 +226,34 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.getMatchedStylesForNode',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetMatchedStylesForNodeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_media_queries(
             self
-    ) -> IResult['GetMediaQueriesReturnT']:
+    ) -> IResponse['GetMediaQueriesReturnT']:
         params = {}
 
         return self._send_command(
             'CSS.getMediaQueries',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetMediaQueriesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_platform_fonts_for_node(
             self,
             node_id: NodeId
-    ) -> IResult['GetPlatformFontsForNodeReturnT']:
+    ) -> IResponse['GetPlatformFontsForNodeReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -218,13 +261,18 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.getPlatformFontsForNode',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetPlatformFontsForNodeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_style_sheet_text(
             self,
             style_sheet_id: StyleSheetId
-    ) -> IResult['GetStyleSheetTextReturnT']:
+    ) -> IResponse['GetStyleSheetTextReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
         }
@@ -232,13 +280,18 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.getStyleSheetText',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetStyleSheetTextReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_layers_for_node(
             self,
             node_id: NodeId
-    ) -> IResult['GetLayersForNodeReturnT']:
+    ) -> IResponse['GetLayersForNodeReturnT']:
         params = {
             'nodeId': node_id,
         }
@@ -246,13 +299,18 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.getLayersForNode',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetLayersForNodeReturnT,
+                data,
+                'camel'
+            )
         )
 
     def track_computed_style_updates(
             self,
             properties_to_track: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'propertiesToTrack': properties_to_track,
         }
@@ -265,13 +323,18 @@ class CSS(BaseDomain):
 
     def take_computed_style_updates(
             self
-    ) -> IResult['TakeComputedStyleUpdatesReturnT']:
+    ) -> IResponse['TakeComputedStyleUpdatesReturnT']:
         params = {}
 
         return self._send_command(
             'CSS.takeComputedStyleUpdates',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                TakeComputedStyleUpdatesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_effective_property_value_for_node(
@@ -279,7 +342,7 @@ class CSS(BaseDomain):
             node_id: NodeId,
             property_name: str,
             value: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'nodeId': node_id,
             'propertyName': property_name,
@@ -297,7 +360,7 @@ class CSS(BaseDomain):
             style_sheet_id: StyleSheetId,
             range_: SourceRange,
             key_text: str
-    ) -> IResult['SetKeyframeKeyReturnT']:
+    ) -> IResponse['SetKeyframeKeyReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
@@ -307,7 +370,12 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.setKeyframeKey',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetKeyframeKeyReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_media_text(
@@ -315,7 +383,7 @@ class CSS(BaseDomain):
             style_sheet_id: StyleSheetId,
             range_: SourceRange,
             text: str
-    ) -> IResult['SetMediaTextReturnT']:
+    ) -> IResponse['SetMediaTextReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
@@ -325,7 +393,12 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.setMediaText',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetMediaTextReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_container_query_text(
@@ -333,7 +406,7 @@ class CSS(BaseDomain):
             style_sheet_id: StyleSheetId,
             range_: SourceRange,
             text: str
-    ) -> IResult['SetContainerQueryTextReturnT']:
+    ) -> IResponse['SetContainerQueryTextReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
@@ -343,7 +416,12 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.setContainerQueryText',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetContainerQueryTextReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_supports_text(
@@ -351,7 +429,7 @@ class CSS(BaseDomain):
             style_sheet_id: StyleSheetId,
             range_: SourceRange,
             text: str
-    ) -> IResult['SetSupportsTextReturnT']:
+    ) -> IResponse['SetSupportsTextReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
@@ -361,7 +439,12 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.setSupportsText',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetSupportsTextReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_scope_text(
@@ -369,7 +452,7 @@ class CSS(BaseDomain):
             style_sheet_id: StyleSheetId,
             range_: SourceRange,
             text: str
-    ) -> IResult['SetScopeTextReturnT']:
+    ) -> IResponse['SetScopeTextReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
@@ -379,7 +462,12 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.setScopeText',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetScopeTextReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_rule_selector(
@@ -387,7 +475,7 @@ class CSS(BaseDomain):
             style_sheet_id: StyleSheetId,
             range_: SourceRange,
             selector: str
-    ) -> IResult['SetRuleSelectorReturnT']:
+    ) -> IResponse['SetRuleSelectorReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
             'range': range_,
@@ -397,14 +485,19 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.setRuleSelector',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetRuleSelectorReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_style_sheet_text(
             self,
             style_sheet_id: StyleSheetId,
             text: str
-    ) -> IResult['SetStyleSheetTextReturnT']:
+    ) -> IResponse['SetStyleSheetTextReturnT']:
         params = {
             'styleSheetId': style_sheet_id,
             'text': text,
@@ -413,13 +506,18 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.setStyleSheetText',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetStyleSheetTextReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_style_texts(
             self,
             edits: list
-    ) -> IResult['SetStyleTextsReturnT']:
+    ) -> IResponse['SetStyleTextsReturnT']:
         params = {
             'edits': edits,
         }
@@ -427,12 +525,17 @@ class CSS(BaseDomain):
         return self._send_command(
             'CSS.setStyleTexts',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetStyleTextsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def start_rule_usage_tracking(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -443,30 +546,40 @@ class CSS(BaseDomain):
 
     def stop_rule_usage_tracking(
             self
-    ) -> IResult['StopRuleUsageTrackingReturnT']:
+    ) -> IResponse['StopRuleUsageTrackingReturnT']:
         params = {}
 
         return self._send_command(
             'CSS.stopRuleUsageTracking',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                StopRuleUsageTrackingReturnT,
+                data,
+                'camel'
+            )
         )
 
     def take_coverage_delta(
             self
-    ) -> IResult['TakeCoverageDeltaReturnT']:
+    ) -> IResponse['TakeCoverageDeltaReturnT']:
         params = {}
 
         return self._send_command(
             'CSS.takeCoverageDelta',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                TakeCoverageDeltaReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_local_fonts_enabled(
             self,
             enabled: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'enabled': enabled,
         }

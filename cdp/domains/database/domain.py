@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.database.types import (
     DatabaseId,
     ExecuteSQLReturnT,
@@ -23,7 +26,7 @@ from cdp.domains.database.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -31,7 +34,7 @@ if TYPE_CHECKING:
 class Database(BaseDomain):
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -42,7 +45,7 @@ class Database(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -55,7 +58,7 @@ class Database(BaseDomain):
             self,
             database_id: DatabaseId,
             query: str
-    ) -> IResult['ExecuteSQLReturnT']:
+    ) -> IResponse['ExecuteSQLReturnT']:
         params = {
             'databaseId': database_id,
             'query': query,
@@ -64,13 +67,18 @@ class Database(BaseDomain):
         return self._send_command(
             'Database.executeSQL',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                ExecuteSQLReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_database_table_names(
             self,
             database_id: DatabaseId
-    ) -> IResult['GetDatabaseTableNamesReturnT']:
+    ) -> IResponse['GetDatabaseTableNamesReturnT']:
         params = {
             'databaseId': database_id,
         }
@@ -78,5 +86,10 @@ class Database(BaseDomain):
         return self._send_command(
             'Database.getDatabaseTableNames',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetDatabaseTableNamesReturnT,
+                data,
+                'camel'
+            )
         )

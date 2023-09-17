@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.storage.types import (
     StorageBucket
 )
@@ -28,7 +31,7 @@ from cdp.domains.indexed_db.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -41,7 +44,7 @@ class IndexedDB(BaseDomain):
             storage_bucket: StorageBucket = UNDEFINED,
             database_name: str = UNDEFINED,
             object_store_name: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -68,7 +71,7 @@ class IndexedDB(BaseDomain):
             storage_key: str = UNDEFINED,
             storage_bucket: StorageBucket = UNDEFINED,
             database_name: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'databaseName': database_name,
         }
@@ -96,7 +99,7 @@ class IndexedDB(BaseDomain):
             database_name: str = UNDEFINED,
             object_store_name: str = UNDEFINED,
             key_range: KeyRange = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -120,7 +123,7 @@ class IndexedDB(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -131,7 +134,7 @@ class IndexedDB(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -151,7 +154,7 @@ class IndexedDB(BaseDomain):
             skip_count: int = UNDEFINED,
             page_size: int = UNDEFINED,
             key_range: KeyRange = UNDEFINED
-    ) -> IResult['RequestDataReturnT']:
+    ) -> IResponse['RequestDataReturnT']:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -175,7 +178,12 @@ class IndexedDB(BaseDomain):
         return self._send_command(
             'IndexedDB.requestData',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                RequestDataReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_metadata(
@@ -185,7 +193,7 @@ class IndexedDB(BaseDomain):
             storage_bucket: StorageBucket = UNDEFINED,
             database_name: str = UNDEFINED,
             object_store_name: str = UNDEFINED
-    ) -> IResult['GetMetadataReturnT']:
+    ) -> IResponse['GetMetadataReturnT']:
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -203,7 +211,12 @@ class IndexedDB(BaseDomain):
         return self._send_command(
             'IndexedDB.getMetadata',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetMetadataReturnT,
+                data,
+                'camel'
+            )
         )
 
     def request_database(
@@ -212,7 +225,7 @@ class IndexedDB(BaseDomain):
             storage_key: str = UNDEFINED,
             storage_bucket: StorageBucket = UNDEFINED,
             database_name: str = UNDEFINED
-    ) -> IResult['RequestDatabaseReturnT']:
+    ) -> IResponse['RequestDatabaseReturnT']:
         params = {
             'databaseName': database_name,
         }
@@ -229,7 +242,12 @@ class IndexedDB(BaseDomain):
         return self._send_command(
             'IndexedDB.requestDatabase',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                RequestDatabaseReturnT,
+                data,
+                'camel'
+            )
         )
 
     def request_database_names(
@@ -237,7 +255,7 @@ class IndexedDB(BaseDomain):
             security_origin: str = UNDEFINED,
             storage_key: str = UNDEFINED,
             storage_bucket: StorageBucket = UNDEFINED
-    ) -> IResult['RequestDatabaseNamesReturnT']:
+    ) -> IResponse['RequestDatabaseNamesReturnT']:
         params = {}
 
         if is_defined(security_origin):
@@ -252,5 +270,10 @@ class IndexedDB(BaseDomain):
         return self._send_command(
             'IndexedDB.requestDatabaseNames',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                RequestDatabaseNamesReturnT,
+                data,
+                'camel'
+            )
         )

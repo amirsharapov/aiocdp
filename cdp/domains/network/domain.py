@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.network.types import (
     AuthChallengeResponse,
     CanClearBrowserCacheReturnT,
@@ -51,7 +54,7 @@ from cdp.domains.page.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -60,7 +63,7 @@ class Network(BaseDomain):
     def set_accepted_encodings(
             self,
             encodings: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'encodings': encodings,
         }
@@ -73,7 +76,7 @@ class Network(BaseDomain):
 
     def clear_accepted_encodings_override(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -84,40 +87,55 @@ class Network(BaseDomain):
 
     def can_clear_browser_cache(
             self
-    ) -> IResult['CanClearBrowserCacheReturnT']:
+    ) -> IResponse['CanClearBrowserCacheReturnT']:
         params = {}
 
         return self._send_command(
             'Network.canClearBrowserCache',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CanClearBrowserCacheReturnT,
+                data,
+                'camel'
+            )
         )
 
     def can_clear_browser_cookies(
             self
-    ) -> IResult['CanClearBrowserCookiesReturnT']:
+    ) -> IResponse['CanClearBrowserCookiesReturnT']:
         params = {}
 
         return self._send_command(
             'Network.canClearBrowserCookies',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CanClearBrowserCookiesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def can_emulate_network_conditions(
             self
-    ) -> IResult['CanEmulateNetworkConditionsReturnT']:
+    ) -> IResponse['CanEmulateNetworkConditionsReturnT']:
         params = {}
 
         return self._send_command(
             'Network.canEmulateNetworkConditions',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CanEmulateNetworkConditionsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def clear_browser_cache(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -128,7 +146,7 @@ class Network(BaseDomain):
 
     def clear_browser_cookies(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -147,7 +165,7 @@ class Network(BaseDomain):
             post_data: str = UNDEFINED,
             headers: Headers = UNDEFINED,
             auth_challenge_response: AuthChallengeResponse = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'interceptionId': interception_id,
         }
@@ -185,7 +203,7 @@ class Network(BaseDomain):
             url: str = UNDEFINED,
             domain: str = UNDEFINED,
             path: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'name': name,
         }
@@ -207,7 +225,7 @@ class Network(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -223,7 +241,7 @@ class Network(BaseDomain):
             download_throughput: float,
             upload_throughput: float,
             connection_type: ConnectionType = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'offline': offline,
             'latency': latency,
@@ -245,7 +263,7 @@ class Network(BaseDomain):
             max_total_buffer_size: int = UNDEFINED,
             max_resource_buffer_size: int = UNDEFINED,
             max_post_data_size: int = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(max_total_buffer_size):
@@ -265,19 +283,24 @@ class Network(BaseDomain):
 
     def get_all_cookies(
             self
-    ) -> IResult['GetAllCookiesReturnT']:
+    ) -> IResponse['GetAllCookiesReturnT']:
         params = {}
 
         return self._send_command(
             'Network.getAllCookies',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetAllCookiesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_certificate(
             self,
             origin: str
-    ) -> IResult['GetCertificateReturnT']:
+    ) -> IResponse['GetCertificateReturnT']:
         params = {
             'origin': origin,
         }
@@ -285,13 +308,18 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.getCertificate',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetCertificateReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_cookies(
             self,
             urls: list = UNDEFINED
-    ) -> IResult['GetCookiesReturnT']:
+    ) -> IResponse['GetCookiesReturnT']:
         params = {}
 
         if is_defined(urls):
@@ -300,13 +328,18 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.getCookies',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetCookiesReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_response_body(
             self,
             request_id: RequestId
-    ) -> IResult['GetResponseBodyReturnT']:
+    ) -> IResponse['GetResponseBodyReturnT']:
         params = {
             'requestId': request_id,
         }
@@ -314,13 +347,18 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.getResponseBody',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetResponseBodyReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_request_post_data(
             self,
             request_id: RequestId
-    ) -> IResult['GetRequestPostDataReturnT']:
+    ) -> IResponse['GetRequestPostDataReturnT']:
         params = {
             'requestId': request_id,
         }
@@ -328,13 +366,18 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.getRequestPostData',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetRequestPostDataReturnT,
+                data,
+                'camel'
+            )
         )
 
     def get_response_body_for_interception(
             self,
             interception_id: InterceptionId
-    ) -> IResult['GetResponseBodyForInterceptionReturnT']:
+    ) -> IResponse['GetResponseBodyForInterceptionReturnT']:
         params = {
             'interceptionId': interception_id,
         }
@@ -342,13 +385,18 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.getResponseBodyForInterception',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetResponseBodyForInterceptionReturnT,
+                data,
+                'camel'
+            )
         )
 
     def take_response_body_for_interception_as_stream(
             self,
             interception_id: InterceptionId
-    ) -> IResult['TakeResponseBodyForInterceptionAsStreamReturnT']:
+    ) -> IResponse['TakeResponseBodyForInterceptionAsStreamReturnT']:
         params = {
             'interceptionId': interception_id,
         }
@@ -356,13 +404,18 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.takeResponseBodyForInterceptionAsStream',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                TakeResponseBodyForInterceptionAsStreamReturnT,
+                data,
+                'camel'
+            )
         )
 
     def replay_xhr(
             self,
             request_id: RequestId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'requestId': request_id,
         }
@@ -379,7 +432,7 @@ class Network(BaseDomain):
             query: str,
             case_sensitive: bool = UNDEFINED,
             is_regex: bool = UNDEFINED
-    ) -> IResult['SearchInResponseBodyReturnT']:
+    ) -> IResponse['SearchInResponseBodyReturnT']:
         params = {
             'requestId': request_id,
             'query': query,
@@ -394,13 +447,18 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.searchInResponseBody',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SearchInResponseBodyReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_blocked_ur_ls(
             self,
             urls: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'urls': urls,
         }
@@ -414,7 +472,7 @@ class Network(BaseDomain):
     def set_bypass_service_worker(
             self,
             bypass: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'bypass': bypass,
         }
@@ -428,7 +486,7 @@ class Network(BaseDomain):
     def set_cache_disabled(
             self,
             cache_disabled: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'cacheDisabled': cache_disabled,
         }
@@ -455,7 +513,7 @@ class Network(BaseDomain):
             source_scheme: CookieSourceScheme = UNDEFINED,
             source_port: int = UNDEFINED,
             partition_key: str = UNDEFINED
-    ) -> IResult['SetCookieReturnT']:
+    ) -> IResponse['SetCookieReturnT']:
         params = {
             'name': name,
             'value': value,
@@ -500,13 +558,18 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.setCookie',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                SetCookieReturnT,
+                data,
+                'camel'
+            )
         )
 
     def set_cookies(
             self,
             cookies: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'cookies': cookies,
         }
@@ -520,7 +583,7 @@ class Network(BaseDomain):
     def set_extra_http_headers(
             self,
             headers: Headers
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'headers': headers,
         }
@@ -534,7 +597,7 @@ class Network(BaseDomain):
     def set_attach_debug_stack(
             self,
             enabled: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'enabled': enabled,
         }
@@ -548,7 +611,7 @@ class Network(BaseDomain):
     def set_request_interception(
             self,
             patterns: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'patterns': patterns,
         }
@@ -565,7 +628,7 @@ class Network(BaseDomain):
             accept_language: str = UNDEFINED,
             platform: str = UNDEFINED,
             user_agent_metadata: UserAgentMetadata = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'userAgent': user_agent,
         }
@@ -588,7 +651,7 @@ class Network(BaseDomain):
     def get_security_isolation_status(
             self,
             frame_id: FrameId = UNDEFINED
-    ) -> IResult['GetSecurityIsolationStatusReturnT']:
+    ) -> IResponse['GetSecurityIsolationStatusReturnT']:
         params = {}
 
         if is_defined(frame_id):
@@ -597,13 +660,18 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.getSecurityIsolationStatus',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetSecurityIsolationStatusReturnT,
+                data,
+                'camel'
+            )
         )
 
     def enable_reporting_api(
             self,
             enable: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'enable': enable,
         }
@@ -619,7 +687,7 @@ class Network(BaseDomain):
             frame_id: FrameId,
             url: str,
             options: LoadNetworkResourceOptions = UNDEFINED
-    ) -> IResult['LoadNetworkResourceReturnT']:
+    ) -> IResponse['LoadNetworkResourceReturnT']:
         params = {
             'url': url,
             'options': options,
@@ -631,5 +699,10 @@ class Network(BaseDomain):
         return self._send_command(
             'Network.loadNetworkResource',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                LoadNetworkResourceReturnT,
+                data,
+                'camel'
+            )
         )

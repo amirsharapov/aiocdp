@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.fetch.types import (
     AuthChallengeResponse,
     GetResponseBodyReturnT,
@@ -27,7 +30,7 @@ from cdp.domains.network.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -35,7 +38,7 @@ if TYPE_CHECKING:
 class Fetch(BaseDomain):
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -48,7 +51,7 @@ class Fetch(BaseDomain):
             self,
             patterns: list = UNDEFINED,
             handle_auth_requests: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(patterns):
@@ -67,7 +70,7 @@ class Fetch(BaseDomain):
             self,
             request_id: RequestId,
             error_reason: ErrorReason
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'requestId': request_id,
             'errorReason': error_reason,
@@ -87,7 +90,7 @@ class Fetch(BaseDomain):
             binary_response_headers: str = UNDEFINED,
             body: str = UNDEFINED,
             response_phrase: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'requestId': request_id,
             'responseCode': response_code,
@@ -119,7 +122,7 @@ class Fetch(BaseDomain):
             post_data: str = UNDEFINED,
             headers: list = UNDEFINED,
             intercept_response: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'requestId': request_id,
         }
@@ -149,7 +152,7 @@ class Fetch(BaseDomain):
             self,
             request_id: RequestId,
             auth_challenge_response: AuthChallengeResponse
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'requestId': request_id,
             'authChallengeResponse': auth_challenge_response,
@@ -168,7 +171,7 @@ class Fetch(BaseDomain):
             response_phrase: str = UNDEFINED,
             response_headers: list = UNDEFINED,
             binary_response_headers: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'requestId': request_id,
         }
@@ -194,7 +197,7 @@ class Fetch(BaseDomain):
     def get_response_body(
             self,
             request_id: RequestId
-    ) -> IResult['GetResponseBodyReturnT']:
+    ) -> IResponse['GetResponseBodyReturnT']:
         params = {
             'requestId': request_id,
         }
@@ -202,13 +205,18 @@ class Fetch(BaseDomain):
         return self._send_command(
             'Fetch.getResponseBody',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetResponseBodyReturnT,
+                data,
+                'camel'
+            )
         )
 
     def take_response_body_as_stream(
             self,
             request_id: RequestId
-    ) -> IResult['TakeResponseBodyAsStreamReturnT']:
+    ) -> IResponse['TakeResponseBodyAsStreamReturnT']:
         params = {
             'requestId': request_id,
         }
@@ -216,5 +224,10 @@ class Fetch(BaseDomain):
         return self._send_command(
             'Fetch.takeResponseBodyAsStream',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                TakeResponseBodyAsStreamReturnT,
+                data,
+                'camel'
+            )
         )

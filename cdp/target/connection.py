@@ -22,7 +22,7 @@ class JSONRPCRequestID:
 
 
 @dataclass
-class IResult(ABC, Generic[_T]):
+class IResponse(ABC, Generic[_T]):
     value: _T
 
     @abstractmethod
@@ -31,20 +31,40 @@ class IResult(ABC, Generic[_T]):
 
 
 @dataclass
-class IConnection(ABC):
+class IEventStream(ABC, Generic[_T]):
+    events: list[_T]
+
     @abstractmethod
-    def send(
-            self,
-            method: str,
-            params: dict,
-            expect_response: bool,
-            response_hook: Callable[[dict], Any]
-    ) -> IResult[Optional[dict]]:
+    def get_next(self) -> _T:
+        ...
+
+    @abstractmethod
+    def close(self) -> None:
         ...
 
 
 @dataclass
-class Result(IResult[_T]):
+class IConnection(ABC):
+    @abstractmethod
+    def send_request(
+            self,
+            method: str,
+            params: dict,
+            expect_response: bool,
+            response_hook: Callable
+    ) -> IResponse:
+        ...
+
+    @abstractmethod
+    def capture_events(
+            self,
+            events: list[type]
+    ) -> IEventStream:
+        ...
+
+
+@dataclass
+class Response(IResponse[_T]):
     future: Optional[asyncio.Future]
 
     async def _wait(self, timeout: int = 10):
@@ -142,13 +162,13 @@ class Connection(IConnection):
             self.ws_thread.start()
             self.ws_thread_started = True
 
-    def send(
+    def send_request(
             self,
             method: str,
             params: dict,
             expect_response: bool,
             response_hook: Callable = None
-    ) -> Result:
+    ) -> Response:
         event_loop = asyncio.get_event_loop()
 
         request_id = JSONRPCRequestID.get()
@@ -161,7 +181,7 @@ class Connection(IConnection):
         request = json.dumps(request)
 
         future = event_loop.create_future()
-        result = Result(
+        result = Response(
             None,
             future
         )
@@ -176,6 +196,16 @@ class Connection(IConnection):
                 None
             )
 
-        self.ws.send(request)
+        try:
+            self.ws.send(request)
+
+        except Exception as e:
+            future.set_exception(e)
 
         return result
+
+    def capture_events(
+            self,
+            events: list[type]
+    ) -> IEventStream:
+        raise NotImplemented

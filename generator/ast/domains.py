@@ -40,10 +40,18 @@ def _generate_class_definition(protocols: list[Protocol]):
         name='Domains',
         bases=[],
         keywords=[],
-        body=[],
+        body=[
+            ast.AnnAssign(
+                target=ast.Name('_target'),
+                annotation=ast.Constant('_Target'),
+            )
+        ],
         decorator_list=[
             ast.Name('dataclass')
-        ]
+        ],
+        render_context={
+            'lines_before': 2
+        }
     )
 
     for protocol in protocols:
@@ -61,19 +69,12 @@ def _generate_class_definition(protocols: list[Protocol]):
                             )
                         ],
                         render_context={
-                            'expand': False
+                            'expand': True
                         }
                     ),
                     simple=1
                 )
             )
-
-    root.body.append(
-        ast.AnnAssign(
-            target=ast.Name('target'),
-            annotation=ast.Constant('Target'),
-        )
-    )
 
     post_init = ast.FunctionDef(
         name='__post_init__',
@@ -85,7 +86,10 @@ def _generate_class_definition(protocols: list[Protocol]):
             ]
         ),
         body=[],
-        decorator_list=[]
+        decorator_list=[],
+        render_context={
+            'lines_before': 1
+        }
     )
 
     for protocol in protocols:
@@ -105,7 +109,10 @@ def _generate_class_definition(protocols: list[Protocol]):
                                 value=ast.Name('self'),
                                 attr='target'
                             )
-                        ]
+                        ],
+                        render_context={
+                            'expand': True
+                        }
                     )
                 )
             )
@@ -133,7 +140,10 @@ def generate(protocols: list[Protocol]):
                 ast.ImportFrom(
                     module='cdp.target.target',
                     names=[
-                        ast.alias('Target')
+                        ast.alias(
+                            name='Target',
+                            asname='_Target'
+                        )
                     ],
                 )
             ]

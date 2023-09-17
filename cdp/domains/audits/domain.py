@@ -16,6 +16,9 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.audits.types import (
     CheckFormsIssuesReturnT,
     GetEncodedResponseReturnT
@@ -25,7 +28,7 @@ from cdp.domains.network.types import (
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -37,7 +40,7 @@ class Audits(BaseDomain):
             encoding: str,
             quality: float = UNDEFINED,
             size_only: bool = UNDEFINED
-    ) -> IResult['GetEncodedResponseReturnT']:
+    ) -> IResponse['GetEncodedResponseReturnT']:
         params = {
             'requestId': request_id,
             'encoding': encoding,
@@ -52,12 +55,17 @@ class Audits(BaseDomain):
         return self._send_command(
             'Audits.getEncodedResponse',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetEncodedResponseReturnT,
+                data,
+                'camel'
+            )
         )
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -68,7 +76,7 @@ class Audits(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -80,7 +88,7 @@ class Audits(BaseDomain):
     def check_contrast(
             self,
             report_aaa: bool = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(report_aaa):
@@ -94,11 +102,16 @@ class Audits(BaseDomain):
 
     def check_forms_issues(
             self
-    ) -> IResult['CheckFormsIssuesReturnT']:
+    ) -> IResponse['CheckFormsIssuesReturnT']:
         params = {}
 
         return self._send_command(
             'Audits.checkFormsIssues',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                CheckFormsIssuesReturnT,
+                data,
+                'camel'
+            )
         )

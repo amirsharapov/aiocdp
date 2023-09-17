@@ -16,9 +16,12 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -26,7 +29,7 @@ if TYPE_CHECKING:
 class Log(BaseDomain):
     def clear(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -37,7 +40,7 @@ class Log(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -48,7 +51,7 @@ class Log(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -60,7 +63,7 @@ class Log(BaseDomain):
     def start_violations_report(
             self,
             config: list
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'config': config,
         }
@@ -73,7 +76,7 @@ class Log(BaseDomain):
 
     def stop_violations_report(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(

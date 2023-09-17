@@ -16,12 +16,15 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.security.types import (
     CertificateErrorAction
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -29,7 +32,7 @@ if TYPE_CHECKING:
 class Security(BaseDomain):
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -40,7 +43,7 @@ class Security(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -52,7 +55,7 @@ class Security(BaseDomain):
     def set_ignore_certificate_errors(
             self,
             ignore: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'ignore': ignore,
         }
@@ -67,7 +70,7 @@ class Security(BaseDomain):
             self,
             event_id: int,
             action: CertificateErrorAction
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'eventId': event_id,
             'action': action,
@@ -82,7 +85,7 @@ class Security(BaseDomain):
     def set_override_certificate_errors(
             self,
             override: bool
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'override': override,
         }

@@ -16,13 +16,16 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.dom_storage.types import (
     GetDOMStorageItemsReturnT,
     StorageId
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -31,7 +34,7 @@ class DOMStorage(BaseDomain):
     def clear(
             self,
             storage_id: StorageId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'storageId': storage_id,
         }
@@ -44,7 +47,7 @@ class DOMStorage(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -55,7 +58,7 @@ class DOMStorage(BaseDomain):
 
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -67,7 +70,7 @@ class DOMStorage(BaseDomain):
     def get_dom_storage_items(
             self,
             storage_id: StorageId
-    ) -> IResult['GetDOMStorageItemsReturnT']:
+    ) -> IResponse['GetDOMStorageItemsReturnT']:
         params = {
             'storageId': storage_id,
         }
@@ -75,14 +78,19 @@ class DOMStorage(BaseDomain):
         return self._send_command(
             'DOMStorage.getDOMStorageItems',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetDOMStorageItemsReturnT,
+                data,
+                'camel'
+            )
         )
 
     def remove_dom_storage_item(
             self,
             storage_id: StorageId,
             key: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'storageId': storage_id,
             'key': key,
@@ -99,7 +107,7 @@ class DOMStorage(BaseDomain):
             storage_id: StorageId,
             key: str,
             value: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'storageId': storage_id,
             'key': key,

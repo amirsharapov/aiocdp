@@ -16,12 +16,15 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.performance.types import (
     GetMetricsReturnT
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -29,7 +32,7 @@ if TYPE_CHECKING:
 class Performance(BaseDomain):
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -41,7 +44,7 @@ class Performance(BaseDomain):
     def enable(
             self,
             time_domain: str = UNDEFINED
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         if is_defined(time_domain):
@@ -56,7 +59,7 @@ class Performance(BaseDomain):
     def set_time_domain(
             self,
             time_domain: str
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'timeDomain': time_domain,
         }
@@ -69,11 +72,16 @@ class Performance(BaseDomain):
 
     def get_metrics(
             self
-    ) -> IResult['GetMetricsReturnT']:
+    ) -> IResponse['GetMetricsReturnT']:
         params = {}
 
         return self._send_command(
             'Performance.getMetrics',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetMetricsReturnT,
+                data,
+                'camel'
+            )
         )

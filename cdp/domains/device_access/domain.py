@@ -16,13 +16,16 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.device_access.types import (
     DeviceId,
     RequestId
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -30,7 +33,7 @@ if TYPE_CHECKING:
 class DeviceAccess(BaseDomain):
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -41,7 +44,7 @@ class DeviceAccess(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -54,7 +57,7 @@ class DeviceAccess(BaseDomain):
             self,
             id_: RequestId,
             device_id: DeviceId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'id': id_,
             'deviceId': device_id,
@@ -69,7 +72,7 @@ class DeviceAccess(BaseDomain):
     def cancel_prompt(
             self,
             id_: RequestId
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {
             'id': id_,
         }

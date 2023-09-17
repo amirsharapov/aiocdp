@@ -16,13 +16,16 @@ from cdp.utils import (
 from typing import (
     TYPE_CHECKING
 )
+from cdp.domains.mapper import (
+    from_dict
+)
 from cdp.domains.web_audio.types import (
     GetRealtimeDataReturnT,
     GraphObjectId
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
-        IResult
+        IResponse
     )
 
 
@@ -30,7 +33,7 @@ if TYPE_CHECKING:
 class WebAudio(BaseDomain):
     def enable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -41,7 +44,7 @@ class WebAudio(BaseDomain):
 
     def disable(
             self
-    ) -> IResult[None]:
+    ) -> IResponse[None]:
         params = {}
 
         return self._send_command(
@@ -53,7 +56,7 @@ class WebAudio(BaseDomain):
     def get_realtime_data(
             self,
             context_id: GraphObjectId
-    ) -> IResult['GetRealtimeDataReturnT']:
+    ) -> IResponse['GetRealtimeDataReturnT']:
         params = {
             'contextId': context_id,
         }
@@ -61,5 +64,10 @@ class WebAudio(BaseDomain):
         return self._send_command(
             'WebAudio.getRealtimeData',
             params,
-            True
+            True,
+            lambda data: from_dict(
+                GetRealtimeDataReturnT,
+                data,
+                'camel'
+            )
         )
