@@ -35,7 +35,7 @@ if TYPE_CHECKING:
 class SystemInfo(BaseDomain):
     def get_info(
             self
-    ) -> IResponse[GetInfoReturnT]:
+    ) -> 'IResponse[GetInfoReturnT]':
         params = {}
 
         return self._send_command(
@@ -52,7 +52,7 @@ class SystemInfo(BaseDomain):
     def get_feature_state(
             self,
             feature_state: 'str'
-    ) -> IResponse[GetFeatureStateReturnT]:
+    ) -> 'IResponse[GetFeatureStateReturnT]':
         params = {
             'featureState': feature_state,
         }
@@ -70,7 +70,7 @@ class SystemInfo(BaseDomain):
 
     def get_process_info(
             self
-    ) -> IResponse[GetProcessInfoReturnT]:
+    ) -> 'IResponse[GetProcessInfoReturnT]':
         params = {}
 
         return self._send_command(

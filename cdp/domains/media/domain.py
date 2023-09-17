@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 class Media(BaseDomain):
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -41,7 +41,7 @@ class Media(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(

@@ -49,7 +49,7 @@ class Runtime(BaseDomain):
             promise_object_id: 'RemoteObjectId',
             return_by_value: 'bool' = UNDEFINED,
             generate_preview: 'bool' = UNDEFINED
-    ) -> IResponse[AwaitPromiseReturnT]:
+    ) -> 'IResponse[AwaitPromiseReturnT]':
         params = {
             'promiseObjectId': promise_object_id,
         }
@@ -83,7 +83,7 @@ class Runtime(BaseDomain):
             await_promise: 'bool' = UNDEFINED,
             execution_context_id: 'ExecutionContextId' = UNDEFINED,
             object_group: 'str' = UNDEFINED
-    ) -> IResponse[CallFunctionOnReturnT]:
+    ) -> 'IResponse[CallFunctionOnReturnT]':
         params = {
             'functionDeclaration': function_declaration,
         }
@@ -135,7 +135,7 @@ class Runtime(BaseDomain):
             source_url: 'str',
             persist_script: 'bool',
             execution_context_id: 'ExecutionContextId' = UNDEFINED
-    ) -> IResponse[CompileScriptReturnT]:
+    ) -> 'IResponse[CompileScriptReturnT]':
         params = {
             'expression': expression,
             'sourceURL': source_url,
@@ -158,7 +158,7 @@ class Runtime(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -169,7 +169,7 @@ class Runtime(BaseDomain):
 
     def discard_console_entries(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -180,7 +180,7 @@ class Runtime(BaseDomain):
 
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -202,7 +202,7 @@ class Runtime(BaseDomain):
             await_promise: 'bool' = UNDEFINED,
             throw_on_side_effect: 'bool' = UNDEFINED,
             timeout: 'TimeDelta' = UNDEFINED
-    ) -> IResponse[EvaluateReturnT]:
+    ) -> 'IResponse[EvaluateReturnT]':
         params = {
             'expression': expression,
         }
@@ -250,7 +250,7 @@ class Runtime(BaseDomain):
 
     def get_isolate_id(
             self
-    ) -> IResponse[GetIsolateIdReturnT]:
+    ) -> 'IResponse[GetIsolateIdReturnT]':
         params = {}
 
         return self._send_command(
@@ -266,7 +266,7 @@ class Runtime(BaseDomain):
 
     def get_heap_usage(
             self
-    ) -> IResponse[GetHeapUsageReturnT]:
+    ) -> 'IResponse[GetHeapUsageReturnT]':
         params = {}
 
         return self._send_command(
@@ -286,7 +286,7 @@ class Runtime(BaseDomain):
             own_properties: 'bool' = UNDEFINED,
             accessor_properties_only: 'bool' = UNDEFINED,
             generate_preview: 'bool' = UNDEFINED
-    ) -> IResponse[GetPropertiesReturnT]:
+    ) -> 'IResponse[GetPropertiesReturnT]':
         params = {
             'objectId': object_id,
         }
@@ -314,7 +314,7 @@ class Runtime(BaseDomain):
     def global_lexical_scope_names(
             self,
             execution_context_id: 'ExecutionContextId' = UNDEFINED
-    ) -> IResponse[GlobalLexicalScopeNamesReturnT]:
+    ) -> 'IResponse[GlobalLexicalScopeNamesReturnT]':
         params = {}
 
         if is_defined(execution_context_id):
@@ -335,7 +335,7 @@ class Runtime(BaseDomain):
             self,
             prototype_object_id: 'RemoteObjectId',
             object_group: 'str' = UNDEFINED
-    ) -> IResponse[QueryObjectsReturnT]:
+    ) -> 'IResponse[QueryObjectsReturnT]':
         params = {
             'prototypeObjectId': prototype_object_id,
         }
@@ -357,7 +357,7 @@ class Runtime(BaseDomain):
     def release_object(
             self,
             object_id: 'RemoteObjectId'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'objectId': object_id,
         }
@@ -371,7 +371,7 @@ class Runtime(BaseDomain):
     def release_object_group(
             self,
             object_group: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'objectGroup': object_group,
         }
@@ -384,7 +384,7 @@ class Runtime(BaseDomain):
 
     def run_if_waiting_for_debugger(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -403,7 +403,7 @@ class Runtime(BaseDomain):
             return_by_value: 'bool' = UNDEFINED,
             generate_preview: 'bool' = UNDEFINED,
             await_promise: 'bool' = UNDEFINED
-    ) -> IResponse[RunScriptReturnT]:
+    ) -> 'IResponse[RunScriptReturnT]':
         params = {
             'scriptId': script_id,
         }
@@ -443,7 +443,7 @@ class Runtime(BaseDomain):
     def set_async_call_stack_depth(
             self,
             max_depth: 'int'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'maxDepth': max_depth,
         }
@@ -457,7 +457,7 @@ class Runtime(BaseDomain):
     def set_custom_object_formatter_enabled(
             self,
             enabled: 'bool'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'enabled': enabled,
         }
@@ -471,7 +471,7 @@ class Runtime(BaseDomain):
     def set_max_call_stack_size_to_capture(
             self,
             size: 'int'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'size': size,
         }
@@ -484,7 +484,7 @@ class Runtime(BaseDomain):
 
     def terminate_execution(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -497,7 +497,7 @@ class Runtime(BaseDomain):
             self,
             name: 'str',
             execution_context_id: 'ExecutionContextId' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'name': name,
         }
@@ -514,7 +514,7 @@ class Runtime(BaseDomain):
     def remove_binding(
             self,
             name: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'name': name,
         }

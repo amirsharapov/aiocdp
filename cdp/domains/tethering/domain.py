@@ -31,7 +31,7 @@ class Tethering(BaseDomain):
     def bind(
             self,
             port: 'int'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'port': port,
         }
@@ -45,7 +45,7 @@ class Tethering(BaseDomain):
     def unbind(
             self,
             port: 'int'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'port': port,
         }

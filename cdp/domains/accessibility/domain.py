@@ -49,7 +49,7 @@ if TYPE_CHECKING:
 class Accessibility(BaseDomain):
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -60,7 +60,7 @@ class Accessibility(BaseDomain):
 
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -75,7 +75,7 @@ class Accessibility(BaseDomain):
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED,
             fetch_relatives: 'bool' = UNDEFINED
-    ) -> IResponse[GetPartialAXTreeReturnT]:
+    ) -> 'IResponse[GetPartialAXTreeReturnT]':
         params = {}
 
         if is_defined(node_id):
@@ -105,7 +105,7 @@ class Accessibility(BaseDomain):
             self,
             depth: 'int' = UNDEFINED,
             frame_id: 'FrameId' = UNDEFINED
-    ) -> IResponse[GetFullAXTreeReturnT]:
+    ) -> 'IResponse[GetFullAXTreeReturnT]':
         params = {}
 
         if is_defined(depth):
@@ -128,7 +128,7 @@ class Accessibility(BaseDomain):
     def get_root_ax_node(
             self,
             frame_id: 'FrameId' = UNDEFINED
-    ) -> IResponse[GetRootAXNodeReturnT]:
+    ) -> 'IResponse[GetRootAXNodeReturnT]':
         params = {}
 
         if is_defined(frame_id):
@@ -150,7 +150,7 @@ class Accessibility(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> IResponse[GetAXNodeAndAncestorsReturnT]:
+    ) -> 'IResponse[GetAXNodeAndAncestorsReturnT]':
         params = {}
 
         if is_defined(node_id):
@@ -177,7 +177,7 @@ class Accessibility(BaseDomain):
             self,
             id_: 'AXNodeId',
             frame_id: 'FrameId' = UNDEFINED
-    ) -> IResponse[GetChildAXNodesReturnT]:
+    ) -> 'IResponse[GetChildAXNodesReturnT]':
         params = {
             'id': id_,
         }
@@ -203,7 +203,7 @@ class Accessibility(BaseDomain):
             object_id: 'RemoteObjectId' = UNDEFINED,
             accessible_name: 'str' = UNDEFINED,
             role: 'str' = UNDEFINED
-    ) -> IResponse[QueryAXTreeReturnT]:
+    ) -> 'IResponse[QueryAXTreeReturnT]':
         params = {}
 
         if is_defined(node_id):

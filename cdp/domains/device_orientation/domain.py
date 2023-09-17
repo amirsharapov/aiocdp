@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 class DeviceOrientation(BaseDomain):
     def clear_device_orientation_override(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -44,7 +44,7 @@ class DeviceOrientation(BaseDomain):
             alpha: 'float',
             beta: 'float',
             gamma: 'float'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'alpha': alpha,
             'beta': beta,

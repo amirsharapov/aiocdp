@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 class Log(BaseDomain):
     def clear(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -41,7 +41,7 @@ class Log(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -52,7 +52,7 @@ class Log(BaseDomain):
 
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -64,7 +64,7 @@ class Log(BaseDomain):
     def start_violations_report(
             self,
             config: 'list'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'config': [
                 to_dict(item, 'camel')
@@ -80,7 +80,7 @@ class Log(BaseDomain):
 
     def stop_violations_report(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(

@@ -43,7 +43,7 @@ class DOMDebugger(BaseDomain):
             object_id: 'RemoteObjectId',
             depth: 'int' = UNDEFINED,
             pierce: 'bool' = UNDEFINED
-    ) -> IResponse[GetEventListenersReturnT]:
+    ) -> 'IResponse[GetEventListenersReturnT]':
         params = {
             'objectId': object_id,
         }
@@ -69,7 +69,7 @@ class DOMDebugger(BaseDomain):
             self,
             node_id: 'NodeId',
             type_: 'DOMBreakpointType'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'nodeId': node_id,
             'type': type_,
@@ -85,7 +85,7 @@ class DOMDebugger(BaseDomain):
             self,
             event_name: 'str',
             target_name: 'str' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'eventName': event_name,
         }
@@ -102,7 +102,7 @@ class DOMDebugger(BaseDomain):
     def remove_instrumentation_breakpoint(
             self,
             event_name: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'eventName': event_name,
         }
@@ -116,7 +116,7 @@ class DOMDebugger(BaseDomain):
     def remove_xhr_breakpoint(
             self,
             url: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'url': url,
         }
@@ -130,7 +130,7 @@ class DOMDebugger(BaseDomain):
     def set_break_on_csp_violation(
             self,
             violation_types: 'list'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'violationTypes': violation_types,
         }
@@ -145,7 +145,7 @@ class DOMDebugger(BaseDomain):
             self,
             node_id: 'NodeId',
             type_: 'DOMBreakpointType'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'nodeId': node_id,
             'type': type_,
@@ -161,7 +161,7 @@ class DOMDebugger(BaseDomain):
             self,
             event_name: 'str',
             target_name: 'str' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'eventName': event_name,
         }
@@ -178,7 +178,7 @@ class DOMDebugger(BaseDomain):
     def set_instrumentation_breakpoint(
             self,
             event_name: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'eventName': event_name,
         }
@@ -192,7 +192,7 @@ class DOMDebugger(BaseDomain):
     def set_xhr_breakpoint(
             self,
             url: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'url': url,
         }

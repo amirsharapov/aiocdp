@@ -290,13 +290,12 @@ def _generate_send_method_return_call(command: Command):
 
 def _generate_send_method_return_signature(command: 'Command'):
     if command.returns:
-        slice_ = ast.Name(command.name_pascal_case + 'ReturnT')
+        slice_ = command.name_pascal_case + 'ReturnT'
     else:
-        slice_ = ast.Name('None')
+        slice_ = 'None'
 
-    return ast.Subscript(
-        value=ast.Name('IResponse'),
-        slice=slice_
+    return ast.Constant(
+        f'IResponse[{slice_}]'
     )
 
 

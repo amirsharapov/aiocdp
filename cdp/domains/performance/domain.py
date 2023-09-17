@@ -33,7 +33,7 @@ if TYPE_CHECKING:
 class Performance(BaseDomain):
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -45,7 +45,7 @@ class Performance(BaseDomain):
     def enable(
             self,
             time_domain: 'str' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         if is_defined(time_domain):
@@ -60,7 +60,7 @@ class Performance(BaseDomain):
     def set_time_domain(
             self,
             time_domain: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'timeDomain': time_domain,
         }
@@ -73,7 +73,7 @@ class Performance(BaseDomain):
 
     def get_metrics(
             self
-    ) -> IResponse[GetMetricsReturnT]:
+    ) -> 'IResponse[GetMetricsReturnT]':
         params = {}
 
         return self._send_command(

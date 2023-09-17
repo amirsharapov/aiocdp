@@ -140,7 +140,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
                         self.source += ' '
 
         if render_context['expand']:
-            self.source += '\n'
+            self.source += f'\n{self.indent}'
 
     def visit_comprehension(self, node: comprehension) -> Any:
         self.source += f'{self.indent}for '
@@ -309,7 +309,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
         if hasattr(node, 'args') and node.args:
             self.visit(node.args)
 
-        self.source += self.indent + ')'
+        self.source += ')'
 
         if hasattr(node, 'returns') and node.returns:
             self.source += ' -> '

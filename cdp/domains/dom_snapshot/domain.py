@@ -34,7 +34,7 @@ if TYPE_CHECKING:
 class DOMSnapshot(BaseDomain):
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -45,7 +45,7 @@ class DOMSnapshot(BaseDomain):
 
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -60,7 +60,7 @@ class DOMSnapshot(BaseDomain):
             include_event_listeners: 'bool' = UNDEFINED,
             include_paint_order: 'bool' = UNDEFINED,
             include_user_agent_shadow_tree: 'bool' = UNDEFINED
-    ) -> IResponse[GetSnapshotReturnT]:
+    ) -> 'IResponse[GetSnapshotReturnT]':
         params = {
             'computedStyleWhitelist': computed_style_whitelist,
         }
@@ -92,7 +92,7 @@ class DOMSnapshot(BaseDomain):
             include_dom_rects: 'bool' = UNDEFINED,
             include_blended_background_colors: 'bool' = UNDEFINED,
             include_text_color_opacities: 'bool' = UNDEFINED
-    ) -> IResponse[CaptureSnapshotReturnT]:
+    ) -> 'IResponse[CaptureSnapshotReturnT]':
         params = {
             'computedStyles': computed_styles,
         }

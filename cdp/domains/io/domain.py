@@ -39,7 +39,7 @@ class IO(BaseDomain):
     def close(
             self,
             handle: 'StreamHandle'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'handle': handle,
         }
@@ -55,7 +55,7 @@ class IO(BaseDomain):
             handle: 'StreamHandle',
             offset: 'int' = UNDEFINED,
             size: 'int' = UNDEFINED
-    ) -> IResponse[ReadReturnT]:
+    ) -> 'IResponse[ReadReturnT]':
         params = {
             'handle': handle,
         }
@@ -80,7 +80,7 @@ class IO(BaseDomain):
     def resolve_blob(
             self,
             object_id: 'RemoteObjectId'
-    ) -> IResponse[ResolveBlobReturnT]:
+    ) -> 'IResponse[ResolveBlobReturnT]':
         params = {
             'objectId': object_id,
         }

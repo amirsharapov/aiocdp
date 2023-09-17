@@ -320,154 +320,154 @@ class Domains:
         init=False
     )
 
-    def __post_init__(self    ):
+    def __post_init__(self):
         self.accessibility = Accessibility(
-            self.target
+            self._target
         )
         self.animation = Animation(
-            self.target
+            self._target
         )
         self.audits = Audits(
-            self.target
+            self._target
         )
         self.autofill = Autofill(
-            self.target
+            self._target
         )
         self.background_service = BackgroundService(
-            self.target
+            self._target
         )
         self.browser = Browser(
-            self.target
+            self._target
         )
         self.css = CSS(
-            self.target
+            self._target
         )
         self.cache_storage = CacheStorage(
-            self.target
+            self._target
         )
         self.cast = Cast(
-            self.target
+            self._target
         )
         self.dom = DOM(
-            self.target
+            self._target
         )
         self.dom_debugger = DOMDebugger(
-            self.target
+            self._target
         )
         self.event_breakpoints = EventBreakpoints(
-            self.target
+            self._target
         )
         self.dom_snapshot = DOMSnapshot(
-            self.target
+            self._target
         )
         self.dom_storage = DOMStorage(
-            self.target
+            self._target
         )
         self.database = Database(
-            self.target
+            self._target
         )
         self.device_orientation = DeviceOrientation(
-            self.target
+            self._target
         )
         self.emulation = Emulation(
-            self.target
+            self._target
         )
         self.headless_experimental = HeadlessExperimental(
-            self.target
+            self._target
         )
         self.io = IO(
-            self.target
+            self._target
         )
         self.indexed_db = IndexedDB(
-            self.target
+            self._target
         )
         self.input = Input(
-            self.target
+            self._target
         )
         self.inspector = Inspector(
-            self.target
+            self._target
         )
         self.layer_tree = LayerTree(
-            self.target
+            self._target
         )
         self.log = Log(
-            self.target
+            self._target
         )
         self.memory = Memory(
-            self.target
+            self._target
         )
         self.network = Network(
-            self.target
+            self._target
         )
         self.overlay = Overlay(
-            self.target
+            self._target
         )
         self.page = Page(
-            self.target
+            self._target
         )
         self.performance = Performance(
-            self.target
+            self._target
         )
         self.performance_timeline = PerformanceTimeline(
-            self.target
+            self._target
         )
         self.security = Security(
-            self.target
+            self._target
         )
         self.service_worker = ServiceWorker(
-            self.target
+            self._target
         )
         self.storage = Storage(
-            self.target
+            self._target
         )
         self.system_info = SystemInfo(
-            self.target
+            self._target
         )
         self.target = Target(
-            self.target
+            self._target
         )
         self.tethering = Tethering(
-            self.target
+            self._target
         )
         self.tracing = Tracing(
-            self.target
+            self._target
         )
         self.fetch = Fetch(
-            self.target
+            self._target
         )
         self.web_audio = WebAudio(
-            self.target
+            self._target
         )
         self.web_authn = WebAuthn(
-            self.target
+            self._target
         )
         self.media = Media(
-            self.target
+            self._target
         )
         self.device_access = DeviceAccess(
-            self.target
+            self._target
         )
         self.preload = Preload(
-            self.target
+            self._target
         )
         self.fed_cm = FedCm(
-            self.target
+            self._target
         )
         self.console = Console(
-            self.target
+            self._target
         )
         self.debugger = Debugger(
-            self.target
+            self._target
         )
         self.heap_profiler = HeapProfiler(
-            self.target
+            self._target
         )
         self.profiler = Profiler(
-            self.target
+            self._target
         )
         self.runtime = Runtime(
-            self.target
+            self._target
         )
         self.schema = Schema(
-            self.target
+            self._target
         )

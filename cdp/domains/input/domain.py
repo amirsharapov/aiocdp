@@ -41,7 +41,7 @@ class Input(BaseDomain):
             y: 'float',
             data: 'DragData',
             modifiers: 'int' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'type': type_,
             'x': x,
@@ -78,7 +78,7 @@ class Input(BaseDomain):
             is_system_key: 'bool' = UNDEFINED,
             location: 'int' = UNDEFINED,
             commands: 'list' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'type': type_,
         }
@@ -134,7 +134,7 @@ class Input(BaseDomain):
     def insert_text(
             self,
             text: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'text': text,
         }
@@ -152,7 +152,7 @@ class Input(BaseDomain):
             selection_end: 'int',
             replacement_start: 'int' = UNDEFINED,
             replacement_end: 'int' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'text': text,
             'selectionStart': selection_start,
@@ -189,7 +189,7 @@ class Input(BaseDomain):
             delta_x: 'float' = UNDEFINED,
             delta_y: 'float' = UNDEFINED,
             pointer_type: 'str' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'type': type_,
             'x': x,
@@ -247,7 +247,7 @@ class Input(BaseDomain):
             touch_points: 'list',
             modifiers: 'int' = UNDEFINED,
             timestamp: 'TimeSinceEpoch' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'type': type_,
             'touchPoints': [
@@ -270,7 +270,7 @@ class Input(BaseDomain):
 
     def cancel_dragging(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -290,7 +290,7 @@ class Input(BaseDomain):
             delta_y: 'float' = UNDEFINED,
             modifiers: 'int' = UNDEFINED,
             click_count: 'int' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'type': type_,
             'x': x,
@@ -322,7 +322,7 @@ class Input(BaseDomain):
     def set_ignore_input_events(
             self,
             ignore: 'bool'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'ignore': ignore,
         }
@@ -336,7 +336,7 @@ class Input(BaseDomain):
     def set_intercept_drags(
             self,
             enabled: 'bool'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'enabled': enabled,
         }
@@ -354,7 +354,7 @@ class Input(BaseDomain):
             scale_factor: 'float',
             relative_speed: 'int' = UNDEFINED,
             gesture_source_type: 'GestureSourceType' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'x': x,
             'y': y,
@@ -387,7 +387,7 @@ class Input(BaseDomain):
             repeat_count: 'int' = UNDEFINED,
             repeat_delay_ms: 'int' = UNDEFINED,
             interaction_marker_name: 'str' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'x': x,
             'y': y,
@@ -436,7 +436,7 @@ class Input(BaseDomain):
             duration: 'int' = UNDEFINED,
             tap_count: 'int' = UNDEFINED,
             gesture_source_type: 'GestureSourceType' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'x': x,
             'y': y,

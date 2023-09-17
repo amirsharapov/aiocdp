@@ -44,7 +44,7 @@ class LayerTree(BaseDomain):
     def compositing_reasons(
             self,
             layer_id: 'LayerId'
-    ) -> IResponse[CompositingReasonsReturnT]:
+    ) -> 'IResponse[CompositingReasonsReturnT]':
         params = {
             'layerId': layer_id,
         }
@@ -62,7 +62,7 @@ class LayerTree(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -73,7 +73,7 @@ class LayerTree(BaseDomain):
 
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -85,7 +85,7 @@ class LayerTree(BaseDomain):
     def load_snapshot(
             self,
             tiles: 'list'
-    ) -> IResponse[LoadSnapshotReturnT]:
+    ) -> 'IResponse[LoadSnapshotReturnT]':
         params = {
             'tiles': [
                 to_dict(item, 'camel')
@@ -107,7 +107,7 @@ class LayerTree(BaseDomain):
     def make_snapshot(
             self,
             layer_id: 'LayerId'
-    ) -> IResponse[MakeSnapshotReturnT]:
+    ) -> 'IResponse[MakeSnapshotReturnT]':
         params = {
             'layerId': layer_id,
         }
@@ -129,7 +129,7 @@ class LayerTree(BaseDomain):
             min_repeat_count: 'int' = UNDEFINED,
             min_duration: 'float' = UNDEFINED,
             clip_rect: 'Rect' = UNDEFINED
-    ) -> IResponse[ProfileSnapshotReturnT]:
+    ) -> 'IResponse[ProfileSnapshotReturnT]':
         params = {
             'snapshotId': snapshot_id,
         }
@@ -160,7 +160,7 @@ class LayerTree(BaseDomain):
     def release_snapshot(
             self,
             snapshot_id: 'SnapshotId'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'snapshotId': snapshot_id,
         }
@@ -177,7 +177,7 @@ class LayerTree(BaseDomain):
             from_step: 'int' = UNDEFINED,
             to_step: 'int' = UNDEFINED,
             scale: 'float' = UNDEFINED
-    ) -> IResponse[ReplaySnapshotReturnT]:
+    ) -> 'IResponse[ReplaySnapshotReturnT]':
         params = {
             'snapshotId': snapshot_id,
         }
@@ -205,7 +205,7 @@ class LayerTree(BaseDomain):
     def snapshot_command_log(
             self,
             snapshot_id: 'SnapshotId'
-    ) -> IResponse[SnapshotCommandLogReturnT]:
+    ) -> 'IResponse[SnapshotCommandLogReturnT]':
         params = {
             'snapshotId': snapshot_id,
         }

@@ -39,7 +39,7 @@ if TYPE_CHECKING:
 class Fetch(BaseDomain):
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -52,7 +52,7 @@ class Fetch(BaseDomain):
             self,
             patterns: 'list' = UNDEFINED,
             handle_auth_requests: 'bool' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         if is_defined(patterns):
@@ -74,7 +74,7 @@ class Fetch(BaseDomain):
             self,
             request_id: 'RequestId',
             error_reason: 'ErrorReason'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'requestId': request_id,
             'errorReason': error_reason,
@@ -94,7 +94,7 @@ class Fetch(BaseDomain):
             binary_response_headers: 'str' = UNDEFINED,
             body: 'str' = UNDEFINED,
             response_phrase: 'str' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'requestId': request_id,
             'responseCode': response_code,
@@ -129,7 +129,7 @@ class Fetch(BaseDomain):
             post_data: 'str' = UNDEFINED,
             headers: 'list' = UNDEFINED,
             intercept_response: 'bool' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'requestId': request_id,
         }
@@ -162,7 +162,7 @@ class Fetch(BaseDomain):
             self,
             request_id: 'RequestId',
             auth_challenge_response: 'AuthChallengeResponse'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'requestId': request_id,
             'authChallengeResponse': to_dict(
@@ -184,7 +184,7 @@ class Fetch(BaseDomain):
             response_phrase: 'str' = UNDEFINED,
             response_headers: 'list' = UNDEFINED,
             binary_response_headers: 'str' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'requestId': request_id,
         }
@@ -213,7 +213,7 @@ class Fetch(BaseDomain):
     def get_response_body(
             self,
             request_id: 'RequestId'
-    ) -> IResponse[GetResponseBodyReturnT]:
+    ) -> 'IResponse[GetResponseBodyReturnT]':
         params = {
             'requestId': request_id,
         }
@@ -232,7 +232,7 @@ class Fetch(BaseDomain):
     def take_response_body_as_stream(
             self,
             request_id: 'RequestId'
-    ) -> IResponse[TakeResponseBodyAsStreamReturnT]:
+    ) -> 'IResponse[TakeResponseBodyAsStreamReturnT]':
         params = {
             'requestId': request_id,
         }

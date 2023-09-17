@@ -42,7 +42,7 @@ class Autofill(BaseDomain):
             field_id: 'BackendNodeId',
             card: 'CreditCard',
             frame_id: 'FrameId' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'fieldId': field_id,
             'card': to_dict(
@@ -63,7 +63,7 @@ class Autofill(BaseDomain):
     def set_addresses(
             self,
             addresses: 'list'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'addresses': [
                 to_dict(item, 'camel')
@@ -79,7 +79,7 @@ class Autofill(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -90,7 +90,7 @@ class Autofill(BaseDomain):
 
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(

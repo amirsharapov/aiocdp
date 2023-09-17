@@ -47,7 +47,7 @@ class Target(BaseDomain):
     def activate_target(
             self,
             target_id: 'TargetID'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'targetId': target_id,
         }
@@ -62,7 +62,7 @@ class Target(BaseDomain):
             self,
             target_id: 'TargetID',
             flatten: 'bool' = UNDEFINED
-    ) -> IResponse[AttachToTargetReturnT]:
+    ) -> 'IResponse[AttachToTargetReturnT]':
         params = {
             'targetId': target_id,
         }
@@ -83,7 +83,7 @@ class Target(BaseDomain):
 
     def attach_to_browser_target(
             self
-    ) -> IResponse[AttachToBrowserTargetReturnT]:
+    ) -> 'IResponse[AttachToBrowserTargetReturnT]':
         params = {}
 
         return self._send_command(
@@ -100,7 +100,7 @@ class Target(BaseDomain):
     def close_target(
             self,
             target_id: 'TargetID'
-    ) -> IResponse[CloseTargetReturnT]:
+    ) -> 'IResponse[CloseTargetReturnT]':
         params = {
             'targetId': target_id,
         }
@@ -120,7 +120,7 @@ class Target(BaseDomain):
             self,
             target_id: 'TargetID',
             binding_name: 'str' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'targetId': target_id,
         }
@@ -140,7 +140,7 @@ class Target(BaseDomain):
             proxy_server: 'str' = UNDEFINED,
             proxy_bypass_list: 'str' = UNDEFINED,
             origins_with_universal_network_access: 'list' = UNDEFINED
-    ) -> IResponse[CreateBrowserContextReturnT]:
+    ) -> 'IResponse[CreateBrowserContextReturnT]':
         params = {}
 
         if is_defined(dispose_on_detach):
@@ -168,7 +168,7 @@ class Target(BaseDomain):
 
     def get_browser_contexts(
             self
-    ) -> IResponse[GetBrowserContextsReturnT]:
+    ) -> 'IResponse[GetBrowserContextsReturnT]':
         params = {}
 
         return self._send_command(
@@ -192,7 +192,7 @@ class Target(BaseDomain):
             new_window: 'bool' = UNDEFINED,
             background: 'bool' = UNDEFINED,
             for_tab: 'bool' = UNDEFINED
-    ) -> IResponse[CreateTargetReturnT]:
+    ) -> 'IResponse[CreateTargetReturnT]':
         params = {
             'url': url,
         }
@@ -233,7 +233,7 @@ class Target(BaseDomain):
             self,
             session_id: 'SessionID' = UNDEFINED,
             target_id: 'TargetID' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         if is_defined(session_id):
@@ -251,7 +251,7 @@ class Target(BaseDomain):
     def dispose_browser_context(
             self,
             browser_context_id: 'BrowserContextID'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'browserContextId': browser_context_id,
         }
@@ -265,7 +265,7 @@ class Target(BaseDomain):
     def get_target_info(
             self,
             target_id: 'TargetID' = UNDEFINED
-    ) -> IResponse[GetTargetInfoReturnT]:
+    ) -> 'IResponse[GetTargetInfoReturnT]':
         params = {}
 
         if is_defined(target_id):
@@ -285,7 +285,7 @@ class Target(BaseDomain):
     def get_targets(
             self,
             filter_: 'TargetFilter' = UNDEFINED
-    ) -> IResponse[GetTargetsReturnT]:
+    ) -> 'IResponse[GetTargetsReturnT]':
         params = {}
 
         if is_defined(filter_):
@@ -307,7 +307,7 @@ class Target(BaseDomain):
             message: 'str',
             session_id: 'SessionID' = UNDEFINED,
             target_id: 'TargetID' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'message': message,
         }
@@ -330,7 +330,7 @@ class Target(BaseDomain):
             wait_for_debugger_on_start: 'bool',
             flatten: 'bool' = UNDEFINED,
             filter_: 'TargetFilter' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'autoAttach': auto_attach,
             'waitForDebuggerOnStart': wait_for_debugger_on_start,
@@ -353,7 +353,7 @@ class Target(BaseDomain):
             target_id: 'TargetID',
             wait_for_debugger_on_start: 'bool',
             filter_: 'TargetFilter' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'targetId': target_id,
             'waitForDebuggerOnStart': wait_for_debugger_on_start,
@@ -372,7 +372,7 @@ class Target(BaseDomain):
             self,
             discover: 'bool',
             filter_: 'TargetFilter' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'discover': discover,
         }
@@ -389,7 +389,7 @@ class Target(BaseDomain):
     def set_remote_locations(
             self,
             locations: 'list'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'locations': [
                 to_dict(item, 'camel')

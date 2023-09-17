@@ -45,7 +45,7 @@ class IndexedDB(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -75,7 +75,7 @@ class IndexedDB(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'databaseName': database_name,
         }
@@ -106,7 +106,7 @@ class IndexedDB(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -136,7 +136,7 @@ class IndexedDB(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -147,7 +147,7 @@ class IndexedDB(BaseDomain):
 
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -167,7 +167,7 @@ class IndexedDB(BaseDomain):
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED,
             key_range: 'KeyRange' = UNDEFINED
-    ) -> IResponse[RequestDataReturnT]:
+    ) -> 'IResponse[RequestDataReturnT]':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -212,7 +212,7 @@ class IndexedDB(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> IResponse[GetMetadataReturnT]:
+    ) -> 'IResponse[GetMetadataReturnT]':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -247,7 +247,7 @@ class IndexedDB(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> IResponse[RequestDatabaseReturnT]:
+    ) -> 'IResponse[RequestDatabaseReturnT]':
         params = {
             'databaseName': database_name,
         }
@@ -280,7 +280,7 @@ class IndexedDB(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> IResponse[RequestDatabaseNamesReturnT]:
+    ) -> 'IResponse[RequestDatabaseNamesReturnT]':
         params = {}
 
         if is_defined(security_origin):

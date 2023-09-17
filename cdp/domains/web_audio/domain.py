@@ -34,7 +34,7 @@ if TYPE_CHECKING:
 class WebAudio(BaseDomain):
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -45,7 +45,7 @@ class WebAudio(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -57,7 +57,7 @@ class WebAudio(BaseDomain):
     def get_realtime_data(
             self,
             context_id: 'GraphObjectId'
-    ) -> IResponse[GetRealtimeDataReturnT]:
+    ) -> 'IResponse[GetRealtimeDataReturnT]':
         params = {
             'contextId': context_id,
         }

@@ -35,7 +35,7 @@ class DOMStorage(BaseDomain):
     def clear(
             self,
             storage_id: 'StorageId'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'storageId': to_dict(
                 storage_id,
@@ -51,7 +51,7 @@ class DOMStorage(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -62,7 +62,7 @@ class DOMStorage(BaseDomain):
 
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -74,7 +74,7 @@ class DOMStorage(BaseDomain):
     def get_dom_storage_items(
             self,
             storage_id: 'StorageId'
-    ) -> IResponse[GetDOMStorageItemsReturnT]:
+    ) -> 'IResponse[GetDOMStorageItemsReturnT]':
         params = {
             'storageId': to_dict(
                 storage_id,
@@ -97,7 +97,7 @@ class DOMStorage(BaseDomain):
             self,
             storage_id: 'StorageId',
             key: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'storageId': to_dict(
                 storage_id,
@@ -117,7 +117,7 @@ class DOMStorage(BaseDomain):
             storage_id: 'StorageId',
             key: 'str',
             value: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'storageId': to_dict(
                 storage_id,

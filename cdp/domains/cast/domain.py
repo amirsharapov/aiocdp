@@ -31,7 +31,7 @@ class Cast(BaseDomain):
     def enable(
             self,
             presentation_url: 'str' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         if is_defined(presentation_url):
@@ -45,7 +45,7 @@ class Cast(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -57,7 +57,7 @@ class Cast(BaseDomain):
     def set_sink_to_use(
             self,
             sink_name: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'sinkName': sink_name,
         }
@@ -71,7 +71,7 @@ class Cast(BaseDomain):
     def start_desktop_mirroring(
             self,
             sink_name: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'sinkName': sink_name,
         }
@@ -85,7 +85,7 @@ class Cast(BaseDomain):
     def start_tab_mirroring(
             self,
             sink_name: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'sinkName': sink_name,
         }
@@ -99,7 +99,7 @@ class Cast(BaseDomain):
     def stop_casting(
             self,
             sink_name: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'sinkName': sink_name,
         }

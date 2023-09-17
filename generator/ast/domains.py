@@ -107,7 +107,7 @@ def _generate_class_definition(protocols: list[Protocol]):
                         args=[
                             ast.Attribute(
                                 value=ast.Name('self'),
-                                attr='target'
+                                attr='_target'
                             )
                         ],
                         render_context={

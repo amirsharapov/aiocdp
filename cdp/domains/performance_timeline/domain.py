@@ -31,7 +31,7 @@ class PerformanceTimeline(BaseDomain):
     def enable(
             self,
             event_types: 'list'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'eventTypes': event_types,
         }

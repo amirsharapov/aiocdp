@@ -38,7 +38,7 @@ class HeadlessExperimental(BaseDomain):
             interval: 'float' = UNDEFINED,
             no_display_updates: 'bool' = UNDEFINED,
             screenshot: 'ScreenshotParams' = UNDEFINED
-    ) -> IResponse[BeginFrameReturnT]:
+    ) -> 'IResponse[BeginFrameReturnT]':
         params = {}
 
         if is_defined(frame_time_ticks):
@@ -69,7 +69,7 @@ class HeadlessExperimental(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -80,7 +80,7 @@ class HeadlessExperimental(BaseDomain):
 
     def enable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(

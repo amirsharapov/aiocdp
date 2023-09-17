@@ -56,6 +56,3 @@ class Target:
             expect_response,
             response_hook
         )
-
-    def listen_for_event(self, event: type) -> EventStream:
-        pass

@@ -39,7 +39,7 @@ class WebAuthn(BaseDomain):
     def enable(
             self,
             enable_ui: 'bool' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         if is_defined(enable_ui):
@@ -53,7 +53,7 @@ class WebAuthn(BaseDomain):
 
     def disable(
             self
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {}
 
         return self._send_command(
@@ -65,7 +65,7 @@ class WebAuthn(BaseDomain):
     def add_virtual_authenticator(
             self,
             options: 'VirtualAuthenticatorOptions'
-    ) -> IResponse[AddVirtualAuthenticatorReturnT]:
+    ) -> 'IResponse[AddVirtualAuthenticatorReturnT]':
         params = {
             'options': to_dict(
                 options,
@@ -90,7 +90,7 @@ class WebAuthn(BaseDomain):
             is_bogus_signature: 'bool' = UNDEFINED,
             is_bad_uv: 'bool' = UNDEFINED,
             is_bad_up: 'bool' = UNDEFINED
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -113,7 +113,7 @@ class WebAuthn(BaseDomain):
     def remove_virtual_authenticator(
             self,
             authenticator_id: 'AuthenticatorId'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -128,7 +128,7 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: 'AuthenticatorId',
             credential: 'Credential'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'authenticatorId': authenticator_id,
             'credential': to_dict(
@@ -147,7 +147,7 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: 'AuthenticatorId',
             credential_id: 'str'
-    ) -> IResponse[GetCredentialReturnT]:
+    ) -> 'IResponse[GetCredentialReturnT]':
         params = {
             'authenticatorId': authenticator_id,
             'credentialId': credential_id,
@@ -167,7 +167,7 @@ class WebAuthn(BaseDomain):
     def get_credentials(
             self,
             authenticator_id: 'AuthenticatorId'
-    ) -> IResponse[GetCredentialsReturnT]:
+    ) -> 'IResponse[GetCredentialsReturnT]':
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -187,7 +187,7 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: 'AuthenticatorId',
             credential_id: 'str'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'authenticatorId': authenticator_id,
             'credentialId': credential_id,
@@ -202,7 +202,7 @@ class WebAuthn(BaseDomain):
     def clear_credentials(
             self,
             authenticator_id: 'AuthenticatorId'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'authenticatorId': authenticator_id,
         }
@@ -217,7 +217,7 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: 'AuthenticatorId',
             is_user_verified: 'bool'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'authenticatorId': authenticator_id,
             'isUserVerified': is_user_verified,
@@ -233,7 +233,7 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: 'AuthenticatorId',
             enabled: 'bool'
-    ) -> IResponse[None]:
+    ) -> 'IResponse[None]':
         params = {
             'authenticatorId': authenticator_id,
             'enabled': enabled,
