@@ -42,6 +42,10 @@ class Command(ComplexNode):
         )
 
     @property
+    def actual_domain(self):
+        return self.parent
+
+    @property
     def name_snake_case(self):
         return snake_case(self.name)
 

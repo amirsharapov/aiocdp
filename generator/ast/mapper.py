@@ -1,6 +1,6 @@
 import ast
 
-from generator.parser.types import Protocol, Type
+from generator.parser.types import Protocol, Type, Command
 
 
 def _generate_imports(protocols: list['Protocol']):
@@ -53,6 +53,310 @@ def _generate_type_constants():
             }
         )
     ]
+
+
+def _generate_return_type_from_dict_mapper_body(
+        command: 'Command',
+        casing_strategy: str
+):
+    assert casing_strategy in ('snake', 'camel', 'pascal')
+
+    root = ast.Call(
+        func=ast.Name((
+            f'{command.actual_domain.domain_snake_case_collision_safe}.'
+            f'{command.name_pascal_case}ReturnT'
+        )),
+        args=[],
+        keywords=[],
+        render_context={
+            'expand': True
+        }
+    )
+
+    for parameter in command.parameters:
+        key = None
+
+        if casing_strategy == 'snake':
+            key = parameter.name_snake_cased
+
+        if casing_strategy == 'camel':
+            key = parameter.name_camel_cased
+
+        if casing_strategy == 'pascal':
+            key = parameter.name_pascal_cased
+
+        key_access = ast.Subscript(
+            value=ast.Name('data'),
+            slice=ast.Constant(key)
+        )
+
+        from_dict_call = ast.Call(
+            func=ast.Name('to_dict'),
+            args=[
+                key_access,
+                ast.Name('casing_strategy')
+            ],
+            render_context={
+                'expand': True
+            }
+        )
+
+        from_dict_call_list_comp = ast.ListComp(
+            elt=ast.Call(
+                func=ast.Name('to_dict'),
+                args=[
+                    ast.Name('item'),
+                    ast.Name('casing_strategy')
+                ]
+            ),
+            generators=[
+                ast.comprehension(
+                    target=ast.Name('item'),
+                    iter=key_access,
+                    ifs=[]
+                )
+            ]
+        )
+
+        if parameter.type == 'array':
+            if parameter.items.ref.actual_type.properties:
+                value = from_dict_call_list_comp
+            else:
+                value = key_access
+
+        else:
+            if parameter.ref.actual_type.properties:
+                value = from_dict_call
+            else:
+                value = key_access
+
+        keyword = ast.keyword(
+            arg=parameter.name_snake_cased,
+            value=value
+        )
+
+        root.keywords.append(keyword)
+
+    return root
+
+
+def _generate_return_type_from_dict_mappers(protocols: list['Protocol']):
+    functions = []
+
+    for protocol in protocols:
+        for domain in protocol.domains:
+            for command in domain.commands:
+                if not command.returns:
+                    continue
+
+                function = ast.FunctionDef(
+                    name=f'_{domain.domain_snake_case}__{command.name_snake_case}_return_t__from_dict',
+                    args=ast.arguments(
+                        args=[
+                            ast.arg(
+                                arg='data',
+                                annotation=ast.Name('dict')
+                            ),
+                            ast.arg(
+                                arg='casing_strategy',
+                                annotation=ast.Constant('CasingStrategyT')
+                            )
+                        ],
+                        defaults=[
+                            ast.Constant('snake')
+                        ],
+                        render_context={
+                            'expand': True,
+                            'lines_before': 2
+                        }
+                    ),
+                    body=[ast.Name('pass')],
+                    returns=ast.Constant((
+                        f'{command.actual_domain.domain_snake_case_collision_safe}.'
+                        f'{command.name_pascal_case}ReturnT'
+                    ))
+                )
+
+                for casing_strategy in ['snake', 'camel', 'pascal']:
+                    function.body.append(
+                        ast.If(
+                            test=ast.Compare(
+                                left=ast.Name('casing_strategy'),
+                                ops=[
+                                    ast.Eq()
+                                ],
+                                comparators=[
+                                    ast.Constant(casing_strategy)
+                                ]
+                            ),
+                            body=[
+                                ast.Return(
+                                    value=_generate_return_type_from_dict_mapper_body(
+                                        command,
+                                        casing_strategy
+                                    )
+                                )
+                            ]
+                        )
+                    )
+
+                functions.append(function)
+
+    return functions
+
+
+def _generate_type_specific_from_dict_mapper_body(
+        type_: 'Type',
+        casing_strategy: str
+):
+    assert casing_strategy in ('snake', 'camel', 'pascal')
+
+    root = ast.Call(
+        func=ast.Name((
+            f'{type_.actual_domain.domain_snake_case_collision_safe}.'
+            f'{type_.id_pascal_case}'
+        )),
+        args=[],
+        keywords=[],
+        render_context={
+            'expand': True
+        }
+    )
+
+    for property_ in type_.properties:
+        key = None
+
+        if casing_strategy == 'snake':
+            key = property_.name_snake_cased
+
+        if casing_strategy == 'camel':
+            key = property_.name_camel_cased
+
+        if casing_strategy == 'pascal':
+            key = property_.name_pascal_cased
+
+        key_access = ast.Subscript(
+            value=ast.Name('data'),
+            slice=ast.Constant(key)
+        )
+
+        from_dict_call = ast.Call(
+            func=ast.Name('to_dict'),
+            args=[
+                key_access,
+                ast.Name('casing_strategy')
+            ],
+            render_context={
+                'expand': True
+            }
+        )
+
+        from_dict_call_list_comp = ast.ListComp(
+            elt=ast.Call(
+                func=ast.Name('to_dict'),
+                args=[
+                    ast.Name('item'),
+                    ast.Name('casing_strategy')
+                ]
+            ),
+            generators=[
+                ast.comprehension(
+                    target=ast.Name('item'),
+                    iter=key_access,
+                    ifs=[]
+                )
+            ]
+        )
+
+        if property_.type == 'array':
+            if property_.items.ref.actual_type.properties:
+                value = from_dict_call_list_comp
+            else:
+                value = key_access
+
+        else:
+            if property_.ref.actual_type.properties:
+                value = from_dict_call
+            else:
+                value = key_access
+
+        keyword = ast.keyword(
+            arg=property_.name_snake_cased,
+            value=value
+        )
+
+        root.keywords.append(keyword)
+
+    return root
+
+
+def _generate_type_specific_from_dict_mappers(protocols: list['Protocol']):
+    functions = []
+
+    for protocol in protocols:
+        for domain in protocol.domains:
+            for type_ in domain.types:
+                if not type_.properties:
+                    continue
+
+                function = ast.FunctionDef(
+                    name=f'_{domain.domain_snake_case}__{type_.id_snake_case}__from_dict',
+                    args=ast.arguments(
+                        args=[
+                            ast.arg(
+                                arg='data',
+                                annotation=ast.Name('dict')
+                            ),
+                            ast.arg(
+                                arg='casing_strategy',
+                                annotation=ast.Constant('CasingStrategyT')
+                            )
+                        ],
+                        defaults=[
+                            ast.Constant('snake')
+                        ],
+                        render_context={
+                            'expand': True
+                        }
+                    ),
+                    body=[],
+                    returns=ast.Constant((
+                        f'{type_.actual_domain.domain_snake_case_collision_safe}.'
+                        f'{type_.id_pascal_case}'
+                    )),
+                    render_context={
+                        'lines_before': 2
+                    }
+                )
+
+                for casing_strategy in ['snake', 'camel', 'pascal']:
+                    function.body.append(
+                        ast.If(
+                            test=ast.Compare(
+                                left=ast.Name('casing_strategy'),
+                                ops=[
+                                    ast.Eq()
+                                ],
+                                comparators=[
+                                    ast.Constant(casing_strategy)
+                                ]
+                            ),
+                            body=[
+                                ast.Return(
+                                    value=_generate_type_specific_from_dict_mapper_body(
+                                        type_,
+                                        casing_strategy
+                                    )
+                                )
+                            ]
+                        )
+                    )
+
+                functions.append(
+                    function
+                )
+
+    return functions
 
 
 def _generate_type_specific_to_dict_mapper_body(
@@ -218,55 +522,6 @@ def _generate_type_specific_to_dict_mappers(protocols: list['Protocol']):
     return functions
 
 
-def _generate_type_specific_from_dict_mappers(protocols: list['Protocol']):
-    functions = []
-
-    for protocol in protocols:
-        for domain in protocol.domains:
-            for type_ in domain.types:
-                function = ast.FunctionDef(
-                    name=f'_{domain.domain_snake_case}__{type_.id_snake_case}__from_dict',
-                    args=ast.arguments(
-                        args=[
-                            ast.arg(
-                                arg='data',
-                                annotation=ast.Name(
-                                    id='dict'
-                                )
-                            ),
-                            ast.arg(
-                                arg='casing_strategy',
-                                annotation=ast.Constant(
-                                    value='CasingStrategyT'
-                                )
-                            )
-                        ],
-                        defaults=[
-                            ast.Constant(
-                                value='snake'
-                            )
-                        ],
-                        render_context={
-                            'expand': True
-                        }
-                    ),
-                    body=[ast.Name('pass')],
-                    returns=ast.Constant((
-                        f'{type_.actual_domain.domain_snake_case_collision_safe}.'
-                        f'{type_.id_pascal_case}'
-                    )),
-                    render_context={
-                        'lines_before': 2
-                    }
-                )
-
-                functions.append(
-                    function
-                )
-
-    return functions
-
-
 def _generate_generic_to_dict_mapper(protocols: list['Protocol']):
     function = ast.FunctionDef(
         name='to_dict',
@@ -407,6 +662,23 @@ def _generate_generic_from_dict_mapper(protocols: list['Protocol']):
 
     for protocol in protocols:
         for domain in protocol.domains:
+            for command in domain.commands:
+                if not command.returns:
+                    continue
+
+                lookup.keys.append(
+                    ast.Name((
+                        f'{command.actual_domain.domain_snake_case_collision_safe}.'
+                        f'{command.name_pascal_case}ReturnT'
+                    ))
+                )
+
+                lookup.values.append(
+                    ast.Name((
+                        f'_{domain.domain_snake_case}__{command.name_snake_case}_return_t__from_dict'
+                    ))
+                )
+
             for type_ in domain.types:
                 if not type_.properties:
                     continue
@@ -486,6 +758,12 @@ def generate(protocols: list['Protocol']):
 
     root.body.extend(
         _generate_type_specific_from_dict_mappers(
+            protocols
+        )
+    )
+
+    root.body.extend(
+        _generate_return_type_from_dict_mappers(
             protocols
         )
     )

@@ -214,9 +214,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
                     if i != len(node.keywords) - 1:
                         self.source += ','
 
-                        if render_context['expand']:
-                            self.source += '\n'
-                        else:
+                        if not render_context['expand']:
                             self.source += ' '
 
         if render_context['expand']:
