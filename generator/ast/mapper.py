@@ -73,22 +73,34 @@ def _generate_return_type_from_dict_mapper_body(
         }
     )
 
-    for parameter in command.parameters:
+    for return_property in command.returns:
         key = None
 
         if casing_strategy == 'snake':
-            key = parameter.name_snake_cased
+            key = return_property.name_snake_cased
 
         if casing_strategy == 'camel':
-            key = parameter.name_camel_cased
+            key = return_property.name_camel_cased
 
         if casing_strategy == 'pascal':
-            key = parameter.name_pascal_cased
+            key = return_property.name_pascal_cased
 
-        key_access = ast.Subscript(
-            value=ast.Name('data'),
-            slice=ast.Constant(key)
-        )
+        if return_property.optional:
+            key_access = ast.Call(
+                func=ast.Attribute(
+                    value=ast.Name('data'),
+                    attr='get'
+                ),
+                args=[
+                    ast.Constant(key),
+                ]
+            )
+
+        else:
+            key_access = ast.Subscript(
+                value=ast.Name('data'),
+                slice=ast.Constant(key)
+            )
 
         from_dict_call = ast.Call(
             func=ast.Name('from_dict'),
@@ -118,20 +130,20 @@ def _generate_return_type_from_dict_mapper_body(
             ]
         )
 
-        if parameter.type == 'array':
-            if parameter.items.ref.actual_type.properties:
+        if return_property.type == 'array':
+            if return_property.items.ref.actual_type.properties:
                 value = from_dict_call_list_comp
             else:
                 value = key_access
 
         else:
-            if parameter.ref.actual_type.properties:
+            if return_property.ref.actual_type.properties:
                 value = from_dict_call
             else:
                 value = key_access
 
         keyword = ast.keyword(
-            arg=parameter.name_snake_cased,
+            arg=return_property.name_snake_cased,
             value=value
         )
 
@@ -166,15 +178,17 @@ def _generate_return_type_from_dict_mappers(protocols: list['Protocol']):
                             ast.Constant('snake')
                         ],
                         render_context={
-                            'expand': True,
-                            'lines_before': 2
+                            'expand': True
                         }
                     ),
                     body=[],
                     returns=ast.Constant((
                         f'{command.actual_domain.domain_snake_case_collision_safe}.'
                         f'{command.name_pascal_case}ReturnT'
-                    ))
+                    )),
+                    render_context={
+                        'lines_before': 2
+                    }
                 )
 
                 for casing_strategy in ['snake', 'camel', 'pascal']:

@@ -2,10 +2,11 @@ import asyncio
 import json
 import threading
 from abc import ABC, abstractmethod
+from asyncio import Future
 from dataclasses import dataclass, field
-from typing import Optional, TypeVar, Generic, Callable, Any
+from typing import Optional, TypeVar, Generic, Callable
 
-from websocket import WebSocketApp
+import websockets.client as websockets
 
 _T = TypeVar('_T')
 
@@ -67,9 +68,9 @@ class IConnection(ABC):
 class Response(IResponse[_T]):
     future: Optional[asyncio.Future]
 
-    async def _wait(self, timeout: int = 10):
+    async def _get(self, timeout: int = 10):
         try:
-            await asyncio.wait_for(
+            return await asyncio.wait_for(
                 fut=self.future,
                 timeout=timeout
             )
@@ -80,13 +81,16 @@ class Response(IResponse[_T]):
             ) from e
 
     def get(self) -> _T:
-        if not self.future or self.future.done():
+        if self.future is None:
             return self.value
+
+        if self.future.done():
+            return self.future.result()
 
         event_loop = asyncio.get_event_loop()
 
         self.value = event_loop.run_until_complete(
-            self._wait()
+            self._get()
         )
 
         return self.value
@@ -98,19 +102,15 @@ class Connection(IConnection):
         init=False,
         repr=False
     )
-    ws: 'WebSocketApp' = field(
+    ws: Optional['websockets.WebSocketClientProtocol'] = field(
         init=False,
         repr=False
     )
-    ws_thread: threading.Thread = field(
+    ws_receiver: Optional[asyncio.Task] = field(
         init=False,
         repr=False
     )
-    ws_thread_lock: threading.Lock = field(
-        init=False,
-        repr=False
-    )
-    ws_thread_started: bool = field(
+    ws_connected: Optional[Future] = field(
         init=False,
         repr=False
     )
@@ -119,31 +119,11 @@ class Connection(IConnection):
 
     def __post_init__(self):
         self.in_flight_futures = {}
-        self.ws = WebSocketApp(
-            url=self.url,
-            on_error=self._on_error,
-            on_message=self._on_message,
-        )
-        self.ws_thread = threading.Thread(
-            target=self._run
-        )
-        self.ws_thread_lock = threading.Lock()
-        self.ws_thread_started = False
+        self.ws = None
+        self.ws_connected = None
+        self.ws_receiver = None
 
-    def _on_close(self, _ws: 'WebSocketApp', status_code: int, message: str):
-        print(
-            'Closed with context: '
-            f'Status Code: {status_code}, '
-            f'Message: {message}'
-        )
-
-    def _on_error(self, _ws: 'WebSocketApp', message: str):
-        print(
-            'Error with context: '
-            f'Message: {message}'
-        )
-
-    def _on_message(self, _ws: 'WebSocketApp', message: str):
+    def _on_message(self, message: str):
         print(
             'Message with context: '
             f'Message: {message}'
@@ -152,15 +132,59 @@ class Connection(IConnection):
         message = json.loads(message)
 
         if 'id' in message:
-            self.in_flight_futures[message['id']].set_result(message)
+            future_context = self.in_flight_futures[message['id']]
+
+            future = future_context['future']
+
+            if 'error' in message and message['error']:
+                error = message['error']
+
+                future.set_exception(
+                    Exception(
+                        'Received the following error: '
+                        f'Err Code: {error["code"]}, '
+                        f'Err Message: {error["message"]}, '
+                        f'Raw Message: {message}'
+                    )
+                )
+                return
+
+            response_hook = future_context['response_hook']
+
+            if response_hook:
+                message = response_hook(message['result'])
+
+            future.set_result(
+                message
+            )
 
     def _run(self):
-        self.ws.run_forever()
+        event_loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(event_loop)
+
+        event_loop.run_until_complete(self._run_async())
+        event_loop.close()
+
+    async def _run_async(self):
+        async with websockets.connect(self.url) as ws:
+            self.ws = ws
+            self.ws_connected.set_result(None)
+
+            while True:
+                message = await ws.recv()
+                self._on_message(message)
 
     def connect(self):
-        if not self.ws_thread_started:
-            self.ws_thread.start()
-            self.ws_thread_started = True
+        loop = asyncio.get_event_loop()
+
+        self.ws_connected = loop.create_future()
+        self.ws_receiver = loop.create_task(
+            self._run_async()
+        )
+
+        loop.run_until_complete(
+            self.ws_connected
+        )
 
     def send_request(
             self,
@@ -187,9 +211,10 @@ class Connection(IConnection):
         )
 
         if expect_response:
-            self.in_flight_futures[request_id] = (
-                future
-            )
+            self.in_flight_futures[request_id] = {
+                'future': future,
+                'response_hook': response_hook
+            }
 
         else:
             future.set_result(
@@ -197,7 +222,8 @@ class Connection(IConnection):
             )
 
         try:
-            self.ws.send(request)
+            coroutine = self.ws.send(request)
+            event_loop.run_until_complete(coroutine)
 
         except Exception as e:
             future.set_exception(e)

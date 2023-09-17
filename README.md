@@ -27,7 +27,7 @@ Code generation methodology inspired by the `python-chrome-devtools-protocol` pa
 - Python `dataclass` decorator for complex types
 - Python `typing` module for type hints, enum literals, and other goodies
 - Python `asyncio` module for async futures (Support for other async libraries is TBD)
-- Python `websocket-client` module for websocket communication (Support for other WS libraries is TBD)
+- Python `websockets` module for websocket communication (Support for other WS libraries is TBD)
 
 ### Releases
 

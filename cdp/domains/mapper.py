@@ -24199,1100 +24199,1439 @@ def _schema__domain__from_dict(
             name=data['Name'],
             version=data['Version']
         )
+
+
 def _accessibility__get_partial_ax_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetPartialAXTreeReturnT':
     if casing_strategy == 'snake':
         return accessibility.GetPartialAXTreeReturnT(
-            node_id=data['node_id'],
-            backend_node_id=data['backend_node_id'],
-            object_id=data['object_id'],
-            fetch_relatives=data['fetch_relatives']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'camel':
         return accessibility.GetPartialAXTreeReturnT(
-            node_id=data['nodeId'],
-            backend_node_id=data['backendNodeId'],
-            object_id=data['objectId'],
-            fetch_relatives=data['fetchRelatives']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'pascal':
         return accessibility.GetPartialAXTreeReturnT(
-            node_id=data['NodeId'],
-            backend_node_id=data['BackendNodeId'],
-            object_id=data['ObjectId'],
-            fetch_relatives=data['FetchRelatives']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['Nodes']
+            ]
         )
+
+
 def _accessibility__get_full_ax_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetFullAXTreeReturnT':
     if casing_strategy == 'snake':
         return accessibility.GetFullAXTreeReturnT(
-            depth=data['depth'],
-            frame_id=data['frame_id']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'camel':
         return accessibility.GetFullAXTreeReturnT(
-            depth=data['depth'],
-            frame_id=data['frameId']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'pascal':
         return accessibility.GetFullAXTreeReturnT(
-            depth=data['Depth'],
-            frame_id=data['FrameId']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['Nodes']
+            ]
         )
+
+
 def _accessibility__get_root_ax_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetRootAXNodeReturnT':
     if casing_strategy == 'snake':
         return accessibility.GetRootAXNodeReturnT(
-            frame_id=data['frame_id']
+            node=from_dict(
+                data['node'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return accessibility.GetRootAXNodeReturnT(
-            frame_id=data['frameId']
+            node=from_dict(
+                data['node'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return accessibility.GetRootAXNodeReturnT(
-            frame_id=data['FrameId']
+            node=from_dict(
+                data['Node'],
+                casing_strategy
+            )
         )
+
+
 def _accessibility__get_ax_node_and_ancestors_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetAXNodeAndAncestorsReturnT':
     if casing_strategy == 'snake':
         return accessibility.GetAXNodeAndAncestorsReturnT(
-            node_id=data['node_id'],
-            backend_node_id=data['backend_node_id'],
-            object_id=data['object_id']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'camel':
         return accessibility.GetAXNodeAndAncestorsReturnT(
-            node_id=data['nodeId'],
-            backend_node_id=data['backendNodeId'],
-            object_id=data['objectId']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'pascal':
         return accessibility.GetAXNodeAndAncestorsReturnT(
-            node_id=data['NodeId'],
-            backend_node_id=data['BackendNodeId'],
-            object_id=data['ObjectId']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['Nodes']
+            ]
         )
+
+
 def _accessibility__get_child_ax_nodes_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetChildAXNodesReturnT':
     if casing_strategy == 'snake':
         return accessibility.GetChildAXNodesReturnT(
-            id=data['id'],
-            frame_id=data['frame_id']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'camel':
         return accessibility.GetChildAXNodesReturnT(
-            id=data['id'],
-            frame_id=data['frameId']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'pascal':
         return accessibility.GetChildAXNodesReturnT(
-            id=data['Id'],
-            frame_id=data['FrameId']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['Nodes']
+            ]
         )
+
+
 def _accessibility__query_ax_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.QueryAXTreeReturnT':
     if casing_strategy == 'snake':
         return accessibility.QueryAXTreeReturnT(
-            node_id=data['node_id'],
-            backend_node_id=data['backend_node_id'],
-            object_id=data['object_id'],
-            accessible_name=data['accessible_name'],
-            role=data['role']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'camel':
         return accessibility.QueryAXTreeReturnT(
-            node_id=data['nodeId'],
-            backend_node_id=data['backendNodeId'],
-            object_id=data['objectId'],
-            accessible_name=data['accessibleName'],
-            role=data['role']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'pascal':
         return accessibility.QueryAXTreeReturnT(
-            node_id=data['NodeId'],
-            backend_node_id=data['BackendNodeId'],
-            object_id=data['ObjectId'],
-            accessible_name=data['AccessibleName'],
-            role=data['Role']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['Nodes']
+            ]
         )
+
+
 def _animation__get_current_time_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.GetCurrentTimeReturnT':
     if casing_strategy == 'snake':
         return animation.GetCurrentTimeReturnT(
-            id=data['id']
+            current_time=data['current_time']
         )
     if casing_strategy == 'camel':
         return animation.GetCurrentTimeReturnT(
-            id=data['id']
+            current_time=data['currentTime']
         )
     if casing_strategy == 'pascal':
         return animation.GetCurrentTimeReturnT(
-            id=data['Id']
+            current_time=data['CurrentTime']
         )
+
+
 def _animation__get_playback_rate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.GetPlaybackRateReturnT':
     if casing_strategy == 'snake':
         return animation.GetPlaybackRateReturnT(
+            playback_rate=data['playback_rate']
         )
     if casing_strategy == 'camel':
         return animation.GetPlaybackRateReturnT(
+            playback_rate=data['playbackRate']
         )
     if casing_strategy == 'pascal':
         return animation.GetPlaybackRateReturnT(
+            playback_rate=data['PlaybackRate']
         )
+
+
 def _animation__resolve_animation_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.ResolveAnimationReturnT':
     if casing_strategy == 'snake':
         return animation.ResolveAnimationReturnT(
-            animation_id=data['animation_id']
+            remote_object=from_dict(
+                data['remote_object'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return animation.ResolveAnimationReturnT(
-            animation_id=data['animationId']
+            remote_object=from_dict(
+                data['remoteObject'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return animation.ResolveAnimationReturnT(
-            animation_id=data['AnimationId']
+            remote_object=from_dict(
+                data['RemoteObject'],
+                casing_strategy
+            )
         )
+
+
 def _audits__get_encoded_response_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.GetEncodedResponseReturnT':
     if casing_strategy == 'snake':
         return audits.GetEncodedResponseReturnT(
-            request_id=data['request_id'],
-            encoding=data['encoding'],
-            quality=data['quality'],
-            size_only=data['size_only']
+            body=data.get('body'),
+            original_size=data['original_size'],
+            encoded_size=data['encoded_size']
         )
     if casing_strategy == 'camel':
         return audits.GetEncodedResponseReturnT(
-            request_id=data['requestId'],
-            encoding=data['encoding'],
-            quality=data['quality'],
-            size_only=data['sizeOnly']
+            body=data.get('body'),
+            original_size=data['originalSize'],
+            encoded_size=data['encodedSize']
         )
     if casing_strategy == 'pascal':
         return audits.GetEncodedResponseReturnT(
-            request_id=data['RequestId'],
-            encoding=data['Encoding'],
-            quality=data['Quality'],
-            size_only=data['SizeOnly']
+            body=data.get('Body'),
+            original_size=data['OriginalSize'],
+            encoded_size=data['EncodedSize']
         )
+
+
 def _audits__check_forms_issues_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.CheckFormsIssuesReturnT':
     if casing_strategy == 'snake':
         return audits.CheckFormsIssuesReturnT(
+            form_issues=[
+                from_dict(item, casing_strategy)
+                for item in data['form_issues']
+            ]
         )
     if casing_strategy == 'camel':
         return audits.CheckFormsIssuesReturnT(
+            form_issues=[
+                from_dict(item, casing_strategy)
+                for item in data['formIssues']
+            ]
         )
     if casing_strategy == 'pascal':
         return audits.CheckFormsIssuesReturnT(
+            form_issues=[
+                from_dict(item, casing_strategy)
+                for item in data['FormIssues']
+            ]
         )
+
+
 def _browser__get_version_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetVersionReturnT':
     if casing_strategy == 'snake':
         return browser.GetVersionReturnT(
+            protocol_version=data['protocol_version'],
+            product=data['product'],
+            revision=data['revision'],
+            user_agent=data['user_agent'],
+            js_version=data['js_version']
         )
     if casing_strategy == 'camel':
         return browser.GetVersionReturnT(
+            protocol_version=data['protocolVersion'],
+            product=data['product'],
+            revision=data['revision'],
+            user_agent=data['userAgent'],
+            js_version=data['jsVersion']
         )
     if casing_strategy == 'pascal':
         return browser.GetVersionReturnT(
+            protocol_version=data['ProtocolVersion'],
+            product=data['Product'],
+            revision=data['Revision'],
+            user_agent=data['UserAgent'],
+            js_version=data['JsVersion']
         )
+
+
 def _browser__get_browser_command_line_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetBrowserCommandLineReturnT':
     if casing_strategy == 'snake':
         return browser.GetBrowserCommandLineReturnT(
+            arguments=data['arguments']
         )
     if casing_strategy == 'camel':
         return browser.GetBrowserCommandLineReturnT(
+            arguments=data['arguments']
         )
     if casing_strategy == 'pascal':
         return browser.GetBrowserCommandLineReturnT(
+            arguments=data['Arguments']
         )
+
+
 def _browser__get_histograms_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetHistogramsReturnT':
     if casing_strategy == 'snake':
         return browser.GetHistogramsReturnT(
-            query=data['query'],
-            delta=data['delta']
+            histograms=[
+                from_dict(item, casing_strategy)
+                for item in data['histograms']
+            ]
         )
     if casing_strategy == 'camel':
         return browser.GetHistogramsReturnT(
-            query=data['query'],
-            delta=data['delta']
+            histograms=[
+                from_dict(item, casing_strategy)
+                for item in data['histograms']
+            ]
         )
     if casing_strategy == 'pascal':
         return browser.GetHistogramsReturnT(
-            query=data['Query'],
-            delta=data['Delta']
+            histograms=[
+                from_dict(item, casing_strategy)
+                for item in data['Histograms']
+            ]
         )
+
+
 def _browser__get_histogram_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetHistogramReturnT':
     if casing_strategy == 'snake':
         return browser.GetHistogramReturnT(
-            name=data['name'],
-            delta=data['delta']
+            histogram=from_dict(
+                data['histogram'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return browser.GetHistogramReturnT(
-            name=data['name'],
-            delta=data['delta']
+            histogram=from_dict(
+                data['histogram'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return browser.GetHistogramReturnT(
-            name=data['Name'],
-            delta=data['Delta']
+            histogram=from_dict(
+                data['Histogram'],
+                casing_strategy
+            )
         )
+
+
 def _browser__get_window_bounds_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetWindowBoundsReturnT':
     if casing_strategy == 'snake':
         return browser.GetWindowBoundsReturnT(
-            window_id=data['window_id']
+            bounds=from_dict(
+                data['bounds'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return browser.GetWindowBoundsReturnT(
-            window_id=data['windowId']
+            bounds=from_dict(
+                data['bounds'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return browser.GetWindowBoundsReturnT(
-            window_id=data['WindowId']
+            bounds=from_dict(
+                data['Bounds'],
+                casing_strategy
+            )
         )
+
+
 def _browser__get_window_for_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetWindowForTargetReturnT':
     if casing_strategy == 'snake':
         return browser.GetWindowForTargetReturnT(
-            target_id=data['target_id']
+            window_id=data['window_id'],
+            bounds=from_dict(
+                data['bounds'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return browser.GetWindowForTargetReturnT(
-            target_id=data['targetId']
+            window_id=data['windowId'],
+            bounds=from_dict(
+                data['bounds'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return browser.GetWindowForTargetReturnT(
-            target_id=data['TargetId']
+            window_id=data['WindowId'],
+            bounds=from_dict(
+                data['Bounds'],
+                casing_strategy
+            )
         )
+
+
 def _css__add_rule_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.AddRuleReturnT':
     if casing_strategy == 'snake':
         return css.AddRuleReturnT(
-            style_sheet_id=data['style_sheet_id'],
-            rule_text=data['rule_text'],
-            location=from_dict(
-                data['location'],
+            rule=from_dict(
+                data['rule'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return css.AddRuleReturnT(
-            style_sheet_id=data['styleSheetId'],
-            rule_text=data['ruleText'],
-            location=from_dict(
-                data['location'],
+            rule=from_dict(
+                data['rule'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return css.AddRuleReturnT(
-            style_sheet_id=data['StyleSheetId'],
-            rule_text=data['RuleText'],
-            location=from_dict(
-                data['Location'],
+            rule=from_dict(
+                data['Rule'],
                 casing_strategy
             )
         )
+
+
 def _css__collect_class_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CollectClassNamesReturnT':
     if casing_strategy == 'snake':
         return css.CollectClassNamesReturnT(
-            style_sheet_id=data['style_sheet_id']
+            class_names=data['class_names']
         )
     if casing_strategy == 'camel':
         return css.CollectClassNamesReturnT(
-            style_sheet_id=data['styleSheetId']
+            class_names=data['classNames']
         )
     if casing_strategy == 'pascal':
         return css.CollectClassNamesReturnT(
-            style_sheet_id=data['StyleSheetId']
+            class_names=data['ClassNames']
         )
+
+
 def _css__create_style_sheet_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CreateStyleSheetReturnT':
     if casing_strategy == 'snake':
         return css.CreateStyleSheetReturnT(
-            frame_id=data['frame_id']
+            style_sheet_id=data['style_sheet_id']
         )
     if casing_strategy == 'camel':
         return css.CreateStyleSheetReturnT(
-            frame_id=data['frameId']
+            style_sheet_id=data['styleSheetId']
         )
     if casing_strategy == 'pascal':
         return css.CreateStyleSheetReturnT(
-            frame_id=data['FrameId']
+            style_sheet_id=data['StyleSheetId']
         )
+
+
 def _css__get_background_colors_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetBackgroundColorsReturnT':
     if casing_strategy == 'snake':
         return css.GetBackgroundColorsReturnT(
-            node_id=data['node_id']
+            background_colors=data.get('background_colors'),
+            computed_font_size=data.get('computed_font_size'),
+            computed_font_weight=data.get('computed_font_weight')
         )
     if casing_strategy == 'camel':
         return css.GetBackgroundColorsReturnT(
-            node_id=data['nodeId']
+            background_colors=data.get('backgroundColors'),
+            computed_font_size=data.get('computedFontSize'),
+            computed_font_weight=data.get('computedFontWeight')
         )
     if casing_strategy == 'pascal':
         return css.GetBackgroundColorsReturnT(
-            node_id=data['NodeId']
+            background_colors=data.get('BackgroundColors'),
+            computed_font_size=data.get('ComputedFontSize'),
+            computed_font_weight=data.get('ComputedFontWeight')
         )
+
+
 def _css__get_computed_style_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetComputedStyleForNodeReturnT':
     if casing_strategy == 'snake':
         return css.GetComputedStyleForNodeReturnT(
-            node_id=data['node_id']
+            computed_style=[
+                from_dict(item, casing_strategy)
+                for item in data['computed_style']
+            ]
         )
     if casing_strategy == 'camel':
         return css.GetComputedStyleForNodeReturnT(
-            node_id=data['nodeId']
+            computed_style=[
+                from_dict(item, casing_strategy)
+                for item in data['computedStyle']
+            ]
         )
     if casing_strategy == 'pascal':
         return css.GetComputedStyleForNodeReturnT(
-            node_id=data['NodeId']
+            computed_style=[
+                from_dict(item, casing_strategy)
+                for item in data['ComputedStyle']
+            ]
         )
+
+
 def _css__get_inline_styles_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetInlineStylesForNodeReturnT':
     if casing_strategy == 'snake':
         return css.GetInlineStylesForNodeReturnT(
-            node_id=data['node_id']
+            inline_style=from_dict(
+                data.get('inline_style'),
+                casing_strategy
+            ),
+            attributes_style=from_dict(
+                data.get('attributes_style'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return css.GetInlineStylesForNodeReturnT(
-            node_id=data['nodeId']
+            inline_style=from_dict(
+                data.get('inlineStyle'),
+                casing_strategy
+            ),
+            attributes_style=from_dict(
+                data.get('attributesStyle'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return css.GetInlineStylesForNodeReturnT(
-            node_id=data['NodeId']
+            inline_style=from_dict(
+                data.get('InlineStyle'),
+                casing_strategy
+            ),
+            attributes_style=from_dict(
+                data.get('AttributesStyle'),
+                casing_strategy
+            )
         )
+
+
 def _css__get_matched_styles_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetMatchedStylesForNodeReturnT':
     if casing_strategy == 'snake':
         return css.GetMatchedStylesForNodeReturnT(
-            node_id=data['node_id']
+            inline_style=from_dict(
+                data.get('inline_style'),
+                casing_strategy
+            ),
+            attributes_style=from_dict(
+                data.get('attributes_style'),
+                casing_strategy
+            ),
+            matched_css_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('matched_css_rules')
+            ],
+            pseudo_elements=[
+                from_dict(item, casing_strategy)
+                for item in data.get('pseudo_elements')
+            ],
+            inherited=[
+                from_dict(item, casing_strategy)
+                for item in data.get('inherited')
+            ],
+            inherited_pseudo_elements=[
+                from_dict(item, casing_strategy)
+                for item in data.get('inherited_pseudo_elements')
+            ],
+            css_keyframes_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('css_keyframes_rules')
+            ],
+            css_position_fallback_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('css_position_fallback_rules')
+            ],
+            css_property_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('css_property_rules')
+            ],
+            css_property_registrations=[
+                from_dict(item, casing_strategy)
+                for item in data.get('css_property_registrations')
+            ],
+            parent_layout_node_id=data.get('parent_layout_node_id')
         )
     if casing_strategy == 'camel':
         return css.GetMatchedStylesForNodeReturnT(
-            node_id=data['nodeId']
+            inline_style=from_dict(
+                data.get('inlineStyle'),
+                casing_strategy
+            ),
+            attributes_style=from_dict(
+                data.get('attributesStyle'),
+                casing_strategy
+            ),
+            matched_css_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('matchedCSSRules')
+            ],
+            pseudo_elements=[
+                from_dict(item, casing_strategy)
+                for item in data.get('pseudoElements')
+            ],
+            inherited=[
+                from_dict(item, casing_strategy)
+                for item in data.get('inherited')
+            ],
+            inherited_pseudo_elements=[
+                from_dict(item, casing_strategy)
+                for item in data.get('inheritedPseudoElements')
+            ],
+            css_keyframes_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('cssKeyframesRules')
+            ],
+            css_position_fallback_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('cssPositionFallbackRules')
+            ],
+            css_property_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('cssPropertyRules')
+            ],
+            css_property_registrations=[
+                from_dict(item, casing_strategy)
+                for item in data.get('cssPropertyRegistrations')
+            ],
+            parent_layout_node_id=data.get('parentLayoutNodeId')
         )
     if casing_strategy == 'pascal':
         return css.GetMatchedStylesForNodeReturnT(
-            node_id=data['NodeId']
+            inline_style=from_dict(
+                data.get('InlineStyle'),
+                casing_strategy
+            ),
+            attributes_style=from_dict(
+                data.get('AttributesStyle'),
+                casing_strategy
+            ),
+            matched_css_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('MatchedCSSRules')
+            ],
+            pseudo_elements=[
+                from_dict(item, casing_strategy)
+                for item in data.get('PseudoElements')
+            ],
+            inherited=[
+                from_dict(item, casing_strategy)
+                for item in data.get('Inherited')
+            ],
+            inherited_pseudo_elements=[
+                from_dict(item, casing_strategy)
+                for item in data.get('InheritedPseudoElements')
+            ],
+            css_keyframes_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('CssKeyframesRules')
+            ],
+            css_position_fallback_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('CssPositionFallbackRules')
+            ],
+            css_property_rules=[
+                from_dict(item, casing_strategy)
+                for item in data.get('CssPropertyRules')
+            ],
+            css_property_registrations=[
+                from_dict(item, casing_strategy)
+                for item in data.get('CssPropertyRegistrations')
+            ],
+            parent_layout_node_id=data.get('ParentLayoutNodeId')
         )
+
+
 def _css__get_media_queries_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetMediaQueriesReturnT':
     if casing_strategy == 'snake':
         return css.GetMediaQueriesReturnT(
+            medias=[
+                from_dict(item, casing_strategy)
+                for item in data['medias']
+            ]
         )
     if casing_strategy == 'camel':
         return css.GetMediaQueriesReturnT(
+            medias=[
+                from_dict(item, casing_strategy)
+                for item in data['medias']
+            ]
         )
     if casing_strategy == 'pascal':
         return css.GetMediaQueriesReturnT(
+            medias=[
+                from_dict(item, casing_strategy)
+                for item in data['Medias']
+            ]
         )
+
+
 def _css__get_platform_fonts_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetPlatformFontsForNodeReturnT':
     if casing_strategy == 'snake':
         return css.GetPlatformFontsForNodeReturnT(
-            node_id=data['node_id']
+            fonts=[
+                from_dict(item, casing_strategy)
+                for item in data['fonts']
+            ]
         )
     if casing_strategy == 'camel':
         return css.GetPlatformFontsForNodeReturnT(
-            node_id=data['nodeId']
+            fonts=[
+                from_dict(item, casing_strategy)
+                for item in data['fonts']
+            ]
         )
     if casing_strategy == 'pascal':
         return css.GetPlatformFontsForNodeReturnT(
-            node_id=data['NodeId']
+            fonts=[
+                from_dict(item, casing_strategy)
+                for item in data['Fonts']
+            ]
         )
+
+
 def _css__get_style_sheet_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetStyleSheetTextReturnT':
     if casing_strategy == 'snake':
         return css.GetStyleSheetTextReturnT(
-            style_sheet_id=data['style_sheet_id']
+            text=data['text']
         )
     if casing_strategy == 'camel':
         return css.GetStyleSheetTextReturnT(
-            style_sheet_id=data['styleSheetId']
+            text=data['text']
         )
     if casing_strategy == 'pascal':
         return css.GetStyleSheetTextReturnT(
-            style_sheet_id=data['StyleSheetId']
+            text=data['Text']
         )
+
+
 def _css__get_layers_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetLayersForNodeReturnT':
     if casing_strategy == 'snake':
         return css.GetLayersForNodeReturnT(
-            node_id=data['node_id']
+            root_layer=from_dict(
+                data['root_layer'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return css.GetLayersForNodeReturnT(
-            node_id=data['nodeId']
+            root_layer=from_dict(
+                data['rootLayer'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return css.GetLayersForNodeReturnT(
-            node_id=data['NodeId']
+            root_layer=from_dict(
+                data['RootLayer'],
+                casing_strategy
+            )
         )
+
+
 def _css__take_computed_style_updates_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.TakeComputedStyleUpdatesReturnT':
     if casing_strategy == 'snake':
         return css.TakeComputedStyleUpdatesReturnT(
+            node_ids=data['node_ids']
         )
     if casing_strategy == 'camel':
         return css.TakeComputedStyleUpdatesReturnT(
+            node_ids=data['nodeIds']
         )
     if casing_strategy == 'pascal':
         return css.TakeComputedStyleUpdatesReturnT(
+            node_ids=data['NodeIds']
         )
+
+
 def _css__set_keyframe_key_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetKeyframeKeyReturnT':
     if casing_strategy == 'snake':
         return css.SetKeyframeKeyReturnT(
-            style_sheet_id=data['style_sheet_id'],
-            range=from_dict(
-                data['range'],
+            key_text=from_dict(
+                data['key_text'],
                 casing_strategy
-            ),
-            key_text=data['key_text']
+            )
         )
     if casing_strategy == 'camel':
         return css.SetKeyframeKeyReturnT(
-            style_sheet_id=data['styleSheetId'],
-            range=from_dict(
-                data['range'],
+            key_text=from_dict(
+                data['keyText'],
                 casing_strategy
-            ),
-            key_text=data['keyText']
+            )
         )
     if casing_strategy == 'pascal':
         return css.SetKeyframeKeyReturnT(
-            style_sheet_id=data['StyleSheetId'],
-            range=from_dict(
-                data['Range'],
+            key_text=from_dict(
+                data['KeyText'],
                 casing_strategy
-            ),
-            key_text=data['KeyText']
+            )
         )
+
+
 def _css__set_media_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetMediaTextReturnT':
     if casing_strategy == 'snake':
         return css.SetMediaTextReturnT(
-            style_sheet_id=data['style_sheet_id'],
-            range=from_dict(
-                data['range'],
+            media=from_dict(
+                data['media'],
                 casing_strategy
-            ),
-            text=data['text']
+            )
         )
     if casing_strategy == 'camel':
         return css.SetMediaTextReturnT(
-            style_sheet_id=data['styleSheetId'],
-            range=from_dict(
-                data['range'],
+            media=from_dict(
+                data['media'],
                 casing_strategy
-            ),
-            text=data['text']
+            )
         )
     if casing_strategy == 'pascal':
         return css.SetMediaTextReturnT(
-            style_sheet_id=data['StyleSheetId'],
-            range=from_dict(
-                data['Range'],
+            media=from_dict(
+                data['Media'],
                 casing_strategy
-            ),
-            text=data['Text']
+            )
         )
+
+
 def _css__set_container_query_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetContainerQueryTextReturnT':
     if casing_strategy == 'snake':
         return css.SetContainerQueryTextReturnT(
-            style_sheet_id=data['style_sheet_id'],
-            range=from_dict(
-                data['range'],
+            container_query=from_dict(
+                data['container_query'],
                 casing_strategy
-            ),
-            text=data['text']
+            )
         )
     if casing_strategy == 'camel':
         return css.SetContainerQueryTextReturnT(
-            style_sheet_id=data['styleSheetId'],
-            range=from_dict(
-                data['range'],
+            container_query=from_dict(
+                data['containerQuery'],
                 casing_strategy
-            ),
-            text=data['text']
+            )
         )
     if casing_strategy == 'pascal':
         return css.SetContainerQueryTextReturnT(
-            style_sheet_id=data['StyleSheetId'],
-            range=from_dict(
-                data['Range'],
+            container_query=from_dict(
+                data['ContainerQuery'],
                 casing_strategy
-            ),
-            text=data['Text']
+            )
         )
+
+
 def _css__set_supports_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetSupportsTextReturnT':
     if casing_strategy == 'snake':
         return css.SetSupportsTextReturnT(
-            style_sheet_id=data['style_sheet_id'],
-            range=from_dict(
-                data['range'],
+            supports=from_dict(
+                data['supports'],
                 casing_strategy
-            ),
-            text=data['text']
+            )
         )
     if casing_strategy == 'camel':
         return css.SetSupportsTextReturnT(
-            style_sheet_id=data['styleSheetId'],
-            range=from_dict(
-                data['range'],
+            supports=from_dict(
+                data['supports'],
                 casing_strategy
-            ),
-            text=data['text']
+            )
         )
     if casing_strategy == 'pascal':
         return css.SetSupportsTextReturnT(
-            style_sheet_id=data['StyleSheetId'],
-            range=from_dict(
-                data['Range'],
+            supports=from_dict(
+                data['Supports'],
                 casing_strategy
-            ),
-            text=data['Text']
+            )
         )
+
+
 def _css__set_scope_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetScopeTextReturnT':
     if casing_strategy == 'snake':
         return css.SetScopeTextReturnT(
-            style_sheet_id=data['style_sheet_id'],
-            range=from_dict(
-                data['range'],
+            scope=from_dict(
+                data['scope'],
                 casing_strategy
-            ),
-            text=data['text']
+            )
         )
     if casing_strategy == 'camel':
         return css.SetScopeTextReturnT(
-            style_sheet_id=data['styleSheetId'],
-            range=from_dict(
-                data['range'],
+            scope=from_dict(
+                data['scope'],
                 casing_strategy
-            ),
-            text=data['text']
+            )
         )
     if casing_strategy == 'pascal':
         return css.SetScopeTextReturnT(
-            style_sheet_id=data['StyleSheetId'],
-            range=from_dict(
-                data['Range'],
+            scope=from_dict(
+                data['Scope'],
                 casing_strategy
-            ),
-            text=data['Text']
+            )
         )
+
+
 def _css__set_rule_selector_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetRuleSelectorReturnT':
     if casing_strategy == 'snake':
         return css.SetRuleSelectorReturnT(
-            style_sheet_id=data['style_sheet_id'],
-            range=from_dict(
-                data['range'],
+            selector_list=from_dict(
+                data['selector_list'],
                 casing_strategy
-            ),
-            selector=data['selector']
+            )
         )
     if casing_strategy == 'camel':
         return css.SetRuleSelectorReturnT(
-            style_sheet_id=data['styleSheetId'],
-            range=from_dict(
-                data['range'],
+            selector_list=from_dict(
+                data['selectorList'],
                 casing_strategy
-            ),
-            selector=data['selector']
+            )
         )
     if casing_strategy == 'pascal':
         return css.SetRuleSelectorReturnT(
-            style_sheet_id=data['StyleSheetId'],
-            range=from_dict(
-                data['Range'],
+            selector_list=from_dict(
+                data['SelectorList'],
                 casing_strategy
-            ),
-            selector=data['Selector']
+            )
         )
+
+
 def _css__set_style_sheet_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetStyleSheetTextReturnT':
     if casing_strategy == 'snake':
         return css.SetStyleSheetTextReturnT(
-            style_sheet_id=data['style_sheet_id'],
-            text=data['text']
+            source_map_url=data.get('source_map_url')
         )
     if casing_strategy == 'camel':
         return css.SetStyleSheetTextReturnT(
-            style_sheet_id=data['styleSheetId'],
-            text=data['text']
+            source_map_url=data.get('sourceMapURL')
         )
     if casing_strategy == 'pascal':
         return css.SetStyleSheetTextReturnT(
-            style_sheet_id=data['StyleSheetId'],
-            text=data['Text']
+            source_map_url=data.get('SourceMapURL')
         )
+
+
 def _css__set_style_texts_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetStyleTextsReturnT':
     if casing_strategy == 'snake':
         return css.SetStyleTextsReturnT(
-            edits=[
+            styles=[
                 from_dict(item, casing_strategy)
-                for item in data['edits']
+                for item in data['styles']
             ]
         )
     if casing_strategy == 'camel':
         return css.SetStyleTextsReturnT(
-            edits=[
+            styles=[
                 from_dict(item, casing_strategy)
-                for item in data['edits']
+                for item in data['styles']
             ]
         )
     if casing_strategy == 'pascal':
         return css.SetStyleTextsReturnT(
-            edits=[
+            styles=[
                 from_dict(item, casing_strategy)
-                for item in data['Edits']
+                for item in data['Styles']
             ]
         )
+
+
 def _css__stop_rule_usage_tracking_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.StopRuleUsageTrackingReturnT':
     if casing_strategy == 'snake':
         return css.StopRuleUsageTrackingReturnT(
+            rule_usage=[
+                from_dict(item, casing_strategy)
+                for item in data['rule_usage']
+            ]
         )
     if casing_strategy == 'camel':
         return css.StopRuleUsageTrackingReturnT(
+            rule_usage=[
+                from_dict(item, casing_strategy)
+                for item in data['ruleUsage']
+            ]
         )
     if casing_strategy == 'pascal':
         return css.StopRuleUsageTrackingReturnT(
+            rule_usage=[
+                from_dict(item, casing_strategy)
+                for item in data['RuleUsage']
+            ]
         )
+
+
 def _css__take_coverage_delta_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.TakeCoverageDeltaReturnT':
     if casing_strategy == 'snake':
         return css.TakeCoverageDeltaReturnT(
+            coverage=[
+                from_dict(item, casing_strategy)
+                for item in data['coverage']
+            ],
+            timestamp=data['timestamp']
         )
     if casing_strategy == 'camel':
         return css.TakeCoverageDeltaReturnT(
+            coverage=[
+                from_dict(item, casing_strategy)
+                for item in data['coverage']
+            ],
+            timestamp=data['timestamp']
         )
     if casing_strategy == 'pascal':
         return css.TakeCoverageDeltaReturnT(
+            coverage=[
+                from_dict(item, casing_strategy)
+                for item in data['Coverage']
+            ],
+            timestamp=data['Timestamp']
         )
+
+
 def _cache_storage__request_cache_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.RequestCacheNamesReturnT':
     if casing_strategy == 'snake':
         return cache_storage.RequestCacheNamesReturnT(
-            security_origin=data['security_origin'],
-            storage_key=data['storage_key'],
-            storage_bucket=from_dict(
-                data['storage_bucket'],
-                casing_strategy
-            )
+            caches=[
+                from_dict(item, casing_strategy)
+                for item in data['caches']
+            ]
         )
     if casing_strategy == 'camel':
         return cache_storage.RequestCacheNamesReturnT(
-            security_origin=data['securityOrigin'],
-            storage_key=data['storageKey'],
-            storage_bucket=from_dict(
-                data['storageBucket'],
-                casing_strategy
-            )
+            caches=[
+                from_dict(item, casing_strategy)
+                for item in data['caches']
+            ]
         )
     if casing_strategy == 'pascal':
         return cache_storage.RequestCacheNamesReturnT(
-            security_origin=data['SecurityOrigin'],
-            storage_key=data['StorageKey'],
-            storage_bucket=from_dict(
-                data['StorageBucket'],
-                casing_strategy
-            )
+            caches=[
+                from_dict(item, casing_strategy)
+                for item in data['Caches']
+            ]
         )
+
+
 def _cache_storage__request_cached_response_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.RequestCachedResponseReturnT':
     if casing_strategy == 'snake':
         return cache_storage.RequestCachedResponseReturnT(
-            cache_id=data['cache_id'],
-            request_url=data['request_url'],
-            request_headers=[
-                from_dict(item, casing_strategy)
-                for item in data['request_headers']
-            ]
+            response=from_dict(
+                data['response'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return cache_storage.RequestCachedResponseReturnT(
-            cache_id=data['cacheId'],
-            request_url=data['requestURL'],
-            request_headers=[
-                from_dict(item, casing_strategy)
-                for item in data['requestHeaders']
-            ]
+            response=from_dict(
+                data['response'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return cache_storage.RequestCachedResponseReturnT(
-            cache_id=data['CacheId'],
-            request_url=data['RequestURL'],
-            request_headers=[
-                from_dict(item, casing_strategy)
-                for item in data['RequestHeaders']
-            ]
+            response=from_dict(
+                data['Response'],
+                casing_strategy
+            )
         )
+
+
 def _cache_storage__request_entries_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.RequestEntriesReturnT':
     if casing_strategy == 'snake':
         return cache_storage.RequestEntriesReturnT(
-            cache_id=data['cache_id'],
-            skip_count=data['skip_count'],
-            page_size=data['page_size'],
-            path_filter=data['path_filter']
+            cache_data_entries=[
+                from_dict(item, casing_strategy)
+                for item in data['cache_data_entries']
+            ],
+            return_count=data['return_count']
         )
     if casing_strategy == 'camel':
         return cache_storage.RequestEntriesReturnT(
-            cache_id=data['cacheId'],
-            skip_count=data['skipCount'],
-            page_size=data['pageSize'],
-            path_filter=data['pathFilter']
+            cache_data_entries=[
+                from_dict(item, casing_strategy)
+                for item in data['cacheDataEntries']
+            ],
+            return_count=data['returnCount']
         )
     if casing_strategy == 'pascal':
         return cache_storage.RequestEntriesReturnT(
-            cache_id=data['CacheId'],
-            skip_count=data['SkipCount'],
-            page_size=data['PageSize'],
-            path_filter=data['PathFilter']
+            cache_data_entries=[
+                from_dict(item, casing_strategy)
+                for item in data['CacheDataEntries']
+            ],
+            return_count=data['ReturnCount']
         )
+
+
 def _dom__collect_class_names_from_subtree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.CollectClassNamesFromSubtreeReturnT':
     if casing_strategy == 'snake':
         return dom.CollectClassNamesFromSubtreeReturnT(
-            node_id=data['node_id']
+            class_names=data['class_names']
         )
     if casing_strategy == 'camel':
         return dom.CollectClassNamesFromSubtreeReturnT(
-            node_id=data['nodeId']
+            class_names=data['classNames']
         )
     if casing_strategy == 'pascal':
         return dom.CollectClassNamesFromSubtreeReturnT(
-            node_id=data['NodeId']
+            class_names=data['ClassNames']
         )
+
+
 def _dom__copy_to_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.CopyToReturnT':
     if casing_strategy == 'snake':
         return dom.CopyToReturnT(
-            node_id=data['node_id'],
-            target_node_id=data['target_node_id'],
-            insert_before_node_id=data['insert_before_node_id']
+            node_id=data['node_id']
         )
     if casing_strategy == 'camel':
         return dom.CopyToReturnT(
-            node_id=data['nodeId'],
-            target_node_id=data['targetNodeId'],
-            insert_before_node_id=data['insertBeforeNodeId']
+            node_id=data['nodeId']
         )
     if casing_strategy == 'pascal':
         return dom.CopyToReturnT(
-            node_id=data['NodeId'],
-            target_node_id=data['TargetNodeId'],
-            insert_before_node_id=data['InsertBeforeNodeId']
+            node_id=data['NodeId']
         )
+
+
 def _dom__describe_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.DescribeNodeReturnT':
     if casing_strategy == 'snake':
         return dom.DescribeNodeReturnT(
-            node_id=data['node_id'],
-            backend_node_id=data['backend_node_id'],
-            object_id=data['object_id'],
-            depth=data['depth'],
-            pierce=data['pierce']
+            node=from_dict(
+                data['node'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return dom.DescribeNodeReturnT(
-            node_id=data['nodeId'],
-            backend_node_id=data['backendNodeId'],
-            object_id=data['objectId'],
-            depth=data['depth'],
-            pierce=data['pierce']
+            node=from_dict(
+                data['node'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return dom.DescribeNodeReturnT(
-            node_id=data['NodeId'],
-            backend_node_id=data['BackendNodeId'],
-            object_id=data['ObjectId'],
-            depth=data['Depth'],
-            pierce=data['Pierce']
+            node=from_dict(
+                data['Node'],
+                casing_strategy
+            )
         )
+
+
 def _dom__get_attributes_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetAttributesReturnT':
     if casing_strategy == 'snake':
         return dom.GetAttributesReturnT(
-            node_id=data['node_id']
+            attributes=data['attributes']
         )
     if casing_strategy == 'camel':
         return dom.GetAttributesReturnT(
-            node_id=data['nodeId']
+            attributes=data['attributes']
         )
     if casing_strategy == 'pascal':
         return dom.GetAttributesReturnT(
-            node_id=data['NodeId']
+            attributes=data['Attributes']
         )
+
+
 def _dom__get_box_model_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetBoxModelReturnT':
     if casing_strategy == 'snake':
         return dom.GetBoxModelReturnT(
-            node_id=data['node_id'],
-            backend_node_id=data['backend_node_id'],
-            object_id=data['object_id']
+            model=from_dict(
+                data['model'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return dom.GetBoxModelReturnT(
-            node_id=data['nodeId'],
-            backend_node_id=data['backendNodeId'],
-            object_id=data['objectId']
+            model=from_dict(
+                data['model'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return dom.GetBoxModelReturnT(
-            node_id=data['NodeId'],
-            backend_node_id=data['BackendNodeId'],
-            object_id=data['ObjectId']
+            model=from_dict(
+                data['Model'],
+                casing_strategy
+            )
         )
+
+
 def _dom__get_content_quads_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetContentQuadsReturnT':
     if casing_strategy == 'snake':
         return dom.GetContentQuadsReturnT(
-            node_id=data['node_id'],
-            backend_node_id=data['backend_node_id'],
-            object_id=data['object_id']
+            quads=data['quads']
         )
     if casing_strategy == 'camel':
         return dom.GetContentQuadsReturnT(
-            node_id=data['nodeId'],
-            backend_node_id=data['backendNodeId'],
-            object_id=data['objectId']
+            quads=data['quads']
         )
     if casing_strategy == 'pascal':
         return dom.GetContentQuadsReturnT(
-            node_id=data['NodeId'],
-            backend_node_id=data['BackendNodeId'],
-            object_id=data['ObjectId']
+            quads=data['Quads']
         )
+
+
 def _dom__get_document_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetDocumentReturnT':
     if casing_strategy == 'snake':
         return dom.GetDocumentReturnT(
-            depth=data['depth'],
-            pierce=data['pierce']
+            root=from_dict(
+                data['root'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return dom.GetDocumentReturnT(
-            depth=data['depth'],
-            pierce=data['pierce']
+            root=from_dict(
+                data['root'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return dom.GetDocumentReturnT(
-            depth=data['Depth'],
-            pierce=data['Pierce']
+            root=from_dict(
+                data['Root'],
+                casing_strategy
+            )
         )
+
+
 def _dom__get_flattened_document_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetFlattenedDocumentReturnT':
     if casing_strategy == 'snake':
         return dom.GetFlattenedDocumentReturnT(
-            depth=data['depth'],
-            pierce=data['pierce']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'camel':
         return dom.GetFlattenedDocumentReturnT(
-            depth=data['depth'],
-            pierce=data['pierce']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['nodes']
+            ]
         )
     if casing_strategy == 'pascal':
         return dom.GetFlattenedDocumentReturnT(
-            depth=data['Depth'],
-            pierce=data['Pierce']
+            nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['Nodes']
+            ]
         )
+
+
 def _dom__get_nodes_for_subtree_by_style_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetNodesForSubtreeByStyleReturnT':
     if casing_strategy == 'snake':
         return dom.GetNodesForSubtreeByStyleReturnT(
-            node_id=data['node_id'],
-            computed_styles=[
-                from_dict(item, casing_strategy)
-                for item in data['computed_styles']
-            ],
-            pierce=data['pierce']
+            node_ids=data['node_ids']
         )
     if casing_strategy == 'camel':
         return dom.GetNodesForSubtreeByStyleReturnT(
-            node_id=data['nodeId'],
-            computed_styles=[
-                from_dict(item, casing_strategy)
-                for item in data['computedStyles']
-            ],
-            pierce=data['pierce']
+            node_ids=data['nodeIds']
         )
     if casing_strategy == 'pascal':
         return dom.GetNodesForSubtreeByStyleReturnT(
-            node_id=data['NodeId'],
-            computed_styles=[
-                from_dict(item, casing_strategy)
-                for item in data['ComputedStyles']
-            ],
-            pierce=data['Pierce']
+            node_ids=data['NodeIds']
         )
+
+
 def _dom__get_node_for_location_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetNodeForLocationReturnT':
     if casing_strategy == 'snake':
         return dom.GetNodeForLocationReturnT(
-            x=data['x'],
-            y=data['y'],
-            include_user_agent_shadow_dom=data['include_user_agent_shadow_dom'],
-            ignore_pointer_events_none=data['ignore_pointer_events_none']
+            backend_node_id=data['backend_node_id'],
+            frame_id=data['frame_id'],
+            node_id=data.get('node_id')
         )
     if casing_strategy == 'camel':
         return dom.GetNodeForLocationReturnT(
-            x=data['x'],
-            y=data['y'],
-            include_user_agent_shadow_dom=data['includeUserAgentShadowDOM'],
-            ignore_pointer_events_none=data['ignorePointerEventsNone']
+            backend_node_id=data['backendNodeId'],
+            frame_id=data['frameId'],
+            node_id=data.get('nodeId')
         )
     if casing_strategy == 'pascal':
         return dom.GetNodeForLocationReturnT(
-            x=data['X'],
-            y=data['Y'],
-            include_user_agent_shadow_dom=data['IncludeUserAgentShadowDOM'],
-            ignore_pointer_events_none=data['IgnorePointerEventsNone']
+            backend_node_id=data['BackendNodeId'],
+            frame_id=data['FrameId'],
+            node_id=data.get('NodeId')
         )
+
+
 def _dom__get_outer_html_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetOuterHTMLReturnT':
     if casing_strategy == 'snake':
         return dom.GetOuterHTMLReturnT(
-            node_id=data['node_id'],
-            backend_node_id=data['backend_node_id'],
-            object_id=data['object_id']
+            outer_html=data['outer_html']
         )
     if casing_strategy == 'camel':
         return dom.GetOuterHTMLReturnT(
-            node_id=data['nodeId'],
-            backend_node_id=data['backendNodeId'],
-            object_id=data['objectId']
+            outer_html=data['outerHTML']
         )
     if casing_strategy == 'pascal':
         return dom.GetOuterHTMLReturnT(
-            node_id=data['NodeId'],
-            backend_node_id=data['BackendNodeId'],
-            object_id=data['ObjectId']
+            outer_html=data['OuterHTML']
         )
+
+
 def _dom__get_relayout_boundary_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
@@ -25309,2823 +25648,3443 @@ def _dom__get_relayout_boundary_return_t__from_dict(
         return dom.GetRelayoutBoundaryReturnT(
             node_id=data['NodeId']
         )
+
+
 def _dom__get_search_results_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetSearchResultsReturnT':
     if casing_strategy == 'snake':
         return dom.GetSearchResultsReturnT(
-            search_id=data['search_id'],
-            from_index=data['from_index'],
-            to_index=data['to_index']
+            node_ids=data['node_ids']
         )
     if casing_strategy == 'camel':
         return dom.GetSearchResultsReturnT(
-            search_id=data['searchId'],
-            from_index=data['fromIndex'],
-            to_index=data['toIndex']
+            node_ids=data['nodeIds']
         )
     if casing_strategy == 'pascal':
         return dom.GetSearchResultsReturnT(
-            search_id=data['SearchId'],
-            from_index=data['FromIndex'],
-            to_index=data['ToIndex']
+            node_ids=data['NodeIds']
         )
+
+
 def _dom__move_to_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.MoveToReturnT':
     if casing_strategy == 'snake':
         return dom.MoveToReturnT(
-            node_id=data['node_id'],
-            target_node_id=data['target_node_id'],
-            insert_before_node_id=data['insert_before_node_id']
+            node_id=data['node_id']
         )
     if casing_strategy == 'camel':
         return dom.MoveToReturnT(
-            node_id=data['nodeId'],
-            target_node_id=data['targetNodeId'],
-            insert_before_node_id=data['insertBeforeNodeId']
+            node_id=data['nodeId']
         )
     if casing_strategy == 'pascal':
         return dom.MoveToReturnT(
-            node_id=data['NodeId'],
-            target_node_id=data['TargetNodeId'],
-            insert_before_node_id=data['InsertBeforeNodeId']
+            node_id=data['NodeId']
         )
+
+
 def _dom__perform_search_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.PerformSearchReturnT':
     if casing_strategy == 'snake':
         return dom.PerformSearchReturnT(
-            query=data['query'],
-            include_user_agent_shadow_dom=data['include_user_agent_shadow_dom']
+            search_id=data['search_id'],
+            result_count=data['result_count']
         )
     if casing_strategy == 'camel':
         return dom.PerformSearchReturnT(
-            query=data['query'],
-            include_user_agent_shadow_dom=data['includeUserAgentShadowDOM']
+            search_id=data['searchId'],
+            result_count=data['resultCount']
         )
     if casing_strategy == 'pascal':
         return dom.PerformSearchReturnT(
-            query=data['Query'],
-            include_user_agent_shadow_dom=data['IncludeUserAgentShadowDOM']
+            search_id=data['SearchId'],
+            result_count=data['ResultCount']
         )
+
+
 def _dom__push_node_by_path_to_frontend_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.PushNodeByPathToFrontendReturnT':
     if casing_strategy == 'snake':
         return dom.PushNodeByPathToFrontendReturnT(
-            path=data['path']
+            node_id=data['node_id']
         )
     if casing_strategy == 'camel':
         return dom.PushNodeByPathToFrontendReturnT(
-            path=data['path']
+            node_id=data['nodeId']
         )
     if casing_strategy == 'pascal':
         return dom.PushNodeByPathToFrontendReturnT(
-            path=data['Path']
+            node_id=data['NodeId']
         )
+
+
 def _dom__push_nodes_by_backend_ids_to_frontend_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.PushNodesByBackendIdsToFrontendReturnT':
     if casing_strategy == 'snake':
         return dom.PushNodesByBackendIdsToFrontendReturnT(
-            backend_node_ids=data['backend_node_ids']
+            node_ids=data['node_ids']
         )
     if casing_strategy == 'camel':
         return dom.PushNodesByBackendIdsToFrontendReturnT(
-            backend_node_ids=data['backendNodeIds']
+            node_ids=data['nodeIds']
         )
     if casing_strategy == 'pascal':
         return dom.PushNodesByBackendIdsToFrontendReturnT(
-            backend_node_ids=data['BackendNodeIds']
+            node_ids=data['NodeIds']
         )
+
+
 def _dom__query_selector_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.QuerySelectorReturnT':
     if casing_strategy == 'snake':
         return dom.QuerySelectorReturnT(
-            node_id=data['node_id'],
-            selector=data['selector']
+            node_id=data['node_id']
         )
     if casing_strategy == 'camel':
         return dom.QuerySelectorReturnT(
-            node_id=data['nodeId'],
-            selector=data['selector']
+            node_id=data['nodeId']
         )
     if casing_strategy == 'pascal':
         return dom.QuerySelectorReturnT(
-            node_id=data['NodeId'],
-            selector=data['Selector']
+            node_id=data['NodeId']
         )
+
+
 def _dom__query_selector_all_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.QuerySelectorAllReturnT':
     if casing_strategy == 'snake':
         return dom.QuerySelectorAllReturnT(
-            node_id=data['node_id'],
-            selector=data['selector']
+            node_ids=data['node_ids']
         )
     if casing_strategy == 'camel':
         return dom.QuerySelectorAllReturnT(
-            node_id=data['nodeId'],
-            selector=data['selector']
+            node_ids=data['nodeIds']
         )
     if casing_strategy == 'pascal':
         return dom.QuerySelectorAllReturnT(
-            node_id=data['NodeId'],
-            selector=data['Selector']
+            node_ids=data['NodeIds']
         )
+
+
 def _dom__get_top_layer_elements_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetTopLayerElementsReturnT':
     if casing_strategy == 'snake':
         return dom.GetTopLayerElementsReturnT(
+            node_ids=data['node_ids']
         )
     if casing_strategy == 'camel':
         return dom.GetTopLayerElementsReturnT(
+            node_ids=data['nodeIds']
         )
     if casing_strategy == 'pascal':
         return dom.GetTopLayerElementsReturnT(
+            node_ids=data['NodeIds']
         )
+
+
 def _dom__request_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.RequestNodeReturnT':
     if casing_strategy == 'snake':
         return dom.RequestNodeReturnT(
-            object_id=data['object_id']
+            node_id=data['node_id']
         )
     if casing_strategy == 'camel':
         return dom.RequestNodeReturnT(
-            object_id=data['objectId']
+            node_id=data['nodeId']
         )
     if casing_strategy == 'pascal':
         return dom.RequestNodeReturnT(
-            object_id=data['ObjectId']
+            node_id=data['NodeId']
         )
+
+
 def _dom__resolve_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.ResolveNodeReturnT':
     if casing_strategy == 'snake':
         return dom.ResolveNodeReturnT(
-            node_id=data['node_id'],
-            backend_node_id=data['backend_node_id'],
-            object_group=data['object_group'],
-            execution_context_id=data['execution_context_id']
+            object=from_dict(
+                data['object'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return dom.ResolveNodeReturnT(
-            node_id=data['nodeId'],
-            backend_node_id=data['backendNodeId'],
-            object_group=data['objectGroup'],
-            execution_context_id=data['executionContextId']
+            object=from_dict(
+                data['object'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return dom.ResolveNodeReturnT(
-            node_id=data['NodeId'],
-            backend_node_id=data['BackendNodeId'],
-            object_group=data['ObjectGroup'],
-            execution_context_id=data['ExecutionContextId']
+            object=from_dict(
+                data['Object'],
+                casing_strategy
+            )
         )
+
+
 def _dom__get_node_stack_traces_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetNodeStackTracesReturnT':
     if casing_strategy == 'snake':
         return dom.GetNodeStackTracesReturnT(
-            node_id=data['node_id']
+            creation=from_dict(
+                data.get('creation'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return dom.GetNodeStackTracesReturnT(
-            node_id=data['nodeId']
+            creation=from_dict(
+                data.get('creation'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return dom.GetNodeStackTracesReturnT(
-            node_id=data['NodeId']
+            creation=from_dict(
+                data.get('Creation'),
+                casing_strategy
+            )
         )
+
+
 def _dom__get_file_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetFileInfoReturnT':
     if casing_strategy == 'snake':
         return dom.GetFileInfoReturnT(
-            object_id=data['object_id']
+            path=data['path']
         )
     if casing_strategy == 'camel':
         return dom.GetFileInfoReturnT(
-            object_id=data['objectId']
+            path=data['path']
         )
     if casing_strategy == 'pascal':
         return dom.GetFileInfoReturnT(
-            object_id=data['ObjectId']
+            path=data['Path']
         )
+
+
 def _dom__set_node_name_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.SetNodeNameReturnT':
     if casing_strategy == 'snake':
         return dom.SetNodeNameReturnT(
-            node_id=data['node_id'],
-            name=data['name']
+            node_id=data['node_id']
         )
     if casing_strategy == 'camel':
         return dom.SetNodeNameReturnT(
-            node_id=data['nodeId'],
-            name=data['name']
+            node_id=data['nodeId']
         )
     if casing_strategy == 'pascal':
         return dom.SetNodeNameReturnT(
-            node_id=data['NodeId'],
-            name=data['Name']
+            node_id=data['NodeId']
         )
+
+
 def _dom__get_frame_owner_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetFrameOwnerReturnT':
     if casing_strategy == 'snake':
         return dom.GetFrameOwnerReturnT(
-            frame_id=data['frame_id']
+            backend_node_id=data['backend_node_id'],
+            node_id=data.get('node_id')
         )
     if casing_strategy == 'camel':
         return dom.GetFrameOwnerReturnT(
-            frame_id=data['frameId']
+            backend_node_id=data['backendNodeId'],
+            node_id=data.get('nodeId')
         )
     if casing_strategy == 'pascal':
         return dom.GetFrameOwnerReturnT(
-            frame_id=data['FrameId']
+            backend_node_id=data['BackendNodeId'],
+            node_id=data.get('NodeId')
         )
+
+
 def _dom__get_container_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetContainerForNodeReturnT':
     if casing_strategy == 'snake':
         return dom.GetContainerForNodeReturnT(
-            node_id=data['node_id'],
-            container_name=data['container_name'],
-            physical_axes=data['physical_axes'],
-            logical_axes=data['logical_axes']
+            node_id=data.get('node_id')
         )
     if casing_strategy == 'camel':
         return dom.GetContainerForNodeReturnT(
-            node_id=data['nodeId'],
-            container_name=data['containerName'],
-            physical_axes=data['physicalAxes'],
-            logical_axes=data['logicalAxes']
+            node_id=data.get('nodeId')
         )
     if casing_strategy == 'pascal':
         return dom.GetContainerForNodeReturnT(
-            node_id=data['NodeId'],
-            container_name=data['ContainerName'],
-            physical_axes=data['PhysicalAxes'],
-            logical_axes=data['LogicalAxes']
+            node_id=data.get('NodeId')
         )
+
+
 def _dom__get_querying_descendants_for_container_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetQueryingDescendantsForContainerReturnT':
     if casing_strategy == 'snake':
         return dom.GetQueryingDescendantsForContainerReturnT(
-            node_id=data['node_id']
+            node_ids=data['node_ids']
         )
     if casing_strategy == 'camel':
         return dom.GetQueryingDescendantsForContainerReturnT(
-            node_id=data['nodeId']
+            node_ids=data['nodeIds']
         )
     if casing_strategy == 'pascal':
         return dom.GetQueryingDescendantsForContainerReturnT(
-            node_id=data['NodeId']
+            node_ids=data['NodeIds']
         )
+
+
 def _dom_debugger__get_event_listeners_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_debugger.GetEventListenersReturnT':
     if casing_strategy == 'snake':
         return dom_debugger.GetEventListenersReturnT(
-            object_id=data['object_id'],
-            depth=data['depth'],
-            pierce=data['pierce']
+            listeners=[
+                from_dict(item, casing_strategy)
+                for item in data['listeners']
+            ]
         )
     if casing_strategy == 'camel':
         return dom_debugger.GetEventListenersReturnT(
-            object_id=data['objectId'],
-            depth=data['depth'],
-            pierce=data['pierce']
+            listeners=[
+                from_dict(item, casing_strategy)
+                for item in data['listeners']
+            ]
         )
     if casing_strategy == 'pascal':
         return dom_debugger.GetEventListenersReturnT(
-            object_id=data['ObjectId'],
-            depth=data['Depth'],
-            pierce=data['Pierce']
+            listeners=[
+                from_dict(item, casing_strategy)
+                for item in data['Listeners']
+            ]
         )
+
+
 def _dom_snapshot__get_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.GetSnapshotReturnT':
     if casing_strategy == 'snake':
         return dom_snapshot.GetSnapshotReturnT(
-            computed_style_whitelist=data['computed_style_whitelist'],
-            include_event_listeners=data['include_event_listeners'],
-            include_paint_order=data['include_paint_order'],
-            include_user_agent_shadow_tree=data['include_user_agent_shadow_tree']
+            dom_nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['dom_nodes']
+            ],
+            layout_tree_nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['layout_tree_nodes']
+            ],
+            computed_styles=[
+                from_dict(item, casing_strategy)
+                for item in data['computed_styles']
+            ]
         )
     if casing_strategy == 'camel':
         return dom_snapshot.GetSnapshotReturnT(
-            computed_style_whitelist=data['computedStyleWhitelist'],
-            include_event_listeners=data['includeEventListeners'],
-            include_paint_order=data['includePaintOrder'],
-            include_user_agent_shadow_tree=data['includeUserAgentShadowTree']
+            dom_nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['domNodes']
+            ],
+            layout_tree_nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['layoutTreeNodes']
+            ],
+            computed_styles=[
+                from_dict(item, casing_strategy)
+                for item in data['computedStyles']
+            ]
         )
     if casing_strategy == 'pascal':
         return dom_snapshot.GetSnapshotReturnT(
-            computed_style_whitelist=data['ComputedStyleWhitelist'],
-            include_event_listeners=data['IncludeEventListeners'],
-            include_paint_order=data['IncludePaintOrder'],
-            include_user_agent_shadow_tree=data['IncludeUserAgentShadowTree']
+            dom_nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['DomNodes']
+            ],
+            layout_tree_nodes=[
+                from_dict(item, casing_strategy)
+                for item in data['LayoutTreeNodes']
+            ],
+            computed_styles=[
+                from_dict(item, casing_strategy)
+                for item in data['ComputedStyles']
+            ]
         )
+
+
 def _dom_snapshot__capture_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.CaptureSnapshotReturnT':
     if casing_strategy == 'snake':
         return dom_snapshot.CaptureSnapshotReturnT(
-            computed_styles=data['computed_styles'],
-            include_paint_order=data['include_paint_order'],
-            include_dom_rects=data['include_dom_rects'],
-            include_blended_background_colors=data['include_blended_background_colors'],
-            include_text_color_opacities=data['include_text_color_opacities']
+            documents=[
+                from_dict(item, casing_strategy)
+                for item in data['documents']
+            ],
+            strings=data['strings']
         )
     if casing_strategy == 'camel':
         return dom_snapshot.CaptureSnapshotReturnT(
-            computed_styles=data['computedStyles'],
-            include_paint_order=data['includePaintOrder'],
-            include_dom_rects=data['includeDOMRects'],
-            include_blended_background_colors=data['includeBlendedBackgroundColors'],
-            include_text_color_opacities=data['includeTextColorOpacities']
+            documents=[
+                from_dict(item, casing_strategy)
+                for item in data['documents']
+            ],
+            strings=data['strings']
         )
     if casing_strategy == 'pascal':
         return dom_snapshot.CaptureSnapshotReturnT(
-            computed_styles=data['ComputedStyles'],
-            include_paint_order=data['IncludePaintOrder'],
-            include_dom_rects=data['IncludeDOMRects'],
-            include_blended_background_colors=data['IncludeBlendedBackgroundColors'],
-            include_text_color_opacities=data['IncludeTextColorOpacities']
+            documents=[
+                from_dict(item, casing_strategy)
+                for item in data['Documents']
+            ],
+            strings=data['Strings']
         )
+
+
 def _dom_storage__get_dom_storage_items_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_storage.GetDOMStorageItemsReturnT':
     if casing_strategy == 'snake':
         return dom_storage.GetDOMStorageItemsReturnT(
-            storage_id=from_dict(
-                data['storage_id'],
-                casing_strategy
-            )
+            entries=data['entries']
         )
     if casing_strategy == 'camel':
         return dom_storage.GetDOMStorageItemsReturnT(
-            storage_id=from_dict(
-                data['storageId'],
-                casing_strategy
-            )
+            entries=data['entries']
         )
     if casing_strategy == 'pascal':
         return dom_storage.GetDOMStorageItemsReturnT(
-            storage_id=from_dict(
-                data['StorageId'],
-                casing_strategy
-            )
+            entries=data['Entries']
         )
+
+
 def _database__execute_sql_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'database.ExecuteSQLReturnT':
     if casing_strategy == 'snake':
         return database.ExecuteSQLReturnT(
-            database_id=data['database_id'],
-            query=data['query']
+            column_names=data.get('column_names'),
+            values=data.get('values'),
+            sql_error=from_dict(
+                data.get('sql_error'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return database.ExecuteSQLReturnT(
-            database_id=data['databaseId'],
-            query=data['query']
+            column_names=data.get('columnNames'),
+            values=data.get('values'),
+            sql_error=from_dict(
+                data.get('sqlError'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return database.ExecuteSQLReturnT(
-            database_id=data['DatabaseId'],
-            query=data['Query']
+            column_names=data.get('ColumnNames'),
+            values=data.get('Values'),
+            sql_error=from_dict(
+                data.get('SqlError'),
+                casing_strategy
+            )
         )
+
+
 def _database__get_database_table_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'database.GetDatabaseTableNamesReturnT':
     if casing_strategy == 'snake':
         return database.GetDatabaseTableNamesReturnT(
-            database_id=data['database_id']
+            table_names=data['table_names']
         )
     if casing_strategy == 'camel':
         return database.GetDatabaseTableNamesReturnT(
-            database_id=data['databaseId']
+            table_names=data['tableNames']
         )
     if casing_strategy == 'pascal':
         return database.GetDatabaseTableNamesReturnT(
-            database_id=data['DatabaseId']
+            table_names=data['TableNames']
         )
+
+
 def _emulation__can_emulate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.CanEmulateReturnT':
     if casing_strategy == 'snake':
         return emulation.CanEmulateReturnT(
+            result=data['result']
         )
     if casing_strategy == 'camel':
         return emulation.CanEmulateReturnT(
+            result=data['result']
         )
     if casing_strategy == 'pascal':
         return emulation.CanEmulateReturnT(
+            result=data['Result']
         )
+
+
 def _emulation__set_virtual_time_policy_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.SetVirtualTimePolicyReturnT':
     if casing_strategy == 'snake':
         return emulation.SetVirtualTimePolicyReturnT(
-            policy=data['policy'],
-            budget=data['budget'],
-            max_virtual_time_task_starvation_count=data['max_virtual_time_task_starvation_count'],
-            initial_virtual_time=data['initial_virtual_time']
+            virtual_time_ticks_base=data['virtual_time_ticks_base']
         )
     if casing_strategy == 'camel':
         return emulation.SetVirtualTimePolicyReturnT(
-            policy=data['policy'],
-            budget=data['budget'],
-            max_virtual_time_task_starvation_count=data['maxVirtualTimeTaskStarvationCount'],
-            initial_virtual_time=data['initialVirtualTime']
+            virtual_time_ticks_base=data['virtualTimeTicksBase']
         )
     if casing_strategy == 'pascal':
         return emulation.SetVirtualTimePolicyReturnT(
-            policy=data['Policy'],
-            budget=data['Budget'],
-            max_virtual_time_task_starvation_count=data['MaxVirtualTimeTaskStarvationCount'],
-            initial_virtual_time=data['InitialVirtualTime']
+            virtual_time_ticks_base=data['VirtualTimeTicksBase']
         )
+
+
 def _headless_experimental__begin_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'headless_experimental.BeginFrameReturnT':
     if casing_strategy == 'snake':
         return headless_experimental.BeginFrameReturnT(
-            frame_time_ticks=data['frame_time_ticks'],
-            interval=data['interval'],
-            no_display_updates=data['no_display_updates'],
-            screenshot=from_dict(
-                data['screenshot'],
-                casing_strategy
-            )
+            has_damage=data['has_damage'],
+            screenshot_data=data.get('screenshot_data')
         )
     if casing_strategy == 'camel':
         return headless_experimental.BeginFrameReturnT(
-            frame_time_ticks=data['frameTimeTicks'],
-            interval=data['interval'],
-            no_display_updates=data['noDisplayUpdates'],
-            screenshot=from_dict(
-                data['screenshot'],
-                casing_strategy
-            )
+            has_damage=data['hasDamage'],
+            screenshot_data=data.get('screenshotData')
         )
     if casing_strategy == 'pascal':
         return headless_experimental.BeginFrameReturnT(
-            frame_time_ticks=data['FrameTimeTicks'],
-            interval=data['Interval'],
-            no_display_updates=data['NoDisplayUpdates'],
-            screenshot=from_dict(
-                data['Screenshot'],
-                casing_strategy
-            )
+            has_damage=data['HasDamage'],
+            screenshot_data=data.get('ScreenshotData')
         )
+
+
 def _io__read_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'io.ReadReturnT':
     if casing_strategy == 'snake':
         return io.ReadReturnT(
-            handle=data['handle'],
-            offset=data['offset'],
-            size=data['size']
+            base64_encoded=data.get('base64_encoded'),
+            data=data['data'],
+            eof=data['eof']
         )
     if casing_strategy == 'camel':
         return io.ReadReturnT(
-            handle=data['handle'],
-            offset=data['offset'],
-            size=data['size']
+            base64_encoded=data.get('base64Encoded'),
+            data=data['data'],
+            eof=data['eof']
         )
     if casing_strategy == 'pascal':
         return io.ReadReturnT(
-            handle=data['Handle'],
-            offset=data['Offset'],
-            size=data['Size']
+            base64_encoded=data.get('Base64Encoded'),
+            data=data['Data'],
+            eof=data['Eof']
         )
+
+
 def _io__resolve_blob_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'io.ResolveBlobReturnT':
     if casing_strategy == 'snake':
         return io.ResolveBlobReturnT(
-            object_id=data['object_id']
+            uuid=data['uuid']
         )
     if casing_strategy == 'camel':
         return io.ResolveBlobReturnT(
-            object_id=data['objectId']
+            uuid=data['uuid']
         )
     if casing_strategy == 'pascal':
         return io.ResolveBlobReturnT(
-            object_id=data['ObjectId']
+            uuid=data['Uuid']
         )
+
+
 def _indexed_db__request_data_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.RequestDataReturnT':
     if casing_strategy == 'snake':
         return indexed_db.RequestDataReturnT(
-            security_origin=data['security_origin'],
-            storage_key=data['storage_key'],
-            storage_bucket=from_dict(
-                data['storage_bucket'],
-                casing_strategy
-            ),
-            database_name=data['database_name'],
-            object_store_name=data['object_store_name'],
-            index_name=data['index_name'],
-            skip_count=data['skip_count'],
-            page_size=data['page_size'],
-            key_range=from_dict(
-                data['key_range'],
-                casing_strategy
-            )
+            object_store_data_entries=[
+                from_dict(item, casing_strategy)
+                for item in data['object_store_data_entries']
+            ],
+            has_more=data['has_more']
         )
     if casing_strategy == 'camel':
         return indexed_db.RequestDataReturnT(
-            security_origin=data['securityOrigin'],
-            storage_key=data['storageKey'],
-            storage_bucket=from_dict(
-                data['storageBucket'],
-                casing_strategy
-            ),
-            database_name=data['databaseName'],
-            object_store_name=data['objectStoreName'],
-            index_name=data['indexName'],
-            skip_count=data['skipCount'],
-            page_size=data['pageSize'],
-            key_range=from_dict(
-                data['keyRange'],
-                casing_strategy
-            )
+            object_store_data_entries=[
+                from_dict(item, casing_strategy)
+                for item in data['objectStoreDataEntries']
+            ],
+            has_more=data['hasMore']
         )
     if casing_strategy == 'pascal':
         return indexed_db.RequestDataReturnT(
-            security_origin=data['SecurityOrigin'],
-            storage_key=data['StorageKey'],
-            storage_bucket=from_dict(
-                data['StorageBucket'],
-                casing_strategy
-            ),
-            database_name=data['DatabaseName'],
-            object_store_name=data['ObjectStoreName'],
-            index_name=data['IndexName'],
-            skip_count=data['SkipCount'],
-            page_size=data['PageSize'],
-            key_range=from_dict(
-                data['KeyRange'],
-                casing_strategy
-            )
+            object_store_data_entries=[
+                from_dict(item, casing_strategy)
+                for item in data['ObjectStoreDataEntries']
+            ],
+            has_more=data['HasMore']
         )
+
+
 def _indexed_db__get_metadata_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.GetMetadataReturnT':
     if casing_strategy == 'snake':
         return indexed_db.GetMetadataReturnT(
-            security_origin=data['security_origin'],
-            storage_key=data['storage_key'],
-            storage_bucket=from_dict(
-                data['storage_bucket'],
-                casing_strategy
-            ),
-            database_name=data['database_name'],
-            object_store_name=data['object_store_name']
+            entries_count=data['entries_count'],
+            key_generator_value=data['key_generator_value']
         )
     if casing_strategy == 'camel':
         return indexed_db.GetMetadataReturnT(
-            security_origin=data['securityOrigin'],
-            storage_key=data['storageKey'],
-            storage_bucket=from_dict(
-                data['storageBucket'],
-                casing_strategy
-            ),
-            database_name=data['databaseName'],
-            object_store_name=data['objectStoreName']
+            entries_count=data['entriesCount'],
+            key_generator_value=data['keyGeneratorValue']
         )
     if casing_strategy == 'pascal':
         return indexed_db.GetMetadataReturnT(
-            security_origin=data['SecurityOrigin'],
-            storage_key=data['StorageKey'],
-            storage_bucket=from_dict(
-                data['StorageBucket'],
-                casing_strategy
-            ),
-            database_name=data['DatabaseName'],
-            object_store_name=data['ObjectStoreName']
+            entries_count=data['EntriesCount'],
+            key_generator_value=data['KeyGeneratorValue']
         )
+
+
 def _indexed_db__request_database_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.RequestDatabaseReturnT':
     if casing_strategy == 'snake':
         return indexed_db.RequestDatabaseReturnT(
-            security_origin=data['security_origin'],
-            storage_key=data['storage_key'],
-            storage_bucket=from_dict(
-                data['storage_bucket'],
+            database_with_object_stores=from_dict(
+                data['database_with_object_stores'],
                 casing_strategy
-            ),
-            database_name=data['database_name']
+            )
         )
     if casing_strategy == 'camel':
         return indexed_db.RequestDatabaseReturnT(
-            security_origin=data['securityOrigin'],
-            storage_key=data['storageKey'],
-            storage_bucket=from_dict(
-                data['storageBucket'],
+            database_with_object_stores=from_dict(
+                data['databaseWithObjectStores'],
                 casing_strategy
-            ),
-            database_name=data['databaseName']
+            )
         )
     if casing_strategy == 'pascal':
         return indexed_db.RequestDatabaseReturnT(
-            security_origin=data['SecurityOrigin'],
-            storage_key=data['StorageKey'],
-            storage_bucket=from_dict(
-                data['StorageBucket'],
+            database_with_object_stores=from_dict(
+                data['DatabaseWithObjectStores'],
                 casing_strategy
-            ),
-            database_name=data['DatabaseName']
+            )
         )
+
+
 def _indexed_db__request_database_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.RequestDatabaseNamesReturnT':
     if casing_strategy == 'snake':
         return indexed_db.RequestDatabaseNamesReturnT(
-            security_origin=data['security_origin'],
-            storage_key=data['storage_key'],
-            storage_bucket=from_dict(
-                data['storage_bucket'],
-                casing_strategy
-            )
+            database_names=data['database_names']
         )
     if casing_strategy == 'camel':
         return indexed_db.RequestDatabaseNamesReturnT(
-            security_origin=data['securityOrigin'],
-            storage_key=data['storageKey'],
-            storage_bucket=from_dict(
-                data['storageBucket'],
-                casing_strategy
-            )
+            database_names=data['databaseNames']
         )
     if casing_strategy == 'pascal':
         return indexed_db.RequestDatabaseNamesReturnT(
-            security_origin=data['SecurityOrigin'],
-            storage_key=data['StorageKey'],
-            storage_bucket=from_dict(
-                data['StorageBucket'],
-                casing_strategy
-            )
+            database_names=data['DatabaseNames']
         )
+
+
 def _layer_tree__compositing_reasons_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.CompositingReasonsReturnT':
     if casing_strategy == 'snake':
         return layer_tree.CompositingReasonsReturnT(
-            layer_id=data['layer_id']
+            compositing_reasons=data['compositing_reasons'],
+            compositing_reason_ids=data['compositing_reason_ids']
         )
     if casing_strategy == 'camel':
         return layer_tree.CompositingReasonsReturnT(
-            layer_id=data['layerId']
+            compositing_reasons=data['compositingReasons'],
+            compositing_reason_ids=data['compositingReasonIds']
         )
     if casing_strategy == 'pascal':
         return layer_tree.CompositingReasonsReturnT(
-            layer_id=data['LayerId']
+            compositing_reasons=data['CompositingReasons'],
+            compositing_reason_ids=data['CompositingReasonIds']
         )
+
+
 def _layer_tree__load_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.LoadSnapshotReturnT':
     if casing_strategy == 'snake':
         return layer_tree.LoadSnapshotReturnT(
-            tiles=[
-                from_dict(item, casing_strategy)
-                for item in data['tiles']
-            ]
+            snapshot_id=data['snapshot_id']
         )
     if casing_strategy == 'camel':
         return layer_tree.LoadSnapshotReturnT(
-            tiles=[
-                from_dict(item, casing_strategy)
-                for item in data['tiles']
-            ]
+            snapshot_id=data['snapshotId']
         )
     if casing_strategy == 'pascal':
         return layer_tree.LoadSnapshotReturnT(
-            tiles=[
-                from_dict(item, casing_strategy)
-                for item in data['Tiles']
-            ]
+            snapshot_id=data['SnapshotId']
         )
+
+
 def _layer_tree__make_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.MakeSnapshotReturnT':
     if casing_strategy == 'snake':
         return layer_tree.MakeSnapshotReturnT(
-            layer_id=data['layer_id']
+            snapshot_id=data['snapshot_id']
         )
     if casing_strategy == 'camel':
         return layer_tree.MakeSnapshotReturnT(
-            layer_id=data['layerId']
+            snapshot_id=data['snapshotId']
         )
     if casing_strategy == 'pascal':
         return layer_tree.MakeSnapshotReturnT(
-            layer_id=data['LayerId']
+            snapshot_id=data['SnapshotId']
         )
+
+
 def _layer_tree__profile_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.ProfileSnapshotReturnT':
     if casing_strategy == 'snake':
         return layer_tree.ProfileSnapshotReturnT(
-            snapshot_id=data['snapshot_id'],
-            min_repeat_count=data['min_repeat_count'],
-            min_duration=data['min_duration'],
-            clip_rect=from_dict(
-                data['clip_rect'],
-                casing_strategy
-            )
+            timings=data['timings']
         )
     if casing_strategy == 'camel':
         return layer_tree.ProfileSnapshotReturnT(
-            snapshot_id=data['snapshotId'],
-            min_repeat_count=data['minRepeatCount'],
-            min_duration=data['minDuration'],
-            clip_rect=from_dict(
-                data['clipRect'],
-                casing_strategy
-            )
+            timings=data['timings']
         )
     if casing_strategy == 'pascal':
         return layer_tree.ProfileSnapshotReturnT(
-            snapshot_id=data['SnapshotId'],
-            min_repeat_count=data['MinRepeatCount'],
-            min_duration=data['MinDuration'],
-            clip_rect=from_dict(
-                data['ClipRect'],
-                casing_strategy
-            )
+            timings=data['Timings']
         )
+
+
 def _layer_tree__replay_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.ReplaySnapshotReturnT':
     if casing_strategy == 'snake':
         return layer_tree.ReplaySnapshotReturnT(
-            snapshot_id=data['snapshot_id'],
-            from_step=data['from_step'],
-            to_step=data['to_step'],
-            scale=data['scale']
+            data_url=data['data_url']
         )
     if casing_strategy == 'camel':
         return layer_tree.ReplaySnapshotReturnT(
-            snapshot_id=data['snapshotId'],
-            from_step=data['fromStep'],
-            to_step=data['toStep'],
-            scale=data['scale']
+            data_url=data['dataURL']
         )
     if casing_strategy == 'pascal':
         return layer_tree.ReplaySnapshotReturnT(
-            snapshot_id=data['SnapshotId'],
-            from_step=data['FromStep'],
-            to_step=data['ToStep'],
-            scale=data['Scale']
+            data_url=data['DataURL']
         )
+
+
 def _layer_tree__snapshot_command_log_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.SnapshotCommandLogReturnT':
     if casing_strategy == 'snake':
         return layer_tree.SnapshotCommandLogReturnT(
-            snapshot_id=data['snapshot_id']
+            command_log=data['command_log']
         )
     if casing_strategy == 'camel':
         return layer_tree.SnapshotCommandLogReturnT(
-            snapshot_id=data['snapshotId']
+            command_log=data['commandLog']
         )
     if casing_strategy == 'pascal':
         return layer_tree.SnapshotCommandLogReturnT(
-            snapshot_id=data['SnapshotId']
+            command_log=data['CommandLog']
         )
+
+
 def _memory__get_dom_counters_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetDOMCountersReturnT':
     if casing_strategy == 'snake':
         return memory.GetDOMCountersReturnT(
+            documents=data['documents'],
+            nodes=data['nodes'],
+            js_event_listeners=data['js_event_listeners']
         )
     if casing_strategy == 'camel':
         return memory.GetDOMCountersReturnT(
+            documents=data['documents'],
+            nodes=data['nodes'],
+            js_event_listeners=data['jsEventListeners']
         )
     if casing_strategy == 'pascal':
         return memory.GetDOMCountersReturnT(
+            documents=data['Documents'],
+            nodes=data['Nodes'],
+            js_event_listeners=data['JsEventListeners']
         )
+
+
 def _memory__get_all_time_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetAllTimeSamplingProfileReturnT':
     if casing_strategy == 'snake':
         return memory.GetAllTimeSamplingProfileReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return memory.GetAllTimeSamplingProfileReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return memory.GetAllTimeSamplingProfileReturnT(
+            profile=from_dict(
+                data['Profile'],
+                casing_strategy
+            )
         )
+
+
 def _memory__get_browser_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetBrowserSamplingProfileReturnT':
     if casing_strategy == 'snake':
         return memory.GetBrowserSamplingProfileReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return memory.GetBrowserSamplingProfileReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return memory.GetBrowserSamplingProfileReturnT(
+            profile=from_dict(
+                data['Profile'],
+                casing_strategy
+            )
         )
+
+
 def _memory__get_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetSamplingProfileReturnT':
     if casing_strategy == 'snake':
         return memory.GetSamplingProfileReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return memory.GetSamplingProfileReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return memory.GetSamplingProfileReturnT(
+            profile=from_dict(
+                data['Profile'],
+                casing_strategy
+            )
         )
+
+
 def _network__can_clear_browser_cache_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CanClearBrowserCacheReturnT':
     if casing_strategy == 'snake':
         return network.CanClearBrowserCacheReturnT(
+            result=data['result']
         )
     if casing_strategy == 'camel':
         return network.CanClearBrowserCacheReturnT(
+            result=data['result']
         )
     if casing_strategy == 'pascal':
         return network.CanClearBrowserCacheReturnT(
+            result=data['Result']
         )
+
+
 def _network__can_clear_browser_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CanClearBrowserCookiesReturnT':
     if casing_strategy == 'snake':
         return network.CanClearBrowserCookiesReturnT(
+            result=data['result']
         )
     if casing_strategy == 'camel':
         return network.CanClearBrowserCookiesReturnT(
+            result=data['result']
         )
     if casing_strategy == 'pascal':
         return network.CanClearBrowserCookiesReturnT(
+            result=data['Result']
         )
+
+
 def _network__can_emulate_network_conditions_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CanEmulateNetworkConditionsReturnT':
     if casing_strategy == 'snake':
         return network.CanEmulateNetworkConditionsReturnT(
+            result=data['result']
         )
     if casing_strategy == 'camel':
         return network.CanEmulateNetworkConditionsReturnT(
+            result=data['result']
         )
     if casing_strategy == 'pascal':
         return network.CanEmulateNetworkConditionsReturnT(
+            result=data['Result']
         )
+
+
 def _network__get_all_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetAllCookiesReturnT':
     if casing_strategy == 'snake':
         return network.GetAllCookiesReturnT(
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['cookies']
+            ]
         )
     if casing_strategy == 'camel':
         return network.GetAllCookiesReturnT(
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['cookies']
+            ]
         )
     if casing_strategy == 'pascal':
         return network.GetAllCookiesReturnT(
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['Cookies']
+            ]
         )
+
+
 def _network__get_certificate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetCertificateReturnT':
     if casing_strategy == 'snake':
         return network.GetCertificateReturnT(
-            origin=data['origin']
+            table_names=data['table_names']
         )
     if casing_strategy == 'camel':
         return network.GetCertificateReturnT(
-            origin=data['origin']
+            table_names=data['tableNames']
         )
     if casing_strategy == 'pascal':
         return network.GetCertificateReturnT(
-            origin=data['Origin']
+            table_names=data['TableNames']
         )
+
+
 def _network__get_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetCookiesReturnT':
     if casing_strategy == 'snake':
         return network.GetCookiesReturnT(
-            urls=data['urls']
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['cookies']
+            ]
         )
     if casing_strategy == 'camel':
         return network.GetCookiesReturnT(
-            urls=data['urls']
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['cookies']
+            ]
         )
     if casing_strategy == 'pascal':
         return network.GetCookiesReturnT(
-            urls=data['Urls']
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['Cookies']
+            ]
         )
+
+
 def _network__get_response_body_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetResponseBodyReturnT':
     if casing_strategy == 'snake':
         return network.GetResponseBodyReturnT(
-            request_id=data['request_id']
+            body=data['body'],
+            base64_encoded=data['base64_encoded']
         )
     if casing_strategy == 'camel':
         return network.GetResponseBodyReturnT(
-            request_id=data['requestId']
+            body=data['body'],
+            base64_encoded=data['base64Encoded']
         )
     if casing_strategy == 'pascal':
         return network.GetResponseBodyReturnT(
-            request_id=data['RequestId']
+            body=data['Body'],
+            base64_encoded=data['Base64Encoded']
         )
+
+
 def _network__get_request_post_data_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetRequestPostDataReturnT':
     if casing_strategy == 'snake':
         return network.GetRequestPostDataReturnT(
-            request_id=data['request_id']
+            post_data=data['post_data']
         )
     if casing_strategy == 'camel':
         return network.GetRequestPostDataReturnT(
-            request_id=data['requestId']
+            post_data=data['postData']
         )
     if casing_strategy == 'pascal':
         return network.GetRequestPostDataReturnT(
-            request_id=data['RequestId']
+            post_data=data['PostData']
         )
+
+
 def _network__get_response_body_for_interception_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetResponseBodyForInterceptionReturnT':
     if casing_strategy == 'snake':
         return network.GetResponseBodyForInterceptionReturnT(
-            interception_id=data['interception_id']
+            body=data['body'],
+            base64_encoded=data['base64_encoded']
         )
     if casing_strategy == 'camel':
         return network.GetResponseBodyForInterceptionReturnT(
-            interception_id=data['interceptionId']
+            body=data['body'],
+            base64_encoded=data['base64Encoded']
         )
     if casing_strategy == 'pascal':
         return network.GetResponseBodyForInterceptionReturnT(
-            interception_id=data['InterceptionId']
+            body=data['Body'],
+            base64_encoded=data['Base64Encoded']
         )
+
+
 def _network__take_response_body_for_interception_as_stream_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.TakeResponseBodyForInterceptionAsStreamReturnT':
     if casing_strategy == 'snake':
         return network.TakeResponseBodyForInterceptionAsStreamReturnT(
-            interception_id=data['interception_id']
+            stream=data['stream']
         )
     if casing_strategy == 'camel':
         return network.TakeResponseBodyForInterceptionAsStreamReturnT(
-            interception_id=data['interceptionId']
+            stream=data['stream']
         )
     if casing_strategy == 'pascal':
         return network.TakeResponseBodyForInterceptionAsStreamReturnT(
-            interception_id=data['InterceptionId']
+            stream=data['Stream']
         )
+
+
 def _network__search_in_response_body_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SearchInResponseBodyReturnT':
     if casing_strategy == 'snake':
         return network.SearchInResponseBodyReturnT(
-            request_id=data['request_id'],
-            query=data['query'],
-            case_sensitive=data['case_sensitive'],
-            is_regex=data['is_regex']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'camel':
         return network.SearchInResponseBodyReturnT(
-            request_id=data['requestId'],
-            query=data['query'],
-            case_sensitive=data['caseSensitive'],
-            is_regex=data['isRegex']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'pascal':
         return network.SearchInResponseBodyReturnT(
-            request_id=data['RequestId'],
-            query=data['Query'],
-            case_sensitive=data['CaseSensitive'],
-            is_regex=data['IsRegex']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['Result']
+            ]
         )
+
+
 def _network__set_cookie_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SetCookieReturnT':
     if casing_strategy == 'snake':
         return network.SetCookieReturnT(
-            name=data['name'],
-            value=data['value'],
-            url=data['url'],
-            domain=data['domain'],
-            path=data['path'],
-            secure=data['secure'],
-            http_only=data['http_only'],
-            same_site=data['same_site'],
-            expires=data['expires'],
-            priority=data['priority'],
-            same_party=data['same_party'],
-            source_scheme=data['source_scheme'],
-            source_port=data['source_port'],
-            partition_key=data['partition_key']
+            success=data['success']
         )
     if casing_strategy == 'camel':
         return network.SetCookieReturnT(
-            name=data['name'],
-            value=data['value'],
-            url=data['url'],
-            domain=data['domain'],
-            path=data['path'],
-            secure=data['secure'],
-            http_only=data['httpOnly'],
-            same_site=data['sameSite'],
-            expires=data['expires'],
-            priority=data['priority'],
-            same_party=data['sameParty'],
-            source_scheme=data['sourceScheme'],
-            source_port=data['sourcePort'],
-            partition_key=data['partitionKey']
+            success=data['success']
         )
     if casing_strategy == 'pascal':
         return network.SetCookieReturnT(
-            name=data['Name'],
-            value=data['Value'],
-            url=data['Url'],
-            domain=data['Domain'],
-            path=data['Path'],
-            secure=data['Secure'],
-            http_only=data['HttpOnly'],
-            same_site=data['SameSite'],
-            expires=data['Expires'],
-            priority=data['Priority'],
-            same_party=data['SameParty'],
-            source_scheme=data['SourceScheme'],
-            source_port=data['SourcePort'],
-            partition_key=data['PartitionKey']
+            success=data['Success']
         )
+
+
 def _network__get_security_isolation_status_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetSecurityIsolationStatusReturnT':
     if casing_strategy == 'snake':
         return network.GetSecurityIsolationStatusReturnT(
-            frame_id=data['frame_id']
+            status=from_dict(
+                data['status'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return network.GetSecurityIsolationStatusReturnT(
-            frame_id=data['frameId']
+            status=from_dict(
+                data['status'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return network.GetSecurityIsolationStatusReturnT(
-            frame_id=data['FrameId']
+            status=from_dict(
+                data['Status'],
+                casing_strategy
+            )
         )
+
+
 def _network__load_network_resource_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.LoadNetworkResourceReturnT':
     if casing_strategy == 'snake':
         return network.LoadNetworkResourceReturnT(
-            frame_id=data['frame_id'],
-            url=data['url'],
-            options=from_dict(
-                data['options'],
+            resource=from_dict(
+                data['resource'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return network.LoadNetworkResourceReturnT(
-            frame_id=data['frameId'],
-            url=data['url'],
-            options=from_dict(
-                data['options'],
+            resource=from_dict(
+                data['resource'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return network.LoadNetworkResourceReturnT(
-            frame_id=data['FrameId'],
-            url=data['Url'],
-            options=from_dict(
-                data['Options'],
+            resource=from_dict(
+                data['Resource'],
                 casing_strategy
             )
         )
+
+
 def _overlay__get_highlight_object_for_test_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GetHighlightObjectForTestReturnT':
     if casing_strategy == 'snake':
         return overlay.GetHighlightObjectForTestReturnT(
-            node_id=data['node_id'],
-            include_distance=data['include_distance'],
-            include_style=data['include_style'],
-            color_format=data['color_format'],
-            show_accessibility_info=data['show_accessibility_info']
+            highlight=data['highlight']
         )
     if casing_strategy == 'camel':
         return overlay.GetHighlightObjectForTestReturnT(
-            node_id=data['nodeId'],
-            include_distance=data['includeDistance'],
-            include_style=data['includeStyle'],
-            color_format=data['colorFormat'],
-            show_accessibility_info=data['showAccessibilityInfo']
+            highlight=data['highlight']
         )
     if casing_strategy == 'pascal':
         return overlay.GetHighlightObjectForTestReturnT(
-            node_id=data['NodeId'],
-            include_distance=data['IncludeDistance'],
-            include_style=data['IncludeStyle'],
-            color_format=data['ColorFormat'],
-            show_accessibility_info=data['ShowAccessibilityInfo']
+            highlight=data['Highlight']
         )
+
+
 def _overlay__get_grid_highlight_objects_for_test_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GetGridHighlightObjectsForTestReturnT':
     if casing_strategy == 'snake':
         return overlay.GetGridHighlightObjectsForTestReturnT(
-            node_ids=data['node_ids']
+            highlights=data['highlights']
         )
     if casing_strategy == 'camel':
         return overlay.GetGridHighlightObjectsForTestReturnT(
-            node_ids=data['nodeIds']
+            highlights=data['highlights']
         )
     if casing_strategy == 'pascal':
         return overlay.GetGridHighlightObjectsForTestReturnT(
-            node_ids=data['NodeIds']
+            highlights=data['Highlights']
         )
+
+
 def _overlay__get_source_order_highlight_object_for_test_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GetSourceOrderHighlightObjectForTestReturnT':
     if casing_strategy == 'snake':
         return overlay.GetSourceOrderHighlightObjectForTestReturnT(
-            node_id=data['node_id']
+            highlight=data['highlight']
         )
     if casing_strategy == 'camel':
         return overlay.GetSourceOrderHighlightObjectForTestReturnT(
-            node_id=data['nodeId']
+            highlight=data['highlight']
         )
     if casing_strategy == 'pascal':
         return overlay.GetSourceOrderHighlightObjectForTestReturnT(
-            node_id=data['NodeId']
+            highlight=data['Highlight']
         )
+
+
 def _page__add_script_to_evaluate_on_load_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AddScriptToEvaluateOnLoadReturnT':
     if casing_strategy == 'snake':
         return page.AddScriptToEvaluateOnLoadReturnT(
-            script_source=data['script_source']
+            identifier=data['identifier']
         )
     if casing_strategy == 'camel':
         return page.AddScriptToEvaluateOnLoadReturnT(
-            script_source=data['scriptSource']
+            identifier=data['identifier']
         )
     if casing_strategy == 'pascal':
         return page.AddScriptToEvaluateOnLoadReturnT(
-            script_source=data['ScriptSource']
+            identifier=data['Identifier']
         )
+
+
 def _page__add_script_to_evaluate_on_new_document_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AddScriptToEvaluateOnNewDocumentReturnT':
     if casing_strategy == 'snake':
         return page.AddScriptToEvaluateOnNewDocumentReturnT(
-            source=data['source'],
-            world_name=data['world_name'],
-            include_command_line_api=data['include_command_line_api'],
-            run_immediately=data['run_immediately']
+            identifier=data['identifier']
         )
     if casing_strategy == 'camel':
         return page.AddScriptToEvaluateOnNewDocumentReturnT(
-            source=data['source'],
-            world_name=data['worldName'],
-            include_command_line_api=data['includeCommandLineAPI'],
-            run_immediately=data['runImmediately']
+            identifier=data['identifier']
         )
     if casing_strategy == 'pascal':
         return page.AddScriptToEvaluateOnNewDocumentReturnT(
-            source=data['Source'],
-            world_name=data['WorldName'],
-            include_command_line_api=data['IncludeCommandLineAPI'],
-            run_immediately=data['RunImmediately']
+            identifier=data['Identifier']
         )
+
+
 def _page__capture_screenshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CaptureScreenshotReturnT':
     if casing_strategy == 'snake':
         return page.CaptureScreenshotReturnT(
-            format=data['format'],
-            quality=data['quality'],
-            clip=from_dict(
-                data['clip'],
-                casing_strategy
-            ),
-            from_surface=data['from_surface'],
-            capture_beyond_viewport=data['capture_beyond_viewport'],
-            optimize_for_speed=data['optimize_for_speed']
+            data=data['data']
         )
     if casing_strategy == 'camel':
         return page.CaptureScreenshotReturnT(
-            format=data['format'],
-            quality=data['quality'],
-            clip=from_dict(
-                data['clip'],
-                casing_strategy
-            ),
-            from_surface=data['fromSurface'],
-            capture_beyond_viewport=data['captureBeyondViewport'],
-            optimize_for_speed=data['optimizeForSpeed']
+            data=data['data']
         )
     if casing_strategy == 'pascal':
         return page.CaptureScreenshotReturnT(
-            format=data['Format'],
-            quality=data['Quality'],
-            clip=from_dict(
-                data['Clip'],
-                casing_strategy
-            ),
-            from_surface=data['FromSurface'],
-            capture_beyond_viewport=data['CaptureBeyondViewport'],
-            optimize_for_speed=data['OptimizeForSpeed']
+            data=data['Data']
         )
+
+
 def _page__capture_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CaptureSnapshotReturnT':
     if casing_strategy == 'snake':
         return page.CaptureSnapshotReturnT(
-            format=data['format']
+            data=data['data']
         )
     if casing_strategy == 'camel':
         return page.CaptureSnapshotReturnT(
-            format=data['format']
+            data=data['data']
         )
     if casing_strategy == 'pascal':
         return page.CaptureSnapshotReturnT(
-            format=data['Format']
+            data=data['Data']
         )
+
+
 def _page__create_isolated_world_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CreateIsolatedWorldReturnT':
     if casing_strategy == 'snake':
         return page.CreateIsolatedWorldReturnT(
-            frame_id=data['frame_id'],
-            world_name=data['world_name'],
-            grant_univeral_access=data['grant_univeral_access']
+            execution_context_id=data['execution_context_id']
         )
     if casing_strategy == 'camel':
         return page.CreateIsolatedWorldReturnT(
-            frame_id=data['frameId'],
-            world_name=data['worldName'],
-            grant_univeral_access=data['grantUniveralAccess']
+            execution_context_id=data['executionContextId']
         )
     if casing_strategy == 'pascal':
         return page.CreateIsolatedWorldReturnT(
-            frame_id=data['FrameId'],
-            world_name=data['WorldName'],
-            grant_univeral_access=data['GrantUniveralAccess']
+            execution_context_id=data['ExecutionContextId']
         )
+
+
 def _page__get_app_manifest_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetAppManifestReturnT':
     if casing_strategy == 'snake':
         return page.GetAppManifestReturnT(
+            url=data['url'],
+            errors=[
+                from_dict(item, casing_strategy)
+                for item in data['errors']
+            ],
+            data=data.get('data'),
+            parsed=from_dict(
+                data.get('parsed'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return page.GetAppManifestReturnT(
+            url=data['url'],
+            errors=[
+                from_dict(item, casing_strategy)
+                for item in data['errors']
+            ],
+            data=data.get('data'),
+            parsed=from_dict(
+                data.get('parsed'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return page.GetAppManifestReturnT(
+            url=data['Url'],
+            errors=[
+                from_dict(item, casing_strategy)
+                for item in data['Errors']
+            ],
+            data=data.get('Data'),
+            parsed=from_dict(
+                data.get('Parsed'),
+                casing_strategy
+            )
         )
+
+
 def _page__get_installability_errors_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetInstallabilityErrorsReturnT':
     if casing_strategy == 'snake':
         return page.GetInstallabilityErrorsReturnT(
+            installability_errors=[
+                from_dict(item, casing_strategy)
+                for item in data['installability_errors']
+            ]
         )
     if casing_strategy == 'camel':
         return page.GetInstallabilityErrorsReturnT(
+            installability_errors=[
+                from_dict(item, casing_strategy)
+                for item in data['installabilityErrors']
+            ]
         )
     if casing_strategy == 'pascal':
         return page.GetInstallabilityErrorsReturnT(
+            installability_errors=[
+                from_dict(item, casing_strategy)
+                for item in data['InstallabilityErrors']
+            ]
         )
+
+
 def _page__get_manifest_icons_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetManifestIconsReturnT':
     if casing_strategy == 'snake':
         return page.GetManifestIconsReturnT(
+            primary_icon=data.get('primary_icon')
         )
     if casing_strategy == 'camel':
         return page.GetManifestIconsReturnT(
+            primary_icon=data.get('primaryIcon')
         )
     if casing_strategy == 'pascal':
         return page.GetManifestIconsReturnT(
+            primary_icon=data.get('PrimaryIcon')
         )
+
+
 def _page__get_app_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetAppIdReturnT':
     if casing_strategy == 'snake':
         return page.GetAppIdReturnT(
+            app_id=data.get('app_id'),
+            recommended_id=data.get('recommended_id')
         )
     if casing_strategy == 'camel':
         return page.GetAppIdReturnT(
+            app_id=data.get('appId'),
+            recommended_id=data.get('recommendedId')
         )
     if casing_strategy == 'pascal':
         return page.GetAppIdReturnT(
+            app_id=data.get('AppId'),
+            recommended_id=data.get('RecommendedId')
         )
+
+
 def _page__get_ad_script_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetAdScriptIdReturnT':
     if casing_strategy == 'snake':
         return page.GetAdScriptIdReturnT(
-            frame_id=data['frame_id']
+            ad_script_id=from_dict(
+                data.get('ad_script_id'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return page.GetAdScriptIdReturnT(
-            frame_id=data['frameId']
+            ad_script_id=from_dict(
+                data.get('adScriptId'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return page.GetAdScriptIdReturnT(
-            frame_id=data['FrameId']
+            ad_script_id=from_dict(
+                data.get('AdScriptId'),
+                casing_strategy
+            )
         )
+
+
 def _page__get_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetCookiesReturnT':
     if casing_strategy == 'snake':
         return page.GetCookiesReturnT(
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['cookies']
+            ]
         )
     if casing_strategy == 'camel':
         return page.GetCookiesReturnT(
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['cookies']
+            ]
         )
     if casing_strategy == 'pascal':
         return page.GetCookiesReturnT(
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['Cookies']
+            ]
         )
+
+
 def _page__get_frame_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetFrameTreeReturnT':
     if casing_strategy == 'snake':
         return page.GetFrameTreeReturnT(
+            frame_tree=from_dict(
+                data['frame_tree'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return page.GetFrameTreeReturnT(
+            frame_tree=from_dict(
+                data['frameTree'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return page.GetFrameTreeReturnT(
+            frame_tree=from_dict(
+                data['FrameTree'],
+                casing_strategy
+            )
         )
+
+
 def _page__get_layout_metrics_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetLayoutMetricsReturnT':
     if casing_strategy == 'snake':
         return page.GetLayoutMetricsReturnT(
+            layout_viewport=from_dict(
+                data['layout_viewport'],
+                casing_strategy
+            ),
+            visual_viewport=from_dict(
+                data['visual_viewport'],
+                casing_strategy
+            ),
+            content_size=from_dict(
+                data['content_size'],
+                casing_strategy
+            ),
+            css_layout_viewport=from_dict(
+                data['css_layout_viewport'],
+                casing_strategy
+            ),
+            css_visual_viewport=from_dict(
+                data['css_visual_viewport'],
+                casing_strategy
+            ),
+            css_content_size=from_dict(
+                data['css_content_size'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return page.GetLayoutMetricsReturnT(
+            layout_viewport=from_dict(
+                data['layoutViewport'],
+                casing_strategy
+            ),
+            visual_viewport=from_dict(
+                data['visualViewport'],
+                casing_strategy
+            ),
+            content_size=from_dict(
+                data['contentSize'],
+                casing_strategy
+            ),
+            css_layout_viewport=from_dict(
+                data['cssLayoutViewport'],
+                casing_strategy
+            ),
+            css_visual_viewport=from_dict(
+                data['cssVisualViewport'],
+                casing_strategy
+            ),
+            css_content_size=from_dict(
+                data['cssContentSize'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return page.GetLayoutMetricsReturnT(
+            layout_viewport=from_dict(
+                data['LayoutViewport'],
+                casing_strategy
+            ),
+            visual_viewport=from_dict(
+                data['VisualViewport'],
+                casing_strategy
+            ),
+            content_size=from_dict(
+                data['ContentSize'],
+                casing_strategy
+            ),
+            css_layout_viewport=from_dict(
+                data['CssLayoutViewport'],
+                casing_strategy
+            ),
+            css_visual_viewport=from_dict(
+                data['CssVisualViewport'],
+                casing_strategy
+            ),
+            css_content_size=from_dict(
+                data['CssContentSize'],
+                casing_strategy
+            )
         )
+
+
 def _page__get_navigation_history_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetNavigationHistoryReturnT':
     if casing_strategy == 'snake':
         return page.GetNavigationHistoryReturnT(
+            current_index=data['current_index'],
+            entries=[
+                from_dict(item, casing_strategy)
+                for item in data['entries']
+            ]
         )
     if casing_strategy == 'camel':
         return page.GetNavigationHistoryReturnT(
+            current_index=data['currentIndex'],
+            entries=[
+                from_dict(item, casing_strategy)
+                for item in data['entries']
+            ]
         )
     if casing_strategy == 'pascal':
         return page.GetNavigationHistoryReturnT(
+            current_index=data['CurrentIndex'],
+            entries=[
+                from_dict(item, casing_strategy)
+                for item in data['Entries']
+            ]
         )
+
+
 def _page__get_resource_content_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetResourceContentReturnT':
     if casing_strategy == 'snake':
         return page.GetResourceContentReturnT(
-            frame_id=data['frame_id'],
-            url=data['url']
+            content=data['content'],
+            base64_encoded=data['base64_encoded']
         )
     if casing_strategy == 'camel':
         return page.GetResourceContentReturnT(
-            frame_id=data['frameId'],
-            url=data['url']
+            content=data['content'],
+            base64_encoded=data['base64Encoded']
         )
     if casing_strategy == 'pascal':
         return page.GetResourceContentReturnT(
-            frame_id=data['FrameId'],
-            url=data['Url']
+            content=data['Content'],
+            base64_encoded=data['Base64Encoded']
         )
+
+
 def _page__get_resource_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetResourceTreeReturnT':
     if casing_strategy == 'snake':
         return page.GetResourceTreeReturnT(
+            frame_tree=from_dict(
+                data['frame_tree'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return page.GetResourceTreeReturnT(
+            frame_tree=from_dict(
+                data['frameTree'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return page.GetResourceTreeReturnT(
+            frame_tree=from_dict(
+                data['FrameTree'],
+                casing_strategy
+            )
         )
+
+
 def _page__navigate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.NavigateReturnT':
     if casing_strategy == 'snake':
         return page.NavigateReturnT(
-            url=data['url'],
-            referrer=data['referrer'],
-            transition_type=data['transition_type'],
             frame_id=data['frame_id'],
-            referrer_policy=data['referrer_policy']
+            loader_id=data.get('loader_id'),
+            error_text=data.get('error_text')
         )
     if casing_strategy == 'camel':
         return page.NavigateReturnT(
-            url=data['url'],
-            referrer=data['referrer'],
-            transition_type=data['transitionType'],
             frame_id=data['frameId'],
-            referrer_policy=data['referrerPolicy']
+            loader_id=data.get('loaderId'),
+            error_text=data.get('errorText')
         )
     if casing_strategy == 'pascal':
         return page.NavigateReturnT(
-            url=data['Url'],
-            referrer=data['Referrer'],
-            transition_type=data['TransitionType'],
             frame_id=data['FrameId'],
-            referrer_policy=data['ReferrerPolicy']
+            loader_id=data.get('LoaderId'),
+            error_text=data.get('ErrorText')
         )
+
+
 def _page__print_to_pdf_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.PrintToPDFReturnT':
     if casing_strategy == 'snake':
         return page.PrintToPDFReturnT(
-            landscape=data['landscape'],
-            display_header_footer=data['display_header_footer'],
-            print_background=data['print_background'],
-            scale=data['scale'],
-            paper_width=data['paper_width'],
-            paper_height=data['paper_height'],
-            margin_top=data['margin_top'],
-            margin_bottom=data['margin_bottom'],
-            margin_left=data['margin_left'],
-            margin_right=data['margin_right'],
-            page_ranges=data['page_ranges'],
-            header_template=data['header_template'],
-            footer_template=data['footer_template'],
-            prefer_css_page_size=data['prefer_css_page_size'],
-            transfer_mode=data['transfer_mode'],
-            generate_tagged_pdf=data['generate_tagged_pdf']
+            data=data['data'],
+            stream=data.get('stream')
         )
     if casing_strategy == 'camel':
         return page.PrintToPDFReturnT(
-            landscape=data['landscape'],
-            display_header_footer=data['displayHeaderFooter'],
-            print_background=data['printBackground'],
-            scale=data['scale'],
-            paper_width=data['paperWidth'],
-            paper_height=data['paperHeight'],
-            margin_top=data['marginTop'],
-            margin_bottom=data['marginBottom'],
-            margin_left=data['marginLeft'],
-            margin_right=data['marginRight'],
-            page_ranges=data['pageRanges'],
-            header_template=data['headerTemplate'],
-            footer_template=data['footerTemplate'],
-            prefer_css_page_size=data['preferCSSPageSize'],
-            transfer_mode=data['transferMode'],
-            generate_tagged_pdf=data['generateTaggedPDF']
+            data=data['data'],
+            stream=data.get('stream')
         )
     if casing_strategy == 'pascal':
         return page.PrintToPDFReturnT(
-            landscape=data['Landscape'],
-            display_header_footer=data['DisplayHeaderFooter'],
-            print_background=data['PrintBackground'],
-            scale=data['Scale'],
-            paper_width=data['PaperWidth'],
-            paper_height=data['PaperHeight'],
-            margin_top=data['MarginTop'],
-            margin_bottom=data['MarginBottom'],
-            margin_left=data['MarginLeft'],
-            margin_right=data['MarginRight'],
-            page_ranges=data['PageRanges'],
-            header_template=data['HeaderTemplate'],
-            footer_template=data['FooterTemplate'],
-            prefer_css_page_size=data['PreferCSSPageSize'],
-            transfer_mode=data['TransferMode'],
-            generate_tagged_pdf=data['GenerateTaggedPDF']
+            data=data['Data'],
+            stream=data.get('Stream')
         )
+
+
 def _page__search_in_resource_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.SearchInResourceReturnT':
     if casing_strategy == 'snake':
         return page.SearchInResourceReturnT(
-            frame_id=data['frame_id'],
-            url=data['url'],
-            query=data['query'],
-            case_sensitive=data['case_sensitive'],
-            is_regex=data['is_regex']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'camel':
         return page.SearchInResourceReturnT(
-            frame_id=data['frameId'],
-            url=data['url'],
-            query=data['query'],
-            case_sensitive=data['caseSensitive'],
-            is_regex=data['isRegex']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'pascal':
         return page.SearchInResourceReturnT(
-            frame_id=data['FrameId'],
-            url=data['Url'],
-            query=data['Query'],
-            case_sensitive=data['CaseSensitive'],
-            is_regex=data['IsRegex']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['Result']
+            ]
         )
+
+
 def _page__get_permissions_policy_state_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetPermissionsPolicyStateReturnT':
     if casing_strategy == 'snake':
         return page.GetPermissionsPolicyStateReturnT(
-            frame_id=data['frame_id']
+            states=[
+                from_dict(item, casing_strategy)
+                for item in data['states']
+            ]
         )
     if casing_strategy == 'camel':
         return page.GetPermissionsPolicyStateReturnT(
-            frame_id=data['frameId']
+            states=[
+                from_dict(item, casing_strategy)
+                for item in data['states']
+            ]
         )
     if casing_strategy == 'pascal':
         return page.GetPermissionsPolicyStateReturnT(
-            frame_id=data['FrameId']
+            states=[
+                from_dict(item, casing_strategy)
+                for item in data['States']
+            ]
         )
+
+
 def _page__get_origin_trials_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetOriginTrialsReturnT':
     if casing_strategy == 'snake':
         return page.GetOriginTrialsReturnT(
-            frame_id=data['frame_id']
+            origin_trials=[
+                from_dict(item, casing_strategy)
+                for item in data['origin_trials']
+            ]
         )
     if casing_strategy == 'camel':
         return page.GetOriginTrialsReturnT(
-            frame_id=data['frameId']
+            origin_trials=[
+                from_dict(item, casing_strategy)
+                for item in data['originTrials']
+            ]
         )
     if casing_strategy == 'pascal':
         return page.GetOriginTrialsReturnT(
-            frame_id=data['FrameId']
+            origin_trials=[
+                from_dict(item, casing_strategy)
+                for item in data['OriginTrials']
+            ]
         )
+
+
 def _performance__get_metrics_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'performance.GetMetricsReturnT':
     if casing_strategy == 'snake':
         return performance.GetMetricsReturnT(
+            metrics=[
+                from_dict(item, casing_strategy)
+                for item in data['metrics']
+            ]
         )
     if casing_strategy == 'camel':
         return performance.GetMetricsReturnT(
+            metrics=[
+                from_dict(item, casing_strategy)
+                for item in data['metrics']
+            ]
         )
     if casing_strategy == 'pascal':
         return performance.GetMetricsReturnT(
+            metrics=[
+                from_dict(item, casing_strategy)
+                for item in data['Metrics']
+            ]
         )
+
+
 def _storage__get_storage_key_for_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetStorageKeyForFrameReturnT':
     if casing_strategy == 'snake':
         return storage.GetStorageKeyForFrameReturnT(
-            frame_id=data['frame_id']
+            storage_key=data['storage_key']
         )
     if casing_strategy == 'camel':
         return storage.GetStorageKeyForFrameReturnT(
-            frame_id=data['frameId']
+            storage_key=data['storageKey']
         )
     if casing_strategy == 'pascal':
         return storage.GetStorageKeyForFrameReturnT(
-            frame_id=data['FrameId']
+            storage_key=data['StorageKey']
         )
+
+
 def _storage__get_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetCookiesReturnT':
     if casing_strategy == 'snake':
         return storage.GetCookiesReturnT(
-            browser_context_id=data['browser_context_id']
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['cookies']
+            ]
         )
     if casing_strategy == 'camel':
         return storage.GetCookiesReturnT(
-            browser_context_id=data['browserContextId']
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['cookies']
+            ]
         )
     if casing_strategy == 'pascal':
         return storage.GetCookiesReturnT(
-            browser_context_id=data['BrowserContextId']
+            cookies=[
+                from_dict(item, casing_strategy)
+                for item in data['Cookies']
+            ]
         )
+
+
 def _storage__get_usage_and_quota_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetUsageAndQuotaReturnT':
     if casing_strategy == 'snake':
         return storage.GetUsageAndQuotaReturnT(
-            origin=data['origin']
+            usage=data['usage'],
+            quota=data['quota'],
+            override_active=data['override_active'],
+            usage_breakdown=[
+                from_dict(item, casing_strategy)
+                for item in data['usage_breakdown']
+            ]
         )
     if casing_strategy == 'camel':
         return storage.GetUsageAndQuotaReturnT(
-            origin=data['origin']
+            usage=data['usage'],
+            quota=data['quota'],
+            override_active=data['overrideActive'],
+            usage_breakdown=[
+                from_dict(item, casing_strategy)
+                for item in data['usageBreakdown']
+            ]
         )
     if casing_strategy == 'pascal':
         return storage.GetUsageAndQuotaReturnT(
-            origin=data['Origin']
+            usage=data['Usage'],
+            quota=data['Quota'],
+            override_active=data['OverrideActive'],
+            usage_breakdown=[
+                from_dict(item, casing_strategy)
+                for item in data['UsageBreakdown']
+            ]
         )
+
+
 def _storage__get_trust_tokens_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetTrustTokensReturnT':
     if casing_strategy == 'snake':
         return storage.GetTrustTokensReturnT(
+            tokens=[
+                from_dict(item, casing_strategy)
+                for item in data['tokens']
+            ]
         )
     if casing_strategy == 'camel':
         return storage.GetTrustTokensReturnT(
+            tokens=[
+                from_dict(item, casing_strategy)
+                for item in data['tokens']
+            ]
         )
     if casing_strategy == 'pascal':
         return storage.GetTrustTokensReturnT(
+            tokens=[
+                from_dict(item, casing_strategy)
+                for item in data['Tokens']
+            ]
         )
+
+
 def _storage__clear_trust_tokens_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.ClearTrustTokensReturnT':
     if casing_strategy == 'snake':
         return storage.ClearTrustTokensReturnT(
-            issuer_origin=data['issuer_origin']
+            did_delete_tokens=data['did_delete_tokens']
         )
     if casing_strategy == 'camel':
         return storage.ClearTrustTokensReturnT(
-            issuer_origin=data['issuerOrigin']
+            did_delete_tokens=data['didDeleteTokens']
         )
     if casing_strategy == 'pascal':
         return storage.ClearTrustTokensReturnT(
-            issuer_origin=data['IssuerOrigin']
+            did_delete_tokens=data['DidDeleteTokens']
         )
+
+
 def _storage__get_interest_group_details_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetInterestGroupDetailsReturnT':
     if casing_strategy == 'snake':
         return storage.GetInterestGroupDetailsReturnT(
-            owner_origin=data['owner_origin'],
-            name=data['name']
+            details=from_dict(
+                data['details'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return storage.GetInterestGroupDetailsReturnT(
-            owner_origin=data['ownerOrigin'],
-            name=data['name']
+            details=from_dict(
+                data['details'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return storage.GetInterestGroupDetailsReturnT(
-            owner_origin=data['OwnerOrigin'],
-            name=data['Name']
+            details=from_dict(
+                data['Details'],
+                casing_strategy
+            )
         )
+
+
 def _storage__get_shared_storage_metadata_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetSharedStorageMetadataReturnT':
     if casing_strategy == 'snake':
         return storage.GetSharedStorageMetadataReturnT(
-            owner_origin=data['owner_origin']
+            metadata=from_dict(
+                data['metadata'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return storage.GetSharedStorageMetadataReturnT(
-            owner_origin=data['ownerOrigin']
+            metadata=from_dict(
+                data['metadata'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return storage.GetSharedStorageMetadataReturnT(
-            owner_origin=data['OwnerOrigin']
+            metadata=from_dict(
+                data['Metadata'],
+                casing_strategy
+            )
         )
+
+
 def _storage__get_shared_storage_entries_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetSharedStorageEntriesReturnT':
     if casing_strategy == 'snake':
         return storage.GetSharedStorageEntriesReturnT(
-            owner_origin=data['owner_origin']
+            entries=[
+                from_dict(item, casing_strategy)
+                for item in data['entries']
+            ]
         )
     if casing_strategy == 'camel':
         return storage.GetSharedStorageEntriesReturnT(
-            owner_origin=data['ownerOrigin']
+            entries=[
+                from_dict(item, casing_strategy)
+                for item in data['entries']
+            ]
         )
     if casing_strategy == 'pascal':
         return storage.GetSharedStorageEntriesReturnT(
-            owner_origin=data['OwnerOrigin']
+            entries=[
+                from_dict(item, casing_strategy)
+                for item in data['Entries']
+            ]
         )
+
+
 def _storage__run_bounce_tracking_mitigations_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.RunBounceTrackingMitigationsReturnT':
     if casing_strategy == 'snake':
         return storage.RunBounceTrackingMitigationsReturnT(
+            deleted_sites=data['deleted_sites']
         )
     if casing_strategy == 'camel':
         return storage.RunBounceTrackingMitigationsReturnT(
+            deleted_sites=data['deletedSites']
         )
     if casing_strategy == 'pascal':
         return storage.RunBounceTrackingMitigationsReturnT(
+            deleted_sites=data['DeletedSites']
         )
+
+
 def _system_info__get_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GetInfoReturnT':
     if casing_strategy == 'snake':
         return system_info.GetInfoReturnT(
+            gpu=from_dict(
+                data['gpu'],
+                casing_strategy
+            ),
+            model_name=data['model_name'],
+            model_version=data['model_version'],
+            command_line=data['command_line']
         )
     if casing_strategy == 'camel':
         return system_info.GetInfoReturnT(
+            gpu=from_dict(
+                data['gpu'],
+                casing_strategy
+            ),
+            model_name=data['modelName'],
+            model_version=data['modelVersion'],
+            command_line=data['commandLine']
         )
     if casing_strategy == 'pascal':
         return system_info.GetInfoReturnT(
+            gpu=from_dict(
+                data['Gpu'],
+                casing_strategy
+            ),
+            model_name=data['ModelName'],
+            model_version=data['ModelVersion'],
+            command_line=data['CommandLine']
         )
+
+
 def _system_info__get_feature_state_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GetFeatureStateReturnT':
     if casing_strategy == 'snake':
         return system_info.GetFeatureStateReturnT(
-            feature_state=data['feature_state']
+            feature_enabled=data['feature_enabled']
         )
     if casing_strategy == 'camel':
         return system_info.GetFeatureStateReturnT(
-            feature_state=data['featureState']
+            feature_enabled=data['featureEnabled']
         )
     if casing_strategy == 'pascal':
         return system_info.GetFeatureStateReturnT(
-            feature_state=data['FeatureState']
+            feature_enabled=data['FeatureEnabled']
         )
+
+
 def _system_info__get_process_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GetProcessInfoReturnT':
     if casing_strategy == 'snake':
         return system_info.GetProcessInfoReturnT(
+            process_info=[
+                from_dict(item, casing_strategy)
+                for item in data['process_info']
+            ]
         )
     if casing_strategy == 'camel':
         return system_info.GetProcessInfoReturnT(
+            process_info=[
+                from_dict(item, casing_strategy)
+                for item in data['processInfo']
+            ]
         )
     if casing_strategy == 'pascal':
         return system_info.GetProcessInfoReturnT(
+            process_info=[
+                from_dict(item, casing_strategy)
+                for item in data['ProcessInfo']
+            ]
         )
+
+
 def _target__attach_to_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.AttachToTargetReturnT':
     if casing_strategy == 'snake':
         return target.AttachToTargetReturnT(
-            target_id=data['target_id'],
-            flatten=data['flatten']
+            session_id=data['session_id']
         )
     if casing_strategy == 'camel':
         return target.AttachToTargetReturnT(
-            target_id=data['targetId'],
-            flatten=data['flatten']
+            session_id=data['sessionId']
         )
     if casing_strategy == 'pascal':
         return target.AttachToTargetReturnT(
-            target_id=data['TargetId'],
-            flatten=data['Flatten']
+            session_id=data['SessionId']
         )
+
+
 def _target__attach_to_browser_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.AttachToBrowserTargetReturnT':
     if casing_strategy == 'snake':
         return target.AttachToBrowserTargetReturnT(
+            session_id=data['session_id']
         )
     if casing_strategy == 'camel':
         return target.AttachToBrowserTargetReturnT(
+            session_id=data['sessionId']
         )
     if casing_strategy == 'pascal':
         return target.AttachToBrowserTargetReturnT(
+            session_id=data['SessionId']
         )
+
+
 def _target__close_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.CloseTargetReturnT':
     if casing_strategy == 'snake':
         return target.CloseTargetReturnT(
-            target_id=data['target_id']
+            success=data['success']
         )
     if casing_strategy == 'camel':
         return target.CloseTargetReturnT(
-            target_id=data['targetId']
+            success=data['success']
         )
     if casing_strategy == 'pascal':
         return target.CloseTargetReturnT(
-            target_id=data['TargetId']
+            success=data['Success']
         )
+
+
 def _target__create_browser_context_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.CreateBrowserContextReturnT':
     if casing_strategy == 'snake':
         return target.CreateBrowserContextReturnT(
-            dispose_on_detach=data['dispose_on_detach'],
-            proxy_server=data['proxy_server'],
-            proxy_bypass_list=data['proxy_bypass_list'],
-            origins_with_universal_network_access=data['origins_with_universal_network_access']
+            browser_context_id=data['browser_context_id']
         )
     if casing_strategy == 'camel':
         return target.CreateBrowserContextReturnT(
-            dispose_on_detach=data['disposeOnDetach'],
-            proxy_server=data['proxyServer'],
-            proxy_bypass_list=data['proxyBypassList'],
-            origins_with_universal_network_access=data['originsWithUniversalNetworkAccess']
+            browser_context_id=data['browserContextId']
         )
     if casing_strategy == 'pascal':
         return target.CreateBrowserContextReturnT(
-            dispose_on_detach=data['DisposeOnDetach'],
-            proxy_server=data['ProxyServer'],
-            proxy_bypass_list=data['ProxyBypassList'],
-            origins_with_universal_network_access=data['OriginsWithUniversalNetworkAccess']
+            browser_context_id=data['BrowserContextId']
         )
+
+
 def _target__get_browser_contexts_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.GetBrowserContextsReturnT':
     if casing_strategy == 'snake':
         return target.GetBrowserContextsReturnT(
+            browser_context_ids=data['browser_context_ids']
         )
     if casing_strategy == 'camel':
         return target.GetBrowserContextsReturnT(
+            browser_context_ids=data['browserContextIds']
         )
     if casing_strategy == 'pascal':
         return target.GetBrowserContextsReturnT(
+            browser_context_ids=data['BrowserContextIds']
         )
+
+
 def _target__create_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.CreateTargetReturnT':
     if casing_strategy == 'snake':
         return target.CreateTargetReturnT(
-            url=data['url'],
-            width=data['width'],
-            height=data['height'],
-            browser_context_id=data['browser_context_id'],
-            enable_begin_frame_control=data['enable_begin_frame_control'],
-            new_window=data['new_window'],
-            background=data['background'],
-            for_tab=data['for_tab']
+            target_id=data['target_id']
         )
     if casing_strategy == 'camel':
         return target.CreateTargetReturnT(
-            url=data['url'],
-            width=data['width'],
-            height=data['height'],
-            browser_context_id=data['browserContextId'],
-            enable_begin_frame_control=data['enableBeginFrameControl'],
-            new_window=data['newWindow'],
-            background=data['background'],
-            for_tab=data['forTab']
+            target_id=data['targetId']
         )
     if casing_strategy == 'pascal':
         return target.CreateTargetReturnT(
-            url=data['Url'],
-            width=data['Width'],
-            height=data['Height'],
-            browser_context_id=data['BrowserContextId'],
-            enable_begin_frame_control=data['EnableBeginFrameControl'],
-            new_window=data['NewWindow'],
-            background=data['Background'],
-            for_tab=data['ForTab']
+            target_id=data['TargetId']
         )
+
+
 def _target__get_target_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.GetTargetInfoReturnT':
     if casing_strategy == 'snake':
         return target.GetTargetInfoReturnT(
-            target_id=data['target_id']
+            target_info=from_dict(
+                data['target_info'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return target.GetTargetInfoReturnT(
-            target_id=data['targetId']
+            target_info=from_dict(
+                data['targetInfo'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return target.GetTargetInfoReturnT(
-            target_id=data['TargetId']
+            target_info=from_dict(
+                data['TargetInfo'],
+                casing_strategy
+            )
         )
+
+
 def _target__get_targets_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.GetTargetsReturnT':
     if casing_strategy == 'snake':
         return target.GetTargetsReturnT(
-            filter=data['filter']
+            target_infos=[
+                from_dict(item, casing_strategy)
+                for item in data['target_infos']
+            ]
         )
     if casing_strategy == 'camel':
         return target.GetTargetsReturnT(
-            filter=data['filter']
+            target_infos=[
+                from_dict(item, casing_strategy)
+                for item in data['targetInfos']
+            ]
         )
     if casing_strategy == 'pascal':
         return target.GetTargetsReturnT(
-            filter=data['Filter']
+            target_infos=[
+                from_dict(item, casing_strategy)
+                for item in data['TargetInfos']
+            ]
         )
+
+
 def _tracing__get_categories_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'tracing.GetCategoriesReturnT':
     if casing_strategy == 'snake':
         return tracing.GetCategoriesReturnT(
+            categories=data['categories']
         )
     if casing_strategy == 'camel':
         return tracing.GetCategoriesReturnT(
+            categories=data['categories']
         )
     if casing_strategy == 'pascal':
         return tracing.GetCategoriesReturnT(
+            categories=data['Categories']
         )
+
+
 def _tracing__request_memory_dump_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'tracing.RequestMemoryDumpReturnT':
     if casing_strategy == 'snake':
         return tracing.RequestMemoryDumpReturnT(
-            deterministic=data['deterministic'],
-            level_of_detail=data['level_of_detail']
+            dump_guid=data['dump_guid'],
+            success=data['success']
         )
     if casing_strategy == 'camel':
         return tracing.RequestMemoryDumpReturnT(
-            deterministic=data['deterministic'],
-            level_of_detail=data['levelOfDetail']
+            dump_guid=data['dumpGuid'],
+            success=data['success']
         )
     if casing_strategy == 'pascal':
         return tracing.RequestMemoryDumpReturnT(
-            deterministic=data['Deterministic'],
-            level_of_detail=data['LevelOfDetail']
+            dump_guid=data['DumpGuid'],
+            success=data['Success']
         )
+
+
 def _fetch__get_response_body_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.GetResponseBodyReturnT':
     if casing_strategy == 'snake':
         return fetch.GetResponseBodyReturnT(
-            request_id=data['request_id']
+            body=data['body'],
+            base64_encoded=data['base64_encoded']
         )
     if casing_strategy == 'camel':
         return fetch.GetResponseBodyReturnT(
-            request_id=data['requestId']
+            body=data['body'],
+            base64_encoded=data['base64Encoded']
         )
     if casing_strategy == 'pascal':
         return fetch.GetResponseBodyReturnT(
-            request_id=data['RequestId']
+            body=data['Body'],
+            base64_encoded=data['Base64Encoded']
         )
+
+
 def _fetch__take_response_body_as_stream_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.TakeResponseBodyAsStreamReturnT':
     if casing_strategy == 'snake':
         return fetch.TakeResponseBodyAsStreamReturnT(
-            request_id=data['request_id']
+            stream=data['stream']
         )
     if casing_strategy == 'camel':
         return fetch.TakeResponseBodyAsStreamReturnT(
-            request_id=data['requestId']
+            stream=data['stream']
         )
     if casing_strategy == 'pascal':
         return fetch.TakeResponseBodyAsStreamReturnT(
-            request_id=data['RequestId']
+            stream=data['Stream']
         )
+
+
 def _web_audio__get_realtime_data_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_audio.GetRealtimeDataReturnT':
     if casing_strategy == 'snake':
         return web_audio.GetRealtimeDataReturnT(
-            context_id=data['context_id']
+            realtime_data=from_dict(
+                data['realtime_data'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return web_audio.GetRealtimeDataReturnT(
-            context_id=data['contextId']
+            realtime_data=from_dict(
+                data['realtimeData'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return web_audio.GetRealtimeDataReturnT(
-            context_id=data['ContextId']
+            realtime_data=from_dict(
+                data['RealtimeData'],
+                casing_strategy
+            )
         )
+
+
 def _web_authn__add_virtual_authenticator_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.AddVirtualAuthenticatorReturnT':
     if casing_strategy == 'snake':
         return web_authn.AddVirtualAuthenticatorReturnT(
-            options=from_dict(
-                data['options'],
-                casing_strategy
-            )
+            authenticator_id=data['authenticator_id']
         )
     if casing_strategy == 'camel':
         return web_authn.AddVirtualAuthenticatorReturnT(
-            options=from_dict(
-                data['options'],
-                casing_strategy
-            )
+            authenticator_id=data['authenticatorId']
         )
     if casing_strategy == 'pascal':
         return web_authn.AddVirtualAuthenticatorReturnT(
-            options=from_dict(
-                data['Options'],
-                casing_strategy
-            )
+            authenticator_id=data['AuthenticatorId']
         )
+
+
 def _web_authn__get_credential_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.GetCredentialReturnT':
     if casing_strategy == 'snake':
         return web_authn.GetCredentialReturnT(
-            authenticator_id=data['authenticator_id'],
-            credential_id=data['credential_id']
+            credential=from_dict(
+                data['credential'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return web_authn.GetCredentialReturnT(
-            authenticator_id=data['authenticatorId'],
-            credential_id=data['credentialId']
+            credential=from_dict(
+                data['credential'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return web_authn.GetCredentialReturnT(
-            authenticator_id=data['AuthenticatorId'],
-            credential_id=data['CredentialId']
+            credential=from_dict(
+                data['Credential'],
+                casing_strategy
+            )
         )
+
+
 def _web_authn__get_credentials_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.GetCredentialsReturnT':
     if casing_strategy == 'snake':
         return web_authn.GetCredentialsReturnT(
-            authenticator_id=data['authenticator_id']
+            credentials=[
+                from_dict(item, casing_strategy)
+                for item in data['credentials']
+            ]
         )
     if casing_strategy == 'camel':
         return web_authn.GetCredentialsReturnT(
-            authenticator_id=data['authenticatorId']
+            credentials=[
+                from_dict(item, casing_strategy)
+                for item in data['credentials']
+            ]
         )
     if casing_strategy == 'pascal':
         return web_authn.GetCredentialsReturnT(
-            authenticator_id=data['AuthenticatorId']
+            credentials=[
+                from_dict(item, casing_strategy)
+                for item in data['Credentials']
+            ]
         )
+
+
 def _debugger__enable_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.EnableReturnT':
     if casing_strategy == 'snake':
         return debugger.EnableReturnT(
-            max_scripts_cache_size=data['max_scripts_cache_size']
+            debugger_id=data['debugger_id']
         )
     if casing_strategy == 'camel':
         return debugger.EnableReturnT(
-            max_scripts_cache_size=data['maxScriptsCacheSize']
+            debugger_id=data['debuggerId']
         )
     if casing_strategy == 'pascal':
         return debugger.EnableReturnT(
-            max_scripts_cache_size=data['MaxScriptsCacheSize']
+            debugger_id=data['DebuggerId']
         )
+
+
 def _debugger__evaluate_on_call_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.EvaluateOnCallFrameReturnT':
     if casing_strategy == 'snake':
         return debugger.EvaluateOnCallFrameReturnT(
-            call_frame_id=data['call_frame_id'],
-            expression=data['expression'],
-            object_group=data['object_group'],
-            include_command_line_api=data['include_command_line_api'],
-            silent=data['silent'],
-            return_by_value=data['return_by_value'],
-            generate_preview=data['generate_preview'],
-            throw_on_side_effect=data['throw_on_side_effect'],
-            timeout=data['timeout']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exception_details'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return debugger.EvaluateOnCallFrameReturnT(
-            call_frame_id=data['callFrameId'],
-            expression=data['expression'],
-            object_group=data['objectGroup'],
-            include_command_line_api=data['includeCommandLineAPI'],
-            silent=data['silent'],
-            return_by_value=data['returnByValue'],
-            generate_preview=data['generatePreview'],
-            throw_on_side_effect=data['throwOnSideEffect'],
-            timeout=data['timeout']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exceptionDetails'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return debugger.EvaluateOnCallFrameReturnT(
-            call_frame_id=data['CallFrameId'],
-            expression=data['Expression'],
-            object_group=data['ObjectGroup'],
-            include_command_line_api=data['IncludeCommandLineAPI'],
-            silent=data['Silent'],
-            return_by_value=data['ReturnByValue'],
-            generate_preview=data['GeneratePreview'],
-            throw_on_side_effect=data['ThrowOnSideEffect'],
-            timeout=data['Timeout']
+            result=from_dict(
+                data['Result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('ExceptionDetails'),
+                casing_strategy
+            )
         )
+
+
 def _debugger__get_possible_breakpoints_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.GetPossibleBreakpointsReturnT':
     if casing_strategy == 'snake':
         return debugger.GetPossibleBreakpointsReturnT(
-            start=from_dict(
-                data['start'],
-                casing_strategy
-            ),
-            end=from_dict(
-                data['end'],
-                casing_strategy
-            ),
-            restrict_to_function=data['restrict_to_function']
+            locations=[
+                from_dict(item, casing_strategy)
+                for item in data['locations']
+            ]
         )
     if casing_strategy == 'camel':
         return debugger.GetPossibleBreakpointsReturnT(
-            start=from_dict(
-                data['start'],
-                casing_strategy
-            ),
-            end=from_dict(
-                data['end'],
-                casing_strategy
-            ),
-            restrict_to_function=data['restrictToFunction']
+            locations=[
+                from_dict(item, casing_strategy)
+                for item in data['locations']
+            ]
         )
     if casing_strategy == 'pascal':
         return debugger.GetPossibleBreakpointsReturnT(
-            start=from_dict(
-                data['Start'],
-                casing_strategy
-            ),
-            end=from_dict(
-                data['End'],
-                casing_strategy
-            ),
-            restrict_to_function=data['RestrictToFunction']
+            locations=[
+                from_dict(item, casing_strategy)
+                for item in data['Locations']
+            ]
         )
+
+
 def _debugger__get_script_source_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.GetScriptSourceReturnT':
     if casing_strategy == 'snake':
         return debugger.GetScriptSourceReturnT(
-            script_id=data['script_id']
+            script_source=data['script_source']
         )
     if casing_strategy == 'camel':
         return debugger.GetScriptSourceReturnT(
-            script_id=data['scriptId']
+            script_source=data['scriptSource']
         )
     if casing_strategy == 'pascal':
         return debugger.GetScriptSourceReturnT(
-            script_id=data['ScriptId']
+            script_source=data['ScriptSource']
         )
+
+
 def _debugger__get_stack_trace_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.GetStackTraceReturnT':
     if casing_strategy == 'snake':
         return debugger.GetStackTraceReturnT(
-            stack_trace_id=from_dict(
-                data['stack_trace_id'],
+            stack_trace=from_dict(
+                data['stack_trace'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return debugger.GetStackTraceReturnT(
-            stack_trace_id=from_dict(
-                data['stackTraceId'],
+            stack_trace=from_dict(
+                data['stackTrace'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return debugger.GetStackTraceReturnT(
-            stack_trace_id=from_dict(
-                data['StackTraceId'],
+            stack_trace=from_dict(
+                data['StackTrace'],
                 casing_strategy
             )
         )
+
+
 def _debugger__restart_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.RestartFrameReturnT':
     if casing_strategy == 'snake':
         return debugger.RestartFrameReturnT(
-            call_frame_id=data['call_frame_id']
+            call_frames=[
+                from_dict(item, casing_strategy)
+                for item in data['call_frames']
+            ],
+            async_stack_trace=from_dict(
+                data.get('async_stack_trace'),
+                casing_strategy
+            ),
+            async_stack_trace_id=from_dict(
+                data.get('async_stack_trace_id'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return debugger.RestartFrameReturnT(
-            call_frame_id=data['callFrameId']
+            call_frames=[
+                from_dict(item, casing_strategy)
+                for item in data['callFrames']
+            ],
+            async_stack_trace=from_dict(
+                data.get('asyncStackTrace'),
+                casing_strategy
+            ),
+            async_stack_trace_id=from_dict(
+                data.get('asyncStackTraceId'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return debugger.RestartFrameReturnT(
-            call_frame_id=data['CallFrameId']
+            call_frames=[
+                from_dict(item, casing_strategy)
+                for item in data['CallFrames']
+            ],
+            async_stack_trace=from_dict(
+                data.get('AsyncStackTrace'),
+                casing_strategy
+            ),
+            async_stack_trace_id=from_dict(
+                data.get('AsyncStackTraceId'),
+                casing_strategy
+            )
         )
+
+
 def _debugger__search_in_content_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SearchInContentReturnT':
     if casing_strategy == 'snake':
         return debugger.SearchInContentReturnT(
-            script_id=data['script_id'],
-            query=data['query'],
-            case_sensitive=data['case_sensitive'],
-            is_regex=data['is_regex']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'camel':
         return debugger.SearchInContentReturnT(
-            script_id=data['scriptId'],
-            query=data['query'],
-            case_sensitive=data['caseSensitive'],
-            is_regex=data['isRegex']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'pascal':
         return debugger.SearchInContentReturnT(
-            script_id=data['ScriptId'],
-            query=data['Query'],
-            case_sensitive=data['CaseSensitive'],
-            is_regex=data['IsRegex']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['Result']
+            ]
         )
+
+
 def _debugger__set_breakpoint_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetBreakpointReturnT':
     if casing_strategy == 'snake':
         return debugger.SetBreakpointReturnT(
-            location=from_dict(
-                data['location'],
+            breakpoint_id=data['breakpoint_id'],
+            actual_location=from_dict(
+                data['actual_location'],
                 casing_strategy
-            ),
-            condition=data['condition']
+            )
         )
     if casing_strategy == 'camel':
         return debugger.SetBreakpointReturnT(
-            location=from_dict(
-                data['location'],
+            breakpoint_id=data['breakpointId'],
+            actual_location=from_dict(
+                data['actualLocation'],
                 casing_strategy
-            ),
-            condition=data['condition']
+            )
         )
     if casing_strategy == 'pascal':
         return debugger.SetBreakpointReturnT(
-            location=from_dict(
-                data['Location'],
+            breakpoint_id=data['BreakpointId'],
+            actual_location=from_dict(
+                data['ActualLocation'],
                 casing_strategy
-            ),
-            condition=data['Condition']
+            )
         )
+
+
 def _debugger__set_instrumentation_breakpoint_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetInstrumentationBreakpointReturnT':
     if casing_strategy == 'snake':
         return debugger.SetInstrumentationBreakpointReturnT(
-            instrumentation=data['instrumentation']
+            breakpoint_id=data['breakpoint_id']
         )
     if casing_strategy == 'camel':
         return debugger.SetInstrumentationBreakpointReturnT(
-            instrumentation=data['instrumentation']
+            breakpoint_id=data['breakpointId']
         )
     if casing_strategy == 'pascal':
         return debugger.SetInstrumentationBreakpointReturnT(
-            instrumentation=data['Instrumentation']
+            breakpoint_id=data['BreakpointId']
         )
+
+
 def _debugger__set_breakpoint_by_url_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetBreakpointByUrlReturnT':
     if casing_strategy == 'snake':
         return debugger.SetBreakpointByUrlReturnT(
-            line_number=data['line_number'],
-            url=data['url'],
-            url_regex=data['url_regex'],
-            script_hash=data['script_hash'],
-            column_number=data['column_number'],
-            condition=data['condition']
+            breakpoint_id=data['breakpoint_id'],
+            locations=[
+                from_dict(item, casing_strategy)
+                for item in data['locations']
+            ]
         )
     if casing_strategy == 'camel':
         return debugger.SetBreakpointByUrlReturnT(
-            line_number=data['lineNumber'],
-            url=data['url'],
-            url_regex=data['urlRegex'],
-            script_hash=data['scriptHash'],
-            column_number=data['columnNumber'],
-            condition=data['condition']
+            breakpoint_id=data['breakpointId'],
+            locations=[
+                from_dict(item, casing_strategy)
+                for item in data['locations']
+            ]
         )
     if casing_strategy == 'pascal':
         return debugger.SetBreakpointByUrlReturnT(
-            line_number=data['LineNumber'],
-            url=data['Url'],
-            url_regex=data['UrlRegex'],
-            script_hash=data['ScriptHash'],
-            column_number=data['ColumnNumber'],
-            condition=data['Condition']
+            breakpoint_id=data['BreakpointId'],
+            locations=[
+                from_dict(item, casing_strategy)
+                for item in data['Locations']
+            ]
         )
+
+
 def _debugger__set_breakpoint_on_function_call_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetBreakpointOnFunctionCallReturnT':
     if casing_strategy == 'snake':
         return debugger.SetBreakpointOnFunctionCallReturnT(
-            object_id=data['object_id'],
-            condition=data['condition']
+            breakpoint_id=data['breakpoint_id']
         )
     if casing_strategy == 'camel':
         return debugger.SetBreakpointOnFunctionCallReturnT(
-            object_id=data['objectId'],
-            condition=data['condition']
+            breakpoint_id=data['breakpointId']
         )
     if casing_strategy == 'pascal':
         return debugger.SetBreakpointOnFunctionCallReturnT(
-            object_id=data['ObjectId'],
-            condition=data['Condition']
+            breakpoint_id=data['BreakpointId']
         )
+
+
 def _debugger__set_script_source_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetScriptSourceReturnT':
     if casing_strategy == 'snake':
         return debugger.SetScriptSourceReturnT(
-            script_id=data['script_id'],
-            script_source=data['script_source'],
-            dry_run=data['dry_run']
+            call_frames=[
+                from_dict(item, casing_strategy)
+                for item in data.get('call_frames')
+            ],
+            stack_changed=data.get('stack_changed'),
+            async_stack_trace=from_dict(
+                data.get('async_stack_trace'),
+                casing_strategy
+            ),
+            async_stack_trace_id=from_dict(
+                data.get('async_stack_trace_id'),
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exception_details'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return debugger.SetScriptSourceReturnT(
-            script_id=data['scriptId'],
-            script_source=data['scriptSource'],
-            dry_run=data['dryRun']
+            call_frames=[
+                from_dict(item, casing_strategy)
+                for item in data.get('callFrames')
+            ],
+            stack_changed=data.get('stackChanged'),
+            async_stack_trace=from_dict(
+                data.get('asyncStackTrace'),
+                casing_strategy
+            ),
+            async_stack_trace_id=from_dict(
+                data.get('asyncStackTraceId'),
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exceptionDetails'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return debugger.SetScriptSourceReturnT(
-            script_id=data['ScriptId'],
-            script_source=data['ScriptSource'],
-            dry_run=data['DryRun']
+            call_frames=[
+                from_dict(item, casing_strategy)
+                for item in data.get('CallFrames')
+            ],
+            stack_changed=data.get('StackChanged'),
+            async_stack_trace=from_dict(
+                data.get('AsyncStackTrace'),
+                casing_strategy
+            ),
+            async_stack_trace_id=from_dict(
+                data.get('AsyncStackTraceId'),
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('ExceptionDetails'),
+                casing_strategy
+            )
         )
+
+
 def _heap_profiler__get_heap_object_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.GetHeapObjectIdReturnT':
     if casing_strategy == 'snake':
         return heap_profiler.GetHeapObjectIdReturnT(
-            object_id=data['object_id']
+            heap_snapshot_object_id=data['heap_snapshot_object_id']
         )
     if casing_strategy == 'camel':
         return heap_profiler.GetHeapObjectIdReturnT(
-            object_id=data['objectId']
+            heap_snapshot_object_id=data['heapSnapshotObjectId']
         )
     if casing_strategy == 'pascal':
         return heap_profiler.GetHeapObjectIdReturnT(
-            object_id=data['ObjectId']
+            heap_snapshot_object_id=data['HeapSnapshotObjectId']
         )
+
+
 def _heap_profiler__get_object_by_heap_object_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.GetObjectByHeapObjectIdReturnT':
     if casing_strategy == 'snake':
         return heap_profiler.GetObjectByHeapObjectIdReturnT(
-            object_id=data['object_id'],
-            object_group=data['object_group']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return heap_profiler.GetObjectByHeapObjectIdReturnT(
-            object_id=data['objectId'],
-            object_group=data['objectGroup']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return heap_profiler.GetObjectByHeapObjectIdReturnT(
-            object_id=data['ObjectId'],
-            object_group=data['ObjectGroup']
+            result=from_dict(
+                data['Result'],
+                casing_strategy
+            )
         )
+
+
 def _heap_profiler__get_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.GetSamplingProfileReturnT':
     if casing_strategy == 'snake':
         return heap_profiler.GetSamplingProfileReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return heap_profiler.GetSamplingProfileReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return heap_profiler.GetSamplingProfileReturnT(
+            profile=from_dict(
+                data['Profile'],
+                casing_strategy
+            )
         )
+
+
 def _heap_profiler__stop_sampling_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.StopSamplingReturnT':
     if casing_strategy == 'snake':
         return heap_profiler.StopSamplingReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return heap_profiler.StopSamplingReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return heap_profiler.StopSamplingReturnT(
+            profile=from_dict(
+                data['Profile'],
+                casing_strategy
+            )
         )
+
+
 def _profiler__get_best_effort_coverage_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.GetBestEffortCoverageReturnT':
     if casing_strategy == 'snake':
         return profiler.GetBestEffortCoverageReturnT(
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'camel':
         return profiler.GetBestEffortCoverageReturnT(
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'pascal':
         return profiler.GetBestEffortCoverageReturnT(
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['Result']
+            ]
         )
+
+
 def _profiler__stop_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.StopReturnT':
     if casing_strategy == 'snake':
         return profiler.StopReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return profiler.StopReturnT(
+            profile=from_dict(
+                data['profile'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return profiler.StopReturnT(
+            profile=from_dict(
+                data['Profile'],
+                casing_strategy
+            )
         )
+
+
 def _profiler__take_precise_coverage_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.TakePreciseCoverageReturnT':
     if casing_strategy == 'snake':
         return profiler.TakePreciseCoverageReturnT(
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'camel':
         return profiler.TakePreciseCoverageReturnT(
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'pascal':
         return profiler.TakePreciseCoverageReturnT(
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['Result']
+            ]
         )
+
+
 def _profiler__take_type_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.TakeTypeProfileReturnT':
     if casing_strategy == 'snake':
         return profiler.TakeTypeProfileReturnT(
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'camel':
         return profiler.TakeTypeProfileReturnT(
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ]
         )
     if casing_strategy == 'pascal':
         return profiler.TakeTypeProfileReturnT(
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['Result']
+            ]
         )
+
+
 def _runtime__await_promise_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.AwaitPromiseReturnT':
     if casing_strategy == 'snake':
         return runtime.AwaitPromiseReturnT(
-            promise_object_id=data['promise_object_id'],
-            return_by_value=data['return_by_value'],
-            generate_preview=data['generate_preview']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exception_details'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return runtime.AwaitPromiseReturnT(
-            promise_object_id=data['promiseObjectId'],
-            return_by_value=data['returnByValue'],
-            generate_preview=data['generatePreview']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exceptionDetails'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return runtime.AwaitPromiseReturnT(
-            promise_object_id=data['PromiseObjectId'],
-            return_by_value=data['ReturnByValue'],
-            generate_preview=data['GeneratePreview']
+            result=from_dict(
+                data['Result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('ExceptionDetails'),
+                casing_strategy
+            )
         )
+
+
 def _runtime__call_function_on_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.CallFunctionOnReturnT':
     if casing_strategy == 'snake':
         return runtime.CallFunctionOnReturnT(
-            function_declaration=data['function_declaration'],
-            object_id=data['object_id'],
-            arguments=[
-                from_dict(item, casing_strategy)
-                for item in data['arguments']
-            ],
-            silent=data['silent'],
-            return_by_value=data['return_by_value'],
-            generate_preview=data['generate_preview'],
-            user_gesture=data['user_gesture'],
-            await_promise=data['await_promise'],
-            execution_context_id=data['execution_context_id'],
-            object_group=data['object_group']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exception_details'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return runtime.CallFunctionOnReturnT(
-            function_declaration=data['functionDeclaration'],
-            object_id=data['objectId'],
-            arguments=[
-                from_dict(item, casing_strategy)
-                for item in data['arguments']
-            ],
-            silent=data['silent'],
-            return_by_value=data['returnByValue'],
-            generate_preview=data['generatePreview'],
-            user_gesture=data['userGesture'],
-            await_promise=data['awaitPromise'],
-            execution_context_id=data['executionContextId'],
-            object_group=data['objectGroup']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exceptionDetails'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return runtime.CallFunctionOnReturnT(
-            function_declaration=data['FunctionDeclaration'],
-            object_id=data['ObjectId'],
-            arguments=[
-                from_dict(item, casing_strategy)
-                for item in data['Arguments']
-            ],
-            silent=data['Silent'],
-            return_by_value=data['ReturnByValue'],
-            generate_preview=data['GeneratePreview'],
-            user_gesture=data['UserGesture'],
-            await_promise=data['AwaitPromise'],
-            execution_context_id=data['ExecutionContextId'],
-            object_group=data['ObjectGroup']
+            result=from_dict(
+                data['Result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('ExceptionDetails'),
+                casing_strategy
+            )
         )
+
+
 def _runtime__compile_script_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.CompileScriptReturnT':
     if casing_strategy == 'snake':
         return runtime.CompileScriptReturnT(
-            expression=data['expression'],
-            source_url=data['source_url'],
-            persist_script=data['persist_script'],
-            execution_context_id=data['execution_context_id']
+            script_id=data.get('script_id'),
+            exception_details=from_dict(
+                data.get('exception_details'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return runtime.CompileScriptReturnT(
-            expression=data['expression'],
-            source_url=data['sourceURL'],
-            persist_script=data['persistScript'],
-            execution_context_id=data['executionContextId']
+            script_id=data.get('scriptId'),
+            exception_details=from_dict(
+                data.get('exceptionDetails'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return runtime.CompileScriptReturnT(
-            expression=data['Expression'],
-            source_url=data['SourceURL'],
-            persist_script=data['PersistScript'],
-            execution_context_id=data['ExecutionContextId']
+            script_id=data.get('ScriptId'),
+            exception_details=from_dict(
+                data.get('ExceptionDetails'),
+                casing_strategy
+            )
         )
+
+
 def _runtime__evaluate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.EvaluateReturnT':
     if casing_strategy == 'snake':
         return runtime.EvaluateReturnT(
-            expression=data['expression'],
-            object_group=data['object_group'],
-            include_command_line_api=data['include_command_line_api'],
-            silent=data['silent'],
-            context_id=data['context_id'],
-            return_by_value=data['return_by_value'],
-            generate_preview=data['generate_preview'],
-            user_gesture=data['user_gesture'],
-            await_promise=data['await_promise'],
-            throw_on_side_effect=data['throw_on_side_effect'],
-            timeout=data['timeout']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exception_details'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return runtime.EvaluateReturnT(
-            expression=data['expression'],
-            object_group=data['objectGroup'],
-            include_command_line_api=data['includeCommandLineAPI'],
-            silent=data['silent'],
-            context_id=data['contextId'],
-            return_by_value=data['returnByValue'],
-            generate_preview=data['generatePreview'],
-            user_gesture=data['userGesture'],
-            await_promise=data['awaitPromise'],
-            throw_on_side_effect=data['throwOnSideEffect'],
-            timeout=data['timeout']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exceptionDetails'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return runtime.EvaluateReturnT(
-            expression=data['Expression'],
-            object_group=data['ObjectGroup'],
-            include_command_line_api=data['IncludeCommandLineAPI'],
-            silent=data['Silent'],
-            context_id=data['ContextId'],
-            return_by_value=data['ReturnByValue'],
-            generate_preview=data['GeneratePreview'],
-            user_gesture=data['UserGesture'],
-            await_promise=data['AwaitPromise'],
-            throw_on_side_effect=data['ThrowOnSideEffect'],
-            timeout=data['Timeout']
+            result=from_dict(
+                data['Result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('ExceptionDetails'),
+                casing_strategy
+            )
         )
+
+
 def _runtime__get_isolate_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GetIsolateIdReturnT':
     if casing_strategy == 'snake':
         return runtime.GetIsolateIdReturnT(
+            id=data['id']
         )
     if casing_strategy == 'camel':
         return runtime.GetIsolateIdReturnT(
+            id=data['id']
         )
     if casing_strategy == 'pascal':
         return runtime.GetIsolateIdReturnT(
+            id=data['Id']
         )
+
+
 def _runtime__get_heap_usage_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GetHeapUsageReturnT':
     if casing_strategy == 'snake':
         return runtime.GetHeapUsageReturnT(
+            used_size=data['used_size'],
+            total_size=data['total_size']
         )
     if casing_strategy == 'camel':
         return runtime.GetHeapUsageReturnT(
+            used_size=data['usedSize'],
+            total_size=data['totalSize']
         )
     if casing_strategy == 'pascal':
         return runtime.GetHeapUsageReturnT(
+            used_size=data['UsedSize'],
+            total_size=data['TotalSize']
         )
+
+
 def _runtime__get_properties_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GetPropertiesReturnT':
     if casing_strategy == 'snake':
         return runtime.GetPropertiesReturnT(
-            object_id=data['object_id'],
-            own_properties=data['own_properties'],
-            accessor_properties_only=data['accessor_properties_only'],
-            generate_preview=data['generate_preview']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ],
+            internal_properties=[
+                from_dict(item, casing_strategy)
+                for item in data.get('internal_properties')
+            ],
+            private_properties=[
+                from_dict(item, casing_strategy)
+                for item in data.get('private_properties')
+            ],
+            exception_details=from_dict(
+                data.get('exception_details'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return runtime.GetPropertiesReturnT(
-            object_id=data['objectId'],
-            own_properties=data['ownProperties'],
-            accessor_properties_only=data['accessorPropertiesOnly'],
-            generate_preview=data['generatePreview']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['result']
+            ],
+            internal_properties=[
+                from_dict(item, casing_strategy)
+                for item in data.get('internalProperties')
+            ],
+            private_properties=[
+                from_dict(item, casing_strategy)
+                for item in data.get('privateProperties')
+            ],
+            exception_details=from_dict(
+                data.get('exceptionDetails'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return runtime.GetPropertiesReturnT(
-            object_id=data['ObjectId'],
-            own_properties=data['OwnProperties'],
-            accessor_properties_only=data['AccessorPropertiesOnly'],
-            generate_preview=data['GeneratePreview']
+            result=[
+                from_dict(item, casing_strategy)
+                for item in data['Result']
+            ],
+            internal_properties=[
+                from_dict(item, casing_strategy)
+                for item in data.get('InternalProperties')
+            ],
+            private_properties=[
+                from_dict(item, casing_strategy)
+                for item in data.get('PrivateProperties')
+            ],
+            exception_details=from_dict(
+                data.get('ExceptionDetails'),
+                casing_strategy
+            )
         )
+
+
 def _runtime__global_lexical_scope_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GlobalLexicalScopeNamesReturnT':
     if casing_strategy == 'snake':
         return runtime.GlobalLexicalScopeNamesReturnT(
-            execution_context_id=data['execution_context_id']
+            names=data['names']
         )
     if casing_strategy == 'camel':
         return runtime.GlobalLexicalScopeNamesReturnT(
-            execution_context_id=data['executionContextId']
+            names=data['names']
         )
     if casing_strategy == 'pascal':
         return runtime.GlobalLexicalScopeNamesReturnT(
-            execution_context_id=data['ExecutionContextId']
+            names=data['Names']
         )
+
+
 def _runtime__query_objects_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.QueryObjectsReturnT':
     if casing_strategy == 'snake':
         return runtime.QueryObjectsReturnT(
-            prototype_object_id=data['prototype_object_id'],
-            object_group=data['object_group']
+            objects=from_dict(
+                data['objects'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return runtime.QueryObjectsReturnT(
-            prototype_object_id=data['prototypeObjectId'],
-            object_group=data['objectGroup']
+            objects=from_dict(
+                data['objects'],
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return runtime.QueryObjectsReturnT(
-            prototype_object_id=data['PrototypeObjectId'],
-            object_group=data['ObjectGroup']
+            objects=from_dict(
+                data['Objects'],
+                casing_strategy
+            )
         )
+
+
 def _runtime__run_script_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.RunScriptReturnT':
     if casing_strategy == 'snake':
         return runtime.RunScriptReturnT(
-            script_id=data['script_id'],
-            execution_context_id=data['execution_context_id'],
-            object_group=data['object_group'],
-            silent=data['silent'],
-            include_command_line_api=data['include_command_line_api'],
-            return_by_value=data['return_by_value'],
-            generate_preview=data['generate_preview'],
-            await_promise=data['await_promise']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exception_details'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'camel':
         return runtime.RunScriptReturnT(
-            script_id=data['scriptId'],
-            execution_context_id=data['executionContextId'],
-            object_group=data['objectGroup'],
-            silent=data['silent'],
-            include_command_line_api=data['includeCommandLineAPI'],
-            return_by_value=data['returnByValue'],
-            generate_preview=data['generatePreview'],
-            await_promise=data['awaitPromise']
+            result=from_dict(
+                data['result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('exceptionDetails'),
+                casing_strategy
+            )
         )
     if casing_strategy == 'pascal':
         return runtime.RunScriptReturnT(
-            script_id=data['ScriptId'],
-            execution_context_id=data['ExecutionContextId'],
-            object_group=data['ObjectGroup'],
-            silent=data['Silent'],
-            include_command_line_api=data['IncludeCommandLineAPI'],
-            return_by_value=data['ReturnByValue'],
-            generate_preview=data['GeneratePreview'],
-            await_promise=data['AwaitPromise']
+            result=from_dict(
+                data['Result'],
+                casing_strategy
+            ),
+            exception_details=from_dict(
+                data.get('ExceptionDetails'),
+                casing_strategy
+            )
         )
+
+
 def _schema__get_domains_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'schema.GetDomainsReturnT':
     if casing_strategy == 'snake':
         return schema.GetDomainsReturnT(
+            domains=[
+                from_dict(item, casing_strategy)
+                for item in data['domains']
+            ]
         )
     if casing_strategy == 'camel':
         return schema.GetDomainsReturnT(
+            domains=[
+                from_dict(item, casing_strategy)
+                for item in data['domains']
+            ]
         )
     if casing_strategy == 'pascal':
         return schema.GetDomainsReturnT(
+            domains=[
+                from_dict(item, casing_strategy)
+                for item in data['Domains']
+            ]
         )
 
 
