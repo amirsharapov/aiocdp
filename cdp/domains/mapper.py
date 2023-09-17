@@ -24203,7 +24203,6 @@ def _accessibility__get_partial_ax_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetPartialAXTreeReturnT':
-    pass
     if casing_strategy == 'snake':
         return accessibility.GetPartialAXTreeReturnT(
             node_id=data['node_id'],
@@ -24229,7 +24228,6 @@ def _accessibility__get_full_ax_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetFullAXTreeReturnT':
-    pass
     if casing_strategy == 'snake':
         return accessibility.GetFullAXTreeReturnT(
             depth=data['depth'],
@@ -24249,7 +24247,6 @@ def _accessibility__get_root_ax_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetRootAXNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return accessibility.GetRootAXNodeReturnT(
             frame_id=data['frame_id']
@@ -24266,7 +24263,6 @@ def _accessibility__get_ax_node_and_ancestors_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetAXNodeAndAncestorsReturnT':
-    pass
     if casing_strategy == 'snake':
         return accessibility.GetAXNodeAndAncestorsReturnT(
             node_id=data['node_id'],
@@ -24289,7 +24285,6 @@ def _accessibility__get_child_ax_nodes_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetChildAXNodesReturnT':
-    pass
     if casing_strategy == 'snake':
         return accessibility.GetChildAXNodesReturnT(
             id=data['id'],
@@ -24309,7 +24304,6 @@ def _accessibility__query_ax_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.QueryAXTreeReturnT':
-    pass
     if casing_strategy == 'snake':
         return accessibility.QueryAXTreeReturnT(
             node_id=data['node_id'],
@@ -24338,7 +24332,6 @@ def _animation__get_current_time_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.GetCurrentTimeReturnT':
-    pass
     if casing_strategy == 'snake':
         return animation.GetCurrentTimeReturnT(
             id=data['id']
@@ -24355,7 +24348,6 @@ def _animation__get_playback_rate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.GetPlaybackRateReturnT':
-    pass
     if casing_strategy == 'snake':
         return animation.GetPlaybackRateReturnT(
         )
@@ -24369,7 +24361,6 @@ def _animation__resolve_animation_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.ResolveAnimationReturnT':
-    pass
     if casing_strategy == 'snake':
         return animation.ResolveAnimationReturnT(
             animation_id=data['animation_id']
@@ -24386,7 +24377,6 @@ def _audits__get_encoded_response_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.GetEncodedResponseReturnT':
-    pass
     if casing_strategy == 'snake':
         return audits.GetEncodedResponseReturnT(
             request_id=data['request_id'],
@@ -24412,7 +24402,6 @@ def _audits__check_forms_issues_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.CheckFormsIssuesReturnT':
-    pass
     if casing_strategy == 'snake':
         return audits.CheckFormsIssuesReturnT(
         )
@@ -24426,7 +24415,6 @@ def _browser__get_version_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetVersionReturnT':
-    pass
     if casing_strategy == 'snake':
         return browser.GetVersionReturnT(
         )
@@ -24440,7 +24428,6 @@ def _browser__get_browser_command_line_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetBrowserCommandLineReturnT':
-    pass
     if casing_strategy == 'snake':
         return browser.GetBrowserCommandLineReturnT(
         )
@@ -24454,7 +24441,6 @@ def _browser__get_histograms_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetHistogramsReturnT':
-    pass
     if casing_strategy == 'snake':
         return browser.GetHistogramsReturnT(
             query=data['query'],
@@ -24474,7 +24460,6 @@ def _browser__get_histogram_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetHistogramReturnT':
-    pass
     if casing_strategy == 'snake':
         return browser.GetHistogramReturnT(
             name=data['name'],
@@ -24494,7 +24479,6 @@ def _browser__get_window_bounds_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetWindowBoundsReturnT':
-    pass
     if casing_strategy == 'snake':
         return browser.GetWindowBoundsReturnT(
             window_id=data['window_id']
@@ -24511,7 +24495,6 @@ def _browser__get_window_for_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetWindowForTargetReturnT':
-    pass
     if casing_strategy == 'snake':
         return browser.GetWindowForTargetReturnT(
             target_id=data['target_id']
@@ -24528,7 +24511,6 @@ def _css__add_rule_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.AddRuleReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.AddRuleReturnT(
             style_sheet_id=data['style_sheet_id'],
@@ -24560,7 +24542,6 @@ def _css__collect_class_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CollectClassNamesReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.CollectClassNamesReturnT(
             style_sheet_id=data['style_sheet_id']
@@ -24577,7 +24558,6 @@ def _css__create_style_sheet_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CreateStyleSheetReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.CreateStyleSheetReturnT(
             frame_id=data['frame_id']
@@ -24594,7 +24574,6 @@ def _css__get_background_colors_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetBackgroundColorsReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.GetBackgroundColorsReturnT(
             node_id=data['node_id']
@@ -24611,7 +24590,6 @@ def _css__get_computed_style_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetComputedStyleForNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.GetComputedStyleForNodeReturnT(
             node_id=data['node_id']
@@ -24628,7 +24606,6 @@ def _css__get_inline_styles_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetInlineStylesForNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.GetInlineStylesForNodeReturnT(
             node_id=data['node_id']
@@ -24645,7 +24622,6 @@ def _css__get_matched_styles_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetMatchedStylesForNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.GetMatchedStylesForNodeReturnT(
             node_id=data['node_id']
@@ -24662,7 +24638,6 @@ def _css__get_media_queries_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetMediaQueriesReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.GetMediaQueriesReturnT(
         )
@@ -24676,7 +24651,6 @@ def _css__get_platform_fonts_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetPlatformFontsForNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.GetPlatformFontsForNodeReturnT(
             node_id=data['node_id']
@@ -24693,7 +24667,6 @@ def _css__get_style_sheet_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetStyleSheetTextReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.GetStyleSheetTextReturnT(
             style_sheet_id=data['style_sheet_id']
@@ -24710,7 +24683,6 @@ def _css__get_layers_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetLayersForNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.GetLayersForNodeReturnT(
             node_id=data['node_id']
@@ -24727,7 +24699,6 @@ def _css__take_computed_style_updates_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.TakeComputedStyleUpdatesReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.TakeComputedStyleUpdatesReturnT(
         )
@@ -24741,7 +24712,6 @@ def _css__set_keyframe_key_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetKeyframeKeyReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.SetKeyframeKeyReturnT(
             style_sheet_id=data['style_sheet_id'],
@@ -24773,7 +24743,6 @@ def _css__set_media_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetMediaTextReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.SetMediaTextReturnT(
             style_sheet_id=data['style_sheet_id'],
@@ -24805,7 +24774,6 @@ def _css__set_container_query_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetContainerQueryTextReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.SetContainerQueryTextReturnT(
             style_sheet_id=data['style_sheet_id'],
@@ -24837,7 +24805,6 @@ def _css__set_supports_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetSupportsTextReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.SetSupportsTextReturnT(
             style_sheet_id=data['style_sheet_id'],
@@ -24869,7 +24836,6 @@ def _css__set_scope_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetScopeTextReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.SetScopeTextReturnT(
             style_sheet_id=data['style_sheet_id'],
@@ -24901,7 +24867,6 @@ def _css__set_rule_selector_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetRuleSelectorReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.SetRuleSelectorReturnT(
             style_sheet_id=data['style_sheet_id'],
@@ -24933,7 +24898,6 @@ def _css__set_style_sheet_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetStyleSheetTextReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.SetStyleSheetTextReturnT(
             style_sheet_id=data['style_sheet_id'],
@@ -24953,7 +24917,6 @@ def _css__set_style_texts_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetStyleTextsReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.SetStyleTextsReturnT(
             edits=[
@@ -24979,7 +24942,6 @@ def _css__stop_rule_usage_tracking_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.StopRuleUsageTrackingReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.StopRuleUsageTrackingReturnT(
         )
@@ -24993,7 +24955,6 @@ def _css__take_coverage_delta_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.TakeCoverageDeltaReturnT':
-    pass
     if casing_strategy == 'snake':
         return css.TakeCoverageDeltaReturnT(
         )
@@ -25007,7 +24968,6 @@ def _cache_storage__request_cache_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.RequestCacheNamesReturnT':
-    pass
     if casing_strategy == 'snake':
         return cache_storage.RequestCacheNamesReturnT(
             security_origin=data['security_origin'],
@@ -25039,7 +24999,6 @@ def _cache_storage__request_cached_response_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.RequestCachedResponseReturnT':
-    pass
     if casing_strategy == 'snake':
         return cache_storage.RequestCachedResponseReturnT(
             cache_id=data['cache_id'],
@@ -25071,7 +25030,6 @@ def _cache_storage__request_entries_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.RequestEntriesReturnT':
-    pass
     if casing_strategy == 'snake':
         return cache_storage.RequestEntriesReturnT(
             cache_id=data['cache_id'],
@@ -25097,7 +25055,6 @@ def _dom__collect_class_names_from_subtree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.CollectClassNamesFromSubtreeReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.CollectClassNamesFromSubtreeReturnT(
             node_id=data['node_id']
@@ -25114,7 +25071,6 @@ def _dom__copy_to_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.CopyToReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.CopyToReturnT(
             node_id=data['node_id'],
@@ -25137,7 +25093,6 @@ def _dom__describe_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.DescribeNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.DescribeNodeReturnT(
             node_id=data['node_id'],
@@ -25166,7 +25121,6 @@ def _dom__get_attributes_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetAttributesReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetAttributesReturnT(
             node_id=data['node_id']
@@ -25183,7 +25137,6 @@ def _dom__get_box_model_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetBoxModelReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetBoxModelReturnT(
             node_id=data['node_id'],
@@ -25206,7 +25159,6 @@ def _dom__get_content_quads_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetContentQuadsReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetContentQuadsReturnT(
             node_id=data['node_id'],
@@ -25229,7 +25181,6 @@ def _dom__get_document_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetDocumentReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetDocumentReturnT(
             depth=data['depth'],
@@ -25249,7 +25200,6 @@ def _dom__get_flattened_document_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetFlattenedDocumentReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetFlattenedDocumentReturnT(
             depth=data['depth'],
@@ -25269,7 +25219,6 @@ def _dom__get_nodes_for_subtree_by_style_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetNodesForSubtreeByStyleReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetNodesForSubtreeByStyleReturnT(
             node_id=data['node_id'],
@@ -25301,7 +25250,6 @@ def _dom__get_node_for_location_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetNodeForLocationReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetNodeForLocationReturnT(
             x=data['x'],
@@ -25327,7 +25275,6 @@ def _dom__get_outer_html_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetOuterHTMLReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetOuterHTMLReturnT(
             node_id=data['node_id'],
@@ -25350,7 +25297,6 @@ def _dom__get_relayout_boundary_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetRelayoutBoundaryReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetRelayoutBoundaryReturnT(
             node_id=data['node_id']
@@ -25367,7 +25313,6 @@ def _dom__get_search_results_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetSearchResultsReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetSearchResultsReturnT(
             search_id=data['search_id'],
@@ -25390,7 +25335,6 @@ def _dom__move_to_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.MoveToReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.MoveToReturnT(
             node_id=data['node_id'],
@@ -25413,7 +25357,6 @@ def _dom__perform_search_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.PerformSearchReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.PerformSearchReturnT(
             query=data['query'],
@@ -25433,7 +25376,6 @@ def _dom__push_node_by_path_to_frontend_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.PushNodeByPathToFrontendReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.PushNodeByPathToFrontendReturnT(
             path=data['path']
@@ -25450,7 +25392,6 @@ def _dom__push_nodes_by_backend_ids_to_frontend_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.PushNodesByBackendIdsToFrontendReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.PushNodesByBackendIdsToFrontendReturnT(
             backend_node_ids=data['backend_node_ids']
@@ -25467,7 +25408,6 @@ def _dom__query_selector_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.QuerySelectorReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.QuerySelectorReturnT(
             node_id=data['node_id'],
@@ -25487,7 +25427,6 @@ def _dom__query_selector_all_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.QuerySelectorAllReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.QuerySelectorAllReturnT(
             node_id=data['node_id'],
@@ -25507,7 +25446,6 @@ def _dom__get_top_layer_elements_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetTopLayerElementsReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetTopLayerElementsReturnT(
         )
@@ -25521,7 +25459,6 @@ def _dom__request_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.RequestNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.RequestNodeReturnT(
             object_id=data['object_id']
@@ -25538,7 +25475,6 @@ def _dom__resolve_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.ResolveNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.ResolveNodeReturnT(
             node_id=data['node_id'],
@@ -25564,7 +25500,6 @@ def _dom__get_node_stack_traces_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetNodeStackTracesReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetNodeStackTracesReturnT(
             node_id=data['node_id']
@@ -25581,7 +25516,6 @@ def _dom__get_file_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetFileInfoReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetFileInfoReturnT(
             object_id=data['object_id']
@@ -25598,7 +25532,6 @@ def _dom__set_node_name_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.SetNodeNameReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.SetNodeNameReturnT(
             node_id=data['node_id'],
@@ -25618,7 +25551,6 @@ def _dom__get_frame_owner_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetFrameOwnerReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetFrameOwnerReturnT(
             frame_id=data['frame_id']
@@ -25635,7 +25567,6 @@ def _dom__get_container_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetContainerForNodeReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetContainerForNodeReturnT(
             node_id=data['node_id'],
@@ -25661,7 +25592,6 @@ def _dom__get_querying_descendants_for_container_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetQueryingDescendantsForContainerReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom.GetQueryingDescendantsForContainerReturnT(
             node_id=data['node_id']
@@ -25678,7 +25608,6 @@ def _dom_debugger__get_event_listeners_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_debugger.GetEventListenersReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom_debugger.GetEventListenersReturnT(
             object_id=data['object_id'],
@@ -25701,7 +25630,6 @@ def _dom_snapshot__get_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.GetSnapshotReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom_snapshot.GetSnapshotReturnT(
             computed_style_whitelist=data['computed_style_whitelist'],
@@ -25727,7 +25655,6 @@ def _dom_snapshot__capture_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.CaptureSnapshotReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom_snapshot.CaptureSnapshotReturnT(
             computed_styles=data['computed_styles'],
@@ -25756,7 +25683,6 @@ def _dom_storage__get_dom_storage_items_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_storage.GetDOMStorageItemsReturnT':
-    pass
     if casing_strategy == 'snake':
         return dom_storage.GetDOMStorageItemsReturnT(
             storage_id=from_dict(
@@ -25782,7 +25708,6 @@ def _database__execute_sql_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'database.ExecuteSQLReturnT':
-    pass
     if casing_strategy == 'snake':
         return database.ExecuteSQLReturnT(
             database_id=data['database_id'],
@@ -25802,7 +25727,6 @@ def _database__get_database_table_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'database.GetDatabaseTableNamesReturnT':
-    pass
     if casing_strategy == 'snake':
         return database.GetDatabaseTableNamesReturnT(
             database_id=data['database_id']
@@ -25819,7 +25743,6 @@ def _emulation__can_emulate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.CanEmulateReturnT':
-    pass
     if casing_strategy == 'snake':
         return emulation.CanEmulateReturnT(
         )
@@ -25833,7 +25756,6 @@ def _emulation__set_virtual_time_policy_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.SetVirtualTimePolicyReturnT':
-    pass
     if casing_strategy == 'snake':
         return emulation.SetVirtualTimePolicyReturnT(
             policy=data['policy'],
@@ -25859,7 +25781,6 @@ def _headless_experimental__begin_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'headless_experimental.BeginFrameReturnT':
-    pass
     if casing_strategy == 'snake':
         return headless_experimental.BeginFrameReturnT(
             frame_time_ticks=data['frame_time_ticks'],
@@ -25894,7 +25815,6 @@ def _io__read_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'io.ReadReturnT':
-    pass
     if casing_strategy == 'snake':
         return io.ReadReturnT(
             handle=data['handle'],
@@ -25917,7 +25837,6 @@ def _io__resolve_blob_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'io.ResolveBlobReturnT':
-    pass
     if casing_strategy == 'snake':
         return io.ResolveBlobReturnT(
             object_id=data['object_id']
@@ -25934,7 +25853,6 @@ def _indexed_db__request_data_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.RequestDataReturnT':
-    pass
     if casing_strategy == 'snake':
         return indexed_db.RequestDataReturnT(
             security_origin=data['security_origin'],
@@ -25993,7 +25911,6 @@ def _indexed_db__get_metadata_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.GetMetadataReturnT':
-    pass
     if casing_strategy == 'snake':
         return indexed_db.GetMetadataReturnT(
             security_origin=data['security_origin'],
@@ -26031,7 +25948,6 @@ def _indexed_db__request_database_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.RequestDatabaseReturnT':
-    pass
     if casing_strategy == 'snake':
         return indexed_db.RequestDatabaseReturnT(
             security_origin=data['security_origin'],
@@ -26066,7 +25982,6 @@ def _indexed_db__request_database_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.RequestDatabaseNamesReturnT':
-    pass
     if casing_strategy == 'snake':
         return indexed_db.RequestDatabaseNamesReturnT(
             security_origin=data['security_origin'],
@@ -26098,7 +26013,6 @@ def _layer_tree__compositing_reasons_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.CompositingReasonsReturnT':
-    pass
     if casing_strategy == 'snake':
         return layer_tree.CompositingReasonsReturnT(
             layer_id=data['layer_id']
@@ -26115,7 +26029,6 @@ def _layer_tree__load_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.LoadSnapshotReturnT':
-    pass
     if casing_strategy == 'snake':
         return layer_tree.LoadSnapshotReturnT(
             tiles=[
@@ -26141,7 +26054,6 @@ def _layer_tree__make_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.MakeSnapshotReturnT':
-    pass
     if casing_strategy == 'snake':
         return layer_tree.MakeSnapshotReturnT(
             layer_id=data['layer_id']
@@ -26158,7 +26070,6 @@ def _layer_tree__profile_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.ProfileSnapshotReturnT':
-    pass
     if casing_strategy == 'snake':
         return layer_tree.ProfileSnapshotReturnT(
             snapshot_id=data['snapshot_id'],
@@ -26193,7 +26104,6 @@ def _layer_tree__replay_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.ReplaySnapshotReturnT':
-    pass
     if casing_strategy == 'snake':
         return layer_tree.ReplaySnapshotReturnT(
             snapshot_id=data['snapshot_id'],
@@ -26219,7 +26129,6 @@ def _layer_tree__snapshot_command_log_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.SnapshotCommandLogReturnT':
-    pass
     if casing_strategy == 'snake':
         return layer_tree.SnapshotCommandLogReturnT(
             snapshot_id=data['snapshot_id']
@@ -26236,7 +26145,6 @@ def _memory__get_dom_counters_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetDOMCountersReturnT':
-    pass
     if casing_strategy == 'snake':
         return memory.GetDOMCountersReturnT(
         )
@@ -26250,7 +26158,6 @@ def _memory__get_all_time_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetAllTimeSamplingProfileReturnT':
-    pass
     if casing_strategy == 'snake':
         return memory.GetAllTimeSamplingProfileReturnT(
         )
@@ -26264,7 +26171,6 @@ def _memory__get_browser_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetBrowserSamplingProfileReturnT':
-    pass
     if casing_strategy == 'snake':
         return memory.GetBrowserSamplingProfileReturnT(
         )
@@ -26278,7 +26184,6 @@ def _memory__get_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetSamplingProfileReturnT':
-    pass
     if casing_strategy == 'snake':
         return memory.GetSamplingProfileReturnT(
         )
@@ -26292,7 +26197,6 @@ def _network__can_clear_browser_cache_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CanClearBrowserCacheReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.CanClearBrowserCacheReturnT(
         )
@@ -26306,7 +26210,6 @@ def _network__can_clear_browser_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CanClearBrowserCookiesReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.CanClearBrowserCookiesReturnT(
         )
@@ -26320,7 +26223,6 @@ def _network__can_emulate_network_conditions_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CanEmulateNetworkConditionsReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.CanEmulateNetworkConditionsReturnT(
         )
@@ -26334,7 +26236,6 @@ def _network__get_all_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetAllCookiesReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.GetAllCookiesReturnT(
         )
@@ -26348,7 +26249,6 @@ def _network__get_certificate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetCertificateReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.GetCertificateReturnT(
             origin=data['origin']
@@ -26365,7 +26265,6 @@ def _network__get_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetCookiesReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.GetCookiesReturnT(
             urls=data['urls']
@@ -26382,7 +26281,6 @@ def _network__get_response_body_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetResponseBodyReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.GetResponseBodyReturnT(
             request_id=data['request_id']
@@ -26399,7 +26297,6 @@ def _network__get_request_post_data_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetRequestPostDataReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.GetRequestPostDataReturnT(
             request_id=data['request_id']
@@ -26416,7 +26313,6 @@ def _network__get_response_body_for_interception_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetResponseBodyForInterceptionReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.GetResponseBodyForInterceptionReturnT(
             interception_id=data['interception_id']
@@ -26433,7 +26329,6 @@ def _network__take_response_body_for_interception_as_stream_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.TakeResponseBodyForInterceptionAsStreamReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.TakeResponseBodyForInterceptionAsStreamReturnT(
             interception_id=data['interception_id']
@@ -26450,7 +26345,6 @@ def _network__search_in_response_body_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SearchInResponseBodyReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.SearchInResponseBodyReturnT(
             request_id=data['request_id'],
@@ -26476,7 +26370,6 @@ def _network__set_cookie_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SetCookieReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.SetCookieReturnT(
             name=data['name'],
@@ -26532,7 +26425,6 @@ def _network__get_security_isolation_status_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetSecurityIsolationStatusReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.GetSecurityIsolationStatusReturnT(
             frame_id=data['frame_id']
@@ -26549,7 +26441,6 @@ def _network__load_network_resource_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.LoadNetworkResourceReturnT':
-    pass
     if casing_strategy == 'snake':
         return network.LoadNetworkResourceReturnT(
             frame_id=data['frame_id'],
@@ -26581,7 +26472,6 @@ def _overlay__get_highlight_object_for_test_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GetHighlightObjectForTestReturnT':
-    pass
     if casing_strategy == 'snake':
         return overlay.GetHighlightObjectForTestReturnT(
             node_id=data['node_id'],
@@ -26610,7 +26500,6 @@ def _overlay__get_grid_highlight_objects_for_test_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GetGridHighlightObjectsForTestReturnT':
-    pass
     if casing_strategy == 'snake':
         return overlay.GetGridHighlightObjectsForTestReturnT(
             node_ids=data['node_ids']
@@ -26627,7 +26516,6 @@ def _overlay__get_source_order_highlight_object_for_test_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GetSourceOrderHighlightObjectForTestReturnT':
-    pass
     if casing_strategy == 'snake':
         return overlay.GetSourceOrderHighlightObjectForTestReturnT(
             node_id=data['node_id']
@@ -26644,7 +26532,6 @@ def _page__add_script_to_evaluate_on_load_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AddScriptToEvaluateOnLoadReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.AddScriptToEvaluateOnLoadReturnT(
             script_source=data['script_source']
@@ -26661,7 +26548,6 @@ def _page__add_script_to_evaluate_on_new_document_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AddScriptToEvaluateOnNewDocumentReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.AddScriptToEvaluateOnNewDocumentReturnT(
             source=data['source'],
@@ -26687,7 +26573,6 @@ def _page__capture_screenshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CaptureScreenshotReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.CaptureScreenshotReturnT(
             format=data['format'],
@@ -26728,7 +26613,6 @@ def _page__capture_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CaptureSnapshotReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.CaptureSnapshotReturnT(
             format=data['format']
@@ -26745,7 +26629,6 @@ def _page__create_isolated_world_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CreateIsolatedWorldReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.CreateIsolatedWorldReturnT(
             frame_id=data['frame_id'],
@@ -26768,7 +26651,6 @@ def _page__get_app_manifest_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetAppManifestReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetAppManifestReturnT(
         )
@@ -26782,7 +26664,6 @@ def _page__get_installability_errors_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetInstallabilityErrorsReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetInstallabilityErrorsReturnT(
         )
@@ -26796,7 +26677,6 @@ def _page__get_manifest_icons_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetManifestIconsReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetManifestIconsReturnT(
         )
@@ -26810,7 +26690,6 @@ def _page__get_app_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetAppIdReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetAppIdReturnT(
         )
@@ -26824,7 +26703,6 @@ def _page__get_ad_script_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetAdScriptIdReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetAdScriptIdReturnT(
             frame_id=data['frame_id']
@@ -26841,7 +26719,6 @@ def _page__get_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetCookiesReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetCookiesReturnT(
         )
@@ -26855,7 +26732,6 @@ def _page__get_frame_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetFrameTreeReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetFrameTreeReturnT(
         )
@@ -26869,7 +26745,6 @@ def _page__get_layout_metrics_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetLayoutMetricsReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetLayoutMetricsReturnT(
         )
@@ -26883,7 +26758,6 @@ def _page__get_navigation_history_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetNavigationHistoryReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetNavigationHistoryReturnT(
         )
@@ -26897,7 +26771,6 @@ def _page__get_resource_content_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetResourceContentReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetResourceContentReturnT(
             frame_id=data['frame_id'],
@@ -26917,7 +26790,6 @@ def _page__get_resource_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetResourceTreeReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetResourceTreeReturnT(
         )
@@ -26931,7 +26803,6 @@ def _page__navigate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.NavigateReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.NavigateReturnT(
             url=data['url'],
@@ -26960,7 +26831,6 @@ def _page__print_to_pdf_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.PrintToPDFReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.PrintToPDFReturnT(
             landscape=data['landscape'],
@@ -27022,7 +26892,6 @@ def _page__search_in_resource_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.SearchInResourceReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.SearchInResourceReturnT(
             frame_id=data['frame_id'],
@@ -27051,7 +26920,6 @@ def _page__get_permissions_policy_state_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetPermissionsPolicyStateReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetPermissionsPolicyStateReturnT(
             frame_id=data['frame_id']
@@ -27068,7 +26936,6 @@ def _page__get_origin_trials_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetOriginTrialsReturnT':
-    pass
     if casing_strategy == 'snake':
         return page.GetOriginTrialsReturnT(
             frame_id=data['frame_id']
@@ -27085,7 +26952,6 @@ def _performance__get_metrics_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'performance.GetMetricsReturnT':
-    pass
     if casing_strategy == 'snake':
         return performance.GetMetricsReturnT(
         )
@@ -27099,7 +26965,6 @@ def _storage__get_storage_key_for_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetStorageKeyForFrameReturnT':
-    pass
     if casing_strategy == 'snake':
         return storage.GetStorageKeyForFrameReturnT(
             frame_id=data['frame_id']
@@ -27116,7 +26981,6 @@ def _storage__get_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetCookiesReturnT':
-    pass
     if casing_strategy == 'snake':
         return storage.GetCookiesReturnT(
             browser_context_id=data['browser_context_id']
@@ -27133,7 +26997,6 @@ def _storage__get_usage_and_quota_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetUsageAndQuotaReturnT':
-    pass
     if casing_strategy == 'snake':
         return storage.GetUsageAndQuotaReturnT(
             origin=data['origin']
@@ -27150,7 +27013,6 @@ def _storage__get_trust_tokens_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetTrustTokensReturnT':
-    pass
     if casing_strategy == 'snake':
         return storage.GetTrustTokensReturnT(
         )
@@ -27164,7 +27026,6 @@ def _storage__clear_trust_tokens_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.ClearTrustTokensReturnT':
-    pass
     if casing_strategy == 'snake':
         return storage.ClearTrustTokensReturnT(
             issuer_origin=data['issuer_origin']
@@ -27181,7 +27042,6 @@ def _storage__get_interest_group_details_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetInterestGroupDetailsReturnT':
-    pass
     if casing_strategy == 'snake':
         return storage.GetInterestGroupDetailsReturnT(
             owner_origin=data['owner_origin'],
@@ -27201,7 +27061,6 @@ def _storage__get_shared_storage_metadata_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetSharedStorageMetadataReturnT':
-    pass
     if casing_strategy == 'snake':
         return storage.GetSharedStorageMetadataReturnT(
             owner_origin=data['owner_origin']
@@ -27218,7 +27077,6 @@ def _storage__get_shared_storage_entries_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetSharedStorageEntriesReturnT':
-    pass
     if casing_strategy == 'snake':
         return storage.GetSharedStorageEntriesReturnT(
             owner_origin=data['owner_origin']
@@ -27235,7 +27093,6 @@ def _storage__run_bounce_tracking_mitigations_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.RunBounceTrackingMitigationsReturnT':
-    pass
     if casing_strategy == 'snake':
         return storage.RunBounceTrackingMitigationsReturnT(
         )
@@ -27249,7 +27106,6 @@ def _system_info__get_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GetInfoReturnT':
-    pass
     if casing_strategy == 'snake':
         return system_info.GetInfoReturnT(
         )
@@ -27263,7 +27119,6 @@ def _system_info__get_feature_state_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GetFeatureStateReturnT':
-    pass
     if casing_strategy == 'snake':
         return system_info.GetFeatureStateReturnT(
             feature_state=data['feature_state']
@@ -27280,7 +27135,6 @@ def _system_info__get_process_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GetProcessInfoReturnT':
-    pass
     if casing_strategy == 'snake':
         return system_info.GetProcessInfoReturnT(
         )
@@ -27294,7 +27148,6 @@ def _target__attach_to_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.AttachToTargetReturnT':
-    pass
     if casing_strategy == 'snake':
         return target.AttachToTargetReturnT(
             target_id=data['target_id'],
@@ -27314,7 +27167,6 @@ def _target__attach_to_browser_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.AttachToBrowserTargetReturnT':
-    pass
     if casing_strategy == 'snake':
         return target.AttachToBrowserTargetReturnT(
         )
@@ -27328,7 +27180,6 @@ def _target__close_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.CloseTargetReturnT':
-    pass
     if casing_strategy == 'snake':
         return target.CloseTargetReturnT(
             target_id=data['target_id']
@@ -27345,7 +27196,6 @@ def _target__create_browser_context_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.CreateBrowserContextReturnT':
-    pass
     if casing_strategy == 'snake':
         return target.CreateBrowserContextReturnT(
             dispose_on_detach=data['dispose_on_detach'],
@@ -27371,7 +27221,6 @@ def _target__get_browser_contexts_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.GetBrowserContextsReturnT':
-    pass
     if casing_strategy == 'snake':
         return target.GetBrowserContextsReturnT(
         )
@@ -27385,7 +27234,6 @@ def _target__create_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.CreateTargetReturnT':
-    pass
     if casing_strategy == 'snake':
         return target.CreateTargetReturnT(
             url=data['url'],
@@ -27423,7 +27271,6 @@ def _target__get_target_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.GetTargetInfoReturnT':
-    pass
     if casing_strategy == 'snake':
         return target.GetTargetInfoReturnT(
             target_id=data['target_id']
@@ -27440,7 +27287,6 @@ def _target__get_targets_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.GetTargetsReturnT':
-    pass
     if casing_strategy == 'snake':
         return target.GetTargetsReturnT(
             filter=data['filter']
@@ -27457,7 +27303,6 @@ def _tracing__get_categories_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'tracing.GetCategoriesReturnT':
-    pass
     if casing_strategy == 'snake':
         return tracing.GetCategoriesReturnT(
         )
@@ -27471,7 +27316,6 @@ def _tracing__request_memory_dump_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'tracing.RequestMemoryDumpReturnT':
-    pass
     if casing_strategy == 'snake':
         return tracing.RequestMemoryDumpReturnT(
             deterministic=data['deterministic'],
@@ -27491,7 +27335,6 @@ def _fetch__get_response_body_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.GetResponseBodyReturnT':
-    pass
     if casing_strategy == 'snake':
         return fetch.GetResponseBodyReturnT(
             request_id=data['request_id']
@@ -27508,7 +27351,6 @@ def _fetch__take_response_body_as_stream_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.TakeResponseBodyAsStreamReturnT':
-    pass
     if casing_strategy == 'snake':
         return fetch.TakeResponseBodyAsStreamReturnT(
             request_id=data['request_id']
@@ -27525,7 +27367,6 @@ def _web_audio__get_realtime_data_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_audio.GetRealtimeDataReturnT':
-    pass
     if casing_strategy == 'snake':
         return web_audio.GetRealtimeDataReturnT(
             context_id=data['context_id']
@@ -27542,7 +27383,6 @@ def _web_authn__add_virtual_authenticator_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.AddVirtualAuthenticatorReturnT':
-    pass
     if casing_strategy == 'snake':
         return web_authn.AddVirtualAuthenticatorReturnT(
             options=from_dict(
@@ -27568,7 +27408,6 @@ def _web_authn__get_credential_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.GetCredentialReturnT':
-    pass
     if casing_strategy == 'snake':
         return web_authn.GetCredentialReturnT(
             authenticator_id=data['authenticator_id'],
@@ -27588,7 +27427,6 @@ def _web_authn__get_credentials_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.GetCredentialsReturnT':
-    pass
     if casing_strategy == 'snake':
         return web_authn.GetCredentialsReturnT(
             authenticator_id=data['authenticator_id']
@@ -27605,7 +27443,6 @@ def _debugger__enable_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.EnableReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.EnableReturnT(
             max_scripts_cache_size=data['max_scripts_cache_size']
@@ -27622,7 +27459,6 @@ def _debugger__evaluate_on_call_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.EvaluateOnCallFrameReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.EvaluateOnCallFrameReturnT(
             call_frame_id=data['call_frame_id'],
@@ -27663,7 +27499,6 @@ def _debugger__get_possible_breakpoints_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.GetPossibleBreakpointsReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.GetPossibleBreakpointsReturnT(
             start=from_dict(
@@ -27704,7 +27539,6 @@ def _debugger__get_script_source_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.GetScriptSourceReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.GetScriptSourceReturnT(
             script_id=data['script_id']
@@ -27721,7 +27555,6 @@ def _debugger__get_stack_trace_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.GetStackTraceReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.GetStackTraceReturnT(
             stack_trace_id=from_dict(
@@ -27747,7 +27580,6 @@ def _debugger__restart_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.RestartFrameReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.RestartFrameReturnT(
             call_frame_id=data['call_frame_id']
@@ -27764,7 +27596,6 @@ def _debugger__search_in_content_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SearchInContentReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.SearchInContentReturnT(
             script_id=data['script_id'],
@@ -27790,7 +27621,6 @@ def _debugger__set_breakpoint_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetBreakpointReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.SetBreakpointReturnT(
             location=from_dict(
@@ -27819,7 +27649,6 @@ def _debugger__set_instrumentation_breakpoint_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetInstrumentationBreakpointReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.SetInstrumentationBreakpointReturnT(
             instrumentation=data['instrumentation']
@@ -27836,7 +27665,6 @@ def _debugger__set_breakpoint_by_url_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetBreakpointByUrlReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.SetBreakpointByUrlReturnT(
             line_number=data['line_number'],
@@ -27868,7 +27696,6 @@ def _debugger__set_breakpoint_on_function_call_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetBreakpointOnFunctionCallReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.SetBreakpointOnFunctionCallReturnT(
             object_id=data['object_id'],
@@ -27888,7 +27715,6 @@ def _debugger__set_script_source_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetScriptSourceReturnT':
-    pass
     if casing_strategy == 'snake':
         return debugger.SetScriptSourceReturnT(
             script_id=data['script_id'],
@@ -27911,7 +27737,6 @@ def _heap_profiler__get_heap_object_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.GetHeapObjectIdReturnT':
-    pass
     if casing_strategy == 'snake':
         return heap_profiler.GetHeapObjectIdReturnT(
             object_id=data['object_id']
@@ -27928,7 +27753,6 @@ def _heap_profiler__get_object_by_heap_object_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.GetObjectByHeapObjectIdReturnT':
-    pass
     if casing_strategy == 'snake':
         return heap_profiler.GetObjectByHeapObjectIdReturnT(
             object_id=data['object_id'],
@@ -27948,7 +27772,6 @@ def _heap_profiler__get_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.GetSamplingProfileReturnT':
-    pass
     if casing_strategy == 'snake':
         return heap_profiler.GetSamplingProfileReturnT(
         )
@@ -27962,7 +27785,6 @@ def _heap_profiler__stop_sampling_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.StopSamplingReturnT':
-    pass
     if casing_strategy == 'snake':
         return heap_profiler.StopSamplingReturnT(
         )
@@ -27976,7 +27798,6 @@ def _profiler__get_best_effort_coverage_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.GetBestEffortCoverageReturnT':
-    pass
     if casing_strategy == 'snake':
         return profiler.GetBestEffortCoverageReturnT(
         )
@@ -27990,7 +27811,6 @@ def _profiler__stop_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.StopReturnT':
-    pass
     if casing_strategy == 'snake':
         return profiler.StopReturnT(
         )
@@ -28004,7 +27824,6 @@ def _profiler__take_precise_coverage_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.TakePreciseCoverageReturnT':
-    pass
     if casing_strategy == 'snake':
         return profiler.TakePreciseCoverageReturnT(
         )
@@ -28018,7 +27837,6 @@ def _profiler__take_type_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.TakeTypeProfileReturnT':
-    pass
     if casing_strategy == 'snake':
         return profiler.TakeTypeProfileReturnT(
         )
@@ -28032,7 +27850,6 @@ def _runtime__await_promise_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.AwaitPromiseReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.AwaitPromiseReturnT(
             promise_object_id=data['promise_object_id'],
@@ -28055,7 +27872,6 @@ def _runtime__call_function_on_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.CallFunctionOnReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.CallFunctionOnReturnT(
             function_declaration=data['function_declaration'],
@@ -28108,7 +27924,6 @@ def _runtime__compile_script_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.CompileScriptReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.CompileScriptReturnT(
             expression=data['expression'],
@@ -28134,7 +27949,6 @@ def _runtime__evaluate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.EvaluateReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.EvaluateReturnT(
             expression=data['expression'],
@@ -28181,7 +27995,6 @@ def _runtime__get_isolate_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GetIsolateIdReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.GetIsolateIdReturnT(
         )
@@ -28195,7 +28008,6 @@ def _runtime__get_heap_usage_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GetHeapUsageReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.GetHeapUsageReturnT(
         )
@@ -28209,7 +28021,6 @@ def _runtime__get_properties_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GetPropertiesReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.GetPropertiesReturnT(
             object_id=data['object_id'],
@@ -28235,7 +28046,6 @@ def _runtime__global_lexical_scope_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GlobalLexicalScopeNamesReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.GlobalLexicalScopeNamesReturnT(
             execution_context_id=data['execution_context_id']
@@ -28252,7 +28062,6 @@ def _runtime__query_objects_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.QueryObjectsReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.QueryObjectsReturnT(
             prototype_object_id=data['prototype_object_id'],
@@ -28272,7 +28081,6 @@ def _runtime__run_script_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.RunScriptReturnT':
-    pass
     if casing_strategy == 'snake':
         return runtime.RunScriptReturnT(
             script_id=data['script_id'],
@@ -28310,7 +28118,6 @@ def _schema__get_domains_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'schema.GetDomainsReturnT':
-    pass
     if casing_strategy == 'snake':
         return schema.GetDomainsReturnT(
         )
@@ -28326,7 +28133,6 @@ def to_dict(
         data,
         casing_strategy: CasingStrategyT
 ) -> dict:
-    pass
     lookup = {
         accessibility.AXValueSource: (
             _accessibility__ax_value_source__to_dict

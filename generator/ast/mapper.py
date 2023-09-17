@@ -170,7 +170,7 @@ def _generate_return_type_from_dict_mappers(protocols: list['Protocol']):
                             'lines_before': 2
                         }
                     ),
-                    body=[ast.Name('pass')],
+                    body=[],
                     returns=ast.Constant((
                         f'{command.actual_domain.domain_snake_case_collision_safe}.'
                         f'{command.name_pascal_case}ReturnT'
@@ -542,7 +542,7 @@ def _generate_generic_to_dict_mapper(protocols: list['Protocol']):
                 value='snake'
             )
         ],
-        body=[ast.Name('pass')],
+        body=[],
         returns=ast.Name('dict'),
         render_context={
             'lines_before': 2
