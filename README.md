@@ -16,6 +16,14 @@ Code generation methodology inspired by the `python-chrome-devtools-protocol` pa
 
 ## Internals:
 
+### Targets
+
+When we setup the internals, we aimed to have as little external dependencies as possible.
+If we were to implement an external dependency, we need to make sure that it is compatible with
+the standard libraries python ships with. `websocket-client` is a library we had to drop for
+this reason.
+
+
 ### Generator
 
 - Python `requests` module for downloading the latest JSON files (TODO)
@@ -32,3 +40,9 @@ Code generation methodology inspired by the `python-chrome-devtools-protocol` pa
 ### Releases
 
 - Github actions (or GitLab CI/CD - whichever is more cost effective) (TODO)
+
+## Notes:
+
+- The `pycdp` package will be published to PyPI
+- The internal `cdp.domains.mapper` function contains all the mapping functions due the the nature of the
+  Chrome DevTools Protocol. This is a temporary solution until we can find a better way to handle this.

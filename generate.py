@@ -1,11 +1,9 @@
-import json
 import logging
 import shutil
 from pathlib import Path
 
-from generator.parser.types.protocol import Protocol
 from generator import ast
-from generator.parser import registry, parser
+from generator.parser import parser
 from generator.utils import snake_case
 from generator.visitor import SourceCodeGenerator
 
@@ -58,7 +56,7 @@ def main():
                 module.source
             )
 
-            module = ast.types.generate(domain)
+            module = ast.modules.types.generate(domain)
             module = SourceCodeGenerator().generate(module)
             elapsed += module.generation_time
 

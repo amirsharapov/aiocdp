@@ -166,6 +166,7 @@ def _accessibility__ax_value_source__to_dict(
         data: 'accessibility.AXValueSource',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -187,6 +188,7 @@ def _accessibility__ax_value_source__to_dict(
             'invalid': data.invalid,
             'invalid_reason': data.invalid_reason,
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
@@ -208,6 +210,7 @@ def _accessibility__ax_value_source__to_dict(
             'invalid': data.invalid,
             'invalidReason': data.invalid_reason,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -230,23 +233,30 @@ def _accessibility__ax_value_source__to_dict(
             'InvalidReason': data.invalid_reason,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__ax_related_node__to_dict(
         data: 'accessibility.AXRelatedNode',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'backend_dom_node_id': data.backend_dom_node_id,
             'idref': data.idref,
             'text': data.text,
         }
+
     if casing_strategy == 'camel':
         return {
             'backendDOMNodeId': data.backend_dom_node_id,
             'idref': data.idref,
             'text': data.text,
         }
+
     if casing_strategy == 'pascal':
         return {
             'BackendDOMNodeId': data.backend_dom_node_id,
@@ -254,11 +264,16 @@ def _accessibility__ax_related_node__to_dict(
             'Text': data.text,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__ax_property__to_dict(
         data: 'accessibility.AXProperty',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -267,6 +282,7 @@ def _accessibility__ax_property__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -275,6 +291,7 @@ def _accessibility__ax_property__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -284,11 +301,16 @@ def _accessibility__ax_property__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__ax_value__to_dict(
         data: 'accessibility.AXValue',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -302,6 +324,7 @@ def _accessibility__ax_value__to_dict(
                 for item in data.sources
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
@@ -315,6 +338,7 @@ def _accessibility__ax_value__to_dict(
                 for item in data.sources
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -329,11 +353,16 @@ def _accessibility__ax_value__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__ax_node__to_dict(
         data: 'accessibility.AXNode',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'node_id': data.node_id,
@@ -367,13 +396,11 @@ def _accessibility__ax_node__to_dict(
                 for item in data.properties
             ],
             'parent_id': data.parent_id,
-            'child_ids': [
-                item
-                for item in data.child_ids
-            ],
+            'child_ids': data.child_ids,
             'backend_dom_node_id': data.backend_dom_node_id,
             'frame_id': data.frame_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'nodeId': data.node_id,
@@ -407,13 +434,11 @@ def _accessibility__ax_node__to_dict(
                 for item in data.properties
             ],
             'parentId': data.parent_id,
-            'childIds': [
-                item
-                for item in data.child_ids
-            ],
+            'childIds': data.child_ids,
             'backendDOMNodeId': data.backend_dom_node_id,
             'frameId': data.frame_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'NodeId': data.node_id,
@@ -447,19 +472,21 @@ def _accessibility__ax_node__to_dict(
                 for item in data.properties
             ],
             'ParentId': data.parent_id,
-            'ChildIds': [
-                item
-                for item in data.child_ids
-            ],
+            'ChildIds': data.child_ids,
             'BackendDOMNodeId': data.backend_dom_node_id,
             'FrameId': data.frame_id,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _animation__animation__to_dict(
         data: 'animation.Animation',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -476,6 +503,7 @@ def _animation__animation__to_dict(
             ),
             'css_id': data.css_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
@@ -492,6 +520,7 @@ def _animation__animation__to_dict(
             ),
             'cssId': data.css_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
@@ -509,11 +538,16 @@ def _animation__animation__to_dict(
             'CssId': data.css_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _animation__animation_effect__to_dict(
         data: 'animation.AnimationEffect',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'delay': data.delay,
@@ -530,6 +564,7 @@ def _animation__animation_effect__to_dict(
             ),
             'easing': data.easing,
         }
+
     if casing_strategy == 'camel':
         return {
             'delay': data.delay,
@@ -546,6 +581,7 @@ def _animation__animation_effect__to_dict(
             ),
             'easing': data.easing,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Delay': data.delay,
@@ -563,11 +599,16 @@ def _animation__animation_effect__to_dict(
             'Easing': data.easing,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _animation__keyframes_rule__to_dict(
         data: 'animation.KeyframesRule',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -576,6 +617,7 @@ def _animation__keyframes_rule__to_dict(
                 for item in data.keyframes
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -584,6 +626,7 @@ def _animation__keyframes_rule__to_dict(
                 for item in data.keyframes
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -593,44 +636,58 @@ def _animation__keyframes_rule__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _animation__keyframe_style__to_dict(
         data: 'animation.KeyframeStyle',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'offset': data.offset,
             'easing': data.easing,
         }
+
     if casing_strategy == 'camel':
         return {
             'offset': data.offset,
             'easing': data.easing,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Offset': data.offset,
             'Easing': data.easing,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__affected_cookie__to_dict(
         data: 'audits.AffectedCookie',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'path': data.path,
             'domain': data.domain,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'path': data.path,
             'domain': data.domain,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -638,50 +695,69 @@ def _audits__affected_cookie__to_dict(
             'Domain': data.domain,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__affected_request__to_dict(
         data: 'audits.AffectedRequest',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'request_id': data.request_id,
             'url': data.url,
         }
+
     if casing_strategy == 'camel':
         return {
             'requestId': data.request_id,
             'url': data.url,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RequestId': data.request_id,
             'Url': data.url,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__affected_frame__to_dict(
         data: 'audits.AffectedFrame',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'frame_id': data.frame_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'frameId': data.frame_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'FrameId': data.frame_id,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _audits__cookie_issue_details__to_dict(
         data: 'audits.CookieIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'cookie': to_dict(
@@ -689,14 +765,8 @@ def _audits__cookie_issue_details__to_dict(
                 casing_strategy
             ),
             'raw_cookie_line': data.raw_cookie_line,
-            'cookie_warning_reasons': [
-                item
-                for item in data.cookie_warning_reasons
-            ],
-            'cookie_exclusion_reasons': [
-                item
-                for item in data.cookie_exclusion_reasons
-            ],
+            'cookie_warning_reasons': data.cookie_warning_reasons,
+            'cookie_exclusion_reasons': data.cookie_exclusion_reasons,
             'operation': data.operation,
             'site_for_cookies': data.site_for_cookies,
             'cookie_url': data.cookie_url,
@@ -705,6 +775,7 @@ def _audits__cookie_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'cookie': to_dict(
@@ -712,14 +783,8 @@ def _audits__cookie_issue_details__to_dict(
                 casing_strategy
             ),
             'rawCookieLine': data.raw_cookie_line,
-            'cookieWarningReasons': [
-                item
-                for item in data.cookie_warning_reasons
-            ],
-            'cookieExclusionReasons': [
-                item
-                for item in data.cookie_exclusion_reasons
-            ],
+            'cookieWarningReasons': data.cookie_warning_reasons,
+            'cookieExclusionReasons': data.cookie_exclusion_reasons,
             'operation': data.operation,
             'siteForCookies': data.site_for_cookies,
             'cookieUrl': data.cookie_url,
@@ -728,6 +793,7 @@ def _audits__cookie_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Cookie': to_dict(
@@ -735,14 +801,8 @@ def _audits__cookie_issue_details__to_dict(
                 casing_strategy
             ),
             'RawCookieLine': data.raw_cookie_line,
-            'CookieWarningReasons': [
-                item
-                for item in data.cookie_warning_reasons
-            ],
-            'CookieExclusionReasons': [
-                item
-                for item in data.cookie_exclusion_reasons
-            ],
+            'CookieWarningReasons': data.cookie_warning_reasons,
+            'CookieExclusionReasons': data.cookie_exclusion_reasons,
             'Operation': data.operation,
             'SiteForCookies': data.site_for_cookies,
             'CookieUrl': data.cookie_url,
@@ -752,11 +812,16 @@ def _audits__cookie_issue_details__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__mixed_content_issue_details__to_dict(
         data: 'audits.MixedContentIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'resource_type': data.resource_type,
@@ -772,6 +837,7 @@ def _audits__mixed_content_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'resourceType': data.resource_type,
@@ -787,6 +853,7 @@ def _audits__mixed_content_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'ResourceType': data.resource_type,
@@ -803,11 +870,16 @@ def _audits__mixed_content_issue_details__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__blocked_by_response_issue_details__to_dict(
         data: 'audits.BlockedByResponseIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'request': to_dict(
@@ -824,6 +896,7 @@ def _audits__blocked_by_response_issue_details__to_dict(
             ),
             'reason': data.reason,
         }
+
     if casing_strategy == 'camel':
         return {
             'request': to_dict(
@@ -840,6 +913,7 @@ def _audits__blocked_by_response_issue_details__to_dict(
             ),
             'reason': data.reason,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Request': to_dict(
@@ -857,11 +931,16 @@ def _audits__blocked_by_response_issue_details__to_dict(
             'Reason': data.reason,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__heavy_ad_issue_details__to_dict(
         data: 'audits.HeavyAdIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'resolution': data.resolution,
@@ -871,6 +950,7 @@ def _audits__heavy_ad_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'resolution': data.resolution,
@@ -880,6 +960,7 @@ def _audits__heavy_ad_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Resolution': data.resolution,
@@ -890,11 +971,16 @@ def _audits__heavy_ad_issue_details__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__source_code_location__to_dict(
         data: 'audits.SourceCodeLocation',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -902,6 +988,7 @@ def _audits__source_code_location__to_dict(
             'line_number': data.line_number,
             'column_number': data.column_number,
         }
+
     if casing_strategy == 'camel':
         return {
             'scriptId': data.script_id,
@@ -909,6 +996,7 @@ def _audits__source_code_location__to_dict(
             'lineNumber': data.line_number,
             'columnNumber': data.column_number,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ScriptId': data.script_id,
@@ -917,11 +1005,16 @@ def _audits__source_code_location__to_dict(
             'ColumnNumber': data.column_number,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__content_security_policy_issue_details__to_dict(
         data: 'audits.ContentSecurityPolicyIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'blocked_url': data.blocked_url,
@@ -938,6 +1031,7 @@ def _audits__content_security_policy_issue_details__to_dict(
             ),
             'violating_node_id': data.violating_node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'blockedURL': data.blocked_url,
@@ -954,6 +1048,7 @@ def _audits__content_security_policy_issue_details__to_dict(
             ),
             'violatingNodeId': data.violating_node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'BlockedURL': data.blocked_url,
@@ -971,11 +1066,16 @@ def _audits__content_security_policy_issue_details__to_dict(
             'ViolatingNodeId': data.violating_node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__shared_array_buffer_issue_details__to_dict(
         data: 'audits.SharedArrayBufferIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'source_code_location': to_dict(
@@ -985,6 +1085,7 @@ def _audits__shared_array_buffer_issue_details__to_dict(
             'is_warning': data.is_warning,
             'type': data.type,
         }
+
     if casing_strategy == 'camel':
         return {
             'sourceCodeLocation': to_dict(
@@ -994,6 +1095,7 @@ def _audits__shared_array_buffer_issue_details__to_dict(
             'isWarning': data.is_warning,
             'type': data.type,
         }
+
     if casing_strategy == 'pascal':
         return {
             'SourceCodeLocation': to_dict(
@@ -1004,11 +1106,16 @@ def _audits__shared_array_buffer_issue_details__to_dict(
             'Type': data.type,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__low_text_contrast_issue_details__to_dict(
         data: 'audits.LowTextContrastIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'violating_node_id': data.violating_node_id,
@@ -1019,6 +1126,7 @@ def _audits__low_text_contrast_issue_details__to_dict(
             'font_size': data.font_size,
             'font_weight': data.font_weight,
         }
+
     if casing_strategy == 'camel':
         return {
             'violatingNodeId': data.violating_node_id,
@@ -1029,6 +1137,7 @@ def _audits__low_text_contrast_issue_details__to_dict(
             'fontSize': data.font_size,
             'fontWeight': data.font_weight,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ViolatingNodeId': data.violating_node_id,
@@ -1040,11 +1149,16 @@ def _audits__low_text_contrast_issue_details__to_dict(
             'FontWeight': data.font_weight,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__cors_issue_details__to_dict(
         data: 'audits.CorsIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'cors_error_status': to_dict(
@@ -1067,6 +1181,7 @@ def _audits__cors_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'corsErrorStatus': to_dict(
@@ -1089,6 +1204,7 @@ def _audits__cors_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'CorsErrorStatus': to_dict(
@@ -1112,11 +1228,16 @@ def _audits__cors_issue_details__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__attribution_reporting_issue_details__to_dict(
         data: 'audits.AttributionReportingIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'violation_type': data.violation_type,
@@ -1127,6 +1248,7 @@ def _audits__attribution_reporting_issue_details__to_dict(
             'violating_node_id': data.violating_node_id,
             'invalid_parameter': data.invalid_parameter,
         }
+
     if casing_strategy == 'camel':
         return {
             'violationType': data.violation_type,
@@ -1137,6 +1259,7 @@ def _audits__attribution_reporting_issue_details__to_dict(
             'violatingNodeId': data.violating_node_id,
             'invalidParameter': data.invalid_parameter,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ViolationType': data.violation_type,
@@ -1148,11 +1271,16 @@ def _audits__attribution_reporting_issue_details__to_dict(
             'InvalidParameter': data.invalid_parameter,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__quirks_mode_issue_details__to_dict(
         data: 'audits.QuirksModeIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'is_limited_quirks_mode': data.is_limited_quirks_mode,
@@ -1161,6 +1289,7 @@ def _audits__quirks_mode_issue_details__to_dict(
             'frame_id': data.frame_id,
             'loader_id': data.loader_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'isLimitedQuirksMode': data.is_limited_quirks_mode,
@@ -1169,6 +1298,7 @@ def _audits__quirks_mode_issue_details__to_dict(
             'frameId': data.frame_id,
             'loaderId': data.loader_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'IsLimitedQuirksMode': data.is_limited_quirks_mode,
@@ -1178,11 +1308,16 @@ def _audits__quirks_mode_issue_details__to_dict(
             'LoaderId': data.loader_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__navigator_user_agent_issue_details__to_dict(
         data: 'audits.NavigatorUserAgentIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -1191,6 +1326,7 @@ def _audits__navigator_user_agent_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
@@ -1199,6 +1335,7 @@ def _audits__navigator_user_agent_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
@@ -1208,11 +1345,16 @@ def _audits__navigator_user_agent_issue_details__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__generic_issue_details__to_dict(
         data: 'audits.GenericIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'error_type': data.error_type,
@@ -1224,6 +1366,7 @@ def _audits__generic_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'errorType': data.error_type,
@@ -1235,6 +1378,7 @@ def _audits__generic_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'ErrorType': data.error_type,
@@ -1247,11 +1391,16 @@ def _audits__generic_issue_details__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__deprecation_issue_details__to_dict(
         data: 'audits.DeprecationIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'affected_frame': to_dict(
@@ -1264,6 +1413,7 @@ def _audits__deprecation_issue_details__to_dict(
             ),
             'type': data.type,
         }
+
     if casing_strategy == 'camel':
         return {
             'affectedFrame': to_dict(
@@ -1276,6 +1426,7 @@ def _audits__deprecation_issue_details__to_dict(
             ),
             'type': data.type,
         }
+
     if casing_strategy == 'pascal':
         return {
             'AffectedFrame': to_dict(
@@ -1289,74 +1440,91 @@ def _audits__deprecation_issue_details__to_dict(
             'Type': data.type,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__bounce_tracking_issue_details__to_dict(
         data: 'audits.BounceTrackingIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
-            'tracking_sites': [
-                item
-                for item in data.tracking_sites
-            ],
+            'tracking_sites': data.tracking_sites,
         }
+
     if casing_strategy == 'camel':
         return {
-            'trackingSites': [
-                item
-                for item in data.tracking_sites
-            ],
+            'trackingSites': data.tracking_sites,
         }
+
     if casing_strategy == 'pascal':
         return {
-            'TrackingSites': [
-                item
-                for item in data.tracking_sites
-            ],
+            'TrackingSites': data.tracking_sites,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _audits__federated_auth_request_issue_details__to_dict(
         data: 'audits.FederatedAuthRequestIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'federated_auth_request_issue_reason': data.federated_auth_request_issue_reason,
         }
+
     if casing_strategy == 'camel':
         return {
             'federatedAuthRequestIssueReason': data.federated_auth_request_issue_reason,
         }
+
     if casing_strategy == 'pascal':
         return {
             'FederatedAuthRequestIssueReason': data.federated_auth_request_issue_reason,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _audits__federated_auth_user_info_request_issue_details__to_dict(
         data: 'audits.FederatedAuthUserInfoRequestIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'federated_auth_user_info_request_issue_reason': data.federated_auth_user_info_request_issue_reason,
         }
+
     if casing_strategy == 'camel':
         return {
             'federatedAuthUserInfoRequestIssueReason': data.federated_auth_user_info_request_issue_reason,
         }
+
     if casing_strategy == 'pascal':
         return {
             'FederatedAuthUserInfoRequestIssueReason': data.federated_auth_user_info_request_issue_reason,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _audits__client_hint_issue_details__to_dict(
         data: 'audits.ClientHintIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'source_code_location': to_dict(
@@ -1365,6 +1533,7 @@ def _audits__client_hint_issue_details__to_dict(
             ),
             'client_hint_issue_reason': data.client_hint_issue_reason,
         }
+
     if casing_strategy == 'camel':
         return {
             'sourceCodeLocation': to_dict(
@@ -1373,6 +1542,7 @@ def _audits__client_hint_issue_details__to_dict(
             ),
             'clientHintIssueReason': data.client_hint_issue_reason,
         }
+
     if casing_strategy == 'pascal':
         return {
             'SourceCodeLocation': to_dict(
@@ -1382,23 +1552,30 @@ def _audits__client_hint_issue_details__to_dict(
             'ClientHintIssueReason': data.client_hint_issue_reason,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__failed_request_info__to_dict(
         data: 'audits.FailedRequestInfo',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
             'failure_message': data.failure_message,
             'request_id': data.request_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
             'failureMessage': data.failure_message,
             'requestId': data.request_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
@@ -1406,11 +1583,16 @@ def _audits__failed_request_info__to_dict(
             'RequestId': data.request_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__stylesheet_loading_issue_details__to_dict(
         data: 'audits.StylesheetLoadingIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'source_code_location': to_dict(
@@ -1423,6 +1605,7 @@ def _audits__stylesheet_loading_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'sourceCodeLocation': to_dict(
@@ -1435,6 +1618,7 @@ def _audits__stylesheet_loading_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'SourceCodeLocation': to_dict(
@@ -1448,11 +1632,16 @@ def _audits__stylesheet_loading_issue_details__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__inspector_issue_details__to_dict(
         data: 'audits.InspectorIssueDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'cookie_issue_details': to_dict(
@@ -1528,6 +1717,7 @@ def _audits__inspector_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'cookieIssueDetails': to_dict(
@@ -1603,6 +1793,7 @@ def _audits__inspector_issue_details__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'CookieIssueDetails': to_dict(
@@ -1679,11 +1870,16 @@ def _audits__inspector_issue_details__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__inspector_issue__to_dict(
         data: 'audits.InspectorIssue',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'code': data.code,
@@ -1693,6 +1889,7 @@ def _audits__inspector_issue__to_dict(
             ),
             'issue_id': data.issue_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'code': data.code,
@@ -1702,6 +1899,7 @@ def _audits__inspector_issue__to_dict(
             ),
             'issueId': data.issue_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Code': data.code,
@@ -1712,11 +1910,16 @@ def _audits__inspector_issue__to_dict(
             'IssueId': data.issue_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__credit_card__to_dict(
         data: 'autofill.CreditCard',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'number': data.number,
@@ -1725,6 +1928,7 @@ def _autofill__credit_card__to_dict(
             'expiry_year': data.expiry_year,
             'cvc': data.cvc,
         }
+
     if casing_strategy == 'camel':
         return {
             'number': data.number,
@@ -1733,6 +1937,7 @@ def _autofill__credit_card__to_dict(
             'expiryYear': data.expiry_year,
             'cvc': data.cvc,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Number': data.number,
@@ -1742,32 +1947,44 @@ def _autofill__credit_card__to_dict(
             'Cvc': data.cvc,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__address_field__to_dict(
         data: 'autofill.AddressField',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__address_fields__to_dict(
         data: 'autofill.AddressFields',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'fields': [
@@ -1775,6 +1992,7 @@ def _autofill__address_fields__to_dict(
                 for item in data.fields
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'fields': [
@@ -1782,6 +2000,7 @@ def _autofill__address_fields__to_dict(
                 for item in data.fields
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Fields': [
@@ -1789,12 +2008,17 @@ def _autofill__address_fields__to_dict(
                 for item in data.fields
             ],
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _autofill__address__to_dict(
         data: 'autofill.Address',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'fields': [
@@ -1802,6 +2026,7 @@ def _autofill__address__to_dict(
                 for item in data.fields
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'fields': [
@@ -1809,6 +2034,7 @@ def _autofill__address__to_dict(
                 for item in data.fields
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Fields': [
@@ -1817,11 +2043,16 @@ def _autofill__address__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__address_ui__to_dict(
         data: 'autofill.AddressUI',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'address_fields': [
@@ -1829,6 +2060,7 @@ def _autofill__address_ui__to_dict(
                 for item in data.address_fields
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'addressFields': [
@@ -1836,6 +2068,7 @@ def _autofill__address_ui__to_dict(
                 for item in data.address_fields
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'AddressFields': [
@@ -1844,11 +2077,16 @@ def _autofill__address_ui__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__filled_field__to_dict(
         data: 'autofill.FilledField',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'html_type': data.html_type,
@@ -1858,6 +2096,7 @@ def _autofill__filled_field__to_dict(
             'autofill_type': data.autofill_type,
             'filling_strategy': data.filling_strategy,
         }
+
     if casing_strategy == 'camel':
         return {
             'htmlType': data.html_type,
@@ -1867,6 +2106,7 @@ def _autofill__filled_field__to_dict(
             'autofillType': data.autofill_type,
             'fillingStrategy': data.filling_strategy,
         }
+
     if casing_strategy == 'pascal':
         return {
             'HtmlType': data.html_type,
@@ -1877,32 +2117,44 @@ def _autofill__filled_field__to_dict(
             'FillingStrategy': data.filling_strategy,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _background_service__event_metadata__to_dict(
         data: 'background_service.EventMetadata',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'key': data.key,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'key': data.key,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Key': data.key,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _background_service__background_service_event__to_dict(
         data: 'background_service.BackgroundServiceEvent',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'timestamp': data.timestamp,
@@ -1917,6 +2169,7 @@ def _background_service__background_service_event__to_dict(
             ],
             'storage_key': data.storage_key,
         }
+
     if casing_strategy == 'camel':
         return {
             'timestamp': data.timestamp,
@@ -1931,6 +2184,7 @@ def _background_service__background_service_event__to_dict(
             ],
             'storageKey': data.storage_key,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Timestamp': data.timestamp,
@@ -1946,11 +2200,16 @@ def _background_service__background_service_event__to_dict(
             'StorageKey': data.storage_key,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__bounds__to_dict(
         data: 'browser.Bounds',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'left': data.left,
@@ -1959,6 +2218,7 @@ def _browser__bounds__to_dict(
             'height': data.height,
             'window_state': data.window_state,
         }
+
     if casing_strategy == 'camel':
         return {
             'left': data.left,
@@ -1967,6 +2227,7 @@ def _browser__bounds__to_dict(
             'height': data.height,
             'windowState': data.window_state,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Left': data.left,
@@ -1976,11 +2237,16 @@ def _browser__bounds__to_dict(
             'WindowState': data.window_state,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__permission_descriptor__to_dict(
         data: 'browser.PermissionDescriptor',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -1989,6 +2255,7 @@ def _browser__permission_descriptor__to_dict(
             'allow_without_sanitization': data.allow_without_sanitization,
             'pan_tilt_zoom': data.pan_tilt_zoom,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -1997,6 +2264,7 @@ def _browser__permission_descriptor__to_dict(
             'allowWithoutSanitization': data.allow_without_sanitization,
             'panTiltZoom': data.pan_tilt_zoom,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -2006,23 +2274,30 @@ def _browser__permission_descriptor__to_dict(
             'PanTiltZoom': data.pan_tilt_zoom,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__bucket__to_dict(
         data: 'browser.Bucket',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'low': data.low,
             'high': data.high,
             'count': data.count,
         }
+
     if casing_strategy == 'camel':
         return {
             'low': data.low,
             'high': data.high,
             'count': data.count,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Low': data.low,
@@ -2030,11 +2305,16 @@ def _browser__bucket__to_dict(
             'Count': data.count,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__histogram__to_dict(
         data: 'browser.Histogram',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -2045,6 +2325,7 @@ def _browser__histogram__to_dict(
                 for item in data.buckets
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -2055,6 +2336,7 @@ def _browser__histogram__to_dict(
                 for item in data.buckets
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -2066,11 +2348,16 @@ def _browser__histogram__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__pseudo_element_matches__to_dict(
         data: 'css.PseudoElementMatches',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'pseudo_type': data.pseudo_type,
@@ -2080,6 +2367,7 @@ def _css__pseudo_element_matches__to_dict(
                 for item in data.matches
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'pseudoType': data.pseudo_type,
@@ -2089,6 +2377,7 @@ def _css__pseudo_element_matches__to_dict(
                 for item in data.matches
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'PseudoType': data.pseudo_type,
@@ -2099,11 +2388,16 @@ def _css__pseudo_element_matches__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__inherited_style_entry__to_dict(
         data: 'css.InheritedStyleEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'inline_style': to_dict(
@@ -2115,6 +2409,7 @@ def _css__inherited_style_entry__to_dict(
                 for item in data.matched_css_rules
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'inlineStyle': to_dict(
@@ -2126,6 +2421,7 @@ def _css__inherited_style_entry__to_dict(
                 for item in data.matched_css_rules
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'InlineStyle': to_dict(
@@ -2138,11 +2434,16 @@ def _css__inherited_style_entry__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__inherited_pseudo_element_matches__to_dict(
         data: 'css.InheritedPseudoElementMatches',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'pseudo_elements': [
@@ -2150,6 +2451,7 @@ def _css__inherited_pseudo_element_matches__to_dict(
                 for item in data.pseudo_elements
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'pseudoElements': [
@@ -2157,6 +2459,7 @@ def _css__inherited_pseudo_element_matches__to_dict(
                 for item in data.pseudo_elements
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'PseudoElements': [
@@ -2165,50 +2468,53 @@ def _css__inherited_pseudo_element_matches__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__rule_match__to_dict(
         data: 'css.RuleMatch',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'rule': to_dict(
                 data.rule,
                 casing_strategy
             ),
-            'matching_selectors': [
-                item
-                for item in data.matching_selectors
-            ],
+            'matching_selectors': data.matching_selectors,
         }
+
     if casing_strategy == 'camel':
         return {
             'rule': to_dict(
                 data.rule,
                 casing_strategy
             ),
-            'matchingSelectors': [
-                item
-                for item in data.matching_selectors
-            ],
+            'matchingSelectors': data.matching_selectors,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Rule': to_dict(
                 data.rule,
                 casing_strategy
             ),
-            'MatchingSelectors': [
-                item
-                for item in data.matching_selectors
-            ],
+            'MatchingSelectors': data.matching_selectors,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _css__value__to_dict(
         data: 'css.Value',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2221,6 +2527,7 @@ def _css__value__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'text': data.text,
@@ -2233,6 +2540,7 @@ def _css__value__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Text': data.text,
@@ -2246,23 +2554,30 @@ def _css__value__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__specificity__to_dict(
         data: 'css.Specificity',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'a': data.a,
             'b': data.b,
             'c': data.c,
         }
+
     if casing_strategy == 'camel':
         return {
             'a': data.a,
             'b': data.b,
             'c': data.c,
         }
+
     if casing_strategy == 'pascal':
         return {
             'A': data.a,
@@ -2270,11 +2585,16 @@ def _css__specificity__to_dict(
             'C': data.c,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__selector_list__to_dict(
         data: 'css.SelectorList',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'selectors': [
@@ -2283,6 +2603,7 @@ def _css__selector_list__to_dict(
             ],
             'text': data.text,
         }
+
     if casing_strategy == 'camel':
         return {
             'selectors': [
@@ -2291,6 +2612,7 @@ def _css__selector_list__to_dict(
             ],
             'text': data.text,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Selectors': [
@@ -2300,11 +2622,16 @@ def _css__selector_list__to_dict(
             'Text': data.text,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_style_sheet_header__to_dict(
         data: 'css.CSSStyleSheetHeader',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -2326,6 +2653,7 @@ def _css__css_style_sheet_header__to_dict(
             'end_column': data.end_column,
             'loading_failed': data.loading_failed,
         }
+
     if casing_strategy == 'camel':
         return {
             'styleSheetId': data.style_sheet_id,
@@ -2347,6 +2675,7 @@ def _css__css_style_sheet_header__to_dict(
             'endColumn': data.end_column,
             'loadingFailed': data.loading_failed,
         }
+
     if casing_strategy == 'pascal':
         return {
             'StyleSheetId': data.style_sheet_id,
@@ -2369,11 +2698,16 @@ def _css__css_style_sheet_header__to_dict(
             'LoadingFailed': data.loading_failed,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_rule__to_dict(
         data: 'css.CSSRule',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -2381,10 +2715,7 @@ def _css__css_rule__to_dict(
                 data.selector_list,
                 casing_strategy
             ),
-            'nesting_selectors': [
-                item
-                for item in data.nesting_selectors
-            ],
+            'nesting_selectors': data.nesting_selectors,
             'origin': data.origin,
             'style': to_dict(
                 data.style,
@@ -2410,11 +2741,9 @@ def _css__css_rule__to_dict(
                 to_dict(item, casing_strategy)
                 for item in data.scopes
             ],
-            'rule_types': [
-                item
-                for item in data.rule_types
-            ],
+            'rule_types': data.rule_types,
         }
+
     if casing_strategy == 'camel':
         return {
             'styleSheetId': data.style_sheet_id,
@@ -2422,10 +2751,7 @@ def _css__css_rule__to_dict(
                 data.selector_list,
                 casing_strategy
             ),
-            'nestingSelectors': [
-                item
-                for item in data.nesting_selectors
-            ],
+            'nestingSelectors': data.nesting_selectors,
             'origin': data.origin,
             'style': to_dict(
                 data.style,
@@ -2451,11 +2777,9 @@ def _css__css_rule__to_dict(
                 to_dict(item, casing_strategy)
                 for item in data.scopes
             ],
-            'ruleTypes': [
-                item
-                for item in data.rule_types
-            ],
+            'ruleTypes': data.rule_types,
         }
+
     if casing_strategy == 'pascal':
         return {
             'StyleSheetId': data.style_sheet_id,
@@ -2463,10 +2787,7 @@ def _css__css_rule__to_dict(
                 data.selector_list,
                 casing_strategy
             ),
-            'NestingSelectors': [
-                item
-                for item in data.nesting_selectors
-            ],
+            'NestingSelectors': data.nesting_selectors,
             'Origin': data.origin,
             'Style': to_dict(
                 data.style,
@@ -2492,17 +2813,19 @@ def _css__css_rule__to_dict(
                 to_dict(item, casing_strategy)
                 for item in data.scopes
             ],
-            'RuleTypes': [
-                item
-                for item in data.rule_types
-            ],
+            'RuleTypes': data.rule_types,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _css__rule_usage__to_dict(
         data: 'css.RuleUsage',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -2510,6 +2833,7 @@ def _css__rule_usage__to_dict(
             'end_offset': data.end_offset,
             'used': data.used,
         }
+
     if casing_strategy == 'camel':
         return {
             'styleSheetId': data.style_sheet_id,
@@ -2517,6 +2841,7 @@ def _css__rule_usage__to_dict(
             'endOffset': data.end_offset,
             'used': data.used,
         }
+
     if casing_strategy == 'pascal':
         return {
             'StyleSheetId': data.style_sheet_id,
@@ -2525,11 +2850,16 @@ def _css__rule_usage__to_dict(
             'Used': data.used,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__source_range__to_dict(
         data: 'css.SourceRange',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'start_line': data.start_line,
@@ -2537,6 +2867,7 @@ def _css__source_range__to_dict(
             'end_line': data.end_line,
             'end_column': data.end_column,
         }
+
     if casing_strategy == 'camel':
         return {
             'startLine': data.start_line,
@@ -2544,6 +2875,7 @@ def _css__source_range__to_dict(
             'endLine': data.end_line,
             'endColumn': data.end_column,
         }
+
     if casing_strategy == 'pascal':
         return {
             'StartLine': data.start_line,
@@ -2552,23 +2884,30 @@ def _css__source_range__to_dict(
             'EndColumn': data.end_column,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__shorthand_entry__to_dict(
         data: 'css.ShorthandEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
             'important': data.important,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
             'important': data.important,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -2576,32 +2915,44 @@ def _css__shorthand_entry__to_dict(
             'Important': data.important,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_computed_style_property__to_dict(
         data: 'css.CSSComputedStyleProperty',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_style__to_dict(
         data: 'css.CSSStyle',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -2619,6 +2970,7 @@ def _css__css_style__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'styleSheetId': data.style_sheet_id,
@@ -2636,6 +2988,7 @@ def _css__css_style__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'StyleSheetId': data.style_sheet_id,
@@ -2654,11 +3007,16 @@ def _css__css_style__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_property__to_dict(
         data: 'css.CSSProperty',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -2677,6 +3035,7 @@ def _css__css_property__to_dict(
                 for item in data.longhand_properties
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -2695,6 +3054,7 @@ def _css__css_property__to_dict(
                 for item in data.longhand_properties
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -2714,11 +3074,16 @@ def _css__css_property__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_media__to_dict(
         data: 'css.CSSMedia',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2734,6 +3099,7 @@ def _css__css_media__to_dict(
                 for item in data.media_list
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'text': data.text,
@@ -2749,6 +3115,7 @@ def _css__css_media__to_dict(
                 for item in data.media_list
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Text': data.text,
@@ -2765,11 +3132,16 @@ def _css__css_media__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__media_query__to_dict(
         data: 'css.MediaQuery',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'expressions': [
@@ -2778,6 +3150,7 @@ def _css__media_query__to_dict(
             ],
             'active': data.active,
         }
+
     if casing_strategy == 'camel':
         return {
             'expressions': [
@@ -2786,6 +3159,7 @@ def _css__media_query__to_dict(
             ],
             'active': data.active,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Expressions': [
@@ -2795,11 +3169,16 @@ def _css__media_query__to_dict(
             'Active': data.active,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__media_query_expression__to_dict(
         data: 'css.MediaQueryExpression',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'value': data.value,
@@ -2811,6 +3190,7 @@ def _css__media_query_expression__to_dict(
             ),
             'computed_length': data.computed_length,
         }
+
     if casing_strategy == 'camel':
         return {
             'value': data.value,
@@ -2822,6 +3202,7 @@ def _css__media_query_expression__to_dict(
             ),
             'computedLength': data.computed_length,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Value': data.value,
@@ -2834,11 +3215,16 @@ def _css__media_query_expression__to_dict(
             'ComputedLength': data.computed_length,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_container_query__to_dict(
         data: 'css.CSSContainerQuery',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2851,6 +3237,7 @@ def _css__css_container_query__to_dict(
             'physical_axes': data.physical_axes,
             'logical_axes': data.logical_axes,
         }
+
     if casing_strategy == 'camel':
         return {
             'text': data.text,
@@ -2863,6 +3250,7 @@ def _css__css_container_query__to_dict(
             'physicalAxes': data.physical_axes,
             'logicalAxes': data.logical_axes,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Text': data.text,
@@ -2876,11 +3264,16 @@ def _css__css_container_query__to_dict(
             'LogicalAxes': data.logical_axes,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_supports__to_dict(
         data: 'css.CSSSupports',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2891,6 +3284,7 @@ def _css__css_supports__to_dict(
             ),
             'style_sheet_id': data.style_sheet_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'text': data.text,
@@ -2901,6 +3295,7 @@ def _css__css_supports__to_dict(
             ),
             'styleSheetId': data.style_sheet_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Text': data.text,
@@ -2912,11 +3307,16 @@ def _css__css_supports__to_dict(
             'StyleSheetId': data.style_sheet_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_scope__to_dict(
         data: 'css.CSSScope',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2926,6 +3326,7 @@ def _css__css_scope__to_dict(
             ),
             'style_sheet_id': data.style_sheet_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'text': data.text,
@@ -2935,6 +3336,7 @@ def _css__css_scope__to_dict(
             ),
             'styleSheetId': data.style_sheet_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Text': data.text,
@@ -2944,12 +3346,17 @@ def _css__css_scope__to_dict(
             ),
             'StyleSheetId': data.style_sheet_id,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _css__css_layer__to_dict(
         data: 'css.CSSLayer',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'text': data.text,
@@ -2959,6 +3366,7 @@ def _css__css_layer__to_dict(
             ),
             'style_sheet_id': data.style_sheet_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'text': data.text,
@@ -2968,6 +3376,7 @@ def _css__css_layer__to_dict(
             ),
             'styleSheetId': data.style_sheet_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Text': data.text,
@@ -2978,11 +3387,16 @@ def _css__css_layer__to_dict(
             'StyleSheetId': data.style_sheet_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_layer_data__to_dict(
         data: 'css.CSSLayerData',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -2992,6 +3406,7 @@ def _css__css_layer_data__to_dict(
             ],
             'order': data.order,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -3001,6 +3416,7 @@ def _css__css_layer_data__to_dict(
             ],
             'order': data.order,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -3011,23 +3427,30 @@ def _css__css_layer_data__to_dict(
             'Order': data.order,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__platform_font_usage__to_dict(
         data: 'css.PlatformFontUsage',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'family_name': data.family_name,
             'is_custom_font': data.is_custom_font,
             'glyph_count': data.glyph_count,
         }
+
     if casing_strategy == 'camel':
         return {
             'familyName': data.family_name,
             'isCustomFont': data.is_custom_font,
             'glyphCount': data.glyph_count,
         }
+
     if casing_strategy == 'pascal':
         return {
             'FamilyName': data.family_name,
@@ -3035,11 +3458,16 @@ def _css__platform_font_usage__to_dict(
             'GlyphCount': data.glyph_count,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__font_variation_axis__to_dict(
         data: 'css.FontVariationAxis',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'tag': data.tag,
@@ -3048,6 +3476,7 @@ def _css__font_variation_axis__to_dict(
             'max_value': data.max_value,
             'default_value': data.default_value,
         }
+
     if casing_strategy == 'camel':
         return {
             'tag': data.tag,
@@ -3056,6 +3485,7 @@ def _css__font_variation_axis__to_dict(
             'maxValue': data.max_value,
             'defaultValue': data.default_value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Tag': data.tag,
@@ -3065,11 +3495,16 @@ def _css__font_variation_axis__to_dict(
             'DefaultValue': data.default_value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__font_face__to_dict(
         data: 'css.FontFace',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'font_family': data.font_family,
@@ -3086,6 +3521,7 @@ def _css__font_face__to_dict(
                 for item in data.font_variation_axes
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'fontFamily': data.font_family,
@@ -3102,6 +3538,7 @@ def _css__font_face__to_dict(
                 for item in data.font_variation_axes
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'FontFamily': data.font_family,
@@ -3119,11 +3556,16 @@ def _css__font_face__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_try_rule__to_dict(
         data: 'css.CSSTryRule',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -3133,6 +3575,7 @@ def _css__css_try_rule__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'styleSheetId': data.style_sheet_id,
@@ -3142,6 +3585,7 @@ def _css__css_try_rule__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'StyleSheetId': data.style_sheet_id,
@@ -3152,11 +3596,16 @@ def _css__css_try_rule__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_position_fallback_rule__to_dict(
         data: 'css.CSSPositionFallbackRule',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': to_dict(
@@ -3168,6 +3617,7 @@ def _css__css_position_fallback_rule__to_dict(
                 for item in data.try_rules
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'name': to_dict(
@@ -3179,6 +3629,7 @@ def _css__css_position_fallback_rule__to_dict(
                 for item in data.try_rules
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': to_dict(
@@ -3191,11 +3642,16 @@ def _css__css_position_fallback_rule__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_keyframes_rule__to_dict(
         data: 'css.CSSKeyframesRule',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'animation_name': to_dict(
@@ -3207,6 +3663,7 @@ def _css__css_keyframes_rule__to_dict(
                 for item in data.keyframes
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'animationName': to_dict(
@@ -3218,6 +3675,7 @@ def _css__css_keyframes_rule__to_dict(
                 for item in data.keyframes
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'AnimationName': to_dict(
@@ -3230,11 +3688,16 @@ def _css__css_keyframes_rule__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_property_registration__to_dict(
         data: 'css.CSSPropertyRegistration',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'property_name': data.property_name,
@@ -3245,6 +3708,7 @@ def _css__css_property_registration__to_dict(
             'inherits': data.inherits,
             'syntax': data.syntax,
         }
+
     if casing_strategy == 'camel':
         return {
             'propertyName': data.property_name,
@@ -3255,6 +3719,7 @@ def _css__css_property_registration__to_dict(
             'inherits': data.inherits,
             'syntax': data.syntax,
         }
+
     if casing_strategy == 'pascal':
         return {
             'PropertyName': data.property_name,
@@ -3266,11 +3731,16 @@ def _css__css_property_registration__to_dict(
             'Syntax': data.syntax,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_property_rule__to_dict(
         data: 'css.CSSPropertyRule',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -3284,6 +3754,7 @@ def _css__css_property_rule__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'styleSheetId': data.style_sheet_id,
@@ -3297,6 +3768,7 @@ def _css__css_property_rule__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'StyleSheetId': data.style_sheet_id,
@@ -3311,11 +3783,16 @@ def _css__css_property_rule__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_keyframe_rule__to_dict(
         data: 'css.CSSKeyframeRule',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -3329,6 +3806,7 @@ def _css__css_keyframe_rule__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'styleSheetId': data.style_sheet_id,
@@ -3342,6 +3820,7 @@ def _css__css_keyframe_rule__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'StyleSheetId': data.style_sheet_id,
@@ -3356,11 +3835,16 @@ def _css__css_keyframe_rule__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__style_declaration_edit__to_dict(
         data: 'css.StyleDeclarationEdit',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'style_sheet_id': data.style_sheet_id,
@@ -3370,6 +3854,7 @@ def _css__style_declaration_edit__to_dict(
             ),
             'text': data.text,
         }
+
     if casing_strategy == 'camel':
         return {
             'styleSheetId': data.style_sheet_id,
@@ -3379,6 +3864,7 @@ def _css__style_declaration_edit__to_dict(
             ),
             'text': data.text,
         }
+
     if casing_strategy == 'pascal':
         return {
             'StyleSheetId': data.style_sheet_id,
@@ -3389,11 +3875,16 @@ def _css__style_declaration_edit__to_dict(
             'Text': data.text,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__data_entry__to_dict(
         data: 'cache_storage.DataEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'request_url': data.request_url,
@@ -3411,6 +3902,7 @@ def _cache_storage__data_entry__to_dict(
                 for item in data.response_headers
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'requestURL': data.request_url,
@@ -3428,6 +3920,7 @@ def _cache_storage__data_entry__to_dict(
                 for item in data.response_headers
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'RequestURL': data.request_url,
@@ -3446,11 +3939,16 @@ def _cache_storage__data_entry__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__cache__to_dict(
         data: 'cache_storage.Cache',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'cache_id': data.cache_id,
@@ -3462,6 +3960,7 @@ def _cache_storage__cache__to_dict(
             ),
             'cache_name': data.cache_name,
         }
+
     if casing_strategy == 'camel':
         return {
             'cacheId': data.cache_id,
@@ -3473,6 +3972,7 @@ def _cache_storage__cache__to_dict(
             ),
             'cacheName': data.cache_name,
         }
+
     if casing_strategy == 'pascal':
         return {
             'CacheId': data.cache_id,
@@ -3485,62 +3985,83 @@ def _cache_storage__cache__to_dict(
             'CacheName': data.cache_name,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__header__to_dict(
         data: 'cache_storage.Header',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__cached_response__to_dict(
         data: 'cache_storage.CachedResponse',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'body': data.body,
         }
+
     if casing_strategy == 'camel':
         return {
             'body': data.body,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Body': data.body,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _cast__sink__to_dict(
         data: 'cast.Sink',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'id': data.id,
             'session': data.session,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'id': data.id,
             'session': data.session,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -3548,23 +4069,30 @@ def _cast__sink__to_dict(
             'Session': data.session,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__backend_node__to_dict(
         data: 'dom.BackendNode',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'node_type': data.node_type,
             'node_name': data.node_name,
             'backend_node_id': data.backend_node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'nodeType': data.node_type,
             'nodeName': data.node_name,
             'backendNodeId': data.backend_node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'NodeType': data.node_type,
@@ -3572,11 +4100,16 @@ def _dom__backend_node__to_dict(
             'BackendNodeId': data.backend_node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__node__to_dict(
         data: 'dom.Node',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'node_id': data.node_id,
@@ -3591,10 +4124,7 @@ def _dom__node__to_dict(
                 to_dict(item, casing_strategy)
                 for item in data.children
             ],
-            'attributes': [
-                item
-                for item in data.attributes
-            ],
+            'attributes': data.attributes,
             'document_url': data.document_url,
             'base_url': data.base_url,
             'public_id': data.public_id,
@@ -3638,6 +4168,7 @@ def _dom__node__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'nodeId': data.node_id,
@@ -3652,10 +4183,7 @@ def _dom__node__to_dict(
                 to_dict(item, casing_strategy)
                 for item in data.children
             ],
-            'attributes': [
-                item
-                for item in data.attributes
-            ],
+            'attributes': data.attributes,
             'documentURL': data.document_url,
             'baseURL': data.base_url,
             'publicId': data.public_id,
@@ -3699,6 +4227,7 @@ def _dom__node__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'NodeId': data.node_id,
@@ -3713,10 +4242,7 @@ def _dom__node__to_dict(
                 to_dict(item, casing_strategy)
                 for item in data.children
             ],
-            'Attributes': [
-                item
-                for item in data.attributes
-            ],
+            'Attributes': data.attributes,
             'DocumentURL': data.document_url,
             'BaseURL': data.base_url,
             'PublicId': data.public_id,
@@ -3761,11 +4287,16 @@ def _dom__node__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__rgba__to_dict(
         data: 'dom.RGBA',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'r': data.r,
@@ -3773,6 +4304,7 @@ def _dom__rgba__to_dict(
             'b': data.b,
             'a': data.a,
         }
+
     if casing_strategy == 'camel':
         return {
             'r': data.r,
@@ -3780,6 +4312,7 @@ def _dom__rgba__to_dict(
             'b': data.b,
             'a': data.a,
         }
+
     if casing_strategy == 'pascal':
         return {
             'R': data.r,
@@ -3788,11 +4321,16 @@ def _dom__rgba__to_dict(
             'A': data.a,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__box_model__to_dict(
         data: 'dom.BoxModel',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'content': data.content,
@@ -3806,6 +4344,7 @@ def _dom__box_model__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'content': data.content,
@@ -3819,6 +4358,7 @@ def _dom__box_model__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Content': data.content,
@@ -3833,53 +4373,47 @@ def _dom__box_model__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__shape_outside_info__to_dict(
         data: 'dom.ShapeOutsideInfo',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'bounds': data.bounds,
-            'shape': [
-                item
-                for item in data.shape
-            ],
-            'margin_shape': [
-                item
-                for item in data.margin_shape
-            ],
+            'shape': data.shape,
+            'margin_shape': data.margin_shape,
         }
+
     if casing_strategy == 'camel':
         return {
             'bounds': data.bounds,
-            'shape': [
-                item
-                for item in data.shape
-            ],
-            'marginShape': [
-                item
-                for item in data.margin_shape
-            ],
+            'shape': data.shape,
+            'marginShape': data.margin_shape,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Bounds': data.bounds,
-            'Shape': [
-                item
-                for item in data.shape
-            ],
-            'MarginShape': [
-                item
-                for item in data.margin_shape
-            ],
+            'Shape': data.shape,
+            'MarginShape': data.margin_shape,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__rect__to_dict(
         data: 'dom.Rect',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'x': data.x,
@@ -3887,6 +4421,7 @@ def _dom__rect__to_dict(
             'width': data.width,
             'height': data.height,
         }
+
     if casing_strategy == 'camel':
         return {
             'x': data.x,
@@ -3894,6 +4429,7 @@ def _dom__rect__to_dict(
             'width': data.width,
             'height': data.height,
         }
+
     if casing_strategy == 'pascal':
         return {
             'X': data.x,
@@ -3902,32 +4438,44 @@ def _dom__rect__to_dict(
             'Height': data.height,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__css_computed_style_property__to_dict(
         data: 'dom.CSSComputedStyleProperty',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_debugger__event_listener__to_dict(
         data: 'dom_debugger.EventListener',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -3947,6 +4495,7 @@ def _dom_debugger__event_listener__to_dict(
             ),
             'backend_node_id': data.backend_node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
@@ -3966,6 +4515,7 @@ def _dom_debugger__event_listener__to_dict(
             ),
             'backendNodeId': data.backend_node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -3986,11 +4536,16 @@ def _dom_debugger__event_listener__to_dict(
             'BackendNodeId': data.backend_node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__dom_node__to_dict(
         data: 'dom_snapshot.DOMNode',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'node_type': data.node_type,
@@ -4001,18 +4556,12 @@ def _dom_snapshot__dom_node__to_dict(
             'input_checked': data.input_checked,
             'option_selected': data.option_selected,
             'backend_node_id': data.backend_node_id,
-            'child_node_indexes': [
-                item
-                for item in data.child_node_indexes
-            ],
+            'child_node_indexes': data.child_node_indexes,
             'attributes': [
                 to_dict(item, casing_strategy)
                 for item in data.attributes
             ],
-            'pseudo_element_indexes': [
-                item
-                for item in data.pseudo_element_indexes
-            ],
+            'pseudo_element_indexes': data.pseudo_element_indexes,
             'layout_node_index': data.layout_node_index,
             'document_url': data.document_url,
             'base_url': data.base_url,
@@ -4034,6 +4583,7 @@ def _dom_snapshot__dom_node__to_dict(
             'scroll_offset_x': data.scroll_offset_x,
             'scroll_offset_y': data.scroll_offset_y,
         }
+
     if casing_strategy == 'camel':
         return {
             'nodeType': data.node_type,
@@ -4044,18 +4594,12 @@ def _dom_snapshot__dom_node__to_dict(
             'inputChecked': data.input_checked,
             'optionSelected': data.option_selected,
             'backendNodeId': data.backend_node_id,
-            'childNodeIndexes': [
-                item
-                for item in data.child_node_indexes
-            ],
+            'childNodeIndexes': data.child_node_indexes,
             'attributes': [
                 to_dict(item, casing_strategy)
                 for item in data.attributes
             ],
-            'pseudoElementIndexes': [
-                item
-                for item in data.pseudo_element_indexes
-            ],
+            'pseudoElementIndexes': data.pseudo_element_indexes,
             'layoutNodeIndex': data.layout_node_index,
             'documentURL': data.document_url,
             'baseURL': data.base_url,
@@ -4077,6 +4621,7 @@ def _dom_snapshot__dom_node__to_dict(
             'scrollOffsetX': data.scroll_offset_x,
             'scrollOffsetY': data.scroll_offset_y,
         }
+
     if casing_strategy == 'pascal':
         return {
             'NodeType': data.node_type,
@@ -4087,18 +4632,12 @@ def _dom_snapshot__dom_node__to_dict(
             'InputChecked': data.input_checked,
             'OptionSelected': data.option_selected,
             'BackendNodeId': data.backend_node_id,
-            'ChildNodeIndexes': [
-                item
-                for item in data.child_node_indexes
-            ],
+            'ChildNodeIndexes': data.child_node_indexes,
             'Attributes': [
                 to_dict(item, casing_strategy)
                 for item in data.attributes
             ],
-            'PseudoElementIndexes': [
-                item
-                for item in data.pseudo_element_indexes
-            ],
+            'PseudoElementIndexes': data.pseudo_element_indexes,
             'LayoutNodeIndex': data.layout_node_index,
             'DocumentURL': data.document_url,
             'BaseURL': data.base_url,
@@ -4121,11 +4660,16 @@ def _dom_snapshot__dom_node__to_dict(
             'ScrollOffsetY': data.scroll_offset_y,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__inline_text_box__to_dict(
         data: 'dom_snapshot.InlineTextBox',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'bounding_box': to_dict(
@@ -4135,6 +4679,7 @@ def _dom_snapshot__inline_text_box__to_dict(
             'start_character_index': data.start_character_index,
             'num_characters': data.num_characters,
         }
+
     if casing_strategy == 'camel':
         return {
             'boundingBox': to_dict(
@@ -4144,6 +4689,7 @@ def _dom_snapshot__inline_text_box__to_dict(
             'startCharacterIndex': data.start_character_index,
             'numCharacters': data.num_characters,
         }
+
     if casing_strategy == 'pascal':
         return {
             'BoundingBox': to_dict(
@@ -4154,11 +4700,16 @@ def _dom_snapshot__inline_text_box__to_dict(
             'NumCharacters': data.num_characters,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__layout_tree_node__to_dict(
         data: 'dom_snapshot.LayoutTreeNode',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'dom_node_index': data.dom_node_index,
@@ -4175,6 +4726,7 @@ def _dom_snapshot__layout_tree_node__to_dict(
             'paint_order': data.paint_order,
             'is_stacking_context': data.is_stacking_context,
         }
+
     if casing_strategy == 'camel':
         return {
             'domNodeIndex': data.dom_node_index,
@@ -4191,6 +4743,7 @@ def _dom_snapshot__layout_tree_node__to_dict(
             'paintOrder': data.paint_order,
             'isStackingContext': data.is_stacking_context,
         }
+
     if casing_strategy == 'pascal':
         return {
             'DomNodeIndex': data.dom_node_index,
@@ -4208,11 +4761,16 @@ def _dom_snapshot__layout_tree_node__to_dict(
             'IsStackingContext': data.is_stacking_context,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__computed_style__to_dict(
         data: 'dom_snapshot.ComputedStyle',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'properties': [
@@ -4220,6 +4778,7 @@ def _dom_snapshot__computed_style__to_dict(
                 for item in data.properties
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'properties': [
@@ -4227,6 +4786,7 @@ def _dom_snapshot__computed_style__to_dict(
                 for item in data.properties
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Properties': [
@@ -4235,137 +4795,125 @@ def _dom_snapshot__computed_style__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__name_value__to_dict(
         data: 'dom_snapshot.NameValue',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__rare_string_data__to_dict(
         data: 'dom_snapshot.RareStringData',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
-            'index': [
-                item
-                for item in data.index
-            ],
-            'value': [
-                item
-                for item in data.value
-            ],
+            'index': data.index,
+            'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
-            'index': [
-                item
-                for item in data.index
-            ],
-            'value': [
-                item
-                for item in data.value
-            ],
+            'index': data.index,
+            'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
-            'Index': [
-                item
-                for item in data.index
-            ],
-            'Value': [
-                item
-                for item in data.value
-            ],
+            'Index': data.index,
+            'Value': data.value,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom_snapshot__rare_boolean_data__to_dict(
         data: 'dom_snapshot.RareBooleanData',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
-            'index': [
-                item
-                for item in data.index
-            ],
+            'index': data.index,
         }
+
     if casing_strategy == 'camel':
         return {
-            'index': [
-                item
-                for item in data.index
-            ],
+            'index': data.index,
         }
+
     if casing_strategy == 'pascal':
         return {
-            'Index': [
-                item
-                for item in data.index
-            ],
+            'Index': data.index,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom_snapshot__rare_integer_data__to_dict(
         data: 'dom_snapshot.RareIntegerData',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
-            'index': [
-                item
-                for item in data.index
-            ],
-            'value': [
-                item
-                for item in data.value
-            ],
+            'index': data.index,
+            'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
-            'index': [
-                item
-                for item in data.index
-            ],
-            'value': [
-                item
-                for item in data.value
-            ],
+            'index': data.index,
+            'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
-            'Index': [
-                item
-                for item in data.index
-            ],
-            'Value': [
-                item
-                for item in data.value
-            ],
+            'Index': data.index,
+            'Value': data.value,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom_snapshot__document_snapshot__to_dict(
         data: 'dom_snapshot.DocumentSnapshot',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'document_url': data.document_url,
@@ -4393,6 +4941,7 @@ def _dom_snapshot__document_snapshot__to_dict(
             'content_width': data.content_width,
             'content_height': data.content_height,
         }
+
     if casing_strategy == 'camel':
         return {
             'documentURL': data.document_url,
@@ -4420,6 +4969,7 @@ def _dom_snapshot__document_snapshot__to_dict(
             'contentWidth': data.content_width,
             'contentHeight': data.content_height,
         }
+
     if casing_strategy == 'pascal':
         return {
             'DocumentURL': data.document_url,
@@ -4448,41 +4998,28 @@ def _dom_snapshot__document_snapshot__to_dict(
             'ContentHeight': data.content_height,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__node_tree_snapshot__to_dict(
         data: 'dom_snapshot.NodeTreeSnapshot',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
-            'parent_index': [
-                item
-                for item in data.parent_index
-            ],
-            'node_type': [
-                item
-                for item in data.node_type
-            ],
+            'parent_index': data.parent_index,
+            'node_type': data.node_type,
             'shadow_root_type': to_dict(
                 data.shadow_root_type,
                 casing_strategy
             ),
-            'node_name': [
-                item
-                for item in data.node_name
-            ],
-            'node_value': [
-                item
-                for item in data.node_value
-            ],
-            'backend_node_id': [
-                item
-                for item in data.backend_node_id
-            ],
-            'attributes': [
-                item
-                for item in data.attributes
-            ],
+            'node_name': data.node_name,
+            'node_value': data.node_value,
+            'backend_node_id': data.backend_node_id,
+            'attributes': data.attributes,
             'text_value': to_dict(
                 data.text_value,
                 casing_strategy
@@ -4524,36 +5061,19 @@ def _dom_snapshot__node_tree_snapshot__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
-            'parentIndex': [
-                item
-                for item in data.parent_index
-            ],
-            'nodeType': [
-                item
-                for item in data.node_type
-            ],
+            'parentIndex': data.parent_index,
+            'nodeType': data.node_type,
             'shadowRootType': to_dict(
                 data.shadow_root_type,
                 casing_strategy
             ),
-            'nodeName': [
-                item
-                for item in data.node_name
-            ],
-            'nodeValue': [
-                item
-                for item in data.node_value
-            ],
-            'backendNodeId': [
-                item
-                for item in data.backend_node_id
-            ],
-            'attributes': [
-                item
-                for item in data.attributes
-            ],
+            'nodeName': data.node_name,
+            'nodeValue': data.node_value,
+            'backendNodeId': data.backend_node_id,
+            'attributes': data.attributes,
             'textValue': to_dict(
                 data.text_value,
                 casing_strategy
@@ -4595,36 +5115,19 @@ def _dom_snapshot__node_tree_snapshot__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
-            'ParentIndex': [
-                item
-                for item in data.parent_index
-            ],
-            'NodeType': [
-                item
-                for item in data.node_type
-            ],
+            'ParentIndex': data.parent_index,
+            'NodeType': data.node_type,
             'ShadowRootType': to_dict(
                 data.shadow_root_type,
                 casing_strategy
             ),
-            'NodeName': [
-                item
-                for item in data.node_name
-            ],
-            'NodeValue': [
-                item
-                for item in data.node_value
-            ],
-            'BackendNodeId': [
-                item
-                for item in data.backend_node_id
-            ],
-            'Attributes': [
-                item
-                for item in data.attributes
-            ],
+            'NodeName': data.node_name,
+            'NodeValue': data.node_value,
+            'BackendNodeId': data.backend_node_id,
+            'Attributes': data.attributes,
             'TextValue': to_dict(
                 data.text_value,
                 casing_strategy
@@ -4667,233 +5170,128 @@ def _dom_snapshot__node_tree_snapshot__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__layout_tree_snapshot__to_dict(
         data: 'dom_snapshot.LayoutTreeSnapshot',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
-            'node_index': [
-                item
-                for item in data.node_index
-            ],
-            'styles': [
-                item
-                for item in data.styles
-            ],
-            'bounds': [
-                item
-                for item in data.bounds
-            ],
-            'text': [
-                item
-                for item in data.text
-            ],
+            'node_index': data.node_index,
+            'styles': data.styles,
+            'bounds': data.bounds,
+            'text': data.text,
             'stacking_contexts': to_dict(
                 data.stacking_contexts,
                 casing_strategy
             ),
-            'paint_orders': [
-                item
-                for item in data.paint_orders
-            ],
-            'offset_rects': [
-                item
-                for item in data.offset_rects
-            ],
-            'scroll_rects': [
-                item
-                for item in data.scroll_rects
-            ],
-            'client_rects': [
-                item
-                for item in data.client_rects
-            ],
-            'blended_background_colors': [
-                item
-                for item in data.blended_background_colors
-            ],
-            'text_color_opacities': [
-                item
-                for item in data.text_color_opacities
-            ],
+            'paint_orders': data.paint_orders,
+            'offset_rects': data.offset_rects,
+            'scroll_rects': data.scroll_rects,
+            'client_rects': data.client_rects,
+            'blended_background_colors': data.blended_background_colors,
+            'text_color_opacities': data.text_color_opacities,
         }
+
     if casing_strategy == 'camel':
         return {
-            'nodeIndex': [
-                item
-                for item in data.node_index
-            ],
-            'styles': [
-                item
-                for item in data.styles
-            ],
-            'bounds': [
-                item
-                for item in data.bounds
-            ],
-            'text': [
-                item
-                for item in data.text
-            ],
+            'nodeIndex': data.node_index,
+            'styles': data.styles,
+            'bounds': data.bounds,
+            'text': data.text,
             'stackingContexts': to_dict(
                 data.stacking_contexts,
                 casing_strategy
             ),
-            'paintOrders': [
-                item
-                for item in data.paint_orders
-            ],
-            'offsetRects': [
-                item
-                for item in data.offset_rects
-            ],
-            'scrollRects': [
-                item
-                for item in data.scroll_rects
-            ],
-            'clientRects': [
-                item
-                for item in data.client_rects
-            ],
-            'blendedBackgroundColors': [
-                item
-                for item in data.blended_background_colors
-            ],
-            'textColorOpacities': [
-                item
-                for item in data.text_color_opacities
-            ],
+            'paintOrders': data.paint_orders,
+            'offsetRects': data.offset_rects,
+            'scrollRects': data.scroll_rects,
+            'clientRects': data.client_rects,
+            'blendedBackgroundColors': data.blended_background_colors,
+            'textColorOpacities': data.text_color_opacities,
         }
+
     if casing_strategy == 'pascal':
         return {
-            'NodeIndex': [
-                item
-                for item in data.node_index
-            ],
-            'Styles': [
-                item
-                for item in data.styles
-            ],
-            'Bounds': [
-                item
-                for item in data.bounds
-            ],
-            'Text': [
-                item
-                for item in data.text
-            ],
+            'NodeIndex': data.node_index,
+            'Styles': data.styles,
+            'Bounds': data.bounds,
+            'Text': data.text,
             'StackingContexts': to_dict(
                 data.stacking_contexts,
                 casing_strategy
             ),
-            'PaintOrders': [
-                item
-                for item in data.paint_orders
-            ],
-            'OffsetRects': [
-                item
-                for item in data.offset_rects
-            ],
-            'ScrollRects': [
-                item
-                for item in data.scroll_rects
-            ],
-            'ClientRects': [
-                item
-                for item in data.client_rects
-            ],
-            'BlendedBackgroundColors': [
-                item
-                for item in data.blended_background_colors
-            ],
-            'TextColorOpacities': [
-                item
-                for item in data.text_color_opacities
-            ],
+            'PaintOrders': data.paint_orders,
+            'OffsetRects': data.offset_rects,
+            'ScrollRects': data.scroll_rects,
+            'ClientRects': data.client_rects,
+            'BlendedBackgroundColors': data.blended_background_colors,
+            'TextColorOpacities': data.text_color_opacities,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom_snapshot__text_box_snapshot__to_dict(
         data: 'dom_snapshot.TextBoxSnapshot',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
-            'layout_index': [
-                item
-                for item in data.layout_index
-            ],
-            'bounds': [
-                item
-                for item in data.bounds
-            ],
-            'start': [
-                item
-                for item in data.start
-            ],
-            'length': [
-                item
-                for item in data.length
-            ],
+            'layout_index': data.layout_index,
+            'bounds': data.bounds,
+            'start': data.start,
+            'length': data.length,
         }
+
     if casing_strategy == 'camel':
         return {
-            'layoutIndex': [
-                item
-                for item in data.layout_index
-            ],
-            'bounds': [
-                item
-                for item in data.bounds
-            ],
-            'start': [
-                item
-                for item in data.start
-            ],
-            'length': [
-                item
-                for item in data.length
-            ],
+            'layoutIndex': data.layout_index,
+            'bounds': data.bounds,
+            'start': data.start,
+            'length': data.length,
         }
+
     if casing_strategy == 'pascal':
         return {
-            'LayoutIndex': [
-                item
-                for item in data.layout_index
-            ],
-            'Bounds': [
-                item
-                for item in data.bounds
-            ],
-            'Start': [
-                item
-                for item in data.start
-            ],
-            'Length': [
-                item
-                for item in data.length
-            ],
+            'LayoutIndex': data.layout_index,
+            'Bounds': data.bounds,
+            'Start': data.start,
+            'Length': data.length,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom_storage__storage_id__to_dict(
         data: 'dom_storage.StorageId',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'security_origin': data.security_origin,
             'storage_key': data.storage_key,
             'is_local_storage': data.is_local_storage,
         }
+
     if casing_strategy == 'camel':
         return {
             'securityOrigin': data.security_origin,
             'storageKey': data.storage_key,
             'isLocalStorage': data.is_local_storage,
         }
+
     if casing_strategy == 'pascal':
         return {
             'SecurityOrigin': data.security_origin,
@@ -4901,11 +5299,16 @@ def _dom_storage__storage_id__to_dict(
             'IsLocalStorage': data.is_local_storage,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _database__database__to_dict(
         data: 'database.Database',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -4913,6 +5316,7 @@ def _database__database__to_dict(
             'name': data.name,
             'version': data.version,
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
@@ -4920,6 +5324,7 @@ def _database__database__to_dict(
             'name': data.name,
             'version': data.version,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
@@ -4928,65 +5333,86 @@ def _database__database__to_dict(
             'Version': data.version,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _database__error__to_dict(
         data: 'database.Error',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'message': data.message,
             'code': data.code,
         }
+
     if casing_strategy == 'camel':
         return {
             'message': data.message,
             'code': data.code,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Message': data.message,
             'Code': data.code,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__screen_orientation__to_dict(
         data: 'emulation.ScreenOrientation',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
             'angle': data.angle,
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
             'angle': data.angle,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
             'Angle': data.angle,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__display_feature__to_dict(
         data: 'emulation.DisplayFeature',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'orientation': data.orientation,
             'offset': data.offset,
             'mask_length': data.mask_length,
         }
+
     if casing_strategy == 'camel':
         return {
             'orientation': data.orientation,
             'offset': data.offset,
             'maskLength': data.mask_length,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Orientation': data.orientation,
@@ -4994,53 +5420,72 @@ def _emulation__display_feature__to_dict(
             'MaskLength': data.mask_length,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__media_feature__to_dict(
         data: 'emulation.MediaFeature',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__user_agent_brand_version__to_dict(
         data: 'emulation.UserAgentBrandVersion',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'brand': data.brand,
             'version': data.version,
         }
+
     if casing_strategy == 'camel':
         return {
             'brand': data.brand,
             'version': data.version,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Brand': data.brand,
             'Version': data.version,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__user_agent_metadata__to_dict(
         data: 'emulation.UserAgentMetadata',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'brands': [
@@ -5060,6 +5505,7 @@ def _emulation__user_agent_metadata__to_dict(
             'bitness': data.bitness,
             'wow64': data.wow64,
         }
+
     if casing_strategy == 'camel':
         return {
             'brands': [
@@ -5079,6 +5525,7 @@ def _emulation__user_agent_metadata__to_dict(
             'bitness': data.bitness,
             'wow64': data.wow64,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Brands': [
@@ -5099,23 +5546,30 @@ def _emulation__user_agent_metadata__to_dict(
             'Wow64': data.wow64,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _headless_experimental__screenshot_params__to_dict(
         data: 'headless_experimental.ScreenshotParams',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'format': data.format,
             'quality': data.quality,
             'optimize_for_speed': data.optimize_for_speed,
         }
+
     if casing_strategy == 'camel':
         return {
             'format': data.format,
             'quality': data.quality,
             'optimizeForSpeed': data.optimize_for_speed,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Format': data.format,
@@ -5123,11 +5577,16 @@ def _headless_experimental__screenshot_params__to_dict(
             'OptimizeForSpeed': data.optimize_for_speed,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__database_with_object_stores__to_dict(
         data: 'indexed_db.DatabaseWithObjectStores',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5137,6 +5596,7 @@ def _indexed_db__database_with_object_stores__to_dict(
                 for item in data.object_stores
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -5146,6 +5606,7 @@ def _indexed_db__database_with_object_stores__to_dict(
                 for item in data.object_stores
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -5156,11 +5617,16 @@ def _indexed_db__database_with_object_stores__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__object_store__to_dict(
         data: 'indexed_db.ObjectStore',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5174,6 +5640,7 @@ def _indexed_db__object_store__to_dict(
                 for item in data.indexes
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -5187,6 +5654,7 @@ def _indexed_db__object_store__to_dict(
                 for item in data.indexes
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -5201,11 +5669,16 @@ def _indexed_db__object_store__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__object_store_index__to_dict(
         data: 'indexed_db.ObjectStoreIndex',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5216,6 +5689,7 @@ def _indexed_db__object_store_index__to_dict(
             'unique': data.unique,
             'multi_entry': data.multi_entry,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -5226,6 +5700,7 @@ def _indexed_db__object_store_index__to_dict(
             'unique': data.unique,
             'multiEntry': data.multi_entry,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -5237,11 +5712,16 @@ def _indexed_db__object_store_index__to_dict(
             'MultiEntry': data.multi_entry,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__key__to_dict(
         data: 'indexed_db.Key',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -5253,6 +5733,7 @@ def _indexed_db__key__to_dict(
                 for item in data.array
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
@@ -5264,6 +5745,7 @@ def _indexed_db__key__to_dict(
                 for item in data.array
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -5276,11 +5758,16 @@ def _indexed_db__key__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__key_range__to_dict(
         data: 'indexed_db.KeyRange',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'lower': to_dict(
@@ -5294,6 +5781,7 @@ def _indexed_db__key_range__to_dict(
             'lower_open': data.lower_open,
             'upper_open': data.upper_open,
         }
+
     if casing_strategy == 'camel':
         return {
             'lower': to_dict(
@@ -5307,6 +5795,7 @@ def _indexed_db__key_range__to_dict(
             'lowerOpen': data.lower_open,
             'upperOpen': data.upper_open,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Lower': to_dict(
@@ -5321,11 +5810,16 @@ def _indexed_db__key_range__to_dict(
             'UpperOpen': data.upper_open,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__data_entry__to_dict(
         data: 'indexed_db.DataEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'key': to_dict(
@@ -5341,6 +5835,7 @@ def _indexed_db__data_entry__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'key': to_dict(
@@ -5356,6 +5851,7 @@ def _indexed_db__data_entry__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Key': to_dict(
@@ -5372,44 +5868,47 @@ def _indexed_db__data_entry__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__key_path__to_dict(
         data: 'indexed_db.KeyPath',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
             'string': data.string,
-            'array': [
-                item
-                for item in data.array
-            ],
+            'array': data.array,
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
             'string': data.string,
-            'array': [
-                item
-                for item in data.array
-            ],
+            'array': data.array,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
             'String': data.string,
-            'Array': [
-                item
-                for item in data.array
-            ],
+            'Array': data.array,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _input__touch_point__to_dict(
         data: 'input_.TouchPoint',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'x': data.x,
@@ -5424,6 +5923,7 @@ def _input__touch_point__to_dict(
             'twist': data.twist,
             'id': data.id,
         }
+
     if casing_strategy == 'camel':
         return {
             'x': data.x,
@@ -5438,6 +5938,7 @@ def _input__touch_point__to_dict(
             'twist': data.twist,
             'id': data.id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'X': data.x,
@@ -5453,11 +5954,16 @@ def _input__touch_point__to_dict(
             'Id': data.id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _input__drag_data_item__to_dict(
         data: 'input_.DragDataItem',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'mime_type': data.mime_type,
@@ -5465,6 +5971,7 @@ def _input__drag_data_item__to_dict(
             'title': data.title,
             'base_url': data.base_url,
         }
+
     if casing_strategy == 'camel':
         return {
             'mimeType': data.mime_type,
@@ -5472,6 +5979,7 @@ def _input__drag_data_item__to_dict(
             'title': data.title,
             'baseURL': data.base_url,
         }
+
     if casing_strategy == 'pascal':
         return {
             'MimeType': data.mime_type,
@@ -5480,53 +5988,56 @@ def _input__drag_data_item__to_dict(
             'BaseURL': data.base_url,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _input__drag_data__to_dict(
         data: 'input_.DragData',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'items': [
                 to_dict(item, casing_strategy)
                 for item in data.items
             ],
-            'files': [
-                item
-                for item in data.files
-            ],
+            'files': data.files,
             'drag_operations_mask': data.drag_operations_mask,
         }
+
     if casing_strategy == 'camel':
         return {
             'items': [
                 to_dict(item, casing_strategy)
                 for item in data.items
             ],
-            'files': [
-                item
-                for item in data.files
-            ],
+            'files': data.files,
             'dragOperationsMask': data.drag_operations_mask,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Items': [
                 to_dict(item, casing_strategy)
                 for item in data.items
             ],
-            'Files': [
-                item
-                for item in data.files
-            ],
+            'Files': data.files,
             'DragOperationsMask': data.drag_operations_mask,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _layer_tree__scroll_rect__to_dict(
         data: 'layer_tree.ScrollRect',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'rect': to_dict(
@@ -5535,6 +6046,7 @@ def _layer_tree__scroll_rect__to_dict(
             ),
             'type': data.type,
         }
+
     if casing_strategy == 'camel':
         return {
             'rect': to_dict(
@@ -5543,6 +6055,7 @@ def _layer_tree__scroll_rect__to_dict(
             ),
             'type': data.type,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Rect': to_dict(
@@ -5552,11 +6065,16 @@ def _layer_tree__scroll_rect__to_dict(
             'Type': data.type,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _layer_tree__sticky_position_constraint__to_dict(
         data: 'layer_tree.StickyPositionConstraint',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'sticky_box_rect': to_dict(
@@ -5570,6 +6088,7 @@ def _layer_tree__sticky_position_constraint__to_dict(
             'nearest_layer_shifting_sticky_box': data.nearest_layer_shifting_sticky_box,
             'nearest_layer_shifting_containing_block': data.nearest_layer_shifting_containing_block,
         }
+
     if casing_strategy == 'camel':
         return {
             'stickyBoxRect': to_dict(
@@ -5583,6 +6102,7 @@ def _layer_tree__sticky_position_constraint__to_dict(
             'nearestLayerShiftingStickyBox': data.nearest_layer_shifting_sticky_box,
             'nearestLayerShiftingContainingBlock': data.nearest_layer_shifting_containing_block,
         }
+
     if casing_strategy == 'pascal':
         return {
             'StickyBoxRect': to_dict(
@@ -5597,23 +6117,30 @@ def _layer_tree__sticky_position_constraint__to_dict(
             'NearestLayerShiftingContainingBlock': data.nearest_layer_shifting_containing_block,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _layer_tree__picture_tile__to_dict(
         data: 'layer_tree.PictureTile',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'x': data.x,
             'y': data.y,
             'picture': data.picture,
         }
+
     if casing_strategy == 'camel':
         return {
             'x': data.x,
             'y': data.y,
             'picture': data.picture,
         }
+
     if casing_strategy == 'pascal':
         return {
             'X': data.x,
@@ -5621,11 +6148,16 @@ def _layer_tree__picture_tile__to_dict(
             'Picture': data.picture,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _layer_tree__layer__to_dict(
         data: 'layer_tree.Layer',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'layer_id': data.layer_id,
@@ -5635,10 +6167,7 @@ def _layer_tree__layer__to_dict(
             'offset_y': data.offset_y,
             'width': data.width,
             'height': data.height,
-            'transform': [
-                item
-                for item in data.transform
-            ],
+            'transform': data.transform,
             'anchor_x': data.anchor_x,
             'anchor_y': data.anchor_y,
             'anchor_z': data.anchor_z,
@@ -5654,6 +6183,7 @@ def _layer_tree__layer__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'layerId': data.layer_id,
@@ -5663,10 +6193,7 @@ def _layer_tree__layer__to_dict(
             'offsetY': data.offset_y,
             'width': data.width,
             'height': data.height,
-            'transform': [
-                item
-                for item in data.transform
-            ],
+            'transform': data.transform,
             'anchorX': data.anchor_x,
             'anchorY': data.anchor_y,
             'anchorZ': data.anchor_z,
@@ -5682,6 +6209,7 @@ def _layer_tree__layer__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'LayerId': data.layer_id,
@@ -5691,10 +6219,7 @@ def _layer_tree__layer__to_dict(
             'OffsetY': data.offset_y,
             'Width': data.width,
             'Height': data.height,
-            'Transform': [
-                item
-                for item in data.transform
-            ],
+            'Transform': data.transform,
             'AnchorX': data.anchor_x,
             'AnchorY': data.anchor_y,
             'AnchorZ': data.anchor_z,
@@ -5711,11 +6236,16 @@ def _layer_tree__layer__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _log__log_entry__to_dict(
         data: 'log.LogEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'source': data.source,
@@ -5736,6 +6266,7 @@ def _log__log_entry__to_dict(
                 for item in data.args
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'source': data.source,
@@ -5756,6 +6287,7 @@ def _log__log_entry__to_dict(
                 for item in data.args
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Source': data.source,
@@ -5777,65 +6309,75 @@ def _log__log_entry__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _log__violation_setting__to_dict(
         data: 'log.ViolationSetting',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'threshold': data.threshold,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'threshold': data.threshold,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Threshold': data.threshold,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _memory__sampling_profile_node__to_dict(
         data: 'memory.SamplingProfileNode',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'size': data.size,
             'total': data.total,
-            'stack': [
-                item
-                for item in data.stack
-            ],
+            'stack': data.stack,
         }
+
     if casing_strategy == 'camel':
         return {
             'size': data.size,
             'total': data.total,
-            'stack': [
-                item
-                for item in data.stack
-            ],
+            'stack': data.stack,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Size': data.size,
             'Total': data.total,
-            'Stack': [
-                item
-                for item in data.stack
-            ],
+            'Stack': data.stack,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _memory__sampling_profile__to_dict(
         data: 'memory.SamplingProfile',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'samples': [
@@ -5847,6 +6389,7 @@ def _memory__sampling_profile__to_dict(
                 for item in data.modules
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'samples': [
@@ -5858,6 +6401,7 @@ def _memory__sampling_profile__to_dict(
                 for item in data.modules
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Samples': [
@@ -5870,11 +6414,16 @@ def _memory__sampling_profile__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _memory__module__to_dict(
         data: 'memory.Module',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -5882,6 +6431,7 @@ def _memory__module__to_dict(
             'base_address': data.base_address,
             'size': data.size,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -5889,6 +6439,7 @@ def _memory__module__to_dict(
             'baseAddress': data.base_address,
             'size': data.size,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -5897,11 +6448,16 @@ def _memory__module__to_dict(
             'Size': data.size,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__resource_timing__to_dict(
         data: 'network.ResourceTiming',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'request_time': data.request_time,
@@ -5924,6 +6480,7 @@ def _network__resource_timing__to_dict(
             'receive_headers_start': data.receive_headers_start,
             'receive_headers_end': data.receive_headers_end,
         }
+
     if casing_strategy == 'camel':
         return {
             'requestTime': data.request_time,
@@ -5946,6 +6503,7 @@ def _network__resource_timing__to_dict(
             'receiveHeadersStart': data.receive_headers_start,
             'receiveHeadersEnd': data.receive_headers_end,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RequestTime': data.request_time,
@@ -5969,29 +6527,41 @@ def _network__resource_timing__to_dict(
             'ReceiveHeadersEnd': data.receive_headers_end,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__post_data_entry__to_dict(
         data: 'network.PostDataEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'bytes': data.bytes,
         }
+
     if casing_strategy == 'camel':
         return {
             'bytes': data.bytes,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Bytes': data.bytes,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__request__to_dict(
         data: 'network.Request',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -6014,6 +6584,7 @@ def _network__request__to_dict(
             ),
             'is_same_site': data.is_same_site,
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
@@ -6036,6 +6607,7 @@ def _network__request__to_dict(
             ),
             'isSameSite': data.is_same_site,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
@@ -6059,11 +6631,16 @@ def _network__request__to_dict(
             'IsSameSite': data.is_same_site,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__signed_certificate_timestamp__to_dict(
         data: 'network.SignedCertificateTimestamp',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'status': data.status,
@@ -6075,6 +6652,7 @@ def _network__signed_certificate_timestamp__to_dict(
             'signature_algorithm': data.signature_algorithm,
             'signature_data': data.signature_data,
         }
+
     if casing_strategy == 'camel':
         return {
             'status': data.status,
@@ -6086,6 +6664,7 @@ def _network__signed_certificate_timestamp__to_dict(
             'signatureAlgorithm': data.signature_algorithm,
             'signatureData': data.signature_data,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Status': data.status,
@@ -6098,11 +6677,16 @@ def _network__signed_certificate_timestamp__to_dict(
             'SignatureData': data.signature_data,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__security_details__to_dict(
         data: 'network.SecurityDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'protocol': data.protocol,
@@ -6112,10 +6696,7 @@ def _network__security_details__to_dict(
             'mac': data.mac,
             'certificate_id': data.certificate_id,
             'subject_name': data.subject_name,
-            'san_list': [
-                item
-                for item in data.san_list
-            ],
+            'san_list': data.san_list,
             'issuer': data.issuer,
             'valid_from': data.valid_from,
             'valid_to': data.valid_to,
@@ -6127,6 +6708,7 @@ def _network__security_details__to_dict(
             'server_signature_algorithm': data.server_signature_algorithm,
             'encrypted_client_hello': data.encrypted_client_hello,
         }
+
     if casing_strategy == 'camel':
         return {
             'protocol': data.protocol,
@@ -6136,10 +6718,7 @@ def _network__security_details__to_dict(
             'mac': data.mac,
             'certificateId': data.certificate_id,
             'subjectName': data.subject_name,
-            'sanList': [
-                item
-                for item in data.san_list
-            ],
+            'sanList': data.san_list,
             'issuer': data.issuer,
             'validFrom': data.valid_from,
             'validTo': data.valid_to,
@@ -6151,6 +6730,7 @@ def _network__security_details__to_dict(
             'serverSignatureAlgorithm': data.server_signature_algorithm,
             'encryptedClientHello': data.encrypted_client_hello,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Protocol': data.protocol,
@@ -6160,10 +6740,7 @@ def _network__security_details__to_dict(
             'Mac': data.mac,
             'CertificateId': data.certificate_id,
             'SubjectName': data.subject_name,
-            'SanList': [
-                item
-                for item in data.san_list
-            ],
+            'SanList': data.san_list,
             'Issuer': data.issuer,
             'ValidFrom': data.valid_from,
             'ValidTo': data.valid_to,
@@ -6176,65 +6753,75 @@ def _network__security_details__to_dict(
             'EncryptedClientHello': data.encrypted_client_hello,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cors_error_status__to_dict(
         data: 'network.CorsErrorStatus',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'cors_error': data.cors_error,
             'failed_parameter': data.failed_parameter,
         }
+
     if casing_strategy == 'camel':
         return {
             'corsError': data.cors_error,
             'failedParameter': data.failed_parameter,
         }
+
     if casing_strategy == 'pascal':
         return {
             'CorsError': data.cors_error,
             'FailedParameter': data.failed_parameter,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__trust_token_params__to_dict(
         data: 'network.TrustTokenParams',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'operation': data.operation,
             'refresh_policy': data.refresh_policy,
-            'issuers': [
-                item
-                for item in data.issuers
-            ],
+            'issuers': data.issuers,
         }
+
     if casing_strategy == 'camel':
         return {
             'operation': data.operation,
             'refreshPolicy': data.refresh_policy,
-            'issuers': [
-                item
-                for item in data.issuers
-            ],
+            'issuers': data.issuers,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Operation': data.operation,
             'RefreshPolicy': data.refresh_policy,
-            'Issuers': [
-                item
-                for item in data.issuers
-            ],
+            'Issuers': data.issuers,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__response__to_dict(
         data: 'network.Response',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -6268,6 +6855,7 @@ def _network__response__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
@@ -6301,6 +6889,7 @@ def _network__response__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
@@ -6335,29 +6924,41 @@ def _network__response__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__web_socket_request__to_dict(
         data: 'network.WebSocketRequest',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'headers': data.headers,
         }
+
     if casing_strategy == 'camel':
         return {
             'headers': data.headers,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Headers': data.headers,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__web_socket_response__to_dict(
         data: 'network.WebSocketResponse',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'status': data.status,
@@ -6367,6 +6968,7 @@ def _network__web_socket_response__to_dict(
             'request_headers': data.request_headers,
             'request_headers_text': data.request_headers_text,
         }
+
     if casing_strategy == 'camel':
         return {
             'status': data.status,
@@ -6376,6 +6978,7 @@ def _network__web_socket_response__to_dict(
             'requestHeaders': data.request_headers,
             'requestHeadersText': data.request_headers_text,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Status': data.status,
@@ -6386,23 +6989,30 @@ def _network__web_socket_response__to_dict(
             'RequestHeadersText': data.request_headers_text,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__web_socket_frame__to_dict(
         data: 'network.WebSocketFrame',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'opcode': data.opcode,
             'mask': data.mask,
             'payload_data': data.payload_data,
         }
+
     if casing_strategy == 'camel':
         return {
             'opcode': data.opcode,
             'mask': data.mask,
             'payloadData': data.payload_data,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Opcode': data.opcode,
@@ -6410,11 +7020,16 @@ def _network__web_socket_frame__to_dict(
             'PayloadData': data.payload_data,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cached_resource__to_dict(
         data: 'network.CachedResource',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -6425,6 +7040,7 @@ def _network__cached_resource__to_dict(
             ),
             'body_size': data.body_size,
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
@@ -6435,6 +7051,7 @@ def _network__cached_resource__to_dict(
             ),
             'bodySize': data.body_size,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
@@ -6446,11 +7063,16 @@ def _network__cached_resource__to_dict(
             'BodySize': data.body_size,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__initiator__to_dict(
         data: 'network.Initiator',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -6463,6 +7085,7 @@ def _network__initiator__to_dict(
             'column_number': data.column_number,
             'request_id': data.request_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
@@ -6475,6 +7098,7 @@ def _network__initiator__to_dict(
             'columnNumber': data.column_number,
             'requestId': data.request_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -6488,11 +7112,16 @@ def _network__initiator__to_dict(
             'RequestId': data.request_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cookie__to_dict(
         data: 'network.Cookie',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -6512,6 +7141,7 @@ def _network__cookie__to_dict(
             'partition_key': data.partition_key,
             'partition_key_opaque': data.partition_key_opaque,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -6531,6 +7161,7 @@ def _network__cookie__to_dict(
             'partitionKey': data.partition_key,
             'partitionKeyOpaque': data.partition_key_opaque,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -6551,41 +7182,39 @@ def _network__cookie__to_dict(
             'PartitionKeyOpaque': data.partition_key_opaque,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__blocked_set_cookie_with_reason__to_dict(
         data: 'network.BlockedSetCookieWithReason',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
-            'blocked_reasons': [
-                item
-                for item in data.blocked_reasons
-            ],
+            'blocked_reasons': data.blocked_reasons,
             'cookie_line': data.cookie_line,
             'cookie': to_dict(
                 data.cookie,
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
-            'blockedReasons': [
-                item
-                for item in data.blocked_reasons
-            ],
+            'blockedReasons': data.blocked_reasons,
             'cookieLine': data.cookie_line,
             'cookie': to_dict(
                 data.cookie,
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
-            'BlockedReasons': [
-                item
-                for item in data.blocked_reasons
-            ],
+            'BlockedReasons': data.blocked_reasons,
             'CookieLine': data.cookie_line,
             'Cookie': to_dict(
                 data.cookie,
@@ -6593,50 +7222,53 @@ def _network__blocked_set_cookie_with_reason__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__blocked_cookie_with_reason__to_dict(
         data: 'network.BlockedCookieWithReason',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
-            'blocked_reasons': [
-                item
-                for item in data.blocked_reasons
-            ],
+            'blocked_reasons': data.blocked_reasons,
             'cookie': to_dict(
                 data.cookie,
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
-            'blockedReasons': [
-                item
-                for item in data.blocked_reasons
-            ],
+            'blockedReasons': data.blocked_reasons,
             'cookie': to_dict(
                 data.cookie,
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
-            'BlockedReasons': [
-                item
-                for item in data.blocked_reasons
-            ],
+            'BlockedReasons': data.blocked_reasons,
             'Cookie': to_dict(
                 data.cookie,
                 casing_strategy
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cookie_param__to_dict(
         data: 'network.CookieParam',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -6654,6 +7286,7 @@ def _network__cookie_param__to_dict(
             'source_port': data.source_port,
             'partition_key': data.partition_key,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -6671,6 +7304,7 @@ def _network__cookie_param__to_dict(
             'sourcePort': data.source_port,
             'partitionKey': data.partition_key,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -6689,11 +7323,16 @@ def _network__cookie_param__to_dict(
             'PartitionKey': data.partition_key,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__auth_challenge__to_dict(
         data: 'network.AuthChallenge',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'source': data.source,
@@ -6701,6 +7340,7 @@ def _network__auth_challenge__to_dict(
             'scheme': data.scheme,
             'realm': data.realm,
         }
+
     if casing_strategy == 'camel':
         return {
             'source': data.source,
@@ -6708,6 +7348,7 @@ def _network__auth_challenge__to_dict(
             'scheme': data.scheme,
             'realm': data.realm,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Source': data.source,
@@ -6716,23 +7357,30 @@ def _network__auth_challenge__to_dict(
             'Realm': data.realm,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__auth_challenge_response__to_dict(
         data: 'network.AuthChallengeResponse',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'response': data.response,
             'username': data.username,
             'password': data.password,
         }
+
     if casing_strategy == 'camel':
         return {
             'response': data.response,
             'username': data.username,
             'password': data.password,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Response': data.response,
@@ -6740,23 +7388,30 @@ def _network__auth_challenge_response__to_dict(
             'Password': data.password,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__request_pattern__to_dict(
         data: 'network.RequestPattern',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url_pattern': data.url_pattern,
             'resource_type': data.resource_type,
             'interception_stage': data.interception_stage,
         }
+
     if casing_strategy == 'camel':
         return {
             'urlPattern': data.url_pattern,
             'resourceType': data.resource_type,
             'interceptionStage': data.interception_stage,
         }
+
     if casing_strategy == 'pascal':
         return {
             'UrlPattern': data.url_pattern,
@@ -6764,11 +7419,16 @@ def _network__request_pattern__to_dict(
             'InterceptionStage': data.interception_stage,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__signed_exchange_signature__to_dict(
         data: 'network.SignedExchangeSignature',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'label': data.label,
@@ -6779,11 +7439,9 @@ def _network__signed_exchange_signature__to_dict(
             'validity_url': data.validity_url,
             'date': data.date,
             'expires': data.expires,
-            'certificates': [
-                item
-                for item in data.certificates
-            ],
+            'certificates': data.certificates,
         }
+
     if casing_strategy == 'camel':
         return {
             'label': data.label,
@@ -6794,11 +7452,9 @@ def _network__signed_exchange_signature__to_dict(
             'validityUrl': data.validity_url,
             'date': data.date,
             'expires': data.expires,
-            'certificates': [
-                item
-                for item in data.certificates
-            ],
+            'certificates': data.certificates,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Label': data.label,
@@ -6809,17 +7465,19 @@ def _network__signed_exchange_signature__to_dict(
             'ValidityUrl': data.validity_url,
             'Date': data.date,
             'Expires': data.expires,
-            'Certificates': [
-                item
-                for item in data.certificates
-            ],
+            'Certificates': data.certificates,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__signed_exchange_header__to_dict(
         data: 'network.SignedExchangeHeader',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'request_url': data.request_url,
@@ -6831,6 +7489,7 @@ def _network__signed_exchange_header__to_dict(
             ],
             'header_integrity': data.header_integrity,
         }
+
     if casing_strategy == 'camel':
         return {
             'requestUrl': data.request_url,
@@ -6842,6 +7501,7 @@ def _network__signed_exchange_header__to_dict(
             ],
             'headerIntegrity': data.header_integrity,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RequestUrl': data.request_url,
@@ -6854,23 +7514,30 @@ def _network__signed_exchange_header__to_dict(
             'HeaderIntegrity': data.header_integrity,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__signed_exchange_error__to_dict(
         data: 'network.SignedExchangeError',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'message': data.message,
             'signature_index': data.signature_index,
             'error_field': data.error_field,
         }
+
     if casing_strategy == 'camel':
         return {
             'message': data.message,
             'signatureIndex': data.signature_index,
             'errorField': data.error_field,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Message': data.message,
@@ -6878,11 +7545,16 @@ def _network__signed_exchange_error__to_dict(
             'ErrorField': data.error_field,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__signed_exchange_info__to_dict(
         data: 'network.SignedExchangeInfo',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'outer_response': to_dict(
@@ -6902,6 +7574,7 @@ def _network__signed_exchange_info__to_dict(
                 for item in data.errors
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'outerResponse': to_dict(
@@ -6921,6 +7594,7 @@ def _network__signed_exchange_info__to_dict(
                 for item in data.errors
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'OuterResponse': to_dict(
@@ -6941,41 +7615,55 @@ def _network__signed_exchange_info__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__connect_timing__to_dict(
         data: 'network.ConnectTiming',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'request_time': data.request_time,
         }
+
     if casing_strategy == 'camel':
         return {
             'requestTime': data.request_time,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RequestTime': data.request_time,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__client_security_state__to_dict(
         data: 'network.ClientSecurityState',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'initiator_is_secure_context': data.initiator_is_secure_context,
             'initiator_ip_address_space': data.initiator_ip_address_space,
             'private_network_request_policy': data.private_network_request_policy,
         }
+
     if casing_strategy == 'camel':
         return {
             'initiatorIsSecureContext': data.initiator_is_secure_context,
             'initiatorIPAddressSpace': data.initiator_ip_address_space,
             'privateNetworkRequestPolicy': data.private_network_request_policy,
         }
+
     if casing_strategy == 'pascal':
         return {
             'InitiatorIsSecureContext': data.initiator_is_secure_context,
@@ -6983,11 +7671,16 @@ def _network__client_security_state__to_dict(
             'PrivateNetworkRequestPolicy': data.private_network_request_policy,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cross_origin_opener_policy_status__to_dict(
         data: 'network.CrossOriginOpenerPolicyStatus',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'value': data.value,
@@ -6995,6 +7688,7 @@ def _network__cross_origin_opener_policy_status__to_dict(
             'reporting_endpoint': data.reporting_endpoint,
             'report_only_reporting_endpoint': data.report_only_reporting_endpoint,
         }
+
     if casing_strategy == 'camel':
         return {
             'value': data.value,
@@ -7002,6 +7696,7 @@ def _network__cross_origin_opener_policy_status__to_dict(
             'reportingEndpoint': data.reporting_endpoint,
             'reportOnlyReportingEndpoint': data.report_only_reporting_endpoint,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Value': data.value,
@@ -7009,12 +7704,17 @@ def _network__cross_origin_opener_policy_status__to_dict(
             'ReportingEndpoint': data.reporting_endpoint,
             'ReportOnlyReportingEndpoint': data.report_only_reporting_endpoint,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__cross_origin_embedder_policy_status__to_dict(
         data: 'network.CrossOriginEmbedderPolicyStatus',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'value': data.value,
@@ -7022,6 +7722,7 @@ def _network__cross_origin_embedder_policy_status__to_dict(
             'reporting_endpoint': data.reporting_endpoint,
             'report_only_reporting_endpoint': data.report_only_reporting_endpoint,
         }
+
     if casing_strategy == 'camel':
         return {
             'value': data.value,
@@ -7029,6 +7730,7 @@ def _network__cross_origin_embedder_policy_status__to_dict(
             'reportingEndpoint': data.reporting_endpoint,
             'reportOnlyReportingEndpoint': data.report_only_reporting_endpoint,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Value': data.value,
@@ -7037,23 +7739,30 @@ def _network__cross_origin_embedder_policy_status__to_dict(
             'ReportOnlyReportingEndpoint': data.report_only_reporting_endpoint,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__content_security_policy_status__to_dict(
         data: 'network.ContentSecurityPolicyStatus',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'effective_directives': data.effective_directives,
             'is_enforced': data.is_enforced,
             'source': data.source,
         }
+
     if casing_strategy == 'camel':
         return {
             'effectiveDirectives': data.effective_directives,
             'isEnforced': data.is_enforced,
             'source': data.source,
         }
+
     if casing_strategy == 'pascal':
         return {
             'EffectiveDirectives': data.effective_directives,
@@ -7061,11 +7770,16 @@ def _network__content_security_policy_status__to_dict(
             'Source': data.source,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__security_isolation_status__to_dict(
         data: 'network.SecurityIsolationStatus',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'coop': to_dict(
@@ -7081,6 +7795,7 @@ def _network__security_isolation_status__to_dict(
                 for item in data.csp
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'coop': to_dict(
@@ -7096,6 +7811,7 @@ def _network__security_isolation_status__to_dict(
                 for item in data.csp
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Coop': to_dict(
@@ -7112,11 +7828,16 @@ def _network__security_isolation_status__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__reporting_api_report__to_dict(
         data: 'network.ReportingApiReport',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -7129,6 +7850,7 @@ def _network__reporting_api_report__to_dict(
             'body': data.body,
             'status': data.status,
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
@@ -7141,6 +7863,7 @@ def _network__reporting_api_report__to_dict(
             'body': data.body,
             'status': data.status,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
@@ -7154,32 +7877,44 @@ def _network__reporting_api_report__to_dict(
             'Status': data.status,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__reporting_api_endpoint__to_dict(
         data: 'network.ReportingApiEndpoint',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
             'group_name': data.group_name,
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
             'groupName': data.group_name,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
             'GroupName': data.group_name,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__load_network_resource_page_result__to_dict(
         data: 'network.LoadNetworkResourcePageResult',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'success': data.success,
@@ -7189,6 +7924,7 @@ def _network__load_network_resource_page_result__to_dict(
             'stream': data.stream,
             'headers': data.headers,
         }
+
     if casing_strategy == 'camel':
         return {
             'success': data.success,
@@ -7198,6 +7934,7 @@ def _network__load_network_resource_page_result__to_dict(
             'stream': data.stream,
             'headers': data.headers,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Success': data.success,
@@ -7208,32 +7945,44 @@ def _network__load_network_resource_page_result__to_dict(
             'Headers': data.headers,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__load_network_resource_options__to_dict(
         data: 'network.LoadNetworkResourceOptions',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'disable_cache': data.disable_cache,
             'include_credentials': data.include_credentials,
         }
+
     if casing_strategy == 'camel':
         return {
             'disableCache': data.disable_cache,
             'includeCredentials': data.include_credentials,
         }
+
     if casing_strategy == 'pascal':
         return {
             'DisableCache': data.disable_cache,
             'IncludeCredentials': data.include_credentials,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__source_order_config__to_dict(
         data: 'overlay.SourceOrderConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'parent_outline_color': to_dict(
@@ -7245,6 +7994,7 @@ def _overlay__source_order_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'parentOutlineColor': to_dict(
@@ -7256,6 +8006,7 @@ def _overlay__source_order_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'ParentOutlineColor': to_dict(
@@ -7268,11 +8019,16 @@ def _overlay__source_order_config__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__grid_highlight_config__to_dict(
         data: 'overlay.GridHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'show_grid_extension_lines': data.show_grid_extension_lines,
@@ -7326,6 +8082,7 @@ def _overlay__grid_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'showGridExtensionLines': data.show_grid_extension_lines,
@@ -7379,6 +8136,7 @@ def _overlay__grid_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'ShowGridExtensionLines': data.show_grid_extension_lines,
@@ -7433,11 +8191,16 @@ def _overlay__grid_highlight_config__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__flex_container_highlight_config__to_dict(
         data: 'overlay.FlexContainerHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'container_border': to_dict(
@@ -7473,6 +8236,7 @@ def _overlay__flex_container_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'containerBorder': to_dict(
@@ -7508,6 +8272,7 @@ def _overlay__flex_container_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'ContainerBorder': to_dict(
@@ -7544,11 +8309,16 @@ def _overlay__flex_container_highlight_config__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__flex_item_highlight_config__to_dict(
         data: 'overlay.FlexItemHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'base_size_box': to_dict(
@@ -7564,6 +8334,7 @@ def _overlay__flex_item_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'baseSizeBox': to_dict(
@@ -7579,6 +8350,7 @@ def _overlay__flex_item_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'BaseSizeBox': to_dict(
@@ -7595,11 +8367,16 @@ def _overlay__flex_item_highlight_config__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__line_style__to_dict(
         data: 'overlay.LineStyle',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'color': to_dict(
@@ -7608,6 +8385,7 @@ def _overlay__line_style__to_dict(
             ),
             'pattern': data.pattern,
         }
+
     if casing_strategy == 'camel':
         return {
             'color': to_dict(
@@ -7616,6 +8394,7 @@ def _overlay__line_style__to_dict(
             ),
             'pattern': data.pattern,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Color': to_dict(
@@ -7625,11 +8404,16 @@ def _overlay__line_style__to_dict(
             'Pattern': data.pattern,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__box_style__to_dict(
         data: 'overlay.BoxStyle',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'fill_color': to_dict(
@@ -7641,6 +8425,7 @@ def _overlay__box_style__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'fillColor': to_dict(
@@ -7652,6 +8437,7 @@ def _overlay__box_style__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'FillColor': to_dict(
@@ -7664,11 +8450,16 @@ def _overlay__box_style__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__highlight_config__to_dict(
         data: 'overlay.HighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'show_info': data.show_info,
@@ -7727,6 +8518,7 @@ def _overlay__highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'showInfo': data.show_info,
@@ -7785,6 +8577,7 @@ def _overlay__highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'ShowInfo': data.show_info,
@@ -7844,11 +8637,16 @@ def _overlay__highlight_config__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__grid_node_highlight_config__to_dict(
         data: 'overlay.GridNodeHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'grid_highlight_config': to_dict(
@@ -7857,6 +8655,7 @@ def _overlay__grid_node_highlight_config__to_dict(
             ),
             'node_id': data.node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'gridHighlightConfig': to_dict(
@@ -7865,6 +8664,7 @@ def _overlay__grid_node_highlight_config__to_dict(
             ),
             'nodeId': data.node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'GridHighlightConfig': to_dict(
@@ -7874,11 +8674,16 @@ def _overlay__grid_node_highlight_config__to_dict(
             'NodeId': data.node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__flex_node_highlight_config__to_dict(
         data: 'overlay.FlexNodeHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'flex_container_highlight_config': to_dict(
@@ -7887,6 +8692,7 @@ def _overlay__flex_node_highlight_config__to_dict(
             ),
             'node_id': data.node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'flexContainerHighlightConfig': to_dict(
@@ -7895,6 +8701,7 @@ def _overlay__flex_node_highlight_config__to_dict(
             ),
             'nodeId': data.node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'FlexContainerHighlightConfig': to_dict(
@@ -7904,11 +8711,16 @@ def _overlay__flex_node_highlight_config__to_dict(
             'NodeId': data.node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__scroll_snap_container_highlight_config__to_dict(
         data: 'overlay.ScrollSnapContainerHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'snapport_border': to_dict(
@@ -7928,6 +8740,7 @@ def _overlay__scroll_snap_container_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'snapportBorder': to_dict(
@@ -7947,6 +8760,7 @@ def _overlay__scroll_snap_container_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'SnapportBorder': to_dict(
@@ -7967,11 +8781,16 @@ def _overlay__scroll_snap_container_highlight_config__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__scroll_snap_highlight_config__to_dict(
         data: 'overlay.ScrollSnapHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'scroll_snap_container_highlight_config': to_dict(
@@ -7980,6 +8799,7 @@ def _overlay__scroll_snap_highlight_config__to_dict(
             ),
             'node_id': data.node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'scrollSnapContainerHighlightConfig': to_dict(
@@ -7988,6 +8808,7 @@ def _overlay__scroll_snap_highlight_config__to_dict(
             ),
             'nodeId': data.node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ScrollSnapContainerHighlightConfig': to_dict(
@@ -7997,11 +8818,16 @@ def _overlay__scroll_snap_highlight_config__to_dict(
             'NodeId': data.node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__hinge_config__to_dict(
         data: 'overlay.HingeConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'rect': to_dict(
@@ -8017,6 +8843,7 @@ def _overlay__hinge_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'rect': to_dict(
@@ -8032,6 +8859,7 @@ def _overlay__hinge_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Rect': to_dict(
@@ -8048,11 +8876,16 @@ def _overlay__hinge_config__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__container_query_highlight_config__to_dict(
         data: 'overlay.ContainerQueryHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'container_query_container_highlight_config': to_dict(
@@ -8061,6 +8894,7 @@ def _overlay__container_query_highlight_config__to_dict(
             ),
             'node_id': data.node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'containerQueryContainerHighlightConfig': to_dict(
@@ -8069,6 +8903,7 @@ def _overlay__container_query_highlight_config__to_dict(
             ),
             'nodeId': data.node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ContainerQueryContainerHighlightConfig': to_dict(
@@ -8078,11 +8913,16 @@ def _overlay__container_query_highlight_config__to_dict(
             'NodeId': data.node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__container_query_container_highlight_config__to_dict(
         data: 'overlay.ContainerQueryContainerHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'container_border': to_dict(
@@ -8094,6 +8934,7 @@ def _overlay__container_query_container_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'containerBorder': to_dict(
@@ -8105,6 +8946,7 @@ def _overlay__container_query_container_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'ContainerBorder': to_dict(
@@ -8117,11 +8959,16 @@ def _overlay__container_query_container_highlight_config__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__isolated_element_highlight_config__to_dict(
         data: 'overlay.IsolatedElementHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'isolation_mode_highlight_config': to_dict(
@@ -8130,6 +8977,7 @@ def _overlay__isolated_element_highlight_config__to_dict(
             ),
             'node_id': data.node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'isolationModeHighlightConfig': to_dict(
@@ -8138,6 +8986,7 @@ def _overlay__isolated_element_highlight_config__to_dict(
             ),
             'nodeId': data.node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'IsolationModeHighlightConfig': to_dict(
@@ -8147,11 +8996,16 @@ def _overlay__isolated_element_highlight_config__to_dict(
             'NodeId': data.node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__isolation_mode_highlight_config__to_dict(
         data: 'overlay.IsolationModeHighlightConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'resizer_color': to_dict(
@@ -8167,6 +9021,7 @@ def _overlay__isolation_mode_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'resizerColor': to_dict(
@@ -8182,6 +9037,7 @@ def _overlay__isolation_mode_highlight_config__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'ResizerColor': to_dict(
@@ -8198,83 +9054,100 @@ def _overlay__isolation_mode_highlight_config__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__ad_frame_status__to_dict(
         data: 'page.AdFrameStatus',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'ad_frame_type': data.ad_frame_type,
-            'explanations': [
-                item
-                for item in data.explanations
-            ],
+            'explanations': data.explanations,
         }
+
     if casing_strategy == 'camel':
         return {
             'adFrameType': data.ad_frame_type,
-            'explanations': [
-                item
-                for item in data.explanations
-            ],
+            'explanations': data.explanations,
         }
+
     if casing_strategy == 'pascal':
         return {
             'AdFrameType': data.ad_frame_type,
-            'Explanations': [
-                item
-                for item in data.explanations
-            ],
+            'Explanations': data.explanations,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__ad_script_id__to_dict(
         data: 'page.AdScriptId',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
             'debugger_id': data.debugger_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'scriptId': data.script_id,
             'debuggerId': data.debugger_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ScriptId': data.script_id,
             'DebuggerId': data.debugger_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__permissions_policy_block_locator__to_dict(
         data: 'page.PermissionsPolicyBlockLocator',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'frame_id': data.frame_id,
             'block_reason': data.block_reason,
         }
+
     if casing_strategy == 'camel':
         return {
             'frameId': data.frame_id,
             'blockReason': data.block_reason,
         }
+
     if casing_strategy == 'pascal':
         return {
             'FrameId': data.frame_id,
             'BlockReason': data.block_reason,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__permissions_policy_feature_state__to_dict(
         data: 'page.PermissionsPolicyFeatureState',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'feature': data.feature,
@@ -8284,6 +9157,7 @@ def _page__permissions_policy_feature_state__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'feature': data.feature,
@@ -8293,6 +9167,7 @@ def _page__permissions_policy_feature_state__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Feature': data.feature,
@@ -8303,11 +9178,16 @@ def _page__permissions_policy_feature_state__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__origin_trial_token__to_dict(
         data: 'page.OriginTrialToken',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'origin': data.origin,
@@ -8317,6 +9197,7 @@ def _page__origin_trial_token__to_dict(
             'is_third_party': data.is_third_party,
             'usage_restriction': data.usage_restriction,
         }
+
     if casing_strategy == 'camel':
         return {
             'origin': data.origin,
@@ -8326,6 +9207,7 @@ def _page__origin_trial_token__to_dict(
             'isThirdParty': data.is_third_party,
             'usageRestriction': data.usage_restriction,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Origin': data.origin,
@@ -8336,11 +9218,16 @@ def _page__origin_trial_token__to_dict(
             'UsageRestriction': data.usage_restriction,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__origin_trial_token_with_status__to_dict(
         data: 'page.OriginTrialTokenWithStatus',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'raw_token_text': data.raw_token_text,
@@ -8350,6 +9237,7 @@ def _page__origin_trial_token_with_status__to_dict(
             ),
             'status': data.status,
         }
+
     if casing_strategy == 'camel':
         return {
             'rawTokenText': data.raw_token_text,
@@ -8359,6 +9247,7 @@ def _page__origin_trial_token_with_status__to_dict(
             ),
             'status': data.status,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RawTokenText': data.raw_token_text,
@@ -8369,11 +9258,16 @@ def _page__origin_trial_token_with_status__to_dict(
             'Status': data.status,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__origin_trial__to_dict(
         data: 'page.OriginTrial',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'trial_name': data.trial_name,
@@ -8383,6 +9277,7 @@ def _page__origin_trial__to_dict(
                 for item in data.tokens_with_status
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'trialName': data.trial_name,
@@ -8392,6 +9287,7 @@ def _page__origin_trial__to_dict(
                 for item in data.tokens_with_status
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'TrialName': data.trial_name,
@@ -8402,11 +9298,16 @@ def _page__origin_trial__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__frame__to_dict(
         data: 'page.Frame',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -8425,11 +9326,9 @@ def _page__frame__to_dict(
             ),
             'secure_context_type': data.secure_context_type,
             'cross_origin_isolated_context_type': data.cross_origin_isolated_context_type,
-            'gated_api_features': [
-                item
-                for item in data.gated_api_features
-            ],
+            'gated_api_features': data.gated_api_features,
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
@@ -8448,11 +9347,9 @@ def _page__frame__to_dict(
             ),
             'secureContextType': data.secure_context_type,
             'crossOriginIsolatedContextType': data.cross_origin_isolated_context_type,
-            'gatedAPIFeatures': [
-                item
-                for item in data.gated_api_features
-            ],
+            'gatedAPIFeatures': data.gated_api_features,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
@@ -8471,17 +9368,19 @@ def _page__frame__to_dict(
             ),
             'SecureContextType': data.secure_context_type,
             'CrossOriginIsolatedContextType': data.cross_origin_isolated_context_type,
-            'GatedAPIFeatures': [
-                item
-                for item in data.gated_api_features
-            ],
+            'GatedAPIFeatures': data.gated_api_features,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__frame_resource__to_dict(
         data: 'page.FrameResource',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -8492,6 +9391,7 @@ def _page__frame_resource__to_dict(
             'failed': data.failed,
             'canceled': data.canceled,
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
@@ -8502,6 +9402,7 @@ def _page__frame_resource__to_dict(
             'failed': data.failed,
             'canceled': data.canceled,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
@@ -8513,11 +9414,16 @@ def _page__frame_resource__to_dict(
             'Canceled': data.canceled,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__frame_resource_tree__to_dict(
         data: 'page.FrameResourceTree',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'frame': to_dict(
@@ -8533,6 +9439,7 @@ def _page__frame_resource_tree__to_dict(
                 for item in data.resources
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'frame': to_dict(
@@ -8548,6 +9455,7 @@ def _page__frame_resource_tree__to_dict(
                 for item in data.resources
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Frame': to_dict(
@@ -8564,11 +9472,16 @@ def _page__frame_resource_tree__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__frame_tree__to_dict(
         data: 'page.FrameTree',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'frame': to_dict(
@@ -8580,6 +9493,7 @@ def _page__frame_tree__to_dict(
                 for item in data.child_frames
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'frame': to_dict(
@@ -8591,6 +9505,7 @@ def _page__frame_tree__to_dict(
                 for item in data.child_frames
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Frame': to_dict(
@@ -8603,11 +9518,16 @@ def _page__frame_tree__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__navigation_entry__to_dict(
         data: 'page.NavigationEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -8616,6 +9536,7 @@ def _page__navigation_entry__to_dict(
             'title': data.title,
             'transition_type': data.transition_type,
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
@@ -8624,6 +9545,7 @@ def _page__navigation_entry__to_dict(
             'title': data.title,
             'transitionType': data.transition_type,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
@@ -8633,11 +9555,16 @@ def _page__navigation_entry__to_dict(
             'TransitionType': data.transition_type,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__screencast_frame_metadata__to_dict(
         data: 'page.ScreencastFrameMetadata',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'offset_top': data.offset_top,
@@ -8648,6 +9575,7 @@ def _page__screencast_frame_metadata__to_dict(
             'scroll_offset_y': data.scroll_offset_y,
             'timestamp': data.timestamp,
         }
+
     if casing_strategy == 'camel':
         return {
             'offsetTop': data.offset_top,
@@ -8658,6 +9586,7 @@ def _page__screencast_frame_metadata__to_dict(
             'scrollOffsetY': data.scroll_offset_y,
             'timestamp': data.timestamp,
         }
+
     if casing_strategy == 'pascal':
         return {
             'OffsetTop': data.offset_top,
@@ -8669,11 +9598,16 @@ def _page__screencast_frame_metadata__to_dict(
             'Timestamp': data.timestamp,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__app_manifest_error__to_dict(
         data: 'page.AppManifestError',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'message': data.message,
@@ -8681,6 +9615,7 @@ def _page__app_manifest_error__to_dict(
             'line': data.line,
             'column': data.column,
         }
+
     if casing_strategy == 'camel':
         return {
             'message': data.message,
@@ -8688,6 +9623,7 @@ def _page__app_manifest_error__to_dict(
             'line': data.line,
             'column': data.column,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Message': data.message,
@@ -8696,29 +9632,41 @@ def _page__app_manifest_error__to_dict(
             'Column': data.column,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__app_manifest_parsed_properties__to_dict(
         data: 'page.AppManifestParsedProperties',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'scope': data.scope,
         }
+
     if casing_strategy == 'camel':
         return {
             'scope': data.scope,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Scope': data.scope,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__layout_viewport__to_dict(
         data: 'page.LayoutViewport',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'page_x': data.page_x,
@@ -8726,6 +9674,7 @@ def _page__layout_viewport__to_dict(
             'client_width': data.client_width,
             'client_height': data.client_height,
         }
+
     if casing_strategy == 'camel':
         return {
             'pageX': data.page_x,
@@ -8733,6 +9682,7 @@ def _page__layout_viewport__to_dict(
             'clientWidth': data.client_width,
             'clientHeight': data.client_height,
         }
+
     if casing_strategy == 'pascal':
         return {
             'PageX': data.page_x,
@@ -8741,11 +9691,16 @@ def _page__layout_viewport__to_dict(
             'ClientHeight': data.client_height,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__visual_viewport__to_dict(
         data: 'page.VisualViewport',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'offset_x': data.offset_x,
@@ -8757,6 +9712,7 @@ def _page__visual_viewport__to_dict(
             'scale': data.scale,
             'zoom': data.zoom,
         }
+
     if casing_strategy == 'camel':
         return {
             'offsetX': data.offset_x,
@@ -8768,6 +9724,7 @@ def _page__visual_viewport__to_dict(
             'scale': data.scale,
             'zoom': data.zoom,
         }
+
     if casing_strategy == 'pascal':
         return {
             'OffsetX': data.offset_x,
@@ -8780,11 +9737,16 @@ def _page__visual_viewport__to_dict(
             'Zoom': data.zoom,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__viewport__to_dict(
         data: 'page.Viewport',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'x': data.x,
@@ -8793,6 +9755,7 @@ def _page__viewport__to_dict(
             'height': data.height,
             'scale': data.scale,
         }
+
     if casing_strategy == 'camel':
         return {
             'x': data.x,
@@ -8801,6 +9764,7 @@ def _page__viewport__to_dict(
             'height': data.height,
             'scale': data.scale,
         }
+
     if casing_strategy == 'pascal':
         return {
             'X': data.x,
@@ -8810,11 +9774,16 @@ def _page__viewport__to_dict(
             'Scale': data.scale,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__font_families__to_dict(
         data: 'page.FontFamilies',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'standard': data.standard,
@@ -8825,6 +9794,7 @@ def _page__font_families__to_dict(
             'fantasy': data.fantasy,
             'math': data.math,
         }
+
     if casing_strategy == 'camel':
         return {
             'standard': data.standard,
@@ -8835,6 +9805,7 @@ def _page__font_families__to_dict(
             'fantasy': data.fantasy,
             'math': data.math,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Standard': data.standard,
@@ -8846,11 +9817,16 @@ def _page__font_families__to_dict(
             'Math': data.math,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__script_font_families__to_dict(
         data: 'page.ScriptFontFamilies',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'script': data.script,
@@ -8859,6 +9835,7 @@ def _page__script_font_families__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'script': data.script,
@@ -8867,6 +9844,7 @@ def _page__script_font_families__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Script': data.script,
@@ -8876,53 +9854,72 @@ def _page__script_font_families__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__font_sizes__to_dict(
         data: 'page.FontSizes',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'standard': data.standard,
             'fixed': data.fixed,
         }
+
     if casing_strategy == 'camel':
         return {
             'standard': data.standard,
             'fixed': data.fixed,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Standard': data.standard,
             'Fixed': data.fixed,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__installability_error_argument__to_dict(
         data: 'page.InstallabilityErrorArgument',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__installability_error__to_dict(
         data: 'page.InstallabilityError',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'error_id': data.error_id,
@@ -8931,6 +9928,7 @@ def _page__installability_error__to_dict(
                 for item in data.error_arguments
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'errorId': data.error_id,
@@ -8939,6 +9937,7 @@ def _page__installability_error__to_dict(
                 for item in data.error_arguments
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'ErrorId': data.error_id,
@@ -8948,44 +9947,58 @@ def _page__installability_error__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__compilation_cache_params__to_dict(
         data: 'page.CompilationCacheParams',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
             'eager': data.eager,
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
             'eager': data.eager,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
             'Eager': data.eager,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__back_forward_cache_not_restored_explanation__to_dict(
         data: 'page.BackForwardCacheNotRestoredExplanation',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
             'reason': data.reason,
             'context': data.context,
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
             'reason': data.reason,
             'context': data.context,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -8993,11 +10006,16 @@ def _page__back_forward_cache_not_restored_explanation__to_dict(
             'Context': data.context,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__back_forward_cache_not_restored_explanation_tree__to_dict(
         data: 'page.BackForwardCacheNotRestoredExplanationTree',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -9010,6 +10028,7 @@ def _page__back_forward_cache_not_restored_explanation_tree__to_dict(
                 for item in data.children
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
@@ -9022,6 +10041,7 @@ def _page__back_forward_cache_not_restored_explanation_tree__to_dict(
                 for item in data.children
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
@@ -9035,32 +10055,44 @@ def _page__back_forward_cache_not_restored_explanation_tree__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance__metric__to_dict(
         data: 'performance.Metric',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance_timeline__largest_contentful_paint__to_dict(
         data: 'performance_timeline.LargestContentfulPaint',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'render_time': data.render_time,
@@ -9070,6 +10102,7 @@ def _performance_timeline__largest_contentful_paint__to_dict(
             'url': data.url,
             'node_id': data.node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'renderTime': data.render_time,
@@ -9079,6 +10112,7 @@ def _performance_timeline__largest_contentful_paint__to_dict(
             'url': data.url,
             'nodeId': data.node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RenderTime': data.render_time,
@@ -9089,11 +10123,16 @@ def _performance_timeline__largest_contentful_paint__to_dict(
             'NodeId': data.node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance_timeline__layout_shift_attribution__to_dict(
         data: 'performance_timeline.LayoutShiftAttribution',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'previous_rect': to_dict(
@@ -9106,6 +10145,7 @@ def _performance_timeline__layout_shift_attribution__to_dict(
             ),
             'node_id': data.node_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'previousRect': to_dict(
@@ -9118,6 +10158,7 @@ def _performance_timeline__layout_shift_attribution__to_dict(
             ),
             'nodeId': data.node_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'PreviousRect': to_dict(
@@ -9131,11 +10172,16 @@ def _performance_timeline__layout_shift_attribution__to_dict(
             'NodeId': data.node_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance_timeline__layout_shift__to_dict(
         data: 'performance_timeline.LayoutShift',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'value': data.value,
@@ -9146,6 +10192,7 @@ def _performance_timeline__layout_shift__to_dict(
                 for item in data.sources
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'value': data.value,
@@ -9156,6 +10203,7 @@ def _performance_timeline__layout_shift__to_dict(
                 for item in data.sources
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Value': data.value,
@@ -9167,11 +10215,16 @@ def _performance_timeline__layout_shift__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance_timeline__timeline_event__to_dict(
         data: 'performance_timeline.TimelineEvent',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'frame_id': data.frame_id,
@@ -9188,6 +10241,7 @@ def _performance_timeline__timeline_event__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'frameId': data.frame_id,
@@ -9204,6 +10258,7 @@ def _performance_timeline__timeline_event__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'FrameId': data.frame_id,
@@ -9221,11 +10276,16 @@ def _performance_timeline__timeline_event__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _security__certificate_security_state__to_dict(
         data: 'security.CertificateSecurityState',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'protocol': data.protocol,
@@ -9233,10 +10293,7 @@ def _security__certificate_security_state__to_dict(
             'key_exchange_group': data.key_exchange_group,
             'cipher': data.cipher,
             'mac': data.mac,
-            'certificate': [
-                item
-                for item in data.certificate
-            ],
+            'certificate': data.certificate,
             'subject_name': data.subject_name,
             'issuer': data.issuer,
             'valid_from': data.valid_from,
@@ -9250,6 +10307,7 @@ def _security__certificate_security_state__to_dict(
             'obsolete_ssl_cipher': data.obsolete_ssl_cipher,
             'obsolete_ssl_signature': data.obsolete_ssl_signature,
         }
+
     if casing_strategy == 'camel':
         return {
             'protocol': data.protocol,
@@ -9257,10 +10315,7 @@ def _security__certificate_security_state__to_dict(
             'keyExchangeGroup': data.key_exchange_group,
             'cipher': data.cipher,
             'mac': data.mac,
-            'certificate': [
-                item
-                for item in data.certificate
-            ],
+            'certificate': data.certificate,
             'subjectName': data.subject_name,
             'issuer': data.issuer,
             'validFrom': data.valid_from,
@@ -9274,6 +10329,7 @@ def _security__certificate_security_state__to_dict(
             'obsoleteSslCipher': data.obsolete_ssl_cipher,
             'obsoleteSslSignature': data.obsolete_ssl_signature,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Protocol': data.protocol,
@@ -9281,10 +10337,7 @@ def _security__certificate_security_state__to_dict(
             'KeyExchangeGroup': data.key_exchange_group,
             'Cipher': data.cipher,
             'Mac': data.mac,
-            'Certificate': [
-                item
-                for item in data.certificate
-            ],
+            'Certificate': data.certificate,
             'SubjectName': data.subject_name,
             'Issuer': data.issuer,
             'ValidFrom': data.valid_from,
@@ -9299,32 +10352,44 @@ def _security__certificate_security_state__to_dict(
             'ObsoleteSslSignature': data.obsolete_ssl_signature,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _security__safety_tip_info__to_dict(
         data: 'security.SafetyTipInfo',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'safety_tip_status': data.safety_tip_status,
             'safe_url': data.safe_url,
         }
+
     if casing_strategy == 'camel':
         return {
             'safetyTipStatus': data.safety_tip_status,
             'safeUrl': data.safe_url,
         }
+
     if casing_strategy == 'pascal':
         return {
             'SafetyTipStatus': data.safety_tip_status,
             'SafeUrl': data.safe_url,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _security__visible_security_state__to_dict(
         data: 'security.VisibleSecurityState',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'security_state': data.security_state,
@@ -9336,11 +10401,9 @@ def _security__visible_security_state__to_dict(
                 data.safety_tip_info,
                 casing_strategy
             ),
-            'security_state_issue_ids': [
-                item
-                for item in data.security_state_issue_ids
-            ],
+            'security_state_issue_ids': data.security_state_issue_ids,
         }
+
     if casing_strategy == 'camel':
         return {
             'securityState': data.security_state,
@@ -9352,11 +10415,9 @@ def _security__visible_security_state__to_dict(
                 data.safety_tip_info,
                 casing_strategy
             ),
-            'securityStateIssueIds': [
-                item
-                for item in data.security_state_issue_ids
-            ],
+            'securityStateIssueIds': data.security_state_issue_ids,
         }
+
     if casing_strategy == 'pascal':
         return {
             'SecurityState': data.security_state,
@@ -9368,17 +10429,19 @@ def _security__visible_security_state__to_dict(
                 data.safety_tip_info,
                 casing_strategy
             ),
-            'SecurityStateIssueIds': [
-                item
-                for item in data.security_state_issue_ids
-            ],
+            'SecurityStateIssueIds': data.security_state_issue_ids,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _security__security_state_explanation__to_dict(
         data: 'security.SecurityStateExplanation',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'security_state': data.security_state,
@@ -9386,15 +10449,10 @@ def _security__security_state_explanation__to_dict(
             'summary': data.summary,
             'description': data.description,
             'mixed_content_type': data.mixed_content_type,
-            'certificate': [
-                item
-                for item in data.certificate
-            ],
-            'recommendations': [
-                item
-                for item in data.recommendations
-            ],
+            'certificate': data.certificate,
+            'recommendations': data.recommendations,
         }
+
     if casing_strategy == 'camel':
         return {
             'securityState': data.security_state,
@@ -9402,15 +10460,10 @@ def _security__security_state_explanation__to_dict(
             'summary': data.summary,
             'description': data.description,
             'mixedContentType': data.mixed_content_type,
-            'certificate': [
-                item
-                for item in data.certificate
-            ],
-            'recommendations': [
-                item
-                for item in data.recommendations
-            ],
+            'certificate': data.certificate,
+            'recommendations': data.recommendations,
         }
+
     if casing_strategy == 'pascal':
         return {
             'SecurityState': data.security_state,
@@ -9418,21 +10471,20 @@ def _security__security_state_explanation__to_dict(
             'Summary': data.summary,
             'Description': data.description,
             'MixedContentType': data.mixed_content_type,
-            'Certificate': [
-                item
-                for item in data.certificate
-            ],
-            'Recommendations': [
-                item
-                for item in data.recommendations
-            ],
+            'Certificate': data.certificate,
+            'Recommendations': data.recommendations,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _security__insecure_content_status__to_dict(
         data: 'security.InsecureContentStatus',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'ran_mixed_content': data.ran_mixed_content,
@@ -9443,6 +10495,7 @@ def _security__insecure_content_status__to_dict(
             'ran_insecure_content_style': data.ran_insecure_content_style,
             'displayed_insecure_content_style': data.displayed_insecure_content_style,
         }
+
     if casing_strategy == 'camel':
         return {
             'ranMixedContent': data.ran_mixed_content,
@@ -9453,6 +10506,7 @@ def _security__insecure_content_status__to_dict(
             'ranInsecureContentStyle': data.ran_insecure_content_style,
             'displayedInsecureContentStyle': data.displayed_insecure_content_style,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RanMixedContent': data.ran_mixed_content,
@@ -9464,23 +10518,30 @@ def _security__insecure_content_status__to_dict(
             'DisplayedInsecureContentStyle': data.displayed_insecure_content_style,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _service_worker__service_worker_registration__to_dict(
         data: 'service_worker.ServiceWorkerRegistration',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'registration_id': data.registration_id,
             'scope_url': data.scope_url,
             'is_deleted': data.is_deleted,
         }
+
     if casing_strategy == 'camel':
         return {
             'registrationId': data.registration_id,
             'scopeURL': data.scope_url,
             'isDeleted': data.is_deleted,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RegistrationId': data.registration_id,
@@ -9488,11 +10549,16 @@ def _service_worker__service_worker_registration__to_dict(
             'IsDeleted': data.is_deleted,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _service_worker__service_worker_version__to_dict(
         data: 'service_worker.ServiceWorkerVersion',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'version_id': data.version_id,
@@ -9502,12 +10568,10 @@ def _service_worker__service_worker_version__to_dict(
             'status': data.status,
             'script_last_modified': data.script_last_modified,
             'script_response_time': data.script_response_time,
-            'controlled_clients': [
-                item
-                for item in data.controlled_clients
-            ],
+            'controlled_clients': data.controlled_clients,
             'target_id': data.target_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'versionId': data.version_id,
@@ -9517,12 +10581,10 @@ def _service_worker__service_worker_version__to_dict(
             'status': data.status,
             'scriptLastModified': data.script_last_modified,
             'scriptResponseTime': data.script_response_time,
-            'controlledClients': [
-                item
-                for item in data.controlled_clients
-            ],
+            'controlledClients': data.controlled_clients,
             'targetId': data.target_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'VersionId': data.version_id,
@@ -9532,18 +10594,20 @@ def _service_worker__service_worker_version__to_dict(
             'Status': data.status,
             'ScriptLastModified': data.script_last_modified,
             'ScriptResponseTime': data.script_response_time,
-            'ControlledClients': [
-                item
-                for item in data.controlled_clients
-            ],
+            'ControlledClients': data.controlled_clients,
             'TargetId': data.target_id,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _service_worker__service_worker_error_message__to_dict(
         data: 'service_worker.ServiceWorkerErrorMessage',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'error_message': data.error_message,
@@ -9553,6 +10617,7 @@ def _service_worker__service_worker_error_message__to_dict(
             'line_number': data.line_number,
             'column_number': data.column_number,
         }
+
     if casing_strategy == 'camel':
         return {
             'errorMessage': data.error_message,
@@ -9562,6 +10627,7 @@ def _service_worker__service_worker_error_message__to_dict(
             'lineNumber': data.line_number,
             'columnNumber': data.column_number,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ErrorMessage': data.error_message,
@@ -9572,74 +10638,100 @@ def _service_worker__service_worker_error_message__to_dict(
             'ColumnNumber': data.column_number,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__usage_for_type__to_dict(
         data: 'storage.UsageForType',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'storage_type': data.storage_type,
             'usage': data.usage,
         }
+
     if casing_strategy == 'camel':
         return {
             'storageType': data.storage_type,
             'usage': data.usage,
         }
+
     if casing_strategy == 'pascal':
         return {
             'StorageType': data.storage_type,
             'Usage': data.usage,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__trust_tokens__to_dict(
         data: 'storage.TrustTokens',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'issuer_origin': data.issuer_origin,
             'count': data.count,
         }
+
     if casing_strategy == 'camel':
         return {
             'issuerOrigin': data.issuer_origin,
             'count': data.count,
         }
+
     if casing_strategy == 'pascal':
         return {
             'IssuerOrigin': data.issuer_origin,
             'Count': data.count,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__interest_group_ad__to_dict(
         data: 'storage.InterestGroupAd',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'render_url': data.render_url,
             'metadata': data.metadata,
         }
+
     if casing_strategy == 'camel':
         return {
             'renderUrl': data.render_url,
             'metadata': data.metadata,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RenderUrl': data.render_url,
             'Metadata': data.metadata,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__interest_group_details__to_dict(
         data: 'storage.InterestGroupDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'owner_origin': data.owner_origin,
@@ -9650,10 +10742,7 @@ def _storage__interest_group_details__to_dict(
             'bidding_wasm_helper_url': data.bidding_wasm_helper_url,
             'update_url': data.update_url,
             'trusted_bidding_signals_url': data.trusted_bidding_signals_url,
-            'trusted_bidding_signals_keys': [
-                item
-                for item in data.trusted_bidding_signals_keys
-            ],
+            'trusted_bidding_signals_keys': data.trusted_bidding_signals_keys,
             'user_bidding_signals': data.user_bidding_signals,
             'ads': [
                 to_dict(item, casing_strategy)
@@ -9664,6 +10753,7 @@ def _storage__interest_group_details__to_dict(
                 for item in data.ad_components
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'ownerOrigin': data.owner_origin,
@@ -9674,10 +10764,7 @@ def _storage__interest_group_details__to_dict(
             'biddingWasmHelperUrl': data.bidding_wasm_helper_url,
             'updateUrl': data.update_url,
             'trustedBiddingSignalsUrl': data.trusted_bidding_signals_url,
-            'trustedBiddingSignalsKeys': [
-                item
-                for item in data.trusted_bidding_signals_keys
-            ],
+            'trustedBiddingSignalsKeys': data.trusted_bidding_signals_keys,
             'userBiddingSignals': data.user_bidding_signals,
             'ads': [
                 to_dict(item, casing_strategy)
@@ -9688,6 +10775,7 @@ def _storage__interest_group_details__to_dict(
                 for item in data.ad_components
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'OwnerOrigin': data.owner_origin,
@@ -9698,10 +10786,7 @@ def _storage__interest_group_details__to_dict(
             'BiddingWasmHelperUrl': data.bidding_wasm_helper_url,
             'UpdateUrl': data.update_url,
             'TrustedBiddingSignalsUrl': data.trusted_bidding_signals_url,
-            'TrustedBiddingSignalsKeys': [
-                item
-                for item in data.trusted_bidding_signals_keys
-            ],
+            'TrustedBiddingSignalsKeys': data.trusted_bidding_signals_keys,
             'UserBiddingSignals': data.user_bidding_signals,
             'Ads': [
                 to_dict(item, casing_strategy)
@@ -9713,44 +10798,58 @@ def _storage__interest_group_details__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_entry__to_dict(
         data: 'storage.SharedStorageEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'key': data.key,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'key': data.key,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Key': data.key,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_metadata__to_dict(
         data: 'storage.SharedStorageMetadata',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'creation_time': data.creation_time,
             'length': data.length,
             'remaining_budget': data.remaining_budget,
         }
+
     if casing_strategy == 'camel':
         return {
             'creationTime': data.creation_time,
             'length': data.length,
             'remainingBudget': data.remaining_budget,
         }
+
     if casing_strategy == 'pascal':
         return {
             'CreationTime': data.creation_time,
@@ -9758,32 +10857,44 @@ def _storage__shared_storage_metadata__to_dict(
             'RemainingBudget': data.remaining_budget,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_reporting_metadata__to_dict(
         data: 'storage.SharedStorageReportingMetadata',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'event_type': data.event_type,
             'reporting_url': data.reporting_url,
         }
+
     if casing_strategy == 'camel':
         return {
             'eventType': data.event_type,
             'reportingUrl': data.reporting_url,
         }
+
     if casing_strategy == 'pascal':
         return {
             'EventType': data.event_type,
             'ReportingUrl': data.reporting_url,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_url_with_metadata__to_dict(
         data: 'storage.SharedStorageUrlWithMetadata',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url': data.url,
@@ -9792,6 +10903,7 @@ def _storage__shared_storage_url_with_metadata__to_dict(
                 for item in data.reporting_metadata
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'url': data.url,
@@ -9800,6 +10912,7 @@ def _storage__shared_storage_url_with_metadata__to_dict(
                 for item in data.reporting_metadata
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Url': data.url,
@@ -9809,11 +10922,16 @@ def _storage__shared_storage_url_with_metadata__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_access_params__to_dict(
         data: 'storage.SharedStorageAccessParams',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'script_source_url': data.script_source_url,
@@ -9827,6 +10945,7 @@ def _storage__shared_storage_access_params__to_dict(
             'value': data.value,
             'ignore_if_present': data.ignore_if_present,
         }
+
     if casing_strategy == 'camel':
         return {
             'scriptSourceUrl': data.script_source_url,
@@ -9840,6 +10959,7 @@ def _storage__shared_storage_access_params__to_dict(
             'value': data.value,
             'ignoreIfPresent': data.ignore_if_present,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ScriptSourceUrl': data.script_source_url,
@@ -9854,32 +10974,44 @@ def _storage__shared_storage_access_params__to_dict(
             'IgnoreIfPresent': data.ignore_if_present,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__storage_bucket__to_dict(
         data: 'storage.StorageBucket',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'storage_key': data.storage_key,
             'name': data.name,
         }
+
     if casing_strategy == 'camel':
         return {
             'storageKey': data.storage_key,
             'name': data.name,
         }
+
     if casing_strategy == 'pascal':
         return {
             'StorageKey': data.storage_key,
             'Name': data.name,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__storage_bucket_info__to_dict(
         data: 'storage.StorageBucketInfo',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'bucket': to_dict(
@@ -9892,6 +11024,7 @@ def _storage__storage_bucket_info__to_dict(
             'persistent': data.persistent,
             'durability': data.durability,
         }
+
     if casing_strategy == 'camel':
         return {
             'bucket': to_dict(
@@ -9904,6 +11037,7 @@ def _storage__storage_bucket_info__to_dict(
             'persistent': data.persistent,
             'durability': data.durability,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Bucket': to_dict(
@@ -9917,92 +11051,100 @@ def _storage__storage_bucket_info__to_dict(
             'Durability': data.durability,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__attribution_reporting_filter_data_entry__to_dict(
         data: 'storage.AttributionReportingFilterDataEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'key': data.key,
-            'values': [
-                item
-                for item in data.values
-            ],
+            'values': data.values,
         }
+
     if casing_strategy == 'camel':
         return {
             'key': data.key,
-            'values': [
-                item
-                for item in data.values
-            ],
+            'values': data.values,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Key': data.key,
-            'Values': [
-                item
-                for item in data.values
-            ],
+            'Values': data.values,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _storage__attribution_reporting_aggregation_keys_entry__to_dict(
         data: 'storage.AttributionReportingAggregationKeysEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'key': data.key,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'key': data.key,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Key': data.key,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__attribution_reporting_event_report_windows__to_dict(
         data: 'storage.AttributionReportingEventReportWindows',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'start': data.start,
-            'ends': [
-                item
-                for item in data.ends
-            ],
+            'ends': data.ends,
         }
+
     if casing_strategy == 'camel':
         return {
             'start': data.start,
-            'ends': [
-                item
-                for item in data.ends
-            ],
+            'ends': data.ends,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Start': data.start,
-            'Ends': [
-                item
-                for item in data.ends
-            ],
+            'Ends': data.ends,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _storage__attribution_reporting_source_registration__to_dict(
         data: 'storage.AttributionReportingSourceRegistration',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'time': data.time,
@@ -10016,10 +11158,7 @@ def _storage__attribution_reporting_source_registration__to_dict(
             'type': data.type,
             'source_origin': data.source_origin,
             'reporting_origin': data.reporting_origin,
-            'destination_sites': [
-                item
-                for item in data.destination_sites
-            ],
+            'destination_sites': data.destination_sites,
             'event_id': data.event_id,
             'priority': data.priority,
             'filter_data': [
@@ -10032,6 +11171,7 @@ def _storage__attribution_reporting_source_registration__to_dict(
             ],
             'debug_key': data.debug_key,
         }
+
     if casing_strategy == 'camel':
         return {
             'time': data.time,
@@ -10045,10 +11185,7 @@ def _storage__attribution_reporting_source_registration__to_dict(
             'type': data.type,
             'sourceOrigin': data.source_origin,
             'reportingOrigin': data.reporting_origin,
-            'destinationSites': [
-                item
-                for item in data.destination_sites
-            ],
+            'destinationSites': data.destination_sites,
             'eventId': data.event_id,
             'priority': data.priority,
             'filterData': [
@@ -10061,6 +11198,7 @@ def _storage__attribution_reporting_source_registration__to_dict(
             ],
             'debugKey': data.debug_key,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Time': data.time,
@@ -10074,10 +11212,7 @@ def _storage__attribution_reporting_source_registration__to_dict(
             'Type': data.type,
             'SourceOrigin': data.source_origin,
             'ReportingOrigin': data.reporting_origin,
-            'DestinationSites': [
-                item
-                for item in data.destination_sites
-            ],
+            'DestinationSites': data.destination_sites,
             'EventId': data.event_id,
             'Priority': data.priority,
             'FilterData': [
@@ -10091,11 +11226,16 @@ def _storage__attribution_reporting_source_registration__to_dict(
             'DebugKey': data.debug_key,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__gpu_device__to_dict(
         data: 'system_info.GPUDevice',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'vendor_id': data.vendor_id,
@@ -10107,6 +11247,7 @@ def _system_info__gpu_device__to_dict(
             'driver_vendor': data.driver_vendor,
             'driver_version': data.driver_version,
         }
+
     if casing_strategy == 'camel':
         return {
             'vendorId': data.vendor_id,
@@ -10118,6 +11259,7 @@ def _system_info__gpu_device__to_dict(
             'driverVendor': data.driver_vendor,
             'driverVersion': data.driver_version,
         }
+
     if casing_strategy == 'pascal':
         return {
             'VendorId': data.vendor_id,
@@ -10130,32 +11272,44 @@ def _system_info__gpu_device__to_dict(
             'DriverVersion': data.driver_version,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__size__to_dict(
         data: 'system_info.Size',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'width': data.width,
             'height': data.height,
         }
+
     if casing_strategy == 'camel':
         return {
             'width': data.width,
             'height': data.height,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Width': data.width,
             'Height': data.height,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__video_decode_accelerator_capability__to_dict(
         data: 'system_info.VideoDecodeAcceleratorCapability',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'profile': data.profile,
@@ -10168,6 +11322,7 @@ def _system_info__video_decode_accelerator_capability__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'profile': data.profile,
@@ -10180,6 +11335,7 @@ def _system_info__video_decode_accelerator_capability__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Profile': data.profile,
@@ -10193,11 +11349,16 @@ def _system_info__video_decode_accelerator_capability__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__video_encode_accelerator_capability__to_dict(
         data: 'system_info.VideoEncodeAcceleratorCapability',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'profile': data.profile,
@@ -10208,6 +11369,7 @@ def _system_info__video_encode_accelerator_capability__to_dict(
             'max_framerate_numerator': data.max_framerate_numerator,
             'max_framerate_denominator': data.max_framerate_denominator,
         }
+
     if casing_strategy == 'camel':
         return {
             'profile': data.profile,
@@ -10218,6 +11380,7 @@ def _system_info__video_encode_accelerator_capability__to_dict(
             'maxFramerateNumerator': data.max_framerate_numerator,
             'maxFramerateDenominator': data.max_framerate_denominator,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Profile': data.profile,
@@ -10229,11 +11392,16 @@ def _system_info__video_encode_accelerator_capability__to_dict(
             'MaxFramerateDenominator': data.max_framerate_denominator,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__image_decode_accelerator_capability__to_dict(
         data: 'system_info.ImageDecodeAcceleratorCapability',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'image_type': data.image_type,
@@ -10245,11 +11413,9 @@ def _system_info__image_decode_accelerator_capability__to_dict(
                 data.min_dimensions,
                 casing_strategy
             ),
-            'subsamplings': [
-                item
-                for item in data.subsamplings
-            ],
+            'subsamplings': data.subsamplings,
         }
+
     if casing_strategy == 'camel':
         return {
             'imageType': data.image_type,
@@ -10261,11 +11427,9 @@ def _system_info__image_decode_accelerator_capability__to_dict(
                 data.min_dimensions,
                 casing_strategy
             ),
-            'subsamplings': [
-                item
-                for item in data.subsamplings
-            ],
+            'subsamplings': data.subsamplings,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ImageType': data.image_type,
@@ -10277,17 +11441,19 @@ def _system_info__image_decode_accelerator_capability__to_dict(
                 data.min_dimensions,
                 casing_strategy
             ),
-            'Subsamplings': [
-                item
-                for item in data.subsamplings
-            ],
+            'Subsamplings': data.subsamplings,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _system_info__gpu_info__to_dict(
         data: 'system_info.GPUInfo',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'devices': [
@@ -10296,10 +11462,7 @@ def _system_info__gpu_info__to_dict(
             ],
             'aux_attributes': data.aux_attributes,
             'feature_status': data.feature_status,
-            'driver_bug_workarounds': [
-                item
-                for item in data.driver_bug_workarounds
-            ],
+            'driver_bug_workarounds': data.driver_bug_workarounds,
             'video_decoding': [
                 to_dict(item, casing_strategy)
                 for item in data.video_decoding
@@ -10313,6 +11476,7 @@ def _system_info__gpu_info__to_dict(
                 for item in data.image_decoding
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'devices': [
@@ -10321,10 +11485,7 @@ def _system_info__gpu_info__to_dict(
             ],
             'auxAttributes': data.aux_attributes,
             'featureStatus': data.feature_status,
-            'driverBugWorkarounds': [
-                item
-                for item in data.driver_bug_workarounds
-            ],
+            'driverBugWorkarounds': data.driver_bug_workarounds,
             'videoDecoding': [
                 to_dict(item, casing_strategy)
                 for item in data.video_decoding
@@ -10338,6 +11499,7 @@ def _system_info__gpu_info__to_dict(
                 for item in data.image_decoding
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Devices': [
@@ -10346,10 +11508,7 @@ def _system_info__gpu_info__to_dict(
             ],
             'AuxAttributes': data.aux_attributes,
             'FeatureStatus': data.feature_status,
-            'DriverBugWorkarounds': [
-                item
-                for item in data.driver_bug_workarounds
-            ],
+            'DriverBugWorkarounds': data.driver_bug_workarounds,
             'VideoDecoding': [
                 to_dict(item, casing_strategy)
                 for item in data.video_decoding
@@ -10364,23 +11523,30 @@ def _system_info__gpu_info__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__process_info__to_dict(
         data: 'system_info.ProcessInfo',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
             'id': data.id,
             'cpu_time': data.cpu_time,
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
             'id': data.id,
             'cpuTime': data.cpu_time,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -10388,11 +11554,16 @@ def _system_info__process_info__to_dict(
             'CpuTime': data.cpu_time,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _target__target_info__to_dict(
         data: 'target.TargetInfo',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'target_id': data.target_id,
@@ -10406,6 +11577,7 @@ def _target__target_info__to_dict(
             'browser_context_id': data.browser_context_id,
             'subtype': data.subtype,
         }
+
     if casing_strategy == 'camel':
         return {
             'targetId': data.target_id,
@@ -10419,6 +11591,7 @@ def _target__target_info__to_dict(
             'browserContextId': data.browser_context_id,
             'subtype': data.subtype,
         }
+
     if casing_strategy == 'pascal':
         return {
             'TargetId': data.target_id,
@@ -10433,53 +11606,72 @@ def _target__target_info__to_dict(
             'Subtype': data.subtype,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _target__filter_entry__to_dict(
         data: 'target.FilterEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'exclude': data.exclude,
             'type': data.type,
         }
+
     if casing_strategy == 'camel':
         return {
             'exclude': data.exclude,
             'type': data.type,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Exclude': data.exclude,
             'Type': data.type,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _target__remote_location__to_dict(
         data: 'target.RemoteLocation',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'host': data.host,
             'port': data.port,
         }
+
     if casing_strategy == 'camel':
         return {
             'host': data.host,
             'port': data.port,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Host': data.host,
             'Port': data.port,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _tracing__trace_config__to_dict(
         data: 'tracing.TraceConfig',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'record_mode': data.record_mode,
@@ -10487,20 +11679,12 @@ def _tracing__trace_config__to_dict(
             'enable_sampling': data.enable_sampling,
             'enable_systrace': data.enable_systrace,
             'enable_argument_filter': data.enable_argument_filter,
-            'included_categories': [
-                item
-                for item in data.included_categories
-            ],
-            'excluded_categories': [
-                item
-                for item in data.excluded_categories
-            ],
-            'synthetic_delays': [
-                item
-                for item in data.synthetic_delays
-            ],
+            'included_categories': data.included_categories,
+            'excluded_categories': data.excluded_categories,
+            'synthetic_delays': data.synthetic_delays,
             'memory_dump_config': data.memory_dump_config,
         }
+
     if casing_strategy == 'camel':
         return {
             'recordMode': data.record_mode,
@@ -10508,20 +11692,12 @@ def _tracing__trace_config__to_dict(
             'enableSampling': data.enable_sampling,
             'enableSystrace': data.enable_systrace,
             'enableArgumentFilter': data.enable_argument_filter,
-            'includedCategories': [
-                item
-                for item in data.included_categories
-            ],
-            'excludedCategories': [
-                item
-                for item in data.excluded_categories
-            ],
-            'syntheticDelays': [
-                item
-                for item in data.synthetic_delays
-            ],
+            'includedCategories': data.included_categories,
+            'excludedCategories': data.excluded_categories,
+            'syntheticDelays': data.synthetic_delays,
             'memoryDumpConfig': data.memory_dump_config,
         }
+
     if casing_strategy == 'pascal':
         return {
             'RecordMode': data.record_mode,
@@ -10529,38 +11705,36 @@ def _tracing__trace_config__to_dict(
             'EnableSampling': data.enable_sampling,
             'EnableSystrace': data.enable_systrace,
             'EnableArgumentFilter': data.enable_argument_filter,
-            'IncludedCategories': [
-                item
-                for item in data.included_categories
-            ],
-            'ExcludedCategories': [
-                item
-                for item in data.excluded_categories
-            ],
-            'SyntheticDelays': [
-                item
-                for item in data.synthetic_delays
-            ],
+            'IncludedCategories': data.included_categories,
+            'ExcludedCategories': data.excluded_categories,
+            'SyntheticDelays': data.synthetic_delays,
             'MemoryDumpConfig': data.memory_dump_config,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _fetch__request_pattern__to_dict(
         data: 'fetch.RequestPattern',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'url_pattern': data.url_pattern,
             'resource_type': data.resource_type,
             'request_stage': data.request_stage,
         }
+
     if casing_strategy == 'camel':
         return {
             'urlPattern': data.url_pattern,
             'resourceType': data.resource_type,
             'requestStage': data.request_stage,
         }
+
     if casing_strategy == 'pascal':
         return {
             'UrlPattern': data.url_pattern,
@@ -10568,32 +11742,44 @@ def _fetch__request_pattern__to_dict(
             'RequestStage': data.request_stage,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fetch__header_entry__to_dict(
         data: 'fetch.HeaderEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fetch__auth_challenge__to_dict(
         data: 'fetch.AuthChallenge',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'source': data.source,
@@ -10601,6 +11787,7 @@ def _fetch__auth_challenge__to_dict(
             'scheme': data.scheme,
             'realm': data.realm,
         }
+
     if casing_strategy == 'camel':
         return {
             'source': data.source,
@@ -10608,6 +11795,7 @@ def _fetch__auth_challenge__to_dict(
             'scheme': data.scheme,
             'realm': data.realm,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Source': data.source,
@@ -10616,23 +11804,30 @@ def _fetch__auth_challenge__to_dict(
             'Realm': data.realm,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fetch__auth_challenge_response__to_dict(
         data: 'fetch.AuthChallengeResponse',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'response': data.response,
             'username': data.username,
             'password': data.password,
         }
+
     if casing_strategy == 'camel':
         return {
             'response': data.response,
             'username': data.username,
             'password': data.password,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Response': data.response,
@@ -10640,11 +11835,16 @@ def _fetch__auth_challenge_response__to_dict(
             'Password': data.password,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__context_realtime_data__to_dict(
         data: 'web_audio.ContextRealtimeData',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'current_time': data.current_time,
@@ -10652,6 +11852,7 @@ def _web_audio__context_realtime_data__to_dict(
             'callback_interval_mean': data.callback_interval_mean,
             'callback_interval_variance': data.callback_interval_variance,
         }
+
     if casing_strategy == 'camel':
         return {
             'currentTime': data.current_time,
@@ -10659,6 +11860,7 @@ def _web_audio__context_realtime_data__to_dict(
             'callbackIntervalMean': data.callback_interval_mean,
             'callbackIntervalVariance': data.callback_interval_variance,
         }
+
     if casing_strategy == 'pascal':
         return {
             'CurrentTime': data.current_time,
@@ -10667,11 +11869,16 @@ def _web_audio__context_realtime_data__to_dict(
             'CallbackIntervalVariance': data.callback_interval_variance,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__base_audio_context__to_dict(
         data: 'web_audio.BaseAudioContext',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'context_id': data.context_id,
@@ -10685,6 +11892,7 @@ def _web_audio__base_audio_context__to_dict(
             'max_output_channel_count': data.max_output_channel_count,
             'sample_rate': data.sample_rate,
         }
+
     if casing_strategy == 'camel':
         return {
             'contextId': data.context_id,
@@ -10698,6 +11906,7 @@ def _web_audio__base_audio_context__to_dict(
             'maxOutputChannelCount': data.max_output_channel_count,
             'sampleRate': data.sample_rate,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ContextId': data.context_id,
@@ -10712,32 +11921,44 @@ def _web_audio__base_audio_context__to_dict(
             'SampleRate': data.sample_rate,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__audio_listener__to_dict(
         data: 'web_audio.AudioListener',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'listener_id': data.listener_id,
             'context_id': data.context_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'listenerId': data.listener_id,
             'contextId': data.context_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ListenerId': data.listener_id,
             'ContextId': data.context_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__audio_node__to_dict(
         data: 'web_audio.AudioNode',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'node_id': data.node_id,
@@ -10749,6 +11970,7 @@ def _web_audio__audio_node__to_dict(
             'channel_count_mode': data.channel_count_mode,
             'channel_interpretation': data.channel_interpretation,
         }
+
     if casing_strategy == 'camel':
         return {
             'nodeId': data.node_id,
@@ -10760,6 +11982,7 @@ def _web_audio__audio_node__to_dict(
             'channelCountMode': data.channel_count_mode,
             'channelInterpretation': data.channel_interpretation,
         }
+
     if casing_strategy == 'pascal':
         return {
             'NodeId': data.node_id,
@@ -10772,11 +11995,16 @@ def _web_audio__audio_node__to_dict(
             'ChannelInterpretation': data.channel_interpretation,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__audio_param__to_dict(
         data: 'web_audio.AudioParam',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'param_id': data.param_id,
@@ -10788,6 +12016,7 @@ def _web_audio__audio_param__to_dict(
             'min_value': data.min_value,
             'max_value': data.max_value,
         }
+
     if casing_strategy == 'camel':
         return {
             'paramId': data.param_id,
@@ -10799,6 +12028,7 @@ def _web_audio__audio_param__to_dict(
             'minValue': data.min_value,
             'maxValue': data.max_value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ParamId': data.param_id,
@@ -10811,11 +12041,16 @@ def _web_audio__audio_param__to_dict(
             'MaxValue': data.max_value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_authn__virtual_authenticator_options__to_dict(
         data: 'web_authn.VirtualAuthenticatorOptions',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'protocol': data.protocol,
@@ -10830,6 +12065,7 @@ def _web_authn__virtual_authenticator_options__to_dict(
             'automatic_presence_simulation': data.automatic_presence_simulation,
             'is_user_verified': data.is_user_verified,
         }
+
     if casing_strategy == 'camel':
         return {
             'protocol': data.protocol,
@@ -10844,6 +12080,7 @@ def _web_authn__virtual_authenticator_options__to_dict(
             'automaticPresenceSimulation': data.automatic_presence_simulation,
             'isUserVerified': data.is_user_verified,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Protocol': data.protocol,
@@ -10859,11 +12096,16 @@ def _web_authn__virtual_authenticator_options__to_dict(
             'IsUserVerified': data.is_user_verified,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_authn__credential__to_dict(
         data: 'web_authn.Credential',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'credential_id': data.credential_id,
@@ -10874,6 +12116,7 @@ def _web_authn__credential__to_dict(
             'sign_count': data.sign_count,
             'large_blob': data.large_blob,
         }
+
     if casing_strategy == 'camel':
         return {
             'credentialId': data.credential_id,
@@ -10884,6 +12127,7 @@ def _web_authn__credential__to_dict(
             'signCount': data.sign_count,
             'largeBlob': data.large_blob,
         }
+
     if casing_strategy == 'pascal':
         return {
             'CredentialId': data.credential_id,
@@ -10895,95 +12139,128 @@ def _web_authn__credential__to_dict(
             'LargeBlob': data.large_blob,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_message__to_dict(
         data: 'media.PlayerMessage',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'level': data.level,
             'message': data.message,
         }
+
     if casing_strategy == 'camel':
         return {
             'level': data.level,
             'message': data.message,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Level': data.level,
             'Message': data.message,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_property__to_dict(
         data: 'media.PlayerProperty',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_event__to_dict(
         data: 'media.PlayerEvent',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'timestamp': data.timestamp,
             'value': data.value,
         }
+
     if casing_strategy == 'camel':
         return {
             'timestamp': data.timestamp,
             'value': data.value,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Timestamp': data.timestamp,
             'Value': data.value,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_error_source_location__to_dict(
         data: 'media.PlayerErrorSourceLocation',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'file': data.file,
             'line': data.line,
         }
+
     if casing_strategy == 'camel':
         return {
             'file': data.file,
             'line': data.line,
         }
+
     if casing_strategy == 'pascal':
         return {
             'File': data.file,
             'Line': data.line,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_error__to_dict(
         data: 'media.PlayerError',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'error_type': data.error_type,
@@ -10998,6 +12275,7 @@ def _media__player_error__to_dict(
             ],
             'data': data.data,
         }
+
     if casing_strategy == 'camel':
         return {
             'errorType': data.error_type,
@@ -11012,6 +12290,7 @@ def _media__player_error__to_dict(
             ],
             'data': data.data,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ErrorType': data.error_type,
@@ -11027,32 +12306,44 @@ def _media__player_error__to_dict(
             'Data': data.data,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _device_access__prompt_device__to_dict(
         data: 'device_access.PromptDevice',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
             'name': data.name,
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
             'name': data.name,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
             'Name': data.name,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _preload__rule_set__to_dict(
         data: 'preload.RuleSet',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -11064,6 +12355,7 @@ def _preload__rule_set__to_dict(
             'error_type': data.error_type,
             'error_message': data.error_message,
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
@@ -11075,6 +12367,7 @@ def _preload__rule_set__to_dict(
             'errorType': data.error_type,
             'errorMessage': data.error_message,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
@@ -11087,11 +12380,16 @@ def _preload__rule_set__to_dict(
             'ErrorMessage': data.error_message,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _preload__preloading_attempt_key__to_dict(
         data: 'preload.PreloadingAttemptKey',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'loader_id': data.loader_id,
@@ -11099,6 +12397,7 @@ def _preload__preloading_attempt_key__to_dict(
             'url': data.url,
             'target_hint': data.target_hint,
         }
+
     if casing_strategy == 'camel':
         return {
             'loaderId': data.loader_id,
@@ -11106,6 +12405,7 @@ def _preload__preloading_attempt_key__to_dict(
             'url': data.url,
             'targetHint': data.target_hint,
         }
+
     if casing_strategy == 'pascal':
         return {
             'LoaderId': data.loader_id,
@@ -11114,62 +12414,56 @@ def _preload__preloading_attempt_key__to_dict(
             'TargetHint': data.target_hint,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _preload__preloading_attempt_source__to_dict(
         data: 'preload.PreloadingAttemptSource',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'key': to_dict(
                 data.key,
                 casing_strategy
             ),
-            'rule_set_ids': [
-                item
-                for item in data.rule_set_ids
-            ],
-            'node_ids': [
-                item
-                for item in data.node_ids
-            ],
+            'rule_set_ids': data.rule_set_ids,
+            'node_ids': data.node_ids,
         }
+
     if casing_strategy == 'camel':
         return {
             'key': to_dict(
                 data.key,
                 casing_strategy
             ),
-            'ruleSetIds': [
-                item
-                for item in data.rule_set_ids
-            ],
-            'nodeIds': [
-                item
-                for item in data.node_ids
-            ],
+            'ruleSetIds': data.rule_set_ids,
+            'nodeIds': data.node_ids,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Key': to_dict(
                 data.key,
                 casing_strategy
             ),
-            'RuleSetIds': [
-                item
-                for item in data.rule_set_ids
-            ],
-            'NodeIds': [
-                item
-                for item in data.node_ids
-            ],
+            'RuleSetIds': data.rule_set_ids,
+            'NodeIds': data.node_ids,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _fed_cm__account__to_dict(
         data: 'fed_cm.Account',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'account_id': data.account_id,
@@ -11183,6 +12477,7 @@ def _fed_cm__account__to_dict(
             'terms_of_service_url': data.terms_of_service_url,
             'privacy_policy_url': data.privacy_policy_url,
         }
+
     if casing_strategy == 'camel':
         return {
             'accountId': data.account_id,
@@ -11196,6 +12491,7 @@ def _fed_cm__account__to_dict(
             'termsOfServiceUrl': data.terms_of_service_url,
             'privacyPolicyUrl': data.privacy_policy_url,
         }
+
     if casing_strategy == 'pascal':
         return {
             'AccountId': data.account_id,
@@ -11210,11 +12506,16 @@ def _fed_cm__account__to_dict(
             'PrivacyPolicyUrl': data.privacy_policy_url,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _console__console_message__to_dict(
         data: 'console.ConsoleMessage',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'source': data.source,
@@ -11224,6 +12525,7 @@ def _console__console_message__to_dict(
             'line': data.line,
             'column': data.column,
         }
+
     if casing_strategy == 'camel':
         return {
             'source': data.source,
@@ -11233,6 +12535,7 @@ def _console__console_message__to_dict(
             'line': data.line,
             'column': data.column,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Source': data.source,
@@ -11243,23 +12546,30 @@ def _console__console_message__to_dict(
             'Column': data.column,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__location__to_dict(
         data: 'debugger.Location',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
             'line_number': data.line_number,
             'column_number': data.column_number,
         }
+
     if casing_strategy == 'camel':
         return {
             'scriptId': data.script_id,
             'lineNumber': data.line_number,
             'columnNumber': data.column_number,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ScriptId': data.script_id,
@@ -11267,32 +12577,44 @@ def _debugger__location__to_dict(
             'ColumnNumber': data.column_number,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__script_position__to_dict(
         data: 'debugger.ScriptPosition',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'line_number': data.line_number,
             'column_number': data.column_number,
         }
+
     if casing_strategy == 'camel':
         return {
             'lineNumber': data.line_number,
             'columnNumber': data.column_number,
         }
+
     if casing_strategy == 'pascal':
         return {
             'LineNumber': data.line_number,
             'ColumnNumber': data.column_number,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__call_frame__to_dict(
         data: 'debugger.CallFrame',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'call_frame_id': data.call_frame_id,
@@ -11319,6 +12641,7 @@ def _debugger__call_frame__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'callFrameId': data.call_frame_id,
@@ -11345,6 +12668,7 @@ def _debugger__call_frame__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'CallFrameId': data.call_frame_id,
@@ -11372,11 +12696,16 @@ def _debugger__call_frame__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__scope__to_dict(
         data: 'debugger.Scope',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -11394,6 +12723,7 @@ def _debugger__scope__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
@@ -11411,6 +12741,7 @@ def _debugger__scope__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -11429,32 +12760,44 @@ def _debugger__scope__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__search_match__to_dict(
         data: 'debugger.SearchMatch',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'line_number': data.line_number,
             'line_content': data.line_content,
         }
+
     if casing_strategy == 'camel':
         return {
             'lineNumber': data.line_number,
             'lineContent': data.line_content,
         }
+
     if casing_strategy == 'pascal':
         return {
             'LineNumber': data.line_number,
             'LineContent': data.line_content,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__break_location__to_dict(
         data: 'debugger.BreakLocation',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -11462,6 +12805,7 @@ def _debugger__break_location__to_dict(
             'column_number': data.column_number,
             'type': data.type,
         }
+
     if casing_strategy == 'camel':
         return {
             'scriptId': data.script_id,
@@ -11469,6 +12813,7 @@ def _debugger__break_location__to_dict(
             'columnNumber': data.column_number,
             'type': data.type,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ScriptId': data.script_id,
@@ -11477,11 +12822,16 @@ def _debugger__break_location__to_dict(
             'Type': data.type,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _heap_profiler__sampling_heap_profile_node__to_dict(
         data: 'heap_profiler.SamplingHeapProfileNode',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'call_frame': to_dict(
@@ -11495,6 +12845,7 @@ def _heap_profiler__sampling_heap_profile_node__to_dict(
                 for item in data.children
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'callFrame': to_dict(
@@ -11508,6 +12859,7 @@ def _heap_profiler__sampling_heap_profile_node__to_dict(
                 for item in data.children
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'CallFrame': to_dict(
@@ -11522,23 +12874,30 @@ def _heap_profiler__sampling_heap_profile_node__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _heap_profiler__sampling_heap_profile_sample__to_dict(
         data: 'heap_profiler.SamplingHeapProfileSample',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'size': data.size,
             'node_id': data.node_id,
             'ordinal': data.ordinal,
         }
+
     if casing_strategy == 'camel':
         return {
             'size': data.size,
             'nodeId': data.node_id,
             'ordinal': data.ordinal,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Size': data.size,
@@ -11546,11 +12905,16 @@ def _heap_profiler__sampling_heap_profile_sample__to_dict(
             'Ordinal': data.ordinal,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _heap_profiler__sampling_heap_profile__to_dict(
         data: 'heap_profiler.SamplingHeapProfile',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'head': to_dict(
@@ -11562,6 +12926,7 @@ def _heap_profiler__sampling_heap_profile__to_dict(
                 for item in data.samples
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'head': to_dict(
@@ -11573,6 +12938,7 @@ def _heap_profiler__sampling_heap_profile__to_dict(
                 for item in data.samples
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Head': to_dict(
@@ -11585,11 +12951,16 @@ def _heap_profiler__sampling_heap_profile__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__profile_node__to_dict(
         data: 'profiler.ProfileNode',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -11598,16 +12969,14 @@ def _profiler__profile_node__to_dict(
                 casing_strategy
             ),
             'hit_count': data.hit_count,
-            'children': [
-                item
-                for item in data.children
-            ],
+            'children': data.children,
             'deopt_reason': data.deopt_reason,
             'position_ticks': [
                 to_dict(item, casing_strategy)
                 for item in data.position_ticks
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
@@ -11616,16 +12985,14 @@ def _profiler__profile_node__to_dict(
                 casing_strategy
             ),
             'hitCount': data.hit_count,
-            'children': [
-                item
-                for item in data.children
-            ],
+            'children': data.children,
             'deoptReason': data.deopt_reason,
             'positionTicks': [
                 to_dict(item, casing_strategy)
                 for item in data.position_ticks
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
@@ -11634,10 +13001,7 @@ def _profiler__profile_node__to_dict(
                 casing_strategy
             ),
             'HitCount': data.hit_count,
-            'Children': [
-                item
-                for item in data.children
-            ],
+            'Children': data.children,
             'DeoptReason': data.deopt_reason,
             'PositionTicks': [
                 to_dict(item, casing_strategy)
@@ -11645,11 +13009,16 @@ def _profiler__profile_node__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__profile__to_dict(
         data: 'profiler.Profile',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'nodes': [
@@ -11658,15 +13027,10 @@ def _profiler__profile__to_dict(
             ],
             'start_time': data.start_time,
             'end_time': data.end_time,
-            'samples': [
-                item
-                for item in data.samples
-            ],
-            'time_deltas': [
-                item
-                for item in data.time_deltas
-            ],
+            'samples': data.samples,
+            'time_deltas': data.time_deltas,
         }
+
     if casing_strategy == 'camel':
         return {
             'nodes': [
@@ -11675,15 +13039,10 @@ def _profiler__profile__to_dict(
             ],
             'startTime': data.start_time,
             'endTime': data.end_time,
-            'samples': [
-                item
-                for item in data.samples
-            ],
-            'timeDeltas': [
-                item
-                for item in data.time_deltas
-            ],
+            'samples': data.samples,
+            'timeDeltas': data.time_deltas,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Nodes': [
@@ -11692,54 +13051,62 @@ def _profiler__profile__to_dict(
             ],
             'StartTime': data.start_time,
             'EndTime': data.end_time,
-            'Samples': [
-                item
-                for item in data.samples
-            ],
-            'TimeDeltas': [
-                item
-                for item in data.time_deltas
-            ],
+            'Samples': data.samples,
+            'TimeDeltas': data.time_deltas,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _profiler__position_tick_info__to_dict(
         data: 'profiler.PositionTickInfo',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'line': data.line,
             'ticks': data.ticks,
         }
+
     if casing_strategy == 'camel':
         return {
             'line': data.line,
             'ticks': data.ticks,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Line': data.line,
             'Ticks': data.ticks,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__coverage_range__to_dict(
         data: 'profiler.CoverageRange',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'start_offset': data.start_offset,
             'end_offset': data.end_offset,
             'count': data.count,
         }
+
     if casing_strategy == 'camel':
         return {
             'startOffset': data.start_offset,
             'endOffset': data.end_offset,
             'count': data.count,
         }
+
     if casing_strategy == 'pascal':
         return {
             'StartOffset': data.start_offset,
@@ -11747,11 +13114,16 @@ def _profiler__coverage_range__to_dict(
             'Count': data.count,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__function_coverage__to_dict(
         data: 'profiler.FunctionCoverage',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'function_name': data.function_name,
@@ -11761,6 +13133,7 @@ def _profiler__function_coverage__to_dict(
             ],
             'is_block_coverage': data.is_block_coverage,
         }
+
     if casing_strategy == 'camel':
         return {
             'functionName': data.function_name,
@@ -11770,6 +13143,7 @@ def _profiler__function_coverage__to_dict(
             ],
             'isBlockCoverage': data.is_block_coverage,
         }
+
     if casing_strategy == 'pascal':
         return {
             'FunctionName': data.function_name,
@@ -11780,11 +13154,16 @@ def _profiler__function_coverage__to_dict(
             'IsBlockCoverage': data.is_block_coverage,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__script_coverage__to_dict(
         data: 'profiler.ScriptCoverage',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -11794,6 +13173,7 @@ def _profiler__script_coverage__to_dict(
                 for item in data.functions
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'scriptId': data.script_id,
@@ -11803,6 +13183,7 @@ def _profiler__script_coverage__to_dict(
                 for item in data.functions
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'ScriptId': data.script_id,
@@ -11813,29 +13194,41 @@ def _profiler__script_coverage__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__type_object__to_dict(
         data: 'profiler.TypeObject',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _profiler__type_profile_entry__to_dict(
         data: 'profiler.TypeProfileEntry',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'offset': data.offset,
@@ -11844,6 +13237,7 @@ def _profiler__type_profile_entry__to_dict(
                 for item in data.types
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'offset': data.offset,
@@ -11852,6 +13246,7 @@ def _profiler__type_profile_entry__to_dict(
                 for item in data.types
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Offset': data.offset,
@@ -11861,11 +13256,16 @@ def _profiler__type_profile_entry__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__script_type_profile__to_dict(
         data: 'profiler.ScriptTypeProfile',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'script_id': data.script_id,
@@ -11875,6 +13275,7 @@ def _profiler__script_type_profile__to_dict(
                 for item in data.entries
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'scriptId': data.script_id,
@@ -11884,6 +13285,7 @@ def _profiler__script_type_profile__to_dict(
                 for item in data.entries
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'ScriptId': data.script_id,
@@ -11894,11 +13296,16 @@ def _profiler__script_type_profile__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__remote_object__to_dict(
         data: 'runtime.RemoteObject',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -11917,6 +13324,7 @@ def _runtime__remote_object__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
@@ -11935,6 +13343,7 @@ def _runtime__remote_object__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -11954,32 +13363,44 @@ def _runtime__remote_object__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__custom_preview__to_dict(
         data: 'runtime.CustomPreview',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'header': data.header,
             'body_getter_id': data.body_getter_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'header': data.header,
             'bodyGetterId': data.body_getter_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Header': data.header,
             'BodyGetterId': data.body_getter_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__object_preview__to_dict(
         data: 'runtime.ObjectPreview',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'type': data.type,
@@ -11995,6 +13416,7 @@ def _runtime__object_preview__to_dict(
                 for item in data.entries
             ],
         }
+
     if casing_strategy == 'camel':
         return {
             'type': data.type,
@@ -12010,6 +13432,7 @@ def _runtime__object_preview__to_dict(
                 for item in data.entries
             ],
         }
+
     if casing_strategy == 'pascal':
         return {
             'Type': data.type,
@@ -12026,11 +13449,16 @@ def _runtime__object_preview__to_dict(
             ],
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__property_preview__to_dict(
         data: 'runtime.PropertyPreview',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -12042,6 +13470,7 @@ def _runtime__property_preview__to_dict(
             ),
             'subtype': data.subtype,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -12053,6 +13482,7 @@ def _runtime__property_preview__to_dict(
             ),
             'subtype': data.subtype,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -12065,11 +13495,16 @@ def _runtime__property_preview__to_dict(
             'Subtype': data.subtype,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__entry_preview__to_dict(
         data: 'runtime.EntryPreview',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'key': to_dict(
@@ -12081,6 +13516,7 @@ def _runtime__entry_preview__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'key': to_dict(
@@ -12092,6 +13528,7 @@ def _runtime__entry_preview__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Key': to_dict(
@@ -12104,11 +13541,16 @@ def _runtime__entry_preview__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__property_descriptor__to_dict(
         data: 'runtime.PropertyDescriptor',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -12134,6 +13576,7 @@ def _runtime__property_descriptor__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -12159,6 +13602,7 @@ def _runtime__property_descriptor__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -12185,11 +13629,16 @@ def _runtime__property_descriptor__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__internal_property_descriptor__to_dict(
         data: 'runtime.InternalPropertyDescriptor',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -12198,6 +13647,7 @@ def _runtime__internal_property_descriptor__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -12206,6 +13656,7 @@ def _runtime__internal_property_descriptor__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -12214,12 +13665,17 @@ def _runtime__internal_property_descriptor__to_dict(
                 casing_strategy
             ),
         }
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _runtime__private_property_descriptor__to_dict(
         data: 'runtime.PrivatePropertyDescriptor',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
@@ -12228,6 +13684,7 @@ def _runtime__private_property_descriptor__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
@@ -12236,6 +13693,7 @@ def _runtime__private_property_descriptor__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
@@ -12245,23 +13703,30 @@ def _runtime__private_property_descriptor__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__call_argument__to_dict(
         data: 'runtime.CallArgument',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'value': data.value,
             'unserializable_value': data.unserializable_value,
             'object_id': data.object_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'value': data.value,
             'unserializableValue': data.unserializable_value,
             'objectId': data.object_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Value': data.value,
@@ -12269,11 +13734,16 @@ def _runtime__call_argument__to_dict(
             'ObjectId': data.object_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__execution_context_description__to_dict(
         data: 'runtime.ExecutionContextDescription',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
@@ -12281,6 +13751,7 @@ def _runtime__execution_context_description__to_dict(
             'name': data.name,
             'aux_data': data.aux_data,
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
@@ -12288,6 +13759,7 @@ def _runtime__execution_context_description__to_dict(
             'name': data.name,
             'auxData': data.aux_data,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
@@ -12296,11 +13768,16 @@ def _runtime__execution_context_description__to_dict(
             'AuxData': data.aux_data,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__exception_details__to_dict(
         data: 'runtime.ExceptionDetails',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'exception_id': data.exception_id,
@@ -12319,6 +13796,7 @@ def _runtime__exception_details__to_dict(
             ),
             'execution_context_id': data.execution_context_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'exceptionId': data.exception_id,
@@ -12337,6 +13815,7 @@ def _runtime__exception_details__to_dict(
             ),
             'executionContextId': data.execution_context_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'ExceptionId': data.exception_id,
@@ -12356,11 +13835,16 @@ def _runtime__exception_details__to_dict(
             'ExecutionContextId': data.execution_context_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__call_frame__to_dict(
         data: 'runtime.CallFrame',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'function_name': data.function_name,
@@ -12369,6 +13853,7 @@ def _runtime__call_frame__to_dict(
             'line_number': data.line_number,
             'column_number': data.column_number,
         }
+
     if casing_strategy == 'camel':
         return {
             'functionName': data.function_name,
@@ -12377,6 +13862,7 @@ def _runtime__call_frame__to_dict(
             'lineNumber': data.line_number,
             'columnNumber': data.column_number,
         }
+
     if casing_strategy == 'pascal':
         return {
             'FunctionName': data.function_name,
@@ -12386,11 +13872,16 @@ def _runtime__call_frame__to_dict(
             'ColumnNumber': data.column_number,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__stack_trace__to_dict(
         data: 'runtime.StackTrace',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'description': data.description,
@@ -12407,6 +13898,7 @@ def _runtime__stack_trace__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'camel':
         return {
             'description': data.description,
@@ -12423,6 +13915,7 @@ def _runtime__stack_trace__to_dict(
                 casing_strategy
             ),
         }
+
     if casing_strategy == 'pascal':
         return {
             'Description': data.description,
@@ -12440,53 +13933,72 @@ def _runtime__stack_trace__to_dict(
             ),
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__stack_trace_id__to_dict(
         data: 'runtime.StackTraceId',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'id': data.id,
             'debugger_id': data.debugger_id,
         }
+
     if casing_strategy == 'camel':
         return {
             'id': data.id,
             'debuggerId': data.debugger_id,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Id': data.id,
             'DebuggerId': data.debugger_id,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _schema__domain__to_dict(
         data: 'schema.Domain',
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> dict:
+
     if casing_strategy == 'snake':
         return {
             'name': data.name,
             'version': data.version,
         }
+
     if casing_strategy == 'camel':
         return {
             'name': data.name,
             'version': data.version,
         }
+
     if casing_strategy == 'pascal':
         return {
             'Name': data.name,
             'Version': data.version,
         }
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__ax_value_source__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.AXValueSource':
+
     if casing_strategy == 'snake':
         return accessibility.AXValueSource(
             type=data['type'],
@@ -12511,6 +14023,7 @@ def _accessibility__ax_value_source__from_dict(
             invalid=data.get('invalid', None),
             invalid_reason=data.get('invalid_reason', None)
         )
+
     if casing_strategy == 'camel':
         return accessibility.AXValueSource(
             type=data['type'],
@@ -12535,6 +14048,7 @@ def _accessibility__ax_value_source__from_dict(
             invalid=data.get('invalid', None),
             invalid_reason=data.get('invalidReason', None)
         )
+
     if casing_strategy == 'pascal':
         return accessibility.AXValueSource(
             type=data['Type'],
@@ -12560,23 +14074,30 @@ def _accessibility__ax_value_source__from_dict(
             invalid_reason=data.get('InvalidReason', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__ax_related_node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.AXRelatedNode':
+
     if casing_strategy == 'snake':
         return accessibility.AXRelatedNode(
             backend_dom_node_id=data['backend_dom_node_id'],
             idref=data.get('idref', None),
             text=data.get('text', None)
         )
+
     if casing_strategy == 'camel':
         return accessibility.AXRelatedNode(
             backend_dom_node_id=data['backendDOMNodeId'],
             idref=data.get('idref', None),
             text=data.get('text', None)
         )
+
     if casing_strategy == 'pascal':
         return accessibility.AXRelatedNode(
             backend_dom_node_id=data['BackendDOMNodeId'],
@@ -12584,11 +14105,16 @@ def _accessibility__ax_related_node__from_dict(
             text=data.get('Text', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__ax_property__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.AXProperty':
+
     if casing_strategy == 'snake':
         return accessibility.AXProperty(
             name=data['name'],
@@ -12598,6 +14124,7 @@ def _accessibility__ax_property__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return accessibility.AXProperty(
             name=data['name'],
@@ -12607,6 +14134,7 @@ def _accessibility__ax_property__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return accessibility.AXProperty(
             name=data['Name'],
@@ -12617,11 +14145,16 @@ def _accessibility__ax_property__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__ax_value__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.AXValue':
+
     if casing_strategy == 'snake':
         return accessibility.AXValue(
             type=data['type'],
@@ -12635,6 +14168,7 @@ def _accessibility__ax_value__from_dict(
                 for item in data.get('sources', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return accessibility.AXValue(
             type=data['type'],
@@ -12648,6 +14182,7 @@ def _accessibility__ax_value__from_dict(
                 for item in data.get('sources', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return accessibility.AXValue(
             type=data['Type'],
@@ -12662,11 +14197,16 @@ def _accessibility__ax_value__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__ax_node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.AXNode':
+
     if casing_strategy == 'snake':
         return accessibility.AXNode(
             node_id=data['node_id'],
@@ -12709,6 +14249,7 @@ def _accessibility__ax_node__from_dict(
             backend_dom_node_id=data.get('backend_dom_node_id', None),
             frame_id=data.get('frame_id', None)
         )
+
     if casing_strategy == 'camel':
         return accessibility.AXNode(
             node_id=data['nodeId'],
@@ -12751,6 +14292,7 @@ def _accessibility__ax_node__from_dict(
             backend_dom_node_id=data.get('backendDOMNodeId', None),
             frame_id=data.get('frameId', None)
         )
+
     if casing_strategy == 'pascal':
         return accessibility.AXNode(
             node_id=data['NodeId'],
@@ -12794,11 +14336,16 @@ def _accessibility__ax_node__from_dict(
             frame_id=data.get('FrameId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _animation__animation__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.Animation':
+
     if casing_strategy == 'snake':
         return animation.Animation(
             id=data['id'],
@@ -12816,6 +14363,7 @@ def _animation__animation__from_dict(
             ),
             css_id=data.get('css_id', None)
         )
+
     if casing_strategy == 'camel':
         return animation.Animation(
             id=data['id'],
@@ -12833,6 +14381,7 @@ def _animation__animation__from_dict(
             ),
             css_id=data.get('cssId', None)
         )
+
     if casing_strategy == 'pascal':
         return animation.Animation(
             id=data['Id'],
@@ -12851,11 +14400,16 @@ def _animation__animation__from_dict(
             css_id=data.get('CssId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _animation__animation_effect__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.AnimationEffect':
+
     if casing_strategy == 'snake':
         return animation.AnimationEffect(
             delay=data['delay'],
@@ -12873,6 +14427,7 @@ def _animation__animation_effect__from_dict(
             ),
             easing=data['easing']
         )
+
     if casing_strategy == 'camel':
         return animation.AnimationEffect(
             delay=data['delay'],
@@ -12890,6 +14445,7 @@ def _animation__animation_effect__from_dict(
             ),
             easing=data['easing']
         )
+
     if casing_strategy == 'pascal':
         return animation.AnimationEffect(
             delay=data['Delay'],
@@ -12908,11 +14464,16 @@ def _animation__animation_effect__from_dict(
             easing=data['Easing']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _animation__keyframes_rule__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.KeyframesRule':
+
     if casing_strategy == 'snake':
         return animation.KeyframesRule(
             name=data.get('name', None),
@@ -12921,6 +14482,7 @@ def _animation__keyframes_rule__from_dict(
                 for item in data['keyframes']
             ]
         )
+
     if casing_strategy == 'camel':
         return animation.KeyframesRule(
             name=data.get('name', None),
@@ -12929,6 +14491,7 @@ def _animation__keyframes_rule__from_dict(
                 for item in data['keyframes']
             ]
         )
+
     if casing_strategy == 'pascal':
         return animation.KeyframesRule(
             name=data.get('Name', None),
@@ -12938,44 +14501,58 @@ def _animation__keyframes_rule__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _animation__keyframe_style__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.KeyframeStyle':
+
     if casing_strategy == 'snake':
         return animation.KeyframeStyle(
             offset=data['offset'],
             easing=data['easing']
         )
+
     if casing_strategy == 'camel':
         return animation.KeyframeStyle(
             offset=data['offset'],
             easing=data['easing']
         )
+
     if casing_strategy == 'pascal':
         return animation.KeyframeStyle(
             offset=data['Offset'],
             easing=data['Easing']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__affected_cookie__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.AffectedCookie':
+
     if casing_strategy == 'snake':
         return audits.AffectedCookie(
             name=data['name'],
             path=data['path'],
             domain=data['domain']
         )
+
     if casing_strategy == 'camel':
         return audits.AffectedCookie(
             name=data['name'],
             path=data['path'],
             domain=data['domain']
         )
+
     if casing_strategy == 'pascal':
         return audits.AffectedCookie(
             name=data['Name'],
@@ -12983,50 +14560,69 @@ def _audits__affected_cookie__from_dict(
             domain=data['Domain']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__affected_request__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.AffectedRequest':
+
     if casing_strategy == 'snake':
         return audits.AffectedRequest(
             request_id=data['request_id'],
             url=data.get('url', None)
         )
+
     if casing_strategy == 'camel':
         return audits.AffectedRequest(
             request_id=data['requestId'],
             url=data.get('url', None)
         )
+
     if casing_strategy == 'pascal':
         return audits.AffectedRequest(
             request_id=data['RequestId'],
             url=data.get('Url', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__affected_frame__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.AffectedFrame':
+
     if casing_strategy == 'snake':
         return audits.AffectedFrame(
             frame_id=data['frame_id']
         )
+
     if casing_strategy == 'camel':
         return audits.AffectedFrame(
             frame_id=data['frameId']
         )
+
     if casing_strategy == 'pascal':
         return audits.AffectedFrame(
             frame_id=data['FrameId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _audits__cookie_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.CookieIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.CookieIssueDetails(
             cookie=from_dict(
@@ -13046,6 +14642,7 @@ def _audits__cookie_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return audits.CookieIssueDetails(
             cookie=from_dict(
@@ -13065,6 +14662,7 @@ def _audits__cookie_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return audits.CookieIssueDetails(
             cookie=from_dict(
@@ -13085,11 +14683,16 @@ def _audits__cookie_issue_details__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__mixed_content_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.MixedContentIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.MixedContentIssueDetails(
             resource_type=data.get('resource_type', None),
@@ -13107,6 +14710,7 @@ def _audits__mixed_content_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return audits.MixedContentIssueDetails(
             resource_type=data.get('resourceType', None),
@@ -13124,6 +14728,7 @@ def _audits__mixed_content_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return audits.MixedContentIssueDetails(
             resource_type=data.get('ResourceType', None),
@@ -13142,11 +14747,16 @@ def _audits__mixed_content_issue_details__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__blocked_by_response_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.BlockedByResponseIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.BlockedByResponseIssueDetails(
             request=from_dict(
@@ -13166,6 +14776,7 @@ def _audits__blocked_by_response_issue_details__from_dict(
             ),
             reason=data['reason']
         )
+
     if casing_strategy == 'camel':
         return audits.BlockedByResponseIssueDetails(
             request=from_dict(
@@ -13185,6 +14796,7 @@ def _audits__blocked_by_response_issue_details__from_dict(
             ),
             reason=data['reason']
         )
+
     if casing_strategy == 'pascal':
         return audits.BlockedByResponseIssueDetails(
             request=from_dict(
@@ -13205,11 +14817,16 @@ def _audits__blocked_by_response_issue_details__from_dict(
             reason=data['Reason']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__heavy_ad_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.HeavyAdIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.HeavyAdIssueDetails(
             resolution=data['resolution'],
@@ -13220,6 +14837,7 @@ def _audits__heavy_ad_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return audits.HeavyAdIssueDetails(
             resolution=data['resolution'],
@@ -13230,6 +14848,7 @@ def _audits__heavy_ad_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return audits.HeavyAdIssueDetails(
             resolution=data['Resolution'],
@@ -13241,11 +14860,16 @@ def _audits__heavy_ad_issue_details__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__source_code_location__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.SourceCodeLocation':
+
     if casing_strategy == 'snake':
         return audits.SourceCodeLocation(
             script_id=data.get('script_id', None),
@@ -13253,6 +14877,7 @@ def _audits__source_code_location__from_dict(
             line_number=data['line_number'],
             column_number=data['column_number']
         )
+
     if casing_strategy == 'camel':
         return audits.SourceCodeLocation(
             script_id=data.get('scriptId', None),
@@ -13260,6 +14885,7 @@ def _audits__source_code_location__from_dict(
             line_number=data['lineNumber'],
             column_number=data['columnNumber']
         )
+
     if casing_strategy == 'pascal':
         return audits.SourceCodeLocation(
             script_id=data.get('ScriptId', None),
@@ -13268,11 +14894,16 @@ def _audits__source_code_location__from_dict(
             column_number=data['ColumnNumber']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__content_security_policy_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.ContentSecurityPolicyIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.ContentSecurityPolicyIssueDetails(
             blocked_url=data.get('blocked_url', None),
@@ -13291,6 +14922,7 @@ def _audits__content_security_policy_issue_details__from_dict(
             ),
             violating_node_id=data.get('violating_node_id', None)
         )
+
     if casing_strategy == 'camel':
         return audits.ContentSecurityPolicyIssueDetails(
             blocked_url=data.get('blockedURL', None),
@@ -13309,6 +14941,7 @@ def _audits__content_security_policy_issue_details__from_dict(
             ),
             violating_node_id=data.get('violatingNodeId', None)
         )
+
     if casing_strategy == 'pascal':
         return audits.ContentSecurityPolicyIssueDetails(
             blocked_url=data.get('BlockedURL', None),
@@ -13328,11 +14961,16 @@ def _audits__content_security_policy_issue_details__from_dict(
             violating_node_id=data.get('ViolatingNodeId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__shared_array_buffer_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.SharedArrayBufferIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.SharedArrayBufferIssueDetails(
             source_code_location=from_dict(
@@ -13343,6 +14981,7 @@ def _audits__shared_array_buffer_issue_details__from_dict(
             is_warning=data['is_warning'],
             type=data['type']
         )
+
     if casing_strategy == 'camel':
         return audits.SharedArrayBufferIssueDetails(
             source_code_location=from_dict(
@@ -13353,6 +14992,7 @@ def _audits__shared_array_buffer_issue_details__from_dict(
             is_warning=data['isWarning'],
             type=data['type']
         )
+
     if casing_strategy == 'pascal':
         return audits.SharedArrayBufferIssueDetails(
             source_code_location=from_dict(
@@ -13364,11 +15004,16 @@ def _audits__shared_array_buffer_issue_details__from_dict(
             type=data['Type']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__low_text_contrast_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.LowTextContrastIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.LowTextContrastIssueDetails(
             violating_node_id=data['violating_node_id'],
@@ -13379,6 +15024,7 @@ def _audits__low_text_contrast_issue_details__from_dict(
             font_size=data['font_size'],
             font_weight=data['font_weight']
         )
+
     if casing_strategy == 'camel':
         return audits.LowTextContrastIssueDetails(
             violating_node_id=data['violatingNodeId'],
@@ -13389,6 +15035,7 @@ def _audits__low_text_contrast_issue_details__from_dict(
             font_size=data['fontSize'],
             font_weight=data['fontWeight']
         )
+
     if casing_strategy == 'pascal':
         return audits.LowTextContrastIssueDetails(
             violating_node_id=data['ViolatingNodeId'],
@@ -13400,11 +15047,16 @@ def _audits__low_text_contrast_issue_details__from_dict(
             font_weight=data['FontWeight']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__cors_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.CorsIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.CorsIssueDetails(
             cors_error_status=from_dict(
@@ -13431,6 +15083,7 @@ def _audits__cors_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return audits.CorsIssueDetails(
             cors_error_status=from_dict(
@@ -13457,6 +15110,7 @@ def _audits__cors_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return audits.CorsIssueDetails(
             cors_error_status=from_dict(
@@ -13484,11 +15138,16 @@ def _audits__cors_issue_details__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__attribution_reporting_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.AttributionReportingIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.AttributionReportingIssueDetails(
             violation_type=data['violation_type'],
@@ -13500,6 +15159,7 @@ def _audits__attribution_reporting_issue_details__from_dict(
             violating_node_id=data.get('violating_node_id', None),
             invalid_parameter=data.get('invalid_parameter', None)
         )
+
     if casing_strategy == 'camel':
         return audits.AttributionReportingIssueDetails(
             violation_type=data['violationType'],
@@ -13511,6 +15171,7 @@ def _audits__attribution_reporting_issue_details__from_dict(
             violating_node_id=data.get('violatingNodeId', None),
             invalid_parameter=data.get('invalidParameter', None)
         )
+
     if casing_strategy == 'pascal':
         return audits.AttributionReportingIssueDetails(
             violation_type=data['ViolationType'],
@@ -13523,11 +15184,16 @@ def _audits__attribution_reporting_issue_details__from_dict(
             invalid_parameter=data.get('InvalidParameter', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__quirks_mode_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.QuirksModeIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.QuirksModeIssueDetails(
             is_limited_quirks_mode=data['is_limited_quirks_mode'],
@@ -13536,6 +15202,7 @@ def _audits__quirks_mode_issue_details__from_dict(
             frame_id=data['frame_id'],
             loader_id=data['loader_id']
         )
+
     if casing_strategy == 'camel':
         return audits.QuirksModeIssueDetails(
             is_limited_quirks_mode=data['isLimitedQuirksMode'],
@@ -13544,6 +15211,7 @@ def _audits__quirks_mode_issue_details__from_dict(
             frame_id=data['frameId'],
             loader_id=data['loaderId']
         )
+
     if casing_strategy == 'pascal':
         return audits.QuirksModeIssueDetails(
             is_limited_quirks_mode=data['IsLimitedQuirksMode'],
@@ -13553,11 +15221,16 @@ def _audits__quirks_mode_issue_details__from_dict(
             loader_id=data['LoaderId']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__navigator_user_agent_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.NavigatorUserAgentIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.NavigatorUserAgentIssueDetails(
             url=data['url'],
@@ -13567,6 +15240,7 @@ def _audits__navigator_user_agent_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return audits.NavigatorUserAgentIssueDetails(
             url=data['url'],
@@ -13576,6 +15250,7 @@ def _audits__navigator_user_agent_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return audits.NavigatorUserAgentIssueDetails(
             url=data['Url'],
@@ -13586,11 +15261,16 @@ def _audits__navigator_user_agent_issue_details__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__generic_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.GenericIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.GenericIssueDetails(
             error_type=data['error_type'],
@@ -13603,6 +15283,7 @@ def _audits__generic_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return audits.GenericIssueDetails(
             error_type=data['errorType'],
@@ -13615,6 +15296,7 @@ def _audits__generic_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return audits.GenericIssueDetails(
             error_type=data['ErrorType'],
@@ -13628,11 +15310,16 @@ def _audits__generic_issue_details__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__deprecation_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.DeprecationIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.DeprecationIssueDetails(
             affected_frame=from_dict(
@@ -13647,6 +15334,7 @@ def _audits__deprecation_issue_details__from_dict(
             ),
             type=data['type']
         )
+
     if casing_strategy == 'camel':
         return audits.DeprecationIssueDetails(
             affected_frame=from_dict(
@@ -13661,6 +15349,7 @@ def _audits__deprecation_issue_details__from_dict(
             ),
             type=data['type']
         )
+
     if casing_strategy == 'pascal':
         return audits.DeprecationIssueDetails(
             affected_frame=from_dict(
@@ -13676,65 +15365,91 @@ def _audits__deprecation_issue_details__from_dict(
             type=data['Type']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__bounce_tracking_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.BounceTrackingIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.BounceTrackingIssueDetails(
             tracking_sites=data['tracking_sites']
         )
+
     if casing_strategy == 'camel':
         return audits.BounceTrackingIssueDetails(
             tracking_sites=data['trackingSites']
         )
+
     if casing_strategy == 'pascal':
         return audits.BounceTrackingIssueDetails(
             tracking_sites=data['TrackingSites']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _audits__federated_auth_request_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.FederatedAuthRequestIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.FederatedAuthRequestIssueDetails(
             federated_auth_request_issue_reason=data['federated_auth_request_issue_reason']
         )
+
     if casing_strategy == 'camel':
         return audits.FederatedAuthRequestIssueDetails(
             federated_auth_request_issue_reason=data['federatedAuthRequestIssueReason']
         )
+
     if casing_strategy == 'pascal':
         return audits.FederatedAuthRequestIssueDetails(
             federated_auth_request_issue_reason=data['FederatedAuthRequestIssueReason']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _audits__federated_auth_user_info_request_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.FederatedAuthUserInfoRequestIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.FederatedAuthUserInfoRequestIssueDetails(
             federated_auth_user_info_request_issue_reason=data['federated_auth_user_info_request_issue_reason']
         )
+
     if casing_strategy == 'camel':
         return audits.FederatedAuthUserInfoRequestIssueDetails(
             federated_auth_user_info_request_issue_reason=data['federatedAuthUserInfoRequestIssueReason']
         )
+
     if casing_strategy == 'pascal':
         return audits.FederatedAuthUserInfoRequestIssueDetails(
             federated_auth_user_info_request_issue_reason=data['FederatedAuthUserInfoRequestIssueReason']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _audits__client_hint_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.ClientHintIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.ClientHintIssueDetails(
             source_code_location=from_dict(
@@ -13744,6 +15459,7 @@ def _audits__client_hint_issue_details__from_dict(
             ),
             client_hint_issue_reason=data['client_hint_issue_reason']
         )
+
     if casing_strategy == 'camel':
         return audits.ClientHintIssueDetails(
             source_code_location=from_dict(
@@ -13753,6 +15469,7 @@ def _audits__client_hint_issue_details__from_dict(
             ),
             client_hint_issue_reason=data['clientHintIssueReason']
         )
+
     if casing_strategy == 'pascal':
         return audits.ClientHintIssueDetails(
             source_code_location=from_dict(
@@ -13763,23 +15480,30 @@ def _audits__client_hint_issue_details__from_dict(
             client_hint_issue_reason=data['ClientHintIssueReason']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__failed_request_info__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.FailedRequestInfo':
+
     if casing_strategy == 'snake':
         return audits.FailedRequestInfo(
             url=data['url'],
             failure_message=data['failure_message'],
             request_id=data.get('request_id', None)
         )
+
     if casing_strategy == 'camel':
         return audits.FailedRequestInfo(
             url=data['url'],
             failure_message=data['failureMessage'],
             request_id=data.get('requestId', None)
         )
+
     if casing_strategy == 'pascal':
         return audits.FailedRequestInfo(
             url=data['Url'],
@@ -13787,11 +15511,16 @@ def _audits__failed_request_info__from_dict(
             request_id=data.get('RequestId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__stylesheet_loading_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.StylesheetLoadingIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.StylesheetLoadingIssueDetails(
             source_code_location=from_dict(
@@ -13806,6 +15535,7 @@ def _audits__stylesheet_loading_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return audits.StylesheetLoadingIssueDetails(
             source_code_location=from_dict(
@@ -13820,6 +15550,7 @@ def _audits__stylesheet_loading_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return audits.StylesheetLoadingIssueDetails(
             source_code_location=from_dict(
@@ -13835,11 +15566,16 @@ def _audits__stylesheet_loading_issue_details__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__inspector_issue_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.InspectorIssueDetails':
+
     if casing_strategy == 'snake':
         return audits.InspectorIssueDetails(
             cookie_issue_details=from_dict(
@@ -13933,6 +15669,7 @@ def _audits__inspector_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return audits.InspectorIssueDetails(
             cookie_issue_details=from_dict(
@@ -14026,6 +15763,7 @@ def _audits__inspector_issue_details__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return audits.InspectorIssueDetails(
             cookie_issue_details=from_dict(
@@ -14120,11 +15858,16 @@ def _audits__inspector_issue_details__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__inspector_issue__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.InspectorIssue':
+
     if casing_strategy == 'snake':
         return audits.InspectorIssue(
             code=data['code'],
@@ -14135,6 +15878,7 @@ def _audits__inspector_issue__from_dict(
             ),
             issue_id=data.get('issue_id', None)
         )
+
     if casing_strategy == 'camel':
         return audits.InspectorIssue(
             code=data['code'],
@@ -14145,6 +15889,7 @@ def _audits__inspector_issue__from_dict(
             ),
             issue_id=data.get('issueId', None)
         )
+
     if casing_strategy == 'pascal':
         return audits.InspectorIssue(
             code=data['Code'],
@@ -14156,11 +15901,16 @@ def _audits__inspector_issue__from_dict(
             issue_id=data.get('IssueId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__credit_card__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'autofill.CreditCard':
+
     if casing_strategy == 'snake':
         return autofill.CreditCard(
             number=data['number'],
@@ -14169,6 +15919,7 @@ def _autofill__credit_card__from_dict(
             expiry_year=data['expiry_year'],
             cvc=data['cvc']
         )
+
     if casing_strategy == 'camel':
         return autofill.CreditCard(
             number=data['number'],
@@ -14177,6 +15928,7 @@ def _autofill__credit_card__from_dict(
             expiry_year=data['expiryYear'],
             cvc=data['cvc']
         )
+
     if casing_strategy == 'pascal':
         return autofill.CreditCard(
             number=data['Number'],
@@ -14186,32 +15938,44 @@ def _autofill__credit_card__from_dict(
             cvc=data['Cvc']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__address_field__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'autofill.AddressField':
+
     if casing_strategy == 'snake':
         return autofill.AddressField(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return autofill.AddressField(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return autofill.AddressField(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__address_fields__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'autofill.AddressFields':
+
     if casing_strategy == 'snake':
         return autofill.AddressFields(
             fields=[
@@ -14219,6 +15983,7 @@ def _autofill__address_fields__from_dict(
                 for item in data['fields']
             ]
         )
+
     if casing_strategy == 'camel':
         return autofill.AddressFields(
             fields=[
@@ -14226,6 +15991,7 @@ def _autofill__address_fields__from_dict(
                 for item in data['fields']
             ]
         )
+
     if casing_strategy == 'pascal':
         return autofill.AddressFields(
             fields=[
@@ -14233,12 +15999,17 @@ def _autofill__address_fields__from_dict(
                 for item in data['Fields']
             ]
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _autofill__address__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'autofill.Address':
+
     if casing_strategy == 'snake':
         return autofill.Address(
             fields=[
@@ -14246,6 +16017,7 @@ def _autofill__address__from_dict(
                 for item in data['fields']
             ]
         )
+
     if casing_strategy == 'camel':
         return autofill.Address(
             fields=[
@@ -14253,6 +16025,7 @@ def _autofill__address__from_dict(
                 for item in data['fields']
             ]
         )
+
     if casing_strategy == 'pascal':
         return autofill.Address(
             fields=[
@@ -14261,11 +16034,16 @@ def _autofill__address__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__address_ui__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'autofill.AddressUI':
+
     if casing_strategy == 'snake':
         return autofill.AddressUI(
             address_fields=[
@@ -14273,6 +16051,7 @@ def _autofill__address_ui__from_dict(
                 for item in data['address_fields']
             ]
         )
+
     if casing_strategy == 'camel':
         return autofill.AddressUI(
             address_fields=[
@@ -14280,6 +16059,7 @@ def _autofill__address_ui__from_dict(
                 for item in data['addressFields']
             ]
         )
+
     if casing_strategy == 'pascal':
         return autofill.AddressUI(
             address_fields=[
@@ -14288,11 +16068,16 @@ def _autofill__address_ui__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _autofill__filled_field__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'autofill.FilledField':
+
     if casing_strategy == 'snake':
         return autofill.FilledField(
             html_type=data['html_type'],
@@ -14302,6 +16087,7 @@ def _autofill__filled_field__from_dict(
             autofill_type=data['autofill_type'],
             filling_strategy=data['filling_strategy']
         )
+
     if casing_strategy == 'camel':
         return autofill.FilledField(
             html_type=data['htmlType'],
@@ -14311,6 +16097,7 @@ def _autofill__filled_field__from_dict(
             autofill_type=data['autofillType'],
             filling_strategy=data['fillingStrategy']
         )
+
     if casing_strategy == 'pascal':
         return autofill.FilledField(
             html_type=data['HtmlType'],
@@ -14321,32 +16108,44 @@ def _autofill__filled_field__from_dict(
             filling_strategy=data['FillingStrategy']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _background_service__event_metadata__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'background_service.EventMetadata':
+
     if casing_strategy == 'snake':
         return background_service.EventMetadata(
             key=data['key'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return background_service.EventMetadata(
             key=data['key'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return background_service.EventMetadata(
             key=data['Key'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _background_service__background_service_event__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'background_service.BackgroundServiceEvent':
+
     if casing_strategy == 'snake':
         return background_service.BackgroundServiceEvent(
             timestamp=data['timestamp'],
@@ -14361,6 +16160,7 @@ def _background_service__background_service_event__from_dict(
             ],
             storage_key=data['storage_key']
         )
+
     if casing_strategy == 'camel':
         return background_service.BackgroundServiceEvent(
             timestamp=data['timestamp'],
@@ -14375,6 +16175,7 @@ def _background_service__background_service_event__from_dict(
             ],
             storage_key=data['storageKey']
         )
+
     if casing_strategy == 'pascal':
         return background_service.BackgroundServiceEvent(
             timestamp=data['Timestamp'],
@@ -14390,11 +16191,16 @@ def _background_service__background_service_event__from_dict(
             storage_key=data['StorageKey']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__bounds__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.Bounds':
+
     if casing_strategy == 'snake':
         return browser.Bounds(
             left=data.get('left', None),
@@ -14403,6 +16209,7 @@ def _browser__bounds__from_dict(
             height=data.get('height', None),
             window_state=data.get('window_state', None)
         )
+
     if casing_strategy == 'camel':
         return browser.Bounds(
             left=data.get('left', None),
@@ -14411,6 +16218,7 @@ def _browser__bounds__from_dict(
             height=data.get('height', None),
             window_state=data.get('windowState', None)
         )
+
     if casing_strategy == 'pascal':
         return browser.Bounds(
             left=data.get('Left', None),
@@ -14420,11 +16228,16 @@ def _browser__bounds__from_dict(
             window_state=data.get('WindowState', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__permission_descriptor__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.PermissionDescriptor':
+
     if casing_strategy == 'snake':
         return browser.PermissionDescriptor(
             name=data['name'],
@@ -14433,6 +16246,7 @@ def _browser__permission_descriptor__from_dict(
             allow_without_sanitization=data.get('allow_without_sanitization', None),
             pan_tilt_zoom=data.get('pan_tilt_zoom', None)
         )
+
     if casing_strategy == 'camel':
         return browser.PermissionDescriptor(
             name=data['name'],
@@ -14441,6 +16255,7 @@ def _browser__permission_descriptor__from_dict(
             allow_without_sanitization=data.get('allowWithoutSanitization', None),
             pan_tilt_zoom=data.get('panTiltZoom', None)
         )
+
     if casing_strategy == 'pascal':
         return browser.PermissionDescriptor(
             name=data['Name'],
@@ -14450,23 +16265,30 @@ def _browser__permission_descriptor__from_dict(
             pan_tilt_zoom=data.get('PanTiltZoom', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__bucket__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.Bucket':
+
     if casing_strategy == 'snake':
         return browser.Bucket(
             low=data['low'],
             high=data['high'],
             count=data['count']
         )
+
     if casing_strategy == 'camel':
         return browser.Bucket(
             low=data['low'],
             high=data['high'],
             count=data['count']
         )
+
     if casing_strategy == 'pascal':
         return browser.Bucket(
             low=data['Low'],
@@ -14474,11 +16296,16 @@ def _browser__bucket__from_dict(
             count=data['Count']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__histogram__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.Histogram':
+
     if casing_strategy == 'snake':
         return browser.Histogram(
             name=data['name'],
@@ -14489,6 +16316,7 @@ def _browser__histogram__from_dict(
                 for item in data['buckets']
             ]
         )
+
     if casing_strategy == 'camel':
         return browser.Histogram(
             name=data['name'],
@@ -14499,6 +16327,7 @@ def _browser__histogram__from_dict(
                 for item in data['buckets']
             ]
         )
+
     if casing_strategy == 'pascal':
         return browser.Histogram(
             name=data['Name'],
@@ -14510,11 +16339,16 @@ def _browser__histogram__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__pseudo_element_matches__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.PseudoElementMatches':
+
     if casing_strategy == 'snake':
         return css.PseudoElementMatches(
             pseudo_type=data['pseudo_type'],
@@ -14524,6 +16358,7 @@ def _css__pseudo_element_matches__from_dict(
                 for item in data['matches']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.PseudoElementMatches(
             pseudo_type=data['pseudoType'],
@@ -14533,6 +16368,7 @@ def _css__pseudo_element_matches__from_dict(
                 for item in data['matches']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.PseudoElementMatches(
             pseudo_type=data['PseudoType'],
@@ -14543,11 +16379,16 @@ def _css__pseudo_element_matches__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__inherited_style_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.InheritedStyleEntry':
+
     if casing_strategy == 'snake':
         return css.InheritedStyleEntry(
             inline_style=from_dict(
@@ -14560,6 +16401,7 @@ def _css__inherited_style_entry__from_dict(
                 for item in data['matched_css_rules']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.InheritedStyleEntry(
             inline_style=from_dict(
@@ -14572,6 +16414,7 @@ def _css__inherited_style_entry__from_dict(
                 for item in data['matchedCSSRules']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.InheritedStyleEntry(
             inline_style=from_dict(
@@ -14585,11 +16428,16 @@ def _css__inherited_style_entry__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__inherited_pseudo_element_matches__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.InheritedPseudoElementMatches':
+
     if casing_strategy == 'snake':
         return css.InheritedPseudoElementMatches(
             pseudo_elements=[
@@ -14597,6 +16445,7 @@ def _css__inherited_pseudo_element_matches__from_dict(
                 for item in data['pseudo_elements']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.InheritedPseudoElementMatches(
             pseudo_elements=[
@@ -14604,6 +16453,7 @@ def _css__inherited_pseudo_element_matches__from_dict(
                 for item in data['pseudoElements']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.InheritedPseudoElementMatches(
             pseudo_elements=[
@@ -14612,11 +16462,16 @@ def _css__inherited_pseudo_element_matches__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__rule_match__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.RuleMatch':
+
     if casing_strategy == 'snake':
         return css.RuleMatch(
             rule=from_dict(
@@ -14626,6 +16481,7 @@ def _css__rule_match__from_dict(
             ),
             matching_selectors=data['matching_selectors']
         )
+
     if casing_strategy == 'camel':
         return css.RuleMatch(
             rule=from_dict(
@@ -14635,6 +16491,7 @@ def _css__rule_match__from_dict(
             ),
             matching_selectors=data['matchingSelectors']
         )
+
     if casing_strategy == 'pascal':
         return css.RuleMatch(
             rule=from_dict(
@@ -14645,11 +16502,16 @@ def _css__rule_match__from_dict(
             matching_selectors=data['MatchingSelectors']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__value__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.Value':
+
     if casing_strategy == 'snake':
         return css.Value(
             text=data['text'],
@@ -14664,6 +16526,7 @@ def _css__value__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.Value(
             text=data['text'],
@@ -14678,6 +16541,7 @@ def _css__value__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.Value(
             text=data['Text'],
@@ -14693,23 +16557,30 @@ def _css__value__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__specificity__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.Specificity':
+
     if casing_strategy == 'snake':
         return css.Specificity(
             a=data['a'],
             b=data['b'],
             c=data['c']
         )
+
     if casing_strategy == 'camel':
         return css.Specificity(
             a=data['a'],
             b=data['b'],
             c=data['c']
         )
+
     if casing_strategy == 'pascal':
         return css.Specificity(
             a=data['A'],
@@ -14717,11 +16588,16 @@ def _css__specificity__from_dict(
             c=data['C']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__selector_list__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SelectorList':
+
     if casing_strategy == 'snake':
         return css.SelectorList(
             selectors=[
@@ -14730,6 +16606,7 @@ def _css__selector_list__from_dict(
             ],
             text=data['text']
         )
+
     if casing_strategy == 'camel':
         return css.SelectorList(
             selectors=[
@@ -14738,6 +16615,7 @@ def _css__selector_list__from_dict(
             ],
             text=data['text']
         )
+
     if casing_strategy == 'pascal':
         return css.SelectorList(
             selectors=[
@@ -14747,11 +16625,16 @@ def _css__selector_list__from_dict(
             text=data['Text']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_style_sheet_header__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSStyleSheetHeader':
+
     if casing_strategy == 'snake':
         return css.CSSStyleSheetHeader(
             style_sheet_id=data['style_sheet_id'],
@@ -14773,6 +16656,7 @@ def _css__css_style_sheet_header__from_dict(
             end_column=data['end_column'],
             loading_failed=data.get('loading_failed', None)
         )
+
     if casing_strategy == 'camel':
         return css.CSSStyleSheetHeader(
             style_sheet_id=data['styleSheetId'],
@@ -14794,6 +16678,7 @@ def _css__css_style_sheet_header__from_dict(
             end_column=data['endColumn'],
             loading_failed=data.get('loadingFailed', None)
         )
+
     if casing_strategy == 'pascal':
         return css.CSSStyleSheetHeader(
             style_sheet_id=data['StyleSheetId'],
@@ -14816,11 +16701,16 @@ def _css__css_style_sheet_header__from_dict(
             loading_failed=data.get('LoadingFailed', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_rule__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSRule':
+
     if casing_strategy == 'snake':
         return css.CSSRule(
             style_sheet_id=data.get('style_sheet_id', None),
@@ -14858,6 +16748,7 @@ def _css__css_rule__from_dict(
             ],
             rule_types=data.get('rule_types', [])
         )
+
     if casing_strategy == 'camel':
         return css.CSSRule(
             style_sheet_id=data.get('styleSheetId', None),
@@ -14895,6 +16786,7 @@ def _css__css_rule__from_dict(
             ],
             rule_types=data.get('ruleTypes', [])
         )
+
     if casing_strategy == 'pascal':
         return css.CSSRule(
             style_sheet_id=data.get('StyleSheetId', None),
@@ -14933,11 +16825,16 @@ def _css__css_rule__from_dict(
             rule_types=data.get('RuleTypes', [])
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__rule_usage__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.RuleUsage':
+
     if casing_strategy == 'snake':
         return css.RuleUsage(
             style_sheet_id=data['style_sheet_id'],
@@ -14945,6 +16842,7 @@ def _css__rule_usage__from_dict(
             end_offset=data['end_offset'],
             used=data['used']
         )
+
     if casing_strategy == 'camel':
         return css.RuleUsage(
             style_sheet_id=data['styleSheetId'],
@@ -14952,6 +16850,7 @@ def _css__rule_usage__from_dict(
             end_offset=data['endOffset'],
             used=data['used']
         )
+
     if casing_strategy == 'pascal':
         return css.RuleUsage(
             style_sheet_id=data['StyleSheetId'],
@@ -14960,11 +16859,16 @@ def _css__rule_usage__from_dict(
             used=data['Used']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__source_range__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SourceRange':
+
     if casing_strategy == 'snake':
         return css.SourceRange(
             start_line=data['start_line'],
@@ -14972,6 +16876,7 @@ def _css__source_range__from_dict(
             end_line=data['end_line'],
             end_column=data['end_column']
         )
+
     if casing_strategy == 'camel':
         return css.SourceRange(
             start_line=data['startLine'],
@@ -14979,6 +16884,7 @@ def _css__source_range__from_dict(
             end_line=data['endLine'],
             end_column=data['endColumn']
         )
+
     if casing_strategy == 'pascal':
         return css.SourceRange(
             start_line=data['StartLine'],
@@ -14987,23 +16893,30 @@ def _css__source_range__from_dict(
             end_column=data['EndColumn']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__shorthand_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.ShorthandEntry':
+
     if casing_strategy == 'snake':
         return css.ShorthandEntry(
             name=data['name'],
             value=data['value'],
             important=data.get('important', None)
         )
+
     if casing_strategy == 'camel':
         return css.ShorthandEntry(
             name=data['name'],
             value=data['value'],
             important=data.get('important', None)
         )
+
     if casing_strategy == 'pascal':
         return css.ShorthandEntry(
             name=data['Name'],
@@ -15011,32 +16924,44 @@ def _css__shorthand_entry__from_dict(
             important=data.get('Important', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_computed_style_property__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSComputedStyleProperty':
+
     if casing_strategy == 'snake':
         return css.CSSComputedStyleProperty(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return css.CSSComputedStyleProperty(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return css.CSSComputedStyleProperty(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_style__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSStyle':
+
     if casing_strategy == 'snake':
         return css.CSSStyle(
             style_sheet_id=data.get('style_sheet_id', None),
@@ -15055,6 +16980,7 @@ def _css__css_style__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.CSSStyle(
             style_sheet_id=data.get('styleSheetId', None),
@@ -15073,6 +16999,7 @@ def _css__css_style__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.CSSStyle(
             style_sheet_id=data.get('StyleSheetId', None),
@@ -15092,11 +17019,16 @@ def _css__css_style__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_property__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSProperty':
+
     if casing_strategy == 'snake':
         return css.CSSProperty(
             name=data['name'],
@@ -15116,6 +17048,7 @@ def _css__css_property__from_dict(
                 for item in data.get('longhand_properties', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return css.CSSProperty(
             name=data['name'],
@@ -15135,6 +17068,7 @@ def _css__css_property__from_dict(
                 for item in data.get('longhandProperties', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.CSSProperty(
             name=data['Name'],
@@ -15155,11 +17089,16 @@ def _css__css_property__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_media__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSMedia':
+
     if casing_strategy == 'snake':
         return css.CSSMedia(
             text=data['text'],
@@ -15176,6 +17115,7 @@ def _css__css_media__from_dict(
                 for item in data.get('media_list', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return css.CSSMedia(
             text=data['text'],
@@ -15192,6 +17132,7 @@ def _css__css_media__from_dict(
                 for item in data.get('mediaList', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.CSSMedia(
             text=data['Text'],
@@ -15209,11 +17150,16 @@ def _css__css_media__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__media_query__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.MediaQuery':
+
     if casing_strategy == 'snake':
         return css.MediaQuery(
             expressions=[
@@ -15222,6 +17168,7 @@ def _css__media_query__from_dict(
             ],
             active=data['active']
         )
+
     if casing_strategy == 'camel':
         return css.MediaQuery(
             expressions=[
@@ -15230,6 +17177,7 @@ def _css__media_query__from_dict(
             ],
             active=data['active']
         )
+
     if casing_strategy == 'pascal':
         return css.MediaQuery(
             expressions=[
@@ -15239,11 +17187,16 @@ def _css__media_query__from_dict(
             active=data['Active']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__media_query_expression__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.MediaQueryExpression':
+
     if casing_strategy == 'snake':
         return css.MediaQueryExpression(
             value=data['value'],
@@ -15256,6 +17209,7 @@ def _css__media_query_expression__from_dict(
             ),
             computed_length=data.get('computed_length', None)
         )
+
     if casing_strategy == 'camel':
         return css.MediaQueryExpression(
             value=data['value'],
@@ -15268,6 +17222,7 @@ def _css__media_query_expression__from_dict(
             ),
             computed_length=data.get('computedLength', None)
         )
+
     if casing_strategy == 'pascal':
         return css.MediaQueryExpression(
             value=data['Value'],
@@ -15281,11 +17236,16 @@ def _css__media_query_expression__from_dict(
             computed_length=data.get('ComputedLength', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_container_query__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSContainerQuery':
+
     if casing_strategy == 'snake':
         return css.CSSContainerQuery(
             text=data['text'],
@@ -15299,6 +17259,7 @@ def _css__css_container_query__from_dict(
             physical_axes=data.get('physical_axes', None),
             logical_axes=data.get('logical_axes', None)
         )
+
     if casing_strategy == 'camel':
         return css.CSSContainerQuery(
             text=data['text'],
@@ -15312,6 +17273,7 @@ def _css__css_container_query__from_dict(
             physical_axes=data.get('physicalAxes', None),
             logical_axes=data.get('logicalAxes', None)
         )
+
     if casing_strategy == 'pascal':
         return css.CSSContainerQuery(
             text=data['Text'],
@@ -15326,11 +17288,16 @@ def _css__css_container_query__from_dict(
             logical_axes=data.get('LogicalAxes', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_supports__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSSupports':
+
     if casing_strategy == 'snake':
         return css.CSSSupports(
             text=data['text'],
@@ -15342,6 +17309,7 @@ def _css__css_supports__from_dict(
             ),
             style_sheet_id=data.get('style_sheet_id', None)
         )
+
     if casing_strategy == 'camel':
         return css.CSSSupports(
             text=data['text'],
@@ -15353,6 +17321,7 @@ def _css__css_supports__from_dict(
             ),
             style_sheet_id=data.get('styleSheetId', None)
         )
+
     if casing_strategy == 'pascal':
         return css.CSSSupports(
             text=data['Text'],
@@ -15365,11 +17334,16 @@ def _css__css_supports__from_dict(
             style_sheet_id=data.get('StyleSheetId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_scope__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSScope':
+
     if casing_strategy == 'snake':
         return css.CSSScope(
             text=data['text'],
@@ -15380,6 +17354,7 @@ def _css__css_scope__from_dict(
             ),
             style_sheet_id=data.get('style_sheet_id', None)
         )
+
     if casing_strategy == 'camel':
         return css.CSSScope(
             text=data['text'],
@@ -15390,6 +17365,7 @@ def _css__css_scope__from_dict(
             ),
             style_sheet_id=data.get('styleSheetId', None)
         )
+
     if casing_strategy == 'pascal':
         return css.CSSScope(
             text=data['Text'],
@@ -15400,12 +17376,17 @@ def _css__css_scope__from_dict(
             ),
             style_sheet_id=data.get('StyleSheetId', None)
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _css__css_layer__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSLayer':
+
     if casing_strategy == 'snake':
         return css.CSSLayer(
             text=data['text'],
@@ -15416,6 +17397,7 @@ def _css__css_layer__from_dict(
             ),
             style_sheet_id=data.get('style_sheet_id', None)
         )
+
     if casing_strategy == 'camel':
         return css.CSSLayer(
             text=data['text'],
@@ -15426,6 +17408,7 @@ def _css__css_layer__from_dict(
             ),
             style_sheet_id=data.get('styleSheetId', None)
         )
+
     if casing_strategy == 'pascal':
         return css.CSSLayer(
             text=data['Text'],
@@ -15437,11 +17420,16 @@ def _css__css_layer__from_dict(
             style_sheet_id=data.get('StyleSheetId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_layer_data__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSLayerData':
+
     if casing_strategy == 'snake':
         return css.CSSLayerData(
             name=data['name'],
@@ -15451,6 +17439,7 @@ def _css__css_layer_data__from_dict(
             ],
             order=data['order']
         )
+
     if casing_strategy == 'camel':
         return css.CSSLayerData(
             name=data['name'],
@@ -15460,6 +17449,7 @@ def _css__css_layer_data__from_dict(
             ],
             order=data['order']
         )
+
     if casing_strategy == 'pascal':
         return css.CSSLayerData(
             name=data['Name'],
@@ -15470,23 +17460,30 @@ def _css__css_layer_data__from_dict(
             order=data['Order']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__platform_font_usage__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.PlatformFontUsage':
+
     if casing_strategy == 'snake':
         return css.PlatformFontUsage(
             family_name=data['family_name'],
             is_custom_font=data['is_custom_font'],
             glyph_count=data['glyph_count']
         )
+
     if casing_strategy == 'camel':
         return css.PlatformFontUsage(
             family_name=data['familyName'],
             is_custom_font=data['isCustomFont'],
             glyph_count=data['glyphCount']
         )
+
     if casing_strategy == 'pascal':
         return css.PlatformFontUsage(
             family_name=data['FamilyName'],
@@ -15494,11 +17491,16 @@ def _css__platform_font_usage__from_dict(
             glyph_count=data['GlyphCount']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__font_variation_axis__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.FontVariationAxis':
+
     if casing_strategy == 'snake':
         return css.FontVariationAxis(
             tag=data['tag'],
@@ -15507,6 +17509,7 @@ def _css__font_variation_axis__from_dict(
             max_value=data['max_value'],
             default_value=data['default_value']
         )
+
     if casing_strategy == 'camel':
         return css.FontVariationAxis(
             tag=data['tag'],
@@ -15515,6 +17518,7 @@ def _css__font_variation_axis__from_dict(
             max_value=data['maxValue'],
             default_value=data['defaultValue']
         )
+
     if casing_strategy == 'pascal':
         return css.FontVariationAxis(
             tag=data['Tag'],
@@ -15524,11 +17528,16 @@ def _css__font_variation_axis__from_dict(
             default_value=data['DefaultValue']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__font_face__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.FontFace':
+
     if casing_strategy == 'snake':
         return css.FontFace(
             font_family=data['font_family'],
@@ -15545,6 +17554,7 @@ def _css__font_face__from_dict(
                 for item in data.get('font_variation_axes', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return css.FontFace(
             font_family=data['fontFamily'],
@@ -15561,6 +17571,7 @@ def _css__font_face__from_dict(
                 for item in data.get('fontVariationAxes', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.FontFace(
             font_family=data['FontFamily'],
@@ -15578,11 +17589,16 @@ def _css__font_face__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_try_rule__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSTryRule':
+
     if casing_strategy == 'snake':
         return css.CSSTryRule(
             style_sheet_id=data.get('style_sheet_id', None),
@@ -15593,6 +17609,7 @@ def _css__css_try_rule__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.CSSTryRule(
             style_sheet_id=data.get('styleSheetId', None),
@@ -15603,6 +17620,7 @@ def _css__css_try_rule__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.CSSTryRule(
             style_sheet_id=data.get('StyleSheetId', None),
@@ -15614,11 +17632,16 @@ def _css__css_try_rule__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_position_fallback_rule__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSPositionFallbackRule':
+
     if casing_strategy == 'snake':
         return css.CSSPositionFallbackRule(
             name=from_dict(
@@ -15631,6 +17654,7 @@ def _css__css_position_fallback_rule__from_dict(
                 for item in data['try_rules']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.CSSPositionFallbackRule(
             name=from_dict(
@@ -15643,6 +17667,7 @@ def _css__css_position_fallback_rule__from_dict(
                 for item in data['tryRules']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.CSSPositionFallbackRule(
             name=from_dict(
@@ -15656,11 +17681,16 @@ def _css__css_position_fallback_rule__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_keyframes_rule__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSKeyframesRule':
+
     if casing_strategy == 'snake':
         return css.CSSKeyframesRule(
             animation_name=from_dict(
@@ -15673,6 +17703,7 @@ def _css__css_keyframes_rule__from_dict(
                 for item in data['keyframes']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.CSSKeyframesRule(
             animation_name=from_dict(
@@ -15685,6 +17716,7 @@ def _css__css_keyframes_rule__from_dict(
                 for item in data['keyframes']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.CSSKeyframesRule(
             animation_name=from_dict(
@@ -15698,11 +17730,16 @@ def _css__css_keyframes_rule__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_property_registration__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSPropertyRegistration':
+
     if casing_strategy == 'snake':
         return css.CSSPropertyRegistration(
             property_name=data['property_name'],
@@ -15714,6 +17751,7 @@ def _css__css_property_registration__from_dict(
             inherits=data['inherits'],
             syntax=data['syntax']
         )
+
     if casing_strategy == 'camel':
         return css.CSSPropertyRegistration(
             property_name=data['propertyName'],
@@ -15725,6 +17763,7 @@ def _css__css_property_registration__from_dict(
             inherits=data['inherits'],
             syntax=data['syntax']
         )
+
     if casing_strategy == 'pascal':
         return css.CSSPropertyRegistration(
             property_name=data['PropertyName'],
@@ -15737,11 +17776,16 @@ def _css__css_property_registration__from_dict(
             syntax=data['Syntax']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_property_rule__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSPropertyRule':
+
     if casing_strategy == 'snake':
         return css.CSSPropertyRule(
             style_sheet_id=data.get('style_sheet_id', None),
@@ -15757,6 +17801,7 @@ def _css__css_property_rule__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.CSSPropertyRule(
             style_sheet_id=data.get('styleSheetId', None),
@@ -15772,6 +17817,7 @@ def _css__css_property_rule__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.CSSPropertyRule(
             style_sheet_id=data.get('StyleSheetId', None),
@@ -15788,11 +17834,16 @@ def _css__css_property_rule__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__css_keyframe_rule__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CSSKeyframeRule':
+
     if casing_strategy == 'snake':
         return css.CSSKeyframeRule(
             style_sheet_id=data.get('style_sheet_id', None),
@@ -15808,6 +17859,7 @@ def _css__css_keyframe_rule__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.CSSKeyframeRule(
             style_sheet_id=data.get('styleSheetId', None),
@@ -15823,6 +17875,7 @@ def _css__css_keyframe_rule__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.CSSKeyframeRule(
             style_sheet_id=data.get('StyleSheetId', None),
@@ -15839,11 +17892,16 @@ def _css__css_keyframe_rule__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__style_declaration_edit__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.StyleDeclarationEdit':
+
     if casing_strategy == 'snake':
         return css.StyleDeclarationEdit(
             style_sheet_id=data['style_sheet_id'],
@@ -15854,6 +17912,7 @@ def _css__style_declaration_edit__from_dict(
             ),
             text=data['text']
         )
+
     if casing_strategy == 'camel':
         return css.StyleDeclarationEdit(
             style_sheet_id=data['styleSheetId'],
@@ -15864,6 +17923,7 @@ def _css__style_declaration_edit__from_dict(
             ),
             text=data['text']
         )
+
     if casing_strategy == 'pascal':
         return css.StyleDeclarationEdit(
             style_sheet_id=data['StyleSheetId'],
@@ -15875,11 +17935,16 @@ def _css__style_declaration_edit__from_dict(
             text=data['Text']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__data_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.DataEntry':
+
     if casing_strategy == 'snake':
         return cache_storage.DataEntry(
             request_url=data['request_url'],
@@ -15897,6 +17962,7 @@ def _cache_storage__data_entry__from_dict(
                 for item in data['response_headers']
             ]
         )
+
     if casing_strategy == 'camel':
         return cache_storage.DataEntry(
             request_url=data['requestURL'],
@@ -15914,6 +17980,7 @@ def _cache_storage__data_entry__from_dict(
                 for item in data['responseHeaders']
             ]
         )
+
     if casing_strategy == 'pascal':
         return cache_storage.DataEntry(
             request_url=data['RequestURL'],
@@ -15932,11 +17999,16 @@ def _cache_storage__data_entry__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__cache__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.Cache':
+
     if casing_strategy == 'snake':
         return cache_storage.Cache(
             cache_id=data['cache_id'],
@@ -15949,6 +18021,7 @@ def _cache_storage__cache__from_dict(
             ),
             cache_name=data['cache_name']
         )
+
     if casing_strategy == 'camel':
         return cache_storage.Cache(
             cache_id=data['cacheId'],
@@ -15961,6 +18034,7 @@ def _cache_storage__cache__from_dict(
             ),
             cache_name=data['cacheName']
         )
+
     if casing_strategy == 'pascal':
         return cache_storage.Cache(
             cache_id=data['CacheId'],
@@ -15974,62 +18048,83 @@ def _cache_storage__cache__from_dict(
             cache_name=data['CacheName']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__header__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.Header':
+
     if casing_strategy == 'snake':
         return cache_storage.Header(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return cache_storage.Header(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return cache_storage.Header(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__cached_response__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.CachedResponse':
+
     if casing_strategy == 'snake':
         return cache_storage.CachedResponse(
             body=data['body']
         )
+
     if casing_strategy == 'camel':
         return cache_storage.CachedResponse(
             body=data['body']
         )
+
     if casing_strategy == 'pascal':
         return cache_storage.CachedResponse(
             body=data['Body']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _cast__sink__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cast.Sink':
+
     if casing_strategy == 'snake':
         return cast.Sink(
             name=data['name'],
             id=data['id'],
             session=data.get('session', None)
         )
+
     if casing_strategy == 'camel':
         return cast.Sink(
             name=data['name'],
             id=data['id'],
             session=data.get('session', None)
         )
+
     if casing_strategy == 'pascal':
         return cast.Sink(
             name=data['Name'],
@@ -16037,23 +18132,30 @@ def _cast__sink__from_dict(
             session=data.get('Session', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__backend_node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.BackendNode':
+
     if casing_strategy == 'snake':
         return dom.BackendNode(
             node_type=data['node_type'],
             node_name=data['node_name'],
             backend_node_id=data['backend_node_id']
         )
+
     if casing_strategy == 'camel':
         return dom.BackendNode(
             node_type=data['nodeType'],
             node_name=data['nodeName'],
             backend_node_id=data['backendNodeId']
         )
+
     if casing_strategy == 'pascal':
         return dom.BackendNode(
             node_type=data['NodeType'],
@@ -16061,11 +18163,16 @@ def _dom__backend_node__from_dict(
             backend_node_id=data['BackendNodeId']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.Node':
+
     if casing_strategy == 'snake':
         return dom.Node(
             node_id=data['node_id'],
@@ -16128,6 +18235,7 @@ def _dom__node__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return dom.Node(
             node_id=data['nodeId'],
@@ -16190,6 +18298,7 @@ def _dom__node__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return dom.Node(
             node_id=data['NodeId'],
@@ -16253,11 +18362,16 @@ def _dom__node__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__rgba__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.RGBA':
+
     if casing_strategy == 'snake':
         return dom.RGBA(
             r=data['r'],
@@ -16265,6 +18379,7 @@ def _dom__rgba__from_dict(
             b=data['b'],
             a=data.get('a', None)
         )
+
     if casing_strategy == 'camel':
         return dom.RGBA(
             r=data['r'],
@@ -16272,6 +18387,7 @@ def _dom__rgba__from_dict(
             b=data['b'],
             a=data.get('a', None)
         )
+
     if casing_strategy == 'pascal':
         return dom.RGBA(
             r=data['R'],
@@ -16280,11 +18396,16 @@ def _dom__rgba__from_dict(
             a=data.get('A', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__box_model__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.BoxModel':
+
     if casing_strategy == 'snake':
         return dom.BoxModel(
             content=data['content'],
@@ -16299,6 +18420,7 @@ def _dom__box_model__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return dom.BoxModel(
             content=data['content'],
@@ -16313,6 +18435,7 @@ def _dom__box_model__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return dom.BoxModel(
             content=data['Content'],
@@ -16328,23 +18451,30 @@ def _dom__box_model__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__shape_outside_info__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.ShapeOutsideInfo':
+
     if casing_strategy == 'snake':
         return dom.ShapeOutsideInfo(
             bounds=data['bounds'],
             shape=data['shape'],
             margin_shape=data['margin_shape']
         )
+
     if casing_strategy == 'camel':
         return dom.ShapeOutsideInfo(
             bounds=data['bounds'],
             shape=data['shape'],
             margin_shape=data['marginShape']
         )
+
     if casing_strategy == 'pascal':
         return dom.ShapeOutsideInfo(
             bounds=data['Bounds'],
@@ -16352,11 +18482,16 @@ def _dom__shape_outside_info__from_dict(
             margin_shape=data['MarginShape']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__rect__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.Rect':
+
     if casing_strategy == 'snake':
         return dom.Rect(
             x=data['x'],
@@ -16364,6 +18499,7 @@ def _dom__rect__from_dict(
             width=data['width'],
             height=data['height']
         )
+
     if casing_strategy == 'camel':
         return dom.Rect(
             x=data['x'],
@@ -16371,6 +18507,7 @@ def _dom__rect__from_dict(
             width=data['width'],
             height=data['height']
         )
+
     if casing_strategy == 'pascal':
         return dom.Rect(
             x=data['X'],
@@ -16379,32 +18516,44 @@ def _dom__rect__from_dict(
             height=data['Height']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__css_computed_style_property__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.CSSComputedStyleProperty':
+
     if casing_strategy == 'snake':
         return dom.CSSComputedStyleProperty(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return dom.CSSComputedStyleProperty(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return dom.CSSComputedStyleProperty(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_debugger__event_listener__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_debugger.EventListener':
+
     if casing_strategy == 'snake':
         return dom_debugger.EventListener(
             type=data['type'],
@@ -16426,6 +18575,7 @@ def _dom_debugger__event_listener__from_dict(
             ),
             backend_node_id=data.get('backend_node_id', None)
         )
+
     if casing_strategy == 'camel':
         return dom_debugger.EventListener(
             type=data['type'],
@@ -16447,6 +18597,7 @@ def _dom_debugger__event_listener__from_dict(
             ),
             backend_node_id=data.get('backendNodeId', None)
         )
+
     if casing_strategy == 'pascal':
         return dom_debugger.EventListener(
             type=data['Type'],
@@ -16469,11 +18620,16 @@ def _dom_debugger__event_listener__from_dict(
             backend_node_id=data.get('BackendNodeId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__dom_node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.DOMNode':
+
     if casing_strategy == 'snake':
         return dom_snapshot.DOMNode(
             node_type=data['node_type'],
@@ -16511,6 +18667,7 @@ def _dom_snapshot__dom_node__from_dict(
             scroll_offset_x=data.get('scroll_offset_x', None),
             scroll_offset_y=data.get('scroll_offset_y', None)
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.DOMNode(
             node_type=data['nodeType'],
@@ -16548,6 +18705,7 @@ def _dom_snapshot__dom_node__from_dict(
             scroll_offset_x=data.get('scrollOffsetX', None),
             scroll_offset_y=data.get('scrollOffsetY', None)
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.DOMNode(
             node_type=data['NodeType'],
@@ -16586,11 +18744,16 @@ def _dom_snapshot__dom_node__from_dict(
             scroll_offset_y=data.get('ScrollOffsetY', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__inline_text_box__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.InlineTextBox':
+
     if casing_strategy == 'snake':
         return dom_snapshot.InlineTextBox(
             bounding_box=from_dict(
@@ -16601,6 +18764,7 @@ def _dom_snapshot__inline_text_box__from_dict(
             start_character_index=data['start_character_index'],
             num_characters=data['num_characters']
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.InlineTextBox(
             bounding_box=from_dict(
@@ -16611,6 +18775,7 @@ def _dom_snapshot__inline_text_box__from_dict(
             start_character_index=data['startCharacterIndex'],
             num_characters=data['numCharacters']
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.InlineTextBox(
             bounding_box=from_dict(
@@ -16622,11 +18787,16 @@ def _dom_snapshot__inline_text_box__from_dict(
             num_characters=data['NumCharacters']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__layout_tree_node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.LayoutTreeNode':
+
     if casing_strategy == 'snake':
         return dom_snapshot.LayoutTreeNode(
             dom_node_index=data['dom_node_index'],
@@ -16644,6 +18814,7 @@ def _dom_snapshot__layout_tree_node__from_dict(
             paint_order=data.get('paint_order', None),
             is_stacking_context=data.get('is_stacking_context', None)
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.LayoutTreeNode(
             dom_node_index=data['domNodeIndex'],
@@ -16661,6 +18832,7 @@ def _dom_snapshot__layout_tree_node__from_dict(
             paint_order=data.get('paintOrder', None),
             is_stacking_context=data.get('isStackingContext', None)
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.LayoutTreeNode(
             dom_node_index=data['DomNodeIndex'],
@@ -16679,11 +18851,16 @@ def _dom_snapshot__layout_tree_node__from_dict(
             is_stacking_context=data.get('IsStackingContext', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__computed_style__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.ComputedStyle':
+
     if casing_strategy == 'snake':
         return dom_snapshot.ComputedStyle(
             properties=[
@@ -16691,6 +18868,7 @@ def _dom_snapshot__computed_style__from_dict(
                 for item in data['properties']
             ]
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.ComputedStyle(
             properties=[
@@ -16698,6 +18876,7 @@ def _dom_snapshot__computed_style__from_dict(
                 for item in data['properties']
             ]
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.ComputedStyle(
             properties=[
@@ -16706,92 +18885,125 @@ def _dom_snapshot__computed_style__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__name_value__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.NameValue':
+
     if casing_strategy == 'snake':
         return dom_snapshot.NameValue(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.NameValue(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.NameValue(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__rare_string_data__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.RareStringData':
+
     if casing_strategy == 'snake':
         return dom_snapshot.RareStringData(
             index=data['index'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.RareStringData(
             index=data['index'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.RareStringData(
             index=data['Index'],
             value=data['Value']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom_snapshot__rare_boolean_data__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.RareBooleanData':
+
     if casing_strategy == 'snake':
         return dom_snapshot.RareBooleanData(
             index=data['index']
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.RareBooleanData(
             index=data['index']
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.RareBooleanData(
             index=data['Index']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom_snapshot__rare_integer_data__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.RareIntegerData':
+
     if casing_strategy == 'snake':
         return dom_snapshot.RareIntegerData(
             index=data['index'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.RareIntegerData(
             index=data['index'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.RareIntegerData(
             index=data['Index'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__document_snapshot__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.DocumentSnapshot':
+
     if casing_strategy == 'snake':
         return dom_snapshot.DocumentSnapshot(
             document_url=data['document_url'],
@@ -16822,6 +19034,7 @@ def _dom_snapshot__document_snapshot__from_dict(
             content_width=data.get('content_width', None),
             content_height=data.get('content_height', None)
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.DocumentSnapshot(
             document_url=data['documentURL'],
@@ -16852,6 +19065,7 @@ def _dom_snapshot__document_snapshot__from_dict(
             content_width=data.get('contentWidth', None),
             content_height=data.get('contentHeight', None)
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.DocumentSnapshot(
             document_url=data['DocumentURL'],
@@ -16883,11 +19097,16 @@ def _dom_snapshot__document_snapshot__from_dict(
             content_height=data.get('ContentHeight', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__node_tree_snapshot__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.NodeTreeSnapshot':
+
     if casing_strategy == 'snake':
         return dom_snapshot.NodeTreeSnapshot(
             parent_index=data.get('parent_index', []),
@@ -16952,6 +19171,7 @@ def _dom_snapshot__node_tree_snapshot__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.NodeTreeSnapshot(
             parent_index=data.get('parentIndex', []),
@@ -17016,6 +19236,7 @@ def _dom_snapshot__node_tree_snapshot__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.NodeTreeSnapshot(
             parent_index=data.get('ParentIndex', []),
@@ -17081,11 +19302,16 @@ def _dom_snapshot__node_tree_snapshot__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__layout_tree_snapshot__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.LayoutTreeSnapshot':
+
     if casing_strategy == 'snake':
         return dom_snapshot.LayoutTreeSnapshot(
             node_index=data['node_index'],
@@ -17104,6 +19330,7 @@ def _dom_snapshot__layout_tree_snapshot__from_dict(
             blended_background_colors=data.get('blended_background_colors', []),
             text_color_opacities=data.get('text_color_opacities', [])
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.LayoutTreeSnapshot(
             node_index=data['nodeIndex'],
@@ -17122,6 +19349,7 @@ def _dom_snapshot__layout_tree_snapshot__from_dict(
             blended_background_colors=data.get('blendedBackgroundColors', []),
             text_color_opacities=data.get('textColorOpacities', [])
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.LayoutTreeSnapshot(
             node_index=data['NodeIndex'],
@@ -17141,11 +19369,16 @@ def _dom_snapshot__layout_tree_snapshot__from_dict(
             text_color_opacities=data.get('TextColorOpacities', [])
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__text_box_snapshot__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.TextBoxSnapshot':
+
     if casing_strategy == 'snake':
         return dom_snapshot.TextBoxSnapshot(
             layout_index=data['layout_index'],
@@ -17153,6 +19386,7 @@ def _dom_snapshot__text_box_snapshot__from_dict(
             start=data['start'],
             length=data['length']
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.TextBoxSnapshot(
             layout_index=data['layoutIndex'],
@@ -17160,6 +19394,7 @@ def _dom_snapshot__text_box_snapshot__from_dict(
             start=data['start'],
             length=data['length']
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.TextBoxSnapshot(
             layout_index=data['LayoutIndex'],
@@ -17168,23 +19403,30 @@ def _dom_snapshot__text_box_snapshot__from_dict(
             length=data['Length']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_storage__storage_id__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_storage.StorageId':
+
     if casing_strategy == 'snake':
         return dom_storage.StorageId(
             security_origin=data.get('security_origin', None),
             storage_key=data.get('storage_key', None),
             is_local_storage=data['is_local_storage']
         )
+
     if casing_strategy == 'camel':
         return dom_storage.StorageId(
             security_origin=data.get('securityOrigin', None),
             storage_key=data.get('storageKey', None),
             is_local_storage=data['isLocalStorage']
         )
+
     if casing_strategy == 'pascal':
         return dom_storage.StorageId(
             security_origin=data.get('SecurityOrigin', None),
@@ -17192,11 +19434,16 @@ def _dom_storage__storage_id__from_dict(
             is_local_storage=data['IsLocalStorage']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _database__database__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'database.Database':
+
     if casing_strategy == 'snake':
         return database.Database(
             id=data['id'],
@@ -17204,6 +19451,7 @@ def _database__database__from_dict(
             name=data['name'],
             version=data['version']
         )
+
     if casing_strategy == 'camel':
         return database.Database(
             id=data['id'],
@@ -17211,6 +19459,7 @@ def _database__database__from_dict(
             name=data['name'],
             version=data['version']
         )
+
     if casing_strategy == 'pascal':
         return database.Database(
             id=data['Id'],
@@ -17219,65 +19468,86 @@ def _database__database__from_dict(
             version=data['Version']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _database__error__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'database.Error':
+
     if casing_strategy == 'snake':
         return database.Error(
             message=data['message'],
             code=data['code']
         )
+
     if casing_strategy == 'camel':
         return database.Error(
             message=data['message'],
             code=data['code']
         )
+
     if casing_strategy == 'pascal':
         return database.Error(
             message=data['Message'],
             code=data['Code']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__screen_orientation__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.ScreenOrientation':
+
     if casing_strategy == 'snake':
         return emulation.ScreenOrientation(
             type=data['type'],
             angle=data['angle']
         )
+
     if casing_strategy == 'camel':
         return emulation.ScreenOrientation(
             type=data['type'],
             angle=data['angle']
         )
+
     if casing_strategy == 'pascal':
         return emulation.ScreenOrientation(
             type=data['Type'],
             angle=data['Angle']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__display_feature__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.DisplayFeature':
+
     if casing_strategy == 'snake':
         return emulation.DisplayFeature(
             orientation=data['orientation'],
             offset=data['offset'],
             mask_length=data['mask_length']
         )
+
     if casing_strategy == 'camel':
         return emulation.DisplayFeature(
             orientation=data['orientation'],
             offset=data['offset'],
             mask_length=data['maskLength']
         )
+
     if casing_strategy == 'pascal':
         return emulation.DisplayFeature(
             orientation=data['Orientation'],
@@ -17285,53 +19555,72 @@ def _emulation__display_feature__from_dict(
             mask_length=data['MaskLength']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__media_feature__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.MediaFeature':
+
     if casing_strategy == 'snake':
         return emulation.MediaFeature(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return emulation.MediaFeature(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return emulation.MediaFeature(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__user_agent_brand_version__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.UserAgentBrandVersion':
+
     if casing_strategy == 'snake':
         return emulation.UserAgentBrandVersion(
             brand=data['brand'],
             version=data['version']
         )
+
     if casing_strategy == 'camel':
         return emulation.UserAgentBrandVersion(
             brand=data['brand'],
             version=data['version']
         )
+
     if casing_strategy == 'pascal':
         return emulation.UserAgentBrandVersion(
             brand=data['Brand'],
             version=data['Version']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _emulation__user_agent_metadata__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.UserAgentMetadata':
+
     if casing_strategy == 'snake':
         return emulation.UserAgentMetadata(
             brands=[
@@ -17351,6 +19640,7 @@ def _emulation__user_agent_metadata__from_dict(
             bitness=data.get('bitness', None),
             wow64=data.get('wow64', None)
         )
+
     if casing_strategy == 'camel':
         return emulation.UserAgentMetadata(
             brands=[
@@ -17370,6 +19660,7 @@ def _emulation__user_agent_metadata__from_dict(
             bitness=data.get('bitness', None),
             wow64=data.get('wow64', None)
         )
+
     if casing_strategy == 'pascal':
         return emulation.UserAgentMetadata(
             brands=[
@@ -17390,23 +19681,30 @@ def _emulation__user_agent_metadata__from_dict(
             wow64=data.get('Wow64', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _headless_experimental__screenshot_params__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'headless_experimental.ScreenshotParams':
+
     if casing_strategy == 'snake':
         return headless_experimental.ScreenshotParams(
             format=data.get('format', None),
             quality=data.get('quality', None),
             optimize_for_speed=data.get('optimize_for_speed', None)
         )
+
     if casing_strategy == 'camel':
         return headless_experimental.ScreenshotParams(
             format=data.get('format', None),
             quality=data.get('quality', None),
             optimize_for_speed=data.get('optimizeForSpeed', None)
         )
+
     if casing_strategy == 'pascal':
         return headless_experimental.ScreenshotParams(
             format=data.get('Format', None),
@@ -17414,11 +19712,16 @@ def _headless_experimental__screenshot_params__from_dict(
             optimize_for_speed=data.get('OptimizeForSpeed', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__database_with_object_stores__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.DatabaseWithObjectStores':
+
     if casing_strategy == 'snake':
         return indexed_db.DatabaseWithObjectStores(
             name=data['name'],
@@ -17428,6 +19731,7 @@ def _indexed_db__database_with_object_stores__from_dict(
                 for item in data['object_stores']
             ]
         )
+
     if casing_strategy == 'camel':
         return indexed_db.DatabaseWithObjectStores(
             name=data['name'],
@@ -17437,6 +19741,7 @@ def _indexed_db__database_with_object_stores__from_dict(
                 for item in data['objectStores']
             ]
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.DatabaseWithObjectStores(
             name=data['Name'],
@@ -17447,11 +19752,16 @@ def _indexed_db__database_with_object_stores__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__object_store__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.ObjectStore':
+
     if casing_strategy == 'snake':
         return indexed_db.ObjectStore(
             name=data['name'],
@@ -17466,6 +19776,7 @@ def _indexed_db__object_store__from_dict(
                 for item in data['indexes']
             ]
         )
+
     if casing_strategy == 'camel':
         return indexed_db.ObjectStore(
             name=data['name'],
@@ -17480,6 +19791,7 @@ def _indexed_db__object_store__from_dict(
                 for item in data['indexes']
             ]
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.ObjectStore(
             name=data['Name'],
@@ -17495,11 +19807,16 @@ def _indexed_db__object_store__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__object_store_index__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.ObjectStoreIndex':
+
     if casing_strategy == 'snake':
         return indexed_db.ObjectStoreIndex(
             name=data['name'],
@@ -17511,6 +19828,7 @@ def _indexed_db__object_store_index__from_dict(
             unique=data['unique'],
             multi_entry=data['multi_entry']
         )
+
     if casing_strategy == 'camel':
         return indexed_db.ObjectStoreIndex(
             name=data['name'],
@@ -17522,6 +19840,7 @@ def _indexed_db__object_store_index__from_dict(
             unique=data['unique'],
             multi_entry=data['multiEntry']
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.ObjectStoreIndex(
             name=data['Name'],
@@ -17534,11 +19853,16 @@ def _indexed_db__object_store_index__from_dict(
             multi_entry=data['MultiEntry']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__key__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.Key':
+
     if casing_strategy == 'snake':
         return indexed_db.Key(
             type=data['type'],
@@ -17550,6 +19874,7 @@ def _indexed_db__key__from_dict(
                 for item in data.get('array', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return indexed_db.Key(
             type=data['type'],
@@ -17561,6 +19886,7 @@ def _indexed_db__key__from_dict(
                 for item in data.get('array', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.Key(
             type=data['Type'],
@@ -17573,11 +19899,16 @@ def _indexed_db__key__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__key_range__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.KeyRange':
+
     if casing_strategy == 'snake':
         return indexed_db.KeyRange(
             lower=from_dict(
@@ -17593,6 +19924,7 @@ def _indexed_db__key_range__from_dict(
             lower_open=data['lower_open'],
             upper_open=data['upper_open']
         )
+
     if casing_strategy == 'camel':
         return indexed_db.KeyRange(
             lower=from_dict(
@@ -17608,6 +19940,7 @@ def _indexed_db__key_range__from_dict(
             lower_open=data['lowerOpen'],
             upper_open=data['upperOpen']
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.KeyRange(
             lower=from_dict(
@@ -17624,11 +19957,16 @@ def _indexed_db__key_range__from_dict(
             upper_open=data['UpperOpen']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__data_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.DataEntry':
+
     if casing_strategy == 'snake':
         return indexed_db.DataEntry(
             key=from_dict(
@@ -17647,6 +19985,7 @@ def _indexed_db__data_entry__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return indexed_db.DataEntry(
             key=from_dict(
@@ -17665,6 +20004,7 @@ def _indexed_db__data_entry__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.DataEntry(
             key=from_dict(
@@ -17684,23 +20024,30 @@ def _indexed_db__data_entry__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__key_path__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.KeyPath':
+
     if casing_strategy == 'snake':
         return indexed_db.KeyPath(
             type=data['type'],
             string=data.get('string', None),
             array=data.get('array', [])
         )
+
     if casing_strategy == 'camel':
         return indexed_db.KeyPath(
             type=data['type'],
             string=data.get('string', None),
             array=data.get('array', [])
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.KeyPath(
             type=data['Type'],
@@ -17708,11 +20055,16 @@ def _indexed_db__key_path__from_dict(
             array=data.get('Array', [])
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _input__touch_point__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'input_.TouchPoint':
+
     if casing_strategy == 'snake':
         return input_.TouchPoint(
             x=data['x'],
@@ -17727,6 +20079,7 @@ def _input__touch_point__from_dict(
             twist=data.get('twist', None),
             id=data.get('id', None)
         )
+
     if casing_strategy == 'camel':
         return input_.TouchPoint(
             x=data['x'],
@@ -17741,6 +20094,7 @@ def _input__touch_point__from_dict(
             twist=data.get('twist', None),
             id=data.get('id', None)
         )
+
     if casing_strategy == 'pascal':
         return input_.TouchPoint(
             x=data['X'],
@@ -17756,11 +20110,16 @@ def _input__touch_point__from_dict(
             id=data.get('Id', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _input__drag_data_item__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'input_.DragDataItem':
+
     if casing_strategy == 'snake':
         return input_.DragDataItem(
             mime_type=data['mime_type'],
@@ -17768,6 +20127,7 @@ def _input__drag_data_item__from_dict(
             title=data.get('title', None),
             base_url=data.get('base_url', None)
         )
+
     if casing_strategy == 'camel':
         return input_.DragDataItem(
             mime_type=data['mimeType'],
@@ -17775,6 +20135,7 @@ def _input__drag_data_item__from_dict(
             title=data.get('title', None),
             base_url=data.get('baseURL', None)
         )
+
     if casing_strategy == 'pascal':
         return input_.DragDataItem(
             mime_type=data['MimeType'],
@@ -17783,11 +20144,16 @@ def _input__drag_data_item__from_dict(
             base_url=data.get('BaseURL', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _input__drag_data__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'input_.DragData':
+
     if casing_strategy == 'snake':
         return input_.DragData(
             items=[
@@ -17797,6 +20163,7 @@ def _input__drag_data__from_dict(
             files=data.get('files', []),
             drag_operations_mask=data['drag_operations_mask']
         )
+
     if casing_strategy == 'camel':
         return input_.DragData(
             items=[
@@ -17806,6 +20173,7 @@ def _input__drag_data__from_dict(
             files=data.get('files', []),
             drag_operations_mask=data['dragOperationsMask']
         )
+
     if casing_strategy == 'pascal':
         return input_.DragData(
             items=[
@@ -17816,11 +20184,16 @@ def _input__drag_data__from_dict(
             drag_operations_mask=data['DragOperationsMask']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _layer_tree__scroll_rect__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.ScrollRect':
+
     if casing_strategy == 'snake':
         return layer_tree.ScrollRect(
             rect=from_dict(
@@ -17830,6 +20203,7 @@ def _layer_tree__scroll_rect__from_dict(
             ),
             type=data['type']
         )
+
     if casing_strategy == 'camel':
         return layer_tree.ScrollRect(
             rect=from_dict(
@@ -17839,6 +20213,7 @@ def _layer_tree__scroll_rect__from_dict(
             ),
             type=data['type']
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.ScrollRect(
             rect=from_dict(
@@ -17849,11 +20224,16 @@ def _layer_tree__scroll_rect__from_dict(
             type=data['Type']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _layer_tree__sticky_position_constraint__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.StickyPositionConstraint':
+
     if casing_strategy == 'snake':
         return layer_tree.StickyPositionConstraint(
             sticky_box_rect=from_dict(
@@ -17869,6 +20249,7 @@ def _layer_tree__sticky_position_constraint__from_dict(
             nearest_layer_shifting_sticky_box=data.get('nearest_layer_shifting_sticky_box', None),
             nearest_layer_shifting_containing_block=data.get('nearest_layer_shifting_containing_block', None)
         )
+
     if casing_strategy == 'camel':
         return layer_tree.StickyPositionConstraint(
             sticky_box_rect=from_dict(
@@ -17884,6 +20265,7 @@ def _layer_tree__sticky_position_constraint__from_dict(
             nearest_layer_shifting_sticky_box=data.get('nearestLayerShiftingStickyBox', None),
             nearest_layer_shifting_containing_block=data.get('nearestLayerShiftingContainingBlock', None)
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.StickyPositionConstraint(
             sticky_box_rect=from_dict(
@@ -17900,23 +20282,30 @@ def _layer_tree__sticky_position_constraint__from_dict(
             nearest_layer_shifting_containing_block=data.get('NearestLayerShiftingContainingBlock', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _layer_tree__picture_tile__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.PictureTile':
+
     if casing_strategy == 'snake':
         return layer_tree.PictureTile(
             x=data['x'],
             y=data['y'],
             picture=data['picture']
         )
+
     if casing_strategy == 'camel':
         return layer_tree.PictureTile(
             x=data['x'],
             y=data['y'],
             picture=data['picture']
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.PictureTile(
             x=data['X'],
@@ -17924,11 +20313,16 @@ def _layer_tree__picture_tile__from_dict(
             picture=data['Picture']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _layer_tree__layer__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.Layer':
+
     if casing_strategy == 'snake':
         return layer_tree.Layer(
             layer_id=data['layer_id'],
@@ -17955,6 +20349,7 @@ def _layer_tree__layer__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return layer_tree.Layer(
             layer_id=data['layerId'],
@@ -17981,6 +20376,7 @@ def _layer_tree__layer__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.Layer(
             layer_id=data['LayerId'],
@@ -18008,11 +20404,16 @@ def _layer_tree__layer__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _log__log_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'log.LogEntry':
+
     if casing_strategy == 'snake':
         return log.LogEntry(
             source=data['source'],
@@ -18034,6 +20435,7 @@ def _log__log_entry__from_dict(
                 for item in data.get('args', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return log.LogEntry(
             source=data['source'],
@@ -18055,6 +20457,7 @@ def _log__log_entry__from_dict(
                 for item in data.get('args', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return log.LogEntry(
             source=data['Source'],
@@ -18077,44 +20480,58 @@ def _log__log_entry__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _log__violation_setting__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'log.ViolationSetting':
+
     if casing_strategy == 'snake':
         return log.ViolationSetting(
             name=data['name'],
             threshold=data['threshold']
         )
+
     if casing_strategy == 'camel':
         return log.ViolationSetting(
             name=data['name'],
             threshold=data['threshold']
         )
+
     if casing_strategy == 'pascal':
         return log.ViolationSetting(
             name=data['Name'],
             threshold=data['Threshold']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _memory__sampling_profile_node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.SamplingProfileNode':
+
     if casing_strategy == 'snake':
         return memory.SamplingProfileNode(
             size=data['size'],
             total=data['total'],
             stack=data['stack']
         )
+
     if casing_strategy == 'camel':
         return memory.SamplingProfileNode(
             size=data['size'],
             total=data['total'],
             stack=data['stack']
         )
+
     if casing_strategy == 'pascal':
         return memory.SamplingProfileNode(
             size=data['Size'],
@@ -18122,11 +20539,16 @@ def _memory__sampling_profile_node__from_dict(
             stack=data['Stack']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _memory__sampling_profile__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.SamplingProfile':
+
     if casing_strategy == 'snake':
         return memory.SamplingProfile(
             samples=[
@@ -18138,6 +20560,7 @@ def _memory__sampling_profile__from_dict(
                 for item in data['modules']
             ]
         )
+
     if casing_strategy == 'camel':
         return memory.SamplingProfile(
             samples=[
@@ -18149,6 +20572,7 @@ def _memory__sampling_profile__from_dict(
                 for item in data['modules']
             ]
         )
+
     if casing_strategy == 'pascal':
         return memory.SamplingProfile(
             samples=[
@@ -18161,11 +20585,16 @@ def _memory__sampling_profile__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _memory__module__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.Module':
+
     if casing_strategy == 'snake':
         return memory.Module(
             name=data['name'],
@@ -18173,6 +20602,7 @@ def _memory__module__from_dict(
             base_address=data['base_address'],
             size=data['size']
         )
+
     if casing_strategy == 'camel':
         return memory.Module(
             name=data['name'],
@@ -18180,6 +20610,7 @@ def _memory__module__from_dict(
             base_address=data['baseAddress'],
             size=data['size']
         )
+
     if casing_strategy == 'pascal':
         return memory.Module(
             name=data['Name'],
@@ -18188,11 +20619,16 @@ def _memory__module__from_dict(
             size=data['Size']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__resource_timing__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.ResourceTiming':
+
     if casing_strategy == 'snake':
         return network.ResourceTiming(
             request_time=data['request_time'],
@@ -18215,6 +20651,7 @@ def _network__resource_timing__from_dict(
             receive_headers_start=data['receive_headers_start'],
             receive_headers_end=data['receive_headers_end']
         )
+
     if casing_strategy == 'camel':
         return network.ResourceTiming(
             request_time=data['requestTime'],
@@ -18237,6 +20674,7 @@ def _network__resource_timing__from_dict(
             receive_headers_start=data['receiveHeadersStart'],
             receive_headers_end=data['receiveHeadersEnd']
         )
+
     if casing_strategy == 'pascal':
         return network.ResourceTiming(
             request_time=data['RequestTime'],
@@ -18260,29 +20698,41 @@ def _network__resource_timing__from_dict(
             receive_headers_end=data['ReceiveHeadersEnd']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__post_data_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.PostDataEntry':
+
     if casing_strategy == 'snake':
         return network.PostDataEntry(
             bytes=data.get('bytes', None)
         )
+
     if casing_strategy == 'camel':
         return network.PostDataEntry(
             bytes=data.get('bytes', None)
         )
+
     if casing_strategy == 'pascal':
         return network.PostDataEntry(
             bytes=data.get('Bytes', None)
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__request__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.Request':
+
     if casing_strategy == 'snake':
         return network.Request(
             url=data['url'],
@@ -18306,6 +20756,7 @@ def _network__request__from_dict(
             ),
             is_same_site=data.get('is_same_site', None)
         )
+
     if casing_strategy == 'camel':
         return network.Request(
             url=data['url'],
@@ -18329,6 +20780,7 @@ def _network__request__from_dict(
             ),
             is_same_site=data.get('isSameSite', None)
         )
+
     if casing_strategy == 'pascal':
         return network.Request(
             url=data['Url'],
@@ -18353,11 +20805,16 @@ def _network__request__from_dict(
             is_same_site=data.get('IsSameSite', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__signed_certificate_timestamp__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SignedCertificateTimestamp':
+
     if casing_strategy == 'snake':
         return network.SignedCertificateTimestamp(
             status=data['status'],
@@ -18369,6 +20826,7 @@ def _network__signed_certificate_timestamp__from_dict(
             signature_algorithm=data['signature_algorithm'],
             signature_data=data['signature_data']
         )
+
     if casing_strategy == 'camel':
         return network.SignedCertificateTimestamp(
             status=data['status'],
@@ -18380,6 +20838,7 @@ def _network__signed_certificate_timestamp__from_dict(
             signature_algorithm=data['signatureAlgorithm'],
             signature_data=data['signatureData']
         )
+
     if casing_strategy == 'pascal':
         return network.SignedCertificateTimestamp(
             status=data['Status'],
@@ -18392,11 +20851,16 @@ def _network__signed_certificate_timestamp__from_dict(
             signature_data=data['SignatureData']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__security_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SecurityDetails':
+
     if casing_strategy == 'snake':
         return network.SecurityDetails(
             protocol=data['protocol'],
@@ -18418,6 +20882,7 @@ def _network__security_details__from_dict(
             server_signature_algorithm=data.get('server_signature_algorithm', None),
             encrypted_client_hello=data['encrypted_client_hello']
         )
+
     if casing_strategy == 'camel':
         return network.SecurityDetails(
             protocol=data['protocol'],
@@ -18439,6 +20904,7 @@ def _network__security_details__from_dict(
             server_signature_algorithm=data.get('serverSignatureAlgorithm', None),
             encrypted_client_hello=data['encryptedClientHello']
         )
+
     if casing_strategy == 'pascal':
         return network.SecurityDetails(
             protocol=data['Protocol'],
@@ -18461,44 +20927,58 @@ def _network__security_details__from_dict(
             encrypted_client_hello=data['EncryptedClientHello']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cors_error_status__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CorsErrorStatus':
+
     if casing_strategy == 'snake':
         return network.CorsErrorStatus(
             cors_error=data['cors_error'],
             failed_parameter=data['failed_parameter']
         )
+
     if casing_strategy == 'camel':
         return network.CorsErrorStatus(
             cors_error=data['corsError'],
             failed_parameter=data['failedParameter']
         )
+
     if casing_strategy == 'pascal':
         return network.CorsErrorStatus(
             cors_error=data['CorsError'],
             failed_parameter=data['FailedParameter']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__trust_token_params__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.TrustTokenParams':
+
     if casing_strategy == 'snake':
         return network.TrustTokenParams(
             operation=data['operation'],
             refresh_policy=data['refresh_policy'],
             issuers=data.get('issuers', [])
         )
+
     if casing_strategy == 'camel':
         return network.TrustTokenParams(
             operation=data['operation'],
             refresh_policy=data['refreshPolicy'],
             issuers=data.get('issuers', [])
         )
+
     if casing_strategy == 'pascal':
         return network.TrustTokenParams(
             operation=data['Operation'],
@@ -18506,11 +20986,16 @@ def _network__trust_token_params__from_dict(
             issuers=data.get('Issuers', [])
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__response__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.Response':
+
     if casing_strategy == 'snake':
         return network.Response(
             url=data['url'],
@@ -18546,6 +21031,7 @@ def _network__response__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return network.Response(
             url=data['url'],
@@ -18581,6 +21067,7 @@ def _network__response__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return network.Response(
             url=data['Url'],
@@ -18617,29 +21104,41 @@ def _network__response__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__web_socket_request__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.WebSocketRequest':
+
     if casing_strategy == 'snake':
         return network.WebSocketRequest(
             headers=data['headers']
         )
+
     if casing_strategy == 'camel':
         return network.WebSocketRequest(
             headers=data['headers']
         )
+
     if casing_strategy == 'pascal':
         return network.WebSocketRequest(
             headers=data['Headers']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__web_socket_response__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.WebSocketResponse':
+
     if casing_strategy == 'snake':
         return network.WebSocketResponse(
             status=data['status'],
@@ -18649,6 +21148,7 @@ def _network__web_socket_response__from_dict(
             request_headers=data.get('request_headers', None),
             request_headers_text=data.get('request_headers_text', None)
         )
+
     if casing_strategy == 'camel':
         return network.WebSocketResponse(
             status=data['status'],
@@ -18658,6 +21158,7 @@ def _network__web_socket_response__from_dict(
             request_headers=data.get('requestHeaders', None),
             request_headers_text=data.get('requestHeadersText', None)
         )
+
     if casing_strategy == 'pascal':
         return network.WebSocketResponse(
             status=data['Status'],
@@ -18668,23 +21169,30 @@ def _network__web_socket_response__from_dict(
             request_headers_text=data.get('RequestHeadersText', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__web_socket_frame__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.WebSocketFrame':
+
     if casing_strategy == 'snake':
         return network.WebSocketFrame(
             opcode=data['opcode'],
             mask=data['mask'],
             payload_data=data['payload_data']
         )
+
     if casing_strategy == 'camel':
         return network.WebSocketFrame(
             opcode=data['opcode'],
             mask=data['mask'],
             payload_data=data['payloadData']
         )
+
     if casing_strategy == 'pascal':
         return network.WebSocketFrame(
             opcode=data['Opcode'],
@@ -18692,11 +21200,16 @@ def _network__web_socket_frame__from_dict(
             payload_data=data['PayloadData']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cached_resource__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CachedResource':
+
     if casing_strategy == 'snake':
         return network.CachedResource(
             url=data['url'],
@@ -18708,6 +21221,7 @@ def _network__cached_resource__from_dict(
             ),
             body_size=data['body_size']
         )
+
     if casing_strategy == 'camel':
         return network.CachedResource(
             url=data['url'],
@@ -18719,6 +21233,7 @@ def _network__cached_resource__from_dict(
             ),
             body_size=data['bodySize']
         )
+
     if casing_strategy == 'pascal':
         return network.CachedResource(
             url=data['Url'],
@@ -18731,11 +21246,16 @@ def _network__cached_resource__from_dict(
             body_size=data['BodySize']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__initiator__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.Initiator':
+
     if casing_strategy == 'snake':
         return network.Initiator(
             type=data['type'],
@@ -18749,6 +21269,7 @@ def _network__initiator__from_dict(
             column_number=data.get('column_number', None),
             request_id=data.get('request_id', None)
         )
+
     if casing_strategy == 'camel':
         return network.Initiator(
             type=data['type'],
@@ -18762,6 +21283,7 @@ def _network__initiator__from_dict(
             column_number=data.get('columnNumber', None),
             request_id=data.get('requestId', None)
         )
+
     if casing_strategy == 'pascal':
         return network.Initiator(
             type=data['Type'],
@@ -18776,11 +21298,16 @@ def _network__initiator__from_dict(
             request_id=data.get('RequestId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cookie__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.Cookie':
+
     if casing_strategy == 'snake':
         return network.Cookie(
             name=data['name'],
@@ -18800,6 +21327,7 @@ def _network__cookie__from_dict(
             partition_key=data.get('partition_key', None),
             partition_key_opaque=data.get('partition_key_opaque', None)
         )
+
     if casing_strategy == 'camel':
         return network.Cookie(
             name=data['name'],
@@ -18819,6 +21347,7 @@ def _network__cookie__from_dict(
             partition_key=data.get('partitionKey', None),
             partition_key_opaque=data.get('partitionKeyOpaque', None)
         )
+
     if casing_strategy == 'pascal':
         return network.Cookie(
             name=data['Name'],
@@ -18839,11 +21368,16 @@ def _network__cookie__from_dict(
             partition_key_opaque=data.get('PartitionKeyOpaque', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__blocked_set_cookie_with_reason__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.BlockedSetCookieWithReason':
+
     if casing_strategy == 'snake':
         return network.BlockedSetCookieWithReason(
             blocked_reasons=data['blocked_reasons'],
@@ -18854,6 +21388,7 @@ def _network__blocked_set_cookie_with_reason__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return network.BlockedSetCookieWithReason(
             blocked_reasons=data['blockedReasons'],
@@ -18864,6 +21399,7 @@ def _network__blocked_set_cookie_with_reason__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return network.BlockedSetCookieWithReason(
             blocked_reasons=data['BlockedReasons'],
@@ -18875,11 +21411,16 @@ def _network__blocked_set_cookie_with_reason__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__blocked_cookie_with_reason__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.BlockedCookieWithReason':
+
     if casing_strategy == 'snake':
         return network.BlockedCookieWithReason(
             blocked_reasons=data['blocked_reasons'],
@@ -18889,6 +21430,7 @@ def _network__blocked_cookie_with_reason__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return network.BlockedCookieWithReason(
             blocked_reasons=data['blockedReasons'],
@@ -18898,6 +21440,7 @@ def _network__blocked_cookie_with_reason__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return network.BlockedCookieWithReason(
             blocked_reasons=data['BlockedReasons'],
@@ -18908,11 +21451,16 @@ def _network__blocked_cookie_with_reason__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cookie_param__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CookieParam':
+
     if casing_strategy == 'snake':
         return network.CookieParam(
             name=data['name'],
@@ -18930,6 +21478,7 @@ def _network__cookie_param__from_dict(
             source_port=data.get('source_port', None),
             partition_key=data.get('partition_key', None)
         )
+
     if casing_strategy == 'camel':
         return network.CookieParam(
             name=data['name'],
@@ -18947,6 +21496,7 @@ def _network__cookie_param__from_dict(
             source_port=data.get('sourcePort', None),
             partition_key=data.get('partitionKey', None)
         )
+
     if casing_strategy == 'pascal':
         return network.CookieParam(
             name=data['Name'],
@@ -18965,11 +21515,16 @@ def _network__cookie_param__from_dict(
             partition_key=data.get('PartitionKey', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__auth_challenge__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.AuthChallenge':
+
     if casing_strategy == 'snake':
         return network.AuthChallenge(
             source=data.get('source', None),
@@ -18977,6 +21532,7 @@ def _network__auth_challenge__from_dict(
             scheme=data['scheme'],
             realm=data['realm']
         )
+
     if casing_strategy == 'camel':
         return network.AuthChallenge(
             source=data.get('source', None),
@@ -18984,6 +21540,7 @@ def _network__auth_challenge__from_dict(
             scheme=data['scheme'],
             realm=data['realm']
         )
+
     if casing_strategy == 'pascal':
         return network.AuthChallenge(
             source=data.get('Source', None),
@@ -18992,23 +21549,30 @@ def _network__auth_challenge__from_dict(
             realm=data['Realm']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__auth_challenge_response__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.AuthChallengeResponse':
+
     if casing_strategy == 'snake':
         return network.AuthChallengeResponse(
             response=data['response'],
             username=data.get('username', None),
             password=data.get('password', None)
         )
+
     if casing_strategy == 'camel':
         return network.AuthChallengeResponse(
             response=data['response'],
             username=data.get('username', None),
             password=data.get('password', None)
         )
+
     if casing_strategy == 'pascal':
         return network.AuthChallengeResponse(
             response=data['Response'],
@@ -19016,23 +21580,30 @@ def _network__auth_challenge_response__from_dict(
             password=data.get('Password', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__request_pattern__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.RequestPattern':
+
     if casing_strategy == 'snake':
         return network.RequestPattern(
             url_pattern=data.get('url_pattern', None),
             resource_type=data.get('resource_type', None),
             interception_stage=data.get('interception_stage', None)
         )
+
     if casing_strategy == 'camel':
         return network.RequestPattern(
             url_pattern=data.get('urlPattern', None),
             resource_type=data.get('resourceType', None),
             interception_stage=data.get('interceptionStage', None)
         )
+
     if casing_strategy == 'pascal':
         return network.RequestPattern(
             url_pattern=data.get('UrlPattern', None),
@@ -19040,11 +21611,16 @@ def _network__request_pattern__from_dict(
             interception_stage=data.get('InterceptionStage', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__signed_exchange_signature__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SignedExchangeSignature':
+
     if casing_strategy == 'snake':
         return network.SignedExchangeSignature(
             label=data['label'],
@@ -19057,6 +21633,7 @@ def _network__signed_exchange_signature__from_dict(
             expires=data['expires'],
             certificates=data.get('certificates', [])
         )
+
     if casing_strategy == 'camel':
         return network.SignedExchangeSignature(
             label=data['label'],
@@ -19069,6 +21646,7 @@ def _network__signed_exchange_signature__from_dict(
             expires=data['expires'],
             certificates=data.get('certificates', [])
         )
+
     if casing_strategy == 'pascal':
         return network.SignedExchangeSignature(
             label=data['Label'],
@@ -19082,11 +21660,16 @@ def _network__signed_exchange_signature__from_dict(
             certificates=data.get('Certificates', [])
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__signed_exchange_header__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SignedExchangeHeader':
+
     if casing_strategy == 'snake':
         return network.SignedExchangeHeader(
             request_url=data['request_url'],
@@ -19098,6 +21681,7 @@ def _network__signed_exchange_header__from_dict(
             ],
             header_integrity=data['header_integrity']
         )
+
     if casing_strategy == 'camel':
         return network.SignedExchangeHeader(
             request_url=data['requestUrl'],
@@ -19109,6 +21693,7 @@ def _network__signed_exchange_header__from_dict(
             ],
             header_integrity=data['headerIntegrity']
         )
+
     if casing_strategy == 'pascal':
         return network.SignedExchangeHeader(
             request_url=data['RequestUrl'],
@@ -19121,23 +21706,30 @@ def _network__signed_exchange_header__from_dict(
             header_integrity=data['HeaderIntegrity']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__signed_exchange_error__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SignedExchangeError':
+
     if casing_strategy == 'snake':
         return network.SignedExchangeError(
             message=data['message'],
             signature_index=data.get('signature_index', None),
             error_field=data.get('error_field', None)
         )
+
     if casing_strategy == 'camel':
         return network.SignedExchangeError(
             message=data['message'],
             signature_index=data.get('signatureIndex', None),
             error_field=data.get('errorField', None)
         )
+
     if casing_strategy == 'pascal':
         return network.SignedExchangeError(
             message=data['Message'],
@@ -19145,11 +21737,16 @@ def _network__signed_exchange_error__from_dict(
             error_field=data.get('ErrorField', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__signed_exchange_info__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SignedExchangeInfo':
+
     if casing_strategy == 'snake':
         return network.SignedExchangeInfo(
             outer_response=from_dict(
@@ -19172,6 +21769,7 @@ def _network__signed_exchange_info__from_dict(
                 for item in data.get('errors', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return network.SignedExchangeInfo(
             outer_response=from_dict(
@@ -19194,6 +21792,7 @@ def _network__signed_exchange_info__from_dict(
                 for item in data.get('errors', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return network.SignedExchangeInfo(
             outer_response=from_dict(
@@ -19217,41 +21816,55 @@ def _network__signed_exchange_info__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__connect_timing__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.ConnectTiming':
+
     if casing_strategy == 'snake':
         return network.ConnectTiming(
             request_time=data['request_time']
         )
+
     if casing_strategy == 'camel':
         return network.ConnectTiming(
             request_time=data['requestTime']
         )
+
     if casing_strategy == 'pascal':
         return network.ConnectTiming(
             request_time=data['RequestTime']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__client_security_state__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.ClientSecurityState':
+
     if casing_strategy == 'snake':
         return network.ClientSecurityState(
             initiator_is_secure_context=data['initiator_is_secure_context'],
             initiator_ip_address_space=data['initiator_ip_address_space'],
             private_network_request_policy=data['private_network_request_policy']
         )
+
     if casing_strategy == 'camel':
         return network.ClientSecurityState(
             initiator_is_secure_context=data['initiatorIsSecureContext'],
             initiator_ip_address_space=data['initiatorIPAddressSpace'],
             private_network_request_policy=data['privateNetworkRequestPolicy']
         )
+
     if casing_strategy == 'pascal':
         return network.ClientSecurityState(
             initiator_is_secure_context=data['InitiatorIsSecureContext'],
@@ -19259,11 +21872,16 @@ def _network__client_security_state__from_dict(
             private_network_request_policy=data['PrivateNetworkRequestPolicy']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__cross_origin_opener_policy_status__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CrossOriginOpenerPolicyStatus':
+
     if casing_strategy == 'snake':
         return network.CrossOriginOpenerPolicyStatus(
             value=data['value'],
@@ -19271,6 +21889,7 @@ def _network__cross_origin_opener_policy_status__from_dict(
             reporting_endpoint=data.get('reporting_endpoint', None),
             report_only_reporting_endpoint=data.get('report_only_reporting_endpoint', None)
         )
+
     if casing_strategy == 'camel':
         return network.CrossOriginOpenerPolicyStatus(
             value=data['value'],
@@ -19278,6 +21897,7 @@ def _network__cross_origin_opener_policy_status__from_dict(
             reporting_endpoint=data.get('reportingEndpoint', None),
             report_only_reporting_endpoint=data.get('reportOnlyReportingEndpoint', None)
         )
+
     if casing_strategy == 'pascal':
         return network.CrossOriginOpenerPolicyStatus(
             value=data['Value'],
@@ -19285,12 +21905,17 @@ def _network__cross_origin_opener_policy_status__from_dict(
             reporting_endpoint=data.get('ReportingEndpoint', None),
             report_only_reporting_endpoint=data.get('ReportOnlyReportingEndpoint', None)
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__cross_origin_embedder_policy_status__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CrossOriginEmbedderPolicyStatus':
+
     if casing_strategy == 'snake':
         return network.CrossOriginEmbedderPolicyStatus(
             value=data['value'],
@@ -19298,6 +21923,7 @@ def _network__cross_origin_embedder_policy_status__from_dict(
             reporting_endpoint=data.get('reporting_endpoint', None),
             report_only_reporting_endpoint=data.get('report_only_reporting_endpoint', None)
         )
+
     if casing_strategy == 'camel':
         return network.CrossOriginEmbedderPolicyStatus(
             value=data['value'],
@@ -19305,6 +21931,7 @@ def _network__cross_origin_embedder_policy_status__from_dict(
             reporting_endpoint=data.get('reportingEndpoint', None),
             report_only_reporting_endpoint=data.get('reportOnlyReportingEndpoint', None)
         )
+
     if casing_strategy == 'pascal':
         return network.CrossOriginEmbedderPolicyStatus(
             value=data['Value'],
@@ -19313,23 +21940,30 @@ def _network__cross_origin_embedder_policy_status__from_dict(
             report_only_reporting_endpoint=data.get('ReportOnlyReportingEndpoint', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__content_security_policy_status__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.ContentSecurityPolicyStatus':
+
     if casing_strategy == 'snake':
         return network.ContentSecurityPolicyStatus(
             effective_directives=data['effective_directives'],
             is_enforced=data['is_enforced'],
             source=data['source']
         )
+
     if casing_strategy == 'camel':
         return network.ContentSecurityPolicyStatus(
             effective_directives=data['effectiveDirectives'],
             is_enforced=data['isEnforced'],
             source=data['source']
         )
+
     if casing_strategy == 'pascal':
         return network.ContentSecurityPolicyStatus(
             effective_directives=data['EffectiveDirectives'],
@@ -19337,11 +21971,16 @@ def _network__content_security_policy_status__from_dict(
             source=data['Source']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__security_isolation_status__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SecurityIsolationStatus':
+
     if casing_strategy == 'snake':
         return network.SecurityIsolationStatus(
             coop=from_dict(
@@ -19359,6 +21998,7 @@ def _network__security_isolation_status__from_dict(
                 for item in data.get('csp', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return network.SecurityIsolationStatus(
             coop=from_dict(
@@ -19376,6 +22016,7 @@ def _network__security_isolation_status__from_dict(
                 for item in data.get('csp', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return network.SecurityIsolationStatus(
             coop=from_dict(
@@ -19394,11 +22035,16 @@ def _network__security_isolation_status__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__reporting_api_report__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.ReportingApiReport':
+
     if casing_strategy == 'snake':
         return network.ReportingApiReport(
             id=data['id'],
@@ -19411,6 +22057,7 @@ def _network__reporting_api_report__from_dict(
             body=data['body'],
             status=data['status']
         )
+
     if casing_strategy == 'camel':
         return network.ReportingApiReport(
             id=data['id'],
@@ -19423,6 +22070,7 @@ def _network__reporting_api_report__from_dict(
             body=data['body'],
             status=data['status']
         )
+
     if casing_strategy == 'pascal':
         return network.ReportingApiReport(
             id=data['Id'],
@@ -19436,32 +22084,44 @@ def _network__reporting_api_report__from_dict(
             status=data['Status']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__reporting_api_endpoint__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.ReportingApiEndpoint':
+
     if casing_strategy == 'snake':
         return network.ReportingApiEndpoint(
             url=data['url'],
             group_name=data['group_name']
         )
+
     if casing_strategy == 'camel':
         return network.ReportingApiEndpoint(
             url=data['url'],
             group_name=data['groupName']
         )
+
     if casing_strategy == 'pascal':
         return network.ReportingApiEndpoint(
             url=data['Url'],
             group_name=data['GroupName']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__load_network_resource_page_result__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.LoadNetworkResourcePageResult':
+
     if casing_strategy == 'snake':
         return network.LoadNetworkResourcePageResult(
             success=data['success'],
@@ -19471,6 +22131,7 @@ def _network__load_network_resource_page_result__from_dict(
             stream=data.get('stream', None),
             headers=data.get('headers', None)
         )
+
     if casing_strategy == 'camel':
         return network.LoadNetworkResourcePageResult(
             success=data['success'],
@@ -19480,6 +22141,7 @@ def _network__load_network_resource_page_result__from_dict(
             stream=data.get('stream', None),
             headers=data.get('headers', None)
         )
+
     if casing_strategy == 'pascal':
         return network.LoadNetworkResourcePageResult(
             success=data['Success'],
@@ -19490,32 +22152,44 @@ def _network__load_network_resource_page_result__from_dict(
             headers=data.get('Headers', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__load_network_resource_options__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.LoadNetworkResourceOptions':
+
     if casing_strategy == 'snake':
         return network.LoadNetworkResourceOptions(
             disable_cache=data['disable_cache'],
             include_credentials=data['include_credentials']
         )
+
     if casing_strategy == 'camel':
         return network.LoadNetworkResourceOptions(
             disable_cache=data['disableCache'],
             include_credentials=data['includeCredentials']
         )
+
     if casing_strategy == 'pascal':
         return network.LoadNetworkResourceOptions(
             disable_cache=data['DisableCache'],
             include_credentials=data['IncludeCredentials']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__source_order_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.SourceOrderConfig':
+
     if casing_strategy == 'snake':
         return overlay.SourceOrderConfig(
             parent_outline_color=from_dict(
@@ -19529,6 +22203,7 @@ def _overlay__source_order_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.SourceOrderConfig(
             parent_outline_color=from_dict(
@@ -19542,6 +22217,7 @@ def _overlay__source_order_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.SourceOrderConfig(
             parent_outline_color=from_dict(
@@ -19556,11 +22232,16 @@ def _overlay__source_order_config__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__grid_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GridHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.GridHighlightConfig(
             show_grid_extension_lines=data.get('show_grid_extension_lines', None),
@@ -19624,6 +22305,7 @@ def _overlay__grid_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.GridHighlightConfig(
             show_grid_extension_lines=data.get('showGridExtensionLines', None),
@@ -19687,6 +22369,7 @@ def _overlay__grid_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.GridHighlightConfig(
             show_grid_extension_lines=data.get('ShowGridExtensionLines', None),
@@ -19751,11 +22434,16 @@ def _overlay__grid_highlight_config__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__flex_container_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.FlexContainerHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.FlexContainerHighlightConfig(
             container_border=from_dict(
@@ -19799,6 +22487,7 @@ def _overlay__flex_container_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.FlexContainerHighlightConfig(
             container_border=from_dict(
@@ -19842,6 +22531,7 @@ def _overlay__flex_container_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.FlexContainerHighlightConfig(
             container_border=from_dict(
@@ -19886,11 +22576,16 @@ def _overlay__flex_container_highlight_config__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__flex_item_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.FlexItemHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.FlexItemHighlightConfig(
             base_size_box=from_dict(
@@ -19909,6 +22604,7 @@ def _overlay__flex_item_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.FlexItemHighlightConfig(
             base_size_box=from_dict(
@@ -19927,6 +22623,7 @@ def _overlay__flex_item_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.FlexItemHighlightConfig(
             base_size_box=from_dict(
@@ -19946,11 +22643,16 @@ def _overlay__flex_item_highlight_config__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__line_style__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.LineStyle':
+
     if casing_strategy == 'snake':
         return overlay.LineStyle(
             color=from_dict(
@@ -19960,6 +22662,7 @@ def _overlay__line_style__from_dict(
             ),
             pattern=data.get('pattern', None)
         )
+
     if casing_strategy == 'camel':
         return overlay.LineStyle(
             color=from_dict(
@@ -19969,6 +22672,7 @@ def _overlay__line_style__from_dict(
             ),
             pattern=data.get('pattern', None)
         )
+
     if casing_strategy == 'pascal':
         return overlay.LineStyle(
             color=from_dict(
@@ -19979,11 +22683,16 @@ def _overlay__line_style__from_dict(
             pattern=data.get('Pattern', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__box_style__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.BoxStyle':
+
     if casing_strategy == 'snake':
         return overlay.BoxStyle(
             fill_color=from_dict(
@@ -19997,6 +22706,7 @@ def _overlay__box_style__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.BoxStyle(
             fill_color=from_dict(
@@ -20010,6 +22720,7 @@ def _overlay__box_style__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.BoxStyle(
             fill_color=from_dict(
@@ -20024,11 +22735,16 @@ def _overlay__box_style__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.HighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.HighlightConfig(
             show_info=data.get('show_info', None),
@@ -20099,6 +22815,7 @@ def _overlay__highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.HighlightConfig(
             show_info=data.get('showInfo', None),
@@ -20169,6 +22886,7 @@ def _overlay__highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.HighlightConfig(
             show_info=data.get('ShowInfo', None),
@@ -20240,11 +22958,16 @@ def _overlay__highlight_config__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__grid_node_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GridNodeHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.GridNodeHighlightConfig(
             grid_highlight_config=from_dict(
@@ -20254,6 +22977,7 @@ def _overlay__grid_node_highlight_config__from_dict(
             ),
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return overlay.GridNodeHighlightConfig(
             grid_highlight_config=from_dict(
@@ -20263,6 +22987,7 @@ def _overlay__grid_node_highlight_config__from_dict(
             ),
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return overlay.GridNodeHighlightConfig(
             grid_highlight_config=from_dict(
@@ -20273,11 +22998,16 @@ def _overlay__grid_node_highlight_config__from_dict(
             node_id=data['NodeId']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__flex_node_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.FlexNodeHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.FlexNodeHighlightConfig(
             flex_container_highlight_config=from_dict(
@@ -20287,6 +23017,7 @@ def _overlay__flex_node_highlight_config__from_dict(
             ),
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return overlay.FlexNodeHighlightConfig(
             flex_container_highlight_config=from_dict(
@@ -20296,6 +23027,7 @@ def _overlay__flex_node_highlight_config__from_dict(
             ),
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return overlay.FlexNodeHighlightConfig(
             flex_container_highlight_config=from_dict(
@@ -20306,11 +23038,16 @@ def _overlay__flex_node_highlight_config__from_dict(
             node_id=data['NodeId']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__scroll_snap_container_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.ScrollSnapContainerHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.ScrollSnapContainerHighlightConfig(
             snapport_border=from_dict(
@@ -20334,6 +23071,7 @@ def _overlay__scroll_snap_container_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.ScrollSnapContainerHighlightConfig(
             snapport_border=from_dict(
@@ -20357,6 +23095,7 @@ def _overlay__scroll_snap_container_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.ScrollSnapContainerHighlightConfig(
             snapport_border=from_dict(
@@ -20381,11 +23120,16 @@ def _overlay__scroll_snap_container_highlight_config__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__scroll_snap_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.ScrollSnapHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.ScrollSnapHighlightConfig(
             scroll_snap_container_highlight_config=from_dict(
@@ -20395,6 +23139,7 @@ def _overlay__scroll_snap_highlight_config__from_dict(
             ),
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return overlay.ScrollSnapHighlightConfig(
             scroll_snap_container_highlight_config=from_dict(
@@ -20404,6 +23149,7 @@ def _overlay__scroll_snap_highlight_config__from_dict(
             ),
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return overlay.ScrollSnapHighlightConfig(
             scroll_snap_container_highlight_config=from_dict(
@@ -20414,11 +23160,16 @@ def _overlay__scroll_snap_highlight_config__from_dict(
             node_id=data['NodeId']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__hinge_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.HingeConfig':
+
     if casing_strategy == 'snake':
         return overlay.HingeConfig(
             rect=from_dict(
@@ -20437,6 +23188,7 @@ def _overlay__hinge_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.HingeConfig(
             rect=from_dict(
@@ -20455,6 +23207,7 @@ def _overlay__hinge_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.HingeConfig(
             rect=from_dict(
@@ -20474,11 +23227,16 @@ def _overlay__hinge_config__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__container_query_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.ContainerQueryHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.ContainerQueryHighlightConfig(
             container_query_container_highlight_config=from_dict(
@@ -20488,6 +23246,7 @@ def _overlay__container_query_highlight_config__from_dict(
             ),
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return overlay.ContainerQueryHighlightConfig(
             container_query_container_highlight_config=from_dict(
@@ -20497,6 +23256,7 @@ def _overlay__container_query_highlight_config__from_dict(
             ),
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return overlay.ContainerQueryHighlightConfig(
             container_query_container_highlight_config=from_dict(
@@ -20507,11 +23267,16 @@ def _overlay__container_query_highlight_config__from_dict(
             node_id=data['NodeId']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__container_query_container_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.ContainerQueryContainerHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.ContainerQueryContainerHighlightConfig(
             container_border=from_dict(
@@ -20525,6 +23290,7 @@ def _overlay__container_query_container_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.ContainerQueryContainerHighlightConfig(
             container_border=from_dict(
@@ -20538,6 +23304,7 @@ def _overlay__container_query_container_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.ContainerQueryContainerHighlightConfig(
             container_border=from_dict(
@@ -20552,11 +23319,16 @@ def _overlay__container_query_container_highlight_config__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__isolated_element_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.IsolatedElementHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.IsolatedElementHighlightConfig(
             isolation_mode_highlight_config=from_dict(
@@ -20566,6 +23338,7 @@ def _overlay__isolated_element_highlight_config__from_dict(
             ),
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return overlay.IsolatedElementHighlightConfig(
             isolation_mode_highlight_config=from_dict(
@@ -20575,6 +23348,7 @@ def _overlay__isolated_element_highlight_config__from_dict(
             ),
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return overlay.IsolatedElementHighlightConfig(
             isolation_mode_highlight_config=from_dict(
@@ -20585,11 +23359,16 @@ def _overlay__isolated_element_highlight_config__from_dict(
             node_id=data['NodeId']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__isolation_mode_highlight_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.IsolationModeHighlightConfig':
+
     if casing_strategy == 'snake':
         return overlay.IsolationModeHighlightConfig(
             resizer_color=from_dict(
@@ -20608,6 +23387,7 @@ def _overlay__isolation_mode_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return overlay.IsolationModeHighlightConfig(
             resizer_color=from_dict(
@@ -20626,6 +23406,7 @@ def _overlay__isolation_mode_highlight_config__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return overlay.IsolationModeHighlightConfig(
             resizer_color=from_dict(
@@ -20645,74 +23426,100 @@ def _overlay__isolation_mode_highlight_config__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__ad_frame_status__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AdFrameStatus':
+
     if casing_strategy == 'snake':
         return page.AdFrameStatus(
             ad_frame_type=data['ad_frame_type'],
             explanations=data.get('explanations', [])
         )
+
     if casing_strategy == 'camel':
         return page.AdFrameStatus(
             ad_frame_type=data['adFrameType'],
             explanations=data.get('explanations', [])
         )
+
     if casing_strategy == 'pascal':
         return page.AdFrameStatus(
             ad_frame_type=data['AdFrameType'],
             explanations=data.get('Explanations', [])
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__ad_script_id__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AdScriptId':
+
     if casing_strategy == 'snake':
         return page.AdScriptId(
             script_id=data['script_id'],
             debugger_id=data['debugger_id']
         )
+
     if casing_strategy == 'camel':
         return page.AdScriptId(
             script_id=data['scriptId'],
             debugger_id=data['debuggerId']
         )
+
     if casing_strategy == 'pascal':
         return page.AdScriptId(
             script_id=data['ScriptId'],
             debugger_id=data['DebuggerId']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__permissions_policy_block_locator__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.PermissionsPolicyBlockLocator':
+
     if casing_strategy == 'snake':
         return page.PermissionsPolicyBlockLocator(
             frame_id=data['frame_id'],
             block_reason=data['block_reason']
         )
+
     if casing_strategy == 'camel':
         return page.PermissionsPolicyBlockLocator(
             frame_id=data['frameId'],
             block_reason=data['blockReason']
         )
+
     if casing_strategy == 'pascal':
         return page.PermissionsPolicyBlockLocator(
             frame_id=data['FrameId'],
             block_reason=data['BlockReason']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__permissions_policy_feature_state__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.PermissionsPolicyFeatureState':
+
     if casing_strategy == 'snake':
         return page.PermissionsPolicyFeatureState(
             feature=data['feature'],
@@ -20723,6 +23530,7 @@ def _page__permissions_policy_feature_state__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return page.PermissionsPolicyFeatureState(
             feature=data['feature'],
@@ -20733,6 +23541,7 @@ def _page__permissions_policy_feature_state__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return page.PermissionsPolicyFeatureState(
             feature=data['Feature'],
@@ -20744,11 +23553,16 @@ def _page__permissions_policy_feature_state__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__origin_trial_token__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.OriginTrialToken':
+
     if casing_strategy == 'snake':
         return page.OriginTrialToken(
             origin=data['origin'],
@@ -20758,6 +23572,7 @@ def _page__origin_trial_token__from_dict(
             is_third_party=data['is_third_party'],
             usage_restriction=data['usage_restriction']
         )
+
     if casing_strategy == 'camel':
         return page.OriginTrialToken(
             origin=data['origin'],
@@ -20767,6 +23582,7 @@ def _page__origin_trial_token__from_dict(
             is_third_party=data['isThirdParty'],
             usage_restriction=data['usageRestriction']
         )
+
     if casing_strategy == 'pascal':
         return page.OriginTrialToken(
             origin=data['Origin'],
@@ -20777,11 +23593,16 @@ def _page__origin_trial_token__from_dict(
             usage_restriction=data['UsageRestriction']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__origin_trial_token_with_status__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.OriginTrialTokenWithStatus':
+
     if casing_strategy == 'snake':
         return page.OriginTrialTokenWithStatus(
             raw_token_text=data['raw_token_text'],
@@ -20792,6 +23613,7 @@ def _page__origin_trial_token_with_status__from_dict(
             ),
             status=data['status']
         )
+
     if casing_strategy == 'camel':
         return page.OriginTrialTokenWithStatus(
             raw_token_text=data['rawTokenText'],
@@ -20802,6 +23624,7 @@ def _page__origin_trial_token_with_status__from_dict(
             ),
             status=data['status']
         )
+
     if casing_strategy == 'pascal':
         return page.OriginTrialTokenWithStatus(
             raw_token_text=data['RawTokenText'],
@@ -20813,11 +23636,16 @@ def _page__origin_trial_token_with_status__from_dict(
             status=data['Status']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__origin_trial__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.OriginTrial':
+
     if casing_strategy == 'snake':
         return page.OriginTrial(
             trial_name=data['trial_name'],
@@ -20827,6 +23655,7 @@ def _page__origin_trial__from_dict(
                 for item in data['tokens_with_status']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.OriginTrial(
             trial_name=data['trialName'],
@@ -20836,6 +23665,7 @@ def _page__origin_trial__from_dict(
                 for item in data['tokensWithStatus']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.OriginTrial(
             trial_name=data['TrialName'],
@@ -20846,11 +23676,16 @@ def _page__origin_trial__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__frame__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.Frame':
+
     if casing_strategy == 'snake':
         return page.Frame(
             id=data['id'],
@@ -20872,6 +23707,7 @@ def _page__frame__from_dict(
             cross_origin_isolated_context_type=data['cross_origin_isolated_context_type'],
             gated_api_features=data['gated_api_features']
         )
+
     if casing_strategy == 'camel':
         return page.Frame(
             id=data['id'],
@@ -20893,6 +23729,7 @@ def _page__frame__from_dict(
             cross_origin_isolated_context_type=data['crossOriginIsolatedContextType'],
             gated_api_features=data['gatedAPIFeatures']
         )
+
     if casing_strategy == 'pascal':
         return page.Frame(
             id=data['Id'],
@@ -20915,11 +23752,16 @@ def _page__frame__from_dict(
             gated_api_features=data['GatedAPIFeatures']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__frame_resource__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.FrameResource':
+
     if casing_strategy == 'snake':
         return page.FrameResource(
             url=data['url'],
@@ -20930,6 +23772,7 @@ def _page__frame_resource__from_dict(
             failed=data.get('failed', None),
             canceled=data.get('canceled', None)
         )
+
     if casing_strategy == 'camel':
         return page.FrameResource(
             url=data['url'],
@@ -20940,6 +23783,7 @@ def _page__frame_resource__from_dict(
             failed=data.get('failed', None),
             canceled=data.get('canceled', None)
         )
+
     if casing_strategy == 'pascal':
         return page.FrameResource(
             url=data['Url'],
@@ -20951,11 +23795,16 @@ def _page__frame_resource__from_dict(
             canceled=data.get('Canceled', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__frame_resource_tree__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.FrameResourceTree':
+
     if casing_strategy == 'snake':
         return page.FrameResourceTree(
             frame=from_dict(
@@ -20972,6 +23821,7 @@ def _page__frame_resource_tree__from_dict(
                 for item in data['resources']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.FrameResourceTree(
             frame=from_dict(
@@ -20988,6 +23838,7 @@ def _page__frame_resource_tree__from_dict(
                 for item in data['resources']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.FrameResourceTree(
             frame=from_dict(
@@ -21005,11 +23856,16 @@ def _page__frame_resource_tree__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__frame_tree__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.FrameTree':
+
     if casing_strategy == 'snake':
         return page.FrameTree(
             frame=from_dict(
@@ -21022,6 +23878,7 @@ def _page__frame_tree__from_dict(
                 for item in data.get('child_frames', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return page.FrameTree(
             frame=from_dict(
@@ -21034,6 +23891,7 @@ def _page__frame_tree__from_dict(
                 for item in data.get('childFrames', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.FrameTree(
             frame=from_dict(
@@ -21047,11 +23905,16 @@ def _page__frame_tree__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__navigation_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.NavigationEntry':
+
     if casing_strategy == 'snake':
         return page.NavigationEntry(
             id=data['id'],
@@ -21060,6 +23923,7 @@ def _page__navigation_entry__from_dict(
             title=data['title'],
             transition_type=data['transition_type']
         )
+
     if casing_strategy == 'camel':
         return page.NavigationEntry(
             id=data['id'],
@@ -21068,6 +23932,7 @@ def _page__navigation_entry__from_dict(
             title=data['title'],
             transition_type=data['transitionType']
         )
+
     if casing_strategy == 'pascal':
         return page.NavigationEntry(
             id=data['Id'],
@@ -21077,11 +23942,16 @@ def _page__navigation_entry__from_dict(
             transition_type=data['TransitionType']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__screencast_frame_metadata__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.ScreencastFrameMetadata':
+
     if casing_strategy == 'snake':
         return page.ScreencastFrameMetadata(
             offset_top=data['offset_top'],
@@ -21092,6 +23962,7 @@ def _page__screencast_frame_metadata__from_dict(
             scroll_offset_y=data['scroll_offset_y'],
             timestamp=data.get('timestamp', None)
         )
+
     if casing_strategy == 'camel':
         return page.ScreencastFrameMetadata(
             offset_top=data['offsetTop'],
@@ -21102,6 +23973,7 @@ def _page__screencast_frame_metadata__from_dict(
             scroll_offset_y=data['scrollOffsetY'],
             timestamp=data.get('timestamp', None)
         )
+
     if casing_strategy == 'pascal':
         return page.ScreencastFrameMetadata(
             offset_top=data['OffsetTop'],
@@ -21113,11 +23985,16 @@ def _page__screencast_frame_metadata__from_dict(
             timestamp=data.get('Timestamp', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__app_manifest_error__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AppManifestError':
+
     if casing_strategy == 'snake':
         return page.AppManifestError(
             message=data['message'],
@@ -21125,6 +24002,7 @@ def _page__app_manifest_error__from_dict(
             line=data['line'],
             column=data['column']
         )
+
     if casing_strategy == 'camel':
         return page.AppManifestError(
             message=data['message'],
@@ -21132,6 +24010,7 @@ def _page__app_manifest_error__from_dict(
             line=data['line'],
             column=data['column']
         )
+
     if casing_strategy == 'pascal':
         return page.AppManifestError(
             message=data['Message'],
@@ -21140,29 +24019,41 @@ def _page__app_manifest_error__from_dict(
             column=data['Column']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__app_manifest_parsed_properties__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AppManifestParsedProperties':
+
     if casing_strategy == 'snake':
         return page.AppManifestParsedProperties(
             scope=data['scope']
         )
+
     if casing_strategy == 'camel':
         return page.AppManifestParsedProperties(
             scope=data['scope']
         )
+
     if casing_strategy == 'pascal':
         return page.AppManifestParsedProperties(
             scope=data['Scope']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__layout_viewport__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.LayoutViewport':
+
     if casing_strategy == 'snake':
         return page.LayoutViewport(
             page_x=data['page_x'],
@@ -21170,6 +24061,7 @@ def _page__layout_viewport__from_dict(
             client_width=data['client_width'],
             client_height=data['client_height']
         )
+
     if casing_strategy == 'camel':
         return page.LayoutViewport(
             page_x=data['pageX'],
@@ -21177,6 +24069,7 @@ def _page__layout_viewport__from_dict(
             client_width=data['clientWidth'],
             client_height=data['clientHeight']
         )
+
     if casing_strategy == 'pascal':
         return page.LayoutViewport(
             page_x=data['PageX'],
@@ -21185,11 +24078,16 @@ def _page__layout_viewport__from_dict(
             client_height=data['ClientHeight']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__visual_viewport__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.VisualViewport':
+
     if casing_strategy == 'snake':
         return page.VisualViewport(
             offset_x=data['offset_x'],
@@ -21201,6 +24099,7 @@ def _page__visual_viewport__from_dict(
             scale=data['scale'],
             zoom=data.get('zoom', None)
         )
+
     if casing_strategy == 'camel':
         return page.VisualViewport(
             offset_x=data['offsetX'],
@@ -21212,6 +24111,7 @@ def _page__visual_viewport__from_dict(
             scale=data['scale'],
             zoom=data.get('zoom', None)
         )
+
     if casing_strategy == 'pascal':
         return page.VisualViewport(
             offset_x=data['OffsetX'],
@@ -21224,11 +24124,16 @@ def _page__visual_viewport__from_dict(
             zoom=data.get('Zoom', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__viewport__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.Viewport':
+
     if casing_strategy == 'snake':
         return page.Viewport(
             x=data['x'],
@@ -21237,6 +24142,7 @@ def _page__viewport__from_dict(
             height=data['height'],
             scale=data['scale']
         )
+
     if casing_strategy == 'camel':
         return page.Viewport(
             x=data['x'],
@@ -21245,6 +24151,7 @@ def _page__viewport__from_dict(
             height=data['height'],
             scale=data['scale']
         )
+
     if casing_strategy == 'pascal':
         return page.Viewport(
             x=data['X'],
@@ -21254,11 +24161,16 @@ def _page__viewport__from_dict(
             scale=data['Scale']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__font_families__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.FontFamilies':
+
     if casing_strategy == 'snake':
         return page.FontFamilies(
             standard=data.get('standard', None),
@@ -21269,6 +24181,7 @@ def _page__font_families__from_dict(
             fantasy=data.get('fantasy', None),
             math=data.get('math', None)
         )
+
     if casing_strategy == 'camel':
         return page.FontFamilies(
             standard=data.get('standard', None),
@@ -21279,6 +24192,7 @@ def _page__font_families__from_dict(
             fantasy=data.get('fantasy', None),
             math=data.get('math', None)
         )
+
     if casing_strategy == 'pascal':
         return page.FontFamilies(
             standard=data.get('Standard', None),
@@ -21290,11 +24204,16 @@ def _page__font_families__from_dict(
             math=data.get('Math', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__script_font_families__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.ScriptFontFamilies':
+
     if casing_strategy == 'snake':
         return page.ScriptFontFamilies(
             script=data['script'],
@@ -21304,6 +24223,7 @@ def _page__script_font_families__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return page.ScriptFontFamilies(
             script=data['script'],
@@ -21313,6 +24233,7 @@ def _page__script_font_families__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return page.ScriptFontFamilies(
             script=data['Script'],
@@ -21323,53 +24244,72 @@ def _page__script_font_families__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__font_sizes__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.FontSizes':
+
     if casing_strategy == 'snake':
         return page.FontSizes(
             standard=data.get('standard', None),
             fixed=data.get('fixed', None)
         )
+
     if casing_strategy == 'camel':
         return page.FontSizes(
             standard=data.get('standard', None),
             fixed=data.get('fixed', None)
         )
+
     if casing_strategy == 'pascal':
         return page.FontSizes(
             standard=data.get('Standard', None),
             fixed=data.get('Fixed', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__installability_error_argument__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.InstallabilityErrorArgument':
+
     if casing_strategy == 'snake':
         return page.InstallabilityErrorArgument(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return page.InstallabilityErrorArgument(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return page.InstallabilityErrorArgument(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__installability_error__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.InstallabilityError':
+
     if casing_strategy == 'snake':
         return page.InstallabilityError(
             error_id=data['error_id'],
@@ -21378,6 +24318,7 @@ def _page__installability_error__from_dict(
                 for item in data['error_arguments']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.InstallabilityError(
             error_id=data['errorId'],
@@ -21386,6 +24327,7 @@ def _page__installability_error__from_dict(
                 for item in data['errorArguments']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.InstallabilityError(
             error_id=data['ErrorId'],
@@ -21395,44 +24337,58 @@ def _page__installability_error__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__compilation_cache_params__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CompilationCacheParams':
+
     if casing_strategy == 'snake':
         return page.CompilationCacheParams(
             url=data['url'],
             eager=data.get('eager', None)
         )
+
     if casing_strategy == 'camel':
         return page.CompilationCacheParams(
             url=data['url'],
             eager=data.get('eager', None)
         )
+
     if casing_strategy == 'pascal':
         return page.CompilationCacheParams(
             url=data['Url'],
             eager=data.get('Eager', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__back_forward_cache_not_restored_explanation__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.BackForwardCacheNotRestoredExplanation':
+
     if casing_strategy == 'snake':
         return page.BackForwardCacheNotRestoredExplanation(
             type=data['type'],
             reason=data['reason'],
             context=data.get('context', None)
         )
+
     if casing_strategy == 'camel':
         return page.BackForwardCacheNotRestoredExplanation(
             type=data['type'],
             reason=data['reason'],
             context=data.get('context', None)
         )
+
     if casing_strategy == 'pascal':
         return page.BackForwardCacheNotRestoredExplanation(
             type=data['Type'],
@@ -21440,11 +24396,16 @@ def _page__back_forward_cache_not_restored_explanation__from_dict(
             context=data.get('Context', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__back_forward_cache_not_restored_explanation_tree__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.BackForwardCacheNotRestoredExplanationTree':
+
     if casing_strategy == 'snake':
         return page.BackForwardCacheNotRestoredExplanationTree(
             url=data['url'],
@@ -21457,6 +24418,7 @@ def _page__back_forward_cache_not_restored_explanation_tree__from_dict(
                 for item in data['children']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.BackForwardCacheNotRestoredExplanationTree(
             url=data['url'],
@@ -21469,6 +24431,7 @@ def _page__back_forward_cache_not_restored_explanation_tree__from_dict(
                 for item in data['children']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.BackForwardCacheNotRestoredExplanationTree(
             url=data['Url'],
@@ -21482,32 +24445,44 @@ def _page__back_forward_cache_not_restored_explanation_tree__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance__metric__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'performance.Metric':
+
     if casing_strategy == 'snake':
         return performance.Metric(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return performance.Metric(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return performance.Metric(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance_timeline__largest_contentful_paint__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'performance_timeline.LargestContentfulPaint':
+
     if casing_strategy == 'snake':
         return performance_timeline.LargestContentfulPaint(
             render_time=data['render_time'],
@@ -21517,6 +24492,7 @@ def _performance_timeline__largest_contentful_paint__from_dict(
             url=data.get('url', None),
             node_id=data.get('node_id', None)
         )
+
     if casing_strategy == 'camel':
         return performance_timeline.LargestContentfulPaint(
             render_time=data['renderTime'],
@@ -21526,6 +24502,7 @@ def _performance_timeline__largest_contentful_paint__from_dict(
             url=data.get('url', None),
             node_id=data.get('nodeId', None)
         )
+
     if casing_strategy == 'pascal':
         return performance_timeline.LargestContentfulPaint(
             render_time=data['RenderTime'],
@@ -21536,11 +24513,16 @@ def _performance_timeline__largest_contentful_paint__from_dict(
             node_id=data.get('NodeId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance_timeline__layout_shift_attribution__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'performance_timeline.LayoutShiftAttribution':
+
     if casing_strategy == 'snake':
         return performance_timeline.LayoutShiftAttribution(
             previous_rect=from_dict(
@@ -21555,6 +24537,7 @@ def _performance_timeline__layout_shift_attribution__from_dict(
             ),
             node_id=data.get('node_id', None)
         )
+
     if casing_strategy == 'camel':
         return performance_timeline.LayoutShiftAttribution(
             previous_rect=from_dict(
@@ -21569,6 +24552,7 @@ def _performance_timeline__layout_shift_attribution__from_dict(
             ),
             node_id=data.get('nodeId', None)
         )
+
     if casing_strategy == 'pascal':
         return performance_timeline.LayoutShiftAttribution(
             previous_rect=from_dict(
@@ -21584,11 +24568,16 @@ def _performance_timeline__layout_shift_attribution__from_dict(
             node_id=data.get('NodeId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance_timeline__layout_shift__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'performance_timeline.LayoutShift':
+
     if casing_strategy == 'snake':
         return performance_timeline.LayoutShift(
             value=data['value'],
@@ -21599,6 +24588,7 @@ def _performance_timeline__layout_shift__from_dict(
                 for item in data['sources']
             ]
         )
+
     if casing_strategy == 'camel':
         return performance_timeline.LayoutShift(
             value=data['value'],
@@ -21609,6 +24599,7 @@ def _performance_timeline__layout_shift__from_dict(
                 for item in data['sources']
             ]
         )
+
     if casing_strategy == 'pascal':
         return performance_timeline.LayoutShift(
             value=data['Value'],
@@ -21620,11 +24611,16 @@ def _performance_timeline__layout_shift__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance_timeline__timeline_event__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'performance_timeline.TimelineEvent':
+
     if casing_strategy == 'snake':
         return performance_timeline.TimelineEvent(
             frame_id=data['frame_id'],
@@ -21643,6 +24639,7 @@ def _performance_timeline__timeline_event__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return performance_timeline.TimelineEvent(
             frame_id=data['frameId'],
@@ -21661,6 +24658,7 @@ def _performance_timeline__timeline_event__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return performance_timeline.TimelineEvent(
             frame_id=data['FrameId'],
@@ -21680,11 +24678,16 @@ def _performance_timeline__timeline_event__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _security__certificate_security_state__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'security.CertificateSecurityState':
+
     if casing_strategy == 'snake':
         return security.CertificateSecurityState(
             protocol=data['protocol'],
@@ -21706,6 +24709,7 @@ def _security__certificate_security_state__from_dict(
             obsolete_ssl_cipher=data['obsolete_ssl_cipher'],
             obsolete_ssl_signature=data['obsolete_ssl_signature']
         )
+
     if casing_strategy == 'camel':
         return security.CertificateSecurityState(
             protocol=data['protocol'],
@@ -21727,6 +24731,7 @@ def _security__certificate_security_state__from_dict(
             obsolete_ssl_cipher=data['obsoleteSslCipher'],
             obsolete_ssl_signature=data['obsoleteSslSignature']
         )
+
     if casing_strategy == 'pascal':
         return security.CertificateSecurityState(
             protocol=data['Protocol'],
@@ -21749,32 +24754,44 @@ def _security__certificate_security_state__from_dict(
             obsolete_ssl_signature=data['ObsoleteSslSignature']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _security__safety_tip_info__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'security.SafetyTipInfo':
+
     if casing_strategy == 'snake':
         return security.SafetyTipInfo(
             safety_tip_status=data['safety_tip_status'],
             safe_url=data.get('safe_url', None)
         )
+
     if casing_strategy == 'camel':
         return security.SafetyTipInfo(
             safety_tip_status=data['safetyTipStatus'],
             safe_url=data.get('safeUrl', None)
         )
+
     if casing_strategy == 'pascal':
         return security.SafetyTipInfo(
             safety_tip_status=data['SafetyTipStatus'],
             safe_url=data.get('SafeUrl', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _security__visible_security_state__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'security.VisibleSecurityState':
+
     if casing_strategy == 'snake':
         return security.VisibleSecurityState(
             security_state=data['security_state'],
@@ -21790,6 +24807,7 @@ def _security__visible_security_state__from_dict(
             ),
             security_state_issue_ids=data['security_state_issue_ids']
         )
+
     if casing_strategy == 'camel':
         return security.VisibleSecurityState(
             security_state=data['securityState'],
@@ -21805,6 +24823,7 @@ def _security__visible_security_state__from_dict(
             ),
             security_state_issue_ids=data['securityStateIssueIds']
         )
+
     if casing_strategy == 'pascal':
         return security.VisibleSecurityState(
             security_state=data['SecurityState'],
@@ -21821,11 +24840,16 @@ def _security__visible_security_state__from_dict(
             security_state_issue_ids=data['SecurityStateIssueIds']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _security__security_state_explanation__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'security.SecurityStateExplanation':
+
     if casing_strategy == 'snake':
         return security.SecurityStateExplanation(
             security_state=data['security_state'],
@@ -21836,6 +24860,7 @@ def _security__security_state_explanation__from_dict(
             certificate=data['certificate'],
             recommendations=data.get('recommendations', [])
         )
+
     if casing_strategy == 'camel':
         return security.SecurityStateExplanation(
             security_state=data['securityState'],
@@ -21846,6 +24871,7 @@ def _security__security_state_explanation__from_dict(
             certificate=data['certificate'],
             recommendations=data.get('recommendations', [])
         )
+
     if casing_strategy == 'pascal':
         return security.SecurityStateExplanation(
             security_state=data['SecurityState'],
@@ -21857,11 +24883,16 @@ def _security__security_state_explanation__from_dict(
             recommendations=data.get('Recommendations', [])
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _security__insecure_content_status__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'security.InsecureContentStatus':
+
     if casing_strategy == 'snake':
         return security.InsecureContentStatus(
             ran_mixed_content=data['ran_mixed_content'],
@@ -21872,6 +24903,7 @@ def _security__insecure_content_status__from_dict(
             ran_insecure_content_style=data['ran_insecure_content_style'],
             displayed_insecure_content_style=data['displayed_insecure_content_style']
         )
+
     if casing_strategy == 'camel':
         return security.InsecureContentStatus(
             ran_mixed_content=data['ranMixedContent'],
@@ -21882,6 +24914,7 @@ def _security__insecure_content_status__from_dict(
             ran_insecure_content_style=data['ranInsecureContentStyle'],
             displayed_insecure_content_style=data['displayedInsecureContentStyle']
         )
+
     if casing_strategy == 'pascal':
         return security.InsecureContentStatus(
             ran_mixed_content=data['RanMixedContent'],
@@ -21893,23 +24926,30 @@ def _security__insecure_content_status__from_dict(
             displayed_insecure_content_style=data['DisplayedInsecureContentStyle']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _service_worker__service_worker_registration__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'service_worker.ServiceWorkerRegistration':
+
     if casing_strategy == 'snake':
         return service_worker.ServiceWorkerRegistration(
             registration_id=data['registration_id'],
             scope_url=data['scope_url'],
             is_deleted=data['is_deleted']
         )
+
     if casing_strategy == 'camel':
         return service_worker.ServiceWorkerRegistration(
             registration_id=data['registrationId'],
             scope_url=data['scopeURL'],
             is_deleted=data['isDeleted']
         )
+
     if casing_strategy == 'pascal':
         return service_worker.ServiceWorkerRegistration(
             registration_id=data['RegistrationId'],
@@ -21917,11 +24957,16 @@ def _service_worker__service_worker_registration__from_dict(
             is_deleted=data['IsDeleted']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _service_worker__service_worker_version__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'service_worker.ServiceWorkerVersion':
+
     if casing_strategy == 'snake':
         return service_worker.ServiceWorkerVersion(
             version_id=data['version_id'],
@@ -21934,6 +24979,7 @@ def _service_worker__service_worker_version__from_dict(
             controlled_clients=data.get('controlled_clients', []),
             target_id=data.get('target_id', None)
         )
+
     if casing_strategy == 'camel':
         return service_worker.ServiceWorkerVersion(
             version_id=data['versionId'],
@@ -21946,6 +24992,7 @@ def _service_worker__service_worker_version__from_dict(
             controlled_clients=data.get('controlledClients', []),
             target_id=data.get('targetId', None)
         )
+
     if casing_strategy == 'pascal':
         return service_worker.ServiceWorkerVersion(
             version_id=data['VersionId'],
@@ -21959,11 +25006,16 @@ def _service_worker__service_worker_version__from_dict(
             target_id=data.get('TargetId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _service_worker__service_worker_error_message__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'service_worker.ServiceWorkerErrorMessage':
+
     if casing_strategy == 'snake':
         return service_worker.ServiceWorkerErrorMessage(
             error_message=data['error_message'],
@@ -21973,6 +25025,7 @@ def _service_worker__service_worker_error_message__from_dict(
             line_number=data['line_number'],
             column_number=data['column_number']
         )
+
     if casing_strategy == 'camel':
         return service_worker.ServiceWorkerErrorMessage(
             error_message=data['errorMessage'],
@@ -21982,6 +25035,7 @@ def _service_worker__service_worker_error_message__from_dict(
             line_number=data['lineNumber'],
             column_number=data['columnNumber']
         )
+
     if casing_strategy == 'pascal':
         return service_worker.ServiceWorkerErrorMessage(
             error_message=data['ErrorMessage'],
@@ -21992,74 +25046,100 @@ def _service_worker__service_worker_error_message__from_dict(
             column_number=data['ColumnNumber']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__usage_for_type__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.UsageForType':
+
     if casing_strategy == 'snake':
         return storage.UsageForType(
             storage_type=data['storage_type'],
             usage=data['usage']
         )
+
     if casing_strategy == 'camel':
         return storage.UsageForType(
             storage_type=data['storageType'],
             usage=data['usage']
         )
+
     if casing_strategy == 'pascal':
         return storage.UsageForType(
             storage_type=data['StorageType'],
             usage=data['Usage']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__trust_tokens__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.TrustTokens':
+
     if casing_strategy == 'snake':
         return storage.TrustTokens(
             issuer_origin=data['issuer_origin'],
             count=data['count']
         )
+
     if casing_strategy == 'camel':
         return storage.TrustTokens(
             issuer_origin=data['issuerOrigin'],
             count=data['count']
         )
+
     if casing_strategy == 'pascal':
         return storage.TrustTokens(
             issuer_origin=data['IssuerOrigin'],
             count=data['Count']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__interest_group_ad__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.InterestGroupAd':
+
     if casing_strategy == 'snake':
         return storage.InterestGroupAd(
             render_url=data['render_url'],
             metadata=data.get('metadata', None)
         )
+
     if casing_strategy == 'camel':
         return storage.InterestGroupAd(
             render_url=data['renderUrl'],
             metadata=data.get('metadata', None)
         )
+
     if casing_strategy == 'pascal':
         return storage.InterestGroupAd(
             render_url=data['RenderUrl'],
             metadata=data.get('Metadata', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__interest_group_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.InterestGroupDetails':
+
     if casing_strategy == 'snake':
         return storage.InterestGroupDetails(
             owner_origin=data['owner_origin'],
@@ -22081,6 +25161,7 @@ def _storage__interest_group_details__from_dict(
                 for item in data['ad_components']
             ]
         )
+
     if casing_strategy == 'camel':
         return storage.InterestGroupDetails(
             owner_origin=data['ownerOrigin'],
@@ -22102,6 +25183,7 @@ def _storage__interest_group_details__from_dict(
                 for item in data['adComponents']
             ]
         )
+
     if casing_strategy == 'pascal':
         return storage.InterestGroupDetails(
             owner_origin=data['OwnerOrigin'],
@@ -22124,44 +25206,58 @@ def _storage__interest_group_details__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.SharedStorageEntry':
+
     if casing_strategy == 'snake':
         return storage.SharedStorageEntry(
             key=data['key'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return storage.SharedStorageEntry(
             key=data['key'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return storage.SharedStorageEntry(
             key=data['Key'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_metadata__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.SharedStorageMetadata':
+
     if casing_strategy == 'snake':
         return storage.SharedStorageMetadata(
             creation_time=data['creation_time'],
             length=data['length'],
             remaining_budget=data['remaining_budget']
         )
+
     if casing_strategy == 'camel':
         return storage.SharedStorageMetadata(
             creation_time=data['creationTime'],
             length=data['length'],
             remaining_budget=data['remainingBudget']
         )
+
     if casing_strategy == 'pascal':
         return storage.SharedStorageMetadata(
             creation_time=data['CreationTime'],
@@ -22169,32 +25265,44 @@ def _storage__shared_storage_metadata__from_dict(
             remaining_budget=data['RemainingBudget']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_reporting_metadata__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.SharedStorageReportingMetadata':
+
     if casing_strategy == 'snake':
         return storage.SharedStorageReportingMetadata(
             event_type=data['event_type'],
             reporting_url=data['reporting_url']
         )
+
     if casing_strategy == 'camel':
         return storage.SharedStorageReportingMetadata(
             event_type=data['eventType'],
             reporting_url=data['reportingUrl']
         )
+
     if casing_strategy == 'pascal':
         return storage.SharedStorageReportingMetadata(
             event_type=data['EventType'],
             reporting_url=data['ReportingUrl']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_url_with_metadata__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.SharedStorageUrlWithMetadata':
+
     if casing_strategy == 'snake':
         return storage.SharedStorageUrlWithMetadata(
             url=data['url'],
@@ -22203,6 +25311,7 @@ def _storage__shared_storage_url_with_metadata__from_dict(
                 for item in data['reporting_metadata']
             ]
         )
+
     if casing_strategy == 'camel':
         return storage.SharedStorageUrlWithMetadata(
             url=data['url'],
@@ -22211,6 +25320,7 @@ def _storage__shared_storage_url_with_metadata__from_dict(
                 for item in data['reportingMetadata']
             ]
         )
+
     if casing_strategy == 'pascal':
         return storage.SharedStorageUrlWithMetadata(
             url=data['Url'],
@@ -22220,11 +25330,16 @@ def _storage__shared_storage_url_with_metadata__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__shared_storage_access_params__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.SharedStorageAccessParams':
+
     if casing_strategy == 'snake':
         return storage.SharedStorageAccessParams(
             script_source_url=data.get('script_source_url', None),
@@ -22238,6 +25353,7 @@ def _storage__shared_storage_access_params__from_dict(
             value=data.get('value', None),
             ignore_if_present=data.get('ignore_if_present', None)
         )
+
     if casing_strategy == 'camel':
         return storage.SharedStorageAccessParams(
             script_source_url=data.get('scriptSourceUrl', None),
@@ -22251,6 +25367,7 @@ def _storage__shared_storage_access_params__from_dict(
             value=data.get('value', None),
             ignore_if_present=data.get('ignoreIfPresent', None)
         )
+
     if casing_strategy == 'pascal':
         return storage.SharedStorageAccessParams(
             script_source_url=data.get('ScriptSourceUrl', None),
@@ -22265,32 +25382,44 @@ def _storage__shared_storage_access_params__from_dict(
             ignore_if_present=data.get('IgnoreIfPresent', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__storage_bucket__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.StorageBucket':
+
     if casing_strategy == 'snake':
         return storage.StorageBucket(
             storage_key=data['storage_key'],
             name=data.get('name', None)
         )
+
     if casing_strategy == 'camel':
         return storage.StorageBucket(
             storage_key=data['storageKey'],
             name=data.get('name', None)
         )
+
     if casing_strategy == 'pascal':
         return storage.StorageBucket(
             storage_key=data['StorageKey'],
             name=data.get('Name', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__storage_bucket_info__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.StorageBucketInfo':
+
     if casing_strategy == 'snake':
         return storage.StorageBucketInfo(
             bucket=from_dict(
@@ -22304,6 +25433,7 @@ def _storage__storage_bucket_info__from_dict(
             persistent=data['persistent'],
             durability=data['durability']
         )
+
     if casing_strategy == 'camel':
         return storage.StorageBucketInfo(
             bucket=from_dict(
@@ -22317,6 +25447,7 @@ def _storage__storage_bucket_info__from_dict(
             persistent=data['persistent'],
             durability=data['durability']
         )
+
     if casing_strategy == 'pascal':
         return storage.StorageBucketInfo(
             bucket=from_dict(
@@ -22331,74 +25462,100 @@ def _storage__storage_bucket_info__from_dict(
             durability=data['Durability']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__attribution_reporting_filter_data_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.AttributionReportingFilterDataEntry':
+
     if casing_strategy == 'snake':
         return storage.AttributionReportingFilterDataEntry(
             key=data['key'],
             values=data['values']
         )
+
     if casing_strategy == 'camel':
         return storage.AttributionReportingFilterDataEntry(
             key=data['key'],
             values=data['values']
         )
+
     if casing_strategy == 'pascal':
         return storage.AttributionReportingFilterDataEntry(
             key=data['Key'],
             values=data['Values']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__attribution_reporting_aggregation_keys_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.AttributionReportingAggregationKeysEntry':
+
     if casing_strategy == 'snake':
         return storage.AttributionReportingAggregationKeysEntry(
             key=data['key'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return storage.AttributionReportingAggregationKeysEntry(
             key=data['key'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return storage.AttributionReportingAggregationKeysEntry(
             key=data['Key'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__attribution_reporting_event_report_windows__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.AttributionReportingEventReportWindows':
+
     if casing_strategy == 'snake':
         return storage.AttributionReportingEventReportWindows(
             start=data['start'],
             ends=data['ends']
         )
+
     if casing_strategy == 'camel':
         return storage.AttributionReportingEventReportWindows(
             start=data['start'],
             ends=data['ends']
         )
+
     if casing_strategy == 'pascal':
         return storage.AttributionReportingEventReportWindows(
             start=data['Start'],
             ends=data['Ends']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__attribution_reporting_source_registration__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.AttributionReportingSourceRegistration':
+
     if casing_strategy == 'snake':
         return storage.AttributionReportingSourceRegistration(
             time=data['time'],
@@ -22426,6 +25583,7 @@ def _storage__attribution_reporting_source_registration__from_dict(
             ],
             debug_key=data.get('debug_key', None)
         )
+
     if casing_strategy == 'camel':
         return storage.AttributionReportingSourceRegistration(
             time=data['time'],
@@ -22453,6 +25611,7 @@ def _storage__attribution_reporting_source_registration__from_dict(
             ],
             debug_key=data.get('debugKey', None)
         )
+
     if casing_strategy == 'pascal':
         return storage.AttributionReportingSourceRegistration(
             time=data['Time'],
@@ -22481,11 +25640,16 @@ def _storage__attribution_reporting_source_registration__from_dict(
             debug_key=data.get('DebugKey', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__gpu_device__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GPUDevice':
+
     if casing_strategy == 'snake':
         return system_info.GPUDevice(
             vendor_id=data['vendor_id'],
@@ -22497,6 +25661,7 @@ def _system_info__gpu_device__from_dict(
             driver_vendor=data['driver_vendor'],
             driver_version=data['driver_version']
         )
+
     if casing_strategy == 'camel':
         return system_info.GPUDevice(
             vendor_id=data['vendorId'],
@@ -22508,6 +25673,7 @@ def _system_info__gpu_device__from_dict(
             driver_vendor=data['driverVendor'],
             driver_version=data['driverVersion']
         )
+
     if casing_strategy == 'pascal':
         return system_info.GPUDevice(
             vendor_id=data['VendorId'],
@@ -22520,32 +25686,44 @@ def _system_info__gpu_device__from_dict(
             driver_version=data['DriverVersion']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__size__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.Size':
+
     if casing_strategy == 'snake':
         return system_info.Size(
             width=data['width'],
             height=data['height']
         )
+
     if casing_strategy == 'camel':
         return system_info.Size(
             width=data['width'],
             height=data['height']
         )
+
     if casing_strategy == 'pascal':
         return system_info.Size(
             width=data['Width'],
             height=data['Height']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__video_decode_accelerator_capability__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.VideoDecodeAcceleratorCapability':
+
     if casing_strategy == 'snake':
         return system_info.VideoDecodeAcceleratorCapability(
             profile=data['profile'],
@@ -22560,6 +25738,7 @@ def _system_info__video_decode_accelerator_capability__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return system_info.VideoDecodeAcceleratorCapability(
             profile=data['profile'],
@@ -22574,6 +25753,7 @@ def _system_info__video_decode_accelerator_capability__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return system_info.VideoDecodeAcceleratorCapability(
             profile=data['Profile'],
@@ -22589,11 +25769,16 @@ def _system_info__video_decode_accelerator_capability__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__video_encode_accelerator_capability__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.VideoEncodeAcceleratorCapability':
+
     if casing_strategy == 'snake':
         return system_info.VideoEncodeAcceleratorCapability(
             profile=data['profile'],
@@ -22605,6 +25790,7 @@ def _system_info__video_encode_accelerator_capability__from_dict(
             max_framerate_numerator=data['max_framerate_numerator'],
             max_framerate_denominator=data['max_framerate_denominator']
         )
+
     if casing_strategy == 'camel':
         return system_info.VideoEncodeAcceleratorCapability(
             profile=data['profile'],
@@ -22616,6 +25802,7 @@ def _system_info__video_encode_accelerator_capability__from_dict(
             max_framerate_numerator=data['maxFramerateNumerator'],
             max_framerate_denominator=data['maxFramerateDenominator']
         )
+
     if casing_strategy == 'pascal':
         return system_info.VideoEncodeAcceleratorCapability(
             profile=data['Profile'],
@@ -22628,11 +25815,16 @@ def _system_info__video_encode_accelerator_capability__from_dict(
             max_framerate_denominator=data['MaxFramerateDenominator']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__image_decode_accelerator_capability__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.ImageDecodeAcceleratorCapability':
+
     if casing_strategy == 'snake':
         return system_info.ImageDecodeAcceleratorCapability(
             image_type=data['image_type'],
@@ -22648,6 +25840,7 @@ def _system_info__image_decode_accelerator_capability__from_dict(
             ),
             subsamplings=data['subsamplings']
         )
+
     if casing_strategy == 'camel':
         return system_info.ImageDecodeAcceleratorCapability(
             image_type=data['imageType'],
@@ -22663,6 +25856,7 @@ def _system_info__image_decode_accelerator_capability__from_dict(
             ),
             subsamplings=data['subsamplings']
         )
+
     if casing_strategy == 'pascal':
         return system_info.ImageDecodeAcceleratorCapability(
             image_type=data['ImageType'],
@@ -22679,11 +25873,16 @@ def _system_info__image_decode_accelerator_capability__from_dict(
             subsamplings=data['Subsamplings']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__gpu_info__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GPUInfo':
+
     if casing_strategy == 'snake':
         return system_info.GPUInfo(
             devices=[
@@ -22706,6 +25905,7 @@ def _system_info__gpu_info__from_dict(
                 for item in data['image_decoding']
             ]
         )
+
     if casing_strategy == 'camel':
         return system_info.GPUInfo(
             devices=[
@@ -22728,6 +25928,7 @@ def _system_info__gpu_info__from_dict(
                 for item in data['imageDecoding']
             ]
         )
+
     if casing_strategy == 'pascal':
         return system_info.GPUInfo(
             devices=[
@@ -22751,23 +25952,30 @@ def _system_info__gpu_info__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__process_info__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.ProcessInfo':
+
     if casing_strategy == 'snake':
         return system_info.ProcessInfo(
             type=data['type'],
             id=data['id'],
             cpu_time=data['cpu_time']
         )
+
     if casing_strategy == 'camel':
         return system_info.ProcessInfo(
             type=data['type'],
             id=data['id'],
             cpu_time=data['cpuTime']
         )
+
     if casing_strategy == 'pascal':
         return system_info.ProcessInfo(
             type=data['Type'],
@@ -22775,11 +25983,16 @@ def _system_info__process_info__from_dict(
             cpu_time=data['CpuTime']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _target__target_info__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.TargetInfo':
+
     if casing_strategy == 'snake':
         return target.TargetInfo(
             target_id=data['target_id'],
@@ -22793,6 +26006,7 @@ def _target__target_info__from_dict(
             browser_context_id=data.get('browser_context_id', None),
             subtype=data.get('subtype', None)
         )
+
     if casing_strategy == 'camel':
         return target.TargetInfo(
             target_id=data['targetId'],
@@ -22806,6 +26020,7 @@ def _target__target_info__from_dict(
             browser_context_id=data.get('browserContextId', None),
             subtype=data.get('subtype', None)
         )
+
     if casing_strategy == 'pascal':
         return target.TargetInfo(
             target_id=data['TargetId'],
@@ -22820,53 +26035,72 @@ def _target__target_info__from_dict(
             subtype=data.get('Subtype', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _target__filter_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.FilterEntry':
+
     if casing_strategy == 'snake':
         return target.FilterEntry(
             exclude=data.get('exclude', None),
             type=data.get('type', None)
         )
+
     if casing_strategy == 'camel':
         return target.FilterEntry(
             exclude=data.get('exclude', None),
             type=data.get('type', None)
         )
+
     if casing_strategy == 'pascal':
         return target.FilterEntry(
             exclude=data.get('Exclude', None),
             type=data.get('Type', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _target__remote_location__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.RemoteLocation':
+
     if casing_strategy == 'snake':
         return target.RemoteLocation(
             host=data['host'],
             port=data['port']
         )
+
     if casing_strategy == 'camel':
         return target.RemoteLocation(
             host=data['host'],
             port=data['port']
         )
+
     if casing_strategy == 'pascal':
         return target.RemoteLocation(
             host=data['Host'],
             port=data['Port']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _tracing__trace_config__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'tracing.TraceConfig':
+
     if casing_strategy == 'snake':
         return tracing.TraceConfig(
             record_mode=data.get('record_mode', None),
@@ -22879,6 +26113,7 @@ def _tracing__trace_config__from_dict(
             synthetic_delays=data.get('synthetic_delays', []),
             memory_dump_config=data.get('memory_dump_config', None)
         )
+
     if casing_strategy == 'camel':
         return tracing.TraceConfig(
             record_mode=data.get('recordMode', None),
@@ -22891,6 +26126,7 @@ def _tracing__trace_config__from_dict(
             synthetic_delays=data.get('syntheticDelays', []),
             memory_dump_config=data.get('memoryDumpConfig', None)
         )
+
     if casing_strategy == 'pascal':
         return tracing.TraceConfig(
             record_mode=data.get('RecordMode', None),
@@ -22904,23 +26140,30 @@ def _tracing__trace_config__from_dict(
             memory_dump_config=data.get('MemoryDumpConfig', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fetch__request_pattern__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.RequestPattern':
+
     if casing_strategy == 'snake':
         return fetch.RequestPattern(
             url_pattern=data.get('url_pattern', None),
             resource_type=data.get('resource_type', None),
             request_stage=data.get('request_stage', None)
         )
+
     if casing_strategy == 'camel':
         return fetch.RequestPattern(
             url_pattern=data.get('urlPattern', None),
             resource_type=data.get('resourceType', None),
             request_stage=data.get('requestStage', None)
         )
+
     if casing_strategy == 'pascal':
         return fetch.RequestPattern(
             url_pattern=data.get('UrlPattern', None),
@@ -22928,32 +26171,44 @@ def _fetch__request_pattern__from_dict(
             request_stage=data.get('RequestStage', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fetch__header_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.HeaderEntry':
+
     if casing_strategy == 'snake':
         return fetch.HeaderEntry(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return fetch.HeaderEntry(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return fetch.HeaderEntry(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fetch__auth_challenge__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.AuthChallenge':
+
     if casing_strategy == 'snake':
         return fetch.AuthChallenge(
             source=data.get('source', None),
@@ -22961,6 +26216,7 @@ def _fetch__auth_challenge__from_dict(
             scheme=data['scheme'],
             realm=data['realm']
         )
+
     if casing_strategy == 'camel':
         return fetch.AuthChallenge(
             source=data.get('source', None),
@@ -22968,6 +26224,7 @@ def _fetch__auth_challenge__from_dict(
             scheme=data['scheme'],
             realm=data['realm']
         )
+
     if casing_strategy == 'pascal':
         return fetch.AuthChallenge(
             source=data.get('Source', None),
@@ -22976,23 +26233,30 @@ def _fetch__auth_challenge__from_dict(
             realm=data['Realm']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fetch__auth_challenge_response__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.AuthChallengeResponse':
+
     if casing_strategy == 'snake':
         return fetch.AuthChallengeResponse(
             response=data['response'],
             username=data.get('username', None),
             password=data.get('password', None)
         )
+
     if casing_strategy == 'camel':
         return fetch.AuthChallengeResponse(
             response=data['response'],
             username=data.get('username', None),
             password=data.get('password', None)
         )
+
     if casing_strategy == 'pascal':
         return fetch.AuthChallengeResponse(
             response=data['Response'],
@@ -23000,11 +26264,16 @@ def _fetch__auth_challenge_response__from_dict(
             password=data.get('Password', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__context_realtime_data__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_audio.ContextRealtimeData':
+
     if casing_strategy == 'snake':
         return web_audio.ContextRealtimeData(
             current_time=data['current_time'],
@@ -23012,6 +26281,7 @@ def _web_audio__context_realtime_data__from_dict(
             callback_interval_mean=data['callback_interval_mean'],
             callback_interval_variance=data['callback_interval_variance']
         )
+
     if casing_strategy == 'camel':
         return web_audio.ContextRealtimeData(
             current_time=data['currentTime'],
@@ -23019,6 +26289,7 @@ def _web_audio__context_realtime_data__from_dict(
             callback_interval_mean=data['callbackIntervalMean'],
             callback_interval_variance=data['callbackIntervalVariance']
         )
+
     if casing_strategy == 'pascal':
         return web_audio.ContextRealtimeData(
             current_time=data['CurrentTime'],
@@ -23027,11 +26298,16 @@ def _web_audio__context_realtime_data__from_dict(
             callback_interval_variance=data['CallbackIntervalVariance']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__base_audio_context__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_audio.BaseAudioContext':
+
     if casing_strategy == 'snake':
         return web_audio.BaseAudioContext(
             context_id=data['context_id'],
@@ -23046,6 +26322,7 @@ def _web_audio__base_audio_context__from_dict(
             max_output_channel_count=data['max_output_channel_count'],
             sample_rate=data['sample_rate']
         )
+
     if casing_strategy == 'camel':
         return web_audio.BaseAudioContext(
             context_id=data['contextId'],
@@ -23060,6 +26337,7 @@ def _web_audio__base_audio_context__from_dict(
             max_output_channel_count=data['maxOutputChannelCount'],
             sample_rate=data['sampleRate']
         )
+
     if casing_strategy == 'pascal':
         return web_audio.BaseAudioContext(
             context_id=data['ContextId'],
@@ -23075,32 +26353,44 @@ def _web_audio__base_audio_context__from_dict(
             sample_rate=data['SampleRate']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__audio_listener__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_audio.AudioListener':
+
     if casing_strategy == 'snake':
         return web_audio.AudioListener(
             listener_id=data['listener_id'],
             context_id=data['context_id']
         )
+
     if casing_strategy == 'camel':
         return web_audio.AudioListener(
             listener_id=data['listenerId'],
             context_id=data['contextId']
         )
+
     if casing_strategy == 'pascal':
         return web_audio.AudioListener(
             listener_id=data['ListenerId'],
             context_id=data['ContextId']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__audio_node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_audio.AudioNode':
+
     if casing_strategy == 'snake':
         return web_audio.AudioNode(
             node_id=data['node_id'],
@@ -23112,6 +26402,7 @@ def _web_audio__audio_node__from_dict(
             channel_count_mode=data['channel_count_mode'],
             channel_interpretation=data['channel_interpretation']
         )
+
     if casing_strategy == 'camel':
         return web_audio.AudioNode(
             node_id=data['nodeId'],
@@ -23123,6 +26414,7 @@ def _web_audio__audio_node__from_dict(
             channel_count_mode=data['channelCountMode'],
             channel_interpretation=data['channelInterpretation']
         )
+
     if casing_strategy == 'pascal':
         return web_audio.AudioNode(
             node_id=data['NodeId'],
@@ -23135,11 +26427,16 @@ def _web_audio__audio_node__from_dict(
             channel_interpretation=data['ChannelInterpretation']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_audio__audio_param__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_audio.AudioParam':
+
     if casing_strategy == 'snake':
         return web_audio.AudioParam(
             param_id=data['param_id'],
@@ -23151,6 +26448,7 @@ def _web_audio__audio_param__from_dict(
             min_value=data['min_value'],
             max_value=data['max_value']
         )
+
     if casing_strategy == 'camel':
         return web_audio.AudioParam(
             param_id=data['paramId'],
@@ -23162,6 +26460,7 @@ def _web_audio__audio_param__from_dict(
             min_value=data['minValue'],
             max_value=data['maxValue']
         )
+
     if casing_strategy == 'pascal':
         return web_audio.AudioParam(
             param_id=data['ParamId'],
@@ -23174,11 +26473,16 @@ def _web_audio__audio_param__from_dict(
             max_value=data['MaxValue']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_authn__virtual_authenticator_options__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.VirtualAuthenticatorOptions':
+
     if casing_strategy == 'snake':
         return web_authn.VirtualAuthenticatorOptions(
             protocol=data['protocol'],
@@ -23193,6 +26497,7 @@ def _web_authn__virtual_authenticator_options__from_dict(
             automatic_presence_simulation=data.get('automatic_presence_simulation', None),
             is_user_verified=data.get('is_user_verified', None)
         )
+
     if casing_strategy == 'camel':
         return web_authn.VirtualAuthenticatorOptions(
             protocol=data['protocol'],
@@ -23207,6 +26512,7 @@ def _web_authn__virtual_authenticator_options__from_dict(
             automatic_presence_simulation=data.get('automaticPresenceSimulation', None),
             is_user_verified=data.get('isUserVerified', None)
         )
+
     if casing_strategy == 'pascal':
         return web_authn.VirtualAuthenticatorOptions(
             protocol=data['Protocol'],
@@ -23222,11 +26528,16 @@ def _web_authn__virtual_authenticator_options__from_dict(
             is_user_verified=data.get('IsUserVerified', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_authn__credential__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.Credential':
+
     if casing_strategy == 'snake':
         return web_authn.Credential(
             credential_id=data['credential_id'],
@@ -23237,6 +26548,7 @@ def _web_authn__credential__from_dict(
             sign_count=data['sign_count'],
             large_blob=data.get('large_blob', None)
         )
+
     if casing_strategy == 'camel':
         return web_authn.Credential(
             credential_id=data['credentialId'],
@@ -23247,6 +26559,7 @@ def _web_authn__credential__from_dict(
             sign_count=data['signCount'],
             large_blob=data.get('largeBlob', None)
         )
+
     if casing_strategy == 'pascal':
         return web_authn.Credential(
             credential_id=data['CredentialId'],
@@ -23258,95 +26571,128 @@ def _web_authn__credential__from_dict(
             large_blob=data.get('LargeBlob', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_message__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'media.PlayerMessage':
+
     if casing_strategy == 'snake':
         return media.PlayerMessage(
             level=data['level'],
             message=data['message']
         )
+
     if casing_strategy == 'camel':
         return media.PlayerMessage(
             level=data['level'],
             message=data['message']
         )
+
     if casing_strategy == 'pascal':
         return media.PlayerMessage(
             level=data['Level'],
             message=data['Message']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_property__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'media.PlayerProperty':
+
     if casing_strategy == 'snake':
         return media.PlayerProperty(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return media.PlayerProperty(
             name=data['name'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return media.PlayerProperty(
             name=data['Name'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_event__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'media.PlayerEvent':
+
     if casing_strategy == 'snake':
         return media.PlayerEvent(
             timestamp=data['timestamp'],
             value=data['value']
         )
+
     if casing_strategy == 'camel':
         return media.PlayerEvent(
             timestamp=data['timestamp'],
             value=data['value']
         )
+
     if casing_strategy == 'pascal':
         return media.PlayerEvent(
             timestamp=data['Timestamp'],
             value=data['Value']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_error_source_location__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'media.PlayerErrorSourceLocation':
+
     if casing_strategy == 'snake':
         return media.PlayerErrorSourceLocation(
             file=data['file'],
             line=data['line']
         )
+
     if casing_strategy == 'camel':
         return media.PlayerErrorSourceLocation(
             file=data['file'],
             line=data['line']
         )
+
     if casing_strategy == 'pascal':
         return media.PlayerErrorSourceLocation(
             file=data['File'],
             line=data['Line']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _media__player_error__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'media.PlayerError':
+
     if casing_strategy == 'snake':
         return media.PlayerError(
             error_type=data['error_type'],
@@ -23361,6 +26707,7 @@ def _media__player_error__from_dict(
             ],
             data=data['data']
         )
+
     if casing_strategy == 'camel':
         return media.PlayerError(
             error_type=data['errorType'],
@@ -23375,6 +26722,7 @@ def _media__player_error__from_dict(
             ],
             data=data['data']
         )
+
     if casing_strategy == 'pascal':
         return media.PlayerError(
             error_type=data['ErrorType'],
@@ -23390,32 +26738,44 @@ def _media__player_error__from_dict(
             data=data['Data']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _device_access__prompt_device__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'device_access.PromptDevice':
+
     if casing_strategy == 'snake':
         return device_access.PromptDevice(
             id=data['id'],
             name=data['name']
         )
+
     if casing_strategy == 'camel':
         return device_access.PromptDevice(
             id=data['id'],
             name=data['name']
         )
+
     if casing_strategy == 'pascal':
         return device_access.PromptDevice(
             id=data['Id'],
             name=data['Name']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _preload__rule_set__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'preload.RuleSet':
+
     if casing_strategy == 'snake':
         return preload.RuleSet(
             id=data['id'],
@@ -23427,6 +26787,7 @@ def _preload__rule_set__from_dict(
             error_type=data.get('error_type', None),
             error_message=data.get('error_message', None)
         )
+
     if casing_strategy == 'camel':
         return preload.RuleSet(
             id=data['id'],
@@ -23438,6 +26799,7 @@ def _preload__rule_set__from_dict(
             error_type=data.get('errorType', None),
             error_message=data.get('errorMessage', None)
         )
+
     if casing_strategy == 'pascal':
         return preload.RuleSet(
             id=data['Id'],
@@ -23450,11 +26812,16 @@ def _preload__rule_set__from_dict(
             error_message=data.get('ErrorMessage', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _preload__preloading_attempt_key__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'preload.PreloadingAttemptKey':
+
     if casing_strategy == 'snake':
         return preload.PreloadingAttemptKey(
             loader_id=data['loader_id'],
@@ -23462,6 +26829,7 @@ def _preload__preloading_attempt_key__from_dict(
             url=data['url'],
             target_hint=data.get('target_hint', None)
         )
+
     if casing_strategy == 'camel':
         return preload.PreloadingAttemptKey(
             loader_id=data['loaderId'],
@@ -23469,6 +26837,7 @@ def _preload__preloading_attempt_key__from_dict(
             url=data['url'],
             target_hint=data.get('targetHint', None)
         )
+
     if casing_strategy == 'pascal':
         return preload.PreloadingAttemptKey(
             loader_id=data['LoaderId'],
@@ -23477,11 +26846,16 @@ def _preload__preloading_attempt_key__from_dict(
             target_hint=data.get('TargetHint', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _preload__preloading_attempt_source__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'preload.PreloadingAttemptSource':
+
     if casing_strategy == 'snake':
         return preload.PreloadingAttemptSource(
             key=from_dict(
@@ -23492,6 +26866,7 @@ def _preload__preloading_attempt_source__from_dict(
             rule_set_ids=data['rule_set_ids'],
             node_ids=data['node_ids']
         )
+
     if casing_strategy == 'camel':
         return preload.PreloadingAttemptSource(
             key=from_dict(
@@ -23502,6 +26877,7 @@ def _preload__preloading_attempt_source__from_dict(
             rule_set_ids=data['ruleSetIds'],
             node_ids=data['nodeIds']
         )
+
     if casing_strategy == 'pascal':
         return preload.PreloadingAttemptSource(
             key=from_dict(
@@ -23513,11 +26889,16 @@ def _preload__preloading_attempt_source__from_dict(
             node_ids=data['NodeIds']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fed_cm__account__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fed_cm.Account':
+
     if casing_strategy == 'snake':
         return fed_cm.Account(
             account_id=data['account_id'],
@@ -23531,6 +26912,7 @@ def _fed_cm__account__from_dict(
             terms_of_service_url=data.get('terms_of_service_url', None),
             privacy_policy_url=data.get('privacy_policy_url', None)
         )
+
     if casing_strategy == 'camel':
         return fed_cm.Account(
             account_id=data['accountId'],
@@ -23544,6 +26926,7 @@ def _fed_cm__account__from_dict(
             terms_of_service_url=data.get('termsOfServiceUrl', None),
             privacy_policy_url=data.get('privacyPolicyUrl', None)
         )
+
     if casing_strategy == 'pascal':
         return fed_cm.Account(
             account_id=data['AccountId'],
@@ -23558,11 +26941,16 @@ def _fed_cm__account__from_dict(
             privacy_policy_url=data.get('PrivacyPolicyUrl', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _console__console_message__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'console.ConsoleMessage':
+
     if casing_strategy == 'snake':
         return console.ConsoleMessage(
             source=data['source'],
@@ -23572,6 +26960,7 @@ def _console__console_message__from_dict(
             line=data.get('line', None),
             column=data.get('column', None)
         )
+
     if casing_strategy == 'camel':
         return console.ConsoleMessage(
             source=data['source'],
@@ -23581,6 +26970,7 @@ def _console__console_message__from_dict(
             line=data.get('line', None),
             column=data.get('column', None)
         )
+
     if casing_strategy == 'pascal':
         return console.ConsoleMessage(
             source=data['Source'],
@@ -23591,23 +26981,30 @@ def _console__console_message__from_dict(
             column=data.get('Column', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__location__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.Location':
+
     if casing_strategy == 'snake':
         return debugger.Location(
             script_id=data['script_id'],
             line_number=data['line_number'],
             column_number=data.get('column_number', None)
         )
+
     if casing_strategy == 'camel':
         return debugger.Location(
             script_id=data['scriptId'],
             line_number=data['lineNumber'],
             column_number=data.get('columnNumber', None)
         )
+
     if casing_strategy == 'pascal':
         return debugger.Location(
             script_id=data['ScriptId'],
@@ -23615,32 +27012,44 @@ def _debugger__location__from_dict(
             column_number=data.get('ColumnNumber', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__script_position__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.ScriptPosition':
+
     if casing_strategy == 'snake':
         return debugger.ScriptPosition(
             line_number=data['line_number'],
             column_number=data['column_number']
         )
+
     if casing_strategy == 'camel':
         return debugger.ScriptPosition(
             line_number=data['lineNumber'],
             column_number=data['columnNumber']
         )
+
     if casing_strategy == 'pascal':
         return debugger.ScriptPosition(
             line_number=data['LineNumber'],
             column_number=data['ColumnNumber']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__call_frame__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.CallFrame':
+
     if casing_strategy == 'snake':
         return debugger.CallFrame(
             call_frame_id=data['call_frame_id'],
@@ -23671,6 +27080,7 @@ def _debugger__call_frame__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return debugger.CallFrame(
             call_frame_id=data['callFrameId'],
@@ -23701,6 +27111,7 @@ def _debugger__call_frame__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return debugger.CallFrame(
             call_frame_id=data['CallFrameId'],
@@ -23732,11 +27143,16 @@ def _debugger__call_frame__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__scope__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.Scope':
+
     if casing_strategy == 'snake':
         return debugger.Scope(
             type=data['type'],
@@ -23757,6 +27173,7 @@ def _debugger__scope__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return debugger.Scope(
             type=data['type'],
@@ -23777,6 +27194,7 @@ def _debugger__scope__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return debugger.Scope(
             type=data['Type'],
@@ -23798,32 +27216,44 @@ def _debugger__scope__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__search_match__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SearchMatch':
+
     if casing_strategy == 'snake':
         return debugger.SearchMatch(
             line_number=data['line_number'],
             line_content=data['line_content']
         )
+
     if casing_strategy == 'camel':
         return debugger.SearchMatch(
             line_number=data['lineNumber'],
             line_content=data['lineContent']
         )
+
     if casing_strategy == 'pascal':
         return debugger.SearchMatch(
             line_number=data['LineNumber'],
             line_content=data['LineContent']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__break_location__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.BreakLocation':
+
     if casing_strategy == 'snake':
         return debugger.BreakLocation(
             script_id=data['script_id'],
@@ -23831,6 +27261,7 @@ def _debugger__break_location__from_dict(
             column_number=data.get('column_number', None),
             type=data.get('type', None)
         )
+
     if casing_strategy == 'camel':
         return debugger.BreakLocation(
             script_id=data['scriptId'],
@@ -23838,6 +27269,7 @@ def _debugger__break_location__from_dict(
             column_number=data.get('columnNumber', None),
             type=data.get('type', None)
         )
+
     if casing_strategy == 'pascal':
         return debugger.BreakLocation(
             script_id=data['ScriptId'],
@@ -23846,11 +27278,16 @@ def _debugger__break_location__from_dict(
             type=data.get('Type', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _heap_profiler__sampling_heap_profile_node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.SamplingHeapProfileNode':
+
     if casing_strategy == 'snake':
         return heap_profiler.SamplingHeapProfileNode(
             call_frame=from_dict(
@@ -23865,6 +27302,7 @@ def _heap_profiler__sampling_heap_profile_node__from_dict(
                 for item in data['children']
             ]
         )
+
     if casing_strategy == 'camel':
         return heap_profiler.SamplingHeapProfileNode(
             call_frame=from_dict(
@@ -23879,6 +27317,7 @@ def _heap_profiler__sampling_heap_profile_node__from_dict(
                 for item in data['children']
             ]
         )
+
     if casing_strategy == 'pascal':
         return heap_profiler.SamplingHeapProfileNode(
             call_frame=from_dict(
@@ -23894,23 +27333,30 @@ def _heap_profiler__sampling_heap_profile_node__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _heap_profiler__sampling_heap_profile_sample__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.SamplingHeapProfileSample':
+
     if casing_strategy == 'snake':
         return heap_profiler.SamplingHeapProfileSample(
             size=data['size'],
             node_id=data['node_id'],
             ordinal=data['ordinal']
         )
+
     if casing_strategy == 'camel':
         return heap_profiler.SamplingHeapProfileSample(
             size=data['size'],
             node_id=data['nodeId'],
             ordinal=data['ordinal']
         )
+
     if casing_strategy == 'pascal':
         return heap_profiler.SamplingHeapProfileSample(
             size=data['Size'],
@@ -23918,11 +27364,16 @@ def _heap_profiler__sampling_heap_profile_sample__from_dict(
             ordinal=data['Ordinal']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _heap_profiler__sampling_heap_profile__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.SamplingHeapProfile':
+
     if casing_strategy == 'snake':
         return heap_profiler.SamplingHeapProfile(
             head=from_dict(
@@ -23935,6 +27386,7 @@ def _heap_profiler__sampling_heap_profile__from_dict(
                 for item in data['samples']
             ]
         )
+
     if casing_strategy == 'camel':
         return heap_profiler.SamplingHeapProfile(
             head=from_dict(
@@ -23947,6 +27399,7 @@ def _heap_profiler__sampling_heap_profile__from_dict(
                 for item in data['samples']
             ]
         )
+
     if casing_strategy == 'pascal':
         return heap_profiler.SamplingHeapProfile(
             head=from_dict(
@@ -23960,11 +27413,16 @@ def _heap_profiler__sampling_heap_profile__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__profile_node__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.ProfileNode':
+
     if casing_strategy == 'snake':
         return profiler.ProfileNode(
             id=data['id'],
@@ -23981,6 +27439,7 @@ def _profiler__profile_node__from_dict(
                 for item in data.get('position_ticks', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return profiler.ProfileNode(
             id=data['id'],
@@ -23997,6 +27456,7 @@ def _profiler__profile_node__from_dict(
                 for item in data.get('positionTicks', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return profiler.ProfileNode(
             id=data['Id'],
@@ -24014,11 +27474,16 @@ def _profiler__profile_node__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__profile__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.Profile':
+
     if casing_strategy == 'snake':
         return profiler.Profile(
             nodes=[
@@ -24030,6 +27495,7 @@ def _profiler__profile__from_dict(
             samples=data.get('samples', []),
             time_deltas=data.get('time_deltas', [])
         )
+
     if casing_strategy == 'camel':
         return profiler.Profile(
             nodes=[
@@ -24041,6 +27507,7 @@ def _profiler__profile__from_dict(
             samples=data.get('samples', []),
             time_deltas=data.get('timeDeltas', [])
         )
+
     if casing_strategy == 'pascal':
         return profiler.Profile(
             nodes=[
@@ -24053,44 +27520,58 @@ def _profiler__profile__from_dict(
             time_deltas=data.get('TimeDeltas', [])
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__position_tick_info__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.PositionTickInfo':
+
     if casing_strategy == 'snake':
         return profiler.PositionTickInfo(
             line=data['line'],
             ticks=data['ticks']
         )
+
     if casing_strategy == 'camel':
         return profiler.PositionTickInfo(
             line=data['line'],
             ticks=data['ticks']
         )
+
     if casing_strategy == 'pascal':
         return profiler.PositionTickInfo(
             line=data['Line'],
             ticks=data['Ticks']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__coverage_range__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.CoverageRange':
+
     if casing_strategy == 'snake':
         return profiler.CoverageRange(
             start_offset=data['start_offset'],
             end_offset=data['end_offset'],
             count=data['count']
         )
+
     if casing_strategy == 'camel':
         return profiler.CoverageRange(
             start_offset=data['startOffset'],
             end_offset=data['endOffset'],
             count=data['count']
         )
+
     if casing_strategy == 'pascal':
         return profiler.CoverageRange(
             start_offset=data['StartOffset'],
@@ -24098,11 +27579,16 @@ def _profiler__coverage_range__from_dict(
             count=data['Count']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__function_coverage__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.FunctionCoverage':
+
     if casing_strategy == 'snake':
         return profiler.FunctionCoverage(
             function_name=data['function_name'],
@@ -24112,6 +27598,7 @@ def _profiler__function_coverage__from_dict(
             ],
             is_block_coverage=data['is_block_coverage']
         )
+
     if casing_strategy == 'camel':
         return profiler.FunctionCoverage(
             function_name=data['functionName'],
@@ -24121,6 +27608,7 @@ def _profiler__function_coverage__from_dict(
             ],
             is_block_coverage=data['isBlockCoverage']
         )
+
     if casing_strategy == 'pascal':
         return profiler.FunctionCoverage(
             function_name=data['FunctionName'],
@@ -24131,11 +27619,16 @@ def _profiler__function_coverage__from_dict(
             is_block_coverage=data['IsBlockCoverage']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__script_coverage__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.ScriptCoverage':
+
     if casing_strategy == 'snake':
         return profiler.ScriptCoverage(
             script_id=data['script_id'],
@@ -24145,6 +27638,7 @@ def _profiler__script_coverage__from_dict(
                 for item in data['functions']
             ]
         )
+
     if casing_strategy == 'camel':
         return profiler.ScriptCoverage(
             script_id=data['scriptId'],
@@ -24154,6 +27648,7 @@ def _profiler__script_coverage__from_dict(
                 for item in data['functions']
             ]
         )
+
     if casing_strategy == 'pascal':
         return profiler.ScriptCoverage(
             script_id=data['ScriptId'],
@@ -24164,29 +27659,41 @@ def _profiler__script_coverage__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__type_object__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.TypeObject':
+
     if casing_strategy == 'snake':
         return profiler.TypeObject(
             name=data['name']
         )
+
     if casing_strategy == 'camel':
         return profiler.TypeObject(
             name=data['name']
         )
+
     if casing_strategy == 'pascal':
         return profiler.TypeObject(
             name=data['Name']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _profiler__type_profile_entry__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.TypeProfileEntry':
+
     if casing_strategy == 'snake':
         return profiler.TypeProfileEntry(
             offset=data['offset'],
@@ -24195,6 +27702,7 @@ def _profiler__type_profile_entry__from_dict(
                 for item in data['types']
             ]
         )
+
     if casing_strategy == 'camel':
         return profiler.TypeProfileEntry(
             offset=data['offset'],
@@ -24203,6 +27711,7 @@ def _profiler__type_profile_entry__from_dict(
                 for item in data['types']
             ]
         )
+
     if casing_strategy == 'pascal':
         return profiler.TypeProfileEntry(
             offset=data['Offset'],
@@ -24212,11 +27721,16 @@ def _profiler__type_profile_entry__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__script_type_profile__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.ScriptTypeProfile':
+
     if casing_strategy == 'snake':
         return profiler.ScriptTypeProfile(
             script_id=data['script_id'],
@@ -24226,6 +27740,7 @@ def _profiler__script_type_profile__from_dict(
                 for item in data['entries']
             ]
         )
+
     if casing_strategy == 'camel':
         return profiler.ScriptTypeProfile(
             script_id=data['scriptId'],
@@ -24235,6 +27750,7 @@ def _profiler__script_type_profile__from_dict(
                 for item in data['entries']
             ]
         )
+
     if casing_strategy == 'pascal':
         return profiler.ScriptTypeProfile(
             script_id=data['ScriptId'],
@@ -24245,11 +27761,16 @@ def _profiler__script_type_profile__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__remote_object__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.RemoteObject':
+
     if casing_strategy == 'snake':
         return runtime.RemoteObject(
             type=data['type'],
@@ -24270,6 +27791,7 @@ def _runtime__remote_object__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.RemoteObject(
             type=data['type'],
@@ -24290,6 +27812,7 @@ def _runtime__remote_object__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.RemoteObject(
             type=data['Type'],
@@ -24311,32 +27834,44 @@ def _runtime__remote_object__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__custom_preview__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.CustomPreview':
+
     if casing_strategy == 'snake':
         return runtime.CustomPreview(
             header=data['header'],
             body_getter_id=data.get('body_getter_id', None)
         )
+
     if casing_strategy == 'camel':
         return runtime.CustomPreview(
             header=data['header'],
             body_getter_id=data.get('bodyGetterId', None)
         )
+
     if casing_strategy == 'pascal':
         return runtime.CustomPreview(
             header=data['Header'],
             body_getter_id=data.get('BodyGetterId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__object_preview__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.ObjectPreview':
+
     if casing_strategy == 'snake':
         return runtime.ObjectPreview(
             type=data['type'],
@@ -24352,6 +27887,7 @@ def _runtime__object_preview__from_dict(
                 for item in data.get('entries', [])
             ]
         )
+
     if casing_strategy == 'camel':
         return runtime.ObjectPreview(
             type=data['type'],
@@ -24367,6 +27903,7 @@ def _runtime__object_preview__from_dict(
                 for item in data.get('entries', [])
             ]
         )
+
     if casing_strategy == 'pascal':
         return runtime.ObjectPreview(
             type=data['Type'],
@@ -24383,11 +27920,16 @@ def _runtime__object_preview__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__property_preview__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.PropertyPreview':
+
     if casing_strategy == 'snake':
         return runtime.PropertyPreview(
             name=data['name'],
@@ -24400,6 +27942,7 @@ def _runtime__property_preview__from_dict(
             ),
             subtype=data.get('subtype', None)
         )
+
     if casing_strategy == 'camel':
         return runtime.PropertyPreview(
             name=data['name'],
@@ -24412,6 +27955,7 @@ def _runtime__property_preview__from_dict(
             ),
             subtype=data.get('subtype', None)
         )
+
     if casing_strategy == 'pascal':
         return runtime.PropertyPreview(
             name=data['Name'],
@@ -24425,11 +27969,16 @@ def _runtime__property_preview__from_dict(
             subtype=data.get('Subtype', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__entry_preview__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.EntryPreview':
+
     if casing_strategy == 'snake':
         return runtime.EntryPreview(
             key=from_dict(
@@ -24443,6 +27992,7 @@ def _runtime__entry_preview__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.EntryPreview(
             key=from_dict(
@@ -24456,6 +28006,7 @@ def _runtime__entry_preview__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.EntryPreview(
             key=from_dict(
@@ -24470,11 +28021,16 @@ def _runtime__entry_preview__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__property_descriptor__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.PropertyDescriptor':
+
     if casing_strategy == 'snake':
         return runtime.PropertyDescriptor(
             name=data['name'],
@@ -24504,6 +28060,7 @@ def _runtime__property_descriptor__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.PropertyDescriptor(
             name=data['name'],
@@ -24533,6 +28090,7 @@ def _runtime__property_descriptor__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.PropertyDescriptor(
             name=data['Name'],
@@ -24563,11 +28121,16 @@ def _runtime__property_descriptor__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__internal_property_descriptor__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.InternalPropertyDescriptor':
+
     if casing_strategy == 'snake':
         return runtime.InternalPropertyDescriptor(
             name=data['name'],
@@ -24577,6 +28140,7 @@ def _runtime__internal_property_descriptor__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.InternalPropertyDescriptor(
             name=data['name'],
@@ -24586,6 +28150,7 @@ def _runtime__internal_property_descriptor__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.InternalPropertyDescriptor(
             name=data['Name'],
@@ -24596,11 +28161,16 @@ def _runtime__internal_property_descriptor__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__private_property_descriptor__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.PrivatePropertyDescriptor':
+
     if casing_strategy == 'snake':
         return runtime.PrivatePropertyDescriptor(
             name=data['name'],
@@ -24610,6 +28180,7 @@ def _runtime__private_property_descriptor__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.PrivatePropertyDescriptor(
             name=data['name'],
@@ -24619,6 +28190,7 @@ def _runtime__private_property_descriptor__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.PrivatePropertyDescriptor(
             name=data['Name'],
@@ -24629,23 +28201,30 @@ def _runtime__private_property_descriptor__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__call_argument__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.CallArgument':
+
     if casing_strategy == 'snake':
         return runtime.CallArgument(
             value=data.get('value', None),
             unserializable_value=data.get('unserializable_value', None),
             object_id=data.get('object_id', None)
         )
+
     if casing_strategy == 'camel':
         return runtime.CallArgument(
             value=data.get('value', None),
             unserializable_value=data.get('unserializableValue', None),
             object_id=data.get('objectId', None)
         )
+
     if casing_strategy == 'pascal':
         return runtime.CallArgument(
             value=data.get('Value', None),
@@ -24653,11 +28232,16 @@ def _runtime__call_argument__from_dict(
             object_id=data.get('ObjectId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__execution_context_description__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.ExecutionContextDescription':
+
     if casing_strategy == 'snake':
         return runtime.ExecutionContextDescription(
             id=data['id'],
@@ -24665,6 +28249,7 @@ def _runtime__execution_context_description__from_dict(
             name=data['name'],
             aux_data=data.get('aux_data', None)
         )
+
     if casing_strategy == 'camel':
         return runtime.ExecutionContextDescription(
             id=data['id'],
@@ -24672,6 +28257,7 @@ def _runtime__execution_context_description__from_dict(
             name=data['name'],
             aux_data=data.get('auxData', None)
         )
+
     if casing_strategy == 'pascal':
         return runtime.ExecutionContextDescription(
             id=data['Id'],
@@ -24680,11 +28266,16 @@ def _runtime__execution_context_description__from_dict(
             aux_data=data.get('AuxData', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__exception_details__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.ExceptionDetails':
+
     if casing_strategy == 'snake':
         return runtime.ExceptionDetails(
             exception_id=data['exception_id'],
@@ -24705,6 +28296,7 @@ def _runtime__exception_details__from_dict(
             ),
             execution_context_id=data.get('execution_context_id', None)
         )
+
     if casing_strategy == 'camel':
         return runtime.ExceptionDetails(
             exception_id=data['exceptionId'],
@@ -24725,6 +28317,7 @@ def _runtime__exception_details__from_dict(
             ),
             execution_context_id=data.get('executionContextId', None)
         )
+
     if casing_strategy == 'pascal':
         return runtime.ExceptionDetails(
             exception_id=data['ExceptionId'],
@@ -24746,11 +28339,16 @@ def _runtime__exception_details__from_dict(
             execution_context_id=data.get('ExecutionContextId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__call_frame__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.CallFrame':
+
     if casing_strategy == 'snake':
         return runtime.CallFrame(
             function_name=data['function_name'],
@@ -24759,6 +28357,7 @@ def _runtime__call_frame__from_dict(
             line_number=data['line_number'],
             column_number=data['column_number']
         )
+
     if casing_strategy == 'camel':
         return runtime.CallFrame(
             function_name=data['functionName'],
@@ -24767,6 +28366,7 @@ def _runtime__call_frame__from_dict(
             line_number=data['lineNumber'],
             column_number=data['columnNumber']
         )
+
     if casing_strategy == 'pascal':
         return runtime.CallFrame(
             function_name=data['FunctionName'],
@@ -24776,11 +28376,16 @@ def _runtime__call_frame__from_dict(
             column_number=data['ColumnNumber']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__stack_trace__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.StackTrace':
+
     if casing_strategy == 'snake':
         return runtime.StackTrace(
             description=data.get('description', None),
@@ -24799,6 +28404,7 @@ def _runtime__stack_trace__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.StackTrace(
             description=data.get('description', None),
@@ -24817,6 +28423,7 @@ def _runtime__stack_trace__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.StackTrace(
             description=data.get('Description', None),
@@ -24836,53 +28443,72 @@ def _runtime__stack_trace__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__stack_trace_id__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.StackTraceId':
+
     if casing_strategy == 'snake':
         return runtime.StackTraceId(
             id=data['id'],
             debugger_id=data.get('debugger_id', None)
         )
+
     if casing_strategy == 'camel':
         return runtime.StackTraceId(
             id=data['id'],
             debugger_id=data.get('debuggerId', None)
         )
+
     if casing_strategy == 'pascal':
         return runtime.StackTraceId(
             id=data['Id'],
             debugger_id=data.get('DebuggerId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _schema__domain__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'schema.Domain':
+
     if casing_strategy == 'snake':
         return schema.Domain(
             name=data['name'],
             version=data['version']
         )
+
     if casing_strategy == 'camel':
         return schema.Domain(
             name=data['name'],
             version=data['version']
         )
+
     if casing_strategy == 'pascal':
         return schema.Domain(
             name=data['Name'],
             version=data['Version']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__get_partial_ax_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetPartialAXTreeReturnT':
+
     if casing_strategy == 'snake':
         return accessibility.GetPartialAXTreeReturnT(
             nodes=[
@@ -24890,6 +28516,7 @@ def _accessibility__get_partial_ax_tree_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'camel':
         return accessibility.GetPartialAXTreeReturnT(
             nodes=[
@@ -24897,6 +28524,7 @@ def _accessibility__get_partial_ax_tree_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'pascal':
         return accessibility.GetPartialAXTreeReturnT(
             nodes=[
@@ -24904,12 +28532,17 @@ def _accessibility__get_partial_ax_tree_return_t__from_dict(
                 for item in data['Nodes']
             ]
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _accessibility__get_full_ax_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetFullAXTreeReturnT':
+
     if casing_strategy == 'snake':
         return accessibility.GetFullAXTreeReturnT(
             nodes=[
@@ -24917,6 +28550,7 @@ def _accessibility__get_full_ax_tree_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'camel':
         return accessibility.GetFullAXTreeReturnT(
             nodes=[
@@ -24924,6 +28558,7 @@ def _accessibility__get_full_ax_tree_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'pascal':
         return accessibility.GetFullAXTreeReturnT(
             nodes=[
@@ -24932,11 +28567,16 @@ def _accessibility__get_full_ax_tree_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__get_root_ax_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetRootAXNodeReturnT':
+
     if casing_strategy == 'snake':
         return accessibility.GetRootAXNodeReturnT(
             node=from_dict(
@@ -24945,6 +28585,7 @@ def _accessibility__get_root_ax_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return accessibility.GetRootAXNodeReturnT(
             node=from_dict(
@@ -24953,6 +28594,7 @@ def _accessibility__get_root_ax_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return accessibility.GetRootAXNodeReturnT(
             node=from_dict(
@@ -24962,11 +28604,16 @@ def _accessibility__get_root_ax_node_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _accessibility__get_ax_node_and_ancestors_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetAXNodeAndAncestorsReturnT':
+
     if casing_strategy == 'snake':
         return accessibility.GetAXNodeAndAncestorsReturnT(
             nodes=[
@@ -24974,6 +28621,7 @@ def _accessibility__get_ax_node_and_ancestors_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'camel':
         return accessibility.GetAXNodeAndAncestorsReturnT(
             nodes=[
@@ -24981,6 +28629,7 @@ def _accessibility__get_ax_node_and_ancestors_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'pascal':
         return accessibility.GetAXNodeAndAncestorsReturnT(
             nodes=[
@@ -24988,12 +28637,17 @@ def _accessibility__get_ax_node_and_ancestors_return_t__from_dict(
                 for item in data['Nodes']
             ]
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _accessibility__get_child_ax_nodes_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.GetChildAXNodesReturnT':
+
     if casing_strategy == 'snake':
         return accessibility.GetChildAXNodesReturnT(
             nodes=[
@@ -25001,6 +28655,7 @@ def _accessibility__get_child_ax_nodes_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'camel':
         return accessibility.GetChildAXNodesReturnT(
             nodes=[
@@ -25008,6 +28663,7 @@ def _accessibility__get_child_ax_nodes_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'pascal':
         return accessibility.GetChildAXNodesReturnT(
             nodes=[
@@ -25015,12 +28671,17 @@ def _accessibility__get_child_ax_nodes_return_t__from_dict(
                 for item in data['Nodes']
             ]
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _accessibility__query_ax_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'accessibility.QueryAXTreeReturnT':
+
     if casing_strategy == 'snake':
         return accessibility.QueryAXTreeReturnT(
             nodes=[
@@ -25028,6 +28689,7 @@ def _accessibility__query_ax_tree_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'camel':
         return accessibility.QueryAXTreeReturnT(
             nodes=[
@@ -25035,6 +28697,7 @@ def _accessibility__query_ax_tree_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'pascal':
         return accessibility.QueryAXTreeReturnT(
             nodes=[
@@ -25043,47 +28706,66 @@ def _accessibility__query_ax_tree_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _animation__get_current_time_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.GetCurrentTimeReturnT':
+
     if casing_strategy == 'snake':
         return animation.GetCurrentTimeReturnT(
             current_time=data['current_time']
         )
+
     if casing_strategy == 'camel':
         return animation.GetCurrentTimeReturnT(
             current_time=data['currentTime']
         )
+
     if casing_strategy == 'pascal':
         return animation.GetCurrentTimeReturnT(
             current_time=data['CurrentTime']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _animation__get_playback_rate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.GetPlaybackRateReturnT':
+
     if casing_strategy == 'snake':
         return animation.GetPlaybackRateReturnT(
             playback_rate=data['playback_rate']
         )
+
     if casing_strategy == 'camel':
         return animation.GetPlaybackRateReturnT(
             playback_rate=data['playbackRate']
         )
+
     if casing_strategy == 'pascal':
         return animation.GetPlaybackRateReturnT(
             playback_rate=data['PlaybackRate']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _animation__resolve_animation_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'animation.ResolveAnimationReturnT':
+
     if casing_strategy == 'snake':
         return animation.ResolveAnimationReturnT(
             remote_object=from_dict(
@@ -25092,6 +28774,7 @@ def _animation__resolve_animation_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return animation.ResolveAnimationReturnT(
             remote_object=from_dict(
@@ -25100,6 +28783,7 @@ def _animation__resolve_animation_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return animation.ResolveAnimationReturnT(
             remote_object=from_dict(
@@ -25109,23 +28793,30 @@ def _animation__resolve_animation_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__get_encoded_response_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.GetEncodedResponseReturnT':
+
     if casing_strategy == 'snake':
         return audits.GetEncodedResponseReturnT(
             body=data.get('body', None),
             original_size=data['original_size'],
             encoded_size=data['encoded_size']
         )
+
     if casing_strategy == 'camel':
         return audits.GetEncodedResponseReturnT(
             body=data.get('body', None),
             original_size=data['originalSize'],
             encoded_size=data['encodedSize']
         )
+
     if casing_strategy == 'pascal':
         return audits.GetEncodedResponseReturnT(
             body=data.get('Body', None),
@@ -25133,11 +28824,16 @@ def _audits__get_encoded_response_return_t__from_dict(
             encoded_size=data['EncodedSize']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _audits__check_forms_issues_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'audits.CheckFormsIssuesReturnT':
+
     if casing_strategy == 'snake':
         return audits.CheckFormsIssuesReturnT(
             form_issues=[
@@ -25145,6 +28841,7 @@ def _audits__check_forms_issues_return_t__from_dict(
                 for item in data['form_issues']
             ]
         )
+
     if casing_strategy == 'camel':
         return audits.CheckFormsIssuesReturnT(
             form_issues=[
@@ -25152,6 +28849,7 @@ def _audits__check_forms_issues_return_t__from_dict(
                 for item in data['formIssues']
             ]
         )
+
     if casing_strategy == 'pascal':
         return audits.CheckFormsIssuesReturnT(
             form_issues=[
@@ -25160,11 +28858,16 @@ def _audits__check_forms_issues_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__get_version_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetVersionReturnT':
+
     if casing_strategy == 'snake':
         return browser.GetVersionReturnT(
             protocol_version=data['protocol_version'],
@@ -25173,6 +28876,7 @@ def _browser__get_version_return_t__from_dict(
             user_agent=data['user_agent'],
             js_version=data['js_version']
         )
+
     if casing_strategy == 'camel':
         return browser.GetVersionReturnT(
             protocol_version=data['protocolVersion'],
@@ -25181,6 +28885,7 @@ def _browser__get_version_return_t__from_dict(
             user_agent=data['userAgent'],
             js_version=data['jsVersion']
         )
+
     if casing_strategy == 'pascal':
         return browser.GetVersionReturnT(
             protocol_version=data['ProtocolVersion'],
@@ -25190,29 +28895,41 @@ def _browser__get_version_return_t__from_dict(
             js_version=data['JsVersion']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__get_browser_command_line_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetBrowserCommandLineReturnT':
+
     if casing_strategy == 'snake':
         return browser.GetBrowserCommandLineReturnT(
             arguments=data['arguments']
         )
+
     if casing_strategy == 'camel':
         return browser.GetBrowserCommandLineReturnT(
             arguments=data['arguments']
         )
+
     if casing_strategy == 'pascal':
         return browser.GetBrowserCommandLineReturnT(
             arguments=data['Arguments']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _browser__get_histograms_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetHistogramsReturnT':
+
     if casing_strategy == 'snake':
         return browser.GetHistogramsReturnT(
             histograms=[
@@ -25220,6 +28937,7 @@ def _browser__get_histograms_return_t__from_dict(
                 for item in data['histograms']
             ]
         )
+
     if casing_strategy == 'camel':
         return browser.GetHistogramsReturnT(
             histograms=[
@@ -25227,6 +28945,7 @@ def _browser__get_histograms_return_t__from_dict(
                 for item in data['histograms']
             ]
         )
+
     if casing_strategy == 'pascal':
         return browser.GetHistogramsReturnT(
             histograms=[
@@ -25235,11 +28954,16 @@ def _browser__get_histograms_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__get_histogram_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetHistogramReturnT':
+
     if casing_strategy == 'snake':
         return browser.GetHistogramReturnT(
             histogram=from_dict(
@@ -25248,6 +28972,7 @@ def _browser__get_histogram_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return browser.GetHistogramReturnT(
             histogram=from_dict(
@@ -25256,6 +28981,7 @@ def _browser__get_histogram_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return browser.GetHistogramReturnT(
             histogram=from_dict(
@@ -25265,11 +28991,16 @@ def _browser__get_histogram_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__get_window_bounds_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetWindowBoundsReturnT':
+
     if casing_strategy == 'snake':
         return browser.GetWindowBoundsReturnT(
             bounds=from_dict(
@@ -25278,6 +29009,7 @@ def _browser__get_window_bounds_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return browser.GetWindowBoundsReturnT(
             bounds=from_dict(
@@ -25286,6 +29018,7 @@ def _browser__get_window_bounds_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return browser.GetWindowBoundsReturnT(
             bounds=from_dict(
@@ -25295,11 +29028,16 @@ def _browser__get_window_bounds_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _browser__get_window_for_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'browser.GetWindowForTargetReturnT':
+
     if casing_strategy == 'snake':
         return browser.GetWindowForTargetReturnT(
             window_id=data['window_id'],
@@ -25309,6 +29047,7 @@ def _browser__get_window_for_target_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return browser.GetWindowForTargetReturnT(
             window_id=data['windowId'],
@@ -25318,6 +29057,7 @@ def _browser__get_window_for_target_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return browser.GetWindowForTargetReturnT(
             window_id=data['WindowId'],
@@ -25328,11 +29068,16 @@ def _browser__get_window_for_target_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__add_rule_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.AddRuleReturnT':
+
     if casing_strategy == 'snake':
         return css.AddRuleReturnT(
             rule=from_dict(
@@ -25341,6 +29086,7 @@ def _css__add_rule_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.AddRuleReturnT(
             rule=from_dict(
@@ -25349,6 +29095,7 @@ def _css__add_rule_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.AddRuleReturnT(
             rule=from_dict(
@@ -25358,59 +29105,80 @@ def _css__add_rule_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__collect_class_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CollectClassNamesReturnT':
+
     if casing_strategy == 'snake':
         return css.CollectClassNamesReturnT(
             class_names=data['class_names']
         )
+
     if casing_strategy == 'camel':
         return css.CollectClassNamesReturnT(
             class_names=data['classNames']
         )
+
     if casing_strategy == 'pascal':
         return css.CollectClassNamesReturnT(
             class_names=data['ClassNames']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _css__create_style_sheet_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.CreateStyleSheetReturnT':
+
     if casing_strategy == 'snake':
         return css.CreateStyleSheetReturnT(
             style_sheet_id=data['style_sheet_id']
         )
+
     if casing_strategy == 'camel':
         return css.CreateStyleSheetReturnT(
             style_sheet_id=data['styleSheetId']
         )
+
     if casing_strategy == 'pascal':
         return css.CreateStyleSheetReturnT(
             style_sheet_id=data['StyleSheetId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _css__get_background_colors_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetBackgroundColorsReturnT':
+
     if casing_strategy == 'snake':
         return css.GetBackgroundColorsReturnT(
             background_colors=data.get('background_colors', []),
             computed_font_size=data.get('computed_font_size', None),
             computed_font_weight=data.get('computed_font_weight', None)
         )
+
     if casing_strategy == 'camel':
         return css.GetBackgroundColorsReturnT(
             background_colors=data.get('backgroundColors', []),
             computed_font_size=data.get('computedFontSize', None),
             computed_font_weight=data.get('computedFontWeight', None)
         )
+
     if casing_strategy == 'pascal':
         return css.GetBackgroundColorsReturnT(
             background_colors=data.get('BackgroundColors', []),
@@ -25418,11 +29186,16 @@ def _css__get_background_colors_return_t__from_dict(
             computed_font_weight=data.get('ComputedFontWeight', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__get_computed_style_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetComputedStyleForNodeReturnT':
+
     if casing_strategy == 'snake':
         return css.GetComputedStyleForNodeReturnT(
             computed_style=[
@@ -25430,6 +29203,7 @@ def _css__get_computed_style_for_node_return_t__from_dict(
                 for item in data['computed_style']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.GetComputedStyleForNodeReturnT(
             computed_style=[
@@ -25437,6 +29211,7 @@ def _css__get_computed_style_for_node_return_t__from_dict(
                 for item in data['computedStyle']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.GetComputedStyleForNodeReturnT(
             computed_style=[
@@ -25445,11 +29220,16 @@ def _css__get_computed_style_for_node_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__get_inline_styles_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetInlineStylesForNodeReturnT':
+
     if casing_strategy == 'snake':
         return css.GetInlineStylesForNodeReturnT(
             inline_style=from_dict(
@@ -25463,6 +29243,7 @@ def _css__get_inline_styles_for_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.GetInlineStylesForNodeReturnT(
             inline_style=from_dict(
@@ -25476,6 +29257,7 @@ def _css__get_inline_styles_for_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.GetInlineStylesForNodeReturnT(
             inline_style=from_dict(
@@ -25490,11 +29272,16 @@ def _css__get_inline_styles_for_node_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__get_matched_styles_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetMatchedStylesForNodeReturnT':
+
     if casing_strategy == 'snake':
         return css.GetMatchedStylesForNodeReturnT(
             inline_style=from_dict(
@@ -25541,6 +29328,7 @@ def _css__get_matched_styles_for_node_return_t__from_dict(
             ],
             parent_layout_node_id=data.get('parent_layout_node_id', None)
         )
+
     if casing_strategy == 'camel':
         return css.GetMatchedStylesForNodeReturnT(
             inline_style=from_dict(
@@ -25587,6 +29375,7 @@ def _css__get_matched_styles_for_node_return_t__from_dict(
             ],
             parent_layout_node_id=data.get('parentLayoutNodeId', None)
         )
+
     if casing_strategy == 'pascal':
         return css.GetMatchedStylesForNodeReturnT(
             inline_style=from_dict(
@@ -25634,11 +29423,16 @@ def _css__get_matched_styles_for_node_return_t__from_dict(
             parent_layout_node_id=data.get('ParentLayoutNodeId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__get_media_queries_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetMediaQueriesReturnT':
+
     if casing_strategy == 'snake':
         return css.GetMediaQueriesReturnT(
             medias=[
@@ -25646,6 +29440,7 @@ def _css__get_media_queries_return_t__from_dict(
                 for item in data['medias']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.GetMediaQueriesReturnT(
             medias=[
@@ -25653,6 +29448,7 @@ def _css__get_media_queries_return_t__from_dict(
                 for item in data['medias']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.GetMediaQueriesReturnT(
             medias=[
@@ -25661,11 +29457,16 @@ def _css__get_media_queries_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__get_platform_fonts_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetPlatformFontsForNodeReturnT':
+
     if casing_strategy == 'snake':
         return css.GetPlatformFontsForNodeReturnT(
             fonts=[
@@ -25673,6 +29474,7 @@ def _css__get_platform_fonts_for_node_return_t__from_dict(
                 for item in data['fonts']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.GetPlatformFontsForNodeReturnT(
             fonts=[
@@ -25680,6 +29482,7 @@ def _css__get_platform_fonts_for_node_return_t__from_dict(
                 for item in data['fonts']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.GetPlatformFontsForNodeReturnT(
             fonts=[
@@ -25688,29 +29491,41 @@ def _css__get_platform_fonts_for_node_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__get_style_sheet_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetStyleSheetTextReturnT':
+
     if casing_strategy == 'snake':
         return css.GetStyleSheetTextReturnT(
             text=data['text']
         )
+
     if casing_strategy == 'camel':
         return css.GetStyleSheetTextReturnT(
             text=data['text']
         )
+
     if casing_strategy == 'pascal':
         return css.GetStyleSheetTextReturnT(
             text=data['Text']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _css__get_layers_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.GetLayersForNodeReturnT':
+
     if casing_strategy == 'snake':
         return css.GetLayersForNodeReturnT(
             root_layer=from_dict(
@@ -25719,6 +29534,7 @@ def _css__get_layers_for_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.GetLayersForNodeReturnT(
             root_layer=from_dict(
@@ -25727,6 +29543,7 @@ def _css__get_layers_for_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.GetLayersForNodeReturnT(
             root_layer=from_dict(
@@ -25736,29 +29553,41 @@ def _css__get_layers_for_node_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__take_computed_style_updates_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.TakeComputedStyleUpdatesReturnT':
+
     if casing_strategy == 'snake':
         return css.TakeComputedStyleUpdatesReturnT(
             node_ids=data['node_ids']
         )
+
     if casing_strategy == 'camel':
         return css.TakeComputedStyleUpdatesReturnT(
             node_ids=data['nodeIds']
         )
+
     if casing_strategy == 'pascal':
         return css.TakeComputedStyleUpdatesReturnT(
             node_ids=data['NodeIds']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _css__set_keyframe_key_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetKeyframeKeyReturnT':
+
     if casing_strategy == 'snake':
         return css.SetKeyframeKeyReturnT(
             key_text=from_dict(
@@ -25767,6 +29596,7 @@ def _css__set_keyframe_key_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.SetKeyframeKeyReturnT(
             key_text=from_dict(
@@ -25775,6 +29605,7 @@ def _css__set_keyframe_key_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.SetKeyframeKeyReturnT(
             key_text=from_dict(
@@ -25784,11 +29615,16 @@ def _css__set_keyframe_key_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__set_media_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetMediaTextReturnT':
+
     if casing_strategy == 'snake':
         return css.SetMediaTextReturnT(
             media=from_dict(
@@ -25797,6 +29633,7 @@ def _css__set_media_text_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.SetMediaTextReturnT(
             media=from_dict(
@@ -25805,6 +29642,7 @@ def _css__set_media_text_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.SetMediaTextReturnT(
             media=from_dict(
@@ -25814,11 +29652,16 @@ def _css__set_media_text_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__set_container_query_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetContainerQueryTextReturnT':
+
     if casing_strategy == 'snake':
         return css.SetContainerQueryTextReturnT(
             container_query=from_dict(
@@ -25827,6 +29670,7 @@ def _css__set_container_query_text_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.SetContainerQueryTextReturnT(
             container_query=from_dict(
@@ -25835,6 +29679,7 @@ def _css__set_container_query_text_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.SetContainerQueryTextReturnT(
             container_query=from_dict(
@@ -25844,11 +29689,16 @@ def _css__set_container_query_text_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__set_supports_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetSupportsTextReturnT':
+
     if casing_strategy == 'snake':
         return css.SetSupportsTextReturnT(
             supports=from_dict(
@@ -25857,6 +29707,7 @@ def _css__set_supports_text_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.SetSupportsTextReturnT(
             supports=from_dict(
@@ -25865,6 +29716,7 @@ def _css__set_supports_text_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.SetSupportsTextReturnT(
             supports=from_dict(
@@ -25874,11 +29726,16 @@ def _css__set_supports_text_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__set_scope_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetScopeTextReturnT':
+
     if casing_strategy == 'snake':
         return css.SetScopeTextReturnT(
             scope=from_dict(
@@ -25887,6 +29744,7 @@ def _css__set_scope_text_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.SetScopeTextReturnT(
             scope=from_dict(
@@ -25895,6 +29753,7 @@ def _css__set_scope_text_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.SetScopeTextReturnT(
             scope=from_dict(
@@ -25904,11 +29763,16 @@ def _css__set_scope_text_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__set_rule_selector_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetRuleSelectorReturnT':
+
     if casing_strategy == 'snake':
         return css.SetRuleSelectorReturnT(
             selector_list=from_dict(
@@ -25917,6 +29781,7 @@ def _css__set_rule_selector_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return css.SetRuleSelectorReturnT(
             selector_list=from_dict(
@@ -25925,6 +29790,7 @@ def _css__set_rule_selector_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return css.SetRuleSelectorReturnT(
             selector_list=from_dict(
@@ -25934,29 +29800,41 @@ def _css__set_rule_selector_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__set_style_sheet_text_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetStyleSheetTextReturnT':
+
     if casing_strategy == 'snake':
         return css.SetStyleSheetTextReturnT(
             source_map_url=data.get('source_map_url', None)
         )
+
     if casing_strategy == 'camel':
         return css.SetStyleSheetTextReturnT(
             source_map_url=data.get('sourceMapURL', None)
         )
+
     if casing_strategy == 'pascal':
         return css.SetStyleSheetTextReturnT(
             source_map_url=data.get('SourceMapURL', None)
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _css__set_style_texts_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.SetStyleTextsReturnT':
+
     if casing_strategy == 'snake':
         return css.SetStyleTextsReturnT(
             styles=[
@@ -25964,6 +29842,7 @@ def _css__set_style_texts_return_t__from_dict(
                 for item in data['styles']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.SetStyleTextsReturnT(
             styles=[
@@ -25971,6 +29850,7 @@ def _css__set_style_texts_return_t__from_dict(
                 for item in data['styles']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.SetStyleTextsReturnT(
             styles=[
@@ -25979,11 +29859,16 @@ def _css__set_style_texts_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__stop_rule_usage_tracking_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.StopRuleUsageTrackingReturnT':
+
     if casing_strategy == 'snake':
         return css.StopRuleUsageTrackingReturnT(
             rule_usage=[
@@ -25991,6 +29876,7 @@ def _css__stop_rule_usage_tracking_return_t__from_dict(
                 for item in data['rule_usage']
             ]
         )
+
     if casing_strategy == 'camel':
         return css.StopRuleUsageTrackingReturnT(
             rule_usage=[
@@ -25998,6 +29884,7 @@ def _css__stop_rule_usage_tracking_return_t__from_dict(
                 for item in data['ruleUsage']
             ]
         )
+
     if casing_strategy == 'pascal':
         return css.StopRuleUsageTrackingReturnT(
             rule_usage=[
@@ -26006,11 +29893,16 @@ def _css__stop_rule_usage_tracking_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _css__take_coverage_delta_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'css.TakeCoverageDeltaReturnT':
+
     if casing_strategy == 'snake':
         return css.TakeCoverageDeltaReturnT(
             coverage=[
@@ -26019,6 +29911,7 @@ def _css__take_coverage_delta_return_t__from_dict(
             ],
             timestamp=data['timestamp']
         )
+
     if casing_strategy == 'camel':
         return css.TakeCoverageDeltaReturnT(
             coverage=[
@@ -26027,6 +29920,7 @@ def _css__take_coverage_delta_return_t__from_dict(
             ],
             timestamp=data['timestamp']
         )
+
     if casing_strategy == 'pascal':
         return css.TakeCoverageDeltaReturnT(
             coverage=[
@@ -26036,11 +29930,16 @@ def _css__take_coverage_delta_return_t__from_dict(
             timestamp=data['Timestamp']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__request_cache_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.RequestCacheNamesReturnT':
+
     if casing_strategy == 'snake':
         return cache_storage.RequestCacheNamesReturnT(
             caches=[
@@ -26048,6 +29947,7 @@ def _cache_storage__request_cache_names_return_t__from_dict(
                 for item in data['caches']
             ]
         )
+
     if casing_strategy == 'camel':
         return cache_storage.RequestCacheNamesReturnT(
             caches=[
@@ -26055,6 +29955,7 @@ def _cache_storage__request_cache_names_return_t__from_dict(
                 for item in data['caches']
             ]
         )
+
     if casing_strategy == 'pascal':
         return cache_storage.RequestCacheNamesReturnT(
             caches=[
@@ -26063,11 +29964,16 @@ def _cache_storage__request_cache_names_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__request_cached_response_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.RequestCachedResponseReturnT':
+
     if casing_strategy == 'snake':
         return cache_storage.RequestCachedResponseReturnT(
             response=from_dict(
@@ -26076,6 +29982,7 @@ def _cache_storage__request_cached_response_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return cache_storage.RequestCachedResponseReturnT(
             response=from_dict(
@@ -26084,6 +29991,7 @@ def _cache_storage__request_cached_response_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return cache_storage.RequestCachedResponseReturnT(
             response=from_dict(
@@ -26093,11 +30001,16 @@ def _cache_storage__request_cached_response_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _cache_storage__request_entries_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'cache_storage.RequestEntriesReturnT':
+
     if casing_strategy == 'snake':
         return cache_storage.RequestEntriesReturnT(
             cache_data_entries=[
@@ -26106,6 +30019,7 @@ def _cache_storage__request_entries_return_t__from_dict(
             ],
             return_count=data['return_count']
         )
+
     if casing_strategy == 'camel':
         return cache_storage.RequestEntriesReturnT(
             cache_data_entries=[
@@ -26114,6 +30028,7 @@ def _cache_storage__request_entries_return_t__from_dict(
             ],
             return_count=data['returnCount']
         )
+
     if casing_strategy == 'pascal':
         return cache_storage.RequestEntriesReturnT(
             cache_data_entries=[
@@ -26123,47 +30038,66 @@ def _cache_storage__request_entries_return_t__from_dict(
             return_count=data['ReturnCount']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__collect_class_names_from_subtree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.CollectClassNamesFromSubtreeReturnT':
+
     if casing_strategy == 'snake':
         return dom.CollectClassNamesFromSubtreeReturnT(
             class_names=data['class_names']
         )
+
     if casing_strategy == 'camel':
         return dom.CollectClassNamesFromSubtreeReturnT(
             class_names=data['classNames']
         )
+
     if casing_strategy == 'pascal':
         return dom.CollectClassNamesFromSubtreeReturnT(
             class_names=data['ClassNames']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__copy_to_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.CopyToReturnT':
+
     if casing_strategy == 'snake':
         return dom.CopyToReturnT(
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return dom.CopyToReturnT(
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return dom.CopyToReturnT(
             node_id=data['NodeId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__describe_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.DescribeNodeReturnT':
+
     if casing_strategy == 'snake':
         return dom.DescribeNodeReturnT(
             node=from_dict(
@@ -26172,6 +30106,7 @@ def _dom__describe_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return dom.DescribeNodeReturnT(
             node=from_dict(
@@ -26180,6 +30115,7 @@ def _dom__describe_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return dom.DescribeNodeReturnT(
             node=from_dict(
@@ -26189,29 +30125,41 @@ def _dom__describe_node_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__get_attributes_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetAttributesReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetAttributesReturnT(
             attributes=data['attributes']
         )
+
     if casing_strategy == 'camel':
         return dom.GetAttributesReturnT(
             attributes=data['attributes']
         )
+
     if casing_strategy == 'pascal':
         return dom.GetAttributesReturnT(
             attributes=data['Attributes']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__get_box_model_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetBoxModelReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetBoxModelReturnT(
             model=from_dict(
@@ -26220,6 +30168,7 @@ def _dom__get_box_model_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return dom.GetBoxModelReturnT(
             model=from_dict(
@@ -26228,6 +30177,7 @@ def _dom__get_box_model_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return dom.GetBoxModelReturnT(
             model=from_dict(
@@ -26237,29 +30187,41 @@ def _dom__get_box_model_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__get_content_quads_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetContentQuadsReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetContentQuadsReturnT(
             quads=data['quads']
         )
+
     if casing_strategy == 'camel':
         return dom.GetContentQuadsReturnT(
             quads=data['quads']
         )
+
     if casing_strategy == 'pascal':
         return dom.GetContentQuadsReturnT(
             quads=data['Quads']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__get_document_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetDocumentReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetDocumentReturnT(
             root=from_dict(
@@ -26268,6 +30230,7 @@ def _dom__get_document_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return dom.GetDocumentReturnT(
             root=from_dict(
@@ -26276,6 +30239,7 @@ def _dom__get_document_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return dom.GetDocumentReturnT(
             root=from_dict(
@@ -26285,11 +30249,16 @@ def _dom__get_document_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__get_flattened_document_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetFlattenedDocumentReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetFlattenedDocumentReturnT(
             nodes=[
@@ -26297,6 +30266,7 @@ def _dom__get_flattened_document_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'camel':
         return dom.GetFlattenedDocumentReturnT(
             nodes=[
@@ -26304,6 +30274,7 @@ def _dom__get_flattened_document_return_t__from_dict(
                 for item in data['nodes']
             ]
         )
+
     if casing_strategy == 'pascal':
         return dom.GetFlattenedDocumentReturnT(
             nodes=[
@@ -26312,41 +30283,55 @@ def _dom__get_flattened_document_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__get_nodes_for_subtree_by_style_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetNodesForSubtreeByStyleReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetNodesForSubtreeByStyleReturnT(
             node_ids=data['node_ids']
         )
+
     if casing_strategy == 'camel':
         return dom.GetNodesForSubtreeByStyleReturnT(
             node_ids=data['nodeIds']
         )
+
     if casing_strategy == 'pascal':
         return dom.GetNodesForSubtreeByStyleReturnT(
             node_ids=data['NodeIds']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__get_node_for_location_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetNodeForLocationReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetNodeForLocationReturnT(
             backend_node_id=data['backend_node_id'],
             frame_id=data['frame_id'],
             node_id=data.get('node_id', None)
         )
+
     if casing_strategy == 'camel':
         return dom.GetNodeForLocationReturnT(
             backend_node_id=data['backendNodeId'],
             frame_id=data['frameId'],
             node_id=data.get('nodeId', None)
         )
+
     if casing_strategy == 'pascal':
         return dom.GetNodeForLocationReturnT(
             backend_node_id=data['BackendNodeId'],
@@ -26354,212 +30339,294 @@ def _dom__get_node_for_location_return_t__from_dict(
             node_id=data.get('NodeId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__get_outer_html_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetOuterHTMLReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetOuterHTMLReturnT(
             outer_html=data['outer_html']
         )
+
     if casing_strategy == 'camel':
         return dom.GetOuterHTMLReturnT(
             outer_html=data['outerHTML']
         )
+
     if casing_strategy == 'pascal':
         return dom.GetOuterHTMLReturnT(
             outer_html=data['OuterHTML']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__get_relayout_boundary_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetRelayoutBoundaryReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetRelayoutBoundaryReturnT(
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return dom.GetRelayoutBoundaryReturnT(
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return dom.GetRelayoutBoundaryReturnT(
             node_id=data['NodeId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__get_search_results_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetSearchResultsReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetSearchResultsReturnT(
             node_ids=data['node_ids']
         )
+
     if casing_strategy == 'camel':
         return dom.GetSearchResultsReturnT(
             node_ids=data['nodeIds']
         )
+
     if casing_strategy == 'pascal':
         return dom.GetSearchResultsReturnT(
             node_ids=data['NodeIds']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__move_to_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.MoveToReturnT':
+
     if casing_strategy == 'snake':
         return dom.MoveToReturnT(
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return dom.MoveToReturnT(
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return dom.MoveToReturnT(
             node_id=data['NodeId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__perform_search_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.PerformSearchReturnT':
+
     if casing_strategy == 'snake':
         return dom.PerformSearchReturnT(
             search_id=data['search_id'],
             result_count=data['result_count']
         )
+
     if casing_strategy == 'camel':
         return dom.PerformSearchReturnT(
             search_id=data['searchId'],
             result_count=data['resultCount']
         )
+
     if casing_strategy == 'pascal':
         return dom.PerformSearchReturnT(
             search_id=data['SearchId'],
             result_count=data['ResultCount']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__push_node_by_path_to_frontend_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.PushNodeByPathToFrontendReturnT':
+
     if casing_strategy == 'snake':
         return dom.PushNodeByPathToFrontendReturnT(
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return dom.PushNodeByPathToFrontendReturnT(
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return dom.PushNodeByPathToFrontendReturnT(
             node_id=data['NodeId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__push_nodes_by_backend_ids_to_frontend_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.PushNodesByBackendIdsToFrontendReturnT':
+
     if casing_strategy == 'snake':
         return dom.PushNodesByBackendIdsToFrontendReturnT(
             node_ids=data['node_ids']
         )
+
     if casing_strategy == 'camel':
         return dom.PushNodesByBackendIdsToFrontendReturnT(
             node_ids=data['nodeIds']
         )
+
     if casing_strategy == 'pascal':
         return dom.PushNodesByBackendIdsToFrontendReturnT(
             node_ids=data['NodeIds']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__query_selector_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.QuerySelectorReturnT':
+
     if casing_strategy == 'snake':
         return dom.QuerySelectorReturnT(
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return dom.QuerySelectorReturnT(
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return dom.QuerySelectorReturnT(
             node_id=data['NodeId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__query_selector_all_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.QuerySelectorAllReturnT':
+
     if casing_strategy == 'snake':
         return dom.QuerySelectorAllReturnT(
             node_ids=data['node_ids']
         )
+
     if casing_strategy == 'camel':
         return dom.QuerySelectorAllReturnT(
             node_ids=data['nodeIds']
         )
+
     if casing_strategy == 'pascal':
         return dom.QuerySelectorAllReturnT(
             node_ids=data['NodeIds']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__get_top_layer_elements_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetTopLayerElementsReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetTopLayerElementsReturnT(
             node_ids=data['node_ids']
         )
+
     if casing_strategy == 'camel':
         return dom.GetTopLayerElementsReturnT(
             node_ids=data['nodeIds']
         )
+
     if casing_strategy == 'pascal':
         return dom.GetTopLayerElementsReturnT(
             node_ids=data['NodeIds']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__request_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.RequestNodeReturnT':
+
     if casing_strategy == 'snake':
         return dom.RequestNodeReturnT(
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return dom.RequestNodeReturnT(
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return dom.RequestNodeReturnT(
             node_id=data['NodeId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__resolve_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.ResolveNodeReturnT':
+
     if casing_strategy == 'snake':
         return dom.ResolveNodeReturnT(
             object=from_dict(
@@ -26568,6 +30635,7 @@ def _dom__resolve_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return dom.ResolveNodeReturnT(
             object=from_dict(
@@ -26576,6 +30644,7 @@ def _dom__resolve_node_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return dom.ResolveNodeReturnT(
             object=from_dict(
@@ -26585,11 +30654,16 @@ def _dom__resolve_node_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__get_node_stack_traces_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetNodeStackTracesReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetNodeStackTracesReturnT(
             creation=from_dict(
@@ -26598,6 +30672,7 @@ def _dom__get_node_stack_traces_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return dom.GetNodeStackTracesReturnT(
             creation=from_dict(
@@ -26606,6 +30681,7 @@ def _dom__get_node_stack_traces_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return dom.GetNodeStackTracesReturnT(
             creation=from_dict(
@@ -26615,104 +30691,144 @@ def _dom__get_node_stack_traces_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__get_file_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetFileInfoReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetFileInfoReturnT(
             path=data['path']
         )
+
     if casing_strategy == 'camel':
         return dom.GetFileInfoReturnT(
             path=data['path']
         )
+
     if casing_strategy == 'pascal':
         return dom.GetFileInfoReturnT(
             path=data['Path']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__set_node_name_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.SetNodeNameReturnT':
+
     if casing_strategy == 'snake':
         return dom.SetNodeNameReturnT(
             node_id=data['node_id']
         )
+
     if casing_strategy == 'camel':
         return dom.SetNodeNameReturnT(
             node_id=data['nodeId']
         )
+
     if casing_strategy == 'pascal':
         return dom.SetNodeNameReturnT(
             node_id=data['NodeId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__get_frame_owner_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetFrameOwnerReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetFrameOwnerReturnT(
             backend_node_id=data['backend_node_id'],
             node_id=data.get('node_id', None)
         )
+
     if casing_strategy == 'camel':
         return dom.GetFrameOwnerReturnT(
             backend_node_id=data['backendNodeId'],
             node_id=data.get('nodeId', None)
         )
+
     if casing_strategy == 'pascal':
         return dom.GetFrameOwnerReturnT(
             backend_node_id=data['BackendNodeId'],
             node_id=data.get('NodeId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom__get_container_for_node_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetContainerForNodeReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetContainerForNodeReturnT(
             node_id=data.get('node_id', None)
         )
+
     if casing_strategy == 'camel':
         return dom.GetContainerForNodeReturnT(
             node_id=data.get('nodeId', None)
         )
+
     if casing_strategy == 'pascal':
         return dom.GetContainerForNodeReturnT(
             node_id=data.get('NodeId', None)
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom__get_querying_descendants_for_container_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom.GetQueryingDescendantsForContainerReturnT':
+
     if casing_strategy == 'snake':
         return dom.GetQueryingDescendantsForContainerReturnT(
             node_ids=data['node_ids']
         )
+
     if casing_strategy == 'camel':
         return dom.GetQueryingDescendantsForContainerReturnT(
             node_ids=data['nodeIds']
         )
+
     if casing_strategy == 'pascal':
         return dom.GetQueryingDescendantsForContainerReturnT(
             node_ids=data['NodeIds']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _dom_debugger__get_event_listeners_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_debugger.GetEventListenersReturnT':
+
     if casing_strategy == 'snake':
         return dom_debugger.GetEventListenersReturnT(
             listeners=[
@@ -26720,6 +30836,7 @@ def _dom_debugger__get_event_listeners_return_t__from_dict(
                 for item in data['listeners']
             ]
         )
+
     if casing_strategy == 'camel':
         return dom_debugger.GetEventListenersReturnT(
             listeners=[
@@ -26727,6 +30844,7 @@ def _dom_debugger__get_event_listeners_return_t__from_dict(
                 for item in data['listeners']
             ]
         )
+
     if casing_strategy == 'pascal':
         return dom_debugger.GetEventListenersReturnT(
             listeners=[
@@ -26735,11 +30853,16 @@ def _dom_debugger__get_event_listeners_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__get_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.GetSnapshotReturnT':
+
     if casing_strategy == 'snake':
         return dom_snapshot.GetSnapshotReturnT(
             dom_nodes=[
@@ -26755,6 +30878,7 @@ def _dom_snapshot__get_snapshot_return_t__from_dict(
                 for item in data['computed_styles']
             ]
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.GetSnapshotReturnT(
             dom_nodes=[
@@ -26770,6 +30894,7 @@ def _dom_snapshot__get_snapshot_return_t__from_dict(
                 for item in data['computedStyles']
             ]
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.GetSnapshotReturnT(
             dom_nodes=[
@@ -26786,11 +30911,16 @@ def _dom_snapshot__get_snapshot_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_snapshot__capture_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_snapshot.CaptureSnapshotReturnT':
+
     if casing_strategy == 'snake':
         return dom_snapshot.CaptureSnapshotReturnT(
             documents=[
@@ -26799,6 +30929,7 @@ def _dom_snapshot__capture_snapshot_return_t__from_dict(
             ],
             strings=data['strings']
         )
+
     if casing_strategy == 'camel':
         return dom_snapshot.CaptureSnapshotReturnT(
             documents=[
@@ -26807,6 +30938,7 @@ def _dom_snapshot__capture_snapshot_return_t__from_dict(
             ],
             strings=data['strings']
         )
+
     if casing_strategy == 'pascal':
         return dom_snapshot.CaptureSnapshotReturnT(
             documents=[
@@ -26816,29 +30948,41 @@ def _dom_snapshot__capture_snapshot_return_t__from_dict(
             strings=data['Strings']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _dom_storage__get_dom_storage_items_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'dom_storage.GetDOMStorageItemsReturnT':
+
     if casing_strategy == 'snake':
         return dom_storage.GetDOMStorageItemsReturnT(
             entries=data['entries']
         )
+
     if casing_strategy == 'camel':
         return dom_storage.GetDOMStorageItemsReturnT(
             entries=data['entries']
         )
+
     if casing_strategy == 'pascal':
         return dom_storage.GetDOMStorageItemsReturnT(
             entries=data['Entries']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _database__execute_sql_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'database.ExecuteSQLReturnT':
+
     if casing_strategy == 'snake':
         return database.ExecuteSQLReturnT(
             column_names=data.get('column_names', []),
@@ -26849,6 +30993,7 @@ def _database__execute_sql_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return database.ExecuteSQLReturnT(
             column_names=data.get('columnNames', []),
@@ -26859,6 +31004,7 @@ def _database__execute_sql_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return database.ExecuteSQLReturnT(
             column_names=data.get('ColumnNames', []),
@@ -26870,98 +31016,133 @@ def _database__execute_sql_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _database__get_database_table_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'database.GetDatabaseTableNamesReturnT':
+
     if casing_strategy == 'snake':
         return database.GetDatabaseTableNamesReturnT(
             table_names=data['table_names']
         )
+
     if casing_strategy == 'camel':
         return database.GetDatabaseTableNamesReturnT(
             table_names=data['tableNames']
         )
+
     if casing_strategy == 'pascal':
         return database.GetDatabaseTableNamesReturnT(
             table_names=data['TableNames']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _emulation__can_emulate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.CanEmulateReturnT':
+
     if casing_strategy == 'snake':
         return emulation.CanEmulateReturnT(
             result=data['result']
         )
+
     if casing_strategy == 'camel':
         return emulation.CanEmulateReturnT(
             result=data['result']
         )
+
     if casing_strategy == 'pascal':
         return emulation.CanEmulateReturnT(
             result=data['Result']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _emulation__set_virtual_time_policy_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'emulation.SetVirtualTimePolicyReturnT':
+
     if casing_strategy == 'snake':
         return emulation.SetVirtualTimePolicyReturnT(
             virtual_time_ticks_base=data['virtual_time_ticks_base']
         )
+
     if casing_strategy == 'camel':
         return emulation.SetVirtualTimePolicyReturnT(
             virtual_time_ticks_base=data['virtualTimeTicksBase']
         )
+
     if casing_strategy == 'pascal':
         return emulation.SetVirtualTimePolicyReturnT(
             virtual_time_ticks_base=data['VirtualTimeTicksBase']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _headless_experimental__begin_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'headless_experimental.BeginFrameReturnT':
+
     if casing_strategy == 'snake':
         return headless_experimental.BeginFrameReturnT(
             has_damage=data['has_damage'],
             screenshot_data=data.get('screenshot_data', None)
         )
+
     if casing_strategy == 'camel':
         return headless_experimental.BeginFrameReturnT(
             has_damage=data['hasDamage'],
             screenshot_data=data.get('screenshotData', None)
         )
+
     if casing_strategy == 'pascal':
         return headless_experimental.BeginFrameReturnT(
             has_damage=data['HasDamage'],
             screenshot_data=data.get('ScreenshotData', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _io__read_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'io.ReadReturnT':
+
     if casing_strategy == 'snake':
         return io.ReadReturnT(
             base64_encoded=data.get('base64_encoded', None),
             data=data['data'],
             eof=data['eof']
         )
+
     if casing_strategy == 'camel':
         return io.ReadReturnT(
             base64_encoded=data.get('base64Encoded', None),
             data=data['data'],
             eof=data['eof']
         )
+
     if casing_strategy == 'pascal':
         return io.ReadReturnT(
             base64_encoded=data.get('Base64Encoded', None),
@@ -26969,29 +31150,41 @@ def _io__read_return_t__from_dict(
             eof=data['Eof']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _io__resolve_blob_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'io.ResolveBlobReturnT':
+
     if casing_strategy == 'snake':
         return io.ResolveBlobReturnT(
             uuid=data['uuid']
         )
+
     if casing_strategy == 'camel':
         return io.ResolveBlobReturnT(
             uuid=data['uuid']
         )
+
     if casing_strategy == 'pascal':
         return io.ResolveBlobReturnT(
             uuid=data['Uuid']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _indexed_db__request_data_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.RequestDataReturnT':
+
     if casing_strategy == 'snake':
         return indexed_db.RequestDataReturnT(
             object_store_data_entries=[
@@ -27000,6 +31193,7 @@ def _indexed_db__request_data_return_t__from_dict(
             ],
             has_more=data['has_more']
         )
+
     if casing_strategy == 'camel':
         return indexed_db.RequestDataReturnT(
             object_store_data_entries=[
@@ -27008,6 +31202,7 @@ def _indexed_db__request_data_return_t__from_dict(
             ],
             has_more=data['hasMore']
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.RequestDataReturnT(
             object_store_data_entries=[
@@ -27017,32 +31212,44 @@ def _indexed_db__request_data_return_t__from_dict(
             has_more=data['HasMore']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__get_metadata_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.GetMetadataReturnT':
+
     if casing_strategy == 'snake':
         return indexed_db.GetMetadataReturnT(
             entries_count=data['entries_count'],
             key_generator_value=data['key_generator_value']
         )
+
     if casing_strategy == 'camel':
         return indexed_db.GetMetadataReturnT(
             entries_count=data['entriesCount'],
             key_generator_value=data['keyGeneratorValue']
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.GetMetadataReturnT(
             entries_count=data['EntriesCount'],
             key_generator_value=data['KeyGeneratorValue']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__request_database_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.RequestDatabaseReturnT':
+
     if casing_strategy == 'snake':
         return indexed_db.RequestDatabaseReturnT(
             database_with_object_stores=from_dict(
@@ -27051,6 +31258,7 @@ def _indexed_db__request_database_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return indexed_db.RequestDatabaseReturnT(
             database_with_object_stores=from_dict(
@@ -27059,6 +31267,7 @@ def _indexed_db__request_database_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.RequestDatabaseReturnT(
             database_with_object_stores=from_dict(
@@ -27068,152 +31277,208 @@ def _indexed_db__request_database_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _indexed_db__request_database_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'indexed_db.RequestDatabaseNamesReturnT':
+
     if casing_strategy == 'snake':
         return indexed_db.RequestDatabaseNamesReturnT(
             database_names=data['database_names']
         )
+
     if casing_strategy == 'camel':
         return indexed_db.RequestDatabaseNamesReturnT(
             database_names=data['databaseNames']
         )
+
     if casing_strategy == 'pascal':
         return indexed_db.RequestDatabaseNamesReturnT(
             database_names=data['DatabaseNames']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _layer_tree__compositing_reasons_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.CompositingReasonsReturnT':
+
     if casing_strategy == 'snake':
         return layer_tree.CompositingReasonsReturnT(
             compositing_reasons=data['compositing_reasons'],
             compositing_reason_ids=data['compositing_reason_ids']
         )
+
     if casing_strategy == 'camel':
         return layer_tree.CompositingReasonsReturnT(
             compositing_reasons=data['compositingReasons'],
             compositing_reason_ids=data['compositingReasonIds']
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.CompositingReasonsReturnT(
             compositing_reasons=data['CompositingReasons'],
             compositing_reason_ids=data['CompositingReasonIds']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _layer_tree__load_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.LoadSnapshotReturnT':
+
     if casing_strategy == 'snake':
         return layer_tree.LoadSnapshotReturnT(
             snapshot_id=data['snapshot_id']
         )
+
     if casing_strategy == 'camel':
         return layer_tree.LoadSnapshotReturnT(
             snapshot_id=data['snapshotId']
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.LoadSnapshotReturnT(
             snapshot_id=data['SnapshotId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _layer_tree__make_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.MakeSnapshotReturnT':
+
     if casing_strategy == 'snake':
         return layer_tree.MakeSnapshotReturnT(
             snapshot_id=data['snapshot_id']
         )
+
     if casing_strategy == 'camel':
         return layer_tree.MakeSnapshotReturnT(
             snapshot_id=data['snapshotId']
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.MakeSnapshotReturnT(
             snapshot_id=data['SnapshotId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _layer_tree__profile_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.ProfileSnapshotReturnT':
+
     if casing_strategy == 'snake':
         return layer_tree.ProfileSnapshotReturnT(
             timings=data['timings']
         )
+
     if casing_strategy == 'camel':
         return layer_tree.ProfileSnapshotReturnT(
             timings=data['timings']
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.ProfileSnapshotReturnT(
             timings=data['Timings']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _layer_tree__replay_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.ReplaySnapshotReturnT':
+
     if casing_strategy == 'snake':
         return layer_tree.ReplaySnapshotReturnT(
             data_url=data['data_url']
         )
+
     if casing_strategy == 'camel':
         return layer_tree.ReplaySnapshotReturnT(
             data_url=data['dataURL']
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.ReplaySnapshotReturnT(
             data_url=data['DataURL']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _layer_tree__snapshot_command_log_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'layer_tree.SnapshotCommandLogReturnT':
+
     if casing_strategy == 'snake':
         return layer_tree.SnapshotCommandLogReturnT(
             command_log=data['command_log']
         )
+
     if casing_strategy == 'camel':
         return layer_tree.SnapshotCommandLogReturnT(
             command_log=data['commandLog']
         )
+
     if casing_strategy == 'pascal':
         return layer_tree.SnapshotCommandLogReturnT(
             command_log=data['CommandLog']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _memory__get_dom_counters_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetDOMCountersReturnT':
+
     if casing_strategy == 'snake':
         return memory.GetDOMCountersReturnT(
             documents=data['documents'],
             nodes=data['nodes'],
             js_event_listeners=data['js_event_listeners']
         )
+
     if casing_strategy == 'camel':
         return memory.GetDOMCountersReturnT(
             documents=data['documents'],
             nodes=data['nodes'],
             js_event_listeners=data['jsEventListeners']
         )
+
     if casing_strategy == 'pascal':
         return memory.GetDOMCountersReturnT(
             documents=data['Documents'],
@@ -27221,11 +31486,16 @@ def _memory__get_dom_counters_return_t__from_dict(
             js_event_listeners=data['JsEventListeners']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _memory__get_all_time_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetAllTimeSamplingProfileReturnT':
+
     if casing_strategy == 'snake':
         return memory.GetAllTimeSamplingProfileReturnT(
             profile=from_dict(
@@ -27234,6 +31504,7 @@ def _memory__get_all_time_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return memory.GetAllTimeSamplingProfileReturnT(
             profile=from_dict(
@@ -27242,6 +31513,7 @@ def _memory__get_all_time_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return memory.GetAllTimeSamplingProfileReturnT(
             profile=from_dict(
@@ -27250,12 +31522,17 @@ def _memory__get_all_time_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _memory__get_browser_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetBrowserSamplingProfileReturnT':
+
     if casing_strategy == 'snake':
         return memory.GetBrowserSamplingProfileReturnT(
             profile=from_dict(
@@ -27264,6 +31541,7 @@ def _memory__get_browser_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return memory.GetBrowserSamplingProfileReturnT(
             profile=from_dict(
@@ -27272,6 +31550,7 @@ def _memory__get_browser_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return memory.GetBrowserSamplingProfileReturnT(
             profile=from_dict(
@@ -27280,12 +31559,17 @@ def _memory__get_browser_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _memory__get_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'memory.GetSamplingProfileReturnT':
+
     if casing_strategy == 'snake':
         return memory.GetSamplingProfileReturnT(
             profile=from_dict(
@@ -27294,6 +31578,7 @@ def _memory__get_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return memory.GetSamplingProfileReturnT(
             profile=from_dict(
@@ -27302,6 +31587,7 @@ def _memory__get_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return memory.GetSamplingProfileReturnT(
             profile=from_dict(
@@ -27311,65 +31597,91 @@ def _memory__get_sampling_profile_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__can_clear_browser_cache_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CanClearBrowserCacheReturnT':
+
     if casing_strategy == 'snake':
         return network.CanClearBrowserCacheReturnT(
             result=data['result']
         )
+
     if casing_strategy == 'camel':
         return network.CanClearBrowserCacheReturnT(
             result=data['result']
         )
+
     if casing_strategy == 'pascal':
         return network.CanClearBrowserCacheReturnT(
             result=data['Result']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__can_clear_browser_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CanClearBrowserCookiesReturnT':
+
     if casing_strategy == 'snake':
         return network.CanClearBrowserCookiesReturnT(
             result=data['result']
         )
+
     if casing_strategy == 'camel':
         return network.CanClearBrowserCookiesReturnT(
             result=data['result']
         )
+
     if casing_strategy == 'pascal':
         return network.CanClearBrowserCookiesReturnT(
             result=data['Result']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__can_emulate_network_conditions_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.CanEmulateNetworkConditionsReturnT':
+
     if casing_strategy == 'snake':
         return network.CanEmulateNetworkConditionsReturnT(
             result=data['result']
         )
+
     if casing_strategy == 'camel':
         return network.CanEmulateNetworkConditionsReturnT(
             result=data['result']
         )
+
     if casing_strategy == 'pascal':
         return network.CanEmulateNetworkConditionsReturnT(
             result=data['Result']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__get_all_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetAllCookiesReturnT':
+
     if casing_strategy == 'snake':
         return network.GetAllCookiesReturnT(
             cookies=[
@@ -27377,6 +31689,7 @@ def _network__get_all_cookies_return_t__from_dict(
                 for item in data['cookies']
             ]
         )
+
     if casing_strategy == 'camel':
         return network.GetAllCookiesReturnT(
             cookies=[
@@ -27384,6 +31697,7 @@ def _network__get_all_cookies_return_t__from_dict(
                 for item in data['cookies']
             ]
         )
+
     if casing_strategy == 'pascal':
         return network.GetAllCookiesReturnT(
             cookies=[
@@ -27391,30 +31705,42 @@ def _network__get_all_cookies_return_t__from_dict(
                 for item in data['Cookies']
             ]
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__get_certificate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetCertificateReturnT':
+
     if casing_strategy == 'snake':
         return network.GetCertificateReturnT(
             table_names=data['table_names']
         )
+
     if casing_strategy == 'camel':
         return network.GetCertificateReturnT(
             table_names=data['tableNames']
         )
+
     if casing_strategy == 'pascal':
         return network.GetCertificateReturnT(
             table_names=data['TableNames']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__get_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetCookiesReturnT':
+
     if casing_strategy == 'snake':
         return network.GetCookiesReturnT(
             cookies=[
@@ -27422,6 +31748,7 @@ def _network__get_cookies_return_t__from_dict(
                 for item in data['cookies']
             ]
         )
+
     if casing_strategy == 'camel':
         return network.GetCookiesReturnT(
             cookies=[
@@ -27429,6 +31756,7 @@ def _network__get_cookies_return_t__from_dict(
                 for item in data['cookies']
             ]
         )
+
     if casing_strategy == 'pascal':
         return network.GetCookiesReturnT(
             cookies=[
@@ -27437,89 +31765,122 @@ def _network__get_cookies_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__get_response_body_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetResponseBodyReturnT':
+
     if casing_strategy == 'snake':
         return network.GetResponseBodyReturnT(
             body=data['body'],
             base64_encoded=data['base64_encoded']
         )
+
     if casing_strategy == 'camel':
         return network.GetResponseBodyReturnT(
             body=data['body'],
             base64_encoded=data['base64Encoded']
         )
+
     if casing_strategy == 'pascal':
         return network.GetResponseBodyReturnT(
             body=data['Body'],
             base64_encoded=data['Base64Encoded']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__get_request_post_data_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetRequestPostDataReturnT':
+
     if casing_strategy == 'snake':
         return network.GetRequestPostDataReturnT(
             post_data=data['post_data']
         )
+
     if casing_strategy == 'camel':
         return network.GetRequestPostDataReturnT(
             post_data=data['postData']
         )
+
     if casing_strategy == 'pascal':
         return network.GetRequestPostDataReturnT(
             post_data=data['PostData']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__get_response_body_for_interception_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetResponseBodyForInterceptionReturnT':
+
     if casing_strategy == 'snake':
         return network.GetResponseBodyForInterceptionReturnT(
             body=data['body'],
             base64_encoded=data['base64_encoded']
         )
+
     if casing_strategy == 'camel':
         return network.GetResponseBodyForInterceptionReturnT(
             body=data['body'],
             base64_encoded=data['base64Encoded']
         )
+
     if casing_strategy == 'pascal':
         return network.GetResponseBodyForInterceptionReturnT(
             body=data['Body'],
             base64_encoded=data['Base64Encoded']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__take_response_body_for_interception_as_stream_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.TakeResponseBodyForInterceptionAsStreamReturnT':
+
     if casing_strategy == 'snake':
         return network.TakeResponseBodyForInterceptionAsStreamReturnT(
             stream=data['stream']
         )
+
     if casing_strategy == 'camel':
         return network.TakeResponseBodyForInterceptionAsStreamReturnT(
             stream=data['stream']
         )
+
     if casing_strategy == 'pascal':
         return network.TakeResponseBodyForInterceptionAsStreamReturnT(
             stream=data['Stream']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__search_in_response_body_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SearchInResponseBodyReturnT':
+
     if casing_strategy == 'snake':
         return network.SearchInResponseBodyReturnT(
             result=[
@@ -27527,6 +31888,7 @@ def _network__search_in_response_body_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'camel':
         return network.SearchInResponseBodyReturnT(
             result=[
@@ -27534,6 +31896,7 @@ def _network__search_in_response_body_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'pascal':
         return network.SearchInResponseBodyReturnT(
             result=[
@@ -27542,29 +31905,41 @@ def _network__search_in_response_body_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__set_cookie_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.SetCookieReturnT':
+
     if casing_strategy == 'snake':
         return network.SetCookieReturnT(
             success=data['success']
         )
+
     if casing_strategy == 'camel':
         return network.SetCookieReturnT(
             success=data['success']
         )
+
     if casing_strategy == 'pascal':
         return network.SetCookieReturnT(
             success=data['Success']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _network__get_security_isolation_status_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.GetSecurityIsolationStatusReturnT':
+
     if casing_strategy == 'snake':
         return network.GetSecurityIsolationStatusReturnT(
             status=from_dict(
@@ -27573,6 +31948,7 @@ def _network__get_security_isolation_status_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return network.GetSecurityIsolationStatusReturnT(
             status=from_dict(
@@ -27581,6 +31957,7 @@ def _network__get_security_isolation_status_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return network.GetSecurityIsolationStatusReturnT(
             status=from_dict(
@@ -27590,11 +31967,16 @@ def _network__get_security_isolation_status_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _network__load_network_resource_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'network.LoadNetworkResourceReturnT':
+
     if casing_strategy == 'snake':
         return network.LoadNetworkResourceReturnT(
             resource=from_dict(
@@ -27603,6 +31985,7 @@ def _network__load_network_resource_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return network.LoadNetworkResourceReturnT(
             resource=from_dict(
@@ -27611,6 +31994,7 @@ def _network__load_network_resource_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return network.LoadNetworkResourceReturnT(
             resource=from_dict(
@@ -27620,155 +32004,216 @@ def _network__load_network_resource_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _overlay__get_highlight_object_for_test_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GetHighlightObjectForTestReturnT':
+
     if casing_strategy == 'snake':
         return overlay.GetHighlightObjectForTestReturnT(
             highlight=data['highlight']
         )
+
     if casing_strategy == 'camel':
         return overlay.GetHighlightObjectForTestReturnT(
             highlight=data['highlight']
         )
+
     if casing_strategy == 'pascal':
         return overlay.GetHighlightObjectForTestReturnT(
             highlight=data['Highlight']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _overlay__get_grid_highlight_objects_for_test_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GetGridHighlightObjectsForTestReturnT':
+
     if casing_strategy == 'snake':
         return overlay.GetGridHighlightObjectsForTestReturnT(
             highlights=data['highlights']
         )
+
     if casing_strategy == 'camel':
         return overlay.GetGridHighlightObjectsForTestReturnT(
             highlights=data['highlights']
         )
+
     if casing_strategy == 'pascal':
         return overlay.GetGridHighlightObjectsForTestReturnT(
             highlights=data['Highlights']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _overlay__get_source_order_highlight_object_for_test_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'overlay.GetSourceOrderHighlightObjectForTestReturnT':
+
     if casing_strategy == 'snake':
         return overlay.GetSourceOrderHighlightObjectForTestReturnT(
             highlight=data['highlight']
         )
+
     if casing_strategy == 'camel':
         return overlay.GetSourceOrderHighlightObjectForTestReturnT(
             highlight=data['highlight']
         )
+
     if casing_strategy == 'pascal':
         return overlay.GetSourceOrderHighlightObjectForTestReturnT(
             highlight=data['Highlight']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__add_script_to_evaluate_on_load_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AddScriptToEvaluateOnLoadReturnT':
+
     if casing_strategy == 'snake':
         return page.AddScriptToEvaluateOnLoadReturnT(
             identifier=data['identifier']
         )
+
     if casing_strategy == 'camel':
         return page.AddScriptToEvaluateOnLoadReturnT(
             identifier=data['identifier']
         )
+
     if casing_strategy == 'pascal':
         return page.AddScriptToEvaluateOnLoadReturnT(
             identifier=data['Identifier']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__add_script_to_evaluate_on_new_document_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.AddScriptToEvaluateOnNewDocumentReturnT':
+
     if casing_strategy == 'snake':
         return page.AddScriptToEvaluateOnNewDocumentReturnT(
             identifier=data['identifier']
         )
+
     if casing_strategy == 'camel':
         return page.AddScriptToEvaluateOnNewDocumentReturnT(
             identifier=data['identifier']
         )
+
     if casing_strategy == 'pascal':
         return page.AddScriptToEvaluateOnNewDocumentReturnT(
             identifier=data['Identifier']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__capture_screenshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CaptureScreenshotReturnT':
+
     if casing_strategy == 'snake':
         return page.CaptureScreenshotReturnT(
             data=data['data']
         )
+
     if casing_strategy == 'camel':
         return page.CaptureScreenshotReturnT(
             data=data['data']
         )
+
     if casing_strategy == 'pascal':
         return page.CaptureScreenshotReturnT(
             data=data['Data']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__capture_snapshot_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CaptureSnapshotReturnT':
+
     if casing_strategy == 'snake':
         return page.CaptureSnapshotReturnT(
             data=data['data']
         )
+
     if casing_strategy == 'camel':
         return page.CaptureSnapshotReturnT(
             data=data['data']
         )
+
     if casing_strategy == 'pascal':
         return page.CaptureSnapshotReturnT(
             data=data['Data']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__create_isolated_world_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.CreateIsolatedWorldReturnT':
+
     if casing_strategy == 'snake':
         return page.CreateIsolatedWorldReturnT(
             execution_context_id=data['execution_context_id']
         )
+
     if casing_strategy == 'camel':
         return page.CreateIsolatedWorldReturnT(
             execution_context_id=data['executionContextId']
         )
+
     if casing_strategy == 'pascal':
         return page.CreateIsolatedWorldReturnT(
             execution_context_id=data['ExecutionContextId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__get_app_manifest_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetAppManifestReturnT':
+
     if casing_strategy == 'snake':
         return page.GetAppManifestReturnT(
             url=data['url'],
@@ -27783,6 +32228,7 @@ def _page__get_app_manifest_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return page.GetAppManifestReturnT(
             url=data['url'],
@@ -27797,6 +32243,7 @@ def _page__get_app_manifest_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return page.GetAppManifestReturnT(
             url=data['Url'],
@@ -27812,11 +32259,16 @@ def _page__get_app_manifest_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_installability_errors_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetInstallabilityErrorsReturnT':
+
     if casing_strategy == 'snake':
         return page.GetInstallabilityErrorsReturnT(
             installability_errors=[
@@ -27824,6 +32276,7 @@ def _page__get_installability_errors_return_t__from_dict(
                 for item in data['installability_errors']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.GetInstallabilityErrorsReturnT(
             installability_errors=[
@@ -27831,6 +32284,7 @@ def _page__get_installability_errors_return_t__from_dict(
                 for item in data['installabilityErrors']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.GetInstallabilityErrorsReturnT(
             installability_errors=[
@@ -27839,50 +32293,69 @@ def _page__get_installability_errors_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_manifest_icons_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetManifestIconsReturnT':
+
     if casing_strategy == 'snake':
         return page.GetManifestIconsReturnT(
             primary_icon=data.get('primary_icon', None)
         )
+
     if casing_strategy == 'camel':
         return page.GetManifestIconsReturnT(
             primary_icon=data.get('primaryIcon', None)
         )
+
     if casing_strategy == 'pascal':
         return page.GetManifestIconsReturnT(
             primary_icon=data.get('PrimaryIcon', None)
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _page__get_app_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetAppIdReturnT':
+
     if casing_strategy == 'snake':
         return page.GetAppIdReturnT(
             app_id=data.get('app_id', None),
             recommended_id=data.get('recommended_id', None)
         )
+
     if casing_strategy == 'camel':
         return page.GetAppIdReturnT(
             app_id=data.get('appId', None),
             recommended_id=data.get('recommendedId', None)
         )
+
     if casing_strategy == 'pascal':
         return page.GetAppIdReturnT(
             app_id=data.get('AppId', None),
             recommended_id=data.get('RecommendedId', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_ad_script_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetAdScriptIdReturnT':
+
     if casing_strategy == 'snake':
         return page.GetAdScriptIdReturnT(
             ad_script_id=from_dict(
@@ -27891,6 +32364,7 @@ def _page__get_ad_script_id_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return page.GetAdScriptIdReturnT(
             ad_script_id=from_dict(
@@ -27899,6 +32373,7 @@ def _page__get_ad_script_id_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return page.GetAdScriptIdReturnT(
             ad_script_id=from_dict(
@@ -27908,11 +32383,16 @@ def _page__get_ad_script_id_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetCookiesReturnT':
+
     if casing_strategy == 'snake':
         return page.GetCookiesReturnT(
             cookies=[
@@ -27920,6 +32400,7 @@ def _page__get_cookies_return_t__from_dict(
                 for item in data['cookies']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.GetCookiesReturnT(
             cookies=[
@@ -27927,6 +32408,7 @@ def _page__get_cookies_return_t__from_dict(
                 for item in data['cookies']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.GetCookiesReturnT(
             cookies=[
@@ -27935,11 +32417,16 @@ def _page__get_cookies_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_frame_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetFrameTreeReturnT':
+
     if casing_strategy == 'snake':
         return page.GetFrameTreeReturnT(
             frame_tree=from_dict(
@@ -27948,6 +32435,7 @@ def _page__get_frame_tree_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return page.GetFrameTreeReturnT(
             frame_tree=from_dict(
@@ -27956,6 +32444,7 @@ def _page__get_frame_tree_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return page.GetFrameTreeReturnT(
             frame_tree=from_dict(
@@ -27965,11 +32454,16 @@ def _page__get_frame_tree_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_layout_metrics_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetLayoutMetricsReturnT':
+
     if casing_strategy == 'snake':
         return page.GetLayoutMetricsReturnT(
             layout_viewport=from_dict(
@@ -28003,6 +32497,7 @@ def _page__get_layout_metrics_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return page.GetLayoutMetricsReturnT(
             layout_viewport=from_dict(
@@ -28036,6 +32531,7 @@ def _page__get_layout_metrics_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return page.GetLayoutMetricsReturnT(
             layout_viewport=from_dict(
@@ -28070,11 +32566,16 @@ def _page__get_layout_metrics_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_navigation_history_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetNavigationHistoryReturnT':
+
     if casing_strategy == 'snake':
         return page.GetNavigationHistoryReturnT(
             current_index=data['current_index'],
@@ -28083,6 +32584,7 @@ def _page__get_navigation_history_return_t__from_dict(
                 for item in data['entries']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.GetNavigationHistoryReturnT(
             current_index=data['currentIndex'],
@@ -28091,6 +32593,7 @@ def _page__get_navigation_history_return_t__from_dict(
                 for item in data['entries']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.GetNavigationHistoryReturnT(
             current_index=data['CurrentIndex'],
@@ -28100,32 +32603,44 @@ def _page__get_navigation_history_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_resource_content_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetResourceContentReturnT':
+
     if casing_strategy == 'snake':
         return page.GetResourceContentReturnT(
             content=data['content'],
             base64_encoded=data['base64_encoded']
         )
+
     if casing_strategy == 'camel':
         return page.GetResourceContentReturnT(
             content=data['content'],
             base64_encoded=data['base64Encoded']
         )
+
     if casing_strategy == 'pascal':
         return page.GetResourceContentReturnT(
             content=data['Content'],
             base64_encoded=data['Base64Encoded']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_resource_tree_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetResourceTreeReturnT':
+
     if casing_strategy == 'snake':
         return page.GetResourceTreeReturnT(
             frame_tree=from_dict(
@@ -28134,6 +32649,7 @@ def _page__get_resource_tree_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return page.GetResourceTreeReturnT(
             frame_tree=from_dict(
@@ -28142,6 +32658,7 @@ def _page__get_resource_tree_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return page.GetResourceTreeReturnT(
             frame_tree=from_dict(
@@ -28151,23 +32668,30 @@ def _page__get_resource_tree_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__navigate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.NavigateReturnT':
+
     if casing_strategy == 'snake':
         return page.NavigateReturnT(
             frame_id=data['frame_id'],
             loader_id=data.get('loader_id', None),
             error_text=data.get('error_text', None)
         )
+
     if casing_strategy == 'camel':
         return page.NavigateReturnT(
             frame_id=data['frameId'],
             loader_id=data.get('loaderId', None),
             error_text=data.get('errorText', None)
         )
+
     if casing_strategy == 'pascal':
         return page.NavigateReturnT(
             frame_id=data['FrameId'],
@@ -28175,32 +32699,44 @@ def _page__navigate_return_t__from_dict(
             error_text=data.get('ErrorText', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__print_to_pdf_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.PrintToPDFReturnT':
+
     if casing_strategy == 'snake':
         return page.PrintToPDFReturnT(
             data=data['data'],
             stream=data.get('stream', None)
         )
+
     if casing_strategy == 'camel':
         return page.PrintToPDFReturnT(
             data=data['data'],
             stream=data.get('stream', None)
         )
+
     if casing_strategy == 'pascal':
         return page.PrintToPDFReturnT(
             data=data['Data'],
             stream=data.get('Stream', None)
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__search_in_resource_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.SearchInResourceReturnT':
+
     if casing_strategy == 'snake':
         return page.SearchInResourceReturnT(
             result=[
@@ -28208,6 +32744,7 @@ def _page__search_in_resource_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.SearchInResourceReturnT(
             result=[
@@ -28215,6 +32752,7 @@ def _page__search_in_resource_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.SearchInResourceReturnT(
             result=[
@@ -28223,11 +32761,16 @@ def _page__search_in_resource_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_permissions_policy_state_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetPermissionsPolicyStateReturnT':
+
     if casing_strategy == 'snake':
         return page.GetPermissionsPolicyStateReturnT(
             states=[
@@ -28235,6 +32778,7 @@ def _page__get_permissions_policy_state_return_t__from_dict(
                 for item in data['states']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.GetPermissionsPolicyStateReturnT(
             states=[
@@ -28242,6 +32786,7 @@ def _page__get_permissions_policy_state_return_t__from_dict(
                 for item in data['states']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.GetPermissionsPolicyStateReturnT(
             states=[
@@ -28250,11 +32795,16 @@ def _page__get_permissions_policy_state_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _page__get_origin_trials_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'page.GetOriginTrialsReturnT':
+
     if casing_strategy == 'snake':
         return page.GetOriginTrialsReturnT(
             origin_trials=[
@@ -28262,6 +32812,7 @@ def _page__get_origin_trials_return_t__from_dict(
                 for item in data['origin_trials']
             ]
         )
+
     if casing_strategy == 'camel':
         return page.GetOriginTrialsReturnT(
             origin_trials=[
@@ -28269,6 +32820,7 @@ def _page__get_origin_trials_return_t__from_dict(
                 for item in data['originTrials']
             ]
         )
+
     if casing_strategy == 'pascal':
         return page.GetOriginTrialsReturnT(
             origin_trials=[
@@ -28277,11 +32829,16 @@ def _page__get_origin_trials_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _performance__get_metrics_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'performance.GetMetricsReturnT':
+
     if casing_strategy == 'snake':
         return performance.GetMetricsReturnT(
             metrics=[
@@ -28289,6 +32846,7 @@ def _performance__get_metrics_return_t__from_dict(
                 for item in data['metrics']
             ]
         )
+
     if casing_strategy == 'camel':
         return performance.GetMetricsReturnT(
             metrics=[
@@ -28296,6 +32854,7 @@ def _performance__get_metrics_return_t__from_dict(
                 for item in data['metrics']
             ]
         )
+
     if casing_strategy == 'pascal':
         return performance.GetMetricsReturnT(
             metrics=[
@@ -28304,29 +32863,41 @@ def _performance__get_metrics_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__get_storage_key_for_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetStorageKeyForFrameReturnT':
+
     if casing_strategy == 'snake':
         return storage.GetStorageKeyForFrameReturnT(
             storage_key=data['storage_key']
         )
+
     if casing_strategy == 'camel':
         return storage.GetStorageKeyForFrameReturnT(
             storage_key=data['storageKey']
         )
+
     if casing_strategy == 'pascal':
         return storage.GetStorageKeyForFrameReturnT(
             storage_key=data['StorageKey']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _storage__get_cookies_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetCookiesReturnT':
+
     if casing_strategy == 'snake':
         return storage.GetCookiesReturnT(
             cookies=[
@@ -28334,6 +32905,7 @@ def _storage__get_cookies_return_t__from_dict(
                 for item in data['cookies']
             ]
         )
+
     if casing_strategy == 'camel':
         return storage.GetCookiesReturnT(
             cookies=[
@@ -28341,6 +32913,7 @@ def _storage__get_cookies_return_t__from_dict(
                 for item in data['cookies']
             ]
         )
+
     if casing_strategy == 'pascal':
         return storage.GetCookiesReturnT(
             cookies=[
@@ -28349,11 +32922,16 @@ def _storage__get_cookies_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__get_usage_and_quota_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetUsageAndQuotaReturnT':
+
     if casing_strategy == 'snake':
         return storage.GetUsageAndQuotaReturnT(
             usage=data['usage'],
@@ -28364,6 +32942,7 @@ def _storage__get_usage_and_quota_return_t__from_dict(
                 for item in data['usage_breakdown']
             ]
         )
+
     if casing_strategy == 'camel':
         return storage.GetUsageAndQuotaReturnT(
             usage=data['usage'],
@@ -28374,6 +32953,7 @@ def _storage__get_usage_and_quota_return_t__from_dict(
                 for item in data['usageBreakdown']
             ]
         )
+
     if casing_strategy == 'pascal':
         return storage.GetUsageAndQuotaReturnT(
             usage=data['Usage'],
@@ -28385,11 +32965,16 @@ def _storage__get_usage_and_quota_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__get_trust_tokens_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetTrustTokensReturnT':
+
     if casing_strategy == 'snake':
         return storage.GetTrustTokensReturnT(
             tokens=[
@@ -28397,6 +32982,7 @@ def _storage__get_trust_tokens_return_t__from_dict(
                 for item in data['tokens']
             ]
         )
+
     if casing_strategy == 'camel':
         return storage.GetTrustTokensReturnT(
             tokens=[
@@ -28404,6 +32990,7 @@ def _storage__get_trust_tokens_return_t__from_dict(
                 for item in data['tokens']
             ]
         )
+
     if casing_strategy == 'pascal':
         return storage.GetTrustTokensReturnT(
             tokens=[
@@ -28412,29 +32999,41 @@ def _storage__get_trust_tokens_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__clear_trust_tokens_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.ClearTrustTokensReturnT':
+
     if casing_strategy == 'snake':
         return storage.ClearTrustTokensReturnT(
             did_delete_tokens=data['did_delete_tokens']
         )
+
     if casing_strategy == 'camel':
         return storage.ClearTrustTokensReturnT(
             did_delete_tokens=data['didDeleteTokens']
         )
+
     if casing_strategy == 'pascal':
         return storage.ClearTrustTokensReturnT(
             did_delete_tokens=data['DidDeleteTokens']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _storage__get_interest_group_details_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetInterestGroupDetailsReturnT':
+
     if casing_strategy == 'snake':
         return storage.GetInterestGroupDetailsReturnT(
             details=from_dict(
@@ -28443,6 +33042,7 @@ def _storage__get_interest_group_details_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return storage.GetInterestGroupDetailsReturnT(
             details=from_dict(
@@ -28451,6 +33051,7 @@ def _storage__get_interest_group_details_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return storage.GetInterestGroupDetailsReturnT(
             details=from_dict(
@@ -28460,11 +33061,16 @@ def _storage__get_interest_group_details_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__get_shared_storage_metadata_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetSharedStorageMetadataReturnT':
+
     if casing_strategy == 'snake':
         return storage.GetSharedStorageMetadataReturnT(
             metadata=from_dict(
@@ -28473,6 +33079,7 @@ def _storage__get_shared_storage_metadata_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return storage.GetSharedStorageMetadataReturnT(
             metadata=from_dict(
@@ -28481,6 +33088,7 @@ def _storage__get_shared_storage_metadata_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return storage.GetSharedStorageMetadataReturnT(
             metadata=from_dict(
@@ -28490,11 +33098,16 @@ def _storage__get_shared_storage_metadata_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__get_shared_storage_entries_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.GetSharedStorageEntriesReturnT':
+
     if casing_strategy == 'snake':
         return storage.GetSharedStorageEntriesReturnT(
             entries=[
@@ -28502,6 +33115,7 @@ def _storage__get_shared_storage_entries_return_t__from_dict(
                 for item in data['entries']
             ]
         )
+
     if casing_strategy == 'camel':
         return storage.GetSharedStorageEntriesReturnT(
             entries=[
@@ -28509,6 +33123,7 @@ def _storage__get_shared_storage_entries_return_t__from_dict(
                 for item in data['entries']
             ]
         )
+
     if casing_strategy == 'pascal':
         return storage.GetSharedStorageEntriesReturnT(
             entries=[
@@ -28517,29 +33132,41 @@ def _storage__get_shared_storage_entries_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _storage__run_bounce_tracking_mitigations_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'storage.RunBounceTrackingMitigationsReturnT':
+
     if casing_strategy == 'snake':
         return storage.RunBounceTrackingMitigationsReturnT(
             deleted_sites=data['deleted_sites']
         )
+
     if casing_strategy == 'camel':
         return storage.RunBounceTrackingMitigationsReturnT(
             deleted_sites=data['deletedSites']
         )
+
     if casing_strategy == 'pascal':
         return storage.RunBounceTrackingMitigationsReturnT(
             deleted_sites=data['DeletedSites']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _system_info__get_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GetInfoReturnT':
+
     if casing_strategy == 'snake':
         return system_info.GetInfoReturnT(
             gpu=from_dict(
@@ -28551,6 +33178,7 @@ def _system_info__get_info_return_t__from_dict(
             model_version=data['model_version'],
             command_line=data['command_line']
         )
+
     if casing_strategy == 'camel':
         return system_info.GetInfoReturnT(
             gpu=from_dict(
@@ -28562,6 +33190,7 @@ def _system_info__get_info_return_t__from_dict(
             model_version=data['modelVersion'],
             command_line=data['commandLine']
         )
+
     if casing_strategy == 'pascal':
         return system_info.GetInfoReturnT(
             gpu=from_dict(
@@ -28574,29 +33203,41 @@ def _system_info__get_info_return_t__from_dict(
             command_line=data['CommandLine']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _system_info__get_feature_state_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GetFeatureStateReturnT':
+
     if casing_strategy == 'snake':
         return system_info.GetFeatureStateReturnT(
             feature_enabled=data['feature_enabled']
         )
+
     if casing_strategy == 'camel':
         return system_info.GetFeatureStateReturnT(
             feature_enabled=data['featureEnabled']
         )
+
     if casing_strategy == 'pascal':
         return system_info.GetFeatureStateReturnT(
             feature_enabled=data['FeatureEnabled']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _system_info__get_process_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'system_info.GetProcessInfoReturnT':
+
     if casing_strategy == 'snake':
         return system_info.GetProcessInfoReturnT(
             process_info=[
@@ -28604,6 +33245,7 @@ def _system_info__get_process_info_return_t__from_dict(
                 for item in data['process_info']
             ]
         )
+
     if casing_strategy == 'camel':
         return system_info.GetProcessInfoReturnT(
             process_info=[
@@ -28611,6 +33253,7 @@ def _system_info__get_process_info_return_t__from_dict(
                 for item in data['processInfo']
             ]
         )
+
     if casing_strategy == 'pascal':
         return system_info.GetProcessInfoReturnT(
             process_info=[
@@ -28619,119 +33262,166 @@ def _system_info__get_process_info_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _target__attach_to_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.AttachToTargetReturnT':
+
     if casing_strategy == 'snake':
         return target.AttachToTargetReturnT(
             session_id=data['session_id']
         )
+
     if casing_strategy == 'camel':
         return target.AttachToTargetReturnT(
             session_id=data['sessionId']
         )
+
     if casing_strategy == 'pascal':
         return target.AttachToTargetReturnT(
             session_id=data['SessionId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _target__attach_to_browser_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.AttachToBrowserTargetReturnT':
+
     if casing_strategy == 'snake':
         return target.AttachToBrowserTargetReturnT(
             session_id=data['session_id']
         )
+
     if casing_strategy == 'camel':
         return target.AttachToBrowserTargetReturnT(
             session_id=data['sessionId']
         )
+
     if casing_strategy == 'pascal':
         return target.AttachToBrowserTargetReturnT(
             session_id=data['SessionId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _target__close_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.CloseTargetReturnT':
+
     if casing_strategy == 'snake':
         return target.CloseTargetReturnT(
             success=data['success']
         )
+
     if casing_strategy == 'camel':
         return target.CloseTargetReturnT(
             success=data['success']
         )
+
     if casing_strategy == 'pascal':
         return target.CloseTargetReturnT(
             success=data['Success']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _target__create_browser_context_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.CreateBrowserContextReturnT':
+
     if casing_strategy == 'snake':
         return target.CreateBrowserContextReturnT(
             browser_context_id=data['browser_context_id']
         )
+
     if casing_strategy == 'camel':
         return target.CreateBrowserContextReturnT(
             browser_context_id=data['browserContextId']
         )
+
     if casing_strategy == 'pascal':
         return target.CreateBrowserContextReturnT(
             browser_context_id=data['BrowserContextId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _target__get_browser_contexts_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.GetBrowserContextsReturnT':
+
     if casing_strategy == 'snake':
         return target.GetBrowserContextsReturnT(
             browser_context_ids=data['browser_context_ids']
         )
+
     if casing_strategy == 'camel':
         return target.GetBrowserContextsReturnT(
             browser_context_ids=data['browserContextIds']
         )
+
     if casing_strategy == 'pascal':
         return target.GetBrowserContextsReturnT(
             browser_context_ids=data['BrowserContextIds']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _target__create_target_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.CreateTargetReturnT':
+
     if casing_strategy == 'snake':
         return target.CreateTargetReturnT(
             target_id=data['target_id']
         )
+
     if casing_strategy == 'camel':
         return target.CreateTargetReturnT(
             target_id=data['targetId']
         )
+
     if casing_strategy == 'pascal':
         return target.CreateTargetReturnT(
             target_id=data['TargetId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _target__get_target_info_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.GetTargetInfoReturnT':
+
     if casing_strategy == 'snake':
         return target.GetTargetInfoReturnT(
             target_info=from_dict(
@@ -28740,6 +33430,7 @@ def _target__get_target_info_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return target.GetTargetInfoReturnT(
             target_info=from_dict(
@@ -28748,6 +33439,7 @@ def _target__get_target_info_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return target.GetTargetInfoReturnT(
             target_info=from_dict(
@@ -28757,11 +33449,16 @@ def _target__get_target_info_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _target__get_targets_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'target.GetTargetsReturnT':
+
     if casing_strategy == 'snake':
         return target.GetTargetsReturnT(
             target_infos=[
@@ -28769,6 +33466,7 @@ def _target__get_targets_return_t__from_dict(
                 for item in data['target_infos']
             ]
         )
+
     if casing_strategy == 'camel':
         return target.GetTargetsReturnT(
             target_infos=[
@@ -28776,6 +33474,7 @@ def _target__get_targets_return_t__from_dict(
                 for item in data['targetInfos']
             ]
         )
+
     if casing_strategy == 'pascal':
         return target.GetTargetsReturnT(
             target_infos=[
@@ -28784,89 +33483,122 @@ def _target__get_targets_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _tracing__get_categories_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'tracing.GetCategoriesReturnT':
+
     if casing_strategy == 'snake':
         return tracing.GetCategoriesReturnT(
             categories=data['categories']
         )
+
     if casing_strategy == 'camel':
         return tracing.GetCategoriesReturnT(
             categories=data['categories']
         )
+
     if casing_strategy == 'pascal':
         return tracing.GetCategoriesReturnT(
             categories=data['Categories']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _tracing__request_memory_dump_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'tracing.RequestMemoryDumpReturnT':
+
     if casing_strategy == 'snake':
         return tracing.RequestMemoryDumpReturnT(
             dump_guid=data['dump_guid'],
             success=data['success']
         )
+
     if casing_strategy == 'camel':
         return tracing.RequestMemoryDumpReturnT(
             dump_guid=data['dumpGuid'],
             success=data['success']
         )
+
     if casing_strategy == 'pascal':
         return tracing.RequestMemoryDumpReturnT(
             dump_guid=data['DumpGuid'],
             success=data['Success']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fetch__get_response_body_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.GetResponseBodyReturnT':
+
     if casing_strategy == 'snake':
         return fetch.GetResponseBodyReturnT(
             body=data['body'],
             base64_encoded=data['base64_encoded']
         )
+
     if casing_strategy == 'camel':
         return fetch.GetResponseBodyReturnT(
             body=data['body'],
             base64_encoded=data['base64Encoded']
         )
+
     if casing_strategy == 'pascal':
         return fetch.GetResponseBodyReturnT(
             body=data['Body'],
             base64_encoded=data['Base64Encoded']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _fetch__take_response_body_as_stream_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'fetch.TakeResponseBodyAsStreamReturnT':
+
     if casing_strategy == 'snake':
         return fetch.TakeResponseBodyAsStreamReturnT(
             stream=data['stream']
         )
+
     if casing_strategy == 'camel':
         return fetch.TakeResponseBodyAsStreamReturnT(
             stream=data['stream']
         )
+
     if casing_strategy == 'pascal':
         return fetch.TakeResponseBodyAsStreamReturnT(
             stream=data['Stream']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _web_audio__get_realtime_data_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_audio.GetRealtimeDataReturnT':
+
     if casing_strategy == 'snake':
         return web_audio.GetRealtimeDataReturnT(
             realtime_data=from_dict(
@@ -28875,6 +33607,7 @@ def _web_audio__get_realtime_data_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return web_audio.GetRealtimeDataReturnT(
             realtime_data=from_dict(
@@ -28883,6 +33616,7 @@ def _web_audio__get_realtime_data_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return web_audio.GetRealtimeDataReturnT(
             realtime_data=from_dict(
@@ -28892,29 +33626,41 @@ def _web_audio__get_realtime_data_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_authn__add_virtual_authenticator_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.AddVirtualAuthenticatorReturnT':
+
     if casing_strategy == 'snake':
         return web_authn.AddVirtualAuthenticatorReturnT(
             authenticator_id=data['authenticator_id']
         )
+
     if casing_strategy == 'camel':
         return web_authn.AddVirtualAuthenticatorReturnT(
             authenticator_id=data['authenticatorId']
         )
+
     if casing_strategy == 'pascal':
         return web_authn.AddVirtualAuthenticatorReturnT(
             authenticator_id=data['AuthenticatorId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _web_authn__get_credential_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.GetCredentialReturnT':
+
     if casing_strategy == 'snake':
         return web_authn.GetCredentialReturnT(
             credential=from_dict(
@@ -28923,6 +33669,7 @@ def _web_authn__get_credential_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return web_authn.GetCredentialReturnT(
             credential=from_dict(
@@ -28931,6 +33678,7 @@ def _web_authn__get_credential_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return web_authn.GetCredentialReturnT(
             credential=from_dict(
@@ -28940,11 +33688,16 @@ def _web_authn__get_credential_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _web_authn__get_credentials_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'web_authn.GetCredentialsReturnT':
+
     if casing_strategy == 'snake':
         return web_authn.GetCredentialsReturnT(
             credentials=[
@@ -28952,6 +33705,7 @@ def _web_authn__get_credentials_return_t__from_dict(
                 for item in data['credentials']
             ]
         )
+
     if casing_strategy == 'camel':
         return web_authn.GetCredentialsReturnT(
             credentials=[
@@ -28959,6 +33713,7 @@ def _web_authn__get_credentials_return_t__from_dict(
                 for item in data['credentials']
             ]
         )
+
     if casing_strategy == 'pascal':
         return web_authn.GetCredentialsReturnT(
             credentials=[
@@ -28967,29 +33722,41 @@ def _web_authn__get_credentials_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__enable_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.EnableReturnT':
+
     if casing_strategy == 'snake':
         return debugger.EnableReturnT(
             debugger_id=data['debugger_id']
         )
+
     if casing_strategy == 'camel':
         return debugger.EnableReturnT(
             debugger_id=data['debuggerId']
         )
+
     if casing_strategy == 'pascal':
         return debugger.EnableReturnT(
             debugger_id=data['DebuggerId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _debugger__evaluate_on_call_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.EvaluateOnCallFrameReturnT':
+
     if casing_strategy == 'snake':
         return debugger.EvaluateOnCallFrameReturnT(
             result=from_dict(
@@ -29003,6 +33770,7 @@ def _debugger__evaluate_on_call_frame_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return debugger.EvaluateOnCallFrameReturnT(
             result=from_dict(
@@ -29016,6 +33784,7 @@ def _debugger__evaluate_on_call_frame_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return debugger.EvaluateOnCallFrameReturnT(
             result=from_dict(
@@ -29030,11 +33799,16 @@ def _debugger__evaluate_on_call_frame_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__get_possible_breakpoints_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.GetPossibleBreakpointsReturnT':
+
     if casing_strategy == 'snake':
         return debugger.GetPossibleBreakpointsReturnT(
             locations=[
@@ -29042,6 +33816,7 @@ def _debugger__get_possible_breakpoints_return_t__from_dict(
                 for item in data['locations']
             ]
         )
+
     if casing_strategy == 'camel':
         return debugger.GetPossibleBreakpointsReturnT(
             locations=[
@@ -29049,6 +33824,7 @@ def _debugger__get_possible_breakpoints_return_t__from_dict(
                 for item in data['locations']
             ]
         )
+
     if casing_strategy == 'pascal':
         return debugger.GetPossibleBreakpointsReturnT(
             locations=[
@@ -29057,29 +33833,41 @@ def _debugger__get_possible_breakpoints_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__get_script_source_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.GetScriptSourceReturnT':
+
     if casing_strategy == 'snake':
         return debugger.GetScriptSourceReturnT(
             script_source=data['script_source']
         )
+
     if casing_strategy == 'camel':
         return debugger.GetScriptSourceReturnT(
             script_source=data['scriptSource']
         )
+
     if casing_strategy == 'pascal':
         return debugger.GetScriptSourceReturnT(
             script_source=data['ScriptSource']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _debugger__get_stack_trace_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.GetStackTraceReturnT':
+
     if casing_strategy == 'snake':
         return debugger.GetStackTraceReturnT(
             stack_trace=from_dict(
@@ -29088,6 +33876,7 @@ def _debugger__get_stack_trace_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return debugger.GetStackTraceReturnT(
             stack_trace=from_dict(
@@ -29096,6 +33885,7 @@ def _debugger__get_stack_trace_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return debugger.GetStackTraceReturnT(
             stack_trace=from_dict(
@@ -29105,11 +33895,16 @@ def _debugger__get_stack_trace_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__restart_frame_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.RestartFrameReturnT':
+
     if casing_strategy == 'snake':
         return debugger.RestartFrameReturnT(
             call_frames=[
@@ -29127,6 +33922,7 @@ def _debugger__restart_frame_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return debugger.RestartFrameReturnT(
             call_frames=[
@@ -29144,6 +33940,7 @@ def _debugger__restart_frame_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return debugger.RestartFrameReturnT(
             call_frames=[
@@ -29162,11 +33959,16 @@ def _debugger__restart_frame_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__search_in_content_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SearchInContentReturnT':
+
     if casing_strategy == 'snake':
         return debugger.SearchInContentReturnT(
             result=[
@@ -29174,6 +33976,7 @@ def _debugger__search_in_content_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'camel':
         return debugger.SearchInContentReturnT(
             result=[
@@ -29181,6 +33984,7 @@ def _debugger__search_in_content_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'pascal':
         return debugger.SearchInContentReturnT(
             result=[
@@ -29189,11 +33993,16 @@ def _debugger__search_in_content_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__set_breakpoint_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetBreakpointReturnT':
+
     if casing_strategy == 'snake':
         return debugger.SetBreakpointReturnT(
             breakpoint_id=data['breakpoint_id'],
@@ -29203,6 +34012,7 @@ def _debugger__set_breakpoint_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return debugger.SetBreakpointReturnT(
             breakpoint_id=data['breakpointId'],
@@ -29212,6 +34022,7 @@ def _debugger__set_breakpoint_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return debugger.SetBreakpointReturnT(
             breakpoint_id=data['BreakpointId'],
@@ -29222,29 +34033,41 @@ def _debugger__set_breakpoint_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__set_instrumentation_breakpoint_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetInstrumentationBreakpointReturnT':
+
     if casing_strategy == 'snake':
         return debugger.SetInstrumentationBreakpointReturnT(
             breakpoint_id=data['breakpoint_id']
         )
+
     if casing_strategy == 'camel':
         return debugger.SetInstrumentationBreakpointReturnT(
             breakpoint_id=data['breakpointId']
         )
+
     if casing_strategy == 'pascal':
         return debugger.SetInstrumentationBreakpointReturnT(
             breakpoint_id=data['BreakpointId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _debugger__set_breakpoint_by_url_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetBreakpointByUrlReturnT':
+
     if casing_strategy == 'snake':
         return debugger.SetBreakpointByUrlReturnT(
             breakpoint_id=data['breakpoint_id'],
@@ -29253,6 +34076,7 @@ def _debugger__set_breakpoint_by_url_return_t__from_dict(
                 for item in data['locations']
             ]
         )
+
     if casing_strategy == 'camel':
         return debugger.SetBreakpointByUrlReturnT(
             breakpoint_id=data['breakpointId'],
@@ -29261,6 +34085,7 @@ def _debugger__set_breakpoint_by_url_return_t__from_dict(
                 for item in data['locations']
             ]
         )
+
     if casing_strategy == 'pascal':
         return debugger.SetBreakpointByUrlReturnT(
             breakpoint_id=data['BreakpointId'],
@@ -29270,29 +34095,41 @@ def _debugger__set_breakpoint_by_url_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _debugger__set_breakpoint_on_function_call_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetBreakpointOnFunctionCallReturnT':
+
     if casing_strategy == 'snake':
         return debugger.SetBreakpointOnFunctionCallReturnT(
             breakpoint_id=data['breakpoint_id']
         )
+
     if casing_strategy == 'camel':
         return debugger.SetBreakpointOnFunctionCallReturnT(
             breakpoint_id=data['breakpointId']
         )
+
     if casing_strategy == 'pascal':
         return debugger.SetBreakpointOnFunctionCallReturnT(
             breakpoint_id=data['BreakpointId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _debugger__set_script_source_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'debugger.SetScriptSourceReturnT':
+
     if casing_strategy == 'snake':
         return debugger.SetScriptSourceReturnT(
             call_frames=[
@@ -29316,6 +34153,7 @@ def _debugger__set_script_source_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return debugger.SetScriptSourceReturnT(
             call_frames=[
@@ -29339,6 +34177,7 @@ def _debugger__set_script_source_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return debugger.SetScriptSourceReturnT(
             call_frames=[
@@ -29363,29 +34202,41 @@ def _debugger__set_script_source_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _heap_profiler__get_heap_object_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.GetHeapObjectIdReturnT':
+
     if casing_strategy == 'snake':
         return heap_profiler.GetHeapObjectIdReturnT(
             heap_snapshot_object_id=data['heap_snapshot_object_id']
         )
+
     if casing_strategy == 'camel':
         return heap_profiler.GetHeapObjectIdReturnT(
             heap_snapshot_object_id=data['heapSnapshotObjectId']
         )
+
     if casing_strategy == 'pascal':
         return heap_profiler.GetHeapObjectIdReturnT(
             heap_snapshot_object_id=data['HeapSnapshotObjectId']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _heap_profiler__get_object_by_heap_object_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.GetObjectByHeapObjectIdReturnT':
+
     if casing_strategy == 'snake':
         return heap_profiler.GetObjectByHeapObjectIdReturnT(
             result=from_dict(
@@ -29394,6 +34245,7 @@ def _heap_profiler__get_object_by_heap_object_id_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return heap_profiler.GetObjectByHeapObjectIdReturnT(
             result=from_dict(
@@ -29402,6 +34254,7 @@ def _heap_profiler__get_object_by_heap_object_id_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return heap_profiler.GetObjectByHeapObjectIdReturnT(
             result=from_dict(
@@ -29410,12 +34263,17 @@ def _heap_profiler__get_object_by_heap_object_id_return_t__from_dict(
                 casing_strategy
             )
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _heap_profiler__get_sampling_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.GetSamplingProfileReturnT':
+
     if casing_strategy == 'snake':
         return heap_profiler.GetSamplingProfileReturnT(
             profile=from_dict(
@@ -29424,6 +34282,7 @@ def _heap_profiler__get_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return heap_profiler.GetSamplingProfileReturnT(
             profile=from_dict(
@@ -29432,6 +34291,7 @@ def _heap_profiler__get_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return heap_profiler.GetSamplingProfileReturnT(
             profile=from_dict(
@@ -29440,12 +34300,17 @@ def _heap_profiler__get_sampling_profile_return_t__from_dict(
                 casing_strategy
             )
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _heap_profiler__stop_sampling_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'heap_profiler.StopSamplingReturnT':
+
     if casing_strategy == 'snake':
         return heap_profiler.StopSamplingReturnT(
             profile=from_dict(
@@ -29454,6 +34319,7 @@ def _heap_profiler__stop_sampling_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return heap_profiler.StopSamplingReturnT(
             profile=from_dict(
@@ -29462,6 +34328,7 @@ def _heap_profiler__stop_sampling_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return heap_profiler.StopSamplingReturnT(
             profile=from_dict(
@@ -29470,12 +34337,17 @@ def _heap_profiler__stop_sampling_return_t__from_dict(
                 casing_strategy
             )
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _profiler__get_best_effort_coverage_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.GetBestEffortCoverageReturnT':
+
     if casing_strategy == 'snake':
         return profiler.GetBestEffortCoverageReturnT(
             result=[
@@ -29483,6 +34355,7 @@ def _profiler__get_best_effort_coverage_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'camel':
         return profiler.GetBestEffortCoverageReturnT(
             result=[
@@ -29490,6 +34363,7 @@ def _profiler__get_best_effort_coverage_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'pascal':
         return profiler.GetBestEffortCoverageReturnT(
             result=[
@@ -29498,11 +34372,16 @@ def _profiler__get_best_effort_coverage_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__stop_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.StopReturnT':
+
     if casing_strategy == 'snake':
         return profiler.StopReturnT(
             profile=from_dict(
@@ -29511,6 +34390,7 @@ def _profiler__stop_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return profiler.StopReturnT(
             profile=from_dict(
@@ -29519,6 +34399,7 @@ def _profiler__stop_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return profiler.StopReturnT(
             profile=from_dict(
@@ -29528,11 +34409,16 @@ def _profiler__stop_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _profiler__take_precise_coverage_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.TakePreciseCoverageReturnT':
+
     if casing_strategy == 'snake':
         return profiler.TakePreciseCoverageReturnT(
             result=[
@@ -29540,6 +34426,7 @@ def _profiler__take_precise_coverage_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'camel':
         return profiler.TakePreciseCoverageReturnT(
             result=[
@@ -29547,6 +34434,7 @@ def _profiler__take_precise_coverage_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'pascal':
         return profiler.TakePreciseCoverageReturnT(
             result=[
@@ -29554,12 +34442,17 @@ def _profiler__take_precise_coverage_return_t__from_dict(
                 for item in data['Result']
             ]
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _profiler__take_type_profile_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'profiler.TakeTypeProfileReturnT':
+
     if casing_strategy == 'snake':
         return profiler.TakeTypeProfileReturnT(
             result=[
@@ -29567,6 +34460,7 @@ def _profiler__take_type_profile_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'camel':
         return profiler.TakeTypeProfileReturnT(
             result=[
@@ -29574,6 +34468,7 @@ def _profiler__take_type_profile_return_t__from_dict(
                 for item in data['result']
             ]
         )
+
     if casing_strategy == 'pascal':
         return profiler.TakeTypeProfileReturnT(
             result=[
@@ -29582,11 +34477,16 @@ def _profiler__take_type_profile_return_t__from_dict(
             ]
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__await_promise_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.AwaitPromiseReturnT':
+
     if casing_strategy == 'snake':
         return runtime.AwaitPromiseReturnT(
             result=from_dict(
@@ -29600,6 +34500,7 @@ def _runtime__await_promise_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.AwaitPromiseReturnT(
             result=from_dict(
@@ -29613,6 +34514,7 @@ def _runtime__await_promise_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.AwaitPromiseReturnT(
             result=from_dict(
@@ -29626,12 +34528,17 @@ def _runtime__await_promise_return_t__from_dict(
                 casing_strategy
             )
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _runtime__call_function_on_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.CallFunctionOnReturnT':
+
     if casing_strategy == 'snake':
         return runtime.CallFunctionOnReturnT(
             result=from_dict(
@@ -29645,6 +34552,7 @@ def _runtime__call_function_on_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.CallFunctionOnReturnT(
             result=from_dict(
@@ -29658,6 +34566,7 @@ def _runtime__call_function_on_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.CallFunctionOnReturnT(
             result=from_dict(
@@ -29672,11 +34581,16 @@ def _runtime__call_function_on_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__compile_script_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.CompileScriptReturnT':
+
     if casing_strategy == 'snake':
         return runtime.CompileScriptReturnT(
             script_id=data.get('script_id', None),
@@ -29686,6 +34600,7 @@ def _runtime__compile_script_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.CompileScriptReturnT(
             script_id=data.get('scriptId', None),
@@ -29695,6 +34610,7 @@ def _runtime__compile_script_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.CompileScriptReturnT(
             script_id=data.get('ScriptId', None),
@@ -29705,11 +34621,16 @@ def _runtime__compile_script_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__evaluate_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.EvaluateReturnT':
+
     if casing_strategy == 'snake':
         return runtime.EvaluateReturnT(
             result=from_dict(
@@ -29723,6 +34644,7 @@ def _runtime__evaluate_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.EvaluateReturnT(
             result=from_dict(
@@ -29736,6 +34658,7 @@ def _runtime__evaluate_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.EvaluateReturnT(
             result=from_dict(
@@ -29750,50 +34673,69 @@ def _runtime__evaluate_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__get_isolate_id_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GetIsolateIdReturnT':
+
     if casing_strategy == 'snake':
         return runtime.GetIsolateIdReturnT(
             id=data['id']
         )
+
     if casing_strategy == 'camel':
         return runtime.GetIsolateIdReturnT(
             id=data['id']
         )
+
     if casing_strategy == 'pascal':
         return runtime.GetIsolateIdReturnT(
             id=data['Id']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _runtime__get_heap_usage_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GetHeapUsageReturnT':
+
     if casing_strategy == 'snake':
         return runtime.GetHeapUsageReturnT(
             used_size=data['used_size'],
             total_size=data['total_size']
         )
+
     if casing_strategy == 'camel':
         return runtime.GetHeapUsageReturnT(
             used_size=data['usedSize'],
             total_size=data['totalSize']
         )
+
     if casing_strategy == 'pascal':
         return runtime.GetHeapUsageReturnT(
             used_size=data['UsedSize'],
             total_size=data['TotalSize']
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__get_properties_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GetPropertiesReturnT':
+
     if casing_strategy == 'snake':
         return runtime.GetPropertiesReturnT(
             result=[
@@ -29814,6 +34756,7 @@ def _runtime__get_properties_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.GetPropertiesReturnT(
             result=[
@@ -29834,6 +34777,7 @@ def _runtime__get_properties_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.GetPropertiesReturnT(
             result=[
@@ -29855,29 +34799,41 @@ def _runtime__get_properties_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__global_lexical_scope_names_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.GlobalLexicalScopeNamesReturnT':
+
     if casing_strategy == 'snake':
         return runtime.GlobalLexicalScopeNamesReturnT(
             names=data['names']
         )
+
     if casing_strategy == 'camel':
         return runtime.GlobalLexicalScopeNamesReturnT(
             names=data['names']
         )
+
     if casing_strategy == 'pascal':
         return runtime.GlobalLexicalScopeNamesReturnT(
             names=data['Names']
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def _runtime__query_objects_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.QueryObjectsReturnT':
+
     if casing_strategy == 'snake':
         return runtime.QueryObjectsReturnT(
             objects=from_dict(
@@ -29886,6 +34842,7 @@ def _runtime__query_objects_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.QueryObjectsReturnT(
             objects=from_dict(
@@ -29894,6 +34851,7 @@ def _runtime__query_objects_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.QueryObjectsReturnT(
             objects=from_dict(
@@ -29903,11 +34861,16 @@ def _runtime__query_objects_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _runtime__run_script_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'runtime.RunScriptReturnT':
+
     if casing_strategy == 'snake':
         return runtime.RunScriptReturnT(
             result=from_dict(
@@ -29921,6 +34884,7 @@ def _runtime__run_script_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'camel':
         return runtime.RunScriptReturnT(
             result=from_dict(
@@ -29934,6 +34898,7 @@ def _runtime__run_script_return_t__from_dict(
                 casing_strategy
             )
         )
+
     if casing_strategy == 'pascal':
         return runtime.RunScriptReturnT(
             result=from_dict(
@@ -29948,11 +34913,16 @@ def _runtime__run_script_return_t__from_dict(
             )
         )
 
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
+
 
 def _schema__get_domains_return_t__from_dict(
         data: dict,
         casing_strategy: 'CasingStrategyT' = 'snake'
 ) -> 'schema.GetDomainsReturnT':
+
     if casing_strategy == 'snake':
         return schema.GetDomainsReturnT(
             domains=[
@@ -29960,6 +34930,7 @@ def _schema__get_domains_return_t__from_dict(
                 for item in data['domains']
             ]
         )
+
     if casing_strategy == 'camel':
         return schema.GetDomainsReturnT(
             domains=[
@@ -29967,6 +34938,7 @@ def _schema__get_domains_return_t__from_dict(
                 for item in data['domains']
             ]
         )
+
     if casing_strategy == 'pascal':
         return schema.GetDomainsReturnT(
             domains=[
@@ -29974,6 +34946,10 @@ def _schema__get_domains_return_t__from_dict(
                 for item in data['Domains']
             ]
         )
+
+    raise NotImplementedError(
+        'Unknown casing strategy'
+    )
 
 
 def to_dict(

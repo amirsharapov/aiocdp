@@ -215,11 +215,33 @@ def _generate_return_type_from_dict_mappers(protocols: list['Protocol']):
                                         casing_strategy
                                     )
                                 )
-                            ]
+                            ],
+                            render_context={
+                                'lines_before': 1
+                            }
                         )
                     )
 
-                functions.append(function)
+                function.body.append(
+                    ast.Raise(
+                        exc=ast.Call(
+                            func=ast.Name('NotImplementedError'),
+                            args=[
+                                ast.Constant('Unknown casing strategy')
+                            ],
+                            render_context={
+                                'expand': True
+                            }
+                        ),
+                        render_context={
+                            'lines_before': 1
+                        }
+                    )
+                )
+
+                functions.append(
+                    function
+                )
 
     return functions
 
@@ -384,9 +406,29 @@ def _generate_type_specific_from_dict_mappers(protocols: list['Protocol']):
                                         casing_strategy
                                     )
                                 )
-                            ]
+                            ],
+                            render_context={
+                                'lines_before': 1
+                            }
                         )
                     )
+
+                function.body.append(
+                    ast.Raise(
+                        exc=ast.Call(
+                            func=ast.Name('NotImplementedError'),
+                            args=[
+                                ast.Constant('Unknown casing strategy')
+                            ],
+                            render_context={
+                                'expand': True
+                            }
+                        ),
+                        render_context={
+                            'lines_before': 1
+                        }
+                    )
+                )
 
                 functions.append(
                     function
@@ -440,17 +482,6 @@ def _generate_type_specific_to_dict_mapper_body(
             }
         )
 
-        attribute_access_list_comp = ast.ListComp(
-            elt=ast.Name('item'),
-            generators=[
-                ast.comprehension(
-                    target=ast.Name('item'),
-                    iter=attribute_access,
-                    ifs=[]
-                )
-            ]
-        )
-
         to_dict_call_list_comp = ast.ListComp(
             elt=ast.Call(
                 func=ast.Name('to_dict'),
@@ -472,7 +503,7 @@ def _generate_type_specific_to_dict_mapper_body(
             if property_.items.ref.actual_type.properties:
                 root.values.append(to_dict_call_list_comp)
             else:
-                root.values.append(attribute_access_list_comp)
+                root.values.append(attribute_access)
 
         else:
             if property_.ref.actual_type.properties:
@@ -547,9 +578,29 @@ def _generate_type_specific_to_dict_mappers(protocols: list['Protocol']):
                                         casing_strategy
                                     )
                                 )
-                            ]
+                            ],
+                            render_context={
+                                'lines_before': 1
+                            }
                         )
                     )
+
+                function.body.append(
+                    ast.Raise(
+                        exc=ast.Call(
+                            func=ast.Name('NotImplementedError'),
+                            args=[
+                                ast.Constant('Unknown casing strategy')
+                            ],
+                            render_context={
+                                'expand': True
+                            }
+                        ),
+                        render_context={
+                            'lines_before': 1
+                        }
+                    )
+                )
 
                 functions.append(
                     function

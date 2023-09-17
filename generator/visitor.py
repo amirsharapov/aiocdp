@@ -393,6 +393,10 @@ class SourceCodeGenerator(ast.NodeVisitor):
     def visit_Name(self, node: ast.Name) -> Any:
         self.source += node.id
 
+    def visit_Raise(self, node: ast.Raise) -> Any:
+        self.source += 'raise '
+        self.visit(node.exc)
+
     def visit_Return(self, node: ast.Return) -> Any:
         self.source += 'return '
         self.visit(node.value)

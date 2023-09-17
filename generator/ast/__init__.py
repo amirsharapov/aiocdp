@@ -1,6 +1,6 @@
-from . import (
-    domain,
-    domains,
-    mapper,
+from .modules import (
     types,
+    domains,
+    domain,
+    mapper
 )
