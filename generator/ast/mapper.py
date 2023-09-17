@@ -91,7 +91,7 @@ def _generate_return_type_from_dict_mapper_body(
         )
 
         from_dict_call = ast.Call(
-            func=ast.Name('to_dict'),
+            func=ast.Name('from_dict'),
             args=[
                 key_access,
                 ast.Name('casing_strategy')
@@ -103,7 +103,7 @@ def _generate_return_type_from_dict_mapper_body(
 
         from_dict_call_list_comp = ast.ListComp(
             elt=ast.Call(
-                func=ast.Name('to_dict'),
+                func=ast.Name('from_dict'),
                 args=[
                     ast.Name('item'),
                     ast.Name('casing_strategy')
@@ -241,7 +241,7 @@ def _generate_type_specific_from_dict_mapper_body(
         )
 
         from_dict_call = ast.Call(
-            func=ast.Name('to_dict'),
+            func=ast.Name('from_dict'),
             args=[
                 key_access,
                 ast.Name('casing_strategy')
@@ -253,7 +253,7 @@ def _generate_type_specific_from_dict_mapper_body(
 
         from_dict_call_list_comp = ast.ListComp(
             elt=ast.Call(
-                func=ast.Name('to_dict'),
+                func=ast.Name('from_dict'),
                 args=[
                     ast.Name('item'),
                     ast.Name('casing_strategy')

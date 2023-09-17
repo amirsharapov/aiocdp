@@ -12490,18 +12490,18 @@ def _accessibility__ax_value_source__from_dict(
     if casing_strategy == 'snake':
         return accessibility.AXValueSource(
             type=data['type'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             ),
             attribute=data['attribute'],
-            attribute_value=to_dict(
+            attribute_value=from_dict(
                 data['attribute_value'],
                 casing_strategy
             ),
             superseded=data['superseded'],
             native_source=data['native_source'],
-            native_source_value=to_dict(
+            native_source_value=from_dict(
                 data['native_source_value'],
                 casing_strategy
             ),
@@ -12511,18 +12511,18 @@ def _accessibility__ax_value_source__from_dict(
     if casing_strategy == 'camel':
         return accessibility.AXValueSource(
             type=data['type'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             ),
             attribute=data['attribute'],
-            attribute_value=to_dict(
+            attribute_value=from_dict(
                 data['attributeValue'],
                 casing_strategy
             ),
             superseded=data['superseded'],
             native_source=data['nativeSource'],
-            native_source_value=to_dict(
+            native_source_value=from_dict(
                 data['nativeSourceValue'],
                 casing_strategy
             ),
@@ -12532,18 +12532,18 @@ def _accessibility__ax_value_source__from_dict(
     if casing_strategy == 'pascal':
         return accessibility.AXValueSource(
             type=data['Type'],
-            value=to_dict(
+            value=from_dict(
                 data['Value'],
                 casing_strategy
             ),
             attribute=data['Attribute'],
-            attribute_value=to_dict(
+            attribute_value=from_dict(
                 data['AttributeValue'],
                 casing_strategy
             ),
             superseded=data['Superseded'],
             native_source=data['NativeSource'],
-            native_source_value=to_dict(
+            native_source_value=from_dict(
                 data['NativeSourceValue'],
                 casing_strategy
             ),
@@ -12583,7 +12583,7 @@ def _accessibility__ax_property__from_dict(
     if casing_strategy == 'snake':
         return accessibility.AXProperty(
             name=data['name'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
@@ -12591,7 +12591,7 @@ def _accessibility__ax_property__from_dict(
     if casing_strategy == 'camel':
         return accessibility.AXProperty(
             name=data['name'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
@@ -12599,7 +12599,7 @@ def _accessibility__ax_property__from_dict(
     if casing_strategy == 'pascal':
         return accessibility.AXProperty(
             name=data['Name'],
-            value=to_dict(
+            value=from_dict(
                 data['Value'],
                 casing_strategy
             )
@@ -12615,11 +12615,11 @@ def _accessibility__ax_value__from_dict(
             type=data['type'],
             value=data['value'],
             related_nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['related_nodes']
             ],
             sources=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['sources']
             ]
         )
@@ -12628,11 +12628,11 @@ def _accessibility__ax_value__from_dict(
             type=data['type'],
             value=data['value'],
             related_nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['relatedNodes']
             ],
             sources=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['sources']
             ]
         )
@@ -12641,11 +12641,11 @@ def _accessibility__ax_value__from_dict(
             type=data['Type'],
             value=data['Value'],
             related_nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['RelatedNodes']
             ],
             sources=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Sources']
             ]
         )
@@ -12660,31 +12660,31 @@ def _accessibility__ax_node__from_dict(
             node_id=data['node_id'],
             ignored=data['ignored'],
             ignored_reasons=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ignored_reasons']
             ],
-            role=to_dict(
+            role=from_dict(
                 data['role'],
                 casing_strategy
             ),
-            chrome_role=to_dict(
+            chrome_role=from_dict(
                 data['chrome_role'],
                 casing_strategy
             ),
-            name=to_dict(
+            name=from_dict(
                 data['name'],
                 casing_strategy
             ),
-            description=to_dict(
+            description=from_dict(
                 data['description'],
                 casing_strategy
             ),
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             ),
             properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['properties']
             ],
             parent_id=data['parent_id'],
@@ -12697,31 +12697,31 @@ def _accessibility__ax_node__from_dict(
             node_id=data['nodeId'],
             ignored=data['ignored'],
             ignored_reasons=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ignoredReasons']
             ],
-            role=to_dict(
+            role=from_dict(
                 data['role'],
                 casing_strategy
             ),
-            chrome_role=to_dict(
+            chrome_role=from_dict(
                 data['chromeRole'],
                 casing_strategy
             ),
-            name=to_dict(
+            name=from_dict(
                 data['name'],
                 casing_strategy
             ),
-            description=to_dict(
+            description=from_dict(
                 data['description'],
                 casing_strategy
             ),
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             ),
             properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['properties']
             ],
             parent_id=data['parentId'],
@@ -12734,31 +12734,31 @@ def _accessibility__ax_node__from_dict(
             node_id=data['NodeId'],
             ignored=data['Ignored'],
             ignored_reasons=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['IgnoredReasons']
             ],
-            role=to_dict(
+            role=from_dict(
                 data['Role'],
                 casing_strategy
             ),
-            chrome_role=to_dict(
+            chrome_role=from_dict(
                 data['ChromeRole'],
                 casing_strategy
             ),
-            name=to_dict(
+            name=from_dict(
                 data['Name'],
                 casing_strategy
             ),
-            description=to_dict(
+            description=from_dict(
                 data['Description'],
                 casing_strategy
             ),
-            value=to_dict(
+            value=from_dict(
                 data['Value'],
                 casing_strategy
             ),
             properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Properties']
             ],
             parent_id=data['ParentId'],
@@ -12782,7 +12782,7 @@ def _animation__animation__from_dict(
             start_time=data['start_time'],
             current_time=data['current_time'],
             type=data['type'],
-            source=to_dict(
+            source=from_dict(
                 data['source'],
                 casing_strategy
             ),
@@ -12798,7 +12798,7 @@ def _animation__animation__from_dict(
             start_time=data['startTime'],
             current_time=data['currentTime'],
             type=data['type'],
-            source=to_dict(
+            source=from_dict(
                 data['source'],
                 casing_strategy
             ),
@@ -12814,7 +12814,7 @@ def _animation__animation__from_dict(
             start_time=data['StartTime'],
             current_time=data['CurrentTime'],
             type=data['Type'],
-            source=to_dict(
+            source=from_dict(
                 data['Source'],
                 casing_strategy
             ),
@@ -12836,7 +12836,7 @@ def _animation__animation_effect__from_dict(
             direction=data['direction'],
             fill=data['fill'],
             backend_node_id=data['backend_node_id'],
-            keyframes_rule=to_dict(
+            keyframes_rule=from_dict(
                 data['keyframes_rule'],
                 casing_strategy
             ),
@@ -12852,7 +12852,7 @@ def _animation__animation_effect__from_dict(
             direction=data['direction'],
             fill=data['fill'],
             backend_node_id=data['backendNodeId'],
-            keyframes_rule=to_dict(
+            keyframes_rule=from_dict(
                 data['keyframesRule'],
                 casing_strategy
             ),
@@ -12868,7 +12868,7 @@ def _animation__animation_effect__from_dict(
             direction=data['Direction'],
             fill=data['Fill'],
             backend_node_id=data['BackendNodeId'],
-            keyframes_rule=to_dict(
+            keyframes_rule=from_dict(
                 data['KeyframesRule'],
                 casing_strategy
             ),
@@ -12884,7 +12884,7 @@ def _animation__keyframes_rule__from_dict(
         return animation.KeyframesRule(
             name=data['name'],
             keyframes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['keyframes']
             ]
         )
@@ -12892,7 +12892,7 @@ def _animation__keyframes_rule__from_dict(
         return animation.KeyframesRule(
             name=data['name'],
             keyframes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['keyframes']
             ]
         )
@@ -12900,7 +12900,7 @@ def _animation__keyframes_rule__from_dict(
         return animation.KeyframesRule(
             name=data['Name'],
             keyframes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Keyframes']
             ]
         )
@@ -12996,7 +12996,7 @@ def _audits__cookie_issue_details__from_dict(
 ) -> 'audits.CookieIssueDetails':
     if casing_strategy == 'snake':
         return audits.CookieIssueDetails(
-            cookie=to_dict(
+            cookie=from_dict(
                 data['cookie'],
                 casing_strategy
             ),
@@ -13006,14 +13006,14 @@ def _audits__cookie_issue_details__from_dict(
             operation=data['operation'],
             site_for_cookies=data['site_for_cookies'],
             cookie_url=data['cookie_url'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return audits.CookieIssueDetails(
-            cookie=to_dict(
+            cookie=from_dict(
                 data['cookie'],
                 casing_strategy
             ),
@@ -13023,14 +13023,14 @@ def _audits__cookie_issue_details__from_dict(
             operation=data['operation'],
             site_for_cookies=data['siteForCookies'],
             cookie_url=data['cookieUrl'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return audits.CookieIssueDetails(
-            cookie=to_dict(
+            cookie=from_dict(
                 data['Cookie'],
                 casing_strategy
             ),
@@ -13040,7 +13040,7 @@ def _audits__cookie_issue_details__from_dict(
             operation=data['Operation'],
             site_for_cookies=data['SiteForCookies'],
             cookie_url=data['CookieUrl'],
-            request=to_dict(
+            request=from_dict(
                 data['Request'],
                 casing_strategy
             )
@@ -13057,11 +13057,11 @@ def _audits__mixed_content_issue_details__from_dict(
             resolution_status=data['resolution_status'],
             insecure_url=data['insecure_url'],
             main_resource_url=data['main_resource_url'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             ),
-            frame=to_dict(
+            frame=from_dict(
                 data['frame'],
                 casing_strategy
             )
@@ -13072,11 +13072,11 @@ def _audits__mixed_content_issue_details__from_dict(
             resolution_status=data['resolutionStatus'],
             insecure_url=data['insecureURL'],
             main_resource_url=data['mainResourceURL'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             ),
-            frame=to_dict(
+            frame=from_dict(
                 data['frame'],
                 casing_strategy
             )
@@ -13087,11 +13087,11 @@ def _audits__mixed_content_issue_details__from_dict(
             resolution_status=data['ResolutionStatus'],
             insecure_url=data['InsecureURL'],
             main_resource_url=data['MainResourceURL'],
-            request=to_dict(
+            request=from_dict(
                 data['Request'],
                 casing_strategy
             ),
-            frame=to_dict(
+            frame=from_dict(
                 data['Frame'],
                 casing_strategy
             )
@@ -13104,15 +13104,15 @@ def _audits__blocked_by_response_issue_details__from_dict(
 ) -> 'audits.BlockedByResponseIssueDetails':
     if casing_strategy == 'snake':
         return audits.BlockedByResponseIssueDetails(
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             ),
-            parent_frame=to_dict(
+            parent_frame=from_dict(
                 data['parent_frame'],
                 casing_strategy
             ),
-            blocked_frame=to_dict(
+            blocked_frame=from_dict(
                 data['blocked_frame'],
                 casing_strategy
             ),
@@ -13120,15 +13120,15 @@ def _audits__blocked_by_response_issue_details__from_dict(
         )
     if casing_strategy == 'camel':
         return audits.BlockedByResponseIssueDetails(
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             ),
-            parent_frame=to_dict(
+            parent_frame=from_dict(
                 data['parentFrame'],
                 casing_strategy
             ),
-            blocked_frame=to_dict(
+            blocked_frame=from_dict(
                 data['blockedFrame'],
                 casing_strategy
             ),
@@ -13136,15 +13136,15 @@ def _audits__blocked_by_response_issue_details__from_dict(
         )
     if casing_strategy == 'pascal':
         return audits.BlockedByResponseIssueDetails(
-            request=to_dict(
+            request=from_dict(
                 data['Request'],
                 casing_strategy
             ),
-            parent_frame=to_dict(
+            parent_frame=from_dict(
                 data['ParentFrame'],
                 casing_strategy
             ),
-            blocked_frame=to_dict(
+            blocked_frame=from_dict(
                 data['BlockedFrame'],
                 casing_strategy
             ),
@@ -13160,7 +13160,7 @@ def _audits__heavy_ad_issue_details__from_dict(
         return audits.HeavyAdIssueDetails(
             resolution=data['resolution'],
             reason=data['reason'],
-            frame=to_dict(
+            frame=from_dict(
                 data['frame'],
                 casing_strategy
             )
@@ -13169,7 +13169,7 @@ def _audits__heavy_ad_issue_details__from_dict(
         return audits.HeavyAdIssueDetails(
             resolution=data['resolution'],
             reason=data['reason'],
-            frame=to_dict(
+            frame=from_dict(
                 data['frame'],
                 casing_strategy
             )
@@ -13178,7 +13178,7 @@ def _audits__heavy_ad_issue_details__from_dict(
         return audits.HeavyAdIssueDetails(
             resolution=data['Resolution'],
             reason=data['Reason'],
-            frame=to_dict(
+            frame=from_dict(
                 data['Frame'],
                 casing_strategy
             )
@@ -13222,11 +13222,11 @@ def _audits__content_security_policy_issue_details__from_dict(
             violated_directive=data['violated_directive'],
             is_report_only=data['is_report_only'],
             content_security_policy_violation_type=data['content_security_policy_violation_type'],
-            frame_ancestor=to_dict(
+            frame_ancestor=from_dict(
                 data['frame_ancestor'],
                 casing_strategy
             ),
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['source_code_location'],
                 casing_strategy
             ),
@@ -13238,11 +13238,11 @@ def _audits__content_security_policy_issue_details__from_dict(
             violated_directive=data['violatedDirective'],
             is_report_only=data['isReportOnly'],
             content_security_policy_violation_type=data['contentSecurityPolicyViolationType'],
-            frame_ancestor=to_dict(
+            frame_ancestor=from_dict(
                 data['frameAncestor'],
                 casing_strategy
             ),
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['sourceCodeLocation'],
                 casing_strategy
             ),
@@ -13254,11 +13254,11 @@ def _audits__content_security_policy_issue_details__from_dict(
             violated_directive=data['ViolatedDirective'],
             is_report_only=data['IsReportOnly'],
             content_security_policy_violation_type=data['ContentSecurityPolicyViolationType'],
-            frame_ancestor=to_dict(
+            frame_ancestor=from_dict(
                 data['FrameAncestor'],
                 casing_strategy
             ),
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['SourceCodeLocation'],
                 casing_strategy
             ),
@@ -13272,7 +13272,7 @@ def _audits__shared_array_buffer_issue_details__from_dict(
 ) -> 'audits.SharedArrayBufferIssueDetails':
     if casing_strategy == 'snake':
         return audits.SharedArrayBufferIssueDetails(
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['source_code_location'],
                 casing_strategy
             ),
@@ -13281,7 +13281,7 @@ def _audits__shared_array_buffer_issue_details__from_dict(
         )
     if casing_strategy == 'camel':
         return audits.SharedArrayBufferIssueDetails(
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['sourceCodeLocation'],
                 casing_strategy
             ),
@@ -13290,7 +13290,7 @@ def _audits__shared_array_buffer_issue_details__from_dict(
         )
     if casing_strategy == 'pascal':
         return audits.SharedArrayBufferIssueDetails(
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['SourceCodeLocation'],
                 casing_strategy
             ),
@@ -13341,66 +13341,66 @@ def _audits__cors_issue_details__from_dict(
 ) -> 'audits.CorsIssueDetails':
     if casing_strategy == 'snake':
         return audits.CorsIssueDetails(
-            cors_error_status=to_dict(
+            cors_error_status=from_dict(
                 data['cors_error_status'],
                 casing_strategy
             ),
             is_warning=data['is_warning'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             ),
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             ),
             initiator_origin=data['initiator_origin'],
             resource_ip_address_space=data['resource_ip_address_space'],
-            client_security_state=to_dict(
+            client_security_state=from_dict(
                 data['client_security_state'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return audits.CorsIssueDetails(
-            cors_error_status=to_dict(
+            cors_error_status=from_dict(
                 data['corsErrorStatus'],
                 casing_strategy
             ),
             is_warning=data['isWarning'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             ),
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             ),
             initiator_origin=data['initiatorOrigin'],
             resource_ip_address_space=data['resourceIPAddressSpace'],
-            client_security_state=to_dict(
+            client_security_state=from_dict(
                 data['clientSecurityState'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return audits.CorsIssueDetails(
-            cors_error_status=to_dict(
+            cors_error_status=from_dict(
                 data['CorsErrorStatus'],
                 casing_strategy
             ),
             is_warning=data['IsWarning'],
-            request=to_dict(
+            request=from_dict(
                 data['Request'],
                 casing_strategy
             ),
-            location=to_dict(
+            location=from_dict(
                 data['Location'],
                 casing_strategy
             ),
             initiator_origin=data['InitiatorOrigin'],
             resource_ip_address_space=data['ResourceIPAddressSpace'],
-            client_security_state=to_dict(
+            client_security_state=from_dict(
                 data['ClientSecurityState'],
                 casing_strategy
             )
@@ -13414,7 +13414,7 @@ def _audits__attribution_reporting_issue_details__from_dict(
     if casing_strategy == 'snake':
         return audits.AttributionReportingIssueDetails(
             violation_type=data['violation_type'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             ),
@@ -13424,7 +13424,7 @@ def _audits__attribution_reporting_issue_details__from_dict(
     if casing_strategy == 'camel':
         return audits.AttributionReportingIssueDetails(
             violation_type=data['violationType'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             ),
@@ -13434,7 +13434,7 @@ def _audits__attribution_reporting_issue_details__from_dict(
     if casing_strategy == 'pascal':
         return audits.AttributionReportingIssueDetails(
             violation_type=data['ViolationType'],
-            request=to_dict(
+            request=from_dict(
                 data['Request'],
                 casing_strategy
             ),
@@ -13480,7 +13480,7 @@ def _audits__navigator_user_agent_issue_details__from_dict(
     if casing_strategy == 'snake':
         return audits.NavigatorUserAgentIssueDetails(
             url=data['url'],
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             )
@@ -13488,7 +13488,7 @@ def _audits__navigator_user_agent_issue_details__from_dict(
     if casing_strategy == 'camel':
         return audits.NavigatorUserAgentIssueDetails(
             url=data['url'],
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             )
@@ -13496,7 +13496,7 @@ def _audits__navigator_user_agent_issue_details__from_dict(
     if casing_strategy == 'pascal':
         return audits.NavigatorUserAgentIssueDetails(
             url=data['Url'],
-            location=to_dict(
+            location=from_dict(
                 data['Location'],
                 casing_strategy
             )
@@ -13513,7 +13513,7 @@ def _audits__generic_issue_details__from_dict(
             frame_id=data['frame_id'],
             violating_node_id=data['violating_node_id'],
             violating_node_attribute=data['violating_node_attribute'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             )
@@ -13524,7 +13524,7 @@ def _audits__generic_issue_details__from_dict(
             frame_id=data['frameId'],
             violating_node_id=data['violatingNodeId'],
             violating_node_attribute=data['violatingNodeAttribute'],
-            request=to_dict(
+            request=from_dict(
                 data['request'],
                 casing_strategy
             )
@@ -13535,7 +13535,7 @@ def _audits__generic_issue_details__from_dict(
             frame_id=data['FrameId'],
             violating_node_id=data['ViolatingNodeId'],
             violating_node_attribute=data['ViolatingNodeAttribute'],
-            request=to_dict(
+            request=from_dict(
                 data['Request'],
                 casing_strategy
             )
@@ -13548,11 +13548,11 @@ def _audits__deprecation_issue_details__from_dict(
 ) -> 'audits.DeprecationIssueDetails':
     if casing_strategy == 'snake':
         return audits.DeprecationIssueDetails(
-            affected_frame=to_dict(
+            affected_frame=from_dict(
                 data['affected_frame'],
                 casing_strategy
             ),
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['source_code_location'],
                 casing_strategy
             ),
@@ -13560,11 +13560,11 @@ def _audits__deprecation_issue_details__from_dict(
         )
     if casing_strategy == 'camel':
         return audits.DeprecationIssueDetails(
-            affected_frame=to_dict(
+            affected_frame=from_dict(
                 data['affectedFrame'],
                 casing_strategy
             ),
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['sourceCodeLocation'],
                 casing_strategy
             ),
@@ -13572,11 +13572,11 @@ def _audits__deprecation_issue_details__from_dict(
         )
     if casing_strategy == 'pascal':
         return audits.DeprecationIssueDetails(
-            affected_frame=to_dict(
+            affected_frame=from_dict(
                 data['AffectedFrame'],
                 casing_strategy
             ),
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['SourceCodeLocation'],
                 casing_strategy
             ),
@@ -13644,7 +13644,7 @@ def _audits__client_hint_issue_details__from_dict(
 ) -> 'audits.ClientHintIssueDetails':
     if casing_strategy == 'snake':
         return audits.ClientHintIssueDetails(
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['source_code_location'],
                 casing_strategy
             ),
@@ -13652,7 +13652,7 @@ def _audits__client_hint_issue_details__from_dict(
         )
     if casing_strategy == 'camel':
         return audits.ClientHintIssueDetails(
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['sourceCodeLocation'],
                 casing_strategy
             ),
@@ -13660,7 +13660,7 @@ def _audits__client_hint_issue_details__from_dict(
         )
     if casing_strategy == 'pascal':
         return audits.ClientHintIssueDetails(
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['SourceCodeLocation'],
                 casing_strategy
             ),
@@ -13698,36 +13698,36 @@ def _audits__stylesheet_loading_issue_details__from_dict(
 ) -> 'audits.StylesheetLoadingIssueDetails':
     if casing_strategy == 'snake':
         return audits.StylesheetLoadingIssueDetails(
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['source_code_location'],
                 casing_strategy
             ),
             style_sheet_loading_issue_reason=data['style_sheet_loading_issue_reason'],
-            failed_request_info=to_dict(
+            failed_request_info=from_dict(
                 data['failed_request_info'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return audits.StylesheetLoadingIssueDetails(
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['sourceCodeLocation'],
                 casing_strategy
             ),
             style_sheet_loading_issue_reason=data['styleSheetLoadingIssueReason'],
-            failed_request_info=to_dict(
+            failed_request_info=from_dict(
                 data['failedRequestInfo'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return audits.StylesheetLoadingIssueDetails(
-            source_code_location=to_dict(
+            source_code_location=from_dict(
                 data['SourceCodeLocation'],
                 casing_strategy
             ),
             style_sheet_loading_issue_reason=data['StyleSheetLoadingIssueReason'],
-            failed_request_info=to_dict(
+            failed_request_info=from_dict(
                 data['FailedRequestInfo'],
                 casing_strategy
             )
@@ -13740,225 +13740,225 @@ def _audits__inspector_issue_details__from_dict(
 ) -> 'audits.InspectorIssueDetails':
     if casing_strategy == 'snake':
         return audits.InspectorIssueDetails(
-            cookie_issue_details=to_dict(
+            cookie_issue_details=from_dict(
                 data['cookie_issue_details'],
                 casing_strategy
             ),
-            mixed_content_issue_details=to_dict(
+            mixed_content_issue_details=from_dict(
                 data['mixed_content_issue_details'],
                 casing_strategy
             ),
-            blocked_by_response_issue_details=to_dict(
+            blocked_by_response_issue_details=from_dict(
                 data['blocked_by_response_issue_details'],
                 casing_strategy
             ),
-            heavy_ad_issue_details=to_dict(
+            heavy_ad_issue_details=from_dict(
                 data['heavy_ad_issue_details'],
                 casing_strategy
             ),
-            content_security_policy_issue_details=to_dict(
+            content_security_policy_issue_details=from_dict(
                 data['content_security_policy_issue_details'],
                 casing_strategy
             ),
-            shared_array_buffer_issue_details=to_dict(
+            shared_array_buffer_issue_details=from_dict(
                 data['shared_array_buffer_issue_details'],
                 casing_strategy
             ),
-            low_text_contrast_issue_details=to_dict(
+            low_text_contrast_issue_details=from_dict(
                 data['low_text_contrast_issue_details'],
                 casing_strategy
             ),
-            cors_issue_details=to_dict(
+            cors_issue_details=from_dict(
                 data['cors_issue_details'],
                 casing_strategy
             ),
-            attribution_reporting_issue_details=to_dict(
+            attribution_reporting_issue_details=from_dict(
                 data['attribution_reporting_issue_details'],
                 casing_strategy
             ),
-            quirks_mode_issue_details=to_dict(
+            quirks_mode_issue_details=from_dict(
                 data['quirks_mode_issue_details'],
                 casing_strategy
             ),
-            navigator_user_agent_issue_details=to_dict(
+            navigator_user_agent_issue_details=from_dict(
                 data['navigator_user_agent_issue_details'],
                 casing_strategy
             ),
-            generic_issue_details=to_dict(
+            generic_issue_details=from_dict(
                 data['generic_issue_details'],
                 casing_strategy
             ),
-            deprecation_issue_details=to_dict(
+            deprecation_issue_details=from_dict(
                 data['deprecation_issue_details'],
                 casing_strategy
             ),
-            client_hint_issue_details=to_dict(
+            client_hint_issue_details=from_dict(
                 data['client_hint_issue_details'],
                 casing_strategy
             ),
-            federated_auth_request_issue_details=to_dict(
+            federated_auth_request_issue_details=from_dict(
                 data['federated_auth_request_issue_details'],
                 casing_strategy
             ),
-            bounce_tracking_issue_details=to_dict(
+            bounce_tracking_issue_details=from_dict(
                 data['bounce_tracking_issue_details'],
                 casing_strategy
             ),
-            stylesheet_loading_issue_details=to_dict(
+            stylesheet_loading_issue_details=from_dict(
                 data['stylesheet_loading_issue_details'],
                 casing_strategy
             ),
-            federated_auth_user_info_request_issue_details=to_dict(
+            federated_auth_user_info_request_issue_details=from_dict(
                 data['federated_auth_user_info_request_issue_details'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return audits.InspectorIssueDetails(
-            cookie_issue_details=to_dict(
+            cookie_issue_details=from_dict(
                 data['cookieIssueDetails'],
                 casing_strategy
             ),
-            mixed_content_issue_details=to_dict(
+            mixed_content_issue_details=from_dict(
                 data['mixedContentIssueDetails'],
                 casing_strategy
             ),
-            blocked_by_response_issue_details=to_dict(
+            blocked_by_response_issue_details=from_dict(
                 data['blockedByResponseIssueDetails'],
                 casing_strategy
             ),
-            heavy_ad_issue_details=to_dict(
+            heavy_ad_issue_details=from_dict(
                 data['heavyAdIssueDetails'],
                 casing_strategy
             ),
-            content_security_policy_issue_details=to_dict(
+            content_security_policy_issue_details=from_dict(
                 data['contentSecurityPolicyIssueDetails'],
                 casing_strategy
             ),
-            shared_array_buffer_issue_details=to_dict(
+            shared_array_buffer_issue_details=from_dict(
                 data['sharedArrayBufferIssueDetails'],
                 casing_strategy
             ),
-            low_text_contrast_issue_details=to_dict(
+            low_text_contrast_issue_details=from_dict(
                 data['lowTextContrastIssueDetails'],
                 casing_strategy
             ),
-            cors_issue_details=to_dict(
+            cors_issue_details=from_dict(
                 data['corsIssueDetails'],
                 casing_strategy
             ),
-            attribution_reporting_issue_details=to_dict(
+            attribution_reporting_issue_details=from_dict(
                 data['attributionReportingIssueDetails'],
                 casing_strategy
             ),
-            quirks_mode_issue_details=to_dict(
+            quirks_mode_issue_details=from_dict(
                 data['quirksModeIssueDetails'],
                 casing_strategy
             ),
-            navigator_user_agent_issue_details=to_dict(
+            navigator_user_agent_issue_details=from_dict(
                 data['navigatorUserAgentIssueDetails'],
                 casing_strategy
             ),
-            generic_issue_details=to_dict(
+            generic_issue_details=from_dict(
                 data['genericIssueDetails'],
                 casing_strategy
             ),
-            deprecation_issue_details=to_dict(
+            deprecation_issue_details=from_dict(
                 data['deprecationIssueDetails'],
                 casing_strategy
             ),
-            client_hint_issue_details=to_dict(
+            client_hint_issue_details=from_dict(
                 data['clientHintIssueDetails'],
                 casing_strategy
             ),
-            federated_auth_request_issue_details=to_dict(
+            federated_auth_request_issue_details=from_dict(
                 data['federatedAuthRequestIssueDetails'],
                 casing_strategy
             ),
-            bounce_tracking_issue_details=to_dict(
+            bounce_tracking_issue_details=from_dict(
                 data['bounceTrackingIssueDetails'],
                 casing_strategy
             ),
-            stylesheet_loading_issue_details=to_dict(
+            stylesheet_loading_issue_details=from_dict(
                 data['stylesheetLoadingIssueDetails'],
                 casing_strategy
             ),
-            federated_auth_user_info_request_issue_details=to_dict(
+            federated_auth_user_info_request_issue_details=from_dict(
                 data['federatedAuthUserInfoRequestIssueDetails'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return audits.InspectorIssueDetails(
-            cookie_issue_details=to_dict(
+            cookie_issue_details=from_dict(
                 data['CookieIssueDetails'],
                 casing_strategy
             ),
-            mixed_content_issue_details=to_dict(
+            mixed_content_issue_details=from_dict(
                 data['MixedContentIssueDetails'],
                 casing_strategy
             ),
-            blocked_by_response_issue_details=to_dict(
+            blocked_by_response_issue_details=from_dict(
                 data['BlockedByResponseIssueDetails'],
                 casing_strategy
             ),
-            heavy_ad_issue_details=to_dict(
+            heavy_ad_issue_details=from_dict(
                 data['HeavyAdIssueDetails'],
                 casing_strategy
             ),
-            content_security_policy_issue_details=to_dict(
+            content_security_policy_issue_details=from_dict(
                 data['ContentSecurityPolicyIssueDetails'],
                 casing_strategy
             ),
-            shared_array_buffer_issue_details=to_dict(
+            shared_array_buffer_issue_details=from_dict(
                 data['SharedArrayBufferIssueDetails'],
                 casing_strategy
             ),
-            low_text_contrast_issue_details=to_dict(
+            low_text_contrast_issue_details=from_dict(
                 data['LowTextContrastIssueDetails'],
                 casing_strategy
             ),
-            cors_issue_details=to_dict(
+            cors_issue_details=from_dict(
                 data['CorsIssueDetails'],
                 casing_strategy
             ),
-            attribution_reporting_issue_details=to_dict(
+            attribution_reporting_issue_details=from_dict(
                 data['AttributionReportingIssueDetails'],
                 casing_strategy
             ),
-            quirks_mode_issue_details=to_dict(
+            quirks_mode_issue_details=from_dict(
                 data['QuirksModeIssueDetails'],
                 casing_strategy
             ),
-            navigator_user_agent_issue_details=to_dict(
+            navigator_user_agent_issue_details=from_dict(
                 data['NavigatorUserAgentIssueDetails'],
                 casing_strategy
             ),
-            generic_issue_details=to_dict(
+            generic_issue_details=from_dict(
                 data['GenericIssueDetails'],
                 casing_strategy
             ),
-            deprecation_issue_details=to_dict(
+            deprecation_issue_details=from_dict(
                 data['DeprecationIssueDetails'],
                 casing_strategy
             ),
-            client_hint_issue_details=to_dict(
+            client_hint_issue_details=from_dict(
                 data['ClientHintIssueDetails'],
                 casing_strategy
             ),
-            federated_auth_request_issue_details=to_dict(
+            federated_auth_request_issue_details=from_dict(
                 data['FederatedAuthRequestIssueDetails'],
                 casing_strategy
             ),
-            bounce_tracking_issue_details=to_dict(
+            bounce_tracking_issue_details=from_dict(
                 data['BounceTrackingIssueDetails'],
                 casing_strategy
             ),
-            stylesheet_loading_issue_details=to_dict(
+            stylesheet_loading_issue_details=from_dict(
                 data['StylesheetLoadingIssueDetails'],
                 casing_strategy
             ),
-            federated_auth_user_info_request_issue_details=to_dict(
+            federated_auth_user_info_request_issue_details=from_dict(
                 data['FederatedAuthUserInfoRequestIssueDetails'],
                 casing_strategy
             )
@@ -13972,7 +13972,7 @@ def _audits__inspector_issue__from_dict(
     if casing_strategy == 'snake':
         return audits.InspectorIssue(
             code=data['code'],
-            details=to_dict(
+            details=from_dict(
                 data['details'],
                 casing_strategy
             ),
@@ -13981,7 +13981,7 @@ def _audits__inspector_issue__from_dict(
     if casing_strategy == 'camel':
         return audits.InspectorIssue(
             code=data['code'],
-            details=to_dict(
+            details=from_dict(
                 data['details'],
                 casing_strategy
             ),
@@ -13990,7 +13990,7 @@ def _audits__inspector_issue__from_dict(
     if casing_strategy == 'pascal':
         return audits.InspectorIssue(
             code=data['Code'],
-            details=to_dict(
+            details=from_dict(
                 data['Details'],
                 casing_strategy
             ),
@@ -14056,21 +14056,21 @@ def _autofill__address_fields__from_dict(
     if casing_strategy == 'snake':
         return autofill.AddressFields(
             fields=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['fields']
             ]
         )
     if casing_strategy == 'camel':
         return autofill.AddressFields(
             fields=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['fields']
             ]
         )
     if casing_strategy == 'pascal':
         return autofill.AddressFields(
             fields=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Fields']
             ]
         )
@@ -14083,21 +14083,21 @@ def _autofill__address__from_dict(
     if casing_strategy == 'snake':
         return autofill.Address(
             fields=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['fields']
             ]
         )
     if casing_strategy == 'camel':
         return autofill.Address(
             fields=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['fields']
             ]
         )
     if casing_strategy == 'pascal':
         return autofill.Address(
             fields=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Fields']
             ]
         )
@@ -14110,21 +14110,21 @@ def _autofill__address_ui__from_dict(
     if casing_strategy == 'snake':
         return autofill.AddressUI(
             address_fields=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['address_fields']
             ]
         )
     if casing_strategy == 'camel':
         return autofill.AddressUI(
             address_fields=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['addressFields']
             ]
         )
     if casing_strategy == 'pascal':
         return autofill.AddressUI(
             address_fields=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['AddressFields']
             ]
         )
@@ -14197,7 +14197,7 @@ def _background_service__background_service_event__from_dict(
             event_name=data['event_name'],
             instance_id=data['instance_id'],
             event_metadata=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['event_metadata']
             ],
             storage_key=data['storage_key']
@@ -14211,7 +14211,7 @@ def _background_service__background_service_event__from_dict(
             event_name=data['eventName'],
             instance_id=data['instanceId'],
             event_metadata=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['eventMetadata']
             ],
             storage_key=data['storageKey']
@@ -14225,7 +14225,7 @@ def _background_service__background_service_event__from_dict(
             event_name=data['EventName'],
             instance_id=data['InstanceId'],
             event_metadata=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['EventMetadata']
             ],
             storage_key=data['StorageKey']
@@ -14326,7 +14326,7 @@ def _browser__histogram__from_dict(
             sum=data['sum'],
             count=data['count'],
             buckets=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['buckets']
             ]
         )
@@ -14336,7 +14336,7 @@ def _browser__histogram__from_dict(
             sum=data['sum'],
             count=data['count'],
             buckets=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['buckets']
             ]
         )
@@ -14346,7 +14346,7 @@ def _browser__histogram__from_dict(
             sum=data['Sum'],
             count=data['Count'],
             buckets=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Buckets']
             ]
         )
@@ -14361,7 +14361,7 @@ def _css__pseudo_element_matches__from_dict(
             pseudo_type=data['pseudo_type'],
             pseudo_identifier=data['pseudo_identifier'],
             matches=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['matches']
             ]
         )
@@ -14370,7 +14370,7 @@ def _css__pseudo_element_matches__from_dict(
             pseudo_type=data['pseudoType'],
             pseudo_identifier=data['pseudoIdentifier'],
             matches=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['matches']
             ]
         )
@@ -14379,7 +14379,7 @@ def _css__pseudo_element_matches__from_dict(
             pseudo_type=data['PseudoType'],
             pseudo_identifier=data['PseudoIdentifier'],
             matches=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Matches']
             ]
         )
@@ -14391,34 +14391,34 @@ def _css__inherited_style_entry__from_dict(
 ) -> 'css.InheritedStyleEntry':
     if casing_strategy == 'snake':
         return css.InheritedStyleEntry(
-            inline_style=to_dict(
+            inline_style=from_dict(
                 data['inline_style'],
                 casing_strategy
             ),
             matched_css_rules=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['matched_css_rules']
             ]
         )
     if casing_strategy == 'camel':
         return css.InheritedStyleEntry(
-            inline_style=to_dict(
+            inline_style=from_dict(
                 data['inlineStyle'],
                 casing_strategy
             ),
             matched_css_rules=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['matchedCSSRules']
             ]
         )
     if casing_strategy == 'pascal':
         return css.InheritedStyleEntry(
-            inline_style=to_dict(
+            inline_style=from_dict(
                 data['InlineStyle'],
                 casing_strategy
             ),
             matched_css_rules=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['MatchedCSSRules']
             ]
         )
@@ -14431,21 +14431,21 @@ def _css__inherited_pseudo_element_matches__from_dict(
     if casing_strategy == 'snake':
         return css.InheritedPseudoElementMatches(
             pseudo_elements=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['pseudo_elements']
             ]
         )
     if casing_strategy == 'camel':
         return css.InheritedPseudoElementMatches(
             pseudo_elements=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['pseudoElements']
             ]
         )
     if casing_strategy == 'pascal':
         return css.InheritedPseudoElementMatches(
             pseudo_elements=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['PseudoElements']
             ]
         )
@@ -14457,7 +14457,7 @@ def _css__rule_match__from_dict(
 ) -> 'css.RuleMatch':
     if casing_strategy == 'snake':
         return css.RuleMatch(
-            rule=to_dict(
+            rule=from_dict(
                 data['rule'],
                 casing_strategy
             ),
@@ -14465,7 +14465,7 @@ def _css__rule_match__from_dict(
         )
     if casing_strategy == 'camel':
         return css.RuleMatch(
-            rule=to_dict(
+            rule=from_dict(
                 data['rule'],
                 casing_strategy
             ),
@@ -14473,7 +14473,7 @@ def _css__rule_match__from_dict(
         )
     if casing_strategy == 'pascal':
         return css.RuleMatch(
-            rule=to_dict(
+            rule=from_dict(
                 data['Rule'],
                 casing_strategy
             ),
@@ -14488,11 +14488,11 @@ def _css__value__from_dict(
     if casing_strategy == 'snake':
         return css.Value(
             text=data['text'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
-            specificity=to_dict(
+            specificity=from_dict(
                 data['specificity'],
                 casing_strategy
             )
@@ -14500,11 +14500,11 @@ def _css__value__from_dict(
     if casing_strategy == 'camel':
         return css.Value(
             text=data['text'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
-            specificity=to_dict(
+            specificity=from_dict(
                 data['specificity'],
                 casing_strategy
             )
@@ -14512,11 +14512,11 @@ def _css__value__from_dict(
     if casing_strategy == 'pascal':
         return css.Value(
             text=data['Text'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
-            specificity=to_dict(
+            specificity=from_dict(
                 data['Specificity'],
                 casing_strategy
             )
@@ -14554,7 +14554,7 @@ def _css__selector_list__from_dict(
     if casing_strategy == 'snake':
         return css.SelectorList(
             selectors=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['selectors']
             ],
             text=data['text']
@@ -14562,7 +14562,7 @@ def _css__selector_list__from_dict(
     if casing_strategy == 'camel':
         return css.SelectorList(
             selectors=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['selectors']
             ],
             text=data['text']
@@ -14570,7 +14570,7 @@ def _css__selector_list__from_dict(
     if casing_strategy == 'pascal':
         return css.SelectorList(
             selectors=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Selectors']
             ],
             text=data['Text']
@@ -14653,34 +14653,34 @@ def _css__css_rule__from_dict(
     if casing_strategy == 'snake':
         return css.CSSRule(
             style_sheet_id=data['style_sheet_id'],
-            selector_list=to_dict(
+            selector_list=from_dict(
                 data['selector_list'],
                 casing_strategy
             ),
             nesting_selectors=data['nesting_selectors'],
             origin=data['origin'],
-            style=to_dict(
+            style=from_dict(
                 data['style'],
                 casing_strategy
             ),
             media=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['media']
             ],
             container_queries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['container_queries']
             ],
             supports=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['supports']
             ],
             layers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['layers']
             ],
             scopes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['scopes']
             ],
             rule_types=data['rule_types']
@@ -14688,34 +14688,34 @@ def _css__css_rule__from_dict(
     if casing_strategy == 'camel':
         return css.CSSRule(
             style_sheet_id=data['styleSheetId'],
-            selector_list=to_dict(
+            selector_list=from_dict(
                 data['selectorList'],
                 casing_strategy
             ),
             nesting_selectors=data['nestingSelectors'],
             origin=data['origin'],
-            style=to_dict(
+            style=from_dict(
                 data['style'],
                 casing_strategy
             ),
             media=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['media']
             ],
             container_queries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['containerQueries']
             ],
             supports=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['supports']
             ],
             layers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['layers']
             ],
             scopes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['scopes']
             ],
             rule_types=data['ruleTypes']
@@ -14723,34 +14723,34 @@ def _css__css_rule__from_dict(
     if casing_strategy == 'pascal':
         return css.CSSRule(
             style_sheet_id=data['StyleSheetId'],
-            selector_list=to_dict(
+            selector_list=from_dict(
                 data['SelectorList'],
                 casing_strategy
             ),
             nesting_selectors=data['NestingSelectors'],
             origin=data['Origin'],
-            style=to_dict(
+            style=from_dict(
                 data['Style'],
                 casing_strategy
             ),
             media=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Media']
             ],
             container_queries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ContainerQueries']
             ],
             supports=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Supports']
             ],
             layers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Layers']
             ],
             scopes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Scopes']
             ],
             rule_types=data['RuleTypes']
@@ -14864,15 +14864,15 @@ def _css__css_style__from_dict(
         return css.CSSStyle(
             style_sheet_id=data['style_sheet_id'],
             css_properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['css_properties']
             ],
             shorthand_entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['shorthand_entries']
             ],
             css_text=data['css_text'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             )
@@ -14881,15 +14881,15 @@ def _css__css_style__from_dict(
         return css.CSSStyle(
             style_sheet_id=data['styleSheetId'],
             css_properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['cssProperties']
             ],
             shorthand_entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['shorthandEntries']
             ],
             css_text=data['cssText'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             )
@@ -14898,15 +14898,15 @@ def _css__css_style__from_dict(
         return css.CSSStyle(
             style_sheet_id=data['StyleSheetId'],
             css_properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['CssProperties']
             ],
             shorthand_entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ShorthandEntries']
             ],
             css_text=data['CssText'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             )
@@ -14926,12 +14926,12 @@ def _css__css_property__from_dict(
             text=data['text'],
             parsed_ok=data['parsed_ok'],
             disabled=data['disabled'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
             longhand_properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['longhand_properties']
             ]
         )
@@ -14944,12 +14944,12 @@ def _css__css_property__from_dict(
             text=data['text'],
             parsed_ok=data['parsedOk'],
             disabled=data['disabled'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
             longhand_properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['longhandProperties']
             ]
         )
@@ -14962,12 +14962,12 @@ def _css__css_property__from_dict(
             text=data['Text'],
             parsed_ok=data['ParsedOk'],
             disabled=data['Disabled'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
             longhand_properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['LonghandProperties']
             ]
         )
@@ -14982,13 +14982,13 @@ def _css__css_media__from_dict(
             text=data['text'],
             source=data['source'],
             source_url=data['source_url'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
             style_sheet_id=data['style_sheet_id'],
             media_list=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['media_list']
             ]
         )
@@ -14997,13 +14997,13 @@ def _css__css_media__from_dict(
             text=data['text'],
             source=data['source'],
             source_url=data['sourceURL'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
             style_sheet_id=data['styleSheetId'],
             media_list=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['mediaList']
             ]
         )
@@ -15012,13 +15012,13 @@ def _css__css_media__from_dict(
             text=data['Text'],
             source=data['Source'],
             source_url=data['SourceURL'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
             style_sheet_id=data['StyleSheetId'],
             media_list=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['MediaList']
             ]
         )
@@ -15031,7 +15031,7 @@ def _css__media_query__from_dict(
     if casing_strategy == 'snake':
         return css.MediaQuery(
             expressions=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['expressions']
             ],
             active=data['active']
@@ -15039,7 +15039,7 @@ def _css__media_query__from_dict(
     if casing_strategy == 'camel':
         return css.MediaQuery(
             expressions=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['expressions']
             ],
             active=data['active']
@@ -15047,7 +15047,7 @@ def _css__media_query__from_dict(
     if casing_strategy == 'pascal':
         return css.MediaQuery(
             expressions=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Expressions']
             ],
             active=data['Active']
@@ -15063,7 +15063,7 @@ def _css__media_query_expression__from_dict(
             value=data['value'],
             unit=data['unit'],
             feature=data['feature'],
-            value_range=to_dict(
+            value_range=from_dict(
                 data['value_range'],
                 casing_strategy
             ),
@@ -15074,7 +15074,7 @@ def _css__media_query_expression__from_dict(
             value=data['value'],
             unit=data['unit'],
             feature=data['feature'],
-            value_range=to_dict(
+            value_range=from_dict(
                 data['valueRange'],
                 casing_strategy
             ),
@@ -15085,7 +15085,7 @@ def _css__media_query_expression__from_dict(
             value=data['Value'],
             unit=data['Unit'],
             feature=data['Feature'],
-            value_range=to_dict(
+            value_range=from_dict(
                 data['ValueRange'],
                 casing_strategy
             ),
@@ -15100,7 +15100,7 @@ def _css__css_container_query__from_dict(
     if casing_strategy == 'snake':
         return css.CSSContainerQuery(
             text=data['text'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15112,7 +15112,7 @@ def _css__css_container_query__from_dict(
     if casing_strategy == 'camel':
         return css.CSSContainerQuery(
             text=data['text'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15124,7 +15124,7 @@ def _css__css_container_query__from_dict(
     if casing_strategy == 'pascal':
         return css.CSSContainerQuery(
             text=data['Text'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -15143,7 +15143,7 @@ def _css__css_supports__from_dict(
         return css.CSSSupports(
             text=data['text'],
             active=data['active'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15153,7 +15153,7 @@ def _css__css_supports__from_dict(
         return css.CSSSupports(
             text=data['text'],
             active=data['active'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15163,7 +15163,7 @@ def _css__css_supports__from_dict(
         return css.CSSSupports(
             text=data['Text'],
             active=data['Active'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -15178,7 +15178,7 @@ def _css__css_scope__from_dict(
     if casing_strategy == 'snake':
         return css.CSSScope(
             text=data['text'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15187,7 +15187,7 @@ def _css__css_scope__from_dict(
     if casing_strategy == 'camel':
         return css.CSSScope(
             text=data['text'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15196,7 +15196,7 @@ def _css__css_scope__from_dict(
     if casing_strategy == 'pascal':
         return css.CSSScope(
             text=data['Text'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -15211,7 +15211,7 @@ def _css__css_layer__from_dict(
     if casing_strategy == 'snake':
         return css.CSSLayer(
             text=data['text'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15220,7 +15220,7 @@ def _css__css_layer__from_dict(
     if casing_strategy == 'camel':
         return css.CSSLayer(
             text=data['text'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15229,7 +15229,7 @@ def _css__css_layer__from_dict(
     if casing_strategy == 'pascal':
         return css.CSSLayer(
             text=data['Text'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -15245,7 +15245,7 @@ def _css__css_layer_data__from_dict(
         return css.CSSLayerData(
             name=data['name'],
             sub_layers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['sub_layers']
             ],
             order=data['order']
@@ -15254,7 +15254,7 @@ def _css__css_layer_data__from_dict(
         return css.CSSLayerData(
             name=data['name'],
             sub_layers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['subLayers']
             ],
             order=data['order']
@@ -15263,7 +15263,7 @@ def _css__css_layer_data__from_dict(
         return css.CSSLayerData(
             name=data['Name'],
             sub_layers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['SubLayers']
             ],
             order=data['Order']
@@ -15340,7 +15340,7 @@ def _css__font_face__from_dict(
             src=data['src'],
             platform_font_family=data['platform_font_family'],
             font_variation_axes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['font_variation_axes']
             ]
         )
@@ -15356,7 +15356,7 @@ def _css__font_face__from_dict(
             src=data['src'],
             platform_font_family=data['platformFontFamily'],
             font_variation_axes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['fontVariationAxes']
             ]
         )
@@ -15372,7 +15372,7 @@ def _css__font_face__from_dict(
             src=data['Src'],
             platform_font_family=data['PlatformFontFamily'],
             font_variation_axes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['FontVariationAxes']
             ]
         )
@@ -15386,7 +15386,7 @@ def _css__css_try_rule__from_dict(
         return css.CSSTryRule(
             style_sheet_id=data['style_sheet_id'],
             origin=data['origin'],
-            style=to_dict(
+            style=from_dict(
                 data['style'],
                 casing_strategy
             )
@@ -15395,7 +15395,7 @@ def _css__css_try_rule__from_dict(
         return css.CSSTryRule(
             style_sheet_id=data['styleSheetId'],
             origin=data['origin'],
-            style=to_dict(
+            style=from_dict(
                 data['style'],
                 casing_strategy
             )
@@ -15404,7 +15404,7 @@ def _css__css_try_rule__from_dict(
         return css.CSSTryRule(
             style_sheet_id=data['StyleSheetId'],
             origin=data['Origin'],
-            style=to_dict(
+            style=from_dict(
                 data['Style'],
                 casing_strategy
             )
@@ -15417,34 +15417,34 @@ def _css__css_position_fallback_rule__from_dict(
 ) -> 'css.CSSPositionFallbackRule':
     if casing_strategy == 'snake':
         return css.CSSPositionFallbackRule(
-            name=to_dict(
+            name=from_dict(
                 data['name'],
                 casing_strategy
             ),
             try_rules=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['try_rules']
             ]
         )
     if casing_strategy == 'camel':
         return css.CSSPositionFallbackRule(
-            name=to_dict(
+            name=from_dict(
                 data['name'],
                 casing_strategy
             ),
             try_rules=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['tryRules']
             ]
         )
     if casing_strategy == 'pascal':
         return css.CSSPositionFallbackRule(
-            name=to_dict(
+            name=from_dict(
                 data['Name'],
                 casing_strategy
             ),
             try_rules=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['TryRules']
             ]
         )
@@ -15456,34 +15456,34 @@ def _css__css_keyframes_rule__from_dict(
 ) -> 'css.CSSKeyframesRule':
     if casing_strategy == 'snake':
         return css.CSSKeyframesRule(
-            animation_name=to_dict(
+            animation_name=from_dict(
                 data['animation_name'],
                 casing_strategy
             ),
             keyframes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['keyframes']
             ]
         )
     if casing_strategy == 'camel':
         return css.CSSKeyframesRule(
-            animation_name=to_dict(
+            animation_name=from_dict(
                 data['animationName'],
                 casing_strategy
             ),
             keyframes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['keyframes']
             ]
         )
     if casing_strategy == 'pascal':
         return css.CSSKeyframesRule(
-            animation_name=to_dict(
+            animation_name=from_dict(
                 data['AnimationName'],
                 casing_strategy
             ),
             keyframes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Keyframes']
             ]
         )
@@ -15496,7 +15496,7 @@ def _css__css_property_registration__from_dict(
     if casing_strategy == 'snake':
         return css.CSSPropertyRegistration(
             property_name=data['property_name'],
-            initial_value=to_dict(
+            initial_value=from_dict(
                 data['initial_value'],
                 casing_strategy
             ),
@@ -15506,7 +15506,7 @@ def _css__css_property_registration__from_dict(
     if casing_strategy == 'camel':
         return css.CSSPropertyRegistration(
             property_name=data['propertyName'],
-            initial_value=to_dict(
+            initial_value=from_dict(
                 data['initialValue'],
                 casing_strategy
             ),
@@ -15516,7 +15516,7 @@ def _css__css_property_registration__from_dict(
     if casing_strategy == 'pascal':
         return css.CSSPropertyRegistration(
             property_name=data['PropertyName'],
-            initial_value=to_dict(
+            initial_value=from_dict(
                 data['InitialValue'],
                 casing_strategy
             ),
@@ -15533,11 +15533,11 @@ def _css__css_property_rule__from_dict(
         return css.CSSPropertyRule(
             style_sheet_id=data['style_sheet_id'],
             origin=data['origin'],
-            property_name=to_dict(
+            property_name=from_dict(
                 data['property_name'],
                 casing_strategy
             ),
-            style=to_dict(
+            style=from_dict(
                 data['style'],
                 casing_strategy
             )
@@ -15546,11 +15546,11 @@ def _css__css_property_rule__from_dict(
         return css.CSSPropertyRule(
             style_sheet_id=data['styleSheetId'],
             origin=data['origin'],
-            property_name=to_dict(
+            property_name=from_dict(
                 data['propertyName'],
                 casing_strategy
             ),
-            style=to_dict(
+            style=from_dict(
                 data['style'],
                 casing_strategy
             )
@@ -15559,11 +15559,11 @@ def _css__css_property_rule__from_dict(
         return css.CSSPropertyRule(
             style_sheet_id=data['StyleSheetId'],
             origin=data['Origin'],
-            property_name=to_dict(
+            property_name=from_dict(
                 data['PropertyName'],
                 casing_strategy
             ),
-            style=to_dict(
+            style=from_dict(
                 data['Style'],
                 casing_strategy
             )
@@ -15578,11 +15578,11 @@ def _css__css_keyframe_rule__from_dict(
         return css.CSSKeyframeRule(
             style_sheet_id=data['style_sheet_id'],
             origin=data['origin'],
-            key_text=to_dict(
+            key_text=from_dict(
                 data['key_text'],
                 casing_strategy
             ),
-            style=to_dict(
+            style=from_dict(
                 data['style'],
                 casing_strategy
             )
@@ -15591,11 +15591,11 @@ def _css__css_keyframe_rule__from_dict(
         return css.CSSKeyframeRule(
             style_sheet_id=data['styleSheetId'],
             origin=data['origin'],
-            key_text=to_dict(
+            key_text=from_dict(
                 data['keyText'],
                 casing_strategy
             ),
-            style=to_dict(
+            style=from_dict(
                 data['style'],
                 casing_strategy
             )
@@ -15604,11 +15604,11 @@ def _css__css_keyframe_rule__from_dict(
         return css.CSSKeyframeRule(
             style_sheet_id=data['StyleSheetId'],
             origin=data['Origin'],
-            key_text=to_dict(
+            key_text=from_dict(
                 data['KeyText'],
                 casing_strategy
             ),
-            style=to_dict(
+            style=from_dict(
                 data['Style'],
                 casing_strategy
             )
@@ -15622,7 +15622,7 @@ def _css__style_declaration_edit__from_dict(
     if casing_strategy == 'snake':
         return css.StyleDeclarationEdit(
             style_sheet_id=data['style_sheet_id'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15631,7 +15631,7 @@ def _css__style_declaration_edit__from_dict(
     if casing_strategy == 'camel':
         return css.StyleDeclarationEdit(
             style_sheet_id=data['styleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -15640,7 +15640,7 @@ def _css__style_declaration_edit__from_dict(
     if casing_strategy == 'pascal':
         return css.StyleDeclarationEdit(
             style_sheet_id=data['StyleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -15657,7 +15657,7 @@ def _cache_storage__data_entry__from_dict(
             request_url=data['request_url'],
             request_method=data['request_method'],
             request_headers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['request_headers']
             ],
             response_time=data['response_time'],
@@ -15665,7 +15665,7 @@ def _cache_storage__data_entry__from_dict(
             response_status_text=data['response_status_text'],
             response_type=data['response_type'],
             response_headers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['response_headers']
             ]
         )
@@ -15674,7 +15674,7 @@ def _cache_storage__data_entry__from_dict(
             request_url=data['requestURL'],
             request_method=data['requestMethod'],
             request_headers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['requestHeaders']
             ],
             response_time=data['responseTime'],
@@ -15682,7 +15682,7 @@ def _cache_storage__data_entry__from_dict(
             response_status_text=data['responseStatusText'],
             response_type=data['responseType'],
             response_headers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['responseHeaders']
             ]
         )
@@ -15691,7 +15691,7 @@ def _cache_storage__data_entry__from_dict(
             request_url=data['RequestURL'],
             request_method=data['RequestMethod'],
             request_headers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['RequestHeaders']
             ],
             response_time=data['ResponseTime'],
@@ -15699,7 +15699,7 @@ def _cache_storage__data_entry__from_dict(
             response_status_text=data['ResponseStatusText'],
             response_type=data['ResponseType'],
             response_headers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ResponseHeaders']
             ]
         )
@@ -15714,7 +15714,7 @@ def _cache_storage__cache__from_dict(
             cache_id=data['cache_id'],
             security_origin=data['security_origin'],
             storage_key=data['storage_key'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storage_bucket'],
                 casing_strategy
             ),
@@ -15725,7 +15725,7 @@ def _cache_storage__cache__from_dict(
             cache_id=data['cacheId'],
             security_origin=data['securityOrigin'],
             storage_key=data['storageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storageBucket'],
                 casing_strategy
             ),
@@ -15736,7 +15736,7 @@ def _cache_storage__cache__from_dict(
             cache_id=data['CacheId'],
             security_origin=data['SecurityOrigin'],
             storage_key=data['StorageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['StorageBucket'],
                 casing_strategy
             ),
@@ -15846,7 +15846,7 @@ def _dom__node__from_dict(
             node_value=data['node_value'],
             child_node_count=data['child_node_count'],
             children=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['children']
             ],
             attributes=data['attributes'],
@@ -15862,33 +15862,33 @@ def _dom__node__from_dict(
             pseudo_identifier=data['pseudo_identifier'],
             shadow_root_type=data['shadow_root_type'],
             frame_id=data['frame_id'],
-            content_document=to_dict(
+            content_document=from_dict(
                 data['content_document'],
                 casing_strategy
             ),
             shadow_roots=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['shadow_roots']
             ],
-            template_content=to_dict(
+            template_content=from_dict(
                 data['template_content'],
                 casing_strategy
             ),
             pseudo_elements=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['pseudo_elements']
             ],
-            imported_document=to_dict(
+            imported_document=from_dict(
                 data['imported_document'],
                 casing_strategy
             ),
             distributed_nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['distributed_nodes']
             ],
             is_svg=data['is_svg'],
             compatibility_mode=data['compatibility_mode'],
-            assigned_slot=to_dict(
+            assigned_slot=from_dict(
                 data['assigned_slot'],
                 casing_strategy
             )
@@ -15904,7 +15904,7 @@ def _dom__node__from_dict(
             node_value=data['nodeValue'],
             child_node_count=data['childNodeCount'],
             children=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['children']
             ],
             attributes=data['attributes'],
@@ -15920,33 +15920,33 @@ def _dom__node__from_dict(
             pseudo_identifier=data['pseudoIdentifier'],
             shadow_root_type=data['shadowRootType'],
             frame_id=data['frameId'],
-            content_document=to_dict(
+            content_document=from_dict(
                 data['contentDocument'],
                 casing_strategy
             ),
             shadow_roots=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['shadowRoots']
             ],
-            template_content=to_dict(
+            template_content=from_dict(
                 data['templateContent'],
                 casing_strategy
             ),
             pseudo_elements=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['pseudoElements']
             ],
-            imported_document=to_dict(
+            imported_document=from_dict(
                 data['importedDocument'],
                 casing_strategy
             ),
             distributed_nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['distributedNodes']
             ],
             is_svg=data['isSVG'],
             compatibility_mode=data['compatibilityMode'],
-            assigned_slot=to_dict(
+            assigned_slot=from_dict(
                 data['assignedSlot'],
                 casing_strategy
             )
@@ -15962,7 +15962,7 @@ def _dom__node__from_dict(
             node_value=data['NodeValue'],
             child_node_count=data['ChildNodeCount'],
             children=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Children']
             ],
             attributes=data['Attributes'],
@@ -15978,33 +15978,33 @@ def _dom__node__from_dict(
             pseudo_identifier=data['PseudoIdentifier'],
             shadow_root_type=data['ShadowRootType'],
             frame_id=data['FrameId'],
-            content_document=to_dict(
+            content_document=from_dict(
                 data['ContentDocument'],
                 casing_strategy
             ),
             shadow_roots=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ShadowRoots']
             ],
-            template_content=to_dict(
+            template_content=from_dict(
                 data['TemplateContent'],
                 casing_strategy
             ),
             pseudo_elements=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['PseudoElements']
             ],
-            imported_document=to_dict(
+            imported_document=from_dict(
                 data['ImportedDocument'],
                 casing_strategy
             ),
             distributed_nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['DistributedNodes']
             ],
             is_svg=data['IsSVG'],
             compatibility_mode=data['CompatibilityMode'],
-            assigned_slot=to_dict(
+            assigned_slot=from_dict(
                 data['AssignedSlot'],
                 casing_strategy
             )
@@ -16050,7 +16050,7 @@ def _dom__box_model__from_dict(
             margin=data['margin'],
             width=data['width'],
             height=data['height'],
-            shape_outside=to_dict(
+            shape_outside=from_dict(
                 data['shape_outside'],
                 casing_strategy
             )
@@ -16063,7 +16063,7 @@ def _dom__box_model__from_dict(
             margin=data['margin'],
             width=data['width'],
             height=data['height'],
-            shape_outside=to_dict(
+            shape_outside=from_dict(
                 data['shapeOutside'],
                 casing_strategy
             )
@@ -16076,7 +16076,7 @@ def _dom__box_model__from_dict(
             margin=data['Margin'],
             width=data['Width'],
             height=data['Height'],
-            shape_outside=to_dict(
+            shape_outside=from_dict(
                 data['ShapeOutside'],
                 casing_strategy
             )
@@ -16168,11 +16168,11 @@ def _dom_debugger__event_listener__from_dict(
             script_id=data['script_id'],
             line_number=data['line_number'],
             column_number=data['column_number'],
-            handler=to_dict(
+            handler=from_dict(
                 data['handler'],
                 casing_strategy
             ),
-            original_handler=to_dict(
+            original_handler=from_dict(
                 data['original_handler'],
                 casing_strategy
             ),
@@ -16187,11 +16187,11 @@ def _dom_debugger__event_listener__from_dict(
             script_id=data['scriptId'],
             line_number=data['lineNumber'],
             column_number=data['columnNumber'],
-            handler=to_dict(
+            handler=from_dict(
                 data['handler'],
                 casing_strategy
             ),
-            original_handler=to_dict(
+            original_handler=from_dict(
                 data['originalHandler'],
                 casing_strategy
             ),
@@ -16206,11 +16206,11 @@ def _dom_debugger__event_listener__from_dict(
             script_id=data['ScriptId'],
             line_number=data['LineNumber'],
             column_number=data['ColumnNumber'],
-            handler=to_dict(
+            handler=from_dict(
                 data['Handler'],
                 casing_strategy
             ),
-            original_handler=to_dict(
+            original_handler=from_dict(
                 data['OriginalHandler'],
                 casing_strategy
             ),
@@ -16234,7 +16234,7 @@ def _dom_snapshot__dom_node__from_dict(
             backend_node_id=data['backend_node_id'],
             child_node_indexes=data['child_node_indexes'],
             attributes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['attributes']
             ],
             pseudo_element_indexes=data['pseudo_element_indexes'],
@@ -16251,7 +16251,7 @@ def _dom_snapshot__dom_node__from_dict(
             shadow_root_type=data['shadow_root_type'],
             is_clickable=data['is_clickable'],
             event_listeners=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['event_listeners']
             ],
             current_source_url=data['current_source_url'],
@@ -16271,7 +16271,7 @@ def _dom_snapshot__dom_node__from_dict(
             backend_node_id=data['backendNodeId'],
             child_node_indexes=data['childNodeIndexes'],
             attributes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['attributes']
             ],
             pseudo_element_indexes=data['pseudoElementIndexes'],
@@ -16288,7 +16288,7 @@ def _dom_snapshot__dom_node__from_dict(
             shadow_root_type=data['shadowRootType'],
             is_clickable=data['isClickable'],
             event_listeners=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['eventListeners']
             ],
             current_source_url=data['currentSourceURL'],
@@ -16308,7 +16308,7 @@ def _dom_snapshot__dom_node__from_dict(
             backend_node_id=data['BackendNodeId'],
             child_node_indexes=data['ChildNodeIndexes'],
             attributes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Attributes']
             ],
             pseudo_element_indexes=data['PseudoElementIndexes'],
@@ -16325,7 +16325,7 @@ def _dom_snapshot__dom_node__from_dict(
             shadow_root_type=data['ShadowRootType'],
             is_clickable=data['IsClickable'],
             event_listeners=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['EventListeners']
             ],
             current_source_url=data['CurrentSourceURL'],
@@ -16341,7 +16341,7 @@ def _dom_snapshot__inline_text_box__from_dict(
 ) -> 'dom_snapshot.InlineTextBox':
     if casing_strategy == 'snake':
         return dom_snapshot.InlineTextBox(
-            bounding_box=to_dict(
+            bounding_box=from_dict(
                 data['bounding_box'],
                 casing_strategy
             ),
@@ -16350,7 +16350,7 @@ def _dom_snapshot__inline_text_box__from_dict(
         )
     if casing_strategy == 'camel':
         return dom_snapshot.InlineTextBox(
-            bounding_box=to_dict(
+            bounding_box=from_dict(
                 data['boundingBox'],
                 casing_strategy
             ),
@@ -16359,7 +16359,7 @@ def _dom_snapshot__inline_text_box__from_dict(
         )
     if casing_strategy == 'pascal':
         return dom_snapshot.InlineTextBox(
-            bounding_box=to_dict(
+            bounding_box=from_dict(
                 data['BoundingBox'],
                 casing_strategy
             ),
@@ -16375,13 +16375,13 @@ def _dom_snapshot__layout_tree_node__from_dict(
     if casing_strategy == 'snake':
         return dom_snapshot.LayoutTreeNode(
             dom_node_index=data['dom_node_index'],
-            bounding_box=to_dict(
+            bounding_box=from_dict(
                 data['bounding_box'],
                 casing_strategy
             ),
             layout_text=data['layout_text'],
             inline_text_nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['inline_text_nodes']
             ],
             style_index=data['style_index'],
@@ -16391,13 +16391,13 @@ def _dom_snapshot__layout_tree_node__from_dict(
     if casing_strategy == 'camel':
         return dom_snapshot.LayoutTreeNode(
             dom_node_index=data['domNodeIndex'],
-            bounding_box=to_dict(
+            bounding_box=from_dict(
                 data['boundingBox'],
                 casing_strategy
             ),
             layout_text=data['layoutText'],
             inline_text_nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['inlineTextNodes']
             ],
             style_index=data['styleIndex'],
@@ -16407,13 +16407,13 @@ def _dom_snapshot__layout_tree_node__from_dict(
     if casing_strategy == 'pascal':
         return dom_snapshot.LayoutTreeNode(
             dom_node_index=data['DomNodeIndex'],
-            bounding_box=to_dict(
+            bounding_box=from_dict(
                 data['BoundingBox'],
                 casing_strategy
             ),
             layout_text=data['LayoutText'],
             inline_text_nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['InlineTextNodes']
             ],
             style_index=data['StyleIndex'],
@@ -16429,21 +16429,21 @@ def _dom_snapshot__computed_style__from_dict(
     if casing_strategy == 'snake':
         return dom_snapshot.ComputedStyle(
             properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['properties']
             ]
         )
     if casing_strategy == 'camel':
         return dom_snapshot.ComputedStyle(
             properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['properties']
             ]
         )
     if casing_strategy == 'pascal':
         return dom_snapshot.ComputedStyle(
             properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Properties']
             ]
         )
@@ -16544,15 +16544,15 @@ def _dom_snapshot__document_snapshot__from_dict(
             public_id=data['public_id'],
             system_id=data['system_id'],
             frame_id=data['frame_id'],
-            nodes=to_dict(
+            nodes=from_dict(
                 data['nodes'],
                 casing_strategy
             ),
-            layout=to_dict(
+            layout=from_dict(
                 data['layout'],
                 casing_strategy
             ),
-            text_boxes=to_dict(
+            text_boxes=from_dict(
                 data['text_boxes'],
                 casing_strategy
             ),
@@ -16571,15 +16571,15 @@ def _dom_snapshot__document_snapshot__from_dict(
             public_id=data['publicId'],
             system_id=data['systemId'],
             frame_id=data['frameId'],
-            nodes=to_dict(
+            nodes=from_dict(
                 data['nodes'],
                 casing_strategy
             ),
-            layout=to_dict(
+            layout=from_dict(
                 data['layout'],
                 casing_strategy
             ),
-            text_boxes=to_dict(
+            text_boxes=from_dict(
                 data['textBoxes'],
                 casing_strategy
             ),
@@ -16598,15 +16598,15 @@ def _dom_snapshot__document_snapshot__from_dict(
             public_id=data['PublicId'],
             system_id=data['SystemId'],
             frame_id=data['FrameId'],
-            nodes=to_dict(
+            nodes=from_dict(
                 data['Nodes'],
                 casing_strategy
             ),
-            layout=to_dict(
+            layout=from_dict(
                 data['Layout'],
                 casing_strategy
             ),
-            text_boxes=to_dict(
+            text_boxes=from_dict(
                 data['TextBoxes'],
                 casing_strategy
             ),
@@ -16625,7 +16625,7 @@ def _dom_snapshot__node_tree_snapshot__from_dict(
         return dom_snapshot.NodeTreeSnapshot(
             parent_index=data['parent_index'],
             node_type=data['node_type'],
-            shadow_root_type=to_dict(
+            shadow_root_type=from_dict(
                 data['shadow_root_type'],
                 casing_strategy
             ),
@@ -16633,43 +16633,43 @@ def _dom_snapshot__node_tree_snapshot__from_dict(
             node_value=data['node_value'],
             backend_node_id=data['backend_node_id'],
             attributes=data['attributes'],
-            text_value=to_dict(
+            text_value=from_dict(
                 data['text_value'],
                 casing_strategy
             ),
-            input_value=to_dict(
+            input_value=from_dict(
                 data['input_value'],
                 casing_strategy
             ),
-            input_checked=to_dict(
+            input_checked=from_dict(
                 data['input_checked'],
                 casing_strategy
             ),
-            option_selected=to_dict(
+            option_selected=from_dict(
                 data['option_selected'],
                 casing_strategy
             ),
-            content_document_index=to_dict(
+            content_document_index=from_dict(
                 data['content_document_index'],
                 casing_strategy
             ),
-            pseudo_type=to_dict(
+            pseudo_type=from_dict(
                 data['pseudo_type'],
                 casing_strategy
             ),
-            pseudo_identifier=to_dict(
+            pseudo_identifier=from_dict(
                 data['pseudo_identifier'],
                 casing_strategy
             ),
-            is_clickable=to_dict(
+            is_clickable=from_dict(
                 data['is_clickable'],
                 casing_strategy
             ),
-            current_source_url=to_dict(
+            current_source_url=from_dict(
                 data['current_source_url'],
                 casing_strategy
             ),
-            origin_url=to_dict(
+            origin_url=from_dict(
                 data['origin_url'],
                 casing_strategy
             )
@@ -16678,7 +16678,7 @@ def _dom_snapshot__node_tree_snapshot__from_dict(
         return dom_snapshot.NodeTreeSnapshot(
             parent_index=data['parentIndex'],
             node_type=data['nodeType'],
-            shadow_root_type=to_dict(
+            shadow_root_type=from_dict(
                 data['shadowRootType'],
                 casing_strategy
             ),
@@ -16686,43 +16686,43 @@ def _dom_snapshot__node_tree_snapshot__from_dict(
             node_value=data['nodeValue'],
             backend_node_id=data['backendNodeId'],
             attributes=data['attributes'],
-            text_value=to_dict(
+            text_value=from_dict(
                 data['textValue'],
                 casing_strategy
             ),
-            input_value=to_dict(
+            input_value=from_dict(
                 data['inputValue'],
                 casing_strategy
             ),
-            input_checked=to_dict(
+            input_checked=from_dict(
                 data['inputChecked'],
                 casing_strategy
             ),
-            option_selected=to_dict(
+            option_selected=from_dict(
                 data['optionSelected'],
                 casing_strategy
             ),
-            content_document_index=to_dict(
+            content_document_index=from_dict(
                 data['contentDocumentIndex'],
                 casing_strategy
             ),
-            pseudo_type=to_dict(
+            pseudo_type=from_dict(
                 data['pseudoType'],
                 casing_strategy
             ),
-            pseudo_identifier=to_dict(
+            pseudo_identifier=from_dict(
                 data['pseudoIdentifier'],
                 casing_strategy
             ),
-            is_clickable=to_dict(
+            is_clickable=from_dict(
                 data['isClickable'],
                 casing_strategy
             ),
-            current_source_url=to_dict(
+            current_source_url=from_dict(
                 data['currentSourceURL'],
                 casing_strategy
             ),
-            origin_url=to_dict(
+            origin_url=from_dict(
                 data['originURL'],
                 casing_strategy
             )
@@ -16731,7 +16731,7 @@ def _dom_snapshot__node_tree_snapshot__from_dict(
         return dom_snapshot.NodeTreeSnapshot(
             parent_index=data['ParentIndex'],
             node_type=data['NodeType'],
-            shadow_root_type=to_dict(
+            shadow_root_type=from_dict(
                 data['ShadowRootType'],
                 casing_strategy
             ),
@@ -16739,43 +16739,43 @@ def _dom_snapshot__node_tree_snapshot__from_dict(
             node_value=data['NodeValue'],
             backend_node_id=data['BackendNodeId'],
             attributes=data['Attributes'],
-            text_value=to_dict(
+            text_value=from_dict(
                 data['TextValue'],
                 casing_strategy
             ),
-            input_value=to_dict(
+            input_value=from_dict(
                 data['InputValue'],
                 casing_strategy
             ),
-            input_checked=to_dict(
+            input_checked=from_dict(
                 data['InputChecked'],
                 casing_strategy
             ),
-            option_selected=to_dict(
+            option_selected=from_dict(
                 data['OptionSelected'],
                 casing_strategy
             ),
-            content_document_index=to_dict(
+            content_document_index=from_dict(
                 data['ContentDocumentIndex'],
                 casing_strategy
             ),
-            pseudo_type=to_dict(
+            pseudo_type=from_dict(
                 data['PseudoType'],
                 casing_strategy
             ),
-            pseudo_identifier=to_dict(
+            pseudo_identifier=from_dict(
                 data['PseudoIdentifier'],
                 casing_strategy
             ),
-            is_clickable=to_dict(
+            is_clickable=from_dict(
                 data['IsClickable'],
                 casing_strategy
             ),
-            current_source_url=to_dict(
+            current_source_url=from_dict(
                 data['CurrentSourceURL'],
                 casing_strategy
             ),
-            origin_url=to_dict(
+            origin_url=from_dict(
                 data['OriginURL'],
                 casing_strategy
             )
@@ -16792,7 +16792,7 @@ def _dom_snapshot__layout_tree_snapshot__from_dict(
             styles=data['styles'],
             bounds=data['bounds'],
             text=data['text'],
-            stacking_contexts=to_dict(
+            stacking_contexts=from_dict(
                 data['stacking_contexts'],
                 casing_strategy
             ),
@@ -16809,7 +16809,7 @@ def _dom_snapshot__layout_tree_snapshot__from_dict(
             styles=data['styles'],
             bounds=data['bounds'],
             text=data['text'],
-            stacking_contexts=to_dict(
+            stacking_contexts=from_dict(
                 data['stackingContexts'],
                 casing_strategy
             ),
@@ -16826,7 +16826,7 @@ def _dom_snapshot__layout_tree_snapshot__from_dict(
             styles=data['Styles'],
             bounds=data['Bounds'],
             text=data['Text'],
-            stacking_contexts=to_dict(
+            stacking_contexts=from_dict(
                 data['StackingContexts'],
                 casing_strategy
             ),
@@ -17032,11 +17032,11 @@ def _emulation__user_agent_metadata__from_dict(
     if casing_strategy == 'snake':
         return emulation.UserAgentMetadata(
             brands=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['brands']
             ],
             full_version_list=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['full_version_list']
             ],
             full_version=data['full_version'],
@@ -17051,11 +17051,11 @@ def _emulation__user_agent_metadata__from_dict(
     if casing_strategy == 'camel':
         return emulation.UserAgentMetadata(
             brands=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['brands']
             ],
             full_version_list=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['fullVersionList']
             ],
             full_version=data['fullVersion'],
@@ -17070,11 +17070,11 @@ def _emulation__user_agent_metadata__from_dict(
     if casing_strategy == 'pascal':
         return emulation.UserAgentMetadata(
             brands=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Brands']
             ],
             full_version_list=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['FullVersionList']
             ],
             full_version=data['FullVersion'],
@@ -17121,7 +17121,7 @@ def _indexed_db__database_with_object_stores__from_dict(
             name=data['name'],
             version=data['version'],
             object_stores=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['object_stores']
             ]
         )
@@ -17130,7 +17130,7 @@ def _indexed_db__database_with_object_stores__from_dict(
             name=data['name'],
             version=data['version'],
             object_stores=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['objectStores']
             ]
         )
@@ -17139,7 +17139,7 @@ def _indexed_db__database_with_object_stores__from_dict(
             name=data['Name'],
             version=data['Version'],
             object_stores=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ObjectStores']
             ]
         )
@@ -17152,39 +17152,39 @@ def _indexed_db__object_store__from_dict(
     if casing_strategy == 'snake':
         return indexed_db.ObjectStore(
             name=data['name'],
-            key_path=to_dict(
+            key_path=from_dict(
                 data['key_path'],
                 casing_strategy
             ),
             auto_increment=data['auto_increment'],
             indexes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['indexes']
             ]
         )
     if casing_strategy == 'camel':
         return indexed_db.ObjectStore(
             name=data['name'],
-            key_path=to_dict(
+            key_path=from_dict(
                 data['keyPath'],
                 casing_strategy
             ),
             auto_increment=data['autoIncrement'],
             indexes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['indexes']
             ]
         )
     if casing_strategy == 'pascal':
         return indexed_db.ObjectStore(
             name=data['Name'],
-            key_path=to_dict(
+            key_path=from_dict(
                 data['KeyPath'],
                 casing_strategy
             ),
             auto_increment=data['AutoIncrement'],
             indexes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Indexes']
             ]
         )
@@ -17197,7 +17197,7 @@ def _indexed_db__object_store_index__from_dict(
     if casing_strategy == 'snake':
         return indexed_db.ObjectStoreIndex(
             name=data['name'],
-            key_path=to_dict(
+            key_path=from_dict(
                 data['key_path'],
                 casing_strategy
             ),
@@ -17207,7 +17207,7 @@ def _indexed_db__object_store_index__from_dict(
     if casing_strategy == 'camel':
         return indexed_db.ObjectStoreIndex(
             name=data['name'],
-            key_path=to_dict(
+            key_path=from_dict(
                 data['keyPath'],
                 casing_strategy
             ),
@@ -17217,7 +17217,7 @@ def _indexed_db__object_store_index__from_dict(
     if casing_strategy == 'pascal':
         return indexed_db.ObjectStoreIndex(
             name=data['Name'],
-            key_path=to_dict(
+            key_path=from_dict(
                 data['KeyPath'],
                 casing_strategy
             ),
@@ -17237,7 +17237,7 @@ def _indexed_db__key__from_dict(
             string=data['string'],
             date=data['date'],
             array=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['array']
             ]
         )
@@ -17248,7 +17248,7 @@ def _indexed_db__key__from_dict(
             string=data['string'],
             date=data['date'],
             array=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['array']
             ]
         )
@@ -17259,7 +17259,7 @@ def _indexed_db__key__from_dict(
             string=data['String'],
             date=data['Date'],
             array=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Array']
             ]
         )
@@ -17271,11 +17271,11 @@ def _indexed_db__key_range__from_dict(
 ) -> 'indexed_db.KeyRange':
     if casing_strategy == 'snake':
         return indexed_db.KeyRange(
-            lower=to_dict(
+            lower=from_dict(
                 data['lower'],
                 casing_strategy
             ),
-            upper=to_dict(
+            upper=from_dict(
                 data['upper'],
                 casing_strategy
             ),
@@ -17284,11 +17284,11 @@ def _indexed_db__key_range__from_dict(
         )
     if casing_strategy == 'camel':
         return indexed_db.KeyRange(
-            lower=to_dict(
+            lower=from_dict(
                 data['lower'],
                 casing_strategy
             ),
-            upper=to_dict(
+            upper=from_dict(
                 data['upper'],
                 casing_strategy
             ),
@@ -17297,11 +17297,11 @@ def _indexed_db__key_range__from_dict(
         )
     if casing_strategy == 'pascal':
         return indexed_db.KeyRange(
-            lower=to_dict(
+            lower=from_dict(
                 data['Lower'],
                 casing_strategy
             ),
-            upper=to_dict(
+            upper=from_dict(
                 data['Upper'],
                 casing_strategy
             ),
@@ -17316,45 +17316,45 @@ def _indexed_db__data_entry__from_dict(
 ) -> 'indexed_db.DataEntry':
     if casing_strategy == 'snake':
         return indexed_db.DataEntry(
-            key=to_dict(
+            key=from_dict(
                 data['key'],
                 casing_strategy
             ),
-            primary_key=to_dict(
+            primary_key=from_dict(
                 data['primary_key'],
                 casing_strategy
             ),
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return indexed_db.DataEntry(
-            key=to_dict(
+            key=from_dict(
                 data['key'],
                 casing_strategy
             ),
-            primary_key=to_dict(
+            primary_key=from_dict(
                 data['primaryKey'],
                 casing_strategy
             ),
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return indexed_db.DataEntry(
-            key=to_dict(
+            key=from_dict(
                 data['Key'],
                 casing_strategy
             ),
-            primary_key=to_dict(
+            primary_key=from_dict(
                 data['PrimaryKey'],
                 casing_strategy
             ),
-            value=to_dict(
+            value=from_dict(
                 data['Value'],
                 casing_strategy
             )
@@ -17467,7 +17467,7 @@ def _input__drag_data__from_dict(
     if casing_strategy == 'snake':
         return input_.DragData(
             items=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['items']
             ],
             files=data['files'],
@@ -17476,7 +17476,7 @@ def _input__drag_data__from_dict(
     if casing_strategy == 'camel':
         return input_.DragData(
             items=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['items']
             ],
             files=data['files'],
@@ -17485,7 +17485,7 @@ def _input__drag_data__from_dict(
     if casing_strategy == 'pascal':
         return input_.DragData(
             items=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Items']
             ],
             files=data['Files'],
@@ -17499,7 +17499,7 @@ def _layer_tree__scroll_rect__from_dict(
 ) -> 'layer_tree.ScrollRect':
     if casing_strategy == 'snake':
         return layer_tree.ScrollRect(
-            rect=to_dict(
+            rect=from_dict(
                 data['rect'],
                 casing_strategy
             ),
@@ -17507,7 +17507,7 @@ def _layer_tree__scroll_rect__from_dict(
         )
     if casing_strategy == 'camel':
         return layer_tree.ScrollRect(
-            rect=to_dict(
+            rect=from_dict(
                 data['rect'],
                 casing_strategy
             ),
@@ -17515,7 +17515,7 @@ def _layer_tree__scroll_rect__from_dict(
         )
     if casing_strategy == 'pascal':
         return layer_tree.ScrollRect(
-            rect=to_dict(
+            rect=from_dict(
                 data['Rect'],
                 casing_strategy
             ),
@@ -17529,11 +17529,11 @@ def _layer_tree__sticky_position_constraint__from_dict(
 ) -> 'layer_tree.StickyPositionConstraint':
     if casing_strategy == 'snake':
         return layer_tree.StickyPositionConstraint(
-            sticky_box_rect=to_dict(
+            sticky_box_rect=from_dict(
                 data['sticky_box_rect'],
                 casing_strategy
             ),
-            containing_block_rect=to_dict(
+            containing_block_rect=from_dict(
                 data['containing_block_rect'],
                 casing_strategy
             ),
@@ -17542,11 +17542,11 @@ def _layer_tree__sticky_position_constraint__from_dict(
         )
     if casing_strategy == 'camel':
         return layer_tree.StickyPositionConstraint(
-            sticky_box_rect=to_dict(
+            sticky_box_rect=from_dict(
                 data['stickyBoxRect'],
                 casing_strategy
             ),
-            containing_block_rect=to_dict(
+            containing_block_rect=from_dict(
                 data['containingBlockRect'],
                 casing_strategy
             ),
@@ -17555,11 +17555,11 @@ def _layer_tree__sticky_position_constraint__from_dict(
         )
     if casing_strategy == 'pascal':
         return layer_tree.StickyPositionConstraint(
-            sticky_box_rect=to_dict(
+            sticky_box_rect=from_dict(
                 data['StickyBoxRect'],
                 casing_strategy
             ),
-            containing_block_rect=to_dict(
+            containing_block_rect=from_dict(
                 data['ContainingBlockRect'],
                 casing_strategy
             ),
@@ -17613,10 +17613,10 @@ def _layer_tree__layer__from_dict(
             draws_content=data['draws_content'],
             invisible=data['invisible'],
             scroll_rects=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['scroll_rects']
             ],
-            sticky_position_constraint=to_dict(
+            sticky_position_constraint=from_dict(
                 data['sticky_position_constraint'],
                 casing_strategy
             )
@@ -17638,10 +17638,10 @@ def _layer_tree__layer__from_dict(
             draws_content=data['drawsContent'],
             invisible=data['invisible'],
             scroll_rects=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['scrollRects']
             ],
-            sticky_position_constraint=to_dict(
+            sticky_position_constraint=from_dict(
                 data['stickyPositionConstraint'],
                 casing_strategy
             )
@@ -17663,10 +17663,10 @@ def _layer_tree__layer__from_dict(
             draws_content=data['DrawsContent'],
             invisible=data['Invisible'],
             scroll_rects=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ScrollRects']
             ],
-            sticky_position_constraint=to_dict(
+            sticky_position_constraint=from_dict(
                 data['StickyPositionConstraint'],
                 casing_strategy
             )
@@ -17686,14 +17686,14 @@ def _log__log_entry__from_dict(
             timestamp=data['timestamp'],
             url=data['url'],
             line_number=data['line_number'],
-            stack_trace=to_dict(
+            stack_trace=from_dict(
                 data['stack_trace'],
                 casing_strategy
             ),
             network_request_id=data['network_request_id'],
             worker_id=data['worker_id'],
             args=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['args']
             ]
         )
@@ -17706,14 +17706,14 @@ def _log__log_entry__from_dict(
             timestamp=data['timestamp'],
             url=data['url'],
             line_number=data['lineNumber'],
-            stack_trace=to_dict(
+            stack_trace=from_dict(
                 data['stackTrace'],
                 casing_strategy
             ),
             network_request_id=data['networkRequestId'],
             worker_id=data['workerId'],
             args=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['args']
             ]
         )
@@ -17726,14 +17726,14 @@ def _log__log_entry__from_dict(
             timestamp=data['Timestamp'],
             url=data['Url'],
             line_number=data['LineNumber'],
-            stack_trace=to_dict(
+            stack_trace=from_dict(
                 data['StackTrace'],
                 casing_strategy
             ),
             network_request_id=data['NetworkRequestId'],
             worker_id=data['WorkerId'],
             args=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Args']
             ]
         )
@@ -17791,33 +17791,33 @@ def _memory__sampling_profile__from_dict(
     if casing_strategy == 'snake':
         return memory.SamplingProfile(
             samples=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['samples']
             ],
             modules=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['modules']
             ]
         )
     if casing_strategy == 'camel':
         return memory.SamplingProfile(
             samples=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['samples']
             ],
             modules=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['modules']
             ]
         )
     if casing_strategy == 'pascal':
         return memory.SamplingProfile(
             samples=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Samples']
             ],
             modules=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Modules']
             ]
         )
@@ -17953,14 +17953,14 @@ def _network__request__from_dict(
             post_data=data['post_data'],
             has_post_data=data['has_post_data'],
             post_data_entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['post_data_entries']
             ],
             mixed_content_type=data['mixed_content_type'],
             initial_priority=data['initial_priority'],
             referrer_policy=data['referrer_policy'],
             is_link_preload=data['is_link_preload'],
-            trust_token_params=to_dict(
+            trust_token_params=from_dict(
                 data['trust_token_params'],
                 casing_strategy
             ),
@@ -17975,14 +17975,14 @@ def _network__request__from_dict(
             post_data=data['postData'],
             has_post_data=data['hasPostData'],
             post_data_entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['postDataEntries']
             ],
             mixed_content_type=data['mixedContentType'],
             initial_priority=data['initialPriority'],
             referrer_policy=data['referrerPolicy'],
             is_link_preload=data['isLinkPreload'],
-            trust_token_params=to_dict(
+            trust_token_params=from_dict(
                 data['trustTokenParams'],
                 casing_strategy
             ),
@@ -17997,14 +17997,14 @@ def _network__request__from_dict(
             post_data=data['PostData'],
             has_post_data=data['HasPostData'],
             post_data_entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['PostDataEntries']
             ],
             mixed_content_type=data['MixedContentType'],
             initial_priority=data['InitialPriority'],
             referrer_policy=data['ReferrerPolicy'],
             is_link_preload=data['IsLinkPreload'],
-            trust_token_params=to_dict(
+            trust_token_params=from_dict(
                 data['TrustTokenParams'],
                 casing_strategy
             ),
@@ -18069,7 +18069,7 @@ def _network__security_details__from_dict(
             valid_from=data['valid_from'],
             valid_to=data['valid_to'],
             signed_certificate_timestamp_list=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['signed_certificate_timestamp_list']
             ],
             certificate_transparency_compliance=data['certificate_transparency_compliance'],
@@ -18090,7 +18090,7 @@ def _network__security_details__from_dict(
             valid_from=data['validFrom'],
             valid_to=data['validTo'],
             signed_certificate_timestamp_list=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['signedCertificateTimestampList']
             ],
             certificate_transparency_compliance=data['certificateTransparencyCompliance'],
@@ -18111,7 +18111,7 @@ def _network__security_details__from_dict(
             valid_from=data['ValidFrom'],
             valid_to=data['ValidTo'],
             signed_certificate_timestamp_list=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['SignedCertificateTimestampList']
             ],
             certificate_transparency_compliance=data['CertificateTransparencyCompliance'],
@@ -18187,7 +18187,7 @@ def _network__response__from_dict(
             from_service_worker=data['from_service_worker'],
             from_prefetch_cache=data['from_prefetch_cache'],
             encoded_data_length=data['encoded_data_length'],
-            timing=to_dict(
+            timing=from_dict(
                 data['timing'],
                 casing_strategy
             ),
@@ -18197,7 +18197,7 @@ def _network__response__from_dict(
             protocol=data['protocol'],
             alternate_protocol_usage=data['alternate_protocol_usage'],
             security_state=data['security_state'],
-            security_details=to_dict(
+            security_details=from_dict(
                 data['security_details'],
                 casing_strategy
             )
@@ -18220,7 +18220,7 @@ def _network__response__from_dict(
             from_service_worker=data['fromServiceWorker'],
             from_prefetch_cache=data['fromPrefetchCache'],
             encoded_data_length=data['encodedDataLength'],
-            timing=to_dict(
+            timing=from_dict(
                 data['timing'],
                 casing_strategy
             ),
@@ -18230,7 +18230,7 @@ def _network__response__from_dict(
             protocol=data['protocol'],
             alternate_protocol_usage=data['alternateProtocolUsage'],
             security_state=data['securityState'],
-            security_details=to_dict(
+            security_details=from_dict(
                 data['securityDetails'],
                 casing_strategy
             )
@@ -18253,7 +18253,7 @@ def _network__response__from_dict(
             from_service_worker=data['FromServiceWorker'],
             from_prefetch_cache=data['FromPrefetchCache'],
             encoded_data_length=data['EncodedDataLength'],
-            timing=to_dict(
+            timing=from_dict(
                 data['Timing'],
                 casing_strategy
             ),
@@ -18263,7 +18263,7 @@ def _network__response__from_dict(
             protocol=data['Protocol'],
             alternate_protocol_usage=data['AlternateProtocolUsage'],
             security_state=data['SecurityState'],
-            security_details=to_dict(
+            security_details=from_dict(
                 data['SecurityDetails'],
                 casing_strategy
             )
@@ -18353,7 +18353,7 @@ def _network__cached_resource__from_dict(
         return network.CachedResource(
             url=data['url'],
             type=data['type'],
-            response=to_dict(
+            response=from_dict(
                 data['response'],
                 casing_strategy
             ),
@@ -18363,7 +18363,7 @@ def _network__cached_resource__from_dict(
         return network.CachedResource(
             url=data['url'],
             type=data['type'],
-            response=to_dict(
+            response=from_dict(
                 data['response'],
                 casing_strategy
             ),
@@ -18373,7 +18373,7 @@ def _network__cached_resource__from_dict(
         return network.CachedResource(
             url=data['Url'],
             type=data['Type'],
-            response=to_dict(
+            response=from_dict(
                 data['Response'],
                 casing_strategy
             ),
@@ -18388,7 +18388,7 @@ def _network__initiator__from_dict(
     if casing_strategy == 'snake':
         return network.Initiator(
             type=data['type'],
-            stack=to_dict(
+            stack=from_dict(
                 data['stack'],
                 casing_strategy
             ),
@@ -18400,7 +18400,7 @@ def _network__initiator__from_dict(
     if casing_strategy == 'camel':
         return network.Initiator(
             type=data['type'],
-            stack=to_dict(
+            stack=from_dict(
                 data['stack'],
                 casing_strategy
             ),
@@ -18412,7 +18412,7 @@ def _network__initiator__from_dict(
     if casing_strategy == 'pascal':
         return network.Initiator(
             type=data['Type'],
-            stack=to_dict(
+            stack=from_dict(
                 data['Stack'],
                 casing_strategy
             ),
@@ -18494,7 +18494,7 @@ def _network__blocked_set_cookie_with_reason__from_dict(
         return network.BlockedSetCookieWithReason(
             blocked_reasons=data['blocked_reasons'],
             cookie_line=data['cookie_line'],
-            cookie=to_dict(
+            cookie=from_dict(
                 data['cookie'],
                 casing_strategy
             )
@@ -18503,7 +18503,7 @@ def _network__blocked_set_cookie_with_reason__from_dict(
         return network.BlockedSetCookieWithReason(
             blocked_reasons=data['blockedReasons'],
             cookie_line=data['cookieLine'],
-            cookie=to_dict(
+            cookie=from_dict(
                 data['cookie'],
                 casing_strategy
             )
@@ -18512,7 +18512,7 @@ def _network__blocked_set_cookie_with_reason__from_dict(
         return network.BlockedSetCookieWithReason(
             blocked_reasons=data['BlockedReasons'],
             cookie_line=data['CookieLine'],
-            cookie=to_dict(
+            cookie=from_dict(
                 data['Cookie'],
                 casing_strategy
             )
@@ -18526,7 +18526,7 @@ def _network__blocked_cookie_with_reason__from_dict(
     if casing_strategy == 'snake':
         return network.BlockedCookieWithReason(
             blocked_reasons=data['blocked_reasons'],
-            cookie=to_dict(
+            cookie=from_dict(
                 data['cookie'],
                 casing_strategy
             )
@@ -18534,7 +18534,7 @@ def _network__blocked_cookie_with_reason__from_dict(
     if casing_strategy == 'camel':
         return network.BlockedCookieWithReason(
             blocked_reasons=data['blockedReasons'],
-            cookie=to_dict(
+            cookie=from_dict(
                 data['cookie'],
                 casing_strategy
             )
@@ -18542,7 +18542,7 @@ def _network__blocked_cookie_with_reason__from_dict(
     if casing_strategy == 'pascal':
         return network.BlockedCookieWithReason(
             blocked_reasons=data['BlockedReasons'],
-            cookie=to_dict(
+            cookie=from_dict(
                 data['Cookie'],
                 casing_strategy
             )
@@ -18733,7 +18733,7 @@ def _network__signed_exchange_header__from_dict(
             response_code=data['response_code'],
             response_headers=data['response_headers'],
             signatures=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['signatures']
             ],
             header_integrity=data['header_integrity']
@@ -18744,7 +18744,7 @@ def _network__signed_exchange_header__from_dict(
             response_code=data['responseCode'],
             response_headers=data['responseHeaders'],
             signatures=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['signatures']
             ],
             header_integrity=data['headerIntegrity']
@@ -18755,7 +18755,7 @@ def _network__signed_exchange_header__from_dict(
             response_code=data['ResponseCode'],
             response_headers=data['ResponseHeaders'],
             signatures=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Signatures']
             ],
             header_integrity=data['HeaderIntegrity']
@@ -18792,58 +18792,58 @@ def _network__signed_exchange_info__from_dict(
 ) -> 'network.SignedExchangeInfo':
     if casing_strategy == 'snake':
         return network.SignedExchangeInfo(
-            outer_response=to_dict(
+            outer_response=from_dict(
                 data['outer_response'],
                 casing_strategy
             ),
-            header=to_dict(
+            header=from_dict(
                 data['header'],
                 casing_strategy
             ),
-            security_details=to_dict(
+            security_details=from_dict(
                 data['security_details'],
                 casing_strategy
             ),
             errors=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['errors']
             ]
         )
     if casing_strategy == 'camel':
         return network.SignedExchangeInfo(
-            outer_response=to_dict(
+            outer_response=from_dict(
                 data['outerResponse'],
                 casing_strategy
             ),
-            header=to_dict(
+            header=from_dict(
                 data['header'],
                 casing_strategy
             ),
-            security_details=to_dict(
+            security_details=from_dict(
                 data['securityDetails'],
                 casing_strategy
             ),
             errors=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['errors']
             ]
         )
     if casing_strategy == 'pascal':
         return network.SignedExchangeInfo(
-            outer_response=to_dict(
+            outer_response=from_dict(
                 data['OuterResponse'],
                 casing_strategy
             ),
-            header=to_dict(
+            header=from_dict(
                 data['Header'],
                 casing_strategy
             ),
-            security_details=to_dict(
+            security_details=from_dict(
                 data['SecurityDetails'],
                 casing_strategy
             ),
             errors=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Errors']
             ]
         )
@@ -18975,46 +18975,46 @@ def _network__security_isolation_status__from_dict(
 ) -> 'network.SecurityIsolationStatus':
     if casing_strategy == 'snake':
         return network.SecurityIsolationStatus(
-            coop=to_dict(
+            coop=from_dict(
                 data['coop'],
                 casing_strategy
             ),
-            coep=to_dict(
+            coep=from_dict(
                 data['coep'],
                 casing_strategy
             ),
             csp=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['csp']
             ]
         )
     if casing_strategy == 'camel':
         return network.SecurityIsolationStatus(
-            coop=to_dict(
+            coop=from_dict(
                 data['coop'],
                 casing_strategy
             ),
-            coep=to_dict(
+            coep=from_dict(
                 data['coep'],
                 casing_strategy
             ),
             csp=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['csp']
             ]
         )
     if casing_strategy == 'pascal':
         return network.SecurityIsolationStatus(
-            coop=to_dict(
+            coop=from_dict(
                 data['Coop'],
                 casing_strategy
             ),
-            coep=to_dict(
+            coep=from_dict(
                 data['Coep'],
                 casing_strategy
             ),
             csp=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Csp']
             ]
         )
@@ -19143,33 +19143,33 @@ def _overlay__source_order_config__from_dict(
 ) -> 'overlay.SourceOrderConfig':
     if casing_strategy == 'snake':
         return overlay.SourceOrderConfig(
-            parent_outline_color=to_dict(
+            parent_outline_color=from_dict(
                 data['parent_outline_color'],
                 casing_strategy
             ),
-            child_outline_color=to_dict(
+            child_outline_color=from_dict(
                 data['child_outline_color'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return overlay.SourceOrderConfig(
-            parent_outline_color=to_dict(
+            parent_outline_color=from_dict(
                 data['parentOutlineColor'],
                 casing_strategy
             ),
-            child_outline_color=to_dict(
+            child_outline_color=from_dict(
                 data['childOutlineColor'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return overlay.SourceOrderConfig(
-            parent_outline_color=to_dict(
+            parent_outline_color=from_dict(
                 data['ParentOutlineColor'],
                 casing_strategy
             ),
-            child_outline_color=to_dict(
+            child_outline_color=from_dict(
                 data['ChildOutlineColor'],
                 casing_strategy
             )
@@ -19188,19 +19188,19 @@ def _overlay__grid_highlight_config__from_dict(
             show_area_names=data['show_area_names'],
             show_line_names=data['show_line_names'],
             show_track_sizes=data['show_track_sizes'],
-            grid_border_color=to_dict(
+            grid_border_color=from_dict(
                 data['grid_border_color'],
                 casing_strategy
             ),
-            cell_border_color=to_dict(
+            cell_border_color=from_dict(
                 data['cell_border_color'],
                 casing_strategy
             ),
-            row_line_color=to_dict(
+            row_line_color=from_dict(
                 data['row_line_color'],
                 casing_strategy
             ),
-            column_line_color=to_dict(
+            column_line_color=from_dict(
                 data['column_line_color'],
                 casing_strategy
             ),
@@ -19208,27 +19208,27 @@ def _overlay__grid_highlight_config__from_dict(
             cell_border_dash=data['cell_border_dash'],
             row_line_dash=data['row_line_dash'],
             column_line_dash=data['column_line_dash'],
-            row_gap_color=to_dict(
+            row_gap_color=from_dict(
                 data['row_gap_color'],
                 casing_strategy
             ),
-            row_hatch_color=to_dict(
+            row_hatch_color=from_dict(
                 data['row_hatch_color'],
                 casing_strategy
             ),
-            column_gap_color=to_dict(
+            column_gap_color=from_dict(
                 data['column_gap_color'],
                 casing_strategy
             ),
-            column_hatch_color=to_dict(
+            column_hatch_color=from_dict(
                 data['column_hatch_color'],
                 casing_strategy
             ),
-            area_border_color=to_dict(
+            area_border_color=from_dict(
                 data['area_border_color'],
                 casing_strategy
             ),
-            grid_background_color=to_dict(
+            grid_background_color=from_dict(
                 data['grid_background_color'],
                 casing_strategy
             )
@@ -19241,19 +19241,19 @@ def _overlay__grid_highlight_config__from_dict(
             show_area_names=data['showAreaNames'],
             show_line_names=data['showLineNames'],
             show_track_sizes=data['showTrackSizes'],
-            grid_border_color=to_dict(
+            grid_border_color=from_dict(
                 data['gridBorderColor'],
                 casing_strategy
             ),
-            cell_border_color=to_dict(
+            cell_border_color=from_dict(
                 data['cellBorderColor'],
                 casing_strategy
             ),
-            row_line_color=to_dict(
+            row_line_color=from_dict(
                 data['rowLineColor'],
                 casing_strategy
             ),
-            column_line_color=to_dict(
+            column_line_color=from_dict(
                 data['columnLineColor'],
                 casing_strategy
             ),
@@ -19261,27 +19261,27 @@ def _overlay__grid_highlight_config__from_dict(
             cell_border_dash=data['cellBorderDash'],
             row_line_dash=data['rowLineDash'],
             column_line_dash=data['columnLineDash'],
-            row_gap_color=to_dict(
+            row_gap_color=from_dict(
                 data['rowGapColor'],
                 casing_strategy
             ),
-            row_hatch_color=to_dict(
+            row_hatch_color=from_dict(
                 data['rowHatchColor'],
                 casing_strategy
             ),
-            column_gap_color=to_dict(
+            column_gap_color=from_dict(
                 data['columnGapColor'],
                 casing_strategy
             ),
-            column_hatch_color=to_dict(
+            column_hatch_color=from_dict(
                 data['columnHatchColor'],
                 casing_strategy
             ),
-            area_border_color=to_dict(
+            area_border_color=from_dict(
                 data['areaBorderColor'],
                 casing_strategy
             ),
-            grid_background_color=to_dict(
+            grid_background_color=from_dict(
                 data['gridBackgroundColor'],
                 casing_strategy
             )
@@ -19294,19 +19294,19 @@ def _overlay__grid_highlight_config__from_dict(
             show_area_names=data['ShowAreaNames'],
             show_line_names=data['ShowLineNames'],
             show_track_sizes=data['ShowTrackSizes'],
-            grid_border_color=to_dict(
+            grid_border_color=from_dict(
                 data['GridBorderColor'],
                 casing_strategy
             ),
-            cell_border_color=to_dict(
+            cell_border_color=from_dict(
                 data['CellBorderColor'],
                 casing_strategy
             ),
-            row_line_color=to_dict(
+            row_line_color=from_dict(
                 data['RowLineColor'],
                 casing_strategy
             ),
-            column_line_color=to_dict(
+            column_line_color=from_dict(
                 data['ColumnLineColor'],
                 casing_strategy
             ),
@@ -19314,27 +19314,27 @@ def _overlay__grid_highlight_config__from_dict(
             cell_border_dash=data['CellBorderDash'],
             row_line_dash=data['RowLineDash'],
             column_line_dash=data['ColumnLineDash'],
-            row_gap_color=to_dict(
+            row_gap_color=from_dict(
                 data['RowGapColor'],
                 casing_strategy
             ),
-            row_hatch_color=to_dict(
+            row_hatch_color=from_dict(
                 data['RowHatchColor'],
                 casing_strategy
             ),
-            column_gap_color=to_dict(
+            column_gap_color=from_dict(
                 data['ColumnGapColor'],
                 casing_strategy
             ),
-            column_hatch_color=to_dict(
+            column_hatch_color=from_dict(
                 data['ColumnHatchColor'],
                 casing_strategy
             ),
-            area_border_color=to_dict(
+            area_border_color=from_dict(
                 data['AreaBorderColor'],
                 casing_strategy
             ),
-            grid_background_color=to_dict(
+            grid_background_color=from_dict(
                 data['GridBackgroundColor'],
                 casing_strategy
             )
@@ -19347,105 +19347,105 @@ def _overlay__flex_container_highlight_config__from_dict(
 ) -> 'overlay.FlexContainerHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.FlexContainerHighlightConfig(
-            container_border=to_dict(
+            container_border=from_dict(
                 data['container_border'],
                 casing_strategy
             ),
-            line_separator=to_dict(
+            line_separator=from_dict(
                 data['line_separator'],
                 casing_strategy
             ),
-            item_separator=to_dict(
+            item_separator=from_dict(
                 data['item_separator'],
                 casing_strategy
             ),
-            main_distributed_space=to_dict(
+            main_distributed_space=from_dict(
                 data['main_distributed_space'],
                 casing_strategy
             ),
-            cross_distributed_space=to_dict(
+            cross_distributed_space=from_dict(
                 data['cross_distributed_space'],
                 casing_strategy
             ),
-            row_gap_space=to_dict(
+            row_gap_space=from_dict(
                 data['row_gap_space'],
                 casing_strategy
             ),
-            column_gap_space=to_dict(
+            column_gap_space=from_dict(
                 data['column_gap_space'],
                 casing_strategy
             ),
-            cross_alignment=to_dict(
+            cross_alignment=from_dict(
                 data['cross_alignment'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return overlay.FlexContainerHighlightConfig(
-            container_border=to_dict(
+            container_border=from_dict(
                 data['containerBorder'],
                 casing_strategy
             ),
-            line_separator=to_dict(
+            line_separator=from_dict(
                 data['lineSeparator'],
                 casing_strategy
             ),
-            item_separator=to_dict(
+            item_separator=from_dict(
                 data['itemSeparator'],
                 casing_strategy
             ),
-            main_distributed_space=to_dict(
+            main_distributed_space=from_dict(
                 data['mainDistributedSpace'],
                 casing_strategy
             ),
-            cross_distributed_space=to_dict(
+            cross_distributed_space=from_dict(
                 data['crossDistributedSpace'],
                 casing_strategy
             ),
-            row_gap_space=to_dict(
+            row_gap_space=from_dict(
                 data['rowGapSpace'],
                 casing_strategy
             ),
-            column_gap_space=to_dict(
+            column_gap_space=from_dict(
                 data['columnGapSpace'],
                 casing_strategy
             ),
-            cross_alignment=to_dict(
+            cross_alignment=from_dict(
                 data['crossAlignment'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return overlay.FlexContainerHighlightConfig(
-            container_border=to_dict(
+            container_border=from_dict(
                 data['ContainerBorder'],
                 casing_strategy
             ),
-            line_separator=to_dict(
+            line_separator=from_dict(
                 data['LineSeparator'],
                 casing_strategy
             ),
-            item_separator=to_dict(
+            item_separator=from_dict(
                 data['ItemSeparator'],
                 casing_strategy
             ),
-            main_distributed_space=to_dict(
+            main_distributed_space=from_dict(
                 data['MainDistributedSpace'],
                 casing_strategy
             ),
-            cross_distributed_space=to_dict(
+            cross_distributed_space=from_dict(
                 data['CrossDistributedSpace'],
                 casing_strategy
             ),
-            row_gap_space=to_dict(
+            row_gap_space=from_dict(
                 data['RowGapSpace'],
                 casing_strategy
             ),
-            column_gap_space=to_dict(
+            column_gap_space=from_dict(
                 data['ColumnGapSpace'],
                 casing_strategy
             ),
-            cross_alignment=to_dict(
+            cross_alignment=from_dict(
                 data['CrossAlignment'],
                 casing_strategy
             )
@@ -19458,45 +19458,45 @@ def _overlay__flex_item_highlight_config__from_dict(
 ) -> 'overlay.FlexItemHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.FlexItemHighlightConfig(
-            base_size_box=to_dict(
+            base_size_box=from_dict(
                 data['base_size_box'],
                 casing_strategy
             ),
-            base_size_border=to_dict(
+            base_size_border=from_dict(
                 data['base_size_border'],
                 casing_strategy
             ),
-            flexibility_arrow=to_dict(
+            flexibility_arrow=from_dict(
                 data['flexibility_arrow'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return overlay.FlexItemHighlightConfig(
-            base_size_box=to_dict(
+            base_size_box=from_dict(
                 data['baseSizeBox'],
                 casing_strategy
             ),
-            base_size_border=to_dict(
+            base_size_border=from_dict(
                 data['baseSizeBorder'],
                 casing_strategy
             ),
-            flexibility_arrow=to_dict(
+            flexibility_arrow=from_dict(
                 data['flexibilityArrow'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return overlay.FlexItemHighlightConfig(
-            base_size_box=to_dict(
+            base_size_box=from_dict(
                 data['BaseSizeBox'],
                 casing_strategy
             ),
-            base_size_border=to_dict(
+            base_size_border=from_dict(
                 data['BaseSizeBorder'],
                 casing_strategy
             ),
-            flexibility_arrow=to_dict(
+            flexibility_arrow=from_dict(
                 data['FlexibilityArrow'],
                 casing_strategy
             )
@@ -19509,7 +19509,7 @@ def _overlay__line_style__from_dict(
 ) -> 'overlay.LineStyle':
     if casing_strategy == 'snake':
         return overlay.LineStyle(
-            color=to_dict(
+            color=from_dict(
                 data['color'],
                 casing_strategy
             ),
@@ -19517,7 +19517,7 @@ def _overlay__line_style__from_dict(
         )
     if casing_strategy == 'camel':
         return overlay.LineStyle(
-            color=to_dict(
+            color=from_dict(
                 data['color'],
                 casing_strategy
             ),
@@ -19525,7 +19525,7 @@ def _overlay__line_style__from_dict(
         )
     if casing_strategy == 'pascal':
         return overlay.LineStyle(
-            color=to_dict(
+            color=from_dict(
                 data['Color'],
                 casing_strategy
             ),
@@ -19539,33 +19539,33 @@ def _overlay__box_style__from_dict(
 ) -> 'overlay.BoxStyle':
     if casing_strategy == 'snake':
         return overlay.BoxStyle(
-            fill_color=to_dict(
+            fill_color=from_dict(
                 data['fill_color'],
                 casing_strategy
             ),
-            hatch_color=to_dict(
+            hatch_color=from_dict(
                 data['hatch_color'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return overlay.BoxStyle(
-            fill_color=to_dict(
+            fill_color=from_dict(
                 data['fillColor'],
                 casing_strategy
             ),
-            hatch_color=to_dict(
+            hatch_color=from_dict(
                 data['hatchColor'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return overlay.BoxStyle(
-            fill_color=to_dict(
+            fill_color=from_dict(
                 data['FillColor'],
                 casing_strategy
             ),
-            hatch_color=to_dict(
+            hatch_color=from_dict(
                 data['HatchColor'],
                 casing_strategy
             )
@@ -19583,53 +19583,53 @@ def _overlay__highlight_config__from_dict(
             show_rulers=data['show_rulers'],
             show_accessibility_info=data['show_accessibility_info'],
             show_extension_lines=data['show_extension_lines'],
-            content_color=to_dict(
+            content_color=from_dict(
                 data['content_color'],
                 casing_strategy
             ),
-            padding_color=to_dict(
+            padding_color=from_dict(
                 data['padding_color'],
                 casing_strategy
             ),
-            border_color=to_dict(
+            border_color=from_dict(
                 data['border_color'],
                 casing_strategy
             ),
-            margin_color=to_dict(
+            margin_color=from_dict(
                 data['margin_color'],
                 casing_strategy
             ),
-            event_target_color=to_dict(
+            event_target_color=from_dict(
                 data['event_target_color'],
                 casing_strategy
             ),
-            shape_color=to_dict(
+            shape_color=from_dict(
                 data['shape_color'],
                 casing_strategy
             ),
-            shape_margin_color=to_dict(
+            shape_margin_color=from_dict(
                 data['shape_margin_color'],
                 casing_strategy
             ),
-            css_grid_color=to_dict(
+            css_grid_color=from_dict(
                 data['css_grid_color'],
                 casing_strategy
             ),
             color_format=data['color_format'],
-            grid_highlight_config=to_dict(
+            grid_highlight_config=from_dict(
                 data['grid_highlight_config'],
                 casing_strategy
             ),
-            flex_container_highlight_config=to_dict(
+            flex_container_highlight_config=from_dict(
                 data['flex_container_highlight_config'],
                 casing_strategy
             ),
-            flex_item_highlight_config=to_dict(
+            flex_item_highlight_config=from_dict(
                 data['flex_item_highlight_config'],
                 casing_strategy
             ),
             contrast_algorithm=data['contrast_algorithm'],
-            container_query_container_highlight_config=to_dict(
+            container_query_container_highlight_config=from_dict(
                 data['container_query_container_highlight_config'],
                 casing_strategy
             )
@@ -19641,53 +19641,53 @@ def _overlay__highlight_config__from_dict(
             show_rulers=data['showRulers'],
             show_accessibility_info=data['showAccessibilityInfo'],
             show_extension_lines=data['showExtensionLines'],
-            content_color=to_dict(
+            content_color=from_dict(
                 data['contentColor'],
                 casing_strategy
             ),
-            padding_color=to_dict(
+            padding_color=from_dict(
                 data['paddingColor'],
                 casing_strategy
             ),
-            border_color=to_dict(
+            border_color=from_dict(
                 data['borderColor'],
                 casing_strategy
             ),
-            margin_color=to_dict(
+            margin_color=from_dict(
                 data['marginColor'],
                 casing_strategy
             ),
-            event_target_color=to_dict(
+            event_target_color=from_dict(
                 data['eventTargetColor'],
                 casing_strategy
             ),
-            shape_color=to_dict(
+            shape_color=from_dict(
                 data['shapeColor'],
                 casing_strategy
             ),
-            shape_margin_color=to_dict(
+            shape_margin_color=from_dict(
                 data['shapeMarginColor'],
                 casing_strategy
             ),
-            css_grid_color=to_dict(
+            css_grid_color=from_dict(
                 data['cssGridColor'],
                 casing_strategy
             ),
             color_format=data['colorFormat'],
-            grid_highlight_config=to_dict(
+            grid_highlight_config=from_dict(
                 data['gridHighlightConfig'],
                 casing_strategy
             ),
-            flex_container_highlight_config=to_dict(
+            flex_container_highlight_config=from_dict(
                 data['flexContainerHighlightConfig'],
                 casing_strategy
             ),
-            flex_item_highlight_config=to_dict(
+            flex_item_highlight_config=from_dict(
                 data['flexItemHighlightConfig'],
                 casing_strategy
             ),
             contrast_algorithm=data['contrastAlgorithm'],
-            container_query_container_highlight_config=to_dict(
+            container_query_container_highlight_config=from_dict(
                 data['containerQueryContainerHighlightConfig'],
                 casing_strategy
             )
@@ -19699,53 +19699,53 @@ def _overlay__highlight_config__from_dict(
             show_rulers=data['ShowRulers'],
             show_accessibility_info=data['ShowAccessibilityInfo'],
             show_extension_lines=data['ShowExtensionLines'],
-            content_color=to_dict(
+            content_color=from_dict(
                 data['ContentColor'],
                 casing_strategy
             ),
-            padding_color=to_dict(
+            padding_color=from_dict(
                 data['PaddingColor'],
                 casing_strategy
             ),
-            border_color=to_dict(
+            border_color=from_dict(
                 data['BorderColor'],
                 casing_strategy
             ),
-            margin_color=to_dict(
+            margin_color=from_dict(
                 data['MarginColor'],
                 casing_strategy
             ),
-            event_target_color=to_dict(
+            event_target_color=from_dict(
                 data['EventTargetColor'],
                 casing_strategy
             ),
-            shape_color=to_dict(
+            shape_color=from_dict(
                 data['ShapeColor'],
                 casing_strategy
             ),
-            shape_margin_color=to_dict(
+            shape_margin_color=from_dict(
                 data['ShapeMarginColor'],
                 casing_strategy
             ),
-            css_grid_color=to_dict(
+            css_grid_color=from_dict(
                 data['CssGridColor'],
                 casing_strategy
             ),
             color_format=data['ColorFormat'],
-            grid_highlight_config=to_dict(
+            grid_highlight_config=from_dict(
                 data['GridHighlightConfig'],
                 casing_strategy
             ),
-            flex_container_highlight_config=to_dict(
+            flex_container_highlight_config=from_dict(
                 data['FlexContainerHighlightConfig'],
                 casing_strategy
             ),
-            flex_item_highlight_config=to_dict(
+            flex_item_highlight_config=from_dict(
                 data['FlexItemHighlightConfig'],
                 casing_strategy
             ),
             contrast_algorithm=data['ContrastAlgorithm'],
-            container_query_container_highlight_config=to_dict(
+            container_query_container_highlight_config=from_dict(
                 data['ContainerQueryContainerHighlightConfig'],
                 casing_strategy
             )
@@ -19758,7 +19758,7 @@ def _overlay__grid_node_highlight_config__from_dict(
 ) -> 'overlay.GridNodeHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.GridNodeHighlightConfig(
-            grid_highlight_config=to_dict(
+            grid_highlight_config=from_dict(
                 data['grid_highlight_config'],
                 casing_strategy
             ),
@@ -19766,7 +19766,7 @@ def _overlay__grid_node_highlight_config__from_dict(
         )
     if casing_strategy == 'camel':
         return overlay.GridNodeHighlightConfig(
-            grid_highlight_config=to_dict(
+            grid_highlight_config=from_dict(
                 data['gridHighlightConfig'],
                 casing_strategy
             ),
@@ -19774,7 +19774,7 @@ def _overlay__grid_node_highlight_config__from_dict(
         )
     if casing_strategy == 'pascal':
         return overlay.GridNodeHighlightConfig(
-            grid_highlight_config=to_dict(
+            grid_highlight_config=from_dict(
                 data['GridHighlightConfig'],
                 casing_strategy
             ),
@@ -19788,7 +19788,7 @@ def _overlay__flex_node_highlight_config__from_dict(
 ) -> 'overlay.FlexNodeHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.FlexNodeHighlightConfig(
-            flex_container_highlight_config=to_dict(
+            flex_container_highlight_config=from_dict(
                 data['flex_container_highlight_config'],
                 casing_strategy
             ),
@@ -19796,7 +19796,7 @@ def _overlay__flex_node_highlight_config__from_dict(
         )
     if casing_strategy == 'camel':
         return overlay.FlexNodeHighlightConfig(
-            flex_container_highlight_config=to_dict(
+            flex_container_highlight_config=from_dict(
                 data['flexContainerHighlightConfig'],
                 casing_strategy
             ),
@@ -19804,7 +19804,7 @@ def _overlay__flex_node_highlight_config__from_dict(
         )
     if casing_strategy == 'pascal':
         return overlay.FlexNodeHighlightConfig(
-            flex_container_highlight_config=to_dict(
+            flex_container_highlight_config=from_dict(
                 data['FlexContainerHighlightConfig'],
                 casing_strategy
             ),
@@ -19818,57 +19818,57 @@ def _overlay__scroll_snap_container_highlight_config__from_dict(
 ) -> 'overlay.ScrollSnapContainerHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.ScrollSnapContainerHighlightConfig(
-            snapport_border=to_dict(
+            snapport_border=from_dict(
                 data['snapport_border'],
                 casing_strategy
             ),
-            snap_area_border=to_dict(
+            snap_area_border=from_dict(
                 data['snap_area_border'],
                 casing_strategy
             ),
-            scroll_margin_color=to_dict(
+            scroll_margin_color=from_dict(
                 data['scroll_margin_color'],
                 casing_strategy
             ),
-            scroll_padding_color=to_dict(
+            scroll_padding_color=from_dict(
                 data['scroll_padding_color'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return overlay.ScrollSnapContainerHighlightConfig(
-            snapport_border=to_dict(
+            snapport_border=from_dict(
                 data['snapportBorder'],
                 casing_strategy
             ),
-            snap_area_border=to_dict(
+            snap_area_border=from_dict(
                 data['snapAreaBorder'],
                 casing_strategy
             ),
-            scroll_margin_color=to_dict(
+            scroll_margin_color=from_dict(
                 data['scrollMarginColor'],
                 casing_strategy
             ),
-            scroll_padding_color=to_dict(
+            scroll_padding_color=from_dict(
                 data['scrollPaddingColor'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return overlay.ScrollSnapContainerHighlightConfig(
-            snapport_border=to_dict(
+            snapport_border=from_dict(
                 data['SnapportBorder'],
                 casing_strategy
             ),
-            snap_area_border=to_dict(
+            snap_area_border=from_dict(
                 data['SnapAreaBorder'],
                 casing_strategy
             ),
-            scroll_margin_color=to_dict(
+            scroll_margin_color=from_dict(
                 data['ScrollMarginColor'],
                 casing_strategy
             ),
-            scroll_padding_color=to_dict(
+            scroll_padding_color=from_dict(
                 data['ScrollPaddingColor'],
                 casing_strategy
             )
@@ -19881,7 +19881,7 @@ def _overlay__scroll_snap_highlight_config__from_dict(
 ) -> 'overlay.ScrollSnapHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.ScrollSnapHighlightConfig(
-            scroll_snap_container_highlight_config=to_dict(
+            scroll_snap_container_highlight_config=from_dict(
                 data['scroll_snap_container_highlight_config'],
                 casing_strategy
             ),
@@ -19889,7 +19889,7 @@ def _overlay__scroll_snap_highlight_config__from_dict(
         )
     if casing_strategy == 'camel':
         return overlay.ScrollSnapHighlightConfig(
-            scroll_snap_container_highlight_config=to_dict(
+            scroll_snap_container_highlight_config=from_dict(
                 data['scrollSnapContainerHighlightConfig'],
                 casing_strategy
             ),
@@ -19897,7 +19897,7 @@ def _overlay__scroll_snap_highlight_config__from_dict(
         )
     if casing_strategy == 'pascal':
         return overlay.ScrollSnapHighlightConfig(
-            scroll_snap_container_highlight_config=to_dict(
+            scroll_snap_container_highlight_config=from_dict(
                 data['ScrollSnapContainerHighlightConfig'],
                 casing_strategy
             ),
@@ -19911,45 +19911,45 @@ def _overlay__hinge_config__from_dict(
 ) -> 'overlay.HingeConfig':
     if casing_strategy == 'snake':
         return overlay.HingeConfig(
-            rect=to_dict(
+            rect=from_dict(
                 data['rect'],
                 casing_strategy
             ),
-            content_color=to_dict(
+            content_color=from_dict(
                 data['content_color'],
                 casing_strategy
             ),
-            outline_color=to_dict(
+            outline_color=from_dict(
                 data['outline_color'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return overlay.HingeConfig(
-            rect=to_dict(
+            rect=from_dict(
                 data['rect'],
                 casing_strategy
             ),
-            content_color=to_dict(
+            content_color=from_dict(
                 data['contentColor'],
                 casing_strategy
             ),
-            outline_color=to_dict(
+            outline_color=from_dict(
                 data['outlineColor'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return overlay.HingeConfig(
-            rect=to_dict(
+            rect=from_dict(
                 data['Rect'],
                 casing_strategy
             ),
-            content_color=to_dict(
+            content_color=from_dict(
                 data['ContentColor'],
                 casing_strategy
             ),
-            outline_color=to_dict(
+            outline_color=from_dict(
                 data['OutlineColor'],
                 casing_strategy
             )
@@ -19962,7 +19962,7 @@ def _overlay__container_query_highlight_config__from_dict(
 ) -> 'overlay.ContainerQueryHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.ContainerQueryHighlightConfig(
-            container_query_container_highlight_config=to_dict(
+            container_query_container_highlight_config=from_dict(
                 data['container_query_container_highlight_config'],
                 casing_strategy
             ),
@@ -19970,7 +19970,7 @@ def _overlay__container_query_highlight_config__from_dict(
         )
     if casing_strategy == 'camel':
         return overlay.ContainerQueryHighlightConfig(
-            container_query_container_highlight_config=to_dict(
+            container_query_container_highlight_config=from_dict(
                 data['containerQueryContainerHighlightConfig'],
                 casing_strategy
             ),
@@ -19978,7 +19978,7 @@ def _overlay__container_query_highlight_config__from_dict(
         )
     if casing_strategy == 'pascal':
         return overlay.ContainerQueryHighlightConfig(
-            container_query_container_highlight_config=to_dict(
+            container_query_container_highlight_config=from_dict(
                 data['ContainerQueryContainerHighlightConfig'],
                 casing_strategy
             ),
@@ -19992,33 +19992,33 @@ def _overlay__container_query_container_highlight_config__from_dict(
 ) -> 'overlay.ContainerQueryContainerHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.ContainerQueryContainerHighlightConfig(
-            container_border=to_dict(
+            container_border=from_dict(
                 data['container_border'],
                 casing_strategy
             ),
-            descendant_border=to_dict(
+            descendant_border=from_dict(
                 data['descendant_border'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return overlay.ContainerQueryContainerHighlightConfig(
-            container_border=to_dict(
+            container_border=from_dict(
                 data['containerBorder'],
                 casing_strategy
             ),
-            descendant_border=to_dict(
+            descendant_border=from_dict(
                 data['descendantBorder'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return overlay.ContainerQueryContainerHighlightConfig(
-            container_border=to_dict(
+            container_border=from_dict(
                 data['ContainerBorder'],
                 casing_strategy
             ),
-            descendant_border=to_dict(
+            descendant_border=from_dict(
                 data['DescendantBorder'],
                 casing_strategy
             )
@@ -20031,7 +20031,7 @@ def _overlay__isolated_element_highlight_config__from_dict(
 ) -> 'overlay.IsolatedElementHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.IsolatedElementHighlightConfig(
-            isolation_mode_highlight_config=to_dict(
+            isolation_mode_highlight_config=from_dict(
                 data['isolation_mode_highlight_config'],
                 casing_strategy
             ),
@@ -20039,7 +20039,7 @@ def _overlay__isolated_element_highlight_config__from_dict(
         )
     if casing_strategy == 'camel':
         return overlay.IsolatedElementHighlightConfig(
-            isolation_mode_highlight_config=to_dict(
+            isolation_mode_highlight_config=from_dict(
                 data['isolationModeHighlightConfig'],
                 casing_strategy
             ),
@@ -20047,7 +20047,7 @@ def _overlay__isolated_element_highlight_config__from_dict(
         )
     if casing_strategy == 'pascal':
         return overlay.IsolatedElementHighlightConfig(
-            isolation_mode_highlight_config=to_dict(
+            isolation_mode_highlight_config=from_dict(
                 data['IsolationModeHighlightConfig'],
                 casing_strategy
             ),
@@ -20061,45 +20061,45 @@ def _overlay__isolation_mode_highlight_config__from_dict(
 ) -> 'overlay.IsolationModeHighlightConfig':
     if casing_strategy == 'snake':
         return overlay.IsolationModeHighlightConfig(
-            resizer_color=to_dict(
+            resizer_color=from_dict(
                 data['resizer_color'],
                 casing_strategy
             ),
-            resizer_handle_color=to_dict(
+            resizer_handle_color=from_dict(
                 data['resizer_handle_color'],
                 casing_strategy
             ),
-            mask_color=to_dict(
+            mask_color=from_dict(
                 data['mask_color'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return overlay.IsolationModeHighlightConfig(
-            resizer_color=to_dict(
+            resizer_color=from_dict(
                 data['resizerColor'],
                 casing_strategy
             ),
-            resizer_handle_color=to_dict(
+            resizer_handle_color=from_dict(
                 data['resizerHandleColor'],
                 casing_strategy
             ),
-            mask_color=to_dict(
+            mask_color=from_dict(
                 data['maskColor'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return overlay.IsolationModeHighlightConfig(
-            resizer_color=to_dict(
+            resizer_color=from_dict(
                 data['ResizerColor'],
                 casing_strategy
             ),
-            resizer_handle_color=to_dict(
+            resizer_handle_color=from_dict(
                 data['ResizerHandleColor'],
                 casing_strategy
             ),
-            mask_color=to_dict(
+            mask_color=from_dict(
                 data['MaskColor'],
                 casing_strategy
             )
@@ -20177,7 +20177,7 @@ def _page__permissions_policy_feature_state__from_dict(
         return page.PermissionsPolicyFeatureState(
             feature=data['feature'],
             allowed=data['allowed'],
-            locator=to_dict(
+            locator=from_dict(
                 data['locator'],
                 casing_strategy
             )
@@ -20186,7 +20186,7 @@ def _page__permissions_policy_feature_state__from_dict(
         return page.PermissionsPolicyFeatureState(
             feature=data['feature'],
             allowed=data['allowed'],
-            locator=to_dict(
+            locator=from_dict(
                 data['locator'],
                 casing_strategy
             )
@@ -20195,7 +20195,7 @@ def _page__permissions_policy_feature_state__from_dict(
         return page.PermissionsPolicyFeatureState(
             feature=data['Feature'],
             allowed=data['Allowed'],
-            locator=to_dict(
+            locator=from_dict(
                 data['Locator'],
                 casing_strategy
             )
@@ -20242,7 +20242,7 @@ def _page__origin_trial_token_with_status__from_dict(
     if casing_strategy == 'snake':
         return page.OriginTrialTokenWithStatus(
             raw_token_text=data['raw_token_text'],
-            parsed_token=to_dict(
+            parsed_token=from_dict(
                 data['parsed_token'],
                 casing_strategy
             ),
@@ -20251,7 +20251,7 @@ def _page__origin_trial_token_with_status__from_dict(
     if casing_strategy == 'camel':
         return page.OriginTrialTokenWithStatus(
             raw_token_text=data['rawTokenText'],
-            parsed_token=to_dict(
+            parsed_token=from_dict(
                 data['parsedToken'],
                 casing_strategy
             ),
@@ -20260,7 +20260,7 @@ def _page__origin_trial_token_with_status__from_dict(
     if casing_strategy == 'pascal':
         return page.OriginTrialTokenWithStatus(
             raw_token_text=data['RawTokenText'],
-            parsed_token=to_dict(
+            parsed_token=from_dict(
                 data['ParsedToken'],
                 casing_strategy
             ),
@@ -20277,7 +20277,7 @@ def _page__origin_trial__from_dict(
             trial_name=data['trial_name'],
             status=data['status'],
             tokens_with_status=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['tokens_with_status']
             ]
         )
@@ -20286,7 +20286,7 @@ def _page__origin_trial__from_dict(
             trial_name=data['trialName'],
             status=data['status'],
             tokens_with_status=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['tokensWithStatus']
             ]
         )
@@ -20295,7 +20295,7 @@ def _page__origin_trial__from_dict(
             trial_name=data['TrialName'],
             status=data['Status'],
             tokens_with_status=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['TokensWithStatus']
             ]
         )
@@ -20317,7 +20317,7 @@ def _page__frame__from_dict(
             security_origin=data['security_origin'],
             mime_type=data['mime_type'],
             unreachable_url=data['unreachable_url'],
-            ad_frame_status=to_dict(
+            ad_frame_status=from_dict(
                 data['ad_frame_status'],
                 casing_strategy
             ),
@@ -20337,7 +20337,7 @@ def _page__frame__from_dict(
             security_origin=data['securityOrigin'],
             mime_type=data['mimeType'],
             unreachable_url=data['unreachableUrl'],
-            ad_frame_status=to_dict(
+            ad_frame_status=from_dict(
                 data['adFrameStatus'],
                 casing_strategy
             ),
@@ -20357,7 +20357,7 @@ def _page__frame__from_dict(
             security_origin=data['SecurityOrigin'],
             mime_type=data['MimeType'],
             unreachable_url=data['UnreachableUrl'],
-            ad_frame_status=to_dict(
+            ad_frame_status=from_dict(
                 data['AdFrameStatus'],
                 casing_strategy
             ),
@@ -20409,46 +20409,46 @@ def _page__frame_resource_tree__from_dict(
 ) -> 'page.FrameResourceTree':
     if casing_strategy == 'snake':
         return page.FrameResourceTree(
-            frame=to_dict(
+            frame=from_dict(
                 data['frame'],
                 casing_strategy
             ),
             child_frames=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['child_frames']
             ],
             resources=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['resources']
             ]
         )
     if casing_strategy == 'camel':
         return page.FrameResourceTree(
-            frame=to_dict(
+            frame=from_dict(
                 data['frame'],
                 casing_strategy
             ),
             child_frames=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['childFrames']
             ],
             resources=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['resources']
             ]
         )
     if casing_strategy == 'pascal':
         return page.FrameResourceTree(
-            frame=to_dict(
+            frame=from_dict(
                 data['Frame'],
                 casing_strategy
             ),
             child_frames=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ChildFrames']
             ],
             resources=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Resources']
             ]
         )
@@ -20460,34 +20460,34 @@ def _page__frame_tree__from_dict(
 ) -> 'page.FrameTree':
     if casing_strategy == 'snake':
         return page.FrameTree(
-            frame=to_dict(
+            frame=from_dict(
                 data['frame'],
                 casing_strategy
             ),
             child_frames=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['child_frames']
             ]
         )
     if casing_strategy == 'camel':
         return page.FrameTree(
-            frame=to_dict(
+            frame=from_dict(
                 data['frame'],
                 casing_strategy
             ),
             child_frames=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['childFrames']
             ]
         )
     if casing_strategy == 'pascal':
         return page.FrameTree(
-            frame=to_dict(
+            frame=from_dict(
                 data['Frame'],
                 casing_strategy
             ),
             child_frames=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ChildFrames']
             ]
         )
@@ -20743,7 +20743,7 @@ def _page__script_font_families__from_dict(
     if casing_strategy == 'snake':
         return page.ScriptFontFamilies(
             script=data['script'],
-            font_families=to_dict(
+            font_families=from_dict(
                 data['font_families'],
                 casing_strategy
             )
@@ -20751,7 +20751,7 @@ def _page__script_font_families__from_dict(
     if casing_strategy == 'camel':
         return page.ScriptFontFamilies(
             script=data['script'],
-            font_families=to_dict(
+            font_families=from_dict(
                 data['fontFamilies'],
                 casing_strategy
             )
@@ -20759,7 +20759,7 @@ def _page__script_font_families__from_dict(
     if casing_strategy == 'pascal':
         return page.ScriptFontFamilies(
             script=data['Script'],
-            font_families=to_dict(
+            font_families=from_dict(
                 data['FontFamilies'],
                 casing_strategy
             )
@@ -20816,7 +20816,7 @@ def _page__installability_error__from_dict(
         return page.InstallabilityError(
             error_id=data['error_id'],
             error_arguments=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['error_arguments']
             ]
         )
@@ -20824,7 +20824,7 @@ def _page__installability_error__from_dict(
         return page.InstallabilityError(
             error_id=data['errorId'],
             error_arguments=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['errorArguments']
             ]
         )
@@ -20832,7 +20832,7 @@ def _page__installability_error__from_dict(
         return page.InstallabilityError(
             error_id=data['ErrorId'],
             error_arguments=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ErrorArguments']
             ]
         )
@@ -20891,11 +20891,11 @@ def _page__back_forward_cache_not_restored_explanation_tree__from_dict(
         return page.BackForwardCacheNotRestoredExplanationTree(
             url=data['url'],
             explanations=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['explanations']
             ],
             children=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['children']
             ]
         )
@@ -20903,11 +20903,11 @@ def _page__back_forward_cache_not_restored_explanation_tree__from_dict(
         return page.BackForwardCacheNotRestoredExplanationTree(
             url=data['url'],
             explanations=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['explanations']
             ],
             children=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['children']
             ]
         )
@@ -20915,11 +20915,11 @@ def _page__back_forward_cache_not_restored_explanation_tree__from_dict(
         return page.BackForwardCacheNotRestoredExplanationTree(
             url=data['Url'],
             explanations=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Explanations']
             ],
             children=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Children']
             ]
         )
@@ -20985,11 +20985,11 @@ def _performance_timeline__layout_shift_attribution__from_dict(
 ) -> 'performance_timeline.LayoutShiftAttribution':
     if casing_strategy == 'snake':
         return performance_timeline.LayoutShiftAttribution(
-            previous_rect=to_dict(
+            previous_rect=from_dict(
                 data['previous_rect'],
                 casing_strategy
             ),
-            current_rect=to_dict(
+            current_rect=from_dict(
                 data['current_rect'],
                 casing_strategy
             ),
@@ -20997,11 +20997,11 @@ def _performance_timeline__layout_shift_attribution__from_dict(
         )
     if casing_strategy == 'camel':
         return performance_timeline.LayoutShiftAttribution(
-            previous_rect=to_dict(
+            previous_rect=from_dict(
                 data['previousRect'],
                 casing_strategy
             ),
-            current_rect=to_dict(
+            current_rect=from_dict(
                 data['currentRect'],
                 casing_strategy
             ),
@@ -21009,11 +21009,11 @@ def _performance_timeline__layout_shift_attribution__from_dict(
         )
     if casing_strategy == 'pascal':
         return performance_timeline.LayoutShiftAttribution(
-            previous_rect=to_dict(
+            previous_rect=from_dict(
                 data['PreviousRect'],
                 casing_strategy
             ),
-            current_rect=to_dict(
+            current_rect=from_dict(
                 data['CurrentRect'],
                 casing_strategy
             ),
@@ -21031,7 +21031,7 @@ def _performance_timeline__layout_shift__from_dict(
             had_recent_input=data['had_recent_input'],
             last_input_time=data['last_input_time'],
             sources=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['sources']
             ]
         )
@@ -21041,7 +21041,7 @@ def _performance_timeline__layout_shift__from_dict(
             had_recent_input=data['hadRecentInput'],
             last_input_time=data['lastInputTime'],
             sources=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['sources']
             ]
         )
@@ -21051,7 +21051,7 @@ def _performance_timeline__layout_shift__from_dict(
             had_recent_input=data['HadRecentInput'],
             last_input_time=data['LastInputTime'],
             sources=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Sources']
             ]
         )
@@ -21068,11 +21068,11 @@ def _performance_timeline__timeline_event__from_dict(
             name=data['name'],
             time=data['time'],
             duration=data['duration'],
-            lcp_details=to_dict(
+            lcp_details=from_dict(
                 data['lcp_details'],
                 casing_strategy
             ),
-            layout_shift_details=to_dict(
+            layout_shift_details=from_dict(
                 data['layout_shift_details'],
                 casing_strategy
             )
@@ -21084,11 +21084,11 @@ def _performance_timeline__timeline_event__from_dict(
             name=data['name'],
             time=data['time'],
             duration=data['duration'],
-            lcp_details=to_dict(
+            lcp_details=from_dict(
                 data['lcpDetails'],
                 casing_strategy
             ),
-            layout_shift_details=to_dict(
+            layout_shift_details=from_dict(
                 data['layoutShiftDetails'],
                 casing_strategy
             )
@@ -21100,11 +21100,11 @@ def _performance_timeline__timeline_event__from_dict(
             name=data['Name'],
             time=data['Time'],
             duration=data['Duration'],
-            lcp_details=to_dict(
+            lcp_details=from_dict(
                 data['LcpDetails'],
                 casing_strategy
             ),
-            layout_shift_details=to_dict(
+            layout_shift_details=from_dict(
                 data['LayoutShiftDetails'],
                 casing_strategy
             )
@@ -21208,11 +21208,11 @@ def _security__visible_security_state__from_dict(
     if casing_strategy == 'snake':
         return security.VisibleSecurityState(
             security_state=data['security_state'],
-            certificate_security_state=to_dict(
+            certificate_security_state=from_dict(
                 data['certificate_security_state'],
                 casing_strategy
             ),
-            safety_tip_info=to_dict(
+            safety_tip_info=from_dict(
                 data['safety_tip_info'],
                 casing_strategy
             ),
@@ -21221,11 +21221,11 @@ def _security__visible_security_state__from_dict(
     if casing_strategy == 'camel':
         return security.VisibleSecurityState(
             security_state=data['securityState'],
-            certificate_security_state=to_dict(
+            certificate_security_state=from_dict(
                 data['certificateSecurityState'],
                 casing_strategy
             ),
-            safety_tip_info=to_dict(
+            safety_tip_info=from_dict(
                 data['safetyTipInfo'],
                 casing_strategy
             ),
@@ -21234,11 +21234,11 @@ def _security__visible_security_state__from_dict(
     if casing_strategy == 'pascal':
         return security.VisibleSecurityState(
             security_state=data['SecurityState'],
-            certificate_security_state=to_dict(
+            certificate_security_state=from_dict(
                 data['CertificateSecurityState'],
                 casing_strategy
             ),
-            safety_tip_info=to_dict(
+            safety_tip_info=from_dict(
                 data['SafetyTipInfo'],
                 casing_strategy
             ),
@@ -21497,11 +21497,11 @@ def _storage__interest_group_details__from_dict(
             trusted_bidding_signals_keys=data['trusted_bidding_signals_keys'],
             user_bidding_signals=data['user_bidding_signals'],
             ads=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ads']
             ],
             ad_components=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ad_components']
             ]
         )
@@ -21518,11 +21518,11 @@ def _storage__interest_group_details__from_dict(
             trusted_bidding_signals_keys=data['trustedBiddingSignalsKeys'],
             user_bidding_signals=data['userBiddingSignals'],
             ads=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ads']
             ],
             ad_components=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['adComponents']
             ]
         )
@@ -21539,11 +21539,11 @@ def _storage__interest_group_details__from_dict(
             trusted_bidding_signals_keys=data['TrustedBiddingSignalsKeys'],
             user_bidding_signals=data['UserBiddingSignals'],
             ads=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Ads']
             ],
             ad_components=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['AdComponents']
             ]
         )
@@ -21623,7 +21623,7 @@ def _storage__shared_storage_url_with_metadata__from_dict(
         return storage.SharedStorageUrlWithMetadata(
             url=data['url'],
             reporting_metadata=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['reporting_metadata']
             ]
         )
@@ -21631,7 +21631,7 @@ def _storage__shared_storage_url_with_metadata__from_dict(
         return storage.SharedStorageUrlWithMetadata(
             url=data['url'],
             reporting_metadata=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['reportingMetadata']
             ]
         )
@@ -21639,7 +21639,7 @@ def _storage__shared_storage_url_with_metadata__from_dict(
         return storage.SharedStorageUrlWithMetadata(
             url=data['Url'],
             reporting_metadata=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ReportingMetadata']
             ]
         )
@@ -21655,7 +21655,7 @@ def _storage__shared_storage_access_params__from_dict(
             operation_name=data['operation_name'],
             serialized_data=data['serialized_data'],
             urls_with_metadata=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['urls_with_metadata']
             ],
             key=data['key'],
@@ -21668,7 +21668,7 @@ def _storage__shared_storage_access_params__from_dict(
             operation_name=data['operationName'],
             serialized_data=data['serializedData'],
             urls_with_metadata=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['urlsWithMetadata']
             ],
             key=data['key'],
@@ -21681,7 +21681,7 @@ def _storage__shared_storage_access_params__from_dict(
             operation_name=data['OperationName'],
             serialized_data=data['SerializedData'],
             urls_with_metadata=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['UrlsWithMetadata']
             ],
             key=data['Key'],
@@ -21717,7 +21717,7 @@ def _storage__storage_bucket_info__from_dict(
 ) -> 'storage.StorageBucketInfo':
     if casing_strategy == 'snake':
         return storage.StorageBucketInfo(
-            bucket=to_dict(
+            bucket=from_dict(
                 data['bucket'],
                 casing_strategy
             ),
@@ -21729,7 +21729,7 @@ def _storage__storage_bucket_info__from_dict(
         )
     if casing_strategy == 'camel':
         return storage.StorageBucketInfo(
-            bucket=to_dict(
+            bucket=from_dict(
                 data['bucket'],
                 casing_strategy
             ),
@@ -21741,7 +21741,7 @@ def _storage__storage_bucket_info__from_dict(
         )
     if casing_strategy == 'pascal':
         return storage.StorageBucketInfo(
-            bucket=to_dict(
+            bucket=from_dict(
                 data['Bucket'],
                 casing_strategy
             ),
@@ -21825,7 +21825,7 @@ def _storage__attribution_reporting_source_registration__from_dict(
             time=data['time'],
             expiry=data['expiry'],
             event_report_window=data['event_report_window'],
-            event_report_windows=to_dict(
+            event_report_windows=from_dict(
                 data['event_report_windows'],
                 casing_strategy
             ),
@@ -21837,11 +21837,11 @@ def _storage__attribution_reporting_source_registration__from_dict(
             event_id=data['event_id'],
             priority=data['priority'],
             filter_data=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['filter_data']
             ],
             aggregation_keys=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['aggregation_keys']
             ],
             debug_key=data['debug_key']
@@ -21851,7 +21851,7 @@ def _storage__attribution_reporting_source_registration__from_dict(
             time=data['time'],
             expiry=data['expiry'],
             event_report_window=data['eventReportWindow'],
-            event_report_windows=to_dict(
+            event_report_windows=from_dict(
                 data['eventReportWindows'],
                 casing_strategy
             ),
@@ -21863,11 +21863,11 @@ def _storage__attribution_reporting_source_registration__from_dict(
             event_id=data['eventId'],
             priority=data['priority'],
             filter_data=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['filterData']
             ],
             aggregation_keys=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['aggregationKeys']
             ],
             debug_key=data['debugKey']
@@ -21877,7 +21877,7 @@ def _storage__attribution_reporting_source_registration__from_dict(
             time=data['Time'],
             expiry=data['Expiry'],
             event_report_window=data['EventReportWindow'],
-            event_report_windows=to_dict(
+            event_report_windows=from_dict(
                 data['EventReportWindows'],
                 casing_strategy
             ),
@@ -21889,11 +21889,11 @@ def _storage__attribution_reporting_source_registration__from_dict(
             event_id=data['EventId'],
             priority=data['Priority'],
             filter_data=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['FilterData']
             ],
             aggregation_keys=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['AggregationKeys']
             ],
             debug_key=data['DebugKey']
@@ -21967,11 +21967,11 @@ def _system_info__video_decode_accelerator_capability__from_dict(
     if casing_strategy == 'snake':
         return system_info.VideoDecodeAcceleratorCapability(
             profile=data['profile'],
-            max_resolution=to_dict(
+            max_resolution=from_dict(
                 data['max_resolution'],
                 casing_strategy
             ),
-            min_resolution=to_dict(
+            min_resolution=from_dict(
                 data['min_resolution'],
                 casing_strategy
             )
@@ -21979,11 +21979,11 @@ def _system_info__video_decode_accelerator_capability__from_dict(
     if casing_strategy == 'camel':
         return system_info.VideoDecodeAcceleratorCapability(
             profile=data['profile'],
-            max_resolution=to_dict(
+            max_resolution=from_dict(
                 data['maxResolution'],
                 casing_strategy
             ),
-            min_resolution=to_dict(
+            min_resolution=from_dict(
                 data['minResolution'],
                 casing_strategy
             )
@@ -21991,11 +21991,11 @@ def _system_info__video_decode_accelerator_capability__from_dict(
     if casing_strategy == 'pascal':
         return system_info.VideoDecodeAcceleratorCapability(
             profile=data['Profile'],
-            max_resolution=to_dict(
+            max_resolution=from_dict(
                 data['MaxResolution'],
                 casing_strategy
             ),
-            min_resolution=to_dict(
+            min_resolution=from_dict(
                 data['MinResolution'],
                 casing_strategy
             )
@@ -22009,7 +22009,7 @@ def _system_info__video_encode_accelerator_capability__from_dict(
     if casing_strategy == 'snake':
         return system_info.VideoEncodeAcceleratorCapability(
             profile=data['profile'],
-            max_resolution=to_dict(
+            max_resolution=from_dict(
                 data['max_resolution'],
                 casing_strategy
             ),
@@ -22019,7 +22019,7 @@ def _system_info__video_encode_accelerator_capability__from_dict(
     if casing_strategy == 'camel':
         return system_info.VideoEncodeAcceleratorCapability(
             profile=data['profile'],
-            max_resolution=to_dict(
+            max_resolution=from_dict(
                 data['maxResolution'],
                 casing_strategy
             ),
@@ -22029,7 +22029,7 @@ def _system_info__video_encode_accelerator_capability__from_dict(
     if casing_strategy == 'pascal':
         return system_info.VideoEncodeAcceleratorCapability(
             profile=data['Profile'],
-            max_resolution=to_dict(
+            max_resolution=from_dict(
                 data['MaxResolution'],
                 casing_strategy
             ),
@@ -22045,11 +22045,11 @@ def _system_info__image_decode_accelerator_capability__from_dict(
     if casing_strategy == 'snake':
         return system_info.ImageDecodeAcceleratorCapability(
             image_type=data['image_type'],
-            max_dimensions=to_dict(
+            max_dimensions=from_dict(
                 data['max_dimensions'],
                 casing_strategy
             ),
-            min_dimensions=to_dict(
+            min_dimensions=from_dict(
                 data['min_dimensions'],
                 casing_strategy
             ),
@@ -22058,11 +22058,11 @@ def _system_info__image_decode_accelerator_capability__from_dict(
     if casing_strategy == 'camel':
         return system_info.ImageDecodeAcceleratorCapability(
             image_type=data['imageType'],
-            max_dimensions=to_dict(
+            max_dimensions=from_dict(
                 data['maxDimensions'],
                 casing_strategy
             ),
-            min_dimensions=to_dict(
+            min_dimensions=from_dict(
                 data['minDimensions'],
                 casing_strategy
             ),
@@ -22071,11 +22071,11 @@ def _system_info__image_decode_accelerator_capability__from_dict(
     if casing_strategy == 'pascal':
         return system_info.ImageDecodeAcceleratorCapability(
             image_type=data['ImageType'],
-            max_dimensions=to_dict(
+            max_dimensions=from_dict(
                 data['MaxDimensions'],
                 casing_strategy
             ),
-            min_dimensions=to_dict(
+            min_dimensions=from_dict(
                 data['MinDimensions'],
                 casing_strategy
             ),
@@ -22090,66 +22090,66 @@ def _system_info__gpu_info__from_dict(
     if casing_strategy == 'snake':
         return system_info.GPUInfo(
             devices=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['devices']
             ],
             aux_attributes=data['aux_attributes'],
             feature_status=data['feature_status'],
             driver_bug_workarounds=data['driver_bug_workarounds'],
             video_decoding=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['video_decoding']
             ],
             video_encoding=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['video_encoding']
             ],
             image_decoding=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['image_decoding']
             ]
         )
     if casing_strategy == 'camel':
         return system_info.GPUInfo(
             devices=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['devices']
             ],
             aux_attributes=data['auxAttributes'],
             feature_status=data['featureStatus'],
             driver_bug_workarounds=data['driverBugWorkarounds'],
             video_decoding=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['videoDecoding']
             ],
             video_encoding=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['videoEncoding']
             ],
             image_decoding=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['imageDecoding']
             ]
         )
     if casing_strategy == 'pascal':
         return system_info.GPUInfo(
             devices=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Devices']
             ],
             aux_attributes=data['AuxAttributes'],
             feature_status=data['FeatureStatus'],
             driver_bug_workarounds=data['DriverBugWorkarounds'],
             video_decoding=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['VideoDecoding']
             ],
             video_encoding=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['VideoEncoding']
             ],
             image_decoding=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ImageDecoding']
             ]
         )
@@ -22440,7 +22440,7 @@ def _web_audio__base_audio_context__from_dict(
             context_id=data['context_id'],
             context_type=data['context_type'],
             context_state=data['context_state'],
-            realtime_data=to_dict(
+            realtime_data=from_dict(
                 data['realtime_data'],
                 casing_strategy
             ),
@@ -22453,7 +22453,7 @@ def _web_audio__base_audio_context__from_dict(
             context_id=data['contextId'],
             context_type=data['contextType'],
             context_state=data['contextState'],
-            realtime_data=to_dict(
+            realtime_data=from_dict(
                 data['realtimeData'],
                 casing_strategy
             ),
@@ -22466,7 +22466,7 @@ def _web_audio__base_audio_context__from_dict(
             context_id=data['ContextId'],
             context_type=data['ContextType'],
             context_state=data['ContextState'],
-            realtime_data=to_dict(
+            realtime_data=from_dict(
                 data['RealtimeData'],
                 casing_strategy
             ),
@@ -22752,11 +22752,11 @@ def _media__player_error__from_dict(
             error_type=data['error_type'],
             code=data['code'],
             stack=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['stack']
             ],
             cause=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['cause']
             ],
             data=data['data']
@@ -22766,11 +22766,11 @@ def _media__player_error__from_dict(
             error_type=data['errorType'],
             code=data['code'],
             stack=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['stack']
             ],
             cause=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['cause']
             ],
             data=data['data']
@@ -22780,11 +22780,11 @@ def _media__player_error__from_dict(
             error_type=data['ErrorType'],
             code=data['Code'],
             stack=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Stack']
             ],
             cause=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Cause']
             ],
             data=data['Data']
@@ -22884,7 +22884,7 @@ def _preload__preloading_attempt_source__from_dict(
 ) -> 'preload.PreloadingAttemptSource':
     if casing_strategy == 'snake':
         return preload.PreloadingAttemptSource(
-            key=to_dict(
+            key=from_dict(
                 data['key'],
                 casing_strategy
             ),
@@ -22893,7 +22893,7 @@ def _preload__preloading_attempt_source__from_dict(
         )
     if casing_strategy == 'camel':
         return preload.PreloadingAttemptSource(
-            key=to_dict(
+            key=from_dict(
                 data['key'],
                 casing_strategy
             ),
@@ -22902,7 +22902,7 @@ def _preload__preloading_attempt_source__from_dict(
         )
     if casing_strategy == 'pascal':
         return preload.PreloadingAttemptSource(
-            key=to_dict(
+            key=from_dict(
                 data['Key'],
                 casing_strategy
             ),
@@ -23042,24 +23042,24 @@ def _debugger__call_frame__from_dict(
         return debugger.CallFrame(
             call_frame_id=data['call_frame_id'],
             function_name=data['function_name'],
-            function_location=to_dict(
+            function_location=from_dict(
                 data['function_location'],
                 casing_strategy
             ),
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             ),
             url=data['url'],
             scope_chain=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['scope_chain']
             ],
-            this=to_dict(
+            this=from_dict(
                 data['this'],
                 casing_strategy
             ),
-            return_value=to_dict(
+            return_value=from_dict(
                 data['return_value'],
                 casing_strategy
             )
@@ -23068,24 +23068,24 @@ def _debugger__call_frame__from_dict(
         return debugger.CallFrame(
             call_frame_id=data['callFrameId'],
             function_name=data['functionName'],
-            function_location=to_dict(
+            function_location=from_dict(
                 data['functionLocation'],
                 casing_strategy
             ),
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             ),
             url=data['url'],
             scope_chain=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['scopeChain']
             ],
-            this=to_dict(
+            this=from_dict(
                 data['this'],
                 casing_strategy
             ),
-            return_value=to_dict(
+            return_value=from_dict(
                 data['returnValue'],
                 casing_strategy
             )
@@ -23094,24 +23094,24 @@ def _debugger__call_frame__from_dict(
         return debugger.CallFrame(
             call_frame_id=data['CallFrameId'],
             function_name=data['FunctionName'],
-            function_location=to_dict(
+            function_location=from_dict(
                 data['FunctionLocation'],
                 casing_strategy
             ),
-            location=to_dict(
+            location=from_dict(
                 data['Location'],
                 casing_strategy
             ),
             url=data['Url'],
             scope_chain=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ScopeChain']
             ],
-            this=to_dict(
+            this=from_dict(
                 data['This'],
                 casing_strategy
             ),
-            return_value=to_dict(
+            return_value=from_dict(
                 data['ReturnValue'],
                 casing_strategy
             )
@@ -23125,16 +23125,16 @@ def _debugger__scope__from_dict(
     if casing_strategy == 'snake':
         return debugger.Scope(
             type=data['type'],
-            object=to_dict(
+            object=from_dict(
                 data['object'],
                 casing_strategy
             ),
             name=data['name'],
-            start_location=to_dict(
+            start_location=from_dict(
                 data['start_location'],
                 casing_strategy
             ),
-            end_location=to_dict(
+            end_location=from_dict(
                 data['end_location'],
                 casing_strategy
             )
@@ -23142,16 +23142,16 @@ def _debugger__scope__from_dict(
     if casing_strategy == 'camel':
         return debugger.Scope(
             type=data['type'],
-            object=to_dict(
+            object=from_dict(
                 data['object'],
                 casing_strategy
             ),
             name=data['name'],
-            start_location=to_dict(
+            start_location=from_dict(
                 data['startLocation'],
                 casing_strategy
             ),
-            end_location=to_dict(
+            end_location=from_dict(
                 data['endLocation'],
                 casing_strategy
             )
@@ -23159,16 +23159,16 @@ def _debugger__scope__from_dict(
     if casing_strategy == 'pascal':
         return debugger.Scope(
             type=data['Type'],
-            object=to_dict(
+            object=from_dict(
                 data['Object'],
                 casing_strategy
             ),
             name=data['Name'],
-            start_location=to_dict(
+            start_location=from_dict(
                 data['StartLocation'],
                 casing_strategy
             ),
-            end_location=to_dict(
+            end_location=from_dict(
                 data['EndLocation'],
                 casing_strategy
             )
@@ -23229,40 +23229,40 @@ def _heap_profiler__sampling_heap_profile_node__from_dict(
 ) -> 'heap_profiler.SamplingHeapProfileNode':
     if casing_strategy == 'snake':
         return heap_profiler.SamplingHeapProfileNode(
-            call_frame=to_dict(
+            call_frame=from_dict(
                 data['call_frame'],
                 casing_strategy
             ),
             self_size=data['self_size'],
             id=data['id'],
             children=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['children']
             ]
         )
     if casing_strategy == 'camel':
         return heap_profiler.SamplingHeapProfileNode(
-            call_frame=to_dict(
+            call_frame=from_dict(
                 data['callFrame'],
                 casing_strategy
             ),
             self_size=data['selfSize'],
             id=data['id'],
             children=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['children']
             ]
         )
     if casing_strategy == 'pascal':
         return heap_profiler.SamplingHeapProfileNode(
-            call_frame=to_dict(
+            call_frame=from_dict(
                 data['CallFrame'],
                 casing_strategy
             ),
             self_size=data['SelfSize'],
             id=data['Id'],
             children=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Children']
             ]
         )
@@ -23298,34 +23298,34 @@ def _heap_profiler__sampling_heap_profile__from_dict(
 ) -> 'heap_profiler.SamplingHeapProfile':
     if casing_strategy == 'snake':
         return heap_profiler.SamplingHeapProfile(
-            head=to_dict(
+            head=from_dict(
                 data['head'],
                 casing_strategy
             ),
             samples=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['samples']
             ]
         )
     if casing_strategy == 'camel':
         return heap_profiler.SamplingHeapProfile(
-            head=to_dict(
+            head=from_dict(
                 data['head'],
                 casing_strategy
             ),
             samples=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['samples']
             ]
         )
     if casing_strategy == 'pascal':
         return heap_profiler.SamplingHeapProfile(
-            head=to_dict(
+            head=from_dict(
                 data['Head'],
                 casing_strategy
             ),
             samples=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Samples']
             ]
         )
@@ -23338,7 +23338,7 @@ def _profiler__profile_node__from_dict(
     if casing_strategy == 'snake':
         return profiler.ProfileNode(
             id=data['id'],
-            call_frame=to_dict(
+            call_frame=from_dict(
                 data['call_frame'],
                 casing_strategy
             ),
@@ -23346,14 +23346,14 @@ def _profiler__profile_node__from_dict(
             children=data['children'],
             deopt_reason=data['deopt_reason'],
             position_ticks=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['position_ticks']
             ]
         )
     if casing_strategy == 'camel':
         return profiler.ProfileNode(
             id=data['id'],
-            call_frame=to_dict(
+            call_frame=from_dict(
                 data['callFrame'],
                 casing_strategy
             ),
@@ -23361,14 +23361,14 @@ def _profiler__profile_node__from_dict(
             children=data['children'],
             deopt_reason=data['deoptReason'],
             position_ticks=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['positionTicks']
             ]
         )
     if casing_strategy == 'pascal':
         return profiler.ProfileNode(
             id=data['Id'],
-            call_frame=to_dict(
+            call_frame=from_dict(
                 data['CallFrame'],
                 casing_strategy
             ),
@@ -23376,7 +23376,7 @@ def _profiler__profile_node__from_dict(
             children=data['Children'],
             deopt_reason=data['DeoptReason'],
             position_ticks=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['PositionTicks']
             ]
         )
@@ -23389,7 +23389,7 @@ def _profiler__profile__from_dict(
     if casing_strategy == 'snake':
         return profiler.Profile(
             nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['nodes']
             ],
             start_time=data['start_time'],
@@ -23400,7 +23400,7 @@ def _profiler__profile__from_dict(
     if casing_strategy == 'camel':
         return profiler.Profile(
             nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['nodes']
             ],
             start_time=data['startTime'],
@@ -23411,7 +23411,7 @@ def _profiler__profile__from_dict(
     if casing_strategy == 'pascal':
         return profiler.Profile(
             nodes=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Nodes']
             ],
             start_time=data['StartTime'],
@@ -23474,7 +23474,7 @@ def _profiler__function_coverage__from_dict(
         return profiler.FunctionCoverage(
             function_name=data['function_name'],
             ranges=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ranges']
             ],
             is_block_coverage=data['is_block_coverage']
@@ -23483,7 +23483,7 @@ def _profiler__function_coverage__from_dict(
         return profiler.FunctionCoverage(
             function_name=data['functionName'],
             ranges=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ranges']
             ],
             is_block_coverage=data['isBlockCoverage']
@@ -23492,7 +23492,7 @@ def _profiler__function_coverage__from_dict(
         return profiler.FunctionCoverage(
             function_name=data['FunctionName'],
             ranges=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Ranges']
             ],
             is_block_coverage=data['IsBlockCoverage']
@@ -23508,7 +23508,7 @@ def _profiler__script_coverage__from_dict(
             script_id=data['script_id'],
             url=data['url'],
             functions=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['functions']
             ]
         )
@@ -23517,7 +23517,7 @@ def _profiler__script_coverage__from_dict(
             script_id=data['scriptId'],
             url=data['url'],
             functions=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['functions']
             ]
         )
@@ -23526,7 +23526,7 @@ def _profiler__script_coverage__from_dict(
             script_id=data['ScriptId'],
             url=data['Url'],
             functions=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Functions']
             ]
         )
@@ -23558,7 +23558,7 @@ def _profiler__type_profile_entry__from_dict(
         return profiler.TypeProfileEntry(
             offset=data['offset'],
             types=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['types']
             ]
         )
@@ -23566,7 +23566,7 @@ def _profiler__type_profile_entry__from_dict(
         return profiler.TypeProfileEntry(
             offset=data['offset'],
             types=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['types']
             ]
         )
@@ -23574,7 +23574,7 @@ def _profiler__type_profile_entry__from_dict(
         return profiler.TypeProfileEntry(
             offset=data['Offset'],
             types=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Types']
             ]
         )
@@ -23589,7 +23589,7 @@ def _profiler__script_type_profile__from_dict(
             script_id=data['script_id'],
             url=data['url'],
             entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['entries']
             ]
         )
@@ -23598,7 +23598,7 @@ def _profiler__script_type_profile__from_dict(
             script_id=data['scriptId'],
             url=data['url'],
             entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['entries']
             ]
         )
@@ -23607,7 +23607,7 @@ def _profiler__script_type_profile__from_dict(
             script_id=data['ScriptId'],
             url=data['Url'],
             entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Entries']
             ]
         )
@@ -23626,11 +23626,11 @@ def _runtime__remote_object__from_dict(
             unserializable_value=data['unserializable_value'],
             description=data['description'],
             object_id=data['object_id'],
-            preview=to_dict(
+            preview=from_dict(
                 data['preview'],
                 casing_strategy
             ),
-            custom_preview=to_dict(
+            custom_preview=from_dict(
                 data['custom_preview'],
                 casing_strategy
             )
@@ -23644,11 +23644,11 @@ def _runtime__remote_object__from_dict(
             unserializable_value=data['unserializableValue'],
             description=data['description'],
             object_id=data['objectId'],
-            preview=to_dict(
+            preview=from_dict(
                 data['preview'],
                 casing_strategy
             ),
-            custom_preview=to_dict(
+            custom_preview=from_dict(
                 data['customPreview'],
                 casing_strategy
             )
@@ -23662,11 +23662,11 @@ def _runtime__remote_object__from_dict(
             unserializable_value=data['UnserializableValue'],
             description=data['Description'],
             object_id=data['ObjectId'],
-            preview=to_dict(
+            preview=from_dict(
                 data['Preview'],
                 casing_strategy
             ),
-            custom_preview=to_dict(
+            custom_preview=from_dict(
                 data['CustomPreview'],
                 casing_strategy
             )
@@ -23705,11 +23705,11 @@ def _runtime__object_preview__from_dict(
             description=data['description'],
             overflow=data['overflow'],
             properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['properties']
             ],
             entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['entries']
             ]
         )
@@ -23720,11 +23720,11 @@ def _runtime__object_preview__from_dict(
             description=data['description'],
             overflow=data['overflow'],
             properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['properties']
             ],
             entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['entries']
             ]
         )
@@ -23735,11 +23735,11 @@ def _runtime__object_preview__from_dict(
             description=data['Description'],
             overflow=data['Overflow'],
             properties=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Properties']
             ],
             entries=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Entries']
             ]
         )
@@ -23754,7 +23754,7 @@ def _runtime__property_preview__from_dict(
             name=data['name'],
             type=data['type'],
             value=data['value'],
-            value_preview=to_dict(
+            value_preview=from_dict(
                 data['value_preview'],
                 casing_strategy
             ),
@@ -23765,7 +23765,7 @@ def _runtime__property_preview__from_dict(
             name=data['name'],
             type=data['type'],
             value=data['value'],
-            value_preview=to_dict(
+            value_preview=from_dict(
                 data['valuePreview'],
                 casing_strategy
             ),
@@ -23776,7 +23776,7 @@ def _runtime__property_preview__from_dict(
             name=data['Name'],
             type=data['Type'],
             value=data['Value'],
-            value_preview=to_dict(
+            value_preview=from_dict(
                 data['ValuePreview'],
                 casing_strategy
             ),
@@ -23790,33 +23790,33 @@ def _runtime__entry_preview__from_dict(
 ) -> 'runtime.EntryPreview':
     if casing_strategy == 'snake':
         return runtime.EntryPreview(
-            key=to_dict(
+            key=from_dict(
                 data['key'],
                 casing_strategy
             ),
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return runtime.EntryPreview(
-            key=to_dict(
+            key=from_dict(
                 data['key'],
                 casing_strategy
             ),
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return runtime.EntryPreview(
-            key=to_dict(
+            key=from_dict(
                 data['Key'],
                 casing_strategy
             ),
-            value=to_dict(
+            value=from_dict(
                 data['Value'],
                 casing_strategy
             )
@@ -23830,16 +23830,16 @@ def _runtime__property_descriptor__from_dict(
     if casing_strategy == 'snake':
         return runtime.PropertyDescriptor(
             name=data['name'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             ),
             writable=data['writable'],
-            get=to_dict(
+            get=from_dict(
                 data['get'],
                 casing_strategy
             ),
-            set=to_dict(
+            set=from_dict(
                 data['set'],
                 casing_strategy
             ),
@@ -23847,7 +23847,7 @@ def _runtime__property_descriptor__from_dict(
             enumerable=data['enumerable'],
             was_thrown=data['was_thrown'],
             is_own=data['is_own'],
-            symbol=to_dict(
+            symbol=from_dict(
                 data['symbol'],
                 casing_strategy
             )
@@ -23855,16 +23855,16 @@ def _runtime__property_descriptor__from_dict(
     if casing_strategy == 'camel':
         return runtime.PropertyDescriptor(
             name=data['name'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             ),
             writable=data['writable'],
-            get=to_dict(
+            get=from_dict(
                 data['get'],
                 casing_strategy
             ),
-            set=to_dict(
+            set=from_dict(
                 data['set'],
                 casing_strategy
             ),
@@ -23872,7 +23872,7 @@ def _runtime__property_descriptor__from_dict(
             enumerable=data['enumerable'],
             was_thrown=data['wasThrown'],
             is_own=data['isOwn'],
-            symbol=to_dict(
+            symbol=from_dict(
                 data['symbol'],
                 casing_strategy
             )
@@ -23880,16 +23880,16 @@ def _runtime__property_descriptor__from_dict(
     if casing_strategy == 'pascal':
         return runtime.PropertyDescriptor(
             name=data['Name'],
-            value=to_dict(
+            value=from_dict(
                 data['Value'],
                 casing_strategy
             ),
             writable=data['Writable'],
-            get=to_dict(
+            get=from_dict(
                 data['Get'],
                 casing_strategy
             ),
-            set=to_dict(
+            set=from_dict(
                 data['Set'],
                 casing_strategy
             ),
@@ -23897,7 +23897,7 @@ def _runtime__property_descriptor__from_dict(
             enumerable=data['Enumerable'],
             was_thrown=data['WasThrown'],
             is_own=data['IsOwn'],
-            symbol=to_dict(
+            symbol=from_dict(
                 data['Symbol'],
                 casing_strategy
             )
@@ -23911,7 +23911,7 @@ def _runtime__internal_property_descriptor__from_dict(
     if casing_strategy == 'snake':
         return runtime.InternalPropertyDescriptor(
             name=data['name'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
@@ -23919,7 +23919,7 @@ def _runtime__internal_property_descriptor__from_dict(
     if casing_strategy == 'camel':
         return runtime.InternalPropertyDescriptor(
             name=data['name'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
@@ -23927,7 +23927,7 @@ def _runtime__internal_property_descriptor__from_dict(
     if casing_strategy == 'pascal':
         return runtime.InternalPropertyDescriptor(
             name=data['Name'],
-            value=to_dict(
+            value=from_dict(
                 data['Value'],
                 casing_strategy
             )
@@ -23941,7 +23941,7 @@ def _runtime__private_property_descriptor__from_dict(
     if casing_strategy == 'snake':
         return runtime.PrivatePropertyDescriptor(
             name=data['name'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
@@ -23949,7 +23949,7 @@ def _runtime__private_property_descriptor__from_dict(
     if casing_strategy == 'camel':
         return runtime.PrivatePropertyDescriptor(
             name=data['name'],
-            value=to_dict(
+            value=from_dict(
                 data['value'],
                 casing_strategy
             )
@@ -23957,7 +23957,7 @@ def _runtime__private_property_descriptor__from_dict(
     if casing_strategy == 'pascal':
         return runtime.PrivatePropertyDescriptor(
             name=data['Name'],
-            value=to_dict(
+            value=from_dict(
                 data['Value'],
                 casing_strategy
             )
@@ -24027,11 +24027,11 @@ def _runtime__exception_details__from_dict(
             column_number=data['column_number'],
             script_id=data['script_id'],
             url=data['url'],
-            stack_trace=to_dict(
+            stack_trace=from_dict(
                 data['stack_trace'],
                 casing_strategy
             ),
-            exception=to_dict(
+            exception=from_dict(
                 data['exception'],
                 casing_strategy
             ),
@@ -24045,11 +24045,11 @@ def _runtime__exception_details__from_dict(
             column_number=data['columnNumber'],
             script_id=data['scriptId'],
             url=data['url'],
-            stack_trace=to_dict(
+            stack_trace=from_dict(
                 data['stackTrace'],
                 casing_strategy
             ),
-            exception=to_dict(
+            exception=from_dict(
                 data['exception'],
                 casing_strategy
             ),
@@ -24063,11 +24063,11 @@ def _runtime__exception_details__from_dict(
             column_number=data['ColumnNumber'],
             script_id=data['ScriptId'],
             url=data['Url'],
-            stack_trace=to_dict(
+            stack_trace=from_dict(
                 data['StackTrace'],
                 casing_strategy
             ),
-            exception=to_dict(
+            exception=from_dict(
                 data['Exception'],
                 casing_strategy
             ),
@@ -24113,14 +24113,14 @@ def _runtime__stack_trace__from_dict(
         return runtime.StackTrace(
             description=data['description'],
             call_frames=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['call_frames']
             ],
-            parent=to_dict(
+            parent=from_dict(
                 data['parent'],
                 casing_strategy
             ),
-            parent_id=to_dict(
+            parent_id=from_dict(
                 data['parent_id'],
                 casing_strategy
             )
@@ -24129,14 +24129,14 @@ def _runtime__stack_trace__from_dict(
         return runtime.StackTrace(
             description=data['description'],
             call_frames=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['callFrames']
             ],
-            parent=to_dict(
+            parent=from_dict(
                 data['parent'],
                 casing_strategy
             ),
-            parent_id=to_dict(
+            parent_id=from_dict(
                 data['parentId'],
                 casing_strategy
             )
@@ -24145,14 +24145,14 @@ def _runtime__stack_trace__from_dict(
         return runtime.StackTrace(
             description=data['Description'],
             call_frames=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['CallFrames']
             ],
-            parent=to_dict(
+            parent=from_dict(
                 data['Parent'],
                 casing_strategy
             ),
-            parent_id=to_dict(
+            parent_id=from_dict(
                 data['ParentId'],
                 casing_strategy
             )
@@ -24533,7 +24533,7 @@ def _css__add_rule_return_t__from_dict(
         return css.AddRuleReturnT(
             style_sheet_id=data['style_sheet_id'],
             rule_text=data['rule_text'],
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             )
@@ -24542,7 +24542,7 @@ def _css__add_rule_return_t__from_dict(
         return css.AddRuleReturnT(
             style_sheet_id=data['styleSheetId'],
             rule_text=data['ruleText'],
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             )
@@ -24551,7 +24551,7 @@ def _css__add_rule_return_t__from_dict(
         return css.AddRuleReturnT(
             style_sheet_id=data['StyleSheetId'],
             rule_text=data['RuleText'],
-            location=to_dict(
+            location=from_dict(
                 data['Location'],
                 casing_strategy
             )
@@ -24745,7 +24745,7 @@ def _css__set_keyframe_key_return_t__from_dict(
     if casing_strategy == 'snake':
         return css.SetKeyframeKeyReturnT(
             style_sheet_id=data['style_sheet_id'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24754,7 +24754,7 @@ def _css__set_keyframe_key_return_t__from_dict(
     if casing_strategy == 'camel':
         return css.SetKeyframeKeyReturnT(
             style_sheet_id=data['styleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24763,7 +24763,7 @@ def _css__set_keyframe_key_return_t__from_dict(
     if casing_strategy == 'pascal':
         return css.SetKeyframeKeyReturnT(
             style_sheet_id=data['StyleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -24777,7 +24777,7 @@ def _css__set_media_text_return_t__from_dict(
     if casing_strategy == 'snake':
         return css.SetMediaTextReturnT(
             style_sheet_id=data['style_sheet_id'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24786,7 +24786,7 @@ def _css__set_media_text_return_t__from_dict(
     if casing_strategy == 'camel':
         return css.SetMediaTextReturnT(
             style_sheet_id=data['styleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24795,7 +24795,7 @@ def _css__set_media_text_return_t__from_dict(
     if casing_strategy == 'pascal':
         return css.SetMediaTextReturnT(
             style_sheet_id=data['StyleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -24809,7 +24809,7 @@ def _css__set_container_query_text_return_t__from_dict(
     if casing_strategy == 'snake':
         return css.SetContainerQueryTextReturnT(
             style_sheet_id=data['style_sheet_id'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24818,7 +24818,7 @@ def _css__set_container_query_text_return_t__from_dict(
     if casing_strategy == 'camel':
         return css.SetContainerQueryTextReturnT(
             style_sheet_id=data['styleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24827,7 +24827,7 @@ def _css__set_container_query_text_return_t__from_dict(
     if casing_strategy == 'pascal':
         return css.SetContainerQueryTextReturnT(
             style_sheet_id=data['StyleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -24841,7 +24841,7 @@ def _css__set_supports_text_return_t__from_dict(
     if casing_strategy == 'snake':
         return css.SetSupportsTextReturnT(
             style_sheet_id=data['style_sheet_id'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24850,7 +24850,7 @@ def _css__set_supports_text_return_t__from_dict(
     if casing_strategy == 'camel':
         return css.SetSupportsTextReturnT(
             style_sheet_id=data['styleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24859,7 +24859,7 @@ def _css__set_supports_text_return_t__from_dict(
     if casing_strategy == 'pascal':
         return css.SetSupportsTextReturnT(
             style_sheet_id=data['StyleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -24873,7 +24873,7 @@ def _css__set_scope_text_return_t__from_dict(
     if casing_strategy == 'snake':
         return css.SetScopeTextReturnT(
             style_sheet_id=data['style_sheet_id'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24882,7 +24882,7 @@ def _css__set_scope_text_return_t__from_dict(
     if casing_strategy == 'camel':
         return css.SetScopeTextReturnT(
             style_sheet_id=data['styleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24891,7 +24891,7 @@ def _css__set_scope_text_return_t__from_dict(
     if casing_strategy == 'pascal':
         return css.SetScopeTextReturnT(
             style_sheet_id=data['StyleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -24905,7 +24905,7 @@ def _css__set_rule_selector_return_t__from_dict(
     if casing_strategy == 'snake':
         return css.SetRuleSelectorReturnT(
             style_sheet_id=data['style_sheet_id'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24914,7 +24914,7 @@ def _css__set_rule_selector_return_t__from_dict(
     if casing_strategy == 'camel':
         return css.SetRuleSelectorReturnT(
             style_sheet_id=data['styleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['range'],
                 casing_strategy
             ),
@@ -24923,7 +24923,7 @@ def _css__set_rule_selector_return_t__from_dict(
     if casing_strategy == 'pascal':
         return css.SetRuleSelectorReturnT(
             style_sheet_id=data['StyleSheetId'],
-            range=to_dict(
+            range=from_dict(
                 data['Range'],
                 casing_strategy
             ),
@@ -24957,21 +24957,21 @@ def _css__set_style_texts_return_t__from_dict(
     if casing_strategy == 'snake':
         return css.SetStyleTextsReturnT(
             edits=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['edits']
             ]
         )
     if casing_strategy == 'camel':
         return css.SetStyleTextsReturnT(
             edits=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['edits']
             ]
         )
     if casing_strategy == 'pascal':
         return css.SetStyleTextsReturnT(
             edits=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Edits']
             ]
         )
@@ -25012,7 +25012,7 @@ def _cache_storage__request_cache_names_return_t__from_dict(
         return cache_storage.RequestCacheNamesReturnT(
             security_origin=data['security_origin'],
             storage_key=data['storage_key'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storage_bucket'],
                 casing_strategy
             )
@@ -25021,7 +25021,7 @@ def _cache_storage__request_cache_names_return_t__from_dict(
         return cache_storage.RequestCacheNamesReturnT(
             security_origin=data['securityOrigin'],
             storage_key=data['storageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storageBucket'],
                 casing_strategy
             )
@@ -25030,7 +25030,7 @@ def _cache_storage__request_cache_names_return_t__from_dict(
         return cache_storage.RequestCacheNamesReturnT(
             security_origin=data['SecurityOrigin'],
             storage_key=data['StorageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['StorageBucket'],
                 casing_strategy
             )
@@ -25045,7 +25045,7 @@ def _cache_storage__request_cached_response_return_t__from_dict(
             cache_id=data['cache_id'],
             request_url=data['request_url'],
             request_headers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['request_headers']
             ]
         )
@@ -25054,7 +25054,7 @@ def _cache_storage__request_cached_response_return_t__from_dict(
             cache_id=data['cacheId'],
             request_url=data['requestURL'],
             request_headers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['requestHeaders']
             ]
         )
@@ -25063,7 +25063,7 @@ def _cache_storage__request_cached_response_return_t__from_dict(
             cache_id=data['CacheId'],
             request_url=data['RequestURL'],
             request_headers=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['RequestHeaders']
             ]
         )
@@ -25274,7 +25274,7 @@ def _dom__get_nodes_for_subtree_by_style_return_t__from_dict(
         return dom.GetNodesForSubtreeByStyleReturnT(
             node_id=data['node_id'],
             computed_styles=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['computed_styles']
             ],
             pierce=data['pierce']
@@ -25283,7 +25283,7 @@ def _dom__get_nodes_for_subtree_by_style_return_t__from_dict(
         return dom.GetNodesForSubtreeByStyleReturnT(
             node_id=data['nodeId'],
             computed_styles=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['computedStyles']
             ],
             pierce=data['pierce']
@@ -25292,7 +25292,7 @@ def _dom__get_nodes_for_subtree_by_style_return_t__from_dict(
         return dom.GetNodesForSubtreeByStyleReturnT(
             node_id=data['NodeId'],
             computed_styles=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['ComputedStyles']
             ],
             pierce=data['Pierce']
@@ -25759,21 +25759,21 @@ def _dom_storage__get_dom_storage_items_return_t__from_dict(
     pass
     if casing_strategy == 'snake':
         return dom_storage.GetDOMStorageItemsReturnT(
-            storage_id=to_dict(
+            storage_id=from_dict(
                 data['storage_id'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return dom_storage.GetDOMStorageItemsReturnT(
-            storage_id=to_dict(
+            storage_id=from_dict(
                 data['storageId'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return dom_storage.GetDOMStorageItemsReturnT(
-            storage_id=to_dict(
+            storage_id=from_dict(
                 data['StorageId'],
                 casing_strategy
             )
@@ -25865,7 +25865,7 @@ def _headless_experimental__begin_frame_return_t__from_dict(
             frame_time_ticks=data['frame_time_ticks'],
             interval=data['interval'],
             no_display_updates=data['no_display_updates'],
-            screenshot=to_dict(
+            screenshot=from_dict(
                 data['screenshot'],
                 casing_strategy
             )
@@ -25875,7 +25875,7 @@ def _headless_experimental__begin_frame_return_t__from_dict(
             frame_time_ticks=data['frameTimeTicks'],
             interval=data['interval'],
             no_display_updates=data['noDisplayUpdates'],
-            screenshot=to_dict(
+            screenshot=from_dict(
                 data['screenshot'],
                 casing_strategy
             )
@@ -25885,7 +25885,7 @@ def _headless_experimental__begin_frame_return_t__from_dict(
             frame_time_ticks=data['FrameTimeTicks'],
             interval=data['Interval'],
             no_display_updates=data['NoDisplayUpdates'],
-            screenshot=to_dict(
+            screenshot=from_dict(
                 data['Screenshot'],
                 casing_strategy
             )
@@ -25939,7 +25939,7 @@ def _indexed_db__request_data_return_t__from_dict(
         return indexed_db.RequestDataReturnT(
             security_origin=data['security_origin'],
             storage_key=data['storage_key'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storage_bucket'],
                 casing_strategy
             ),
@@ -25948,7 +25948,7 @@ def _indexed_db__request_data_return_t__from_dict(
             index_name=data['index_name'],
             skip_count=data['skip_count'],
             page_size=data['page_size'],
-            key_range=to_dict(
+            key_range=from_dict(
                 data['key_range'],
                 casing_strategy
             )
@@ -25957,7 +25957,7 @@ def _indexed_db__request_data_return_t__from_dict(
         return indexed_db.RequestDataReturnT(
             security_origin=data['securityOrigin'],
             storage_key=data['storageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storageBucket'],
                 casing_strategy
             ),
@@ -25966,7 +25966,7 @@ def _indexed_db__request_data_return_t__from_dict(
             index_name=data['indexName'],
             skip_count=data['skipCount'],
             page_size=data['pageSize'],
-            key_range=to_dict(
+            key_range=from_dict(
                 data['keyRange'],
                 casing_strategy
             )
@@ -25975,7 +25975,7 @@ def _indexed_db__request_data_return_t__from_dict(
         return indexed_db.RequestDataReturnT(
             security_origin=data['SecurityOrigin'],
             storage_key=data['StorageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['StorageBucket'],
                 casing_strategy
             ),
@@ -25984,7 +25984,7 @@ def _indexed_db__request_data_return_t__from_dict(
             index_name=data['IndexName'],
             skip_count=data['SkipCount'],
             page_size=data['PageSize'],
-            key_range=to_dict(
+            key_range=from_dict(
                 data['KeyRange'],
                 casing_strategy
             )
@@ -25998,7 +25998,7 @@ def _indexed_db__get_metadata_return_t__from_dict(
         return indexed_db.GetMetadataReturnT(
             security_origin=data['security_origin'],
             storage_key=data['storage_key'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storage_bucket'],
                 casing_strategy
             ),
@@ -26009,7 +26009,7 @@ def _indexed_db__get_metadata_return_t__from_dict(
         return indexed_db.GetMetadataReturnT(
             security_origin=data['securityOrigin'],
             storage_key=data['storageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storageBucket'],
                 casing_strategy
             ),
@@ -26020,7 +26020,7 @@ def _indexed_db__get_metadata_return_t__from_dict(
         return indexed_db.GetMetadataReturnT(
             security_origin=data['SecurityOrigin'],
             storage_key=data['StorageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['StorageBucket'],
                 casing_strategy
             ),
@@ -26036,7 +26036,7 @@ def _indexed_db__request_database_return_t__from_dict(
         return indexed_db.RequestDatabaseReturnT(
             security_origin=data['security_origin'],
             storage_key=data['storage_key'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storage_bucket'],
                 casing_strategy
             ),
@@ -26046,7 +26046,7 @@ def _indexed_db__request_database_return_t__from_dict(
         return indexed_db.RequestDatabaseReturnT(
             security_origin=data['securityOrigin'],
             storage_key=data['storageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storageBucket'],
                 casing_strategy
             ),
@@ -26056,7 +26056,7 @@ def _indexed_db__request_database_return_t__from_dict(
         return indexed_db.RequestDatabaseReturnT(
             security_origin=data['SecurityOrigin'],
             storage_key=data['StorageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['StorageBucket'],
                 casing_strategy
             ),
@@ -26071,7 +26071,7 @@ def _indexed_db__request_database_names_return_t__from_dict(
         return indexed_db.RequestDatabaseNamesReturnT(
             security_origin=data['security_origin'],
             storage_key=data['storage_key'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storage_bucket'],
                 casing_strategy
             )
@@ -26080,7 +26080,7 @@ def _indexed_db__request_database_names_return_t__from_dict(
         return indexed_db.RequestDatabaseNamesReturnT(
             security_origin=data['securityOrigin'],
             storage_key=data['storageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['storageBucket'],
                 casing_strategy
             )
@@ -26089,7 +26089,7 @@ def _indexed_db__request_database_names_return_t__from_dict(
         return indexed_db.RequestDatabaseNamesReturnT(
             security_origin=data['SecurityOrigin'],
             storage_key=data['StorageKey'],
-            storage_bucket=to_dict(
+            storage_bucket=from_dict(
                 data['StorageBucket'],
                 casing_strategy
             )
@@ -26119,21 +26119,21 @@ def _layer_tree__load_snapshot_return_t__from_dict(
     if casing_strategy == 'snake':
         return layer_tree.LoadSnapshotReturnT(
             tiles=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['tiles']
             ]
         )
     if casing_strategy == 'camel':
         return layer_tree.LoadSnapshotReturnT(
             tiles=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['tiles']
             ]
         )
     if casing_strategy == 'pascal':
         return layer_tree.LoadSnapshotReturnT(
             tiles=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Tiles']
             ]
         )
@@ -26164,7 +26164,7 @@ def _layer_tree__profile_snapshot_return_t__from_dict(
             snapshot_id=data['snapshot_id'],
             min_repeat_count=data['min_repeat_count'],
             min_duration=data['min_duration'],
-            clip_rect=to_dict(
+            clip_rect=from_dict(
                 data['clip_rect'],
                 casing_strategy
             )
@@ -26174,7 +26174,7 @@ def _layer_tree__profile_snapshot_return_t__from_dict(
             snapshot_id=data['snapshotId'],
             min_repeat_count=data['minRepeatCount'],
             min_duration=data['minDuration'],
-            clip_rect=to_dict(
+            clip_rect=from_dict(
                 data['clipRect'],
                 casing_strategy
             )
@@ -26184,7 +26184,7 @@ def _layer_tree__profile_snapshot_return_t__from_dict(
             snapshot_id=data['SnapshotId'],
             min_repeat_count=data['MinRepeatCount'],
             min_duration=data['MinDuration'],
-            clip_rect=to_dict(
+            clip_rect=from_dict(
                 data['ClipRect'],
                 casing_strategy
             )
@@ -26554,7 +26554,7 @@ def _network__load_network_resource_return_t__from_dict(
         return network.LoadNetworkResourceReturnT(
             frame_id=data['frame_id'],
             url=data['url'],
-            options=to_dict(
+            options=from_dict(
                 data['options'],
                 casing_strategy
             )
@@ -26563,7 +26563,7 @@ def _network__load_network_resource_return_t__from_dict(
         return network.LoadNetworkResourceReturnT(
             frame_id=data['frameId'],
             url=data['url'],
-            options=to_dict(
+            options=from_dict(
                 data['options'],
                 casing_strategy
             )
@@ -26572,7 +26572,7 @@ def _network__load_network_resource_return_t__from_dict(
         return network.LoadNetworkResourceReturnT(
             frame_id=data['FrameId'],
             url=data['Url'],
-            options=to_dict(
+            options=from_dict(
                 data['Options'],
                 casing_strategy
             )
@@ -26692,7 +26692,7 @@ def _page__capture_screenshot_return_t__from_dict(
         return page.CaptureScreenshotReturnT(
             format=data['format'],
             quality=data['quality'],
-            clip=to_dict(
+            clip=from_dict(
                 data['clip'],
                 casing_strategy
             ),
@@ -26704,7 +26704,7 @@ def _page__capture_screenshot_return_t__from_dict(
         return page.CaptureScreenshotReturnT(
             format=data['format'],
             quality=data['quality'],
-            clip=to_dict(
+            clip=from_dict(
                 data['clip'],
                 casing_strategy
             ),
@@ -26716,7 +26716,7 @@ def _page__capture_screenshot_return_t__from_dict(
         return page.CaptureScreenshotReturnT(
             format=data['Format'],
             quality=data['Quality'],
-            clip=to_dict(
+            clip=from_dict(
                 data['Clip'],
                 casing_strategy
             ),
@@ -27545,21 +27545,21 @@ def _web_authn__add_virtual_authenticator_return_t__from_dict(
     pass
     if casing_strategy == 'snake':
         return web_authn.AddVirtualAuthenticatorReturnT(
-            options=to_dict(
+            options=from_dict(
                 data['options'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return web_authn.AddVirtualAuthenticatorReturnT(
-            options=to_dict(
+            options=from_dict(
                 data['options'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return web_authn.AddVirtualAuthenticatorReturnT(
-            options=to_dict(
+            options=from_dict(
                 data['Options'],
                 casing_strategy
             )
@@ -27666,11 +27666,11 @@ def _debugger__get_possible_breakpoints_return_t__from_dict(
     pass
     if casing_strategy == 'snake':
         return debugger.GetPossibleBreakpointsReturnT(
-            start=to_dict(
+            start=from_dict(
                 data['start'],
                 casing_strategy
             ),
-            end=to_dict(
+            end=from_dict(
                 data['end'],
                 casing_strategy
             ),
@@ -27678,11 +27678,11 @@ def _debugger__get_possible_breakpoints_return_t__from_dict(
         )
     if casing_strategy == 'camel':
         return debugger.GetPossibleBreakpointsReturnT(
-            start=to_dict(
+            start=from_dict(
                 data['start'],
                 casing_strategy
             ),
-            end=to_dict(
+            end=from_dict(
                 data['end'],
                 casing_strategy
             ),
@@ -27690,11 +27690,11 @@ def _debugger__get_possible_breakpoints_return_t__from_dict(
         )
     if casing_strategy == 'pascal':
         return debugger.GetPossibleBreakpointsReturnT(
-            start=to_dict(
+            start=from_dict(
                 data['Start'],
                 casing_strategy
             ),
-            end=to_dict(
+            end=from_dict(
                 data['End'],
                 casing_strategy
             ),
@@ -27724,21 +27724,21 @@ def _debugger__get_stack_trace_return_t__from_dict(
     pass
     if casing_strategy == 'snake':
         return debugger.GetStackTraceReturnT(
-            stack_trace_id=to_dict(
+            stack_trace_id=from_dict(
                 data['stack_trace_id'],
                 casing_strategy
             )
         )
     if casing_strategy == 'camel':
         return debugger.GetStackTraceReturnT(
-            stack_trace_id=to_dict(
+            stack_trace_id=from_dict(
                 data['stackTraceId'],
                 casing_strategy
             )
         )
     if casing_strategy == 'pascal':
         return debugger.GetStackTraceReturnT(
-            stack_trace_id=to_dict(
+            stack_trace_id=from_dict(
                 data['StackTraceId'],
                 casing_strategy
             )
@@ -27793,7 +27793,7 @@ def _debugger__set_breakpoint_return_t__from_dict(
     pass
     if casing_strategy == 'snake':
         return debugger.SetBreakpointReturnT(
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             ),
@@ -27801,7 +27801,7 @@ def _debugger__set_breakpoint_return_t__from_dict(
         )
     if casing_strategy == 'camel':
         return debugger.SetBreakpointReturnT(
-            location=to_dict(
+            location=from_dict(
                 data['location'],
                 casing_strategy
             ),
@@ -27809,7 +27809,7 @@ def _debugger__set_breakpoint_return_t__from_dict(
         )
     if casing_strategy == 'pascal':
         return debugger.SetBreakpointReturnT(
-            location=to_dict(
+            location=from_dict(
                 data['Location'],
                 casing_strategy
             ),
@@ -28061,7 +28061,7 @@ def _runtime__call_function_on_return_t__from_dict(
             function_declaration=data['function_declaration'],
             object_id=data['object_id'],
             arguments=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['arguments']
             ],
             silent=data['silent'],
@@ -28077,7 +28077,7 @@ def _runtime__call_function_on_return_t__from_dict(
             function_declaration=data['functionDeclaration'],
             object_id=data['objectId'],
             arguments=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['arguments']
             ],
             silent=data['silent'],
@@ -28093,7 +28093,7 @@ def _runtime__call_function_on_return_t__from_dict(
             function_declaration=data['FunctionDeclaration'],
             object_id=data['ObjectId'],
             arguments=[
-                to_dict(item, casing_strategy)
+                from_dict(item, casing_strategy)
                 for item in data['Arguments']
             ],
             silent=data['Silent'],
