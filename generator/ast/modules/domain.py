@@ -1,45 +1,27 @@
 import ast
 from collections import defaultdict
 
+from generator.ast.utils import ast_imports
 from generator.parser.types import Domain, Command
 from generator.parser.types.property import CommandParameter
 from generator.utils import (
-    snake_case,
     coalesce_undefined,
     cdp_to_python_type,
-    is_builtin
 )
 
 
 def _generate_imports():
-    return [
-        ast.ImportFrom(
-            module='dataclasses',
-            names=[
-                ast.alias('dataclass')
-            ]
-        ),
-        ast.ImportFrom(
-            module='cdp.utils',
-            names=[
-                ast.alias('is_defined'),
-                ast.alias('UNDEFINED')
-            ]
-        ),
-        ast.ImportFrom(
-            module='typing',
-            names=[
-                ast.alias('TYPE_CHECKING')
-            ]
-        ),
-        ast.ImportFrom(
-            module='cdp.domains.mapper',
-            names=[
-                ast.alias('from_dict'),
-                ast.alias('to_dict')
-            ]
-        )
-    ]
+    import_tree = defaultdict(set)
+
+    import_tree['dataclasses'].add('dataclass')
+    import_tree['cdp.utils'].add('is_defined')
+    import_tree['cdp.utils'].add('UNDEFINED')
+    import_tree['typing'].add('TYPE_CHECKING')
+    import_tree['cdp.domains'].add('mappers')
+
+    return ast_imports(
+        import_tree
+    )
 
 
 def _generate_type_imports(domain: Domain):
@@ -47,30 +29,21 @@ def _generate_type_imports(domain: Domain):
 
     for command in domain.commands:
         if command.returns:
-            import_tree[domain.domain_snake_case].add(
-                command.name_pascal_case + 'ReturnT'
+            module = f'cdp.domains.{domain.domain_.snake_case}.types'
+            import_tree[module].add(
+                command.return_type_name
             )
 
         for parameter in command.parameters:
             for ref in parameter.get_refs():
-                module_name = ref.actual_domain.domain_snake_case
-                import_tree[module_name].add(
+                module = f'cdp.domains.{ref.actual_domain.domain_.snake_case}.types'
+                import_tree[module].add(
                     ref.type
                 )
 
-    imports = []
-
-    for domain, types in import_tree.items():
-        types = sorted(types)
-
-        imports.append(
-            ast.ImportFrom(
-                module=f'cdp.domains.{domain}.types',
-                names=[ast.alias(name) for name in types]
-            )
-        )
-
-    return imports
+    return ast_imports(
+        import_tree
+    )
 
 
 def _generate_send_method_parameter_signature(command: Command):
@@ -122,52 +95,41 @@ def _generate_send_method_parameter_signature(command: Command):
     return arguments
 
 
-def _generate_send_method_params_value(parameter: 'CommandParameter'):
-    parameter_name = parameter.name_snake_cased_collision_safe
+def _send_method_parameter_value(parameter: 'CommandParameter'):
+    param_name = parameter.name_snake_cased_collision_safe
+    value = ast.Name(param_name)
 
-    basic_param = ast.Name(
-        id=parameter_name
-    )
+    if parameter.is_simple_type or parameter.is_array_of_simple_types:
+        return value
 
-    basic_param_with_to_json = ast.Call(
-        func=ast.Name('to_dict'),
-        args=[
-            basic_param,
-            ast.Constant('camel')
-        ],
-        render_context={
-            'expand': True
-        }
-    )
-
-    list_comp_with_to_json = ast.ListComp(
-        elt=ast.Call(
+    if parameter.is_complex_type:
+        return ast.Call(
             func=ast.Name('to_dict'),
             args=[
-                ast.Name('item'),
+                value,
                 ast.Constant('camel')
+            ],
+            render_context={
+                'expand': True
+            }
+        )
+
+    if parameter.is_array_of_complex_type:
+        return ast.ListComp(
+            elt=ast.Call(
+                func=ast.Name('to_dict'),
+                args=[
+                    ast.Name('_'),
+                    ast.Constant('camel')
+                ]
+            ),
+            generators=[
+                ast.comprehension(
+                    target=ast.Name('_'),
+                    iter=value
+                )
             ]
-        ),
-        generators=[
-            ast.comprehension(
-                target=ast.Name('item'),
-                iter=basic_param,
-                ifs=[]
-            )
-        ]
-    )
-
-    if parameter.type == 'array':
-        if parameter.items.ref.actual_type.properties:
-            return list_comp_with_to_json
-        else:
-            return basic_param
-
-    else:
-        if parameter.ref.actual_type.properties:
-            return basic_param_with_to_json
-        else:
-            return basic_param
+        )
 
 
 def _generate_send_method_initial_params(command: Command):
@@ -181,13 +143,11 @@ def _generate_send_method_initial_params(command: Command):
             continue
 
         params.keys.append(
-            ast.Constant(
-                value=parameter.name,
-            )
+            ast.Constant(parameter.name)
         )
 
         params.values.append(
-            _generate_send_method_params_value(
+            _send_method_parameter_value(
                 parameter
             )
         )
@@ -227,7 +187,7 @@ def _generate_send_method_optional_params(command: Command):
                                 slice=ast.Constant(parameter.name)
                             )
                         ],
-                        value=_generate_send_method_params_value(
+                        value=_send_method_parameter_value(
                             parameter
                         )
                     )
@@ -269,7 +229,7 @@ def _generate_send_method_return_call(command: Command):
                 body=ast.Call(
                     func=ast.Name('from_dict'),
                     args=[
-                        ast.Name(command.name_pascal_case + 'ReturnT'),
+                        ast.Name(command.return_type_name),
                         ast.Name('data'),
                         ast.Constant('camel')
                     ],
@@ -288,22 +248,14 @@ def _generate_send_method_return_call(command: Command):
     )
 
 
-def _generate_send_method_return_signature(command: 'Command'):
-    if command.returns:
-        slice_ = command.name_pascal_case + 'ReturnT'
-    else:
-        slice_ = 'None'
-
-    return ast.Constant(
-        f'IFutureResponse[{slice_}]'
-    )
-
-
 def _generate_send_method(command: Command, index: int):
     function = ast.FunctionDef(
-        name=snake_case(command.name),
+        name=command.name_.snake_case,
         args=None,
         body=[],
+        returns=ast.Constant(
+            f'IFutureResponse[{command.return_type_name}]'
+        ),
         render_context={
             'expand': True,
             'lines_before': 1 if index > 0 else 0
@@ -330,10 +282,6 @@ def _generate_send_method(command: Command, index: int):
         _generate_send_method_return_call(
             command
         )
-    )
-
-    function.returns = _generate_send_method_return_signature(
-        command
     )
 
     return function

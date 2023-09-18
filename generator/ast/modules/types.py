@@ -1,6 +1,7 @@
 import ast
 from collections import defaultdict
 
+from generator.ast.utils import ast_imports
 from generator.parser.types import Domain, Type, Command
 from generator.utils import cdp_to_python_type
 
@@ -11,8 +12,9 @@ def _generate_domain_type_imports(domain: Domain):
     for type_ in domain.types:
         for ref in type_.get_refs():
             if ref.actual_domain.domain != domain.domain:
-                module_name = ref.actual_domain.domain_snake_case
-                import_tree[module_name].add(
+                module = ref.actual_domain.domain_snake_case
+                module = f'cdp.domains.{module}.types'
+                import_tree[module].add(
                     ref.type
                 )
 
@@ -20,26 +22,15 @@ def _generate_domain_type_imports(domain: Domain):
         for return_ in command.returns:
             for ref in return_.get_refs():
                 if ref.actual_domain.domain != domain.domain:
-                    module_name = ref.actual_domain.domain_snake_case
-                    import_tree[module_name].add(
+                    module = ref.actual_domain.domain_snake_case
+                    module = f'cdp.domains.{module}.types'
+                    import_tree[module].add(
                         ref.type
                     )
 
-    imports = []
-
-    for module, types in import_tree.items():
-        types = sorted(types)
-
-        imports.append(
-            ast.ImportFrom(
-                module=f'cdp.domains.{module}.types',
-                names=[
-                    ast.alias(type_) for type_ in types
-                ]
-            )
-        )
-
-    return imports
+    return ast_imports(
+        import_tree
+    )
 
 
 def _generate_basic_imports(domain: Domain):
@@ -239,7 +230,7 @@ def _generate_return_type_definition(command: Command):
         return
 
     class_ = ast.ClassDef(
-        name=command.name_pascal_case + 'ReturnT',
+        name=command.return_type_name,
         decorator_list=[
             ast.Name(
                 id='dataclass',

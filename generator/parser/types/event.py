@@ -36,8 +36,8 @@ class Event(ComplexNode):
         )
 
     @property
-    def inferred_domain(self):
-        return self.parent.domain
+    def actual_domain(self):
+        return self.parent
 
     def get_refs(self):
         refs = []

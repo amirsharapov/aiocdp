@@ -32,3 +32,7 @@ class Items(ComplexNode, ABC):
             type=data.get('type', UNDEFINED),
             ref=ref
         )
+
+    @property
+    def actual_domain(self):
+        return self.parent.actual_domain

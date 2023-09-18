@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 from generator.parser import registry
 from generator.parser.types.base import Node
-from generator.utils import UNDEFINED, MaybeUndefined, is_undefined
+from generator.utils import UNDEFINED, MaybeUndefined
 
 if TYPE_CHECKING:
     from generator.parser.types.domain import Domain
@@ -42,7 +42,7 @@ class Ref(Node, ABC):
     @property
     @abstractmethod
     def actual_domain(self) -> 'Domain':
-        pass
+        ...
 
 
 @dataclass
@@ -54,10 +54,7 @@ class PropertyRef(Ref):
 
     @property
     def actual_domain(self) -> 'Domain':
-        if is_undefined(self.domain):
-            return self.parent.parent.parent
-        else:
-            return registry.get_domain(self.domain)
+        return self.parent.actual_domain
 
 
 @dataclass
@@ -69,7 +66,4 @@ class ItemsRef(Ref):
 
     @property
     def actual_domain(self) -> 'Domain':
-        if is_undefined(self.domain):
-            return self.parent.parent.parent.parent
-        else:
-            return registry.get_domain(self.domain)
+        return self.parent.actual_domain

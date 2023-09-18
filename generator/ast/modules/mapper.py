@@ -63,8 +63,8 @@ def _generate_return_type_from_dict_mapper_body(
 
     root = ast.Call(
         func=ast.Name((
-            f'{command.actual_domain.domain_snake_case_collision_safe}.'
-            f'{command.name_pascal_case}ReturnT'
+            f'{command.domain_.domain_snake_case_collision_safe}.'
+            f'{command.return_type_name}'
         )),
         args=[],
         keywords=[],
@@ -110,7 +110,7 @@ def _generate_return_type_from_dict_mapper_body(
                         func=ast.Name('from_dict'),
                         args=[
                             ast.Name(
-                                f'{command.actual_domain.domain_snake_case_collision_safe}.'
+                                f'{command.domain_.domain_snake_case_collision_safe}.'
                                 f'{return_property.items.ref.actual_type.id_pascal_case}'
                             ),
                             ast.Name('item'),
@@ -134,7 +134,7 @@ def _generate_return_type_from_dict_mapper_body(
                     func=ast.Name('from_dict'),
                     args=[
                         ast.Name((
-                            f'{command.actual_domain.domain_snake_case_collision_safe}.'
+                            f'{command.domain_.domain_snake_case_collision_safe}.'
                             f'{return_property.ref.actual_type.id_pascal_case}'
                         )),
                         key_access,
@@ -167,7 +167,7 @@ def _generate_return_type_from_dict_mappers(protocols: list['Protocol']):
                     continue
 
                 function = ast.FunctionDef(
-                    name=f'_{domain.domain_snake_case}__{command.name_snake_case}_return_t__from_dict',
+                    name=f'_{domain.domain_snake_case}__{command.name_.snake_case}_return_t__from_dict',
                     args=ast.arguments(
                         args=[
                             ast.arg(
@@ -188,8 +188,8 @@ def _generate_return_type_from_dict_mappers(protocols: list['Protocol']):
                     ),
                     body=[],
                     returns=ast.Constant((
-                        f'{command.actual_domain.domain_snake_case_collision_safe}.'
-                        f'{command.name_pascal_case}ReturnT'
+                        f'{command.domain_.domain_snake_case_collision_safe}.'
+                        f'{command.return_type_name}'
                     )),
                     render_context={
                         'lines_before': 2
@@ -755,14 +755,14 @@ def _generate_generic_from_dict_mapper(protocols: list['Protocol']):
 
                 lookup.keys.append(
                     ast.Name((
-                        f'{command.actual_domain.domain_snake_case_collision_safe}.'
-                        f'{command.name_pascal_case}ReturnT'
+                        f'{command.domain_.domain_snake_case_collision_safe}.'
+                        f'{command.return_type_name}'
                     ))
                 )
 
                 lookup.values.append(
                     ast.Name((
-                        f'_{domain.domain_snake_case}__{command.name_snake_case}_return_t__from_dict'
+                        f'_{domain.domain_snake_case}__{command.name_.snake_case}_return_t__from_dict'
                     ))
                 )
 

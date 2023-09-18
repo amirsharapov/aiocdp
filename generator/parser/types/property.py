@@ -53,6 +53,10 @@ class Property(ComplexNode, ABC):
         )
 
     @property
+    def actual_domain(self):
+        return self.parent.domain_
+
+    @property
     def name_snake_cased(self):
         return snake_case(self.name)
 

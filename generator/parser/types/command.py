@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 from dataclasses import dataclass, field
 
+from generator.parser.extensions import ExtendedString
 from generator.parser.types.base import ComplexNode
 from generator.parser.types.property import CommandParameter, CommandReturnProperty
 from generator.utils import UNDEFINED, MaybeUndefined, snake_case, pascal_case
@@ -42,16 +43,17 @@ class Command(ComplexNode):
         )
 
     @property
-    def actual_domain(self):
+    def domain_(self):
         return self.parent
 
     @property
-    def name_snake_case(self):
-        return snake_case(self.name)
+    def name_(self):
+        return ExtendedString(self.name)
 
     @property
-    def name_pascal_case(self):
-        return pascal_case(self.name)
+    def return_type_name(self):
+        if self.returns:
+            return self.name_.pascal_case + 'ReturnType'
 
     def get_refs(self) -> list['Ref']:
         refs = []

@@ -181,3 +181,9 @@ class GetChildAXNodesReturnT:
 @dataclass
 class QueryAXTreeReturnT:
     nodes: list
+
+
+type_registry.register(
+    'accessibility.QueryAXTreeReturnT',
+    QueryAXTreeReturnT
+)

@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
+from generator.parser.extensions import ExtendedString
 from generator.parser.types.base import ComplexNode
 from generator.parser.types.command import Command
 from generator.parser.types.event import Event
@@ -46,8 +47,8 @@ class Domain(ComplexNode):
         )
 
     @property
-    def class_name(self):
-        return self.domain
+    def domain_(self):
+        return ExtendedString(self.domain)
 
     @property
     def domain_snake_case(self):
