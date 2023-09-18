@@ -6,22 +6,21 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.schema.types import (
-    GetDomainsReturnT
+    GetDomainsReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -33,7 +32,7 @@ if TYPE_CHECKING:
 class Schema(BaseDomain):
     def get_domains(
             self
-    ) -> 'IFutureResponse[GetDomainsReturnT]':
+    ) -> 'IFutureResponse[GetDomainsReturnType]':
         params = {}
 
         return self._send_command(
@@ -41,7 +40,7 @@ class Schema(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetDomainsReturnT,
+                GetDomainsReturnType,
                 data,
                 'camel'
             )

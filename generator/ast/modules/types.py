@@ -213,7 +213,7 @@ def _generate_complex_type_definitions(type_):
         class_.body.append(
             ast.AnnAssign(
                 target=ast.Name(
-                    id=property_.name_snake_cased,
+                    id=property_.name_.snake_case,
                     ctx=ast.Store()
                 ),
                 annotation=annotation,
@@ -259,7 +259,7 @@ def _generate_return_type_definition(command: Command):
         class_.body.append(
             ast.AnnAssign(
                 target=ast.Name(
-                    id=return_.name_snake_cased,
+                    id=return_.name_.snake_case,
                     ctx=ast.Store()
                 ),
                 annotation=annotation,

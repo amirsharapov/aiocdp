@@ -6,25 +6,22 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.audits.types import (
-    CheckFormsIssuesReturnT,
-    GetEncodedResponseReturnT
-)
-from cdp.domains.network.types import (
+    CheckFormsIssuesReturnType,
+    GetEncodedResponseReturnType,
     RequestId
 )
 if TYPE_CHECKING:
@@ -41,9 +38,12 @@ class Audits(BaseDomain):
             encoding: 'str',
             quality: 'float' = UNDEFINED,
             size_only: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetEncodedResponseReturnT]':
+    ) -> 'IFutureResponse[GetEncodedResponseReturnType]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
             'encoding': encoding,
         }
 
@@ -58,7 +58,7 @@ class Audits(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetEncodedResponseReturnT,
+                GetEncodedResponseReturnType,
                 data,
                 'camel'
             )
@@ -103,7 +103,7 @@ class Audits(BaseDomain):
 
     def check_forms_issues(
             self
-    ) -> 'IFutureResponse[CheckFormsIssuesReturnT]':
+    ) -> 'IFutureResponse[CheckFormsIssuesReturnType]':
         params = {}
 
         return self._send_command(
@@ -111,7 +111,7 @@ class Audits(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CheckFormsIssuesReturnT,
+                CheckFormsIssuesReturnType,
                 data,
                 'camel'
             )

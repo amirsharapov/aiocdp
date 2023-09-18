@@ -12,14 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.dom.types import (
-        BackendNodeId
-    )
-    from cdp.domains.runtime.types import (
-        RemoteObject
-    )
-
 
 @dataclass
 class Animation:
@@ -62,15 +54,15 @@ class KeyframeStyle:
 
 
 @dataclass
-class GetCurrentTimeReturnT:
+class GetCurrentTimeReturnType:
     current_time: float
 
 
 @dataclass
-class GetPlaybackRateReturnT:
+class GetPlaybackRateReturnType:
     playback_rate: float
 
 
 @dataclass
-class ResolveAnimationReturnT:
+class ResolveAnimationReturnType:
     remote_object: 'RemoteObject'

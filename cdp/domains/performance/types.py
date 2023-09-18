@@ -20,5 +20,5 @@ class Metric:
 
 
 @dataclass
-class GetMetricsReturnT:
+class GetMetricsReturnType:
     metrics: list

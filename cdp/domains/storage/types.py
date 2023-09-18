@@ -12,11 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.network.types import (
-        TimeSinceEpoch
-    )
-
 SerializedStorageKey = str
 UnsignedInt64AsBase10 = str
 UnsignedInt128AsBase16 = str
@@ -209,17 +204,17 @@ class AttributionReportingSourceRegistration:
 
 
 @dataclass
-class GetStorageKeyForFrameReturnT:
+class GetStorageKeyForFrameReturnType:
     storage_key: 'SerializedStorageKey'
 
 
 @dataclass
-class GetCookiesReturnT:
+class GetCookiesReturnType:
     cookies: list
 
 
 @dataclass
-class GetUsageAndQuotaReturnT:
+class GetUsageAndQuotaReturnType:
     usage: float
     quota: float
     override_active: bool
@@ -227,30 +222,30 @@ class GetUsageAndQuotaReturnT:
 
 
 @dataclass
-class GetTrustTokensReturnT:
+class GetTrustTokensReturnType:
     tokens: list
 
 
 @dataclass
-class ClearTrustTokensReturnT:
+class ClearTrustTokensReturnType:
     did_delete_tokens: bool
 
 
 @dataclass
-class GetInterestGroupDetailsReturnT:
+class GetInterestGroupDetailsReturnType:
     details: 'InterestGroupDetails'
 
 
 @dataclass
-class GetSharedStorageMetadataReturnT:
+class GetSharedStorageMetadataReturnType:
     metadata: 'SharedStorageMetadata'
 
 
 @dataclass
-class GetSharedStorageEntriesReturnT:
+class GetSharedStorageEntriesReturnType:
     entries: list
 
 
 @dataclass
-class RunBounceTrackingMitigationsReturnT:
+class RunBounceTrackingMitigationsReturnType:
     deleted_sites: list

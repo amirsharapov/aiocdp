@@ -6,32 +6,29 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.layer_tree.types import (
-    CompositingReasonsReturnT,
+    CompositingReasonsReturnType,
     LayerId,
-    LoadSnapshotReturnT,
-    MakeSnapshotReturnT,
-    ProfileSnapshotReturnT,
-    ReplaySnapshotReturnT,
-    SnapshotCommandLogReturnT,
+    LoadSnapshotReturnType,
+    MakeSnapshotReturnType,
+    ProfileSnapshotReturnType,
+    Rect,
+    ReplaySnapshotReturnType,
+    SnapshotCommandLogReturnType,
     SnapshotId
-)
-from cdp.domains.dom.types import (
-    Rect
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -44,9 +41,12 @@ class LayerTree(BaseDomain):
     def compositing_reasons(
             self,
             layer_id: 'LayerId'
-    ) -> 'IFutureResponse[CompositingReasonsReturnT]':
+    ) -> 'IFutureResponse[CompositingReasonsReturnType]':
         params = {
-            'layerId': layer_id,
+            'layerId': to_dict(
+                layer_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -54,7 +54,7 @@ class LayerTree(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CompositingReasonsReturnT,
+                CompositingReasonsReturnType,
                 data,
                 'camel'
             )
@@ -85,12 +85,9 @@ class LayerTree(BaseDomain):
     def load_snapshot(
             self,
             tiles: 'list'
-    ) -> 'IFutureResponse[LoadSnapshotReturnT]':
+    ) -> 'IFutureResponse[LoadSnapshotReturnType]':
         params = {
-            'tiles': [
-                to_dict(item, 'camel')
-                for item in tiles
-            ],
+            'tiles': tiles,
         }
 
         return self._send_command(
@@ -98,7 +95,7 @@ class LayerTree(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                LoadSnapshotReturnT,
+                LoadSnapshotReturnType,
                 data,
                 'camel'
             )
@@ -107,9 +104,12 @@ class LayerTree(BaseDomain):
     def make_snapshot(
             self,
             layer_id: 'LayerId'
-    ) -> 'IFutureResponse[MakeSnapshotReturnT]':
+    ) -> 'IFutureResponse[MakeSnapshotReturnType]':
         params = {
-            'layerId': layer_id,
+            'layerId': to_dict(
+                layer_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -117,7 +117,7 @@ class LayerTree(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                MakeSnapshotReturnT,
+                MakeSnapshotReturnType,
                 data,
                 'camel'
             )
@@ -129,9 +129,12 @@ class LayerTree(BaseDomain):
             min_repeat_count: 'int' = UNDEFINED,
             min_duration: 'float' = UNDEFINED,
             clip_rect: 'Rect' = UNDEFINED
-    ) -> 'IFutureResponse[ProfileSnapshotReturnT]':
+    ) -> 'IFutureResponse[ProfileSnapshotReturnType]':
         params = {
-            'snapshotId': snapshot_id,
+            'snapshotId': to_dict(
+                snapshot_id,
+                'camel'
+            ),
         }
 
         if is_defined(min_repeat_count):
@@ -151,7 +154,7 @@ class LayerTree(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                ProfileSnapshotReturnT,
+                ProfileSnapshotReturnType,
                 data,
                 'camel'
             )
@@ -162,7 +165,10 @@ class LayerTree(BaseDomain):
             snapshot_id: 'SnapshotId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'snapshotId': snapshot_id,
+            'snapshotId': to_dict(
+                snapshot_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -177,9 +183,12 @@ class LayerTree(BaseDomain):
             from_step: 'int' = UNDEFINED,
             to_step: 'int' = UNDEFINED,
             scale: 'float' = UNDEFINED
-    ) -> 'IFutureResponse[ReplaySnapshotReturnT]':
+    ) -> 'IFutureResponse[ReplaySnapshotReturnType]':
         params = {
-            'snapshotId': snapshot_id,
+            'snapshotId': to_dict(
+                snapshot_id,
+                'camel'
+            ),
         }
 
         if is_defined(from_step):
@@ -196,7 +205,7 @@ class LayerTree(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                ReplaySnapshotReturnT,
+                ReplaySnapshotReturnType,
                 data,
                 'camel'
             )
@@ -205,9 +214,12 @@ class LayerTree(BaseDomain):
     def snapshot_command_log(
             self,
             snapshot_id: 'SnapshotId'
-    ) -> 'IFutureResponse[SnapshotCommandLogReturnT]':
+    ) -> 'IFutureResponse[SnapshotCommandLogReturnType]':
         params = {
-            'snapshotId': snapshot_id,
+            'snapshotId': to_dict(
+                snapshot_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -215,7 +227,7 @@ class LayerTree(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SnapshotCommandLogReturnT,
+                SnapshotCommandLogReturnType,
                 data,
                 'camel'
             )

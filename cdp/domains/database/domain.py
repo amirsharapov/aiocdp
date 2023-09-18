@@ -6,24 +6,23 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.database.types import (
     DatabaseId,
-    ExecuteSQLReturnT,
-    GetDatabaseTableNamesReturnT
+    ExecuteSQLReturnType,
+    GetDatabaseTableNamesReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -59,9 +58,12 @@ class Database(BaseDomain):
             self,
             database_id: 'DatabaseId',
             query: 'str'
-    ) -> 'IFutureResponse[ExecuteSQLReturnT]':
+    ) -> 'IFutureResponse[ExecuteSQLReturnType]':
         params = {
-            'databaseId': database_id,
+            'databaseId': to_dict(
+                database_id,
+                'camel'
+            ),
             'query': query,
         }
 
@@ -70,7 +72,7 @@ class Database(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                ExecuteSQLReturnT,
+                ExecuteSQLReturnType,
                 data,
                 'camel'
             )
@@ -79,9 +81,12 @@ class Database(BaseDomain):
     def get_database_table_names(
             self,
             database_id: 'DatabaseId'
-    ) -> 'IFutureResponse[GetDatabaseTableNamesReturnT]':
+    ) -> 'IFutureResponse[GetDatabaseTableNamesReturnType]':
         params = {
-            'databaseId': database_id,
+            'databaseId': to_dict(
+                database_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -89,7 +94,7 @@ class Database(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetDatabaseTableNamesReturnT,
+                GetDatabaseTableNamesReturnType,
                 data,
                 'camel'
             )

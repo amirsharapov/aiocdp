@@ -6,38 +6,31 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.accessibility.types import (
     AXNodeId,
-    GetAXNodeAndAncestorsReturnT,
-    GetChildAXNodesReturnT,
-    GetFullAXTreeReturnT,
-    GetPartialAXTreeReturnT,
-    GetRootAXNodeReturnT,
-    QueryAXTreeReturnT
-)
-from cdp.domains.dom.types import (
     BackendNodeId,
-    NodeId
-)
-from cdp.domains.runtime.types import (
+    FrameId,
+    GetAXNodeAndAncestorsReturnType,
+    GetChildAXNodesReturnType,
+    GetFullAXTreeReturnType,
+    GetPartialAXTreeReturnType,
+    GetRootAXNodeReturnType,
+    NodeId,
+    QueryAXTreeReturnType,
     RemoteObjectId
-)
-from cdp.domains.page.types import (
-    FrameId
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -75,17 +68,26 @@ class Accessibility(BaseDomain):
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED,
             fetch_relatives: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetPartialAXTreeReturnT]':
+    ) -> 'IFutureResponse[GetPartialAXTreeReturnType]':
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         if is_defined(fetch_relatives):
             params['fetchRelatives'] = fetch_relatives
@@ -95,7 +97,7 @@ class Accessibility(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetPartialAXTreeReturnT,
+                GetPartialAXTreeReturnType,
                 data,
                 'camel'
             )
@@ -105,21 +107,24 @@ class Accessibility(BaseDomain):
             self,
             depth: 'int' = UNDEFINED,
             frame_id: 'FrameId' = UNDEFINED
-    ) -> 'IFutureResponse[GetFullAXTreeReturnT]':
+    ) -> 'IFutureResponse[GetFullAXTreeReturnType]':
         params = {}
 
         if is_defined(depth):
             params['depth'] = depth
 
         if is_defined(frame_id):
-            params['frameId'] = frame_id
+            params['frameId'] = to_dict(
+                frame_id,
+                'camel'
+            )
 
         return self._send_command(
             'Accessibility.getFullAXTree',
             params,
             True,
             lambda data: from_dict(
-                GetFullAXTreeReturnT,
+                GetFullAXTreeReturnType,
                 data,
                 'camel'
             )
@@ -128,18 +133,21 @@ class Accessibility(BaseDomain):
     def get_root_ax_node(
             self,
             frame_id: 'FrameId' = UNDEFINED
-    ) -> 'IFutureResponse[GetRootAXNodeReturnT]':
+    ) -> 'IFutureResponse[GetRootAXNodeReturnType]':
         params = {}
 
         if is_defined(frame_id):
-            params['frameId'] = frame_id
+            params['frameId'] = to_dict(
+                frame_id,
+                'camel'
+            )
 
         return self._send_command(
             'Accessibility.getRootAXNode',
             params,
             True,
             lambda data: from_dict(
-                GetRootAXNodeReturnT,
+                GetRootAXNodeReturnType,
                 data,
                 'camel'
             )
@@ -150,24 +158,33 @@ class Accessibility(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> 'IFutureResponse[GetAXNodeAndAncestorsReturnT]':
+    ) -> 'IFutureResponse[GetAXNodeAndAncestorsReturnType]':
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         return self._send_command(
             'Accessibility.getAXNodeAndAncestors',
             params,
             True,
             lambda data: from_dict(
-                GetAXNodeAndAncestorsReturnT,
+                GetAXNodeAndAncestorsReturnType,
                 data,
                 'camel'
             )
@@ -177,20 +194,26 @@ class Accessibility(BaseDomain):
             self,
             id_: 'AXNodeId',
             frame_id: 'FrameId' = UNDEFINED
-    ) -> 'IFutureResponse[GetChildAXNodesReturnT]':
+    ) -> 'IFutureResponse[GetChildAXNodesReturnType]':
         params = {
-            'id': id_,
+            'id': to_dict(
+                id_,
+                'camel'
+            ),
         }
 
         if is_defined(frame_id):
-            params['frameId'] = frame_id
+            params['frameId'] = to_dict(
+                frame_id,
+                'camel'
+            )
 
         return self._send_command(
             'Accessibility.getChildAXNodes',
             params,
             True,
             lambda data: from_dict(
-                GetChildAXNodesReturnT,
+                GetChildAXNodesReturnType,
                 data,
                 'camel'
             )
@@ -203,17 +226,26 @@ class Accessibility(BaseDomain):
             object_id: 'RemoteObjectId' = UNDEFINED,
             accessible_name: 'str' = UNDEFINED,
             role: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[QueryAXTreeReturnT]':
+    ) -> 'IFutureResponse[QueryAXTreeReturnType]':
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         if is_defined(accessible_name):
             params['accessibleName'] = accessible_name
@@ -226,7 +258,7 @@ class Accessibility(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                QueryAXTreeReturnT,
+                QueryAXTreeReturnType,
                 data,
                 'camel'
             )

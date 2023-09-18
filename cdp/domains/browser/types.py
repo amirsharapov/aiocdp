@@ -93,7 +93,7 @@ class Histogram:
 
 
 @dataclass
-class GetVersionReturnT:
+class GetVersionReturnType:
     protocol_version: str
     product: str
     revision: str
@@ -102,26 +102,26 @@ class GetVersionReturnT:
 
 
 @dataclass
-class GetBrowserCommandLineReturnT:
+class GetBrowserCommandLineReturnType:
     arguments: list
 
 
 @dataclass
-class GetHistogramsReturnT:
+class GetHistogramsReturnType:
     histograms: list
 
 
 @dataclass
-class GetHistogramReturnT:
+class GetHistogramReturnType:
     histogram: 'Histogram'
 
 
 @dataclass
-class GetWindowBoundsReturnT:
+class GetWindowBoundsReturnType:
     bounds: 'Bounds'
 
 
 @dataclass
-class GetWindowForTargetReturnT:
+class GetWindowForTargetReturnType:
     window_id: 'WindowID'
     bounds: 'Bounds'

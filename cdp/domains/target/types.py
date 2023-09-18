@@ -12,14 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.page.types import (
-        FrameId
-    )
-    from cdp.domains.browser.types import (
-        BrowserContextID
-    )
-
 TargetID = str
 SessionID = str
 TargetFilter = list['FilterEntry']
@@ -51,40 +43,40 @@ class RemoteLocation:
 
 
 @dataclass
-class AttachToTargetReturnT:
+class AttachToTargetReturnType:
     session_id: 'SessionID'
 
 
 @dataclass
-class AttachToBrowserTargetReturnT:
+class AttachToBrowserTargetReturnType:
     session_id: 'SessionID'
 
 
 @dataclass
-class CloseTargetReturnT:
+class CloseTargetReturnType:
     success: bool
 
 
 @dataclass
-class CreateBrowserContextReturnT:
+class CreateBrowserContextReturnType:
     browser_context_id: 'BrowserContextID'
 
 
 @dataclass
-class GetBrowserContextsReturnT:
+class GetBrowserContextsReturnType:
     browser_context_ids: list
 
 
 @dataclass
-class CreateTargetReturnT:
+class CreateTargetReturnType:
     target_id: 'TargetID'
 
 
 @dataclass
-class GetTargetInfoReturnT:
+class GetTargetInfoReturnType:
     target_info: 'TargetInfo'
 
 
 @dataclass
-class GetTargetsReturnT:
+class GetTargetsReturnType:
     target_infos: list

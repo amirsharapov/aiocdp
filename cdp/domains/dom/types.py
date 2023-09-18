@@ -12,15 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.page.types import (
-        FrameId
-    )
-    from cdp.domains.runtime.types import (
-        RemoteObject,
-        StackTrace
-    )
-
 NodeId = int
 BackendNodeId = int
 Quad = list[float]
@@ -155,144 +146,144 @@ class CSSComputedStyleProperty:
 
 
 @dataclass
-class CollectClassNamesFromSubtreeReturnT:
+class CollectClassNamesFromSubtreeReturnType:
     class_names: list
 
 
 @dataclass
-class CopyToReturnT:
+class CopyToReturnType:
     node_id: 'NodeId'
 
 
 @dataclass
-class DescribeNodeReturnT:
+class DescribeNodeReturnType:
     node: 'Node'
 
 
 @dataclass
-class GetAttributesReturnT:
+class GetAttributesReturnType:
     attributes: list
 
 
 @dataclass
-class GetBoxModelReturnT:
+class GetBoxModelReturnType:
     model: 'BoxModel'
 
 
 @dataclass
-class GetContentQuadsReturnT:
+class GetContentQuadsReturnType:
     quads: list
 
 
 @dataclass
-class GetDocumentReturnT:
+class GetDocumentReturnType:
     root: 'Node'
 
 
 @dataclass
-class GetFlattenedDocumentReturnT:
+class GetFlattenedDocumentReturnType:
     nodes: list
 
 
 @dataclass
-class GetNodesForSubtreeByStyleReturnT:
+class GetNodesForSubtreeByStyleReturnType:
     node_ids: list
 
 
 @dataclass
-class GetNodeForLocationReturnT:
+class GetNodeForLocationReturnType:
     backend_node_id: 'BackendNodeId'
     frame_id: 'FrameId'
     node_id: 'NodeId'
 
 
 @dataclass
-class GetOuterHTMLReturnT:
+class GetOuterHTMLReturnType:
     outer_html: str
 
 
 @dataclass
-class GetRelayoutBoundaryReturnT:
+class GetRelayoutBoundaryReturnType:
     node_id: 'NodeId'
 
 
 @dataclass
-class GetSearchResultsReturnT:
+class GetSearchResultsReturnType:
     node_ids: list
 
 
 @dataclass
-class MoveToReturnT:
+class MoveToReturnType:
     node_id: 'NodeId'
 
 
 @dataclass
-class PerformSearchReturnT:
+class PerformSearchReturnType:
     search_id: str
     result_count: int
 
 
 @dataclass
-class PushNodeByPathToFrontendReturnT:
+class PushNodeByPathToFrontendReturnType:
     node_id: 'NodeId'
 
 
 @dataclass
-class PushNodesByBackendIdsToFrontendReturnT:
+class PushNodesByBackendIdsToFrontendReturnType:
     node_ids: list
 
 
 @dataclass
-class QuerySelectorReturnT:
+class QuerySelectorReturnType:
     node_id: 'NodeId'
 
 
 @dataclass
-class QuerySelectorAllReturnT:
+class QuerySelectorAllReturnType:
     node_ids: list
 
 
 @dataclass
-class GetTopLayerElementsReturnT:
+class GetTopLayerElementsReturnType:
     node_ids: list
 
 
 @dataclass
-class RequestNodeReturnT:
+class RequestNodeReturnType:
     node_id: 'NodeId'
 
 
 @dataclass
-class ResolveNodeReturnT:
+class ResolveNodeReturnType:
     object: 'RemoteObject'
 
 
 @dataclass
-class GetNodeStackTracesReturnT:
+class GetNodeStackTracesReturnType:
     creation: 'StackTrace'
 
 
 @dataclass
-class GetFileInfoReturnT:
+class GetFileInfoReturnType:
     path: str
 
 
 @dataclass
-class SetNodeNameReturnT:
+class SetNodeNameReturnType:
     node_id: 'NodeId'
 
 
 @dataclass
-class GetFrameOwnerReturnT:
+class GetFrameOwnerReturnType:
     backend_node_id: 'BackendNodeId'
     node_id: 'NodeId'
 
 
 @dataclass
-class GetContainerForNodeReturnT:
+class GetContainerForNodeReturnType:
     node_id: 'NodeId'
 
 
 @dataclass
-class GetQueryingDescendantsForContainerReturnT:
+class GetQueryingDescendantsForContainerReturnType:
     node_ids: list

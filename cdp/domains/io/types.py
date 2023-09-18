@@ -15,12 +15,12 @@ from dataclasses import (
 StreamHandle = str
 
 @dataclass
-class ReadReturnT:
+class ReadReturnType:
     base64_encoded: bool
     data: str
     eof: bool
 
 
 @dataclass
-class ResolveBlobReturnT:
+class ResolveBlobReturnType:
     uuid: str

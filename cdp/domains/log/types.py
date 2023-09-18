@@ -12,15 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
-        StackTrace,
-        Timestamp
-    )
-    from cdp.domains.network.types import (
-        RequestId
-    )
-
 
 @dataclass
 class LogEntry:

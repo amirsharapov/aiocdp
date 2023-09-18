@@ -12,19 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.security.types import (
-        CertificateId,
-        MixedContentType,
-        SecurityState
-    )
-    from cdp.domains.runtime.types import (
-        StackTrace
-    )
-    from cdp.domains.io.types import (
-        StreamHandle
-    )
-
 LoaderId = str
 RequestId = str
 InterceptionId = str
@@ -616,72 +603,72 @@ class LoadNetworkResourceOptions:
 
 
 @dataclass
-class CanClearBrowserCacheReturnT:
+class CanClearBrowserCacheReturnType:
     result: bool
 
 
 @dataclass
-class CanClearBrowserCookiesReturnT:
+class CanClearBrowserCookiesReturnType:
     result: bool
 
 
 @dataclass
-class CanEmulateNetworkConditionsReturnT:
+class CanEmulateNetworkConditionsReturnType:
     result: bool
 
 
 @dataclass
-class GetAllCookiesReturnT:
+class GetAllCookiesReturnType:
     cookies: list
 
 
 @dataclass
-class GetCertificateReturnT:
+class GetCertificateReturnType:
     table_names: list
 
 
 @dataclass
-class GetCookiesReturnT:
+class GetCookiesReturnType:
     cookies: list
 
 
 @dataclass
-class GetResponseBodyReturnT:
+class GetResponseBodyReturnType:
     body: str
     base64_encoded: bool
 
 
 @dataclass
-class GetRequestPostDataReturnT:
+class GetRequestPostDataReturnType:
     post_data: str
 
 
 @dataclass
-class GetResponseBodyForInterceptionReturnT:
+class GetResponseBodyForInterceptionReturnType:
     body: str
     base64_encoded: bool
 
 
 @dataclass
-class TakeResponseBodyForInterceptionAsStreamReturnT:
+class TakeResponseBodyForInterceptionAsStreamReturnType:
     stream: 'StreamHandle'
 
 
 @dataclass
-class SearchInResponseBodyReturnT:
+class SearchInResponseBodyReturnType:
     result: list
 
 
 @dataclass
-class SetCookieReturnT:
+class SetCookieReturnType:
     success: bool
 
 
 @dataclass
-class GetSecurityIsolationStatusReturnT:
+class GetSecurityIsolationStatusReturnType:
     status: 'SecurityIsolationStatus'
 
 
 @dataclass
-class LoadNetworkResourceReturnT:
+class LoadNetworkResourceReturnType:
     resource: 'LoadNetworkResourcePageResult'

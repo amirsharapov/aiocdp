@@ -1,10 +1,14 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
+from generator.parser.extensions import ExtendedString
 from generator.parser.types.base import ComplexNode
 from generator.parser.types.items import Items
-from generator.parser.types.property import TypeProperty
-from generator.utils import UNDEFINED, MaybeUndefined, snake_case, pascal_case, is_builtin
+from generator.parser.types.property import (
+    TypeProperty,
+    split_properties_by_optional_flag
+)
+from generator.utils import UNDEFINED, MaybeUndefined
 
 if TYPE_CHECKING:
     from generator.parser.types.domain import Domain
@@ -14,6 +18,15 @@ if TYPE_CHECKING:
 @dataclass
 class Type(ComplexNode):
     parent: 'Domain' = field(
+        init=False,
+        repr=False
+    )
+
+    optional_properties: list['TypeProperty'] = field(
+        init=False,
+        repr=False
+    )
+    required_properties: list['TypeProperty'] = field(
         init=False,
         repr=False
     )
@@ -48,24 +61,25 @@ class Type(ComplexNode):
             deprecated=data.get('deprecated', UNDEFINED)
         )
 
+    def __post_init__(self):
+        required, optional = split_properties_by_optional_flag(
+            self.properties
+        )
+
+        self.required_properties = required
+        self.optional_properties = optional
+
     @property
     def actual_domain(self) -> 'Domain':
         return self.parent
 
     @property
-    def id_snake_case(self):
-        return snake_case(self.id)
+    def id_(self):
+        return ExtendedString(self.id)
 
     @property
-    def id_snake_case_collision_safe(self):
-        res = self.id_snake_case
-        if is_builtin(res):
-            res += '_'
-        return res
-
-    @property
-    def id_pascal_case(self):
-        return pascal_case(self.id)
+    def properties_with_required_first(self):
+        return self.required_properties + self.optional_properties
 
     def get_refs(self) -> list['Ref']:
         refs = []

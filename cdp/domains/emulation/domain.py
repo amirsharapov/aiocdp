@@ -6,36 +6,29 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.emulation.types import (
-    CanEmulateReturnT,
+    CanEmulateReturnType,
     DisplayFeature,
+    RGBA,
     ScreenOrientation,
-    SetVirtualTimePolicyReturnT,
+    SetVirtualTimePolicyReturnType,
+    TimeSinceEpoch,
     UserAgentMetadata,
+    Viewport,
     VirtualTimePolicy
-)
-from cdp.domains.dom.types import (
-    RGBA
-)
-from cdp.domains.page.types import (
-    Viewport
-)
-from cdp.domains.network.types import (
-    TimeSinceEpoch
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -47,7 +40,7 @@ if TYPE_CHECKING:
 class Emulation(BaseDomain):
     def can_emulate(
             self
-    ) -> 'IFutureResponse[CanEmulateReturnT]':
+    ) -> 'IFutureResponse[CanEmulateReturnType]':
         params = {}
 
         return self._send_command(
@@ -55,7 +48,7 @@ class Emulation(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CanEmulateReturnT,
+                CanEmulateReturnType,
                 data,
                 'camel'
             )
@@ -277,10 +270,7 @@ class Emulation(BaseDomain):
             params['media'] = media
 
         if is_defined(features):
-            params['features'] = [
-                to_dict(item, 'camel')
-                for item in features
-            ]
+            params['features'] = features
 
         return self._send_command(
             'Emulation.setEmulatedMedia',
@@ -418,9 +408,12 @@ class Emulation(BaseDomain):
             budget: 'float' = UNDEFINED,
             max_virtual_time_task_starvation_count: 'int' = UNDEFINED,
             initial_virtual_time: 'TimeSinceEpoch' = UNDEFINED
-    ) -> 'IFutureResponse[SetVirtualTimePolicyReturnT]':
+    ) -> 'IFutureResponse[SetVirtualTimePolicyReturnType]':
         params = {
-            'policy': policy,
+            'policy': to_dict(
+                policy,
+                'camel'
+            ),
         }
 
         if is_defined(budget):
@@ -430,14 +423,17 @@ class Emulation(BaseDomain):
             params['maxVirtualTimeTaskStarvationCount'] = max_virtual_time_task_starvation_count
 
         if is_defined(initial_virtual_time):
-            params['initialVirtualTime'] = initial_virtual_time
+            params['initialVirtualTime'] = to_dict(
+                initial_virtual_time,
+                'camel'
+            )
 
         return self._send_command(
             'Emulation.setVirtualTimePolicy',
             params,
             True,
             lambda data: from_dict(
-                SetVirtualTimePolicyReturnT,
+                SetVirtualTimePolicyReturnType,
                 data,
                 'camel'
             )

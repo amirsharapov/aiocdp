@@ -6,19 +6,18 @@
 from cdp.domains.base import (
     BaseDomain
 )
+from cdp.domains import (
+    mappers
+)
+from cdp.utils import (
+    UNDEFINED,
+    is_defined
+)
 from dataclasses import (
     dataclass
 )
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
-)
 from typing import (
     TYPE_CHECKING
-)
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
 )
 from cdp.domains.input.types import (
     DragData,
@@ -87,7 +86,10 @@ class Input(BaseDomain):
             params['modifiers'] = modifiers
 
         if is_defined(timestamp):
-            params['timestamp'] = timestamp
+            params['timestamp'] = to_dict(
+                timestamp,
+                'camel'
+            )
 
         if is_defined(text):
             params['text'] = text
@@ -200,10 +202,16 @@ class Input(BaseDomain):
             params['modifiers'] = modifiers
 
         if is_defined(timestamp):
-            params['timestamp'] = timestamp
+            params['timestamp'] = to_dict(
+                timestamp,
+                'camel'
+            )
 
         if is_defined(button):
-            params['button'] = button
+            params['button'] = to_dict(
+                button,
+                'camel'
+            )
 
         if is_defined(buttons):
             params['buttons'] = buttons
@@ -250,17 +258,17 @@ class Input(BaseDomain):
     ) -> 'IFutureResponse[None]':
         params = {
             'type': type_,
-            'touchPoints': [
-                to_dict(item, 'camel')
-                for item in touch_points
-            ],
+            'touchPoints': touch_points,
         }
 
         if is_defined(modifiers):
             params['modifiers'] = modifiers
 
         if is_defined(timestamp):
-            params['timestamp'] = timestamp
+            params['timestamp'] = to_dict(
+                timestamp,
+                'camel'
+            )
 
         return self._send_command(
             'Input.dispatchTouchEvent',
@@ -295,11 +303,17 @@ class Input(BaseDomain):
             'type': type_,
             'x': x,
             'y': y,
-            'button': button,
+            'button': to_dict(
+                button,
+                'camel'
+            ),
         }
 
         if is_defined(timestamp):
-            params['timestamp'] = timestamp
+            params['timestamp'] = to_dict(
+                timestamp,
+                'camel'
+            )
 
         if is_defined(delta_x):
             params['deltaX'] = delta_x
@@ -365,7 +379,10 @@ class Input(BaseDomain):
             params['relativeSpeed'] = relative_speed
 
         if is_defined(gesture_source_type):
-            params['gestureSourceType'] = gesture_source_type
+            params['gestureSourceType'] = to_dict(
+                gesture_source_type,
+                'camel'
+            )
 
         return self._send_command(
             'Input.synthesizePinchGesture',
@@ -412,7 +429,10 @@ class Input(BaseDomain):
             params['speed'] = speed
 
         if is_defined(gesture_source_type):
-            params['gestureSourceType'] = gesture_source_type
+            params['gestureSourceType'] = to_dict(
+                gesture_source_type,
+                'camel'
+            )
 
         if is_defined(repeat_count):
             params['repeatCount'] = repeat_count
@@ -449,7 +469,10 @@ class Input(BaseDomain):
             params['tapCount'] = tap_count
 
         if is_defined(gesture_source_type):
-            params['gestureSourceType'] = gesture_source_type
+            params['gestureSourceType'] = to_dict(
+                gesture_source_type,
+                'camel'
+            )
 
         return self._send_command(
             'Input.synthesizeTapGesture',

@@ -1,13 +1,13 @@
-from typing import Callable
+from typing import TypeVar, Callable
 
-_KT = tuple | str
+_KT = TypeVar('_KT')
 
 mappers = {}
 
 
-def add_mapper(mapper: Callable, key: _KT) -> None:
-    mappers[key] = mapper
-
-
-def get_mapper(key: _KT) -> Callable:
+def get_mapper(key: _KT):
     return mappers[key]
+
+
+def add_mapper(mapper: Callable, key: _KT):
+    mappers[key] = mapper

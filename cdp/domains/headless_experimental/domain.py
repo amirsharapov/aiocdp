@@ -6,22 +6,21 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.headless_experimental.types import (
-    BeginFrameReturnT,
+    BeginFrameReturnType,
     ScreenshotParams
 )
 if TYPE_CHECKING:
@@ -38,7 +37,7 @@ class HeadlessExperimental(BaseDomain):
             interval: 'float' = UNDEFINED,
             no_display_updates: 'bool' = UNDEFINED,
             screenshot: 'ScreenshotParams' = UNDEFINED
-    ) -> 'IFutureResponse[BeginFrameReturnT]':
+    ) -> 'IFutureResponse[BeginFrameReturnType]':
         params = {}
 
         if is_defined(frame_time_ticks):
@@ -61,7 +60,7 @@ class HeadlessExperimental(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                BeginFrameReturnT,
+                BeginFrameReturnType,
                 data,
                 'camel'
             )

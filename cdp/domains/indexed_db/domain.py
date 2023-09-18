@@ -6,29 +6,26 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
-from cdp.domains.storage.types import (
-    StorageBucket
-)
 from cdp.domains.indexed_db.types import (
-    GetMetadataReturnT,
+    GetMetadataReturnType,
     KeyRange,
-    RequestDataReturnT,
-    RequestDatabaseNamesReturnT,
-    RequestDatabaseReturnT
+    RequestDataReturnType,
+    RequestDatabaseNamesReturnType,
+    RequestDatabaseReturnType,
+    StorageBucket
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -167,7 +164,7 @@ class IndexedDB(BaseDomain):
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED,
             key_range: 'KeyRange' = UNDEFINED
-    ) -> 'IFutureResponse[RequestDataReturnT]':
+    ) -> 'IFutureResponse[RequestDataReturnType]':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -199,7 +196,7 @@ class IndexedDB(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                RequestDataReturnT,
+                RequestDataReturnType,
                 data,
                 'camel'
             )
@@ -212,7 +209,7 @@ class IndexedDB(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> 'IFutureResponse[GetMetadataReturnT]':
+    ) -> 'IFutureResponse[GetMetadataReturnType]':
         params = {
             'databaseName': database_name,
             'objectStoreName': object_store_name,
@@ -235,7 +232,7 @@ class IndexedDB(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetMetadataReturnT,
+                GetMetadataReturnType,
                 data,
                 'camel'
             )
@@ -247,7 +244,7 @@ class IndexedDB(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> 'IFutureResponse[RequestDatabaseReturnT]':
+    ) -> 'IFutureResponse[RequestDatabaseReturnType]':
         params = {
             'databaseName': database_name,
         }
@@ -269,7 +266,7 @@ class IndexedDB(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                RequestDatabaseReturnT,
+                RequestDatabaseReturnType,
                 data,
                 'camel'
             )
@@ -280,7 +277,7 @@ class IndexedDB(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> 'IFutureResponse[RequestDatabaseNamesReturnT]':
+    ) -> 'IFutureResponse[RequestDatabaseNamesReturnType]':
         params = {}
 
         if is_defined(security_origin):
@@ -300,7 +297,7 @@ class IndexedDB(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                RequestDatabaseNamesReturnT,
+                RequestDatabaseNamesReturnType,
                 data,
                 'camel'
             )

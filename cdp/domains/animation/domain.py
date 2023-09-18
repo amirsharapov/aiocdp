@@ -6,24 +6,23 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.animation.types import (
-    GetCurrentTimeReturnT,
-    GetPlaybackRateReturnT,
-    ResolveAnimationReturnT
+    GetCurrentTimeReturnType,
+    GetPlaybackRateReturnType,
+    ResolveAnimationReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -58,7 +57,7 @@ class Animation(BaseDomain):
     def get_current_time(
             self,
             id_: 'str'
-    ) -> 'IFutureResponse[GetCurrentTimeReturnT]':
+    ) -> 'IFutureResponse[GetCurrentTimeReturnType]':
         params = {
             'id': id_,
         }
@@ -68,7 +67,7 @@ class Animation(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetCurrentTimeReturnT,
+                GetCurrentTimeReturnType,
                 data,
                 'camel'
             )
@@ -76,7 +75,7 @@ class Animation(BaseDomain):
 
     def get_playback_rate(
             self
-    ) -> 'IFutureResponse[GetPlaybackRateReturnT]':
+    ) -> 'IFutureResponse[GetPlaybackRateReturnType]':
         params = {}
 
         return self._send_command(
@@ -84,7 +83,7 @@ class Animation(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetPlaybackRateReturnT,
+                GetPlaybackRateReturnType,
                 data,
                 'camel'
             )
@@ -107,7 +106,7 @@ class Animation(BaseDomain):
     def resolve_animation(
             self,
             animation_id: 'str'
-    ) -> 'IFutureResponse[ResolveAnimationReturnT]':
+    ) -> 'IFutureResponse[ResolveAnimationReturnType]':
         params = {
             'animationId': animation_id,
         }
@@ -117,7 +116,7 @@ class Animation(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                ResolveAnimationReturnT,
+                ResolveAnimationReturnType,
                 data,
                 'camel'
             )

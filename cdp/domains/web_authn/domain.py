@@ -6,26 +6,25 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.web_authn.types import (
-    AddVirtualAuthenticatorReturnT,
+    AddVirtualAuthenticatorReturnType,
     AuthenticatorId,
     Credential,
-    GetCredentialReturnT,
-    GetCredentialsReturnT,
+    GetCredentialReturnType,
+    GetCredentialsReturnType,
     VirtualAuthenticatorOptions
 )
 if TYPE_CHECKING:
@@ -65,7 +64,7 @@ class WebAuthn(BaseDomain):
     def add_virtual_authenticator(
             self,
             options: 'VirtualAuthenticatorOptions'
-    ) -> 'IFutureResponse[AddVirtualAuthenticatorReturnT]':
+    ) -> 'IFutureResponse[AddVirtualAuthenticatorReturnType]':
         params = {
             'options': to_dict(
                 options,
@@ -78,7 +77,7 @@ class WebAuthn(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                AddVirtualAuthenticatorReturnT,
+                AddVirtualAuthenticatorReturnType,
                 data,
                 'camel'
             )
@@ -92,7 +91,10 @@ class WebAuthn(BaseDomain):
             is_bad_up: 'bool' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'authenticatorId': authenticator_id,
+            'authenticatorId': to_dict(
+                authenticator_id,
+                'camel'
+            ),
         }
 
         if is_defined(is_bogus_signature):
@@ -115,7 +117,10 @@ class WebAuthn(BaseDomain):
             authenticator_id: 'AuthenticatorId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'authenticatorId': authenticator_id,
+            'authenticatorId': to_dict(
+                authenticator_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -130,7 +135,10 @@ class WebAuthn(BaseDomain):
             credential: 'Credential'
     ) -> 'IFutureResponse[None]':
         params = {
-            'authenticatorId': authenticator_id,
+            'authenticatorId': to_dict(
+                authenticator_id,
+                'camel'
+            ),
             'credential': to_dict(
                 credential,
                 'camel'
@@ -147,9 +155,12 @@ class WebAuthn(BaseDomain):
             self,
             authenticator_id: 'AuthenticatorId',
             credential_id: 'str'
-    ) -> 'IFutureResponse[GetCredentialReturnT]':
+    ) -> 'IFutureResponse[GetCredentialReturnType]':
         params = {
-            'authenticatorId': authenticator_id,
+            'authenticatorId': to_dict(
+                authenticator_id,
+                'camel'
+            ),
             'credentialId': credential_id,
         }
 
@@ -158,7 +169,7 @@ class WebAuthn(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetCredentialReturnT,
+                GetCredentialReturnType,
                 data,
                 'camel'
             )
@@ -167,9 +178,12 @@ class WebAuthn(BaseDomain):
     def get_credentials(
             self,
             authenticator_id: 'AuthenticatorId'
-    ) -> 'IFutureResponse[GetCredentialsReturnT]':
+    ) -> 'IFutureResponse[GetCredentialsReturnType]':
         params = {
-            'authenticatorId': authenticator_id,
+            'authenticatorId': to_dict(
+                authenticator_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -177,7 +191,7 @@ class WebAuthn(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetCredentialsReturnT,
+                GetCredentialsReturnType,
                 data,
                 'camel'
             )
@@ -189,7 +203,10 @@ class WebAuthn(BaseDomain):
             credential_id: 'str'
     ) -> 'IFutureResponse[None]':
         params = {
-            'authenticatorId': authenticator_id,
+            'authenticatorId': to_dict(
+                authenticator_id,
+                'camel'
+            ),
             'credentialId': credential_id,
         }
 
@@ -204,7 +221,10 @@ class WebAuthn(BaseDomain):
             authenticator_id: 'AuthenticatorId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'authenticatorId': authenticator_id,
+            'authenticatorId': to_dict(
+                authenticator_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -219,7 +239,10 @@ class WebAuthn(BaseDomain):
             is_user_verified: 'bool'
     ) -> 'IFutureResponse[None]':
         params = {
-            'authenticatorId': authenticator_id,
+            'authenticatorId': to_dict(
+                authenticator_id,
+                'camel'
+            ),
             'isUserVerified': is_user_verified,
         }
 
@@ -235,7 +258,10 @@ class WebAuthn(BaseDomain):
             enabled: 'bool'
     ) -> 'IFutureResponse[None]':
         params = {
-            'authenticatorId': authenticator_id,
+            'authenticatorId': to_dict(
+                authenticator_id,
+                'camel'
+            ),
             'enabled': enabled,
         }
 

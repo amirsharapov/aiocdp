@@ -6,19 +6,18 @@
 from cdp.domains.base import (
     BaseDomain
 )
+from cdp.domains import (
+    mappers
+)
+from cdp.utils import (
+    UNDEFINED,
+    is_defined
+)
 from dataclasses import (
     dataclass
 )
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
-)
 from typing import (
     TYPE_CHECKING
-)
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
 )
 from cdp.domains.background_service.types import (
     ServiceName
@@ -36,7 +35,10 @@ class BackgroundService(BaseDomain):
             service: 'ServiceName'
     ) -> 'IFutureResponse[None]':
         params = {
-            'service': service,
+            'service': to_dict(
+                service,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -50,7 +52,10 @@ class BackgroundService(BaseDomain):
             service: 'ServiceName'
     ) -> 'IFutureResponse[None]':
         params = {
-            'service': service,
+            'service': to_dict(
+                service,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -66,7 +71,10 @@ class BackgroundService(BaseDomain):
     ) -> 'IFutureResponse[None]':
         params = {
             'shouldRecord': should_record,
-            'service': service,
+            'service': to_dict(
+                service,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -80,7 +88,10 @@ class BackgroundService(BaseDomain):
             service: 'ServiceName'
     ) -> 'IFutureResponse[None]':
         params = {
-            'service': service,
+            'service': to_dict(
+                service,
+                'camel'
+            ),
         }
 
         return self._send_command(

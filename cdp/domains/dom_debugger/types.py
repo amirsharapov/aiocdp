@@ -12,15 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
-        RemoteObject,
-        ScriptId
-    )
-    from cdp.domains.dom.types import (
-        BackendNodeId
-    )
-
 DOMBreakpointType = Literal[
     'subtree-modified',
     'attribute-modified',
@@ -46,5 +37,5 @@ class EventListener:
 
 
 @dataclass
-class GetEventListenersReturnT:
+class GetEventListenersReturnType:
     listeners: list

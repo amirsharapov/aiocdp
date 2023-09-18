@@ -6,22 +6,21 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.performance.types import (
-    GetMetricsReturnT
+    GetMetricsReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -73,7 +72,7 @@ class Performance(BaseDomain):
 
     def get_metrics(
             self
-    ) -> 'IFutureResponse[GetMetricsReturnT]':
+    ) -> 'IFutureResponse[GetMetricsReturnType]':
         params = {}
 
         return self._send_command(
@@ -81,7 +80,7 @@ class Performance(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetMetricsReturnT,
+                GetMetricsReturnType,
                 data,
                 'camel'
             )

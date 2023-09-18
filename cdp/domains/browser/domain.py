@@ -6,36 +6,33 @@
 from cdp.domains.base import (
     BaseDomain
 )
+from cdp.domains import (
+    mappers
+)
+from cdp.utils import (
+    UNDEFINED,
+    is_defined
+)
 from dataclasses import (
     dataclass
 )
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
-)
 from typing import (
     TYPE_CHECKING
-)
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
 )
 from cdp.domains.browser.types import (
     Bounds,
     BrowserCommandId,
     BrowserContextID,
-    GetBrowserCommandLineReturnT,
-    GetHistogramReturnT,
-    GetHistogramsReturnT,
-    GetVersionReturnT,
-    GetWindowBoundsReturnT,
-    GetWindowForTargetReturnT,
+    GetBrowserCommandLineReturnType,
+    GetHistogramReturnType,
+    GetHistogramsReturnType,
+    GetVersionReturnType,
+    GetWindowBoundsReturnType,
+    GetWindowForTargetReturnType,
     PermissionDescriptor,
     PermissionSetting,
+    TargetID,
     WindowID
-)
-from cdp.domains.target.types import (
-    TargetID
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -57,14 +54,20 @@ class Browser(BaseDomain):
                 permission,
                 'camel'
             ),
-            'setting': setting,
+            'setting': to_dict(
+                setting,
+                'camel'
+            ),
         }
 
         if is_defined(origin):
             params['origin'] = origin
 
         if is_defined(browser_context_id):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'] = to_dict(
+                browser_context_id,
+                'camel'
+            )
 
         return self._send_command(
             'Browser.setPermission',
@@ -86,7 +89,10 @@ class Browser(BaseDomain):
             params['origin'] = origin
 
         if is_defined(browser_context_id):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'] = to_dict(
+                browser_context_id,
+                'camel'
+            )
 
         return self._send_command(
             'Browser.grantPermissions',
@@ -101,7 +107,10 @@ class Browser(BaseDomain):
         params = {}
 
         if is_defined(browser_context_id):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'] = to_dict(
+                browser_context_id,
+                'camel'
+            )
 
         return self._send_command(
             'Browser.resetPermissions',
@@ -121,7 +130,10 @@ class Browser(BaseDomain):
         }
 
         if is_defined(browser_context_id):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'] = to_dict(
+                browser_context_id,
+                'camel'
+            )
 
         if is_defined(download_path):
             params['downloadPath'] = download_path
@@ -145,7 +157,10 @@ class Browser(BaseDomain):
         }
 
         if is_defined(browser_context_id):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'] = to_dict(
+                browser_context_id,
+                'camel'
+            )
 
         return self._send_command(
             'Browser.cancelDownload',
@@ -188,7 +203,7 @@ class Browser(BaseDomain):
 
     def get_version(
             self
-    ) -> 'IFutureResponse[GetVersionReturnT]':
+    ) -> 'IFutureResponse[GetVersionReturnType]':
         params = {}
 
         return self._send_command(
@@ -196,7 +211,7 @@ class Browser(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetVersionReturnT,
+                GetVersionReturnType,
                 data,
                 'camel'
             )
@@ -204,7 +219,7 @@ class Browser(BaseDomain):
 
     def get_browser_command_line(
             self
-    ) -> 'IFutureResponse[GetBrowserCommandLineReturnT]':
+    ) -> 'IFutureResponse[GetBrowserCommandLineReturnType]':
         params = {}
 
         return self._send_command(
@@ -212,7 +227,7 @@ class Browser(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetBrowserCommandLineReturnT,
+                GetBrowserCommandLineReturnType,
                 data,
                 'camel'
             )
@@ -222,7 +237,7 @@ class Browser(BaseDomain):
             self,
             query: 'str' = UNDEFINED,
             delta: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetHistogramsReturnT]':
+    ) -> 'IFutureResponse[GetHistogramsReturnType]':
         params = {}
 
         if is_defined(query):
@@ -236,7 +251,7 @@ class Browser(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetHistogramsReturnT,
+                GetHistogramsReturnType,
                 data,
                 'camel'
             )
@@ -246,7 +261,7 @@ class Browser(BaseDomain):
             self,
             name: 'str',
             delta: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetHistogramReturnT]':
+    ) -> 'IFutureResponse[GetHistogramReturnType]':
         params = {
             'name': name,
         }
@@ -259,7 +274,7 @@ class Browser(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetHistogramReturnT,
+                GetHistogramReturnType,
                 data,
                 'camel'
             )
@@ -268,9 +283,12 @@ class Browser(BaseDomain):
     def get_window_bounds(
             self,
             window_id: 'WindowID'
-    ) -> 'IFutureResponse[GetWindowBoundsReturnT]':
+    ) -> 'IFutureResponse[GetWindowBoundsReturnType]':
         params = {
-            'windowId': window_id,
+            'windowId': to_dict(
+                window_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -278,7 +296,7 @@ class Browser(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetWindowBoundsReturnT,
+                GetWindowBoundsReturnType,
                 data,
                 'camel'
             )
@@ -287,18 +305,21 @@ class Browser(BaseDomain):
     def get_window_for_target(
             self,
             target_id: 'TargetID' = UNDEFINED
-    ) -> 'IFutureResponse[GetWindowForTargetReturnT]':
+    ) -> 'IFutureResponse[GetWindowForTargetReturnType]':
         params = {}
 
         if is_defined(target_id):
-            params['targetId'] = target_id
+            params['targetId'] = to_dict(
+                target_id,
+                'camel'
+            )
 
         return self._send_command(
             'Browser.getWindowForTarget',
             params,
             True,
             lambda data: from_dict(
-                GetWindowForTargetReturnT,
+                GetWindowForTargetReturnType,
                 data,
                 'camel'
             )
@@ -310,7 +331,10 @@ class Browser(BaseDomain):
             bounds: 'Bounds'
     ) -> 'IFutureResponse[None]':
         params = {
-            'windowId': window_id,
+            'windowId': to_dict(
+                window_id,
+                'camel'
+            ),
             'bounds': to_dict(
                 bounds,
                 'camel'
@@ -347,7 +371,10 @@ class Browser(BaseDomain):
             command_id: 'BrowserCommandId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'commandId': command_id,
+            'commandId': to_dict(
+                command_id,
+                'camel'
+            ),
         }
 
         return self._send_command(

@@ -6,25 +6,24 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.memory.types import (
-    GetAllTimeSamplingProfileReturnT,
-    GetBrowserSamplingProfileReturnT,
-    GetDOMCountersReturnT,
-    GetSamplingProfileReturnT,
+    GetAllTimeSamplingProfileReturnType,
+    GetBrowserSamplingProfileReturnType,
+    GetDOMCountersReturnType,
+    GetSamplingProfileReturnType,
     PressureLevel
 )
 if TYPE_CHECKING:
@@ -37,7 +36,7 @@ if TYPE_CHECKING:
 class Memory(BaseDomain):
     def get_dom_counters(
             self
-    ) -> 'IFutureResponse[GetDOMCountersReturnT]':
+    ) -> 'IFutureResponse[GetDOMCountersReturnType]':
         params = {}
 
         return self._send_command(
@@ -45,7 +44,7 @@ class Memory(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetDOMCountersReturnT,
+                GetDOMCountersReturnType,
                 data,
                 'camel'
             )
@@ -92,7 +91,10 @@ class Memory(BaseDomain):
             level: 'PressureLevel'
     ) -> 'IFutureResponse[None]':
         params = {
-            'level': level,
+            'level': to_dict(
+                level,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -133,7 +135,7 @@ class Memory(BaseDomain):
 
     def get_all_time_sampling_profile(
             self
-    ) -> 'IFutureResponse[GetAllTimeSamplingProfileReturnT]':
+    ) -> 'IFutureResponse[GetAllTimeSamplingProfileReturnType]':
         params = {}
 
         return self._send_command(
@@ -141,7 +143,7 @@ class Memory(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetAllTimeSamplingProfileReturnT,
+                GetAllTimeSamplingProfileReturnType,
                 data,
                 'camel'
             )
@@ -149,7 +151,7 @@ class Memory(BaseDomain):
 
     def get_browser_sampling_profile(
             self
-    ) -> 'IFutureResponse[GetBrowserSamplingProfileReturnT]':
+    ) -> 'IFutureResponse[GetBrowserSamplingProfileReturnType]':
         params = {}
 
         return self._send_command(
@@ -157,7 +159,7 @@ class Memory(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetBrowserSamplingProfileReturnT,
+                GetBrowserSamplingProfileReturnType,
                 data,
                 'camel'
             )
@@ -165,7 +167,7 @@ class Memory(BaseDomain):
 
     def get_sampling_profile(
             self
-    ) -> 'IFutureResponse[GetSamplingProfileReturnT]':
+    ) -> 'IFutureResponse[GetSamplingProfileReturnType]':
         params = {}
 
         return self._send_command(
@@ -173,7 +175,7 @@ class Memory(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetSamplingProfileReturnT,
+                GetSamplingProfileReturnType,
                 data,
                 'camel'
             )

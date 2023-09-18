@@ -12,16 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
-        ExceptionDetails,
-        RemoteObject,
-        ScriptId,
-        StackTrace,
-        StackTraceId,
-        UniqueDebuggerId
-    )
-
 BreakpointId = str
 CallFrameId = str
 
@@ -74,67 +64,67 @@ class BreakLocation:
 
 
 @dataclass
-class EnableReturnT:
+class EnableReturnType:
     debugger_id: 'UniqueDebuggerId'
 
 
 @dataclass
-class EvaluateOnCallFrameReturnT:
+class EvaluateOnCallFrameReturnType:
     result: 'RemoteObject'
     exception_details: 'ExceptionDetails'
 
 
 @dataclass
-class GetPossibleBreakpointsReturnT:
+class GetPossibleBreakpointsReturnType:
     locations: list
 
 
 @dataclass
-class GetScriptSourceReturnT:
+class GetScriptSourceReturnType:
     script_source: str
 
 
 @dataclass
-class GetStackTraceReturnT:
+class GetStackTraceReturnType:
     stack_trace: 'StackTrace'
 
 
 @dataclass
-class RestartFrameReturnT:
+class RestartFrameReturnType:
     call_frames: list
     async_stack_trace: 'StackTrace'
     async_stack_trace_id: 'StackTraceId'
 
 
 @dataclass
-class SearchInContentReturnT:
+class SearchInContentReturnType:
     result: list
 
 
 @dataclass
-class SetBreakpointReturnT:
+class SetBreakpointReturnType:
     breakpoint_id: 'BreakpointId'
     actual_location: 'Location'
 
 
 @dataclass
-class SetInstrumentationBreakpointReturnT:
+class SetInstrumentationBreakpointReturnType:
     breakpoint_id: 'BreakpointId'
 
 
 @dataclass
-class SetBreakpointByUrlReturnT:
+class SetBreakpointByUrlReturnType:
     breakpoint_id: 'BreakpointId'
     locations: list
 
 
 @dataclass
-class SetBreakpointOnFunctionCallReturnT:
+class SetBreakpointOnFunctionCallReturnType:
     breakpoint_id: 'BreakpointId'
 
 
 @dataclass
-class SetScriptSourceReturnT:
+class SetScriptSourceReturnType:
     call_frames: list
     stack_changed: bool
     async_stack_trace: 'StackTrace'

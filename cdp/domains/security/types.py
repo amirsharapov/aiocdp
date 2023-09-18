@@ -12,11 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.network.types import (
-        TimeSinceEpoch
-    )
-
 CertificateId = int
 MixedContentType = Literal[
     'blockable',

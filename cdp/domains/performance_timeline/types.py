@@ -12,18 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.network.types import (
-        TimeSinceEpoch
-    )
-    from cdp.domains.dom.types import (
-        BackendNodeId,
-        Rect
-    )
-    from cdp.domains.page.types import (
-        FrameId
-    )
-
 
 @dataclass
 class LargestContentfulPaint:

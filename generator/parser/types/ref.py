@@ -35,7 +35,7 @@ class Ref(Node, ABC):
     @property
     def actual_type(self):
         return registry.get_type(
-            self.actual_domain.domain,
+            self.domain or self.actual_domain.domain,
             self.type
         )
 

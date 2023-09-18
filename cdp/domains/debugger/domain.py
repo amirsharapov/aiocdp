@@ -6,41 +6,38 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.debugger.types import (
     BreakpointId,
-    CallFrameId,
-    EnableReturnT,
-    EvaluateOnCallFrameReturnT,
-    GetPossibleBreakpointsReturnT,
-    GetScriptSourceReturnT,
-    GetStackTraceReturnT,
-    Location,
-    RestartFrameReturnT,
-    SearchInContentReturnT,
-    SetBreakpointByUrlReturnT,
-    SetBreakpointOnFunctionCallReturnT,
-    SetBreakpointReturnT,
-    SetInstrumentationBreakpointReturnT,
-    SetScriptSourceReturnT
-)
-from cdp.domains.runtime.types import (
     CallArgument,
+    CallFrameId,
+    EnableReturnType,
+    EvaluateOnCallFrameReturnType,
+    GetPossibleBreakpointsReturnType,
+    GetScriptSourceReturnType,
+    GetStackTraceReturnType,
+    Location,
     RemoteObjectId,
+    RestartFrameReturnType,
     ScriptId,
+    SearchInContentReturnType,
+    SetBreakpointByUrlReturnType,
+    SetBreakpointOnFunctionCallReturnType,
+    SetBreakpointReturnType,
+    SetInstrumentationBreakpointReturnType,
+    SetScriptSourceReturnType,
     StackTraceId,
     TimeDelta
 )
@@ -87,7 +84,7 @@ class Debugger(BaseDomain):
     def enable(
             self,
             max_scripts_cache_size: 'float' = UNDEFINED
-    ) -> 'IFutureResponse[EnableReturnT]':
+    ) -> 'IFutureResponse[EnableReturnType]':
         params = {}
 
         if is_defined(max_scripts_cache_size):
@@ -98,7 +95,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                EnableReturnT,
+                EnableReturnType,
                 data,
                 'camel'
             )
@@ -115,9 +112,12 @@ class Debugger(BaseDomain):
             generate_preview: 'bool' = UNDEFINED,
             throw_on_side_effect: 'bool' = UNDEFINED,
             timeout: 'TimeDelta' = UNDEFINED
-    ) -> 'IFutureResponse[EvaluateOnCallFrameReturnT]':
+    ) -> 'IFutureResponse[EvaluateOnCallFrameReturnType]':
         params = {
-            'callFrameId': call_frame_id,
+            'callFrameId': to_dict(
+                call_frame_id,
+                'camel'
+            ),
             'expression': expression,
         }
 
@@ -140,14 +140,17 @@ class Debugger(BaseDomain):
             params['throwOnSideEffect'] = throw_on_side_effect
 
         if is_defined(timeout):
-            params['timeout'] = timeout
+            params['timeout'] = to_dict(
+                timeout,
+                'camel'
+            )
 
         return self._send_command(
             'Debugger.evaluateOnCallFrame',
             params,
             True,
             lambda data: from_dict(
-                EvaluateOnCallFrameReturnT,
+                EvaluateOnCallFrameReturnType,
                 data,
                 'camel'
             )
@@ -158,7 +161,7 @@ class Debugger(BaseDomain):
             start: 'Location',
             end: 'Location' = UNDEFINED,
             restrict_to_function: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetPossibleBreakpointsReturnT]':
+    ) -> 'IFutureResponse[GetPossibleBreakpointsReturnType]':
         params = {
             'start': to_dict(
                 start,
@@ -180,7 +183,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetPossibleBreakpointsReturnT,
+                GetPossibleBreakpointsReturnType,
                 data,
                 'camel'
             )
@@ -189,9 +192,12 @@ class Debugger(BaseDomain):
     def get_script_source(
             self,
             script_id: 'ScriptId'
-    ) -> 'IFutureResponse[GetScriptSourceReturnT]':
+    ) -> 'IFutureResponse[GetScriptSourceReturnType]':
         params = {
-            'scriptId': script_id,
+            'scriptId': to_dict(
+                script_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -199,7 +205,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetScriptSourceReturnT,
+                GetScriptSourceReturnType,
                 data,
                 'camel'
             )
@@ -208,7 +214,7 @@ class Debugger(BaseDomain):
     def get_stack_trace(
             self,
             stack_trace_id: 'StackTraceId'
-    ) -> 'IFutureResponse[GetStackTraceReturnT]':
+    ) -> 'IFutureResponse[GetStackTraceReturnType]':
         params = {
             'stackTraceId': to_dict(
                 stack_trace_id,
@@ -221,7 +227,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetStackTraceReturnT,
+                GetStackTraceReturnType,
                 data,
                 'camel'
             )
@@ -260,7 +266,10 @@ class Debugger(BaseDomain):
             breakpoint_id: 'BreakpointId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'breakpointId': breakpoint_id,
+            'breakpointId': to_dict(
+                breakpoint_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -272,9 +281,12 @@ class Debugger(BaseDomain):
     def restart_frame(
             self,
             call_frame_id: 'CallFrameId'
-    ) -> 'IFutureResponse[RestartFrameReturnT]':
+    ) -> 'IFutureResponse[RestartFrameReturnType]':
         params = {
-            'callFrameId': call_frame_id,
+            'callFrameId': to_dict(
+                call_frame_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -282,7 +294,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                RestartFrameReturnT,
+                RestartFrameReturnType,
                 data,
                 'camel'
             )
@@ -305,9 +317,12 @@ class Debugger(BaseDomain):
             query: 'str',
             case_sensitive: 'bool' = UNDEFINED,
             is_regex: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[SearchInContentReturnT]':
+    ) -> 'IFutureResponse[SearchInContentReturnType]':
         params = {
-            'scriptId': script_id,
+            'scriptId': to_dict(
+                script_id,
+                'camel'
+            ),
             'query': query,
         }
 
@@ -322,7 +337,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SearchInContentReturnT,
+                SearchInContentReturnType,
                 data,
                 'camel'
             )
@@ -362,11 +377,11 @@ class Debugger(BaseDomain):
             positions: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'scriptId': script_id,
-            'positions': [
-                to_dict(item, 'camel')
-                for item in positions
-            ],
+            'scriptId': to_dict(
+                script_id,
+                'camel'
+            ),
+            'positions': positions,
         }
 
         return self._send_command(
@@ -379,7 +394,7 @@ class Debugger(BaseDomain):
             self,
             location: 'Location',
             condition: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[SetBreakpointReturnT]':
+    ) -> 'IFutureResponse[SetBreakpointReturnType]':
         params = {
             'location': to_dict(
                 location,
@@ -395,7 +410,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetBreakpointReturnT,
+                SetBreakpointReturnType,
                 data,
                 'camel'
             )
@@ -404,7 +419,7 @@ class Debugger(BaseDomain):
     def set_instrumentation_breakpoint(
             self,
             instrumentation: 'str'
-    ) -> 'IFutureResponse[SetInstrumentationBreakpointReturnT]':
+    ) -> 'IFutureResponse[SetInstrumentationBreakpointReturnType]':
         params = {
             'instrumentation': instrumentation,
         }
@@ -414,7 +429,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetInstrumentationBreakpointReturnT,
+                SetInstrumentationBreakpointReturnType,
                 data,
                 'camel'
             )
@@ -428,7 +443,7 @@ class Debugger(BaseDomain):
             script_hash: 'str' = UNDEFINED,
             column_number: 'int' = UNDEFINED,
             condition: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[SetBreakpointByUrlReturnT]':
+    ) -> 'IFutureResponse[SetBreakpointByUrlReturnType]':
         params = {
             'lineNumber': line_number,
         }
@@ -453,7 +468,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetBreakpointByUrlReturnT,
+                SetBreakpointByUrlReturnType,
                 data,
                 'camel'
             )
@@ -463,9 +478,12 @@ class Debugger(BaseDomain):
             self,
             object_id: 'RemoteObjectId',
             condition: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[SetBreakpointOnFunctionCallReturnT]':
+    ) -> 'IFutureResponse[SetBreakpointOnFunctionCallReturnType]':
         params = {
-            'objectId': object_id,
+            'objectId': to_dict(
+                object_id,
+                'camel'
+            ),
         }
 
         if is_defined(condition):
@@ -476,7 +494,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetBreakpointOnFunctionCallReturnT,
+                SetBreakpointOnFunctionCallReturnType,
                 data,
                 'camel'
             )
@@ -532,9 +550,12 @@ class Debugger(BaseDomain):
             script_id: 'ScriptId',
             script_source: 'str',
             dry_run: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[SetScriptSourceReturnT]':
+    ) -> 'IFutureResponse[SetScriptSourceReturnType]':
         params = {
-            'scriptId': script_id,
+            'scriptId': to_dict(
+                script_id,
+                'camel'
+            ),
             'scriptSource': script_source,
         }
 
@@ -546,7 +567,7 @@ class Debugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetScriptSourceReturnT,
+                SetScriptSourceReturnType,
                 data,
                 'camel'
             )
@@ -580,7 +601,10 @@ class Debugger(BaseDomain):
                 new_value,
                 'camel'
             ),
-            'callFrameId': call_frame_id,
+            'callFrameId': to_dict(
+                call_frame_id,
+                'camel'
+            ),
         }
 
         return self._send_command(

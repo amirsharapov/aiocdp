@@ -12,11 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
-        RemoteObject
-    )
-
 
 @dataclass
 class DatabaseWithObjectStores:
@@ -73,22 +68,22 @@ class KeyPath:
 
 
 @dataclass
-class RequestDataReturnT:
+class RequestDataReturnType:
     object_store_data_entries: list
     has_more: bool
 
 
 @dataclass
-class GetMetadataReturnT:
+class GetMetadataReturnType:
     entries_count: float
     key_generator_value: float
 
 
 @dataclass
-class RequestDatabaseReturnT:
+class RequestDatabaseReturnType:
     database_with_object_stores: 'DatabaseWithObjectStores'
 
 
 @dataclass
-class RequestDatabaseNamesReturnT:
+class RequestDatabaseNamesReturnType:
     database_names: list

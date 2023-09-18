@@ -12,11 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.target.types import (
-        TargetID
-    )
-
 RegistrationID = str
 ServiceWorkerVersionRunningStatus = Literal[
     'stopped',

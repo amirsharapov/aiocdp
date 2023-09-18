@@ -12,12 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
-        CallFrame,
-        ScriptId
-    )
-
 
 @dataclass
 class ProfileNode:
@@ -84,20 +78,20 @@ class ScriptTypeProfile:
 
 
 @dataclass
-class GetBestEffortCoverageReturnT:
+class GetBestEffortCoverageReturnType:
     result: list
 
 
 @dataclass
-class StopReturnT:
+class StopReturnType:
     profile: 'Profile'
 
 
 @dataclass
-class TakePreciseCoverageReturnT:
+class TakePreciseCoverageReturnType:
     result: list
 
 
 @dataclass
-class TakeTypeProfileReturnT:
+class TakeTypeProfileReturnType:
     result: list

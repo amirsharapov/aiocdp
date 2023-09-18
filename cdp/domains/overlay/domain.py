@@ -6,41 +6,34 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.overlay.types import (
+    BackendNodeId,
     ColorFormat,
-    GetGridHighlightObjectsForTestReturnT,
-    GetHighlightObjectForTestReturnT,
-    GetSourceOrderHighlightObjectForTestReturnT,
+    FrameId,
+    GetGridHighlightObjectsForTestReturnType,
+    GetHighlightObjectForTestReturnType,
+    GetSourceOrderHighlightObjectForTestReturnType,
     HighlightConfig,
     HingeConfig,
     InspectMode,
-    SourceOrderConfig
-)
-from cdp.domains.dom.types import (
-    BackendNodeId,
     NodeId,
     Quad,
-    RGBA
-)
-from cdp.domains.page.types import (
-    FrameId
-)
-from cdp.domains.runtime.types import (
-    RemoteObjectId
+    RGBA,
+    RemoteObjectId,
+    SourceOrderConfig
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -79,9 +72,12 @@ class Overlay(BaseDomain):
             include_style: 'bool' = UNDEFINED,
             color_format: 'ColorFormat' = UNDEFINED,
             show_accessibility_info: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetHighlightObjectForTestReturnT]':
+    ) -> 'IFutureResponse[GetHighlightObjectForTestReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         if is_defined(include_distance):
@@ -91,7 +87,10 @@ class Overlay(BaseDomain):
             params['includeStyle'] = include_style
 
         if is_defined(color_format):
-            params['colorFormat'] = color_format
+            params['colorFormat'] = to_dict(
+                color_format,
+                'camel'
+            )
 
         if is_defined(show_accessibility_info):
             params['showAccessibilityInfo'] = show_accessibility_info
@@ -101,7 +100,7 @@ class Overlay(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetHighlightObjectForTestReturnT,
+                GetHighlightObjectForTestReturnType,
                 data,
                 'camel'
             )
@@ -110,7 +109,7 @@ class Overlay(BaseDomain):
     def get_grid_highlight_objects_for_test(
             self,
             node_ids: 'list'
-    ) -> 'IFutureResponse[GetGridHighlightObjectsForTestReturnT]':
+    ) -> 'IFutureResponse[GetGridHighlightObjectsForTestReturnType]':
         params = {
             'nodeIds': node_ids,
         }
@@ -120,7 +119,7 @@ class Overlay(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetGridHighlightObjectsForTestReturnT,
+                GetGridHighlightObjectsForTestReturnType,
                 data,
                 'camel'
             )
@@ -129,9 +128,12 @@ class Overlay(BaseDomain):
     def get_source_order_highlight_object_for_test(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetSourceOrderHighlightObjectForTestReturnT]':
+    ) -> 'IFutureResponse[GetSourceOrderHighlightObjectForTestReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -139,7 +141,7 @@ class Overlay(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetSourceOrderHighlightObjectForTestReturnT,
+                GetSourceOrderHighlightObjectForTestReturnType,
                 data,
                 'camel'
             )
@@ -163,7 +165,10 @@ class Overlay(BaseDomain):
             content_outline_color: 'RGBA' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
         }
 
         if is_defined(content_color):
@@ -200,13 +205,22 @@ class Overlay(BaseDomain):
         }
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         if is_defined(selector):
             params['selector'] = selector
@@ -224,7 +238,10 @@ class Overlay(BaseDomain):
             outline_color: 'RGBA' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'quad': quad,
+            'quad': to_dict(
+                quad,
+                'camel'
+            ),
         }
 
         if is_defined(color):
@@ -294,13 +311,22 @@ class Overlay(BaseDomain):
         }
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         return self._send_command(
             'Overlay.highlightSourceOrder',
@@ -314,7 +340,10 @@ class Overlay(BaseDomain):
             highlight_config: 'HighlightConfig' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'mode': mode,
+            'mode': to_dict(
+                mode,
+                'camel'
+            ),
         }
 
         if is_defined(highlight_config):
@@ -391,10 +420,7 @@ class Overlay(BaseDomain):
             grid_node_highlight_configs: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'gridNodeHighlightConfigs': [
-                to_dict(item, 'camel')
-                for item in grid_node_highlight_configs
-            ],
+            'gridNodeHighlightConfigs': grid_node_highlight_configs,
         }
 
         return self._send_command(
@@ -408,10 +434,7 @@ class Overlay(BaseDomain):
             flex_node_highlight_configs: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'flexNodeHighlightConfigs': [
-                to_dict(item, 'camel')
-                for item in flex_node_highlight_configs
-            ],
+            'flexNodeHighlightConfigs': flex_node_highlight_configs,
         }
 
         return self._send_command(
@@ -425,10 +448,7 @@ class Overlay(BaseDomain):
             scroll_snap_highlight_configs: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'scrollSnapHighlightConfigs': [
-                to_dict(item, 'camel')
-                for item in scroll_snap_highlight_configs
-            ],
+            'scrollSnapHighlightConfigs': scroll_snap_highlight_configs,
         }
 
         return self._send_command(
@@ -442,10 +462,7 @@ class Overlay(BaseDomain):
             container_query_highlight_configs: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'containerQueryHighlightConfigs': [
-                to_dict(item, 'camel')
-                for item in container_query_highlight_configs
-            ],
+            'containerQueryHighlightConfigs': container_query_highlight_configs,
         }
 
         return self._send_command(
@@ -561,10 +578,7 @@ class Overlay(BaseDomain):
             isolated_element_highlight_configs: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'isolatedElementHighlightConfigs': [
-                to_dict(item, 'camel')
-                for item in isolated_element_highlight_configs
-            ],
+            'isolatedElementHighlightConfigs': isolated_element_highlight_configs,
         }
 
         return self._send_command(

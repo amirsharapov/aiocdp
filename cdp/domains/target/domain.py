@@ -6,35 +6,32 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.target.types import (
-    AttachToBrowserTargetReturnT,
-    AttachToTargetReturnT,
-    CloseTargetReturnT,
-    CreateBrowserContextReturnT,
-    CreateTargetReturnT,
-    GetBrowserContextsReturnT,
-    GetTargetInfoReturnT,
-    GetTargetsReturnT,
+    AttachToBrowserTargetReturnType,
+    AttachToTargetReturnType,
+    BrowserContextID,
+    CloseTargetReturnType,
+    CreateBrowserContextReturnType,
+    CreateTargetReturnType,
+    GetBrowserContextsReturnType,
+    GetTargetInfoReturnType,
+    GetTargetsReturnType,
     SessionID,
     TargetFilter,
     TargetID
-)
-from cdp.domains.browser.types import (
-    BrowserContextID
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -49,7 +46,10 @@ class Target(BaseDomain):
             target_id: 'TargetID'
     ) -> 'IFutureResponse[None]':
         params = {
-            'targetId': target_id,
+            'targetId': to_dict(
+                target_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -62,9 +62,12 @@ class Target(BaseDomain):
             self,
             target_id: 'TargetID',
             flatten: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[AttachToTargetReturnT]':
+    ) -> 'IFutureResponse[AttachToTargetReturnType]':
         params = {
-            'targetId': target_id,
+            'targetId': to_dict(
+                target_id,
+                'camel'
+            ),
         }
 
         if is_defined(flatten):
@@ -75,7 +78,7 @@ class Target(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                AttachToTargetReturnT,
+                AttachToTargetReturnType,
                 data,
                 'camel'
             )
@@ -83,7 +86,7 @@ class Target(BaseDomain):
 
     def attach_to_browser_target(
             self
-    ) -> 'IFutureResponse[AttachToBrowserTargetReturnT]':
+    ) -> 'IFutureResponse[AttachToBrowserTargetReturnType]':
         params = {}
 
         return self._send_command(
@@ -91,7 +94,7 @@ class Target(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                AttachToBrowserTargetReturnT,
+                AttachToBrowserTargetReturnType,
                 data,
                 'camel'
             )
@@ -100,9 +103,12 @@ class Target(BaseDomain):
     def close_target(
             self,
             target_id: 'TargetID'
-    ) -> 'IFutureResponse[CloseTargetReturnT]':
+    ) -> 'IFutureResponse[CloseTargetReturnType]':
         params = {
-            'targetId': target_id,
+            'targetId': to_dict(
+                target_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -110,7 +116,7 @@ class Target(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CloseTargetReturnT,
+                CloseTargetReturnType,
                 data,
                 'camel'
             )
@@ -122,7 +128,10 @@ class Target(BaseDomain):
             binding_name: 'str' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'targetId': target_id,
+            'targetId': to_dict(
+                target_id,
+                'camel'
+            ),
         }
 
         if is_defined(binding_name):
@@ -140,7 +149,7 @@ class Target(BaseDomain):
             proxy_server: 'str' = UNDEFINED,
             proxy_bypass_list: 'str' = UNDEFINED,
             origins_with_universal_network_access: 'list' = UNDEFINED
-    ) -> 'IFutureResponse[CreateBrowserContextReturnT]':
+    ) -> 'IFutureResponse[CreateBrowserContextReturnType]':
         params = {}
 
         if is_defined(dispose_on_detach):
@@ -160,7 +169,7 @@ class Target(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CreateBrowserContextReturnT,
+                CreateBrowserContextReturnType,
                 data,
                 'camel'
             )
@@ -168,7 +177,7 @@ class Target(BaseDomain):
 
     def get_browser_contexts(
             self
-    ) -> 'IFutureResponse[GetBrowserContextsReturnT]':
+    ) -> 'IFutureResponse[GetBrowserContextsReturnType]':
         params = {}
 
         return self._send_command(
@@ -176,7 +185,7 @@ class Target(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetBrowserContextsReturnT,
+                GetBrowserContextsReturnType,
                 data,
                 'camel'
             )
@@ -192,7 +201,7 @@ class Target(BaseDomain):
             new_window: 'bool' = UNDEFINED,
             background: 'bool' = UNDEFINED,
             for_tab: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[CreateTargetReturnT]':
+    ) -> 'IFutureResponse[CreateTargetReturnType]':
         params = {
             'url': url,
         }
@@ -204,7 +213,10 @@ class Target(BaseDomain):
             params['height'] = height
 
         if is_defined(browser_context_id):
-            params['browserContextId'] = browser_context_id
+            params['browserContextId'] = to_dict(
+                browser_context_id,
+                'camel'
+            )
 
         if is_defined(enable_begin_frame_control):
             params['enableBeginFrameControl'] = enable_begin_frame_control
@@ -223,7 +235,7 @@ class Target(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CreateTargetReturnT,
+                CreateTargetReturnType,
                 data,
                 'camel'
             )
@@ -237,10 +249,16 @@ class Target(BaseDomain):
         params = {}
 
         if is_defined(session_id):
-            params['sessionId'] = session_id
+            params['sessionId'] = to_dict(
+                session_id,
+                'camel'
+            )
 
         if is_defined(target_id):
-            params['targetId'] = target_id
+            params['targetId'] = to_dict(
+                target_id,
+                'camel'
+            )
 
         return self._send_command(
             'Target.detachFromTarget',
@@ -253,7 +271,10 @@ class Target(BaseDomain):
             browser_context_id: 'BrowserContextID'
     ) -> 'IFutureResponse[None]':
         params = {
-            'browserContextId': browser_context_id,
+            'browserContextId': to_dict(
+                browser_context_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -265,18 +286,21 @@ class Target(BaseDomain):
     def get_target_info(
             self,
             target_id: 'TargetID' = UNDEFINED
-    ) -> 'IFutureResponse[GetTargetInfoReturnT]':
+    ) -> 'IFutureResponse[GetTargetInfoReturnType]':
         params = {}
 
         if is_defined(target_id):
-            params['targetId'] = target_id
+            params['targetId'] = to_dict(
+                target_id,
+                'camel'
+            )
 
         return self._send_command(
             'Target.getTargetInfo',
             params,
             True,
             lambda data: from_dict(
-                GetTargetInfoReturnT,
+                GetTargetInfoReturnType,
                 data,
                 'camel'
             )
@@ -285,18 +309,21 @@ class Target(BaseDomain):
     def get_targets(
             self,
             filter_: 'TargetFilter' = UNDEFINED
-    ) -> 'IFutureResponse[GetTargetsReturnT]':
+    ) -> 'IFutureResponse[GetTargetsReturnType]':
         params = {}
 
         if is_defined(filter_):
-            params['filter'] = filter_
+            params['filter'] = to_dict(
+                filter_,
+                'camel'
+            )
 
         return self._send_command(
             'Target.getTargets',
             params,
             True,
             lambda data: from_dict(
-                GetTargetsReturnT,
+                GetTargetsReturnType,
                 data,
                 'camel'
             )
@@ -313,10 +340,16 @@ class Target(BaseDomain):
         }
 
         if is_defined(session_id):
-            params['sessionId'] = session_id
+            params['sessionId'] = to_dict(
+                session_id,
+                'camel'
+            )
 
         if is_defined(target_id):
-            params['targetId'] = target_id
+            params['targetId'] = to_dict(
+                target_id,
+                'camel'
+            )
 
         return self._send_command(
             'Target.sendMessageToTarget',
@@ -340,7 +373,10 @@ class Target(BaseDomain):
             params['flatten'] = flatten
 
         if is_defined(filter_):
-            params['filter'] = filter_
+            params['filter'] = to_dict(
+                filter_,
+                'camel'
+            )
 
         return self._send_command(
             'Target.setAutoAttach',
@@ -355,12 +391,18 @@ class Target(BaseDomain):
             filter_: 'TargetFilter' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'targetId': target_id,
+            'targetId': to_dict(
+                target_id,
+                'camel'
+            ),
             'waitForDebuggerOnStart': wait_for_debugger_on_start,
         }
 
         if is_defined(filter_):
-            params['filter'] = filter_
+            params['filter'] = to_dict(
+                filter_,
+                'camel'
+            )
 
         return self._send_command(
             'Target.autoAttachRelated',
@@ -378,7 +420,10 @@ class Target(BaseDomain):
         }
 
         if is_defined(filter_):
-            params['filter'] = filter_
+            params['filter'] = to_dict(
+                filter_,
+                'camel'
+            )
 
         return self._send_command(
             'Target.setDiscoverTargets',
@@ -391,10 +436,7 @@ class Target(BaseDomain):
             locations: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'locations': [
-                to_dict(item, 'camel')
-                for item in locations
-            ],
+            'locations': locations,
         }
 
         return self._send_command(

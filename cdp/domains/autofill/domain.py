@@ -6,28 +6,23 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
-from cdp.domains.dom.types import (
-    BackendNodeId
-)
-from cdp.domains.page.types import (
-    FrameId
-)
 from cdp.domains.autofill.types import (
-    CreditCard
+    BackendNodeId,
+    CreditCard,
+    FrameId
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -44,7 +39,10 @@ class Autofill(BaseDomain):
             frame_id: 'FrameId' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'fieldId': field_id,
+            'fieldId': to_dict(
+                field_id,
+                'camel'
+            ),
             'card': to_dict(
                 card,
                 'camel'
@@ -52,7 +50,10 @@ class Autofill(BaseDomain):
         }
 
         if is_defined(frame_id):
-            params['frameId'] = frame_id
+            params['frameId'] = to_dict(
+                frame_id,
+                'camel'
+            )
 
         return self._send_command(
             'Autofill.trigger',
@@ -65,10 +66,7 @@ class Autofill(BaseDomain):
             addresses: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'addresses': [
-                to_dict(item, 'camel')
-                for item in addresses
-            ],
+            'addresses': addresses,
         }
 
         return self._send_command(

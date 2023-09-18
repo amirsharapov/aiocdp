@@ -12,12 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.dom.types import (
-        BackendNodeId,
-        Rect
-    )
-
 LayerId = str
 SnapshotId = str
 PaintProfile = list[float]
@@ -64,31 +58,31 @@ class Layer:
 
 
 @dataclass
-class CompositingReasonsReturnT:
+class CompositingReasonsReturnType:
     compositing_reasons: list
     compositing_reason_ids: list
 
 
 @dataclass
-class LoadSnapshotReturnT:
+class LoadSnapshotReturnType:
     snapshot_id: 'SnapshotId'
 
 
 @dataclass
-class MakeSnapshotReturnT:
+class MakeSnapshotReturnType:
     snapshot_id: 'SnapshotId'
 
 
 @dataclass
-class ProfileSnapshotReturnT:
+class ProfileSnapshotReturnType:
     timings: list
 
 
 @dataclass
-class ReplaySnapshotReturnT:
+class ReplaySnapshotReturnType:
     data_url: str
 
 
 @dataclass
-class SnapshotCommandLogReturnT:
+class SnapshotCommandLogReturnType:
     command_log: list

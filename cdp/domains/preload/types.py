@@ -12,15 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.network.types import (
-        LoaderId,
-        RequestId
-    )
-    from cdp.domains.dom.types import (
-        BackendNodeId
-    )
-
 RuleSetId = str
 RuleSetErrorType = Literal[
     'SourceIsNotJsonObject',

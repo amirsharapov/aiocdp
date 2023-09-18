@@ -6,25 +6,24 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.profiler.types import (
-    GetBestEffortCoverageReturnT,
-    StopReturnT,
-    TakePreciseCoverageReturnT,
-    TakeTypeProfileReturnT
+    GetBestEffortCoverageReturnType,
+    StopReturnType,
+    TakePreciseCoverageReturnType,
+    TakeTypeProfileReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -58,7 +57,7 @@ class Profiler(BaseDomain):
 
     def get_best_effort_coverage(
             self
-    ) -> 'IFutureResponse[GetBestEffortCoverageReturnT]':
+    ) -> 'IFutureResponse[GetBestEffortCoverageReturnType]':
         params = {}
 
         return self._send_command(
@@ -66,7 +65,7 @@ class Profiler(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetBestEffortCoverageReturnT,
+                GetBestEffortCoverageReturnType,
                 data,
                 'camel'
             )
@@ -129,7 +128,7 @@ class Profiler(BaseDomain):
 
     def stop(
             self
-    ) -> 'IFutureResponse[StopReturnT]':
+    ) -> 'IFutureResponse[StopReturnType]':
         params = {}
 
         return self._send_command(
@@ -137,7 +136,7 @@ class Profiler(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                StopReturnT,
+                StopReturnType,
                 data,
                 'camel'
             )
@@ -167,7 +166,7 @@ class Profiler(BaseDomain):
 
     def take_precise_coverage(
             self
-    ) -> 'IFutureResponse[TakePreciseCoverageReturnT]':
+    ) -> 'IFutureResponse[TakePreciseCoverageReturnType]':
         params = {}
 
         return self._send_command(
@@ -175,7 +174,7 @@ class Profiler(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                TakePreciseCoverageReturnT,
+                TakePreciseCoverageReturnType,
                 data,
                 'camel'
             )
@@ -183,7 +182,7 @@ class Profiler(BaseDomain):
 
     def take_type_profile(
             self
-    ) -> 'IFutureResponse[TakeTypeProfileReturnT]':
+    ) -> 'IFutureResponse[TakeTypeProfileReturnType]':
         params = {}
 
         return self._send_command(
@@ -191,7 +190,7 @@ class Profiler(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                TakeTypeProfileReturnT,
+                TakeTypeProfileReturnType,
                 data,
                 'camel'
             )

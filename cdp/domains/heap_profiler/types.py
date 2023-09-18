@@ -12,12 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
-        CallFrame,
-        RemoteObject
-    )
-
 HeapSnapshotObjectId = str
 
 @dataclass
@@ -42,20 +36,20 @@ class SamplingHeapProfile:
 
 
 @dataclass
-class GetHeapObjectIdReturnT:
+class GetHeapObjectIdReturnType:
     heap_snapshot_object_id: 'HeapSnapshotObjectId'
 
 
 @dataclass
-class GetObjectByHeapObjectIdReturnT:
+class GetObjectByHeapObjectIdReturnType:
     result: 'RemoteObject'
 
 
 @dataclass
-class GetSamplingProfileReturnT:
+class GetSamplingProfileReturnType:
     profile: 'SamplingHeapProfile'
 
 
 @dataclass
-class StopSamplingReturnT:
+class StopSamplingReturnType:
     profile: 'SamplingHeapProfile'

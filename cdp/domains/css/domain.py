@@ -6,51 +6,46 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.css.types import (
-    AddRuleReturnT,
-    CollectClassNamesReturnT,
-    CreateStyleSheetReturnT,
-    GetBackgroundColorsReturnT,
-    GetComputedStyleForNodeReturnT,
-    GetInlineStylesForNodeReturnT,
-    GetLayersForNodeReturnT,
-    GetMatchedStylesForNodeReturnT,
-    GetMediaQueriesReturnT,
-    GetPlatformFontsForNodeReturnT,
-    GetStyleSheetTextReturnT,
-    SetContainerQueryTextReturnT,
-    SetKeyframeKeyReturnT,
-    SetMediaTextReturnT,
-    SetRuleSelectorReturnT,
-    SetScopeTextReturnT,
-    SetStyleSheetTextReturnT,
-    SetStyleTextsReturnT,
-    SetSupportsTextReturnT,
+    AddRuleReturnType,
+    CollectClassNamesReturnType,
+    CreateStyleSheetReturnType,
+    FrameId,
+    GetBackgroundColorsReturnType,
+    GetComputedStyleForNodeReturnType,
+    GetInlineStylesForNodeReturnType,
+    GetLayersForNodeReturnType,
+    GetMatchedStylesForNodeReturnType,
+    GetMediaQueriesReturnType,
+    GetPlatformFontsForNodeReturnType,
+    GetStyleSheetTextReturnType,
+    NodeId,
+    SetContainerQueryTextReturnType,
+    SetKeyframeKeyReturnType,
+    SetMediaTextReturnType,
+    SetRuleSelectorReturnType,
+    SetScopeTextReturnType,
+    SetStyleSheetTextReturnType,
+    SetStyleTextsReturnType,
+    SetSupportsTextReturnType,
     SourceRange,
-    StopRuleUsageTrackingReturnT,
+    StopRuleUsageTrackingReturnType,
     StyleSheetId,
-    TakeComputedStyleUpdatesReturnT,
-    TakeCoverageDeltaReturnT
-)
-from cdp.domains.page.types import (
-    FrameId
-)
-from cdp.domains.dom.types import (
-    NodeId
+    TakeComputedStyleUpdatesReturnType,
+    TakeCoverageDeltaReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -65,9 +60,12 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             rule_text: 'str',
             location: 'SourceRange'
-    ) -> 'IFutureResponse[AddRuleReturnT]':
+    ) -> 'IFutureResponse[AddRuleReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
             'ruleText': rule_text,
             'location': to_dict(
                 location,
@@ -80,7 +78,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                AddRuleReturnT,
+                AddRuleReturnType,
                 data,
                 'camel'
             )
@@ -89,9 +87,12 @@ class CSS(BaseDomain):
     def collect_class_names(
             self,
             style_sheet_id: 'StyleSheetId'
-    ) -> 'IFutureResponse[CollectClassNamesReturnT]':
+    ) -> 'IFutureResponse[CollectClassNamesReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -99,7 +100,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CollectClassNamesReturnT,
+                CollectClassNamesReturnType,
                 data,
                 'camel'
             )
@@ -108,9 +109,12 @@ class CSS(BaseDomain):
     def create_style_sheet(
             self,
             frame_id: 'FrameId'
-    ) -> 'IFutureResponse[CreateStyleSheetReturnT]':
+    ) -> 'IFutureResponse[CreateStyleSheetReturnType]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -118,7 +122,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CreateStyleSheetReturnT,
+                CreateStyleSheetReturnType,
                 data,
                 'camel'
             )
@@ -152,7 +156,10 @@ class CSS(BaseDomain):
             forced_pseudo_classes: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'forcedPseudoClasses': forced_pseudo_classes,
         }
 
@@ -165,9 +172,12 @@ class CSS(BaseDomain):
     def get_background_colors(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetBackgroundColorsReturnT]':
+    ) -> 'IFutureResponse[GetBackgroundColorsReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -175,7 +185,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetBackgroundColorsReturnT,
+                GetBackgroundColorsReturnType,
                 data,
                 'camel'
             )
@@ -184,9 +194,12 @@ class CSS(BaseDomain):
     def get_computed_style_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetComputedStyleForNodeReturnT]':
+    ) -> 'IFutureResponse[GetComputedStyleForNodeReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -194,7 +207,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetComputedStyleForNodeReturnT,
+                GetComputedStyleForNodeReturnType,
                 data,
                 'camel'
             )
@@ -203,9 +216,12 @@ class CSS(BaseDomain):
     def get_inline_styles_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetInlineStylesForNodeReturnT]':
+    ) -> 'IFutureResponse[GetInlineStylesForNodeReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -213,7 +229,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetInlineStylesForNodeReturnT,
+                GetInlineStylesForNodeReturnType,
                 data,
                 'camel'
             )
@@ -222,9 +238,12 @@ class CSS(BaseDomain):
     def get_matched_styles_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetMatchedStylesForNodeReturnT]':
+    ) -> 'IFutureResponse[GetMatchedStylesForNodeReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -232,7 +251,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetMatchedStylesForNodeReturnT,
+                GetMatchedStylesForNodeReturnType,
                 data,
                 'camel'
             )
@@ -240,7 +259,7 @@ class CSS(BaseDomain):
 
     def get_media_queries(
             self
-    ) -> 'IFutureResponse[GetMediaQueriesReturnT]':
+    ) -> 'IFutureResponse[GetMediaQueriesReturnType]':
         params = {}
 
         return self._send_command(
@@ -248,7 +267,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetMediaQueriesReturnT,
+                GetMediaQueriesReturnType,
                 data,
                 'camel'
             )
@@ -257,9 +276,12 @@ class CSS(BaseDomain):
     def get_platform_fonts_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetPlatformFontsForNodeReturnT]':
+    ) -> 'IFutureResponse[GetPlatformFontsForNodeReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -267,7 +289,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetPlatformFontsForNodeReturnT,
+                GetPlatformFontsForNodeReturnType,
                 data,
                 'camel'
             )
@@ -276,9 +298,12 @@ class CSS(BaseDomain):
     def get_style_sheet_text(
             self,
             style_sheet_id: 'StyleSheetId'
-    ) -> 'IFutureResponse[GetStyleSheetTextReturnT]':
+    ) -> 'IFutureResponse[GetStyleSheetTextReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -286,7 +311,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetStyleSheetTextReturnT,
+                GetStyleSheetTextReturnType,
                 data,
                 'camel'
             )
@@ -295,9 +320,12 @@ class CSS(BaseDomain):
     def get_layers_for_node(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetLayersForNodeReturnT]':
+    ) -> 'IFutureResponse[GetLayersForNodeReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -305,7 +333,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetLayersForNodeReturnT,
+                GetLayersForNodeReturnType,
                 data,
                 'camel'
             )
@@ -316,10 +344,7 @@ class CSS(BaseDomain):
             properties_to_track: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'propertiesToTrack': [
-                to_dict(item, 'camel')
-                for item in properties_to_track
-            ],
+            'propertiesToTrack': properties_to_track,
         }
 
         return self._send_command(
@@ -330,7 +355,7 @@ class CSS(BaseDomain):
 
     def take_computed_style_updates(
             self
-    ) -> 'IFutureResponse[TakeComputedStyleUpdatesReturnT]':
+    ) -> 'IFutureResponse[TakeComputedStyleUpdatesReturnType]':
         params = {}
 
         return self._send_command(
@@ -338,7 +363,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                TakeComputedStyleUpdatesReturnT,
+                TakeComputedStyleUpdatesReturnType,
                 data,
                 'camel'
             )
@@ -351,7 +376,10 @@ class CSS(BaseDomain):
             value: 'str'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'propertyName': property_name,
             'value': value,
         }
@@ -367,9 +395,12 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             key_text: 'str'
-    ) -> 'IFutureResponse[SetKeyframeKeyReturnT]':
+    ) -> 'IFutureResponse[SetKeyframeKeyReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
             'range': to_dict(
                 range_,
                 'camel'
@@ -382,7 +413,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetKeyframeKeyReturnT,
+                SetKeyframeKeyReturnType,
                 data,
                 'camel'
             )
@@ -393,9 +424,12 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             text: 'str'
-    ) -> 'IFutureResponse[SetMediaTextReturnT]':
+    ) -> 'IFutureResponse[SetMediaTextReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
             'range': to_dict(
                 range_,
                 'camel'
@@ -408,7 +442,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetMediaTextReturnT,
+                SetMediaTextReturnType,
                 data,
                 'camel'
             )
@@ -419,9 +453,12 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             text: 'str'
-    ) -> 'IFutureResponse[SetContainerQueryTextReturnT]':
+    ) -> 'IFutureResponse[SetContainerQueryTextReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
             'range': to_dict(
                 range_,
                 'camel'
@@ -434,7 +471,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetContainerQueryTextReturnT,
+                SetContainerQueryTextReturnType,
                 data,
                 'camel'
             )
@@ -445,9 +482,12 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             text: 'str'
-    ) -> 'IFutureResponse[SetSupportsTextReturnT]':
+    ) -> 'IFutureResponse[SetSupportsTextReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
             'range': to_dict(
                 range_,
                 'camel'
@@ -460,7 +500,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetSupportsTextReturnT,
+                SetSupportsTextReturnType,
                 data,
                 'camel'
             )
@@ -471,9 +511,12 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             text: 'str'
-    ) -> 'IFutureResponse[SetScopeTextReturnT]':
+    ) -> 'IFutureResponse[SetScopeTextReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
             'range': to_dict(
                 range_,
                 'camel'
@@ -486,7 +529,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetScopeTextReturnT,
+                SetScopeTextReturnType,
                 data,
                 'camel'
             )
@@ -497,9 +540,12 @@ class CSS(BaseDomain):
             style_sheet_id: 'StyleSheetId',
             range_: 'SourceRange',
             selector: 'str'
-    ) -> 'IFutureResponse[SetRuleSelectorReturnT]':
+    ) -> 'IFutureResponse[SetRuleSelectorReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
             'range': to_dict(
                 range_,
                 'camel'
@@ -512,7 +558,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetRuleSelectorReturnT,
+                SetRuleSelectorReturnType,
                 data,
                 'camel'
             )
@@ -522,9 +568,12 @@ class CSS(BaseDomain):
             self,
             style_sheet_id: 'StyleSheetId',
             text: 'str'
-    ) -> 'IFutureResponse[SetStyleSheetTextReturnT]':
+    ) -> 'IFutureResponse[SetStyleSheetTextReturnType]':
         params = {
-            'styleSheetId': style_sheet_id,
+            'styleSheetId': to_dict(
+                style_sheet_id,
+                'camel'
+            ),
             'text': text,
         }
 
@@ -533,7 +582,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetStyleSheetTextReturnT,
+                SetStyleSheetTextReturnType,
                 data,
                 'camel'
             )
@@ -542,12 +591,9 @@ class CSS(BaseDomain):
     def set_style_texts(
             self,
             edits: 'list'
-    ) -> 'IFutureResponse[SetStyleTextsReturnT]':
+    ) -> 'IFutureResponse[SetStyleTextsReturnType]':
         params = {
-            'edits': [
-                to_dict(item, 'camel')
-                for item in edits
-            ],
+            'edits': edits,
         }
 
         return self._send_command(
@@ -555,7 +601,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetStyleTextsReturnT,
+                SetStyleTextsReturnType,
                 data,
                 'camel'
             )
@@ -574,7 +620,7 @@ class CSS(BaseDomain):
 
     def stop_rule_usage_tracking(
             self
-    ) -> 'IFutureResponse[StopRuleUsageTrackingReturnT]':
+    ) -> 'IFutureResponse[StopRuleUsageTrackingReturnType]':
         params = {}
 
         return self._send_command(
@@ -582,7 +628,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                StopRuleUsageTrackingReturnT,
+                StopRuleUsageTrackingReturnType,
                 data,
                 'camel'
             )
@@ -590,7 +636,7 @@ class CSS(BaseDomain):
 
     def take_coverage_delta(
             self
-    ) -> 'IFutureResponse[TakeCoverageDeltaReturnT]':
+    ) -> 'IFutureResponse[TakeCoverageDeltaReturnType]':
         params = {}
 
         return self._send_command(
@@ -598,7 +644,7 @@ class CSS(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                TakeCoverageDeltaReturnT,
+                TakeCoverageDeltaReturnType,
                 data,
                 'camel'
             )

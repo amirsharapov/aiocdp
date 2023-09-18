@@ -12,17 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.dom.types import (
-        BackendNodeId,
-        PseudoType,
-        Rect,
-        ShadowRootType
-    )
-    from cdp.domains.page.types import (
-        FrameId
-    )
-
 StringIndex = int
 ArrayOfStrings = list['StringIndex']
 Rectangle = list[float]
@@ -169,13 +158,13 @@ class TextBoxSnapshot:
 
 
 @dataclass
-class GetSnapshotReturnT:
+class GetSnapshotReturnType:
     dom_nodes: list
     layout_tree_nodes: list
     computed_styles: list
 
 
 @dataclass
-class CaptureSnapshotReturnT:
+class CaptureSnapshotReturnType:
     documents: list
     strings: list

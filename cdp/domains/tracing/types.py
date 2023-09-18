@@ -46,11 +46,11 @@ class TraceConfig:
 
 
 @dataclass
-class GetCategoriesReturnT:
+class GetCategoriesReturnType:
     categories: list
 
 
 @dataclass
-class RequestMemoryDumpReturnT:
+class RequestMemoryDumpReturnType:
     dump_guid: str
     success: bool

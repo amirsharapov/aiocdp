@@ -6,27 +6,24 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.cache_storage.types import (
     CacheId,
-    RequestCacheNamesReturnT,
-    RequestCachedResponseReturnT,
-    RequestEntriesReturnT
-)
-from cdp.domains.storage.types import (
+    RequestCacheNamesReturnType,
+    RequestCachedResponseReturnType,
+    RequestEntriesReturnType,
     StorageBucket
 )
 if TYPE_CHECKING:
@@ -42,7 +39,10 @@ class CacheStorage(BaseDomain):
             cache_id: 'CacheId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'cacheId': cache_id,
+            'cacheId': to_dict(
+                cache_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -57,7 +57,10 @@ class CacheStorage(BaseDomain):
             request: 'str'
     ) -> 'IFutureResponse[None]':
         params = {
-            'cacheId': cache_id,
+            'cacheId': to_dict(
+                cache_id,
+                'camel'
+            ),
             'request': request,
         }
 
@@ -72,7 +75,7 @@ class CacheStorage(BaseDomain):
             security_origin: 'str' = UNDEFINED,
             storage_key: 'str' = UNDEFINED,
             storage_bucket: 'StorageBucket' = UNDEFINED
-    ) -> 'IFutureResponse[RequestCacheNamesReturnT]':
+    ) -> 'IFutureResponse[RequestCacheNamesReturnType]':
         params = {}
 
         if is_defined(security_origin):
@@ -92,7 +95,7 @@ class CacheStorage(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                RequestCacheNamesReturnT,
+                RequestCacheNamesReturnType,
                 data,
                 'camel'
             )
@@ -103,14 +106,14 @@ class CacheStorage(BaseDomain):
             cache_id: 'CacheId',
             request_url: 'str',
             request_headers: 'list'
-    ) -> 'IFutureResponse[RequestCachedResponseReturnT]':
+    ) -> 'IFutureResponse[RequestCachedResponseReturnType]':
         params = {
-            'cacheId': cache_id,
+            'cacheId': to_dict(
+                cache_id,
+                'camel'
+            ),
             'requestURL': request_url,
-            'requestHeaders': [
-                to_dict(item, 'camel')
-                for item in request_headers
-            ],
+            'requestHeaders': request_headers,
         }
 
         return self._send_command(
@@ -118,7 +121,7 @@ class CacheStorage(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                RequestCachedResponseReturnT,
+                RequestCachedResponseReturnType,
                 data,
                 'camel'
             )
@@ -130,9 +133,12 @@ class CacheStorage(BaseDomain):
             skip_count: 'int' = UNDEFINED,
             page_size: 'int' = UNDEFINED,
             path_filter: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[RequestEntriesReturnT]':
+    ) -> 'IFutureResponse[RequestEntriesReturnType]':
         params = {
-            'cacheId': cache_id,
+            'cacheId': to_dict(
+                cache_id,
+                'camel'
+            ),
         }
 
         if is_defined(skip_count):
@@ -149,7 +155,7 @@ class CacheStorage(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                RequestEntriesReturnT,
+                RequestEntriesReturnType,
                 data,
                 'camel'
             )

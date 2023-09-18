@@ -6,27 +6,24 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.io.types import (
-    ReadReturnT,
-    ResolveBlobReturnT,
+    ReadReturnType,
+    RemoteObjectId,
+    ResolveBlobReturnType,
     StreamHandle
-)
-from cdp.domains.runtime.types import (
-    RemoteObjectId
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -41,7 +38,10 @@ class IO(BaseDomain):
             handle: 'StreamHandle'
     ) -> 'IFutureResponse[None]':
         params = {
-            'handle': handle,
+            'handle': to_dict(
+                handle,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -55,9 +55,12 @@ class IO(BaseDomain):
             handle: 'StreamHandle',
             offset: 'int' = UNDEFINED,
             size: 'int' = UNDEFINED
-    ) -> 'IFutureResponse[ReadReturnT]':
+    ) -> 'IFutureResponse[ReadReturnType]':
         params = {
-            'handle': handle,
+            'handle': to_dict(
+                handle,
+                'camel'
+            ),
         }
 
         if is_defined(offset):
@@ -71,7 +74,7 @@ class IO(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                ReadReturnT,
+                ReadReturnType,
                 data,
                 'camel'
             )
@@ -80,9 +83,12 @@ class IO(BaseDomain):
     def resolve_blob(
             self,
             object_id: 'RemoteObjectId'
-    ) -> 'IFutureResponse[ResolveBlobReturnT]':
+    ) -> 'IFutureResponse[ResolveBlobReturnType]':
         params = {
-            'objectId': object_id,
+            'objectId': to_dict(
+                object_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -90,7 +96,7 @@ class IO(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                ResolveBlobReturnT,
+                ResolveBlobReturnType,
                 data,
                 'camel'
             )

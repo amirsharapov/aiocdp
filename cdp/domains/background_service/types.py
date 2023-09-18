@@ -12,14 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.network.types import (
-        TimeSinceEpoch
-    )
-    from cdp.domains.service_worker.types import (
-        RegistrationID
-    )
-
 ServiceName = Literal[
     'backgroundFetch',
     'backgroundSync',

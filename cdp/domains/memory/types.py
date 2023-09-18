@@ -39,22 +39,22 @@ class Module:
 
 
 @dataclass
-class GetDOMCountersReturnT:
+class GetDOMCountersReturnType:
     documents: int
     nodes: int
     js_event_listeners: int
 
 
 @dataclass
-class GetAllTimeSamplingProfileReturnT:
+class GetAllTimeSamplingProfileReturnType:
     profile: 'SamplingProfile'
 
 
 @dataclass
-class GetBrowserSamplingProfileReturnT:
+class GetBrowserSamplingProfileReturnType:
     profile: 'SamplingProfile'
 
 
 @dataclass
-class GetSamplingProfileReturnT:
+class GetSamplingProfileReturnType:
     profile: 'SamplingProfile'

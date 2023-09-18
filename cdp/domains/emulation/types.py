@@ -62,10 +62,10 @@ class UserAgentMetadata:
 
 
 @dataclass
-class CanEmulateReturnT:
+class CanEmulateReturnType:
     result: bool
 
 
 @dataclass
-class SetVirtualTimePolicyReturnT:
+class SetVirtualTimePolicyReturnType:
     virtual_time_ticks_base: float

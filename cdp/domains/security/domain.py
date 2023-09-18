@@ -6,19 +6,18 @@
 from cdp.domains.base import (
     BaseDomain
 )
+from cdp.domains import (
+    mappers
+)
+from cdp.utils import (
+    UNDEFINED,
+    is_defined
+)
 from dataclasses import (
     dataclass
 )
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
-)
 from typing import (
     TYPE_CHECKING
-)
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
 )
 from cdp.domains.security.types import (
     CertificateErrorAction
@@ -74,7 +73,10 @@ class Security(BaseDomain):
     ) -> 'IFutureResponse[None]':
         params = {
             'eventId': event_id,
-            'action': action,
+            'action': to_dict(
+                action,
+                'camel'
+            ),
         }
 
         return self._send_command(

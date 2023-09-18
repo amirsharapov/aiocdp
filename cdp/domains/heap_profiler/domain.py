@@ -6,29 +6,26 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.heap_profiler.types import (
-    GetHeapObjectIdReturnT,
-    GetObjectByHeapObjectIdReturnT,
-    GetSamplingProfileReturnT,
+    GetHeapObjectIdReturnType,
+    GetObjectByHeapObjectIdReturnType,
+    GetSamplingProfileReturnType,
     HeapSnapshotObjectId,
-    StopSamplingReturnT
-)
-from cdp.domains.runtime.types import (
-    RemoteObjectId
+    RemoteObjectId,
+    StopSamplingReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -43,7 +40,10 @@ class HeapProfiler(BaseDomain):
             heap_object_id: 'HeapSnapshotObjectId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'heapObjectId': heap_object_id,
+            'heapObjectId': to_dict(
+                heap_object_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -88,9 +88,12 @@ class HeapProfiler(BaseDomain):
     def get_heap_object_id(
             self,
             object_id: 'RemoteObjectId'
-    ) -> 'IFutureResponse[GetHeapObjectIdReturnT]':
+    ) -> 'IFutureResponse[GetHeapObjectIdReturnType]':
         params = {
-            'objectId': object_id,
+            'objectId': to_dict(
+                object_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -98,7 +101,7 @@ class HeapProfiler(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetHeapObjectIdReturnT,
+                GetHeapObjectIdReturnType,
                 data,
                 'camel'
             )
@@ -108,9 +111,12 @@ class HeapProfiler(BaseDomain):
             self,
             object_id: 'HeapSnapshotObjectId',
             object_group: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[GetObjectByHeapObjectIdReturnT]':
+    ) -> 'IFutureResponse[GetObjectByHeapObjectIdReturnType]':
         params = {
-            'objectId': object_id,
+            'objectId': to_dict(
+                object_id,
+                'camel'
+            ),
         }
 
         if is_defined(object_group):
@@ -121,7 +127,7 @@ class HeapProfiler(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetObjectByHeapObjectIdReturnT,
+                GetObjectByHeapObjectIdReturnType,
                 data,
                 'camel'
             )
@@ -129,7 +135,7 @@ class HeapProfiler(BaseDomain):
 
     def get_sampling_profile(
             self
-    ) -> 'IFutureResponse[GetSamplingProfileReturnT]':
+    ) -> 'IFutureResponse[GetSamplingProfileReturnType]':
         params = {}
 
         return self._send_command(
@@ -137,7 +143,7 @@ class HeapProfiler(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetSamplingProfileReturnT,
+                GetSamplingProfileReturnType,
                 data,
                 'camel'
             )
@@ -175,7 +181,7 @@ class HeapProfiler(BaseDomain):
 
     def stop_sampling(
             self
-    ) -> 'IFutureResponse[StopSamplingReturnT]':
+    ) -> 'IFutureResponse[StopSamplingReturnType]':
         params = {}
 
         return self._send_command(
@@ -183,7 +189,7 @@ class HeapProfiler(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                StopSamplingReturnT,
+                StopSamplingReturnType,
                 data,
                 'camel'
             )

@@ -6,23 +6,22 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.dom_snapshot.types import (
-    CaptureSnapshotReturnT,
-    GetSnapshotReturnT
+    CaptureSnapshotReturnType,
+    GetSnapshotReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -60,7 +59,7 @@ class DOMSnapshot(BaseDomain):
             include_event_listeners: 'bool' = UNDEFINED,
             include_paint_order: 'bool' = UNDEFINED,
             include_user_agent_shadow_tree: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetSnapshotReturnT]':
+    ) -> 'IFutureResponse[GetSnapshotReturnType]':
         params = {
             'computedStyleWhitelist': computed_style_whitelist,
         }
@@ -79,7 +78,7 @@ class DOMSnapshot(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetSnapshotReturnT,
+                GetSnapshotReturnType,
                 data,
                 'camel'
             )
@@ -92,7 +91,7 @@ class DOMSnapshot(BaseDomain):
             include_dom_rects: 'bool' = UNDEFINED,
             include_blended_background_colors: 'bool' = UNDEFINED,
             include_text_color_opacities: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[CaptureSnapshotReturnT]':
+    ) -> 'IFutureResponse[CaptureSnapshotReturnType]':
         params = {
             'computedStyles': computed_styles,
         }
@@ -114,7 +113,7 @@ class DOMSnapshot(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CaptureSnapshotReturnT,
+                CaptureSnapshotReturnType,
                 data,
                 'camel'
             )

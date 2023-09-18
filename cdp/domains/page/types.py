@@ -12,24 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.runtime.types import (
-        ExecutionContextId,
-        ScriptId,
-        UniqueDebuggerId
-    )
-    from cdp.domains.network.types import (
-        LoaderId,
-        ResourceType,
-        TimeSinceEpoch
-    )
-    from cdp.domains.dom.types import (
-        Rect
-    )
-    from cdp.domains.io.types import (
-        StreamHandle
-    )
-
 FrameId = str
 ScriptIdentifier = str
 AdFrameType = Literal[
@@ -572,32 +554,32 @@ class BackForwardCacheNotRestoredExplanationTree:
 
 
 @dataclass
-class AddScriptToEvaluateOnLoadReturnT:
+class AddScriptToEvaluateOnLoadReturnType:
     identifier: 'ScriptIdentifier'
 
 
 @dataclass
-class AddScriptToEvaluateOnNewDocumentReturnT:
+class AddScriptToEvaluateOnNewDocumentReturnType:
     identifier: 'ScriptIdentifier'
 
 
 @dataclass
-class CaptureScreenshotReturnT:
+class CaptureScreenshotReturnType:
     data: str
 
 
 @dataclass
-class CaptureSnapshotReturnT:
+class CaptureSnapshotReturnType:
     data: str
 
 
 @dataclass
-class CreateIsolatedWorldReturnT:
+class CreateIsolatedWorldReturnType:
     execution_context_id: 'ExecutionContextId'
 
 
 @dataclass
-class GetAppManifestReturnT:
+class GetAppManifestReturnType:
     url: str
     errors: list
     data: str
@@ -605,38 +587,38 @@ class GetAppManifestReturnT:
 
 
 @dataclass
-class GetInstallabilityErrorsReturnT:
+class GetInstallabilityErrorsReturnType:
     installability_errors: list
 
 
 @dataclass
-class GetManifestIconsReturnT:
+class GetManifestIconsReturnType:
     primary_icon: str
 
 
 @dataclass
-class GetAppIdReturnT:
+class GetAppIdReturnType:
     app_id: str
     recommended_id: str
 
 
 @dataclass
-class GetAdScriptIdReturnT:
+class GetAdScriptIdReturnType:
     ad_script_id: 'AdScriptId'
 
 
 @dataclass
-class GetCookiesReturnT:
+class GetCookiesReturnType:
     cookies: list
 
 
 @dataclass
-class GetFrameTreeReturnT:
+class GetFrameTreeReturnType:
     frame_tree: 'FrameTree'
 
 
 @dataclass
-class GetLayoutMetricsReturnT:
+class GetLayoutMetricsReturnType:
     layout_viewport: 'LayoutViewport'
     visual_viewport: 'VisualViewport'
     content_size: 'Rect'
@@ -646,45 +628,45 @@ class GetLayoutMetricsReturnT:
 
 
 @dataclass
-class GetNavigationHistoryReturnT:
+class GetNavigationHistoryReturnType:
     current_index: int
     entries: list
 
 
 @dataclass
-class GetResourceContentReturnT:
+class GetResourceContentReturnType:
     content: str
     base64_encoded: bool
 
 
 @dataclass
-class GetResourceTreeReturnT:
+class GetResourceTreeReturnType:
     frame_tree: 'FrameResourceTree'
 
 
 @dataclass
-class NavigateReturnT:
+class NavigateReturnType:
     frame_id: 'FrameId'
     loader_id: 'LoaderId'
     error_text: str
 
 
 @dataclass
-class PrintToPDFReturnT:
+class PrintToPDFReturnType:
     data: str
     stream: 'StreamHandle'
 
 
 @dataclass
-class SearchInResourceReturnT:
+class SearchInResourceReturnType:
     result: list
 
 
 @dataclass
-class GetPermissionsPolicyStateReturnT:
+class GetPermissionsPolicyStateReturnType:
     states: list
 
 
 @dataclass
-class GetOriginTrialsReturnT:
+class GetOriginTrialsReturnType:
     origin_trials: list

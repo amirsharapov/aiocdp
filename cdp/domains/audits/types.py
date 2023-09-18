@@ -12,24 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.network.types import (
-        ClientSecurityState,
-        CorsErrorStatus,
-        IPAddressSpace,
-        LoaderId,
-        RequestId
-    )
-    from cdp.domains.page.types import (
-        FrameId
-    )
-    from cdp.domains.runtime.types import (
-        ScriptId
-    )
-    from cdp.domains.dom.types import (
-        BackendNodeId
-    )
-
 IssueId = str
 CookieExclusionReason = Literal[
     'ExcludeSameSiteUnspecifiedTreatedAsLax',
@@ -436,12 +418,12 @@ class InspectorIssue:
 
 
 @dataclass
-class GetEncodedResponseReturnT:
+class GetEncodedResponseReturnType:
     body: str
     original_size: int
     encoded_size: int
 
 
 @dataclass
-class CheckFormsIssuesReturnT:
+class CheckFormsIssuesReturnType:
     form_issues: list

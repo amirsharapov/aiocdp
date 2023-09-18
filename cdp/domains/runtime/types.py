@@ -142,42 +142,42 @@ class StackTraceId:
 
 
 @dataclass
-class AwaitPromiseReturnT:
+class AwaitPromiseReturnType:
     result: 'RemoteObject'
     exception_details: 'ExceptionDetails'
 
 
 @dataclass
-class CallFunctionOnReturnT:
+class CallFunctionOnReturnType:
     result: 'RemoteObject'
     exception_details: 'ExceptionDetails'
 
 
 @dataclass
-class CompileScriptReturnT:
+class CompileScriptReturnType:
     script_id: 'ScriptId'
     exception_details: 'ExceptionDetails'
 
 
 @dataclass
-class EvaluateReturnT:
+class EvaluateReturnType:
     result: 'RemoteObject'
     exception_details: 'ExceptionDetails'
 
 
 @dataclass
-class GetIsolateIdReturnT:
+class GetIsolateIdReturnType:
     id: str
 
 
 @dataclass
-class GetHeapUsageReturnT:
+class GetHeapUsageReturnType:
     used_size: float
     total_size: float
 
 
 @dataclass
-class GetPropertiesReturnT:
+class GetPropertiesReturnType:
     result: list
     internal_properties: list
     private_properties: list
@@ -185,16 +185,16 @@ class GetPropertiesReturnT:
 
 
 @dataclass
-class GlobalLexicalScopeNamesReturnT:
+class GlobalLexicalScopeNamesReturnType:
     names: list
 
 
 @dataclass
-class QueryObjectsReturnT:
+class QueryObjectsReturnType:
     objects: 'RemoteObject'
 
 
 @dataclass
-class RunScriptReturnT:
+class RunScriptReturnType:
     result: 'RemoteObject'
     exception_details: 'ExceptionDetails'

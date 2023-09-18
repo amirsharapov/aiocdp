@@ -6,28 +6,25 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.fetch.types import (
     AuthChallengeResponse,
-    GetResponseBodyReturnT,
+    ErrorReason,
+    GetResponseBodyReturnType,
     RequestId,
-    TakeResponseBodyAsStreamReturnT
-)
-from cdp.domains.network.types import (
-    ErrorReason
+    TakeResponseBodyAsStreamReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -56,10 +53,7 @@ class Fetch(BaseDomain):
         params = {}
 
         if is_defined(patterns):
-            params['patterns'] = [
-                to_dict(item, 'camel')
-                for item in patterns
-            ]
+            params['patterns'] = patterns
 
         if is_defined(handle_auth_requests):
             params['handleAuthRequests'] = handle_auth_requests
@@ -76,8 +70,14 @@ class Fetch(BaseDomain):
             error_reason: 'ErrorReason'
     ) -> 'IFutureResponse[None]':
         params = {
-            'requestId': request_id,
-            'errorReason': error_reason,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
+            'errorReason': to_dict(
+                error_reason,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -96,15 +96,15 @@ class Fetch(BaseDomain):
             response_phrase: 'str' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
             'responseCode': response_code,
         }
 
         if is_defined(response_headers):
-            params['responseHeaders'] = [
-                to_dict(item, 'camel')
-                for item in response_headers
-            ]
+            params['responseHeaders'] = response_headers
 
         if is_defined(binary_response_headers):
             params['binaryResponseHeaders'] = binary_response_headers
@@ -131,7 +131,10 @@ class Fetch(BaseDomain):
             intercept_response: 'bool' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
         }
 
         if is_defined(url):
@@ -144,10 +147,7 @@ class Fetch(BaseDomain):
             params['postData'] = post_data
 
         if is_defined(headers):
-            params['headers'] = [
-                to_dict(item, 'camel')
-                for item in headers
-            ]
+            params['headers'] = headers
 
         if is_defined(intercept_response):
             params['interceptResponse'] = intercept_response
@@ -164,7 +164,10 @@ class Fetch(BaseDomain):
             auth_challenge_response: 'AuthChallengeResponse'
     ) -> 'IFutureResponse[None]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
             'authChallengeResponse': to_dict(
                 auth_challenge_response,
                 'camel'
@@ -186,7 +189,10 @@ class Fetch(BaseDomain):
             binary_response_headers: 'str' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
         }
 
         if is_defined(response_code):
@@ -196,10 +202,7 @@ class Fetch(BaseDomain):
             params['responsePhrase'] = response_phrase
 
         if is_defined(response_headers):
-            params['responseHeaders'] = [
-                to_dict(item, 'camel')
-                for item in response_headers
-            ]
+            params['responseHeaders'] = response_headers
 
         if is_defined(binary_response_headers):
             params['binaryResponseHeaders'] = binary_response_headers
@@ -213,9 +216,12 @@ class Fetch(BaseDomain):
     def get_response_body(
             self,
             request_id: 'RequestId'
-    ) -> 'IFutureResponse[GetResponseBodyReturnT]':
+    ) -> 'IFutureResponse[GetResponseBodyReturnType]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -223,7 +229,7 @@ class Fetch(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetResponseBodyReturnT,
+                GetResponseBodyReturnType,
                 data,
                 'camel'
             )
@@ -232,9 +238,12 @@ class Fetch(BaseDomain):
     def take_response_body_as_stream(
             self,
             request_id: 'RequestId'
-    ) -> 'IFutureResponse[TakeResponseBodyAsStreamReturnT]':
+    ) -> 'IFutureResponse[TakeResponseBodyAsStreamReturnType]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -242,7 +251,7 @@ class Fetch(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                TakeResponseBodyAsStreamReturnT,
+                TakeResponseBodyAsStreamReturnType,
                 data,
                 'camel'
             )

@@ -72,7 +72,7 @@ def _generate_send_method_parameter_signature(command: Command):
 
     for parameter in required + optional:
         arg = ast.arg(
-            arg=parameter.name_snake_cased_collision_safe,
+            arg=parameter.name_.snake_case_non_colliding,
             annotation=ast.Constant(
                 cdp_to_python_type(
                     coalesce_undefined([
@@ -96,10 +96,10 @@ def _generate_send_method_parameter_signature(command: Command):
 
 
 def _send_method_parameter_value(parameter: 'CommandParameter'):
-    param_name = parameter.name_snake_cased_collision_safe
+    param_name = parameter.name_.snake_case_non_colliding
     value = ast.Name(param_name)
 
-    if parameter.is_simple_type or parameter.is_array_of_simple_types:
+    if parameter.is_simple_type or parameter.is_array_of_simple_type:
         return value
 
     if parameter.is_complex_type:
@@ -175,7 +175,7 @@ def _generate_send_method_optional_params(command: Command):
                     func=ast.Name('is_defined'),
                     args=[
                         ast.Name(
-                            parameter.name_snake_cased_collision_safe
+                            parameter.name_.snake_case_non_colliding
                         )
                     ]
                 ),
@@ -212,7 +212,6 @@ def _generate_send_method_return_call(command: Command):
             ast.Name('params'),
             ast.Constant(bool(command.returns))
         ],
-        keywords=[],
         render_context={
             'expand': True
         }

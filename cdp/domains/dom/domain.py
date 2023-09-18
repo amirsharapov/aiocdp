@@ -6,61 +6,56 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.dom.types import (
     BackendNodeId,
-    CollectClassNamesFromSubtreeReturnT,
-    CopyToReturnT,
-    DescribeNodeReturnT,
-    GetAttributesReturnT,
-    GetBoxModelReturnT,
-    GetContainerForNodeReturnT,
-    GetContentQuadsReturnT,
-    GetDocumentReturnT,
-    GetFileInfoReturnT,
-    GetFlattenedDocumentReturnT,
-    GetFrameOwnerReturnT,
-    GetNodeForLocationReturnT,
-    GetNodeStackTracesReturnT,
-    GetNodesForSubtreeByStyleReturnT,
-    GetOuterHTMLReturnT,
-    GetQueryingDescendantsForContainerReturnT,
-    GetRelayoutBoundaryReturnT,
-    GetSearchResultsReturnT,
-    GetTopLayerElementsReturnT,
-    LogicalAxes,
-    MoveToReturnT,
-    NodeId,
-    PerformSearchReturnT,
-    PhysicalAxes,
-    PushNodeByPathToFrontendReturnT,
-    PushNodesByBackendIdsToFrontendReturnT,
-    QuerySelectorAllReturnT,
-    QuerySelectorReturnT,
-    Rect,
-    RequestNodeReturnT,
-    ResolveNodeReturnT,
-    SetNodeNameReturnT
-)
-from cdp.domains.runtime.types import (
+    CollectClassNamesFromSubtreeReturnType,
+    CopyToReturnType,
+    DescribeNodeReturnType,
     ExecutionContextId,
-    RemoteObjectId
-)
-from cdp.domains.page.types import (
-    FrameId
+    FrameId,
+    GetAttributesReturnType,
+    GetBoxModelReturnType,
+    GetContainerForNodeReturnType,
+    GetContentQuadsReturnType,
+    GetDocumentReturnType,
+    GetFileInfoReturnType,
+    GetFlattenedDocumentReturnType,
+    GetFrameOwnerReturnType,
+    GetNodeForLocationReturnType,
+    GetNodeStackTracesReturnType,
+    GetNodesForSubtreeByStyleReturnType,
+    GetOuterHTMLReturnType,
+    GetQueryingDescendantsForContainerReturnType,
+    GetRelayoutBoundaryReturnType,
+    GetSearchResultsReturnType,
+    GetTopLayerElementsReturnType,
+    LogicalAxes,
+    MoveToReturnType,
+    NodeId,
+    PerformSearchReturnType,
+    PhysicalAxes,
+    PushNodeByPathToFrontendReturnType,
+    PushNodesByBackendIdsToFrontendReturnType,
+    QuerySelectorAllReturnType,
+    QuerySelectorReturnType,
+    Rect,
+    RemoteObjectId,
+    RequestNodeReturnType,
+    ResolveNodeReturnType,
+    SetNodeNameReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -73,9 +68,12 @@ class DOM(BaseDomain):
     def collect_class_names_from_subtree(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[CollectClassNamesFromSubtreeReturnT]':
+    ) -> 'IFutureResponse[CollectClassNamesFromSubtreeReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -83,7 +81,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CollectClassNamesFromSubtreeReturnT,
+                CollectClassNamesFromSubtreeReturnType,
                 data,
                 'camel'
             )
@@ -94,21 +92,30 @@ class DOM(BaseDomain):
             node_id: 'NodeId',
             target_node_id: 'NodeId',
             insert_before_node_id: 'NodeId' = UNDEFINED
-    ) -> 'IFutureResponse[CopyToReturnT]':
+    ) -> 'IFutureResponse[CopyToReturnType]':
         params = {
-            'nodeId': node_id,
-            'targetNodeId': target_node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
+            'targetNodeId': to_dict(
+                target_node_id,
+                'camel'
+            ),
         }
 
         if is_defined(insert_before_node_id):
-            params['insertBeforeNodeId'] = insert_before_node_id
+            params['insertBeforeNodeId'] = to_dict(
+                insert_before_node_id,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.copyTo',
             params,
             True,
             lambda data: from_dict(
-                CopyToReturnT,
+                CopyToReturnType,
                 data,
                 'camel'
             )
@@ -121,17 +128,26 @@ class DOM(BaseDomain):
             object_id: 'RemoteObjectId' = UNDEFINED,
             depth: 'int' = UNDEFINED,
             pierce: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[DescribeNodeReturnT]':
+    ) -> 'IFutureResponse[DescribeNodeReturnType]':
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         if is_defined(depth):
             params['depth'] = depth
@@ -144,7 +160,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                DescribeNodeReturnT,
+                DescribeNodeReturnType,
                 data,
                 'camel'
             )
@@ -160,13 +176,22 @@ class DOM(BaseDomain):
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         if is_defined(rect):
             params['rect'] = to_dict(
@@ -229,13 +254,22 @@ class DOM(BaseDomain):
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.focus',
@@ -246,9 +280,12 @@ class DOM(BaseDomain):
     def get_attributes(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetAttributesReturnT]':
+    ) -> 'IFutureResponse[GetAttributesReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -256,7 +293,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetAttributesReturnT,
+                GetAttributesReturnType,
                 data,
                 'camel'
             )
@@ -267,24 +304,33 @@ class DOM(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> 'IFutureResponse[GetBoxModelReturnT]':
+    ) -> 'IFutureResponse[GetBoxModelReturnType]':
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.getBoxModel',
             params,
             True,
             lambda data: from_dict(
-                GetBoxModelReturnT,
+                GetBoxModelReturnType,
                 data,
                 'camel'
             )
@@ -295,24 +341,33 @@ class DOM(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> 'IFutureResponse[GetContentQuadsReturnT]':
+    ) -> 'IFutureResponse[GetContentQuadsReturnType]':
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.getContentQuads',
             params,
             True,
             lambda data: from_dict(
-                GetContentQuadsReturnT,
+                GetContentQuadsReturnType,
                 data,
                 'camel'
             )
@@ -322,7 +377,7 @@ class DOM(BaseDomain):
             self,
             depth: 'int' = UNDEFINED,
             pierce: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetDocumentReturnT]':
+    ) -> 'IFutureResponse[GetDocumentReturnType]':
         params = {}
 
         if is_defined(depth):
@@ -336,7 +391,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetDocumentReturnT,
+                GetDocumentReturnType,
                 data,
                 'camel'
             )
@@ -346,7 +401,7 @@ class DOM(BaseDomain):
             self,
             depth: 'int' = UNDEFINED,
             pierce: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetFlattenedDocumentReturnT]':
+    ) -> 'IFutureResponse[GetFlattenedDocumentReturnType]':
         params = {}
 
         if is_defined(depth):
@@ -360,7 +415,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetFlattenedDocumentReturnT,
+                GetFlattenedDocumentReturnType,
                 data,
                 'camel'
             )
@@ -371,13 +426,13 @@ class DOM(BaseDomain):
             node_id: 'NodeId',
             computed_styles: 'list',
             pierce: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetNodesForSubtreeByStyleReturnT]':
+    ) -> 'IFutureResponse[GetNodesForSubtreeByStyleReturnType]':
         params = {
-            'nodeId': node_id,
-            'computedStyles': [
-                to_dict(item, 'camel')
-                for item in computed_styles
-            ],
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
+            'computedStyles': computed_styles,
         }
 
         if is_defined(pierce):
@@ -388,7 +443,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetNodesForSubtreeByStyleReturnT,
+                GetNodesForSubtreeByStyleReturnType,
                 data,
                 'camel'
             )
@@ -400,7 +455,7 @@ class DOM(BaseDomain):
             y: 'int',
             include_user_agent_shadow_dom: 'bool' = UNDEFINED,
             ignore_pointer_events_none: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetNodeForLocationReturnT]':
+    ) -> 'IFutureResponse[GetNodeForLocationReturnType]':
         params = {
             'x': x,
             'y': y,
@@ -417,7 +472,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetNodeForLocationReturnT,
+                GetNodeForLocationReturnType,
                 data,
                 'camel'
             )
@@ -428,24 +483,33 @@ class DOM(BaseDomain):
             node_id: 'NodeId' = UNDEFINED,
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_id: 'RemoteObjectId' = UNDEFINED
-    ) -> 'IFutureResponse[GetOuterHTMLReturnT]':
+    ) -> 'IFutureResponse[GetOuterHTMLReturnType]':
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.getOuterHTML',
             params,
             True,
             lambda data: from_dict(
-                GetOuterHTMLReturnT,
+                GetOuterHTMLReturnType,
                 data,
                 'camel'
             )
@@ -454,9 +518,12 @@ class DOM(BaseDomain):
     def get_relayout_boundary(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetRelayoutBoundaryReturnT]':
+    ) -> 'IFutureResponse[GetRelayoutBoundaryReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -464,7 +531,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetRelayoutBoundaryReturnT,
+                GetRelayoutBoundaryReturnType,
                 data,
                 'camel'
             )
@@ -475,7 +542,7 @@ class DOM(BaseDomain):
             search_id: 'str',
             from_index: 'int',
             to_index: 'int'
-    ) -> 'IFutureResponse[GetSearchResultsReturnT]':
+    ) -> 'IFutureResponse[GetSearchResultsReturnType]':
         params = {
             'searchId': search_id,
             'fromIndex': from_index,
@@ -487,7 +554,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetSearchResultsReturnT,
+                GetSearchResultsReturnType,
                 data,
                 'camel'
             )
@@ -542,21 +609,30 @@ class DOM(BaseDomain):
             node_id: 'NodeId',
             target_node_id: 'NodeId',
             insert_before_node_id: 'NodeId' = UNDEFINED
-    ) -> 'IFutureResponse[MoveToReturnT]':
+    ) -> 'IFutureResponse[MoveToReturnType]':
         params = {
-            'nodeId': node_id,
-            'targetNodeId': target_node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
+            'targetNodeId': to_dict(
+                target_node_id,
+                'camel'
+            ),
         }
 
         if is_defined(insert_before_node_id):
-            params['insertBeforeNodeId'] = insert_before_node_id
+            params['insertBeforeNodeId'] = to_dict(
+                insert_before_node_id,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.moveTo',
             params,
             True,
             lambda data: from_dict(
-                MoveToReturnT,
+                MoveToReturnType,
                 data,
                 'camel'
             )
@@ -566,7 +642,7 @@ class DOM(BaseDomain):
             self,
             query: 'str',
             include_user_agent_shadow_dom: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[PerformSearchReturnT]':
+    ) -> 'IFutureResponse[PerformSearchReturnType]':
         params = {
             'query': query,
         }
@@ -579,7 +655,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                PerformSearchReturnT,
+                PerformSearchReturnType,
                 data,
                 'camel'
             )
@@ -588,7 +664,7 @@ class DOM(BaseDomain):
     def push_node_by_path_to_frontend(
             self,
             path: 'str'
-    ) -> 'IFutureResponse[PushNodeByPathToFrontendReturnT]':
+    ) -> 'IFutureResponse[PushNodeByPathToFrontendReturnType]':
         params = {
             'path': path,
         }
@@ -598,7 +674,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                PushNodeByPathToFrontendReturnT,
+                PushNodeByPathToFrontendReturnType,
                 data,
                 'camel'
             )
@@ -607,7 +683,7 @@ class DOM(BaseDomain):
     def push_nodes_by_backend_ids_to_frontend(
             self,
             backend_node_ids: 'list'
-    ) -> 'IFutureResponse[PushNodesByBackendIdsToFrontendReturnT]':
+    ) -> 'IFutureResponse[PushNodesByBackendIdsToFrontendReturnType]':
         params = {
             'backendNodeIds': backend_node_ids,
         }
@@ -617,7 +693,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                PushNodesByBackendIdsToFrontendReturnT,
+                PushNodesByBackendIdsToFrontendReturnType,
                 data,
                 'camel'
             )
@@ -627,9 +703,12 @@ class DOM(BaseDomain):
             self,
             node_id: 'NodeId',
             selector: 'str'
-    ) -> 'IFutureResponse[QuerySelectorReturnT]':
+    ) -> 'IFutureResponse[QuerySelectorReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'selector': selector,
         }
 
@@ -638,7 +717,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                QuerySelectorReturnT,
+                QuerySelectorReturnType,
                 data,
                 'camel'
             )
@@ -648,9 +727,12 @@ class DOM(BaseDomain):
             self,
             node_id: 'NodeId',
             selector: 'str'
-    ) -> 'IFutureResponse[QuerySelectorAllReturnT]':
+    ) -> 'IFutureResponse[QuerySelectorAllReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'selector': selector,
         }
 
@@ -659,7 +741,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                QuerySelectorAllReturnT,
+                QuerySelectorAllReturnType,
                 data,
                 'camel'
             )
@@ -667,7 +749,7 @@ class DOM(BaseDomain):
 
     def get_top_layer_elements(
             self
-    ) -> 'IFutureResponse[GetTopLayerElementsReturnT]':
+    ) -> 'IFutureResponse[GetTopLayerElementsReturnType]':
         params = {}
 
         return self._send_command(
@@ -675,7 +757,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetTopLayerElementsReturnT,
+                GetTopLayerElementsReturnType,
                 data,
                 'camel'
             )
@@ -698,7 +780,10 @@ class DOM(BaseDomain):
             name: 'str'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'name': name,
         }
 
@@ -713,7 +798,10 @@ class DOM(BaseDomain):
             node_id: 'NodeId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -729,7 +817,10 @@ class DOM(BaseDomain):
             pierce: 'bool' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         if is_defined(depth):
@@ -747,9 +838,12 @@ class DOM(BaseDomain):
     def request_node(
             self,
             object_id: 'RemoteObjectId'
-    ) -> 'IFutureResponse[RequestNodeReturnT]':
+    ) -> 'IFutureResponse[RequestNodeReturnType]':
         params = {
-            'objectId': object_id,
+            'objectId': to_dict(
+                object_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -757,7 +851,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                RequestNodeReturnT,
+                RequestNodeReturnType,
                 data,
                 'camel'
             )
@@ -769,27 +863,36 @@ class DOM(BaseDomain):
             backend_node_id: 'BackendNodeId' = UNDEFINED,
             object_group: 'str' = UNDEFINED,
             execution_context_id: 'ExecutionContextId' = UNDEFINED
-    ) -> 'IFutureResponse[ResolveNodeReturnT]':
+    ) -> 'IFutureResponse[ResolveNodeReturnType]':
         params = {}
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_group):
             params['objectGroup'] = object_group
 
         if is_defined(execution_context_id):
-            params['executionContextId'] = execution_context_id
+            params['executionContextId'] = to_dict(
+                execution_context_id,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.resolveNode',
             params,
             True,
             lambda data: from_dict(
-                ResolveNodeReturnT,
+                ResolveNodeReturnType,
                 data,
                 'camel'
             )
@@ -802,7 +905,10 @@ class DOM(BaseDomain):
             value: 'str'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'name': name,
             'value': value,
         }
@@ -820,7 +926,10 @@ class DOM(BaseDomain):
             name: 'str' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'text': text,
         }
 
@@ -845,13 +954,22 @@ class DOM(BaseDomain):
         }
 
         if is_defined(node_id):
-            params['nodeId'] = node_id
+            params['nodeId'] = to_dict(
+                node_id,
+                'camel'
+            )
 
         if is_defined(backend_node_id):
-            params['backendNodeId'] = backend_node_id
+            params['backendNodeId'] = to_dict(
+                backend_node_id,
+                'camel'
+            )
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.setFileInputFiles',
@@ -876,9 +994,12 @@ class DOM(BaseDomain):
     def get_node_stack_traces(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetNodeStackTracesReturnT]':
+    ) -> 'IFutureResponse[GetNodeStackTracesReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -886,7 +1007,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetNodeStackTracesReturnT,
+                GetNodeStackTracesReturnType,
                 data,
                 'camel'
             )
@@ -895,9 +1016,12 @@ class DOM(BaseDomain):
     def get_file_info(
             self,
             object_id: 'RemoteObjectId'
-    ) -> 'IFutureResponse[GetFileInfoReturnT]':
+    ) -> 'IFutureResponse[GetFileInfoReturnType]':
         params = {
-            'objectId': object_id,
+            'objectId': to_dict(
+                object_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -905,7 +1029,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetFileInfoReturnT,
+                GetFileInfoReturnType,
                 data,
                 'camel'
             )
@@ -916,7 +1040,10 @@ class DOM(BaseDomain):
             node_id: 'NodeId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -929,9 +1056,12 @@ class DOM(BaseDomain):
             self,
             node_id: 'NodeId',
             name: 'str'
-    ) -> 'IFutureResponse[SetNodeNameReturnT]':
+    ) -> 'IFutureResponse[SetNodeNameReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'name': name,
         }
 
@@ -940,7 +1070,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetNodeNameReturnT,
+                SetNodeNameReturnType,
                 data,
                 'camel'
             )
@@ -952,7 +1082,10 @@ class DOM(BaseDomain):
             value: 'str'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'value': value,
         }
 
@@ -968,7 +1101,10 @@ class DOM(BaseDomain):
             outer_html: 'str'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
             'outerHTML': outer_html,
         }
 
@@ -992,9 +1128,12 @@ class DOM(BaseDomain):
     def get_frame_owner(
             self,
             frame_id: 'FrameId'
-    ) -> 'IFutureResponse[GetFrameOwnerReturnT]':
+    ) -> 'IFutureResponse[GetFrameOwnerReturnType]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -1002,7 +1141,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetFrameOwnerReturnT,
+                GetFrameOwnerReturnType,
                 data,
                 'camel'
             )
@@ -1014,26 +1153,35 @@ class DOM(BaseDomain):
             container_name: 'str' = UNDEFINED,
             physical_axes: 'PhysicalAxes' = UNDEFINED,
             logical_axes: 'LogicalAxes' = UNDEFINED
-    ) -> 'IFutureResponse[GetContainerForNodeReturnT]':
+    ) -> 'IFutureResponse[GetContainerForNodeReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         if is_defined(container_name):
             params['containerName'] = container_name
 
         if is_defined(physical_axes):
-            params['physicalAxes'] = physical_axes
+            params['physicalAxes'] = to_dict(
+                physical_axes,
+                'camel'
+            )
 
         if is_defined(logical_axes):
-            params['logicalAxes'] = logical_axes
+            params['logicalAxes'] = to_dict(
+                logical_axes,
+                'camel'
+            )
 
         return self._send_command(
             'DOM.getContainerForNode',
             params,
             True,
             lambda data: from_dict(
-                GetContainerForNodeReturnT,
+                GetContainerForNodeReturnType,
                 data,
                 'camel'
             )
@@ -1042,9 +1190,12 @@ class DOM(BaseDomain):
     def get_querying_descendants_for_container(
             self,
             node_id: 'NodeId'
-    ) -> 'IFutureResponse[GetQueryingDescendantsForContainerReturnT]':
+    ) -> 'IFutureResponse[GetQueryingDescendantsForContainerReturnType]':
         params = {
-            'nodeId': node_id,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -1052,7 +1203,7 @@ class DOM(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetQueryingDescendantsForContainerReturnT,
+                GetQueryingDescendantsForContainerReturnType,
                 data,
                 'camel'
             )

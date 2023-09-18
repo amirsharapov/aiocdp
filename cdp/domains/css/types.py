@@ -12,18 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.dom.types import (
-        BackendNodeId,
-        LogicalAxes,
-        NodeId,
-        PhysicalAxes,
-        PseudoType
-    )
-    from cdp.domains.page.types import (
-        FrameId
-    )
-
 StyleSheetId = str
 StyleSheetOrigin = Literal[
     'injected',
@@ -317,40 +305,40 @@ class StyleDeclarationEdit:
 
 
 @dataclass
-class AddRuleReturnT:
+class AddRuleReturnType:
     rule: 'CSSRule'
 
 
 @dataclass
-class CollectClassNamesReturnT:
+class CollectClassNamesReturnType:
     class_names: list
 
 
 @dataclass
-class CreateStyleSheetReturnT:
+class CreateStyleSheetReturnType:
     style_sheet_id: 'StyleSheetId'
 
 
 @dataclass
-class GetBackgroundColorsReturnT:
+class GetBackgroundColorsReturnType:
     background_colors: list
     computed_font_size: str
     computed_font_weight: str
 
 
 @dataclass
-class GetComputedStyleForNodeReturnT:
+class GetComputedStyleForNodeReturnType:
     computed_style: list
 
 
 @dataclass
-class GetInlineStylesForNodeReturnT:
+class GetInlineStylesForNodeReturnType:
     inline_style: 'CSSStyle'
     attributes_style: 'CSSStyle'
 
 
 @dataclass
-class GetMatchedStylesForNodeReturnT:
+class GetMatchedStylesForNodeReturnType:
     inline_style: 'CSSStyle'
     attributes_style: 'CSSStyle'
     matched_css_rules: list
@@ -365,76 +353,76 @@ class GetMatchedStylesForNodeReturnT:
 
 
 @dataclass
-class GetMediaQueriesReturnT:
+class GetMediaQueriesReturnType:
     medias: list
 
 
 @dataclass
-class GetPlatformFontsForNodeReturnT:
+class GetPlatformFontsForNodeReturnType:
     fonts: list
 
 
 @dataclass
-class GetStyleSheetTextReturnT:
+class GetStyleSheetTextReturnType:
     text: str
 
 
 @dataclass
-class GetLayersForNodeReturnT:
+class GetLayersForNodeReturnType:
     root_layer: 'CSSLayerData'
 
 
 @dataclass
-class TakeComputedStyleUpdatesReturnT:
+class TakeComputedStyleUpdatesReturnType:
     node_ids: list
 
 
 @dataclass
-class SetKeyframeKeyReturnT:
+class SetKeyframeKeyReturnType:
     key_text: 'Value'
 
 
 @dataclass
-class SetMediaTextReturnT:
+class SetMediaTextReturnType:
     media: 'CSSMedia'
 
 
 @dataclass
-class SetContainerQueryTextReturnT:
+class SetContainerQueryTextReturnType:
     container_query: 'CSSContainerQuery'
 
 
 @dataclass
-class SetSupportsTextReturnT:
+class SetSupportsTextReturnType:
     supports: 'CSSSupports'
 
 
 @dataclass
-class SetScopeTextReturnT:
+class SetScopeTextReturnType:
     scope: 'CSSScope'
 
 
 @dataclass
-class SetRuleSelectorReturnT:
+class SetRuleSelectorReturnType:
     selector_list: 'SelectorList'
 
 
 @dataclass
-class SetStyleSheetTextReturnT:
+class SetStyleSheetTextReturnType:
     source_map_url: str
 
 
 @dataclass
-class SetStyleTextsReturnT:
+class SetStyleTextsReturnType:
     styles: list
 
 
 @dataclass
-class StopRuleUsageTrackingReturnT:
+class StopRuleUsageTrackingReturnType:
     rule_usage: list
 
 
 @dataclass
-class TakeCoverageDeltaReturnT:
+class TakeCoverageDeltaReturnType:
     coverage: list
     timestamp: float

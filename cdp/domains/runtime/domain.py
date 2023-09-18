@@ -6,33 +6,32 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.runtime.types import (
-    AwaitPromiseReturnT,
-    CallFunctionOnReturnT,
-    CompileScriptReturnT,
-    EvaluateReturnT,
+    AwaitPromiseReturnType,
+    CallFunctionOnReturnType,
+    CompileScriptReturnType,
+    EvaluateReturnType,
     ExecutionContextId,
-    GetHeapUsageReturnT,
-    GetIsolateIdReturnT,
-    GetPropertiesReturnT,
-    GlobalLexicalScopeNamesReturnT,
-    QueryObjectsReturnT,
+    GetHeapUsageReturnType,
+    GetIsolateIdReturnType,
+    GetPropertiesReturnType,
+    GlobalLexicalScopeNamesReturnType,
+    QueryObjectsReturnType,
     RemoteObjectId,
-    RunScriptReturnT,
+    RunScriptReturnType,
     ScriptId,
     TimeDelta
 )
@@ -49,9 +48,12 @@ class Runtime(BaseDomain):
             promise_object_id: 'RemoteObjectId',
             return_by_value: 'bool' = UNDEFINED,
             generate_preview: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[AwaitPromiseReturnT]':
+    ) -> 'IFutureResponse[AwaitPromiseReturnType]':
         params = {
-            'promiseObjectId': promise_object_id,
+            'promiseObjectId': to_dict(
+                promise_object_id,
+                'camel'
+            ),
         }
 
         if is_defined(return_by_value):
@@ -65,7 +67,7 @@ class Runtime(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                AwaitPromiseReturnT,
+                AwaitPromiseReturnType,
                 data,
                 'camel'
             )
@@ -83,19 +85,19 @@ class Runtime(BaseDomain):
             await_promise: 'bool' = UNDEFINED,
             execution_context_id: 'ExecutionContextId' = UNDEFINED,
             object_group: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[CallFunctionOnReturnT]':
+    ) -> 'IFutureResponse[CallFunctionOnReturnType]':
         params = {
             'functionDeclaration': function_declaration,
         }
 
         if is_defined(object_id):
-            params['objectId'] = object_id
+            params['objectId'] = to_dict(
+                object_id,
+                'camel'
+            )
 
         if is_defined(arguments):
-            params['arguments'] = [
-                to_dict(item, 'camel')
-                for item in arguments
-            ]
+            params['arguments'] = arguments
 
         if is_defined(silent):
             params['silent'] = silent
@@ -113,7 +115,10 @@ class Runtime(BaseDomain):
             params['awaitPromise'] = await_promise
 
         if is_defined(execution_context_id):
-            params['executionContextId'] = execution_context_id
+            params['executionContextId'] = to_dict(
+                execution_context_id,
+                'camel'
+            )
 
         if is_defined(object_group):
             params['objectGroup'] = object_group
@@ -123,7 +128,7 @@ class Runtime(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CallFunctionOnReturnT,
+                CallFunctionOnReturnType,
                 data,
                 'camel'
             )
@@ -135,7 +140,7 @@ class Runtime(BaseDomain):
             source_url: 'str',
             persist_script: 'bool',
             execution_context_id: 'ExecutionContextId' = UNDEFINED
-    ) -> 'IFutureResponse[CompileScriptReturnT]':
+    ) -> 'IFutureResponse[CompileScriptReturnType]':
         params = {
             'expression': expression,
             'sourceURL': source_url,
@@ -143,14 +148,17 @@ class Runtime(BaseDomain):
         }
 
         if is_defined(execution_context_id):
-            params['executionContextId'] = execution_context_id
+            params['executionContextId'] = to_dict(
+                execution_context_id,
+                'camel'
+            )
 
         return self._send_command(
             'Runtime.compileScript',
             params,
             True,
             lambda data: from_dict(
-                CompileScriptReturnT,
+                CompileScriptReturnType,
                 data,
                 'camel'
             )
@@ -202,7 +210,7 @@ class Runtime(BaseDomain):
             await_promise: 'bool' = UNDEFINED,
             throw_on_side_effect: 'bool' = UNDEFINED,
             timeout: 'TimeDelta' = UNDEFINED
-    ) -> 'IFutureResponse[EvaluateReturnT]':
+    ) -> 'IFutureResponse[EvaluateReturnType]':
         params = {
             'expression': expression,
         }
@@ -217,7 +225,10 @@ class Runtime(BaseDomain):
             params['silent'] = silent
 
         if is_defined(context_id):
-            params['contextId'] = context_id
+            params['contextId'] = to_dict(
+                context_id,
+                'camel'
+            )
 
         if is_defined(return_by_value):
             params['returnByValue'] = return_by_value
@@ -235,14 +246,17 @@ class Runtime(BaseDomain):
             params['throwOnSideEffect'] = throw_on_side_effect
 
         if is_defined(timeout):
-            params['timeout'] = timeout
+            params['timeout'] = to_dict(
+                timeout,
+                'camel'
+            )
 
         return self._send_command(
             'Runtime.evaluate',
             params,
             True,
             lambda data: from_dict(
-                EvaluateReturnT,
+                EvaluateReturnType,
                 data,
                 'camel'
             )
@@ -250,7 +264,7 @@ class Runtime(BaseDomain):
 
     def get_isolate_id(
             self
-    ) -> 'IFutureResponse[GetIsolateIdReturnT]':
+    ) -> 'IFutureResponse[GetIsolateIdReturnType]':
         params = {}
 
         return self._send_command(
@@ -258,7 +272,7 @@ class Runtime(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetIsolateIdReturnT,
+                GetIsolateIdReturnType,
                 data,
                 'camel'
             )
@@ -266,7 +280,7 @@ class Runtime(BaseDomain):
 
     def get_heap_usage(
             self
-    ) -> 'IFutureResponse[GetHeapUsageReturnT]':
+    ) -> 'IFutureResponse[GetHeapUsageReturnType]':
         params = {}
 
         return self._send_command(
@@ -274,7 +288,7 @@ class Runtime(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetHeapUsageReturnT,
+                GetHeapUsageReturnType,
                 data,
                 'camel'
             )
@@ -286,9 +300,12 @@ class Runtime(BaseDomain):
             own_properties: 'bool' = UNDEFINED,
             accessor_properties_only: 'bool' = UNDEFINED,
             generate_preview: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetPropertiesReturnT]':
+    ) -> 'IFutureResponse[GetPropertiesReturnType]':
         params = {
-            'objectId': object_id,
+            'objectId': to_dict(
+                object_id,
+                'camel'
+            ),
         }
 
         if is_defined(own_properties):
@@ -305,7 +322,7 @@ class Runtime(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetPropertiesReturnT,
+                GetPropertiesReturnType,
                 data,
                 'camel'
             )
@@ -314,18 +331,21 @@ class Runtime(BaseDomain):
     def global_lexical_scope_names(
             self,
             execution_context_id: 'ExecutionContextId' = UNDEFINED
-    ) -> 'IFutureResponse[GlobalLexicalScopeNamesReturnT]':
+    ) -> 'IFutureResponse[GlobalLexicalScopeNamesReturnType]':
         params = {}
 
         if is_defined(execution_context_id):
-            params['executionContextId'] = execution_context_id
+            params['executionContextId'] = to_dict(
+                execution_context_id,
+                'camel'
+            )
 
         return self._send_command(
             'Runtime.globalLexicalScopeNames',
             params,
             True,
             lambda data: from_dict(
-                GlobalLexicalScopeNamesReturnT,
+                GlobalLexicalScopeNamesReturnType,
                 data,
                 'camel'
             )
@@ -335,9 +355,12 @@ class Runtime(BaseDomain):
             self,
             prototype_object_id: 'RemoteObjectId',
             object_group: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[QueryObjectsReturnT]':
+    ) -> 'IFutureResponse[QueryObjectsReturnType]':
         params = {
-            'prototypeObjectId': prototype_object_id,
+            'prototypeObjectId': to_dict(
+                prototype_object_id,
+                'camel'
+            ),
         }
 
         if is_defined(object_group):
@@ -348,7 +371,7 @@ class Runtime(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                QueryObjectsReturnT,
+                QueryObjectsReturnType,
                 data,
                 'camel'
             )
@@ -359,7 +382,10 @@ class Runtime(BaseDomain):
             object_id: 'RemoteObjectId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'objectId': object_id,
+            'objectId': to_dict(
+                object_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -403,13 +429,19 @@ class Runtime(BaseDomain):
             return_by_value: 'bool' = UNDEFINED,
             generate_preview: 'bool' = UNDEFINED,
             await_promise: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[RunScriptReturnT]':
+    ) -> 'IFutureResponse[RunScriptReturnType]':
         params = {
-            'scriptId': script_id,
+            'scriptId': to_dict(
+                script_id,
+                'camel'
+            ),
         }
 
         if is_defined(execution_context_id):
-            params['executionContextId'] = execution_context_id
+            params['executionContextId'] = to_dict(
+                execution_context_id,
+                'camel'
+            )
 
         if is_defined(object_group):
             params['objectGroup'] = object_group
@@ -434,7 +466,7 @@ class Runtime(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                RunScriptReturnT,
+                RunScriptReturnType,
                 data,
                 'camel'
             )
@@ -503,7 +535,10 @@ class Runtime(BaseDomain):
         }
 
         if is_defined(execution_context_id):
-            params['executionContextId'] = execution_context_id
+            params['executionContextId'] = to_dict(
+                execution_context_id,
+                'camel'
+            )
 
         return self._send_command(
             'Runtime.addBinding',

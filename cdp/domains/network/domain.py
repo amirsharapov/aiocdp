@@ -6,52 +6,47 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.network.types import (
     AuthChallengeResponse,
-    CanClearBrowserCacheReturnT,
-    CanClearBrowserCookiesReturnT,
-    CanEmulateNetworkConditionsReturnT,
+    CanClearBrowserCacheReturnType,
+    CanClearBrowserCookiesReturnType,
+    CanEmulateNetworkConditionsReturnType,
     ConnectionType,
     CookiePriority,
     CookieSameSite,
     CookieSourceScheme,
     ErrorReason,
-    GetAllCookiesReturnT,
-    GetCertificateReturnT,
-    GetCookiesReturnT,
-    GetRequestPostDataReturnT,
-    GetResponseBodyForInterceptionReturnT,
-    GetResponseBodyReturnT,
-    GetSecurityIsolationStatusReturnT,
+    FrameId,
+    GetAllCookiesReturnType,
+    GetCertificateReturnType,
+    GetCookiesReturnType,
+    GetRequestPostDataReturnType,
+    GetResponseBodyForInterceptionReturnType,
+    GetResponseBodyReturnType,
+    GetSecurityIsolationStatusReturnType,
     Headers,
     InterceptionId,
     LoadNetworkResourceOptions,
-    LoadNetworkResourceReturnT,
+    LoadNetworkResourceReturnType,
     RequestId,
-    SearchInResponseBodyReturnT,
-    SetCookieReturnT,
-    TakeResponseBodyForInterceptionAsStreamReturnT,
-    TimeSinceEpoch
-)
-from cdp.domains.emulation.types import (
+    SearchInResponseBodyReturnType,
+    SetCookieReturnType,
+    TakeResponseBodyForInterceptionAsStreamReturnType,
+    TimeSinceEpoch,
     UserAgentMetadata
-)
-from cdp.domains.page.types import (
-    FrameId
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -88,7 +83,7 @@ class Network(BaseDomain):
 
     def can_clear_browser_cache(
             self
-    ) -> 'IFutureResponse[CanClearBrowserCacheReturnT]':
+    ) -> 'IFutureResponse[CanClearBrowserCacheReturnType]':
         params = {}
 
         return self._send_command(
@@ -96,7 +91,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CanClearBrowserCacheReturnT,
+                CanClearBrowserCacheReturnType,
                 data,
                 'camel'
             )
@@ -104,7 +99,7 @@ class Network(BaseDomain):
 
     def can_clear_browser_cookies(
             self
-    ) -> 'IFutureResponse[CanClearBrowserCookiesReturnT]':
+    ) -> 'IFutureResponse[CanClearBrowserCookiesReturnType]':
         params = {}
 
         return self._send_command(
@@ -112,7 +107,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CanClearBrowserCookiesReturnT,
+                CanClearBrowserCookiesReturnType,
                 data,
                 'camel'
             )
@@ -120,7 +115,7 @@ class Network(BaseDomain):
 
     def can_emulate_network_conditions(
             self
-    ) -> 'IFutureResponse[CanEmulateNetworkConditionsReturnT]':
+    ) -> 'IFutureResponse[CanEmulateNetworkConditionsReturnType]':
         params = {}
 
         return self._send_command(
@@ -128,7 +123,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CanEmulateNetworkConditionsReturnT,
+                CanEmulateNetworkConditionsReturnType,
                 data,
                 'camel'
             )
@@ -168,11 +163,17 @@ class Network(BaseDomain):
             auth_challenge_response: 'AuthChallengeResponse' = UNDEFINED
     ) -> 'IFutureResponse[None]':
         params = {
-            'interceptionId': interception_id,
+            'interceptionId': to_dict(
+                interception_id,
+                'camel'
+            ),
         }
 
         if is_defined(error_reason):
-            params['errorReason'] = error_reason
+            params['errorReason'] = to_dict(
+                error_reason,
+                'camel'
+            )
 
         if is_defined(raw_response):
             params['rawResponse'] = raw_response
@@ -187,7 +188,10 @@ class Network(BaseDomain):
             params['postData'] = post_data
 
         if is_defined(headers):
-            params['headers'] = headers
+            params['headers'] = to_dict(
+                headers,
+                'camel'
+            )
 
         if is_defined(auth_challenge_response):
             params['authChallengeResponse'] = to_dict(
@@ -254,7 +258,10 @@ class Network(BaseDomain):
         }
 
         if is_defined(connection_type):
-            params['connectionType'] = connection_type
+            params['connectionType'] = to_dict(
+                connection_type,
+                'camel'
+            )
 
         return self._send_command(
             'Network.emulateNetworkConditions',
@@ -287,7 +294,7 @@ class Network(BaseDomain):
 
     def get_all_cookies(
             self
-    ) -> 'IFutureResponse[GetAllCookiesReturnT]':
+    ) -> 'IFutureResponse[GetAllCookiesReturnType]':
         params = {}
 
         return self._send_command(
@@ -295,7 +302,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetAllCookiesReturnT,
+                GetAllCookiesReturnType,
                 data,
                 'camel'
             )
@@ -304,7 +311,7 @@ class Network(BaseDomain):
     def get_certificate(
             self,
             origin: 'str'
-    ) -> 'IFutureResponse[GetCertificateReturnT]':
+    ) -> 'IFutureResponse[GetCertificateReturnType]':
         params = {
             'origin': origin,
         }
@@ -314,7 +321,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetCertificateReturnT,
+                GetCertificateReturnType,
                 data,
                 'camel'
             )
@@ -323,7 +330,7 @@ class Network(BaseDomain):
     def get_cookies(
             self,
             urls: 'list' = UNDEFINED
-    ) -> 'IFutureResponse[GetCookiesReturnT]':
+    ) -> 'IFutureResponse[GetCookiesReturnType]':
         params = {}
 
         if is_defined(urls):
@@ -334,7 +341,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetCookiesReturnT,
+                GetCookiesReturnType,
                 data,
                 'camel'
             )
@@ -343,9 +350,12 @@ class Network(BaseDomain):
     def get_response_body(
             self,
             request_id: 'RequestId'
-    ) -> 'IFutureResponse[GetResponseBodyReturnT]':
+    ) -> 'IFutureResponse[GetResponseBodyReturnType]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -353,7 +363,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetResponseBodyReturnT,
+                GetResponseBodyReturnType,
                 data,
                 'camel'
             )
@@ -362,9 +372,12 @@ class Network(BaseDomain):
     def get_request_post_data(
             self,
             request_id: 'RequestId'
-    ) -> 'IFutureResponse[GetRequestPostDataReturnT]':
+    ) -> 'IFutureResponse[GetRequestPostDataReturnType]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -372,7 +385,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetRequestPostDataReturnT,
+                GetRequestPostDataReturnType,
                 data,
                 'camel'
             )
@@ -381,9 +394,12 @@ class Network(BaseDomain):
     def get_response_body_for_interception(
             self,
             interception_id: 'InterceptionId'
-    ) -> 'IFutureResponse[GetResponseBodyForInterceptionReturnT]':
+    ) -> 'IFutureResponse[GetResponseBodyForInterceptionReturnType]':
         params = {
-            'interceptionId': interception_id,
+            'interceptionId': to_dict(
+                interception_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -391,7 +407,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetResponseBodyForInterceptionReturnT,
+                GetResponseBodyForInterceptionReturnType,
                 data,
                 'camel'
             )
@@ -400,9 +416,12 @@ class Network(BaseDomain):
     def take_response_body_for_interception_as_stream(
             self,
             interception_id: 'InterceptionId'
-    ) -> 'IFutureResponse[TakeResponseBodyForInterceptionAsStreamReturnT]':
+    ) -> 'IFutureResponse[TakeResponseBodyForInterceptionAsStreamReturnType]':
         params = {
-            'interceptionId': interception_id,
+            'interceptionId': to_dict(
+                interception_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -410,7 +429,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                TakeResponseBodyForInterceptionAsStreamReturnT,
+                TakeResponseBodyForInterceptionAsStreamReturnType,
                 data,
                 'camel'
             )
@@ -421,7 +440,10 @@ class Network(BaseDomain):
             request_id: 'RequestId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -436,9 +458,12 @@ class Network(BaseDomain):
             query: 'str',
             case_sensitive: 'bool' = UNDEFINED,
             is_regex: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[SearchInResponseBodyReturnT]':
+    ) -> 'IFutureResponse[SearchInResponseBodyReturnType]':
         params = {
-            'requestId': request_id,
+            'requestId': to_dict(
+                request_id,
+                'camel'
+            ),
             'query': query,
         }
 
@@ -453,7 +478,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SearchInResponseBodyReturnT,
+                SearchInResponseBodyReturnType,
                 data,
                 'camel'
             )
@@ -517,7 +542,7 @@ class Network(BaseDomain):
             source_scheme: 'CookieSourceScheme' = UNDEFINED,
             source_port: 'int' = UNDEFINED,
             partition_key: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[SetCookieReturnT]':
+    ) -> 'IFutureResponse[SetCookieReturnType]':
         params = {
             'name': name,
             'value': value,
@@ -539,19 +564,31 @@ class Network(BaseDomain):
             params['httpOnly'] = http_only
 
         if is_defined(same_site):
-            params['sameSite'] = same_site
+            params['sameSite'] = to_dict(
+                same_site,
+                'camel'
+            )
 
         if is_defined(expires):
-            params['expires'] = expires
+            params['expires'] = to_dict(
+                expires,
+                'camel'
+            )
 
         if is_defined(priority):
-            params['priority'] = priority
+            params['priority'] = to_dict(
+                priority,
+                'camel'
+            )
 
         if is_defined(same_party):
             params['sameParty'] = same_party
 
         if is_defined(source_scheme):
-            params['sourceScheme'] = source_scheme
+            params['sourceScheme'] = to_dict(
+                source_scheme,
+                'camel'
+            )
 
         if is_defined(source_port):
             params['sourcePort'] = source_port
@@ -564,7 +601,7 @@ class Network(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SetCookieReturnT,
+                SetCookieReturnType,
                 data,
                 'camel'
             )
@@ -575,10 +612,7 @@ class Network(BaseDomain):
             cookies: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'cookies': [
-                to_dict(item, 'camel')
-                for item in cookies
-            ],
+            'cookies': cookies,
         }
 
         return self._send_command(
@@ -592,7 +626,10 @@ class Network(BaseDomain):
             headers: 'Headers'
     ) -> 'IFutureResponse[None]':
         params = {
-            'headers': headers,
+            'headers': to_dict(
+                headers,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -620,10 +657,7 @@ class Network(BaseDomain):
             patterns: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'patterns': [
-                to_dict(item, 'camel')
-                for item in patterns
-            ],
+            'patterns': patterns,
         }
 
         return self._send_command(
@@ -664,18 +698,21 @@ class Network(BaseDomain):
     def get_security_isolation_status(
             self,
             frame_id: 'FrameId' = UNDEFINED
-    ) -> 'IFutureResponse[GetSecurityIsolationStatusReturnT]':
+    ) -> 'IFutureResponse[GetSecurityIsolationStatusReturnType]':
         params = {}
 
         if is_defined(frame_id):
-            params['frameId'] = frame_id
+            params['frameId'] = to_dict(
+                frame_id,
+                'camel'
+            )
 
         return self._send_command(
             'Network.getSecurityIsolationStatus',
             params,
             True,
             lambda data: from_dict(
-                GetSecurityIsolationStatusReturnT,
+                GetSecurityIsolationStatusReturnType,
                 data,
                 'camel'
             )
@@ -700,7 +737,7 @@ class Network(BaseDomain):
             url: 'str',
             options: 'LoadNetworkResourceOptions',
             frame_id: 'FrameId' = UNDEFINED
-    ) -> 'IFutureResponse[LoadNetworkResourceReturnT]':
+    ) -> 'IFutureResponse[LoadNetworkResourceReturnType]':
         params = {
             'url': url,
             'options': to_dict(
@@ -710,14 +747,17 @@ class Network(BaseDomain):
         }
 
         if is_defined(frame_id):
-            params['frameId'] = frame_id
+            params['frameId'] = to_dict(
+                frame_id,
+                'camel'
+            )
 
         return self._send_command(
             'Network.loadNetworkResource',
             params,
             True,
             lambda data: from_dict(
-                LoadNetworkResourceReturnT,
+                LoadNetworkResourceReturnType,
                 data,
                 'camel'
             )

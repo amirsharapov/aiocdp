@@ -6,29 +6,24 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.dom_debugger.types import (
     DOMBreakpointType,
-    GetEventListenersReturnT
-)
-from cdp.domains.runtime.types import (
+    GetEventListenersReturnType,
+    NodeId,
     RemoteObjectId
-)
-from cdp.domains.dom.types import (
-    NodeId
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -43,9 +38,12 @@ class DOMDebugger(BaseDomain):
             object_id: 'RemoteObjectId',
             depth: 'int' = UNDEFINED,
             pierce: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[GetEventListenersReturnT]':
+    ) -> 'IFutureResponse[GetEventListenersReturnType]':
         params = {
-            'objectId': object_id,
+            'objectId': to_dict(
+                object_id,
+                'camel'
+            ),
         }
 
         if is_defined(depth):
@@ -59,7 +57,7 @@ class DOMDebugger(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetEventListenersReturnT,
+                GetEventListenersReturnType,
                 data,
                 'camel'
             )
@@ -71,8 +69,14 @@ class DOMDebugger(BaseDomain):
             type_: 'DOMBreakpointType'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
-            'type': type_,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
+            'type': to_dict(
+                type_,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -147,8 +151,14 @@ class DOMDebugger(BaseDomain):
             type_: 'DOMBreakpointType'
     ) -> 'IFutureResponse[None]':
         params = {
-            'nodeId': node_id,
-            'type': type_,
+            'nodeId': to_dict(
+                node_id,
+                'camel'
+            ),
+            'type': to_dict(
+                type_,
+                'camel'
+            ),
         }
 
         return self._send_command(

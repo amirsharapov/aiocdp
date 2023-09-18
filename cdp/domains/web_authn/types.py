@@ -56,15 +56,15 @@ class Credential:
 
 
 @dataclass
-class AddVirtualAuthenticatorReturnT:
+class AddVirtualAuthenticatorReturnType:
     authenticator_id: 'AuthenticatorId'
 
 
 @dataclass
-class GetCredentialReturnT:
+class GetCredentialReturnType:
     credential: 'Credential'
 
 
 @dataclass
-class GetCredentialsReturnT:
+class GetCredentialsReturnType:
     credentials: list

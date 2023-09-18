@@ -6,19 +6,18 @@
 from cdp.domains.base import (
     BaseDomain
 )
+from cdp.domains import (
+    mappers
+)
+from cdp.utils import (
+    UNDEFINED,
+    is_defined
+)
 from dataclasses import (
     dataclass
 )
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
-)
 from typing import (
     TYPE_CHECKING
-)
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
 )
 from cdp.domains.service_worker.types import (
     RegistrationID
@@ -39,7 +38,10 @@ class ServiceWorker(BaseDomain):
     ) -> 'IFutureResponse[None]':
         params = {
             'origin': origin,
-            'registrationId': registration_id,
+            'registrationId': to_dict(
+                registration_id,
+                'camel'
+            ),
             'data': data,
         }
 
@@ -69,7 +71,10 @@ class ServiceWorker(BaseDomain):
     ) -> 'IFutureResponse[None]':
         params = {
             'origin': origin,
-            'registrationId': registration_id,
+            'registrationId': to_dict(
+                registration_id,
+                'camel'
+            ),
             'tag': tag,
             'lastChance': last_chance,
         }
@@ -88,7 +93,10 @@ class ServiceWorker(BaseDomain):
     ) -> 'IFutureResponse[None]':
         params = {
             'origin': origin,
-            'registrationId': registration_id,
+            'registrationId': to_dict(
+                registration_id,
+                'camel'
+            ),
             'tag': tag,
         }
 

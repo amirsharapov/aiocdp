@@ -12,13 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.dom.types import (
-        NodeId,
-        RGBA,
-        Rect
-    )
-
 ContrastAlgorithm = Literal[
     'aa',
     'aaa',
@@ -181,15 +174,15 @@ class IsolationModeHighlightConfig:
 
 
 @dataclass
-class GetHighlightObjectForTestReturnT:
+class GetHighlightObjectForTestReturnType:
     highlight: object
 
 
 @dataclass
-class GetGridHighlightObjectsForTestReturnT:
+class GetGridHighlightObjectsForTestReturnType:
     highlights: object
 
 
 @dataclass
-class GetSourceOrderHighlightObjectForTestReturnT:
+class GetSourceOrderHighlightObjectForTestReturnType:
     highlight: object

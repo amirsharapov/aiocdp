@@ -12,14 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.network.types import (
-        ResourceType
-    )
-    from cdp.domains.io.types import (
-        StreamHandle
-    )
-
 RequestId = str
 RequestStage = Literal[
     'Request',
@@ -55,11 +47,11 @@ class AuthChallengeResponse:
 
 
 @dataclass
-class GetResponseBodyReturnT:
+class GetResponseBodyReturnType:
     body: str
     base64_encoded: bool
 
 
 @dataclass
-class TakeResponseBodyAsStreamReturnT:
+class TakeResponseBodyAsStreamReturnType:
     stream: 'StreamHandle'

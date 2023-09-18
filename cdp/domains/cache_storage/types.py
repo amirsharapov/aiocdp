@@ -12,11 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.storage.types import (
-        StorageBucket
-    )
-
 CacheId = str
 CachedResponseType = Literal[
     'basic',
@@ -60,16 +55,16 @@ class CachedResponse:
 
 
 @dataclass
-class RequestCacheNamesReturnT:
+class RequestCacheNamesReturnType:
     caches: list
 
 
 @dataclass
-class RequestCachedResponseReturnT:
+class RequestCachedResponseReturnType:
     response: 'CachedResponse'
 
 
 @dataclass
-class RequestEntriesReturnT:
+class RequestEntriesReturnType:
     cache_data_entries: list
     return_count: float

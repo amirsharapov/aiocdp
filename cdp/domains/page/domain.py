@@ -6,53 +6,50 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.page.types import (
-    AddScriptToEvaluateOnLoadReturnT,
-    AddScriptToEvaluateOnNewDocumentReturnT,
+    AddScriptToEvaluateOnLoadReturnType,
+    AddScriptToEvaluateOnNewDocumentReturnType,
     AutoResponseMode,
-    CaptureScreenshotReturnT,
-    CaptureSnapshotReturnT,
-    CreateIsolatedWorldReturnT,
+    CaptureScreenshotReturnType,
+    CaptureSnapshotReturnType,
+    CreateIsolatedWorldReturnType,
     FontFamilies,
     FontSizes,
     FrameId,
-    GetAdScriptIdReturnT,
-    GetAppIdReturnT,
-    GetAppManifestReturnT,
-    GetCookiesReturnT,
-    GetFrameTreeReturnT,
-    GetInstallabilityErrorsReturnT,
-    GetLayoutMetricsReturnT,
-    GetManifestIconsReturnT,
-    GetNavigationHistoryReturnT,
-    GetOriginTrialsReturnT,
-    GetPermissionsPolicyStateReturnT,
-    GetResourceContentReturnT,
-    GetResourceTreeReturnT,
-    NavigateReturnT,
-    PrintToPDFReturnT,
+    GetAdScriptIdReturnType,
+    GetAppIdReturnType,
+    GetAppManifestReturnType,
+    GetCookiesReturnType,
+    GetFrameTreeReturnType,
+    GetInstallabilityErrorsReturnType,
+    GetLayoutMetricsReturnType,
+    GetManifestIconsReturnType,
+    GetNavigationHistoryReturnType,
+    GetOriginTrialsReturnType,
+    GetPermissionsPolicyStateReturnType,
+    GetResourceContentReturnType,
+    GetResourceTreeReturnType,
+    NavigateReturnType,
+    PrintToPDFReturnType,
     ReferrerPolicy,
+    ScreenOrientation,
     ScriptIdentifier,
-    SearchInResourceReturnT,
+    SearchInResourceReturnType,
     TransitionType,
     Viewport
-)
-from cdp.domains.emulation.types import (
-    ScreenOrientation
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -65,7 +62,7 @@ class Page(BaseDomain):
     def add_script_to_evaluate_on_load(
             self,
             script_source: 'str'
-    ) -> 'IFutureResponse[AddScriptToEvaluateOnLoadReturnT]':
+    ) -> 'IFutureResponse[AddScriptToEvaluateOnLoadReturnType]':
         params = {
             'scriptSource': script_source,
         }
@@ -75,7 +72,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                AddScriptToEvaluateOnLoadReturnT,
+                AddScriptToEvaluateOnLoadReturnType,
                 data,
                 'camel'
             )
@@ -87,7 +84,7 @@ class Page(BaseDomain):
             world_name: 'str' = UNDEFINED,
             include_command_line_api: 'bool' = UNDEFINED,
             run_immediately: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[AddScriptToEvaluateOnNewDocumentReturnT]':
+    ) -> 'IFutureResponse[AddScriptToEvaluateOnNewDocumentReturnType]':
         params = {
             'source': source,
         }
@@ -106,7 +103,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                AddScriptToEvaluateOnNewDocumentReturnT,
+                AddScriptToEvaluateOnNewDocumentReturnType,
                 data,
                 'camel'
             )
@@ -131,7 +128,7 @@ class Page(BaseDomain):
             from_surface: 'bool' = UNDEFINED,
             capture_beyond_viewport: 'bool' = UNDEFINED,
             optimize_for_speed: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[CaptureScreenshotReturnT]':
+    ) -> 'IFutureResponse[CaptureScreenshotReturnType]':
         params = {}
 
         if is_defined(format_):
@@ -160,7 +157,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CaptureScreenshotReturnT,
+                CaptureScreenshotReturnType,
                 data,
                 'camel'
             )
@@ -169,7 +166,7 @@ class Page(BaseDomain):
     def capture_snapshot(
             self,
             format_: 'str' = UNDEFINED
-    ) -> 'IFutureResponse[CaptureSnapshotReturnT]':
+    ) -> 'IFutureResponse[CaptureSnapshotReturnType]':
         params = {}
 
         if is_defined(format_):
@@ -180,7 +177,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CaptureSnapshotReturnT,
+                CaptureSnapshotReturnType,
                 data,
                 'camel'
             )
@@ -224,9 +221,12 @@ class Page(BaseDomain):
             frame_id: 'FrameId',
             world_name: 'str' = UNDEFINED,
             grant_univeral_access: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[CreateIsolatedWorldReturnT]':
+    ) -> 'IFutureResponse[CreateIsolatedWorldReturnType]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
         }
 
         if is_defined(world_name):
@@ -240,7 +240,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                CreateIsolatedWorldReturnT,
+                CreateIsolatedWorldReturnType,
                 data,
                 'camel'
             )
@@ -286,7 +286,7 @@ class Page(BaseDomain):
 
     def get_app_manifest(
             self
-    ) -> 'IFutureResponse[GetAppManifestReturnT]':
+    ) -> 'IFutureResponse[GetAppManifestReturnType]':
         params = {}
 
         return self._send_command(
@@ -294,7 +294,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetAppManifestReturnT,
+                GetAppManifestReturnType,
                 data,
                 'camel'
             )
@@ -302,7 +302,7 @@ class Page(BaseDomain):
 
     def get_installability_errors(
             self
-    ) -> 'IFutureResponse[GetInstallabilityErrorsReturnT]':
+    ) -> 'IFutureResponse[GetInstallabilityErrorsReturnType]':
         params = {}
 
         return self._send_command(
@@ -310,7 +310,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetInstallabilityErrorsReturnT,
+                GetInstallabilityErrorsReturnType,
                 data,
                 'camel'
             )
@@ -318,7 +318,7 @@ class Page(BaseDomain):
 
     def get_manifest_icons(
             self
-    ) -> 'IFutureResponse[GetManifestIconsReturnT]':
+    ) -> 'IFutureResponse[GetManifestIconsReturnType]':
         params = {}
 
         return self._send_command(
@@ -326,7 +326,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetManifestIconsReturnT,
+                GetManifestIconsReturnType,
                 data,
                 'camel'
             )
@@ -334,7 +334,7 @@ class Page(BaseDomain):
 
     def get_app_id(
             self
-    ) -> 'IFutureResponse[GetAppIdReturnT]':
+    ) -> 'IFutureResponse[GetAppIdReturnType]':
         params = {}
 
         return self._send_command(
@@ -342,7 +342,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetAppIdReturnT,
+                GetAppIdReturnType,
                 data,
                 'camel'
             )
@@ -351,9 +351,12 @@ class Page(BaseDomain):
     def get_ad_script_id(
             self,
             frame_id: 'FrameId'
-    ) -> 'IFutureResponse[GetAdScriptIdReturnT]':
+    ) -> 'IFutureResponse[GetAdScriptIdReturnType]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -361,7 +364,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetAdScriptIdReturnT,
+                GetAdScriptIdReturnType,
                 data,
                 'camel'
             )
@@ -369,7 +372,7 @@ class Page(BaseDomain):
 
     def get_cookies(
             self
-    ) -> 'IFutureResponse[GetCookiesReturnT]':
+    ) -> 'IFutureResponse[GetCookiesReturnType]':
         params = {}
 
         return self._send_command(
@@ -377,7 +380,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetCookiesReturnT,
+                GetCookiesReturnType,
                 data,
                 'camel'
             )
@@ -385,7 +388,7 @@ class Page(BaseDomain):
 
     def get_frame_tree(
             self
-    ) -> 'IFutureResponse[GetFrameTreeReturnT]':
+    ) -> 'IFutureResponse[GetFrameTreeReturnType]':
         params = {}
 
         return self._send_command(
@@ -393,7 +396,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetFrameTreeReturnT,
+                GetFrameTreeReturnType,
                 data,
                 'camel'
             )
@@ -401,7 +404,7 @@ class Page(BaseDomain):
 
     def get_layout_metrics(
             self
-    ) -> 'IFutureResponse[GetLayoutMetricsReturnT]':
+    ) -> 'IFutureResponse[GetLayoutMetricsReturnType]':
         params = {}
 
         return self._send_command(
@@ -409,7 +412,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetLayoutMetricsReturnT,
+                GetLayoutMetricsReturnType,
                 data,
                 'camel'
             )
@@ -417,7 +420,7 @@ class Page(BaseDomain):
 
     def get_navigation_history(
             self
-    ) -> 'IFutureResponse[GetNavigationHistoryReturnT]':
+    ) -> 'IFutureResponse[GetNavigationHistoryReturnType]':
         params = {}
 
         return self._send_command(
@@ -425,7 +428,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetNavigationHistoryReturnT,
+                GetNavigationHistoryReturnType,
                 data,
                 'camel'
             )
@@ -446,9 +449,12 @@ class Page(BaseDomain):
             self,
             frame_id: 'FrameId',
             url: 'str'
-    ) -> 'IFutureResponse[GetResourceContentReturnT]':
+    ) -> 'IFutureResponse[GetResourceContentReturnType]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
             'url': url,
         }
 
@@ -457,7 +463,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetResourceContentReturnT,
+                GetResourceContentReturnType,
                 data,
                 'camel'
             )
@@ -465,7 +471,7 @@ class Page(BaseDomain):
 
     def get_resource_tree(
             self
-    ) -> 'IFutureResponse[GetResourceTreeReturnT]':
+    ) -> 'IFutureResponse[GetResourceTreeReturnType]':
         params = {}
 
         return self._send_command(
@@ -473,7 +479,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetResourceTreeReturnT,
+                GetResourceTreeReturnType,
                 data,
                 'camel'
             )
@@ -504,7 +510,7 @@ class Page(BaseDomain):
             transition_type: 'TransitionType' = UNDEFINED,
             frame_id: 'FrameId' = UNDEFINED,
             referrer_policy: 'ReferrerPolicy' = UNDEFINED
-    ) -> 'IFutureResponse[NavigateReturnT]':
+    ) -> 'IFutureResponse[NavigateReturnType]':
         params = {
             'url': url,
         }
@@ -513,20 +519,29 @@ class Page(BaseDomain):
             params['referrer'] = referrer
 
         if is_defined(transition_type):
-            params['transitionType'] = transition_type
+            params['transitionType'] = to_dict(
+                transition_type,
+                'camel'
+            )
 
         if is_defined(frame_id):
-            params['frameId'] = frame_id
+            params['frameId'] = to_dict(
+                frame_id,
+                'camel'
+            )
 
         if is_defined(referrer_policy):
-            params['referrerPolicy'] = referrer_policy
+            params['referrerPolicy'] = to_dict(
+                referrer_policy,
+                'camel'
+            )
 
         return self._send_command(
             'Page.navigate',
             params,
             True,
             lambda data: from_dict(
-                NavigateReturnT,
+                NavigateReturnType,
                 data,
                 'camel'
             )
@@ -564,7 +579,7 @@ class Page(BaseDomain):
             prefer_css_page_size: 'bool' = UNDEFINED,
             transfer_mode: 'str' = UNDEFINED,
             generate_tagged_pdf: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[PrintToPDFReturnT]':
+    ) -> 'IFutureResponse[PrintToPDFReturnType]':
         params = {}
 
         if is_defined(landscape):
@@ -620,7 +635,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                PrintToPDFReturnT,
+                PrintToPDFReturnType,
                 data,
                 'camel'
             )
@@ -650,7 +665,10 @@ class Page(BaseDomain):
             identifier: 'ScriptIdentifier'
     ) -> 'IFutureResponse[None]':
         params = {
-            'identifier': identifier,
+            'identifier': to_dict(
+                identifier,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -664,7 +682,10 @@ class Page(BaseDomain):
             identifier: 'ScriptIdentifier'
     ) -> 'IFutureResponse[None]':
         params = {
-            'identifier': identifier,
+            'identifier': to_dict(
+                identifier,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -694,9 +715,12 @@ class Page(BaseDomain):
             query: 'str',
             case_sensitive: 'bool' = UNDEFINED,
             is_regex: 'bool' = UNDEFINED
-    ) -> 'IFutureResponse[SearchInResourceReturnT]':
+    ) -> 'IFutureResponse[SearchInResourceReturnType]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
             'url': url,
             'query': query,
         }
@@ -712,7 +736,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                SearchInResourceReturnT,
+                SearchInResourceReturnType,
                 data,
                 'camel'
             )
@@ -749,9 +773,12 @@ class Page(BaseDomain):
     def get_permissions_policy_state(
             self,
             frame_id: 'FrameId'
-    ) -> 'IFutureResponse[GetPermissionsPolicyStateReturnT]':
+    ) -> 'IFutureResponse[GetPermissionsPolicyStateReturnType]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -759,7 +786,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetPermissionsPolicyStateReturnT,
+                GetPermissionsPolicyStateReturnType,
                 data,
                 'camel'
             )
@@ -768,9 +795,12 @@ class Page(BaseDomain):
     def get_origin_trials(
             self,
             frame_id: 'FrameId'
-    ) -> 'IFutureResponse[GetOriginTrialsReturnT]':
+    ) -> 'IFutureResponse[GetOriginTrialsReturnType]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -778,7 +808,7 @@ class Page(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetOriginTrialsReturnT,
+                GetOriginTrialsReturnType,
                 data,
                 'camel'
             )
@@ -873,10 +903,7 @@ class Page(BaseDomain):
         }
 
         if is_defined(for_scripts):
-            params['forScripts'] = [
-                to_dict(item, 'camel')
-                for item in for_scripts
-            ]
+            params['forScripts'] = for_scripts
 
         return self._send_command(
             'Page.setFontFamilies',
@@ -907,7 +934,10 @@ class Page(BaseDomain):
             html: 'str'
     ) -> 'IFutureResponse[None]':
         params = {
-            'frameId': frame_id,
+            'frameId': to_dict(
+                frame_id,
+                'camel'
+            ),
             'html': html,
         }
 
@@ -1084,10 +1114,7 @@ class Page(BaseDomain):
             scripts: 'list'
     ) -> 'IFutureResponse[None]':
         params = {
-            'scripts': [
-                to_dict(item, 'camel')
-                for item in scripts
-            ],
+            'scripts': scripts,
         }
 
         return self._send_command(
@@ -1128,7 +1155,10 @@ class Page(BaseDomain):
             mode: 'AutoResponseMode'
     ) -> 'IFutureResponse[None]':
         params = {
-            'mode': mode,
+            'mode': to_dict(
+                mode,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -1142,7 +1172,10 @@ class Page(BaseDomain):
             mode: 'AutoResponseMode'
     ) -> 'IFutureResponse[None]':
         params = {
-            'mode': mode,
+            'mode': to_dict(
+                mode,
+                'camel'
+            ),
         }
 
         return self._send_command(

@@ -12,14 +12,6 @@ from dataclasses import (
     dataclass
 )
 
-if TYPE_CHECKING:
-    from cdp.domains.dom.types import (
-        BackendNodeId
-    )
-    from cdp.domains.page.types import (
-        FrameId
-    )
-
 AXNodeId = str
 AXValueType = Literal[
     'boolean',
@@ -154,36 +146,30 @@ class AXNode:
 
 
 @dataclass
-class GetPartialAXTreeReturnT:
+class GetPartialAXTreeReturnType:
     nodes: list
 
 
 @dataclass
-class GetFullAXTreeReturnT:
+class GetFullAXTreeReturnType:
     nodes: list
 
 
 @dataclass
-class GetRootAXNodeReturnT:
+class GetRootAXNodeReturnType:
     node: 'AXNode'
 
 
 @dataclass
-class GetAXNodeAndAncestorsReturnT:
+class GetAXNodeAndAncestorsReturnType:
     nodes: list
 
 
 @dataclass
-class GetChildAXNodesReturnT:
+class GetChildAXNodesReturnType:
     nodes: list
 
 
 @dataclass
-class QueryAXTreeReturnT:
+class QueryAXTreeReturnType:
     nodes: list
-
-
-type_registry.register(
-    'accessibility.QueryAXTreeReturnT',
-    QueryAXTreeReturnT
-)

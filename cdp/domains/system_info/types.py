@@ -83,7 +83,7 @@ class ProcessInfo:
 
 
 @dataclass
-class GetInfoReturnT:
+class GetInfoReturnType:
     gpu: 'GPUInfo'
     model_name: str
     model_version: str
@@ -91,10 +91,10 @@ class GetInfoReturnT:
 
 
 @dataclass
-class GetFeatureStateReturnT:
+class GetFeatureStateReturnType:
     feature_enabled: bool
 
 
 @dataclass
-class GetProcessInfoReturnT:
+class GetProcessInfoReturnType:
     process_info: list

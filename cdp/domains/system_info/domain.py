@@ -6,24 +6,23 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.system_info.types import (
-    GetFeatureStateReturnT,
-    GetInfoReturnT,
-    GetProcessInfoReturnT
+    GetFeatureStateReturnType,
+    GetInfoReturnType,
+    GetProcessInfoReturnType
 )
 if TYPE_CHECKING:
     from cdp.target.connection import (
@@ -35,7 +34,7 @@ if TYPE_CHECKING:
 class SystemInfo(BaseDomain):
     def get_info(
             self
-    ) -> 'IFutureResponse[GetInfoReturnT]':
+    ) -> 'IFutureResponse[GetInfoReturnType]':
         params = {}
 
         return self._send_command(
@@ -43,7 +42,7 @@ class SystemInfo(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetInfoReturnT,
+                GetInfoReturnType,
                 data,
                 'camel'
             )
@@ -52,7 +51,7 @@ class SystemInfo(BaseDomain):
     def get_feature_state(
             self,
             feature_state: 'str'
-    ) -> 'IFutureResponse[GetFeatureStateReturnT]':
+    ) -> 'IFutureResponse[GetFeatureStateReturnType]':
         params = {
             'featureState': feature_state,
         }
@@ -62,7 +61,7 @@ class SystemInfo(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetFeatureStateReturnT,
+                GetFeatureStateReturnType,
                 data,
                 'camel'
             )
@@ -70,7 +69,7 @@ class SystemInfo(BaseDomain):
 
     def get_process_info(
             self
-    ) -> 'IFutureResponse[GetProcessInfoReturnT]':
+    ) -> 'IFutureResponse[GetProcessInfoReturnType]':
         params = {}
 
         return self._send_command(
@@ -78,7 +77,7 @@ class SystemInfo(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetProcessInfoReturnT,
+                GetProcessInfoReturnType,
                 data,
                 'camel'
             )

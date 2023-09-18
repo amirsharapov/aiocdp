@@ -29,12 +29,12 @@ class Error:
 
 
 @dataclass
-class ExecuteSQLReturnT:
+class ExecuteSQLReturnType:
     column_names: list
     values: list
     sql_error: 'Error'
 
 
 @dataclass
-class GetDatabaseTableNamesReturnT:
+class GetDatabaseTableNamesReturnType:
     table_names: list

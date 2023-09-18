@@ -88,5 +88,5 @@ class AudioParam:
 
 
 @dataclass
-class GetRealtimeDataReturnT:
+class GetRealtimeDataReturnType:
     realtime_data: 'ContextRealtimeData'

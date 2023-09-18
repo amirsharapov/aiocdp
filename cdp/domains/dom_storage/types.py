@@ -23,5 +23,5 @@ class StorageId:
 
 
 @dataclass
-class GetDOMStorageItemsReturnT:
+class GetDOMStorageItemsReturnType:
     entries: list

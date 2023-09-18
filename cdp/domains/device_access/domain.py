@@ -6,19 +6,18 @@
 from cdp.domains.base import (
     BaseDomain
 )
+from cdp.domains import (
+    mappers
+)
+from cdp.utils import (
+    UNDEFINED,
+    is_defined
+)
 from dataclasses import (
     dataclass
 )
-from cdp.utils import (
-    is_defined,
-    UNDEFINED
-)
 from typing import (
     TYPE_CHECKING
-)
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
 )
 from cdp.domains.device_access.types import (
     DeviceId,
@@ -60,8 +59,14 @@ class DeviceAccess(BaseDomain):
             device_id: 'DeviceId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'id': id_,
-            'deviceId': device_id,
+            'id': to_dict(
+                id_,
+                'camel'
+            ),
+            'deviceId': to_dict(
+                device_id,
+                'camel'
+            ),
         }
 
         return self._send_command(
@@ -75,7 +80,10 @@ class DeviceAccess(BaseDomain):
             id_: 'RequestId'
     ) -> 'IFutureResponse[None]':
         params = {
-            'id': id_,
+            'id': to_dict(
+                id_,
+                'camel'
+            ),
         }
 
         return self._send_command(

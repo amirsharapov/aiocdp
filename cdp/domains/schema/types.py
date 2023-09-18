@@ -20,5 +20,5 @@ class Domain:
 
 
 @dataclass
-class GetDomainsReturnT:
+class GetDomainsReturnType:
     domains: list

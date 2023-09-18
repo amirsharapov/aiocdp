@@ -21,6 +21,6 @@ class ScreenshotParams:
 
 
 @dataclass
-class BeginFrameReturnT:
+class BeginFrameReturnType:
     has_damage: bool
     screenshot_data: str

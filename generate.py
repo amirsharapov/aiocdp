@@ -32,7 +32,7 @@ def main():
     Path('cdp/domains/__init__.py').touch()
 
     for item in Path('cdp/domains').iterdir():
-        if item.name not in ('__init__.py', 'base.py', 'utils.py'):
+        if item.name not in ('__init__.py', 'base.py', 'utils.py', 'mappers.py'):
             if item.is_dir():
                 shutil.rmtree(item)
             else:
@@ -65,6 +65,15 @@ def main():
                 module.source
             )
 
+            module = ast.modules.mapper.generate(domain)
+            module = SourceCodeGenerator().generate(module)
+            elapsed += module.generation_time
+
+            Path(f'cdp/domains/{module_name}/mapper.py').write_text(
+                GENERATED_MODULE_HEADER +
+                module.source
+            )
+
     print(
         f'Generated "cdp/domains/*" in '
         f'{elapsed} seconds'
@@ -82,7 +91,7 @@ def main():
         module.source
     )
 
-    module = ast.mapper.generate(protocols)
+    module = ast.mapper_.generate(protocols)
     module = SourceCodeGenerator().generate(module)
     print(
         f'Generated "cdp/domains/mapper.py" in '

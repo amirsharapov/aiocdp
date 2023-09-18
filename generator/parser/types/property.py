@@ -2,6 +2,7 @@ from abc import ABC
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
+from generator.parser.extensions import ExtendedString
 from generator.parser.types.base import ComplexNode
 from generator.parser.types.items import Items
 from generator.parser.types.ref import PropertyRef
@@ -11,6 +12,19 @@ if TYPE_CHECKING:
     from generator.parser.types import Type
     from generator.parser.types.command import Command
     from generator.parser.types.event import Event
+
+
+def split_properties_by_optional_flag(properties: list['Property']):
+    required = []
+    optional = []
+
+    for property_ in properties:
+        if is_defined(property_.optional):
+            optional.append(property_)
+        else:
+            required.append(property_)
+
+    return required, optional
 
 
 @dataclass
@@ -54,26 +68,27 @@ class Property(ComplexNode, ABC):
 
     @property
     def actual_domain(self):
-        return self.parent.domain_
+        return self.parent.actual_domain
 
     @property
-    def name_snake_cased(self):
-        return snake_case(self.name)
+    def is_array_of_complex_type(self):
+        return is_defined(self.items) and is_defined(self.items.ref)
 
     @property
-    def name_snake_cased_collision_safe(self):
-        name = self.name_snake_cased
-        if is_builtin(self.name_snake_cased):
-            name += '_'
-        return name
+    def is_array_of_simple_type(self):
+        return is_defined(self.items) and is_defined(self.items.type)
 
     @property
-    def name_camel_cased(self):
-        return camel_case(self.name)
+    def is_complex_type(self):
+        return is_defined(self.ref)
 
     @property
-    def name_pascal_cased(self):
-        return pascal_case(self.name)
+    def is_simple_type(self):
+        return is_defined(self.type)
+
+    @property
+    def name_(self):
+        return ExtendedString(self.name)
 
     def get_refs(self) -> list[PropertyRef]:
         if is_defined(self.ref):

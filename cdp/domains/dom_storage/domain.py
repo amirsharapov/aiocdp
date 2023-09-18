@@ -6,22 +6,21 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.dom_storage.types import (
-    GetDOMStorageItemsReturnT,
+    GetDOMStorageItemsReturnType,
     StorageId
 )
 if TYPE_CHECKING:
@@ -74,7 +73,7 @@ class DOMStorage(BaseDomain):
     def get_dom_storage_items(
             self,
             storage_id: 'StorageId'
-    ) -> 'IFutureResponse[GetDOMStorageItemsReturnT]':
+    ) -> 'IFutureResponse[GetDOMStorageItemsReturnType]':
         params = {
             'storageId': to_dict(
                 storage_id,
@@ -87,7 +86,7 @@ class DOMStorage(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetDOMStorageItemsReturnT,
+                GetDOMStorageItemsReturnType,
                 data,
                 'camel'
             )

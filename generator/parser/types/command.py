@@ -43,7 +43,7 @@ class Command(ComplexNode):
         )
 
     @property
-    def domain_(self):
+    def actual_domain(self):
         return self.parent
 
     @property

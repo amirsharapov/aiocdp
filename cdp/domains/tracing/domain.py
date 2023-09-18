@@ -6,24 +6,23 @@
 from cdp.domains.base import (
     BaseDomain
 )
-from dataclasses import (
-    dataclass
+from cdp.domains import (
+    mappers
 )
 from cdp.utils import (
-    is_defined,
-    UNDEFINED
+    UNDEFINED,
+    is_defined
+)
+from dataclasses import (
+    dataclass
 )
 from typing import (
     TYPE_CHECKING
 )
-from cdp.domains.mapper import (
-    from_dict,
-    to_dict
-)
 from cdp.domains.tracing.types import (
-    GetCategoriesReturnT,
+    GetCategoriesReturnType,
     MemoryDumpLevelOfDetail,
-    RequestMemoryDumpReturnT,
+    RequestMemoryDumpReturnType,
     StreamCompression,
     StreamFormat,
     TraceConfig,
@@ -50,7 +49,7 @@ class Tracing(BaseDomain):
 
     def get_categories(
             self
-    ) -> 'IFutureResponse[GetCategoriesReturnT]':
+    ) -> 'IFutureResponse[GetCategoriesReturnType]':
         params = {}
 
         return self._send_command(
@@ -58,7 +57,7 @@ class Tracing(BaseDomain):
             params,
             True,
             lambda data: from_dict(
-                GetCategoriesReturnT,
+                GetCategoriesReturnType,
                 data,
                 'camel'
             )
@@ -82,21 +81,24 @@ class Tracing(BaseDomain):
             self,
             deterministic: 'bool' = UNDEFINED,
             level_of_detail: 'MemoryDumpLevelOfDetail' = UNDEFINED
-    ) -> 'IFutureResponse[RequestMemoryDumpReturnT]':
+    ) -> 'IFutureResponse[RequestMemoryDumpReturnType]':
         params = {}
 
         if is_defined(deterministic):
             params['deterministic'] = deterministic
 
         if is_defined(level_of_detail):
-            params['levelOfDetail'] = level_of_detail
+            params['levelOfDetail'] = to_dict(
+                level_of_detail,
+                'camel'
+            )
 
         return self._send_command(
             'Tracing.requestMemoryDump',
             params,
             True,
             lambda data: from_dict(
-                RequestMemoryDumpReturnT,
+                RequestMemoryDumpReturnType,
                 data,
                 'camel'
             )
@@ -129,10 +131,16 @@ class Tracing(BaseDomain):
             params['transferMode'] = transfer_mode
 
         if is_defined(stream_format):
-            params['streamFormat'] = stream_format
+            params['streamFormat'] = to_dict(
+                stream_format,
+                'camel'
+            )
 
         if is_defined(stream_compression):
-            params['streamCompression'] = stream_compression
+            params['streamCompression'] = to_dict(
+                stream_compression,
+                'camel'
+            )
 
         if is_defined(trace_config):
             params['traceConfig'] = to_dict(
@@ -144,7 +152,10 @@ class Tracing(BaseDomain):
             params['perfettoConfig'] = perfetto_config
 
         if is_defined(tracing_backend):
-            params['tracingBackend'] = tracing_backend
+            params['tracingBackend'] = to_dict(
+                tracing_backend,
+                'camel'
+            )
 
         return self._send_command(
             'Tracing.start',

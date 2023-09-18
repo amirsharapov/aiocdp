@@ -438,3 +438,18 @@ class SourceCodeGenerator(ast.NodeVisitor):
             self.source += self.indent
 
         self.source += ']'
+
+    def visit_Tuple(self, node: ast.Tuple) -> Any:
+        render_context = get_render_context(node)
+
+        for element in node.elts:
+            self.visit(element)
+
+            if element != node.elts[-1]:
+                self.source += ','
+
+                if not render_context['expand']:
+                    self.source += ' '
+                else:
+                    self.source += '\n' + ' ' * 4
+                    self.source += self.indent
