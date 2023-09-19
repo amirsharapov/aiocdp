@@ -28,10 +28,10 @@ def main():
         'static/protocols/1.3/js_protocol.json'
     ])
 
-    Path('cdp/domains').mkdir(parents=True, exist_ok=True)
-    Path('cdp/domains/__init__.py').touch()
+    Path('cdp/_domains').mkdir(parents=True, exist_ok=True)
+    Path('cdp/_domains/__init__.py').touch()
 
-    for item in Path('cdp/domains').iterdir():
+    for item in Path('cdp/_domains').iterdir():
         if item.name not in ('__init__.py', 'base.py', 'utils.py', 'mappers.py'):
             if item.is_dir():
                 shutil.rmtree(item)
@@ -44,14 +44,14 @@ def main():
         for domain in protocol.domains:
             module_name = snake_case(domain.domain)
 
-            Path(f'cdp/domains/{module_name}').mkdir(parents=True, exist_ok=True)
-            Path(f'cdp/domains/{module_name}/__init__.py').touch()
+            Path(f'cdp/_domains/{module_name}').mkdir(parents=True, exist_ok=True)
+            Path(f'cdp/_domains/{module_name}/__init__.py').touch()
 
             module = ast.domain.generate(domain)
             module = SourceCodeGenerator().generate(module)
             elapsed += module.generation_time
 
-            Path(f'cdp/domains/{module_name}/domain.py').write_text(
+            Path(f'cdp/_domains/{module_name}/domain.py').write_text(
                 GENERATED_MODULE_HEADER +
                 module.source
             )
@@ -60,7 +60,7 @@ def main():
             module = SourceCodeGenerator().generate(module)
             elapsed += module.generation_time
 
-            Path(f'cdp/domains/{module_name}/types.py').write_text(
+            Path(f'cdp/_domains/{module_name}/types.py').write_text(
                 GENERATED_MODULE_HEADER +
                 module.source
             )
@@ -69,7 +69,7 @@ def main():
             module = SourceCodeGenerator().generate(module)
             elapsed += module.generation_time
 
-            Path(f'cdp/domains/{module_name}/mapper.py').write_text(
+            Path(f'cdp/_domains/{module_name}/mapper.py').write_text(
                 GENERATED_MODULE_HEADER +
                 module.source
             )
@@ -86,7 +86,7 @@ def main():
         f'{module.generation_time} seconds'
     )
 
-    Path(f'cdp/domains/domains.py').write_text(
+    Path(f'cdp/_domains/domains.py').write_text(
         GENERATED_MODULE_HEADER +
         module.source
     )
@@ -98,7 +98,7 @@ def main():
         f'{module.generation_time} seconds'
     )
 
-    Path(f'cdp/domains/mapper.py').write_text(
+    Path(f'cdp/_domains/mapper.py').write_text(
         GENERATED_MODULE_HEADER +
         module.source
     )

@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from asyncio import Future
 from collections import defaultdict
 from dataclasses import dataclass, field
-from typing import Optional, TypeVar, Generic, Callable
+from typing import Optional, TypeVar, Generic
 
 import websockets.client as websockets
 
@@ -50,8 +50,6 @@ class IConnection(ABC):
             self,
             method: str,
             params: dict,
-            expect_response: bool,
-            response_hook: Callable
     ) -> IFutureResponse:
         ...
 
@@ -192,8 +190,6 @@ class Connection(IConnection):
             self,
             method: str,
             params: dict,
-            expect_response: bool,
-            response_hook: Callable = None
     ) -> FutureResponse:
         event_loop = asyncio.get_event_loop()
 
@@ -212,16 +208,7 @@ class Connection(IConnection):
             future
         )
 
-        if expect_response:
-            self.in_flight_futures[request_id] = {
-                'future': future,
-                'response_hook': response_hook
-            }
-
-        else:
-            future.set_result(
-                None
-            )
+        self.in_flight_futures[request_id] = future
 
         try:
             coroutine = self.ws.send(request)

@@ -1,25 +1,21 @@
 from abc import ABC
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from cdp.target import Target
+    from cdp.domains.domains import Domains
 
 
 @dataclass
 class BaseDomain(ABC):
-    target: 'Target'
+    domains: 'Domains'
 
     def _send_command(
             self,
             method: str,
-            params: dict,
-            expect_response: bool,
-            response_hook: Callable = None
+            params: dict
     ):
-        return self.target.send_command(
+        return self.domains.ws_target.send_command(
             method,
             params,
-            expect_response,
-            response_hook
         )

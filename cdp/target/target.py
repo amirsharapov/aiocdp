@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Optional, Callable
+from typing import TYPE_CHECKING, Optional
 
 from cdp.domains.domains import Domains
 from cdp.target.connection import Connection, IFutureResponse
@@ -24,11 +24,13 @@ class Target:
     chrome: 'Chrome'
     id: str
 
+    @property
+    def ws_url(self):
+        return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.id}'
+    
     def __post_init__(self):
         self.domains = Domains(self)
-        self.connection = Connection(
-            f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.id}'
-        )
+        self.connection = Connection(self.ws_url)
         self.active_session_id = None
 
     def connect(self):
@@ -44,8 +46,6 @@ class Target:
             self,
             method: str,
             params: dict,
-            expect_response: bool,
-            response_hook: Callable = None
     ) -> IFutureResponse:
         if self.active_session_id:
             params['sessionId'] = self.active_session_id
@@ -53,6 +53,4 @@ class Target:
         return self.connection.send_request(
             method,
             params,
-            expect_response,
-            response_hook
         )
