@@ -29,7 +29,4 @@ class Tests(TestCase):
 
         target.domains.accessibility.some_method(x)
 
-        target.domains.accessibility.some_method(
-            {'node_id': 1},
-            node_id=''
-        )
+        target.domains.accessibility.some_method({})

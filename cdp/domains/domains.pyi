@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import TypedDict, Literal, overload
+from typing import TypedDict, Literal, overload, NotRequired
 
 from cdp.domains.domain import Domain
 
@@ -37,7 +37,7 @@ class _accessibility__some_method__ReturnT(TypedDict):
 
 
 class ParamsT(TypedDict):
-    node_id: str
+    node_id: NotRequired[str]
 
 
 @dataclass
@@ -52,7 +52,7 @@ class Accessibility:
     @overload
     def some_method(
             self,
-            node_id: str
+            node_id: str = ...
     ) -> _accessibility__some_method__ReturnT:
         ...
 
