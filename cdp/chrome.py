@@ -12,7 +12,7 @@ class Chrome:
     port: int
 
     @classmethod
-    def start(cls, host: str = '127.0.0.1', port: int = 9222):
+    def start(cls, host: str = '127.0.0.1', port: int = 9222) -> 'Chrome':
         os.system(
             f'start chrome '
             f'--remote-debugging-port={port} '
@@ -30,7 +30,7 @@ class Chrome:
     def http_url(self):
         return f'http://{self.host}:{self.port}'
 
-    def get_targets(self):
+    def get_targets(self) -> list[Target]:
         url = self.http_url + '/json/list'
 
         response = requests.get(url)

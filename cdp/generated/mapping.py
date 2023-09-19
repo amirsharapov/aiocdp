@@ -10,11 +10,3 @@ domain_name_map = {
 domain_method_name_map = {
     ('accessibility', 'disable'): 'disable',
 }
-
-request_param_key_map = {
-    ('accessibility', 'disable', 'some_param'): 'someParam'
-}
-
-response_type_key_map = {
-    ('accessibility', 'disable', 'returnType'): 'return_type'
-}
