@@ -1,38 +1,41 @@
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 from cdp.domains.base import BaseDomain
-from cdp.generated import mapping
+from cdp.domains import conversions
 
 if TYPE_CHECKING:
     from cdp.domains.domains import Domains
 
 
-def transform_method(domain_name: str, domain_method_name: str):
+def transform_method(domain_name: str, method_name: str):
     return (
-        mapping.domain_name_map[domain_name] + '.' +
-        mapping.domain_method_name_map[domain_method_name]
+        conversions.domain_names[domain_name] + '.' +
+        conversions.method_names[method_name]
     )
 
 
-def transform_params(params: dict[str, Any]):
-    params_ = {}
-
-    for k, v in params.items():
-        k = mapping.request_param_mapper = None
-
-
-def validate_method_args_kwargs(args, kwargs, domain_name, method_name):
-    if args and kwargs:
-        raise Exception(
-            ...
-        )
-
-
 def load_params(
-        args,
-        kwargs
+        domain_name: str,
+        method_name: str,
+        args: tuple,
+        kwargs: dict
 ):
+    """
+    Loads the params by either using the first argument as the params dictionary or the kwargs.
+    *args and **kwargs are mutually exclusive.
+    """
+    if args and kwargs:
+        raise Exception
+
+    if args and len(args) > 1:
+        raise Exception
+
+    if args:
+        params = args[0]
+    else:
+        params = kwargs
+
     return {}
 
 
@@ -48,14 +51,9 @@ class Domain(BaseDomain):
         )
 
         def wrapper(*args, **kwargs):
-            validate_method_args_kwargs(
-                args,
-                kwargs,
-                self.name,
-                method
-            )
-
             params = load_params(
+                self.name,
+                method,
                 args,
                 kwargs
             )

@@ -10,37 +10,35 @@ class Node(ABC):
         repr=False
     )
 
+    raw: dict
+
+    @abstractmethod
+    def resolve(self, parent: Optional['Node']):
+        ...
+
     def __post_init__(self):
         self.parent = None
 
-    def resolve_parent_refs(self):
-        for field_ in fields(self):
-            if field_.name == 'parent':
-                continue
 
-            attribute = getattr(self, field_.name)
+def resolve_parent_refs(node: 'Node'):
+    for field_ in fields(node):
+        if field_.name == 'parent':
+            continue
 
-            if isinstance(attribute, Node):
-                attribute.parent = self
-                attribute.resolve_parent_refs()
+        item = getattr(node, field_.name)
 
-            elif isinstance(attribute, list):
-                for item in attribute:
-                    if isinstance(item, Node):
-                        item.parent = self
-                        item.resolve_parent_refs()
+        if isinstance(item, Node):
+            item.parent = node
+            resolve_parent_refs(item)
 
-            elif isinstance(attribute, dict):
-                for item in attribute.values():
-                    if isinstance(item, Node):
-                        item.parent = self
-                        item.resolve_parent_refs()
+        elif isinstance(item, list):
+            for item_ in item:
+                if isinstance(item_, Node):
+                    item_.parent = node
+                    resolve_parent_refs(item_)
 
-
-@dataclass
-class ComplexNode(Node, ABC):
-
-    @classmethod
-    @abstractmethod
-    def from_dict(cls, data):
-        pass
+        elif isinstance(item, dict):
+            for item_ in item.values():
+                if isinstance(item_, Node):
+                    item_.parent = node
+                    resolve_parent_refs(item_)

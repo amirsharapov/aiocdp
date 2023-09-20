@@ -1,8 +1,9 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from generator.parser.extensions import ExtendedString
-from generator.parser.types.base import ComplexNode
+from generator.parser import registry
+from generator.parser.utils import ExtendedString
+from generator.parser.types.base import Node
 from generator.parser.types.command import Command
 from generator.parser.types.event import Event
 from generator.parser.types.ref import Ref
@@ -18,61 +19,137 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Domain(ComplexNode):
+class Domain(Node):
     parent: 'Protocol' = field(
         init=False,
         repr=False
     )
 
-    domain: str
-    description: MaybeUndefined[str]
-    types: list['Type']
-    commands: list['Command']
-    events: list['Event']
-    dependencies: list[str]
-    experimental: MaybeUndefined[bool]
-    deprecated: MaybeUndefined[bool]
+    name: str = field(
+        init=False
+    )
+    description: MaybeUndefined[str] = field(
+        init=False
+    )
+    types: list['Type'] = field(
+        init=False
+    )
+    commands: list['Command'] = field(
+        init=False
+    )
+    events: list['Event'] = field(
+        init=False
+    )
+    dependencies: list[str] = field(
+        init=False
+    )
+    experimental: MaybeUndefined[bool] = field(
+        init=False
+    )
+    deprecated: MaybeUndefined[bool] = field(
+        init=False
+    )
 
-    @classmethod
-    def from_dict(cls, data):
-        return cls(
-            domain=data['domain'],
-            description=data.get('description', UNDEFINED),
-            types=[Type.from_dict(type_) for type_ in data.get('types', [])],
-            commands=[Command.from_dict(command) for command in data.get('commands', [])],
-            events=[Event.from_dict(event) for event in data.get('events', [])],
-            dependencies=data.get('dependencies', []),
-            experimental=data.get('experimental', UNDEFINED),
-            deprecated=data.get('deprecated', UNDEFINED)
+    def __post_init__(self):
+        registry.add_domain(self)
+
+    def resolve(self, parent: None = None):
+        self.name = ExtendedString(
+            self.raw['domain']
         )
 
-    @property
-    def domain_(self):
-        return ExtendedString(self.domain)
+        self.description = self.raw.get(
+            'description',
+            UNDEFINED
+        )
 
-    @property
-    def domain_snake_case(self):
-        return snake_case(self.domain)
+        self.types = [
+            Type(type_) for
+            type_ in
+            self.raw.get(
+                'types',
+                []
+            )
+        ]
 
-    @property
-    def domain_snake_case_collision_safe(self):
-        res = self.domain_snake_case
+        self.commands = [
+            Command(command) for
+            command in
+            self.raw.get(
+                'commands',
+                []
+            )
+        ]
 
-        if is_builtin(res):
-            res += '_'
+        self.events = [
+            Event(event) for
+            event in
+            self.raw.get(
+                'events',
+                []
+            )
+        ]
 
-        return res
+        self.dependencies = self.raw.get(
+            'dependencies',
+            []
+        )
+
+        self.experimental = self.raw.get(
+            'experimental',
+            UNDEFINED
+        )
+
+        self.deprecated = self.raw.get(
+            'deprecated',
+            UNDEFINED
+        )
+
+        for type_ in self.types:
+            type_.resolve(self)
+
+        for command in self.commands:
+            command.resolve(self)
+
+        for event in self.events:
+            event.resolve(self)
 
     def get_refs(self) -> list[Ref]:
         refs = []
 
         for type_ in self.types:
-            refs += type_.get_refs()
+            for property_ in type_.properties:
+                if property_.ref:
+                    refs.append(property_.ref)
+
+                if property_.items:
+                    if property_.items.ref:
+                        refs.append(property_.items.ref)
 
         for command in self.commands:
-            refs += command.get_refs()
+            for parameter in command.parameters:
+                if parameter.ref:
+                    refs.append(parameter.ref)
+
+                if parameter.items:
+                    if parameter.items.ref:
+                        refs.append(parameter.items.ref)
+
+            for return_ in command.returns:
+                if return_.ref:
+                    refs.append(return_.ref)
+
+                if return_.items:
+                    if return_.items.ref:
+                        refs.append(return_.items.ref)
 
         for event in self.events:
-            refs += event.get_refs()
+            for parameter in event.parameters:
+                if parameter.ref:
+                    refs.append(parameter.ref)
+
+                if parameter.items:
+                    if parameter.items.ref:
+                        refs.append(parameter.items.ref)
 
         return refs

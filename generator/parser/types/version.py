@@ -1,14 +1,14 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from generator.parser.types.base import ComplexNode
+from generator.parser.types.base import Node
 
 if TYPE_CHECKING:
     from generator.parser.types.protocol import Protocol
 
 
 @dataclass
-class Version(ComplexNode):
+class Version(Node):
     parent: 'Protocol' = field(
         init=False,
         repr=False
@@ -17,9 +17,6 @@ class Version(ComplexNode):
     major: int
     minor: int
 
-    @classmethod
-    def from_dict(cls, data):
-        return cls(
-            major=data['major'],
-            minor=data['minor']
-        )
+    def resolve(self):
+        self.major = self.raw['major']
+        self.minor = self.raw['minor']

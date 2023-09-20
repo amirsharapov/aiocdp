@@ -3,6 +3,7 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 from generator.parser import registry
+from generator.parser.types import Type
 from generator.parser.types.base import Node
 from generator.utils import UNDEFINED, MaybeUndefined
 
@@ -14,35 +15,39 @@ if TYPE_CHECKING:
 
 @dataclass
 class Ref(Node, ABC):
-    domain: MaybeUndefined[str]
-    type: str
+    parent: 'Property | Items' = field(
+        init=False,
+        repr=False
+    )
+
+    type: 'Type' = field(
+        init=False
+    )
+
+    raw: str
 
     @classmethod
-    def from_str(cls, s: str):
-        if '.' in s:
-            s = s.split('.')
-            return cls(
-                domain=s[0],
-                type=s[1]
-            )
+    def from_maybe_undefined(cls, raw: MaybeUndefined[str]) -> MaybeUndefined['Ref']:
+        if raw is UNDEFINED:
+            return UNDEFINED
+
+        return cls(raw)
+
+    @property
+    def domain(self) -> 'Domain':
+        return self.parent.domain
+
+    def resolve(self):
+        split = self.raw.split('.')
+
+        if len(split) == 1:
+            self.type = split[0]
+
+        elif len(split) == 2:
+            self.type = split[1]
 
         else:
-            return cls(
-                domain=UNDEFINED,
-                type=s
-            )
-
-    @property
-    def actual_type(self):
-        return registry.get_type(
-            self.domain or self.actual_domain.domain,
-            self.type
-        )
-
-    @property
-    @abstractmethod
-    def actual_domain(self) -> 'Domain':
-        ...
+            raise ValueError(f'Invalid ref: {self.raw}')
 
 
 @dataclass
@@ -52,10 +57,6 @@ class PropertyRef(Ref):
         repr=False
     )
 
-    @property
-    def actual_domain(self) -> 'Domain':
-        return self.parent.actual_domain
-
 
 @dataclass
 class ItemsRef(Ref):
@@ -63,7 +64,3 @@ class ItemsRef(Ref):
         init=False,
         repr=False
     )
-
-    @property
-    def actual_domain(self) -> 'Domain':
-        return self.parent.actual_domain

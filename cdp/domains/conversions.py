@@ -2,11 +2,11 @@
 #
 # This was last updated on 2021-10-17 17:00 by the CICD pipeline
 
-domain_name_map = {
+domain_names = {
     'accessibility': 'Accessibility',
     'animation': 'Animation',
 }
 
-domain_method_name_map = {
+method_names = {
     ('accessibility', 'disable'): 'disable',
 }

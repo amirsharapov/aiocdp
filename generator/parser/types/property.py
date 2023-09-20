@@ -2,8 +2,8 @@ from abc import ABC
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from generator.parser.extensions import ExtendedString
-from generator.parser.types.base import ComplexNode
+from generator.parser.utils import ExtendedString
+from generator.parser.types.base import Node
 from generator.parser.types.items import Items
 from generator.parser.types.ref import PropertyRef
 from generator.utils import UNDEFINED, MaybeUndefined, is_defined, snake_case, camel_case, pascal_case, is_builtin
@@ -28,7 +28,7 @@ def split_properties_by_optional_flag(properties: list['Property']):
 
 
 @dataclass
-class Property(ComplexNode, ABC):
+class Property(Node, ABC):
     parent: 'Type | Command | Event' = field(
         init=False,
         repr=False
@@ -43,32 +43,31 @@ class Property(ComplexNode, ABC):
     experimental: MaybeUndefined[bool]
     deprecated: MaybeUndefined[bool]
 
-    @classmethod
-    def from_dict(cls, data):
-        ref = data.get('$ref', UNDEFINED)
+    def resolve(self, parent: 'Type | Command | Event'):
+        ref = raw.get('$ref', UNDEFINED)
 
         if is_defined(ref):
             ref = PropertyRef.from_str(ref)
 
-        items = data.get('items', UNDEFINED)
+        items = raw.get('items', UNDEFINED)
 
         if is_defined(items):
             items = Items.from_dict(items)
 
         return cls(
-            name=data['name'],
-            type=data.get('type', UNDEFINED),
+            name=raw['name'],
+            type=raw.get('type', UNDEFINED),
             ref=ref,
             items=items,
-            description=data.get('description', UNDEFINED),
-            optional=data.get('optional', UNDEFINED),
-            experimental=data.get('experimental', UNDEFINED),
-            deprecated=data.get('deprecated', UNDEFINED)
+            description=raw.get('description', UNDEFINED),
+            optional=raw.get('optional', UNDEFINED),
+            experimental=raw.get('experimental', UNDEFINED),
+            deprecated=raw.get('deprecated', UNDEFINED)
         )
 
     @property
-    def actual_domain(self):
-        return self.parent.actual_domain
+    def domain(self):
+        return self.parent.domain
 
     @property
     def is_array_of_complex_type(self):
@@ -85,16 +84,6 @@ class Property(ComplexNode, ABC):
     @property
     def is_simple_type(self):
         return is_defined(self.type)
-
-    @property
-    def name_(self):
-        return ExtendedString(self.name)
-
-    def get_refs(self) -> list[PropertyRef]:
-        if is_defined(self.ref):
-            return [self.ref]
-        else:
-            return []
 
 
 @dataclass

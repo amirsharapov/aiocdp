@@ -1,14 +1,28 @@
-from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from dataclasses import (
+    dataclass,
+    field
+)
+from typing import (
+    TYPE_CHECKING
+)
 
-from generator.parser.extensions import ExtendedString
-from generator.parser.types.base import ComplexNode
-from generator.parser.types.items import Items
+from generator.parser.utils import (
+    ExtendedString
+)
+from generator.parser.types.base import (
+    Node
+)
+from generator.parser.types.items import (
+    Items
+)
 from generator.parser.types.property import (
     TypeProperty,
     split_properties_by_optional_flag
 )
-from generator.utils import UNDEFINED, MaybeUndefined
+from generator.utils import (
+    UNDEFINED,
+    MaybeUndefined
+)
 
 if TYPE_CHECKING:
     from generator.parser.types.domain import Domain
@@ -16,7 +30,7 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Type(ComplexNode):
+class Type(Node):
     parent: 'Domain' = field(
         init=False,
         repr=False
@@ -31,51 +45,97 @@ class Type(ComplexNode):
         repr=False
     )
 
-    id: str
-    type: str
-    description: MaybeUndefined[str]
-    properties: list['TypeProperty']
-    enum: list[str]
-    items: MaybeUndefined['Items']
-    experimental: MaybeUndefined[bool]
-    deprecated: MaybeUndefined[bool]
+    id: 'ExtendedString' = field(
+        init=False,
+        repr=False
+    )
+    type: str = field(
+        init=False,
+        repr=False
+    )
+    description: MaybeUndefined[str] = field(
+        init=False,
+        repr=False
+    )
+    properties: list['TypeProperty'] = field(
+        init=False,
+        repr=False
+    )
+    enum: list[str] = field(
+        init=False,
+        repr=False
+    )
+    items: MaybeUndefined['Items'] = field(
+        init=False,
+        repr=False
+    )
+    experimental: MaybeUndefined[bool] = field(
+        init=False,
+        repr=False
+    )
+    deprecated: MaybeUndefined[bool] = field(
+        init=False,
+        repr=False
+    )
 
-    @classmethod
-    def from_dict(cls, data):
-        items = data.get('items', UNDEFINED)
+    raw_data: dict
 
-        if items:
-            items = Items.from_dict(items)
-
-        return cls(
-            id=data['id'],
-            type=data['type'],
-            description=data.get('description', UNDEFINED),
-            properties=[
-                TypeProperty.from_dict(property_)
-                for property_ in data.get('properties', [])
-            ],
-            enum=data.get('enum', []),
-            items=items,
-            experimental=data.get('experimental', UNDEFINED),
-            deprecated=data.get('deprecated', UNDEFINED)
+    def resolve_internal_references(self):
+        self.id = ExtendedString(
+            self.raw_data.get(
+                'id',
+                UNDEFINED
+            )
         )
 
-    def __post_init__(self):
-        required, optional = split_properties_by_optional_flag(
-            self.properties
+        self.type = self.raw_data.get(
+            'type',
+            UNDEFINED
         )
 
-        self.required_properties = required
-        self.optional_properties = optional
+        self.description = self.raw_data.get(
+            'description',
+            UNDEFINED
+        )
+
+        self.properties = self.raw_data.get(
+            'properties',
+            UNDEFINED
+        )
+
+        if self.properties:
+            for i, property_ in enumerate(self.properties):
+                self.properties[i] = TypeProperty(property_)
+
+            split = split_properties_by_optional_flag(self.properties)
+
+            self.required_properties = split[0]
+            self.optional_properties = split[1]
+
+        self.enum = self.raw_data.get(
+            'enum',
+            UNDEFINED
+        )
+        self.items = self.raw_data.get(
+            'items',
+            UNDEFINED
+        )
+
+        if self.items:
+            self.items = Items(self.items)
+
+        self.experimental = self.raw_data.get(
+            'experimental',
+            UNDEFINED
+        )
+        self.deprecated = self.raw_data.get(
+            'deprecated',
+            UNDEFINED
+        )
 
     @property
-    def actual_domain(self) -> 'Domain':
+    def domain(self) -> 'Domain':
         return self.parent
-
-    @property
-    def id_(self):
-        return ExtendedString(self.id)
 
     @property
     def properties_with_required_first(self):

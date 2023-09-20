@@ -9,7 +9,7 @@ registry = defaultdict(dict)
 
 
 def add_type(type_: 'Type'):
-    key = (type_.actual_domain.domain, type_.id)
+    key = (type_.domain.name, type_.id)
 
     if key in registry['types']:
         raise ValueError(f'Type {key} already exists')
@@ -23,7 +23,7 @@ def get_type(domain, id_) -> 'Type':
 
 
 def add_domain(domain: 'Domain'):
-    key = domain.domain
+    key = domain.name
 
     if key in registry['domains']:
         raise ValueError(f'Domain {key} already exists')

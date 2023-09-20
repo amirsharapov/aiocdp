@@ -1,8 +1,9 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from generator.parser.types.base import ComplexNode
+from generator.parser.types.base import Node
 from generator.parser.types.property import EventProperty
+from generator.parser.utils import ExtendedString
 from generator.utils import UNDEFINED, MaybeUndefined
 
 if TYPE_CHECKING:
@@ -10,39 +11,60 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Event(ComplexNode):
+class Event(Node):
     parent: 'Domain' = field(
         init=False,
         repr=False
     )
 
-    name: str
-    description: MaybeUndefined[str]
-    parameters: list['EventProperty']
-    experimental: MaybeUndefined[bool]
-    deprecated: MaybeUndefined[bool]
+    name: ExtendedString = field(
+        init=False
+    )
+    description: MaybeUndefined[str] = field(
+        init=False
+    )
+    parameters: list['EventProperty'] = field(
+        init=False
+    )
+    experimental: MaybeUndefined[bool] = field(
+        init=False
+    )
+    deprecated: MaybeUndefined[bool] = field(
+        init=False
+    )
 
-    @classmethod
-    def from_dict(cls, data):
-        return cls(
-            name=data['name'],
-            description=data.get('description', UNDEFINED),
-            parameters=[
-                EventProperty.from_dict(parameter)
-                for parameter in data.get('parameters', [])
-            ],
-            experimental=data.get('experimental', UNDEFINED),
-            deprecated=data.get('deprecated', UNDEFINED)
+    def resolve(self, parent: 'Domain'):
+        self.name = ExtendedString(
+            self.raw['name']
         )
 
-    @property
-    def actual_domain(self):
-        return self.parent
+        self.description = self.raw.get(
+            'description',
+            UNDEFINED
+        )
 
-    def get_refs(self):
-        refs = []
+        self.parameters = [
+            EventProperty(parameter) for
+            parameter in
+            self.raw.get(
+                'parameters',
+                []
+            )
+        ]
+
+        self.experimental = self.raw.get(
+            'experimental',
+            UNDEFINED
+        )
+
+        self.deprecated = self.raw.get(
+            'deprecated',
+            UNDEFINED
+        )
 
         for parameter in self.parameters:
-            refs += parameter.get_refs()
+            parameter.resolve(self)
 
-        return refs
+    @property
+    def domain(self):
+        return self.parent

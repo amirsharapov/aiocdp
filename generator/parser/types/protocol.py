@@ -1,18 +1,26 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-from generator.parser.types.base import ComplexNode
+from generator.parser.types.base import Node
 from generator.parser.types.domain import Domain
 from generator.parser.types.version import Version
 
 
 @dataclass
-class Protocol(ComplexNode):
-    version: 'Version'
-    domains: list['Domain']
+class Protocol(Node):
+    version: 'Version' = field(
+        init=False
+    )
+    domains: list['Domain'] = field(
+        init=False
+    )
 
-    @classmethod
-    def from_dict(cls, data):
-        return cls(
-            version=Version.from_dict(data['version']),
-            domains=[Domain.from_dict(domain) for domain in data['domains']]
+    def resolve(self):
+        self.version = Version(
+            self.raw['version']
         )
+
+        self.domains = [
+            Domain(domain) for
+            domain in
+            self.raw['domains']
+        ]
