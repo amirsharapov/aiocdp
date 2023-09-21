@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from generator.parser.utils import ExtendedString
 from generator.parser.types.base import Node
 from generator.parser.types.property import CommandParameter, CommandReturnProperty
-from generator.utils import UNDEFINED, MaybeUndefined, snake_case, pascal_case
+from generator.utils import UNDEFINED, MaybeUndefined
 
 if TYPE_CHECKING:
     from generator.parser.types.domain import Domain
@@ -40,7 +40,7 @@ class Command(Node):
     def domain(self):
         return self.parent
 
-    def resolve(self, parent: 'Domain'):
+    def __post_init__(self):
         self.name = ExtendedString(
             self.raw['name']
         )
@@ -77,9 +77,3 @@ class Command(Node):
             'deprecated',
             UNDEFINED
         )
-
-        for parameter in self.parameters:
-            parameter.resolve(self)
-
-        for return_ in self.returns:
-            return_.resolve(self)

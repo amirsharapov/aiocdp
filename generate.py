@@ -4,8 +4,7 @@ from pathlib import Path
 
 from generator import ast
 from generator.parser import parser
-from generator.utils import snake_case
-from generator.visitor import SourceCodeGenerator
+from generator.ast.visitor import SourceCodeGenerator
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -28,77 +27,40 @@ def main():
         'static/protocols/1.3/js_protocol.json'
     ])
 
-    Path('cdp/_domains').mkdir(parents=True, exist_ok=True)
-    Path('cdp/_domains/__init__.py').touch()
-
-    for item in Path('cdp/_domains').iterdir():
-        if item.name not in ('__init__.py', 'base.py', 'utils.py', 'mappers.py'):
-            if item.is_dir():
-                shutil.rmtree(item)
-            else:
-                item.unlink()
-
-    elapsed = 0
-
-    for protocol in protocols:
-        for domain in protocol.domains:
-            module_name = snake_case(domain.domain)
-
-            Path(f'cdp/_domains/{module_name}').mkdir(parents=True, exist_ok=True)
-            Path(f'cdp/_domains/{module_name}/__init__.py').touch()
-
-            module = ast.domain.generate(domain)
-            module = SourceCodeGenerator().generate(module)
-            elapsed += module.generation_time
-
-            Path(f'cdp/_domains/{module_name}/domain.py').write_text(
-                GENERATED_MODULE_HEADER +
-                module.source
-            )
-
-            module = ast.modules.types.generate(domain)
-            module = SourceCodeGenerator().generate(module)
-            elapsed += module.generation_time
-
-            Path(f'cdp/_domains/{module_name}/types.py').write_text(
-                GENERATED_MODULE_HEADER +
-                module.source
-            )
-
-            module = ast.modules.mapper.generate(domain)
-            module = SourceCodeGenerator().generate(module)
-            elapsed += module.generation_time
-
-            Path(f'cdp/_domains/{module_name}/mapper.py').write_text(
-                GENERATED_MODULE_HEADER +
-                module.source
-            )
-
-    print(
-        f'Generated "cdp/domains/*" in '
-        f'{elapsed} seconds'
+    domains = (
+        protocols[0].domains +
+        protocols[1].domains
     )
 
-    module = ast.domains.generate(protocols)
+    shutil.rmtree(
+        path='cdp/types',
+        ignore_errors=True
+    )
+
+    Path('cdp/types').mkdir(parents=True, exist_ok=True)
+    Path('cdp/types/__init__.py').touch()
+
+    for domain in domains:
+        module = ast.modules.types.generate(domain)
+        module = SourceCodeGenerator().generate(module)
+
+        Path(f'cdp/types/{domain.domain.snake_case}.py').write_text(
+            GENERATED_MODULE_HEADER +
+            module.source
+        )
+
+    module = ast.modules.conversions.generate(domains)
     module = SourceCodeGenerator().generate(module)
-    print(
-        f'Generated "cdp/domains/domains.py" in '
-        f'{module.generation_time} seconds'
-    )
 
-    Path(f'cdp/_domains/domains.py').write_text(
+    Path(f'cdp/domains/conversions.py').write_text(
         GENERATED_MODULE_HEADER +
         module.source
     )
 
-    module = ast.mapper_.generate(protocols)
+    module = ast.modules.domains.generate(domains)
     module = SourceCodeGenerator().generate(module)
-    print(
-        f'Generated "cdp/domains/mapper.py" in '
-        f'{module.generation_time} seconds'
-    )
 
-    Path(f'cdp/_domains/mapper.py').write_text(
+    Path(f'cdp/domains/domains.pyi').write_text(
         GENERATED_MODULE_HEADER +
         module.source
     )

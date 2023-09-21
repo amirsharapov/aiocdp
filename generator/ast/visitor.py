@@ -388,6 +388,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
         for item in node.body:
             self._add_lines_before(item)
             self.visit(item)
+            self._add_new_line_if_prev_line_not_empty()
             self._add_lines_after(item)
 
     def visit_Name(self, node: ast.Name) -> Any:

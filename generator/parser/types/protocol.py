@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 
+from cdp.utils import UNDEFINED
 from generator.parser.types.base import Node
 from generator.parser.types.domain import Domain
 from generator.parser.types.version import Version
@@ -14,9 +15,12 @@ class Protocol(Node):
         init=False
     )
 
-    def resolve(self):
+    def __post_init__(self):
         self.version = Version(
-            self.raw['version']
+            self.raw.get(
+                'version',
+                UNDEFINED
+            )
         )
 
         self.domains = [

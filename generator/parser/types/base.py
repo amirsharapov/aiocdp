@@ -10,17 +10,15 @@ class Node(ABC):
         repr=False
     )
 
-    raw: dict
-
-    @abstractmethod
-    def resolve(self, parent: Optional['Node']):
-        ...
+    raw: dict = field(
+        repr=False
+    )
 
     def __post_init__(self):
         self.parent = None
 
 
-def resolve_parent_refs(node: 'Node'):
+def recursively_link_children(node: 'Node'):
     for field_ in fields(node):
         if field_.name == 'parent':
             continue
@@ -29,16 +27,16 @@ def resolve_parent_refs(node: 'Node'):
 
         if isinstance(item, Node):
             item.parent = node
-            resolve_parent_refs(item)
+            recursively_link_children(item)
 
         elif isinstance(item, list):
             for item_ in item:
                 if isinstance(item_, Node):
                     item_.parent = node
-                    resolve_parent_refs(item_)
+                    recursively_link_children(item_)
 
         elif isinstance(item, dict):
             for item_ in item.values():
                 if isinstance(item_, Node):
                     item_.parent = node
-                    resolve_parent_refs(item_)
+                    recursively_link_children(item_)

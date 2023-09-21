@@ -6,31 +6,42 @@ if TYPE_CHECKING:
     from generator.parser.types.type import Type
 
 registry = defaultdict(dict)
+is_registry_loaded = False
+
+_types = []
+_domains = []
+
+
+def _load_registry():
+    for type_ in _types:
+        registry['types'][(type_.domain.domain, type_.id)] = type_
+
+    for domain in _domains:
+        registry['domains'][domain.domain] = domain
+
+    global is_registry_loaded
+    is_registry_loaded = True
 
 
 def add_type(type_: 'Type'):
-    key = (type_.domain.name, type_.id)
-
-    if key in registry['types']:
-        raise ValueError(f'Type {key} already exists')
-
-    registry['types'][key] = type_
+    _types.append(type_)
 
 
 def get_type(domain, id_) -> 'Type':
+    if not is_registry_loaded:
+        _load_registry()
+
     key = (domain, id_)
     return registry['types'][key]
 
 
 def add_domain(domain: 'Domain'):
-    key = domain.name
-
-    if key in registry['domains']:
-        raise ValueError(f'Domain {key} already exists')
-
-    registry['domains'][key] = domain
+    _domains.append(domain)
 
 
 def get_domain(domain: str) -> 'Domain':
+    if not is_registry_loaded:
+        _load_registry()
+
     key = domain
     return registry['domains'][key]

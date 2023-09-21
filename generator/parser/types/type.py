@@ -6,6 +6,8 @@ from typing import (
     TYPE_CHECKING
 )
 
+from generator.parser import registry
+from generator.parser.types.datatype import DataType
 from generator.parser.utils import (
     ExtendedString
 )
@@ -17,7 +19,7 @@ from generator.parser.types.items import (
 )
 from generator.parser.types.property import (
     TypeProperty,
-    split_properties_by_optional_flag
+    order_by_required_flag
 )
 from generator.utils import (
     UNDEFINED,
@@ -26,7 +28,6 @@ from generator.utils import (
 
 if TYPE_CHECKING:
     from generator.parser.types.domain import Domain
-    from generator.parser.types.ref import Ref
 
 
 @dataclass
@@ -36,115 +37,83 @@ class Type(Node):
         repr=False
     )
 
-    optional_properties: list['TypeProperty'] = field(
-        init=False,
-        repr=False
-    )
-    required_properties: list['TypeProperty'] = field(
-        init=False,
-        repr=False
-    )
-
     id: 'ExtendedString' = field(
         init=False,
-        repr=False
     )
-    type: str = field(
+    type: DataType = field(
         init=False,
-        repr=False
     )
     description: MaybeUndefined[str] = field(
         init=False,
-        repr=False
     )
     properties: list['TypeProperty'] = field(
         init=False,
-        repr=False
     )
     enum: list[str] = field(
         init=False,
-        repr=False
     )
     items: MaybeUndefined['Items'] = field(
         init=False,
-        repr=False
     )
     experimental: MaybeUndefined[bool] = field(
         init=False,
-        repr=False
     )
     deprecated: MaybeUndefined[bool] = field(
         init=False,
-        repr=False
     )
-
-    raw_data: dict
-
-    def resolve_internal_references(self):
-        self.id = ExtendedString(
-            self.raw_data.get(
-                'id',
-                UNDEFINED
-            )
-        )
-
-        self.type = self.raw_data.get(
-            'type',
-            UNDEFINED
-        )
-
-        self.description = self.raw_data.get(
-            'description',
-            UNDEFINED
-        )
-
-        self.properties = self.raw_data.get(
-            'properties',
-            UNDEFINED
-        )
-
-        if self.properties:
-            for i, property_ in enumerate(self.properties):
-                self.properties[i] = TypeProperty(property_)
-
-            split = split_properties_by_optional_flag(self.properties)
-
-            self.required_properties = split[0]
-            self.optional_properties = split[1]
-
-        self.enum = self.raw_data.get(
-            'enum',
-            UNDEFINED
-        )
-        self.items = self.raw_data.get(
-            'items',
-            UNDEFINED
-        )
-
-        if self.items:
-            self.items = Items(self.items)
-
-        self.experimental = self.raw_data.get(
-            'experimental',
-            UNDEFINED
-        )
-        self.deprecated = self.raw_data.get(
-            'deprecated',
-            UNDEFINED
-        )
 
     @property
     def domain(self) -> 'Domain':
         return self.parent
 
-    @property
-    def properties_with_required_first(self):
-        return self.required_properties + self.optional_properties
+    def __post_init__(self):
+        self.id = ExtendedString(
+            self.raw.get(
+                'id',
+                UNDEFINED
+            )
+        )
 
-    def get_refs(self) -> list['Ref']:
-        refs = []
+        self.type = DataType.from_maybe_undefined(
+            self.raw.get(
+                'type',
+                UNDEFINED
+            )
+        )
 
-        for property_ in self.properties:
-            refs += property_.get_refs()
+        self.description = self.raw.get(
+            'description',
+            UNDEFINED
+        )
 
-        return refs
+        self.properties = order_by_required_flag([
+            TypeProperty(property_) for
+            property_ in
+            self.raw.get(
+                'properties',
+                []
+            )
+        ])
+
+        self.enum = self.raw.get(
+            'enum',
+            UNDEFINED
+        )
+
+        self.items = Items.from_maybe_undefined(
+            self.raw.get(
+                'items',
+                UNDEFINED
+            )
+        )
+
+        self.experimental = self.raw.get(
+            'experimental',
+            UNDEFINED
+        )
+        self.deprecated = self.raw.get(
+            'deprecated',
+            UNDEFINED
+        )
+
+        registry.add_type(self)

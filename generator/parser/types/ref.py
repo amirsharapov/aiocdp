@@ -1,15 +1,15 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from generator.parser import registry
-from generator.parser.types import Type
 from generator.parser.types.base import Node
 from generator.utils import UNDEFINED, MaybeUndefined
 
 if TYPE_CHECKING:
     from generator.parser.types.domain import Domain
     from generator.parser.types.items import Items
+    from generator.parser.types import Type
     from generator.parser.types.property import Property
 
 
@@ -20,7 +20,7 @@ class Ref(Node, ABC):
         repr=False
     )
 
-    type: 'Type' = field(
+    type: Optional['Type'] = field(
         init=False
     )
 
@@ -37,17 +37,28 @@ class Ref(Node, ABC):
     def domain(self) -> 'Domain':
         return self.parent.domain
 
-    def resolve(self):
+    def __post_init__(self):
+        self.type = None
+
+    def resolve_type(self):
         split = self.raw.split('.')
 
         if len(split) == 1:
-            self.type = split[0]
+            self.type = registry.get_type(
+                self.domain.domain,
+                split[0]
+            )
 
         elif len(split) == 2:
-            self.type = split[1]
+            self.type = registry.get_type(
+                split[0],
+                split[1]
+            )
 
         else:
-            raise ValueError(f'Invalid ref: {self.raw}')
+            raise ValueError(
+                f'Invalid ref: {self.raw}'
+            )
 
 
 @dataclass

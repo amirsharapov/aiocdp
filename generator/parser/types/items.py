@@ -3,6 +3,7 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 from generator.parser.types.base import Node
+from generator.parser.types.datatype import DataType
 from generator.utils import MaybeUndefined, UNDEFINED
 from generator.parser.types.ref import ItemsRef
 
@@ -17,31 +18,35 @@ class Items(Node, ABC):
         repr=False
     )
 
-    type: MaybeUndefined[str] = field(
+    type: MaybeUndefined[DataType] = field(
         init=False
     )
     ref: MaybeUndefined[ItemsRef] = field(
         init=False
     )
 
-    def resolve(self):
-        self.type = self.raw.get(
-            'type',
-            UNDEFINED
-        )
+    @classmethod
+    def from_maybe_undefined(cls, raw: MaybeUndefined[dict]) -> MaybeUndefined['Items']:
+        if raw is UNDEFINED:
+            return UNDEFINED
 
-        ref = self.raw.get(
-            '$ref',
-            UNDEFINED
-        )
-
-        if ref:
-            ref = ItemsRef(
-                ref
-            )
-
-        self.ref = ref
+        return cls(raw)
 
     @property
     def domain(self):
         return self.parent.domain
+
+    def __post_init__(self):
+        self.type = DataType.from_maybe_undefined(
+            self.raw.get(
+                'type',
+                UNDEFINED
+            )
+        )
+
+        self.ref = ItemsRef.from_maybe_undefined(
+            self.raw.get(
+                '$ref',
+                UNDEFINED
+            )
+        )

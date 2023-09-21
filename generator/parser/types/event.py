@@ -33,7 +33,11 @@ class Event(Node):
         init=False
     )
 
-    def resolve(self, parent: 'Domain'):
+    @property
+    def domain(self):
+        return self.parent
+
+    def __post_init__(self):
         self.name = ExtendedString(
             self.raw['name']
         )
@@ -61,10 +65,3 @@ class Event(Node):
             'deprecated',
             UNDEFINED
         )
-
-        for parameter in self.parameters:
-            parameter.resolve(self)
-
-    @property
-    def domain(self):
-        return self.parent

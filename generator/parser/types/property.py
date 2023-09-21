@@ -2,6 +2,7 @@ from abc import ABC
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
+from generator.parser.types.datatype import DataType
 from generator.parser.utils import ExtendedString
 from generator.parser.types.base import Node
 from generator.parser.types.items import Items
@@ -14,7 +15,7 @@ if TYPE_CHECKING:
     from generator.parser.types.event import Event
 
 
-def split_properties_by_optional_flag(properties: list['Property']):
+def order_by_required_flag(properties: list['Property']):
     required = []
     optional = []
 
@@ -24,7 +25,7 @@ def split_properties_by_optional_flag(properties: list['Property']):
         else:
             required.append(property_)
 
-    return required, optional
+    return required + optional
 
 
 @dataclass
@@ -34,36 +35,30 @@ class Property(Node, ABC):
         repr=False
     )
 
-    name: str
-    type: MaybeUndefined[str]
-    ref: MaybeUndefined[PropertyRef]
-    items: MaybeUndefined['Items']
-    description: MaybeUndefined[str]
-    optional: MaybeUndefined[bool]
-    experimental: MaybeUndefined[bool]
-    deprecated: MaybeUndefined[bool]
-
-    def resolve(self, parent: 'Type | Command | Event'):
-        ref = raw.get('$ref', UNDEFINED)
-
-        if is_defined(ref):
-            ref = PropertyRef.from_str(ref)
-
-        items = raw.get('items', UNDEFINED)
-
-        if is_defined(items):
-            items = Items.from_dict(items)
-
-        return cls(
-            name=raw['name'],
-            type=raw.get('type', UNDEFINED),
-            ref=ref,
-            items=items,
-            description=raw.get('description', UNDEFINED),
-            optional=raw.get('optional', UNDEFINED),
-            experimental=raw.get('experimental', UNDEFINED),
-            deprecated=raw.get('deprecated', UNDEFINED)
-        )
+    name: str = field(
+        init=False
+    )
+    type: MaybeUndefined[DataType] = field(
+        init=False
+    )
+    ref: MaybeUndefined[PropertyRef] = field(
+        init=False
+    )
+    items: MaybeUndefined['Items'] = field(
+        init=False
+    )
+    description: MaybeUndefined[str] = field(
+        init=False
+    )
+    optional: MaybeUndefined[bool] = field(
+        init=False
+    )
+    experimental: MaybeUndefined[bool] = field(
+        init=False
+    )
+    deprecated: MaybeUndefined[bool] = field(
+        init=False
+    )
 
     @property
     def domain(self):
@@ -84,6 +79,52 @@ class Property(Node, ABC):
     @property
     def is_simple_type(self):
         return is_defined(self.type)
+
+    def __post_init__(self):
+        self.name = ExtendedString(
+            self.raw['name']
+        )
+
+        self.type = DataType.from_maybe_undefined(
+            self.raw.get(
+                'type',
+                UNDEFINED
+            )
+        )
+
+        self.ref = PropertyRef.from_maybe_undefined(
+            self.raw.get(
+                '$ref',
+                UNDEFINED
+            )
+        )
+
+        self.items = Items.from_maybe_undefined(
+            self.raw.get(
+                'items',
+                UNDEFINED
+            )
+        )
+
+        self.description = self.raw.get(
+            'description',
+            UNDEFINED
+        )
+
+        self.optional = self.raw.get(
+            'optional',
+            UNDEFINED
+        )
+
+        self.experimental = self.raw.get(
+            'experimental',
+            UNDEFINED
+        )
+
+        self.deprecated = self.raw.get(
+            'deprecated',
+            UNDEFINED
+        )
 
 
 @dataclass

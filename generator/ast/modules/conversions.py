@@ -1,11 +1,13 @@
 import ast
 from typing import Iterable
 
-from cdp.domains.domain import Domain
+from generator.parser.types import Domain
 
 
 def generate(domains: Iterable[Domain]):
-    root = ast.Module()
+    root = ast.Module(
+        body=[]
+    )
 
     ast_domain_names_dict = ast.Dict(
         keys=[],
@@ -48,3 +50,5 @@ def generate(domains: Iterable[Domain]):
             value=ast_return_properties_dict
         )
     ])
+
+    return root

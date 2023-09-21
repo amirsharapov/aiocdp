@@ -14,9 +14,13 @@ class Version(Node):
         repr=False
     )
 
-    major: int
-    minor: int
+    major: int = field(
+        init=False,
+    )
+    minor: int = field(
+        init=False,
+    )
 
-    def resolve(self):
+    def __post_init__(self):
         self.major = self.raw['major']
         self.minor = self.raw['minor']

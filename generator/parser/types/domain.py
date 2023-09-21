@@ -25,7 +25,7 @@ class Domain(Node):
         repr=False
     )
 
-    name: str = field(
+    domain: ExtendedString = field(
         init=False
     )
     description: MaybeUndefined[str] = field(
@@ -51,10 +51,7 @@ class Domain(Node):
     )
 
     def __post_init__(self):
-        registry.add_domain(self)
-
-    def resolve(self, parent: None = None):
-        self.name = ExtendedString(
+        self.domain = ExtendedString(
             self.raw['domain']
         )
 
@@ -105,14 +102,11 @@ class Domain(Node):
             UNDEFINED
         )
 
-        for type_ in self.types:
-            type_.resolve(self)
+        registry.add_domain(self)
 
-        for command in self.commands:
-            command.resolve(self)
-
-        for event in self.events:
-            event.resolve(self)
+    def resolve_refs(self):
+        for ref in self.get_refs():
+            ref.resolve_type()
 
     def get_refs(self) -> list[Ref]:
         refs = []
