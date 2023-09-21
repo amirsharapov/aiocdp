@@ -33,7 +33,7 @@ class ScreenOrientation(TypedDict):
 class DisplayFeature(TypedDict):
     orientation: str
     offset: int
-    maskLength: int
+    mask_length: int
 
 
 class MediaFeature(TypedDict):
@@ -48,12 +48,12 @@ class UserAgentBrandVersion(TypedDict):
 
 class UserAgentMetadata(TypedDict):
     platform: str
-    platformVersion: str
+    platform_version: str
     architecture: str
     model: str
     mobile: bool
     brands: list
-    fullVersionList: list
-    fullVersion: str
+    full_version_list: list
+    full_version: str
     bitness: str
     wow64: bool

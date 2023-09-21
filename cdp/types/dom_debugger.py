@@ -26,12 +26,12 @@ CSPViolationType = Literal[
 
 class EventListener(TypedDict):
     type: str
-    useCapture: bool
+    use_capture: bool
     passive: bool
     once: bool
-    scriptId: 'runtime.ScriptId'
-    lineNumber: int
-    columnNumber: int
+    script_id: 'runtime.ScriptId'
+    line_number: int
+    column_number: int
     handler: 'runtime.RemoteObject'
-    originalHandler: 'runtime.RemoteObject'
-    backendNodeId: 'dom.BackendNodeId'
+    original_handler: 'runtime.RemoteObject'
+    backend_node_id: 'dom.BackendNodeId'

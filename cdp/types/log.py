@@ -19,10 +19,10 @@ class LogEntry(TypedDict):
     timestamp: 'runtime.Timestamp'
     category: str
     url: str
-    lineNumber: int
-    stackTrace: 'runtime.StackTrace'
-    networkRequestId: 'network.RequestId'
-    workerId: str
+    line_number: int
+    stack_trace: 'runtime.StackTrace'
+    network_request_id: 'network.RequestId'
+    worker_id: str
     args: list
 
 

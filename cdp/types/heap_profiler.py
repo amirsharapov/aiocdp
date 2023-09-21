@@ -14,15 +14,15 @@ HeapSnapshotObjectId = str
 
 
 class SamplingHeapProfileNode(TypedDict):
-    callFrame: 'runtime.CallFrame'
-    selfSize: float
+    call_frame: 'runtime.CallFrame'
+    self_size: float
     id: int
     children: list
 
 
 class SamplingHeapProfileSample(TypedDict):
     size: float
-    nodeId: int
+    node_id: int
     ordinal: float
 
 

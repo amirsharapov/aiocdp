@@ -15,21 +15,21 @@ from typing import (
 class DatabaseWithObjectStores(TypedDict):
     name: str
     version: float
-    objectStores: list
+    object_stores: list
 
 
 class ObjectStore(TypedDict):
     name: str
-    keyPath: 'KeyPath'
-    autoIncrement: bool
+    key_path: 'KeyPath'
+    auto_increment: bool
     indexes: list
 
 
 class ObjectStoreIndex(TypedDict):
     name: str
-    keyPath: 'KeyPath'
+    key_path: 'KeyPath'
     unique: bool
-    multiEntry: bool
+    multi_entry: bool
 
 
 class Key(TypedDict):
@@ -41,15 +41,15 @@ class Key(TypedDict):
 
 
 class KeyRange(TypedDict):
-    lowerOpen: bool
-    upperOpen: bool
+    lower_open: bool
+    upper_open: bool
     lower: 'Key'
     upper: 'Key'
 
 
 class DataEntry(TypedDict):
     key: 'runtime.RemoteObject'
-    primaryKey: 'runtime.RemoteObject'
+    primary_key: 'runtime.RemoteObject'
     value: 'runtime.RemoteObject'
 
 

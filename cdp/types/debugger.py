@@ -16,42 +16,42 @@ CallFrameId = str
 
 
 class Location(TypedDict):
-    scriptId: 'runtime.ScriptId'
-    lineNumber: int
-    columnNumber: int
+    script_id: 'runtime.ScriptId'
+    line_number: int
+    column_number: int
 
 
 class ScriptPosition(TypedDict):
-    lineNumber: int
-    columnNumber: int
+    line_number: int
+    column_number: int
 
 
 class CallFrame(TypedDict):
-    callFrameId: 'CallFrameId'
-    functionName: str
+    call_frame_id: 'CallFrameId'
+    function_name: str
     location: 'Location'
     url: str
-    scopeChain: list
+    scope_chain: list
     this: 'runtime.RemoteObject'
-    functionLocation: 'Location'
-    returnValue: 'runtime.RemoteObject'
+    function_location: 'Location'
+    return_value: 'runtime.RemoteObject'
 
 
 class Scope(TypedDict):
     type: str
     object: 'runtime.RemoteObject'
     name: str
-    startLocation: 'Location'
-    endLocation: 'Location'
+    start_location: 'Location'
+    end_location: 'Location'
 
 
 class SearchMatch(TypedDict):
-    lineNumber: float
-    lineContent: str
+    line_number: float
+    line_content: str
 
 
 class BreakLocation(TypedDict):
-    scriptId: 'runtime.ScriptId'
-    lineNumber: int
-    columnNumber: int
+    script_id: 'runtime.ScriptId'
+    line_number: int
+    column_number: int
     type: str

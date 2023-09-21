@@ -41,52 +41,52 @@ CertificateErrorAction = Literal[
 
 class CertificateSecurityState(TypedDict):
     protocol: str
-    keyExchange: str
+    key_exchange: str
     cipher: str
     certificate: list
-    subjectName: str
+    subject_name: str
     issuer: str
-    validFrom: 'network.TimeSinceEpoch'
-    validTo: 'network.TimeSinceEpoch'
-    certificateHasWeakSignature: bool
-    certificateHasSha1Signature: bool
-    modernSSL: bool
-    obsoleteSslProtocol: bool
-    obsoleteSslKeyExchange: bool
-    obsoleteSslCipher: bool
-    obsoleteSslSignature: bool
-    keyExchangeGroup: str
+    valid_from: 'network.TimeSinceEpoch'
+    valid_to: 'network.TimeSinceEpoch'
+    certificate_has_weak_signature: bool
+    certificate_has_sha1_signature: bool
+    modern_ssl: bool
+    obsolete_ssl_protocol: bool
+    obsolete_ssl_key_exchange: bool
+    obsolete_ssl_cipher: bool
+    obsolete_ssl_signature: bool
+    key_exchange_group: str
     mac: str
-    certificateNetworkError: str
+    certificate_network_error: str
 
 
 class SafetyTipInfo(TypedDict):
-    safetyTipStatus: 'SafetyTipStatus'
-    safeUrl: str
+    safety_tip_status: 'SafetyTipStatus'
+    safe_url: str
 
 
 class VisibleSecurityState(TypedDict):
-    securityState: 'SecurityState'
-    securityStateIssueIds: list
-    certificateSecurityState: 'CertificateSecurityState'
-    safetyTipInfo: 'SafetyTipInfo'
+    security_state: 'SecurityState'
+    security_state_issue_ids: list
+    certificate_security_state: 'CertificateSecurityState'
+    safety_tip_info: 'SafetyTipInfo'
 
 
 class SecurityStateExplanation(TypedDict):
-    securityState: 'SecurityState'
+    security_state: 'SecurityState'
     title: str
     summary: str
     description: str
-    mixedContentType: 'MixedContentType'
+    mixed_content_type: 'MixedContentType'
     certificate: list
     recommendations: list
 
 
 class InsecureContentStatus(TypedDict):
-    ranMixedContent: bool
-    displayedMixedContent: bool
-    containedMixedForm: bool
-    ranContentWithCertErrors: bool
-    displayedContentWithCertErrors: bool
-    ranInsecureContentStyle: 'SecurityState'
-    displayedInsecureContentStyle: 'SecurityState'
+    ran_mixed_content: bool
+    displayed_mixed_content: bool
+    contained_mixed_form: bool
+    ran_content_with_cert_errors: bool
+    displayed_content_with_cert_errors: bool
+    ran_insecure_content_style: 'SecurityState'
+    displayed_insecure_content_style: 'SecurityState'

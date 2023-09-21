@@ -32,22 +32,22 @@ AuthenticatorTransport = Literal[
 class VirtualAuthenticatorOptions(TypedDict):
     protocol: 'AuthenticatorProtocol'
     transport: 'AuthenticatorTransport'
-    ctap2Version: 'Ctap2Version'
-    hasResidentKey: bool
-    hasUserVerification: bool
-    hasLargeBlob: bool
-    hasCredBlob: bool
-    hasMinPinLength: bool
-    hasPrf: bool
-    automaticPresenceSimulation: bool
-    isUserVerified: bool
+    ctap2_version: 'Ctap2Version'
+    has_resident_key: bool
+    has_user_verification: bool
+    has_large_blob: bool
+    has_cred_blob: bool
+    has_min_pin_length: bool
+    has_prf: bool
+    automatic_presence_simulation: bool
+    is_user_verified: bool
 
 
 class Credential(TypedDict):
-    credentialId: str
-    isResidentCredential: bool
-    privateKey: str
-    signCount: int
-    rpId: str
-    userHandle: str
-    largeBlob: str
+    credential_id: str
+    is_resident_credential: bool
+    private_key: str
+    sign_count: int
+    rp_id: str
+    user_handle: str
+    large_blob: str

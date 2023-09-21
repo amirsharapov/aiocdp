@@ -32,23 +32,23 @@ CSSRuleType = Literal[
 
 
 class PseudoElementMatches(TypedDict):
-    pseudoType: 'dom.PseudoType'
+    pseudo_type: 'dom.PseudoType'
     matches: list
-    pseudoIdentifier: str
+    pseudo_identifier: str
 
 
 class InheritedStyleEntry(TypedDict):
-    matchedCSSRules: list
-    inlineStyle: 'CSSStyle'
+    matched_css_rules: list
+    inline_style: 'CSSStyle'
 
 
 class InheritedPseudoElementMatches(TypedDict):
-    pseudoElements: list
+    pseudo_elements: list
 
 
 class RuleMatch(TypedDict):
     rule: 'CSSRule'
-    matchingSelectors: list
+    matching_selectors: list
 
 
 class Value(TypedDict):
@@ -69,52 +69,52 @@ class SelectorList(TypedDict):
 
 
 class CSSStyleSheetHeader(TypedDict):
-    styleSheetId: 'StyleSheetId'
-    frameId: 'page.FrameId'
-    sourceURL: str
+    style_sheet_id: 'StyleSheetId'
+    frame_id: 'page.FrameId'
+    source_url: str
     origin: 'StyleSheetOrigin'
     title: str
     disabled: bool
-    isInline: bool
-    isMutable: bool
-    isConstructed: bool
-    startLine: float
-    startColumn: float
+    is_inline: bool
+    is_mutable: bool
+    is_constructed: bool
+    start_line: float
+    start_column: float
     length: float
-    endLine: float
-    endColumn: float
-    sourceMapURL: str
-    ownerNode: 'dom.BackendNodeId'
-    hasSourceURL: bool
-    loadingFailed: bool
+    end_line: float
+    end_column: float
+    source_map_url: str
+    owner_node: 'dom.BackendNodeId'
+    has_source_url: bool
+    loading_failed: bool
 
 
 class CSSRule(TypedDict):
-    selectorList: 'SelectorList'
+    selector_list: 'SelectorList'
     origin: 'StyleSheetOrigin'
     style: 'CSSStyle'
-    styleSheetId: 'StyleSheetId'
-    nestingSelectors: list
+    style_sheet_id: 'StyleSheetId'
+    nesting_selectors: list
     media: list
-    containerQueries: list
+    container_queries: list
     supports: list
     layers: list
     scopes: list
-    ruleTypes: list
+    rule_types: list
 
 
 class RuleUsage(TypedDict):
-    styleSheetId: 'StyleSheetId'
-    startOffset: float
-    endOffset: float
+    style_sheet_id: 'StyleSheetId'
+    start_offset: float
+    end_offset: float
     used: bool
 
 
 class SourceRange(TypedDict):
-    startLine: int
-    startColumn: int
-    endLine: int
-    endColumn: int
+    start_line: int
+    start_column: int
+    end_line: int
+    end_column: int
 
 
 class ShorthandEntry(TypedDict):
@@ -129,10 +129,10 @@ class CSSComputedStyleProperty(TypedDict):
 
 
 class CSSStyle(TypedDict):
-    cssProperties: list
-    shorthandEntries: list
-    styleSheetId: 'StyleSheetId'
-    cssText: str
+    css_properties: list
+    shorthand_entries: list
+    style_sheet_id: 'StyleSheetId'
+    css_text: str
     range: 'SourceRange'
 
 
@@ -142,19 +142,19 @@ class CSSProperty(TypedDict):
     important: bool
     implicit: bool
     text: str
-    parsedOk: bool
+    parsed_ok: bool
     disabled: bool
     range: 'SourceRange'
-    longhandProperties: list
+    longhand_properties: list
 
 
 class CSSMedia(TypedDict):
     text: str
     source: str
-    sourceURL: str
+    source_url: str
     range: 'SourceRange'
-    styleSheetId: 'StyleSheetId'
-    mediaList: list
+    style_sheet_id: 'StyleSheetId'
+    media_list: list
 
 
 class MediaQuery(TypedDict):
@@ -166,109 +166,109 @@ class MediaQueryExpression(TypedDict):
     value: float
     unit: str
     feature: str
-    valueRange: 'SourceRange'
-    computedLength: float
+    value_range: 'SourceRange'
+    computed_length: float
 
 
 class CSSContainerQuery(TypedDict):
     text: str
     range: 'SourceRange'
-    styleSheetId: 'StyleSheetId'
+    style_sheet_id: 'StyleSheetId'
     name: str
-    physicalAxes: 'dom.PhysicalAxes'
-    logicalAxes: 'dom.LogicalAxes'
+    physical_axes: 'dom.PhysicalAxes'
+    logical_axes: 'dom.LogicalAxes'
 
 
 class CSSSupports(TypedDict):
     text: str
     active: bool
     range: 'SourceRange'
-    styleSheetId: 'StyleSheetId'
+    style_sheet_id: 'StyleSheetId'
 
 
 class CSSScope(TypedDict):
     text: str
     range: 'SourceRange'
-    styleSheetId: 'StyleSheetId'
+    style_sheet_id: 'StyleSheetId'
 
 
 class CSSLayer(TypedDict):
     text: str
     range: 'SourceRange'
-    styleSheetId: 'StyleSheetId'
+    style_sheet_id: 'StyleSheetId'
 
 
 class CSSLayerData(TypedDict):
     name: str
     order: float
-    subLayers: list
+    sub_layers: list
 
 
 class PlatformFontUsage(TypedDict):
-    familyName: str
-    isCustomFont: bool
-    glyphCount: float
+    family_name: str
+    is_custom_font: bool
+    glyph_count: float
 
 
 class FontVariationAxis(TypedDict):
     tag: str
     name: str
-    minValue: float
-    maxValue: float
-    defaultValue: float
+    min_value: float
+    max_value: float
+    default_value: float
 
 
 class FontFace(TypedDict):
-    fontFamily: str
-    fontStyle: str
-    fontVariant: str
-    fontWeight: str
-    fontStretch: str
-    fontDisplay: str
-    unicodeRange: str
+    font_family: str
+    font_style: str
+    font_variant: str
+    font_weight: str
+    font_stretch: str
+    font_display: str
+    unicode_range: str
     src: str
-    platformFontFamily: str
-    fontVariationAxes: list
+    platform_font_family: str
+    font_variation_axes: list
 
 
 class CSSTryRule(TypedDict):
     origin: 'StyleSheetOrigin'
     style: 'CSSStyle'
-    styleSheetId: 'StyleSheetId'
+    style_sheet_id: 'StyleSheetId'
 
 
 class CSSPositionFallbackRule(TypedDict):
     name: 'Value'
-    tryRules: list
+    try_rules: list
 
 
 class CSSKeyframesRule(TypedDict):
-    animationName: 'Value'
+    animation_name: 'Value'
     keyframes: list
 
 
 class CSSPropertyRegistration(TypedDict):
-    propertyName: str
+    property_name: str
     inherits: bool
     syntax: str
-    initialValue: 'Value'
+    initial_value: 'Value'
 
 
 class CSSPropertyRule(TypedDict):
     origin: 'StyleSheetOrigin'
-    propertyName: 'Value'
+    property_name: 'Value'
     style: 'CSSStyle'
-    styleSheetId: 'StyleSheetId'
+    style_sheet_id: 'StyleSheetId'
 
 
 class CSSKeyframeRule(TypedDict):
     origin: 'StyleSheetOrigin'
-    keyText: 'Value'
+    key_text: 'Value'
     style: 'CSSStyle'
-    styleSheetId: 'StyleSheetId'
+    style_sheet_id: 'StyleSheetId'
 
 
 class StyleDeclarationEdit(TypedDict):
-    styleSheetId: 'StyleSheetId'
+    style_sheet_id: 'StyleSheetId'
     range: 'SourceRange'
     text: str

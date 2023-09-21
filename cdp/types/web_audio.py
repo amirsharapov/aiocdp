@@ -43,44 +43,44 @@ AutomationRate = Literal[
 
 
 class ContextRealtimeData(TypedDict):
-    currentTime: float
-    renderCapacity: float
-    callbackIntervalMean: float
-    callbackIntervalVariance: float
+    current_time: float
+    render_capacity: float
+    callback_interval_mean: float
+    callback_interval_variance: float
 
 
 class BaseAudioContext(TypedDict):
-    contextId: 'GraphObjectId'
-    contextType: 'ContextType'
-    contextState: 'ContextState'
-    callbackBufferSize: float
-    maxOutputChannelCount: float
-    sampleRate: float
-    realtimeData: 'ContextRealtimeData'
+    context_id: 'GraphObjectId'
+    context_type: 'ContextType'
+    context_state: 'ContextState'
+    callback_buffer_size: float
+    max_output_channel_count: float
+    sample_rate: float
+    realtime_data: 'ContextRealtimeData'
 
 
 class AudioListener(TypedDict):
-    listenerId: 'GraphObjectId'
-    contextId: 'GraphObjectId'
+    listener_id: 'GraphObjectId'
+    context_id: 'GraphObjectId'
 
 
 class AudioNode(TypedDict):
-    nodeId: 'GraphObjectId'
-    contextId: 'GraphObjectId'
-    nodeType: 'NodeType'
-    numberOfInputs: float
-    numberOfOutputs: float
-    channelCount: float
-    channelCountMode: 'ChannelCountMode'
-    channelInterpretation: 'ChannelInterpretation'
+    node_id: 'GraphObjectId'
+    context_id: 'GraphObjectId'
+    node_type: 'NodeType'
+    number_of_inputs: float
+    number_of_outputs: float
+    channel_count: float
+    channel_count_mode: 'ChannelCountMode'
+    channel_interpretation: 'ChannelInterpretation'
 
 
 class AudioParam(TypedDict):
-    paramId: 'GraphObjectId'
-    nodeId: 'GraphObjectId'
-    contextId: 'GraphObjectId'
-    paramType: 'ParamType'
+    param_id: 'GraphObjectId'
+    node_id: 'GraphObjectId'
+    context_id: 'GraphObjectId'
+    param_type: 'ParamType'
     rate: 'AutomationRate'
-    defaultValue: float
-    minValue: float
-    maxValue: float
+    default_value: float
+    min_value: float
+    max_value: float

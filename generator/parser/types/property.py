@@ -35,7 +35,7 @@ class Property(Node, ABC):
         repr=False
     )
 
-    name: str = field(
+    name: ExtendedString = field(
         init=False
     )
     type: MaybeUndefined[DataType] = field(

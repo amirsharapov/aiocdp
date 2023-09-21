@@ -22,9 +22,9 @@ RequestStage = Literal[
 
 
 class RequestPattern(TypedDict):
-    urlPattern: str
-    resourceType: 'network.ResourceType'
-    requestStage: 'RequestStage'
+    url_pattern: str
+    resource_type: 'network.ResourceType'
+    request_stage: 'RequestStage'
 
 
 class HeaderEntry(TypedDict):

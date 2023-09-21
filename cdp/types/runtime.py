@@ -26,18 +26,18 @@ UniqueDebuggerId = str
 class RemoteObject(TypedDict):
     type: str
     subtype: str
-    className: str
+    class_name: str
     value: Any
-    unserializableValue: 'UnserializableValue'
+    unserializable_value: 'UnserializableValue'
     description: str
-    objectId: 'RemoteObjectId'
+    object_id: 'RemoteObjectId'
     preview: 'ObjectPreview'
-    customPreview: 'CustomPreview'
+    custom_preview: 'CustomPreview'
 
 
 class CustomPreview(TypedDict):
     header: str
-    bodyGetterId: 'RemoteObjectId'
+    body_getter_id: 'RemoteObjectId'
 
 
 class ObjectPreview(TypedDict):
@@ -53,7 +53,7 @@ class PropertyPreview(TypedDict):
     name: str
     type: str
     value: str
-    valuePreview: 'ObjectPreview'
+    value_preview: 'ObjectPreview'
     subtype: str
 
 
@@ -70,8 +70,8 @@ class PropertyDescriptor(TypedDict):
     writable: bool
     get: 'RemoteObject'
     set: 'RemoteObject'
-    wasThrown: bool
-    isOwn: bool
+    was_thrown: bool
+    is_own: bool
     symbol: 'RemoteObject'
 
 
@@ -87,44 +87,44 @@ class PrivatePropertyDescriptor(TypedDict):
 
 class CallArgument(TypedDict):
     value: Any
-    unserializableValue: 'UnserializableValue'
-    objectId: 'RemoteObjectId'
+    unserializable_value: 'UnserializableValue'
+    object_id: 'RemoteObjectId'
 
 
 class ExecutionContextDescription(TypedDict):
     id: 'ExecutionContextId'
     origin: str
     name: str
-    auxData: dict
+    aux_data: dict
 
 
 class ExceptionDetails(TypedDict):
-    exceptionId: int
+    exception_id: int
     text: str
-    lineNumber: int
-    columnNumber: int
-    scriptId: 'ScriptId'
+    line_number: int
+    column_number: int
+    script_id: 'ScriptId'
     url: str
-    stackTrace: 'StackTrace'
+    stack_trace: 'StackTrace'
     exception: 'RemoteObject'
-    executionContextId: 'ExecutionContextId'
+    execution_context_id: 'ExecutionContextId'
 
 
 class CallFrame(TypedDict):
-    functionName: str
-    scriptId: 'ScriptId'
+    function_name: str
+    script_id: 'ScriptId'
     url: str
-    lineNumber: int
-    columnNumber: int
+    line_number: int
+    column_number: int
 
 
 class StackTrace(TypedDict):
-    callFrames: list
+    call_frames: list
     description: str
     parent: 'StackTrace'
-    parentId: 'StackTraceId'
+    parent_id: 'StackTraceId'
 
 
 class StackTraceId(TypedDict):
     id: str
-    debuggerId: 'UniqueDebuggerId'
+    debugger_id: 'UniqueDebuggerId'

@@ -22,13 +22,13 @@ ImageType = Literal[
 
 
 class GPUDevice(TypedDict):
-    vendorId: float
-    deviceId: float
-    vendorString: str
-    deviceString: str
-    driverVendor: str
-    driverVersion: str
-    subSysId: float
+    vendor_id: float
+    device_id: float
+    vendor_string: str
+    device_string: str
+    driver_vendor: str
+    driver_version: str
+    sub_sys_id: float
     revision: float
 
 
@@ -39,35 +39,35 @@ class Size(TypedDict):
 
 class VideoDecodeAcceleratorCapability(TypedDict):
     profile: str
-    maxResolution: 'Size'
-    minResolution: 'Size'
+    max_resolution: 'Size'
+    min_resolution: 'Size'
 
 
 class VideoEncodeAcceleratorCapability(TypedDict):
     profile: str
-    maxResolution: 'Size'
-    maxFramerateNumerator: int
-    maxFramerateDenominator: int
+    max_resolution: 'Size'
+    max_framerate_numerator: int
+    max_framerate_denominator: int
 
 
 class ImageDecodeAcceleratorCapability(TypedDict):
-    imageType: 'ImageType'
-    maxDimensions: 'Size'
-    minDimensions: 'Size'
+    image_type: 'ImageType'
+    max_dimensions: 'Size'
+    min_dimensions: 'Size'
     subsamplings: list
 
 
 class GPUInfo(TypedDict):
     devices: list
-    driverBugWorkarounds: list
-    videoDecoding: list
-    videoEncoding: list
-    imageDecoding: list
-    auxAttributes: dict
-    featureStatus: dict
+    driver_bug_workarounds: list
+    video_decoding: list
+    video_encoding: list
+    image_decoding: list
+    aux_attributes: dict
+    feature_status: dict
 
 
 class ProcessInfo(TypedDict):
     type: str
     id: int
-    cpuTime: float
+    cpu_time: float

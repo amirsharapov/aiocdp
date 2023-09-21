@@ -371,18 +371,18 @@ BackForwardCacheNotRestoredReasonType = Literal[
 
 
 class AdFrameStatus(TypedDict):
-    adFrameType: 'AdFrameType'
+    ad_frame_type: 'AdFrameType'
     explanations: list
 
 
 class AdScriptId(TypedDict):
-    scriptId: 'runtime.ScriptId'
-    debuggerId: 'runtime.UniqueDebuggerId'
+    script_id: 'runtime.ScriptId'
+    debugger_id: 'runtime.UniqueDebuggerId'
 
 
 class PermissionsPolicyBlockLocator(TypedDict):
-    frameId: 'FrameId'
-    blockReason: 'PermissionsPolicyBlockReason'
+    frame_id: 'FrameId'
+    block_reason: 'PermissionsPolicyBlockReason'
 
 
 class PermissionsPolicyFeatureState(TypedDict):
@@ -393,48 +393,48 @@ class PermissionsPolicyFeatureState(TypedDict):
 
 class OriginTrialToken(TypedDict):
     origin: str
-    matchSubDomains: bool
-    trialName: str
-    expiryTime: 'network.TimeSinceEpoch'
-    isThirdParty: bool
-    usageRestriction: 'OriginTrialUsageRestriction'
+    match_sub_domains: bool
+    trial_name: str
+    expiry_time: 'network.TimeSinceEpoch'
+    is_third_party: bool
+    usage_restriction: 'OriginTrialUsageRestriction'
 
 
 class OriginTrialTokenWithStatus(TypedDict):
-    rawTokenText: str
+    raw_token_text: str
     status: 'OriginTrialTokenStatus'
-    parsedToken: 'OriginTrialToken'
+    parsed_token: 'OriginTrialToken'
 
 
 class OriginTrial(TypedDict):
-    trialName: str
+    trial_name: str
     status: 'OriginTrialStatus'
-    tokensWithStatus: list
+    tokens_with_status: list
 
 
 class Frame(TypedDict):
     id: 'FrameId'
-    loaderId: 'network.LoaderId'
+    loader_id: 'network.LoaderId'
     url: str
-    domainAndRegistry: str
-    securityOrigin: str
-    mimeType: str
-    secureContextType: 'SecureContextType'
-    crossOriginIsolatedContextType: 'CrossOriginIsolatedContextType'
-    gatedAPIFeatures: list
-    parentId: 'FrameId'
+    domain_and_registry: str
+    security_origin: str
+    mime_type: str
+    secure_context_type: 'SecureContextType'
+    cross_origin_isolated_context_type: 'CrossOriginIsolatedContextType'
+    gated_api_features: list
+    parent_id: 'FrameId'
     name: str
-    urlFragment: str
-    unreachableUrl: str
-    adFrameStatus: 'AdFrameStatus'
+    url_fragment: str
+    unreachable_url: str
+    ad_frame_status: 'AdFrameStatus'
 
 
 class FrameResource(TypedDict):
     url: str
     type: 'network.ResourceType'
-    mimeType: str
-    lastModified: 'network.TimeSinceEpoch'
-    contentSize: float
+    mime_type: str
+    last_modified: 'network.TimeSinceEpoch'
+    content_size: float
     failed: bool
     canceled: bool
 
@@ -442,29 +442,29 @@ class FrameResource(TypedDict):
 class FrameResourceTree(TypedDict):
     frame: 'Frame'
     resources: list
-    childFrames: list
+    child_frames: list
 
 
 class FrameTree(TypedDict):
     frame: 'Frame'
-    childFrames: list
+    child_frames: list
 
 
 class NavigationEntry(TypedDict):
     id: int
     url: str
-    userTypedURL: str
+    user_typed_url: str
     title: str
-    transitionType: 'TransitionType'
+    transition_type: 'TransitionType'
 
 
 class ScreencastFrameMetadata(TypedDict):
-    offsetTop: float
-    pageScaleFactor: float
-    deviceWidth: float
-    deviceHeight: float
-    scrollOffsetX: float
-    scrollOffsetY: float
+    offset_top: float
+    page_scale_factor: float
+    device_width: float
+    device_height: float
+    scroll_offset_x: float
+    scroll_offset_y: float
     timestamp: 'network.TimeSinceEpoch'
 
 
@@ -480,19 +480,19 @@ class AppManifestParsedProperties(TypedDict):
 
 
 class LayoutViewport(TypedDict):
-    pageX: int
-    pageY: int
-    clientWidth: int
-    clientHeight: int
+    page_x: int
+    page_y: int
+    client_width: int
+    client_height: int
 
 
 class VisualViewport(TypedDict):
-    offsetX: float
-    offsetY: float
-    pageX: float
-    pageY: float
-    clientWidth: float
-    clientHeight: float
+    offset_x: float
+    offset_y: float
+    page_x: float
+    page_y: float
+    client_width: float
+    client_height: float
     scale: float
     zoom: float
 
@@ -509,7 +509,7 @@ class FontFamilies(TypedDict):
     standard: str
     fixed: str
     serif: str
-    sansSerif: str
+    sans_serif: str
     cursive: str
     fantasy: str
     math: str
@@ -517,7 +517,7 @@ class FontFamilies(TypedDict):
 
 class ScriptFontFamilies(TypedDict):
     script: str
-    fontFamilies: 'FontFamilies'
+    font_families: 'FontFamilies'
 
 
 class FontSizes(TypedDict):
@@ -531,8 +531,8 @@ class InstallabilityErrorArgument(TypedDict):
 
 
 class InstallabilityError(TypedDict):
-    errorId: str
-    errorArguments: list
+    error_id: str
+    error_arguments: list
 
 
 class CompilationCacheParams(TypedDict):

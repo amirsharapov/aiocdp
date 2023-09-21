@@ -21,8 +21,8 @@ FillingStrategy = Literal[
 class CreditCard(TypedDict):
     number: str
     name: str
-    expiryMonth: str
-    expiryYear: str
+    expiry_month: str
+    expiry_year: str
     cvc: str
 
 
@@ -40,13 +40,13 @@ class Address(TypedDict):
 
 
 class AddressUI(TypedDict):
-    addressFields: list
+    address_fields: list
 
 
 class FilledField(TypedDict):
-    htmlType: str
+    html_type: str
     id: str
     name: str
     value: str
-    autofillType: str
-    fillingStrategy: 'FillingStrategy'
+    autofill_type: str
+    filling_strategy: 'FillingStrategy'

@@ -30,9 +30,9 @@ class EventMetadata(TypedDict):
 class BackgroundServiceEvent(TypedDict):
     timestamp: 'network.TimeSinceEpoch'
     origin: str
-    serviceWorkerRegistrationId: 'service_worker.RegistrationID'
+    service_worker_registration_id: 'service_worker.RegistrationID'
     service: 'ServiceName'
-    eventName: str
-    instanceId: str
-    eventMetadata: list
-    storageKey: str
+    event_name: str
+    instance_id: str
+    event_metadata: list
+    storage_key: str

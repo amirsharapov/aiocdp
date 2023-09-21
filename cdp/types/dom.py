@@ -72,43 +72,43 @@ LogicalAxes = Literal[
 
 
 class BackendNode(TypedDict):
-    nodeType: int
-    nodeName: str
-    backendNodeId: 'BackendNodeId'
+    node_type: int
+    node_name: str
+    backend_node_id: 'BackendNodeId'
 
 
 class Node(TypedDict):
-    nodeId: 'NodeId'
-    backendNodeId: 'BackendNodeId'
-    nodeType: int
-    nodeName: str
-    localName: str
-    nodeValue: str
-    parentId: 'NodeId'
-    childNodeCount: int
+    node_id: 'NodeId'
+    backend_node_id: 'BackendNodeId'
+    node_type: int
+    node_name: str
+    local_name: str
+    node_value: str
+    parent_id: 'NodeId'
+    child_node_count: int
     children: list
     attributes: list
-    documentURL: str
-    baseURL: str
-    publicId: str
-    systemId: str
-    internalSubset: str
-    xmlVersion: str
+    document_url: str
+    base_url: str
+    public_id: str
+    system_id: str
+    internal_subset: str
+    xml_version: str
     name: str
     value: str
-    pseudoType: 'PseudoType'
-    pseudoIdentifier: str
-    shadowRootType: 'ShadowRootType'
-    frameId: 'page.FrameId'
-    contentDocument: 'Node'
-    shadowRoots: list
-    templateContent: 'Node'
-    pseudoElements: list
-    importedDocument: 'Node'
-    distributedNodes: list
-    isSVG: bool
-    compatibilityMode: 'CompatibilityMode'
-    assignedSlot: 'BackendNode'
+    pseudo_type: 'PseudoType'
+    pseudo_identifier: str
+    shadow_root_type: 'ShadowRootType'
+    frame_id: 'page.FrameId'
+    content_document: 'Node'
+    shadow_roots: list
+    template_content: 'Node'
+    pseudo_elements: list
+    imported_document: 'Node'
+    distributed_nodes: list
+    is_svg: bool
+    compatibility_mode: 'CompatibilityMode'
+    assigned_slot: 'BackendNode'
 
 
 class RGBA(TypedDict):
@@ -125,13 +125,13 @@ class BoxModel(TypedDict):
     margin: 'Quad'
     width: int
     height: int
-    shapeOutside: 'ShapeOutsideInfo'
+    shape_outside: 'ShapeOutsideInfo'
 
 
 class ShapeOutsideInfo(TypedDict):
     bounds: 'Quad'
     shape: list
-    marginShape: list
+    margin_shape: list
 
 
 class Rect(TypedDict):

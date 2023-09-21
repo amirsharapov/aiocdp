@@ -238,30 +238,30 @@ class AffectedCookie(TypedDict):
 
 
 class AffectedRequest(TypedDict):
-    requestId: 'network.RequestId'
+    request_id: 'network.RequestId'
     url: str
 
 
 class AffectedFrame(TypedDict):
-    frameId: 'page.FrameId'
+    frame_id: 'page.FrameId'
 
 
 class CookieIssueDetails(TypedDict):
-    cookieWarningReasons: list
-    cookieExclusionReasons: list
+    cookie_warning_reasons: list
+    cookie_exclusion_reasons: list
     operation: 'CookieOperation'
     cookie: 'AffectedCookie'
-    rawCookieLine: str
-    siteForCookies: str
-    cookieUrl: str
+    raw_cookie_line: str
+    site_for_cookies: str
+    cookie_url: str
     request: 'AffectedRequest'
 
 
 class MixedContentIssueDetails(TypedDict):
-    resolutionStatus: 'MixedContentResolutionStatus'
-    insecureURL: str
-    mainResourceURL: str
-    resourceType: 'MixedContentResourceType'
+    resolution_status: 'MixedContentResolutionStatus'
+    insecure_url: str
+    main_resource_url: str
+    resource_type: 'MixedContentResourceType'
     request: 'AffectedRequest'
     frame: 'AffectedFrame'
 
@@ -269,8 +269,8 @@ class MixedContentIssueDetails(TypedDict):
 class BlockedByResponseIssueDetails(TypedDict):
     request: 'AffectedRequest'
     reason: 'BlockedByResponseReason'
-    parentFrame: 'AffectedFrame'
-    blockedFrame: 'AffectedFrame'
+    parent_frame: 'AffectedFrame'
+    blocked_frame: 'AffectedFrame'
 
 
 class HeavyAdIssueDetails(TypedDict):
@@ -281,60 +281,60 @@ class HeavyAdIssueDetails(TypedDict):
 
 class SourceCodeLocation(TypedDict):
     url: str
-    lineNumber: int
-    columnNumber: int
-    scriptId: 'runtime.ScriptId'
+    line_number: int
+    column_number: int
+    script_id: 'runtime.ScriptId'
 
 
 class ContentSecurityPolicyIssueDetails(TypedDict):
-    violatedDirective: str
-    isReportOnly: bool
-    contentSecurityPolicyViolationType: 'ContentSecurityPolicyViolationType'
-    blockedURL: str
-    frameAncestor: 'AffectedFrame'
-    sourceCodeLocation: 'SourceCodeLocation'
-    violatingNodeId: 'dom.BackendNodeId'
+    violated_directive: str
+    is_report_only: bool
+    content_security_policy_violation_type: 'ContentSecurityPolicyViolationType'
+    blocked_url: str
+    frame_ancestor: 'AffectedFrame'
+    source_code_location: 'SourceCodeLocation'
+    violating_node_id: 'dom.BackendNodeId'
 
 
 class SharedArrayBufferIssueDetails(TypedDict):
-    sourceCodeLocation: 'SourceCodeLocation'
-    isWarning: bool
+    source_code_location: 'SourceCodeLocation'
+    is_warning: bool
     type: 'SharedArrayBufferIssueType'
 
 
 class LowTextContrastIssueDetails(TypedDict):
-    violatingNodeId: 'dom.BackendNodeId'
-    violatingNodeSelector: str
-    contrastRatio: float
-    thresholdAA: float
-    thresholdAAA: float
-    fontSize: str
-    fontWeight: str
+    violating_node_id: 'dom.BackendNodeId'
+    violating_node_selector: str
+    contrast_ratio: float
+    threshold_aa: float
+    threshold_aaa: float
+    font_size: str
+    font_weight: str
 
 
 class CorsIssueDetails(TypedDict):
-    corsErrorStatus: 'network.CorsErrorStatus'
-    isWarning: bool
+    cors_error_status: 'network.CorsErrorStatus'
+    is_warning: bool
     request: 'AffectedRequest'
     location: 'SourceCodeLocation'
-    initiatorOrigin: str
-    resourceIPAddressSpace: 'network.IPAddressSpace'
-    clientSecurityState: 'network.ClientSecurityState'
+    initiator_origin: str
+    resource_ip_address_space: 'network.IPAddressSpace'
+    client_security_state: 'network.ClientSecurityState'
 
 
 class AttributionReportingIssueDetails(TypedDict):
-    violationType: 'AttributionReportingIssueType'
+    violation_type: 'AttributionReportingIssueType'
     request: 'AffectedRequest'
-    violatingNodeId: 'dom.BackendNodeId'
-    invalidParameter: str
+    violating_node_id: 'dom.BackendNodeId'
+    invalid_parameter: str
 
 
 class QuirksModeIssueDetails(TypedDict):
-    isLimitedQuirksMode: bool
-    documentNodeId: 'dom.BackendNodeId'
+    is_limited_quirks_mode: bool
+    document_node_id: 'dom.BackendNodeId'
     url: str
-    frameId: 'page.FrameId'
-    loaderId: 'network.LoaderId'
+    frame_id: 'page.FrameId'
+    loader_id: 'network.LoaderId'
 
 
 class NavigatorUserAgentIssueDetails(TypedDict):
@@ -343,70 +343,70 @@ class NavigatorUserAgentIssueDetails(TypedDict):
 
 
 class GenericIssueDetails(TypedDict):
-    errorType: 'GenericIssueErrorType'
-    frameId: 'page.FrameId'
-    violatingNodeId: 'dom.BackendNodeId'
-    violatingNodeAttribute: str
+    error_type: 'GenericIssueErrorType'
+    frame_id: 'page.FrameId'
+    violating_node_id: 'dom.BackendNodeId'
+    violating_node_attribute: str
     request: 'AffectedRequest'
 
 
 class DeprecationIssueDetails(TypedDict):
-    sourceCodeLocation: 'SourceCodeLocation'
+    source_code_location: 'SourceCodeLocation'
     type: str
-    affectedFrame: 'AffectedFrame'
+    affected_frame: 'AffectedFrame'
 
 
 class BounceTrackingIssueDetails(TypedDict):
-    trackingSites: list
+    tracking_sites: list
 
 
 class FederatedAuthRequestIssueDetails(TypedDict):
-    federatedAuthRequestIssueReason: 'FederatedAuthRequestIssueReason'
+    federated_auth_request_issue_reason: 'FederatedAuthRequestIssueReason'
 
 
 class FederatedAuthUserInfoRequestIssueDetails(TypedDict):
-    federatedAuthUserInfoRequestIssueReason: 'FederatedAuthUserInfoRequestIssueReason'
+    federated_auth_user_info_request_issue_reason: 'FederatedAuthUserInfoRequestIssueReason'
 
 
 class ClientHintIssueDetails(TypedDict):
-    sourceCodeLocation: 'SourceCodeLocation'
-    clientHintIssueReason: 'ClientHintIssueReason'
+    source_code_location: 'SourceCodeLocation'
+    client_hint_issue_reason: 'ClientHintIssueReason'
 
 
 class FailedRequestInfo(TypedDict):
     url: str
-    failureMessage: str
-    requestId: 'network.RequestId'
+    failure_message: str
+    request_id: 'network.RequestId'
 
 
 class StylesheetLoadingIssueDetails(TypedDict):
-    sourceCodeLocation: 'SourceCodeLocation'
-    styleSheetLoadingIssueReason: 'StyleSheetLoadingIssueReason'
-    failedRequestInfo: 'FailedRequestInfo'
+    source_code_location: 'SourceCodeLocation'
+    style_sheet_loading_issue_reason: 'StyleSheetLoadingIssueReason'
+    failed_request_info: 'FailedRequestInfo'
 
 
 class InspectorIssueDetails(TypedDict):
-    cookieIssueDetails: 'CookieIssueDetails'
-    mixedContentIssueDetails: 'MixedContentIssueDetails'
-    blockedByResponseIssueDetails: 'BlockedByResponseIssueDetails'
-    heavyAdIssueDetails: 'HeavyAdIssueDetails'
-    contentSecurityPolicyIssueDetails: 'ContentSecurityPolicyIssueDetails'
-    sharedArrayBufferIssueDetails: 'SharedArrayBufferIssueDetails'
-    lowTextContrastIssueDetails: 'LowTextContrastIssueDetails'
-    corsIssueDetails: 'CorsIssueDetails'
-    attributionReportingIssueDetails: 'AttributionReportingIssueDetails'
-    quirksModeIssueDetails: 'QuirksModeIssueDetails'
-    navigatorUserAgentIssueDetails: 'NavigatorUserAgentIssueDetails'
-    genericIssueDetails: 'GenericIssueDetails'
-    deprecationIssueDetails: 'DeprecationIssueDetails'
-    clientHintIssueDetails: 'ClientHintIssueDetails'
-    federatedAuthRequestIssueDetails: 'FederatedAuthRequestIssueDetails'
-    bounceTrackingIssueDetails: 'BounceTrackingIssueDetails'
-    stylesheetLoadingIssueDetails: 'StylesheetLoadingIssueDetails'
-    federatedAuthUserInfoRequestIssueDetails: 'FederatedAuthUserInfoRequestIssueDetails'
+    cookie_issue_details: 'CookieIssueDetails'
+    mixed_content_issue_details: 'MixedContentIssueDetails'
+    blocked_by_response_issue_details: 'BlockedByResponseIssueDetails'
+    heavy_ad_issue_details: 'HeavyAdIssueDetails'
+    content_security_policy_issue_details: 'ContentSecurityPolicyIssueDetails'
+    shared_array_buffer_issue_details: 'SharedArrayBufferIssueDetails'
+    low_text_contrast_issue_details: 'LowTextContrastIssueDetails'
+    cors_issue_details: 'CorsIssueDetails'
+    attribution_reporting_issue_details: 'AttributionReportingIssueDetails'
+    quirks_mode_issue_details: 'QuirksModeIssueDetails'
+    navigator_user_agent_issue_details: 'NavigatorUserAgentIssueDetails'
+    generic_issue_details: 'GenericIssueDetails'
+    deprecation_issue_details: 'DeprecationIssueDetails'
+    client_hint_issue_details: 'ClientHintIssueDetails'
+    federated_auth_request_issue_details: 'FederatedAuthRequestIssueDetails'
+    bounce_tracking_issue_details: 'BounceTrackingIssueDetails'
+    stylesheet_loading_issue_details: 'StylesheetLoadingIssueDetails'
+    federated_auth_user_info_request_issue_details: 'FederatedAuthUserInfoRequestIssueDetails'
 
 
 class InspectorIssue(TypedDict):
     code: 'InspectorIssueCode'
     details: 'InspectorIssueDetails'
-    issueId: 'IssueId'
+    issue_id: 'IssueId'

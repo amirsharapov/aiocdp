@@ -153,7 +153,7 @@ def _complex_type_definitions(domain: 'Domain'):
 
                 root.body.append(
                     ast.AnnAssign(
-                        target=ast.Name(property_.name),
+                        target=ast.Name(property_.name.snake_case),
                         annotation=annotation
                     )
                 )
@@ -161,7 +161,7 @@ def _complex_type_definitions(domain: 'Domain'):
             else:
                 root.body.append(
                     ast.AnnAssign(
-                        target=ast.Name(property_.name),
+                        target=ast.Name(property_.name.snake_case),
                         annotation=ast.Name(property_.type.python_type.__name__),
                         simple=1
                     )

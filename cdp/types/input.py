@@ -29,25 +29,25 @@ MouseButton = Literal[
 class TouchPoint(TypedDict):
     x: float
     y: float
-    radiusX: float
-    radiusY: float
-    rotationAngle: float
+    radius_x: float
+    radius_y: float
+    rotation_angle: float
     force: float
-    tangentialPressure: float
-    tiltX: int
-    tiltY: int
+    tangential_pressure: float
+    tilt_x: int
+    tilt_y: int
     twist: int
     id: float
 
 
 class DragDataItem(TypedDict):
-    mimeType: str
+    mime_type: str
     data: str
     title: str
-    baseURL: str
+    base_url: str
 
 
 class DragData(TypedDict):
     items: list
-    dragOperationsMask: int
+    drag_operations_mask: int
     files: list

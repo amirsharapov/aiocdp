@@ -13,6 +13,6 @@ Item = list
 
 
 class StorageId(TypedDict):
-    isLocalStorage: bool
-    securityOrigin: str
-    storageKey: 'SerializedStorageKey'
+    is_local_storage: bool
+    security_origin: str
+    storage_key: 'SerializedStorageKey'

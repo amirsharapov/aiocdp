@@ -294,25 +294,25 @@ ReportStatus = Literal[
 
 
 class ResourceTiming(TypedDict):
-    requestTime: float
-    proxyStart: float
-    proxyEnd: float
-    dnsStart: float
-    dnsEnd: float
-    connectStart: float
-    connectEnd: float
-    sslStart: float
-    sslEnd: float
-    workerStart: float
-    workerReady: float
-    workerFetchStart: float
-    workerRespondWithSettled: float
-    sendStart: float
-    sendEnd: float
-    pushStart: float
-    pushEnd: float
-    receiveHeadersStart: float
-    receiveHeadersEnd: float
+    request_time: float
+    proxy_start: float
+    proxy_end: float
+    dns_start: float
+    dns_end: float
+    connect_start: float
+    connect_end: float
+    ssl_start: float
+    ssl_end: float
+    worker_start: float
+    worker_ready: float
+    worker_fetch_start: float
+    worker_respond_with_settled: float
+    send_start: float
+    send_end: float
+    push_start: float
+    push_end: float
+    receive_headers_start: float
+    receive_headers_end: float
 
 
 class PostDataEntry(TypedDict):
@@ -323,83 +323,83 @@ class Request(TypedDict):
     url: str
     method: str
     headers: 'Headers'
-    initialPriority: 'ResourcePriority'
-    referrerPolicy: str
-    urlFragment: str
-    postData: str
-    hasPostData: bool
-    postDataEntries: list
-    mixedContentType: 'security.MixedContentType'
-    isLinkPreload: bool
-    trustTokenParams: 'TrustTokenParams'
-    isSameSite: bool
+    initial_priority: 'ResourcePriority'
+    referrer_policy: str
+    url_fragment: str
+    post_data: str
+    has_post_data: bool
+    post_data_entries: list
+    mixed_content_type: 'security.MixedContentType'
+    is_link_preload: bool
+    trust_token_params: 'TrustTokenParams'
+    is_same_site: bool
 
 
 class SignedCertificateTimestamp(TypedDict):
     status: str
     origin: str
-    logDescription: str
-    logId: str
+    log_description: str
+    log_id: str
     timestamp: float
-    hashAlgorithm: str
-    signatureAlgorithm: str
-    signatureData: str
+    hash_algorithm: str
+    signature_algorithm: str
+    signature_data: str
 
 
 class SecurityDetails(TypedDict):
     protocol: str
-    keyExchange: str
+    key_exchange: str
     cipher: str
-    certificateId: 'security.CertificateId'
-    subjectName: str
-    sanList: list
+    certificate_id: 'security.CertificateId'
+    subject_name: str
+    san_list: list
     issuer: str
-    validFrom: 'TimeSinceEpoch'
-    validTo: 'TimeSinceEpoch'
-    signedCertificateTimestampList: list
-    certificateTransparencyCompliance: 'CertificateTransparencyCompliance'
-    encryptedClientHello: bool
-    keyExchangeGroup: str
+    valid_from: 'TimeSinceEpoch'
+    valid_to: 'TimeSinceEpoch'
+    signed_certificate_timestamp_list: list
+    certificate_transparency_compliance: 'CertificateTransparencyCompliance'
+    encrypted_client_hello: bool
+    key_exchange_group: str
     mac: str
-    serverSignatureAlgorithm: int
+    server_signature_algorithm: int
 
 
 class CorsErrorStatus(TypedDict):
-    corsError: 'CorsError'
-    failedParameter: str
+    cors_error: 'CorsError'
+    failed_parameter: str
 
 
 class TrustTokenParams(TypedDict):
     operation: 'TrustTokenOperationType'
-    refreshPolicy: str
+    refresh_policy: str
     issuers: list
 
 
 class Response(TypedDict):
     url: str
     status: int
-    statusText: str
+    status_text: str
     headers: 'Headers'
-    mimeType: str
-    connectionReused: bool
-    connectionId: float
-    encodedDataLength: float
-    securityState: 'security.SecurityState'
-    headersText: str
-    requestHeaders: 'Headers'
-    requestHeadersText: str
-    remoteIPAddress: str
-    remotePort: int
-    fromDiskCache: bool
-    fromServiceWorker: bool
-    fromPrefetchCache: bool
+    mime_type: str
+    connection_reused: bool
+    connection_id: float
+    encoded_data_length: float
+    security_state: 'security.SecurityState'
+    headers_text: str
+    request_headers: 'Headers'
+    request_headers_text: str
+    remote_ip_address: str
+    remote_port: int
+    from_disk_cache: bool
+    from_service_worker: bool
+    from_prefetch_cache: bool
     timing: 'ResourceTiming'
-    serviceWorkerResponseSource: 'ServiceWorkerResponseSource'
-    responseTime: 'TimeSinceEpoch'
-    cacheStorageCacheName: str
+    service_worker_response_source: 'ServiceWorkerResponseSource'
+    response_time: 'TimeSinceEpoch'
+    cache_storage_cache_name: str
     protocol: str
-    alternateProtocolUsage: 'AlternateProtocolUsage'
-    securityDetails: 'SecurityDetails'
+    alternate_protocol_usage: 'AlternateProtocolUsage'
+    security_details: 'SecurityDetails'
 
 
 class WebSocketRequest(TypedDict):
@@ -408,23 +408,23 @@ class WebSocketRequest(TypedDict):
 
 class WebSocketResponse(TypedDict):
     status: int
-    statusText: str
+    status_text: str
     headers: 'Headers'
-    headersText: str
-    requestHeaders: 'Headers'
-    requestHeadersText: str
+    headers_text: str
+    request_headers: 'Headers'
+    request_headers_text: str
 
 
 class WebSocketFrame(TypedDict):
     opcode: float
     mask: bool
-    payloadData: str
+    payload_data: str
 
 
 class CachedResource(TypedDict):
     url: str
     type: 'ResourceType'
-    bodySize: float
+    body_size: float
     response: 'Response'
 
 
@@ -432,9 +432,9 @@ class Initiator(TypedDict):
     type: str
     stack: 'runtime.StackTrace'
     url: str
-    lineNumber: float
-    columnNumber: float
-    requestId: 'RequestId'
+    line_number: float
+    column_number: float
+    request_id: 'RequestId'
 
 
 class Cookie(TypedDict):
@@ -444,26 +444,26 @@ class Cookie(TypedDict):
     path: str
     expires: float
     size: int
-    httpOnly: bool
+    http_only: bool
     secure: bool
     session: bool
     priority: 'CookiePriority'
-    sameParty: bool
-    sourceScheme: 'CookieSourceScheme'
-    sourcePort: int
-    sameSite: 'CookieSameSite'
-    partitionKey: str
-    partitionKeyOpaque: bool
+    same_party: bool
+    source_scheme: 'CookieSourceScheme'
+    source_port: int
+    same_site: 'CookieSameSite'
+    partition_key: str
+    partition_key_opaque: bool
 
 
 class BlockedSetCookieWithReason(TypedDict):
-    blockedReasons: list
-    cookieLine: str
+    blocked_reasons: list
+    cookie_line: str
     cookie: 'Cookie'
 
 
 class BlockedCookieWithReason(TypedDict):
-    blockedReasons: list
+    blocked_reasons: list
     cookie: 'Cookie'
 
 
@@ -474,14 +474,14 @@ class CookieParam(TypedDict):
     domain: str
     path: str
     secure: bool
-    httpOnly: bool
-    sameSite: 'CookieSameSite'
+    http_only: bool
+    same_site: 'CookieSameSite'
     expires: 'TimeSinceEpoch'
     priority: 'CookiePriority'
-    sameParty: bool
-    sourceScheme: 'CookieSourceScheme'
-    sourcePort: int
-    partitionKey: str
+    same_party: bool
+    source_scheme: 'CookieSourceScheme'
+    source_port: int
+    partition_key: str
 
 
 class AuthChallenge(TypedDict):
@@ -498,71 +498,71 @@ class AuthChallengeResponse(TypedDict):
 
 
 class RequestPattern(TypedDict):
-    urlPattern: str
-    resourceType: 'ResourceType'
-    interceptionStage: 'InterceptionStage'
+    url_pattern: str
+    resource_type: 'ResourceType'
+    interception_stage: 'InterceptionStage'
 
 
 class SignedExchangeSignature(TypedDict):
     label: str
     signature: str
     integrity: str
-    validityUrl: str
+    validity_url: str
     date: int
     expires: int
-    certUrl: str
-    certSha256: str
+    cert_url: str
+    cert_sha256: str
     certificates: list
 
 
 class SignedExchangeHeader(TypedDict):
-    requestUrl: str
-    responseCode: int
-    responseHeaders: 'Headers'
+    request_url: str
+    response_code: int
+    response_headers: 'Headers'
     signatures: list
-    headerIntegrity: str
+    header_integrity: str
 
 
 class SignedExchangeError(TypedDict):
     message: str
-    signatureIndex: int
-    errorField: 'SignedExchangeErrorField'
+    signature_index: int
+    error_field: 'SignedExchangeErrorField'
 
 
 class SignedExchangeInfo(TypedDict):
-    outerResponse: 'Response'
+    outer_response: 'Response'
     header: 'SignedExchangeHeader'
-    securityDetails: 'SecurityDetails'
+    security_details: 'SecurityDetails'
     errors: list
 
 
 class ConnectTiming(TypedDict):
-    requestTime: float
+    request_time: float
 
 
 class ClientSecurityState(TypedDict):
-    initiatorIsSecureContext: bool
-    initiatorIPAddressSpace: 'IPAddressSpace'
-    privateNetworkRequestPolicy: 'PrivateNetworkRequestPolicy'
+    initiator_is_secure_context: bool
+    initiator_ip_address_space: 'IPAddressSpace'
+    private_network_request_policy: 'PrivateNetworkRequestPolicy'
 
 
 class CrossOriginOpenerPolicyStatus(TypedDict):
     value: 'CrossOriginOpenerPolicyValue'
-    reportOnlyValue: 'CrossOriginOpenerPolicyValue'
-    reportingEndpoint: str
-    reportOnlyReportingEndpoint: str
+    report_only_value: 'CrossOriginOpenerPolicyValue'
+    reporting_endpoint: str
+    report_only_reporting_endpoint: str
 
 
 class CrossOriginEmbedderPolicyStatus(TypedDict):
     value: 'CrossOriginEmbedderPolicyValue'
-    reportOnlyValue: 'CrossOriginEmbedderPolicyValue'
-    reportingEndpoint: str
-    reportOnlyReportingEndpoint: str
+    report_only_value: 'CrossOriginEmbedderPolicyValue'
+    reporting_endpoint: str
+    report_only_reporting_endpoint: str
 
 
 class ContentSecurityPolicyStatus(TypedDict):
-    effectiveDirectives: str
-    isEnforced: bool
+    effective_directives: str
+    is_enforced: bool
     source: 'ContentSecurityPolicySource'
 
 
@@ -574,30 +574,30 @@ class SecurityIsolationStatus(TypedDict):
 
 class ReportingApiReport(TypedDict):
     id: 'ReportId'
-    initiatorUrl: str
+    initiator_url: str
     destination: str
     type: str
     timestamp: 'TimeSinceEpoch'
     depth: int
-    completedAttempts: int
+    completed_attempts: int
     body: dict
     status: 'ReportStatus'
 
 
 class ReportingApiEndpoint(TypedDict):
     url: str
-    groupName: str
+    group_name: str
 
 
 class LoadNetworkResourcePageResult(TypedDict):
     success: bool
-    netError: float
-    netErrorName: str
-    httpStatusCode: float
+    net_error: float
+    net_error_name: str
+    http_status_code: float
     stream: 'io.StreamHandle'
     headers: 'Headers'
 
 
 class LoadNetworkResourceOptions(TypedDict):
-    disableCache: bool
-    includeCredentials: bool
+    disable_cache: bool
+    include_credentials: bool

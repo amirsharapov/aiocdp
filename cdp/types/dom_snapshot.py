@@ -20,50 +20,50 @@ Rectangle = list
 
 
 class DOMNode(TypedDict):
-    nodeType: int
-    nodeName: str
-    nodeValue: str
-    backendNodeId: 'dom.BackendNodeId'
-    textValue: str
-    inputValue: str
-    inputChecked: bool
-    optionSelected: bool
-    childNodeIndexes: list
+    node_type: int
+    node_name: str
+    node_value: str
+    backend_node_id: 'dom.BackendNodeId'
+    text_value: str
+    input_value: str
+    input_checked: bool
+    option_selected: bool
+    child_node_indexes: list
     attributes: list
-    pseudoElementIndexes: list
-    layoutNodeIndex: int
-    documentURL: str
-    baseURL: str
-    contentLanguage: str
-    documentEncoding: str
-    publicId: str
-    systemId: str
-    frameId: 'page.FrameId'
-    contentDocumentIndex: int
-    pseudoType: 'dom.PseudoType'
-    shadowRootType: 'dom.ShadowRootType'
-    isClickable: bool
-    eventListeners: list
-    currentSourceURL: str
-    originURL: str
-    scrollOffsetX: float
-    scrollOffsetY: float
+    pseudo_element_indexes: list
+    layout_node_index: int
+    document_url: str
+    base_url: str
+    content_language: str
+    document_encoding: str
+    public_id: str
+    system_id: str
+    frame_id: 'page.FrameId'
+    content_document_index: int
+    pseudo_type: 'dom.PseudoType'
+    shadow_root_type: 'dom.ShadowRootType'
+    is_clickable: bool
+    event_listeners: list
+    current_source_url: str
+    origin_url: str
+    scroll_offset_x: float
+    scroll_offset_y: float
 
 
 class InlineTextBox(TypedDict):
-    boundingBox: 'dom.Rect'
-    startCharacterIndex: int
-    numCharacters: int
+    bounding_box: 'dom.Rect'
+    start_character_index: int
+    num_characters: int
 
 
 class LayoutTreeNode(TypedDict):
-    domNodeIndex: int
-    boundingBox: 'dom.Rect'
-    layoutText: str
-    inlineTextNodes: list
-    styleIndex: int
-    paintOrder: int
-    isStackingContext: bool
+    dom_node_index: int
+    bounding_box: 'dom.Rect'
+    layout_text: str
+    inline_text_nodes: list
+    style_index: int
+    paint_order: int
+    is_stacking_context: bool
 
 
 class ComputedStyle(TypedDict):
@@ -90,59 +90,59 @@ class RareIntegerData(TypedDict):
 
 
 class DocumentSnapshot(TypedDict):
-    documentURL: 'StringIndex'
+    document_url: 'StringIndex'
     title: 'StringIndex'
-    baseURL: 'StringIndex'
-    contentLanguage: 'StringIndex'
-    encodingName: 'StringIndex'
-    publicId: 'StringIndex'
-    systemId: 'StringIndex'
-    frameId: 'StringIndex'
+    base_url: 'StringIndex'
+    content_language: 'StringIndex'
+    encoding_name: 'StringIndex'
+    public_id: 'StringIndex'
+    system_id: 'StringIndex'
+    frame_id: 'StringIndex'
     nodes: 'NodeTreeSnapshot'
     layout: 'LayoutTreeSnapshot'
-    textBoxes: 'TextBoxSnapshot'
-    scrollOffsetX: float
-    scrollOffsetY: float
-    contentWidth: float
-    contentHeight: float
+    text_boxes: 'TextBoxSnapshot'
+    scroll_offset_x: float
+    scroll_offset_y: float
+    content_width: float
+    content_height: float
 
 
 class NodeTreeSnapshot(TypedDict):
-    parentIndex: list
-    nodeType: list
-    shadowRootType: 'RareStringData'
-    nodeName: list
-    nodeValue: list
-    backendNodeId: list
+    parent_index: list
+    node_type: list
+    shadow_root_type: 'RareStringData'
+    node_name: list
+    node_value: list
+    backend_node_id: list
     attributes: list
-    textValue: 'RareStringData'
-    inputValue: 'RareStringData'
-    inputChecked: 'RareBooleanData'
-    optionSelected: 'RareBooleanData'
-    contentDocumentIndex: 'RareIntegerData'
-    pseudoType: 'RareStringData'
-    pseudoIdentifier: 'RareStringData'
-    isClickable: 'RareBooleanData'
-    currentSourceURL: 'RareStringData'
-    originURL: 'RareStringData'
+    text_value: 'RareStringData'
+    input_value: 'RareStringData'
+    input_checked: 'RareBooleanData'
+    option_selected: 'RareBooleanData'
+    content_document_index: 'RareIntegerData'
+    pseudo_type: 'RareStringData'
+    pseudo_identifier: 'RareStringData'
+    is_clickable: 'RareBooleanData'
+    current_source_url: 'RareStringData'
+    origin_url: 'RareStringData'
 
 
 class LayoutTreeSnapshot(TypedDict):
-    nodeIndex: list
+    node_index: list
     styles: list
     bounds: list
     text: list
-    stackingContexts: 'RareBooleanData'
-    paintOrders: list
-    offsetRects: list
-    scrollRects: list
-    clientRects: list
-    blendedBackgroundColors: list
-    textColorOpacities: list
+    stacking_contexts: 'RareBooleanData'
+    paint_orders: list
+    offset_rects: list
+    scroll_rects: list
+    client_rects: list
+    blended_background_colors: list
+    text_color_opacities: list
 
 
 class TextBoxSnapshot(TypedDict):
-    layoutIndex: list
+    layout_index: list
     bounds: list
     start: list
     length: list

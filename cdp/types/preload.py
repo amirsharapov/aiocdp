@@ -140,23 +140,23 @@ PrefetchStatus = Literal[
 
 class RuleSet(TypedDict):
     id: 'RuleSetId'
-    loaderId: 'network.LoaderId'
-    sourceText: str
-    backendNodeId: 'dom.BackendNodeId'
+    loader_id: 'network.LoaderId'
+    source_text: str
+    backend_node_id: 'dom.BackendNodeId'
     url: str
-    requestId: 'network.RequestId'
-    errorType: 'RuleSetErrorType'
-    errorMessage: str
+    request_id: 'network.RequestId'
+    error_type: 'RuleSetErrorType'
+    error_message: str
 
 
 class PreloadingAttemptKey(TypedDict):
-    loaderId: 'network.LoaderId'
+    loader_id: 'network.LoaderId'
     action: 'SpeculationAction'
     url: str
-    targetHint: 'SpeculationTargetHint'
+    target_hint: 'SpeculationTargetHint'
 
 
 class PreloadingAttemptSource(TypedDict):
     key: 'PreloadingAttemptKey'
-    ruleSetIds: list
-    nodeIds: list
+    rule_set_ids: list
+    node_ids: list

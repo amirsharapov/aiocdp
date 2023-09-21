@@ -14,32 +14,32 @@ from typing import (
 
 
 class LargestContentfulPaint(TypedDict):
-    renderTime: 'network.TimeSinceEpoch'
-    loadTime: 'network.TimeSinceEpoch'
+    render_time: 'network.TimeSinceEpoch'
+    load_time: 'network.TimeSinceEpoch'
     size: float
-    elementId: str
+    element_id: str
     url: str
-    nodeId: 'dom.BackendNodeId'
+    node_id: 'dom.BackendNodeId'
 
 
 class LayoutShiftAttribution(TypedDict):
-    previousRect: 'dom.Rect'
-    currentRect: 'dom.Rect'
-    nodeId: 'dom.BackendNodeId'
+    previous_rect: 'dom.Rect'
+    current_rect: 'dom.Rect'
+    node_id: 'dom.BackendNodeId'
 
 
 class LayoutShift(TypedDict):
     value: float
-    hadRecentInput: bool
-    lastInputTime: 'network.TimeSinceEpoch'
+    had_recent_input: bool
+    last_input_time: 'network.TimeSinceEpoch'
     sources: list
 
 
 class TimelineEvent(TypedDict):
-    frameId: 'page.FrameId'
+    frame_id: 'page.FrameId'
     type: str
     name: str
     time: 'network.TimeSinceEpoch'
     duration: float
-    lcpDetails: 'LargestContentfulPaint'
-    layoutShiftDetails: 'LayoutShift'
+    lcp_details: 'LargestContentfulPaint'
+    layout_shift_details: 'LayoutShift'

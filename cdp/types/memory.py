@@ -28,5 +28,5 @@ class SamplingProfile(TypedDict):
 class Module(TypedDict):
     name: str
     uuid: str
-    baseAddress: str
+    base_address: str
     size: float

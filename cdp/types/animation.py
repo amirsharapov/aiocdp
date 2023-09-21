@@ -15,27 +15,27 @@ from typing import (
 class Animation(TypedDict):
     id: str
     name: str
-    pausedState: bool
-    playState: str
-    playbackRate: float
-    startTime: float
-    currentTime: float
+    paused_state: bool
+    play_state: str
+    playback_rate: float
+    start_time: float
+    current_time: float
     type: str
     source: 'AnimationEffect'
-    cssId: str
+    css_id: str
 
 
 class AnimationEffect(TypedDict):
     delay: float
-    endDelay: float
-    iterationStart: float
+    end_delay: float
+    iteration_start: float
     iterations: float
     duration: float
     direction: str
     fill: str
     easing: str
-    backendNodeId: 'dom.BackendNodeId'
-    keyframesRule: 'KeyframesRule'
+    backend_node_id: 'dom.BackendNodeId'
+    keyframes_rule: 'KeyframesRule'
 
 
 class KeyframesRule(TypedDict):

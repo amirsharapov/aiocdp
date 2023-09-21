@@ -24,22 +24,22 @@ CachedResponseType = Literal[
 
 
 class DataEntry(TypedDict):
-    requestURL: str
-    requestMethod: str
-    requestHeaders: list
-    responseTime: float
-    responseStatus: int
-    responseStatusText: str
-    responseType: 'CachedResponseType'
-    responseHeaders: list
+    request_url: str
+    request_method: str
+    request_headers: list
+    response_time: float
+    response_status: int
+    response_status_text: str
+    response_type: 'CachedResponseType'
+    response_headers: list
 
 
 class Cache(TypedDict):
-    cacheId: 'CacheId'
-    securityOrigin: str
-    storageKey: str
-    cacheName: str
-    storageBucket: 'storage.StorageBucket'
+    cache_id: 'CacheId'
+    security_origin: str
+    storage_key: str
+    cache_name: str
+    storage_bucket: 'storage.StorageBucket'
 
 
 class Header(TypedDict):

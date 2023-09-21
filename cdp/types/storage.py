@@ -93,33 +93,33 @@ AttributionReportingSourceRegistrationResult = Literal[
 
 
 class UsageForType(TypedDict):
-    storageType: 'StorageType'
+    storage_type: 'StorageType'
     usage: float
 
 
 class TrustTokens(TypedDict):
-    issuerOrigin: str
+    issuer_origin: str
     count: float
 
 
 class InterestGroupAd(TypedDict):
-    renderUrl: str
+    render_url: str
     metadata: str
 
 
 class InterestGroupDetails(TypedDict):
-    ownerOrigin: str
+    owner_origin: str
     name: str
-    expirationTime: 'network.TimeSinceEpoch'
-    joiningOrigin: str
-    trustedBiddingSignalsKeys: list
+    expiration_time: 'network.TimeSinceEpoch'
+    joining_origin: str
+    trusted_bidding_signals_keys: list
     ads: list
-    adComponents: list
-    biddingUrl: str
-    biddingWasmHelperUrl: str
-    updateUrl: str
-    trustedBiddingSignalsUrl: str
-    userBiddingSignals: str
+    ad_components: list
+    bidding_url: str
+    bidding_wasm_helper_url: str
+    update_url: str
+    trusted_bidding_signals_url: str
+    user_bidding_signals: str
 
 
 class SharedStorageEntry(TypedDict):
@@ -128,33 +128,33 @@ class SharedStorageEntry(TypedDict):
 
 
 class SharedStorageMetadata(TypedDict):
-    creationTime: 'network.TimeSinceEpoch'
+    creation_time: 'network.TimeSinceEpoch'
     length: int
-    remainingBudget: float
+    remaining_budget: float
 
 
 class SharedStorageReportingMetadata(TypedDict):
-    eventType: str
-    reportingUrl: str
+    event_type: str
+    reporting_url: str
 
 
 class SharedStorageUrlWithMetadata(TypedDict):
     url: str
-    reportingMetadata: list
+    reporting_metadata: list
 
 
 class SharedStorageAccessParams(TypedDict):
-    scriptSourceUrl: str
-    operationName: str
-    serializedData: str
-    urlsWithMetadata: list
+    script_source_url: str
+    operation_name: str
+    serialized_data: str
+    urls_with_metadata: list
     key: str
     value: str
-    ignoreIfPresent: bool
+    ignore_if_present: bool
 
 
 class StorageBucket(TypedDict):
-    storageKey: 'SerializedStorageKey'
+    storage_key: 'SerializedStorageKey'
     name: str
 
 
@@ -185,15 +185,15 @@ class AttributionReportingEventReportWindows(TypedDict):
 class AttributionReportingSourceRegistration(TypedDict):
     time: 'network.TimeSinceEpoch'
     type: 'AttributionReportingSourceType'
-    sourceOrigin: str
-    reportingOrigin: str
-    destinationSites: list
-    eventId: 'UnsignedInt64AsBase10'
+    source_origin: str
+    reporting_origin: str
+    destination_sites: list
+    event_id: 'UnsignedInt64AsBase10'
     priority: 'SignedInt64AsBase10'
-    filterData: list
-    aggregationKeys: list
+    filter_data: list
+    aggregation_keys: list
     expiry: int
-    eventReportWindow: int
-    eventReportWindows: 'AttributionReportingEventReportWindows'
-    aggregatableReportWindow: int
-    debugKey: 'UnsignedInt64AsBase10'
+    event_report_window: int
+    event_report_windows: 'AttributionReportingEventReportWindows'
+    aggregatable_report_window: int
+    debug_key: 'UnsignedInt64AsBase10'

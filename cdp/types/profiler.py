@@ -14,19 +14,19 @@ from typing import (
 
 class ProfileNode(TypedDict):
     id: int
-    callFrame: 'runtime.CallFrame'
-    hitCount: int
+    call_frame: 'runtime.CallFrame'
+    hit_count: int
     children: list
-    deoptReason: str
-    positionTicks: list
+    deopt_reason: str
+    position_ticks: list
 
 
 class Profile(TypedDict):
     nodes: list
-    startTime: float
-    endTime: float
+    start_time: float
+    end_time: float
     samples: list
-    timeDeltas: list
+    time_deltas: list
 
 
 class PositionTickInfo(TypedDict):
@@ -35,19 +35,19 @@ class PositionTickInfo(TypedDict):
 
 
 class CoverageRange(TypedDict):
-    startOffset: int
-    endOffset: int
+    start_offset: int
+    end_offset: int
     count: int
 
 
 class FunctionCoverage(TypedDict):
-    functionName: str
+    function_name: str
     ranges: list
-    isBlockCoverage: bool
+    is_block_coverage: bool
 
 
 class ScriptCoverage(TypedDict):
-    scriptId: 'runtime.ScriptId'
+    script_id: 'runtime.ScriptId'
     url: str
     functions: list
 
@@ -62,6 +62,6 @@ class TypeProfileEntry(TypedDict):
 
 
 class ScriptTypeProfile(TypedDict):
-    scriptId: 'runtime.ScriptId'
+    script_id: 'runtime.ScriptId'
     url: str
     entries: list

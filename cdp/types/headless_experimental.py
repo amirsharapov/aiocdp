@@ -11,4 +11,4 @@ from typing import (
 class ScreenshotParams(TypedDict):
     format: str
     quality: int
-    optimizeForSpeed: bool
+    optimize_for_speed: bool

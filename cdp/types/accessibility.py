@@ -105,16 +105,16 @@ class AXValueSource(TypedDict):
     type: 'AXValueSourceType'
     value: 'AXValue'
     attribute: str
-    attributeValue: 'AXValue'
+    attribute_value: 'AXValue'
     superseded: bool
-    nativeSource: 'AXValueNativeSourceType'
-    nativeSourceValue: 'AXValue'
+    native_source: 'AXValueNativeSourceType'
+    native_source_value: 'AXValue'
     invalid: bool
-    invalidReason: str
+    invalid_reason: str
 
 
 class AXRelatedNode(TypedDict):
-    backendDOMNodeId: 'dom.BackendNodeId'
+    backend_dom_node_id: 'dom.BackendNodeId'
     idref: str
     text: str
 
@@ -127,21 +127,21 @@ class AXProperty(TypedDict):
 class AXValue(TypedDict):
     type: 'AXValueType'
     value: Any
-    relatedNodes: list
+    related_nodes: list
     sources: list
 
 
 class AXNode(TypedDict):
-    nodeId: 'AXNodeId'
+    node_id: 'AXNodeId'
     ignored: bool
-    ignoredReasons: list
+    ignored_reasons: list
     role: 'AXValue'
-    chromeRole: 'AXValue'
+    chrome_role: 'AXValue'
     name: 'AXValue'
     description: 'AXValue'
     value: 'AXValue'
     properties: list
-    parentId: 'AXNodeId'
-    childIds: list
-    backendDOMNodeId: 'dom.BackendNodeId'
-    frameId: 'page.FrameId'
+    parent_id: 'AXNodeId'
+    child_ids: list
+    backend_dom_node_id: 'dom.BackendNodeId'
+    frame_id: 'page.FrameId'

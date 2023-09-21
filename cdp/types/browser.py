@@ -70,15 +70,15 @@ class Bounds(TypedDict):
     top: int
     width: int
     height: int
-    windowState: 'WindowState'
+    window_state: 'WindowState'
 
 
 class PermissionDescriptor(TypedDict):
     name: str
     sysex: bool
-    userVisibleOnly: bool
-    allowWithoutSanitization: bool
-    panTiltZoom: bool
+    user_visible_only: bool
+    allow_without_sanitization: bool
+    pan_tilt_zoom: bool
 
 
 class Bucket(TypedDict):

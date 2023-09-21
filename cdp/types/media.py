@@ -33,7 +33,7 @@ class PlayerErrorSourceLocation(TypedDict):
 
 
 class PlayerError(TypedDict):
-    errorType: str
+    error_type: str
     code: int
     stack: list
     cause: list

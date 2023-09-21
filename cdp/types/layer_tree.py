@@ -23,10 +23,10 @@ class ScrollRect(TypedDict):
 
 
 class StickyPositionConstraint(TypedDict):
-    stickyBoxRect: 'dom.Rect'
-    containingBlockRect: 'dom.Rect'
-    nearestLayerShiftingStickyBox: 'LayerId'
-    nearestLayerShiftingContainingBlock: 'LayerId'
+    sticky_box_rect: 'dom.Rect'
+    containing_block_rect: 'dom.Rect'
+    nearest_layer_shifting_sticky_box: 'LayerId'
+    nearest_layer_shifting_containing_block: 'LayerId'
 
 
 class PictureTile(TypedDict):
@@ -36,19 +36,19 @@ class PictureTile(TypedDict):
 
 
 class Layer(TypedDict):
-    layerId: 'LayerId'
-    offsetX: float
-    offsetY: float
+    layer_id: 'LayerId'
+    offset_x: float
+    offset_y: float
     width: float
     height: float
-    paintCount: int
-    drawsContent: bool
-    parentLayerId: 'LayerId'
-    backendNodeId: 'dom.BackendNodeId'
+    paint_count: int
+    draws_content: bool
+    parent_layer_id: 'LayerId'
+    backend_node_id: 'dom.BackendNodeId'
     transform: list
-    anchorX: float
-    anchorY: float
-    anchorZ: float
+    anchor_x: float
+    anchor_y: float
+    anchor_z: float
     invisible: bool
-    scrollRects: list
-    stickyPositionConstraint: 'StickyPositionConstraint'
+    scroll_rects: list
+    sticky_position_constraint: 'StickyPositionConstraint'

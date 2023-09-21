@@ -19,15 +19,15 @@ TargetFilter = list
 
 
 class TargetInfo(TypedDict):
-    targetId: 'TargetID'
+    target_id: 'TargetID'
     type: str
     title: str
     url: str
     attached: bool
-    canAccessOpener: bool
-    openerId: 'TargetID'
-    openerFrameId: 'page.FrameId'
-    browserContextId: 'browser.BrowserContextID'
+    can_access_opener: bool
+    opener_id: 'TargetID'
+    opener_frame_id: 'page.FrameId'
+    browser_context_id: 'browser.BrowserContextID'
     subtype: str
 
 
