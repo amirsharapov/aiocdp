@@ -1,10 +1,7 @@
 import time
-from dataclasses import dataclass
-from typing import TypedDict
 from unittest import TestCase
 
 from cdp.chrome import Chrome
-from cdp.domains.domains import Domains
 
 
 class Tests(TestCase):

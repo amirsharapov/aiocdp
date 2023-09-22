@@ -59,7 +59,7 @@ def main():
     module = ast.modules.domains.generate(domains)
     module = SourceCodeGenerator().generate(module)
 
-    Path(f'cdp/domains/domains.pyi').write_text(
+    Path(f'static/domains.pyi').write_text(
         GENERATED_MODULE_HEADER +
         module.source
     )

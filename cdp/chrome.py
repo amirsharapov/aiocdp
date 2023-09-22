@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 import requests
 
-from cdp.target import Target
+from cdp.target.target import Target
 
 
 @dataclass
@@ -41,7 +41,12 @@ class Chrome:
         for target in response.json():
             target_ = Target(
                 chrome=self,
-                id=target['id']
+                id=target['id'],
+                title=target['title'],
+                description=target['description'],
+                url=target['url'],
+                type=target['type'],
+                web_socket_debugger_url=target['webSocketDebuggerUrl']
             )
 
             targets.append(target_)

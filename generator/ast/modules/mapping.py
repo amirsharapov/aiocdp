@@ -43,7 +43,7 @@ def _domain_names(domains: Iterable['Domain']):
         assign_dict_key_value(
             snake_to_pascal,
             domain.domain.snake_case,
-            domain.domain.camel_case
+            domain.domain.pascal_case
         )
 
     return ast.Assign(

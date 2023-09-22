@@ -7,154 +7,154 @@
 domain_names = {
     'snake:pascal': {
         'accessibility': (
-            'accessibility'
+            'Accessibility'
         ),
         'animation': (
-            'animation'
+            'Animation'
         ),
         'audits': (
-            'audits'
+            'Audits'
         ),
         'autofill': (
-            'autofill'
+            'Autofill'
         ),
         'background_service': (
-            'backgroundService'
+            'BackgroundService'
         ),
         'browser': (
-            'browser'
+            'Browser'
         ),
         'css': (
-            'cSS'
+            'CSS'
         ),
         'cache_storage': (
-            'cacheStorage'
+            'CacheStorage'
         ),
         'cast': (
-            'cast'
+            'Cast'
         ),
         'dom': (
-            'dOM'
+            'DOM'
         ),
         'dom_debugger': (
-            'dOMDebugger'
+            'DOMDebugger'
         ),
         'event_breakpoints': (
-            'eventBreakpoints'
+            'EventBreakpoints'
         ),
         'dom_snapshot': (
-            'dOMSnapshot'
+            'DOMSnapshot'
         ),
         'dom_storage': (
-            'dOMStorage'
+            'DOMStorage'
         ),
         'database': (
-            'database'
+            'Database'
         ),
         'device_orientation': (
-            'deviceOrientation'
+            'DeviceOrientation'
         ),
         'emulation': (
-            'emulation'
+            'Emulation'
         ),
         'headless_experimental': (
-            'headlessExperimental'
+            'HeadlessExperimental'
         ),
         'io': (
-            'iO'
+            'IO'
         ),
         'indexed_db': (
-            'indexedDB'
+            'IndexedDB'
         ),
         'input': (
-            'input'
+            'Input'
         ),
         'inspector': (
-            'inspector'
+            'Inspector'
         ),
         'layer_tree': (
-            'layerTree'
+            'LayerTree'
         ),
         'log': (
-            'log'
+            'Log'
         ),
         'memory': (
-            'memory'
+            'Memory'
         ),
         'network': (
-            'network'
+            'Network'
         ),
         'overlay': (
-            'overlay'
+            'Overlay'
         ),
         'page': (
-            'page'
+            'Page'
         ),
         'performance': (
-            'performance'
+            'Performance'
         ),
         'performance_timeline': (
-            'performanceTimeline'
+            'PerformanceTimeline'
         ),
         'security': (
-            'security'
+            'Security'
         ),
         'service_worker': (
-            'serviceWorker'
+            'ServiceWorker'
         ),
         'storage': (
-            'storage'
+            'Storage'
         ),
         'system_info': (
-            'systemInfo'
+            'SystemInfo'
         ),
         'target': (
-            'target'
+            'Target'
         ),
         'tethering': (
-            'tethering'
+            'Tethering'
         ),
         'tracing': (
-            'tracing'
+            'Tracing'
         ),
         'fetch': (
-            'fetch'
+            'Fetch'
         ),
         'web_audio': (
-            'webAudio'
+            'WebAudio'
         ),
         'web_authn': (
-            'webAuthn'
+            'WebAuthn'
         ),
         'media': (
-            'media'
+            'Media'
         ),
         'device_access': (
-            'deviceAccess'
+            'DeviceAccess'
         ),
         'preload': (
-            'preload'
+            'Preload'
         ),
         'fed_cm': (
-            'fedCm'
+            'FedCm'
         ),
         'console': (
-            'console'
+            'Console'
         ),
         'debugger': (
-            'debugger'
+            'Debugger'
         ),
         'heap_profiler': (
-            'heapProfiler'
+            'HeapProfiler'
         ),
         'profiler': (
-            'profiler'
+            'Profiler'
         ),
         'runtime': (
-            'runtime'
+            'Runtime'
         ),
         'schema': (
-            'schema'
+            'Schema'
         ),
     },
 }

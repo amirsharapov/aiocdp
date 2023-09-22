@@ -8,13 +8,6 @@ if TYPE_CHECKING:
     from cdp.domains.domains import Domains
 
 
-def transform_method(domain_name: str, method_name: str):
-    return (
-            conversions.domain_names[domain_name] + '.' +
-            conversions.method_names[method_name]
-    )
-
-
 def load_params(
         domain_name: str,
         method_name: str,
@@ -32,11 +25,22 @@ def load_params(
         raise Exception
 
     if args:
-        params = args[0]
-    else:
-        params = kwargs
+        old_params = args[0]
 
-    return {}
+    else:
+        old_params = kwargs
+
+    new_params = {}
+
+    for key, value in old_params.items():
+        key = mapping.command_params_properties['snake:camel'].get(
+            (domain_name, method_name, key),
+            key
+        )
+
+        new_params[key] = value
+
+    return new_params
 
 
 @dataclass
@@ -45,21 +49,28 @@ class Domain(BaseDomain):
     domains: 'Domains'
 
     def __getattr__(self, item: str):
-        method = transform_method(
+        domain_name = mapping.domain_names['snake:pascal'].get(
             self.name,
+            self.name
+        )
+
+        method_name = mapping.command_names['snake:camel'].get(
+            (self.name, item),
             item
         )
+
+        method_name = f'{domain_name}.{method_name}'
 
         def wrapper(*args, **kwargs):
             params = load_params(
                 self.name,
-                method,
+                method_name,
                 args,
                 kwargs
             )
 
             return self._send_command(
-                method,
+                method_name,
                 params
             )
 

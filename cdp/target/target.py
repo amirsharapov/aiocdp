@@ -22,7 +22,21 @@ class Target:
     )
 
     chrome: 'Chrome'
+
     id: str
+    title: str
+    description: str
+    url: str
+    type: str
+    web_socket_debugger_url: str
+
+    parent_id: str = field(
+        default=None
+    )
+    favicon_url: str = field(
+        default=None
+    )
+
 
     @property
     def ws_url(self):
