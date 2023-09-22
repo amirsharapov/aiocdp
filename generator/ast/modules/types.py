@@ -16,10 +16,17 @@ def _should_import_typed_dict(domain: 'Domain'):
         if command.parameters:
             return True
 
+    for event in domain.events:
+        if event.parameters:
+            return True
+
     return False
 
 
 def _should_import_string_literal(domain: 'Domain'):
+    if domain.events:
+        return True
+
     for type_ in domain.types:
         if type_.enum:
             return True
@@ -171,15 +178,178 @@ def _complex_type_definitions(domain: 'Domain'):
 
 
 def _command_params_object_definitions(domain: 'Domain'):
-    yield
+    for command in domain.commands:
+        if not command.parameters:
+            continue
+
+        root = ast.ClassDef(
+            name=command.name.pascal_case + 'ParamsT',
+            bases=[
+                ast.Name('TypedDict')
+            ],
+            body=[],
+            render_context={
+                'lines_before': 2
+            }
+        )
+
+        for parameter in command.parameters:
+            if parameter.ref:
+                if parameter.ref.type.domain is not domain:
+                    annotation = ast.Constant(
+                        parameter.ref.type.domain.domain.snake_case + '.' +
+                        parameter.ref.type.id.pascal_case
+                    )
+                else:
+                    annotation = ast.Constant(
+                        parameter.ref.type.id.pascal_case
+                    )
+
+                root.body.append(
+                    ast.AnnAssign(
+                        target=ast.Name(parameter.name.snake_case),
+                        annotation=annotation
+                    )
+                )
+
+            else:
+                root.body.append(
+                    ast.AnnAssign(
+                        target=ast.Name(parameter.name.snake_case),
+                        annotation=ast.Name(parameter.type.python_type.__name__),
+                        simple=1
+                    )
+                )
+
+        yield root
 
 
 def _command_return_object_definitions(domain: 'Domain'):
-    yield
+    for command in domain.commands:
+        if not command.returns:
+            continue
+
+        root = ast.ClassDef(
+            name=command.name.pascal_case + 'ReturnT',
+            bases=[
+                ast.Name('TypedDict')
+            ],
+            body=[],
+            render_context={
+                'lines_before': 2
+            }
+        )
+
+        for return_ in command.returns:
+            if return_.ref:
+                if return_.ref.type.domain is not domain:
+                    annotation = ast.Constant(
+                        return_.ref.type.domain.domain.snake_case + '.' +
+                        return_.ref.type.id.pascal_case
+                    )
+                else:
+                    annotation = ast.Constant(
+                        return_.ref.type.id.pascal_case
+                    )
+
+                root.body.append(
+                    ast.AnnAssign(
+                        target=ast.Name(return_.name.snake_case),
+                        annotation=annotation
+                    )
+                )
+
+            else:
+                root.body.append(
+                    ast.AnnAssign(
+                        target=ast.Name(return_.name.snake_case),
+                        annotation=ast.Name(return_.type.python_type.__name__),
+                        simple=1
+                    )
+                )
+
+        yield root
 
 
 def _event_definitions(domain: 'Domain'):
-    yield
+    for event in domain.events:
+        yield ast.ClassDef(
+            name=event.name.pascal_case + 'EventT',
+            bases=[
+                ast.Name('TypedDict')
+            ],
+            body=[
+                ast.AnnAssign(
+                    target=ast.Name('name'),
+                    annotation=ast.Subscript(
+                        value=ast.Name('Literal'),
+                        slice=ast.Tuple(
+                            elts=[
+                                ast.Str(event.name.snake_case)
+                            ]
+                        )
+                    )
+                ),
+                ast.AnnAssign(
+                    target=ast.Name('params'),
+                    annotation=(
+                        ast.Constant(event.name.pascal_case + 'ParamsT') if
+                        event.parameters else
+                        ast.Constant(None)
+                    )
+                )
+            ],
+            render_context={
+                'lines_before': 2
+            }
+        )
+
+
+def _event_params_definitions(domain: 'Domain'):
+    for event in domain.events:
+        if not event.parameters:
+            continue
+
+        root = ast.ClassDef(
+            name=event.name.pascal_case + 'ParamsT',
+            bases=[
+                ast.Name('TypedDict')
+            ],
+            body=[],
+            render_context={
+                'lines_before': 2
+            }
+        )
+
+        for parameter in event.parameters:
+            if parameter.ref:
+                if parameter.ref.type.domain is not domain:
+                    annotation = ast.Constant(
+                        parameter.ref.type.domain.domain.snake_case + '.' +
+                        parameter.ref.type.id.pascal_case
+                    )
+                else:
+                    annotation = ast.Constant(
+                        parameter.ref.type.id.pascal_case
+                    )
+
+                root.body.append(
+                    ast.AnnAssign(
+                        target=ast.Name(parameter.name.snake_case),
+                        annotation=annotation
+                    )
+                )
+
+            else:
+                root.body.append(
+                    ast.AnnAssign(
+                        target=ast.Name(parameter.name.snake_case),
+                        annotation=ast.Name(parameter.type.python_type.__name__),
+                        simple=1
+                    )
+                )
+
+        yield root
 
 
 def generate(domain: Domain):
@@ -191,8 +361,9 @@ def generate(domain: Domain):
     root.body += _primitive_type_definitions(domain)
     root.body += _string_literal_definitions(domain)
     root.body += _complex_type_definitions(domain)
-    # root.body += _command_params_object_definitions(domain)
-    # root.body += _command_return_object_definitions(domain)
-    # root.body += _event_definitions(domain)
+    root.body += _command_params_object_definitions(domain)
+    root.body += _command_return_object_definitions(domain)
+    root.body += _event_definitions(domain)
+    root.body += _event_params_definitions(domain)
 
     return root

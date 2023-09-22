@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 from cdp.domains.base import BaseDomain
-from cdp.domains import conversions
+from cdp.generated import mapping
 
 if TYPE_CHECKING:
     from cdp.domains.domains import Domains
@@ -10,8 +10,8 @@ if TYPE_CHECKING:
 
 def transform_method(domain_name: str, method_name: str):
     return (
-        conversions.domain_names[domain_name] + '.' +
-        conversions.method_names[method_name]
+            conversions.domain_names[domain_name] + '.' +
+            conversions.method_names[method_name]
     )
 
 

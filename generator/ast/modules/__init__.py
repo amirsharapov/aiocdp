@@ -1,5 +1,5 @@
 from . import (
-    conversions,
+    mapping,
     domains,
     types
 )

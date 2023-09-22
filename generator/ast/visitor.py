@@ -8,6 +8,7 @@ from typing import Any, TypedDict
 
 class RenderContextDict(TypedDict):
     expand: bool
+    include_parentheses: bool
     lines_before: int
     lines_after: int
 
@@ -18,6 +19,7 @@ def get_render_context(node: ast.AST) -> RenderContextDict:
 
         return {
             'expand': False,
+            'include_parentheses': False,
             'lines_before': 0,
             'lines_after': 0,
             **node.render_context
@@ -26,6 +28,7 @@ def get_render_context(node: ast.AST) -> RenderContextDict:
     else:
         return {
             'expand': False,
+            'include_parentheses': False,
             'lines_before': 0,
             'lines_after': 0,
         }
@@ -443,6 +446,9 @@ class SourceCodeGenerator(ast.NodeVisitor):
     def visit_Tuple(self, node: ast.Tuple) -> Any:
         render_context = get_render_context(node)
 
+        if render_context['include_parentheses']:
+            self.source += '('
+
         for element in node.elts:
             self.visit(element)
 
@@ -454,3 +460,6 @@ class SourceCodeGenerator(ast.NodeVisitor):
                 else:
                     self.source += '\n' + ' ' * 4
                     self.source += self.indent
+
+        if render_context['include_parentheses']:
+            self.source += ')'

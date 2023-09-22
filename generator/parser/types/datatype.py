@@ -8,7 +8,6 @@ class DataType(str):
     def from_maybe_undefined(cls, raw: MaybeUndefined[str]) -> MaybeUndefined['DataType']:
         if not is_defined(raw):
             return UNDEFINED
-
         return cls(raw)
 
     @property
