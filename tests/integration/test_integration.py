@@ -13,6 +13,7 @@ class Tests(TestCase):
         targets = chrome.get_targets()
         target = targets[0]
         target.connect()
+        target.open_session()
 
         result = target.domains.page.navigate(
             url='https://www.google.com'

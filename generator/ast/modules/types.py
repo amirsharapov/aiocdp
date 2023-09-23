@@ -71,7 +71,7 @@ def _imports(domain: 'Domain'):
 
     for ref in domain.get_refs():
         if ref.type.domain is not domain:
-            import_tree['cdp.types'].add(ref.type.domain.domain.snake_case)
+            import_tree['cdp.generated.types'].add(ref.type.domain.domain.snake_case)
 
     modules = sorted(import_tree.keys())
 

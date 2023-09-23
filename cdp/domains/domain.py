@@ -54,7 +54,7 @@ class Domain(BaseDomain):
             self.name
         )
 
-        method_name = mapping.command_names['snake:camel'].get(
+        method_name = mapping.command_names['snake:snake:camel'].get(
             (self.name, item),
             item
         )
@@ -63,15 +63,15 @@ class Domain(BaseDomain):
 
         def wrapper(*args, **kwargs):
             params = load_params(
-                self.name,
+                domain_name,
                 method_name,
                 args,
                 kwargs
             )
 
-            return self._send_command(
+            return self.domains.ws_target.send_command(
                 method_name,
-                params
+                params,
             )
 
         return wrapper

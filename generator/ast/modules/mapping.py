@@ -107,7 +107,7 @@ def _type_properties(domains: Iterable['Domain']):
 
 
 def _command_names(domains: Iterable['Domain']):
-    snake_to_camel = ast.Dict(
+    snake_snake_to_camel = ast.Dict(
         keys=[],
         values=[],
         render_context={
@@ -118,7 +118,7 @@ def _command_names(domains: Iterable['Domain']):
     for domain in domains:
         for command in domain.commands:
             assign_dict_key_value(
-                snake_to_camel,
+                snake_snake_to_camel,
                 (domain.domain.snake_case, command.name.snake_case),
                 command.name.camel_case
             )
@@ -126,8 +126,8 @@ def _command_names(domains: Iterable['Domain']):
     return ast.Assign(
         targets=[ast.Name('command_names')],
         value=ast.Dict(
-            keys=[ast.Constant('snake:camel')],
-            values=[snake_to_camel]
+            keys=[ast.Constant('snake:snake:camel')],
+            values=[snake_snake_to_camel]
         ),
         render_context={
             'lines_before': 2,

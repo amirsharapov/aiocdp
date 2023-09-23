@@ -3073,7 +3073,7 @@ type_properties = {
 
 
 command_names = {
-    'snake:camel': {
+    'snake:snake:camel': {
         ('accessibility', 'disable'): (
             'disable'
         ),
