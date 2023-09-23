@@ -8,6 +8,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -21,8 +22,8 @@ class Animation(TypedDict):
     start_time: float
     current_time: float
     type: str
-    source: 'AnimationEffect'
-    css_id: str
+    source: NotRequired['AnimationEffect']
+    css_id: NotRequired[str]
 
 
 class AnimationEffect(TypedDict):
@@ -34,13 +35,13 @@ class AnimationEffect(TypedDict):
     direction: str
     fill: str
     easing: str
-    backend_node_id: 'dom.BackendNodeId'
-    keyframes_rule: 'KeyframesRule'
+    backend_node_id: NotRequired['dom.BackendNodeId']
+    keyframes_rule: NotRequired['KeyframesRule']
 
 
 class KeyframesRule(TypedDict):
     keyframes: list
-    name: str
+    name: NotRequired[str]
 
 
 class KeyframeStyle(TypedDict):

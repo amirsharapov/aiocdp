@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 

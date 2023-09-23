@@ -9,6 +9,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -17,15 +18,15 @@ class LargestContentfulPaint(TypedDict):
     render_time: 'network.TimeSinceEpoch'
     load_time: 'network.TimeSinceEpoch'
     size: float
-    element_id: str
-    url: str
-    node_id: 'dom.BackendNodeId'
+    element_id: NotRequired[str]
+    url: NotRequired[str]
+    node_id: NotRequired['dom.BackendNodeId']
 
 
 class LayoutShiftAttribution(TypedDict):
     previous_rect: 'dom.Rect'
     current_rect: 'dom.Rect'
-    node_id: 'dom.BackendNodeId'
+    node_id: NotRequired['dom.BackendNodeId']
 
 
 class LayoutShift(TypedDict):
@@ -40,9 +41,9 @@ class TimelineEvent(TypedDict):
     type: str
     name: str
     time: 'network.TimeSinceEpoch'
-    duration: float
-    lcp_details: 'LargestContentfulPaint'
-    layout_shift_details: 'LayoutShift'
+    duration: NotRequired[float]
+    lcp_details: NotRequired['LargestContentfulPaint']
+    layout_shift_details: NotRequired['LayoutShift']
 
 
 class EnableParamsT(TypedDict):

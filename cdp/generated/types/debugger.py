@@ -7,6 +7,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -18,7 +19,7 @@ CallFrameId = str
 class Location(TypedDict):
     script_id: 'runtime.ScriptId'
     line_number: int
-    column_number: int
+    column_number: NotRequired[int]
 
 
 class ScriptPosition(TypedDict):
@@ -33,16 +34,16 @@ class CallFrame(TypedDict):
     url: str
     scope_chain: list
     this: 'runtime.RemoteObject'
-    function_location: 'Location'
-    return_value: 'runtime.RemoteObject'
+    function_location: NotRequired['Location']
+    return_value: NotRequired['runtime.RemoteObject']
 
 
 class Scope(TypedDict):
     type: str
     object: 'runtime.RemoteObject'
-    name: str
-    start_location: 'Location'
-    end_location: 'Location'
+    name: NotRequired[str]
+    start_location: NotRequired['Location']
+    end_location: NotRequired['Location']
 
 
 class SearchMatch(TypedDict):
@@ -53,35 +54,35 @@ class SearchMatch(TypedDict):
 class BreakLocation(TypedDict):
     script_id: 'runtime.ScriptId'
     line_number: int
-    column_number: int
-    type: str
+    column_number: NotRequired[int]
+    type: NotRequired[str]
 
 
 class ContinueToLocationParamsT(TypedDict):
     location: 'Location'
-    target_call_frames: str
+    target_call_frames: NotRequired[str]
 
 
 class EnableParamsT(TypedDict):
-    max_scripts_cache_size: float
+    max_scripts_cache_size: NotRequired[float]
 
 
 class EvaluateOnCallFrameParamsT(TypedDict):
     call_frame_id: 'CallFrameId'
     expression: str
-    object_group: str
-    include_command_line_api: bool
-    silent: bool
-    return_by_value: bool
-    generate_preview: bool
-    throw_on_side_effect: bool
-    timeout: 'runtime.TimeDelta'
+    object_group: NotRequired[str]
+    include_command_line_api: NotRequired[bool]
+    silent: NotRequired[bool]
+    return_by_value: NotRequired[bool]
+    generate_preview: NotRequired[bool]
+    throw_on_side_effect: NotRequired[bool]
+    timeout: NotRequired['runtime.TimeDelta']
 
 
 class GetPossibleBreakpointsParamsT(TypedDict):
     start: 'Location'
-    end: 'Location'
-    restrict_to_function: bool
+    end: NotRequired['Location']
+    restrict_to_function: NotRequired[bool]
 
 
 class GetScriptSourceParamsT(TypedDict):
@@ -107,8 +108,8 @@ class RestartFrameParamsT(TypedDict):
 class SearchInContentParamsT(TypedDict):
     script_id: 'runtime.ScriptId'
     query: str
-    case_sensitive: bool
-    is_regex: bool
+    case_sensitive: NotRequired[bool]
+    is_regex: NotRequired[bool]
 
 
 class SetAsyncCallStackDepthParamsT(TypedDict):
@@ -126,7 +127,7 @@ class SetBlackboxedRangesParamsT(TypedDict):
 
 class SetBreakpointParamsT(TypedDict):
     location: 'Location'
-    condition: str
+    condition: NotRequired[str]
 
 
 class SetInstrumentationBreakpointParamsT(TypedDict):
@@ -135,16 +136,16 @@ class SetInstrumentationBreakpointParamsT(TypedDict):
 
 class SetBreakpointByUrlParamsT(TypedDict):
     line_number: int
-    url: str
-    url_regex: str
-    script_hash: str
-    column_number: int
-    condition: str
+    url: NotRequired[str]
+    url_regex: NotRequired[str]
+    script_hash: NotRequired[str]
+    column_number: NotRequired[int]
+    condition: NotRequired[str]
 
 
 class SetBreakpointOnFunctionCallParamsT(TypedDict):
     object_id: 'runtime.RemoteObjectId'
-    condition: str
+    condition: NotRequired[str]
 
 
 class SetBreakpointsActiveParamsT(TypedDict):
@@ -162,7 +163,7 @@ class SetReturnValueParamsT(TypedDict):
 class SetScriptSourceParamsT(TypedDict):
     script_id: 'runtime.ScriptId'
     script_source: str
-    dry_run: bool
+    dry_run: NotRequired[bool]
 
 
 class SetSkipAllPausesParamsT(TypedDict):
@@ -177,7 +178,7 @@ class SetVariableValueParamsT(TypedDict):
 
 
 class StepIntoParamsT(TypedDict):
-    break_on_async_call: bool
+    break_on_async_call: NotRequired[bool]
 
 
 class EnableReturnT(TypedDict):

@@ -7,6 +7,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -41,23 +42,23 @@ class GetHeapObjectIdParamsT(TypedDict):
 
 class GetObjectByHeapObjectIdParamsT(TypedDict):
     object_id: 'HeapSnapshotObjectId'
-    object_group: str
+    object_group: NotRequired[str]
 
 
 class StartSamplingParamsT(TypedDict):
-    sampling_interval: float
+    sampling_interval: NotRequired[float]
 
 
 class StartTrackingHeapObjectsParamsT(TypedDict):
-    track_allocations: bool
+    track_allocations: NotRequired[bool]
 
 
 class StopTrackingHeapObjectsParamsT(TypedDict):
-    report_progress: bool
+    report_progress: NotRequired[bool]
 
 
 class TakeHeapSnapshotParamsT(TypedDict):
-    report_progress: bool
+    report_progress: NotRequired[bool]
 
 
 class GetHeapObjectIdReturnT(TypedDict):

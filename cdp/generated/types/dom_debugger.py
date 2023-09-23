@@ -8,6 +8,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -31,15 +32,15 @@ class EventListener(TypedDict):
     script_id: 'runtime.ScriptId'
     line_number: int
     column_number: int
-    handler: 'runtime.RemoteObject'
-    original_handler: 'runtime.RemoteObject'
-    backend_node_id: 'dom.BackendNodeId'
+    handler: NotRequired['runtime.RemoteObject']
+    original_handler: NotRequired['runtime.RemoteObject']
+    backend_node_id: NotRequired['dom.BackendNodeId']
 
 
 class GetEventListenersParamsT(TypedDict):
     object_id: 'runtime.RemoteObjectId'
-    depth: int
-    pierce: bool
+    depth: NotRequired[int]
+    pierce: NotRequired[bool]
 
 
 class RemoveDOMBreakpointParamsT(TypedDict):
@@ -49,7 +50,7 @@ class RemoveDOMBreakpointParamsT(TypedDict):
 
 class RemoveEventListenerBreakpointParamsT(TypedDict):
     event_name: str
-    target_name: str
+    target_name: NotRequired[str]
 
 
 class RemoveInstrumentationBreakpointParamsT(TypedDict):
@@ -71,7 +72,7 @@ class SetDOMBreakpointParamsT(TypedDict):
 
 class SetEventListenerBreakpointParamsT(TypedDict):
     event_name: str
-    target_name: str
+    target_name: NotRequired[str]
 
 
 class SetInstrumentationBreakpointParamsT(TypedDict):

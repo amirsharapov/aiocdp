@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -28,28 +29,28 @@ MouseButton = Literal[
 class TouchPoint(TypedDict):
     x: float
     y: float
-    radius_x: float
-    radius_y: float
-    rotation_angle: float
-    force: float
-    tangential_pressure: float
-    tilt_x: int
-    tilt_y: int
-    twist: int
-    id: float
+    radius_x: NotRequired[float]
+    radius_y: NotRequired[float]
+    rotation_angle: NotRequired[float]
+    force: NotRequired[float]
+    tangential_pressure: NotRequired[float]
+    tilt_x: NotRequired[int]
+    tilt_y: NotRequired[int]
+    twist: NotRequired[int]
+    id: NotRequired[float]
 
 
 class DragDataItem(TypedDict):
     mime_type: str
     data: str
-    title: str
-    base_url: str
+    title: NotRequired[str]
+    base_url: NotRequired[str]
 
 
 class DragData(TypedDict):
     items: list
     drag_operations_mask: int
-    files: list
+    files: NotRequired[list]
 
 
 class DispatchDragEventParamsT(TypedDict):
@@ -57,25 +58,25 @@ class DispatchDragEventParamsT(TypedDict):
     x: float
     y: float
     data: 'DragData'
-    modifiers: int
+    modifiers: NotRequired[int]
 
 
 class DispatchKeyEventParamsT(TypedDict):
     type: str
-    modifiers: int
-    timestamp: 'TimeSinceEpoch'
-    text: str
-    unmodified_text: str
-    key_identifier: str
-    code: str
-    key: str
-    windows_virtual_key_code: int
-    native_virtual_key_code: int
-    auto_repeat: bool
-    is_keypad: bool
-    is_system_key: bool
-    location: int
-    commands: list
+    modifiers: NotRequired[int]
+    timestamp: NotRequired['TimeSinceEpoch']
+    text: NotRequired[str]
+    unmodified_text: NotRequired[str]
+    key_identifier: NotRequired[str]
+    code: NotRequired[str]
+    key: NotRequired[str]
+    windows_virtual_key_code: NotRequired[int]
+    native_virtual_key_code: NotRequired[int]
+    auto_repeat: NotRequired[bool]
+    is_keypad: NotRequired[bool]
+    is_system_key: NotRequired[bool]
+    location: NotRequired[int]
+    commands: NotRequired[list]
 
 
 class InsertTextParamsT(TypedDict):
@@ -86,34 +87,34 @@ class ImeSetCompositionParamsT(TypedDict):
     text: str
     selection_start: int
     selection_end: int
-    replacement_start: int
-    replacement_end: int
+    replacement_start: NotRequired[int]
+    replacement_end: NotRequired[int]
 
 
 class DispatchMouseEventParamsT(TypedDict):
     type: str
     x: float
     y: float
-    modifiers: int
-    timestamp: 'TimeSinceEpoch'
-    button: 'MouseButton'
-    buttons: int
-    click_count: int
-    force: float
-    tangential_pressure: float
-    tilt_x: int
-    tilt_y: int
-    twist: int
-    delta_x: float
-    delta_y: float
-    pointer_type: str
+    modifiers: NotRequired[int]
+    timestamp: NotRequired['TimeSinceEpoch']
+    button: NotRequired['MouseButton']
+    buttons: NotRequired[int]
+    click_count: NotRequired[int]
+    force: NotRequired[float]
+    tangential_pressure: NotRequired[float]
+    tilt_x: NotRequired[int]
+    tilt_y: NotRequired[int]
+    twist: NotRequired[int]
+    delta_x: NotRequired[float]
+    delta_y: NotRequired[float]
+    pointer_type: NotRequired[str]
 
 
 class DispatchTouchEventParamsT(TypedDict):
     type: str
     touch_points: list
-    modifiers: int
-    timestamp: 'TimeSinceEpoch'
+    modifiers: NotRequired[int]
+    timestamp: NotRequired['TimeSinceEpoch']
 
 
 class EmulateTouchFromMouseEventParamsT(TypedDict):
@@ -121,11 +122,11 @@ class EmulateTouchFromMouseEventParamsT(TypedDict):
     x: int
     y: int
     button: 'MouseButton'
-    timestamp: 'TimeSinceEpoch'
-    delta_x: float
-    delta_y: float
-    modifiers: int
-    click_count: int
+    timestamp: NotRequired['TimeSinceEpoch']
+    delta_x: NotRequired[float]
+    delta_y: NotRequired[float]
+    modifiers: NotRequired[int]
+    click_count: NotRequired[int]
 
 
 class SetIgnoreInputEventsParamsT(TypedDict):
@@ -140,31 +141,31 @@ class SynthesizePinchGestureParamsT(TypedDict):
     x: float
     y: float
     scale_factor: float
-    relative_speed: int
-    gesture_source_type: 'GestureSourceType'
+    relative_speed: NotRequired[int]
+    gesture_source_type: NotRequired['GestureSourceType']
 
 
 class SynthesizeScrollGestureParamsT(TypedDict):
     x: float
     y: float
-    x_distance: float
-    y_distance: float
-    x_overscroll: float
-    y_overscroll: float
-    prevent_fling: bool
-    speed: int
-    gesture_source_type: 'GestureSourceType'
-    repeat_count: int
-    repeat_delay_ms: int
-    interaction_marker_name: str
+    x_distance: NotRequired[float]
+    y_distance: NotRequired[float]
+    x_overscroll: NotRequired[float]
+    y_overscroll: NotRequired[float]
+    prevent_fling: NotRequired[bool]
+    speed: NotRequired[int]
+    gesture_source_type: NotRequired['GestureSourceType']
+    repeat_count: NotRequired[int]
+    repeat_delay_ms: NotRequired[int]
+    interaction_marker_name: NotRequired[str]
 
 
 class SynthesizeTapGestureParamsT(TypedDict):
     x: float
     y: float
-    duration: int
-    tap_count: int
-    gesture_source_type: 'GestureSourceType'
+    duration: NotRequired[int]
+    tap_count: NotRequired[int]
+    gesture_source_type: NotRequired['GestureSourceType']
 
 
 class DragInterceptedEventT(TypedDict):

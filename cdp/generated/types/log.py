@@ -8,6 +8,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -17,13 +18,13 @@ class LogEntry(TypedDict):
     level: str
     text: str
     timestamp: 'runtime.Timestamp'
-    category: str
-    url: str
-    line_number: int
-    stack_trace: 'runtime.StackTrace'
-    network_request_id: 'network.RequestId'
-    worker_id: str
-    args: list
+    category: NotRequired[str]
+    url: NotRequired[str]
+    line_number: NotRequired[int]
+    stack_trace: NotRequired['runtime.StackTrace']
+    network_request_id: NotRequired['network.RequestId']
+    worker_id: NotRequired[str]
+    args: NotRequired[list]
 
 
 class ViolationSetting(TypedDict):

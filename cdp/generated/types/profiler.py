@@ -8,6 +8,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -15,18 +16,18 @@ from typing import (
 class ProfileNode(TypedDict):
     id: int
     call_frame: 'runtime.CallFrame'
-    hit_count: int
-    children: list
-    deopt_reason: str
-    position_ticks: list
+    hit_count: NotRequired[int]
+    children: NotRequired[list]
+    deopt_reason: NotRequired[str]
+    position_ticks: NotRequired[list]
 
 
 class Profile(TypedDict):
     nodes: list
     start_time: float
     end_time: float
-    samples: list
-    time_deltas: list
+    samples: NotRequired[list]
+    time_deltas: NotRequired[list]
 
 
 class PositionTickInfo(TypedDict):
@@ -72,8 +73,8 @@ class SetSamplingIntervalParamsT(TypedDict):
 
 
 class StartPreciseCoverageParamsT(TypedDict):
-    call_count: bool
-    detailed: bool
+    call_count: NotRequired[bool]
+    detailed: NotRequired[bool]
 
 
 class GetBestEffortCoverageReturnT(TypedDict):

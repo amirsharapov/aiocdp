@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -14,7 +15,7 @@ class Metric(TypedDict):
 
 
 class EnableParamsT(TypedDict):
-    time_domain: str
+    time_domain: NotRequired[str]
 
 
 class SetTimeDomainParamsT(TypedDict):

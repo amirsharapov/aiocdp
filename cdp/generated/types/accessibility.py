@@ -10,6 +10,7 @@ from cdp.generated.types import (
 from typing import (
     Any,
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -102,20 +103,20 @@ AXPropertyName = Literal[
 
 class AXValueSource(TypedDict):
     type: 'AXValueSourceType'
-    value: 'AXValue'
-    attribute: str
-    attribute_value: 'AXValue'
-    superseded: bool
-    native_source: 'AXValueNativeSourceType'
-    native_source_value: 'AXValue'
-    invalid: bool
-    invalid_reason: str
+    value: NotRequired['AXValue']
+    attribute: NotRequired[str]
+    attribute_value: NotRequired['AXValue']
+    superseded: NotRequired[bool]
+    native_source: NotRequired['AXValueNativeSourceType']
+    native_source_value: NotRequired['AXValue']
+    invalid: NotRequired[bool]
+    invalid_reason: NotRequired[str]
 
 
 class AXRelatedNode(TypedDict):
     backend_dom_node_id: 'dom.BackendNodeId'
-    idref: str
-    text: str
+    idref: NotRequired[str]
+    text: NotRequired[str]
 
 
 class AXProperty(TypedDict):
@@ -125,60 +126,60 @@ class AXProperty(TypedDict):
 
 class AXValue(TypedDict):
     type: 'AXValueType'
-    value: Any
-    related_nodes: list
-    sources: list
+    value: NotRequired[Any]
+    related_nodes: NotRequired[list]
+    sources: NotRequired[list]
 
 
 class AXNode(TypedDict):
     node_id: 'AXNodeId'
     ignored: bool
-    ignored_reasons: list
-    role: 'AXValue'
-    chrome_role: 'AXValue'
-    name: 'AXValue'
-    description: 'AXValue'
-    value: 'AXValue'
-    properties: list
-    parent_id: 'AXNodeId'
-    child_ids: list
-    backend_dom_node_id: 'dom.BackendNodeId'
-    frame_id: 'page.FrameId'
+    ignored_reasons: NotRequired[list]
+    role: NotRequired['AXValue']
+    chrome_role: NotRequired['AXValue']
+    name: NotRequired['AXValue']
+    description: NotRequired['AXValue']
+    value: NotRequired['AXValue']
+    properties: NotRequired[list]
+    parent_id: NotRequired['AXNodeId']
+    child_ids: NotRequired[list]
+    backend_dom_node_id: NotRequired['dom.BackendNodeId']
+    frame_id: NotRequired['page.FrameId']
 
 
 class GetPartialAXTreeParamsT(TypedDict):
-    node_id: 'dom.NodeId'
-    backend_node_id: 'dom.BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
-    fetch_relatives: bool
+    node_id: NotRequired['dom.NodeId']
+    backend_node_id: NotRequired['dom.BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
+    fetch_relatives: NotRequired[bool]
 
 
 class GetFullAXTreeParamsT(TypedDict):
-    depth: int
-    frame_id: 'page.FrameId'
+    depth: NotRequired[int]
+    frame_id: NotRequired['page.FrameId']
 
 
 class GetRootAXNodeParamsT(TypedDict):
-    frame_id: 'page.FrameId'
+    frame_id: NotRequired['page.FrameId']
 
 
 class GetAXNodeAndAncestorsParamsT(TypedDict):
-    node_id: 'dom.NodeId'
-    backend_node_id: 'dom.BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
+    node_id: NotRequired['dom.NodeId']
+    backend_node_id: NotRequired['dom.BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
 
 
 class GetChildAXNodesParamsT(TypedDict):
     id: 'AXNodeId'
-    frame_id: 'page.FrameId'
+    frame_id: NotRequired['page.FrameId']
 
 
 class QueryAXTreeParamsT(TypedDict):
-    node_id: 'dom.NodeId'
-    backend_node_id: 'dom.BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
-    accessible_name: str
-    role: str
+    node_id: NotRequired['dom.NodeId']
+    backend_node_id: NotRequired['dom.BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
+    accessible_name: NotRequired[str]
+    role: NotRequired[str]
 
 
 class GetPartialAXTreeReturnT(TypedDict):

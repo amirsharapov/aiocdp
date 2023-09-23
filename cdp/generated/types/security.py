@@ -7,6 +7,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -54,21 +55,21 @@ class CertificateSecurityState(TypedDict):
     obsolete_ssl_key_exchange: bool
     obsolete_ssl_cipher: bool
     obsolete_ssl_signature: bool
-    key_exchange_group: str
-    mac: str
-    certificate_network_error: str
+    key_exchange_group: NotRequired[str]
+    mac: NotRequired[str]
+    certificate_network_error: NotRequired[str]
 
 
 class SafetyTipInfo(TypedDict):
     safety_tip_status: 'SafetyTipStatus'
-    safe_url: str
+    safe_url: NotRequired[str]
 
 
 class VisibleSecurityState(TypedDict):
     security_state: 'SecurityState'
     security_state_issue_ids: list
-    certificate_security_state: 'CertificateSecurityState'
-    safety_tip_info: 'SafetyTipInfo'
+    certificate_security_state: NotRequired['CertificateSecurityState']
+    safety_tip_info: NotRequired['SafetyTipInfo']
 
 
 class SecurityStateExplanation(TypedDict):
@@ -78,7 +79,7 @@ class SecurityStateExplanation(TypedDict):
     description: str
     mixed_content_type: 'MixedContentType'
     certificate: list
-    recommendations: list
+    recommendations: NotRequired[list]
 
 
 class InsecureContentStatus(TypedDict):

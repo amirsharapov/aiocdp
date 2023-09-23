@@ -7,6 +7,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -38,7 +39,7 @@ class Cache(TypedDict):
     security_origin: str
     storage_key: str
     cache_name: str
-    storage_bucket: 'storage.StorageBucket'
+    storage_bucket: NotRequired['storage.StorageBucket']
 
 
 class Header(TypedDict):
@@ -60,9 +61,9 @@ class DeleteEntryParamsT(TypedDict):
 
 
 class RequestCacheNamesParamsT(TypedDict):
-    security_origin: str
-    storage_key: str
-    storage_bucket: 'storage.StorageBucket'
+    security_origin: NotRequired[str]
+    storage_key: NotRequired[str]
+    storage_bucket: NotRequired['storage.StorageBucket']
 
 
 class RequestCachedResponseParamsT(TypedDict):
@@ -73,9 +74,9 @@ class RequestCachedResponseParamsT(TypedDict):
 
 class RequestEntriesParamsT(TypedDict):
     cache_id: 'CacheId'
-    skip_count: int
-    page_size: int
-    path_filter: str
+    skip_count: NotRequired[int]
+    page_size: NotRequired[int]
+    path_filter: NotRequired[str]
 
 
 class RequestCacheNamesReturnT(TypedDict):

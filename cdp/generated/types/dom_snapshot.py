@@ -8,6 +8,7 @@ from cdp.generated.types import (
     page
 )
 from typing import (
+    NotRequired,
     TypedDict
 )
 
@@ -23,30 +24,30 @@ class DOMNode(TypedDict):
     node_name: str
     node_value: str
     backend_node_id: 'dom.BackendNodeId'
-    text_value: str
-    input_value: str
-    input_checked: bool
-    option_selected: bool
-    child_node_indexes: list
-    attributes: list
-    pseudo_element_indexes: list
-    layout_node_index: int
-    document_url: str
-    base_url: str
-    content_language: str
-    document_encoding: str
-    public_id: str
-    system_id: str
-    frame_id: 'page.FrameId'
-    content_document_index: int
-    pseudo_type: 'dom.PseudoType'
-    shadow_root_type: 'dom.ShadowRootType'
-    is_clickable: bool
-    event_listeners: list
-    current_source_url: str
-    origin_url: str
-    scroll_offset_x: float
-    scroll_offset_y: float
+    text_value: NotRequired[str]
+    input_value: NotRequired[str]
+    input_checked: NotRequired[bool]
+    option_selected: NotRequired[bool]
+    child_node_indexes: NotRequired[list]
+    attributes: NotRequired[list]
+    pseudo_element_indexes: NotRequired[list]
+    layout_node_index: NotRequired[int]
+    document_url: NotRequired[str]
+    base_url: NotRequired[str]
+    content_language: NotRequired[str]
+    document_encoding: NotRequired[str]
+    public_id: NotRequired[str]
+    system_id: NotRequired[str]
+    frame_id: NotRequired['page.FrameId']
+    content_document_index: NotRequired[int]
+    pseudo_type: NotRequired['dom.PseudoType']
+    shadow_root_type: NotRequired['dom.ShadowRootType']
+    is_clickable: NotRequired[bool]
+    event_listeners: NotRequired[list]
+    current_source_url: NotRequired[str]
+    origin_url: NotRequired[str]
+    scroll_offset_x: NotRequired[float]
+    scroll_offset_y: NotRequired[float]
 
 
 class InlineTextBox(TypedDict):
@@ -58,11 +59,11 @@ class InlineTextBox(TypedDict):
 class LayoutTreeNode(TypedDict):
     dom_node_index: int
     bounding_box: 'dom.Rect'
-    layout_text: str
-    inline_text_nodes: list
-    style_index: int
-    paint_order: int
-    is_stacking_context: bool
+    layout_text: NotRequired[str]
+    inline_text_nodes: NotRequired[list]
+    style_index: NotRequired[int]
+    paint_order: NotRequired[int]
+    is_stacking_context: NotRequired[bool]
 
 
 class ComputedStyle(TypedDict):
@@ -100,30 +101,30 @@ class DocumentSnapshot(TypedDict):
     nodes: 'NodeTreeSnapshot'
     layout: 'LayoutTreeSnapshot'
     text_boxes: 'TextBoxSnapshot'
-    scroll_offset_x: float
-    scroll_offset_y: float
-    content_width: float
-    content_height: float
+    scroll_offset_x: NotRequired[float]
+    scroll_offset_y: NotRequired[float]
+    content_width: NotRequired[float]
+    content_height: NotRequired[float]
 
 
 class NodeTreeSnapshot(TypedDict):
-    parent_index: list
-    node_type: list
-    shadow_root_type: 'RareStringData'
-    node_name: list
-    node_value: list
-    backend_node_id: list
-    attributes: list
-    text_value: 'RareStringData'
-    input_value: 'RareStringData'
-    input_checked: 'RareBooleanData'
-    option_selected: 'RareBooleanData'
-    content_document_index: 'RareIntegerData'
-    pseudo_type: 'RareStringData'
-    pseudo_identifier: 'RareStringData'
-    is_clickable: 'RareBooleanData'
-    current_source_url: 'RareStringData'
-    origin_url: 'RareStringData'
+    parent_index: NotRequired[list]
+    node_type: NotRequired[list]
+    shadow_root_type: NotRequired['RareStringData']
+    node_name: NotRequired[list]
+    node_value: NotRequired[list]
+    backend_node_id: NotRequired[list]
+    attributes: NotRequired[list]
+    text_value: NotRequired['RareStringData']
+    input_value: NotRequired['RareStringData']
+    input_checked: NotRequired['RareBooleanData']
+    option_selected: NotRequired['RareBooleanData']
+    content_document_index: NotRequired['RareIntegerData']
+    pseudo_type: NotRequired['RareStringData']
+    pseudo_identifier: NotRequired['RareStringData']
+    is_clickable: NotRequired['RareBooleanData']
+    current_source_url: NotRequired['RareStringData']
+    origin_url: NotRequired['RareStringData']
 
 
 class LayoutTreeSnapshot(TypedDict):
@@ -132,12 +133,12 @@ class LayoutTreeSnapshot(TypedDict):
     bounds: list
     text: list
     stacking_contexts: 'RareBooleanData'
-    paint_orders: list
-    offset_rects: list
-    scroll_rects: list
-    client_rects: list
-    blended_background_colors: list
-    text_color_opacities: list
+    paint_orders: NotRequired[list]
+    offset_rects: NotRequired[list]
+    scroll_rects: NotRequired[list]
+    client_rects: NotRequired[list]
+    blended_background_colors: NotRequired[list]
+    text_color_opacities: NotRequired[list]
 
 
 class TextBoxSnapshot(TypedDict):
@@ -149,17 +150,17 @@ class TextBoxSnapshot(TypedDict):
 
 class GetSnapshotParamsT(TypedDict):
     computed_style_whitelist: list
-    include_event_listeners: bool
-    include_paint_order: bool
-    include_user_agent_shadow_tree: bool
+    include_event_listeners: NotRequired[bool]
+    include_paint_order: NotRequired[bool]
+    include_user_agent_shadow_tree: NotRequired[bool]
 
 
 class CaptureSnapshotParamsT(TypedDict):
     computed_styles: list
-    include_paint_order: bool
-    include_dom_rects: bool
-    include_blended_background_colors: bool
-    include_text_color_opacities: bool
+    include_paint_order: NotRequired[bool]
+    include_dom_rects: NotRequired[bool]
+    include_blended_background_colors: NotRequired[bool]
+    include_text_color_opacities: NotRequired[bool]
 
 
 class GetSnapshotReturnT(TypedDict):

@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -31,15 +32,15 @@ AuthenticatorTransport = Literal[
 class VirtualAuthenticatorOptions(TypedDict):
     protocol: 'AuthenticatorProtocol'
     transport: 'AuthenticatorTransport'
-    ctap2_version: 'Ctap2Version'
-    has_resident_key: bool
-    has_user_verification: bool
-    has_large_blob: bool
-    has_cred_blob: bool
-    has_min_pin_length: bool
-    has_prf: bool
-    automatic_presence_simulation: bool
-    is_user_verified: bool
+    ctap2_version: NotRequired['Ctap2Version']
+    has_resident_key: NotRequired[bool]
+    has_user_verification: NotRequired[bool]
+    has_large_blob: NotRequired[bool]
+    has_cred_blob: NotRequired[bool]
+    has_min_pin_length: NotRequired[bool]
+    has_prf: NotRequired[bool]
+    automatic_presence_simulation: NotRequired[bool]
+    is_user_verified: NotRequired[bool]
 
 
 class Credential(TypedDict):
@@ -47,13 +48,13 @@ class Credential(TypedDict):
     is_resident_credential: bool
     private_key: str
     sign_count: int
-    rp_id: str
-    user_handle: str
-    large_blob: str
+    rp_id: NotRequired[str]
+    user_handle: NotRequired[str]
+    large_blob: NotRequired[str]
 
 
 class EnableParamsT(TypedDict):
-    enable_ui: bool
+    enable_ui: NotRequired[bool]
 
 
 class AddVirtualAuthenticatorParamsT(TypedDict):
@@ -62,9 +63,9 @@ class AddVirtualAuthenticatorParamsT(TypedDict):
 
 class SetResponseOverrideBitsParamsT(TypedDict):
     authenticator_id: 'AuthenticatorId'
-    is_bogus_signature: bool
-    is_bad_uv: bool
-    is_bad_up: bool
+    is_bogus_signature: NotRequired[bool]
+    is_bad_uv: NotRequired[bool]
+    is_bad_up: NotRequired[bool]
 
 
 class RemoveVirtualAuthenticatorParamsT(TypedDict):

@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -14,8 +15,8 @@ Item = list
 
 class StorageId(TypedDict):
     is_local_storage: bool
-    security_origin: str
-    storage_key: 'SerializedStorageKey'
+    security_origin: NotRequired[str]
+    storage_key: NotRequired['SerializedStorageKey']
 
 
 class ClearParamsT(TypedDict):

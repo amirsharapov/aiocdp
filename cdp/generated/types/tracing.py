@@ -7,6 +7,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -36,15 +37,15 @@ TracingBackend = Literal[
 
 
 class TraceConfig(TypedDict):
-    record_mode: str
-    trace_buffer_size_in_kb: float
-    enable_sampling: bool
-    enable_systrace: bool
-    enable_argument_filter: bool
-    included_categories: list
-    excluded_categories: list
-    synthetic_delays: list
-    memory_dump_config: 'MemoryDumpConfig'
+    record_mode: NotRequired[str]
+    trace_buffer_size_in_kb: NotRequired[float]
+    enable_sampling: NotRequired[bool]
+    enable_systrace: NotRequired[bool]
+    enable_argument_filter: NotRequired[bool]
+    included_categories: NotRequired[list]
+    excluded_categories: NotRequired[list]
+    synthetic_delays: NotRequired[list]
+    memory_dump_config: NotRequired['MemoryDumpConfig']
 
 
 class RecordClockSyncMarkerParamsT(TypedDict):
@@ -52,20 +53,20 @@ class RecordClockSyncMarkerParamsT(TypedDict):
 
 
 class RequestMemoryDumpParamsT(TypedDict):
-    deterministic: bool
-    level_of_detail: 'MemoryDumpLevelOfDetail'
+    deterministic: NotRequired[bool]
+    level_of_detail: NotRequired['MemoryDumpLevelOfDetail']
 
 
 class StartParamsT(TypedDict):
-    categories: str
-    options: str
-    buffer_usage_reporting_interval: float
-    transfer_mode: str
-    stream_format: 'StreamFormat'
-    stream_compression: 'StreamCompression'
-    trace_config: 'TraceConfig'
-    perfetto_config: str
-    tracing_backend: 'TracingBackend'
+    categories: NotRequired[str]
+    options: NotRequired[str]
+    buffer_usage_reporting_interval: NotRequired[float]
+    transfer_mode: NotRequired[str]
+    stream_format: NotRequired['StreamFormat']
+    stream_compression: NotRequired['StreamCompression']
+    trace_config: NotRequired['TraceConfig']
+    perfetto_config: NotRequired[str]
+    tracing_backend: NotRequired['TracingBackend']
 
 
 class GetCategoriesReturnT(TypedDict):

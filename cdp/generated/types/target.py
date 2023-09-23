@@ -8,6 +8,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -25,15 +26,15 @@ class TargetInfo(TypedDict):
     url: str
     attached: bool
     can_access_opener: bool
-    opener_id: 'TargetID'
-    opener_frame_id: 'page.FrameId'
-    browser_context_id: 'browser.BrowserContextID'
-    subtype: str
+    opener_id: NotRequired['TargetID']
+    opener_frame_id: NotRequired['page.FrameId']
+    browser_context_id: NotRequired['browser.BrowserContextID']
+    subtype: NotRequired[str]
 
 
 class FilterEntry(TypedDict):
-    exclude: bool
-    type: str
+    exclude: NotRequired[bool]
+    type: NotRequired[str]
 
 
 class RemoteLocation(TypedDict):
@@ -47,7 +48,7 @@ class ActivateTargetParamsT(TypedDict):
 
 class AttachToTargetParamsT(TypedDict):
     target_id: 'TargetID'
-    flatten: bool
+    flatten: NotRequired[bool]
 
 
 class CloseTargetParamsT(TypedDict):
@@ -56,30 +57,30 @@ class CloseTargetParamsT(TypedDict):
 
 class ExposeDevToolsProtocolParamsT(TypedDict):
     target_id: 'TargetID'
-    binding_name: str
+    binding_name: NotRequired[str]
 
 
 class CreateBrowserContextParamsT(TypedDict):
-    dispose_on_detach: bool
-    proxy_server: str
-    proxy_bypass_list: str
-    origins_with_universal_network_access: list
+    dispose_on_detach: NotRequired[bool]
+    proxy_server: NotRequired[str]
+    proxy_bypass_list: NotRequired[str]
+    origins_with_universal_network_access: NotRequired[list]
 
 
 class CreateTargetParamsT(TypedDict):
     url: str
-    width: int
-    height: int
-    browser_context_id: 'browser.BrowserContextID'
-    enable_begin_frame_control: bool
-    new_window: bool
-    background: bool
-    for_tab: bool
+    width: NotRequired[int]
+    height: NotRequired[int]
+    browser_context_id: NotRequired['browser.BrowserContextID']
+    enable_begin_frame_control: NotRequired[bool]
+    new_window: NotRequired[bool]
+    background: NotRequired[bool]
+    for_tab: NotRequired[bool]
 
 
 class DetachFromTargetParamsT(TypedDict):
-    session_id: 'SessionID'
-    target_id: 'TargetID'
+    session_id: NotRequired['SessionID']
+    target_id: NotRequired['TargetID']
 
 
 class DisposeBrowserContextParamsT(TypedDict):
@@ -87,35 +88,35 @@ class DisposeBrowserContextParamsT(TypedDict):
 
 
 class GetTargetInfoParamsT(TypedDict):
-    target_id: 'TargetID'
+    target_id: NotRequired['TargetID']
 
 
 class GetTargetsParamsT(TypedDict):
-    filter: 'TargetFilter'
+    filter: NotRequired['TargetFilter']
 
 
 class SendMessageToTargetParamsT(TypedDict):
     message: str
-    session_id: 'SessionID'
-    target_id: 'TargetID'
+    session_id: NotRequired['SessionID']
+    target_id: NotRequired['TargetID']
 
 
 class SetAutoAttachParamsT(TypedDict):
     auto_attach: bool
     wait_for_debugger_on_start: bool
-    flatten: bool
-    filter: 'TargetFilter'
+    flatten: NotRequired[bool]
+    filter: NotRequired['TargetFilter']
 
 
 class AutoAttachRelatedParamsT(TypedDict):
     target_id: 'TargetID'
     wait_for_debugger_on_start: bool
-    filter: 'TargetFilter'
+    filter: NotRequired['TargetFilter']
 
 
 class SetDiscoverTargetsParamsT(TypedDict):
     discover: bool
-    filter: 'TargetFilter'
+    filter: NotRequired['TargetFilter']
 
 
 class SetRemoteLocationsParamsT(TypedDict):

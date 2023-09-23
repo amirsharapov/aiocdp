@@ -8,6 +8,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -53,7 +54,7 @@ class FilledField(TypedDict):
 
 class TriggerParamsT(TypedDict):
     field_id: 'dom.BackendNodeId'
-    frame_id: 'page.FrameId'
+    frame_id: NotRequired['page.FrameId']
     card: 'CreditCard'
 
 

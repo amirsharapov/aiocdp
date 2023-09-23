@@ -8,6 +8,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -65,19 +66,19 @@ BrowserCommandId = Literal[
 
 
 class Bounds(TypedDict):
-    left: int
-    top: int
-    width: int
-    height: int
-    window_state: 'WindowState'
+    left: NotRequired[int]
+    top: NotRequired[int]
+    width: NotRequired[int]
+    height: NotRequired[int]
+    window_state: NotRequired['WindowState']
 
 
 class PermissionDescriptor(TypedDict):
     name: str
-    sysex: bool
-    user_visible_only: bool
-    allow_without_sanitization: bool
-    pan_tilt_zoom: bool
+    sysex: NotRequired[bool]
+    user_visible_only: NotRequired[bool]
+    allow_without_sanitization: NotRequired[bool]
+    pan_tilt_zoom: NotRequired[bool]
 
 
 class Bucket(TypedDict):
@@ -96,40 +97,40 @@ class Histogram(TypedDict):
 class SetPermissionParamsT(TypedDict):
     permission: 'PermissionDescriptor'
     setting: 'PermissionSetting'
-    origin: str
-    browser_context_id: 'BrowserContextID'
+    origin: NotRequired[str]
+    browser_context_id: NotRequired['BrowserContextID']
 
 
 class GrantPermissionsParamsT(TypedDict):
     permissions: list
-    origin: str
-    browser_context_id: 'BrowserContextID'
+    origin: NotRequired[str]
+    browser_context_id: NotRequired['BrowserContextID']
 
 
 class ResetPermissionsParamsT(TypedDict):
-    browser_context_id: 'BrowserContextID'
+    browser_context_id: NotRequired['BrowserContextID']
 
 
 class SetDownloadBehaviorParamsT(TypedDict):
     behavior: str
-    browser_context_id: 'BrowserContextID'
-    download_path: str
-    events_enabled: bool
+    browser_context_id: NotRequired['BrowserContextID']
+    download_path: NotRequired[str]
+    events_enabled: NotRequired[bool]
 
 
 class CancelDownloadParamsT(TypedDict):
     guid: str
-    browser_context_id: 'BrowserContextID'
+    browser_context_id: NotRequired['BrowserContextID']
 
 
 class GetHistogramsParamsT(TypedDict):
-    query: str
-    delta: bool
+    query: NotRequired[str]
+    delta: NotRequired[bool]
 
 
 class GetHistogramParamsT(TypedDict):
     name: str
-    delta: bool
+    delta: NotRequired[bool]
 
 
 class GetWindowBoundsParamsT(TypedDict):
@@ -137,7 +138,7 @@ class GetWindowBoundsParamsT(TypedDict):
 
 
 class GetWindowForTargetParamsT(TypedDict):
-    target_id: 'target.TargetID'
+    target_id: NotRequired['target.TargetID']
 
 
 class SetWindowBoundsParamsT(TypedDict):
@@ -146,8 +147,8 @@ class SetWindowBoundsParamsT(TypedDict):
 
 
 class SetDockTileParamsT(TypedDict):
-    badge_label: str
-    image: str
+    badge_label: NotRequired[str]
+    image: NotRequired[str]
 
 
 class ExecuteBrowserCommandParamsT(TypedDict):

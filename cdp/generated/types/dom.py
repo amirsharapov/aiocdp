@@ -8,6 +8,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -83,38 +84,38 @@ class Node(TypedDict):
     node_name: str
     local_name: str
     node_value: str
-    parent_id: 'NodeId'
-    child_node_count: int
-    children: list
-    attributes: list
-    document_url: str
-    base_url: str
-    public_id: str
-    system_id: str
-    internal_subset: str
-    xml_version: str
-    name: str
-    value: str
-    pseudo_type: 'PseudoType'
-    pseudo_identifier: str
-    shadow_root_type: 'ShadowRootType'
-    frame_id: 'page.FrameId'
-    content_document: 'Node'
-    shadow_roots: list
-    template_content: 'Node'
-    pseudo_elements: list
-    imported_document: 'Node'
-    distributed_nodes: list
-    is_svg: bool
-    compatibility_mode: 'CompatibilityMode'
-    assigned_slot: 'BackendNode'
+    parent_id: NotRequired['NodeId']
+    child_node_count: NotRequired[int]
+    children: NotRequired[list]
+    attributes: NotRequired[list]
+    document_url: NotRequired[str]
+    base_url: NotRequired[str]
+    public_id: NotRequired[str]
+    system_id: NotRequired[str]
+    internal_subset: NotRequired[str]
+    xml_version: NotRequired[str]
+    name: NotRequired[str]
+    value: NotRequired[str]
+    pseudo_type: NotRequired['PseudoType']
+    pseudo_identifier: NotRequired[str]
+    shadow_root_type: NotRequired['ShadowRootType']
+    frame_id: NotRequired['page.FrameId']
+    content_document: NotRequired['Node']
+    shadow_roots: NotRequired[list]
+    template_content: NotRequired['Node']
+    pseudo_elements: NotRequired[list]
+    imported_document: NotRequired['Node']
+    distributed_nodes: NotRequired[list]
+    is_svg: NotRequired[bool]
+    compatibility_mode: NotRequired['CompatibilityMode']
+    assigned_slot: NotRequired['BackendNode']
 
 
 class RGBA(TypedDict):
     r: int
     g: int
     b: int
-    a: float
+    a: NotRequired[float]
 
 
 class BoxModel(TypedDict):
@@ -124,7 +125,7 @@ class BoxModel(TypedDict):
     margin: 'Quad'
     width: int
     height: int
-    shape_outside: 'ShapeOutsideInfo'
+    shape_outside: NotRequired['ShapeOutsideInfo']
 
 
 class ShapeOutsideInfo(TypedDict):
@@ -152,22 +153,22 @@ class CollectClassNamesFromSubtreeParamsT(TypedDict):
 class CopyToParamsT(TypedDict):
     node_id: 'NodeId'
     target_node_id: 'NodeId'
-    insert_before_node_id: 'NodeId'
+    insert_before_node_id: NotRequired['NodeId']
 
 
 class DescribeNodeParamsT(TypedDict):
-    node_id: 'NodeId'
-    backend_node_id: 'BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
-    depth: int
-    pierce: bool
+    node_id: NotRequired['NodeId']
+    backend_node_id: NotRequired['BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
+    depth: NotRequired[int]
+    pierce: NotRequired[bool]
 
 
 class ScrollIntoViewIfNeededParamsT(TypedDict):
-    node_id: 'NodeId'
-    backend_node_id: 'BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
-    rect: 'Rect'
+    node_id: NotRequired['NodeId']
+    backend_node_id: NotRequired['BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
+    rect: NotRequired['Rect']
 
 
 class DiscardSearchResultsParamsT(TypedDict):
@@ -175,13 +176,13 @@ class DiscardSearchResultsParamsT(TypedDict):
 
 
 class EnableParamsT(TypedDict):
-    include_whitespace: str
+    include_whitespace: NotRequired[str]
 
 
 class FocusParamsT(TypedDict):
-    node_id: 'NodeId'
-    backend_node_id: 'BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
+    node_id: NotRequired['NodeId']
+    backend_node_id: NotRequired['BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
 
 
 class GetAttributesParamsT(TypedDict):
@@ -189,44 +190,44 @@ class GetAttributesParamsT(TypedDict):
 
 
 class GetBoxModelParamsT(TypedDict):
-    node_id: 'NodeId'
-    backend_node_id: 'BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
+    node_id: NotRequired['NodeId']
+    backend_node_id: NotRequired['BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
 
 
 class GetContentQuadsParamsT(TypedDict):
-    node_id: 'NodeId'
-    backend_node_id: 'BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
+    node_id: NotRequired['NodeId']
+    backend_node_id: NotRequired['BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
 
 
 class GetDocumentParamsT(TypedDict):
-    depth: int
-    pierce: bool
+    depth: NotRequired[int]
+    pierce: NotRequired[bool]
 
 
 class GetFlattenedDocumentParamsT(TypedDict):
-    depth: int
-    pierce: bool
+    depth: NotRequired[int]
+    pierce: NotRequired[bool]
 
 
 class GetNodesForSubtreeByStyleParamsT(TypedDict):
     node_id: 'NodeId'
     computed_styles: list
-    pierce: bool
+    pierce: NotRequired[bool]
 
 
 class GetNodeForLocationParamsT(TypedDict):
     x: int
     y: int
-    include_user_agent_shadow_dom: bool
-    ignore_pointer_events_none: bool
+    include_user_agent_shadow_dom: NotRequired[bool]
+    ignore_pointer_events_none: NotRequired[bool]
 
 
 class GetOuterHTMLParamsT(TypedDict):
-    node_id: 'NodeId'
-    backend_node_id: 'BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
+    node_id: NotRequired['NodeId']
+    backend_node_id: NotRequired['BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
 
 
 class GetRelayoutBoundaryParamsT(TypedDict):
@@ -242,12 +243,12 @@ class GetSearchResultsParamsT(TypedDict):
 class MoveToParamsT(TypedDict):
     node_id: 'NodeId'
     target_node_id: 'NodeId'
-    insert_before_node_id: 'NodeId'
+    insert_before_node_id: NotRequired['NodeId']
 
 
 class PerformSearchParamsT(TypedDict):
     query: str
-    include_user_agent_shadow_dom: bool
+    include_user_agent_shadow_dom: NotRequired[bool]
 
 
 class PushNodeByPathToFrontendParamsT(TypedDict):
@@ -279,8 +280,8 @@ class RemoveNodeParamsT(TypedDict):
 
 class RequestChildNodesParamsT(TypedDict):
     node_id: 'NodeId'
-    depth: int
-    pierce: bool
+    depth: NotRequired[int]
+    pierce: NotRequired[bool]
 
 
 class RequestNodeParamsT(TypedDict):
@@ -288,10 +289,10 @@ class RequestNodeParamsT(TypedDict):
 
 
 class ResolveNodeParamsT(TypedDict):
-    node_id: 'NodeId'
-    backend_node_id: 'BackendNodeId'
-    object_group: str
-    execution_context_id: 'runtime.ExecutionContextId'
+    node_id: NotRequired['NodeId']
+    backend_node_id: NotRequired['BackendNodeId']
+    object_group: NotRequired[str]
+    execution_context_id: NotRequired['runtime.ExecutionContextId']
 
 
 class SetAttributeValueParamsT(TypedDict):
@@ -303,14 +304,14 @@ class SetAttributeValueParamsT(TypedDict):
 class SetAttributesAsTextParamsT(TypedDict):
     node_id: 'NodeId'
     text: str
-    name: str
+    name: NotRequired[str]
 
 
 class SetFileInputFilesParamsT(TypedDict):
     files: list
-    node_id: 'NodeId'
-    backend_node_id: 'BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
+    node_id: NotRequired['NodeId']
+    backend_node_id: NotRequired['BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
 
 
 class SetNodeStackTracesEnabledParamsT(TypedDict):
@@ -350,9 +351,9 @@ class GetFrameOwnerParamsT(TypedDict):
 
 class GetContainerForNodeParamsT(TypedDict):
     node_id: 'NodeId'
-    container_name: str
-    physical_axes: 'PhysicalAxes'
-    logical_axes: 'LogicalAxes'
+    container_name: NotRequired[str]
+    physical_axes: NotRequired['PhysicalAxes']
+    logical_axes: NotRequired['LogicalAxes']
 
 
 class GetQueryingDescendantsForContainerParamsT(TypedDict):

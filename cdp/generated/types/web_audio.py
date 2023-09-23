@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -55,7 +56,7 @@ class BaseAudioContext(TypedDict):
     callback_buffer_size: float
     max_output_channel_count: float
     sample_rate: float
-    realtime_data: 'ContextRealtimeData'
+    realtime_data: NotRequired['ContextRealtimeData']
 
 
 class AudioListener(TypedDict):

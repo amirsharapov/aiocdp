@@ -12,6 +12,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -315,7 +316,7 @@ class ResourceTiming(TypedDict):
 
 
 class PostDataEntry(TypedDict):
-    bytes: str
+    bytes: NotRequired[str]
 
 
 class Request(TypedDict):
@@ -324,14 +325,14 @@ class Request(TypedDict):
     headers: 'Headers'
     initial_priority: 'ResourcePriority'
     referrer_policy: str
-    url_fragment: str
-    post_data: str
-    has_post_data: bool
-    post_data_entries: list
-    mixed_content_type: 'security.MixedContentType'
-    is_link_preload: bool
-    trust_token_params: 'TrustTokenParams'
-    is_same_site: bool
+    url_fragment: NotRequired[str]
+    post_data: NotRequired[str]
+    has_post_data: NotRequired[bool]
+    post_data_entries: NotRequired[list]
+    mixed_content_type: NotRequired['security.MixedContentType']
+    is_link_preload: NotRequired[bool]
+    trust_token_params: NotRequired['TrustTokenParams']
+    is_same_site: NotRequired[bool]
 
 
 class SignedCertificateTimestamp(TypedDict):
@@ -358,9 +359,9 @@ class SecurityDetails(TypedDict):
     signed_certificate_timestamp_list: list
     certificate_transparency_compliance: 'CertificateTransparencyCompliance'
     encrypted_client_hello: bool
-    key_exchange_group: str
-    mac: str
-    server_signature_algorithm: int
+    key_exchange_group: NotRequired[str]
+    mac: NotRequired[str]
+    server_signature_algorithm: NotRequired[int]
 
 
 class CorsErrorStatus(TypedDict):
@@ -371,7 +372,7 @@ class CorsErrorStatus(TypedDict):
 class TrustTokenParams(TypedDict):
     operation: 'TrustTokenOperationType'
     refresh_policy: str
-    issuers: list
+    issuers: NotRequired[list]
 
 
 class Response(TypedDict):
@@ -384,21 +385,21 @@ class Response(TypedDict):
     connection_id: float
     encoded_data_length: float
     security_state: 'security.SecurityState'
-    headers_text: str
-    request_headers: 'Headers'
-    request_headers_text: str
-    remote_ip_address: str
-    remote_port: int
-    from_disk_cache: bool
-    from_service_worker: bool
-    from_prefetch_cache: bool
-    timing: 'ResourceTiming'
-    service_worker_response_source: 'ServiceWorkerResponseSource'
-    response_time: 'TimeSinceEpoch'
-    cache_storage_cache_name: str
-    protocol: str
-    alternate_protocol_usage: 'AlternateProtocolUsage'
-    security_details: 'SecurityDetails'
+    headers_text: NotRequired[str]
+    request_headers: NotRequired['Headers']
+    request_headers_text: NotRequired[str]
+    remote_ip_address: NotRequired[str]
+    remote_port: NotRequired[int]
+    from_disk_cache: NotRequired[bool]
+    from_service_worker: NotRequired[bool]
+    from_prefetch_cache: NotRequired[bool]
+    timing: NotRequired['ResourceTiming']
+    service_worker_response_source: NotRequired['ServiceWorkerResponseSource']
+    response_time: NotRequired['TimeSinceEpoch']
+    cache_storage_cache_name: NotRequired[str]
+    protocol: NotRequired[str]
+    alternate_protocol_usage: NotRequired['AlternateProtocolUsage']
+    security_details: NotRequired['SecurityDetails']
 
 
 class WebSocketRequest(TypedDict):
@@ -409,9 +410,9 @@ class WebSocketResponse(TypedDict):
     status: int
     status_text: str
     headers: 'Headers'
-    headers_text: str
-    request_headers: 'Headers'
-    request_headers_text: str
+    headers_text: NotRequired[str]
+    request_headers: NotRequired['Headers']
+    request_headers_text: NotRequired[str]
 
 
 class WebSocketFrame(TypedDict):
@@ -424,16 +425,16 @@ class CachedResource(TypedDict):
     url: str
     type: 'ResourceType'
     body_size: float
-    response: 'Response'
+    response: NotRequired['Response']
 
 
 class Initiator(TypedDict):
     type: str
-    stack: 'runtime.StackTrace'
-    url: str
-    line_number: float
-    column_number: float
-    request_id: 'RequestId'
+    stack: NotRequired['runtime.StackTrace']
+    url: NotRequired[str]
+    line_number: NotRequired[float]
+    column_number: NotRequired[float]
+    request_id: NotRequired['RequestId']
 
 
 class Cookie(TypedDict):
@@ -450,15 +451,15 @@ class Cookie(TypedDict):
     same_party: bool
     source_scheme: 'CookieSourceScheme'
     source_port: int
-    same_site: 'CookieSameSite'
-    partition_key: str
-    partition_key_opaque: bool
+    same_site: NotRequired['CookieSameSite']
+    partition_key: NotRequired[str]
+    partition_key_opaque: NotRequired[bool]
 
 
 class BlockedSetCookieWithReason(TypedDict):
     blocked_reasons: list
     cookie_line: str
-    cookie: 'Cookie'
+    cookie: NotRequired['Cookie']
 
 
 class BlockedCookieWithReason(TypedDict):
@@ -469,37 +470,37 @@ class BlockedCookieWithReason(TypedDict):
 class CookieParam(TypedDict):
     name: str
     value: str
-    url: str
-    domain: str
-    path: str
-    secure: bool
-    http_only: bool
-    same_site: 'CookieSameSite'
-    expires: 'TimeSinceEpoch'
-    priority: 'CookiePriority'
-    same_party: bool
-    source_scheme: 'CookieSourceScheme'
-    source_port: int
-    partition_key: str
+    url: NotRequired[str]
+    domain: NotRequired[str]
+    path: NotRequired[str]
+    secure: NotRequired[bool]
+    http_only: NotRequired[bool]
+    same_site: NotRequired['CookieSameSite']
+    expires: NotRequired['TimeSinceEpoch']
+    priority: NotRequired['CookiePriority']
+    same_party: NotRequired[bool]
+    source_scheme: NotRequired['CookieSourceScheme']
+    source_port: NotRequired[int]
+    partition_key: NotRequired[str]
 
 
 class AuthChallenge(TypedDict):
     origin: str
     scheme: str
     realm: str
-    source: str
+    source: NotRequired[str]
 
 
 class AuthChallengeResponse(TypedDict):
     response: str
-    username: str
-    password: str
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
 class RequestPattern(TypedDict):
-    url_pattern: str
-    resource_type: 'ResourceType'
-    interception_stage: 'InterceptionStage'
+    url_pattern: NotRequired[str]
+    resource_type: NotRequired['ResourceType']
+    interception_stage: NotRequired['InterceptionStage']
 
 
 class SignedExchangeSignature(TypedDict):
@@ -509,9 +510,9 @@ class SignedExchangeSignature(TypedDict):
     validity_url: str
     date: int
     expires: int
-    cert_url: str
-    cert_sha256: str
-    certificates: list
+    cert_url: NotRequired[str]
+    cert_sha256: NotRequired[str]
+    certificates: NotRequired[list]
 
 
 class SignedExchangeHeader(TypedDict):
@@ -524,15 +525,15 @@ class SignedExchangeHeader(TypedDict):
 
 class SignedExchangeError(TypedDict):
     message: str
-    signature_index: int
-    error_field: 'SignedExchangeErrorField'
+    signature_index: NotRequired[int]
+    error_field: NotRequired['SignedExchangeErrorField']
 
 
 class SignedExchangeInfo(TypedDict):
     outer_response: 'Response'
-    header: 'SignedExchangeHeader'
-    security_details: 'SecurityDetails'
-    errors: list
+    header: NotRequired['SignedExchangeHeader']
+    security_details: NotRequired['SecurityDetails']
+    errors: NotRequired[list]
 
 
 class ConnectTiming(TypedDict):
@@ -548,15 +549,15 @@ class ClientSecurityState(TypedDict):
 class CrossOriginOpenerPolicyStatus(TypedDict):
     value: 'CrossOriginOpenerPolicyValue'
     report_only_value: 'CrossOriginOpenerPolicyValue'
-    reporting_endpoint: str
-    report_only_reporting_endpoint: str
+    reporting_endpoint: NotRequired[str]
+    report_only_reporting_endpoint: NotRequired[str]
 
 
 class CrossOriginEmbedderPolicyStatus(TypedDict):
     value: 'CrossOriginEmbedderPolicyValue'
     report_only_value: 'CrossOriginEmbedderPolicyValue'
-    reporting_endpoint: str
-    report_only_reporting_endpoint: str
+    reporting_endpoint: NotRequired[str]
+    report_only_reporting_endpoint: NotRequired[str]
 
 
 class ContentSecurityPolicyStatus(TypedDict):
@@ -566,9 +567,9 @@ class ContentSecurityPolicyStatus(TypedDict):
 
 
 class SecurityIsolationStatus(TypedDict):
-    coop: 'CrossOriginOpenerPolicyStatus'
-    coep: 'CrossOriginEmbedderPolicyStatus'
-    csp: list
+    coop: NotRequired['CrossOriginOpenerPolicyStatus']
+    coep: NotRequired['CrossOriginEmbedderPolicyStatus']
+    csp: NotRequired[list]
 
 
 class ReportingApiReport(TypedDict):
@@ -590,11 +591,11 @@ class ReportingApiEndpoint(TypedDict):
 
 class LoadNetworkResourcePageResult(TypedDict):
     success: bool
-    net_error: float
-    net_error_name: str
-    http_status_code: float
-    stream: 'io.StreamHandle'
-    headers: 'Headers'
+    net_error: NotRequired[float]
+    net_error_name: NotRequired[str]
+    http_status_code: NotRequired[float]
+    stream: NotRequired['io.StreamHandle']
+    headers: NotRequired['Headers']
 
 
 class LoadNetworkResourceOptions(TypedDict):
@@ -608,20 +609,20 @@ class SetAcceptedEncodingsParamsT(TypedDict):
 
 class ContinueInterceptedRequestParamsT(TypedDict):
     interception_id: 'InterceptionId'
-    error_reason: 'ErrorReason'
-    raw_response: str
-    url: str
-    method: str
-    post_data: str
-    headers: 'Headers'
-    auth_challenge_response: 'AuthChallengeResponse'
+    error_reason: NotRequired['ErrorReason']
+    raw_response: NotRequired[str]
+    url: NotRequired[str]
+    method: NotRequired[str]
+    post_data: NotRequired[str]
+    headers: NotRequired['Headers']
+    auth_challenge_response: NotRequired['AuthChallengeResponse']
 
 
 class DeleteCookiesParamsT(TypedDict):
     name: str
-    url: str
-    domain: str
-    path: str
+    url: NotRequired[str]
+    domain: NotRequired[str]
+    path: NotRequired[str]
 
 
 class EmulateNetworkConditionsParamsT(TypedDict):
@@ -629,13 +630,13 @@ class EmulateNetworkConditionsParamsT(TypedDict):
     latency: float
     download_throughput: float
     upload_throughput: float
-    connection_type: 'ConnectionType'
+    connection_type: NotRequired['ConnectionType']
 
 
 class EnableParamsT(TypedDict):
-    max_total_buffer_size: int
-    max_resource_buffer_size: int
-    max_post_data_size: int
+    max_total_buffer_size: NotRequired[int]
+    max_resource_buffer_size: NotRequired[int]
+    max_post_data_size: NotRequired[int]
 
 
 class GetCertificateParamsT(TypedDict):
@@ -643,7 +644,7 @@ class GetCertificateParamsT(TypedDict):
 
 
 class GetCookiesParamsT(TypedDict):
-    urls: list
+    urls: NotRequired[list]
 
 
 class GetResponseBodyParamsT(TypedDict):
@@ -669,8 +670,8 @@ class ReplayXHRParamsT(TypedDict):
 class SearchInResponseBodyParamsT(TypedDict):
     request_id: 'RequestId'
     query: str
-    case_sensitive: bool
-    is_regex: bool
+    case_sensitive: NotRequired[bool]
+    is_regex: NotRequired[bool]
 
 
 class SetBlockedURLsParamsT(TypedDict):
@@ -688,18 +689,18 @@ class SetCacheDisabledParamsT(TypedDict):
 class SetCookieParamsT(TypedDict):
     name: str
     value: str
-    url: str
-    domain: str
-    path: str
-    secure: bool
-    http_only: bool
-    same_site: 'CookieSameSite'
-    expires: 'TimeSinceEpoch'
-    priority: 'CookiePriority'
-    same_party: bool
-    source_scheme: 'CookieSourceScheme'
-    source_port: int
-    partition_key: str
+    url: NotRequired[str]
+    domain: NotRequired[str]
+    path: NotRequired[str]
+    secure: NotRequired[bool]
+    http_only: NotRequired[bool]
+    same_site: NotRequired['CookieSameSite']
+    expires: NotRequired['TimeSinceEpoch']
+    priority: NotRequired['CookiePriority']
+    same_party: NotRequired[bool]
+    source_scheme: NotRequired['CookieSourceScheme']
+    source_port: NotRequired[int]
+    partition_key: NotRequired[str]
 
 
 class SetCookiesParamsT(TypedDict):
@@ -720,13 +721,13 @@ class SetRequestInterceptionParamsT(TypedDict):
 
 class SetUserAgentOverrideParamsT(TypedDict):
     user_agent: str
-    accept_language: str
-    platform: str
-    user_agent_metadata: 'emulation.UserAgentMetadata'
+    accept_language: NotRequired[str]
+    platform: NotRequired[str]
+    user_agent_metadata: NotRequired['emulation.UserAgentMetadata']
 
 
 class GetSecurityIsolationStatusParamsT(TypedDict):
-    frame_id: 'page.FrameId'
+    frame_id: NotRequired['page.FrameId']
 
 
 class EnableReportingApiParamsT(TypedDict):
@@ -734,7 +735,7 @@ class EnableReportingApiParamsT(TypedDict):
 
 
 class LoadNetworkResourceParamsT(TypedDict):
-    frame_id: 'page.FrameId'
+    frame_id: NotRequired['page.FrameId']
     url: str
     options: 'LoadNetworkResourceOptions'
 

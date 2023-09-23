@@ -9,6 +9,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -141,18 +142,18 @@ class RuleSet(TypedDict):
     id: 'RuleSetId'
     loader_id: 'network.LoaderId'
     source_text: str
-    backend_node_id: 'dom.BackendNodeId'
-    url: str
-    request_id: 'network.RequestId'
-    error_type: 'RuleSetErrorType'
-    error_message: str
+    backend_node_id: NotRequired['dom.BackendNodeId']
+    url: NotRequired[str]
+    request_id: NotRequired['network.RequestId']
+    error_type: NotRequired['RuleSetErrorType']
+    error_message: NotRequired[str]
 
 
 class PreloadingAttemptKey(TypedDict):
     loader_id: 'network.LoaderId'
     action: 'SpeculationAction'
     url: str
-    target_hint: 'SpeculationTargetHint'
+    target_hint: NotRequired['SpeculationTargetHint']
 
 
 class PreloadingAttemptSource(TypedDict):

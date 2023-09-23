@@ -9,6 +9,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -21,9 +22,9 @@ RequestStage = Literal[
 
 
 class RequestPattern(TypedDict):
-    url_pattern: str
-    resource_type: 'network.ResourceType'
-    request_stage: 'RequestStage'
+    url_pattern: NotRequired[str]
+    resource_type: NotRequired['network.ResourceType']
+    request_stage: NotRequired['RequestStage']
 
 
 class HeaderEntry(TypedDict):
@@ -35,18 +36,18 @@ class AuthChallenge(TypedDict):
     origin: str
     scheme: str
     realm: str
-    source: str
+    source: NotRequired[str]
 
 
 class AuthChallengeResponse(TypedDict):
     response: str
-    username: str
-    password: str
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
 class EnableParamsT(TypedDict):
-    patterns: list
-    handle_auth_requests: bool
+    patterns: NotRequired[list]
+    handle_auth_requests: NotRequired[bool]
 
 
 class FailRequestParamsT(TypedDict):
@@ -57,19 +58,19 @@ class FailRequestParamsT(TypedDict):
 class FulfillRequestParamsT(TypedDict):
     request_id: 'RequestId'
     response_code: int
-    response_headers: list
-    binary_response_headers: str
-    body: str
-    response_phrase: str
+    response_headers: NotRequired[list]
+    binary_response_headers: NotRequired[str]
+    body: NotRequired[str]
+    response_phrase: NotRequired[str]
 
 
 class ContinueRequestParamsT(TypedDict):
     request_id: 'RequestId'
-    url: str
-    method: str
-    post_data: str
-    headers: list
-    intercept_response: bool
+    url: NotRequired[str]
+    method: NotRequired[str]
+    post_data: NotRequired[str]
+    headers: NotRequired[list]
+    intercept_response: NotRequired[bool]
 
 
 class ContinueWithAuthParamsT(TypedDict):
@@ -79,10 +80,10 @@ class ContinueWithAuthParamsT(TypedDict):
 
 class ContinueResponseParamsT(TypedDict):
     request_id: 'RequestId'
-    response_code: int
-    response_phrase: str
-    response_headers: list
-    binary_response_headers: str
+    response_code: NotRequired[int]
+    response_phrase: NotRequired[str]
+    response_headers: NotRequired[list]
+    binary_response_headers: NotRequired[str]
 
 
 class GetResponseBodyParamsT(TypedDict):

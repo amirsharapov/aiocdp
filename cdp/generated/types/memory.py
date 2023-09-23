@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -40,8 +41,8 @@ class SimulatePressureNotificationParamsT(TypedDict):
 
 
 class StartSamplingParamsT(TypedDict):
-    sampling_interval: int
-    suppress_randomness: bool
+    sampling_interval: NotRequired[int]
+    suppress_randomness: NotRequired[bool]
 
 
 class GetDOMCountersReturnT(TypedDict):

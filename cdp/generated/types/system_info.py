@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -27,8 +28,8 @@ class GPUDevice(TypedDict):
     device_string: str
     driver_vendor: str
     driver_version: str
-    sub_sys_id: float
-    revision: float
+    sub_sys_id: NotRequired[float]
+    revision: NotRequired[float]
 
 
 class Size(TypedDict):
@@ -62,8 +63,8 @@ class GPUInfo(TypedDict):
     video_decoding: list
     video_encoding: list
     image_decoding: list
-    aux_attributes: dict
-    feature_status: dict
+    aux_attributes: NotRequired[dict]
+    feature_status: NotRequired[dict]
 
 
 class ProcessInfo(TypedDict):

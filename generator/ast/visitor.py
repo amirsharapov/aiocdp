@@ -307,6 +307,12 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += '}'
 
     def visit_FunctionDef(self, node: ast.FunctionDef) -> Any:
+        if decorators := getattr(node, 'decorator_list', None):
+            for decorator in decorators:
+                self.source += f'@'
+                self.visit(decorator)
+                self.source += '\n' + self.indent
+
         self.source += f'def {node.name}('
 
         if hasattr(node, 'args') and node.args:

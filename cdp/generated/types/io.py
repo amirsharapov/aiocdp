@@ -6,6 +6,7 @@ from cdp.generated.types import (
     runtime
 )
 from typing import (
+    NotRequired,
     TypedDict
 )
 
@@ -18,8 +19,8 @@ class CloseParamsT(TypedDict):
 
 class ReadParamsT(TypedDict):
     handle: 'StreamHandle'
-    offset: int
-    size: int
+    offset: NotRequired[int]
+    size: NotRequired[int]
 
 
 class ResolveBlobParamsT(TypedDict):

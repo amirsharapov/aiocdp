@@ -10,6 +10,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -238,7 +239,7 @@ class AffectedCookie(TypedDict):
 
 class AffectedRequest(TypedDict):
     request_id: 'network.RequestId'
-    url: str
+    url: NotRequired[str]
 
 
 class AffectedFrame(TypedDict):
@@ -249,27 +250,27 @@ class CookieIssueDetails(TypedDict):
     cookie_warning_reasons: list
     cookie_exclusion_reasons: list
     operation: 'CookieOperation'
-    cookie: 'AffectedCookie'
-    raw_cookie_line: str
-    site_for_cookies: str
-    cookie_url: str
-    request: 'AffectedRequest'
+    cookie: NotRequired['AffectedCookie']
+    raw_cookie_line: NotRequired[str]
+    site_for_cookies: NotRequired[str]
+    cookie_url: NotRequired[str]
+    request: NotRequired['AffectedRequest']
 
 
 class MixedContentIssueDetails(TypedDict):
     resolution_status: 'MixedContentResolutionStatus'
     insecure_url: str
     main_resource_url: str
-    resource_type: 'MixedContentResourceType'
-    request: 'AffectedRequest'
-    frame: 'AffectedFrame'
+    resource_type: NotRequired['MixedContentResourceType']
+    request: NotRequired['AffectedRequest']
+    frame: NotRequired['AffectedFrame']
 
 
 class BlockedByResponseIssueDetails(TypedDict):
     request: 'AffectedRequest'
     reason: 'BlockedByResponseReason'
-    parent_frame: 'AffectedFrame'
-    blocked_frame: 'AffectedFrame'
+    parent_frame: NotRequired['AffectedFrame']
+    blocked_frame: NotRequired['AffectedFrame']
 
 
 class HeavyAdIssueDetails(TypedDict):
@@ -282,17 +283,17 @@ class SourceCodeLocation(TypedDict):
     url: str
     line_number: int
     column_number: int
-    script_id: 'runtime.ScriptId'
+    script_id: NotRequired['runtime.ScriptId']
 
 
 class ContentSecurityPolicyIssueDetails(TypedDict):
     violated_directive: str
     is_report_only: bool
     content_security_policy_violation_type: 'ContentSecurityPolicyViolationType'
-    blocked_url: str
-    frame_ancestor: 'AffectedFrame'
-    source_code_location: 'SourceCodeLocation'
-    violating_node_id: 'dom.BackendNodeId'
+    blocked_url: NotRequired[str]
+    frame_ancestor: NotRequired['AffectedFrame']
+    source_code_location: NotRequired['SourceCodeLocation']
+    violating_node_id: NotRequired['dom.BackendNodeId']
 
 
 class SharedArrayBufferIssueDetails(TypedDict):
@@ -315,17 +316,17 @@ class CorsIssueDetails(TypedDict):
     cors_error_status: 'network.CorsErrorStatus'
     is_warning: bool
     request: 'AffectedRequest'
-    location: 'SourceCodeLocation'
-    initiator_origin: str
-    resource_ip_address_space: 'network.IPAddressSpace'
-    client_security_state: 'network.ClientSecurityState'
+    location: NotRequired['SourceCodeLocation']
+    initiator_origin: NotRequired[str]
+    resource_ip_address_space: NotRequired['network.IPAddressSpace']
+    client_security_state: NotRequired['network.ClientSecurityState']
 
 
 class AttributionReportingIssueDetails(TypedDict):
     violation_type: 'AttributionReportingIssueType'
-    request: 'AffectedRequest'
-    violating_node_id: 'dom.BackendNodeId'
-    invalid_parameter: str
+    request: NotRequired['AffectedRequest']
+    violating_node_id: NotRequired['dom.BackendNodeId']
+    invalid_parameter: NotRequired[str]
 
 
 class QuirksModeIssueDetails(TypedDict):
@@ -338,21 +339,21 @@ class QuirksModeIssueDetails(TypedDict):
 
 class NavigatorUserAgentIssueDetails(TypedDict):
     url: str
-    location: 'SourceCodeLocation'
+    location: NotRequired['SourceCodeLocation']
 
 
 class GenericIssueDetails(TypedDict):
     error_type: 'GenericIssueErrorType'
-    frame_id: 'page.FrameId'
-    violating_node_id: 'dom.BackendNodeId'
-    violating_node_attribute: str
-    request: 'AffectedRequest'
+    frame_id: NotRequired['page.FrameId']
+    violating_node_id: NotRequired['dom.BackendNodeId']
+    violating_node_attribute: NotRequired[str]
+    request: NotRequired['AffectedRequest']
 
 
 class DeprecationIssueDetails(TypedDict):
     source_code_location: 'SourceCodeLocation'
     type: str
-    affected_frame: 'AffectedFrame'
+    affected_frame: NotRequired['AffectedFrame']
 
 
 class BounceTrackingIssueDetails(TypedDict):
@@ -375,51 +376,51 @@ class ClientHintIssueDetails(TypedDict):
 class FailedRequestInfo(TypedDict):
     url: str
     failure_message: str
-    request_id: 'network.RequestId'
+    request_id: NotRequired['network.RequestId']
 
 
 class StylesheetLoadingIssueDetails(TypedDict):
     source_code_location: 'SourceCodeLocation'
     style_sheet_loading_issue_reason: 'StyleSheetLoadingIssueReason'
-    failed_request_info: 'FailedRequestInfo'
+    failed_request_info: NotRequired['FailedRequestInfo']
 
 
 class InspectorIssueDetails(TypedDict):
-    cookie_issue_details: 'CookieIssueDetails'
-    mixed_content_issue_details: 'MixedContentIssueDetails'
-    blocked_by_response_issue_details: 'BlockedByResponseIssueDetails'
-    heavy_ad_issue_details: 'HeavyAdIssueDetails'
-    content_security_policy_issue_details: 'ContentSecurityPolicyIssueDetails'
-    shared_array_buffer_issue_details: 'SharedArrayBufferIssueDetails'
-    low_text_contrast_issue_details: 'LowTextContrastIssueDetails'
-    cors_issue_details: 'CorsIssueDetails'
-    attribution_reporting_issue_details: 'AttributionReportingIssueDetails'
-    quirks_mode_issue_details: 'QuirksModeIssueDetails'
-    navigator_user_agent_issue_details: 'NavigatorUserAgentIssueDetails'
-    generic_issue_details: 'GenericIssueDetails'
-    deprecation_issue_details: 'DeprecationIssueDetails'
-    client_hint_issue_details: 'ClientHintIssueDetails'
-    federated_auth_request_issue_details: 'FederatedAuthRequestIssueDetails'
-    bounce_tracking_issue_details: 'BounceTrackingIssueDetails'
-    stylesheet_loading_issue_details: 'StylesheetLoadingIssueDetails'
-    federated_auth_user_info_request_issue_details: 'FederatedAuthUserInfoRequestIssueDetails'
+    cookie_issue_details: NotRequired['CookieIssueDetails']
+    mixed_content_issue_details: NotRequired['MixedContentIssueDetails']
+    blocked_by_response_issue_details: NotRequired['BlockedByResponseIssueDetails']
+    heavy_ad_issue_details: NotRequired['HeavyAdIssueDetails']
+    content_security_policy_issue_details: NotRequired['ContentSecurityPolicyIssueDetails']
+    shared_array_buffer_issue_details: NotRequired['SharedArrayBufferIssueDetails']
+    low_text_contrast_issue_details: NotRequired['LowTextContrastIssueDetails']
+    cors_issue_details: NotRequired['CorsIssueDetails']
+    attribution_reporting_issue_details: NotRequired['AttributionReportingIssueDetails']
+    quirks_mode_issue_details: NotRequired['QuirksModeIssueDetails']
+    navigator_user_agent_issue_details: NotRequired['NavigatorUserAgentIssueDetails']
+    generic_issue_details: NotRequired['GenericIssueDetails']
+    deprecation_issue_details: NotRequired['DeprecationIssueDetails']
+    client_hint_issue_details: NotRequired['ClientHintIssueDetails']
+    federated_auth_request_issue_details: NotRequired['FederatedAuthRequestIssueDetails']
+    bounce_tracking_issue_details: NotRequired['BounceTrackingIssueDetails']
+    stylesheet_loading_issue_details: NotRequired['StylesheetLoadingIssueDetails']
+    federated_auth_user_info_request_issue_details: NotRequired['FederatedAuthUserInfoRequestIssueDetails']
 
 
 class InspectorIssue(TypedDict):
     code: 'InspectorIssueCode'
     details: 'InspectorIssueDetails'
-    issue_id: 'IssueId'
+    issue_id: NotRequired['IssueId']
 
 
 class GetEncodedResponseParamsT(TypedDict):
     request_id: 'network.RequestId'
     encoding: str
-    quality: float
-    size_only: bool
+    quality: NotRequired[float]
+    size_only: NotRequired[bool]
 
 
 class CheckContrastParamsT(TypedDict):
-    report_aaa: bool
+    report_aaa: NotRequired[bool]
 
 
 class GetEncodedResponseReturnT(TypedDict):

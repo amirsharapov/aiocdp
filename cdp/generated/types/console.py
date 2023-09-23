@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -12,9 +13,9 @@ class ConsoleMessage(TypedDict):
     source: str
     level: str
     text: str
-    url: str
-    line: int
-    column: int
+    url: NotRequired[str]
+    line: NotRequired[int]
+    column: NotRequired[int]
 
 
 class MessageAddedEventT(TypedDict):

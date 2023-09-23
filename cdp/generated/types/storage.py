@@ -9,6 +9,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -103,7 +104,7 @@ class TrustTokens(TypedDict):
 
 class InterestGroupAd(TypedDict):
     render_url: str
-    metadata: str
+    metadata: NotRequired[str]
 
 
 class InterestGroupDetails(TypedDict):
@@ -114,11 +115,11 @@ class InterestGroupDetails(TypedDict):
     trusted_bidding_signals_keys: list
     ads: list
     ad_components: list
-    bidding_url: str
-    bidding_wasm_helper_url: str
-    update_url: str
-    trusted_bidding_signals_url: str
-    user_bidding_signals: str
+    bidding_url: NotRequired[str]
+    bidding_wasm_helper_url: NotRequired[str]
+    update_url: NotRequired[str]
+    trusted_bidding_signals_url: NotRequired[str]
+    user_bidding_signals: NotRequired[str]
 
 
 class SharedStorageEntry(TypedDict):
@@ -143,18 +144,18 @@ class SharedStorageUrlWithMetadata(TypedDict):
 
 
 class SharedStorageAccessParams(TypedDict):
-    script_source_url: str
-    operation_name: str
-    serialized_data: str
-    urls_with_metadata: list
-    key: str
-    value: str
-    ignore_if_present: bool
+    script_source_url: NotRequired[str]
+    operation_name: NotRequired[str]
+    serialized_data: NotRequired[str]
+    urls_with_metadata: NotRequired[list]
+    key: NotRequired[str]
+    value: NotRequired[str]
+    ignore_if_present: NotRequired[bool]
 
 
 class StorageBucket(TypedDict):
     storage_key: 'SerializedStorageKey'
-    name: str
+    name: NotRequired[str]
 
 
 class StorageBucketInfo(TypedDict):
@@ -191,11 +192,11 @@ class AttributionReportingSourceRegistration(TypedDict):
     priority: 'SignedInt64AsBase10'
     filter_data: list
     aggregation_keys: list
-    expiry: int
-    event_report_window: int
-    event_report_windows: 'AttributionReportingEventReportWindows'
-    aggregatable_report_window: int
-    debug_key: 'UnsignedInt64AsBase10'
+    expiry: NotRequired[int]
+    event_report_window: NotRequired[int]
+    event_report_windows: NotRequired['AttributionReportingEventReportWindows']
+    aggregatable_report_window: NotRequired[int]
+    debug_key: NotRequired['UnsignedInt64AsBase10']
 
 
 class GetStorageKeyForFrameParamsT(TypedDict):
@@ -213,16 +214,16 @@ class ClearDataForStorageKeyParamsT(TypedDict):
 
 
 class GetCookiesParamsT(TypedDict):
-    browser_context_id: 'browser.BrowserContextID'
+    browser_context_id: NotRequired['browser.BrowserContextID']
 
 
 class SetCookiesParamsT(TypedDict):
     cookies: list
-    browser_context_id: 'browser.BrowserContextID'
+    browser_context_id: NotRequired['browser.BrowserContextID']
 
 
 class ClearCookiesParamsT(TypedDict):
-    browser_context_id: 'browser.BrowserContextID'
+    browser_context_id: NotRequired['browser.BrowserContextID']
 
 
 class GetUsageAndQuotaParamsT(TypedDict):
@@ -231,7 +232,7 @@ class GetUsageAndQuotaParamsT(TypedDict):
 
 class OverrideQuotaForOriginParamsT(TypedDict):
     origin: str
-    quota_size: float
+    quota_size: NotRequired[float]
 
 
 class TrackCacheStorageForOriginParamsT(TypedDict):
@@ -291,7 +292,7 @@ class SetSharedStorageEntryParamsT(TypedDict):
     owner_origin: str
     key: str
     value: str
-    ignore_if_present: bool
+    ignore_if_present: NotRequired[bool]
 
 
 class DeleteSharedStorageEntryParamsT(TypedDict):

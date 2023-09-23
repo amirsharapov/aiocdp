@@ -5,15 +5,18 @@
 
 
 from dataclasses import (
-    dataclass
+    dataclass,
+    field
 )
 from typing import (
-    TYPE_CHECKING
+    TYPE_CHECKING,
+    overload,
+    Optional
 )
 
 if TYPE_CHECKING:
     from cdp.target.target import (
-        Target
+        Target as WSTarget
     )
     from cdp.generated.types import (
         accessibility,
@@ -70,5 +73,8143 @@ if TYPE_CHECKING:
 
 
 @dataclass
+class Accessibility:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def get_partial_ax_tree(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...,
+            fetch_relatives: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_partial_ax_tree(
+            self,
+            params: 'accessibility.GetPartialAXTreeParamsT'
+    ):
+        ...
+
+    @overload
+    def get_full_ax_tree(
+            self,
+            *,
+            depth: Optional['int'] = ...,
+            frame_id: Optional['page.FrameId'] = ...
+    ):
+        ...
+
+    @overload
+    def get_full_ax_tree(
+            self,
+            params: 'accessibility.GetFullAXTreeParamsT'
+    ):
+        ...
+
+    @overload
+    def get_root_ax_node(
+            self,
+            *,
+            frame_id: Optional['page.FrameId'] = ...
+    ):
+        ...
+
+    @overload
+    def get_root_ax_node(
+            self,
+            params: 'accessibility.GetRootAXNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def get_ax_node_and_ancestors(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...
+    ):
+        ...
+
+    @overload
+    def get_ax_node_and_ancestors(
+            self,
+            params: 'accessibility.GetAXNodeAndAncestorsParamsT'
+    ):
+        ...
+
+    @overload
+    def get_child_ax_nodes(
+            self,
+            *,
+            id: 'accessibility.AXNodeId',
+            frame_id: Optional['page.FrameId'] = ...
+    ):
+        ...
+
+    @overload
+    def get_child_ax_nodes(
+            self,
+            params: 'accessibility.GetChildAXNodesParamsT'
+    ):
+        ...
+
+    @overload
+    def query_ax_tree(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...,
+            accessible_name: Optional['str'] = ...,
+            role: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def query_ax_tree(
+            self,
+            params: 'accessibility.QueryAXTreeParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Animation:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def get_current_time(
+            self,
+            *,
+            id: 'str'
+    ):
+        ...
+
+    @overload
+    def get_current_time(
+            self,
+            params: 'animation.GetCurrentTimeParamsT'
+    ):
+        ...
+
+    @overload
+    def get_playback_rate(
+            self
+    ):
+        ...
+
+    @overload
+    def release_animations(
+            self,
+            *,
+            animations: 'list'
+    ):
+        ...
+
+    @overload
+    def release_animations(
+            self,
+            params: 'animation.ReleaseAnimationsParamsT'
+    ):
+        ...
+
+    @overload
+    def resolve_animation(
+            self,
+            *,
+            animation_id: 'str'
+    ):
+        ...
+
+    @overload
+    def resolve_animation(
+            self,
+            params: 'animation.ResolveAnimationParamsT'
+    ):
+        ...
+
+    @overload
+    def seek_animations(
+            self,
+            *,
+            animations: 'list',
+            current_time: 'float'
+    ):
+        ...
+
+    @overload
+    def seek_animations(
+            self,
+            params: 'animation.SeekAnimationsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_paused(
+            self,
+            *,
+            animations: 'list',
+            paused: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_paused(
+            self,
+            params: 'animation.SetPausedParamsT'
+    ):
+        ...
+
+    @overload
+    def set_playback_rate(
+            self,
+            *,
+            playback_rate: 'float'
+    ):
+        ...
+
+    @overload
+    def set_playback_rate(
+            self,
+            params: 'animation.SetPlaybackRateParamsT'
+    ):
+        ...
+
+    @overload
+    def set_timing(
+            self,
+            *,
+            animation_id: 'str',
+            duration: 'float',
+            delay: 'float'
+    ):
+        ...
+
+    @overload
+    def set_timing(
+            self,
+            params: 'animation.SetTimingParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Audits:
+    domains: 'Domains'
+
+    @overload
+    def get_encoded_response(
+            self,
+            *,
+            request_id: 'network.RequestId',
+            encoding: 'str',
+            quality: Optional['float'] = ...,
+            size_only: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_encoded_response(
+            self,
+            params: 'audits.GetEncodedResponseParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def check_contrast(
+            self,
+            *,
+            report_aaa: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def check_contrast(
+            self,
+            params: 'audits.CheckContrastParamsT'
+    ):
+        ...
+
+    @overload
+    def check_forms_issues(
+            self
+    ):
+        ...
+
+
+@dataclass
+class Autofill:
+    domains: 'Domains'
+
+    @overload
+    def trigger(
+            self,
+            *,
+            field_id: 'dom.BackendNodeId',
+            frame_id: Optional['page.FrameId'],
+            card: 'autofill.CreditCard' = ...
+    ):
+        ...
+
+    @overload
+    def trigger(
+            self,
+            params: 'autofill.TriggerParamsT'
+    ):
+        ...
+
+    @overload
+    def set_addresses(
+            self,
+            *,
+            addresses: 'list'
+    ):
+        ...
+
+    @overload
+    def set_addresses(
+            self,
+            params: 'autofill.SetAddressesParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+
+@dataclass
+class BackgroundService:
+    domains: 'Domains'
+
+    @overload
+    def start_observing(
+            self,
+            *,
+            service: 'background_service.ServiceName'
+    ):
+        ...
+
+    @overload
+    def start_observing(
+            self,
+            params: 'background_service.StartObservingParamsT'
+    ):
+        ...
+
+    @overload
+    def stop_observing(
+            self,
+            *,
+            service: 'background_service.ServiceName'
+    ):
+        ...
+
+    @overload
+    def stop_observing(
+            self,
+            params: 'background_service.StopObservingParamsT'
+    ):
+        ...
+
+    @overload
+    def set_recording(
+            self,
+            *,
+            should_record: 'bool',
+            service: 'background_service.ServiceName'
+    ):
+        ...
+
+    @overload
+    def set_recording(
+            self,
+            params: 'background_service.SetRecordingParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_events(
+            self,
+            *,
+            service: 'background_service.ServiceName'
+    ):
+        ...
+
+    @overload
+    def clear_events(
+            self,
+            params: 'background_service.ClearEventsParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Browser:
+    domains: 'Domains'
+
+    @overload
+    def set_permission(
+            self,
+            *,
+            permission: 'browser.PermissionDescriptor',
+            setting: 'browser.PermissionSetting',
+            origin: Optional['str'] = ...,
+            browser_context_id: Optional['browser.BrowserContextID'] = ...
+    ):
+        ...
+
+    @overload
+    def set_permission(
+            self,
+            params: 'browser.SetPermissionParamsT'
+    ):
+        ...
+
+    @overload
+    def grant_permissions(
+            self,
+            *,
+            permissions: 'list',
+            origin: Optional['str'] = ...,
+            browser_context_id: Optional['browser.BrowserContextID'] = ...
+    ):
+        ...
+
+    @overload
+    def grant_permissions(
+            self,
+            params: 'browser.GrantPermissionsParamsT'
+    ):
+        ...
+
+    @overload
+    def reset_permissions(
+            self,
+            *,
+            browser_context_id: Optional['browser.BrowserContextID'] = ...
+    ):
+        ...
+
+    @overload
+    def reset_permissions(
+            self,
+            params: 'browser.ResetPermissionsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_download_behavior(
+            self,
+            *,
+            behavior: 'str',
+            browser_context_id: Optional['browser.BrowserContextID'] = ...,
+            download_path: Optional['str'] = ...,
+            events_enabled: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def set_download_behavior(
+            self,
+            params: 'browser.SetDownloadBehaviorParamsT'
+    ):
+        ...
+
+    @overload
+    def cancel_download(
+            self,
+            *,
+            guid: 'str',
+            browser_context_id: Optional['browser.BrowserContextID'] = ...
+    ):
+        ...
+
+    @overload
+    def cancel_download(
+            self,
+            params: 'browser.CancelDownloadParamsT'
+    ):
+        ...
+
+    @overload
+    def close(
+            self
+    ):
+        ...
+
+    @overload
+    def crash(
+            self
+    ):
+        ...
+
+    @overload
+    def crash_gpu_process(
+            self
+    ):
+        ...
+
+    @overload
+    def get_version(
+            self
+    ):
+        ...
+
+    @overload
+    def get_browser_command_line(
+            self
+    ):
+        ...
+
+    @overload
+    def get_histograms(
+            self,
+            *,
+            query: Optional['str'] = ...,
+            delta: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_histograms(
+            self,
+            params: 'browser.GetHistogramsParamsT'
+    ):
+        ...
+
+    @overload
+    def get_histogram(
+            self,
+            *,
+            name: 'str',
+            delta: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_histogram(
+            self,
+            params: 'browser.GetHistogramParamsT'
+    ):
+        ...
+
+    @overload
+    def get_window_bounds(
+            self,
+            *,
+            window_id: 'browser.WindowID'
+    ):
+        ...
+
+    @overload
+    def get_window_bounds(
+            self,
+            params: 'browser.GetWindowBoundsParamsT'
+    ):
+        ...
+
+    @overload
+    def get_window_for_target(
+            self,
+            *,
+            target_id: Optional['target.TargetID'] = ...
+    ):
+        ...
+
+    @overload
+    def get_window_for_target(
+            self,
+            params: 'browser.GetWindowForTargetParamsT'
+    ):
+        ...
+
+    @overload
+    def set_window_bounds(
+            self,
+            *,
+            window_id: 'browser.WindowID',
+            bounds: 'browser.Bounds'
+    ):
+        ...
+
+    @overload
+    def set_window_bounds(
+            self,
+            params: 'browser.SetWindowBoundsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_dock_tile(
+            self,
+            *,
+            badge_label: Optional['str'] = ...,
+            image: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_dock_tile(
+            self,
+            params: 'browser.SetDockTileParamsT'
+    ):
+        ...
+
+    @overload
+    def execute_browser_command(
+            self,
+            *,
+            command_id: 'browser.BrowserCommandId'
+    ):
+        ...
+
+    @overload
+    def execute_browser_command(
+            self,
+            params: 'browser.ExecuteBrowserCommandParamsT'
+    ):
+        ...
+
+    @overload
+    def add_privacy_sandbox_enrollment_override(
+            self,
+            *,
+            url: 'str'
+    ):
+        ...
+
+    @overload
+    def add_privacy_sandbox_enrollment_override(
+            self,
+            params: 'browser.AddPrivacySandboxEnrollmentOverrideParamsT'
+    ):
+        ...
+
+
+@dataclass
+class CSS:
+    domains: 'Domains'
+
+    @overload
+    def add_rule(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId',
+            rule_text: 'str',
+            location: 'css.SourceRange'
+    ):
+        ...
+
+    @overload
+    def add_rule(
+            self,
+            params: 'css.AddRuleParamsT'
+    ):
+        ...
+
+    @overload
+    def collect_class_names(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId'
+    ):
+        ...
+
+    @overload
+    def collect_class_names(
+            self,
+            params: 'css.CollectClassNamesParamsT'
+    ):
+        ...
+
+    @overload
+    def create_style_sheet(
+            self,
+            *,
+            frame_id: 'page.FrameId'
+    ):
+        ...
+
+    @overload
+    def create_style_sheet(
+            self,
+            params: 'css.CreateStyleSheetParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def force_pseudo_state(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            forced_pseudo_classes: 'list'
+    ):
+        ...
+
+    @overload
+    def force_pseudo_state(
+            self,
+            params: 'css.ForcePseudoStateParamsT'
+    ):
+        ...
+
+    @overload
+    def get_background_colors(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_background_colors(
+            self,
+            params: 'css.GetBackgroundColorsParamsT'
+    ):
+        ...
+
+    @overload
+    def get_computed_style_for_node(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_computed_style_for_node(
+            self,
+            params: 'css.GetComputedStyleForNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def get_inline_styles_for_node(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_inline_styles_for_node(
+            self,
+            params: 'css.GetInlineStylesForNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def get_matched_styles_for_node(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_matched_styles_for_node(
+            self,
+            params: 'css.GetMatchedStylesForNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def get_media_queries(
+            self
+    ):
+        ...
+
+    @overload
+    def get_platform_fonts_for_node(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_platform_fonts_for_node(
+            self,
+            params: 'css.GetPlatformFontsForNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def get_style_sheet_text(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId'
+    ):
+        ...
+
+    @overload
+    def get_style_sheet_text(
+            self,
+            params: 'css.GetStyleSheetTextParamsT'
+    ):
+        ...
+
+    @overload
+    def get_layers_for_node(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_layers_for_node(
+            self,
+            params: 'css.GetLayersForNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def track_computed_style_updates(
+            self,
+            *,
+            properties_to_track: 'list'
+    ):
+        ...
+
+    @overload
+    def track_computed_style_updates(
+            self,
+            params: 'css.TrackComputedStyleUpdatesParamsT'
+    ):
+        ...
+
+    @overload
+    def take_computed_style_updates(
+            self
+    ):
+        ...
+
+    @overload
+    def set_effective_property_value_for_node(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            property_name: 'str',
+            value: 'str'
+    ):
+        ...
+
+    @overload
+    def set_effective_property_value_for_node(
+            self,
+            params: 'css.SetEffectivePropertyValueForNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def set_keyframe_key(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId',
+            range: 'css.SourceRange',
+            key_text: 'str'
+    ):
+        ...
+
+    @overload
+    def set_keyframe_key(
+            self,
+            params: 'css.SetKeyframeKeyParamsT'
+    ):
+        ...
+
+    @overload
+    def set_media_text(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId',
+            range: 'css.SourceRange',
+            text: 'str'
+    ):
+        ...
+
+    @overload
+    def set_media_text(
+            self,
+            params: 'css.SetMediaTextParamsT'
+    ):
+        ...
+
+    @overload
+    def set_container_query_text(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId',
+            range: 'css.SourceRange',
+            text: 'str'
+    ):
+        ...
+
+    @overload
+    def set_container_query_text(
+            self,
+            params: 'css.SetContainerQueryTextParamsT'
+    ):
+        ...
+
+    @overload
+    def set_supports_text(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId',
+            range: 'css.SourceRange',
+            text: 'str'
+    ):
+        ...
+
+    @overload
+    def set_supports_text(
+            self,
+            params: 'css.SetSupportsTextParamsT'
+    ):
+        ...
+
+    @overload
+    def set_scope_text(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId',
+            range: 'css.SourceRange',
+            text: 'str'
+    ):
+        ...
+
+    @overload
+    def set_scope_text(
+            self,
+            params: 'css.SetScopeTextParamsT'
+    ):
+        ...
+
+    @overload
+    def set_rule_selector(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId',
+            range: 'css.SourceRange',
+            selector: 'str'
+    ):
+        ...
+
+    @overload
+    def set_rule_selector(
+            self,
+            params: 'css.SetRuleSelectorParamsT'
+    ):
+        ...
+
+    @overload
+    def set_style_sheet_text(
+            self,
+            *,
+            style_sheet_id: 'css.StyleSheetId',
+            text: 'str'
+    ):
+        ...
+
+    @overload
+    def set_style_sheet_text(
+            self,
+            params: 'css.SetStyleSheetTextParamsT'
+    ):
+        ...
+
+    @overload
+    def set_style_texts(
+            self,
+            *,
+            edits: 'list'
+    ):
+        ...
+
+    @overload
+    def set_style_texts(
+            self,
+            params: 'css.SetStyleTextsParamsT'
+    ):
+        ...
+
+    @overload
+    def start_rule_usage_tracking(
+            self
+    ):
+        ...
+
+    @overload
+    def stop_rule_usage_tracking(
+            self
+    ):
+        ...
+
+    @overload
+    def take_coverage_delta(
+            self
+    ):
+        ...
+
+    @overload
+    def set_local_fonts_enabled(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_local_fonts_enabled(
+            self,
+            params: 'css.SetLocalFontsEnabledParamsT'
+    ):
+        ...
+
+
+@dataclass
+class CacheStorage:
+    domains: 'Domains'
+
+    @overload
+    def delete_cache(
+            self,
+            *,
+            cache_id: 'cache_storage.CacheId'
+    ):
+        ...
+
+    @overload
+    def delete_cache(
+            self,
+            params: 'cache_storage.DeleteCacheParamsT'
+    ):
+        ...
+
+    @overload
+    def delete_entry(
+            self,
+            *,
+            cache_id: 'cache_storage.CacheId',
+            request: 'str'
+    ):
+        ...
+
+    @overload
+    def delete_entry(
+            self,
+            params: 'cache_storage.DeleteEntryParamsT'
+    ):
+        ...
+
+    @overload
+    def request_cache_names(
+            self,
+            *,
+            security_origin: Optional['str'] = ...,
+            storage_key: Optional['str'] = ...,
+            storage_bucket: Optional['storage.StorageBucket'] = ...
+    ):
+        ...
+
+    @overload
+    def request_cache_names(
+            self,
+            params: 'cache_storage.RequestCacheNamesParamsT'
+    ):
+        ...
+
+    @overload
+    def request_cached_response(
+            self,
+            *,
+            cache_id: 'cache_storage.CacheId',
+            request_url: 'str',
+            request_headers: 'list'
+    ):
+        ...
+
+    @overload
+    def request_cached_response(
+            self,
+            params: 'cache_storage.RequestCachedResponseParamsT'
+    ):
+        ...
+
+    @overload
+    def request_entries(
+            self,
+            *,
+            cache_id: 'cache_storage.CacheId',
+            skip_count: Optional['int'] = ...,
+            page_size: Optional['int'] = ...,
+            path_filter: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def request_entries(
+            self,
+            params: 'cache_storage.RequestEntriesParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Cast:
+    domains: 'Domains'
+
+    @overload
+    def enable(
+            self,
+            *,
+            presentation_url: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            params: 'cast.EnableParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def set_sink_to_use(
+            self,
+            *,
+            sink_name: 'str'
+    ):
+        ...
+
+    @overload
+    def set_sink_to_use(
+            self,
+            params: 'cast.SetSinkToUseParamsT'
+    ):
+        ...
+
+    @overload
+    def start_desktop_mirroring(
+            self,
+            *,
+            sink_name: 'str'
+    ):
+        ...
+
+    @overload
+    def start_desktop_mirroring(
+            self,
+            params: 'cast.StartDesktopMirroringParamsT'
+    ):
+        ...
+
+    @overload
+    def start_tab_mirroring(
+            self,
+            *,
+            sink_name: 'str'
+    ):
+        ...
+
+    @overload
+    def start_tab_mirroring(
+            self,
+            params: 'cast.StartTabMirroringParamsT'
+    ):
+        ...
+
+    @overload
+    def stop_casting(
+            self,
+            *,
+            sink_name: 'str'
+    ):
+        ...
+
+    @overload
+    def stop_casting(
+            self,
+            params: 'cast.StopCastingParamsT'
+    ):
+        ...
+
+
+@dataclass
+class DOM:
+    domains: 'Domains'
+
+    @overload
+    def collect_class_names_from_subtree(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def collect_class_names_from_subtree(
+            self,
+            params: 'dom.CollectClassNamesFromSubtreeParamsT'
+    ):
+        ...
+
+    @overload
+    def copy_to(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            target_node_id: 'dom.NodeId',
+            insert_before_node_id: Optional['dom.NodeId'] = ...
+    ):
+        ...
+
+    @overload
+    def copy_to(
+            self,
+            params: 'dom.CopyToParamsT'
+    ):
+        ...
+
+    @overload
+    def describe_node(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...,
+            depth: Optional['int'] = ...,
+            pierce: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def describe_node(
+            self,
+            params: 'dom.DescribeNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def scroll_into_view_if_needed(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...,
+            rect: Optional['dom.Rect'] = ...
+    ):
+        ...
+
+    @overload
+    def scroll_into_view_if_needed(
+            self,
+            params: 'dom.ScrollIntoViewIfNeededParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def discard_search_results(
+            self,
+            *,
+            search_id: 'str'
+    ):
+        ...
+
+    @overload
+    def discard_search_results(
+            self,
+            params: 'dom.DiscardSearchResultsParamsT'
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            *,
+            include_whitespace: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            params: 'dom.EnableParamsT'
+    ):
+        ...
+
+    @overload
+    def focus(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...
+    ):
+        ...
+
+    @overload
+    def focus(
+            self,
+            params: 'dom.FocusParamsT'
+    ):
+        ...
+
+    @overload
+    def get_attributes(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_attributes(
+            self,
+            params: 'dom.GetAttributesParamsT'
+    ):
+        ...
+
+    @overload
+    def get_box_model(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...
+    ):
+        ...
+
+    @overload
+    def get_box_model(
+            self,
+            params: 'dom.GetBoxModelParamsT'
+    ):
+        ...
+
+    @overload
+    def get_content_quads(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...
+    ):
+        ...
+
+    @overload
+    def get_content_quads(
+            self,
+            params: 'dom.GetContentQuadsParamsT'
+    ):
+        ...
+
+    @overload
+    def get_document(
+            self,
+            *,
+            depth: Optional['int'] = ...,
+            pierce: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_document(
+            self,
+            params: 'dom.GetDocumentParamsT'
+    ):
+        ...
+
+    @overload
+    def get_flattened_document(
+            self,
+            *,
+            depth: Optional['int'] = ...,
+            pierce: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_flattened_document(
+            self,
+            params: 'dom.GetFlattenedDocumentParamsT'
+    ):
+        ...
+
+    @overload
+    def get_nodes_for_subtree_by_style(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            computed_styles: 'list',
+            pierce: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_nodes_for_subtree_by_style(
+            self,
+            params: 'dom.GetNodesForSubtreeByStyleParamsT'
+    ):
+        ...
+
+    @overload
+    def get_node_for_location(
+            self,
+            *,
+            x: 'int',
+            y: 'int',
+            include_user_agent_shadow_dom: Optional['bool'] = ...,
+            ignore_pointer_events_none: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_node_for_location(
+            self,
+            params: 'dom.GetNodeForLocationParamsT'
+    ):
+        ...
+
+    @overload
+    def get_outer_html(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...
+    ):
+        ...
+
+    @overload
+    def get_outer_html(
+            self,
+            params: 'dom.GetOuterHTMLParamsT'
+    ):
+        ...
+
+    @overload
+    def get_relayout_boundary(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_relayout_boundary(
+            self,
+            params: 'dom.GetRelayoutBoundaryParamsT'
+    ):
+        ...
+
+    @overload
+    def get_search_results(
+            self,
+            *,
+            search_id: 'str',
+            from_index: 'int',
+            to_index: 'int'
+    ):
+        ...
+
+    @overload
+    def get_search_results(
+            self,
+            params: 'dom.GetSearchResultsParamsT'
+    ):
+        ...
+
+    @overload
+    def hide_highlight(
+            self
+    ):
+        ...
+
+    @overload
+    def highlight_node(
+            self
+    ):
+        ...
+
+    @overload
+    def highlight_rect(
+            self
+    ):
+        ...
+
+    @overload
+    def mark_undoable_state(
+            self
+    ):
+        ...
+
+    @overload
+    def move_to(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            target_node_id: 'dom.NodeId',
+            insert_before_node_id: Optional['dom.NodeId'] = ...
+    ):
+        ...
+
+    @overload
+    def move_to(
+            self,
+            params: 'dom.MoveToParamsT'
+    ):
+        ...
+
+    @overload
+    def perform_search(
+            self,
+            *,
+            query: 'str',
+            include_user_agent_shadow_dom: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def perform_search(
+            self,
+            params: 'dom.PerformSearchParamsT'
+    ):
+        ...
+
+    @overload
+    def push_node_by_path_to_frontend(
+            self,
+            *,
+            path: 'str'
+    ):
+        ...
+
+    @overload
+    def push_node_by_path_to_frontend(
+            self,
+            params: 'dom.PushNodeByPathToFrontendParamsT'
+    ):
+        ...
+
+    @overload
+    def push_nodes_by_backend_ids_to_frontend(
+            self,
+            *,
+            backend_node_ids: 'list'
+    ):
+        ...
+
+    @overload
+    def push_nodes_by_backend_ids_to_frontend(
+            self,
+            params: 'dom.PushNodesByBackendIdsToFrontendParamsT'
+    ):
+        ...
+
+    @overload
+    def query_selector(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            selector: 'str'
+    ):
+        ...
+
+    @overload
+    def query_selector(
+            self,
+            params: 'dom.QuerySelectorParamsT'
+    ):
+        ...
+
+    @overload
+    def query_selector_all(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            selector: 'str'
+    ):
+        ...
+
+    @overload
+    def query_selector_all(
+            self,
+            params: 'dom.QuerySelectorAllParamsT'
+    ):
+        ...
+
+    @overload
+    def get_top_layer_elements(
+            self
+    ):
+        ...
+
+    @overload
+    def redo(
+            self
+    ):
+        ...
+
+    @overload
+    def remove_attribute(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            name: 'str'
+    ):
+        ...
+
+    @overload
+    def remove_attribute(
+            self,
+            params: 'dom.RemoveAttributeParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_node(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def remove_node(
+            self,
+            params: 'dom.RemoveNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def request_child_nodes(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            depth: Optional['int'] = ...,
+            pierce: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def request_child_nodes(
+            self,
+            params: 'dom.RequestChildNodesParamsT'
+    ):
+        ...
+
+    @overload
+    def request_node(
+            self,
+            *,
+            object_id: 'runtime.RemoteObjectId'
+    ):
+        ...
+
+    @overload
+    def request_node(
+            self,
+            params: 'dom.RequestNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def resolve_node(
+            self,
+            *,
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_group: Optional['str'] = ...,
+            execution_context_id: Optional['runtime.ExecutionContextId'] = ...
+    ):
+        ...
+
+    @overload
+    def resolve_node(
+            self,
+            params: 'dom.ResolveNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def set_attribute_value(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            name: 'str',
+            value: 'str'
+    ):
+        ...
+
+    @overload
+    def set_attribute_value(
+            self,
+            params: 'dom.SetAttributeValueParamsT'
+    ):
+        ...
+
+    @overload
+    def set_attributes_as_text(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            text: 'str',
+            name: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_attributes_as_text(
+            self,
+            params: 'dom.SetAttributesAsTextParamsT'
+    ):
+        ...
+
+    @overload
+    def set_file_input_files(
+            self,
+            *,
+            files: 'list',
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...
+    ):
+        ...
+
+    @overload
+    def set_file_input_files(
+            self,
+            params: 'dom.SetFileInputFilesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_node_stack_traces_enabled(
+            self,
+            *,
+            enable: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_node_stack_traces_enabled(
+            self,
+            params: 'dom.SetNodeStackTracesEnabledParamsT'
+    ):
+        ...
+
+    @overload
+    def get_node_stack_traces(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_node_stack_traces(
+            self,
+            params: 'dom.GetNodeStackTracesParamsT'
+    ):
+        ...
+
+    @overload
+    def get_file_info(
+            self,
+            *,
+            object_id: 'runtime.RemoteObjectId'
+    ):
+        ...
+
+    @overload
+    def get_file_info(
+            self,
+            params: 'dom.GetFileInfoParamsT'
+    ):
+        ...
+
+    @overload
+    def set_inspected_node(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def set_inspected_node(
+            self,
+            params: 'dom.SetInspectedNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def set_node_name(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            name: 'str'
+    ):
+        ...
+
+    @overload
+    def set_node_name(
+            self,
+            params: 'dom.SetNodeNameParamsT'
+    ):
+        ...
+
+    @overload
+    def set_node_value(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            value: 'str'
+    ):
+        ...
+
+    @overload
+    def set_node_value(
+            self,
+            params: 'dom.SetNodeValueParamsT'
+    ):
+        ...
+
+    @overload
+    def set_outer_html(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            outer_html: 'str'
+    ):
+        ...
+
+    @overload
+    def set_outer_html(
+            self,
+            params: 'dom.SetOuterHTMLParamsT'
+    ):
+        ...
+
+    @overload
+    def undo(
+            self
+    ):
+        ...
+
+    @overload
+    def get_frame_owner(
+            self,
+            *,
+            frame_id: 'page.FrameId'
+    ):
+        ...
+
+    @overload
+    def get_frame_owner(
+            self,
+            params: 'dom.GetFrameOwnerParamsT'
+    ):
+        ...
+
+    @overload
+    def get_container_for_node(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            container_name: Optional['str'] = ...,
+            physical_axes: Optional['dom.PhysicalAxes'] = ...,
+            logical_axes: Optional['dom.LogicalAxes'] = ...
+    ):
+        ...
+
+    @overload
+    def get_container_for_node(
+            self,
+            params: 'dom.GetContainerForNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def get_querying_descendants_for_container(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_querying_descendants_for_container(
+            self,
+            params: 'dom.GetQueryingDescendantsForContainerParamsT'
+    ):
+        ...
+
+
+@dataclass
+class DOMDebugger:
+    domains: 'Domains'
+
+    @overload
+    def get_event_listeners(
+            self,
+            *,
+            object_id: 'runtime.RemoteObjectId',
+            depth: Optional['int'] = ...,
+            pierce: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_event_listeners(
+            self,
+            params: 'dom_debugger.GetEventListenersParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_dom_breakpoint(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            type: 'dom_debugger.DOMBreakpointType'
+    ):
+        ...
+
+    @overload
+    def remove_dom_breakpoint(
+            self,
+            params: 'dom_debugger.RemoveDOMBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_event_listener_breakpoint(
+            self,
+            *,
+            event_name: 'str',
+            target_name: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def remove_event_listener_breakpoint(
+            self,
+            params: 'dom_debugger.RemoveEventListenerBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_instrumentation_breakpoint(
+            self,
+            *,
+            event_name: 'str'
+    ):
+        ...
+
+    @overload
+    def remove_instrumentation_breakpoint(
+            self,
+            params: 'dom_debugger.RemoveInstrumentationBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_xhr_breakpoint(
+            self,
+            *,
+            url: 'str'
+    ):
+        ...
+
+    @overload
+    def remove_xhr_breakpoint(
+            self,
+            params: 'dom_debugger.RemoveXHRBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def set_break_on_csp_violation(
+            self,
+            *,
+            violation_types: 'list'
+    ):
+        ...
+
+    @overload
+    def set_break_on_csp_violation(
+            self,
+            params: 'dom_debugger.SetBreakOnCSPViolationParamsT'
+    ):
+        ...
+
+    @overload
+    def set_dom_breakpoint(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            type: 'dom_debugger.DOMBreakpointType'
+    ):
+        ...
+
+    @overload
+    def set_dom_breakpoint(
+            self,
+            params: 'dom_debugger.SetDOMBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def set_event_listener_breakpoint(
+            self,
+            *,
+            event_name: 'str',
+            target_name: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_event_listener_breakpoint(
+            self,
+            params: 'dom_debugger.SetEventListenerBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def set_instrumentation_breakpoint(
+            self,
+            *,
+            event_name: 'str'
+    ):
+        ...
+
+    @overload
+    def set_instrumentation_breakpoint(
+            self,
+            params: 'dom_debugger.SetInstrumentationBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def set_xhr_breakpoint(
+            self,
+            *,
+            url: 'str'
+    ):
+        ...
+
+    @overload
+    def set_xhr_breakpoint(
+            self,
+            params: 'dom_debugger.SetXHRBreakpointParamsT'
+    ):
+        ...
+
+
+@dataclass
+class EventBreakpoints:
+    domains: 'Domains'
+
+    @overload
+    def set_instrumentation_breakpoint(
+            self,
+            *,
+            event_name: 'str'
+    ):
+        ...
+
+    @overload
+    def set_instrumentation_breakpoint(
+            self,
+            params: 'event_breakpoints.SetInstrumentationBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_instrumentation_breakpoint(
+            self,
+            *,
+            event_name: 'str'
+    ):
+        ...
+
+    @overload
+    def remove_instrumentation_breakpoint(
+            self,
+            params: 'event_breakpoints.RemoveInstrumentationBreakpointParamsT'
+    ):
+        ...
+
+
+@dataclass
+class DOMSnapshot:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def get_snapshot(
+            self,
+            *,
+            computed_style_whitelist: 'list',
+            include_event_listeners: Optional['bool'] = ...,
+            include_paint_order: Optional['bool'] = ...,
+            include_user_agent_shadow_tree: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_snapshot(
+            self,
+            params: 'dom_snapshot.GetSnapshotParamsT'
+    ):
+        ...
+
+    @overload
+    def capture_snapshot(
+            self,
+            *,
+            computed_styles: 'list',
+            include_paint_order: Optional['bool'] = ...,
+            include_dom_rects: Optional['bool'] = ...,
+            include_blended_background_colors: Optional['bool'] = ...,
+            include_text_color_opacities: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def capture_snapshot(
+            self,
+            params: 'dom_snapshot.CaptureSnapshotParamsT'
+    ):
+        ...
+
+
+@dataclass
+class DOMStorage:
+    domains: 'Domains'
+
+    @overload
+    def clear(
+            self,
+            *,
+            storage_id: 'dom_storage.StorageId'
+    ):
+        ...
+
+    @overload
+    def clear(
+            self,
+            params: 'dom_storage.ClearParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def get_dom_storage_items(
+            self,
+            *,
+            storage_id: 'dom_storage.StorageId'
+    ):
+        ...
+
+    @overload
+    def get_dom_storage_items(
+            self,
+            params: 'dom_storage.GetDOMStorageItemsParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_dom_storage_item(
+            self,
+            *,
+            storage_id: 'dom_storage.StorageId',
+            key: 'str'
+    ):
+        ...
+
+    @overload
+    def remove_dom_storage_item(
+            self,
+            params: 'dom_storage.RemoveDOMStorageItemParamsT'
+    ):
+        ...
+
+    @overload
+    def set_dom_storage_item(
+            self,
+            *,
+            storage_id: 'dom_storage.StorageId',
+            key: 'str',
+            value: 'str'
+    ):
+        ...
+
+    @overload
+    def set_dom_storage_item(
+            self,
+            params: 'dom_storage.SetDOMStorageItemParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Database:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def execute_sql(
+            self,
+            *,
+            database_id: 'database.DatabaseId',
+            query: 'str'
+    ):
+        ...
+
+    @overload
+    def execute_sql(
+            self,
+            params: 'database.ExecuteSQLParamsT'
+    ):
+        ...
+
+    @overload
+    def get_database_table_names(
+            self,
+            *,
+            database_id: 'database.DatabaseId'
+    ):
+        ...
+
+    @overload
+    def get_database_table_names(
+            self,
+            params: 'database.GetDatabaseTableNamesParamsT'
+    ):
+        ...
+
+
+@dataclass
+class DeviceOrientation:
+    domains: 'Domains'
+
+    @overload
+    def clear_device_orientation_override(
+            self
+    ):
+        ...
+
+    @overload
+    def set_device_orientation_override(
+            self,
+            *,
+            alpha: 'float',
+            beta: 'float',
+            gamma: 'float'
+    ):
+        ...
+
+    @overload
+    def set_device_orientation_override(
+            self,
+            params: 'device_orientation.SetDeviceOrientationOverrideParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Emulation:
+    domains: 'Domains'
+
+    @overload
+    def can_emulate(
+            self
+    ):
+        ...
+
+    @overload
+    def clear_device_metrics_override(
+            self
+    ):
+        ...
+
+    @overload
+    def clear_geolocation_override(
+            self
+    ):
+        ...
+
+    @overload
+    def reset_page_scale_factor(
+            self
+    ):
+        ...
+
+    @overload
+    def set_focus_emulation_enabled(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_focus_emulation_enabled(
+            self,
+            params: 'emulation.SetFocusEmulationEnabledParamsT'
+    ):
+        ...
+
+    @overload
+    def set_auto_dark_mode_override(
+            self,
+            *,
+            enabled: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def set_auto_dark_mode_override(
+            self,
+            params: 'emulation.SetAutoDarkModeOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_cpu_throttling_rate(
+            self,
+            *,
+            rate: 'float'
+    ):
+        ...
+
+    @overload
+    def set_cpu_throttling_rate(
+            self,
+            params: 'emulation.SetCPUThrottlingRateParamsT'
+    ):
+        ...
+
+    @overload
+    def set_default_background_color_override(
+            self,
+            *,
+            color: Optional['dom.RGBA'] = ...
+    ):
+        ...
+
+    @overload
+    def set_default_background_color_override(
+            self,
+            params: 'emulation.SetDefaultBackgroundColorOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_device_metrics_override(
+            self,
+            *,
+            width: 'int',
+            height: 'int',
+            device_scale_factor: 'float',
+            mobile: 'bool',
+            scale: Optional['float'] = ...,
+            screen_width: Optional['int'] = ...,
+            screen_height: Optional['int'] = ...,
+            position_x: Optional['int'] = ...,
+            position_y: Optional['int'] = ...,
+            dont_set_visible_size: Optional['bool'] = ...,
+            screen_orientation: Optional['emulation.ScreenOrientation'] = ...,
+            viewport: Optional['page.Viewport'] = ...,
+            display_feature: Optional['emulation.DisplayFeature'] = ...
+    ):
+        ...
+
+    @overload
+    def set_device_metrics_override(
+            self,
+            params: 'emulation.SetDeviceMetricsOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_scrollbars_hidden(
+            self,
+            *,
+            hidden: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_scrollbars_hidden(
+            self,
+            params: 'emulation.SetScrollbarsHiddenParamsT'
+    ):
+        ...
+
+    @overload
+    def set_document_cookie_disabled(
+            self,
+            *,
+            disabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_document_cookie_disabled(
+            self,
+            params: 'emulation.SetDocumentCookieDisabledParamsT'
+    ):
+        ...
+
+    @overload
+    def set_emit_touch_events_for_mouse(
+            self,
+            *,
+            enabled: 'bool',
+            configuration: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_emit_touch_events_for_mouse(
+            self,
+            params: 'emulation.SetEmitTouchEventsForMouseParamsT'
+    ):
+        ...
+
+    @overload
+    def set_emulated_media(
+            self,
+            *,
+            media: Optional['str'] = ...,
+            features: Optional['list'] = ...
+    ):
+        ...
+
+    @overload
+    def set_emulated_media(
+            self,
+            params: 'emulation.SetEmulatedMediaParamsT'
+    ):
+        ...
+
+    @overload
+    def set_emulated_vision_deficiency(
+            self,
+            *,
+            type: 'str'
+    ):
+        ...
+
+    @overload
+    def set_emulated_vision_deficiency(
+            self,
+            params: 'emulation.SetEmulatedVisionDeficiencyParamsT'
+    ):
+        ...
+
+    @overload
+    def set_geolocation_override(
+            self,
+            *,
+            latitude: Optional['float'] = ...,
+            longitude: Optional['float'] = ...,
+            accuracy: Optional['float'] = ...
+    ):
+        ...
+
+    @overload
+    def set_geolocation_override(
+            self,
+            params: 'emulation.SetGeolocationOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_idle_override(
+            self,
+            *,
+            is_user_active: 'bool',
+            is_screen_unlocked: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_idle_override(
+            self,
+            params: 'emulation.SetIdleOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_idle_override(
+            self
+    ):
+        ...
+
+    @overload
+    def set_navigator_overrides(
+            self,
+            *,
+            platform: 'str'
+    ):
+        ...
+
+    @overload
+    def set_navigator_overrides(
+            self,
+            params: 'emulation.SetNavigatorOverridesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_page_scale_factor(
+            self,
+            *,
+            page_scale_factor: 'float'
+    ):
+        ...
+
+    @overload
+    def set_page_scale_factor(
+            self,
+            params: 'emulation.SetPageScaleFactorParamsT'
+    ):
+        ...
+
+    @overload
+    def set_script_execution_disabled(
+            self,
+            *,
+            value: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_script_execution_disabled(
+            self,
+            params: 'emulation.SetScriptExecutionDisabledParamsT'
+    ):
+        ...
+
+    @overload
+    def set_touch_emulation_enabled(
+            self,
+            *,
+            enabled: 'bool',
+            max_touch_points: Optional['int'] = ...
+    ):
+        ...
+
+    @overload
+    def set_touch_emulation_enabled(
+            self,
+            params: 'emulation.SetTouchEmulationEnabledParamsT'
+    ):
+        ...
+
+    @overload
+    def set_virtual_time_policy(
+            self,
+            *,
+            policy: 'emulation.VirtualTimePolicy',
+            budget: Optional['float'] = ...,
+            max_virtual_time_task_starvation_count: Optional['int'] = ...,
+            initial_virtual_time: Optional['network.TimeSinceEpoch'] = ...
+    ):
+        ...
+
+    @overload
+    def set_virtual_time_policy(
+            self,
+            params: 'emulation.SetVirtualTimePolicyParamsT'
+    ):
+        ...
+
+    @overload
+    def set_locale_override(
+            self,
+            *,
+            locale: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_locale_override(
+            self,
+            params: 'emulation.SetLocaleOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_timezone_override(
+            self,
+            *,
+            timezone_id: 'str'
+    ):
+        ...
+
+    @overload
+    def set_timezone_override(
+            self,
+            params: 'emulation.SetTimezoneOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_visible_size(
+            self,
+            *,
+            width: 'int',
+            height: 'int'
+    ):
+        ...
+
+    @overload
+    def set_visible_size(
+            self,
+            params: 'emulation.SetVisibleSizeParamsT'
+    ):
+        ...
+
+    @overload
+    def set_disabled_image_types(
+            self,
+            *,
+            image_types: 'list'
+    ):
+        ...
+
+    @overload
+    def set_disabled_image_types(
+            self,
+            params: 'emulation.SetDisabledImageTypesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_hardware_concurrency_override(
+            self,
+            *,
+            hardware_concurrency: 'int'
+    ):
+        ...
+
+    @overload
+    def set_hardware_concurrency_override(
+            self,
+            params: 'emulation.SetHardwareConcurrencyOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_user_agent_override(
+            self,
+            *,
+            user_agent: 'str',
+            accept_language: Optional['str'] = ...,
+            platform: Optional['str'] = ...,
+            user_agent_metadata: Optional['emulation.UserAgentMetadata'] = ...
+    ):
+        ...
+
+    @overload
+    def set_user_agent_override(
+            self,
+            params: 'emulation.SetUserAgentOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_automation_override(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_automation_override(
+            self,
+            params: 'emulation.SetAutomationOverrideParamsT'
+    ):
+        ...
+
+
+@dataclass
+class HeadlessExperimental:
+    domains: 'Domains'
+
+    @overload
+    def begin_frame(
+            self,
+            *,
+            frame_time_ticks: Optional['float'] = ...,
+            interval: Optional['float'] = ...,
+            no_display_updates: Optional['bool'] = ...,
+            screenshot: Optional['headless_experimental.ScreenshotParams'] = ...
+    ):
+        ...
+
+    @overload
+    def begin_frame(
+            self,
+            params: 'headless_experimental.BeginFrameParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+
+@dataclass
+class IO:
+    domains: 'Domains'
+
+    @overload
+    def close(
+            self,
+            *,
+            handle: 'io.StreamHandle'
+    ):
+        ...
+
+    @overload
+    def close(
+            self,
+            params: 'io.CloseParamsT'
+    ):
+        ...
+
+    @overload
+    def read(
+            self,
+            *,
+            handle: 'io.StreamHandle',
+            offset: Optional['int'] = ...,
+            size: Optional['int'] = ...
+    ):
+        ...
+
+    @overload
+    def read(
+            self,
+            params: 'io.ReadParamsT'
+    ):
+        ...
+
+    @overload
+    def resolve_blob(
+            self,
+            *,
+            object_id: 'runtime.RemoteObjectId'
+    ):
+        ...
+
+    @overload
+    def resolve_blob(
+            self,
+            params: 'io.ResolveBlobParamsT'
+    ):
+        ...
+
+
+@dataclass
+class IndexedDB:
+    domains: 'Domains'
+
+    @overload
+    def clear_object_store(
+            self,
+            *,
+            security_origin: Optional['str'],
+            storage_key: Optional['str'],
+            storage_bucket: Optional['storage.StorageBucket'] = ...,
+            database_name: 'str' = ...,
+            object_store_name: 'str' = ...
+    ):
+        ...
+
+    @overload
+    def clear_object_store(
+            self,
+            params: 'indexed_db.ClearObjectStoreParamsT'
+    ):
+        ...
+
+    @overload
+    def delete_database(
+            self,
+            *,
+            security_origin: Optional['str'],
+            storage_key: Optional['str'] = ...,
+            storage_bucket: Optional['storage.StorageBucket'] = ...,
+            database_name: 'str' = ...
+    ):
+        ...
+
+    @overload
+    def delete_database(
+            self,
+            params: 'indexed_db.DeleteDatabaseParamsT'
+    ):
+        ...
+
+    @overload
+    def delete_object_store_entries(
+            self,
+            *,
+            security_origin: Optional['str'],
+            storage_key: Optional['str'],
+            storage_bucket: Optional['storage.StorageBucket'],
+            database_name: 'str' = ...,
+            object_store_name: 'str' = ...,
+            key_range: 'indexed_db.KeyRange' = ...
+    ):
+        ...
+
+    @overload
+    def delete_object_store_entries(
+            self,
+            params: 'indexed_db.DeleteObjectStoreEntriesParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def request_data(
+            self,
+            *,
+            security_origin: Optional['str'],
+            storage_key: Optional['str'],
+            storage_bucket: Optional['storage.StorageBucket'],
+            database_name: 'str',
+            object_store_name: 'str',
+            index_name: 'str' = ...,
+            skip_count: 'int' = ...,
+            page_size: 'int' = ...,
+            key_range: Optional['indexed_db.KeyRange'] = ...
+    ):
+        ...
+
+    @overload
+    def request_data(
+            self,
+            params: 'indexed_db.RequestDataParamsT'
+    ):
+        ...
+
+    @overload
+    def get_metadata(
+            self,
+            *,
+            security_origin: Optional['str'],
+            storage_key: Optional['str'],
+            storage_bucket: Optional['storage.StorageBucket'] = ...,
+            database_name: 'str' = ...,
+            object_store_name: 'str' = ...
+    ):
+        ...
+
+    @overload
+    def get_metadata(
+            self,
+            params: 'indexed_db.GetMetadataParamsT'
+    ):
+        ...
+
+    @overload
+    def request_database(
+            self,
+            *,
+            security_origin: Optional['str'],
+            storage_key: Optional['str'] = ...,
+            storage_bucket: Optional['storage.StorageBucket'] = ...,
+            database_name: 'str' = ...
+    ):
+        ...
+
+    @overload
+    def request_database(
+            self,
+            params: 'indexed_db.RequestDatabaseParamsT'
+    ):
+        ...
+
+    @overload
+    def request_database_names(
+            self,
+            *,
+            security_origin: Optional['str'] = ...,
+            storage_key: Optional['str'] = ...,
+            storage_bucket: Optional['storage.StorageBucket'] = ...
+    ):
+        ...
+
+    @overload
+    def request_database_names(
+            self,
+            params: 'indexed_db.RequestDatabaseNamesParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Input:
+    domains: 'Domains'
+
+    @overload
+    def dispatch_drag_event(
+            self,
+            *,
+            type: 'str',
+            x: 'float',
+            y: 'float',
+            data: 'input.DragData',
+            modifiers: Optional['int'] = ...
+    ):
+        ...
+
+    @overload
+    def dispatch_drag_event(
+            self,
+            params: 'input.DispatchDragEventParamsT'
+    ):
+        ...
+
+    @overload
+    def dispatch_key_event(
+            self,
+            *,
+            type: 'str',
+            modifiers: Optional['int'] = ...,
+            timestamp: Optional['input.TimeSinceEpoch'] = ...,
+            text: Optional['str'] = ...,
+            unmodified_text: Optional['str'] = ...,
+            key_identifier: Optional['str'] = ...,
+            code: Optional['str'] = ...,
+            key: Optional['str'] = ...,
+            windows_virtual_key_code: Optional['int'] = ...,
+            native_virtual_key_code: Optional['int'] = ...,
+            auto_repeat: Optional['bool'] = ...,
+            is_keypad: Optional['bool'] = ...,
+            is_system_key: Optional['bool'] = ...,
+            location: Optional['int'] = ...,
+            commands: Optional['list'] = ...
+    ):
+        ...
+
+    @overload
+    def dispatch_key_event(
+            self,
+            params: 'input.DispatchKeyEventParamsT'
+    ):
+        ...
+
+    @overload
+    def insert_text(
+            self,
+            *,
+            text: 'str'
+    ):
+        ...
+
+    @overload
+    def insert_text(
+            self,
+            params: 'input.InsertTextParamsT'
+    ):
+        ...
+
+    @overload
+    def ime_set_composition(
+            self,
+            *,
+            text: 'str',
+            selection_start: 'int',
+            selection_end: 'int',
+            replacement_start: Optional['int'] = ...,
+            replacement_end: Optional['int'] = ...
+    ):
+        ...
+
+    @overload
+    def ime_set_composition(
+            self,
+            params: 'input.ImeSetCompositionParamsT'
+    ):
+        ...
+
+    @overload
+    def dispatch_mouse_event(
+            self,
+            *,
+            type: 'str',
+            x: 'float',
+            y: 'float',
+            modifiers: Optional['int'] = ...,
+            timestamp: Optional['input.TimeSinceEpoch'] = ...,
+            button: Optional['input.MouseButton'] = ...,
+            buttons: Optional['int'] = ...,
+            click_count: Optional['int'] = ...,
+            force: Optional['float'] = ...,
+            tangential_pressure: Optional['float'] = ...,
+            tilt_x: Optional['int'] = ...,
+            tilt_y: Optional['int'] = ...,
+            twist: Optional['int'] = ...,
+            delta_x: Optional['float'] = ...,
+            delta_y: Optional['float'] = ...,
+            pointer_type: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def dispatch_mouse_event(
+            self,
+            params: 'input.DispatchMouseEventParamsT'
+    ):
+        ...
+
+    @overload
+    def dispatch_touch_event(
+            self,
+            *,
+            type: 'str',
+            touch_points: 'list',
+            modifiers: Optional['int'] = ...,
+            timestamp: Optional['input.TimeSinceEpoch'] = ...
+    ):
+        ...
+
+    @overload
+    def dispatch_touch_event(
+            self,
+            params: 'input.DispatchTouchEventParamsT'
+    ):
+        ...
+
+    @overload
+    def cancel_dragging(
+            self
+    ):
+        ...
+
+    @overload
+    def emulate_touch_from_mouse_event(
+            self,
+            *,
+            type: 'str',
+            x: 'int',
+            y: 'int',
+            button: 'input.MouseButton',
+            timestamp: Optional['input.TimeSinceEpoch'] = ...,
+            delta_x: Optional['float'] = ...,
+            delta_y: Optional['float'] = ...,
+            modifiers: Optional['int'] = ...,
+            click_count: Optional['int'] = ...
+    ):
+        ...
+
+    @overload
+    def emulate_touch_from_mouse_event(
+            self,
+            params: 'input.EmulateTouchFromMouseEventParamsT'
+    ):
+        ...
+
+    @overload
+    def set_ignore_input_events(
+            self,
+            *,
+            ignore: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_ignore_input_events(
+            self,
+            params: 'input.SetIgnoreInputEventsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_intercept_drags(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_intercept_drags(
+            self,
+            params: 'input.SetInterceptDragsParamsT'
+    ):
+        ...
+
+    @overload
+    def synthesize_pinch_gesture(
+            self,
+            *,
+            x: 'float',
+            y: 'float',
+            scale_factor: 'float',
+            relative_speed: Optional['int'] = ...,
+            gesture_source_type: Optional['input.GestureSourceType'] = ...
+    ):
+        ...
+
+    @overload
+    def synthesize_pinch_gesture(
+            self,
+            params: 'input.SynthesizePinchGestureParamsT'
+    ):
+        ...
+
+    @overload
+    def synthesize_scroll_gesture(
+            self,
+            *,
+            x: 'float',
+            y: 'float',
+            x_distance: Optional['float'] = ...,
+            y_distance: Optional['float'] = ...,
+            x_overscroll: Optional['float'] = ...,
+            y_overscroll: Optional['float'] = ...,
+            prevent_fling: Optional['bool'] = ...,
+            speed: Optional['int'] = ...,
+            gesture_source_type: Optional['input.GestureSourceType'] = ...,
+            repeat_count: Optional['int'] = ...,
+            repeat_delay_ms: Optional['int'] = ...,
+            interaction_marker_name: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def synthesize_scroll_gesture(
+            self,
+            params: 'input.SynthesizeScrollGestureParamsT'
+    ):
+        ...
+
+    @overload
+    def synthesize_tap_gesture(
+            self,
+            *,
+            x: 'float',
+            y: 'float',
+            duration: Optional['int'] = ...,
+            tap_count: Optional['int'] = ...,
+            gesture_source_type: Optional['input.GestureSourceType'] = ...
+    ):
+        ...
+
+    @overload
+    def synthesize_tap_gesture(
+            self,
+            params: 'input.SynthesizeTapGestureParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Inspector:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+
+@dataclass
+class LayerTree:
+    domains: 'Domains'
+
+    @overload
+    def compositing_reasons(
+            self,
+            *,
+            layer_id: 'layer_tree.LayerId'
+    ):
+        ...
+
+    @overload
+    def compositing_reasons(
+            self,
+            params: 'layer_tree.CompositingReasonsParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def load_snapshot(
+            self,
+            *,
+            tiles: 'list'
+    ):
+        ...
+
+    @overload
+    def load_snapshot(
+            self,
+            params: 'layer_tree.LoadSnapshotParamsT'
+    ):
+        ...
+
+    @overload
+    def make_snapshot(
+            self,
+            *,
+            layer_id: 'layer_tree.LayerId'
+    ):
+        ...
+
+    @overload
+    def make_snapshot(
+            self,
+            params: 'layer_tree.MakeSnapshotParamsT'
+    ):
+        ...
+
+    @overload
+    def profile_snapshot(
+            self,
+            *,
+            snapshot_id: 'layer_tree.SnapshotId',
+            min_repeat_count: Optional['int'] = ...,
+            min_duration: Optional['float'] = ...,
+            clip_rect: Optional['dom.Rect'] = ...
+    ):
+        ...
+
+    @overload
+    def profile_snapshot(
+            self,
+            params: 'layer_tree.ProfileSnapshotParamsT'
+    ):
+        ...
+
+    @overload
+    def release_snapshot(
+            self,
+            *,
+            snapshot_id: 'layer_tree.SnapshotId'
+    ):
+        ...
+
+    @overload
+    def release_snapshot(
+            self,
+            params: 'layer_tree.ReleaseSnapshotParamsT'
+    ):
+        ...
+
+    @overload
+    def replay_snapshot(
+            self,
+            *,
+            snapshot_id: 'layer_tree.SnapshotId',
+            from_step: Optional['int'] = ...,
+            to_step: Optional['int'] = ...,
+            scale: Optional['float'] = ...
+    ):
+        ...
+
+    @overload
+    def replay_snapshot(
+            self,
+            params: 'layer_tree.ReplaySnapshotParamsT'
+    ):
+        ...
+
+    @overload
+    def snapshot_command_log(
+            self,
+            *,
+            snapshot_id: 'layer_tree.SnapshotId'
+    ):
+        ...
+
+    @overload
+    def snapshot_command_log(
+            self,
+            params: 'layer_tree.SnapshotCommandLogParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Log:
+    domains: 'Domains'
+
+    @overload
+    def clear(
+            self
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def start_violations_report(
+            self,
+            *,
+            config: 'list'
+    ):
+        ...
+
+    @overload
+    def start_violations_report(
+            self,
+            params: 'log.StartViolationsReportParamsT'
+    ):
+        ...
+
+    @overload
+    def stop_violations_report(
+            self
+    ):
+        ...
+
+
+@dataclass
+class Memory:
+    domains: 'Domains'
+
+    @overload
+    def get_dom_counters(
+            self
+    ):
+        ...
+
+    @overload
+    def prepare_for_leak_detection(
+            self
+    ):
+        ...
+
+    @overload
+    def forcibly_purge_java_script_memory(
+            self
+    ):
+        ...
+
+    @overload
+    def set_pressure_notifications_suppressed(
+            self,
+            *,
+            suppressed: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_pressure_notifications_suppressed(
+            self,
+            params: 'memory.SetPressureNotificationsSuppressedParamsT'
+    ):
+        ...
+
+    @overload
+    def simulate_pressure_notification(
+            self,
+            *,
+            level: 'memory.PressureLevel'
+    ):
+        ...
+
+    @overload
+    def simulate_pressure_notification(
+            self,
+            params: 'memory.SimulatePressureNotificationParamsT'
+    ):
+        ...
+
+    @overload
+    def start_sampling(
+            self,
+            *,
+            sampling_interval: Optional['int'] = ...,
+            suppress_randomness: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def start_sampling(
+            self,
+            params: 'memory.StartSamplingParamsT'
+    ):
+        ...
+
+    @overload
+    def stop_sampling(
+            self
+    ):
+        ...
+
+    @overload
+    def get_all_time_sampling_profile(
+            self
+    ):
+        ...
+
+    @overload
+    def get_browser_sampling_profile(
+            self
+    ):
+        ...
+
+    @overload
+    def get_sampling_profile(
+            self
+    ):
+        ...
+
+
+@dataclass
+class Network:
+    domains: 'Domains'
+
+    @overload
+    def set_accepted_encodings(
+            self,
+            *,
+            encodings: 'list'
+    ):
+        ...
+
+    @overload
+    def set_accepted_encodings(
+            self,
+            params: 'network.SetAcceptedEncodingsParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_accepted_encodings_override(
+            self
+    ):
+        ...
+
+    @overload
+    def can_clear_browser_cache(
+            self
+    ):
+        ...
+
+    @overload
+    def can_clear_browser_cookies(
+            self
+    ):
+        ...
+
+    @overload
+    def can_emulate_network_conditions(
+            self
+    ):
+        ...
+
+    @overload
+    def clear_browser_cache(
+            self
+    ):
+        ...
+
+    @overload
+    def clear_browser_cookies(
+            self
+    ):
+        ...
+
+    @overload
+    def continue_intercepted_request(
+            self,
+            *,
+            interception_id: 'network.InterceptionId',
+            error_reason: Optional['network.ErrorReason'] = ...,
+            raw_response: Optional['str'] = ...,
+            url: Optional['str'] = ...,
+            method: Optional['str'] = ...,
+            post_data: Optional['str'] = ...,
+            headers: Optional['network.Headers'] = ...,
+            auth_challenge_response: Optional['network.AuthChallengeResponse'] = ...
+    ):
+        ...
+
+    @overload
+    def continue_intercepted_request(
+            self,
+            params: 'network.ContinueInterceptedRequestParamsT'
+    ):
+        ...
+
+    @overload
+    def delete_cookies(
+            self,
+            *,
+            name: 'str',
+            url: Optional['str'] = ...,
+            domain: Optional['str'] = ...,
+            path: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def delete_cookies(
+            self,
+            params: 'network.DeleteCookiesParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def emulate_network_conditions(
+            self,
+            *,
+            offline: 'bool',
+            latency: 'float',
+            download_throughput: 'float',
+            upload_throughput: 'float',
+            connection_type: Optional['network.ConnectionType'] = ...
+    ):
+        ...
+
+    @overload
+    def emulate_network_conditions(
+            self,
+            params: 'network.EmulateNetworkConditionsParamsT'
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            *,
+            max_total_buffer_size: Optional['int'] = ...,
+            max_resource_buffer_size: Optional['int'] = ...,
+            max_post_data_size: Optional['int'] = ...
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            params: 'network.EnableParamsT'
+    ):
+        ...
+
+    @overload
+    def get_all_cookies(
+            self
+    ):
+        ...
+
+    @overload
+    def get_certificate(
+            self,
+            *,
+            origin: 'str'
+    ):
+        ...
+
+    @overload
+    def get_certificate(
+            self,
+            params: 'network.GetCertificateParamsT'
+    ):
+        ...
+
+    @overload
+    def get_cookies(
+            self,
+            *,
+            urls: Optional['list'] = ...
+    ):
+        ...
+
+    @overload
+    def get_cookies(
+            self,
+            params: 'network.GetCookiesParamsT'
+    ):
+        ...
+
+    @overload
+    def get_response_body(
+            self,
+            *,
+            request_id: 'network.RequestId'
+    ):
+        ...
+
+    @overload
+    def get_response_body(
+            self,
+            params: 'network.GetResponseBodyParamsT'
+    ):
+        ...
+
+    @overload
+    def get_request_post_data(
+            self,
+            *,
+            request_id: 'network.RequestId'
+    ):
+        ...
+
+    @overload
+    def get_request_post_data(
+            self,
+            params: 'network.GetRequestPostDataParamsT'
+    ):
+        ...
+
+    @overload
+    def get_response_body_for_interception(
+            self,
+            *,
+            interception_id: 'network.InterceptionId'
+    ):
+        ...
+
+    @overload
+    def get_response_body_for_interception(
+            self,
+            params: 'network.GetResponseBodyForInterceptionParamsT'
+    ):
+        ...
+
+    @overload
+    def take_response_body_for_interception_as_stream(
+            self,
+            *,
+            interception_id: 'network.InterceptionId'
+    ):
+        ...
+
+    @overload
+    def take_response_body_for_interception_as_stream(
+            self,
+            params: 'network.TakeResponseBodyForInterceptionAsStreamParamsT'
+    ):
+        ...
+
+    @overload
+    def replay_xhr(
+            self,
+            *,
+            request_id: 'network.RequestId'
+    ):
+        ...
+
+    @overload
+    def replay_xhr(
+            self,
+            params: 'network.ReplayXHRParamsT'
+    ):
+        ...
+
+    @overload
+    def search_in_response_body(
+            self,
+            *,
+            request_id: 'network.RequestId',
+            query: 'str',
+            case_sensitive: Optional['bool'] = ...,
+            is_regex: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def search_in_response_body(
+            self,
+            params: 'network.SearchInResponseBodyParamsT'
+    ):
+        ...
+
+    @overload
+    def set_blocked_ur_ls(
+            self,
+            *,
+            urls: 'list'
+    ):
+        ...
+
+    @overload
+    def set_blocked_ur_ls(
+            self,
+            params: 'network.SetBlockedURLsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_bypass_service_worker(
+            self,
+            *,
+            bypass: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_bypass_service_worker(
+            self,
+            params: 'network.SetBypassServiceWorkerParamsT'
+    ):
+        ...
+
+    @overload
+    def set_cache_disabled(
+            self,
+            *,
+            cache_disabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_cache_disabled(
+            self,
+            params: 'network.SetCacheDisabledParamsT'
+    ):
+        ...
+
+    @overload
+    def set_cookie(
+            self,
+            *,
+            name: 'str',
+            value: 'str',
+            url: Optional['str'] = ...,
+            domain: Optional['str'] = ...,
+            path: Optional['str'] = ...,
+            secure: Optional['bool'] = ...,
+            http_only: Optional['bool'] = ...,
+            same_site: Optional['network.CookieSameSite'] = ...,
+            expires: Optional['network.TimeSinceEpoch'] = ...,
+            priority: Optional['network.CookiePriority'] = ...,
+            same_party: Optional['bool'] = ...,
+            source_scheme: Optional['network.CookieSourceScheme'] = ...,
+            source_port: Optional['int'] = ...,
+            partition_key: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_cookie(
+            self,
+            params: 'network.SetCookieParamsT'
+    ):
+        ...
+
+    @overload
+    def set_cookies(
+            self,
+            *,
+            cookies: 'list'
+    ):
+        ...
+
+    @overload
+    def set_cookies(
+            self,
+            params: 'network.SetCookiesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_extra_http_headers(
+            self,
+            *,
+            headers: 'network.Headers'
+    ):
+        ...
+
+    @overload
+    def set_extra_http_headers(
+            self,
+            params: 'network.SetExtraHTTPHeadersParamsT'
+    ):
+        ...
+
+    @overload
+    def set_attach_debug_stack(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_attach_debug_stack(
+            self,
+            params: 'network.SetAttachDebugStackParamsT'
+    ):
+        ...
+
+    @overload
+    def set_request_interception(
+            self,
+            *,
+            patterns: 'list'
+    ):
+        ...
+
+    @overload
+    def set_request_interception(
+            self,
+            params: 'network.SetRequestInterceptionParamsT'
+    ):
+        ...
+
+    @overload
+    def set_user_agent_override(
+            self,
+            *,
+            user_agent: 'str',
+            accept_language: Optional['str'] = ...,
+            platform: Optional['str'] = ...,
+            user_agent_metadata: Optional['emulation.UserAgentMetadata'] = ...
+    ):
+        ...
+
+    @overload
+    def set_user_agent_override(
+            self,
+            params: 'network.SetUserAgentOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def get_security_isolation_status(
+            self,
+            *,
+            frame_id: Optional['page.FrameId'] = ...
+    ):
+        ...
+
+    @overload
+    def get_security_isolation_status(
+            self,
+            params: 'network.GetSecurityIsolationStatusParamsT'
+    ):
+        ...
+
+    @overload
+    def enable_reporting_api(
+            self,
+            *,
+            enable: 'bool'
+    ):
+        ...
+
+    @overload
+    def enable_reporting_api(
+            self,
+            params: 'network.EnableReportingApiParamsT'
+    ):
+        ...
+
+    @overload
+    def load_network_resource(
+            self,
+            *,
+            frame_id: Optional['page.FrameId'],
+            url: 'str',
+            options: 'network.LoadNetworkResourceOptions' = ...
+    ):
+        ...
+
+    @overload
+    def load_network_resource(
+            self,
+            params: 'network.LoadNetworkResourceParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Overlay:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def get_highlight_object_for_test(
+            self,
+            *,
+            node_id: 'dom.NodeId',
+            include_distance: Optional['bool'] = ...,
+            include_style: Optional['bool'] = ...,
+            color_format: Optional['overlay.ColorFormat'] = ...,
+            show_accessibility_info: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_highlight_object_for_test(
+            self,
+            params: 'overlay.GetHighlightObjectForTestParamsT'
+    ):
+        ...
+
+    @overload
+    def get_grid_highlight_objects_for_test(
+            self,
+            *,
+            node_ids: 'list'
+    ):
+        ...
+
+    @overload
+    def get_grid_highlight_objects_for_test(
+            self,
+            params: 'overlay.GetGridHighlightObjectsForTestParamsT'
+    ):
+        ...
+
+    @overload
+    def get_source_order_highlight_object_for_test(
+            self,
+            *,
+            node_id: 'dom.NodeId'
+    ):
+        ...
+
+    @overload
+    def get_source_order_highlight_object_for_test(
+            self,
+            params: 'overlay.GetSourceOrderHighlightObjectForTestParamsT'
+    ):
+        ...
+
+    @overload
+    def hide_highlight(
+            self
+    ):
+        ...
+
+    @overload
+    def highlight_frame(
+            self,
+            *,
+            frame_id: 'page.FrameId',
+            content_color: Optional['dom.RGBA'] = ...,
+            content_outline_color: Optional['dom.RGBA'] = ...
+    ):
+        ...
+
+    @overload
+    def highlight_frame(
+            self,
+            params: 'overlay.HighlightFrameParamsT'
+    ):
+        ...
+
+    @overload
+    def highlight_node(
+            self,
+            *,
+            highlight_config: 'overlay.HighlightConfig',
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...,
+            selector: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def highlight_node(
+            self,
+            params: 'overlay.HighlightNodeParamsT'
+    ):
+        ...
+
+    @overload
+    def highlight_quad(
+            self,
+            *,
+            quad: 'dom.Quad',
+            color: Optional['dom.RGBA'] = ...,
+            outline_color: Optional['dom.RGBA'] = ...
+    ):
+        ...
+
+    @overload
+    def highlight_quad(
+            self,
+            params: 'overlay.HighlightQuadParamsT'
+    ):
+        ...
+
+    @overload
+    def highlight_rect(
+            self,
+            *,
+            x: 'int',
+            y: 'int',
+            width: 'int',
+            height: 'int',
+            color: Optional['dom.RGBA'] = ...,
+            outline_color: Optional['dom.RGBA'] = ...
+    ):
+        ...
+
+    @overload
+    def highlight_rect(
+            self,
+            params: 'overlay.HighlightRectParamsT'
+    ):
+        ...
+
+    @overload
+    def highlight_source_order(
+            self,
+            *,
+            source_order_config: 'overlay.SourceOrderConfig',
+            node_id: Optional['dom.NodeId'] = ...,
+            backend_node_id: Optional['dom.BackendNodeId'] = ...,
+            object_id: Optional['runtime.RemoteObjectId'] = ...
+    ):
+        ...
+
+    @overload
+    def highlight_source_order(
+            self,
+            params: 'overlay.HighlightSourceOrderParamsT'
+    ):
+        ...
+
+    @overload
+    def set_inspect_mode(
+            self,
+            *,
+            mode: 'overlay.InspectMode',
+            highlight_config: Optional['overlay.HighlightConfig'] = ...
+    ):
+        ...
+
+    @overload
+    def set_inspect_mode(
+            self,
+            params: 'overlay.SetInspectModeParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_ad_highlights(
+            self,
+            *,
+            show: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_show_ad_highlights(
+            self,
+            params: 'overlay.SetShowAdHighlightsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_paused_in_debugger_message(
+            self,
+            *,
+            message: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_paused_in_debugger_message(
+            self,
+            params: 'overlay.SetPausedInDebuggerMessageParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_debug_borders(
+            self,
+            *,
+            show: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_show_debug_borders(
+            self,
+            params: 'overlay.SetShowDebugBordersParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_fps_counter(
+            self,
+            *,
+            show: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_show_fps_counter(
+            self,
+            params: 'overlay.SetShowFPSCounterParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_grid_overlays(
+            self,
+            *,
+            grid_node_highlight_configs: 'list'
+    ):
+        ...
+
+    @overload
+    def set_show_grid_overlays(
+            self,
+            params: 'overlay.SetShowGridOverlaysParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_flex_overlays(
+            self,
+            *,
+            flex_node_highlight_configs: 'list'
+    ):
+        ...
+
+    @overload
+    def set_show_flex_overlays(
+            self,
+            params: 'overlay.SetShowFlexOverlaysParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_scroll_snap_overlays(
+            self,
+            *,
+            scroll_snap_highlight_configs: 'list'
+    ):
+        ...
+
+    @overload
+    def set_show_scroll_snap_overlays(
+            self,
+            params: 'overlay.SetShowScrollSnapOverlaysParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_container_query_overlays(
+            self,
+            *,
+            container_query_highlight_configs: 'list'
+    ):
+        ...
+
+    @overload
+    def set_show_container_query_overlays(
+            self,
+            params: 'overlay.SetShowContainerQueryOverlaysParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_paint_rects(
+            self,
+            *,
+            result: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_show_paint_rects(
+            self,
+            params: 'overlay.SetShowPaintRectsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_layout_shift_regions(
+            self,
+            *,
+            result: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_show_layout_shift_regions(
+            self,
+            params: 'overlay.SetShowLayoutShiftRegionsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_scroll_bottleneck_rects(
+            self,
+            *,
+            show: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_show_scroll_bottleneck_rects(
+            self,
+            params: 'overlay.SetShowScrollBottleneckRectsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_hit_test_borders(
+            self,
+            *,
+            show: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_show_hit_test_borders(
+            self,
+            params: 'overlay.SetShowHitTestBordersParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_web_vitals(
+            self,
+            *,
+            show: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_show_web_vitals(
+            self,
+            params: 'overlay.SetShowWebVitalsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_viewport_size_on_resize(
+            self,
+            *,
+            show: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_show_viewport_size_on_resize(
+            self,
+            params: 'overlay.SetShowViewportSizeOnResizeParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_hinge(
+            self,
+            *,
+            hinge_config: Optional['overlay.HingeConfig'] = ...
+    ):
+        ...
+
+    @overload
+    def set_show_hinge(
+            self,
+            params: 'overlay.SetShowHingeParamsT'
+    ):
+        ...
+
+    @overload
+    def set_show_isolated_elements(
+            self,
+            *,
+            isolated_element_highlight_configs: 'list'
+    ):
+        ...
+
+    @overload
+    def set_show_isolated_elements(
+            self,
+            params: 'overlay.SetShowIsolatedElementsParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Page:
+    domains: 'Domains'
+
+    @overload
+    def add_script_to_evaluate_on_load(
+            self,
+            *,
+            script_source: 'str'
+    ):
+        ...
+
+    @overload
+    def add_script_to_evaluate_on_load(
+            self,
+            params: 'page.AddScriptToEvaluateOnLoadParamsT'
+    ):
+        ...
+
+    @overload
+    def add_script_to_evaluate_on_new_document(
+            self,
+            *,
+            source: 'str',
+            world_name: Optional['str'] = ...,
+            include_command_line_api: Optional['bool'] = ...,
+            run_immediately: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def add_script_to_evaluate_on_new_document(
+            self,
+            params: 'page.AddScriptToEvaluateOnNewDocumentParamsT'
+    ):
+        ...
+
+    @overload
+    def bring_to_front(
+            self
+    ):
+        ...
+
+    @overload
+    def capture_screenshot(
+            self,
+            *,
+            format: Optional['str'] = ...,
+            quality: Optional['int'] = ...,
+            clip: Optional['page.Viewport'] = ...,
+            from_surface: Optional['bool'] = ...,
+            capture_beyond_viewport: Optional['bool'] = ...,
+            optimize_for_speed: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def capture_screenshot(
+            self,
+            params: 'page.CaptureScreenshotParamsT'
+    ):
+        ...
+
+    @overload
+    def capture_snapshot(
+            self,
+            *,
+            format: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def capture_snapshot(
+            self,
+            params: 'page.CaptureSnapshotParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_device_metrics_override(
+            self
+    ):
+        ...
+
+    @overload
+    def clear_device_orientation_override(
+            self
+    ):
+        ...
+
+    @overload
+    def clear_geolocation_override(
+            self
+    ):
+        ...
+
+    @overload
+    def create_isolated_world(
+            self,
+            *,
+            frame_id: 'page.FrameId',
+            world_name: Optional['str'] = ...,
+            grant_univeral_access: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def create_isolated_world(
+            self,
+            params: 'page.CreateIsolatedWorldParamsT'
+    ):
+        ...
+
+    @overload
+    def delete_cookie(
+            self,
+            *,
+            cookie_name: 'str',
+            url: 'str'
+    ):
+        ...
+
+    @overload
+    def delete_cookie(
+            self,
+            params: 'page.DeleteCookieParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def get_app_manifest(
+            self
+    ):
+        ...
+
+    @overload
+    def get_installability_errors(
+            self
+    ):
+        ...
+
+    @overload
+    def get_manifest_icons(
+            self
+    ):
+        ...
+
+    @overload
+    def get_app_id(
+            self
+    ):
+        ...
+
+    @overload
+    def get_ad_script_id(
+            self,
+            *,
+            frame_id: 'page.FrameId'
+    ):
+        ...
+
+    @overload
+    def get_ad_script_id(
+            self,
+            params: 'page.GetAdScriptIdParamsT'
+    ):
+        ...
+
+    @overload
+    def get_cookies(
+            self
+    ):
+        ...
+
+    @overload
+    def get_frame_tree(
+            self
+    ):
+        ...
+
+    @overload
+    def get_layout_metrics(
+            self
+    ):
+        ...
+
+    @overload
+    def get_navigation_history(
+            self
+    ):
+        ...
+
+    @overload
+    def reset_navigation_history(
+            self
+    ):
+        ...
+
+    @overload
+    def get_resource_content(
+            self,
+            *,
+            frame_id: 'page.FrameId',
+            url: 'str'
+    ):
+        ...
+
+    @overload
+    def get_resource_content(
+            self,
+            params: 'page.GetResourceContentParamsT'
+    ):
+        ...
+
+    @overload
+    def get_resource_tree(
+            self
+    ):
+        ...
+
+    @overload
+    def handle_java_script_dialog(
+            self,
+            *,
+            accept: 'bool',
+            prompt_text: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def handle_java_script_dialog(
+            self,
+            params: 'page.HandleJavaScriptDialogParamsT'
+    ):
+        ...
+
+    @overload
+    def navigate(
+            self,
+            *,
+            url: 'str',
+            referrer: Optional['str'] = ...,
+            transition_type: Optional['page.TransitionType'] = ...,
+            frame_id: Optional['page.FrameId'] = ...,
+            referrer_policy: Optional['page.ReferrerPolicy'] = ...
+    ):
+        ...
+
+    @overload
+    def navigate(
+            self,
+            params: 'page.NavigateParamsT'
+    ):
+        ...
+
+    @overload
+    def navigate_to_history_entry(
+            self,
+            *,
+            entry_id: 'int'
+    ):
+        ...
+
+    @overload
+    def navigate_to_history_entry(
+            self,
+            params: 'page.NavigateToHistoryEntryParamsT'
+    ):
+        ...
+
+    @overload
+    def print_to_pdf(
+            self,
+            *,
+            landscape: Optional['bool'] = ...,
+            display_header_footer: Optional['bool'] = ...,
+            print_background: Optional['bool'] = ...,
+            scale: Optional['float'] = ...,
+            paper_width: Optional['float'] = ...,
+            paper_height: Optional['float'] = ...,
+            margin_top: Optional['float'] = ...,
+            margin_bottom: Optional['float'] = ...,
+            margin_left: Optional['float'] = ...,
+            margin_right: Optional['float'] = ...,
+            page_ranges: Optional['str'] = ...,
+            header_template: Optional['str'] = ...,
+            footer_template: Optional['str'] = ...,
+            prefer_css_page_size: Optional['bool'] = ...,
+            transfer_mode: Optional['str'] = ...,
+            generate_tagged_pdf: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def print_to_pdf(
+            self,
+            params: 'page.PrintToPDFParamsT'
+    ):
+        ...
+
+    @overload
+    def reload(
+            self,
+            *,
+            ignore_cache: Optional['bool'] = ...,
+            script_to_evaluate_on_load: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def reload(
+            self,
+            params: 'page.ReloadParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_script_to_evaluate_on_load(
+            self,
+            *,
+            identifier: 'page.ScriptIdentifier'
+    ):
+        ...
+
+    @overload
+    def remove_script_to_evaluate_on_load(
+            self,
+            params: 'page.RemoveScriptToEvaluateOnLoadParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_script_to_evaluate_on_new_document(
+            self,
+            *,
+            identifier: 'page.ScriptIdentifier'
+    ):
+        ...
+
+    @overload
+    def remove_script_to_evaluate_on_new_document(
+            self,
+            params: 'page.RemoveScriptToEvaluateOnNewDocumentParamsT'
+    ):
+        ...
+
+    @overload
+    def screencast_frame_ack(
+            self,
+            *,
+            session_id: 'int'
+    ):
+        ...
+
+    @overload
+    def screencast_frame_ack(
+            self,
+            params: 'page.ScreencastFrameAckParamsT'
+    ):
+        ...
+
+    @overload
+    def search_in_resource(
+            self,
+            *,
+            frame_id: 'page.FrameId',
+            url: 'str',
+            query: 'str',
+            case_sensitive: Optional['bool'] = ...,
+            is_regex: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def search_in_resource(
+            self,
+            params: 'page.SearchInResourceParamsT'
+    ):
+        ...
+
+    @overload
+    def set_ad_blocking_enabled(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_ad_blocking_enabled(
+            self,
+            params: 'page.SetAdBlockingEnabledParamsT'
+    ):
+        ...
+
+    @overload
+    def set_bypass_csp(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_bypass_csp(
+            self,
+            params: 'page.SetBypassCSPParamsT'
+    ):
+        ...
+
+    @overload
+    def get_permissions_policy_state(
+            self,
+            *,
+            frame_id: 'page.FrameId'
+    ):
+        ...
+
+    @overload
+    def get_permissions_policy_state(
+            self,
+            params: 'page.GetPermissionsPolicyStateParamsT'
+    ):
+        ...
+
+    @overload
+    def get_origin_trials(
+            self,
+            *,
+            frame_id: 'page.FrameId'
+    ):
+        ...
+
+    @overload
+    def get_origin_trials(
+            self,
+            params: 'page.GetOriginTrialsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_device_metrics_override(
+            self,
+            *,
+            width: 'int',
+            height: 'int',
+            device_scale_factor: 'float',
+            mobile: 'bool',
+            scale: Optional['float'] = ...,
+            screen_width: Optional['int'] = ...,
+            screen_height: Optional['int'] = ...,
+            position_x: Optional['int'] = ...,
+            position_y: Optional['int'] = ...,
+            dont_set_visible_size: Optional['bool'] = ...,
+            screen_orientation: Optional['emulation.ScreenOrientation'] = ...,
+            viewport: Optional['page.Viewport'] = ...
+    ):
+        ...
+
+    @overload
+    def set_device_metrics_override(
+            self,
+            params: 'page.SetDeviceMetricsOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_device_orientation_override(
+            self,
+            *,
+            alpha: 'float',
+            beta: 'float',
+            gamma: 'float'
+    ):
+        ...
+
+    @overload
+    def set_device_orientation_override(
+            self,
+            params: 'page.SetDeviceOrientationOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_font_families(
+            self,
+            *,
+            font_families: 'page.FontFamilies',
+            for_scripts: Optional['list'] = ...
+    ):
+        ...
+
+    @overload
+    def set_font_families(
+            self,
+            params: 'page.SetFontFamiliesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_font_sizes(
+            self,
+            *,
+            font_sizes: 'page.FontSizes'
+    ):
+        ...
+
+    @overload
+    def set_font_sizes(
+            self,
+            params: 'page.SetFontSizesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_document_content(
+            self,
+            *,
+            frame_id: 'page.FrameId',
+            html: 'str'
+    ):
+        ...
+
+    @overload
+    def set_document_content(
+            self,
+            params: 'page.SetDocumentContentParamsT'
+    ):
+        ...
+
+    @overload
+    def set_download_behavior(
+            self,
+            *,
+            behavior: 'str',
+            download_path: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_download_behavior(
+            self,
+            params: 'page.SetDownloadBehaviorParamsT'
+    ):
+        ...
+
+    @overload
+    def set_geolocation_override(
+            self,
+            *,
+            latitude: Optional['float'] = ...,
+            longitude: Optional['float'] = ...,
+            accuracy: Optional['float'] = ...
+    ):
+        ...
+
+    @overload
+    def set_geolocation_override(
+            self,
+            params: 'page.SetGeolocationOverrideParamsT'
+    ):
+        ...
+
+    @overload
+    def set_lifecycle_events_enabled(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_lifecycle_events_enabled(
+            self,
+            params: 'page.SetLifecycleEventsEnabledParamsT'
+    ):
+        ...
+
+    @overload
+    def set_touch_emulation_enabled(
+            self,
+            *,
+            enabled: 'bool',
+            configuration: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_touch_emulation_enabled(
+            self,
+            params: 'page.SetTouchEmulationEnabledParamsT'
+    ):
+        ...
+
+    @overload
+    def start_screencast(
+            self,
+            *,
+            format: Optional['str'] = ...,
+            quality: Optional['int'] = ...,
+            max_width: Optional['int'] = ...,
+            max_height: Optional['int'] = ...,
+            every_nth_frame: Optional['int'] = ...
+    ):
+        ...
+
+    @overload
+    def start_screencast(
+            self,
+            params: 'page.StartScreencastParamsT'
+    ):
+        ...
+
+    @overload
+    def stop_loading(
+            self
+    ):
+        ...
+
+    @overload
+    def crash(
+            self
+    ):
+        ...
+
+    @overload
+    def close(
+            self
+    ):
+        ...
+
+    @overload
+    def set_web_lifecycle_state(
+            self,
+            *,
+            state: 'str'
+    ):
+        ...
+
+    @overload
+    def set_web_lifecycle_state(
+            self,
+            params: 'page.SetWebLifecycleStateParamsT'
+    ):
+        ...
+
+    @overload
+    def stop_screencast(
+            self
+    ):
+        ...
+
+    @overload
+    def produce_compilation_cache(
+            self,
+            *,
+            scripts: 'list'
+    ):
+        ...
+
+    @overload
+    def produce_compilation_cache(
+            self,
+            params: 'page.ProduceCompilationCacheParamsT'
+    ):
+        ...
+
+    @overload
+    def add_compilation_cache(
+            self,
+            *,
+            url: 'str',
+            data: 'str'
+    ):
+        ...
+
+    @overload
+    def add_compilation_cache(
+            self,
+            params: 'page.AddCompilationCacheParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_compilation_cache(
+            self
+    ):
+        ...
+
+    @overload
+    def set_spc_transaction_mode(
+            self,
+            *,
+            mode: 'page.AutoResponseMode'
+    ):
+        ...
+
+    @overload
+    def set_spc_transaction_mode(
+            self,
+            params: 'page.SetSPCTransactionModeParamsT'
+    ):
+        ...
+
+    @overload
+    def set_rph_registration_mode(
+            self,
+            *,
+            mode: 'page.AutoResponseMode'
+    ):
+        ...
+
+    @overload
+    def set_rph_registration_mode(
+            self,
+            params: 'page.SetRPHRegistrationModeParamsT'
+    ):
+        ...
+
+    @overload
+    def generate_test_report(
+            self,
+            *,
+            message: 'str',
+            group: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def generate_test_report(
+            self,
+            params: 'page.GenerateTestReportParamsT'
+    ):
+        ...
+
+    @overload
+    def wait_for_debugger(
+            self
+    ):
+        ...
+
+    @overload
+    def set_intercept_file_chooser_dialog(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_intercept_file_chooser_dialog(
+            self,
+            params: 'page.SetInterceptFileChooserDialogParamsT'
+    ):
+        ...
+
+    @overload
+    def set_prerendering_allowed(
+            self,
+            *,
+            is_allowed: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_prerendering_allowed(
+            self,
+            params: 'page.SetPrerenderingAllowedParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Performance:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            *,
+            time_domain: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            params: 'performance.EnableParamsT'
+    ):
+        ...
+
+    @overload
+    def set_time_domain(
+            self,
+            *,
+            time_domain: 'str'
+    ):
+        ...
+
+    @overload
+    def set_time_domain(
+            self,
+            params: 'performance.SetTimeDomainParamsT'
+    ):
+        ...
+
+    @overload
+    def get_metrics(
+            self
+    ):
+        ...
+
+
+@dataclass
+class PerformanceTimeline:
+    domains: 'Domains'
+
+    @overload
+    def enable(
+            self,
+            *,
+            event_types: 'list'
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            params: 'performance_timeline.EnableParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Security:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def set_ignore_certificate_errors(
+            self,
+            *,
+            ignore: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_ignore_certificate_errors(
+            self,
+            params: 'security.SetIgnoreCertificateErrorsParamsT'
+    ):
+        ...
+
+    @overload
+    def handle_certificate_error(
+            self,
+            *,
+            event_id: 'int',
+            action: 'security.CertificateErrorAction'
+    ):
+        ...
+
+    @overload
+    def handle_certificate_error(
+            self,
+            params: 'security.HandleCertificateErrorParamsT'
+    ):
+        ...
+
+    @overload
+    def set_override_certificate_errors(
+            self,
+            *,
+            override: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_override_certificate_errors(
+            self,
+            params: 'security.SetOverrideCertificateErrorsParamsT'
+    ):
+        ...
+
+
+@dataclass
+class ServiceWorker:
+    domains: 'Domains'
+
+    @overload
+    def deliver_push_message(
+            self,
+            *,
+            origin: 'str',
+            registration_id: 'service_worker.RegistrationID',
+            data: 'str'
+    ):
+        ...
+
+    @overload
+    def deliver_push_message(
+            self,
+            params: 'service_worker.DeliverPushMessageParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def dispatch_sync_event(
+            self,
+            *,
+            origin: 'str',
+            registration_id: 'service_worker.RegistrationID',
+            tag: 'str',
+            last_chance: 'bool'
+    ):
+        ...
+
+    @overload
+    def dispatch_sync_event(
+            self,
+            params: 'service_worker.DispatchSyncEventParamsT'
+    ):
+        ...
+
+    @overload
+    def dispatch_periodic_sync_event(
+            self,
+            *,
+            origin: 'str',
+            registration_id: 'service_worker.RegistrationID',
+            tag: 'str'
+    ):
+        ...
+
+    @overload
+    def dispatch_periodic_sync_event(
+            self,
+            params: 'service_worker.DispatchPeriodicSyncEventParamsT'
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def inspect_worker(
+            self,
+            *,
+            version_id: 'str'
+    ):
+        ...
+
+    @overload
+    def inspect_worker(
+            self,
+            params: 'service_worker.InspectWorkerParamsT'
+    ):
+        ...
+
+    @overload
+    def set_force_update_on_page_load(
+            self,
+            *,
+            force_update_on_page_load: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_force_update_on_page_load(
+            self,
+            params: 'service_worker.SetForceUpdateOnPageLoadParamsT'
+    ):
+        ...
+
+    @overload
+    def skip_waiting(
+            self,
+            *,
+            scope_url: 'str'
+    ):
+        ...
+
+    @overload
+    def skip_waiting(
+            self,
+            params: 'service_worker.SkipWaitingParamsT'
+    ):
+        ...
+
+    @overload
+    def start_worker(
+            self,
+            *,
+            scope_url: 'str'
+    ):
+        ...
+
+    @overload
+    def start_worker(
+            self,
+            params: 'service_worker.StartWorkerParamsT'
+    ):
+        ...
+
+    @overload
+    def stop_all_workers(
+            self
+    ):
+        ...
+
+    @overload
+    def stop_worker(
+            self,
+            *,
+            version_id: 'str'
+    ):
+        ...
+
+    @overload
+    def stop_worker(
+            self,
+            params: 'service_worker.StopWorkerParamsT'
+    ):
+        ...
+
+    @overload
+    def unregister(
+            self,
+            *,
+            scope_url: 'str'
+    ):
+        ...
+
+    @overload
+    def unregister(
+            self,
+            params: 'service_worker.UnregisterParamsT'
+    ):
+        ...
+
+    @overload
+    def update_registration(
+            self,
+            *,
+            scope_url: 'str'
+    ):
+        ...
+
+    @overload
+    def update_registration(
+            self,
+            params: 'service_worker.UpdateRegistrationParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Storage:
+    domains: 'Domains'
+
+    @overload
+    def get_storage_key_for_frame(
+            self,
+            *,
+            frame_id: 'page.FrameId'
+    ):
+        ...
+
+    @overload
+    def get_storage_key_for_frame(
+            self,
+            params: 'storage.GetStorageKeyForFrameParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_data_for_origin(
+            self,
+            *,
+            origin: 'str',
+            storage_types: 'str'
+    ):
+        ...
+
+    @overload
+    def clear_data_for_origin(
+            self,
+            params: 'storage.ClearDataForOriginParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_data_for_storage_key(
+            self,
+            *,
+            storage_key: 'str',
+            storage_types: 'str'
+    ):
+        ...
+
+    @overload
+    def clear_data_for_storage_key(
+            self,
+            params: 'storage.ClearDataForStorageKeyParamsT'
+    ):
+        ...
+
+    @overload
+    def get_cookies(
+            self,
+            *,
+            browser_context_id: Optional['browser.BrowserContextID'] = ...
+    ):
+        ...
+
+    @overload
+    def get_cookies(
+            self,
+            params: 'storage.GetCookiesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_cookies(
+            self,
+            *,
+            cookies: 'list',
+            browser_context_id: Optional['browser.BrowserContextID'] = ...
+    ):
+        ...
+
+    @overload
+    def set_cookies(
+            self,
+            params: 'storage.SetCookiesParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_cookies(
+            self,
+            *,
+            browser_context_id: Optional['browser.BrowserContextID'] = ...
+    ):
+        ...
+
+    @overload
+    def clear_cookies(
+            self,
+            params: 'storage.ClearCookiesParamsT'
+    ):
+        ...
+
+    @overload
+    def get_usage_and_quota(
+            self,
+            *,
+            origin: 'str'
+    ):
+        ...
+
+    @overload
+    def get_usage_and_quota(
+            self,
+            params: 'storage.GetUsageAndQuotaParamsT'
+    ):
+        ...
+
+    @overload
+    def override_quota_for_origin(
+            self,
+            *,
+            origin: 'str',
+            quota_size: Optional['float'] = ...
+    ):
+        ...
+
+    @overload
+    def override_quota_for_origin(
+            self,
+            params: 'storage.OverrideQuotaForOriginParamsT'
+    ):
+        ...
+
+    @overload
+    def track_cache_storage_for_origin(
+            self,
+            *,
+            origin: 'str'
+    ):
+        ...
+
+    @overload
+    def track_cache_storage_for_origin(
+            self,
+            params: 'storage.TrackCacheStorageForOriginParamsT'
+    ):
+        ...
+
+    @overload
+    def track_cache_storage_for_storage_key(
+            self,
+            *,
+            storage_key: 'str'
+    ):
+        ...
+
+    @overload
+    def track_cache_storage_for_storage_key(
+            self,
+            params: 'storage.TrackCacheStorageForStorageKeyParamsT'
+    ):
+        ...
+
+    @overload
+    def track_indexed_db_for_origin(
+            self,
+            *,
+            origin: 'str'
+    ):
+        ...
+
+    @overload
+    def track_indexed_db_for_origin(
+            self,
+            params: 'storage.TrackIndexedDBForOriginParamsT'
+    ):
+        ...
+
+    @overload
+    def track_indexed_db_for_storage_key(
+            self,
+            *,
+            storage_key: 'str'
+    ):
+        ...
+
+    @overload
+    def track_indexed_db_for_storage_key(
+            self,
+            params: 'storage.TrackIndexedDBForStorageKeyParamsT'
+    ):
+        ...
+
+    @overload
+    def untrack_cache_storage_for_origin(
+            self,
+            *,
+            origin: 'str'
+    ):
+        ...
+
+    @overload
+    def untrack_cache_storage_for_origin(
+            self,
+            params: 'storage.UntrackCacheStorageForOriginParamsT'
+    ):
+        ...
+
+    @overload
+    def untrack_cache_storage_for_storage_key(
+            self,
+            *,
+            storage_key: 'str'
+    ):
+        ...
+
+    @overload
+    def untrack_cache_storage_for_storage_key(
+            self,
+            params: 'storage.UntrackCacheStorageForStorageKeyParamsT'
+    ):
+        ...
+
+    @overload
+    def untrack_indexed_db_for_origin(
+            self,
+            *,
+            origin: 'str'
+    ):
+        ...
+
+    @overload
+    def untrack_indexed_db_for_origin(
+            self,
+            params: 'storage.UntrackIndexedDBForOriginParamsT'
+    ):
+        ...
+
+    @overload
+    def untrack_indexed_db_for_storage_key(
+            self,
+            *,
+            storage_key: 'str'
+    ):
+        ...
+
+    @overload
+    def untrack_indexed_db_for_storage_key(
+            self,
+            params: 'storage.UntrackIndexedDBForStorageKeyParamsT'
+    ):
+        ...
+
+    @overload
+    def get_trust_tokens(
+            self
+    ):
+        ...
+
+    @overload
+    def clear_trust_tokens(
+            self,
+            *,
+            issuer_origin: 'str'
+    ):
+        ...
+
+    @overload
+    def clear_trust_tokens(
+            self,
+            params: 'storage.ClearTrustTokensParamsT'
+    ):
+        ...
+
+    @overload
+    def get_interest_group_details(
+            self,
+            *,
+            owner_origin: 'str',
+            name: 'str'
+    ):
+        ...
+
+    @overload
+    def get_interest_group_details(
+            self,
+            params: 'storage.GetInterestGroupDetailsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_interest_group_tracking(
+            self,
+            *,
+            enable: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_interest_group_tracking(
+            self,
+            params: 'storage.SetInterestGroupTrackingParamsT'
+    ):
+        ...
+
+    @overload
+    def get_shared_storage_metadata(
+            self,
+            *,
+            owner_origin: 'str'
+    ):
+        ...
+
+    @overload
+    def get_shared_storage_metadata(
+            self,
+            params: 'storage.GetSharedStorageMetadataParamsT'
+    ):
+        ...
+
+    @overload
+    def get_shared_storage_entries(
+            self,
+            *,
+            owner_origin: 'str'
+    ):
+        ...
+
+    @overload
+    def get_shared_storage_entries(
+            self,
+            params: 'storage.GetSharedStorageEntriesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_shared_storage_entry(
+            self,
+            *,
+            owner_origin: 'str',
+            key: 'str',
+            value: 'str',
+            ignore_if_present: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def set_shared_storage_entry(
+            self,
+            params: 'storage.SetSharedStorageEntryParamsT'
+    ):
+        ...
+
+    @overload
+    def delete_shared_storage_entry(
+            self,
+            *,
+            owner_origin: 'str',
+            key: 'str'
+    ):
+        ...
+
+    @overload
+    def delete_shared_storage_entry(
+            self,
+            params: 'storage.DeleteSharedStorageEntryParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_shared_storage_entries(
+            self,
+            *,
+            owner_origin: 'str'
+    ):
+        ...
+
+    @overload
+    def clear_shared_storage_entries(
+            self,
+            params: 'storage.ClearSharedStorageEntriesParamsT'
+    ):
+        ...
+
+    @overload
+    def reset_shared_storage_budget(
+            self,
+            *,
+            owner_origin: 'str'
+    ):
+        ...
+
+    @overload
+    def reset_shared_storage_budget(
+            self,
+            params: 'storage.ResetSharedStorageBudgetParamsT'
+    ):
+        ...
+
+    @overload
+    def set_shared_storage_tracking(
+            self,
+            *,
+            enable: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_shared_storage_tracking(
+            self,
+            params: 'storage.SetSharedStorageTrackingParamsT'
+    ):
+        ...
+
+    @overload
+    def set_storage_bucket_tracking(
+            self,
+            *,
+            storage_key: 'str',
+            enable: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_storage_bucket_tracking(
+            self,
+            params: 'storage.SetStorageBucketTrackingParamsT'
+    ):
+        ...
+
+    @overload
+    def delete_storage_bucket(
+            self,
+            *,
+            bucket: 'storage.StorageBucket'
+    ):
+        ...
+
+    @overload
+    def delete_storage_bucket(
+            self,
+            params: 'storage.DeleteStorageBucketParamsT'
+    ):
+        ...
+
+    @overload
+    def run_bounce_tracking_mitigations(
+            self
+    ):
+        ...
+
+    @overload
+    def set_attribution_reporting_local_testing_mode(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_attribution_reporting_local_testing_mode(
+            self,
+            params: 'storage.SetAttributionReportingLocalTestingModeParamsT'
+    ):
+        ...
+
+    @overload
+    def set_attribution_reporting_tracking(
+            self,
+            *,
+            enable: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_attribution_reporting_tracking(
+            self,
+            params: 'storage.SetAttributionReportingTrackingParamsT'
+    ):
+        ...
+
+
+@dataclass
+class SystemInfo:
+    domains: 'Domains'
+
+    @overload
+    def get_info(
+            self
+    ):
+        ...
+
+    @overload
+    def get_feature_state(
+            self,
+            *,
+            feature_state: 'str'
+    ):
+        ...
+
+    @overload
+    def get_feature_state(
+            self,
+            params: 'system_info.GetFeatureStateParamsT'
+    ):
+        ...
+
+    @overload
+    def get_process_info(
+            self
+    ):
+        ...
+
+
+@dataclass
+class Target:
+    domains: 'Domains'
+
+    @overload
+    def activate_target(
+            self,
+            *,
+            target_id: 'target.TargetID'
+    ):
+        ...
+
+    @overload
+    def activate_target(
+            self,
+            params: 'target.ActivateTargetParamsT'
+    ):
+        ...
+
+    @overload
+    def attach_to_target(
+            self,
+            *,
+            target_id: 'target.TargetID',
+            flatten: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def attach_to_target(
+            self,
+            params: 'target.AttachToTargetParamsT'
+    ):
+        ...
+
+    @overload
+    def attach_to_browser_target(
+            self
+    ):
+        ...
+
+    @overload
+    def close_target(
+            self,
+            *,
+            target_id: 'target.TargetID'
+    ):
+        ...
+
+    @overload
+    def close_target(
+            self,
+            params: 'target.CloseTargetParamsT'
+    ):
+        ...
+
+    @overload
+    def expose_dev_tools_protocol(
+            self,
+            *,
+            target_id: 'target.TargetID',
+            binding_name: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def expose_dev_tools_protocol(
+            self,
+            params: 'target.ExposeDevToolsProtocolParamsT'
+    ):
+        ...
+
+    @overload
+    def create_browser_context(
+            self,
+            *,
+            dispose_on_detach: Optional['bool'] = ...,
+            proxy_server: Optional['str'] = ...,
+            proxy_bypass_list: Optional['str'] = ...,
+            origins_with_universal_network_access: Optional['list'] = ...
+    ):
+        ...
+
+    @overload
+    def create_browser_context(
+            self,
+            params: 'target.CreateBrowserContextParamsT'
+    ):
+        ...
+
+    @overload
+    def get_browser_contexts(
+            self
+    ):
+        ...
+
+    @overload
+    def create_target(
+            self,
+            *,
+            url: 'str',
+            width: Optional['int'] = ...,
+            height: Optional['int'] = ...,
+            browser_context_id: Optional['browser.BrowserContextID'] = ...,
+            enable_begin_frame_control: Optional['bool'] = ...,
+            new_window: Optional['bool'] = ...,
+            background: Optional['bool'] = ...,
+            for_tab: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def create_target(
+            self,
+            params: 'target.CreateTargetParamsT'
+    ):
+        ...
+
+    @overload
+    def detach_from_target(
+            self,
+            *,
+            session_id: Optional['target.SessionID'] = ...,
+            target_id: Optional['target.TargetID'] = ...
+    ):
+        ...
+
+    @overload
+    def detach_from_target(
+            self,
+            params: 'target.DetachFromTargetParamsT'
+    ):
+        ...
+
+    @overload
+    def dispose_browser_context(
+            self,
+            *,
+            browser_context_id: 'browser.BrowserContextID'
+    ):
+        ...
+
+    @overload
+    def dispose_browser_context(
+            self,
+            params: 'target.DisposeBrowserContextParamsT'
+    ):
+        ...
+
+    @overload
+    def get_target_info(
+            self,
+            *,
+            target_id: Optional['target.TargetID'] = ...
+    ):
+        ...
+
+    @overload
+    def get_target_info(
+            self,
+            params: 'target.GetTargetInfoParamsT'
+    ):
+        ...
+
+    @overload
+    def get_targets(
+            self,
+            *,
+            filter: Optional['target.TargetFilter'] = ...
+    ):
+        ...
+
+    @overload
+    def get_targets(
+            self,
+            params: 'target.GetTargetsParamsT'
+    ):
+        ...
+
+    @overload
+    def send_message_to_target(
+            self,
+            *,
+            message: 'str',
+            session_id: Optional['target.SessionID'] = ...,
+            target_id: Optional['target.TargetID'] = ...
+    ):
+        ...
+
+    @overload
+    def send_message_to_target(
+            self,
+            params: 'target.SendMessageToTargetParamsT'
+    ):
+        ...
+
+    @overload
+    def set_auto_attach(
+            self,
+            *,
+            auto_attach: 'bool',
+            wait_for_debugger_on_start: 'bool',
+            flatten: Optional['bool'] = ...,
+            filter: Optional['target.TargetFilter'] = ...
+    ):
+        ...
+
+    @overload
+    def set_auto_attach(
+            self,
+            params: 'target.SetAutoAttachParamsT'
+    ):
+        ...
+
+    @overload
+    def auto_attach_related(
+            self,
+            *,
+            target_id: 'target.TargetID',
+            wait_for_debugger_on_start: 'bool',
+            filter: Optional['target.TargetFilter'] = ...
+    ):
+        ...
+
+    @overload
+    def auto_attach_related(
+            self,
+            params: 'target.AutoAttachRelatedParamsT'
+    ):
+        ...
+
+    @overload
+    def set_discover_targets(
+            self,
+            *,
+            discover: 'bool',
+            filter: Optional['target.TargetFilter'] = ...
+    ):
+        ...
+
+    @overload
+    def set_discover_targets(
+            self,
+            params: 'target.SetDiscoverTargetsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_remote_locations(
+            self,
+            *,
+            locations: 'list'
+    ):
+        ...
+
+    @overload
+    def set_remote_locations(
+            self,
+            params: 'target.SetRemoteLocationsParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Tethering:
+    domains: 'Domains'
+
+    @overload
+    def bind(
+            self,
+            *,
+            port: 'int'
+    ):
+        ...
+
+    @overload
+    def bind(
+            self,
+            params: 'tethering.BindParamsT'
+    ):
+        ...
+
+    @overload
+    def unbind(
+            self,
+            *,
+            port: 'int'
+    ):
+        ...
+
+    @overload
+    def unbind(
+            self,
+            params: 'tethering.UnbindParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Tracing:
+    domains: 'Domains'
+
+    @overload
+    def end(
+            self
+    ):
+        ...
+
+    @overload
+    def get_categories(
+            self
+    ):
+        ...
+
+    @overload
+    def record_clock_sync_marker(
+            self,
+            *,
+            sync_id: 'str'
+    ):
+        ...
+
+    @overload
+    def record_clock_sync_marker(
+            self,
+            params: 'tracing.RecordClockSyncMarkerParamsT'
+    ):
+        ...
+
+    @overload
+    def request_memory_dump(
+            self,
+            *,
+            deterministic: Optional['bool'] = ...,
+            level_of_detail: Optional['tracing.MemoryDumpLevelOfDetail'] = ...
+    ):
+        ...
+
+    @overload
+    def request_memory_dump(
+            self,
+            params: 'tracing.RequestMemoryDumpParamsT'
+    ):
+        ...
+
+    @overload
+    def start(
+            self,
+            *,
+            categories: Optional['str'] = ...,
+            options: Optional['str'] = ...,
+            buffer_usage_reporting_interval: Optional['float'] = ...,
+            transfer_mode: Optional['str'] = ...,
+            stream_format: Optional['tracing.StreamFormat'] = ...,
+            stream_compression: Optional['tracing.StreamCompression'] = ...,
+            trace_config: Optional['tracing.TraceConfig'] = ...,
+            perfetto_config: Optional['str'] = ...,
+            tracing_backend: Optional['tracing.TracingBackend'] = ...
+    ):
+        ...
+
+    @overload
+    def start(
+            self,
+            params: 'tracing.StartParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Fetch:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            *,
+            patterns: Optional['list'] = ...,
+            handle_auth_requests: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            params: 'fetch.EnableParamsT'
+    ):
+        ...
+
+    @overload
+    def fail_request(
+            self,
+            *,
+            request_id: 'fetch.RequestId',
+            error_reason: 'network.ErrorReason'
+    ):
+        ...
+
+    @overload
+    def fail_request(
+            self,
+            params: 'fetch.FailRequestParamsT'
+    ):
+        ...
+
+    @overload
+    def fulfill_request(
+            self,
+            *,
+            request_id: 'fetch.RequestId',
+            response_code: 'int',
+            response_headers: Optional['list'] = ...,
+            binary_response_headers: Optional['str'] = ...,
+            body: Optional['str'] = ...,
+            response_phrase: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def fulfill_request(
+            self,
+            params: 'fetch.FulfillRequestParamsT'
+    ):
+        ...
+
+    @overload
+    def continue_request(
+            self,
+            *,
+            request_id: 'fetch.RequestId',
+            url: Optional['str'] = ...,
+            method: Optional['str'] = ...,
+            post_data: Optional['str'] = ...,
+            headers: Optional['list'] = ...,
+            intercept_response: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def continue_request(
+            self,
+            params: 'fetch.ContinueRequestParamsT'
+    ):
+        ...
+
+    @overload
+    def continue_with_auth(
+            self,
+            *,
+            request_id: 'fetch.RequestId',
+            auth_challenge_response: 'fetch.AuthChallengeResponse'
+    ):
+        ...
+
+    @overload
+    def continue_with_auth(
+            self,
+            params: 'fetch.ContinueWithAuthParamsT'
+    ):
+        ...
+
+    @overload
+    def continue_response(
+            self,
+            *,
+            request_id: 'fetch.RequestId',
+            response_code: Optional['int'] = ...,
+            response_phrase: Optional['str'] = ...,
+            response_headers: Optional['list'] = ...,
+            binary_response_headers: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def continue_response(
+            self,
+            params: 'fetch.ContinueResponseParamsT'
+    ):
+        ...
+
+    @overload
+    def get_response_body(
+            self,
+            *,
+            request_id: 'fetch.RequestId'
+    ):
+        ...
+
+    @overload
+    def get_response_body(
+            self,
+            params: 'fetch.GetResponseBodyParamsT'
+    ):
+        ...
+
+    @overload
+    def take_response_body_as_stream(
+            self,
+            *,
+            request_id: 'fetch.RequestId'
+    ):
+        ...
+
+    @overload
+    def take_response_body_as_stream(
+            self,
+            params: 'fetch.TakeResponseBodyAsStreamParamsT'
+    ):
+        ...
+
+
+@dataclass
+class WebAudio:
+    domains: 'Domains'
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def get_realtime_data(
+            self,
+            *,
+            context_id: 'web_audio.GraphObjectId'
+    ):
+        ...
+
+    @overload
+    def get_realtime_data(
+            self,
+            params: 'web_audio.GetRealtimeDataParamsT'
+    ):
+        ...
+
+
+@dataclass
+class WebAuthn:
+    domains: 'Domains'
+
+    @overload
+    def enable(
+            self,
+            *,
+            enable_ui: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            params: 'web_authn.EnableParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def add_virtual_authenticator(
+            self,
+            *,
+            options: 'web_authn.VirtualAuthenticatorOptions'
+    ):
+        ...
+
+    @overload
+    def add_virtual_authenticator(
+            self,
+            params: 'web_authn.AddVirtualAuthenticatorParamsT'
+    ):
+        ...
+
+    @overload
+    def set_response_override_bits(
+            self,
+            *,
+            authenticator_id: 'web_authn.AuthenticatorId',
+            is_bogus_signature: Optional['bool'] = ...,
+            is_bad_uv: Optional['bool'] = ...,
+            is_bad_up: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def set_response_override_bits(
+            self,
+            params: 'web_authn.SetResponseOverrideBitsParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_virtual_authenticator(
+            self,
+            *,
+            authenticator_id: 'web_authn.AuthenticatorId'
+    ):
+        ...
+
+    @overload
+    def remove_virtual_authenticator(
+            self,
+            params: 'web_authn.RemoveVirtualAuthenticatorParamsT'
+    ):
+        ...
+
+    @overload
+    def add_credential(
+            self,
+            *,
+            authenticator_id: 'web_authn.AuthenticatorId',
+            credential: 'web_authn.Credential'
+    ):
+        ...
+
+    @overload
+    def add_credential(
+            self,
+            params: 'web_authn.AddCredentialParamsT'
+    ):
+        ...
+
+    @overload
+    def get_credential(
+            self,
+            *,
+            authenticator_id: 'web_authn.AuthenticatorId',
+            credential_id: 'str'
+    ):
+        ...
+
+    @overload
+    def get_credential(
+            self,
+            params: 'web_authn.GetCredentialParamsT'
+    ):
+        ...
+
+    @overload
+    def get_credentials(
+            self,
+            *,
+            authenticator_id: 'web_authn.AuthenticatorId'
+    ):
+        ...
+
+    @overload
+    def get_credentials(
+            self,
+            params: 'web_authn.GetCredentialsParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_credential(
+            self,
+            *,
+            authenticator_id: 'web_authn.AuthenticatorId',
+            credential_id: 'str'
+    ):
+        ...
+
+    @overload
+    def remove_credential(
+            self,
+            params: 'web_authn.RemoveCredentialParamsT'
+    ):
+        ...
+
+    @overload
+    def clear_credentials(
+            self,
+            *,
+            authenticator_id: 'web_authn.AuthenticatorId'
+    ):
+        ...
+
+    @overload
+    def clear_credentials(
+            self,
+            params: 'web_authn.ClearCredentialsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_user_verified(
+            self,
+            *,
+            authenticator_id: 'web_authn.AuthenticatorId',
+            is_user_verified: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_user_verified(
+            self,
+            params: 'web_authn.SetUserVerifiedParamsT'
+    ):
+        ...
+
+    @overload
+    def set_automatic_presence_simulation(
+            self,
+            *,
+            authenticator_id: 'web_authn.AuthenticatorId',
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_automatic_presence_simulation(
+            self,
+            params: 'web_authn.SetAutomaticPresenceSimulationParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Media:
+    domains: 'Domains'
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+
+@dataclass
+class DeviceAccess:
+    domains: 'Domains'
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def select_prompt(
+            self,
+            *,
+            id: 'device_access.RequestId',
+            device_id: 'device_access.DeviceId'
+    ):
+        ...
+
+    @overload
+    def select_prompt(
+            self,
+            params: 'device_access.SelectPromptParamsT'
+    ):
+        ...
+
+    @overload
+    def cancel_prompt(
+            self,
+            *,
+            id: 'device_access.RequestId'
+    ):
+        ...
+
+    @overload
+    def cancel_prompt(
+            self,
+            params: 'device_access.CancelPromptParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Preload:
+    domains: 'Domains'
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+
+@dataclass
+class FedCm:
+    domains: 'Domains'
+
+    @overload
+    def enable(
+            self,
+            *,
+            disable_rejection_delay: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            params: 'fed_cm.EnableParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def select_account(
+            self,
+            *,
+            dialog_id: 'str',
+            account_index: 'int'
+    ):
+        ...
+
+    @overload
+    def select_account(
+            self,
+            params: 'fed_cm.SelectAccountParamsT'
+    ):
+        ...
+
+    @overload
+    def confirm_idp_signin(
+            self,
+            *,
+            dialog_id: 'str'
+    ):
+        ...
+
+    @overload
+    def confirm_idp_signin(
+            self,
+            params: 'fed_cm.ConfirmIdpSigninParamsT'
+    ):
+        ...
+
+    @overload
+    def dismiss_dialog(
+            self,
+            *,
+            dialog_id: 'str',
+            trigger_cooldown: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def dismiss_dialog(
+            self,
+            params: 'fed_cm.DismissDialogParamsT'
+    ):
+        ...
+
+    @overload
+    def reset_cooldown(
+            self
+    ):
+        ...
+
+
+@dataclass
+class Console:
+    domains: 'Domains'
+
+    @overload
+    def clear_messages(
+            self
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+
+@dataclass
+class Debugger:
+    domains: 'Domains'
+
+    @overload
+    def continue_to_location(
+            self,
+            *,
+            location: 'debugger.Location',
+            target_call_frames: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def continue_to_location(
+            self,
+            params: 'debugger.ContinueToLocationParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            *,
+            max_scripts_cache_size: Optional['float'] = ...
+    ):
+        ...
+
+    @overload
+    def enable(
+            self,
+            params: 'debugger.EnableParamsT'
+    ):
+        ...
+
+    @overload
+    def evaluate_on_call_frame(
+            self,
+            *,
+            call_frame_id: 'debugger.CallFrameId',
+            expression: 'str',
+            object_group: Optional['str'] = ...,
+            include_command_line_api: Optional['bool'] = ...,
+            silent: Optional['bool'] = ...,
+            return_by_value: Optional['bool'] = ...,
+            generate_preview: Optional['bool'] = ...,
+            throw_on_side_effect: Optional['bool'] = ...,
+            timeout: Optional['runtime.TimeDelta'] = ...
+    ):
+        ...
+
+    @overload
+    def evaluate_on_call_frame(
+            self,
+            params: 'debugger.EvaluateOnCallFrameParamsT'
+    ):
+        ...
+
+    @overload
+    def get_possible_breakpoints(
+            self,
+            *,
+            start: 'debugger.Location',
+            end: Optional['debugger.Location'] = ...,
+            restrict_to_function: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_possible_breakpoints(
+            self,
+            params: 'debugger.GetPossibleBreakpointsParamsT'
+    ):
+        ...
+
+    @overload
+    def get_script_source(
+            self,
+            *,
+            script_id: 'runtime.ScriptId'
+    ):
+        ...
+
+    @overload
+    def get_script_source(
+            self,
+            params: 'debugger.GetScriptSourceParamsT'
+    ):
+        ...
+
+    @overload
+    def get_stack_trace(
+            self,
+            *,
+            stack_trace_id: 'runtime.StackTraceId'
+    ):
+        ...
+
+    @overload
+    def get_stack_trace(
+            self,
+            params: 'debugger.GetStackTraceParamsT'
+    ):
+        ...
+
+    @overload
+    def pause(
+            self
+    ):
+        ...
+
+    @overload
+    def pause_on_async_call(
+            self,
+            *,
+            parent_stack_trace_id: 'runtime.StackTraceId'
+    ):
+        ...
+
+    @overload
+    def pause_on_async_call(
+            self,
+            params: 'debugger.PauseOnAsyncCallParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_breakpoint(
+            self,
+            *,
+            breakpoint_id: 'debugger.BreakpointId'
+    ):
+        ...
+
+    @overload
+    def remove_breakpoint(
+            self,
+            params: 'debugger.RemoveBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def restart_frame(
+            self,
+            *,
+            call_frame_id: 'debugger.CallFrameId'
+    ):
+        ...
+
+    @overload
+    def restart_frame(
+            self,
+            params: 'debugger.RestartFrameParamsT'
+    ):
+        ...
+
+    @overload
+    def resume(
+            self
+    ):
+        ...
+
+    @overload
+    def search_in_content(
+            self,
+            *,
+            script_id: 'runtime.ScriptId',
+            query: 'str',
+            case_sensitive: Optional['bool'] = ...,
+            is_regex: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def search_in_content(
+            self,
+            params: 'debugger.SearchInContentParamsT'
+    ):
+        ...
+
+    @overload
+    def set_async_call_stack_depth(
+            self,
+            *,
+            max_depth: 'int'
+    ):
+        ...
+
+    @overload
+    def set_async_call_stack_depth(
+            self,
+            params: 'debugger.SetAsyncCallStackDepthParamsT'
+    ):
+        ...
+
+    @overload
+    def set_blackbox_patterns(
+            self,
+            *,
+            patterns: 'list'
+    ):
+        ...
+
+    @overload
+    def set_blackbox_patterns(
+            self,
+            params: 'debugger.SetBlackboxPatternsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_blackboxed_ranges(
+            self,
+            *,
+            script_id: 'runtime.ScriptId',
+            positions: 'list'
+    ):
+        ...
+
+    @overload
+    def set_blackboxed_ranges(
+            self,
+            params: 'debugger.SetBlackboxedRangesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_breakpoint(
+            self,
+            *,
+            location: 'debugger.Location',
+            condition: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_breakpoint(
+            self,
+            params: 'debugger.SetBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def set_instrumentation_breakpoint(
+            self,
+            *,
+            instrumentation: 'str'
+    ):
+        ...
+
+    @overload
+    def set_instrumentation_breakpoint(
+            self,
+            params: 'debugger.SetInstrumentationBreakpointParamsT'
+    ):
+        ...
+
+    @overload
+    def set_breakpoint_by_url(
+            self,
+            *,
+            line_number: 'int',
+            url: Optional['str'] = ...,
+            url_regex: Optional['str'] = ...,
+            script_hash: Optional['str'] = ...,
+            column_number: Optional['int'] = ...,
+            condition: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_breakpoint_by_url(
+            self,
+            params: 'debugger.SetBreakpointByUrlParamsT'
+    ):
+        ...
+
+    @overload
+    def set_breakpoint_on_function_call(
+            self,
+            *,
+            object_id: 'runtime.RemoteObjectId',
+            condition: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def set_breakpoint_on_function_call(
+            self,
+            params: 'debugger.SetBreakpointOnFunctionCallParamsT'
+    ):
+        ...
+
+    @overload
+    def set_breakpoints_active(
+            self,
+            *,
+            active: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_breakpoints_active(
+            self,
+            params: 'debugger.SetBreakpointsActiveParamsT'
+    ):
+        ...
+
+    @overload
+    def set_pause_on_exceptions(
+            self,
+            *,
+            state: 'str'
+    ):
+        ...
+
+    @overload
+    def set_pause_on_exceptions(
+            self,
+            params: 'debugger.SetPauseOnExceptionsParamsT'
+    ):
+        ...
+
+    @overload
+    def set_return_value(
+            self,
+            *,
+            new_value: 'runtime.CallArgument'
+    ):
+        ...
+
+    @overload
+    def set_return_value(
+            self,
+            params: 'debugger.SetReturnValueParamsT'
+    ):
+        ...
+
+    @overload
+    def set_script_source(
+            self,
+            *,
+            script_id: 'runtime.ScriptId',
+            script_source: 'str',
+            dry_run: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def set_script_source(
+            self,
+            params: 'debugger.SetScriptSourceParamsT'
+    ):
+        ...
+
+    @overload
+    def set_skip_all_pauses(
+            self,
+            *,
+            skip: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_skip_all_pauses(
+            self,
+            params: 'debugger.SetSkipAllPausesParamsT'
+    ):
+        ...
+
+    @overload
+    def set_variable_value(
+            self,
+            *,
+            scope_number: 'int',
+            variable_name: 'str',
+            new_value: 'runtime.CallArgument',
+            call_frame_id: 'debugger.CallFrameId'
+    ):
+        ...
+
+    @overload
+    def set_variable_value(
+            self,
+            params: 'debugger.SetVariableValueParamsT'
+    ):
+        ...
+
+    @overload
+    def step_into(
+            self,
+            *,
+            break_on_async_call: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def step_into(
+            self,
+            params: 'debugger.StepIntoParamsT'
+    ):
+        ...
+
+    @overload
+    def step_out(
+            self
+    ):
+        ...
+
+    @overload
+    def step_over(
+            self
+    ):
+        ...
+
+
+@dataclass
+class HeapProfiler:
+    domains: 'Domains'
+
+    @overload
+    def add_inspected_heap_object(
+            self,
+            *,
+            heap_object_id: 'heap_profiler.HeapSnapshotObjectId'
+    ):
+        ...
+
+    @overload
+    def add_inspected_heap_object(
+            self,
+            params: 'heap_profiler.AddInspectedHeapObjectParamsT'
+    ):
+        ...
+
+    @overload
+    def collect_garbage(
+            self
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def get_heap_object_id(
+            self,
+            *,
+            object_id: 'runtime.RemoteObjectId'
+    ):
+        ...
+
+    @overload
+    def get_heap_object_id(
+            self,
+            params: 'heap_profiler.GetHeapObjectIdParamsT'
+    ):
+        ...
+
+    @overload
+    def get_object_by_heap_object_id(
+            self,
+            *,
+            object_id: 'heap_profiler.HeapSnapshotObjectId',
+            object_group: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def get_object_by_heap_object_id(
+            self,
+            params: 'heap_profiler.GetObjectByHeapObjectIdParamsT'
+    ):
+        ...
+
+    @overload
+    def get_sampling_profile(
+            self
+    ):
+        ...
+
+    @overload
+    def start_sampling(
+            self,
+            *,
+            sampling_interval: Optional['float'] = ...
+    ):
+        ...
+
+    @overload
+    def start_sampling(
+            self,
+            params: 'heap_profiler.StartSamplingParamsT'
+    ):
+        ...
+
+    @overload
+    def start_tracking_heap_objects(
+            self,
+            *,
+            track_allocations: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def start_tracking_heap_objects(
+            self,
+            params: 'heap_profiler.StartTrackingHeapObjectsParamsT'
+    ):
+        ...
+
+    @overload
+    def stop_sampling(
+            self
+    ):
+        ...
+
+    @overload
+    def stop_tracking_heap_objects(
+            self,
+            *,
+            report_progress: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def stop_tracking_heap_objects(
+            self,
+            params: 'heap_profiler.StopTrackingHeapObjectsParamsT'
+    ):
+        ...
+
+    @overload
+    def take_heap_snapshot(
+            self,
+            *,
+            report_progress: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def take_heap_snapshot(
+            self,
+            params: 'heap_profiler.TakeHeapSnapshotParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Profiler:
+    domains: 'Domains'
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def get_best_effort_coverage(
+            self
+    ):
+        ...
+
+    @overload
+    def set_sampling_interval(
+            self,
+            *,
+            interval: 'int'
+    ):
+        ...
+
+    @overload
+    def set_sampling_interval(
+            self,
+            params: 'profiler.SetSamplingIntervalParamsT'
+    ):
+        ...
+
+    @overload
+    def start(
+            self
+    ):
+        ...
+
+    @overload
+    def start_precise_coverage(
+            self,
+            *,
+            call_count: Optional['bool'] = ...,
+            detailed: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def start_precise_coverage(
+            self,
+            params: 'profiler.StartPreciseCoverageParamsT'
+    ):
+        ...
+
+    @overload
+    def start_type_profile(
+            self
+    ):
+        ...
+
+    @overload
+    def stop(
+            self
+    ):
+        ...
+
+    @overload
+    def stop_precise_coverage(
+            self
+    ):
+        ...
+
+    @overload
+    def stop_type_profile(
+            self
+    ):
+        ...
+
+    @overload
+    def take_precise_coverage(
+            self
+    ):
+        ...
+
+    @overload
+    def take_type_profile(
+            self
+    ):
+        ...
+
+
+@dataclass
+class Runtime:
+    domains: 'Domains'
+
+    @overload
+    def await_promise(
+            self,
+            *,
+            promise_object_id: 'runtime.RemoteObjectId',
+            return_by_value: Optional['bool'] = ...,
+            generate_preview: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def await_promise(
+            self,
+            params: 'runtime.AwaitPromiseParamsT'
+    ):
+        ...
+
+    @overload
+    def call_function_on(
+            self,
+            *,
+            function_declaration: 'str',
+            object_id: Optional['runtime.RemoteObjectId'] = ...,
+            arguments: Optional['list'] = ...,
+            silent: Optional['bool'] = ...,
+            return_by_value: Optional['bool'] = ...,
+            generate_preview: Optional['bool'] = ...,
+            user_gesture: Optional['bool'] = ...,
+            await_promise: Optional['bool'] = ...,
+            execution_context_id: Optional['runtime.ExecutionContextId'] = ...,
+            object_group: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def call_function_on(
+            self,
+            params: 'runtime.CallFunctionOnParamsT'
+    ):
+        ...
+
+    @overload
+    def compile_script(
+            self,
+            *,
+            expression: 'str',
+            source_url: 'str',
+            persist_script: 'bool',
+            execution_context_id: Optional['runtime.ExecutionContextId'] = ...
+    ):
+        ...
+
+    @overload
+    def compile_script(
+            self,
+            params: 'runtime.CompileScriptParamsT'
+    ):
+        ...
+
+    @overload
+    def disable(
+            self
+    ):
+        ...
+
+    @overload
+    def discard_console_entries(
+            self
+    ):
+        ...
+
+    @overload
+    def enable(
+            self
+    ):
+        ...
+
+    @overload
+    def evaluate(
+            self,
+            *,
+            expression: 'str',
+            object_group: Optional['str'] = ...,
+            include_command_line_api: Optional['bool'] = ...,
+            silent: Optional['bool'] = ...,
+            context_id: Optional['runtime.ExecutionContextId'] = ...,
+            return_by_value: Optional['bool'] = ...,
+            generate_preview: Optional['bool'] = ...,
+            user_gesture: Optional['bool'] = ...,
+            await_promise: Optional['bool'] = ...,
+            throw_on_side_effect: Optional['bool'] = ...,
+            timeout: Optional['runtime.TimeDelta'] = ...
+    ):
+        ...
+
+    @overload
+    def evaluate(
+            self,
+            params: 'runtime.EvaluateParamsT'
+    ):
+        ...
+
+    @overload
+    def get_isolate_id(
+            self
+    ):
+        ...
+
+    @overload
+    def get_heap_usage(
+            self
+    ):
+        ...
+
+    @overload
+    def get_properties(
+            self,
+            *,
+            object_id: 'runtime.RemoteObjectId',
+            own_properties: Optional['bool'] = ...,
+            accessor_properties_only: Optional['bool'] = ...,
+            generate_preview: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def get_properties(
+            self,
+            params: 'runtime.GetPropertiesParamsT'
+    ):
+        ...
+
+    @overload
+    def global_lexical_scope_names(
+            self,
+            *,
+            execution_context_id: Optional['runtime.ExecutionContextId'] = ...
+    ):
+        ...
+
+    @overload
+    def global_lexical_scope_names(
+            self,
+            params: 'runtime.GlobalLexicalScopeNamesParamsT'
+    ):
+        ...
+
+    @overload
+    def query_objects(
+            self,
+            *,
+            prototype_object_id: 'runtime.RemoteObjectId',
+            object_group: Optional['str'] = ...
+    ):
+        ...
+
+    @overload
+    def query_objects(
+            self,
+            params: 'runtime.QueryObjectsParamsT'
+    ):
+        ...
+
+    @overload
+    def release_object(
+            self,
+            *,
+            object_id: 'runtime.RemoteObjectId'
+    ):
+        ...
+
+    @overload
+    def release_object(
+            self,
+            params: 'runtime.ReleaseObjectParamsT'
+    ):
+        ...
+
+    @overload
+    def release_object_group(
+            self,
+            *,
+            object_group: 'str'
+    ):
+        ...
+
+    @overload
+    def release_object_group(
+            self,
+            params: 'runtime.ReleaseObjectGroupParamsT'
+    ):
+        ...
+
+    @overload
+    def run_if_waiting_for_debugger(
+            self
+    ):
+        ...
+
+    @overload
+    def run_script(
+            self,
+            *,
+            script_id: 'runtime.ScriptId',
+            execution_context_id: Optional['runtime.ExecutionContextId'] = ...,
+            object_group: Optional['str'] = ...,
+            silent: Optional['bool'] = ...,
+            include_command_line_api: Optional['bool'] = ...,
+            return_by_value: Optional['bool'] = ...,
+            generate_preview: Optional['bool'] = ...,
+            await_promise: Optional['bool'] = ...
+    ):
+        ...
+
+    @overload
+    def run_script(
+            self,
+            params: 'runtime.RunScriptParamsT'
+    ):
+        ...
+
+    @overload
+    def set_async_call_stack_depth(
+            self,
+            *,
+            max_depth: 'int'
+    ):
+        ...
+
+    @overload
+    def set_async_call_stack_depth(
+            self,
+            params: 'runtime.SetAsyncCallStackDepthParamsT'
+    ):
+        ...
+
+    @overload
+    def set_custom_object_formatter_enabled(
+            self,
+            *,
+            enabled: 'bool'
+    ):
+        ...
+
+    @overload
+    def set_custom_object_formatter_enabled(
+            self,
+            params: 'runtime.SetCustomObjectFormatterEnabledParamsT'
+    ):
+        ...
+
+    @overload
+    def set_max_call_stack_size_to_capture(
+            self,
+            *,
+            size: 'int'
+    ):
+        ...
+
+    @overload
+    def set_max_call_stack_size_to_capture(
+            self,
+            params: 'runtime.SetMaxCallStackSizeToCaptureParamsT'
+    ):
+        ...
+
+    @overload
+    def terminate_execution(
+            self
+    ):
+        ...
+
+    @overload
+    def add_binding(
+            self,
+            *,
+            name: 'str',
+            execution_context_id: Optional['runtime.ExecutionContextId'] = ...
+    ):
+        ...
+
+    @overload
+    def add_binding(
+            self,
+            params: 'runtime.AddBindingParamsT'
+    ):
+        ...
+
+    @overload
+    def remove_binding(
+            self,
+            *,
+            name: 'str'
+    ):
+        ...
+
+    @overload
+    def remove_binding(
+            self,
+            params: 'runtime.RemoveBindingParamsT'
+    ):
+        ...
+
+
+@dataclass
+class Schema:
+    domains: 'Domains'
+
+    @overload
+    def get_domains(
+            self
+    ):
+        ...
+
+
+@dataclass
 class Domains:
-    ws_target: 'Target'
+    accessibility: 'Accessibility' = field(
+        init=False,
+        repr=False
+    )
+    animation: 'Animation' = field(
+        init=False,
+        repr=False
+    )
+    audits: 'Audits' = field(
+        init=False,
+        repr=False
+    )
+    autofill: 'Autofill' = field(
+        init=False,
+        repr=False
+    )
+    background_service: 'BackgroundService' = field(
+        init=False,
+        repr=False
+    )
+    browser: 'Browser' = field(
+        init=False,
+        repr=False
+    )
+    css: 'CSS' = field(
+        init=False,
+        repr=False
+    )
+    cache_storage: 'CacheStorage' = field(
+        init=False,
+        repr=False
+    )
+    cast: 'Cast' = field(
+        init=False,
+        repr=False
+    )
+    dom: 'DOM' = field(
+        init=False,
+        repr=False
+    )
+    dom_debugger: 'DOMDebugger' = field(
+        init=False,
+        repr=False
+    )
+    event_breakpoints: 'EventBreakpoints' = field(
+        init=False,
+        repr=False
+    )
+    dom_snapshot: 'DOMSnapshot' = field(
+        init=False,
+        repr=False
+    )
+    dom_storage: 'DOMStorage' = field(
+        init=False,
+        repr=False
+    )
+    database: 'Database' = field(
+        init=False,
+        repr=False
+    )
+    device_orientation: 'DeviceOrientation' = field(
+        init=False,
+        repr=False
+    )
+    emulation: 'Emulation' = field(
+        init=False,
+        repr=False
+    )
+    headless_experimental: 'HeadlessExperimental' = field(
+        init=False,
+        repr=False
+    )
+    io: 'IO' = field(
+        init=False,
+        repr=False
+    )
+    indexed_db: 'IndexedDB' = field(
+        init=False,
+        repr=False
+    )
+    input: 'Input' = field(
+        init=False,
+        repr=False
+    )
+    inspector: 'Inspector' = field(
+        init=False,
+        repr=False
+    )
+    layer_tree: 'LayerTree' = field(
+        init=False,
+        repr=False
+    )
+    log: 'Log' = field(
+        init=False,
+        repr=False
+    )
+    memory: 'Memory' = field(
+        init=False,
+        repr=False
+    )
+    network: 'Network' = field(
+        init=False,
+        repr=False
+    )
+    overlay: 'Overlay' = field(
+        init=False,
+        repr=False
+    )
+    page: 'Page' = field(
+        init=False,
+        repr=False
+    )
+    performance: 'Performance' = field(
+        init=False,
+        repr=False
+    )
+    performance_timeline: 'PerformanceTimeline' = field(
+        init=False,
+        repr=False
+    )
+    security: 'Security' = field(
+        init=False,
+        repr=False
+    )
+    service_worker: 'ServiceWorker' = field(
+        init=False,
+        repr=False
+    )
+    storage: 'Storage' = field(
+        init=False,
+        repr=False
+    )
+    system_info: 'SystemInfo' = field(
+        init=False,
+        repr=False
+    )
+    target: 'Target' = field(
+        init=False,
+        repr=False
+    )
+    tethering: 'Tethering' = field(
+        init=False,
+        repr=False
+    )
+    tracing: 'Tracing' = field(
+        init=False,
+        repr=False
+    )
+    fetch: 'Fetch' = field(
+        init=False,
+        repr=False
+    )
+    web_audio: 'WebAudio' = field(
+        init=False,
+        repr=False
+    )
+    web_authn: 'WebAuthn' = field(
+        init=False,
+        repr=False
+    )
+    media: 'Media' = field(
+        init=False,
+        repr=False
+    )
+    device_access: 'DeviceAccess' = field(
+        init=False,
+        repr=False
+    )
+    preload: 'Preload' = field(
+        init=False,
+        repr=False
+    )
+    fed_cm: 'FedCm' = field(
+        init=False,
+        repr=False
+    )
+    console: 'Console' = field(
+        init=False,
+        repr=False
+    )
+    debugger: 'Debugger' = field(
+        init=False,
+        repr=False
+    )
+    heap_profiler: 'HeapProfiler' = field(
+        init=False,
+        repr=False
+    )
+    profiler: 'Profiler' = field(
+        init=False,
+        repr=False
+    )
+    runtime: 'Runtime' = field(
+        init=False,
+        repr=False
+    )
+    schema: 'Schema' = field(
+        init=False,
+        repr=False
+    )
+
+    ws_target: 'WSTarget'

@@ -7,6 +7,7 @@ from cdp.generated.types import (
     storage
 )
 from typing import (
+    NotRequired,
     TypedDict
 )
 
@@ -33,17 +34,17 @@ class ObjectStoreIndex(TypedDict):
 
 class Key(TypedDict):
     type: str
-    number: float
-    string: str
-    date: float
-    array: list
+    number: NotRequired[float]
+    string: NotRequired[str]
+    date: NotRequired[float]
+    array: NotRequired[list]
 
 
 class KeyRange(TypedDict):
     lower_open: bool
     upper_open: bool
-    lower: 'Key'
-    upper: 'Key'
+    lower: NotRequired['Key']
+    upper: NotRequired['Key']
 
 
 class DataEntry(TypedDict):
@@ -54,65 +55,65 @@ class DataEntry(TypedDict):
 
 class KeyPath(TypedDict):
     type: str
-    string: str
-    array: list
+    string: NotRequired[str]
+    array: NotRequired[list]
 
 
 class ClearObjectStoreParamsT(TypedDict):
-    security_origin: str
-    storage_key: str
-    storage_bucket: 'storage.StorageBucket'
+    security_origin: NotRequired[str]
+    storage_key: NotRequired[str]
+    storage_bucket: NotRequired['storage.StorageBucket']
     database_name: str
     object_store_name: str
 
 
 class DeleteDatabaseParamsT(TypedDict):
-    security_origin: str
-    storage_key: str
-    storage_bucket: 'storage.StorageBucket'
+    security_origin: NotRequired[str]
+    storage_key: NotRequired[str]
+    storage_bucket: NotRequired['storage.StorageBucket']
     database_name: str
 
 
 class DeleteObjectStoreEntriesParamsT(TypedDict):
-    security_origin: str
-    storage_key: str
-    storage_bucket: 'storage.StorageBucket'
+    security_origin: NotRequired[str]
+    storage_key: NotRequired[str]
+    storage_bucket: NotRequired['storage.StorageBucket']
     database_name: str
     object_store_name: str
     key_range: 'KeyRange'
 
 
 class RequestDataParamsT(TypedDict):
-    security_origin: str
-    storage_key: str
-    storage_bucket: 'storage.StorageBucket'
+    security_origin: NotRequired[str]
+    storage_key: NotRequired[str]
+    storage_bucket: NotRequired['storage.StorageBucket']
     database_name: str
     object_store_name: str
     index_name: str
     skip_count: int
     page_size: int
-    key_range: 'KeyRange'
+    key_range: NotRequired['KeyRange']
 
 
 class GetMetadataParamsT(TypedDict):
-    security_origin: str
-    storage_key: str
-    storage_bucket: 'storage.StorageBucket'
+    security_origin: NotRequired[str]
+    storage_key: NotRequired[str]
+    storage_bucket: NotRequired['storage.StorageBucket']
     database_name: str
     object_store_name: str
 
 
 class RequestDatabaseParamsT(TypedDict):
-    security_origin: str
-    storage_key: str
-    storage_bucket: 'storage.StorageBucket'
+    security_origin: NotRequired[str]
+    storage_key: NotRequired[str]
+    storage_bucket: NotRequired['storage.StorageBucket']
     database_name: str
 
 
 class RequestDatabaseNamesParamsT(TypedDict):
-    security_origin: str
-    storage_key: str
-    storage_bucket: 'storage.StorageBucket'
+    security_origin: NotRequired[str]
+    storage_key: NotRequired[str]
+    storage_bucket: NotRequired['storage.StorageBucket']
 
 
 class RequestDataReturnT(TypedDict):

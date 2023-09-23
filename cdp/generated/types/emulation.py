@@ -9,6 +9,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -51,11 +52,11 @@ class UserAgentMetadata(TypedDict):
     architecture: str
     model: str
     mobile: bool
-    brands: list
-    full_version_list: list
-    full_version: str
-    bitness: str
-    wow64: bool
+    brands: NotRequired[list]
+    full_version_list: NotRequired[list]
+    full_version: NotRequired[str]
+    bitness: NotRequired[str]
+    wow64: NotRequired[bool]
 
 
 class SetFocusEmulationEnabledParamsT(TypedDict):
@@ -63,7 +64,7 @@ class SetFocusEmulationEnabledParamsT(TypedDict):
 
 
 class SetAutoDarkModeOverrideParamsT(TypedDict):
-    enabled: bool
+    enabled: NotRequired[bool]
 
 
 class SetCPUThrottlingRateParamsT(TypedDict):
@@ -71,7 +72,7 @@ class SetCPUThrottlingRateParamsT(TypedDict):
 
 
 class SetDefaultBackgroundColorOverrideParamsT(TypedDict):
-    color: 'dom.RGBA'
+    color: NotRequired['dom.RGBA']
 
 
 class SetDeviceMetricsOverrideParamsT(TypedDict):
@@ -79,15 +80,15 @@ class SetDeviceMetricsOverrideParamsT(TypedDict):
     height: int
     device_scale_factor: float
     mobile: bool
-    scale: float
-    screen_width: int
-    screen_height: int
-    position_x: int
-    position_y: int
-    dont_set_visible_size: bool
-    screen_orientation: 'ScreenOrientation'
-    viewport: 'page.Viewport'
-    display_feature: 'DisplayFeature'
+    scale: NotRequired[float]
+    screen_width: NotRequired[int]
+    screen_height: NotRequired[int]
+    position_x: NotRequired[int]
+    position_y: NotRequired[int]
+    dont_set_visible_size: NotRequired[bool]
+    screen_orientation: NotRequired['ScreenOrientation']
+    viewport: NotRequired['page.Viewport']
+    display_feature: NotRequired['DisplayFeature']
 
 
 class SetScrollbarsHiddenParamsT(TypedDict):
@@ -100,12 +101,12 @@ class SetDocumentCookieDisabledParamsT(TypedDict):
 
 class SetEmitTouchEventsForMouseParamsT(TypedDict):
     enabled: bool
-    configuration: str
+    configuration: NotRequired[str]
 
 
 class SetEmulatedMediaParamsT(TypedDict):
-    media: str
-    features: list
+    media: NotRequired[str]
+    features: NotRequired[list]
 
 
 class SetEmulatedVisionDeficiencyParamsT(TypedDict):
@@ -113,9 +114,9 @@ class SetEmulatedVisionDeficiencyParamsT(TypedDict):
 
 
 class SetGeolocationOverrideParamsT(TypedDict):
-    latitude: float
-    longitude: float
-    accuracy: float
+    latitude: NotRequired[float]
+    longitude: NotRequired[float]
+    accuracy: NotRequired[float]
 
 
 class SetIdleOverrideParamsT(TypedDict):
@@ -137,18 +138,18 @@ class SetScriptExecutionDisabledParamsT(TypedDict):
 
 class SetTouchEmulationEnabledParamsT(TypedDict):
     enabled: bool
-    max_touch_points: int
+    max_touch_points: NotRequired[int]
 
 
 class SetVirtualTimePolicyParamsT(TypedDict):
     policy: 'VirtualTimePolicy'
-    budget: float
-    max_virtual_time_task_starvation_count: int
-    initial_virtual_time: 'network.TimeSinceEpoch'
+    budget: NotRequired[float]
+    max_virtual_time_task_starvation_count: NotRequired[int]
+    initial_virtual_time: NotRequired['network.TimeSinceEpoch']
 
 
 class SetLocaleOverrideParamsT(TypedDict):
-    locale: str
+    locale: NotRequired[str]
 
 
 class SetTimezoneOverrideParamsT(TypedDict):
@@ -170,9 +171,9 @@ class SetHardwareConcurrencyOverrideParamsT(TypedDict):
 
 class SetUserAgentOverrideParamsT(TypedDict):
     user_agent: str
-    accept_language: str
-    platform: str
-    user_agent_metadata: 'UserAgentMetadata'
+    accept_language: NotRequired[str]
+    platform: NotRequired[str]
+    user_agent_metadata: NotRequired['UserAgentMetadata']
 
 
 class SetAutomationOverrideParamsT(TypedDict):

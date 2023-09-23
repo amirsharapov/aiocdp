@@ -12,6 +12,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -371,7 +372,7 @@ BackForwardCacheNotRestoredReasonType = Literal[
 
 class AdFrameStatus(TypedDict):
     ad_frame_type: 'AdFrameType'
-    explanations: list
+    explanations: NotRequired[list]
 
 
 class AdScriptId(TypedDict):
@@ -387,7 +388,7 @@ class PermissionsPolicyBlockLocator(TypedDict):
 class PermissionsPolicyFeatureState(TypedDict):
     feature: 'PermissionsPolicyFeature'
     allowed: bool
-    locator: 'PermissionsPolicyBlockLocator'
+    locator: NotRequired['PermissionsPolicyBlockLocator']
 
 
 class OriginTrialToken(TypedDict):
@@ -402,7 +403,7 @@ class OriginTrialToken(TypedDict):
 class OriginTrialTokenWithStatus(TypedDict):
     raw_token_text: str
     status: 'OriginTrialTokenStatus'
-    parsed_token: 'OriginTrialToken'
+    parsed_token: NotRequired['OriginTrialToken']
 
 
 class OriginTrial(TypedDict):
@@ -421,32 +422,32 @@ class Frame(TypedDict):
     secure_context_type: 'SecureContextType'
     cross_origin_isolated_context_type: 'CrossOriginIsolatedContextType'
     gated_api_features: list
-    parent_id: 'FrameId'
-    name: str
-    url_fragment: str
-    unreachable_url: str
-    ad_frame_status: 'AdFrameStatus'
+    parent_id: NotRequired['FrameId']
+    name: NotRequired[str]
+    url_fragment: NotRequired[str]
+    unreachable_url: NotRequired[str]
+    ad_frame_status: NotRequired['AdFrameStatus']
 
 
 class FrameResource(TypedDict):
     url: str
     type: 'network.ResourceType'
     mime_type: str
-    last_modified: 'network.TimeSinceEpoch'
-    content_size: float
-    failed: bool
-    canceled: bool
+    last_modified: NotRequired['network.TimeSinceEpoch']
+    content_size: NotRequired[float]
+    failed: NotRequired[bool]
+    canceled: NotRequired[bool]
 
 
 class FrameResourceTree(TypedDict):
     frame: 'Frame'
     resources: list
-    child_frames: list
+    child_frames: NotRequired[list]
 
 
 class FrameTree(TypedDict):
     frame: 'Frame'
-    child_frames: list
+    child_frames: NotRequired[list]
 
 
 class NavigationEntry(TypedDict):
@@ -464,7 +465,7 @@ class ScreencastFrameMetadata(TypedDict):
     device_height: float
     scroll_offset_x: float
     scroll_offset_y: float
-    timestamp: 'network.TimeSinceEpoch'
+    timestamp: NotRequired['network.TimeSinceEpoch']
 
 
 class AppManifestError(TypedDict):
@@ -493,7 +494,7 @@ class VisualViewport(TypedDict):
     client_width: float
     client_height: float
     scale: float
-    zoom: float
+    zoom: NotRequired[float]
 
 
 class Viewport(TypedDict):
@@ -505,13 +506,13 @@ class Viewport(TypedDict):
 
 
 class FontFamilies(TypedDict):
-    standard: str
-    fixed: str
-    serif: str
-    sans_serif: str
-    cursive: str
-    fantasy: str
-    math: str
+    standard: NotRequired[str]
+    fixed: NotRequired[str]
+    serif: NotRequired[str]
+    sans_serif: NotRequired[str]
+    cursive: NotRequired[str]
+    fantasy: NotRequired[str]
+    math: NotRequired[str]
 
 
 class ScriptFontFamilies(TypedDict):
@@ -520,8 +521,8 @@ class ScriptFontFamilies(TypedDict):
 
 
 class FontSizes(TypedDict):
-    standard: int
-    fixed: int
+    standard: NotRequired[int]
+    fixed: NotRequired[int]
 
 
 class InstallabilityErrorArgument(TypedDict):
@@ -536,13 +537,13 @@ class InstallabilityError(TypedDict):
 
 class CompilationCacheParams(TypedDict):
     url: str
-    eager: bool
+    eager: NotRequired[bool]
 
 
 class BackForwardCacheNotRestoredExplanation(TypedDict):
     type: 'BackForwardCacheNotRestoredReasonType'
     reason: 'BackForwardCacheNotRestoredReason'
-    context: str
+    context: NotRequired[str]
 
 
 class BackForwardCacheNotRestoredExplanationTree(TypedDict):
@@ -557,28 +558,28 @@ class AddScriptToEvaluateOnLoadParamsT(TypedDict):
 
 class AddScriptToEvaluateOnNewDocumentParamsT(TypedDict):
     source: str
-    world_name: str
-    include_command_line_api: bool
-    run_immediately: bool
+    world_name: NotRequired[str]
+    include_command_line_api: NotRequired[bool]
+    run_immediately: NotRequired[bool]
 
 
 class CaptureScreenshotParamsT(TypedDict):
-    format: str
-    quality: int
-    clip: 'Viewport'
-    from_surface: bool
-    capture_beyond_viewport: bool
-    optimize_for_speed: bool
+    format: NotRequired[str]
+    quality: NotRequired[int]
+    clip: NotRequired['Viewport']
+    from_surface: NotRequired[bool]
+    capture_beyond_viewport: NotRequired[bool]
+    optimize_for_speed: NotRequired[bool]
 
 
 class CaptureSnapshotParamsT(TypedDict):
-    format: str
+    format: NotRequired[str]
 
 
 class CreateIsolatedWorldParamsT(TypedDict):
     frame_id: 'FrameId'
-    world_name: str
-    grant_univeral_access: bool
+    world_name: NotRequired[str]
+    grant_univeral_access: NotRequired[bool]
 
 
 class DeleteCookieParamsT(TypedDict):
@@ -597,15 +598,15 @@ class GetResourceContentParamsT(TypedDict):
 
 class HandleJavaScriptDialogParamsT(TypedDict):
     accept: bool
-    prompt_text: str
+    prompt_text: NotRequired[str]
 
 
 class NavigateParamsT(TypedDict):
     url: str
-    referrer: str
-    transition_type: 'TransitionType'
-    frame_id: 'FrameId'
-    referrer_policy: 'ReferrerPolicy'
+    referrer: NotRequired[str]
+    transition_type: NotRequired['TransitionType']
+    frame_id: NotRequired['FrameId']
+    referrer_policy: NotRequired['ReferrerPolicy']
 
 
 class NavigateToHistoryEntryParamsT(TypedDict):
@@ -613,27 +614,27 @@ class NavigateToHistoryEntryParamsT(TypedDict):
 
 
 class PrintToPDFParamsT(TypedDict):
-    landscape: bool
-    display_header_footer: bool
-    print_background: bool
-    scale: float
-    paper_width: float
-    paper_height: float
-    margin_top: float
-    margin_bottom: float
-    margin_left: float
-    margin_right: float
-    page_ranges: str
-    header_template: str
-    footer_template: str
-    prefer_css_page_size: bool
-    transfer_mode: str
-    generate_tagged_pdf: bool
+    landscape: NotRequired[bool]
+    display_header_footer: NotRequired[bool]
+    print_background: NotRequired[bool]
+    scale: NotRequired[float]
+    paper_width: NotRequired[float]
+    paper_height: NotRequired[float]
+    margin_top: NotRequired[float]
+    margin_bottom: NotRequired[float]
+    margin_left: NotRequired[float]
+    margin_right: NotRequired[float]
+    page_ranges: NotRequired[str]
+    header_template: NotRequired[str]
+    footer_template: NotRequired[str]
+    prefer_css_page_size: NotRequired[bool]
+    transfer_mode: NotRequired[str]
+    generate_tagged_pdf: NotRequired[bool]
 
 
 class ReloadParamsT(TypedDict):
-    ignore_cache: bool
-    script_to_evaluate_on_load: str
+    ignore_cache: NotRequired[bool]
+    script_to_evaluate_on_load: NotRequired[str]
 
 
 class RemoveScriptToEvaluateOnLoadParamsT(TypedDict):
@@ -652,8 +653,8 @@ class SearchInResourceParamsT(TypedDict):
     frame_id: 'FrameId'
     url: str
     query: str
-    case_sensitive: bool
-    is_regex: bool
+    case_sensitive: NotRequired[bool]
+    is_regex: NotRequired[bool]
 
 
 class SetAdBlockingEnabledParamsT(TypedDict):
@@ -677,14 +678,14 @@ class SetDeviceMetricsOverrideParamsT(TypedDict):
     height: int
     device_scale_factor: float
     mobile: bool
-    scale: float
-    screen_width: int
-    screen_height: int
-    position_x: int
-    position_y: int
-    dont_set_visible_size: bool
-    screen_orientation: 'emulation.ScreenOrientation'
-    viewport: 'Viewport'
+    scale: NotRequired[float]
+    screen_width: NotRequired[int]
+    screen_height: NotRequired[int]
+    position_x: NotRequired[int]
+    position_y: NotRequired[int]
+    dont_set_visible_size: NotRequired[bool]
+    screen_orientation: NotRequired['emulation.ScreenOrientation']
+    viewport: NotRequired['Viewport']
 
 
 class SetDeviceOrientationOverrideParamsT(TypedDict):
@@ -695,7 +696,7 @@ class SetDeviceOrientationOverrideParamsT(TypedDict):
 
 class SetFontFamiliesParamsT(TypedDict):
     font_families: 'FontFamilies'
-    for_scripts: list
+    for_scripts: NotRequired[list]
 
 
 class SetFontSizesParamsT(TypedDict):
@@ -709,13 +710,13 @@ class SetDocumentContentParamsT(TypedDict):
 
 class SetDownloadBehaviorParamsT(TypedDict):
     behavior: str
-    download_path: str
+    download_path: NotRequired[str]
 
 
 class SetGeolocationOverrideParamsT(TypedDict):
-    latitude: float
-    longitude: float
-    accuracy: float
+    latitude: NotRequired[float]
+    longitude: NotRequired[float]
+    accuracy: NotRequired[float]
 
 
 class SetLifecycleEventsEnabledParamsT(TypedDict):
@@ -724,15 +725,15 @@ class SetLifecycleEventsEnabledParamsT(TypedDict):
 
 class SetTouchEmulationEnabledParamsT(TypedDict):
     enabled: bool
-    configuration: str
+    configuration: NotRequired[str]
 
 
 class StartScreencastParamsT(TypedDict):
-    format: str
-    quality: int
-    max_width: int
-    max_height: int
-    every_nth_frame: int
+    format: NotRequired[str]
+    quality: NotRequired[int]
+    max_width: NotRequired[int]
+    max_height: NotRequired[int]
+    every_nth_frame: NotRequired[int]
 
 
 class SetWebLifecycleStateParamsT(TypedDict):
@@ -758,7 +759,7 @@ class SetRPHRegistrationModeParamsT(TypedDict):
 
 class GenerateTestReportParamsT(TypedDict):
     message: str
-    group: str
+    group: NotRequired[str]
 
 
 class SetInterceptFileChooserDialogParamsT(TypedDict):

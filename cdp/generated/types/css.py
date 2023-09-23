@@ -8,6 +8,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -33,12 +34,12 @@ CSSRuleType = Literal[
 class PseudoElementMatches(TypedDict):
     pseudo_type: 'dom.PseudoType'
     matches: list
-    pseudo_identifier: str
+    pseudo_identifier: NotRequired[str]
 
 
 class InheritedStyleEntry(TypedDict):
     matched_css_rules: list
-    inline_style: 'CSSStyle'
+    inline_style: NotRequired['CSSStyle']
 
 
 class InheritedPseudoElementMatches(TypedDict):
@@ -52,8 +53,8 @@ class RuleMatch(TypedDict):
 
 class Value(TypedDict):
     text: str
-    range: 'SourceRange'
-    specificity: 'Specificity'
+    range: NotRequired['SourceRange']
+    specificity: NotRequired['Specificity']
 
 
 class Specificity(TypedDict):
@@ -82,24 +83,24 @@ class CSSStyleSheetHeader(TypedDict):
     length: float
     end_line: float
     end_column: float
-    source_map_url: str
-    owner_node: 'dom.BackendNodeId'
-    has_source_url: bool
-    loading_failed: bool
+    source_map_url: NotRequired[str]
+    owner_node: NotRequired['dom.BackendNodeId']
+    has_source_url: NotRequired[bool]
+    loading_failed: NotRequired[bool]
 
 
 class CSSRule(TypedDict):
     selector_list: 'SelectorList'
     origin: 'StyleSheetOrigin'
     style: 'CSSStyle'
-    style_sheet_id: 'StyleSheetId'
-    nesting_selectors: list
-    media: list
-    container_queries: list
-    supports: list
-    layers: list
-    scopes: list
-    rule_types: list
+    style_sheet_id: NotRequired['StyleSheetId']
+    nesting_selectors: NotRequired[list]
+    media: NotRequired[list]
+    container_queries: NotRequired[list]
+    supports: NotRequired[list]
+    layers: NotRequired[list]
+    scopes: NotRequired[list]
+    rule_types: NotRequired[list]
 
 
 class RuleUsage(TypedDict):
@@ -119,7 +120,7 @@ class SourceRange(TypedDict):
 class ShorthandEntry(TypedDict):
     name: str
     value: str
-    important: bool
+    important: NotRequired[bool]
 
 
 class CSSComputedStyleProperty(TypedDict):
@@ -130,30 +131,30 @@ class CSSComputedStyleProperty(TypedDict):
 class CSSStyle(TypedDict):
     css_properties: list
     shorthand_entries: list
-    style_sheet_id: 'StyleSheetId'
-    css_text: str
-    range: 'SourceRange'
+    style_sheet_id: NotRequired['StyleSheetId']
+    css_text: NotRequired[str]
+    range: NotRequired['SourceRange']
 
 
 class CSSProperty(TypedDict):
     name: str
     value: str
-    important: bool
-    implicit: bool
-    text: str
-    parsed_ok: bool
-    disabled: bool
-    range: 'SourceRange'
-    longhand_properties: list
+    important: NotRequired[bool]
+    implicit: NotRequired[bool]
+    text: NotRequired[str]
+    parsed_ok: NotRequired[bool]
+    disabled: NotRequired[bool]
+    range: NotRequired['SourceRange']
+    longhand_properties: NotRequired[list]
 
 
 class CSSMedia(TypedDict):
     text: str
     source: str
-    source_url: str
-    range: 'SourceRange'
-    style_sheet_id: 'StyleSheetId'
-    media_list: list
+    source_url: NotRequired[str]
+    range: NotRequired['SourceRange']
+    style_sheet_id: NotRequired['StyleSheetId']
+    media_list: NotRequired[list]
 
 
 class MediaQuery(TypedDict):
@@ -165,42 +166,42 @@ class MediaQueryExpression(TypedDict):
     value: float
     unit: str
     feature: str
-    value_range: 'SourceRange'
-    computed_length: float
+    value_range: NotRequired['SourceRange']
+    computed_length: NotRequired[float]
 
 
 class CSSContainerQuery(TypedDict):
     text: str
-    range: 'SourceRange'
-    style_sheet_id: 'StyleSheetId'
-    name: str
-    physical_axes: 'dom.PhysicalAxes'
-    logical_axes: 'dom.LogicalAxes'
+    range: NotRequired['SourceRange']
+    style_sheet_id: NotRequired['StyleSheetId']
+    name: NotRequired[str]
+    physical_axes: NotRequired['dom.PhysicalAxes']
+    logical_axes: NotRequired['dom.LogicalAxes']
 
 
 class CSSSupports(TypedDict):
     text: str
     active: bool
-    range: 'SourceRange'
-    style_sheet_id: 'StyleSheetId'
+    range: NotRequired['SourceRange']
+    style_sheet_id: NotRequired['StyleSheetId']
 
 
 class CSSScope(TypedDict):
     text: str
-    range: 'SourceRange'
-    style_sheet_id: 'StyleSheetId'
+    range: NotRequired['SourceRange']
+    style_sheet_id: NotRequired['StyleSheetId']
 
 
 class CSSLayer(TypedDict):
     text: str
-    range: 'SourceRange'
-    style_sheet_id: 'StyleSheetId'
+    range: NotRequired['SourceRange']
+    style_sheet_id: NotRequired['StyleSheetId']
 
 
 class CSSLayerData(TypedDict):
     name: str
     order: float
-    sub_layers: list
+    sub_layers: NotRequired[list]
 
 
 class PlatformFontUsage(TypedDict):
@@ -227,13 +228,13 @@ class FontFace(TypedDict):
     unicode_range: str
     src: str
     platform_font_family: str
-    font_variation_axes: list
+    font_variation_axes: NotRequired[list]
 
 
 class CSSTryRule(TypedDict):
     origin: 'StyleSheetOrigin'
     style: 'CSSStyle'
-    style_sheet_id: 'StyleSheetId'
+    style_sheet_id: NotRequired['StyleSheetId']
 
 
 class CSSPositionFallbackRule(TypedDict):
@@ -250,21 +251,21 @@ class CSSPropertyRegistration(TypedDict):
     property_name: str
     inherits: bool
     syntax: str
-    initial_value: 'Value'
+    initial_value: NotRequired['Value']
 
 
 class CSSPropertyRule(TypedDict):
     origin: 'StyleSheetOrigin'
     property_name: 'Value'
     style: 'CSSStyle'
-    style_sheet_id: 'StyleSheetId'
+    style_sheet_id: NotRequired['StyleSheetId']
 
 
 class CSSKeyframeRule(TypedDict):
     origin: 'StyleSheetOrigin'
     key_text: 'Value'
     style: 'CSSStyle'
-    style_sheet_id: 'StyleSheetId'
+    style_sheet_id: NotRequired['StyleSheetId']
 
 
 class StyleDeclarationEdit(TypedDict):

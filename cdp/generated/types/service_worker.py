@@ -7,6 +7,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -41,10 +42,10 @@ class ServiceWorkerVersion(TypedDict):
     script_url: str
     running_status: 'ServiceWorkerVersionRunningStatus'
     status: 'ServiceWorkerVersionStatus'
-    script_last_modified: float
-    script_response_time: float
-    controlled_clients: list
-    target_id: 'target.TargetID'
+    script_last_modified: NotRequired[float]
+    script_response_time: NotRequired[float]
+    controlled_clients: NotRequired[list]
+    target_id: NotRequired['target.TargetID']
 
 
 class ServiceWorkerErrorMessage(TypedDict):

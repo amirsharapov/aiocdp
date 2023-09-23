@@ -47,6 +47,33 @@ def _should_import_any(domain: 'Domain'):
     return False
 
 
+def _should_import_not_required(domain: 'Domain'):
+    for type_ in domain.types:
+        if type_.properties:
+            for property_ in type_.properties:
+                if property_.optional:
+                    return True
+
+    for command in domain.commands:
+        if command.parameters:
+            for parameter in command.parameters:
+                if parameter.optional:
+                    return True
+
+        if command.returns:
+            for return_ in command.returns:
+                if return_.optional:
+                    return True
+
+    for event in domain.events:
+        if event.parameters:
+            for parameter in event.parameters:
+                if parameter.optional:
+                    return True
+
+    return False
+
+
 def _imports(domain: 'Domain'):
     import_tree = defaultdict(set)
 
@@ -59,6 +86,9 @@ def _imports(domain: 'Domain'):
     import_any = _should_import_any(
         domain
     )
+    import_not_required = _should_import_not_required(
+        domain
+    )
 
     if import_typed_dict:
         import_tree['typing'].add('TypedDict')
@@ -68,6 +98,9 @@ def _imports(domain: 'Domain'):
 
     if import_any:
         import_tree['typing'].add('Any')
+
+    if import_not_required:
+        import_tree['typing'].add('NotRequired')
 
     for ref in domain.get_refs():
         if ref.type.domain is not domain:
@@ -158,21 +191,23 @@ def _complex_type_definitions(domain: 'Domain'):
                         property_.ref.type.id.pascal_case
                     )
 
-                root.body.append(
-                    ast.AnnAssign(
-                        target=ast.Name(property_.name.snake_case),
-                        annotation=annotation
-                    )
+            else:
+                annotation = ast.Name(
+                    property_.type.python_type.__name__
                 )
 
-            else:
-                root.body.append(
-                    ast.AnnAssign(
-                        target=ast.Name(property_.name.snake_case),
-                        annotation=ast.Name(property_.type.python_type.__name__),
-                        simple=1
-                    )
+            if property_.optional:
+                annotation = ast.Subscript(
+                    value=ast.Name('NotRequired'),
+                    slice=annotation
                 )
+
+            root.body.append(
+                ast.AnnAssign(
+                    target=ast.Name(property_.name.snake_case),
+                    annotation=annotation,
+                )
+            )
 
         yield root
 
@@ -205,21 +240,24 @@ def _command_params_object_definitions(domain: 'Domain'):
                         parameter.ref.type.id.pascal_case
                     )
 
-                root.body.append(
-                    ast.AnnAssign(
-                        target=ast.Name(parameter.name.snake_case),
-                        annotation=annotation
-                    )
+            else:
+                annotation = ast.Name(
+                    parameter.type.python_type.__name__
                 )
 
-            else:
-                root.body.append(
-                    ast.AnnAssign(
-                        target=ast.Name(parameter.name.snake_case),
-                        annotation=ast.Name(parameter.type.python_type.__name__),
-                        simple=1
-                    )
+            if parameter.optional:
+                annotation = ast.Subscript(
+                    value=ast.Name('NotRequired'),
+                    slice=annotation
                 )
+
+            root.body.append(
+                ast.AnnAssign(
+                    target=ast.Name(parameter.name.snake_case),
+                    annotation=annotation,
+                    simple=1
+                )
+            )
 
         yield root
 
@@ -252,21 +290,17 @@ def _command_return_object_definitions(domain: 'Domain'):
                         return_.ref.type.id.pascal_case
                     )
 
-                root.body.append(
-                    ast.AnnAssign(
-                        target=ast.Name(return_.name.snake_case),
-                        annotation=annotation
-                    )
+            else:
+                annotation = ast.Name(
+                    return_.type.python_type.__name__
                 )
 
-            else:
-                root.body.append(
-                    ast.AnnAssign(
-                        target=ast.Name(return_.name.snake_case),
-                        annotation=ast.Name(return_.type.python_type.__name__),
-                        simple=1
-                    )
+            root.body.append(
+                ast.AnnAssign(
+                    target=ast.Name(return_.name.snake_case),
+                    annotation=annotation
                 )
+            )
 
         yield root
 
@@ -333,21 +367,17 @@ def _event_params_definitions(domain: 'Domain'):
                         parameter.ref.type.id.pascal_case
                     )
 
-                root.body.append(
-                    ast.AnnAssign(
-                        target=ast.Name(parameter.name.snake_case),
-                        annotation=annotation
-                    )
+            else:
+                annotation = ast.Name(
+                    parameter.type.python_type.__name__
                 )
 
-            else:
-                root.body.append(
-                    ast.AnnAssign(
-                        target=ast.Name(parameter.name.snake_case),
-                        annotation=ast.Name(parameter.type.python_type.__name__),
-                        simple=1
-                    )
+            root.body.append(
+                ast.AnnAssign(
+                    target=ast.Name(parameter.name.snake_case),
+                    annotation=annotation
                 )
+            )
 
         yield root
 

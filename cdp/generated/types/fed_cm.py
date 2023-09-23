@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -28,12 +29,12 @@ class Account(TypedDict):
     idp_config_url: str
     idp_signin_url: str
     login_state: 'LoginState'
-    terms_of_service_url: str
-    privacy_policy_url: str
+    terms_of_service_url: NotRequired[str]
+    privacy_policy_url: NotRequired[str]
 
 
 class EnableParamsT(TypedDict):
-    disable_rejection_delay: bool
+    disable_rejection_delay: NotRequired[bool]
 
 
 class SelectAccountParamsT(TypedDict):
@@ -47,7 +48,7 @@ class ConfirmIdpSigninParamsT(TypedDict):
 
 class DismissDialogParamsT(TypedDict):
     dialog_id: str
-    trigger_cooldown: bool
+    trigger_cooldown: NotRequired[bool]
 
 
 class DialogShownEventT(TypedDict):

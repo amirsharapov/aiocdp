@@ -37,7 +37,6 @@ class Target:
         default=None
     )
 
-
     @property
     def ws_url(self):
         return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.id}'
@@ -51,10 +50,16 @@ class Target:
         self.connection.connect()
 
     def open_session(self):
-        result = self.domains.target.attach_to_target(self.id)
-        result = result.get()
+        result = self.domains.target.attach_to_target({
+            'target_id': self.id,
+            'flatten': True
+        })
 
-        self.active_session_id = result.session_id
+        self.domains.target.attach_to_target(
+            target_id=self.id,
+        )
+
+        self.active_session_id = result['session_id']
 
     def send_command(
             self,

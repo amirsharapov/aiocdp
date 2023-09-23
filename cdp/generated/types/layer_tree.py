@@ -7,6 +7,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -25,8 +26,8 @@ class ScrollRect(TypedDict):
 class StickyPositionConstraint(TypedDict):
     sticky_box_rect: 'dom.Rect'
     containing_block_rect: 'dom.Rect'
-    nearest_layer_shifting_sticky_box: 'LayerId'
-    nearest_layer_shifting_containing_block: 'LayerId'
+    nearest_layer_shifting_sticky_box: NotRequired['LayerId']
+    nearest_layer_shifting_containing_block: NotRequired['LayerId']
 
 
 class PictureTile(TypedDict):
@@ -43,15 +44,15 @@ class Layer(TypedDict):
     height: float
     paint_count: int
     draws_content: bool
-    parent_layer_id: 'LayerId'
-    backend_node_id: 'dom.BackendNodeId'
-    transform: list
-    anchor_x: float
-    anchor_y: float
-    anchor_z: float
-    invisible: bool
-    scroll_rects: list
-    sticky_position_constraint: 'StickyPositionConstraint'
+    parent_layer_id: NotRequired['LayerId']
+    backend_node_id: NotRequired['dom.BackendNodeId']
+    transform: NotRequired[list]
+    anchor_x: NotRequired[float]
+    anchor_y: NotRequired[float]
+    anchor_z: NotRequired[float]
+    invisible: NotRequired[bool]
+    scroll_rects: NotRequired[list]
+    sticky_position_constraint: NotRequired['StickyPositionConstraint']
 
 
 class CompositingReasonsParamsT(TypedDict):
@@ -68,9 +69,9 @@ class MakeSnapshotParamsT(TypedDict):
 
 class ProfileSnapshotParamsT(TypedDict):
     snapshot_id: 'SnapshotId'
-    min_repeat_count: int
-    min_duration: float
-    clip_rect: 'dom.Rect'
+    min_repeat_count: NotRequired[int]
+    min_duration: NotRequired[float]
+    clip_rect: NotRequired['dom.Rect']
 
 
 class ReleaseSnapshotParamsT(TypedDict):
@@ -79,9 +80,9 @@ class ReleaseSnapshotParamsT(TypedDict):
 
 class ReplaySnapshotParamsT(TypedDict):
     snapshot_id: 'SnapshotId'
-    from_step: int
-    to_step: int
-    scale: float
+    from_step: NotRequired[int]
+    to_step: NotRequired[int]
+    scale: NotRequired[float]
 
 
 class SnapshotCommandLogParamsT(TypedDict):

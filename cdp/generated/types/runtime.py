@@ -5,6 +5,7 @@
 from typing import (
     Any,
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -25,59 +26,59 @@ UniqueDebuggerId = str
 
 class RemoteObject(TypedDict):
     type: str
-    subtype: str
-    class_name: str
-    value: Any
-    unserializable_value: 'UnserializableValue'
-    description: str
-    object_id: 'RemoteObjectId'
-    preview: 'ObjectPreview'
-    custom_preview: 'CustomPreview'
+    subtype: NotRequired[str]
+    class_name: NotRequired[str]
+    value: NotRequired[Any]
+    unserializable_value: NotRequired['UnserializableValue']
+    description: NotRequired[str]
+    object_id: NotRequired['RemoteObjectId']
+    preview: NotRequired['ObjectPreview']
+    custom_preview: NotRequired['CustomPreview']
 
 
 class CustomPreview(TypedDict):
     header: str
-    body_getter_id: 'RemoteObjectId'
+    body_getter_id: NotRequired['RemoteObjectId']
 
 
 class ObjectPreview(TypedDict):
     type: str
     overflow: bool
     properties: list
-    subtype: str
-    description: str
-    entries: list
+    subtype: NotRequired[str]
+    description: NotRequired[str]
+    entries: NotRequired[list]
 
 
 class PropertyPreview(TypedDict):
     name: str
     type: str
-    value: str
-    value_preview: 'ObjectPreview'
-    subtype: str
+    value: NotRequired[str]
+    value_preview: NotRequired['ObjectPreview']
+    subtype: NotRequired[str]
 
 
 class EntryPreview(TypedDict):
     value: 'ObjectPreview'
-    key: 'ObjectPreview'
+    key: NotRequired['ObjectPreview']
 
 
 class PropertyDescriptor(TypedDict):
     name: str
     configurable: bool
     enumerable: bool
-    value: 'RemoteObject'
-    writable: bool
-    get: 'RemoteObject'
-    set: 'RemoteObject'
-    was_thrown: bool
-    is_own: bool
-    symbol: 'RemoteObject'
+    value: NotRequired['RemoteObject']
+    writable: NotRequired[bool]
+    get: NotRequired['RemoteObject']
+    set: NotRequired['RemoteObject']
+    was_thrown: NotRequired[bool]
+    is_own: NotRequired[bool]
+    symbol: NotRequired['RemoteObject']
 
 
 class InternalPropertyDescriptor(TypedDict):
     name: str
-    value: 'RemoteObject'
+    value: NotRequired['RemoteObject']
 
 
 class PrivatePropertyDescriptor(TypedDict):
@@ -86,16 +87,16 @@ class PrivatePropertyDescriptor(TypedDict):
 
 
 class CallArgument(TypedDict):
-    value: Any
-    unserializable_value: 'UnserializableValue'
-    object_id: 'RemoteObjectId'
+    value: NotRequired[Any]
+    unserializable_value: NotRequired['UnserializableValue']
+    object_id: NotRequired['RemoteObjectId']
 
 
 class ExecutionContextDescription(TypedDict):
     id: 'ExecutionContextId'
     origin: str
     name: str
-    aux_data: dict
+    aux_data: NotRequired[dict]
 
 
 class ExceptionDetails(TypedDict):
@@ -103,11 +104,11 @@ class ExceptionDetails(TypedDict):
     text: str
     line_number: int
     column_number: int
-    script_id: 'ScriptId'
-    url: str
-    stack_trace: 'StackTrace'
-    exception: 'RemoteObject'
-    execution_context_id: 'ExecutionContextId'
+    script_id: NotRequired['ScriptId']
+    url: NotRequired[str]
+    stack_trace: NotRequired['StackTrace']
+    exception: NotRequired['RemoteObject']
+    execution_context_id: NotRequired['ExecutionContextId']
 
 
 class CallFrame(TypedDict):
@@ -120,70 +121,70 @@ class CallFrame(TypedDict):
 
 class StackTrace(TypedDict):
     call_frames: list
-    description: str
-    parent: 'StackTrace'
-    parent_id: 'StackTraceId'
+    description: NotRequired[str]
+    parent: NotRequired['StackTrace']
+    parent_id: NotRequired['StackTraceId']
 
 
 class StackTraceId(TypedDict):
     id: str
-    debugger_id: 'UniqueDebuggerId'
+    debugger_id: NotRequired['UniqueDebuggerId']
 
 
 class AwaitPromiseParamsT(TypedDict):
     promise_object_id: 'RemoteObjectId'
-    return_by_value: bool
-    generate_preview: bool
+    return_by_value: NotRequired[bool]
+    generate_preview: NotRequired[bool]
 
 
 class CallFunctionOnParamsT(TypedDict):
     function_declaration: str
-    object_id: 'RemoteObjectId'
-    arguments: list
-    silent: bool
-    return_by_value: bool
-    generate_preview: bool
-    user_gesture: bool
-    await_promise: bool
-    execution_context_id: 'ExecutionContextId'
-    object_group: str
+    object_id: NotRequired['RemoteObjectId']
+    arguments: NotRequired[list]
+    silent: NotRequired[bool]
+    return_by_value: NotRequired[bool]
+    generate_preview: NotRequired[bool]
+    user_gesture: NotRequired[bool]
+    await_promise: NotRequired[bool]
+    execution_context_id: NotRequired['ExecutionContextId']
+    object_group: NotRequired[str]
 
 
 class CompileScriptParamsT(TypedDict):
     expression: str
     source_url: str
     persist_script: bool
-    execution_context_id: 'ExecutionContextId'
+    execution_context_id: NotRequired['ExecutionContextId']
 
 
 class EvaluateParamsT(TypedDict):
     expression: str
-    object_group: str
-    include_command_line_api: bool
-    silent: bool
-    context_id: 'ExecutionContextId'
-    return_by_value: bool
-    generate_preview: bool
-    user_gesture: bool
-    await_promise: bool
-    throw_on_side_effect: bool
-    timeout: 'TimeDelta'
+    object_group: NotRequired[str]
+    include_command_line_api: NotRequired[bool]
+    silent: NotRequired[bool]
+    context_id: NotRequired['ExecutionContextId']
+    return_by_value: NotRequired[bool]
+    generate_preview: NotRequired[bool]
+    user_gesture: NotRequired[bool]
+    await_promise: NotRequired[bool]
+    throw_on_side_effect: NotRequired[bool]
+    timeout: NotRequired['TimeDelta']
 
 
 class GetPropertiesParamsT(TypedDict):
     object_id: 'RemoteObjectId'
-    own_properties: bool
-    accessor_properties_only: bool
-    generate_preview: bool
+    own_properties: NotRequired[bool]
+    accessor_properties_only: NotRequired[bool]
+    generate_preview: NotRequired[bool]
 
 
 class GlobalLexicalScopeNamesParamsT(TypedDict):
-    execution_context_id: 'ExecutionContextId'
+    execution_context_id: NotRequired['ExecutionContextId']
 
 
 class QueryObjectsParamsT(TypedDict):
     prototype_object_id: 'RemoteObjectId'
-    object_group: str
+    object_group: NotRequired[str]
 
 
 class ReleaseObjectParamsT(TypedDict):
@@ -196,13 +197,13 @@ class ReleaseObjectGroupParamsT(TypedDict):
 
 class RunScriptParamsT(TypedDict):
     script_id: 'ScriptId'
-    execution_context_id: 'ExecutionContextId'
-    object_group: str
-    silent: bool
-    include_command_line_api: bool
-    return_by_value: bool
-    generate_preview: bool
-    await_promise: bool
+    execution_context_id: NotRequired['ExecutionContextId']
+    object_group: NotRequired[str]
+    silent: NotRequired[bool]
+    include_command_line_api: NotRequired[bool]
+    return_by_value: NotRequired[bool]
+    generate_preview: NotRequired[bool]
+    await_promise: NotRequired[bool]
 
 
 class SetAsyncCallStackDepthParamsT(TypedDict):
@@ -219,7 +220,7 @@ class SetMaxCallStackSizeToCaptureParamsT(TypedDict):
 
 class AddBindingParamsT(TypedDict):
     name: str
-    execution_context_id: 'ExecutionContextId'
+    execution_context_id: NotRequired['ExecutionContextId']
 
 
 class RemoveBindingParamsT(TypedDict):

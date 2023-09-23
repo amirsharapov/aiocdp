@@ -4,6 +4,7 @@
 # and run it again.
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -11,11 +12,11 @@ from typing import (
 class Sink(TypedDict):
     name: str
     id: str
-    session: str
+    session: NotRequired[str]
 
 
 class EnableParamsT(TypedDict):
-    presentation_url: str
+    presentation_url: NotRequired[str]
 
 
 class SetSinkToUseParamsT(TypedDict):

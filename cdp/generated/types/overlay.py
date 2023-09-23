@@ -9,6 +9,7 @@ from cdp.generated.types import (
 )
 from typing import (
     Literal,
+    NotRequired,
     TypedDict
 )
 
@@ -40,75 +41,75 @@ class SourceOrderConfig(TypedDict):
 
 
 class GridHighlightConfig(TypedDict):
-    show_grid_extension_lines: bool
-    show_positive_line_numbers: bool
-    show_negative_line_numbers: bool
-    show_area_names: bool
-    show_line_names: bool
-    show_track_sizes: bool
-    grid_border_color: 'dom.RGBA'
-    cell_border_color: 'dom.RGBA'
-    row_line_color: 'dom.RGBA'
-    column_line_color: 'dom.RGBA'
-    grid_border_dash: bool
-    cell_border_dash: bool
-    row_line_dash: bool
-    column_line_dash: bool
-    row_gap_color: 'dom.RGBA'
-    row_hatch_color: 'dom.RGBA'
-    column_gap_color: 'dom.RGBA'
-    column_hatch_color: 'dom.RGBA'
-    area_border_color: 'dom.RGBA'
-    grid_background_color: 'dom.RGBA'
+    show_grid_extension_lines: NotRequired[bool]
+    show_positive_line_numbers: NotRequired[bool]
+    show_negative_line_numbers: NotRequired[bool]
+    show_area_names: NotRequired[bool]
+    show_line_names: NotRequired[bool]
+    show_track_sizes: NotRequired[bool]
+    grid_border_color: NotRequired['dom.RGBA']
+    cell_border_color: NotRequired['dom.RGBA']
+    row_line_color: NotRequired['dom.RGBA']
+    column_line_color: NotRequired['dom.RGBA']
+    grid_border_dash: NotRequired[bool]
+    cell_border_dash: NotRequired[bool]
+    row_line_dash: NotRequired[bool]
+    column_line_dash: NotRequired[bool]
+    row_gap_color: NotRequired['dom.RGBA']
+    row_hatch_color: NotRequired['dom.RGBA']
+    column_gap_color: NotRequired['dom.RGBA']
+    column_hatch_color: NotRequired['dom.RGBA']
+    area_border_color: NotRequired['dom.RGBA']
+    grid_background_color: NotRequired['dom.RGBA']
 
 
 class FlexContainerHighlightConfig(TypedDict):
-    container_border: 'LineStyle'
-    line_separator: 'LineStyle'
-    item_separator: 'LineStyle'
-    main_distributed_space: 'BoxStyle'
-    cross_distributed_space: 'BoxStyle'
-    row_gap_space: 'BoxStyle'
-    column_gap_space: 'BoxStyle'
-    cross_alignment: 'LineStyle'
+    container_border: NotRequired['LineStyle']
+    line_separator: NotRequired['LineStyle']
+    item_separator: NotRequired['LineStyle']
+    main_distributed_space: NotRequired['BoxStyle']
+    cross_distributed_space: NotRequired['BoxStyle']
+    row_gap_space: NotRequired['BoxStyle']
+    column_gap_space: NotRequired['BoxStyle']
+    cross_alignment: NotRequired['LineStyle']
 
 
 class FlexItemHighlightConfig(TypedDict):
-    base_size_box: 'BoxStyle'
-    base_size_border: 'LineStyle'
-    flexibility_arrow: 'LineStyle'
+    base_size_box: NotRequired['BoxStyle']
+    base_size_border: NotRequired['LineStyle']
+    flexibility_arrow: NotRequired['LineStyle']
 
 
 class LineStyle(TypedDict):
-    color: 'dom.RGBA'
-    pattern: str
+    color: NotRequired['dom.RGBA']
+    pattern: NotRequired[str]
 
 
 class BoxStyle(TypedDict):
-    fill_color: 'dom.RGBA'
-    hatch_color: 'dom.RGBA'
+    fill_color: NotRequired['dom.RGBA']
+    hatch_color: NotRequired['dom.RGBA']
 
 
 class HighlightConfig(TypedDict):
-    show_info: bool
-    show_styles: bool
-    show_rulers: bool
-    show_accessibility_info: bool
-    show_extension_lines: bool
-    content_color: 'dom.RGBA'
-    padding_color: 'dom.RGBA'
-    border_color: 'dom.RGBA'
-    margin_color: 'dom.RGBA'
-    event_target_color: 'dom.RGBA'
-    shape_color: 'dom.RGBA'
-    shape_margin_color: 'dom.RGBA'
-    css_grid_color: 'dom.RGBA'
-    color_format: 'ColorFormat'
-    grid_highlight_config: 'GridHighlightConfig'
-    flex_container_highlight_config: 'FlexContainerHighlightConfig'
-    flex_item_highlight_config: 'FlexItemHighlightConfig'
-    contrast_algorithm: 'ContrastAlgorithm'
-    container_query_container_highlight_config: 'ContainerQueryContainerHighlightConfig'
+    show_info: NotRequired[bool]
+    show_styles: NotRequired[bool]
+    show_rulers: NotRequired[bool]
+    show_accessibility_info: NotRequired[bool]
+    show_extension_lines: NotRequired[bool]
+    content_color: NotRequired['dom.RGBA']
+    padding_color: NotRequired['dom.RGBA']
+    border_color: NotRequired['dom.RGBA']
+    margin_color: NotRequired['dom.RGBA']
+    event_target_color: NotRequired['dom.RGBA']
+    shape_color: NotRequired['dom.RGBA']
+    shape_margin_color: NotRequired['dom.RGBA']
+    css_grid_color: NotRequired['dom.RGBA']
+    color_format: NotRequired['ColorFormat']
+    grid_highlight_config: NotRequired['GridHighlightConfig']
+    flex_container_highlight_config: NotRequired['FlexContainerHighlightConfig']
+    flex_item_highlight_config: NotRequired['FlexItemHighlightConfig']
+    contrast_algorithm: NotRequired['ContrastAlgorithm']
+    container_query_container_highlight_config: NotRequired['ContainerQueryContainerHighlightConfig']
 
 
 class GridNodeHighlightConfig(TypedDict):
@@ -122,10 +123,10 @@ class FlexNodeHighlightConfig(TypedDict):
 
 
 class ScrollSnapContainerHighlightConfig(TypedDict):
-    snapport_border: 'LineStyle'
-    snap_area_border: 'LineStyle'
-    scroll_margin_color: 'dom.RGBA'
-    scroll_padding_color: 'dom.RGBA'
+    snapport_border: NotRequired['LineStyle']
+    snap_area_border: NotRequired['LineStyle']
+    scroll_margin_color: NotRequired['dom.RGBA']
+    scroll_padding_color: NotRequired['dom.RGBA']
 
 
 class ScrollSnapHighlightConfig(TypedDict):
@@ -135,8 +136,8 @@ class ScrollSnapHighlightConfig(TypedDict):
 
 class HingeConfig(TypedDict):
     rect: 'dom.Rect'
-    content_color: 'dom.RGBA'
-    outline_color: 'dom.RGBA'
+    content_color: NotRequired['dom.RGBA']
+    outline_color: NotRequired['dom.RGBA']
 
 
 class ContainerQueryHighlightConfig(TypedDict):
@@ -145,8 +146,8 @@ class ContainerQueryHighlightConfig(TypedDict):
 
 
 class ContainerQueryContainerHighlightConfig(TypedDict):
-    container_border: 'LineStyle'
-    descendant_border: 'LineStyle'
+    container_border: NotRequired['LineStyle']
+    descendant_border: NotRequired['LineStyle']
 
 
 class IsolatedElementHighlightConfig(TypedDict):
@@ -155,17 +156,17 @@ class IsolatedElementHighlightConfig(TypedDict):
 
 
 class IsolationModeHighlightConfig(TypedDict):
-    resizer_color: 'dom.RGBA'
-    resizer_handle_color: 'dom.RGBA'
-    mask_color: 'dom.RGBA'
+    resizer_color: NotRequired['dom.RGBA']
+    resizer_handle_color: NotRequired['dom.RGBA']
+    mask_color: NotRequired['dom.RGBA']
 
 
 class GetHighlightObjectForTestParamsT(TypedDict):
     node_id: 'dom.NodeId'
-    include_distance: bool
-    include_style: bool
-    color_format: 'ColorFormat'
-    show_accessibility_info: bool
+    include_distance: NotRequired[bool]
+    include_style: NotRequired[bool]
+    color_format: NotRequired['ColorFormat']
+    show_accessibility_info: NotRequired[bool]
 
 
 class GetGridHighlightObjectsForTestParamsT(TypedDict):
@@ -178,22 +179,22 @@ class GetSourceOrderHighlightObjectForTestParamsT(TypedDict):
 
 class HighlightFrameParamsT(TypedDict):
     frame_id: 'page.FrameId'
-    content_color: 'dom.RGBA'
-    content_outline_color: 'dom.RGBA'
+    content_color: NotRequired['dom.RGBA']
+    content_outline_color: NotRequired['dom.RGBA']
 
 
 class HighlightNodeParamsT(TypedDict):
     highlight_config: 'HighlightConfig'
-    node_id: 'dom.NodeId'
-    backend_node_id: 'dom.BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
-    selector: str
+    node_id: NotRequired['dom.NodeId']
+    backend_node_id: NotRequired['dom.BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
+    selector: NotRequired[str]
 
 
 class HighlightQuadParamsT(TypedDict):
     quad: 'dom.Quad'
-    color: 'dom.RGBA'
-    outline_color: 'dom.RGBA'
+    color: NotRequired['dom.RGBA']
+    outline_color: NotRequired['dom.RGBA']
 
 
 class HighlightRectParamsT(TypedDict):
@@ -201,20 +202,20 @@ class HighlightRectParamsT(TypedDict):
     y: int
     width: int
     height: int
-    color: 'dom.RGBA'
-    outline_color: 'dom.RGBA'
+    color: NotRequired['dom.RGBA']
+    outline_color: NotRequired['dom.RGBA']
 
 
 class HighlightSourceOrderParamsT(TypedDict):
     source_order_config: 'SourceOrderConfig'
-    node_id: 'dom.NodeId'
-    backend_node_id: 'dom.BackendNodeId'
-    object_id: 'runtime.RemoteObjectId'
+    node_id: NotRequired['dom.NodeId']
+    backend_node_id: NotRequired['dom.BackendNodeId']
+    object_id: NotRequired['runtime.RemoteObjectId']
 
 
 class SetInspectModeParamsT(TypedDict):
     mode: 'InspectMode'
-    highlight_config: 'HighlightConfig'
+    highlight_config: NotRequired['HighlightConfig']
 
 
 class SetShowAdHighlightsParamsT(TypedDict):
@@ -222,7 +223,7 @@ class SetShowAdHighlightsParamsT(TypedDict):
 
 
 class SetPausedInDebuggerMessageParamsT(TypedDict):
-    message: str
+    message: NotRequired[str]
 
 
 class SetShowDebugBordersParamsT(TypedDict):
@@ -274,7 +275,7 @@ class SetShowViewportSizeOnResizeParamsT(TypedDict):
 
 
 class SetShowHingeParamsT(TypedDict):
-    hinge_config: 'HingeConfig'
+    hinge_config: NotRequired['HingeConfig']
 
 
 class SetShowIsolatedElementsParamsT(TypedDict):
