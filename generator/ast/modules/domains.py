@@ -2,7 +2,7 @@ import ast
 from typing import Iterable, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from cdp.domains.domain import Domain
+    from generator.parser.types.domain import Domain
 
 
 def _imports():
@@ -29,19 +29,28 @@ def _imports():
     ]
 
 
-def _type_checked_imports():
-    imports = [
+def _type_checked_imports(domains: Iterable['Domain']):
+    aliases = []
+
+    for domain in domains:
+        aliases.append(
+            ast.alias(
+                domain.domain.snake_case
+            )
+        )
+
+    return [
         ast.ImportFrom(
             module='cdp.target.target',
             names=[
-                ast.alias(
-                    name='Target'
-                )
+                ast.alias('Target')
             ]
         ),
+        ast.ImportFrom(
+            module='cdp.generated.types',
+            names=aliases
+        )
     ]
-
-    return imports
 
 
 def _domain():
@@ -73,7 +82,7 @@ def generate(domains: Iterable['Domain']):
     root.body.append(
         ast.If(
             test=ast.Name('TYPE_CHECKING'),
-            body=_type_checked_imports(),
+            body=_type_checked_imports(domains),
             render_context={
                 'lines_before': 1,
             }
