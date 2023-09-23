@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 import requests
 
-from cdp.target.target import Target
+from cdp.target import Target
 
 
 @dataclass

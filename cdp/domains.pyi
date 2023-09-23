@@ -15,7 +15,7 @@ from typing import (
 )
 
 if TYPE_CHECKING:
-    from cdp.target.target import (
+    from cdp.target import (
         Target as WSTarget
     )
     from cdp.generated.types import (

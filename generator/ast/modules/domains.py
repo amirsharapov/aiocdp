@@ -40,7 +40,7 @@ def _type_checked_imports(domains: Iterable['Domain']):
 
     return [
         ast.ImportFrom(
-            module='cdp.target.target',
+            module='cdp.target',
             names=[
                 ast.alias(
                     name='Target',

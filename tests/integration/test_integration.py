@@ -20,11 +20,3 @@ class Tests(TestCase):
         )
 
         result.get()
-
-        x = {
-            'node_id': 1
-        }
-
-        target.domains.accessibility.some_method(x)
-
-        target.domains.accessibility.some_method({})

@@ -156,7 +156,7 @@ def _command_params_properties(domains: Iterable['Domain']):
     return ast.Assign(
         targets=[ast.Name('command_params_properties')],
         value=ast.Dict(
-            keys=[ast.Constant('snake:camel')],
+            keys=[ast.Constant('snake:snake:snake:camel')],
             values=[snake_to_camel]
         ),
         render_context={
@@ -179,14 +179,14 @@ def _command_return_properties(domains: Iterable['Domain']):
             for return_ in command.returns:
                 assign_dict_key_value(
                     camel_to_snake,
-                    (domain.domain.camel_case, command.name.camel_case, return_.name.camel_case),
+                    (domain.domain.snake_case, command.name.snake_case, return_.name.camel_case),
                     return_.name.snake_case
                 )
 
     return ast.Assign(
         targets=[ast.Name('command_return_properties')],
         value=ast.Dict(
-            keys=[ast.Constant('camel:snake')],
+            keys=[ast.Constant('snake:snake:camel:snake')],
             values=[camel_to_snake]
         ),
         render_context={

@@ -4789,7 +4789,7 @@ command_names = {
 
 
 command_params_properties = {
-    'snake:camel': {
+    'snake:snake:snake:camel': {
         ('accessibility', 'get_partial_ax_tree', 'node_id'): (
             'nodeId'
         ),
@@ -7612,545 +7612,545 @@ command_params_properties = {
 
 
 command_return_properties = {
-    'camel:snake': {
-        ('accessibility', 'getPartialAXTree', 'nodes'): (
+    'snake:snake:camel:snake': {
+        ('accessibility', 'get_partial_ax_tree', 'nodes'): (
             'nodes'
         ),
-        ('accessibility', 'getFullAXTree', 'nodes'): (
+        ('accessibility', 'get_full_ax_tree', 'nodes'): (
             'nodes'
         ),
-        ('accessibility', 'getRootAXNode', 'node'): (
+        ('accessibility', 'get_root_ax_node', 'node'): (
             'node'
         ),
-        ('accessibility', 'getAXNodeAndAncestors', 'nodes'): (
+        ('accessibility', 'get_ax_node_and_ancestors', 'nodes'): (
             'nodes'
         ),
-        ('accessibility', 'getChildAXNodes', 'nodes'): (
+        ('accessibility', 'get_child_ax_nodes', 'nodes'): (
             'nodes'
         ),
-        ('accessibility', 'queryAXTree', 'nodes'): (
+        ('accessibility', 'query_ax_tree', 'nodes'): (
             'nodes'
         ),
-        ('animation', 'getCurrentTime', 'currentTime'): (
+        ('animation', 'get_current_time', 'currentTime'): (
             'current_time'
         ),
-        ('animation', 'getPlaybackRate', 'playbackRate'): (
+        ('animation', 'get_playback_rate', 'playbackRate'): (
             'playback_rate'
         ),
-        ('animation', 'resolveAnimation', 'remoteObject'): (
+        ('animation', 'resolve_animation', 'remoteObject'): (
             'remote_object'
         ),
-        ('audits', 'getEncodedResponse', 'body'): (
+        ('audits', 'get_encoded_response', 'body'): (
             'body'
         ),
-        ('audits', 'getEncodedResponse', 'originalSize'): (
+        ('audits', 'get_encoded_response', 'originalSize'): (
             'original_size'
         ),
-        ('audits', 'getEncodedResponse', 'encodedSize'): (
+        ('audits', 'get_encoded_response', 'encodedSize'): (
             'encoded_size'
         ),
-        ('audits', 'checkFormsIssues', 'formIssues'): (
+        ('audits', 'check_forms_issues', 'formIssues'): (
             'form_issues'
         ),
-        ('browser', 'getVersion', 'protocolVersion'): (
+        ('browser', 'get_version', 'protocolVersion'): (
             'protocol_version'
         ),
-        ('browser', 'getVersion', 'product'): (
+        ('browser', 'get_version', 'product'): (
             'product'
         ),
-        ('browser', 'getVersion', 'revision'): (
+        ('browser', 'get_version', 'revision'): (
             'revision'
         ),
-        ('browser', 'getVersion', 'userAgent'): (
+        ('browser', 'get_version', 'userAgent'): (
             'user_agent'
         ),
-        ('browser', 'getVersion', 'jsVersion'): (
+        ('browser', 'get_version', 'jsVersion'): (
             'js_version'
         ),
-        ('browser', 'getBrowserCommandLine', 'arguments'): (
+        ('browser', 'get_browser_command_line', 'arguments'): (
             'arguments'
         ),
-        ('browser', 'getHistograms', 'histograms'): (
+        ('browser', 'get_histograms', 'histograms'): (
             'histograms'
         ),
-        ('browser', 'getHistogram', 'histogram'): (
+        ('browser', 'get_histogram', 'histogram'): (
             'histogram'
         ),
-        ('browser', 'getWindowBounds', 'bounds'): (
+        ('browser', 'get_window_bounds', 'bounds'): (
             'bounds'
         ),
-        ('browser', 'getWindowForTarget', 'windowId'): (
+        ('browser', 'get_window_for_target', 'windowId'): (
             'window_id'
         ),
-        ('browser', 'getWindowForTarget', 'bounds'): (
+        ('browser', 'get_window_for_target', 'bounds'): (
             'bounds'
         ),
-        ('cSS', 'addRule', 'rule'): (
+        ('css', 'add_rule', 'rule'): (
             'rule'
         ),
-        ('cSS', 'collectClassNames', 'classNames'): (
+        ('css', 'collect_class_names', 'classNames'): (
             'class_names'
         ),
-        ('cSS', 'createStyleSheet', 'styleSheetId'): (
+        ('css', 'create_style_sheet', 'styleSheetId'): (
             'style_sheet_id'
         ),
-        ('cSS', 'getBackgroundColors', 'backgroundColors'): (
+        ('css', 'get_background_colors', 'backgroundColors'): (
             'background_colors'
         ),
-        ('cSS', 'getBackgroundColors', 'computedFontSize'): (
+        ('css', 'get_background_colors', 'computedFontSize'): (
             'computed_font_size'
         ),
-        ('cSS', 'getBackgroundColors', 'computedFontWeight'): (
+        ('css', 'get_background_colors', 'computedFontWeight'): (
             'computed_font_weight'
         ),
-        ('cSS', 'getComputedStyleForNode', 'computedStyle'): (
+        ('css', 'get_computed_style_for_node', 'computedStyle'): (
             'computed_style'
         ),
-        ('cSS', 'getInlineStylesForNode', 'inlineStyle'): (
+        ('css', 'get_inline_styles_for_node', 'inlineStyle'): (
             'inline_style'
         ),
-        ('cSS', 'getInlineStylesForNode', 'attributesStyle'): (
+        ('css', 'get_inline_styles_for_node', 'attributesStyle'): (
             'attributes_style'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'inlineStyle'): (
+        ('css', 'get_matched_styles_for_node', 'inlineStyle'): (
             'inline_style'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'attributesStyle'): (
+        ('css', 'get_matched_styles_for_node', 'attributesStyle'): (
             'attributes_style'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'matchedCSSRules'): (
+        ('css', 'get_matched_styles_for_node', 'matchedCSSRules'): (
             'matched_css_rules'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'pseudoElements'): (
+        ('css', 'get_matched_styles_for_node', 'pseudoElements'): (
             'pseudo_elements'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'inherited'): (
+        ('css', 'get_matched_styles_for_node', 'inherited'): (
             'inherited'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'inheritedPseudoElements'): (
+        ('css', 'get_matched_styles_for_node', 'inheritedPseudoElements'): (
             'inherited_pseudo_elements'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'cssKeyframesRules'): (
+        ('css', 'get_matched_styles_for_node', 'cssKeyframesRules'): (
             'css_keyframes_rules'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'cssPositionFallbackRules'): (
+        ('css', 'get_matched_styles_for_node', 'cssPositionFallbackRules'): (
             'css_position_fallback_rules'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'cssPropertyRules'): (
+        ('css', 'get_matched_styles_for_node', 'cssPropertyRules'): (
             'css_property_rules'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'cssPropertyRegistrations'): (
+        ('css', 'get_matched_styles_for_node', 'cssPropertyRegistrations'): (
             'css_property_registrations'
         ),
-        ('cSS', 'getMatchedStylesForNode', 'parentLayoutNodeId'): (
+        ('css', 'get_matched_styles_for_node', 'parentLayoutNodeId'): (
             'parent_layout_node_id'
         ),
-        ('cSS', 'getMediaQueries', 'medias'): (
+        ('css', 'get_media_queries', 'medias'): (
             'medias'
         ),
-        ('cSS', 'getPlatformFontsForNode', 'fonts'): (
+        ('css', 'get_platform_fonts_for_node', 'fonts'): (
             'fonts'
         ),
-        ('cSS', 'getStyleSheetText', 'text'): (
+        ('css', 'get_style_sheet_text', 'text'): (
             'text'
         ),
-        ('cSS', 'getLayersForNode', 'rootLayer'): (
+        ('css', 'get_layers_for_node', 'rootLayer'): (
             'root_layer'
         ),
-        ('cSS', 'takeComputedStyleUpdates', 'nodeIds'): (
+        ('css', 'take_computed_style_updates', 'nodeIds'): (
             'node_ids'
         ),
-        ('cSS', 'setKeyframeKey', 'keyText'): (
+        ('css', 'set_keyframe_key', 'keyText'): (
             'key_text'
         ),
-        ('cSS', 'setMediaText', 'media'): (
+        ('css', 'set_media_text', 'media'): (
             'media'
         ),
-        ('cSS', 'setContainerQueryText', 'containerQuery'): (
+        ('css', 'set_container_query_text', 'containerQuery'): (
             'container_query'
         ),
-        ('cSS', 'setSupportsText', 'supports'): (
+        ('css', 'set_supports_text', 'supports'): (
             'supports'
         ),
-        ('cSS', 'setScopeText', 'scope'): (
+        ('css', 'set_scope_text', 'scope'): (
             'scope'
         ),
-        ('cSS', 'setRuleSelector', 'selectorList'): (
+        ('css', 'set_rule_selector', 'selectorList'): (
             'selector_list'
         ),
-        ('cSS', 'setStyleSheetText', 'sourceMapURL'): (
+        ('css', 'set_style_sheet_text', 'sourceMapURL'): (
             'source_map_url'
         ),
-        ('cSS', 'setStyleTexts', 'styles'): (
+        ('css', 'set_style_texts', 'styles'): (
             'styles'
         ),
-        ('cSS', 'stopRuleUsageTracking', 'ruleUsage'): (
+        ('css', 'stop_rule_usage_tracking', 'ruleUsage'): (
             'rule_usage'
         ),
-        ('cSS', 'takeCoverageDelta', 'coverage'): (
+        ('css', 'take_coverage_delta', 'coverage'): (
             'coverage'
         ),
-        ('cSS', 'takeCoverageDelta', 'timestamp'): (
+        ('css', 'take_coverage_delta', 'timestamp'): (
             'timestamp'
         ),
-        ('cacheStorage', 'requestCacheNames', 'caches'): (
+        ('cache_storage', 'request_cache_names', 'caches'): (
             'caches'
         ),
-        ('cacheStorage', 'requestCachedResponse', 'response'): (
+        ('cache_storage', 'request_cached_response', 'response'): (
             'response'
         ),
-        ('cacheStorage', 'requestEntries', 'cacheDataEntries'): (
+        ('cache_storage', 'request_entries', 'cacheDataEntries'): (
             'cache_data_entries'
         ),
-        ('cacheStorage', 'requestEntries', 'returnCount'): (
+        ('cache_storage', 'request_entries', 'returnCount'): (
             'return_count'
         ),
-        ('dOM', 'collectClassNamesFromSubtree', 'classNames'): (
+        ('dom', 'collect_class_names_from_subtree', 'classNames'): (
             'class_names'
         ),
-        ('dOM', 'copyTo', 'nodeId'): (
+        ('dom', 'copy_to', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'describeNode', 'node'): (
+        ('dom', 'describe_node', 'node'): (
             'node'
         ),
-        ('dOM', 'getAttributes', 'attributes'): (
+        ('dom', 'get_attributes', 'attributes'): (
             'attributes'
         ),
-        ('dOM', 'getBoxModel', 'model'): (
+        ('dom', 'get_box_model', 'model'): (
             'model'
         ),
-        ('dOM', 'getContentQuads', 'quads'): (
+        ('dom', 'get_content_quads', 'quads'): (
             'quads'
         ),
-        ('dOM', 'getDocument', 'root'): (
+        ('dom', 'get_document', 'root'): (
             'root'
         ),
-        ('dOM', 'getFlattenedDocument', 'nodes'): (
+        ('dom', 'get_flattened_document', 'nodes'): (
             'nodes'
         ),
-        ('dOM', 'getNodesForSubtreeByStyle', 'nodeIds'): (
+        ('dom', 'get_nodes_for_subtree_by_style', 'nodeIds'): (
             'node_ids'
         ),
-        ('dOM', 'getNodeForLocation', 'backendNodeId'): (
+        ('dom', 'get_node_for_location', 'backendNodeId'): (
             'backend_node_id'
         ),
-        ('dOM', 'getNodeForLocation', 'frameId'): (
+        ('dom', 'get_node_for_location', 'frameId'): (
             'frame_id'
         ),
-        ('dOM', 'getNodeForLocation', 'nodeId'): (
+        ('dom', 'get_node_for_location', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'getOuterHTML', 'outerHTML'): (
+        ('dom', 'get_outer_html', 'outerHTML'): (
             'outer_html'
         ),
-        ('dOM', 'getRelayoutBoundary', 'nodeId'): (
+        ('dom', 'get_relayout_boundary', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'getSearchResults', 'nodeIds'): (
+        ('dom', 'get_search_results', 'nodeIds'): (
             'node_ids'
         ),
-        ('dOM', 'moveTo', 'nodeId'): (
+        ('dom', 'move_to', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'performSearch', 'searchId'): (
+        ('dom', 'perform_search', 'searchId'): (
             'search_id'
         ),
-        ('dOM', 'performSearch', 'resultCount'): (
+        ('dom', 'perform_search', 'resultCount'): (
             'result_count'
         ),
-        ('dOM', 'pushNodeByPathToFrontend', 'nodeId'): (
+        ('dom', 'push_node_by_path_to_frontend', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'pushNodesByBackendIdsToFrontend', 'nodeIds'): (
+        ('dom', 'push_nodes_by_backend_ids_to_frontend', 'nodeIds'): (
             'node_ids'
         ),
-        ('dOM', 'querySelector', 'nodeId'): (
+        ('dom', 'query_selector', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'querySelectorAll', 'nodeIds'): (
+        ('dom', 'query_selector_all', 'nodeIds'): (
             'node_ids'
         ),
-        ('dOM', 'getTopLayerElements', 'nodeIds'): (
+        ('dom', 'get_top_layer_elements', 'nodeIds'): (
             'node_ids'
         ),
-        ('dOM', 'requestNode', 'nodeId'): (
+        ('dom', 'request_node', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'resolveNode', 'object'): (
+        ('dom', 'resolve_node', 'object'): (
             'object'
         ),
-        ('dOM', 'getNodeStackTraces', 'creation'): (
+        ('dom', 'get_node_stack_traces', 'creation'): (
             'creation'
         ),
-        ('dOM', 'getFileInfo', 'path'): (
+        ('dom', 'get_file_info', 'path'): (
             'path'
         ),
-        ('dOM', 'setNodeName', 'nodeId'): (
+        ('dom', 'set_node_name', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'getFrameOwner', 'backendNodeId'): (
+        ('dom', 'get_frame_owner', 'backendNodeId'): (
             'backend_node_id'
         ),
-        ('dOM', 'getFrameOwner', 'nodeId'): (
+        ('dom', 'get_frame_owner', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'getContainerForNode', 'nodeId'): (
+        ('dom', 'get_container_for_node', 'nodeId'): (
             'node_id'
         ),
-        ('dOM', 'getQueryingDescendantsForContainer', 'nodeIds'): (
+        ('dom', 'get_querying_descendants_for_container', 'nodeIds'): (
             'node_ids'
         ),
-        ('dOMDebugger', 'getEventListeners', 'listeners'): (
+        ('dom_debugger', 'get_event_listeners', 'listeners'): (
             'listeners'
         ),
-        ('dOMSnapshot', 'getSnapshot', 'domNodes'): (
+        ('dom_snapshot', 'get_snapshot', 'domNodes'): (
             'dom_nodes'
         ),
-        ('dOMSnapshot', 'getSnapshot', 'layoutTreeNodes'): (
+        ('dom_snapshot', 'get_snapshot', 'layoutTreeNodes'): (
             'layout_tree_nodes'
         ),
-        ('dOMSnapshot', 'getSnapshot', 'computedStyles'): (
+        ('dom_snapshot', 'get_snapshot', 'computedStyles'): (
             'computed_styles'
         ),
-        ('dOMSnapshot', 'captureSnapshot', 'documents'): (
+        ('dom_snapshot', 'capture_snapshot', 'documents'): (
             'documents'
         ),
-        ('dOMSnapshot', 'captureSnapshot', 'strings'): (
+        ('dom_snapshot', 'capture_snapshot', 'strings'): (
             'strings'
         ),
-        ('dOMStorage', 'getDOMStorageItems', 'entries'): (
+        ('dom_storage', 'get_dom_storage_items', 'entries'): (
             'entries'
         ),
-        ('database', 'executeSQL', 'columnNames'): (
+        ('database', 'execute_sql', 'columnNames'): (
             'column_names'
         ),
-        ('database', 'executeSQL', 'values'): (
+        ('database', 'execute_sql', 'values'): (
             'values'
         ),
-        ('database', 'executeSQL', 'sqlError'): (
+        ('database', 'execute_sql', 'sqlError'): (
             'sql_error'
         ),
-        ('database', 'getDatabaseTableNames', 'tableNames'): (
+        ('database', 'get_database_table_names', 'tableNames'): (
             'table_names'
         ),
-        ('emulation', 'canEmulate', 'result'): (
+        ('emulation', 'can_emulate', 'result'): (
             'result'
         ),
-        ('emulation', 'setVirtualTimePolicy', 'virtualTimeTicksBase'): (
+        ('emulation', 'set_virtual_time_policy', 'virtualTimeTicksBase'): (
             'virtual_time_ticks_base'
         ),
-        ('headlessExperimental', 'beginFrame', 'hasDamage'): (
+        ('headless_experimental', 'begin_frame', 'hasDamage'): (
             'has_damage'
         ),
-        ('headlessExperimental', 'beginFrame', 'screenshotData'): (
+        ('headless_experimental', 'begin_frame', 'screenshotData'): (
             'screenshot_data'
         ),
-        ('iO', 'read', 'base64Encoded'): (
+        ('io', 'read', 'base64Encoded'): (
             'base64_encoded'
         ),
-        ('iO', 'read', 'data'): (
+        ('io', 'read', 'data'): (
             'data'
         ),
-        ('iO', 'read', 'eof'): (
+        ('io', 'read', 'eof'): (
             'eof'
         ),
-        ('iO', 'resolveBlob', 'uuid'): (
+        ('io', 'resolve_blob', 'uuid'): (
             'uuid'
         ),
-        ('indexedDB', 'requestData', 'objectStoreDataEntries'): (
+        ('indexed_db', 'request_data', 'objectStoreDataEntries'): (
             'object_store_data_entries'
         ),
-        ('indexedDB', 'requestData', 'hasMore'): (
+        ('indexed_db', 'request_data', 'hasMore'): (
             'has_more'
         ),
-        ('indexedDB', 'getMetadata', 'entriesCount'): (
+        ('indexed_db', 'get_metadata', 'entriesCount'): (
             'entries_count'
         ),
-        ('indexedDB', 'getMetadata', 'keyGeneratorValue'): (
+        ('indexed_db', 'get_metadata', 'keyGeneratorValue'): (
             'key_generator_value'
         ),
-        ('indexedDB', 'requestDatabase', 'databaseWithObjectStores'): (
+        ('indexed_db', 'request_database', 'databaseWithObjectStores'): (
             'database_with_object_stores'
         ),
-        ('indexedDB', 'requestDatabaseNames', 'databaseNames'): (
+        ('indexed_db', 'request_database_names', 'databaseNames'): (
             'database_names'
         ),
-        ('layerTree', 'compositingReasons', 'compositingReasons'): (
+        ('layer_tree', 'compositing_reasons', 'compositingReasons'): (
             'compositing_reasons'
         ),
-        ('layerTree', 'compositingReasons', 'compositingReasonIds'): (
+        ('layer_tree', 'compositing_reasons', 'compositingReasonIds'): (
             'compositing_reason_ids'
         ),
-        ('layerTree', 'loadSnapshot', 'snapshotId'): (
+        ('layer_tree', 'load_snapshot', 'snapshotId'): (
             'snapshot_id'
         ),
-        ('layerTree', 'makeSnapshot', 'snapshotId'): (
+        ('layer_tree', 'make_snapshot', 'snapshotId'): (
             'snapshot_id'
         ),
-        ('layerTree', 'profileSnapshot', 'timings'): (
+        ('layer_tree', 'profile_snapshot', 'timings'): (
             'timings'
         ),
-        ('layerTree', 'replaySnapshot', 'dataURL'): (
+        ('layer_tree', 'replay_snapshot', 'dataURL'): (
             'data_url'
         ),
-        ('layerTree', 'snapshotCommandLog', 'commandLog'): (
+        ('layer_tree', 'snapshot_command_log', 'commandLog'): (
             'command_log'
         ),
-        ('memory', 'getDOMCounters', 'documents'): (
+        ('memory', 'get_dom_counters', 'documents'): (
             'documents'
         ),
-        ('memory', 'getDOMCounters', 'nodes'): (
+        ('memory', 'get_dom_counters', 'nodes'): (
             'nodes'
         ),
-        ('memory', 'getDOMCounters', 'jsEventListeners'): (
+        ('memory', 'get_dom_counters', 'jsEventListeners'): (
             'js_event_listeners'
         ),
-        ('memory', 'getAllTimeSamplingProfile', 'profile'): (
+        ('memory', 'get_all_time_sampling_profile', 'profile'): (
             'profile'
         ),
-        ('memory', 'getBrowserSamplingProfile', 'profile'): (
+        ('memory', 'get_browser_sampling_profile', 'profile'): (
             'profile'
         ),
-        ('memory', 'getSamplingProfile', 'profile'): (
+        ('memory', 'get_sampling_profile', 'profile'): (
             'profile'
         ),
-        ('network', 'canClearBrowserCache', 'result'): (
+        ('network', 'can_clear_browser_cache', 'result'): (
             'result'
         ),
-        ('network', 'canClearBrowserCookies', 'result'): (
+        ('network', 'can_clear_browser_cookies', 'result'): (
             'result'
         ),
-        ('network', 'canEmulateNetworkConditions', 'result'): (
+        ('network', 'can_emulate_network_conditions', 'result'): (
             'result'
         ),
-        ('network', 'getAllCookies', 'cookies'): (
+        ('network', 'get_all_cookies', 'cookies'): (
             'cookies'
         ),
-        ('network', 'getCertificate', 'tableNames'): (
+        ('network', 'get_certificate', 'tableNames'): (
             'table_names'
         ),
-        ('network', 'getCookies', 'cookies'): (
+        ('network', 'get_cookies', 'cookies'): (
             'cookies'
         ),
-        ('network', 'getResponseBody', 'body'): (
+        ('network', 'get_response_body', 'body'): (
             'body'
         ),
-        ('network', 'getResponseBody', 'base64Encoded'): (
+        ('network', 'get_response_body', 'base64Encoded'): (
             'base64_encoded'
         ),
-        ('network', 'getRequestPostData', 'postData'): (
+        ('network', 'get_request_post_data', 'postData'): (
             'post_data'
         ),
-        ('network', 'getResponseBodyForInterception', 'body'): (
+        ('network', 'get_response_body_for_interception', 'body'): (
             'body'
         ),
-        ('network', 'getResponseBodyForInterception', 'base64Encoded'): (
+        ('network', 'get_response_body_for_interception', 'base64Encoded'): (
             'base64_encoded'
         ),
-        ('network', 'takeResponseBodyForInterceptionAsStream', 'stream'): (
+        ('network', 'take_response_body_for_interception_as_stream', 'stream'): (
             'stream'
         ),
-        ('network', 'searchInResponseBody', 'result'): (
+        ('network', 'search_in_response_body', 'result'): (
             'result'
         ),
-        ('network', 'setCookie', 'success'): (
+        ('network', 'set_cookie', 'success'): (
             'success'
         ),
-        ('network', 'getSecurityIsolationStatus', 'status'): (
+        ('network', 'get_security_isolation_status', 'status'): (
             'status'
         ),
-        ('network', 'loadNetworkResource', 'resource'): (
+        ('network', 'load_network_resource', 'resource'): (
             'resource'
         ),
-        ('overlay', 'getHighlightObjectForTest', 'highlight'): (
+        ('overlay', 'get_highlight_object_for_test', 'highlight'): (
             'highlight'
         ),
-        ('overlay', 'getGridHighlightObjectsForTest', 'highlights'): (
+        ('overlay', 'get_grid_highlight_objects_for_test', 'highlights'): (
             'highlights'
         ),
-        ('overlay', 'getSourceOrderHighlightObjectForTest', 'highlight'): (
+        ('overlay', 'get_source_order_highlight_object_for_test', 'highlight'): (
             'highlight'
         ),
-        ('page', 'addScriptToEvaluateOnLoad', 'identifier'): (
+        ('page', 'add_script_to_evaluate_on_load', 'identifier'): (
             'identifier'
         ),
-        ('page', 'addScriptToEvaluateOnNewDocument', 'identifier'): (
+        ('page', 'add_script_to_evaluate_on_new_document', 'identifier'): (
             'identifier'
         ),
-        ('page', 'captureScreenshot', 'data'): (
+        ('page', 'capture_screenshot', 'data'): (
             'data'
         ),
-        ('page', 'captureSnapshot', 'data'): (
+        ('page', 'capture_snapshot', 'data'): (
             'data'
         ),
-        ('page', 'createIsolatedWorld', 'executionContextId'): (
+        ('page', 'create_isolated_world', 'executionContextId'): (
             'execution_context_id'
         ),
-        ('page', 'getAppManifest', 'url'): (
+        ('page', 'get_app_manifest', 'url'): (
             'url'
         ),
-        ('page', 'getAppManifest', 'errors'): (
+        ('page', 'get_app_manifest', 'errors'): (
             'errors'
         ),
-        ('page', 'getAppManifest', 'data'): (
+        ('page', 'get_app_manifest', 'data'): (
             'data'
         ),
-        ('page', 'getAppManifest', 'parsed'): (
+        ('page', 'get_app_manifest', 'parsed'): (
             'parsed'
         ),
-        ('page', 'getInstallabilityErrors', 'installabilityErrors'): (
+        ('page', 'get_installability_errors', 'installabilityErrors'): (
             'installability_errors'
         ),
-        ('page', 'getManifestIcons', 'primaryIcon'): (
+        ('page', 'get_manifest_icons', 'primaryIcon'): (
             'primary_icon'
         ),
-        ('page', 'getAppId', 'appId'): (
+        ('page', 'get_app_id', 'appId'): (
             'app_id'
         ),
-        ('page', 'getAppId', 'recommendedId'): (
+        ('page', 'get_app_id', 'recommendedId'): (
             'recommended_id'
         ),
-        ('page', 'getAdScriptId', 'adScriptId'): (
+        ('page', 'get_ad_script_id', 'adScriptId'): (
             'ad_script_id'
         ),
-        ('page', 'getCookies', 'cookies'): (
+        ('page', 'get_cookies', 'cookies'): (
             'cookies'
         ),
-        ('page', 'getFrameTree', 'frameTree'): (
+        ('page', 'get_frame_tree', 'frameTree'): (
             'frame_tree'
         ),
-        ('page', 'getLayoutMetrics', 'layoutViewport'): (
+        ('page', 'get_layout_metrics', 'layoutViewport'): (
             'layout_viewport'
         ),
-        ('page', 'getLayoutMetrics', 'visualViewport'): (
+        ('page', 'get_layout_metrics', 'visualViewport'): (
             'visual_viewport'
         ),
-        ('page', 'getLayoutMetrics', 'contentSize'): (
+        ('page', 'get_layout_metrics', 'contentSize'): (
             'content_size'
         ),
-        ('page', 'getLayoutMetrics', 'cssLayoutViewport'): (
+        ('page', 'get_layout_metrics', 'cssLayoutViewport'): (
             'css_layout_viewport'
         ),
-        ('page', 'getLayoutMetrics', 'cssVisualViewport'): (
+        ('page', 'get_layout_metrics', 'cssVisualViewport'): (
             'css_visual_viewport'
         ),
-        ('page', 'getLayoutMetrics', 'cssContentSize'): (
+        ('page', 'get_layout_metrics', 'cssContentSize'): (
             'css_content_size'
         ),
-        ('page', 'getNavigationHistory', 'currentIndex'): (
+        ('page', 'get_navigation_history', 'currentIndex'): (
             'current_index'
         ),
-        ('page', 'getNavigationHistory', 'entries'): (
+        ('page', 'get_navigation_history', 'entries'): (
             'entries'
         ),
-        ('page', 'getResourceContent', 'content'): (
+        ('page', 'get_resource_content', 'content'): (
             'content'
         ),
-        ('page', 'getResourceContent', 'base64Encoded'): (
+        ('page', 'get_resource_content', 'base64Encoded'): (
             'base64_encoded'
         ),
-        ('page', 'getResourceTree', 'frameTree'): (
+        ('page', 'get_resource_tree', 'frameTree'): (
             'frame_tree'
         ),
         ('page', 'navigate', 'frameId'): (
@@ -8162,235 +8162,235 @@ command_return_properties = {
         ('page', 'navigate', 'errorText'): (
             'error_text'
         ),
-        ('page', 'printToPDF', 'data'): (
+        ('page', 'print_to_pdf', 'data'): (
             'data'
         ),
-        ('page', 'printToPDF', 'stream'): (
+        ('page', 'print_to_pdf', 'stream'): (
             'stream'
         ),
-        ('page', 'searchInResource', 'result'): (
+        ('page', 'search_in_resource', 'result'): (
             'result'
         ),
-        ('page', 'getPermissionsPolicyState', 'states'): (
+        ('page', 'get_permissions_policy_state', 'states'): (
             'states'
         ),
-        ('page', 'getOriginTrials', 'originTrials'): (
+        ('page', 'get_origin_trials', 'originTrials'): (
             'origin_trials'
         ),
-        ('performance', 'getMetrics', 'metrics'): (
+        ('performance', 'get_metrics', 'metrics'): (
             'metrics'
         ),
-        ('storage', 'getStorageKeyForFrame', 'storageKey'): (
+        ('storage', 'get_storage_key_for_frame', 'storageKey'): (
             'storage_key'
         ),
-        ('storage', 'getCookies', 'cookies'): (
+        ('storage', 'get_cookies', 'cookies'): (
             'cookies'
         ),
-        ('storage', 'getUsageAndQuota', 'usage'): (
+        ('storage', 'get_usage_and_quota', 'usage'): (
             'usage'
         ),
-        ('storage', 'getUsageAndQuota', 'quota'): (
+        ('storage', 'get_usage_and_quota', 'quota'): (
             'quota'
         ),
-        ('storage', 'getUsageAndQuota', 'overrideActive'): (
+        ('storage', 'get_usage_and_quota', 'overrideActive'): (
             'override_active'
         ),
-        ('storage', 'getUsageAndQuota', 'usageBreakdown'): (
+        ('storage', 'get_usage_and_quota', 'usageBreakdown'): (
             'usage_breakdown'
         ),
-        ('storage', 'getTrustTokens', 'tokens'): (
+        ('storage', 'get_trust_tokens', 'tokens'): (
             'tokens'
         ),
-        ('storage', 'clearTrustTokens', 'didDeleteTokens'): (
+        ('storage', 'clear_trust_tokens', 'didDeleteTokens'): (
             'did_delete_tokens'
         ),
-        ('storage', 'getInterestGroupDetails', 'details'): (
+        ('storage', 'get_interest_group_details', 'details'): (
             'details'
         ),
-        ('storage', 'getSharedStorageMetadata', 'metadata'): (
+        ('storage', 'get_shared_storage_metadata', 'metadata'): (
             'metadata'
         ),
-        ('storage', 'getSharedStorageEntries', 'entries'): (
+        ('storage', 'get_shared_storage_entries', 'entries'): (
             'entries'
         ),
-        ('storage', 'runBounceTrackingMitigations', 'deletedSites'): (
+        ('storage', 'run_bounce_tracking_mitigations', 'deletedSites'): (
             'deleted_sites'
         ),
-        ('systemInfo', 'getInfo', 'gpu'): (
+        ('system_info', 'get_info', 'gpu'): (
             'gpu'
         ),
-        ('systemInfo', 'getInfo', 'modelName'): (
+        ('system_info', 'get_info', 'modelName'): (
             'model_name'
         ),
-        ('systemInfo', 'getInfo', 'modelVersion'): (
+        ('system_info', 'get_info', 'modelVersion'): (
             'model_version'
         ),
-        ('systemInfo', 'getInfo', 'commandLine'): (
+        ('system_info', 'get_info', 'commandLine'): (
             'command_line'
         ),
-        ('systemInfo', 'getFeatureState', 'featureEnabled'): (
+        ('system_info', 'get_feature_state', 'featureEnabled'): (
             'feature_enabled'
         ),
-        ('systemInfo', 'getProcessInfo', 'processInfo'): (
+        ('system_info', 'get_process_info', 'processInfo'): (
             'process_info'
         ),
-        ('target', 'attachToTarget', 'sessionId'): (
+        ('target', 'attach_to_target', 'sessionId'): (
             'session_id'
         ),
-        ('target', 'attachToBrowserTarget', 'sessionId'): (
+        ('target', 'attach_to_browser_target', 'sessionId'): (
             'session_id'
         ),
-        ('target', 'closeTarget', 'success'): (
+        ('target', 'close_target', 'success'): (
             'success'
         ),
-        ('target', 'createBrowserContext', 'browserContextId'): (
+        ('target', 'create_browser_context', 'browserContextId'): (
             'browser_context_id'
         ),
-        ('target', 'getBrowserContexts', 'browserContextIds'): (
+        ('target', 'get_browser_contexts', 'browserContextIds'): (
             'browser_context_ids'
         ),
-        ('target', 'createTarget', 'targetId'): (
+        ('target', 'create_target', 'targetId'): (
             'target_id'
         ),
-        ('target', 'getTargetInfo', 'targetInfo'): (
+        ('target', 'get_target_info', 'targetInfo'): (
             'target_info'
         ),
-        ('target', 'getTargets', 'targetInfos'): (
+        ('target', 'get_targets', 'targetInfos'): (
             'target_infos'
         ),
-        ('tracing', 'getCategories', 'categories'): (
+        ('tracing', 'get_categories', 'categories'): (
             'categories'
         ),
-        ('tracing', 'requestMemoryDump', 'dumpGuid'): (
+        ('tracing', 'request_memory_dump', 'dumpGuid'): (
             'dump_guid'
         ),
-        ('tracing', 'requestMemoryDump', 'success'): (
+        ('tracing', 'request_memory_dump', 'success'): (
             'success'
         ),
-        ('fetch', 'getResponseBody', 'body'): (
+        ('fetch', 'get_response_body', 'body'): (
             'body'
         ),
-        ('fetch', 'getResponseBody', 'base64Encoded'): (
+        ('fetch', 'get_response_body', 'base64Encoded'): (
             'base64_encoded'
         ),
-        ('fetch', 'takeResponseBodyAsStream', 'stream'): (
+        ('fetch', 'take_response_body_as_stream', 'stream'): (
             'stream'
         ),
-        ('webAudio', 'getRealtimeData', 'realtimeData'): (
+        ('web_audio', 'get_realtime_data', 'realtimeData'): (
             'realtime_data'
         ),
-        ('webAuthn', 'addVirtualAuthenticator', 'authenticatorId'): (
+        ('web_authn', 'add_virtual_authenticator', 'authenticatorId'): (
             'authenticator_id'
         ),
-        ('webAuthn', 'getCredential', 'credential'): (
+        ('web_authn', 'get_credential', 'credential'): (
             'credential'
         ),
-        ('webAuthn', 'getCredentials', 'credentials'): (
+        ('web_authn', 'get_credentials', 'credentials'): (
             'credentials'
         ),
         ('debugger', 'enable', 'debuggerId'): (
             'debugger_id'
         ),
-        ('debugger', 'evaluateOnCallFrame', 'result'): (
+        ('debugger', 'evaluate_on_call_frame', 'result'): (
             'result'
         ),
-        ('debugger', 'evaluateOnCallFrame', 'exceptionDetails'): (
+        ('debugger', 'evaluate_on_call_frame', 'exceptionDetails'): (
             'exception_details'
         ),
-        ('debugger', 'getPossibleBreakpoints', 'locations'): (
+        ('debugger', 'get_possible_breakpoints', 'locations'): (
             'locations'
         ),
-        ('debugger', 'getScriptSource', 'scriptSource'): (
+        ('debugger', 'get_script_source', 'scriptSource'): (
             'script_source'
         ),
-        ('debugger', 'getStackTrace', 'stackTrace'): (
+        ('debugger', 'get_stack_trace', 'stackTrace'): (
             'stack_trace'
         ),
-        ('debugger', 'restartFrame', 'callFrames'): (
+        ('debugger', 'restart_frame', 'callFrames'): (
             'call_frames'
         ),
-        ('debugger', 'restartFrame', 'asyncStackTrace'): (
+        ('debugger', 'restart_frame', 'asyncStackTrace'): (
             'async_stack_trace'
         ),
-        ('debugger', 'restartFrame', 'asyncStackTraceId'): (
+        ('debugger', 'restart_frame', 'asyncStackTraceId'): (
             'async_stack_trace_id'
         ),
-        ('debugger', 'searchInContent', 'result'): (
+        ('debugger', 'search_in_content', 'result'): (
             'result'
         ),
-        ('debugger', 'setBreakpoint', 'breakpointId'): (
+        ('debugger', 'set_breakpoint', 'breakpointId'): (
             'breakpoint_id'
         ),
-        ('debugger', 'setBreakpoint', 'actualLocation'): (
+        ('debugger', 'set_breakpoint', 'actualLocation'): (
             'actual_location'
         ),
-        ('debugger', 'setInstrumentationBreakpoint', 'breakpointId'): (
+        ('debugger', 'set_instrumentation_breakpoint', 'breakpointId'): (
             'breakpoint_id'
         ),
-        ('debugger', 'setBreakpointByUrl', 'breakpointId'): (
+        ('debugger', 'set_breakpoint_by_url', 'breakpointId'): (
             'breakpoint_id'
         ),
-        ('debugger', 'setBreakpointByUrl', 'locations'): (
+        ('debugger', 'set_breakpoint_by_url', 'locations'): (
             'locations'
         ),
-        ('debugger', 'setBreakpointOnFunctionCall', 'breakpointId'): (
+        ('debugger', 'set_breakpoint_on_function_call', 'breakpointId'): (
             'breakpoint_id'
         ),
-        ('debugger', 'setScriptSource', 'callFrames'): (
+        ('debugger', 'set_script_source', 'callFrames'): (
             'call_frames'
         ),
-        ('debugger', 'setScriptSource', 'stackChanged'): (
+        ('debugger', 'set_script_source', 'stackChanged'): (
             'stack_changed'
         ),
-        ('debugger', 'setScriptSource', 'asyncStackTrace'): (
+        ('debugger', 'set_script_source', 'asyncStackTrace'): (
             'async_stack_trace'
         ),
-        ('debugger', 'setScriptSource', 'asyncStackTraceId'): (
+        ('debugger', 'set_script_source', 'asyncStackTraceId'): (
             'async_stack_trace_id'
         ),
-        ('debugger', 'setScriptSource', 'exceptionDetails'): (
+        ('debugger', 'set_script_source', 'exceptionDetails'): (
             'exception_details'
         ),
-        ('heapProfiler', 'getHeapObjectId', 'heapSnapshotObjectId'): (
+        ('heap_profiler', 'get_heap_object_id', 'heapSnapshotObjectId'): (
             'heap_snapshot_object_id'
         ),
-        ('heapProfiler', 'getObjectByHeapObjectId', 'result'): (
+        ('heap_profiler', 'get_object_by_heap_object_id', 'result'): (
             'result'
         ),
-        ('heapProfiler', 'getSamplingProfile', 'profile'): (
+        ('heap_profiler', 'get_sampling_profile', 'profile'): (
             'profile'
         ),
-        ('heapProfiler', 'stopSampling', 'profile'): (
+        ('heap_profiler', 'stop_sampling', 'profile'): (
             'profile'
         ),
-        ('profiler', 'getBestEffortCoverage', 'result'): (
+        ('profiler', 'get_best_effort_coverage', 'result'): (
             'result'
         ),
         ('profiler', 'stop', 'profile'): (
             'profile'
         ),
-        ('profiler', 'takePreciseCoverage', 'result'): (
+        ('profiler', 'take_precise_coverage', 'result'): (
             'result'
         ),
-        ('profiler', 'takeTypeProfile', 'result'): (
+        ('profiler', 'take_type_profile', 'result'): (
             'result'
         ),
-        ('runtime', 'awaitPromise', 'result'): (
+        ('runtime', 'await_promise', 'result'): (
             'result'
         ),
-        ('runtime', 'awaitPromise', 'exceptionDetails'): (
+        ('runtime', 'await_promise', 'exceptionDetails'): (
             'exception_details'
         ),
-        ('runtime', 'callFunctionOn', 'result'): (
+        ('runtime', 'call_function_on', 'result'): (
             'result'
         ),
-        ('runtime', 'callFunctionOn', 'exceptionDetails'): (
+        ('runtime', 'call_function_on', 'exceptionDetails'): (
             'exception_details'
         ),
-        ('runtime', 'compileScript', 'scriptId'): (
+        ('runtime', 'compile_script', 'scriptId'): (
             'script_id'
         ),
-        ('runtime', 'compileScript', 'exceptionDetails'): (
+        ('runtime', 'compile_script', 'exceptionDetails'): (
             'exception_details'
         ),
         ('runtime', 'evaluate', 'result'): (
@@ -8399,40 +8399,40 @@ command_return_properties = {
         ('runtime', 'evaluate', 'exceptionDetails'): (
             'exception_details'
         ),
-        ('runtime', 'getIsolateId', 'id'): (
+        ('runtime', 'get_isolate_id', 'id'): (
             'id'
         ),
-        ('runtime', 'getHeapUsage', 'usedSize'): (
+        ('runtime', 'get_heap_usage', 'usedSize'): (
             'used_size'
         ),
-        ('runtime', 'getHeapUsage', 'totalSize'): (
+        ('runtime', 'get_heap_usage', 'totalSize'): (
             'total_size'
         ),
-        ('runtime', 'getProperties', 'result'): (
+        ('runtime', 'get_properties', 'result'): (
             'result'
         ),
-        ('runtime', 'getProperties', 'internalProperties'): (
+        ('runtime', 'get_properties', 'internalProperties'): (
             'internal_properties'
         ),
-        ('runtime', 'getProperties', 'privateProperties'): (
+        ('runtime', 'get_properties', 'privateProperties'): (
             'private_properties'
         ),
-        ('runtime', 'getProperties', 'exceptionDetails'): (
+        ('runtime', 'get_properties', 'exceptionDetails'): (
             'exception_details'
         ),
-        ('runtime', 'globalLexicalScopeNames', 'names'): (
+        ('runtime', 'global_lexical_scope_names', 'names'): (
             'names'
         ),
-        ('runtime', 'queryObjects', 'objects'): (
+        ('runtime', 'query_objects', 'objects'): (
             'objects'
         ),
-        ('runtime', 'runScript', 'result'): (
+        ('runtime', 'run_script', 'result'): (
             'result'
         ),
-        ('runtime', 'runScript', 'exceptionDetails'): (
+        ('runtime', 'run_script', 'exceptionDetails'): (
             'exception_details'
         ),
-        ('schema', 'getDomains', 'domains'): (
+        ('schema', 'get_domains', 'domains'): (
             'domains'
         ),
     },

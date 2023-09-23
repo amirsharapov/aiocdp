@@ -1,8 +1,9 @@
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Optional, Callable
 
-from cdp.domains.domains import Domains
-from cdp.target.connection import Connection, IFutureResponse
+from cdp.domains import Domains
+from cdp.connection.connection import Connection
+from cdp.connection.response import PendingResponse
 
 if TYPE_CHECKING:
     from cdp.chrome import Chrome
@@ -53,11 +54,7 @@ class Target:
         result = self.domains.target.attach_to_target({
             'target_id': self.id,
             'flatten': True
-        })
-
-        self.domains.target.attach_to_target(
-            target_id=self.id,
-        )
+        }).get()
 
         self.active_session_id = result['session_id']
 
@@ -65,11 +62,13 @@ class Target:
             self,
             method: str,
             params: dict,
-    ) -> IFutureResponse:
+            response_middlewares: list[Callable] = None
+    ) -> PendingResponse:
         if self.active_session_id:
             params['sessionId'] = self.active_session_id
 
         return self.connection.send_request(
             method,
             params,
+            response_middlewares
         )

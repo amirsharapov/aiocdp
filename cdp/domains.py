@@ -1,10 +1,10 @@
 from dataclasses import field, dataclass
 from typing import TYPE_CHECKING
 
-from cdp.domains.domain import Domain
+from cdp.domain import Domain
 
 if TYPE_CHECKING:
-    from cdp.target.target import Target
+    from cdp.target import Target
 
 
 @dataclass
