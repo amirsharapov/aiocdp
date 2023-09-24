@@ -47,7 +47,7 @@ class Target:
         self.active_session_id = None
 
     async def connect(self):
-        return await self.connection.connect()
+        await self.connection.connect()
 
     async def open_session(self):
         result = await self.domains.target.attach_to_target({

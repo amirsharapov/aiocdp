@@ -59,9 +59,9 @@ class Connection:
 
             while True:
                 message = await ws.recv()
-                self._on_message(message)
+                await self._on_message(message)
 
-    def _on_message(self, message: str):
+    async def _on_message(self, message: str):
         message = json.loads(message)
 
         print("MSG: ", message)
@@ -90,7 +90,7 @@ class Connection:
 
         else:
             for stream in self.event_streams[message['method']]:
-                stream.publish(message)
+                await stream.publish(message)
 
     async def connect(self):
         loop = asyncio.get_event_loop()
