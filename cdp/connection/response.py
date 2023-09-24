@@ -15,7 +15,7 @@ class PendingResponse(Generic[_T]):
     future: Optional[asyncio.Future]
     middleware: list[Callable]
 
-    async def _get(self, timeout: int = 10):
+    async def _get(self, timeout: int):
         try:
             return await asyncio.wait_for(
                 self.future,
@@ -29,7 +29,7 @@ class PendingResponse(Generic[_T]):
     def add_middleware(self, middleware: Callable[[_T], _T]):
         self.middleware.append(middleware)
 
-    def get(self) -> _T:
+    def get(self, timeout: int = 10) -> _T:
         loop = asyncio.get_event_loop()
 
         if self.future is None:
@@ -40,7 +40,9 @@ class PendingResponse(Generic[_T]):
 
         else:
             value = loop.run_until_complete(
-                self._get()
+                self._get(
+                    timeout=timeout
+                )
             )
 
         for middleware in self.middleware:

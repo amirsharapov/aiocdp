@@ -54,7 +54,9 @@ class Target:
         result = self.domains.target.attach_to_target({
             'target_id': self.id,
             'flatten': True
-        }).get()
+        })
+
+        result = result.get()
 
         self.active_session_id = result['session_id']
 
@@ -62,6 +64,7 @@ class Target:
             self,
             method: str,
             params: dict,
+            expect_response: bool = True,
             response_middlewares: list[Callable] = None
     ) -> PendingResponse:
         if self.active_session_id:
@@ -70,5 +73,6 @@ class Target:
         return self.connection.send_request(
             method,
             params,
+            expect_response,
             response_middlewares
         )

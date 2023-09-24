@@ -411,6 +411,35 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += 'return '
         self.visit(node.value)
 
+    def visit_Set(self, node: ast.Set) -> Any:
+        render_context = get_render_context(node)
+
+        self.source += '{'
+
+        if render_context['expand']:
+            self.source += '\n'
+
+        with self._indent_context():
+            for i, element in enumerate(node.elts):
+                if render_context['expand']:
+                    self.source += self.indent
+
+                self.visit(element)
+
+                if i != len(node.elts) - 1:
+                    self.source += ','
+
+                    if render_context['expand']:
+                        self.source += '\n'
+                    else:
+                        self.source += ' '
+
+        if render_context['expand']:
+            self.source += '\n'
+            self.source += self.indent
+
+        self.source += '}'
+
     def visit_Subscript(self, node: ast.Subscript) -> Any:
         render_context = get_render_context(node)
 

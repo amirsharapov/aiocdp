@@ -1,5 +1,5 @@
 from . import (
-    mapping,
+    constants,
     domains,
     types
 )

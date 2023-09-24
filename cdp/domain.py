@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from cdp.generated import mapping
+from cdp.generated import constants
 
 if TYPE_CHECKING:
     from cdp.domains import Domains
@@ -28,7 +28,7 @@ def command_params_properties_to_camel(
     new_params = {}
 
     for key, value in params.items():
-        key = mapping.command_params_properties['snake:snake:snake:camel'].get(
+        key = constants.command_params_properties['snake:snake:snake:camel'].get(
             (domain, method, key),
             key
         )
@@ -46,7 +46,7 @@ def command_return_properties_to_snake(
     new_return = {}
 
     for key, value in return_.items():
-        key = mapping.command_return_properties['snake:snake:camel:snake'].get(
+        key = constants.command_return_properties['snake:snake:camel:snake'].get(
             (domain, method, key),
             key
         )
@@ -69,12 +69,12 @@ class Method:
     )
 
     def __post_init__(self):
-        self.cdp_domain = mapping.domain_names['snake:pascal'].get(
+        self.cdp_domain = constants.domain_names['snake:pascal'].get(
             self.domain.name,
             self.domain.name
         )
 
-        self.cdp_method = mapping.command_names['snake:snake:camel'].get(
+        self.cdp_method = constants.command_names['snake:snake:camel'].get(
             (self.domain.name, self.name),
             self.name
         )
@@ -101,9 +101,12 @@ class Method:
             params
         )
 
+        method = f'{self.cdp_domain}.{self.cdp_method}'
+
         return self.domain.domains.ws_target.send_command(
-            f'{self.cdp_domain}.{self.cdp_method}',
+            method,
             params,
+            method in constants.commands_with_responses,
             [
                 self.response_middleware
             ]

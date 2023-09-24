@@ -48,10 +48,10 @@ def main():
             module.source
         )
 
-    module = ast.modules.mapping.generate(domains)
+    module = ast.modules.constants.generate(domains)
     module = SourceCodeGenerator().generate(module)
 
-    Path(f'cdp/generated/mapping.py').write_text(
+    Path(f'cdp/generated/constants.py').write_text(
         GENERATED_MODULE_HEADER +
         module.source
     )

@@ -195,6 +195,28 @@ def _command_return_properties(domains: Iterable['Domain']):
     )
 
 
+def _commands_with_responses(domains: Iterable['Domain']):
+    return ast.Assign(
+        targets=[ast.Name('commands_with_responses')],
+        value=ast.Set(
+            elts=[
+                ast.Constant(
+                    f'{domain.domain.pascal_case}.{command.name.camel_case}'
+                ) for
+                domain in domains for
+                command in domain.commands if
+                command.returns
+            ],
+            render_context={
+                'expand': True,
+            }
+        ),
+        render_context={
+            'lines_before': 2,
+        }
+    )
+
+
 def _event_names(domains: Iterable['Domain']):
     camel_to_snake = ast.Dict(
         keys=[],
@@ -284,6 +306,7 @@ def generate(domains: Iterable[Domain]):
         _command_names(domains),
         _command_params_properties(domains),
         _command_return_properties(domains),
+        _commands_with_responses(domains),
         _event_names(domains),
         _event_params_properties(domains)
     ])

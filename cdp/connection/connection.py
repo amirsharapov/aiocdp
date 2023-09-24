@@ -65,7 +65,7 @@ class Connection:
         message = json.loads(message)
 
         if 'id' in message:
-            future = self.in_flight_futures[message['id']]
+            future = self.in_flight_futures.pop(message['id'])
 
             if 'error' in message and message['error']:
                 error = message['error']
@@ -118,6 +118,7 @@ class Connection:
             self,
             method: str,
             params: dict,
+            expect_response: bool = True,
             response_middlewares: list[callable] = None
     ) -> PendingResponse:
         loop = asyncio.get_event_loop()
@@ -133,7 +134,11 @@ class Connection:
 
         future = loop.create_future()
 
-        self.in_flight_futures[request_id] = future
+        if expect_response:
+            self.in_flight_futures[request_id] = future
+
+        else:
+            future.set_result(None)
 
         try:
             coroutine = self.ws.send(request)

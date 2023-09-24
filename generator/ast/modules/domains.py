@@ -49,6 +49,12 @@ def _type_checked_imports(domains: Iterable['Domain']):
             ]
         ),
         ast.ImportFrom(
+            module='cdp.connection.response',
+            names=[
+                ast.alias('PendingResponse')
+            ]
+        ),
+        ast.ImportFrom(
             module='cdp.generated.types',
             names=aliases
         )
@@ -73,6 +79,23 @@ def _domain(domain: 'Domain'):
     )
 
     for command in domain.commands:
+        if command.returns:
+            returns = ast.Name(
+                command.domain.domain.snake_case + '.' +
+                command.name.pascal_case + 'ReturnT'
+            )
+        else:
+            returns = ast.Name(
+                'None'
+            )
+
+        returns = ast.Subscript(
+            value=ast.Name('PendingResponse'),
+            slice=ast.Index(
+                value=returns
+            )
+        )
+
         method_with_kwargs = ast.FunctionDef(
             name=command.name.snake_case,
             args=ast.arguments(
@@ -92,6 +115,7 @@ def _domain(domain: 'Domain'):
             decorator_list=[
                 ast.Name('overload')
             ],
+            returns=returns,
             render_context={
                 'lines_before': 1
             }
@@ -105,7 +129,7 @@ def _domain(domain: 'Domain'):
             )
 
         for parameter in command.parameters:
-            annotation = ast.Constant(
+            annotation = ast.Name(
                 parameter.type.python_type.__name__ or
                 f'{parameter.ref.type.domain.domain.snake_case}.{parameter.ref.type.id}'
             )
@@ -142,7 +166,7 @@ def _domain(domain: 'Domain'):
                         ast.arg('self'),
                         ast.arg(
                             arg='params',
-                            annotation=ast.Constant(f'{domain.domain.snake_case}.{command.name.pascal_case}ParamsT')
+                            annotation=ast.Name(f'{domain.domain.snake_case}.{command.name.pascal_case}ParamsT')
                         )
                     ],
                     defaults=[],
@@ -156,6 +180,7 @@ def _domain(domain: 'Domain'):
                 decorator_list=[
                     ast.Name('overload')
                 ],
+                returns=returns,
                 render_context={
                     'lines_before': 1
                 }
@@ -203,7 +228,7 @@ def generate(domains: Iterable['Domain']):
         domains_definition.body.append(
             ast.AnnAssign(
                 target=ast.Name(domain.domain.snake_case),
-                annotation=ast.Constant(domain.domain.pascal_case),
+                annotation=ast.Name(domain.domain.pascal_case),
                 value=ast.Call(
                     func=ast.Name('field'),
                     keywords=[
