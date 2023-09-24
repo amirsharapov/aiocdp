@@ -1,5 +1,6 @@
 import asyncio
 import json
+import time
 from asyncio import Future
 from collections import defaultdict
 from dataclasses import dataclass, field
@@ -63,10 +64,8 @@ class Connection:
     def _on_message(self, message: str):
         message = json.loads(message)
 
-        print(json.dumps(
-            message,
-            indent=4
-        ))
+        print("MSG: ", message)
+        print("TS:  ", time.time())
 
         if 'id' in message:
             future = self.in_flight_futures.pop(message['id'], None)

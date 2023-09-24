@@ -18,14 +18,26 @@ class Tests(TestCase):
             await target.connect()
             await target.open_session()
 
+            await target.domains.debugger.enable()
+
+            await target.domains.runtime.enable()
+            await target.domains.page.enable()
             await target.domains.network.enable()
 
-            result = await target.domains.page.navigate(
-                url='https://youtube.com'
+            result = {
+                'error_text': None
+            }
+
+            while 'error_text' in result:
+                time.sleep(.3)
+                result = await target.domains.page.navigate(
+                    url='https://google.com'
+                )
+
+            result = await target.domains.runtime.evaluate(
+                expression='r = document.querySelector("form"); console.log(r)'
             )
 
             print(result)
 
-            time.sleep(1)
-
-        asyncio.run(_())
+        asyncio.get_event_loop().run_until_complete(_())
