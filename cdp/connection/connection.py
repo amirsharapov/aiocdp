@@ -18,6 +18,24 @@ def _next_rpc_id():
     return _id
 
 
+def _validate_response(response: dict):
+    if 'error' in response and response['error']:
+        error = response['error']
+        raise Exception(
+            'Received the following error: '
+            f'Err Code: {error["code"]}, '
+            f'Err Message: {error["message"]}, '
+            f'Raw Message: {response}'
+        )
+
+
+async def _wrap_future(future: asyncio.Future):
+    result = await future
+
+    if 'result' in result:
+        return result['result']
+
+
 @dataclass
 class Connection:
     event_streams: defaultdict[str, list[EventStream]] = field(
@@ -45,47 +63,57 @@ class Connection:
 
     def __post_init__(self):
         self.event_streams = defaultdict(list)
-        self._in_flight_futures = {}
-        self._ws = None
+        self.in_flight_futures = {}
+        self.ws = None
         self.ws_connected = None
         self.ws_listener = None
 
+    async def _handle_event(self, event: dict):
+        for stream in self.event_streams[event['method']]:
+            await stream.publish(event)
+
+    async def _handle_message(self, message: str):
+        message = json.loads(message)
+
+        if 'id' in message:
+            return await self._handle_response(
+                message
+            )
+
+        else:
+            return await self._handle_event(
+                message
+            )
+
+    async def _handle_response(self, response: dict):
+        future = self.in_flight_futures.pop(
+            response['id'],
+            None
+        )
+
+        if future is None:
+            return
+
+        try:
+            _validate_response(
+                response
+            )
+
+            future.set_result(
+                response
+            )
+
+        except Exception as e:
+            future.set_exception(e)
+
     async def _listen_async(self):
         async with websockets.connect(self.ws_url) as ws:
-            self._ws = ws
+            self.ws = ws
             self.ws_connected.set_result(None)
 
             while True:
                 message = await ws.recv()
-                self._on_message(message)
-
-    def _on_message(self, message: str):
-        message = json.loads(message)
-
-        if 'id' in message:
-            future = self._in_flight_futures.pop(message['id'], None)
-
-            if future is None:
-                return
-
-            if 'error' in message and message['error']:
-                error = message['error']
-                raise Exception(
-                    'Received the following error: '
-                    f'Err Code: {error["code"]}, '
-                    f'Err Message: {error["message"]}, '
-                    f'Raw Message: {message}'
-                )
-
-            try:
-                future.set_result(message)
-
-            except Exception as e:
-                future.set_exception(e)
-
-        else:
-            for stream in self.event_streams[message['method']]:
-                stream.publish(message)
+                await self._handle_message(message)
 
     async def connect(self):
         loop = asyncio.get_event_loop()
@@ -95,7 +123,7 @@ class Connection:
 
         await self.ws_connected
 
-    async def open_event_stream(
+    async def open_stream(
             self,
             events: list[str]
     ) -> EventStream:
@@ -106,12 +134,12 @@ class Connection:
 
         return stream
 
-    async def send_request(
+    async def send(
             self,
             method: str,
             params: dict,
             await_response: bool = True
-    ) -> dict:
+    ):
         loop = asyncio.get_event_loop()
 
         request_id = _next_rpc_id()
@@ -122,22 +150,20 @@ class Connection:
         }
 
         request = json.dumps(request)
-
         future = loop.create_future()
 
         if await_response:
-            self._in_flight_futures[request_id] = future
+            self.in_flight_futures[request_id] = future
 
         else:
             future.set_result(None)
 
         try:
-            await self._ws.send(request)
+            await self.ws.send(request)
 
         except Exception as e:
             future.set_exception(e)
 
-        result = await future
-
-        if result:
-            return result['result']
+        return _wrap_future(
+            future
+        )

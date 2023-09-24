@@ -13,7 +13,6 @@ class EventStream(Generic[_T]):
     events: list[dict] = field(
         init=False
     )
-
     next_future: asyncio.Future = field(
         init=False,
         repr=False

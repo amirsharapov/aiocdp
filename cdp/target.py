@@ -1,19 +1,18 @@
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 
 from cdp.connection.connection import Connection
+from cdp.io import IO
 
 if TYPE_CHECKING:
     from cdp.chrome import Chrome
 
+
 @dataclass
 class Target:
-    connection: 'Connection' = field(
+    io: IO = field(
         init=False,
         repr=False
-    )
-    active_session_id: Optional[str] = field(
-        init=False
     )
 
     chrome: 'Chrome'
@@ -37,14 +36,16 @@ class Target:
         return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.id}'
     
     def __post_init__(self):
-        self.connection = Connection(self.ws_url)
-        self.active_session_id = None
+        self.io = IO(
+            Connection(self.ws_url),
+            None
+        )
 
     async def connect(self):
-        return await self.connection.connect()
+        return await self.io.connection.connect()
 
     async def open_session(self):
-        result = await self.send(
+        result = await self.io.send(
             'Target.attachToTarget',
             {
                 'targetId': self.id,
@@ -52,19 +53,4 @@ class Target:
             }
         )
 
-        self.active_session_id = result['sessionId']
-
-    async def send(
-            self,
-            method: str,
-            params: dict,
-            expect_response: bool = True,
-    ) -> dict:
-        if self.active_session_id:
-            params['sessionId'] = self.active_session_id
-
-        return await self.connection.send_request(
-            method,
-            params,
-            expect_response,
-        )
+        self.io.session_id = result['session_id']

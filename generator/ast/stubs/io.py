@@ -11,7 +11,6 @@ def _imports():
             module='dataclasses',
             names=[
                 ast.alias('dataclass'),
-                ast.alias('field')
             ],
             render_context={
                 'lines_before': 2,
@@ -22,7 +21,13 @@ def _imports():
             names=[
                 ast.alias('TYPE_CHECKING'),
                 ast.alias('overload'),
-                ast.alias('Optional')
+                ast.alias('Literal'),
+            ]
+        ),
+        ast.ImportFrom(
+            module='cdp.connection.connection',
+            names=[
+                ast.alias('Connection')
             ]
         )
     ]
@@ -40,19 +45,23 @@ def _type_checked_imports(domains: Iterable['Domain']):
 
     return [
         ast.ImportFrom(
-            module='cdp.generated.types',
+            module='cdp.types',
             names=aliases
         )
     ]
 
 
-def _domain(domain: 'Domain'):
+def _io(domains: Iterable['Domain']):
     root = ast.ClassDef(
-        name=domain.domain.pascal_case,
+        name='IO',
         body=[
             ast.AnnAssign(
-                target=ast.Name('domains'),
-                annotation=ast.Constant('Domains'),
+                target=ast.Name('connection'),
+                annotation=ast.Constant('Connection'),
+            ),
+            ast.AnnAssign(
+                target=ast.Name('session_id'),
+                annotation=ast.Constant('Optional[str]'),
             )
         ],
         decorator_list=[
@@ -63,110 +72,62 @@ def _domain(domain: 'Domain'):
         }
     )
 
-    for command in domain.commands:
-        if command.returns:
-            returns = ast.Name(
-                command.domain.domain.snake_case + '.' +
-                command.name.pascal_case + 'ReturnT'
-            )
-        else:
-            returns = ast.Name(
-                'None'
-            )
-
-        method_with_kwargs = ast.AsyncFunctionDef(
-            name=command.name.snake_case,
-            args=ast.arguments(
-                args=[
-                    ast.arg(
-                        arg='self'
-                    )
-                ],
-                defaults=[],
-                render_context={
-                    'expand': True,
-                }
-            ),
-            body=[
-                ast.Name('...')
-            ],
-            decorator_list=[
-                ast.Name('overload')
-            ],
-            returns=returns,
-            render_context={
-                'lines_before': 1
-            }
-        )
-
-        if command.parameters:
-            method_with_kwargs.args.args.append(
-                ast.arg(
-                    arg='*',
+    for domain in domains:
+        for command in domain.commands:
+            if command.returns:
+                returns = ast.Name(
+                    command.domain.domain.snake_case + '.' +
+                    command.name.pascal_case + 'ReturnT'
                 )
-            )
-
-        for parameter in command.parameters:
-            annotation = ast.Name(
-                parameter.type.python_type.__name__ or
-                f'{parameter.ref.type.domain.domain.snake_case}.{parameter.ref.type.id}'
-            )
-
-            if parameter.optional:
-                annotation = ast.Subscript(
-                    value=ast.Name('Optional'),
-                    slice=ast.Index(
-                        value=annotation
-                    )
+            else:
+                returns = ast.Name(
+                    'None'
                 )
 
-            method_with_kwargs.args.args.append(
-                ast.arg(
-                    arg=parameter.name.snake_case,
-                    annotation=annotation
-                )
-            )
-
-            if parameter.optional:
-                method_with_kwargs.args.defaults.append(
-                    ast.Name('...')
-                )
-
-        root.body.append(
-            method_with_kwargs
-        )
-
-        if command.parameters:
-            method_with_params = ast.AsyncFunctionDef(
-                name=command.name.snake_case,
-                args=ast.arguments(
-                    args=[
-                        ast.arg('self'),
-                        ast.arg(
-                            arg='params',
-                            annotation=ast.Name(f'{domain.domain.snake_case}.{command.name.pascal_case}ParamsT')
-                        )
+            if command.parameters:
+                method = ast.AsyncFunctionDef(
+                    name='send',
+                    args=ast.arguments(
+                        args=[
+                            ast.arg('self'),
+                            ast.arg(
+                                arg='method',
+                                annotation=ast.Subscript(
+                                    value=ast.Name('Literal'),
+                                    slice=ast.Index(
+                                        value=ast.Constant(
+                                            domain.domain + '.' +
+                                            command.name
+                                        )
+                                    )
+                                )
+                            ),
+                            ast.arg(
+                                arg='params',
+                                # annotation=ast.Name(f'{domain.domain.snake_case}.{command.name.pascal_case}ParamsT')
+                                annotation=ast.Name('dict')
+                            )
+                        ],
+                        defaults=[],
+                        render_context={
+                            'expand': True,
+                        }
+                    ),
+                    body=[
+                        ast.Name('...')
                     ],
-                    defaults=[],
+                    decorator_list=[
+                        ast.Name('overload')
+                    ],
+                    returns=returns,
                     render_context={
-                        'expand': True,
+                        'lines_before': 1
                     }
-                ),
-                body=[
-                    ast.Name('...')
-                ],
-                decorator_list=[
-                    ast.Name('overload')
-                ],
-                returns=returns,
-                render_context={
-                    'lines_before': 1
-                }
-            )
+                )
 
-            root.body.append(
-                method_with_params
-            )
+                root.body.append(
+                    method
+                )
 
     return root
 
@@ -187,55 +148,8 @@ def generate(domains: Iterable['Domain']):
         )
     )
 
-    domains_definition = ast.ClassDef(
-        name='Domains',
-        body=[],
-        decorator_list=[
-            ast.Name('dataclass')
-        ],
-        render_context={
-            'lines_before': 2,
-        }
+    root.body.append(
+        _io(domains)
     )
-
-    for domain in domains:
-        root.body.append(
-            _domain(domain)
-        )
-
-        domains_definition.body.append(
-            ast.AnnAssign(
-                target=ast.Name(domain.domain.snake_case),
-                annotation=ast.Name(domain.domain.pascal_case),
-                value=ast.Call(
-                    func=ast.Name('field'),
-                    keywords=[
-                        ast.keyword(
-                            arg='init',
-                            value=ast.Constant(False)
-                        ),
-                        ast.keyword(
-                            arg='repr',
-                            value=ast.Constant(False)
-                        )
-                    ],
-                    render_context={
-                        'expand': True,
-                    }
-                )
-            )
-        )
-
-    domains_definition.body.append(
-        ast.AnnAssign(
-            target=ast.Name('ws_target'),
-            annotation=ast.Constant('WSTarget'),
-            render_context={
-                'lines_before': 1
-            }
-        )
-    )
-
-    root.body.append(domains_definition)
 
     return root
