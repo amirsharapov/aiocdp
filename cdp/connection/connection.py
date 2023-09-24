@@ -1,7 +1,5 @@
 import asyncio
 import json
-import time
-from asyncio import Future
 from collections import defaultdict
 from dataclasses import dataclass, field
 from typing import Optional
@@ -30,31 +28,31 @@ class Connection:
         init=False,
         repr=False
     )
-    ws: Optional['websockets.WebSocketClientProtocol'] = field(
+    ws: Optional[websockets.WebSocketClientProtocol] = field(
         init=False,
         repr=False
     )
-    ws_receiver: Optional[asyncio.Task] = field(
+    ws_listener: Optional[asyncio.Task] = field(
         init=False,
         repr=False
     )
-    ws_connected: Optional[Future] = field(
+    ws_connected: Optional[asyncio.Future] = field(
         init=False,
         repr=False
     )
 
-    url: str
+    ws_url: str
 
     def __post_init__(self):
         self.event_streams = defaultdict(list)
-        self.in_flight_futures = {}
-        self.ws = None
+        self._in_flight_futures = {}
+        self._ws = None
         self.ws_connected = None
-        self.ws_receiver = None
+        self.ws_listener = None
 
     async def _listen_async(self):
-        async with websockets.connect(self.url) as ws:
-            self.ws = ws
+        async with websockets.connect(self.ws_url) as ws:
+            self._ws = ws
             self.ws_connected.set_result(None)
 
             while True:
@@ -64,11 +62,8 @@ class Connection:
     def _on_message(self, message: str):
         message = json.loads(message)
 
-        print("MSG: ", message)
-        print("TS:  ", time.time())
-
         if 'id' in message:
-            future = self.in_flight_futures.pop(message['id'], None)
+            future = self._in_flight_futures.pop(message['id'], None)
 
             if future is None:
                 return
@@ -96,11 +91,11 @@ class Connection:
         loop = asyncio.get_event_loop()
 
         self.ws_connected = loop.create_future()
-        self.ws_receiver = loop.create_task(self._listen_async())
+        self.ws_listener = loop.create_task(self._listen_async())
 
         await self.ws_connected
 
-    async def open_stream(
+    async def open_event_stream(
             self,
             events: list[str]
     ) -> EventStream:
@@ -115,8 +110,7 @@ class Connection:
             self,
             method: str,
             params: dict,
-            expect_response: bool = True,
-            response_middlewares: list[callable] = None
+            await_response: bool = True
     ) -> dict:
         loop = asyncio.get_event_loop()
 
@@ -131,22 +125,19 @@ class Connection:
 
         future = loop.create_future()
 
-        if expect_response:
-            self.in_flight_futures[request_id] = future
+        if await_response:
+            self._in_flight_futures[request_id] = future
 
         else:
             future.set_result(None)
 
         try:
-            await self.ws.send(request)
+            await self._ws.send(request)
 
         except Exception as e:
             future.set_exception(e)
 
         result = await future
-
-        for middleware in response_middlewares or []:
-            result = middleware(result)
 
         if result:
             return result['result']

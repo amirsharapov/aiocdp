@@ -32,34 +32,30 @@ def main():
     )
 
     shutil.rmtree(
-        path='cdp/generated/types',
+        path='cdp/types',
         ignore_errors=True
     )
 
-    Path('cdp/generated/types').mkdir(parents=True, exist_ok=True)
-    Path('cdp/generated/types/__init__.py').touch()
+    Path('cdp/types').mkdir(parents=True, exist_ok=True)
+    Path('cdp/types/__init__.py').touch()
 
     for domain in domains:
         module = ast.modules.types.generate(domain)
         module = SourceCodeGenerator().generate(module)
 
-        Path(f'cdp/generated/types/{domain.domain.snake_case}.py').write_text(
+        Path(f'cdp/types/{domain.domain.snake_case}.py').write_text(
             GENERATED_MODULE_HEADER +
             module.source
         )
 
-    module = ast.modules.constants.generate(domains)
-    module = SourceCodeGenerator().generate(module)
-
-    Path(f'cdp/generated/constants.py').write_text(
-        GENERATED_MODULE_HEADER +
-        module.source
+    Path(f'cdp/io.pyi').unlink(
+        missing_ok=True
     )
 
-    module = ast.modules.domains.generate(domains)
+    module = ast.stubs.io.generate(domains)
     module = SourceCodeGenerator().generate(module)
 
-    Path(f'cdp/domains.pyi').write_text(
+    Path(f'cdp/io.pyi').write_text(
         GENERATED_MODULE_HEADER +
         module.source
     )

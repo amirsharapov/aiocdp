@@ -18,7 +18,16 @@ class Tests(TestCase):
             await target.connect()
             await target.open_session()
 
-            await target.domains.debugger.enable()
+            await target.io.send(
+                'Debugger.enable'
+            )
+
+            await target.io.send(
+                'Debugger.setBreakpointsActive',
+                {
+                    'active': True
+                }
+            )
 
             await target.domains.runtime.enable()
             await target.domains.page.enable()

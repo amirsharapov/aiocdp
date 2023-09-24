@@ -1,7 +1,6 @@
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Optional, Callable
+from typing import TYPE_CHECKING, Optional
 
-from cdp.domains import Domains
 from cdp.connection.connection import Connection
 
 if TYPE_CHECKING:
@@ -9,10 +8,6 @@ if TYPE_CHECKING:
 
 @dataclass
 class Target:
-    domains: Domains = field(
-        init=False,
-        repr=False
-    )
     connection: 'Connection' = field(
         init=False,
         repr=False
@@ -42,7 +37,6 @@ class Target:
         return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.id}'
     
     def __post_init__(self):
-        self.domains = Domains(self)
         self.connection = Connection(self.ws_url)
         self.active_session_id = None
 
@@ -50,19 +44,21 @@ class Target:
         return await self.connection.connect()
 
     async def open_session(self):
-        result = await self.domains.target.attach_to_target({
-            'target_id': self.id,
-            'flatten': True
-        })
+        result = await self.send(
+            'Target.attachToTarget',
+            {
+                'targetId': self.id,
+                'flatten': True
+            }
+        )
 
-        self.active_session_id = result['session_id']
+        self.active_session_id = result['sessionId']
 
-    async def send_command(
+    async def send(
             self,
             method: str,
             params: dict,
             expect_response: bool = True,
-            response_middlewares: list[Callable] = None
     ) -> dict:
         if self.active_session_id:
             params['sessionId'] = self.active_session_id
@@ -71,5 +67,4 @@ class Target:
             method,
             params,
             expect_response,
-            response_middlewares
         )
