@@ -52,7 +52,7 @@ class Connection:
         self.ws_receiver = None
 
     async def _listen_async(self):
-        with websockets.connect(self.url) as ws:
+        async with websockets.connect(self.url) as ws:
             self.ws = ws
             self.ws_connected.set_result(None)
 
@@ -62,6 +62,11 @@ class Connection:
 
     def _on_message(self, message: str):
         message = json.loads(message)
+
+        print(json.dumps(
+            message,
+            indent=4
+        ))
 
         if 'id' in message:
             future = self.in_flight_futures.pop(message['id'], None)
@@ -144,4 +149,5 @@ class Connection:
         for middleware in response_middlewares or []:
             result = middleware(result)
 
-        return result['result']
+        if result:
+            return result['result']

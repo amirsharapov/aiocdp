@@ -80,6 +80,9 @@ class Method:
         )
 
     def response_middleware(self, response: dict):
+        if not response or 'error' in response:
+            return response
+
         return {
             **response,
             'result': command_return_properties_to_snake(
