@@ -18,9 +18,6 @@ if TYPE_CHECKING:
     from cdp.target import (
         Target as WSTarget
     )
-    from cdp.connection.response import (
-        PendingResponse
-    )
     from cdp.generated.types import (
         accessibility,
         animation,
@@ -80,101 +77,101 @@ class Accessibility:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_partial_ax_tree(
+    async def get_partial_ax_tree(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...,
             fetch_relatives: Optional[bool] = ...
-    ) -> PendingResponse[accessibility.GetPartialAXTreeReturnT]:
+    ) -> accessibility.GetPartialAXTreeReturnT:
         ...
 
     @overload
-    def get_partial_ax_tree(
+    async def get_partial_ax_tree(
             self,
             params: accessibility.GetPartialAXTreeParamsT
-    ) -> PendingResponse[accessibility.GetPartialAXTreeReturnT]:
+    ) -> accessibility.GetPartialAXTreeReturnT:
         ...
 
     @overload
-    def get_full_ax_tree(
+    async def get_full_ax_tree(
             self,
             *,
             depth: Optional[int] = ...,
             frame_id: Optional[page.FrameId] = ...
-    ) -> PendingResponse[accessibility.GetFullAXTreeReturnT]:
+    ) -> accessibility.GetFullAXTreeReturnT:
         ...
 
     @overload
-    def get_full_ax_tree(
+    async def get_full_ax_tree(
             self,
             params: accessibility.GetFullAXTreeParamsT
-    ) -> PendingResponse[accessibility.GetFullAXTreeReturnT]:
+    ) -> accessibility.GetFullAXTreeReturnT:
         ...
 
     @overload
-    def get_root_ax_node(
+    async def get_root_ax_node(
             self,
             *,
             frame_id: Optional[page.FrameId] = ...
-    ) -> PendingResponse[accessibility.GetRootAXNodeReturnT]:
+    ) -> accessibility.GetRootAXNodeReturnT:
         ...
 
     @overload
-    def get_root_ax_node(
+    async def get_root_ax_node(
             self,
             params: accessibility.GetRootAXNodeParamsT
-    ) -> PendingResponse[accessibility.GetRootAXNodeReturnT]:
+    ) -> accessibility.GetRootAXNodeReturnT:
         ...
 
     @overload
-    def get_ax_node_and_ancestors(
+    async def get_ax_node_and_ancestors(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...
-    ) -> PendingResponse[accessibility.GetAXNodeAndAncestorsReturnT]:
+    ) -> accessibility.GetAXNodeAndAncestorsReturnT:
         ...
 
     @overload
-    def get_ax_node_and_ancestors(
+    async def get_ax_node_and_ancestors(
             self,
             params: accessibility.GetAXNodeAndAncestorsParamsT
-    ) -> PendingResponse[accessibility.GetAXNodeAndAncestorsReturnT]:
+    ) -> accessibility.GetAXNodeAndAncestorsReturnT:
         ...
 
     @overload
-    def get_child_ax_nodes(
+    async def get_child_ax_nodes(
             self,
             *,
             id: accessibility.AXNodeId,
             frame_id: Optional[page.FrameId] = ...
-    ) -> PendingResponse[accessibility.GetChildAXNodesReturnT]:
+    ) -> accessibility.GetChildAXNodesReturnT:
         ...
 
     @overload
-    def get_child_ax_nodes(
+    async def get_child_ax_nodes(
             self,
             params: accessibility.GetChildAXNodesParamsT
-    ) -> PendingResponse[accessibility.GetChildAXNodesReturnT]:
+    ) -> accessibility.GetChildAXNodesReturnT:
         ...
 
     @overload
-    def query_ax_tree(
+    async def query_ax_tree(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
@@ -182,14 +179,14 @@ class Accessibility:
             object_id: Optional[runtime.RemoteObjectId] = ...,
             accessible_name: Optional[str] = ...,
             role: Optional[str] = ...
-    ) -> PendingResponse[accessibility.QueryAXTreeReturnT]:
+    ) -> accessibility.QueryAXTreeReturnT:
         ...
 
     @overload
-    def query_ax_tree(
+    async def query_ax_tree(
             self,
             params: accessibility.QueryAXTreeParamsT
-    ) -> PendingResponse[accessibility.QueryAXTreeReturnT]:
+    ) -> accessibility.QueryAXTreeReturnT:
         ...
 
 
@@ -198,130 +195,130 @@ class Animation:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_current_time(
+    async def get_current_time(
             self,
             *,
             id: str
-    ) -> PendingResponse[animation.GetCurrentTimeReturnT]:
+    ) -> animation.GetCurrentTimeReturnT:
         ...
 
     @overload
-    def get_current_time(
+    async def get_current_time(
             self,
             params: animation.GetCurrentTimeParamsT
-    ) -> PendingResponse[animation.GetCurrentTimeReturnT]:
+    ) -> animation.GetCurrentTimeReturnT:
         ...
 
     @overload
-    def get_playback_rate(
+    async def get_playback_rate(
             self
-    ) -> PendingResponse[animation.GetPlaybackRateReturnT]:
+    ) -> animation.GetPlaybackRateReturnT:
         ...
 
     @overload
-    def release_animations(
+    async def release_animations(
             self,
             *,
             animations: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def release_animations(
+    async def release_animations(
             self,
             params: animation.ReleaseAnimationsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def resolve_animation(
+    async def resolve_animation(
             self,
             *,
             animation_id: str
-    ) -> PendingResponse[animation.ResolveAnimationReturnT]:
+    ) -> animation.ResolveAnimationReturnT:
         ...
 
     @overload
-    def resolve_animation(
+    async def resolve_animation(
             self,
             params: animation.ResolveAnimationParamsT
-    ) -> PendingResponse[animation.ResolveAnimationReturnT]:
+    ) -> animation.ResolveAnimationReturnT:
         ...
 
     @overload
-    def seek_animations(
+    async def seek_animations(
             self,
             *,
             animations: list,
             current_time: float
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def seek_animations(
+    async def seek_animations(
             self,
             params: animation.SeekAnimationsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_paused(
+    async def set_paused(
             self,
             *,
             animations: list,
             paused: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_paused(
+    async def set_paused(
             self,
             params: animation.SetPausedParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_playback_rate(
+    async def set_playback_rate(
             self,
             *,
             playback_rate: float
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_playback_rate(
+    async def set_playback_rate(
             self,
             params: animation.SetPlaybackRateParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_timing(
+    async def set_timing(
             self,
             *,
             animation_id: str,
             duration: float,
             delay: float
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_timing(
+    async def set_timing(
             self,
             params: animation.SetTimingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -330,54 +327,54 @@ class Audits:
     domains: 'Domains'
 
     @overload
-    def get_encoded_response(
+    async def get_encoded_response(
             self,
             *,
             request_id: network.RequestId,
             encoding: str,
             quality: Optional[float] = ...,
             size_only: Optional[bool] = ...
-    ) -> PendingResponse[audits.GetEncodedResponseReturnT]:
+    ) -> audits.GetEncodedResponseReturnT:
         ...
 
     @overload
-    def get_encoded_response(
+    async def get_encoded_response(
             self,
             params: audits.GetEncodedResponseParamsT
-    ) -> PendingResponse[audits.GetEncodedResponseReturnT]:
+    ) -> audits.GetEncodedResponseReturnT:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def check_contrast(
+    async def check_contrast(
             self,
             *,
             report_aaa: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def check_contrast(
+    async def check_contrast(
             self,
             params: audits.CheckContrastParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def check_forms_issues(
+    async def check_forms_issues(
             self
-    ) -> PendingResponse[audits.CheckFormsIssuesReturnT]:
+    ) -> audits.CheckFormsIssuesReturnT:
         ...
 
 
@@ -386,47 +383,47 @@ class Autofill:
     domains: 'Domains'
 
     @overload
-    def trigger(
+    async def trigger(
             self,
             *,
             field_id: dom.BackendNodeId,
             frame_id: Optional[page.FrameId],
             card: autofill.CreditCard = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def trigger(
+    async def trigger(
             self,
             params: autofill.TriggerParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_addresses(
+    async def set_addresses(
             self,
             *,
             addresses: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_addresses(
+    async def set_addresses(
             self,
             params: autofill.SetAddressesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -435,64 +432,64 @@ class BackgroundService:
     domains: 'Domains'
 
     @overload
-    def start_observing(
+    async def start_observing(
             self,
             *,
             service: background_service.ServiceName
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_observing(
+    async def start_observing(
             self,
             params: background_service.StartObservingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_observing(
+    async def stop_observing(
             self,
             *,
             service: background_service.ServiceName
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_observing(
+    async def stop_observing(
             self,
             params: background_service.StopObservingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_recording(
+    async def set_recording(
             self,
             *,
             should_record: bool,
             service: background_service.ServiceName
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_recording(
+    async def set_recording(
             self,
             params: background_service.SetRecordingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_events(
+    async def clear_events(
             self,
             *,
             service: background_service.ServiceName
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_events(
+    async def clear_events(
             self,
             params: background_service.ClearEventsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -501,241 +498,241 @@ class Browser:
     domains: 'Domains'
 
     @overload
-    def set_permission(
+    async def set_permission(
             self,
             *,
             permission: browser.PermissionDescriptor,
             setting: browser.PermissionSetting,
             origin: Optional[str] = ...,
             browser_context_id: Optional[browser.BrowserContextID] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_permission(
+    async def set_permission(
             self,
             params: browser.SetPermissionParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def grant_permissions(
+    async def grant_permissions(
             self,
             *,
             permissions: list,
             origin: Optional[str] = ...,
             browser_context_id: Optional[browser.BrowserContextID] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def grant_permissions(
+    async def grant_permissions(
             self,
             params: browser.GrantPermissionsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def reset_permissions(
+    async def reset_permissions(
             self,
             *,
             browser_context_id: Optional[browser.BrowserContextID] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def reset_permissions(
+    async def reset_permissions(
             self,
             params: browser.ResetPermissionsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_download_behavior(
+    async def set_download_behavior(
             self,
             *,
             behavior: str,
             browser_context_id: Optional[browser.BrowserContextID] = ...,
             download_path: Optional[str] = ...,
             events_enabled: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_download_behavior(
+    async def set_download_behavior(
             self,
             params: browser.SetDownloadBehaviorParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def cancel_download(
+    async def cancel_download(
             self,
             *,
             guid: str,
             browser_context_id: Optional[browser.BrowserContextID] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def cancel_download(
+    async def cancel_download(
             self,
             params: browser.CancelDownloadParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def close(
+    async def close(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def crash(
+    async def crash(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def crash_gpu_process(
+    async def crash_gpu_process(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_version(
+    async def get_version(
             self
-    ) -> PendingResponse[browser.GetVersionReturnT]:
+    ) -> browser.GetVersionReturnT:
         ...
 
     @overload
-    def get_browser_command_line(
+    async def get_browser_command_line(
             self
-    ) -> PendingResponse[browser.GetBrowserCommandLineReturnT]:
+    ) -> browser.GetBrowserCommandLineReturnT:
         ...
 
     @overload
-    def get_histograms(
+    async def get_histograms(
             self,
             *,
             query: Optional[str] = ...,
             delta: Optional[bool] = ...
-    ) -> PendingResponse[browser.GetHistogramsReturnT]:
+    ) -> browser.GetHistogramsReturnT:
         ...
 
     @overload
-    def get_histograms(
+    async def get_histograms(
             self,
             params: browser.GetHistogramsParamsT
-    ) -> PendingResponse[browser.GetHistogramsReturnT]:
+    ) -> browser.GetHistogramsReturnT:
         ...
 
     @overload
-    def get_histogram(
+    async def get_histogram(
             self,
             *,
             name: str,
             delta: Optional[bool] = ...
-    ) -> PendingResponse[browser.GetHistogramReturnT]:
+    ) -> browser.GetHistogramReturnT:
         ...
 
     @overload
-    def get_histogram(
+    async def get_histogram(
             self,
             params: browser.GetHistogramParamsT
-    ) -> PendingResponse[browser.GetHistogramReturnT]:
+    ) -> browser.GetHistogramReturnT:
         ...
 
     @overload
-    def get_window_bounds(
+    async def get_window_bounds(
             self,
             *,
             window_id: browser.WindowID
-    ) -> PendingResponse[browser.GetWindowBoundsReturnT]:
+    ) -> browser.GetWindowBoundsReturnT:
         ...
 
     @overload
-    def get_window_bounds(
+    async def get_window_bounds(
             self,
             params: browser.GetWindowBoundsParamsT
-    ) -> PendingResponse[browser.GetWindowBoundsReturnT]:
+    ) -> browser.GetWindowBoundsReturnT:
         ...
 
     @overload
-    def get_window_for_target(
+    async def get_window_for_target(
             self,
             *,
             target_id: Optional[target.TargetID] = ...
-    ) -> PendingResponse[browser.GetWindowForTargetReturnT]:
+    ) -> browser.GetWindowForTargetReturnT:
         ...
 
     @overload
-    def get_window_for_target(
+    async def get_window_for_target(
             self,
             params: browser.GetWindowForTargetParamsT
-    ) -> PendingResponse[browser.GetWindowForTargetReturnT]:
+    ) -> browser.GetWindowForTargetReturnT:
         ...
 
     @overload
-    def set_window_bounds(
+    async def set_window_bounds(
             self,
             *,
             window_id: browser.WindowID,
             bounds: browser.Bounds
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_window_bounds(
+    async def set_window_bounds(
             self,
             params: browser.SetWindowBoundsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_dock_tile(
+    async def set_dock_tile(
             self,
             *,
             badge_label: Optional[str] = ...,
             image: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_dock_tile(
+    async def set_dock_tile(
             self,
             params: browser.SetDockTileParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def execute_browser_command(
+    async def execute_browser_command(
             self,
             *,
             command_id: browser.BrowserCommandId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def execute_browser_command(
+    async def execute_browser_command(
             self,
             params: browser.ExecuteBrowserCommandParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_privacy_sandbox_enrollment_override(
+    async def add_privacy_sandbox_enrollment_override(
             self,
             *,
             url: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_privacy_sandbox_enrollment_override(
+    async def add_privacy_sandbox_enrollment_override(
             self,
             params: browser.AddPrivacySandboxEnrollmentOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -744,393 +741,393 @@ class CSS:
     domains: 'Domains'
 
     @overload
-    def add_rule(
+    async def add_rule(
             self,
             *,
             style_sheet_id: css.StyleSheetId,
             rule_text: str,
             location: css.SourceRange
-    ) -> PendingResponse[css.AddRuleReturnT]:
+    ) -> css.AddRuleReturnT:
         ...
 
     @overload
-    def add_rule(
+    async def add_rule(
             self,
             params: css.AddRuleParamsT
-    ) -> PendingResponse[css.AddRuleReturnT]:
+    ) -> css.AddRuleReturnT:
         ...
 
     @overload
-    def collect_class_names(
+    async def collect_class_names(
             self,
             *,
             style_sheet_id: css.StyleSheetId
-    ) -> PendingResponse[css.CollectClassNamesReturnT]:
+    ) -> css.CollectClassNamesReturnT:
         ...
 
     @overload
-    def collect_class_names(
+    async def collect_class_names(
             self,
             params: css.CollectClassNamesParamsT
-    ) -> PendingResponse[css.CollectClassNamesReturnT]:
+    ) -> css.CollectClassNamesReturnT:
         ...
 
     @overload
-    def create_style_sheet(
+    async def create_style_sheet(
             self,
             *,
             frame_id: page.FrameId
-    ) -> PendingResponse[css.CreateStyleSheetReturnT]:
+    ) -> css.CreateStyleSheetReturnT:
         ...
 
     @overload
-    def create_style_sheet(
+    async def create_style_sheet(
             self,
             params: css.CreateStyleSheetParamsT
-    ) -> PendingResponse[css.CreateStyleSheetReturnT]:
+    ) -> css.CreateStyleSheetReturnT:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def force_pseudo_state(
+    async def force_pseudo_state(
             self,
             *,
             node_id: dom.NodeId,
             forced_pseudo_classes: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def force_pseudo_state(
+    async def force_pseudo_state(
             self,
             params: css.ForcePseudoStateParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_background_colors(
+    async def get_background_colors(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[css.GetBackgroundColorsReturnT]:
+    ) -> css.GetBackgroundColorsReturnT:
         ...
 
     @overload
-    def get_background_colors(
+    async def get_background_colors(
             self,
             params: css.GetBackgroundColorsParamsT
-    ) -> PendingResponse[css.GetBackgroundColorsReturnT]:
+    ) -> css.GetBackgroundColorsReturnT:
         ...
 
     @overload
-    def get_computed_style_for_node(
+    async def get_computed_style_for_node(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[css.GetComputedStyleForNodeReturnT]:
+    ) -> css.GetComputedStyleForNodeReturnT:
         ...
 
     @overload
-    def get_computed_style_for_node(
+    async def get_computed_style_for_node(
             self,
             params: css.GetComputedStyleForNodeParamsT
-    ) -> PendingResponse[css.GetComputedStyleForNodeReturnT]:
+    ) -> css.GetComputedStyleForNodeReturnT:
         ...
 
     @overload
-    def get_inline_styles_for_node(
+    async def get_inline_styles_for_node(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[css.GetInlineStylesForNodeReturnT]:
+    ) -> css.GetInlineStylesForNodeReturnT:
         ...
 
     @overload
-    def get_inline_styles_for_node(
+    async def get_inline_styles_for_node(
             self,
             params: css.GetInlineStylesForNodeParamsT
-    ) -> PendingResponse[css.GetInlineStylesForNodeReturnT]:
+    ) -> css.GetInlineStylesForNodeReturnT:
         ...
 
     @overload
-    def get_matched_styles_for_node(
+    async def get_matched_styles_for_node(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[css.GetMatchedStylesForNodeReturnT]:
+    ) -> css.GetMatchedStylesForNodeReturnT:
         ...
 
     @overload
-    def get_matched_styles_for_node(
+    async def get_matched_styles_for_node(
             self,
             params: css.GetMatchedStylesForNodeParamsT
-    ) -> PendingResponse[css.GetMatchedStylesForNodeReturnT]:
+    ) -> css.GetMatchedStylesForNodeReturnT:
         ...
 
     @overload
-    def get_media_queries(
+    async def get_media_queries(
             self
-    ) -> PendingResponse[css.GetMediaQueriesReturnT]:
+    ) -> css.GetMediaQueriesReturnT:
         ...
 
     @overload
-    def get_platform_fonts_for_node(
+    async def get_platform_fonts_for_node(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[css.GetPlatformFontsForNodeReturnT]:
+    ) -> css.GetPlatformFontsForNodeReturnT:
         ...
 
     @overload
-    def get_platform_fonts_for_node(
+    async def get_platform_fonts_for_node(
             self,
             params: css.GetPlatformFontsForNodeParamsT
-    ) -> PendingResponse[css.GetPlatformFontsForNodeReturnT]:
+    ) -> css.GetPlatformFontsForNodeReturnT:
         ...
 
     @overload
-    def get_style_sheet_text(
+    async def get_style_sheet_text(
             self,
             *,
             style_sheet_id: css.StyleSheetId
-    ) -> PendingResponse[css.GetStyleSheetTextReturnT]:
+    ) -> css.GetStyleSheetTextReturnT:
         ...
 
     @overload
-    def get_style_sheet_text(
+    async def get_style_sheet_text(
             self,
             params: css.GetStyleSheetTextParamsT
-    ) -> PendingResponse[css.GetStyleSheetTextReturnT]:
+    ) -> css.GetStyleSheetTextReturnT:
         ...
 
     @overload
-    def get_layers_for_node(
+    async def get_layers_for_node(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[css.GetLayersForNodeReturnT]:
+    ) -> css.GetLayersForNodeReturnT:
         ...
 
     @overload
-    def get_layers_for_node(
+    async def get_layers_for_node(
             self,
             params: css.GetLayersForNodeParamsT
-    ) -> PendingResponse[css.GetLayersForNodeReturnT]:
+    ) -> css.GetLayersForNodeReturnT:
         ...
 
     @overload
-    def track_computed_style_updates(
+    async def track_computed_style_updates(
             self,
             *,
             properties_to_track: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def track_computed_style_updates(
+    async def track_computed_style_updates(
             self,
             params: css.TrackComputedStyleUpdatesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def take_computed_style_updates(
+    async def take_computed_style_updates(
             self
-    ) -> PendingResponse[css.TakeComputedStyleUpdatesReturnT]:
+    ) -> css.TakeComputedStyleUpdatesReturnT:
         ...
 
     @overload
-    def set_effective_property_value_for_node(
+    async def set_effective_property_value_for_node(
             self,
             *,
             node_id: dom.NodeId,
             property_name: str,
             value: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_effective_property_value_for_node(
+    async def set_effective_property_value_for_node(
             self,
             params: css.SetEffectivePropertyValueForNodeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_keyframe_key(
+    async def set_keyframe_key(
             self,
             *,
             style_sheet_id: css.StyleSheetId,
             range: css.SourceRange,
             key_text: str
-    ) -> PendingResponse[css.SetKeyframeKeyReturnT]:
+    ) -> css.SetKeyframeKeyReturnT:
         ...
 
     @overload
-    def set_keyframe_key(
+    async def set_keyframe_key(
             self,
             params: css.SetKeyframeKeyParamsT
-    ) -> PendingResponse[css.SetKeyframeKeyReturnT]:
+    ) -> css.SetKeyframeKeyReturnT:
         ...
 
     @overload
-    def set_media_text(
+    async def set_media_text(
             self,
             *,
             style_sheet_id: css.StyleSheetId,
             range: css.SourceRange,
             text: str
-    ) -> PendingResponse[css.SetMediaTextReturnT]:
+    ) -> css.SetMediaTextReturnT:
         ...
 
     @overload
-    def set_media_text(
+    async def set_media_text(
             self,
             params: css.SetMediaTextParamsT
-    ) -> PendingResponse[css.SetMediaTextReturnT]:
+    ) -> css.SetMediaTextReturnT:
         ...
 
     @overload
-    def set_container_query_text(
+    async def set_container_query_text(
             self,
             *,
             style_sheet_id: css.StyleSheetId,
             range: css.SourceRange,
             text: str
-    ) -> PendingResponse[css.SetContainerQueryTextReturnT]:
+    ) -> css.SetContainerQueryTextReturnT:
         ...
 
     @overload
-    def set_container_query_text(
+    async def set_container_query_text(
             self,
             params: css.SetContainerQueryTextParamsT
-    ) -> PendingResponse[css.SetContainerQueryTextReturnT]:
+    ) -> css.SetContainerQueryTextReturnT:
         ...
 
     @overload
-    def set_supports_text(
+    async def set_supports_text(
             self,
             *,
             style_sheet_id: css.StyleSheetId,
             range: css.SourceRange,
             text: str
-    ) -> PendingResponse[css.SetSupportsTextReturnT]:
+    ) -> css.SetSupportsTextReturnT:
         ...
 
     @overload
-    def set_supports_text(
+    async def set_supports_text(
             self,
             params: css.SetSupportsTextParamsT
-    ) -> PendingResponse[css.SetSupportsTextReturnT]:
+    ) -> css.SetSupportsTextReturnT:
         ...
 
     @overload
-    def set_scope_text(
+    async def set_scope_text(
             self,
             *,
             style_sheet_id: css.StyleSheetId,
             range: css.SourceRange,
             text: str
-    ) -> PendingResponse[css.SetScopeTextReturnT]:
+    ) -> css.SetScopeTextReturnT:
         ...
 
     @overload
-    def set_scope_text(
+    async def set_scope_text(
             self,
             params: css.SetScopeTextParamsT
-    ) -> PendingResponse[css.SetScopeTextReturnT]:
+    ) -> css.SetScopeTextReturnT:
         ...
 
     @overload
-    def set_rule_selector(
+    async def set_rule_selector(
             self,
             *,
             style_sheet_id: css.StyleSheetId,
             range: css.SourceRange,
             selector: str
-    ) -> PendingResponse[css.SetRuleSelectorReturnT]:
+    ) -> css.SetRuleSelectorReturnT:
         ...
 
     @overload
-    def set_rule_selector(
+    async def set_rule_selector(
             self,
             params: css.SetRuleSelectorParamsT
-    ) -> PendingResponse[css.SetRuleSelectorReturnT]:
+    ) -> css.SetRuleSelectorReturnT:
         ...
 
     @overload
-    def set_style_sheet_text(
+    async def set_style_sheet_text(
             self,
             *,
             style_sheet_id: css.StyleSheetId,
             text: str
-    ) -> PendingResponse[css.SetStyleSheetTextReturnT]:
+    ) -> css.SetStyleSheetTextReturnT:
         ...
 
     @overload
-    def set_style_sheet_text(
+    async def set_style_sheet_text(
             self,
             params: css.SetStyleSheetTextParamsT
-    ) -> PendingResponse[css.SetStyleSheetTextReturnT]:
+    ) -> css.SetStyleSheetTextReturnT:
         ...
 
     @overload
-    def set_style_texts(
+    async def set_style_texts(
             self,
             *,
             edits: list
-    ) -> PendingResponse[css.SetStyleTextsReturnT]:
+    ) -> css.SetStyleTextsReturnT:
         ...
 
     @overload
-    def set_style_texts(
+    async def set_style_texts(
             self,
             params: css.SetStyleTextsParamsT
-    ) -> PendingResponse[css.SetStyleTextsReturnT]:
+    ) -> css.SetStyleTextsReturnT:
         ...
 
     @overload
-    def start_rule_usage_tracking(
+    async def start_rule_usage_tracking(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_rule_usage_tracking(
+    async def stop_rule_usage_tracking(
             self
-    ) -> PendingResponse[css.StopRuleUsageTrackingReturnT]:
+    ) -> css.StopRuleUsageTrackingReturnT:
         ...
 
     @overload
-    def take_coverage_delta(
+    async def take_coverage_delta(
             self
-    ) -> PendingResponse[css.TakeCoverageDeltaReturnT]:
+    ) -> css.TakeCoverageDeltaReturnT:
         ...
 
     @overload
-    def set_local_fonts_enabled(
+    async def set_local_fonts_enabled(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_local_fonts_enabled(
+    async def set_local_fonts_enabled(
             self,
             params: css.SetLocalFontsEnabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -1139,86 +1136,86 @@ class CacheStorage:
     domains: 'Domains'
 
     @overload
-    def delete_cache(
+    async def delete_cache(
             self,
             *,
             cache_id: cache_storage.CacheId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_cache(
+    async def delete_cache(
             self,
             params: cache_storage.DeleteCacheParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_entry(
+    async def delete_entry(
             self,
             *,
             cache_id: cache_storage.CacheId,
             request: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_entry(
+    async def delete_entry(
             self,
             params: cache_storage.DeleteEntryParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def request_cache_names(
+    async def request_cache_names(
             self,
             *,
             security_origin: Optional[str] = ...,
             storage_key: Optional[str] = ...,
             storage_bucket: Optional[storage.StorageBucket] = ...
-    ) -> PendingResponse[cache_storage.RequestCacheNamesReturnT]:
+    ) -> cache_storage.RequestCacheNamesReturnT:
         ...
 
     @overload
-    def request_cache_names(
+    async def request_cache_names(
             self,
             params: cache_storage.RequestCacheNamesParamsT
-    ) -> PendingResponse[cache_storage.RequestCacheNamesReturnT]:
+    ) -> cache_storage.RequestCacheNamesReturnT:
         ...
 
     @overload
-    def request_cached_response(
+    async def request_cached_response(
             self,
             *,
             cache_id: cache_storage.CacheId,
             request_url: str,
             request_headers: list
-    ) -> PendingResponse[cache_storage.RequestCachedResponseReturnT]:
+    ) -> cache_storage.RequestCachedResponseReturnT:
         ...
 
     @overload
-    def request_cached_response(
+    async def request_cached_response(
             self,
             params: cache_storage.RequestCachedResponseParamsT
-    ) -> PendingResponse[cache_storage.RequestCachedResponseReturnT]:
+    ) -> cache_storage.RequestCachedResponseReturnT:
         ...
 
     @overload
-    def request_entries(
+    async def request_entries(
             self,
             *,
             cache_id: cache_storage.CacheId,
             skip_count: Optional[int] = ...,
             page_size: Optional[int] = ...,
             path_filter: Optional[str] = ...
-    ) -> PendingResponse[cache_storage.RequestEntriesReturnT]:
+    ) -> cache_storage.RequestEntriesReturnT:
         ...
 
     @overload
-    def request_entries(
+    async def request_entries(
             self,
             params: cache_storage.RequestEntriesParamsT
-    ) -> PendingResponse[cache_storage.RequestEntriesReturnT]:
+    ) -> cache_storage.RequestEntriesReturnT:
         ...
 
 
@@ -1227,84 +1224,84 @@ class Cast:
     domains: 'Domains'
 
     @overload
-    def enable(
+    async def enable(
             self,
             *,
             presentation_url: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             params: cast.EnableParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_sink_to_use(
+    async def set_sink_to_use(
             self,
             *,
             sink_name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_sink_to_use(
+    async def set_sink_to_use(
             self,
             params: cast.SetSinkToUseParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_desktop_mirroring(
+    async def start_desktop_mirroring(
             self,
             *,
             sink_name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_desktop_mirroring(
+    async def start_desktop_mirroring(
             self,
             params: cast.StartDesktopMirroringParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_tab_mirroring(
+    async def start_tab_mirroring(
             self,
             *,
             sink_name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_tab_mirroring(
+    async def start_tab_mirroring(
             self,
             params: cast.StartTabMirroringParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_casting(
+    async def stop_casting(
             self,
             *,
             sink_name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_casting(
+    async def stop_casting(
             self,
             params: cast.StopCastingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -1313,39 +1310,39 @@ class DOM:
     domains: 'Domains'
 
     @overload
-    def collect_class_names_from_subtree(
+    async def collect_class_names_from_subtree(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[dom.CollectClassNamesFromSubtreeReturnT]:
+    ) -> dom.CollectClassNamesFromSubtreeReturnT:
         ...
 
     @overload
-    def collect_class_names_from_subtree(
+    async def collect_class_names_from_subtree(
             self,
             params: dom.CollectClassNamesFromSubtreeParamsT
-    ) -> PendingResponse[dom.CollectClassNamesFromSubtreeReturnT]:
+    ) -> dom.CollectClassNamesFromSubtreeReturnT:
         ...
 
     @overload
-    def copy_to(
+    async def copy_to(
             self,
             *,
             node_id: dom.NodeId,
             target_node_id: dom.NodeId,
             insert_before_node_id: Optional[dom.NodeId] = ...
-    ) -> PendingResponse[dom.CopyToReturnT]:
+    ) -> dom.CopyToReturnT:
         ...
 
     @overload
-    def copy_to(
+    async def copy_to(
             self,
             params: dom.CopyToParamsT
-    ) -> PendingResponse[dom.CopyToReturnT]:
+    ) -> dom.CopyToReturnT:
         ...
 
     @overload
-    def describe_node(
+    async def describe_node(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
@@ -1353,676 +1350,676 @@ class DOM:
             object_id: Optional[runtime.RemoteObjectId] = ...,
             depth: Optional[int] = ...,
             pierce: Optional[bool] = ...
-    ) -> PendingResponse[dom.DescribeNodeReturnT]:
+    ) -> dom.DescribeNodeReturnT:
         ...
 
     @overload
-    def describe_node(
+    async def describe_node(
             self,
             params: dom.DescribeNodeParamsT
-    ) -> PendingResponse[dom.DescribeNodeReturnT]:
+    ) -> dom.DescribeNodeReturnT:
         ...
 
     @overload
-    def scroll_into_view_if_needed(
+    async def scroll_into_view_if_needed(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...,
             rect: Optional[dom.Rect] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def scroll_into_view_if_needed(
+    async def scroll_into_view_if_needed(
             self,
             params: dom.ScrollIntoViewIfNeededParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def discard_search_results(
+    async def discard_search_results(
             self,
             *,
             search_id: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def discard_search_results(
+    async def discard_search_results(
             self,
             params: dom.DiscardSearchResultsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             *,
             include_whitespace: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             params: dom.EnableParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def focus(
+    async def focus(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def focus(
+    async def focus(
             self,
             params: dom.FocusParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_attributes(
+    async def get_attributes(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[dom.GetAttributesReturnT]:
+    ) -> dom.GetAttributesReturnT:
         ...
 
     @overload
-    def get_attributes(
+    async def get_attributes(
             self,
             params: dom.GetAttributesParamsT
-    ) -> PendingResponse[dom.GetAttributesReturnT]:
+    ) -> dom.GetAttributesReturnT:
         ...
 
     @overload
-    def get_box_model(
+    async def get_box_model(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...
-    ) -> PendingResponse[dom.GetBoxModelReturnT]:
+    ) -> dom.GetBoxModelReturnT:
         ...
 
     @overload
-    def get_box_model(
+    async def get_box_model(
             self,
             params: dom.GetBoxModelParamsT
-    ) -> PendingResponse[dom.GetBoxModelReturnT]:
+    ) -> dom.GetBoxModelReturnT:
         ...
 
     @overload
-    def get_content_quads(
+    async def get_content_quads(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...
-    ) -> PendingResponse[dom.GetContentQuadsReturnT]:
+    ) -> dom.GetContentQuadsReturnT:
         ...
 
     @overload
-    def get_content_quads(
+    async def get_content_quads(
             self,
             params: dom.GetContentQuadsParamsT
-    ) -> PendingResponse[dom.GetContentQuadsReturnT]:
+    ) -> dom.GetContentQuadsReturnT:
         ...
 
     @overload
-    def get_document(
+    async def get_document(
             self,
             *,
             depth: Optional[int] = ...,
             pierce: Optional[bool] = ...
-    ) -> PendingResponse[dom.GetDocumentReturnT]:
+    ) -> dom.GetDocumentReturnT:
         ...
 
     @overload
-    def get_document(
+    async def get_document(
             self,
             params: dom.GetDocumentParamsT
-    ) -> PendingResponse[dom.GetDocumentReturnT]:
+    ) -> dom.GetDocumentReturnT:
         ...
 
     @overload
-    def get_flattened_document(
+    async def get_flattened_document(
             self,
             *,
             depth: Optional[int] = ...,
             pierce: Optional[bool] = ...
-    ) -> PendingResponse[dom.GetFlattenedDocumentReturnT]:
+    ) -> dom.GetFlattenedDocumentReturnT:
         ...
 
     @overload
-    def get_flattened_document(
+    async def get_flattened_document(
             self,
             params: dom.GetFlattenedDocumentParamsT
-    ) -> PendingResponse[dom.GetFlattenedDocumentReturnT]:
+    ) -> dom.GetFlattenedDocumentReturnT:
         ...
 
     @overload
-    def get_nodes_for_subtree_by_style(
+    async def get_nodes_for_subtree_by_style(
             self,
             *,
             node_id: dom.NodeId,
             computed_styles: list,
             pierce: Optional[bool] = ...
-    ) -> PendingResponse[dom.GetNodesForSubtreeByStyleReturnT]:
+    ) -> dom.GetNodesForSubtreeByStyleReturnT:
         ...
 
     @overload
-    def get_nodes_for_subtree_by_style(
+    async def get_nodes_for_subtree_by_style(
             self,
             params: dom.GetNodesForSubtreeByStyleParamsT
-    ) -> PendingResponse[dom.GetNodesForSubtreeByStyleReturnT]:
+    ) -> dom.GetNodesForSubtreeByStyleReturnT:
         ...
 
     @overload
-    def get_node_for_location(
+    async def get_node_for_location(
             self,
             *,
             x: int,
             y: int,
             include_user_agent_shadow_dom: Optional[bool] = ...,
             ignore_pointer_events_none: Optional[bool] = ...
-    ) -> PendingResponse[dom.GetNodeForLocationReturnT]:
+    ) -> dom.GetNodeForLocationReturnT:
         ...
 
     @overload
-    def get_node_for_location(
+    async def get_node_for_location(
             self,
             params: dom.GetNodeForLocationParamsT
-    ) -> PendingResponse[dom.GetNodeForLocationReturnT]:
+    ) -> dom.GetNodeForLocationReturnT:
         ...
 
     @overload
-    def get_outer_html(
+    async def get_outer_html(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...
-    ) -> PendingResponse[dom.GetOuterHTMLReturnT]:
+    ) -> dom.GetOuterHTMLReturnT:
         ...
 
     @overload
-    def get_outer_html(
+    async def get_outer_html(
             self,
             params: dom.GetOuterHTMLParamsT
-    ) -> PendingResponse[dom.GetOuterHTMLReturnT]:
+    ) -> dom.GetOuterHTMLReturnT:
         ...
 
     @overload
-    def get_relayout_boundary(
+    async def get_relayout_boundary(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[dom.GetRelayoutBoundaryReturnT]:
+    ) -> dom.GetRelayoutBoundaryReturnT:
         ...
 
     @overload
-    def get_relayout_boundary(
+    async def get_relayout_boundary(
             self,
             params: dom.GetRelayoutBoundaryParamsT
-    ) -> PendingResponse[dom.GetRelayoutBoundaryReturnT]:
+    ) -> dom.GetRelayoutBoundaryReturnT:
         ...
 
     @overload
-    def get_search_results(
+    async def get_search_results(
             self,
             *,
             search_id: str,
             from_index: int,
             to_index: int
-    ) -> PendingResponse[dom.GetSearchResultsReturnT]:
+    ) -> dom.GetSearchResultsReturnT:
         ...
 
     @overload
-    def get_search_results(
+    async def get_search_results(
             self,
             params: dom.GetSearchResultsParamsT
-    ) -> PendingResponse[dom.GetSearchResultsReturnT]:
+    ) -> dom.GetSearchResultsReturnT:
         ...
 
     @overload
-    def hide_highlight(
+    async def hide_highlight(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_node(
+    async def highlight_node(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_rect(
+    async def highlight_rect(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def mark_undoable_state(
+    async def mark_undoable_state(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def move_to(
+    async def move_to(
             self,
             *,
             node_id: dom.NodeId,
             target_node_id: dom.NodeId,
             insert_before_node_id: Optional[dom.NodeId] = ...
-    ) -> PendingResponse[dom.MoveToReturnT]:
+    ) -> dom.MoveToReturnT:
         ...
 
     @overload
-    def move_to(
+    async def move_to(
             self,
             params: dom.MoveToParamsT
-    ) -> PendingResponse[dom.MoveToReturnT]:
+    ) -> dom.MoveToReturnT:
         ...
 
     @overload
-    def perform_search(
+    async def perform_search(
             self,
             *,
             query: str,
             include_user_agent_shadow_dom: Optional[bool] = ...
-    ) -> PendingResponse[dom.PerformSearchReturnT]:
+    ) -> dom.PerformSearchReturnT:
         ...
 
     @overload
-    def perform_search(
+    async def perform_search(
             self,
             params: dom.PerformSearchParamsT
-    ) -> PendingResponse[dom.PerformSearchReturnT]:
+    ) -> dom.PerformSearchReturnT:
         ...
 
     @overload
-    def push_node_by_path_to_frontend(
+    async def push_node_by_path_to_frontend(
             self,
             *,
             path: str
-    ) -> PendingResponse[dom.PushNodeByPathToFrontendReturnT]:
+    ) -> dom.PushNodeByPathToFrontendReturnT:
         ...
 
     @overload
-    def push_node_by_path_to_frontend(
+    async def push_node_by_path_to_frontend(
             self,
             params: dom.PushNodeByPathToFrontendParamsT
-    ) -> PendingResponse[dom.PushNodeByPathToFrontendReturnT]:
+    ) -> dom.PushNodeByPathToFrontendReturnT:
         ...
 
     @overload
-    def push_nodes_by_backend_ids_to_frontend(
+    async def push_nodes_by_backend_ids_to_frontend(
             self,
             *,
             backend_node_ids: list
-    ) -> PendingResponse[dom.PushNodesByBackendIdsToFrontendReturnT]:
+    ) -> dom.PushNodesByBackendIdsToFrontendReturnT:
         ...
 
     @overload
-    def push_nodes_by_backend_ids_to_frontend(
+    async def push_nodes_by_backend_ids_to_frontend(
             self,
             params: dom.PushNodesByBackendIdsToFrontendParamsT
-    ) -> PendingResponse[dom.PushNodesByBackendIdsToFrontendReturnT]:
+    ) -> dom.PushNodesByBackendIdsToFrontendReturnT:
         ...
 
     @overload
-    def query_selector(
+    async def query_selector(
             self,
             *,
             node_id: dom.NodeId,
             selector: str
-    ) -> PendingResponse[dom.QuerySelectorReturnT]:
+    ) -> dom.QuerySelectorReturnT:
         ...
 
     @overload
-    def query_selector(
+    async def query_selector(
             self,
             params: dom.QuerySelectorParamsT
-    ) -> PendingResponse[dom.QuerySelectorReturnT]:
+    ) -> dom.QuerySelectorReturnT:
         ...
 
     @overload
-    def query_selector_all(
+    async def query_selector_all(
             self,
             *,
             node_id: dom.NodeId,
             selector: str
-    ) -> PendingResponse[dom.QuerySelectorAllReturnT]:
+    ) -> dom.QuerySelectorAllReturnT:
         ...
 
     @overload
-    def query_selector_all(
+    async def query_selector_all(
             self,
             params: dom.QuerySelectorAllParamsT
-    ) -> PendingResponse[dom.QuerySelectorAllReturnT]:
+    ) -> dom.QuerySelectorAllReturnT:
         ...
 
     @overload
-    def get_top_layer_elements(
+    async def get_top_layer_elements(
             self
-    ) -> PendingResponse[dom.GetTopLayerElementsReturnT]:
+    ) -> dom.GetTopLayerElementsReturnT:
         ...
 
     @overload
-    def redo(
+    async def redo(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_attribute(
+    async def remove_attribute(
             self,
             *,
             node_id: dom.NodeId,
             name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_attribute(
+    async def remove_attribute(
             self,
             params: dom.RemoveAttributeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_node(
+    async def remove_node(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_node(
+    async def remove_node(
             self,
             params: dom.RemoveNodeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def request_child_nodes(
+    async def request_child_nodes(
             self,
             *,
             node_id: dom.NodeId,
             depth: Optional[int] = ...,
             pierce: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def request_child_nodes(
+    async def request_child_nodes(
             self,
             params: dom.RequestChildNodesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def request_node(
+    async def request_node(
             self,
             *,
             object_id: runtime.RemoteObjectId
-    ) -> PendingResponse[dom.RequestNodeReturnT]:
+    ) -> dom.RequestNodeReturnT:
         ...
 
     @overload
-    def request_node(
+    async def request_node(
             self,
             params: dom.RequestNodeParamsT
-    ) -> PendingResponse[dom.RequestNodeReturnT]:
+    ) -> dom.RequestNodeReturnT:
         ...
 
     @overload
-    def resolve_node(
+    async def resolve_node(
             self,
             *,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_group: Optional[str] = ...,
             execution_context_id: Optional[runtime.ExecutionContextId] = ...
-    ) -> PendingResponse[dom.ResolveNodeReturnT]:
+    ) -> dom.ResolveNodeReturnT:
         ...
 
     @overload
-    def resolve_node(
+    async def resolve_node(
             self,
             params: dom.ResolveNodeParamsT
-    ) -> PendingResponse[dom.ResolveNodeReturnT]:
+    ) -> dom.ResolveNodeReturnT:
         ...
 
     @overload
-    def set_attribute_value(
+    async def set_attribute_value(
             self,
             *,
             node_id: dom.NodeId,
             name: str,
             value: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_attribute_value(
+    async def set_attribute_value(
             self,
             params: dom.SetAttributeValueParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_attributes_as_text(
+    async def set_attributes_as_text(
             self,
             *,
             node_id: dom.NodeId,
             text: str,
             name: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_attributes_as_text(
+    async def set_attributes_as_text(
             self,
             params: dom.SetAttributesAsTextParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_file_input_files(
+    async def set_file_input_files(
             self,
             *,
             files: list,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_file_input_files(
+    async def set_file_input_files(
             self,
             params: dom.SetFileInputFilesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_node_stack_traces_enabled(
+    async def set_node_stack_traces_enabled(
             self,
             *,
             enable: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_node_stack_traces_enabled(
+    async def set_node_stack_traces_enabled(
             self,
             params: dom.SetNodeStackTracesEnabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_node_stack_traces(
+    async def get_node_stack_traces(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[dom.GetNodeStackTracesReturnT]:
+    ) -> dom.GetNodeStackTracesReturnT:
         ...
 
     @overload
-    def get_node_stack_traces(
+    async def get_node_stack_traces(
             self,
             params: dom.GetNodeStackTracesParamsT
-    ) -> PendingResponse[dom.GetNodeStackTracesReturnT]:
+    ) -> dom.GetNodeStackTracesReturnT:
         ...
 
     @overload
-    def get_file_info(
+    async def get_file_info(
             self,
             *,
             object_id: runtime.RemoteObjectId
-    ) -> PendingResponse[dom.GetFileInfoReturnT]:
+    ) -> dom.GetFileInfoReturnT:
         ...
 
     @overload
-    def get_file_info(
+    async def get_file_info(
             self,
             params: dom.GetFileInfoParamsT
-    ) -> PendingResponse[dom.GetFileInfoReturnT]:
+    ) -> dom.GetFileInfoReturnT:
         ...
 
     @overload
-    def set_inspected_node(
+    async def set_inspected_node(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_inspected_node(
+    async def set_inspected_node(
             self,
             params: dom.SetInspectedNodeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_node_name(
+    async def set_node_name(
             self,
             *,
             node_id: dom.NodeId,
             name: str
-    ) -> PendingResponse[dom.SetNodeNameReturnT]:
+    ) -> dom.SetNodeNameReturnT:
         ...
 
     @overload
-    def set_node_name(
+    async def set_node_name(
             self,
             params: dom.SetNodeNameParamsT
-    ) -> PendingResponse[dom.SetNodeNameReturnT]:
+    ) -> dom.SetNodeNameReturnT:
         ...
 
     @overload
-    def set_node_value(
+    async def set_node_value(
             self,
             *,
             node_id: dom.NodeId,
             value: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_node_value(
+    async def set_node_value(
             self,
             params: dom.SetNodeValueParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_outer_html(
+    async def set_outer_html(
             self,
             *,
             node_id: dom.NodeId,
             outer_html: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_outer_html(
+    async def set_outer_html(
             self,
             params: dom.SetOuterHTMLParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def undo(
+    async def undo(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_frame_owner(
+    async def get_frame_owner(
             self,
             *,
             frame_id: page.FrameId
-    ) -> PendingResponse[dom.GetFrameOwnerReturnT]:
+    ) -> dom.GetFrameOwnerReturnT:
         ...
 
     @overload
-    def get_frame_owner(
+    async def get_frame_owner(
             self,
             params: dom.GetFrameOwnerParamsT
-    ) -> PendingResponse[dom.GetFrameOwnerReturnT]:
+    ) -> dom.GetFrameOwnerReturnT:
         ...
 
     @overload
-    def get_container_for_node(
+    async def get_container_for_node(
             self,
             *,
             node_id: dom.NodeId,
             container_name: Optional[str] = ...,
             physical_axes: Optional[dom.PhysicalAxes] = ...,
             logical_axes: Optional[dom.LogicalAxes] = ...
-    ) -> PendingResponse[dom.GetContainerForNodeReturnT]:
+    ) -> dom.GetContainerForNodeReturnT:
         ...
 
     @overload
-    def get_container_for_node(
+    async def get_container_for_node(
             self,
             params: dom.GetContainerForNodeParamsT
-    ) -> PendingResponse[dom.GetContainerForNodeReturnT]:
+    ) -> dom.GetContainerForNodeReturnT:
         ...
 
     @overload
-    def get_querying_descendants_for_container(
+    async def get_querying_descendants_for_container(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[dom.GetQueryingDescendantsForContainerReturnT]:
+    ) -> dom.GetQueryingDescendantsForContainerReturnT:
         ...
 
     @overload
-    def get_querying_descendants_for_container(
+    async def get_querying_descendants_for_container(
             self,
             params: dom.GetQueryingDescendantsForContainerParamsT
-    ) -> PendingResponse[dom.GetQueryingDescendantsForContainerReturnT]:
+    ) -> dom.GetQueryingDescendantsForContainerReturnT:
         ...
 
 
@@ -2031,159 +2028,159 @@ class DOMDebugger:
     domains: 'Domains'
 
     @overload
-    def get_event_listeners(
+    async def get_event_listeners(
             self,
             *,
             object_id: runtime.RemoteObjectId,
             depth: Optional[int] = ...,
             pierce: Optional[bool] = ...
-    ) -> PendingResponse[dom_debugger.GetEventListenersReturnT]:
+    ) -> dom_debugger.GetEventListenersReturnT:
         ...
 
     @overload
-    def get_event_listeners(
+    async def get_event_listeners(
             self,
             params: dom_debugger.GetEventListenersParamsT
-    ) -> PendingResponse[dom_debugger.GetEventListenersReturnT]:
+    ) -> dom_debugger.GetEventListenersReturnT:
         ...
 
     @overload
-    def remove_dom_breakpoint(
+    async def remove_dom_breakpoint(
             self,
             *,
             node_id: dom.NodeId,
             type: dom_debugger.DOMBreakpointType
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_dom_breakpoint(
+    async def remove_dom_breakpoint(
             self,
             params: dom_debugger.RemoveDOMBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_event_listener_breakpoint(
+    async def remove_event_listener_breakpoint(
             self,
             *,
             event_name: str,
             target_name: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_event_listener_breakpoint(
+    async def remove_event_listener_breakpoint(
             self,
             params: dom_debugger.RemoveEventListenerBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_instrumentation_breakpoint(
+    async def remove_instrumentation_breakpoint(
             self,
             *,
             event_name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_instrumentation_breakpoint(
+    async def remove_instrumentation_breakpoint(
             self,
             params: dom_debugger.RemoveInstrumentationBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_xhr_breakpoint(
+    async def remove_xhr_breakpoint(
             self,
             *,
             url: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_xhr_breakpoint(
+    async def remove_xhr_breakpoint(
             self,
             params: dom_debugger.RemoveXHRBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_break_on_csp_violation(
+    async def set_break_on_csp_violation(
             self,
             *,
             violation_types: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_break_on_csp_violation(
+    async def set_break_on_csp_violation(
             self,
             params: dom_debugger.SetBreakOnCSPViolationParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_dom_breakpoint(
+    async def set_dom_breakpoint(
             self,
             *,
             node_id: dom.NodeId,
             type: dom_debugger.DOMBreakpointType
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_dom_breakpoint(
+    async def set_dom_breakpoint(
             self,
             params: dom_debugger.SetDOMBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_event_listener_breakpoint(
+    async def set_event_listener_breakpoint(
             self,
             *,
             event_name: str,
             target_name: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_event_listener_breakpoint(
+    async def set_event_listener_breakpoint(
             self,
             params: dom_debugger.SetEventListenerBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_instrumentation_breakpoint(
+    async def set_instrumentation_breakpoint(
             self,
             *,
             event_name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_instrumentation_breakpoint(
+    async def set_instrumentation_breakpoint(
             self,
             params: dom_debugger.SetInstrumentationBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_xhr_breakpoint(
+    async def set_xhr_breakpoint(
             self,
             *,
             url: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_xhr_breakpoint(
+    async def set_xhr_breakpoint(
             self,
             params: dom_debugger.SetXHRBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -2192,33 +2189,33 @@ class EventBreakpoints:
     domains: 'Domains'
 
     @overload
-    def set_instrumentation_breakpoint(
+    async def set_instrumentation_breakpoint(
             self,
             *,
             event_name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_instrumentation_breakpoint(
+    async def set_instrumentation_breakpoint(
             self,
             params: event_breakpoints.SetInstrumentationBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_instrumentation_breakpoint(
+    async def remove_instrumentation_breakpoint(
             self,
             *,
             event_name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_instrumentation_breakpoint(
+    async def remove_instrumentation_breakpoint(
             self,
             params: event_breakpoints.RemoveInstrumentationBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -2227,37 +2224,37 @@ class DOMSnapshot:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_snapshot(
+    async def get_snapshot(
             self,
             *,
             computed_style_whitelist: list,
             include_event_listeners: Optional[bool] = ...,
             include_paint_order: Optional[bool] = ...,
             include_user_agent_shadow_tree: Optional[bool] = ...
-    ) -> PendingResponse[dom_snapshot.GetSnapshotReturnT]:
+    ) -> dom_snapshot.GetSnapshotReturnT:
         ...
 
     @overload
-    def get_snapshot(
+    async def get_snapshot(
             self,
             params: dom_snapshot.GetSnapshotParamsT
-    ) -> PendingResponse[dom_snapshot.GetSnapshotReturnT]:
+    ) -> dom_snapshot.GetSnapshotReturnT:
         ...
 
     @overload
-    def capture_snapshot(
+    async def capture_snapshot(
             self,
             *,
             computed_styles: list,
@@ -2265,14 +2262,14 @@ class DOMSnapshot:
             include_dom_rects: Optional[bool] = ...,
             include_blended_background_colors: Optional[bool] = ...,
             include_text_color_opacities: Optional[bool] = ...
-    ) -> PendingResponse[dom_snapshot.CaptureSnapshotReturnT]:
+    ) -> dom_snapshot.CaptureSnapshotReturnT:
         ...
 
     @overload
-    def capture_snapshot(
+    async def capture_snapshot(
             self,
             params: dom_snapshot.CaptureSnapshotParamsT
-    ) -> PendingResponse[dom_snapshot.CaptureSnapshotReturnT]:
+    ) -> dom_snapshot.CaptureSnapshotReturnT:
         ...
 
 
@@ -2281,78 +2278,78 @@ class DOMStorage:
     domains: 'Domains'
 
     @overload
-    def clear(
+    async def clear(
             self,
             *,
             storage_id: dom_storage.StorageId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear(
+    async def clear(
             self,
             params: dom_storage.ClearParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_dom_storage_items(
+    async def get_dom_storage_items(
             self,
             *,
             storage_id: dom_storage.StorageId
-    ) -> PendingResponse[dom_storage.GetDOMStorageItemsReturnT]:
+    ) -> dom_storage.GetDOMStorageItemsReturnT:
         ...
 
     @overload
-    def get_dom_storage_items(
+    async def get_dom_storage_items(
             self,
             params: dom_storage.GetDOMStorageItemsParamsT
-    ) -> PendingResponse[dom_storage.GetDOMStorageItemsReturnT]:
+    ) -> dom_storage.GetDOMStorageItemsReturnT:
         ...
 
     @overload
-    def remove_dom_storage_item(
+    async def remove_dom_storage_item(
             self,
             *,
             storage_id: dom_storage.StorageId,
             key: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_dom_storage_item(
+    async def remove_dom_storage_item(
             self,
             params: dom_storage.RemoveDOMStorageItemParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_dom_storage_item(
+    async def set_dom_storage_item(
             self,
             *,
             storage_id: dom_storage.StorageId,
             key: str,
             value: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_dom_storage_item(
+    async def set_dom_storage_item(
             self,
             params: dom_storage.SetDOMStorageItemParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -2361,46 +2358,46 @@ class Database:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def execute_sql(
+    async def execute_sql(
             self,
             *,
             database_id: database.DatabaseId,
             query: str
-    ) -> PendingResponse[database.ExecuteSQLReturnT]:
+    ) -> database.ExecuteSQLReturnT:
         ...
 
     @overload
-    def execute_sql(
+    async def execute_sql(
             self,
             params: database.ExecuteSQLParamsT
-    ) -> PendingResponse[database.ExecuteSQLReturnT]:
+    ) -> database.ExecuteSQLReturnT:
         ...
 
     @overload
-    def get_database_table_names(
+    async def get_database_table_names(
             self,
             *,
             database_id: database.DatabaseId
-    ) -> PendingResponse[database.GetDatabaseTableNamesReturnT]:
+    ) -> database.GetDatabaseTableNamesReturnT:
         ...
 
     @overload
-    def get_database_table_names(
+    async def get_database_table_names(
             self,
             params: database.GetDatabaseTableNamesParamsT
-    ) -> PendingResponse[database.GetDatabaseTableNamesReturnT]:
+    ) -> database.GetDatabaseTableNamesReturnT:
         ...
 
 
@@ -2409,26 +2406,26 @@ class DeviceOrientation:
     domains: 'Domains'
 
     @overload
-    def clear_device_orientation_override(
+    async def clear_device_orientation_override(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_device_orientation_override(
+    async def set_device_orientation_override(
             self,
             *,
             alpha: float,
             beta: float,
             gamma: float
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_device_orientation_override(
+    async def set_device_orientation_override(
             self,
             params: device_orientation.SetDeviceOrientationOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -2437,91 +2434,91 @@ class Emulation:
     domains: 'Domains'
 
     @overload
-    def can_emulate(
+    async def can_emulate(
             self
-    ) -> PendingResponse[emulation.CanEmulateReturnT]:
+    ) -> emulation.CanEmulateReturnT:
         ...
 
     @overload
-    def clear_device_metrics_override(
+    async def clear_device_metrics_override(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_geolocation_override(
+    async def clear_geolocation_override(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def reset_page_scale_factor(
+    async def reset_page_scale_factor(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_focus_emulation_enabled(
+    async def set_focus_emulation_enabled(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_focus_emulation_enabled(
+    async def set_focus_emulation_enabled(
             self,
             params: emulation.SetFocusEmulationEnabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_auto_dark_mode_override(
+    async def set_auto_dark_mode_override(
             self,
             *,
             enabled: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_auto_dark_mode_override(
+    async def set_auto_dark_mode_override(
             self,
             params: emulation.SetAutoDarkModeOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_cpu_throttling_rate(
+    async def set_cpu_throttling_rate(
             self,
             *,
             rate: float
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_cpu_throttling_rate(
+    async def set_cpu_throttling_rate(
             self,
             params: emulation.SetCPUThrottlingRateParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_default_background_color_override(
+    async def set_default_background_color_override(
             self,
             *,
             color: Optional[dom.RGBA] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_default_background_color_override(
+    async def set_default_background_color_override(
             self,
             params: emulation.SetDefaultBackgroundColorOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_device_metrics_override(
+    async def set_device_metrics_override(
             self,
             *,
             width: int,
@@ -2537,318 +2534,318 @@ class Emulation:
             screen_orientation: Optional[emulation.ScreenOrientation] = ...,
             viewport: Optional[page.Viewport] = ...,
             display_feature: Optional[emulation.DisplayFeature] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_device_metrics_override(
+    async def set_device_metrics_override(
             self,
             params: emulation.SetDeviceMetricsOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_scrollbars_hidden(
+    async def set_scrollbars_hidden(
             self,
             *,
             hidden: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_scrollbars_hidden(
+    async def set_scrollbars_hidden(
             self,
             params: emulation.SetScrollbarsHiddenParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_document_cookie_disabled(
+    async def set_document_cookie_disabled(
             self,
             *,
             disabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_document_cookie_disabled(
+    async def set_document_cookie_disabled(
             self,
             params: emulation.SetDocumentCookieDisabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_emit_touch_events_for_mouse(
+    async def set_emit_touch_events_for_mouse(
             self,
             *,
             enabled: bool,
             configuration: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_emit_touch_events_for_mouse(
+    async def set_emit_touch_events_for_mouse(
             self,
             params: emulation.SetEmitTouchEventsForMouseParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_emulated_media(
+    async def set_emulated_media(
             self,
             *,
             media: Optional[str] = ...,
             features: Optional[list] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_emulated_media(
+    async def set_emulated_media(
             self,
             params: emulation.SetEmulatedMediaParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_emulated_vision_deficiency(
+    async def set_emulated_vision_deficiency(
             self,
             *,
             type: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_emulated_vision_deficiency(
+    async def set_emulated_vision_deficiency(
             self,
             params: emulation.SetEmulatedVisionDeficiencyParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_geolocation_override(
+    async def set_geolocation_override(
             self,
             *,
             latitude: Optional[float] = ...,
             longitude: Optional[float] = ...,
             accuracy: Optional[float] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_geolocation_override(
+    async def set_geolocation_override(
             self,
             params: emulation.SetGeolocationOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_idle_override(
+    async def set_idle_override(
             self,
             *,
             is_user_active: bool,
             is_screen_unlocked: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_idle_override(
+    async def set_idle_override(
             self,
             params: emulation.SetIdleOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_idle_override(
+    async def clear_idle_override(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_navigator_overrides(
+    async def set_navigator_overrides(
             self,
             *,
             platform: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_navigator_overrides(
+    async def set_navigator_overrides(
             self,
             params: emulation.SetNavigatorOverridesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_page_scale_factor(
+    async def set_page_scale_factor(
             self,
             *,
             page_scale_factor: float
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_page_scale_factor(
+    async def set_page_scale_factor(
             self,
             params: emulation.SetPageScaleFactorParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_script_execution_disabled(
+    async def set_script_execution_disabled(
             self,
             *,
             value: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_script_execution_disabled(
+    async def set_script_execution_disabled(
             self,
             params: emulation.SetScriptExecutionDisabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_touch_emulation_enabled(
+    async def set_touch_emulation_enabled(
             self,
             *,
             enabled: bool,
             max_touch_points: Optional[int] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_touch_emulation_enabled(
+    async def set_touch_emulation_enabled(
             self,
             params: emulation.SetTouchEmulationEnabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_virtual_time_policy(
+    async def set_virtual_time_policy(
             self,
             *,
             policy: emulation.VirtualTimePolicy,
             budget: Optional[float] = ...,
             max_virtual_time_task_starvation_count: Optional[int] = ...,
             initial_virtual_time: Optional[network.TimeSinceEpoch] = ...
-    ) -> PendingResponse[emulation.SetVirtualTimePolicyReturnT]:
+    ) -> emulation.SetVirtualTimePolicyReturnT:
         ...
 
     @overload
-    def set_virtual_time_policy(
+    async def set_virtual_time_policy(
             self,
             params: emulation.SetVirtualTimePolicyParamsT
-    ) -> PendingResponse[emulation.SetVirtualTimePolicyReturnT]:
+    ) -> emulation.SetVirtualTimePolicyReturnT:
         ...
 
     @overload
-    def set_locale_override(
+    async def set_locale_override(
             self,
             *,
             locale: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_locale_override(
+    async def set_locale_override(
             self,
             params: emulation.SetLocaleOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_timezone_override(
+    async def set_timezone_override(
             self,
             *,
             timezone_id: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_timezone_override(
+    async def set_timezone_override(
             self,
             params: emulation.SetTimezoneOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_visible_size(
+    async def set_visible_size(
             self,
             *,
             width: int,
             height: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_visible_size(
+    async def set_visible_size(
             self,
             params: emulation.SetVisibleSizeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_disabled_image_types(
+    async def set_disabled_image_types(
             self,
             *,
             image_types: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_disabled_image_types(
+    async def set_disabled_image_types(
             self,
             params: emulation.SetDisabledImageTypesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_hardware_concurrency_override(
+    async def set_hardware_concurrency_override(
             self,
             *,
             hardware_concurrency: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_hardware_concurrency_override(
+    async def set_hardware_concurrency_override(
             self,
             params: emulation.SetHardwareConcurrencyOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_user_agent_override(
+    async def set_user_agent_override(
             self,
             *,
             user_agent: str,
             accept_language: Optional[str] = ...,
             platform: Optional[str] = ...,
             user_agent_metadata: Optional[emulation.UserAgentMetadata] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_user_agent_override(
+    async def set_user_agent_override(
             self,
             params: emulation.SetUserAgentOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_automation_override(
+    async def set_automation_override(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_automation_override(
+    async def set_automation_override(
             self,
             params: emulation.SetAutomationOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -2857,33 +2854,33 @@ class HeadlessExperimental:
     domains: 'Domains'
 
     @overload
-    def begin_frame(
+    async def begin_frame(
             self,
             *,
             frame_time_ticks: Optional[float] = ...,
             interval: Optional[float] = ...,
             no_display_updates: Optional[bool] = ...,
             screenshot: Optional[headless_experimental.ScreenshotParams] = ...
-    ) -> PendingResponse[headless_experimental.BeginFrameReturnT]:
+    ) -> headless_experimental.BeginFrameReturnT:
         ...
 
     @overload
-    def begin_frame(
+    async def begin_frame(
             self,
             params: headless_experimental.BeginFrameParamsT
-    ) -> PendingResponse[headless_experimental.BeginFrameReturnT]:
+    ) -> headless_experimental.BeginFrameReturnT:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -2892,50 +2889,50 @@ class IO:
     domains: 'Domains'
 
     @overload
-    def close(
+    async def close(
             self,
             *,
             handle: io.StreamHandle
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def close(
+    async def close(
             self,
             params: io.CloseParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def read(
+    async def read(
             self,
             *,
             handle: io.StreamHandle,
             offset: Optional[int] = ...,
             size: Optional[int] = ...
-    ) -> PendingResponse[io.ReadReturnT]:
+    ) -> io.ReadReturnT:
         ...
 
     @overload
-    def read(
+    async def read(
             self,
             params: io.ReadParamsT
-    ) -> PendingResponse[io.ReadReturnT]:
+    ) -> io.ReadReturnT:
         ...
 
     @overload
-    def resolve_blob(
+    async def resolve_blob(
             self,
             *,
             object_id: runtime.RemoteObjectId
-    ) -> PendingResponse[io.ResolveBlobReturnT]:
+    ) -> io.ResolveBlobReturnT:
         ...
 
     @overload
-    def resolve_blob(
+    async def resolve_blob(
             self,
             params: io.ResolveBlobParamsT
-    ) -> PendingResponse[io.ResolveBlobReturnT]:
+    ) -> io.ResolveBlobReturnT:
         ...
 
 
@@ -2944,7 +2941,7 @@ class IndexedDB:
     domains: 'Domains'
 
     @overload
-    def clear_object_store(
+    async def clear_object_store(
             self,
             *,
             security_origin: Optional[str],
@@ -2952,36 +2949,36 @@ class IndexedDB:
             storage_bucket: Optional[storage.StorageBucket] = ...,
             database_name: str = ...,
             object_store_name: str = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_object_store(
+    async def clear_object_store(
             self,
             params: indexed_db.ClearObjectStoreParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_database(
+    async def delete_database(
             self,
             *,
             security_origin: Optional[str],
             storage_key: Optional[str] = ...,
             storage_bucket: Optional[storage.StorageBucket] = ...,
             database_name: str = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_database(
+    async def delete_database(
             self,
             params: indexed_db.DeleteDatabaseParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_object_store_entries(
+    async def delete_object_store_entries(
             self,
             *,
             security_origin: Optional[str],
@@ -2990,30 +2987,30 @@ class IndexedDB:
             database_name: str = ...,
             object_store_name: str = ...,
             key_range: indexed_db.KeyRange = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_object_store_entries(
+    async def delete_object_store_entries(
             self,
             params: indexed_db.DeleteObjectStoreEntriesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def request_data(
+    async def request_data(
             self,
             *,
             security_origin: Optional[str],
@@ -3025,18 +3022,18 @@ class IndexedDB:
             skip_count: int = ...,
             page_size: int = ...,
             key_range: Optional[indexed_db.KeyRange] = ...
-    ) -> PendingResponse[indexed_db.RequestDataReturnT]:
+    ) -> indexed_db.RequestDataReturnT:
         ...
 
     @overload
-    def request_data(
+    async def request_data(
             self,
             params: indexed_db.RequestDataParamsT
-    ) -> PendingResponse[indexed_db.RequestDataReturnT]:
+    ) -> indexed_db.RequestDataReturnT:
         ...
 
     @overload
-    def get_metadata(
+    async def get_metadata(
             self,
             *,
             security_origin: Optional[str],
@@ -3044,49 +3041,49 @@ class IndexedDB:
             storage_bucket: Optional[storage.StorageBucket] = ...,
             database_name: str = ...,
             object_store_name: str = ...
-    ) -> PendingResponse[indexed_db.GetMetadataReturnT]:
+    ) -> indexed_db.GetMetadataReturnT:
         ...
 
     @overload
-    def get_metadata(
+    async def get_metadata(
             self,
             params: indexed_db.GetMetadataParamsT
-    ) -> PendingResponse[indexed_db.GetMetadataReturnT]:
+    ) -> indexed_db.GetMetadataReturnT:
         ...
 
     @overload
-    def request_database(
+    async def request_database(
             self,
             *,
             security_origin: Optional[str],
             storage_key: Optional[str] = ...,
             storage_bucket: Optional[storage.StorageBucket] = ...,
             database_name: str = ...
-    ) -> PendingResponse[indexed_db.RequestDatabaseReturnT]:
+    ) -> indexed_db.RequestDatabaseReturnT:
         ...
 
     @overload
-    def request_database(
+    async def request_database(
             self,
             params: indexed_db.RequestDatabaseParamsT
-    ) -> PendingResponse[indexed_db.RequestDatabaseReturnT]:
+    ) -> indexed_db.RequestDatabaseReturnT:
         ...
 
     @overload
-    def request_database_names(
+    async def request_database_names(
             self,
             *,
             security_origin: Optional[str] = ...,
             storage_key: Optional[str] = ...,
             storage_bucket: Optional[storage.StorageBucket] = ...
-    ) -> PendingResponse[indexed_db.RequestDatabaseNamesReturnT]:
+    ) -> indexed_db.RequestDatabaseNamesReturnT:
         ...
 
     @overload
-    def request_database_names(
+    async def request_database_names(
             self,
             params: indexed_db.RequestDatabaseNamesParamsT
-    ) -> PendingResponse[indexed_db.RequestDatabaseNamesReturnT]:
+    ) -> indexed_db.RequestDatabaseNamesReturnT:
         ...
 
 
@@ -3095,7 +3092,7 @@ class Input:
     domains: 'Domains'
 
     @overload
-    def dispatch_drag_event(
+    async def dispatch_drag_event(
             self,
             *,
             type: str,
@@ -3103,18 +3100,18 @@ class Input:
             y: float,
             data: input.DragData,
             modifiers: Optional[int] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_drag_event(
+    async def dispatch_drag_event(
             self,
             params: input.DispatchDragEventParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_key_event(
+    async def dispatch_key_event(
             self,
             *,
             type: str,
@@ -3132,33 +3129,33 @@ class Input:
             is_system_key: Optional[bool] = ...,
             location: Optional[int] = ...,
             commands: Optional[list] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_key_event(
+    async def dispatch_key_event(
             self,
             params: input.DispatchKeyEventParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def insert_text(
+    async def insert_text(
             self,
             *,
             text: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def insert_text(
+    async def insert_text(
             self,
             params: input.InsertTextParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def ime_set_composition(
+    async def ime_set_composition(
             self,
             *,
             text: str,
@@ -3166,18 +3163,18 @@ class Input:
             selection_end: int,
             replacement_start: Optional[int] = ...,
             replacement_end: Optional[int] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def ime_set_composition(
+    async def ime_set_composition(
             self,
             params: input.ImeSetCompositionParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_mouse_event(
+    async def dispatch_mouse_event(
             self,
             *,
             type: str,
@@ -3196,42 +3193,42 @@ class Input:
             delta_x: Optional[float] = ...,
             delta_y: Optional[float] = ...,
             pointer_type: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_mouse_event(
+    async def dispatch_mouse_event(
             self,
             params: input.DispatchMouseEventParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_touch_event(
+    async def dispatch_touch_event(
             self,
             *,
             type: str,
             touch_points: list,
             modifiers: Optional[int] = ...,
             timestamp: Optional[input.TimeSinceEpoch] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_touch_event(
+    async def dispatch_touch_event(
             self,
             params: input.DispatchTouchEventParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def cancel_dragging(
+    async def cancel_dragging(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def emulate_touch_from_mouse_event(
+    async def emulate_touch_from_mouse_event(
             self,
             *,
             type: str,
@@ -3243,48 +3240,48 @@ class Input:
             delta_y: Optional[float] = ...,
             modifiers: Optional[int] = ...,
             click_count: Optional[int] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def emulate_touch_from_mouse_event(
+    async def emulate_touch_from_mouse_event(
             self,
             params: input.EmulateTouchFromMouseEventParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_ignore_input_events(
+    async def set_ignore_input_events(
             self,
             *,
             ignore: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_ignore_input_events(
+    async def set_ignore_input_events(
             self,
             params: input.SetIgnoreInputEventsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_intercept_drags(
+    async def set_intercept_drags(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_intercept_drags(
+    async def set_intercept_drags(
             self,
             params: input.SetInterceptDragsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def synthesize_pinch_gesture(
+    async def synthesize_pinch_gesture(
             self,
             *,
             x: float,
@@ -3292,18 +3289,18 @@ class Input:
             scale_factor: float,
             relative_speed: Optional[int] = ...,
             gesture_source_type: Optional[input.GestureSourceType] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def synthesize_pinch_gesture(
+    async def synthesize_pinch_gesture(
             self,
             params: input.SynthesizePinchGestureParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def synthesize_scroll_gesture(
+    async def synthesize_scroll_gesture(
             self,
             *,
             x: float,
@@ -3318,18 +3315,18 @@ class Input:
             repeat_count: Optional[int] = ...,
             repeat_delay_ms: Optional[int] = ...,
             interaction_marker_name: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def synthesize_scroll_gesture(
+    async def synthesize_scroll_gesture(
             self,
             params: input.SynthesizeScrollGestureParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def synthesize_tap_gesture(
+    async def synthesize_tap_gesture(
             self,
             *,
             x: float,
@@ -3337,14 +3334,14 @@ class Input:
             duration: Optional[int] = ...,
             tap_count: Optional[int] = ...,
             gesture_source_type: Optional[input.GestureSourceType] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def synthesize_tap_gesture(
+    async def synthesize_tap_gesture(
             self,
             params: input.SynthesizeTapGestureParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -3353,15 +3350,15 @@ class Inspector:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -3370,126 +3367,126 @@ class LayerTree:
     domains: 'Domains'
 
     @overload
-    def compositing_reasons(
+    async def compositing_reasons(
             self,
             *,
             layer_id: layer_tree.LayerId
-    ) -> PendingResponse[layer_tree.CompositingReasonsReturnT]:
+    ) -> layer_tree.CompositingReasonsReturnT:
         ...
 
     @overload
-    def compositing_reasons(
+    async def compositing_reasons(
             self,
             params: layer_tree.CompositingReasonsParamsT
-    ) -> PendingResponse[layer_tree.CompositingReasonsReturnT]:
+    ) -> layer_tree.CompositingReasonsReturnT:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def load_snapshot(
+    async def load_snapshot(
             self,
             *,
             tiles: list
-    ) -> PendingResponse[layer_tree.LoadSnapshotReturnT]:
+    ) -> layer_tree.LoadSnapshotReturnT:
         ...
 
     @overload
-    def load_snapshot(
+    async def load_snapshot(
             self,
             params: layer_tree.LoadSnapshotParamsT
-    ) -> PendingResponse[layer_tree.LoadSnapshotReturnT]:
+    ) -> layer_tree.LoadSnapshotReturnT:
         ...
 
     @overload
-    def make_snapshot(
+    async def make_snapshot(
             self,
             *,
             layer_id: layer_tree.LayerId
-    ) -> PendingResponse[layer_tree.MakeSnapshotReturnT]:
+    ) -> layer_tree.MakeSnapshotReturnT:
         ...
 
     @overload
-    def make_snapshot(
+    async def make_snapshot(
             self,
             params: layer_tree.MakeSnapshotParamsT
-    ) -> PendingResponse[layer_tree.MakeSnapshotReturnT]:
+    ) -> layer_tree.MakeSnapshotReturnT:
         ...
 
     @overload
-    def profile_snapshot(
+    async def profile_snapshot(
             self,
             *,
             snapshot_id: layer_tree.SnapshotId,
             min_repeat_count: Optional[int] = ...,
             min_duration: Optional[float] = ...,
             clip_rect: Optional[dom.Rect] = ...
-    ) -> PendingResponse[layer_tree.ProfileSnapshotReturnT]:
+    ) -> layer_tree.ProfileSnapshotReturnT:
         ...
 
     @overload
-    def profile_snapshot(
+    async def profile_snapshot(
             self,
             params: layer_tree.ProfileSnapshotParamsT
-    ) -> PendingResponse[layer_tree.ProfileSnapshotReturnT]:
+    ) -> layer_tree.ProfileSnapshotReturnT:
         ...
 
     @overload
-    def release_snapshot(
+    async def release_snapshot(
             self,
             *,
             snapshot_id: layer_tree.SnapshotId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def release_snapshot(
+    async def release_snapshot(
             self,
             params: layer_tree.ReleaseSnapshotParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def replay_snapshot(
+    async def replay_snapshot(
             self,
             *,
             snapshot_id: layer_tree.SnapshotId,
             from_step: Optional[int] = ...,
             to_step: Optional[int] = ...,
             scale: Optional[float] = ...
-    ) -> PendingResponse[layer_tree.ReplaySnapshotReturnT]:
+    ) -> layer_tree.ReplaySnapshotReturnT:
         ...
 
     @overload
-    def replay_snapshot(
+    async def replay_snapshot(
             self,
             params: layer_tree.ReplaySnapshotParamsT
-    ) -> PendingResponse[layer_tree.ReplaySnapshotReturnT]:
+    ) -> layer_tree.ReplaySnapshotReturnT:
         ...
 
     @overload
-    def snapshot_command_log(
+    async def snapshot_command_log(
             self,
             *,
             snapshot_id: layer_tree.SnapshotId
-    ) -> PendingResponse[layer_tree.SnapshotCommandLogReturnT]:
+    ) -> layer_tree.SnapshotCommandLogReturnT:
         ...
 
     @overload
-    def snapshot_command_log(
+    async def snapshot_command_log(
             self,
             params: layer_tree.SnapshotCommandLogParamsT
-    ) -> PendingResponse[layer_tree.SnapshotCommandLogReturnT]:
+    ) -> layer_tree.SnapshotCommandLogReturnT:
         ...
 
 
@@ -3498,42 +3495,42 @@ class Log:
     domains: 'Domains'
 
     @overload
-    def clear(
+    async def clear(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_violations_report(
+    async def start_violations_report(
             self,
             *,
             config: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_violations_report(
+    async def start_violations_report(
             self,
             params: log.StartViolationsReportParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_violations_report(
+    async def stop_violations_report(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -3542,91 +3539,91 @@ class Memory:
     domains: 'Domains'
 
     @overload
-    def get_dom_counters(
+    async def get_dom_counters(
             self
-    ) -> PendingResponse[memory.GetDOMCountersReturnT]:
+    ) -> memory.GetDOMCountersReturnT:
         ...
 
     @overload
-    def prepare_for_leak_detection(
+    async def prepare_for_leak_detection(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def forcibly_purge_java_script_memory(
+    async def forcibly_purge_java_script_memory(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_pressure_notifications_suppressed(
+    async def set_pressure_notifications_suppressed(
             self,
             *,
             suppressed: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_pressure_notifications_suppressed(
+    async def set_pressure_notifications_suppressed(
             self,
             params: memory.SetPressureNotificationsSuppressedParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def simulate_pressure_notification(
+    async def simulate_pressure_notification(
             self,
             *,
             level: memory.PressureLevel
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def simulate_pressure_notification(
+    async def simulate_pressure_notification(
             self,
             params: memory.SimulatePressureNotificationParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_sampling(
+    async def start_sampling(
             self,
             *,
             sampling_interval: Optional[int] = ...,
             suppress_randomness: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_sampling(
+    async def start_sampling(
             self,
             params: memory.StartSamplingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_sampling(
+    async def stop_sampling(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_all_time_sampling_profile(
+    async def get_all_time_sampling_profile(
             self
-    ) -> PendingResponse[memory.GetAllTimeSamplingProfileReturnT]:
+    ) -> memory.GetAllTimeSamplingProfileReturnT:
         ...
 
     @overload
-    def get_browser_sampling_profile(
+    async def get_browser_sampling_profile(
             self
-    ) -> PendingResponse[memory.GetBrowserSamplingProfileReturnT]:
+    ) -> memory.GetBrowserSamplingProfileReturnT:
         ...
 
     @overload
-    def get_sampling_profile(
+    async def get_sampling_profile(
             self
-    ) -> PendingResponse[memory.GetSamplingProfileReturnT]:
+    ) -> memory.GetSamplingProfileReturnT:
         ...
 
 
@@ -3635,58 +3632,58 @@ class Network:
     domains: 'Domains'
 
     @overload
-    def set_accepted_encodings(
+    async def set_accepted_encodings(
             self,
             *,
             encodings: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_accepted_encodings(
+    async def set_accepted_encodings(
             self,
             params: network.SetAcceptedEncodingsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_accepted_encodings_override(
+    async def clear_accepted_encodings_override(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def can_clear_browser_cache(
+    async def can_clear_browser_cache(
             self
-    ) -> PendingResponse[network.CanClearBrowserCacheReturnT]:
+    ) -> network.CanClearBrowserCacheReturnT:
         ...
 
     @overload
-    def can_clear_browser_cookies(
+    async def can_clear_browser_cookies(
             self
-    ) -> PendingResponse[network.CanClearBrowserCookiesReturnT]:
+    ) -> network.CanClearBrowserCookiesReturnT:
         ...
 
     @overload
-    def can_emulate_network_conditions(
+    async def can_emulate_network_conditions(
             self
-    ) -> PendingResponse[network.CanEmulateNetworkConditionsReturnT]:
+    ) -> network.CanEmulateNetworkConditionsReturnT:
         ...
 
     @overload
-    def clear_browser_cache(
+    async def clear_browser_cache(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_browser_cookies(
+    async def clear_browser_cookies(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def continue_intercepted_request(
+    async def continue_intercepted_request(
             self,
             *,
             interception_id: network.InterceptionId,
@@ -3697,42 +3694,42 @@ class Network:
             post_data: Optional[str] = ...,
             headers: Optional[network.Headers] = ...,
             auth_challenge_response: Optional[network.AuthChallengeResponse] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def continue_intercepted_request(
+    async def continue_intercepted_request(
             self,
             params: network.ContinueInterceptedRequestParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_cookies(
+    async def delete_cookies(
             self,
             *,
             name: str,
             url: Optional[str] = ...,
             domain: Optional[str] = ...,
             path: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_cookies(
+    async def delete_cookies(
             self,
             params: network.DeleteCookiesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def emulate_network_conditions(
+    async def emulate_network_conditions(
             self,
             *,
             offline: bool,
@@ -3740,209 +3737,209 @@ class Network:
             download_throughput: float,
             upload_throughput: float,
             connection_type: Optional[network.ConnectionType] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def emulate_network_conditions(
+    async def emulate_network_conditions(
             self,
             params: network.EmulateNetworkConditionsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             *,
             max_total_buffer_size: Optional[int] = ...,
             max_resource_buffer_size: Optional[int] = ...,
             max_post_data_size: Optional[int] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             params: network.EnableParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_all_cookies(
+    async def get_all_cookies(
             self
-    ) -> PendingResponse[network.GetAllCookiesReturnT]:
+    ) -> network.GetAllCookiesReturnT:
         ...
 
     @overload
-    def get_certificate(
+    async def get_certificate(
             self,
             *,
             origin: str
-    ) -> PendingResponse[network.GetCertificateReturnT]:
+    ) -> network.GetCertificateReturnT:
         ...
 
     @overload
-    def get_certificate(
+    async def get_certificate(
             self,
             params: network.GetCertificateParamsT
-    ) -> PendingResponse[network.GetCertificateReturnT]:
+    ) -> network.GetCertificateReturnT:
         ...
 
     @overload
-    def get_cookies(
+    async def get_cookies(
             self,
             *,
             urls: Optional[list] = ...
-    ) -> PendingResponse[network.GetCookiesReturnT]:
+    ) -> network.GetCookiesReturnT:
         ...
 
     @overload
-    def get_cookies(
+    async def get_cookies(
             self,
             params: network.GetCookiesParamsT
-    ) -> PendingResponse[network.GetCookiesReturnT]:
+    ) -> network.GetCookiesReturnT:
         ...
 
     @overload
-    def get_response_body(
+    async def get_response_body(
             self,
             *,
             request_id: network.RequestId
-    ) -> PendingResponse[network.GetResponseBodyReturnT]:
+    ) -> network.GetResponseBodyReturnT:
         ...
 
     @overload
-    def get_response_body(
+    async def get_response_body(
             self,
             params: network.GetResponseBodyParamsT
-    ) -> PendingResponse[network.GetResponseBodyReturnT]:
+    ) -> network.GetResponseBodyReturnT:
         ...
 
     @overload
-    def get_request_post_data(
+    async def get_request_post_data(
             self,
             *,
             request_id: network.RequestId
-    ) -> PendingResponse[network.GetRequestPostDataReturnT]:
+    ) -> network.GetRequestPostDataReturnT:
         ...
 
     @overload
-    def get_request_post_data(
+    async def get_request_post_data(
             self,
             params: network.GetRequestPostDataParamsT
-    ) -> PendingResponse[network.GetRequestPostDataReturnT]:
+    ) -> network.GetRequestPostDataReturnT:
         ...
 
     @overload
-    def get_response_body_for_interception(
+    async def get_response_body_for_interception(
             self,
             *,
             interception_id: network.InterceptionId
-    ) -> PendingResponse[network.GetResponseBodyForInterceptionReturnT]:
+    ) -> network.GetResponseBodyForInterceptionReturnT:
         ...
 
     @overload
-    def get_response_body_for_interception(
+    async def get_response_body_for_interception(
             self,
             params: network.GetResponseBodyForInterceptionParamsT
-    ) -> PendingResponse[network.GetResponseBodyForInterceptionReturnT]:
+    ) -> network.GetResponseBodyForInterceptionReturnT:
         ...
 
     @overload
-    def take_response_body_for_interception_as_stream(
+    async def take_response_body_for_interception_as_stream(
             self,
             *,
             interception_id: network.InterceptionId
-    ) -> PendingResponse[network.TakeResponseBodyForInterceptionAsStreamReturnT]:
+    ) -> network.TakeResponseBodyForInterceptionAsStreamReturnT:
         ...
 
     @overload
-    def take_response_body_for_interception_as_stream(
+    async def take_response_body_for_interception_as_stream(
             self,
             params: network.TakeResponseBodyForInterceptionAsStreamParamsT
-    ) -> PendingResponse[network.TakeResponseBodyForInterceptionAsStreamReturnT]:
+    ) -> network.TakeResponseBodyForInterceptionAsStreamReturnT:
         ...
 
     @overload
-    def replay_xhr(
+    async def replay_xhr(
             self,
             *,
             request_id: network.RequestId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def replay_xhr(
+    async def replay_xhr(
             self,
             params: network.ReplayXHRParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def search_in_response_body(
+    async def search_in_response_body(
             self,
             *,
             request_id: network.RequestId,
             query: str,
             case_sensitive: Optional[bool] = ...,
             is_regex: Optional[bool] = ...
-    ) -> PendingResponse[network.SearchInResponseBodyReturnT]:
+    ) -> network.SearchInResponseBodyReturnT:
         ...
 
     @overload
-    def search_in_response_body(
+    async def search_in_response_body(
             self,
             params: network.SearchInResponseBodyParamsT
-    ) -> PendingResponse[network.SearchInResponseBodyReturnT]:
+    ) -> network.SearchInResponseBodyReturnT:
         ...
 
     @overload
-    def set_blocked_ur_ls(
+    async def set_blocked_ur_ls(
             self,
             *,
             urls: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_blocked_ur_ls(
+    async def set_blocked_ur_ls(
             self,
             params: network.SetBlockedURLsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_bypass_service_worker(
+    async def set_bypass_service_worker(
             self,
             *,
             bypass: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_bypass_service_worker(
+    async def set_bypass_service_worker(
             self,
             params: network.SetBypassServiceWorkerParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_cache_disabled(
+    async def set_cache_disabled(
             self,
             *,
             cache_disabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_cache_disabled(
+    async def set_cache_disabled(
             self,
             params: network.SetCacheDisabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_cookie(
+    async def set_cookie(
             self,
             *,
             name: str,
@@ -3959,139 +3956,139 @@ class Network:
             source_scheme: Optional[network.CookieSourceScheme] = ...,
             source_port: Optional[int] = ...,
             partition_key: Optional[str] = ...
-    ) -> PendingResponse[network.SetCookieReturnT]:
+    ) -> network.SetCookieReturnT:
         ...
 
     @overload
-    def set_cookie(
+    async def set_cookie(
             self,
             params: network.SetCookieParamsT
-    ) -> PendingResponse[network.SetCookieReturnT]:
+    ) -> network.SetCookieReturnT:
         ...
 
     @overload
-    def set_cookies(
+    async def set_cookies(
             self,
             *,
             cookies: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_cookies(
+    async def set_cookies(
             self,
             params: network.SetCookiesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_extra_http_headers(
+    async def set_extra_http_headers(
             self,
             *,
             headers: network.Headers
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_extra_http_headers(
+    async def set_extra_http_headers(
             self,
             params: network.SetExtraHTTPHeadersParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_attach_debug_stack(
+    async def set_attach_debug_stack(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_attach_debug_stack(
+    async def set_attach_debug_stack(
             self,
             params: network.SetAttachDebugStackParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_request_interception(
+    async def set_request_interception(
             self,
             *,
             patterns: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_request_interception(
+    async def set_request_interception(
             self,
             params: network.SetRequestInterceptionParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_user_agent_override(
+    async def set_user_agent_override(
             self,
             *,
             user_agent: str,
             accept_language: Optional[str] = ...,
             platform: Optional[str] = ...,
             user_agent_metadata: Optional[emulation.UserAgentMetadata] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_user_agent_override(
+    async def set_user_agent_override(
             self,
             params: network.SetUserAgentOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_security_isolation_status(
+    async def get_security_isolation_status(
             self,
             *,
             frame_id: Optional[page.FrameId] = ...
-    ) -> PendingResponse[network.GetSecurityIsolationStatusReturnT]:
+    ) -> network.GetSecurityIsolationStatusReturnT:
         ...
 
     @overload
-    def get_security_isolation_status(
+    async def get_security_isolation_status(
             self,
             params: network.GetSecurityIsolationStatusParamsT
-    ) -> PendingResponse[network.GetSecurityIsolationStatusReturnT]:
+    ) -> network.GetSecurityIsolationStatusReturnT:
         ...
 
     @overload
-    def enable_reporting_api(
+    async def enable_reporting_api(
             self,
             *,
             enable: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable_reporting_api(
+    async def enable_reporting_api(
             self,
             params: network.EnableReportingApiParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def load_network_resource(
+    async def load_network_resource(
             self,
             *,
             frame_id: Optional[page.FrameId],
             url: str,
             options: network.LoadNetworkResourceOptions = ...
-    ) -> PendingResponse[network.LoadNetworkResourceReturnT]:
+    ) -> network.LoadNetworkResourceReturnT:
         ...
 
     @overload
-    def load_network_resource(
+    async def load_network_resource(
             self,
             params: network.LoadNetworkResourceParamsT
-    ) -> PendingResponse[network.LoadNetworkResourceReturnT]:
+    ) -> network.LoadNetworkResourceReturnT:
         ...
 
 
@@ -4100,19 +4097,19 @@ class Overlay:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_highlight_object_for_test(
+    async def get_highlight_object_for_test(
             self,
             *,
             node_id: dom.NodeId,
@@ -4120,71 +4117,71 @@ class Overlay:
             include_style: Optional[bool] = ...,
             color_format: Optional[overlay.ColorFormat] = ...,
             show_accessibility_info: Optional[bool] = ...
-    ) -> PendingResponse[overlay.GetHighlightObjectForTestReturnT]:
+    ) -> overlay.GetHighlightObjectForTestReturnT:
         ...
 
     @overload
-    def get_highlight_object_for_test(
+    async def get_highlight_object_for_test(
             self,
             params: overlay.GetHighlightObjectForTestParamsT
-    ) -> PendingResponse[overlay.GetHighlightObjectForTestReturnT]:
+    ) -> overlay.GetHighlightObjectForTestReturnT:
         ...
 
     @overload
-    def get_grid_highlight_objects_for_test(
+    async def get_grid_highlight_objects_for_test(
             self,
             *,
             node_ids: list
-    ) -> PendingResponse[overlay.GetGridHighlightObjectsForTestReturnT]:
+    ) -> overlay.GetGridHighlightObjectsForTestReturnT:
         ...
 
     @overload
-    def get_grid_highlight_objects_for_test(
+    async def get_grid_highlight_objects_for_test(
             self,
             params: overlay.GetGridHighlightObjectsForTestParamsT
-    ) -> PendingResponse[overlay.GetGridHighlightObjectsForTestReturnT]:
+    ) -> overlay.GetGridHighlightObjectsForTestReturnT:
         ...
 
     @overload
-    def get_source_order_highlight_object_for_test(
+    async def get_source_order_highlight_object_for_test(
             self,
             *,
             node_id: dom.NodeId
-    ) -> PendingResponse[overlay.GetSourceOrderHighlightObjectForTestReturnT]:
+    ) -> overlay.GetSourceOrderHighlightObjectForTestReturnT:
         ...
 
     @overload
-    def get_source_order_highlight_object_for_test(
+    async def get_source_order_highlight_object_for_test(
             self,
             params: overlay.GetSourceOrderHighlightObjectForTestParamsT
-    ) -> PendingResponse[overlay.GetSourceOrderHighlightObjectForTestReturnT]:
+    ) -> overlay.GetSourceOrderHighlightObjectForTestReturnT:
         ...
 
     @overload
-    def hide_highlight(
+    async def hide_highlight(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_frame(
+    async def highlight_frame(
             self,
             *,
             frame_id: page.FrameId,
             content_color: Optional[dom.RGBA] = ...,
             content_outline_color: Optional[dom.RGBA] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_frame(
+    async def highlight_frame(
             self,
             params: overlay.HighlightFrameParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_node(
+    async def highlight_node(
             self,
             *,
             highlight_config: overlay.HighlightConfig,
@@ -4192,35 +4189,35 @@ class Overlay:
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...,
             selector: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_node(
+    async def highlight_node(
             self,
             params: overlay.HighlightNodeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_quad(
+    async def highlight_quad(
             self,
             *,
             quad: dom.Quad,
             color: Optional[dom.RGBA] = ...,
             outline_color: Optional[dom.RGBA] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_quad(
+    async def highlight_quad(
             self,
             params: overlay.HighlightQuadParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_rect(
+    async def highlight_rect(
             self,
             *,
             x: int,
@@ -4229,288 +4226,288 @@ class Overlay:
             height: int,
             color: Optional[dom.RGBA] = ...,
             outline_color: Optional[dom.RGBA] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_rect(
+    async def highlight_rect(
             self,
             params: overlay.HighlightRectParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_source_order(
+    async def highlight_source_order(
             self,
             *,
             source_order_config: overlay.SourceOrderConfig,
             node_id: Optional[dom.NodeId] = ...,
             backend_node_id: Optional[dom.BackendNodeId] = ...,
             object_id: Optional[runtime.RemoteObjectId] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def highlight_source_order(
+    async def highlight_source_order(
             self,
             params: overlay.HighlightSourceOrderParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_inspect_mode(
+    async def set_inspect_mode(
             self,
             *,
             mode: overlay.InspectMode,
             highlight_config: Optional[overlay.HighlightConfig] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_inspect_mode(
+    async def set_inspect_mode(
             self,
             params: overlay.SetInspectModeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_ad_highlights(
+    async def set_show_ad_highlights(
             self,
             *,
             show: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_ad_highlights(
+    async def set_show_ad_highlights(
             self,
             params: overlay.SetShowAdHighlightsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_paused_in_debugger_message(
+    async def set_paused_in_debugger_message(
             self,
             *,
             message: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_paused_in_debugger_message(
+    async def set_paused_in_debugger_message(
             self,
             params: overlay.SetPausedInDebuggerMessageParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_debug_borders(
+    async def set_show_debug_borders(
             self,
             *,
             show: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_debug_borders(
+    async def set_show_debug_borders(
             self,
             params: overlay.SetShowDebugBordersParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_fps_counter(
+    async def set_show_fps_counter(
             self,
             *,
             show: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_fps_counter(
+    async def set_show_fps_counter(
             self,
             params: overlay.SetShowFPSCounterParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_grid_overlays(
+    async def set_show_grid_overlays(
             self,
             *,
             grid_node_highlight_configs: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_grid_overlays(
+    async def set_show_grid_overlays(
             self,
             params: overlay.SetShowGridOverlaysParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_flex_overlays(
+    async def set_show_flex_overlays(
             self,
             *,
             flex_node_highlight_configs: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_flex_overlays(
+    async def set_show_flex_overlays(
             self,
             params: overlay.SetShowFlexOverlaysParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_scroll_snap_overlays(
+    async def set_show_scroll_snap_overlays(
             self,
             *,
             scroll_snap_highlight_configs: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_scroll_snap_overlays(
+    async def set_show_scroll_snap_overlays(
             self,
             params: overlay.SetShowScrollSnapOverlaysParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_container_query_overlays(
+    async def set_show_container_query_overlays(
             self,
             *,
             container_query_highlight_configs: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_container_query_overlays(
+    async def set_show_container_query_overlays(
             self,
             params: overlay.SetShowContainerQueryOverlaysParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_paint_rects(
+    async def set_show_paint_rects(
             self,
             *,
             result: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_paint_rects(
+    async def set_show_paint_rects(
             self,
             params: overlay.SetShowPaintRectsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_layout_shift_regions(
+    async def set_show_layout_shift_regions(
             self,
             *,
             result: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_layout_shift_regions(
+    async def set_show_layout_shift_regions(
             self,
             params: overlay.SetShowLayoutShiftRegionsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_scroll_bottleneck_rects(
+    async def set_show_scroll_bottleneck_rects(
             self,
             *,
             show: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_scroll_bottleneck_rects(
+    async def set_show_scroll_bottleneck_rects(
             self,
             params: overlay.SetShowScrollBottleneckRectsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_hit_test_borders(
+    async def set_show_hit_test_borders(
             self,
             *,
             show: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_hit_test_borders(
+    async def set_show_hit_test_borders(
             self,
             params: overlay.SetShowHitTestBordersParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_web_vitals(
+    async def set_show_web_vitals(
             self,
             *,
             show: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_web_vitals(
+    async def set_show_web_vitals(
             self,
             params: overlay.SetShowWebVitalsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_viewport_size_on_resize(
+    async def set_show_viewport_size_on_resize(
             self,
             *,
             show: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_viewport_size_on_resize(
+    async def set_show_viewport_size_on_resize(
             self,
             params: overlay.SetShowViewportSizeOnResizeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_hinge(
+    async def set_show_hinge(
             self,
             *,
             hinge_config: Optional[overlay.HingeConfig] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_hinge(
+    async def set_show_hinge(
             self,
             params: overlay.SetShowHingeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_isolated_elements(
+    async def set_show_isolated_elements(
             self,
             *,
             isolated_element_highlight_configs: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_show_isolated_elements(
+    async def set_show_isolated_elements(
             self,
             params: overlay.SetShowIsolatedElementsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -4519,46 +4516,46 @@ class Page:
     domains: 'Domains'
 
     @overload
-    def add_script_to_evaluate_on_load(
+    async def add_script_to_evaluate_on_load(
             self,
             *,
             script_source: str
-    ) -> PendingResponse[page.AddScriptToEvaluateOnLoadReturnT]:
+    ) -> page.AddScriptToEvaluateOnLoadReturnT:
         ...
 
     @overload
-    def add_script_to_evaluate_on_load(
+    async def add_script_to_evaluate_on_load(
             self,
             params: page.AddScriptToEvaluateOnLoadParamsT
-    ) -> PendingResponse[page.AddScriptToEvaluateOnLoadReturnT]:
+    ) -> page.AddScriptToEvaluateOnLoadReturnT:
         ...
 
     @overload
-    def add_script_to_evaluate_on_new_document(
+    async def add_script_to_evaluate_on_new_document(
             self,
             *,
             source: str,
             world_name: Optional[str] = ...,
             include_command_line_api: Optional[bool] = ...,
             run_immediately: Optional[bool] = ...
-    ) -> PendingResponse[page.AddScriptToEvaluateOnNewDocumentReturnT]:
+    ) -> page.AddScriptToEvaluateOnNewDocumentReturnT:
         ...
 
     @overload
-    def add_script_to_evaluate_on_new_document(
+    async def add_script_to_evaluate_on_new_document(
             self,
             params: page.AddScriptToEvaluateOnNewDocumentParamsT
-    ) -> PendingResponse[page.AddScriptToEvaluateOnNewDocumentReturnT]:
+    ) -> page.AddScriptToEvaluateOnNewDocumentReturnT:
         ...
 
     @overload
-    def bring_to_front(
+    async def bring_to_front(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def capture_screenshot(
+    async def capture_screenshot(
             self,
             *,
             format: Optional[str] = ...,
@@ -4567,203 +4564,203 @@ class Page:
             from_surface: Optional[bool] = ...,
             capture_beyond_viewport: Optional[bool] = ...,
             optimize_for_speed: Optional[bool] = ...
-    ) -> PendingResponse[page.CaptureScreenshotReturnT]:
+    ) -> page.CaptureScreenshotReturnT:
         ...
 
     @overload
-    def capture_screenshot(
+    async def capture_screenshot(
             self,
             params: page.CaptureScreenshotParamsT
-    ) -> PendingResponse[page.CaptureScreenshotReturnT]:
+    ) -> page.CaptureScreenshotReturnT:
         ...
 
     @overload
-    def capture_snapshot(
+    async def capture_snapshot(
             self,
             *,
             format: Optional[str] = ...
-    ) -> PendingResponse[page.CaptureSnapshotReturnT]:
+    ) -> page.CaptureSnapshotReturnT:
         ...
 
     @overload
-    def capture_snapshot(
+    async def capture_snapshot(
             self,
             params: page.CaptureSnapshotParamsT
-    ) -> PendingResponse[page.CaptureSnapshotReturnT]:
+    ) -> page.CaptureSnapshotReturnT:
         ...
 
     @overload
-    def clear_device_metrics_override(
+    async def clear_device_metrics_override(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_device_orientation_override(
+    async def clear_device_orientation_override(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_geolocation_override(
+    async def clear_geolocation_override(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def create_isolated_world(
+    async def create_isolated_world(
             self,
             *,
             frame_id: page.FrameId,
             world_name: Optional[str] = ...,
             grant_univeral_access: Optional[bool] = ...
-    ) -> PendingResponse[page.CreateIsolatedWorldReturnT]:
+    ) -> page.CreateIsolatedWorldReturnT:
         ...
 
     @overload
-    def create_isolated_world(
+    async def create_isolated_world(
             self,
             params: page.CreateIsolatedWorldParamsT
-    ) -> PendingResponse[page.CreateIsolatedWorldReturnT]:
+    ) -> page.CreateIsolatedWorldReturnT:
         ...
 
     @overload
-    def delete_cookie(
+    async def delete_cookie(
             self,
             *,
             cookie_name: str,
             url: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_cookie(
+    async def delete_cookie(
             self,
             params: page.DeleteCookieParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_app_manifest(
+    async def get_app_manifest(
             self
-    ) -> PendingResponse[page.GetAppManifestReturnT]:
+    ) -> page.GetAppManifestReturnT:
         ...
 
     @overload
-    def get_installability_errors(
+    async def get_installability_errors(
             self
-    ) -> PendingResponse[page.GetInstallabilityErrorsReturnT]:
+    ) -> page.GetInstallabilityErrorsReturnT:
         ...
 
     @overload
-    def get_manifest_icons(
+    async def get_manifest_icons(
             self
-    ) -> PendingResponse[page.GetManifestIconsReturnT]:
+    ) -> page.GetManifestIconsReturnT:
         ...
 
     @overload
-    def get_app_id(
+    async def get_app_id(
             self
-    ) -> PendingResponse[page.GetAppIdReturnT]:
+    ) -> page.GetAppIdReturnT:
         ...
 
     @overload
-    def get_ad_script_id(
+    async def get_ad_script_id(
             self,
             *,
             frame_id: page.FrameId
-    ) -> PendingResponse[page.GetAdScriptIdReturnT]:
+    ) -> page.GetAdScriptIdReturnT:
         ...
 
     @overload
-    def get_ad_script_id(
+    async def get_ad_script_id(
             self,
             params: page.GetAdScriptIdParamsT
-    ) -> PendingResponse[page.GetAdScriptIdReturnT]:
+    ) -> page.GetAdScriptIdReturnT:
         ...
 
     @overload
-    def get_cookies(
+    async def get_cookies(
             self
-    ) -> PendingResponse[page.GetCookiesReturnT]:
+    ) -> page.GetCookiesReturnT:
         ...
 
     @overload
-    def get_frame_tree(
+    async def get_frame_tree(
             self
-    ) -> PendingResponse[page.GetFrameTreeReturnT]:
+    ) -> page.GetFrameTreeReturnT:
         ...
 
     @overload
-    def get_layout_metrics(
+    async def get_layout_metrics(
             self
-    ) -> PendingResponse[page.GetLayoutMetricsReturnT]:
+    ) -> page.GetLayoutMetricsReturnT:
         ...
 
     @overload
-    def get_navigation_history(
+    async def get_navigation_history(
             self
-    ) -> PendingResponse[page.GetNavigationHistoryReturnT]:
+    ) -> page.GetNavigationHistoryReturnT:
         ...
 
     @overload
-    def reset_navigation_history(
+    async def reset_navigation_history(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_resource_content(
+    async def get_resource_content(
             self,
             *,
             frame_id: page.FrameId,
             url: str
-    ) -> PendingResponse[page.GetResourceContentReturnT]:
+    ) -> page.GetResourceContentReturnT:
         ...
 
     @overload
-    def get_resource_content(
+    async def get_resource_content(
             self,
             params: page.GetResourceContentParamsT
-    ) -> PendingResponse[page.GetResourceContentReturnT]:
+    ) -> page.GetResourceContentReturnT:
         ...
 
     @overload
-    def get_resource_tree(
+    async def get_resource_tree(
             self
-    ) -> PendingResponse[page.GetResourceTreeReturnT]:
+    ) -> page.GetResourceTreeReturnT:
         ...
 
     @overload
-    def handle_java_script_dialog(
+    async def handle_java_script_dialog(
             self,
             *,
             accept: bool,
             prompt_text: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def handle_java_script_dialog(
+    async def handle_java_script_dialog(
             self,
             params: page.HandleJavaScriptDialogParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def navigate(
+    async def navigate(
             self,
             *,
             url: str,
@@ -4771,33 +4768,33 @@ class Page:
             transition_type: Optional[page.TransitionType] = ...,
             frame_id: Optional[page.FrameId] = ...,
             referrer_policy: Optional[page.ReferrerPolicy] = ...
-    ) -> PendingResponse[page.NavigateReturnT]:
+    ) -> page.NavigateReturnT:
         ...
 
     @overload
-    def navigate(
+    async def navigate(
             self,
             params: page.NavigateParamsT
-    ) -> PendingResponse[page.NavigateReturnT]:
+    ) -> page.NavigateReturnT:
         ...
 
     @overload
-    def navigate_to_history_entry(
+    async def navigate_to_history_entry(
             self,
             *,
             entry_id: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def navigate_to_history_entry(
+    async def navigate_to_history_entry(
             self,
             params: page.NavigateToHistoryEntryParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def print_to_pdf(
+    async def print_to_pdf(
             self,
             *,
             landscape: Optional[bool] = ...,
@@ -4816,79 +4813,79 @@ class Page:
             prefer_css_page_size: Optional[bool] = ...,
             transfer_mode: Optional[str] = ...,
             generate_tagged_pdf: Optional[bool] = ...
-    ) -> PendingResponse[page.PrintToPDFReturnT]:
+    ) -> page.PrintToPDFReturnT:
         ...
 
     @overload
-    def print_to_pdf(
+    async def print_to_pdf(
             self,
             params: page.PrintToPDFParamsT
-    ) -> PendingResponse[page.PrintToPDFReturnT]:
+    ) -> page.PrintToPDFReturnT:
         ...
 
     @overload
-    def reload(
+    async def reload(
             self,
             *,
             ignore_cache: Optional[bool] = ...,
             script_to_evaluate_on_load: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def reload(
+    async def reload(
             self,
             params: page.ReloadParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_script_to_evaluate_on_load(
+    async def remove_script_to_evaluate_on_load(
             self,
             *,
             identifier: page.ScriptIdentifier
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_script_to_evaluate_on_load(
+    async def remove_script_to_evaluate_on_load(
             self,
             params: page.RemoveScriptToEvaluateOnLoadParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_script_to_evaluate_on_new_document(
+    async def remove_script_to_evaluate_on_new_document(
             self,
             *,
             identifier: page.ScriptIdentifier
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_script_to_evaluate_on_new_document(
+    async def remove_script_to_evaluate_on_new_document(
             self,
             params: page.RemoveScriptToEvaluateOnNewDocumentParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def screencast_frame_ack(
+    async def screencast_frame_ack(
             self,
             *,
             session_id: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def screencast_frame_ack(
+    async def screencast_frame_ack(
             self,
             params: page.ScreencastFrameAckParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def search_in_resource(
+    async def search_in_resource(
             self,
             *,
             frame_id: page.FrameId,
@@ -4896,78 +4893,78 @@ class Page:
             query: str,
             case_sensitive: Optional[bool] = ...,
             is_regex: Optional[bool] = ...
-    ) -> PendingResponse[page.SearchInResourceReturnT]:
+    ) -> page.SearchInResourceReturnT:
         ...
 
     @overload
-    def search_in_resource(
+    async def search_in_resource(
             self,
             params: page.SearchInResourceParamsT
-    ) -> PendingResponse[page.SearchInResourceReturnT]:
+    ) -> page.SearchInResourceReturnT:
         ...
 
     @overload
-    def set_ad_blocking_enabled(
+    async def set_ad_blocking_enabled(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_ad_blocking_enabled(
+    async def set_ad_blocking_enabled(
             self,
             params: page.SetAdBlockingEnabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_bypass_csp(
+    async def set_bypass_csp(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_bypass_csp(
+    async def set_bypass_csp(
             self,
             params: page.SetBypassCSPParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_permissions_policy_state(
+    async def get_permissions_policy_state(
             self,
             *,
             frame_id: page.FrameId
-    ) -> PendingResponse[page.GetPermissionsPolicyStateReturnT]:
+    ) -> page.GetPermissionsPolicyStateReturnT:
         ...
 
     @overload
-    def get_permissions_policy_state(
+    async def get_permissions_policy_state(
             self,
             params: page.GetPermissionsPolicyStateParamsT
-    ) -> PendingResponse[page.GetPermissionsPolicyStateReturnT]:
+    ) -> page.GetPermissionsPolicyStateReturnT:
         ...
 
     @overload
-    def get_origin_trials(
+    async def get_origin_trials(
             self,
             *,
             frame_id: page.FrameId
-    ) -> PendingResponse[page.GetOriginTrialsReturnT]:
+    ) -> page.GetOriginTrialsReturnT:
         ...
 
     @overload
-    def get_origin_trials(
+    async def get_origin_trials(
             self,
             params: page.GetOriginTrialsParamsT
-    ) -> PendingResponse[page.GetOriginTrialsReturnT]:
+    ) -> page.GetOriginTrialsReturnT:
         ...
 
     @overload
-    def set_device_metrics_override(
+    async def set_device_metrics_override(
             self,
             *,
             width: int,
@@ -4982,146 +4979,146 @@ class Page:
             dont_set_visible_size: Optional[bool] = ...,
             screen_orientation: Optional[emulation.ScreenOrientation] = ...,
             viewport: Optional[page.Viewport] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_device_metrics_override(
+    async def set_device_metrics_override(
             self,
             params: page.SetDeviceMetricsOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_device_orientation_override(
+    async def set_device_orientation_override(
             self,
             *,
             alpha: float,
             beta: float,
             gamma: float
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_device_orientation_override(
+    async def set_device_orientation_override(
             self,
             params: page.SetDeviceOrientationOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_font_families(
+    async def set_font_families(
             self,
             *,
             font_families: page.FontFamilies,
             for_scripts: Optional[list] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_font_families(
+    async def set_font_families(
             self,
             params: page.SetFontFamiliesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_font_sizes(
+    async def set_font_sizes(
             self,
             *,
             font_sizes: page.FontSizes
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_font_sizes(
+    async def set_font_sizes(
             self,
             params: page.SetFontSizesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_document_content(
+    async def set_document_content(
             self,
             *,
             frame_id: page.FrameId,
             html: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_document_content(
+    async def set_document_content(
             self,
             params: page.SetDocumentContentParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_download_behavior(
+    async def set_download_behavior(
             self,
             *,
             behavior: str,
             download_path: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_download_behavior(
+    async def set_download_behavior(
             self,
             params: page.SetDownloadBehaviorParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_geolocation_override(
+    async def set_geolocation_override(
             self,
             *,
             latitude: Optional[float] = ...,
             longitude: Optional[float] = ...,
             accuracy: Optional[float] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_geolocation_override(
+    async def set_geolocation_override(
             self,
             params: page.SetGeolocationOverrideParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_lifecycle_events_enabled(
+    async def set_lifecycle_events_enabled(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_lifecycle_events_enabled(
+    async def set_lifecycle_events_enabled(
             self,
             params: page.SetLifecycleEventsEnabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_touch_emulation_enabled(
+    async def set_touch_emulation_enabled(
             self,
             *,
             enabled: bool,
             configuration: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_touch_emulation_enabled(
+    async def set_touch_emulation_enabled(
             self,
             params: page.SetTouchEmulationEnabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_screencast(
+    async def start_screencast(
             self,
             *,
             format: Optional[str] = ...,
@@ -5129,172 +5126,172 @@ class Page:
             max_width: Optional[int] = ...,
             max_height: Optional[int] = ...,
             every_nth_frame: Optional[int] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_screencast(
+    async def start_screencast(
             self,
             params: page.StartScreencastParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_loading(
+    async def stop_loading(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def crash(
+    async def crash(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def close(
+    async def close(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_web_lifecycle_state(
+    async def set_web_lifecycle_state(
             self,
             *,
             state: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_web_lifecycle_state(
+    async def set_web_lifecycle_state(
             self,
             params: page.SetWebLifecycleStateParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_screencast(
+    async def stop_screencast(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def produce_compilation_cache(
+    async def produce_compilation_cache(
             self,
             *,
             scripts: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def produce_compilation_cache(
+    async def produce_compilation_cache(
             self,
             params: page.ProduceCompilationCacheParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_compilation_cache(
+    async def add_compilation_cache(
             self,
             *,
             url: str,
             data: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_compilation_cache(
+    async def add_compilation_cache(
             self,
             params: page.AddCompilationCacheParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_compilation_cache(
+    async def clear_compilation_cache(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_spc_transaction_mode(
+    async def set_spc_transaction_mode(
             self,
             *,
             mode: page.AutoResponseMode
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_spc_transaction_mode(
+    async def set_spc_transaction_mode(
             self,
             params: page.SetSPCTransactionModeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_rph_registration_mode(
+    async def set_rph_registration_mode(
             self,
             *,
             mode: page.AutoResponseMode
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_rph_registration_mode(
+    async def set_rph_registration_mode(
             self,
             params: page.SetRPHRegistrationModeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def generate_test_report(
+    async def generate_test_report(
             self,
             *,
             message: str,
             group: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def generate_test_report(
+    async def generate_test_report(
             self,
             params: page.GenerateTestReportParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def wait_for_debugger(
+    async def wait_for_debugger(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_intercept_file_chooser_dialog(
+    async def set_intercept_file_chooser_dialog(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_intercept_file_chooser_dialog(
+    async def set_intercept_file_chooser_dialog(
             self,
             params: page.SetInterceptFileChooserDialogParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_prerendering_allowed(
+    async def set_prerendering_allowed(
             self,
             *,
             is_allowed: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_prerendering_allowed(
+    async def set_prerendering_allowed(
             self,
             params: page.SetPrerenderingAllowedParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -5303,45 +5300,45 @@ class Performance:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             *,
             time_domain: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             params: performance.EnableParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_time_domain(
+    async def set_time_domain(
             self,
             *,
             time_domain: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_time_domain(
+    async def set_time_domain(
             self,
             params: performance.SetTimeDomainParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_metrics(
+    async def get_metrics(
             self
-    ) -> PendingResponse[performance.GetMetricsReturnT]:
+    ) -> performance.GetMetricsReturnT:
         ...
 
 
@@ -5350,18 +5347,18 @@ class PerformanceTimeline:
     domains: 'Domains'
 
     @overload
-    def enable(
+    async def enable(
             self,
             *,
             event_types: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             params: performance_timeline.EnableParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -5370,61 +5367,61 @@ class Security:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_ignore_certificate_errors(
+    async def set_ignore_certificate_errors(
             self,
             *,
             ignore: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_ignore_certificate_errors(
+    async def set_ignore_certificate_errors(
             self,
             params: security.SetIgnoreCertificateErrorsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def handle_certificate_error(
+    async def handle_certificate_error(
             self,
             *,
             event_id: int,
             action: security.CertificateErrorAction
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def handle_certificate_error(
+    async def handle_certificate_error(
             self,
             params: security.HandleCertificateErrorParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_override_certificate_errors(
+    async def set_override_certificate_errors(
             self,
             *,
             override: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_override_certificate_errors(
+    async def set_override_certificate_errors(
             self,
             params: security.SetOverrideCertificateErrorsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -5433,178 +5430,178 @@ class ServiceWorker:
     domains: 'Domains'
 
     @overload
-    def deliver_push_message(
+    async def deliver_push_message(
             self,
             *,
             origin: str,
             registration_id: service_worker.RegistrationID,
             data: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def deliver_push_message(
+    async def deliver_push_message(
             self,
             params: service_worker.DeliverPushMessageParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_sync_event(
+    async def dispatch_sync_event(
             self,
             *,
             origin: str,
             registration_id: service_worker.RegistrationID,
             tag: str,
             last_chance: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_sync_event(
+    async def dispatch_sync_event(
             self,
             params: service_worker.DispatchSyncEventParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_periodic_sync_event(
+    async def dispatch_periodic_sync_event(
             self,
             *,
             origin: str,
             registration_id: service_worker.RegistrationID,
             tag: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispatch_periodic_sync_event(
+    async def dispatch_periodic_sync_event(
             self,
             params: service_worker.DispatchPeriodicSyncEventParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def inspect_worker(
+    async def inspect_worker(
             self,
             *,
             version_id: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def inspect_worker(
+    async def inspect_worker(
             self,
             params: service_worker.InspectWorkerParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_force_update_on_page_load(
+    async def set_force_update_on_page_load(
             self,
             *,
             force_update_on_page_load: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_force_update_on_page_load(
+    async def set_force_update_on_page_load(
             self,
             params: service_worker.SetForceUpdateOnPageLoadParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def skip_waiting(
+    async def skip_waiting(
             self,
             *,
             scope_url: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def skip_waiting(
+    async def skip_waiting(
             self,
             params: service_worker.SkipWaitingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_worker(
+    async def start_worker(
             self,
             *,
             scope_url: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_worker(
+    async def start_worker(
             self,
             params: service_worker.StartWorkerParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_all_workers(
+    async def stop_all_workers(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_worker(
+    async def stop_worker(
             self,
             *,
             version_id: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_worker(
+    async def stop_worker(
             self,
             params: service_worker.StopWorkerParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def unregister(
+    async def unregister(
             self,
             *,
             scope_url: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def unregister(
+    async def unregister(
             self,
             params: service_worker.UnregisterParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def update_registration(
+    async def update_registration(
             self,
             *,
             scope_url: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def update_registration(
+    async def update_registration(
             self,
             params: service_worker.UpdateRegistrationParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -5613,475 +5610,475 @@ class Storage:
     domains: 'Domains'
 
     @overload
-    def get_storage_key_for_frame(
+    async def get_storage_key_for_frame(
             self,
             *,
             frame_id: page.FrameId
-    ) -> PendingResponse[storage.GetStorageKeyForFrameReturnT]:
+    ) -> storage.GetStorageKeyForFrameReturnT:
         ...
 
     @overload
-    def get_storage_key_for_frame(
+    async def get_storage_key_for_frame(
             self,
             params: storage.GetStorageKeyForFrameParamsT
-    ) -> PendingResponse[storage.GetStorageKeyForFrameReturnT]:
+    ) -> storage.GetStorageKeyForFrameReturnT:
         ...
 
     @overload
-    def clear_data_for_origin(
+    async def clear_data_for_origin(
             self,
             *,
             origin: str,
             storage_types: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_data_for_origin(
+    async def clear_data_for_origin(
             self,
             params: storage.ClearDataForOriginParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_data_for_storage_key(
+    async def clear_data_for_storage_key(
             self,
             *,
             storage_key: str,
             storage_types: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_data_for_storage_key(
+    async def clear_data_for_storage_key(
             self,
             params: storage.ClearDataForStorageKeyParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_cookies(
+    async def get_cookies(
             self,
             *,
             browser_context_id: Optional[browser.BrowserContextID] = ...
-    ) -> PendingResponse[storage.GetCookiesReturnT]:
+    ) -> storage.GetCookiesReturnT:
         ...
 
     @overload
-    def get_cookies(
+    async def get_cookies(
             self,
             params: storage.GetCookiesParamsT
-    ) -> PendingResponse[storage.GetCookiesReturnT]:
+    ) -> storage.GetCookiesReturnT:
         ...
 
     @overload
-    def set_cookies(
+    async def set_cookies(
             self,
             *,
             cookies: list,
             browser_context_id: Optional[browser.BrowserContextID] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_cookies(
+    async def set_cookies(
             self,
             params: storage.SetCookiesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_cookies(
+    async def clear_cookies(
             self,
             *,
             browser_context_id: Optional[browser.BrowserContextID] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_cookies(
+    async def clear_cookies(
             self,
             params: storage.ClearCookiesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_usage_and_quota(
+    async def get_usage_and_quota(
             self,
             *,
             origin: str
-    ) -> PendingResponse[storage.GetUsageAndQuotaReturnT]:
+    ) -> storage.GetUsageAndQuotaReturnT:
         ...
 
     @overload
-    def get_usage_and_quota(
+    async def get_usage_and_quota(
             self,
             params: storage.GetUsageAndQuotaParamsT
-    ) -> PendingResponse[storage.GetUsageAndQuotaReturnT]:
+    ) -> storage.GetUsageAndQuotaReturnT:
         ...
 
     @overload
-    def override_quota_for_origin(
+    async def override_quota_for_origin(
             self,
             *,
             origin: str,
             quota_size: Optional[float] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def override_quota_for_origin(
+    async def override_quota_for_origin(
             self,
             params: storage.OverrideQuotaForOriginParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def track_cache_storage_for_origin(
+    async def track_cache_storage_for_origin(
             self,
             *,
             origin: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def track_cache_storage_for_origin(
+    async def track_cache_storage_for_origin(
             self,
             params: storage.TrackCacheStorageForOriginParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def track_cache_storage_for_storage_key(
+    async def track_cache_storage_for_storage_key(
             self,
             *,
             storage_key: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def track_cache_storage_for_storage_key(
+    async def track_cache_storage_for_storage_key(
             self,
             params: storage.TrackCacheStorageForStorageKeyParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def track_indexed_db_for_origin(
+    async def track_indexed_db_for_origin(
             self,
             *,
             origin: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def track_indexed_db_for_origin(
+    async def track_indexed_db_for_origin(
             self,
             params: storage.TrackIndexedDBForOriginParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def track_indexed_db_for_storage_key(
+    async def track_indexed_db_for_storage_key(
             self,
             *,
             storage_key: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def track_indexed_db_for_storage_key(
+    async def track_indexed_db_for_storage_key(
             self,
             params: storage.TrackIndexedDBForStorageKeyParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def untrack_cache_storage_for_origin(
+    async def untrack_cache_storage_for_origin(
             self,
             *,
             origin: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def untrack_cache_storage_for_origin(
+    async def untrack_cache_storage_for_origin(
             self,
             params: storage.UntrackCacheStorageForOriginParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def untrack_cache_storage_for_storage_key(
+    async def untrack_cache_storage_for_storage_key(
             self,
             *,
             storage_key: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def untrack_cache_storage_for_storage_key(
+    async def untrack_cache_storage_for_storage_key(
             self,
             params: storage.UntrackCacheStorageForStorageKeyParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def untrack_indexed_db_for_origin(
+    async def untrack_indexed_db_for_origin(
             self,
             *,
             origin: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def untrack_indexed_db_for_origin(
+    async def untrack_indexed_db_for_origin(
             self,
             params: storage.UntrackIndexedDBForOriginParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def untrack_indexed_db_for_storage_key(
+    async def untrack_indexed_db_for_storage_key(
             self,
             *,
             storage_key: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def untrack_indexed_db_for_storage_key(
+    async def untrack_indexed_db_for_storage_key(
             self,
             params: storage.UntrackIndexedDBForStorageKeyParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_trust_tokens(
+    async def get_trust_tokens(
             self
-    ) -> PendingResponse[storage.GetTrustTokensReturnT]:
+    ) -> storage.GetTrustTokensReturnT:
         ...
 
     @overload
-    def clear_trust_tokens(
+    async def clear_trust_tokens(
             self,
             *,
             issuer_origin: str
-    ) -> PendingResponse[storage.ClearTrustTokensReturnT]:
+    ) -> storage.ClearTrustTokensReturnT:
         ...
 
     @overload
-    def clear_trust_tokens(
+    async def clear_trust_tokens(
             self,
             params: storage.ClearTrustTokensParamsT
-    ) -> PendingResponse[storage.ClearTrustTokensReturnT]:
+    ) -> storage.ClearTrustTokensReturnT:
         ...
 
     @overload
-    def get_interest_group_details(
+    async def get_interest_group_details(
             self,
             *,
             owner_origin: str,
             name: str
-    ) -> PendingResponse[storage.GetInterestGroupDetailsReturnT]:
+    ) -> storage.GetInterestGroupDetailsReturnT:
         ...
 
     @overload
-    def get_interest_group_details(
+    async def get_interest_group_details(
             self,
             params: storage.GetInterestGroupDetailsParamsT
-    ) -> PendingResponse[storage.GetInterestGroupDetailsReturnT]:
+    ) -> storage.GetInterestGroupDetailsReturnT:
         ...
 
     @overload
-    def set_interest_group_tracking(
+    async def set_interest_group_tracking(
             self,
             *,
             enable: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_interest_group_tracking(
+    async def set_interest_group_tracking(
             self,
             params: storage.SetInterestGroupTrackingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_shared_storage_metadata(
+    async def get_shared_storage_metadata(
             self,
             *,
             owner_origin: str
-    ) -> PendingResponse[storage.GetSharedStorageMetadataReturnT]:
+    ) -> storage.GetSharedStorageMetadataReturnT:
         ...
 
     @overload
-    def get_shared_storage_metadata(
+    async def get_shared_storage_metadata(
             self,
             params: storage.GetSharedStorageMetadataParamsT
-    ) -> PendingResponse[storage.GetSharedStorageMetadataReturnT]:
+    ) -> storage.GetSharedStorageMetadataReturnT:
         ...
 
     @overload
-    def get_shared_storage_entries(
+    async def get_shared_storage_entries(
             self,
             *,
             owner_origin: str
-    ) -> PendingResponse[storage.GetSharedStorageEntriesReturnT]:
+    ) -> storage.GetSharedStorageEntriesReturnT:
         ...
 
     @overload
-    def get_shared_storage_entries(
+    async def get_shared_storage_entries(
             self,
             params: storage.GetSharedStorageEntriesParamsT
-    ) -> PendingResponse[storage.GetSharedStorageEntriesReturnT]:
+    ) -> storage.GetSharedStorageEntriesReturnT:
         ...
 
     @overload
-    def set_shared_storage_entry(
+    async def set_shared_storage_entry(
             self,
             *,
             owner_origin: str,
             key: str,
             value: str,
             ignore_if_present: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_shared_storage_entry(
+    async def set_shared_storage_entry(
             self,
             params: storage.SetSharedStorageEntryParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_shared_storage_entry(
+    async def delete_shared_storage_entry(
             self,
             *,
             owner_origin: str,
             key: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_shared_storage_entry(
+    async def delete_shared_storage_entry(
             self,
             params: storage.DeleteSharedStorageEntryParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_shared_storage_entries(
+    async def clear_shared_storage_entries(
             self,
             *,
             owner_origin: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_shared_storage_entries(
+    async def clear_shared_storage_entries(
             self,
             params: storage.ClearSharedStorageEntriesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def reset_shared_storage_budget(
+    async def reset_shared_storage_budget(
             self,
             *,
             owner_origin: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def reset_shared_storage_budget(
+    async def reset_shared_storage_budget(
             self,
             params: storage.ResetSharedStorageBudgetParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_shared_storage_tracking(
+    async def set_shared_storage_tracking(
             self,
             *,
             enable: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_shared_storage_tracking(
+    async def set_shared_storage_tracking(
             self,
             params: storage.SetSharedStorageTrackingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_storage_bucket_tracking(
+    async def set_storage_bucket_tracking(
             self,
             *,
             storage_key: str,
             enable: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_storage_bucket_tracking(
+    async def set_storage_bucket_tracking(
             self,
             params: storage.SetStorageBucketTrackingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_storage_bucket(
+    async def delete_storage_bucket(
             self,
             *,
             bucket: storage.StorageBucket
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def delete_storage_bucket(
+    async def delete_storage_bucket(
             self,
             params: storage.DeleteStorageBucketParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def run_bounce_tracking_mitigations(
+    async def run_bounce_tracking_mitigations(
             self
-    ) -> PendingResponse[storage.RunBounceTrackingMitigationsReturnT]:
+    ) -> storage.RunBounceTrackingMitigationsReturnT:
         ...
 
     @overload
-    def set_attribution_reporting_local_testing_mode(
+    async def set_attribution_reporting_local_testing_mode(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_attribution_reporting_local_testing_mode(
+    async def set_attribution_reporting_local_testing_mode(
             self,
             params: storage.SetAttributionReportingLocalTestingModeParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_attribution_reporting_tracking(
+    async def set_attribution_reporting_tracking(
             self,
             *,
             enable: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_attribution_reporting_tracking(
+    async def set_attribution_reporting_tracking(
             self,
             params: storage.SetAttributionReportingTrackingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -6090,30 +6087,30 @@ class SystemInfo:
     domains: 'Domains'
 
     @overload
-    def get_info(
+    async def get_info(
             self
-    ) -> PendingResponse[system_info.GetInfoReturnT]:
+    ) -> system_info.GetInfoReturnT:
         ...
 
     @overload
-    def get_feature_state(
+    async def get_feature_state(
             self,
             *,
             feature_state: str
-    ) -> PendingResponse[system_info.GetFeatureStateReturnT]:
+    ) -> system_info.GetFeatureStateReturnT:
         ...
 
     @overload
-    def get_feature_state(
+    async def get_feature_state(
             self,
             params: system_info.GetFeatureStateParamsT
-    ) -> PendingResponse[system_info.GetFeatureStateReturnT]:
+    ) -> system_info.GetFeatureStateReturnT:
         ...
 
     @overload
-    def get_process_info(
+    async def get_process_info(
             self
-    ) -> PendingResponse[system_info.GetProcessInfoReturnT]:
+    ) -> system_info.GetProcessInfoReturnT:
         ...
 
 
@@ -6122,99 +6119,99 @@ class Target:
     domains: 'Domains'
 
     @overload
-    def activate_target(
+    async def activate_target(
             self,
             *,
             target_id: target.TargetID
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def activate_target(
+    async def activate_target(
             self,
             params: target.ActivateTargetParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def attach_to_target(
+    async def attach_to_target(
             self,
             *,
             target_id: target.TargetID,
             flatten: Optional[bool] = ...
-    ) -> PendingResponse[target.AttachToTargetReturnT]:
+    ) -> target.AttachToTargetReturnT:
         ...
 
     @overload
-    def attach_to_target(
+    async def attach_to_target(
             self,
             params: target.AttachToTargetParamsT
-    ) -> PendingResponse[target.AttachToTargetReturnT]:
+    ) -> target.AttachToTargetReturnT:
         ...
 
     @overload
-    def attach_to_browser_target(
+    async def attach_to_browser_target(
             self
-    ) -> PendingResponse[target.AttachToBrowserTargetReturnT]:
+    ) -> target.AttachToBrowserTargetReturnT:
         ...
 
     @overload
-    def close_target(
+    async def close_target(
             self,
             *,
             target_id: target.TargetID
-    ) -> PendingResponse[target.CloseTargetReturnT]:
+    ) -> target.CloseTargetReturnT:
         ...
 
     @overload
-    def close_target(
+    async def close_target(
             self,
             params: target.CloseTargetParamsT
-    ) -> PendingResponse[target.CloseTargetReturnT]:
+    ) -> target.CloseTargetReturnT:
         ...
 
     @overload
-    def expose_dev_tools_protocol(
+    async def expose_dev_tools_protocol(
             self,
             *,
             target_id: target.TargetID,
             binding_name: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def expose_dev_tools_protocol(
+    async def expose_dev_tools_protocol(
             self,
             params: target.ExposeDevToolsProtocolParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def create_browser_context(
+    async def create_browser_context(
             self,
             *,
             dispose_on_detach: Optional[bool] = ...,
             proxy_server: Optional[str] = ...,
             proxy_bypass_list: Optional[str] = ...,
             origins_with_universal_network_access: Optional[list] = ...
-    ) -> PendingResponse[target.CreateBrowserContextReturnT]:
+    ) -> target.CreateBrowserContextReturnT:
         ...
 
     @overload
-    def create_browser_context(
+    async def create_browser_context(
             self,
             params: target.CreateBrowserContextParamsT
-    ) -> PendingResponse[target.CreateBrowserContextReturnT]:
+    ) -> target.CreateBrowserContextReturnT:
         ...
 
     @overload
-    def get_browser_contexts(
+    async def get_browser_contexts(
             self
-    ) -> PendingResponse[target.GetBrowserContextsReturnT]:
+    ) -> target.GetBrowserContextsReturnT:
         ...
 
     @overload
-    def create_target(
+    async def create_target(
             self,
             *,
             url: str,
@@ -6225,158 +6222,158 @@ class Target:
             new_window: Optional[bool] = ...,
             background: Optional[bool] = ...,
             for_tab: Optional[bool] = ...
-    ) -> PendingResponse[target.CreateTargetReturnT]:
+    ) -> target.CreateTargetReturnT:
         ...
 
     @overload
-    def create_target(
+    async def create_target(
             self,
             params: target.CreateTargetParamsT
-    ) -> PendingResponse[target.CreateTargetReturnT]:
+    ) -> target.CreateTargetReturnT:
         ...
 
     @overload
-    def detach_from_target(
+    async def detach_from_target(
             self,
             *,
             session_id: Optional[target.SessionID] = ...,
             target_id: Optional[target.TargetID] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def detach_from_target(
+    async def detach_from_target(
             self,
             params: target.DetachFromTargetParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispose_browser_context(
+    async def dispose_browser_context(
             self,
             *,
             browser_context_id: browser.BrowserContextID
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dispose_browser_context(
+    async def dispose_browser_context(
             self,
             params: target.DisposeBrowserContextParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_target_info(
+    async def get_target_info(
             self,
             *,
             target_id: Optional[target.TargetID] = ...
-    ) -> PendingResponse[target.GetTargetInfoReturnT]:
+    ) -> target.GetTargetInfoReturnT:
         ...
 
     @overload
-    def get_target_info(
+    async def get_target_info(
             self,
             params: target.GetTargetInfoParamsT
-    ) -> PendingResponse[target.GetTargetInfoReturnT]:
+    ) -> target.GetTargetInfoReturnT:
         ...
 
     @overload
-    def get_targets(
+    async def get_targets(
             self,
             *,
             filter: Optional[target.TargetFilter] = ...
-    ) -> PendingResponse[target.GetTargetsReturnT]:
+    ) -> target.GetTargetsReturnT:
         ...
 
     @overload
-    def get_targets(
+    async def get_targets(
             self,
             params: target.GetTargetsParamsT
-    ) -> PendingResponse[target.GetTargetsReturnT]:
+    ) -> target.GetTargetsReturnT:
         ...
 
     @overload
-    def send_message_to_target(
+    async def send_message_to_target(
             self,
             *,
             message: str,
             session_id: Optional[target.SessionID] = ...,
             target_id: Optional[target.TargetID] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def send_message_to_target(
+    async def send_message_to_target(
             self,
             params: target.SendMessageToTargetParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_auto_attach(
+    async def set_auto_attach(
             self,
             *,
             auto_attach: bool,
             wait_for_debugger_on_start: bool,
             flatten: Optional[bool] = ...,
             filter: Optional[target.TargetFilter] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_auto_attach(
+    async def set_auto_attach(
             self,
             params: target.SetAutoAttachParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def auto_attach_related(
+    async def auto_attach_related(
             self,
             *,
             target_id: target.TargetID,
             wait_for_debugger_on_start: bool,
             filter: Optional[target.TargetFilter] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def auto_attach_related(
+    async def auto_attach_related(
             self,
             params: target.AutoAttachRelatedParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_discover_targets(
+    async def set_discover_targets(
             self,
             *,
             discover: bool,
             filter: Optional[target.TargetFilter] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_discover_targets(
+    async def set_discover_targets(
             self,
             params: target.SetDiscoverTargetsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_remote_locations(
+    async def set_remote_locations(
             self,
             *,
             locations: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_remote_locations(
+    async def set_remote_locations(
             self,
             params: target.SetRemoteLocationsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -6385,33 +6382,33 @@ class Tethering:
     domains: 'Domains'
 
     @overload
-    def bind(
+    async def bind(
             self,
             *,
             port: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def bind(
+    async def bind(
             self,
             params: tethering.BindParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def unbind(
+    async def unbind(
             self,
             *,
             port: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def unbind(
+    async def unbind(
             self,
             params: tethering.UnbindParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -6420,50 +6417,50 @@ class Tracing:
     domains: 'Domains'
 
     @overload
-    def end(
+    async def end(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_categories(
+    async def get_categories(
             self
-    ) -> PendingResponse[tracing.GetCategoriesReturnT]:
+    ) -> tracing.GetCategoriesReturnT:
         ...
 
     @overload
-    def record_clock_sync_marker(
+    async def record_clock_sync_marker(
             self,
             *,
             sync_id: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def record_clock_sync_marker(
+    async def record_clock_sync_marker(
             self,
             params: tracing.RecordClockSyncMarkerParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def request_memory_dump(
+    async def request_memory_dump(
             self,
             *,
             deterministic: Optional[bool] = ...,
             level_of_detail: Optional[tracing.MemoryDumpLevelOfDetail] = ...
-    ) -> PendingResponse[tracing.RequestMemoryDumpReturnT]:
+    ) -> tracing.RequestMemoryDumpReturnT:
         ...
 
     @overload
-    def request_memory_dump(
+    async def request_memory_dump(
             self,
             params: tracing.RequestMemoryDumpParamsT
-    ) -> PendingResponse[tracing.RequestMemoryDumpReturnT]:
+    ) -> tracing.RequestMemoryDumpReturnT:
         ...
 
     @overload
-    def start(
+    async def start(
             self,
             *,
             categories: Optional[str] = ...,
@@ -6475,14 +6472,14 @@ class Tracing:
             trace_config: Optional[tracing.TraceConfig] = ...,
             perfetto_config: Optional[str] = ...,
             tracing_backend: Optional[tracing.TracingBackend] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start(
+    async def start(
             self,
             params: tracing.StartParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -6491,45 +6488,45 @@ class Fetch:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             *,
             patterns: Optional[list] = ...,
             handle_auth_requests: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             params: fetch.EnableParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def fail_request(
+    async def fail_request(
             self,
             *,
             request_id: fetch.RequestId,
             error_reason: network.ErrorReason
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def fail_request(
+    async def fail_request(
             self,
             params: fetch.FailRequestParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def fulfill_request(
+    async def fulfill_request(
             self,
             *,
             request_id: fetch.RequestId,
@@ -6538,18 +6535,18 @@ class Fetch:
             binary_response_headers: Optional[str] = ...,
             body: Optional[str] = ...,
             response_phrase: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def fulfill_request(
+    async def fulfill_request(
             self,
             params: fetch.FulfillRequestParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def continue_request(
+    async def continue_request(
             self,
             *,
             request_id: fetch.RequestId,
@@ -6558,34 +6555,34 @@ class Fetch:
             post_data: Optional[str] = ...,
             headers: Optional[list] = ...,
             intercept_response: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def continue_request(
+    async def continue_request(
             self,
             params: fetch.ContinueRequestParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def continue_with_auth(
+    async def continue_with_auth(
             self,
             *,
             request_id: fetch.RequestId,
             auth_challenge_response: fetch.AuthChallengeResponse
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def continue_with_auth(
+    async def continue_with_auth(
             self,
             params: fetch.ContinueWithAuthParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def continue_response(
+    async def continue_response(
             self,
             *,
             request_id: fetch.RequestId,
@@ -6593,44 +6590,44 @@ class Fetch:
             response_phrase: Optional[str] = ...,
             response_headers: Optional[list] = ...,
             binary_response_headers: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def continue_response(
+    async def continue_response(
             self,
             params: fetch.ContinueResponseParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_response_body(
+    async def get_response_body(
             self,
             *,
             request_id: fetch.RequestId
-    ) -> PendingResponse[fetch.GetResponseBodyReturnT]:
+    ) -> fetch.GetResponseBodyReturnT:
         ...
 
     @overload
-    def get_response_body(
+    async def get_response_body(
             self,
             params: fetch.GetResponseBodyParamsT
-    ) -> PendingResponse[fetch.GetResponseBodyReturnT]:
+    ) -> fetch.GetResponseBodyReturnT:
         ...
 
     @overload
-    def take_response_body_as_stream(
+    async def take_response_body_as_stream(
             self,
             *,
             request_id: fetch.RequestId
-    ) -> PendingResponse[fetch.TakeResponseBodyAsStreamReturnT]:
+    ) -> fetch.TakeResponseBodyAsStreamReturnT:
         ...
 
     @overload
-    def take_response_body_as_stream(
+    async def take_response_body_as_stream(
             self,
             params: fetch.TakeResponseBodyAsStreamParamsT
-    ) -> PendingResponse[fetch.TakeResponseBodyAsStreamReturnT]:
+    ) -> fetch.TakeResponseBodyAsStreamReturnT:
         ...
 
 
@@ -6639,30 +6636,30 @@ class WebAudio:
     domains: 'Domains'
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_realtime_data(
+    async def get_realtime_data(
             self,
             *,
             context_id: web_audio.GraphObjectId
-    ) -> PendingResponse[web_audio.GetRealtimeDataReturnT]:
+    ) -> web_audio.GetRealtimeDataReturnT:
         ...
 
     @overload
-    def get_realtime_data(
+    async def get_realtime_data(
             self,
             params: web_audio.GetRealtimeDataParamsT
-    ) -> PendingResponse[web_audio.GetRealtimeDataReturnT]:
+    ) -> web_audio.GetRealtimeDataReturnT:
         ...
 
 
@@ -6671,182 +6668,182 @@ class WebAuthn:
     domains: 'Domains'
 
     @overload
-    def enable(
+    async def enable(
             self,
             *,
             enable_ui: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             params: web_authn.EnableParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_virtual_authenticator(
+    async def add_virtual_authenticator(
             self,
             *,
             options: web_authn.VirtualAuthenticatorOptions
-    ) -> PendingResponse[web_authn.AddVirtualAuthenticatorReturnT]:
+    ) -> web_authn.AddVirtualAuthenticatorReturnT:
         ...
 
     @overload
-    def add_virtual_authenticator(
+    async def add_virtual_authenticator(
             self,
             params: web_authn.AddVirtualAuthenticatorParamsT
-    ) -> PendingResponse[web_authn.AddVirtualAuthenticatorReturnT]:
+    ) -> web_authn.AddVirtualAuthenticatorReturnT:
         ...
 
     @overload
-    def set_response_override_bits(
+    async def set_response_override_bits(
             self,
             *,
             authenticator_id: web_authn.AuthenticatorId,
             is_bogus_signature: Optional[bool] = ...,
             is_bad_uv: Optional[bool] = ...,
             is_bad_up: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_response_override_bits(
+    async def set_response_override_bits(
             self,
             params: web_authn.SetResponseOverrideBitsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_virtual_authenticator(
+    async def remove_virtual_authenticator(
             self,
             *,
             authenticator_id: web_authn.AuthenticatorId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_virtual_authenticator(
+    async def remove_virtual_authenticator(
             self,
             params: web_authn.RemoveVirtualAuthenticatorParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_credential(
+    async def add_credential(
             self,
             *,
             authenticator_id: web_authn.AuthenticatorId,
             credential: web_authn.Credential
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_credential(
+    async def add_credential(
             self,
             params: web_authn.AddCredentialParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_credential(
+    async def get_credential(
             self,
             *,
             authenticator_id: web_authn.AuthenticatorId,
             credential_id: str
-    ) -> PendingResponse[web_authn.GetCredentialReturnT]:
+    ) -> web_authn.GetCredentialReturnT:
         ...
 
     @overload
-    def get_credential(
+    async def get_credential(
             self,
             params: web_authn.GetCredentialParamsT
-    ) -> PendingResponse[web_authn.GetCredentialReturnT]:
+    ) -> web_authn.GetCredentialReturnT:
         ...
 
     @overload
-    def get_credentials(
+    async def get_credentials(
             self,
             *,
             authenticator_id: web_authn.AuthenticatorId
-    ) -> PendingResponse[web_authn.GetCredentialsReturnT]:
+    ) -> web_authn.GetCredentialsReturnT:
         ...
 
     @overload
-    def get_credentials(
+    async def get_credentials(
             self,
             params: web_authn.GetCredentialsParamsT
-    ) -> PendingResponse[web_authn.GetCredentialsReturnT]:
+    ) -> web_authn.GetCredentialsReturnT:
         ...
 
     @overload
-    def remove_credential(
+    async def remove_credential(
             self,
             *,
             authenticator_id: web_authn.AuthenticatorId,
             credential_id: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_credential(
+    async def remove_credential(
             self,
             params: web_authn.RemoveCredentialParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_credentials(
+    async def clear_credentials(
             self,
             *,
             authenticator_id: web_authn.AuthenticatorId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def clear_credentials(
+    async def clear_credentials(
             self,
             params: web_authn.ClearCredentialsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_user_verified(
+    async def set_user_verified(
             self,
             *,
             authenticator_id: web_authn.AuthenticatorId,
             is_user_verified: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_user_verified(
+    async def set_user_verified(
             self,
             params: web_authn.SetUserVerifiedParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_automatic_presence_simulation(
+    async def set_automatic_presence_simulation(
             self,
             *,
             authenticator_id: web_authn.AuthenticatorId,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_automatic_presence_simulation(
+    async def set_automatic_presence_simulation(
             self,
             params: web_authn.SetAutomaticPresenceSimulationParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -6855,15 +6852,15 @@ class Media:
     domains: 'Domains'
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -6872,46 +6869,46 @@ class DeviceAccess:
     domains: 'Domains'
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def select_prompt(
+    async def select_prompt(
             self,
             *,
             id: device_access.RequestId,
             device_id: device_access.DeviceId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def select_prompt(
+    async def select_prompt(
             self,
             params: device_access.SelectPromptParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def cancel_prompt(
+    async def cancel_prompt(
             self,
             *,
             id: device_access.RequestId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def cancel_prompt(
+    async def cancel_prompt(
             self,
             params: device_access.CancelPromptParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -6920,15 +6917,15 @@ class Preload:
     domains: 'Domains'
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -6937,77 +6934,77 @@ class FedCm:
     domains: 'Domains'
 
     @overload
-    def enable(
+    async def enable(
             self,
             *,
             disable_rejection_delay: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             params: fed_cm.EnableParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def select_account(
+    async def select_account(
             self,
             *,
             dialog_id: str,
             account_index: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def select_account(
+    async def select_account(
             self,
             params: fed_cm.SelectAccountParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def confirm_idp_signin(
+    async def confirm_idp_signin(
             self,
             *,
             dialog_id: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def confirm_idp_signin(
+    async def confirm_idp_signin(
             self,
             params: fed_cm.ConfirmIdpSigninParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dismiss_dialog(
+    async def dismiss_dialog(
             self,
             *,
             dialog_id: str,
             trigger_cooldown: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def dismiss_dialog(
+    async def dismiss_dialog(
             self,
             params: fed_cm.DismissDialogParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def reset_cooldown(
+    async def reset_cooldown(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -7016,21 +7013,21 @@ class Console:
     domains: 'Domains'
 
     @overload
-    def clear_messages(
+    async def clear_messages(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -7039,44 +7036,44 @@ class Debugger:
     domains: 'Domains'
 
     @overload
-    def continue_to_location(
+    async def continue_to_location(
             self,
             *,
             location: debugger.Location,
             target_call_frames: Optional[str] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def continue_to_location(
+    async def continue_to_location(
             self,
             params: debugger.ContinueToLocationParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             *,
             max_scripts_cache_size: Optional[float] = ...
-    ) -> PendingResponse[debugger.EnableReturnT]:
+    ) -> debugger.EnableReturnT:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self,
             params: debugger.EnableParamsT
-    ) -> PendingResponse[debugger.EnableReturnT]:
+    ) -> debugger.EnableReturnT:
         ...
 
     @overload
-    def evaluate_on_call_frame(
+    async def evaluate_on_call_frame(
             self,
             *,
             call_frame_id: debugger.CallFrameId,
@@ -7088,217 +7085,217 @@ class Debugger:
             generate_preview: Optional[bool] = ...,
             throw_on_side_effect: Optional[bool] = ...,
             timeout: Optional[runtime.TimeDelta] = ...
-    ) -> PendingResponse[debugger.EvaluateOnCallFrameReturnT]:
+    ) -> debugger.EvaluateOnCallFrameReturnT:
         ...
 
     @overload
-    def evaluate_on_call_frame(
+    async def evaluate_on_call_frame(
             self,
             params: debugger.EvaluateOnCallFrameParamsT
-    ) -> PendingResponse[debugger.EvaluateOnCallFrameReturnT]:
+    ) -> debugger.EvaluateOnCallFrameReturnT:
         ...
 
     @overload
-    def get_possible_breakpoints(
+    async def get_possible_breakpoints(
             self,
             *,
             start: debugger.Location,
             end: Optional[debugger.Location] = ...,
             restrict_to_function: Optional[bool] = ...
-    ) -> PendingResponse[debugger.GetPossibleBreakpointsReturnT]:
+    ) -> debugger.GetPossibleBreakpointsReturnT:
         ...
 
     @overload
-    def get_possible_breakpoints(
+    async def get_possible_breakpoints(
             self,
             params: debugger.GetPossibleBreakpointsParamsT
-    ) -> PendingResponse[debugger.GetPossibleBreakpointsReturnT]:
+    ) -> debugger.GetPossibleBreakpointsReturnT:
         ...
 
     @overload
-    def get_script_source(
+    async def get_script_source(
             self,
             *,
             script_id: runtime.ScriptId
-    ) -> PendingResponse[debugger.GetScriptSourceReturnT]:
+    ) -> debugger.GetScriptSourceReturnT:
         ...
 
     @overload
-    def get_script_source(
+    async def get_script_source(
             self,
             params: debugger.GetScriptSourceParamsT
-    ) -> PendingResponse[debugger.GetScriptSourceReturnT]:
+    ) -> debugger.GetScriptSourceReturnT:
         ...
 
     @overload
-    def get_stack_trace(
+    async def get_stack_trace(
             self,
             *,
             stack_trace_id: runtime.StackTraceId
-    ) -> PendingResponse[debugger.GetStackTraceReturnT]:
+    ) -> debugger.GetStackTraceReturnT:
         ...
 
     @overload
-    def get_stack_trace(
+    async def get_stack_trace(
             self,
             params: debugger.GetStackTraceParamsT
-    ) -> PendingResponse[debugger.GetStackTraceReturnT]:
+    ) -> debugger.GetStackTraceReturnT:
         ...
 
     @overload
-    def pause(
+    async def pause(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def pause_on_async_call(
+    async def pause_on_async_call(
             self,
             *,
             parent_stack_trace_id: runtime.StackTraceId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def pause_on_async_call(
+    async def pause_on_async_call(
             self,
             params: debugger.PauseOnAsyncCallParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_breakpoint(
+    async def remove_breakpoint(
             self,
             *,
             breakpoint_id: debugger.BreakpointId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_breakpoint(
+    async def remove_breakpoint(
             self,
             params: debugger.RemoveBreakpointParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def restart_frame(
+    async def restart_frame(
             self,
             *,
             call_frame_id: debugger.CallFrameId
-    ) -> PendingResponse[debugger.RestartFrameReturnT]:
+    ) -> debugger.RestartFrameReturnT:
         ...
 
     @overload
-    def restart_frame(
+    async def restart_frame(
             self,
             params: debugger.RestartFrameParamsT
-    ) -> PendingResponse[debugger.RestartFrameReturnT]:
+    ) -> debugger.RestartFrameReturnT:
         ...
 
     @overload
-    def resume(
+    async def resume(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def search_in_content(
+    async def search_in_content(
             self,
             *,
             script_id: runtime.ScriptId,
             query: str,
             case_sensitive: Optional[bool] = ...,
             is_regex: Optional[bool] = ...
-    ) -> PendingResponse[debugger.SearchInContentReturnT]:
+    ) -> debugger.SearchInContentReturnT:
         ...
 
     @overload
-    def search_in_content(
+    async def search_in_content(
             self,
             params: debugger.SearchInContentParamsT
-    ) -> PendingResponse[debugger.SearchInContentReturnT]:
+    ) -> debugger.SearchInContentReturnT:
         ...
 
     @overload
-    def set_async_call_stack_depth(
+    async def set_async_call_stack_depth(
             self,
             *,
             max_depth: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_async_call_stack_depth(
+    async def set_async_call_stack_depth(
             self,
             params: debugger.SetAsyncCallStackDepthParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_blackbox_patterns(
+    async def set_blackbox_patterns(
             self,
             *,
             patterns: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_blackbox_patterns(
+    async def set_blackbox_patterns(
             self,
             params: debugger.SetBlackboxPatternsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_blackboxed_ranges(
+    async def set_blackboxed_ranges(
             self,
             *,
             script_id: runtime.ScriptId,
             positions: list
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_blackboxed_ranges(
+    async def set_blackboxed_ranges(
             self,
             params: debugger.SetBlackboxedRangesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_breakpoint(
+    async def set_breakpoint(
             self,
             *,
             location: debugger.Location,
             condition: Optional[str] = ...
-    ) -> PendingResponse[debugger.SetBreakpointReturnT]:
+    ) -> debugger.SetBreakpointReturnT:
         ...
 
     @overload
-    def set_breakpoint(
+    async def set_breakpoint(
             self,
             params: debugger.SetBreakpointParamsT
-    ) -> PendingResponse[debugger.SetBreakpointReturnT]:
+    ) -> debugger.SetBreakpointReturnT:
         ...
 
     @overload
-    def set_instrumentation_breakpoint(
+    async def set_instrumentation_breakpoint(
             self,
             *,
             instrumentation: str
-    ) -> PendingResponse[debugger.SetInstrumentationBreakpointReturnT]:
+    ) -> debugger.SetInstrumentationBreakpointReturnT:
         ...
 
     @overload
-    def set_instrumentation_breakpoint(
+    async def set_instrumentation_breakpoint(
             self,
             params: debugger.SetInstrumentationBreakpointParamsT
-    ) -> PendingResponse[debugger.SetInstrumentationBreakpointReturnT]:
+    ) -> debugger.SetInstrumentationBreakpointReturnT:
         ...
 
     @overload
-    def set_breakpoint_by_url(
+    async def set_breakpoint_by_url(
             self,
             *,
             line_number: int,
@@ -7307,152 +7304,152 @@ class Debugger:
             script_hash: Optional[str] = ...,
             column_number: Optional[int] = ...,
             condition: Optional[str] = ...
-    ) -> PendingResponse[debugger.SetBreakpointByUrlReturnT]:
+    ) -> debugger.SetBreakpointByUrlReturnT:
         ...
 
     @overload
-    def set_breakpoint_by_url(
+    async def set_breakpoint_by_url(
             self,
             params: debugger.SetBreakpointByUrlParamsT
-    ) -> PendingResponse[debugger.SetBreakpointByUrlReturnT]:
+    ) -> debugger.SetBreakpointByUrlReturnT:
         ...
 
     @overload
-    def set_breakpoint_on_function_call(
+    async def set_breakpoint_on_function_call(
             self,
             *,
             object_id: runtime.RemoteObjectId,
             condition: Optional[str] = ...
-    ) -> PendingResponse[debugger.SetBreakpointOnFunctionCallReturnT]:
+    ) -> debugger.SetBreakpointOnFunctionCallReturnT:
         ...
 
     @overload
-    def set_breakpoint_on_function_call(
+    async def set_breakpoint_on_function_call(
             self,
             params: debugger.SetBreakpointOnFunctionCallParamsT
-    ) -> PendingResponse[debugger.SetBreakpointOnFunctionCallReturnT]:
+    ) -> debugger.SetBreakpointOnFunctionCallReturnT:
         ...
 
     @overload
-    def set_breakpoints_active(
+    async def set_breakpoints_active(
             self,
             *,
             active: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_breakpoints_active(
+    async def set_breakpoints_active(
             self,
             params: debugger.SetBreakpointsActiveParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_pause_on_exceptions(
+    async def set_pause_on_exceptions(
             self,
             *,
             state: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_pause_on_exceptions(
+    async def set_pause_on_exceptions(
             self,
             params: debugger.SetPauseOnExceptionsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_return_value(
+    async def set_return_value(
             self,
             *,
             new_value: runtime.CallArgument
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_return_value(
+    async def set_return_value(
             self,
             params: debugger.SetReturnValueParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_script_source(
+    async def set_script_source(
             self,
             *,
             script_id: runtime.ScriptId,
             script_source: str,
             dry_run: Optional[bool] = ...
-    ) -> PendingResponse[debugger.SetScriptSourceReturnT]:
+    ) -> debugger.SetScriptSourceReturnT:
         ...
 
     @overload
-    def set_script_source(
+    async def set_script_source(
             self,
             params: debugger.SetScriptSourceParamsT
-    ) -> PendingResponse[debugger.SetScriptSourceReturnT]:
+    ) -> debugger.SetScriptSourceReturnT:
         ...
 
     @overload
-    def set_skip_all_pauses(
+    async def set_skip_all_pauses(
             self,
             *,
             skip: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_skip_all_pauses(
+    async def set_skip_all_pauses(
             self,
             params: debugger.SetSkipAllPausesParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_variable_value(
+    async def set_variable_value(
             self,
             *,
             scope_number: int,
             variable_name: str,
             new_value: runtime.CallArgument,
             call_frame_id: debugger.CallFrameId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_variable_value(
+    async def set_variable_value(
             self,
             params: debugger.SetVariableValueParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def step_into(
+    async def step_into(
             self,
             *,
             break_on_async_call: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def step_into(
+    async def step_into(
             self,
             params: debugger.StepIntoParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def step_out(
+    async def step_out(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def step_over(
+    async def step_over(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -7461,139 +7458,139 @@ class HeapProfiler:
     domains: 'Domains'
 
     @overload
-    def add_inspected_heap_object(
+    async def add_inspected_heap_object(
             self,
             *,
             heap_object_id: heap_profiler.HeapSnapshotObjectId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_inspected_heap_object(
+    async def add_inspected_heap_object(
             self,
             params: heap_profiler.AddInspectedHeapObjectParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def collect_garbage(
+    async def collect_garbage(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_heap_object_id(
+    async def get_heap_object_id(
             self,
             *,
             object_id: runtime.RemoteObjectId
-    ) -> PendingResponse[heap_profiler.GetHeapObjectIdReturnT]:
+    ) -> heap_profiler.GetHeapObjectIdReturnT:
         ...
 
     @overload
-    def get_heap_object_id(
+    async def get_heap_object_id(
             self,
             params: heap_profiler.GetHeapObjectIdParamsT
-    ) -> PendingResponse[heap_profiler.GetHeapObjectIdReturnT]:
+    ) -> heap_profiler.GetHeapObjectIdReturnT:
         ...
 
     @overload
-    def get_object_by_heap_object_id(
+    async def get_object_by_heap_object_id(
             self,
             *,
             object_id: heap_profiler.HeapSnapshotObjectId,
             object_group: Optional[str] = ...
-    ) -> PendingResponse[heap_profiler.GetObjectByHeapObjectIdReturnT]:
+    ) -> heap_profiler.GetObjectByHeapObjectIdReturnT:
         ...
 
     @overload
-    def get_object_by_heap_object_id(
+    async def get_object_by_heap_object_id(
             self,
             params: heap_profiler.GetObjectByHeapObjectIdParamsT
-    ) -> PendingResponse[heap_profiler.GetObjectByHeapObjectIdReturnT]:
+    ) -> heap_profiler.GetObjectByHeapObjectIdReturnT:
         ...
 
     @overload
-    def get_sampling_profile(
+    async def get_sampling_profile(
             self
-    ) -> PendingResponse[heap_profiler.GetSamplingProfileReturnT]:
+    ) -> heap_profiler.GetSamplingProfileReturnT:
         ...
 
     @overload
-    def start_sampling(
+    async def start_sampling(
             self,
             *,
             sampling_interval: Optional[float] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_sampling(
+    async def start_sampling(
             self,
             params: heap_profiler.StartSamplingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_tracking_heap_objects(
+    async def start_tracking_heap_objects(
             self,
             *,
             track_allocations: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_tracking_heap_objects(
+    async def start_tracking_heap_objects(
             self,
             params: heap_profiler.StartTrackingHeapObjectsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_sampling(
+    async def stop_sampling(
             self
-    ) -> PendingResponse[heap_profiler.StopSamplingReturnT]:
+    ) -> heap_profiler.StopSamplingReturnT:
         ...
 
     @overload
-    def stop_tracking_heap_objects(
+    async def stop_tracking_heap_objects(
             self,
             *,
             report_progress: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_tracking_heap_objects(
+    async def stop_tracking_heap_objects(
             self,
             params: heap_profiler.StopTrackingHeapObjectsParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def take_heap_snapshot(
+    async def take_heap_snapshot(
             self,
             *,
             report_progress: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def take_heap_snapshot(
+    async def take_heap_snapshot(
             self,
             params: heap_profiler.TakeHeapSnapshotParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -7602,94 +7599,94 @@ class Profiler:
     domains: 'Domains'
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def get_best_effort_coverage(
+    async def get_best_effort_coverage(
             self
-    ) -> PendingResponse[profiler.GetBestEffortCoverageReturnT]:
+    ) -> profiler.GetBestEffortCoverageReturnT:
         ...
 
     @overload
-    def set_sampling_interval(
+    async def set_sampling_interval(
             self,
             *,
             interval: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_sampling_interval(
+    async def set_sampling_interval(
             self,
             params: profiler.SetSamplingIntervalParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start(
+    async def start(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_precise_coverage(
+    async def start_precise_coverage(
             self,
             *,
             call_count: Optional[bool] = ...,
             detailed: Optional[bool] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_precise_coverage(
+    async def start_precise_coverage(
             self,
             params: profiler.StartPreciseCoverageParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def start_type_profile(
+    async def start_type_profile(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop(
+    async def stop(
             self
-    ) -> PendingResponse[profiler.StopReturnT]:
+    ) -> profiler.StopReturnT:
         ...
 
     @overload
-    def stop_precise_coverage(
+    async def stop_precise_coverage(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def stop_type_profile(
+    async def stop_type_profile(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def take_precise_coverage(
+    async def take_precise_coverage(
             self
-    ) -> PendingResponse[profiler.TakePreciseCoverageReturnT]:
+    ) -> profiler.TakePreciseCoverageReturnT:
         ...
 
     @overload
-    def take_type_profile(
+    async def take_type_profile(
             self
-    ) -> PendingResponse[profiler.TakeTypeProfileReturnT]:
+    ) -> profiler.TakeTypeProfileReturnT:
         ...
 
 
@@ -7698,24 +7695,24 @@ class Runtime:
     domains: 'Domains'
 
     @overload
-    def await_promise(
+    async def await_promise(
             self,
             *,
             promise_object_id: runtime.RemoteObjectId,
             return_by_value: Optional[bool] = ...,
             generate_preview: Optional[bool] = ...
-    ) -> PendingResponse[runtime.AwaitPromiseReturnT]:
+    ) -> runtime.AwaitPromiseReturnT:
         ...
 
     @overload
-    def await_promise(
+    async def await_promise(
             self,
             params: runtime.AwaitPromiseParamsT
-    ) -> PendingResponse[runtime.AwaitPromiseReturnT]:
+    ) -> runtime.AwaitPromiseReturnT:
         ...
 
     @overload
-    def call_function_on(
+    async def call_function_on(
             self,
             *,
             function_declaration: str,
@@ -7728,54 +7725,54 @@ class Runtime:
             await_promise: Optional[bool] = ...,
             execution_context_id: Optional[runtime.ExecutionContextId] = ...,
             object_group: Optional[str] = ...
-    ) -> PendingResponse[runtime.CallFunctionOnReturnT]:
+    ) -> runtime.CallFunctionOnReturnT:
         ...
 
     @overload
-    def call_function_on(
+    async def call_function_on(
             self,
             params: runtime.CallFunctionOnParamsT
-    ) -> PendingResponse[runtime.CallFunctionOnReturnT]:
+    ) -> runtime.CallFunctionOnReturnT:
         ...
 
     @overload
-    def compile_script(
+    async def compile_script(
             self,
             *,
             expression: str,
             source_url: str,
             persist_script: bool,
             execution_context_id: Optional[runtime.ExecutionContextId] = ...
-    ) -> PendingResponse[runtime.CompileScriptReturnT]:
+    ) -> runtime.CompileScriptReturnT:
         ...
 
     @overload
-    def compile_script(
+    async def compile_script(
             self,
             params: runtime.CompileScriptParamsT
-    ) -> PendingResponse[runtime.CompileScriptReturnT]:
+    ) -> runtime.CompileScriptReturnT:
         ...
 
     @overload
-    def disable(
+    async def disable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def discard_console_entries(
+    async def discard_console_entries(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def enable(
+    async def enable(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def evaluate(
+    async def evaluate(
             self,
             *,
             expression: str,
@@ -7789,115 +7786,115 @@ class Runtime:
             await_promise: Optional[bool] = ...,
             throw_on_side_effect: Optional[bool] = ...,
             timeout: Optional[runtime.TimeDelta] = ...
-    ) -> PendingResponse[runtime.EvaluateReturnT]:
+    ) -> runtime.EvaluateReturnT:
         ...
 
     @overload
-    def evaluate(
+    async def evaluate(
             self,
             params: runtime.EvaluateParamsT
-    ) -> PendingResponse[runtime.EvaluateReturnT]:
+    ) -> runtime.EvaluateReturnT:
         ...
 
     @overload
-    def get_isolate_id(
+    async def get_isolate_id(
             self
-    ) -> PendingResponse[runtime.GetIsolateIdReturnT]:
+    ) -> runtime.GetIsolateIdReturnT:
         ...
 
     @overload
-    def get_heap_usage(
+    async def get_heap_usage(
             self
-    ) -> PendingResponse[runtime.GetHeapUsageReturnT]:
+    ) -> runtime.GetHeapUsageReturnT:
         ...
 
     @overload
-    def get_properties(
+    async def get_properties(
             self,
             *,
             object_id: runtime.RemoteObjectId,
             own_properties: Optional[bool] = ...,
             accessor_properties_only: Optional[bool] = ...,
             generate_preview: Optional[bool] = ...
-    ) -> PendingResponse[runtime.GetPropertiesReturnT]:
+    ) -> runtime.GetPropertiesReturnT:
         ...
 
     @overload
-    def get_properties(
+    async def get_properties(
             self,
             params: runtime.GetPropertiesParamsT
-    ) -> PendingResponse[runtime.GetPropertiesReturnT]:
+    ) -> runtime.GetPropertiesReturnT:
         ...
 
     @overload
-    def global_lexical_scope_names(
+    async def global_lexical_scope_names(
             self,
             *,
             execution_context_id: Optional[runtime.ExecutionContextId] = ...
-    ) -> PendingResponse[runtime.GlobalLexicalScopeNamesReturnT]:
+    ) -> runtime.GlobalLexicalScopeNamesReturnT:
         ...
 
     @overload
-    def global_lexical_scope_names(
+    async def global_lexical_scope_names(
             self,
             params: runtime.GlobalLexicalScopeNamesParamsT
-    ) -> PendingResponse[runtime.GlobalLexicalScopeNamesReturnT]:
+    ) -> runtime.GlobalLexicalScopeNamesReturnT:
         ...
 
     @overload
-    def query_objects(
+    async def query_objects(
             self,
             *,
             prototype_object_id: runtime.RemoteObjectId,
             object_group: Optional[str] = ...
-    ) -> PendingResponse[runtime.QueryObjectsReturnT]:
+    ) -> runtime.QueryObjectsReturnT:
         ...
 
     @overload
-    def query_objects(
+    async def query_objects(
             self,
             params: runtime.QueryObjectsParamsT
-    ) -> PendingResponse[runtime.QueryObjectsReturnT]:
+    ) -> runtime.QueryObjectsReturnT:
         ...
 
     @overload
-    def release_object(
+    async def release_object(
             self,
             *,
             object_id: runtime.RemoteObjectId
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def release_object(
+    async def release_object(
             self,
             params: runtime.ReleaseObjectParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def release_object_group(
+    async def release_object_group(
             self,
             *,
             object_group: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def release_object_group(
+    async def release_object_group(
             self,
             params: runtime.ReleaseObjectGroupParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def run_if_waiting_for_debugger(
+    async def run_if_waiting_for_debugger(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def run_script(
+    async def run_script(
             self,
             *,
             script_id: runtime.ScriptId,
@@ -7908,96 +7905,96 @@ class Runtime:
             return_by_value: Optional[bool] = ...,
             generate_preview: Optional[bool] = ...,
             await_promise: Optional[bool] = ...
-    ) -> PendingResponse[runtime.RunScriptReturnT]:
+    ) -> runtime.RunScriptReturnT:
         ...
 
     @overload
-    def run_script(
+    async def run_script(
             self,
             params: runtime.RunScriptParamsT
-    ) -> PendingResponse[runtime.RunScriptReturnT]:
+    ) -> runtime.RunScriptReturnT:
         ...
 
     @overload
-    def set_async_call_stack_depth(
+    async def set_async_call_stack_depth(
             self,
             *,
             max_depth: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_async_call_stack_depth(
+    async def set_async_call_stack_depth(
             self,
             params: runtime.SetAsyncCallStackDepthParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_custom_object_formatter_enabled(
+    async def set_custom_object_formatter_enabled(
             self,
             *,
             enabled: bool
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_custom_object_formatter_enabled(
+    async def set_custom_object_formatter_enabled(
             self,
             params: runtime.SetCustomObjectFormatterEnabledParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_max_call_stack_size_to_capture(
+    async def set_max_call_stack_size_to_capture(
             self,
             *,
             size: int
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def set_max_call_stack_size_to_capture(
+    async def set_max_call_stack_size_to_capture(
             self,
             params: runtime.SetMaxCallStackSizeToCaptureParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def terminate_execution(
+    async def terminate_execution(
             self
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_binding(
+    async def add_binding(
             self,
             *,
             name: str,
             execution_context_id: Optional[runtime.ExecutionContextId] = ...
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def add_binding(
+    async def add_binding(
             self,
             params: runtime.AddBindingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_binding(
+    async def remove_binding(
             self,
             *,
             name: str
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
     @overload
-    def remove_binding(
+    async def remove_binding(
             self,
             params: runtime.RemoveBindingParamsT
-    ) -> PendingResponse[None]:
+    ) -> None:
         ...
 
 
@@ -8006,9 +8003,9 @@ class Schema:
     domains: 'Domains'
 
     @overload
-    def get_domains(
+    async def get_domains(
             self
-    ) -> PendingResponse[schema.GetDomainsReturnT]:
+    ) -> schema.GetDomainsReturnT:
         ...
 
 

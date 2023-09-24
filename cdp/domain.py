@@ -89,7 +89,7 @@ class Method:
             )
         }
 
-    def __call__(self, *args, **kwargs):
+    async def __call__(self, *args, **kwargs):
         params = validate_args_kwargs(
             args,
             kwargs
@@ -103,7 +103,7 @@ class Method:
 
         method = f'{self.cdp_domain}.{self.cdp_method}'
 
-        return self.domain.domains.ws_target.send_command(
+        return await self.domain.domains.ws_target.send_command(
             method,
             params,
             method in constants.commands_with_responses,

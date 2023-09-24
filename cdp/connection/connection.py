@@ -7,7 +7,6 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from cdp.connection.response import PendingResponse
 from cdp.connection.stream import EventStream
 
 
@@ -26,7 +25,7 @@ class Connection:
         init=False,
         repr=False
     )
-    in_flight_futures: dict = field(
+    in_flight_futures: dict[int, asyncio.Future] = field(
         init=False,
         repr=False
     )
@@ -52,8 +51,8 @@ class Connection:
         self.ws_connected = None
         self.ws_receiver = None
 
-    async def _run_async(self):
-        async with websockets.connect(self.url) as ws:
+    async def _listen_async(self):
+        with websockets.connect(self.url) as ws:
             self.ws = ws
             self.ws_connected.set_result(None)
 
@@ -65,7 +64,10 @@ class Connection:
         message = json.loads(message)
 
         if 'id' in message:
-            future = self.in_flight_futures.pop(message['id'])
+            future = self.in_flight_futures.pop(message['id'], None)
+
+            if future is None:
+                return
 
             if 'error' in message and message['error']:
                 error = message['error']
@@ -86,41 +88,32 @@ class Connection:
             for stream in self.event_streams[message['method']]:
                 stream.publish(message)
 
-    def connect(self):
+    async def connect(self):
         loop = asyncio.get_event_loop()
 
         self.ws_connected = loop.create_future()
-        self.ws_receiver = loop.create_task(
-            self._run_async()
-        )
+        self.ws_receiver = loop.create_task(self._listen_async())
 
-        loop.run_until_complete(
-            self.ws_connected
-        )
+        await self.ws_connected
 
-    def open_stream(
+    async def open_stream(
             self,
             events: list[str]
     ) -> EventStream:
-        stream = EventStream(
-            self,
-            events
-        )
+        stream = EventStream(self, events)
 
         for event in events:
-            self.event_streams[event].append(
-                stream
-            )
+            self.event_streams[event].append(stream)
 
         return stream
 
-    def send_request(
+    async def send_request(
             self,
             method: str,
             params: dict,
             expect_response: bool = True,
             response_middlewares: list[callable] = None
-    ) -> PendingResponse:
+    ) -> dict:
         loop = asyncio.get_event_loop()
 
         request_id = _next_rpc_id()
@@ -141,13 +134,14 @@ class Connection:
             future.set_result(None)
 
         try:
-            coroutine = self.ws.send(request)
-            loop.run_until_complete(coroutine)
+            await self.ws.send(request)
 
         except Exception as e:
             future.set_exception(e)
 
-        return PendingResponse(
-            future,
-            response_middlewares or []
-        )
+        result = await future
+
+        for middleware in response_middlewares or []:
+            result = middleware(result)
+
+        return result['result']

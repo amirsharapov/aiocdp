@@ -77,6 +77,37 @@ class SourceCodeGenerator(ast.NodeVisitor):
         if self.last_line.strip():
             self.source += '\n'
 
+    def _visit_function(self, node: ast.FunctionDef | ast.AsyncFunctionDef) -> Any:
+        if decorators := getattr(node, 'decorator_list', None):
+            for decorator in decorators:
+                self.source += f'@'
+                self.visit(decorator)
+                self.source += '\n' + self.indent
+
+        if isinstance(node, ast.AsyncFunctionDef):
+            self.source += 'async '
+
+        self.source += f'def {node.name}('
+
+        if hasattr(node, 'args') and node.args:
+            self.visit(node.args)
+
+        self.source += ')'
+
+        if hasattr(node, 'returns') and node.returns:
+            self.source += ' -> '
+            self.visit(node.returns)
+
+        self.source += ':\n'
+
+        with self._indent_context():
+            for item in node.body:
+                self._add_lines_before(item)
+                self.source += self.indent
+                self.visit(item)
+                self._add_new_line_if_prev_line_not_empty()
+                self._add_lines_after(item)
+
     def _zip_args_and_defaults(self, node: ast.arguments):
         defaults = getattr(node, 'defaults', [])
         args = getattr(node, 'args', [])
@@ -180,6 +211,9 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.visit(node.targets[0])
         self.source += ' = '
         self.visit(node.value)
+
+    def visit_AsyncFunctionDef(self, node: ast.AsyncFunctionDef) -> Any:
+        self._visit_function(node)
 
     def visit_Attribute(self, node: ast.Attribute) -> Any:
         self.visit(node.value)
@@ -307,32 +341,7 @@ class SourceCodeGenerator(ast.NodeVisitor):
         self.source += '}'
 
     def visit_FunctionDef(self, node: ast.FunctionDef) -> Any:
-        if decorators := getattr(node, 'decorator_list', None):
-            for decorator in decorators:
-                self.source += f'@'
-                self.visit(decorator)
-                self.source += '\n' + self.indent
-
-        self.source += f'def {node.name}('
-
-        if hasattr(node, 'args') and node.args:
-            self.visit(node.args)
-
-        self.source += ')'
-
-        if hasattr(node, 'returns') and node.returns:
-            self.source += ' -> '
-            self.visit(node.returns)
-
-        self.source += ':\n'
-
-        with self._indent_context():
-            for item in node.body:
-                self._add_lines_before(item)
-                self.source += self.indent
-                self.visit(item)
-                self._add_new_line_if_prev_line_not_empty()
-                self._add_lines_after(item)
+        self._visit_function(node)
 
     def visit_ImportFrom(self, node: ast.ImportFrom) -> Any:
         self.source += f'from {node.module} import ('

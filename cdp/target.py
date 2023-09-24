@@ -3,7 +3,6 @@ from typing import TYPE_CHECKING, Optional, Callable
 
 from cdp.domains import Domains
 from cdp.connection.connection import Connection
-from cdp.connection.response import PendingResponse
 
 if TYPE_CHECKING:
     from cdp.chrome import Chrome
@@ -47,30 +46,28 @@ class Target:
         self.connection = Connection(self.ws_url)
         self.active_session_id = None
 
-    def connect(self):
-        self.connection.connect()
+    async def connect(self):
+        return await self.connection.connect()
 
-    def open_session(self):
-        result = self.domains.target.attach_to_target({
+    async def open_session(self):
+        result = await self.domains.target.attach_to_target({
             'target_id': self.id,
             'flatten': True
         })
 
-        result = result.get()
-
         self.active_session_id = result['session_id']
 
-    def send_command(
+    async def send_command(
             self,
             method: str,
             params: dict,
             expect_response: bool = True,
             response_middlewares: list[Callable] = None
-    ) -> PendingResponse:
+    ) -> dict:
         if self.active_session_id:
             params['sessionId'] = self.active_session_id
 
-        return self.connection.send_request(
+        return await self.connection.send_request(
             method,
             params,
             expect_response,

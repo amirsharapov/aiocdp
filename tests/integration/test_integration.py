@@ -1,3 +1,4 @@
+import asyncio
 import time
 from unittest import TestCase
 
@@ -6,17 +7,25 @@ from cdp.chrome import Chrome
 
 class Tests(TestCase):
     def test(self):
-        chrome = Chrome.start()
+        async def _():
+            chrome = Chrome.start()
 
-        time.sleep(1)
+            time.sleep(1)
 
-        targets = chrome.get_targets()
-        target = targets[0]
-        target.connect()
-        target.open_session()
+            targets = chrome.get_targets()
+            target = targets[0]
 
-        result = target.domains.page.navigate(
-            url='https://www.google.com'
-        )
+            await target.connect()
+            await target.open_session()
 
-        result.get()
+            await target.domains.network.enable()
+
+            result = await target.domains.page.navigate(
+                url='https://youtube.com'
+            )
+
+            print(result)
+
+            time.sleep(1)
+
+        asyncio.run(_())

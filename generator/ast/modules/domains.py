@@ -49,12 +49,6 @@ def _type_checked_imports(domains: Iterable['Domain']):
             ]
         ),
         ast.ImportFrom(
-            module='cdp.connection.response',
-            names=[
-                ast.alias('PendingResponse')
-            ]
-        ),
-        ast.ImportFrom(
             module='cdp.generated.types',
             names=aliases
         )
@@ -89,14 +83,7 @@ def _domain(domain: 'Domain'):
                 'None'
             )
 
-        returns = ast.Subscript(
-            value=ast.Name('PendingResponse'),
-            slice=ast.Index(
-                value=returns
-            )
-        )
-
-        method_with_kwargs = ast.FunctionDef(
+        method_with_kwargs = ast.AsyncFunctionDef(
             name=command.name.snake_case,
             args=ast.arguments(
                 args=[
@@ -159,7 +146,7 @@ def _domain(domain: 'Domain'):
         )
 
         if command.parameters:
-            method_with_params = ast.FunctionDef(
+            method_with_params = ast.AsyncFunctionDef(
                 name=command.name.snake_case,
                 args=ast.arguments(
                     args=[
