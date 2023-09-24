@@ -8,21 +8,24 @@ Every week, a CICD pipeline will run to fetch the latest spec and regenerate the
 ## Inspiration
 
 Code generation methodology inspired by the `python-chrome-devtools-protocol` package.
-`pycdp` follows the same idea with several key additions:
+This library (`pycdp`) follows the same idea with several key additions:
 
+- Code generation is for stub files and constants only
 - Automatic CICD pipeline to refresh the library
-- Websocket communication implemented directly into this library
-- Changes to the key interfaces for a more fluent API
+- Websocket communication implementation
+- Updates to interfaces for better type hints and code completion
 
 ## Internals:
 
-### Targets
+### Goals
 
-When we setup the internals, we aimed to have as little external dependencies as possible.
-If we were to implement an external dependency, we need to make sure that it is compatible with
-the standard libraries python ships with. `websocket-client` is a library we had to drop for
-this reason.
+We aim to be the underlying engine for any libraries or projects using Chrome DevTools Protocol.
 
+With that in mind, we need to achieve the following points:
+
+1. Flexibility
+2. Minimal external dependencies
+3. Compatible with built-in python libraries
 
 ### Generator
 
