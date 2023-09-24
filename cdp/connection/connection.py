@@ -134,7 +134,7 @@ class Connection:
 
         return stream
 
-    async def send(
+    def send(
             self,
             method: str,
             params: dict,
@@ -159,11 +159,11 @@ class Connection:
             future.set_result(None)
 
         try:
-            await self.ws.send(request)
+            asyncio.gather(
+                self.ws.send(request)
+            )
 
         except Exception as e:
             future.set_exception(e)
 
-        return _wrap_future(
-            future
-        )
+        return _wrap_future(future)

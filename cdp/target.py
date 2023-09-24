@@ -36,9 +36,12 @@ class Target:
         return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.id}'
     
     def __post_init__(self):
+        connection = Connection(self.ws_url)
+        session_id = None
+
         self.io = IO(
-            Connection(self.ws_url),
-            None
+            connection,
+            session_id
         )
 
     async def connect(self):
@@ -48,9 +51,8 @@ class Target:
         result = await self.io.send(
             'Target.attachToTarget',
             {
-                'targetId': self.id,
-                'flatten': True
+                'targetId': self.id
             }
         )
 
-        self.io.session_id = result['session_id']
+        self.io.session_id = result['sessionId']

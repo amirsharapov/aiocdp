@@ -19,19 +19,16 @@ class Tests(TestCase):
             await target.open_session()
 
             await target.io.send(
-                'Debugger.enable'
+                'Debugger.enable',
             )
 
             await target.io.send(
-                'Debugger.setBreakpointsActive',
-                {
-                    'active': True
-                }
+                'Page.enable'
             )
 
-            await target.domains.runtime.enable()
-            await target.domains.page.enable()
-            await target.domains.network.enable()
+            await target.io.send(
+                'Network.enable'
+            )
 
             result = {
                 'error_text': None
@@ -39,14 +36,19 @@ class Tests(TestCase):
 
             while 'error_text' in result:
                 time.sleep(.3)
-                result = await target.domains.page.navigate(
-                    url='https://google.com'
+
+                result = await target.io.send(
+                    'Page.navigate',
+                    {
+                        'url': 'https://google.com'
+                    }
                 )
 
-            result = await target.domains.runtime.evaluate(
-                expression='r = document.querySelector("form"); console.log(r)'
+            result = await target.io.send(
+                'Runtime.evaluate',
+                {
+                    'expression': 'document.querySelector("form")'
+                }
             )
-
-            print(result)
 
         asyncio.get_event_loop().run_until_complete(_())

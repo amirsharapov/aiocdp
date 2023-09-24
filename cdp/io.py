@@ -1,8 +1,10 @@
+from dataclasses import dataclass
 from typing import Optional
 
 from cdp.connection.connection import Connection
 
 
+@dataclass
 class IO:
     connection: Connection
     session_id: Optional[str]
@@ -13,10 +15,12 @@ class IO:
             params: dict = None,
             return_response: bool = True
     ):
+        params = params or {}
+
         if self.session_id:
             params['sessionId'] = self.session_id
 
-        return self.connection.send(
+        return await self.connection.send(
             method,
             params,
             return_response
