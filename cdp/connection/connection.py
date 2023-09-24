@@ -11,13 +11,13 @@ from cdp.connection.response import PendingResponse
 from cdp.connection.stream import EventStream
 
 
-class JSONRPCRequestID:
-    next_id = 0
+_id = 0
 
-    @classmethod
-    def get(cls):
-        cls.next_id += 1
-        return cls.next_id
+
+def _next_rpc_id():
+    global _id
+    _id += 1
+    return _id
 
 
 @dataclass
@@ -122,7 +122,7 @@ class Connection:
     ) -> PendingResponse:
         loop = asyncio.get_event_loop()
 
-        request_id = JSONRPCRequestID.get()
+        request_id = _next_rpc_id()
         request = {
             'id': request_id,
             'method': method,
