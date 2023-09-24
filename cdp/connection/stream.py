@@ -28,14 +28,13 @@ class EventStream(Generic[_T]):
         self.next_future = loop.create_future()
 
     async def publish(self, event: dict) -> None:
-        self.events.append(event)
-        self.next_future.set_result(event)
-
         loop = asyncio.get_event_loop()
 
+        self.events.append(event)
+        self.next_future.set_result(event)
         self.next_future = loop.create_future()
 
-    async def wait_until_next(self) -> _T:
+    async def wait(self) -> _T:
         loop = asyncio.get_event_loop()
 
         result = await self.next_future
@@ -44,7 +43,7 @@ class EventStream(Generic[_T]):
 
         return result
 
-    def close(self) -> None:
+    async def close(self) -> None:
         for name in self.event_names:
             self.connection.event_streams[name].remove(
                 self

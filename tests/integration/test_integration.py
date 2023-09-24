@@ -16,39 +16,35 @@ class Tests(TestCase):
             target = targets[0]
 
             await target.connect()
-            await target.open_session()
+            await target.start_session()
 
-            await target.io.send(
+            await target.send(
                 'Debugger.enable',
             )
 
-            await target.io.send(
+            await target.send(
                 'Page.enable'
             )
 
-            await target.io.send(
+            await target.send(
                 'Network.enable'
             )
 
-            result = {
-                'error_text': None
-            }
+            await target.send(
+                'Page.navigate',
+                {
+                    'url': 'https://google.com'
+                }
+            )
 
-            while 'error_text' in result:
-                time.sleep(.3)
-
-                result = await target.io.send(
-                    'Page.navigate',
-                    {
-                        'url': 'https://google.com'
-                    }
-                )
-
-            result = await target.io.send(
+            result = await target.send(
                 'Runtime.evaluate',
                 {
                     'expression': 'document.querySelector("form")'
                 }
             )
+
+            print(result)
+            print(await result)
 
         asyncio.get_event_loop().run_until_complete(_())

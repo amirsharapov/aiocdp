@@ -2,7 +2,6 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 from cdp.connection.connection import Connection
-from cdp.io import IO
 
 if TYPE_CHECKING:
     from cdp.chrome import Chrome
@@ -10,7 +9,11 @@ if TYPE_CHECKING:
 
 @dataclass
 class Target:
-    io: IO = field(
+    connection: Connection = field(
+        init=False,
+        repr=False
+    )
+    session_id: str | None = field(
         init=False,
         repr=False
     )
@@ -34,25 +37,34 @@ class Target:
     @property
     def ws_url(self):
         return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.id}'
-    
-    def __post_init__(self):
-        connection = Connection(self.ws_url)
-        session_id = None
 
-        self.io = IO(
-            connection,
-            session_id
-        )
+    def __post_init__(self):
+        self.connection = Connection(self.ws_url)
+        self.session_id = None
 
     async def connect(self):
-        return await self.io.connection.connect()
+        return await self.connection.connect()
 
-    async def open_session(self):
-        result = await self.io.send(
+    async def open_events_stream(self, events: list[str]):
+        return await self.connection.open_stream(events)
+
+    async def send(self, method: str, params: dict = None):
+        params = params or {}
+
+        if self.session_id:
+            params['sessionId'] = self.session_id
+
+        return await self.connection.send(
+            method,
+            params
+        )
+
+    async def start_session(self):
+        result = await self.connection.send(
             'Target.attachToTarget',
             {
                 'targetId': self.id
             }
         )
 
-        self.io.session_id = result['sessionId']
+        self.session_id = (await result)['sessionId']

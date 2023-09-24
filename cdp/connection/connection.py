@@ -29,13 +29,6 @@ def _validate_response(response: dict):
         )
 
 
-async def _wrap_future(future: asyncio.Future):
-    result = await future
-
-    if 'result' in result:
-        return result['result']
-
-
 @dataclass
 class Connection:
     event_streams: defaultdict[str, list[EventStream]] = field(
@@ -100,7 +93,7 @@ class Connection:
             )
 
             future.set_result(
-                response
+                response['result']
             )
 
         except Exception as e:
@@ -134,11 +127,10 @@ class Connection:
 
         return stream
 
-    def send(
+    async def send(
             self,
             method: str,
-            params: dict,
-            await_response: bool = True
+            params: dict
     ):
         loop = asyncio.get_event_loop()
 
@@ -152,18 +144,12 @@ class Connection:
         request = json.dumps(request)
         future = loop.create_future()
 
-        if await_response:
-            self.in_flight_futures[request_id] = future
-
-        else:
-            future.set_result(None)
+        self.in_flight_futures[request_id] = future
 
         try:
-            asyncio.gather(
-                self.ws.send(request)
-            )
+            await self.ws.send(request)
 
         except Exception as e:
             future.set_exception(e)
 
-        return _wrap_future(future)
+        return future
