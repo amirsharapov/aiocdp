@@ -8,7 +8,6 @@ import websockets.client as websockets
 
 from cdp.connection.stream import EventStream
 
-
 _id = 0
 
 
@@ -63,7 +62,9 @@ class Connection:
 
     async def _handle_event(self, event: dict):
         for stream in self.event_streams[event['method']]:
-            await stream.publish(event)
+            await stream.publish(
+                event
+            )
 
     async def _handle_message(self, message: str):
         message = json.loads(message)
@@ -102,11 +103,24 @@ class Connection:
     async def _listen_async(self):
         async with websockets.connect(self.ws_url) as ws:
             self.ws = ws
-            self.ws_connected.set_result(None)
+            self.ws_connected.set_result(
+                None
+            )
 
             while True:
                 message = await ws.recv()
-                await self._handle_message(message)
+                await self._handle_message(
+                    message
+                )
+
+    async def close_stream(
+            self,
+            stream: EventStream
+    ):
+        for event in stream.event_names:
+            self.event_streams[event].remove(
+                stream
+            )
 
     async def connect(self):
         loop = asyncio.get_event_loop()

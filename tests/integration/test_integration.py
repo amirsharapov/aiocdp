@@ -30,12 +30,19 @@ class Tests(TestCase):
                 'Network.enable'
             )
 
+            stream = await target.open_stream(['Page.frameNavigated'])
+            future = stream.next
+
             await target.send(
                 'Page.navigate',
                 {
                     'url': 'https://google.com'
                 }
             )
+
+            result = await future
+
+            print(result)
 
             result = await target.send(
                 'Runtime.evaluate',

@@ -13,11 +13,13 @@ With that in mind, we need to achieve the following points:
 2. Minimal external dependencies
 3. Compatible with built-in python libraries
 
-### Package
+## Package
 
 - Python `typing` module for type hints, enum literals, and other goodies
 - Python `asyncio` module for async futures (Support for other async libraries is TBD)
 - Python `websockets` module for websocket communication (Support for other WS libraries is TBD)
+
+## Competing Libraries
 
 ## Notes:
 

@@ -13,7 +13,11 @@ class EventStream(Generic[_T]):
     events: list[dict] = field(
         init=False
     )
-    next_future: asyncio.Future = field(
+    next: asyncio.Future = field(
+        init=False,
+        repr=False
+    )
+    lock: asyncio.Lock = field(
         init=False,
         repr=False
     )
@@ -22,29 +26,16 @@ class EventStream(Generic[_T]):
     event_names: list[str]
 
     def __post_init__(self):
-        loop = asyncio.get_event_loop()
-
         self.events = []
-        self.next_future = loop.create_future()
+        self.next = asyncio.get_event_loop().create_future()
+        self.lock = asyncio.Lock()
 
     async def publish(self, event: dict) -> None:
-        loop = asyncio.get_event_loop()
-
+        await self.lock.acquire()
         self.events.append(event)
-        self.next_future.set_result(event)
-        self.next_future = loop.create_future()
+        self.next.set_result(event)
+        self.next = asyncio.get_event_loop().create_future()
+        self.lock.release()
 
-    async def wait(self) -> _T:
-        loop = asyncio.get_event_loop()
-
-        result = await self.next_future
-
-        self.next_future = loop.create_future()
-
-        return result
-
-    async def close(self) -> None:
-        for name in self.event_names:
-            self.connection.event_streams[name].remove(
-                self
-            )
+    async def close(self):
+        await self.connection.close_stream(self)
