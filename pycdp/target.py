@@ -1,4 +1,3 @@
-import asyncio
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
@@ -23,10 +22,6 @@ class TargetInfo:
 
 @dataclass
 class Target:
-    _async_lock: asyncio.Lock = field(
-        init=False,
-        repr=False
-    )
     _connection: Connection = field(
         init=False,
         repr=False
@@ -46,7 +41,6 @@ class Target:
     def __post_init__(self):
         self._connection = Connection(self.ws_url)
         self._session_id = None
-        self._async_lock = asyncio.Lock()
 
     async def close_stream(self, stream: EventStream):
         return await self._connection.close_stream(stream)
@@ -69,13 +63,10 @@ class Target:
         )
 
     async def send_and_await_response(self, method: str, params: dict = None):
-        async with self._async_lock:
-            return await (
-                await self.send(
-                    method,
-                    params
-                )
-            )
+        return await (await self.send(
+            method,
+            params
+        ))
 
     async def start_session(self):
         method = 'Target.attachToTarget'
