@@ -36,7 +36,7 @@ class Target:
 
     @property
     def ws_url(self):
-        return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.id}'
+        return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.info.id}'
 
     def __post_init__(self):
         self._connection = Connection(self.ws_url)

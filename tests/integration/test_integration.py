@@ -30,7 +30,7 @@ class Tests(TestCase):
                 'Network.enable'
             )
 
-            stream = await target.open_stream(['Page.frameNavigated'])
+            stream = await target.open_stream(['Page.frameStoppedLoading'])
             future = stream.next
 
             await target.send(
