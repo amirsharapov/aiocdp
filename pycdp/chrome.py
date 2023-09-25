@@ -64,7 +64,7 @@ class Chrome:
         if tab_url:
             params['url'] = tab_url
 
-        response = requests.get(
+        response = requests.put(
             url=url,
             params=params
         )

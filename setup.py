@@ -14,5 +14,7 @@ setup(
         ]
     ),
     install_requires=[
+        'websockets',
+        'requests',
     ]
 )

@@ -6,6 +6,16 @@ from pycdp.chrome import Chrome
 
 
 class Tests(TestCase):
+    def test_open_tab(self):
+        async def _():
+            chrome = Chrome.start()
+
+            time.sleep(1)
+
+            chrome.open_tab('https://google.com')
+
+        asyncio.get_event_loop().run_until_complete(_())
+
     def test(self):
         async def _():
             chrome = Chrome.start()
