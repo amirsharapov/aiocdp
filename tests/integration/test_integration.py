@@ -28,22 +28,22 @@ class Tests(TestCase):
             await target.connect()
             await target.start_session()
 
+            print(await target.send_and_await_response(
+                'Page.enable'
+            ))
+
+            print(await target.send_and_await_response(
+                'Network.enable'
+            ))
+
             await target.send(
                 'Debugger.enable',
-            )
-
-            await target.send(
-                'Page.enable'
-            )
-
-            await target.send(
-                'Network.enable'
             )
 
             stream = await target.open_stream(['Page.frameStoppedLoading'])
             future = stream.next
 
-            await target.send(
+            await target.send_and_await_response(
                 'Page.navigate',
                 {
                     'url': 'https://google.com'
@@ -54,7 +54,7 @@ class Tests(TestCase):
 
             print(result)
 
-            result = await target.send(
+            result = await target.send_and_await_response(
                 'Runtime.evaluate',
                 {
                     'expression': 'document.querySelector("form")'
@@ -62,6 +62,5 @@ class Tests(TestCase):
             )
 
             print(result)
-            print(await result)
 
         asyncio.get_event_loop().run_until_complete(_())

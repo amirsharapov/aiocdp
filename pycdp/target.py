@@ -62,6 +62,12 @@ class Target:
             }
         )
 
+    async def send_and_await_response(self, method: str, params: dict = None):
+        return await (await self.send(
+            method,
+            params
+        ))
+
     async def start_session(self):
         method = 'Target.attachToTarget'
         params = {
