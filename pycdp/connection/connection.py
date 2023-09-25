@@ -11,13 +11,13 @@ from pycdp.connection.stream import EventStream
 _id = 0
 
 
-def _next_rpc_id():
+def next_rpc_id():
     global _id
     _id += 1
     return _id
 
 
-def _validate_response(response: dict):
+def validate_rpc_response(response: dict):
     if 'error' in response and response['error']:
         error = response['error']
         raise Exception(
@@ -89,7 +89,7 @@ class Connection:
             return
 
         try:
-            _validate_response(
+            validate_rpc_response(
                 response
             )
 
@@ -148,7 +148,7 @@ class Connection:
     ):
         loop = asyncio.get_event_loop()
 
-        request_id = _next_rpc_id()
+        request_id = next_rpc_id()
         request = {
             'id': request_id,
             'method': method,

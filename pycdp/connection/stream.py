@@ -33,6 +33,13 @@ class EventStream(Generic[_T]):
     async def close(self):
         await self.connection.close_stream(self)
 
+    async def iterate(self):
+        for event in self.events:
+            yield event
+
+        while True:
+            yield await self.next
+
     async def publish(self, event: dict) -> None:
         await self.lock.acquire()
         self.events.append(event)
