@@ -6,7 +6,7 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from cdp.connection.stream import EventStream
+from pycdp.connection.stream import EventStream
 
 _id = 0
 
