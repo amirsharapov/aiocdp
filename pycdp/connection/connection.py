@@ -60,9 +60,9 @@ class Connection:
         self.ws_connected = None
         self.ws_listener = None
 
-    async def _handle_event(self, event: dict):
+    def _handle_event(self, event: dict):
         for stream in self.event_streams[event['method']]:
-            await stream.publish(
+            stream.publish(
                 event
             )
 
@@ -70,16 +70,16 @@ class Connection:
         message = json.loads(message)
 
         if 'id' in message:
-            return await self._handle_response(
+            return self._handle_response(
                 message
             )
 
         else:
-            return await self._handle_event(
+            return self._handle_event(
                 message
             )
 
-    async def _handle_response(self, response: dict):
+    def _handle_response(self, response: dict):
         future = self.in_flight_futures.pop(
             response['id'],
             None
@@ -113,7 +113,7 @@ class Connection:
                     message
                 )
 
-    async def close_stream(
+    def close_stream(
             self,
             stream: EventStream
     ):
@@ -130,7 +130,7 @@ class Connection:
 
         await self.ws_connected
 
-    async def open_stream(
+    def open_stream(
             self,
             events: list[str]
     ) -> EventStream:

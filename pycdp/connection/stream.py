@@ -40,9 +40,7 @@ class EventStream(Generic[_T]):
         while True:
             yield await self.next
 
-    async def publish(self, event: dict) -> None:
-        await self.lock.acquire()
+    def publish(self, event: dict) -> None:
         self.events.append(event)
         self.next.set_result(event)
         self.next = asyncio.get_event_loop().create_future()
-        self.lock.release()

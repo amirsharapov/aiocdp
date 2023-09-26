@@ -42,14 +42,14 @@ class Target:
         self._connection = Connection(self.ws_url)
         self._session_id = None
 
-    async def close_stream(self, stream: EventStream):
-        return await self._connection.close_stream(stream)
+    def close_stream(self, stream: EventStream):
+        return self._connection.close_stream(stream)
 
     async def connect(self):
         return await self._connection.connect()
 
-    async def open_stream(self, events: list[str]):
-        return await self._connection.open_stream(events)
+    def open_stream(self, events: list[str]):
+        return self._connection.open_stream(events)
 
     async def send(self, method: str, params: dict = None):
         params = params or {}
