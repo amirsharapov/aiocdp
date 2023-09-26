@@ -30,8 +30,8 @@ class EventStream(Generic[_T]):
         self.next = asyncio.get_event_loop().create_future()
         self.lock = asyncio.Lock()
 
-    async def close(self):
-        await self.connection.close_stream(self)
+    def close(self):
+        self.connection.close_stream(self)
 
     async def iterate(self):
         for event in self.events:
