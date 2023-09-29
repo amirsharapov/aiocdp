@@ -63,17 +63,13 @@ class Chrome:
 
         return targets
 
-    def open_tab(self, tab_url: str) -> Target:
-        url = f'http://{self.host}:{self.port}/json/new?{tab_url}'
-        params = {}
+    def open_tab(self, tab_url: str = None) -> Target:
+        url = f'http://{self.host}:{self.port}/json/new'
 
         if tab_url:
-            params['url'] = tab_url
+            url += f'?{tab_url}'
 
-        response = requests.put(
-            url=url,
-            params=params
-        )
+        response = requests.put(url)
         response.raise_for_status()
 
         return Target(

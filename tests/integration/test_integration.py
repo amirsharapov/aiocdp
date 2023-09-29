@@ -12,7 +12,22 @@ class Tests(TestCase):
 
             time.sleep(1)
 
-            chrome.open_tab('https://google.com')
+            chrome.open_tab()
+
+            time.sleep(1)
+
+            targets = chrome.get_targets()
+            target = targets[0]
+
+            await target.connect()
+            await target.start_session()
+
+            print(await target.send_and_await_response(
+                'Page.navigate',
+                {
+                    'url': 'https://google.com'
+                }
+            ))
 
         asyncio.get_event_loop().run_until_complete(_())
 

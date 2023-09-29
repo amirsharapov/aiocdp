@@ -33,7 +33,7 @@ class EventStream(Generic[_T]):
     def close(self):
         self.connection.close_stream(self)
 
-    async def iterate(self):
+    async def iterate_events(self):
         for event in self.events:
             yield event
 
