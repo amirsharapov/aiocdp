@@ -8,24 +8,27 @@ from pycdp.target import Target, TargetInfo
 
 @dataclass
 class Chrome:
-    host: str = '127.0.0.1'
-    port: int = 9222
+    host: str
+    port: int
 
     @classmethod
-    def start(cls, host: str = '127.0.0.1', port: int = 9222, cli_args: list[str] = None) -> 'Chrome':
-        cli_args = cli_args or []
-        commands = [
-            f'start chrome',
-            f'--remote-debugging-port={port}',
-            f'--remote-allow-origins=*'
-        ]
-
-        os.system(' '.join(commands + cli_args))
-
-        self = cls(
+    def create(cls, host: str = '127.0.0.1', port: int = 9222):
+        return cls(
             host=host,
             port=port
         )
+
+    def start(self, cli_args: list[str] = None):
+        commands = [
+            f'start chrome',
+            f'--remote-debugging-port={self.port}',
+            f'--remote-allow-origins=*'
+        ]
+
+        commands.extend(cli_args or [])
+        command = ' '.join(commands)
+
+        os.system(command)
 
         return self
 

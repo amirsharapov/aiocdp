@@ -8,7 +8,7 @@ from pycdp.chrome import Chrome
 class Tests(TestCase):
     def test_open_tab(self):
         async def _():
-            chrome = Chrome.start()
+            chrome = Chrome.create().start()
 
             time.sleep(1)
 
@@ -18,7 +18,7 @@ class Tests(TestCase):
 
     def test(self):
         async def _():
-            chrome = Chrome.start()
+            chrome = Chrome.create().start()
 
             time.sleep(1)
 
