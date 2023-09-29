@@ -1,11 +1,11 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from pycdp.connection.connection import Connection
-from pycdp.connection.stream import EventStream
+from pycdp.core.connection.connection import Connection
+from pycdp.core.connection.stream import EventStream
 
 if TYPE_CHECKING:
-    from pycdp.chrome import Chrome
+    from pycdp.core.chrome import Chrome
 
 
 @dataclass
