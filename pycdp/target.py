@@ -61,7 +61,13 @@ class Target:
     def close_stream(self, stream: EventStream):
         return self._connection.close_stream(stream)
 
-    async def connect(self):
+    async def connect(self, skip_if_already_connected: bool = True):
+        if (
+            skip_if_already_connected and
+            self.is_connected
+        ):
+            return
+
         return await self._connection.connect()
 
     def open_stream(self, events: list[str]):
@@ -84,7 +90,13 @@ class Target:
             params
         ))
 
-    async def start_session(self):
+    async def start_session(self, skip_if_session_already_started: bool = True):
+        if (
+            skip_if_session_already_started and
+            self.is_session_started
+        ):
+            return
+
         method = 'Target.attachToTarget'
         params = {
             'targetId': self.info.id
