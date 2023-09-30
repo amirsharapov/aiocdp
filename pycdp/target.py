@@ -36,7 +36,7 @@ class Target:
 
     @property
     def is_connected(self):
-        return self._connection is not None
+        return self._connection.is_connected
 
     @property
     def is_session_started(self):
