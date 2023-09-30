@@ -53,6 +53,10 @@ class Connection:
 
     ws_url: str
 
+    @property
+    def is_connected(self):
+        return self.ws is not None
+
     def __post_init__(self):
         self.event_streams = defaultdict(list)
         self.in_flight_futures = {}
@@ -104,7 +108,7 @@ class Connection:
         async with websockets.connect(self.ws_url) as ws:
             self.ws = ws
             self.ws_connected.set_result(
-                None
+                True
             )
 
             while True:

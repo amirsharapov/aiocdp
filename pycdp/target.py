@@ -22,7 +22,7 @@ class TargetInfo:
 
 @dataclass
 class Target:
-    _connection: Connection | None = field(
+    _connection: Connection = field(
         init=False,
         repr=False
     )
@@ -47,14 +47,21 @@ class Target:
         return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.info.id}'
 
     def __post_init__(self):
-        self._connection = None
+        self._connection = Connection(self.ws_url)
         self._session_id = None
+
+    async def close_session(self):
+        await self._connection.send(
+            'Target.detachFromTarget',
+            {
+                'sessionId': self._session_id
+            }
+        )
 
     def close_stream(self, stream: EventStream):
         return self._connection.close_stream(stream)
 
     async def connect(self):
-        self._connection = Connection(self.ws_url)
         return await self._connection.connect()
 
     def open_stream(self, events: list[str]):
