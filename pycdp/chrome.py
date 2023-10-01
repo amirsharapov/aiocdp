@@ -41,10 +41,10 @@ class Chrome:
     def get_targets(self) -> list[Target]:
         url = f'http://{self.host}:{self.port}/json/list'
 
+        targets = []
+
         response = requests.get(url)
         response.raise_for_status()
-
-        targets = []
 
         for target in response.json():
             target_ = Target(
