@@ -6,7 +6,8 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from pycdp.core.connection.stream import EventStream
+from pycdp.stream import EventStream
+from pycdp import logging
 
 _id = 0
 
@@ -53,6 +54,10 @@ class Connection:
 
     ws_url: str
 
+    @property
+    def is_connected(self):
+        return self.ws is not None
+
     def __post_init__(self):
         self.event_streams = defaultdict(list)
         self.in_flight_futures = {}
@@ -61,12 +66,18 @@ class Connection:
         self.ws_listener = None
 
     def _handle_event(self, event: dict):
+        if logging.is_logging_enabled('connection.handle_event'):
+            print(event)
+
         for stream in self.event_streams[event['method']]:
             stream.publish(
                 event
             )
 
     async def _handle_message(self, message: str):
+        if logging.is_logging_enabled('connection.handle_message'):
+            print(message)
+
         message = json.loads(message)
 
         if 'id' in message:
@@ -80,6 +91,9 @@ class Connection:
             )
 
     def _handle_response(self, response: dict):
+        if logging.is_logging_enabled('connection.handle_response'):
+            print(response)
+
         future = self.in_flight_futures.pop(
             response['id'],
             None
@@ -104,7 +118,7 @@ class Connection:
         async with websockets.connect(self.ws_url) as ws:
             self.ws = ws
             self.ws_connected.set_result(
-                None
+                True
             )
 
             while True:

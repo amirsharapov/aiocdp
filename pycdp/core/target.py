@@ -1,8 +1,8 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from pycdp.core.connection.connection import Connection
-from pycdp.core.connection.stream import EventStream
+from pycdp.core.connection import Connection
+from pycdp.stream import EventStream
 
 if TYPE_CHECKING:
     from pycdp.core.chrome import Chrome
@@ -35,6 +35,14 @@ class Target:
     info: TargetInfo
 
     @property
+    def is_connected(self):
+        return self._connection.is_connected
+
+    @property
+    def is_session_started(self):
+        return self._session_id is not None
+
+    @property
     def ws_url(self):
         return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.info.id}'
 
@@ -42,10 +50,24 @@ class Target:
         self._connection = Connection(self.ws_url)
         self._session_id = None
 
+    async def close_session(self):
+        await self._connection.send(
+            'Target.detachFromTarget',
+            {
+                'sessionId': self._session_id
+            }
+        )
+
     def close_stream(self, stream: EventStream):
         return self._connection.close_stream(stream)
 
-    async def connect(self):
+    async def connect(self, skip_if_already_connected: bool = True):
+        if (
+            skip_if_already_connected and
+            self.is_connected
+        ):
+            return
+
         return await self._connection.connect()
 
     def open_stream(self, events: list[str]):
@@ -68,7 +90,13 @@ class Target:
             params
         ))
 
-    async def start_session(self):
+    async def start_session(self, skip_if_session_already_started: bool = True):
+        if (
+            skip_if_session_already_started and
+            self.is_session_started
+        ):
+            return
+
         method = 'Target.attachToTarget'
         params = {
             'targetId': self.info.id

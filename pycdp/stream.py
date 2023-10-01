@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from typing import Generic, TypeVar, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from pycdp.core.connection.connection import Connection
+    from pycdp.core.connection import Connection
 
 _T = TypeVar('_T')
 
