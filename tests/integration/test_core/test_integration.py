@@ -58,8 +58,7 @@ class Tests(TestCase):
                 'Debugger.enable',
             )
 
-            stream = target.open_stream(['Page.frameStoppedLoading'])
-            future = stream.next
+            reader = target.open_stream(['Page.frameStoppedLoading'])
 
             await target.send_and_await_response(
                 'Page.navigate',
@@ -68,9 +67,9 @@ class Tests(TestCase):
                 }
             )
 
-            result = await future
-
-            print(result)
+            async for event in reader.iterate():
+                print(event)
+                break
 
             result = await target.send_and_await_response(
                 'Runtime.evaluate',

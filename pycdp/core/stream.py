@@ -42,7 +42,7 @@ class Stream(Generic[_T], ABC):
 class StreamReader(Generic[_T], ABC):
     stream: Stream[_T]
 
-    async def read(self) -> AsyncGenerator[_T, None]:
+    async def iterate(self) -> AsyncGenerator[_T, None]:
         async for item in self.stream.read():
             yield item
 
