@@ -2,7 +2,7 @@ import asyncio
 import time
 from unittest import TestCase
 
-from pycdp.chrome import Chrome
+from pycdp.core.chrome import Chrome
 
 
 class Tests(TestCase):

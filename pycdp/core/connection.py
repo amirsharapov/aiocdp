@@ -6,7 +6,7 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from pycdp.connection.stream import EventStream
+from pycdp.stream import Stream, StreamReader
 from pycdp import logging
 
 _id = 0
@@ -30,8 +30,43 @@ def validate_rpc_response(response: dict):
 
 
 @dataclass
+class EventStream(Stream):
+    connection: 'Connection'
+    events: list[str]
+
+    # noinspection PyMethodOverriding
+    @classmethod
+    def create(cls, connection: 'Connection'):
+        return cls(
+            items=[],
+            next=asyncio.get_event_loop().create_future(),
+            connection=connection,
+            events=[]
+        )
+
+    def get_reader(self):
+        return EventStreamReader(self)
+
+
+@dataclass
+class EventStreamReader(StreamReader):
+    stream: EventStream
+
+    @property
+    def events(self):
+        return self.stream.events
+
+    @property
+    def connection(self):
+        return self.stream.connection
+
+    def close(self):
+        self.connection.close_stream(self)
+
+
+@dataclass
 class Connection:
-    event_streams: defaultdict[str, list[EventStream]] = field(
+    stream_readers: defaultdict[str, list[EventStream]] = field(
         init=False,
         repr=False
     )
@@ -59,7 +94,7 @@ class Connection:
         return self.ws is not None
 
     def __post_init__(self):
-        self.event_streams = defaultdict(list)
+        self.stream_readers = defaultdict(list)
         self.in_flight_futures = {}
         self.ws = None
         self.ws_connected = None
@@ -69,10 +104,8 @@ class Connection:
         if logging.is_logging_enabled('connection.handle_event'):
             print(event)
 
-        for stream in self.event_streams[event['method']]:
-            stream.publish(
-                event
-            )
+        for stream in self.stream_readers[event['method']]:
+            stream.write(event)
 
     async def _handle_message(self, message: str):
         if logging.is_logging_enabled('connection.handle_message'):
@@ -129,11 +162,11 @@ class Connection:
 
     def close_stream(
             self,
-            stream: EventStream
+            reader: EventStreamReader
     ):
-        for event in stream.event_names:
-            self.event_streams[event].remove(
-                stream
+        for event in reader.events:
+            self.stream_readers[event].remove(
+                reader.stream
             )
 
     async def connect(self):
@@ -147,13 +180,13 @@ class Connection:
     def open_stream(
             self,
             events: list[str]
-    ) -> EventStream:
-        stream = EventStream(self, events)
+    ) -> EventStreamReader:
+        stream = EventStream.create(self)
 
         for event in events:
-            self.event_streams[event].append(stream)
+            self.stream_readers[event].append(stream)
 
-        return stream
+        return stream.get_reader()
 
     async def send(
             self,

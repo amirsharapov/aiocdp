@@ -1,1 +1,1 @@
-from .chrome import Chrome
+from pycdp.core.chrome import Chrome
