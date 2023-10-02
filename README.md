@@ -4,6 +4,11 @@
 
 This library will provide wrapper around the Chrome DevTools Protocol.
 
+## Scope
+
+This library is built to be "one and done" with the exception of performance optimizations or bug fixes.
+This library should NOT depend on the CDP spec as the spec is subject to change.
+
 ## Motivation
 
 I hope this library becomes the underlying engine for any projects using Chrome DevTools Protocol.
@@ -17,9 +22,8 @@ With that in mind, we need to achieve the following points:
 
 ### Organization
 
-- `pycdp` - Root package
+- `pycdp` - Root package. Contains core and utility modules
 - `pycdp.core` - Core functionality for communicating with the Chrome DevTools Protocol
-- `pycdp.extras` - Extra functionality for common use cases
 
 ### Dependencies
 

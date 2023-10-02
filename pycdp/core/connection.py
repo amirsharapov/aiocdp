@@ -6,7 +6,7 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from pycdp.stream import Stream, StreamReader
+from pycdp.core.stream import EventStreamReader, EventStream
 from pycdp import logging
 
 _id = 0
@@ -27,41 +27,6 @@ def validate_rpc_response(response: dict):
             f'Err Message: {error["message"]}, '
             f'Raw Message: {response}'
         )
-
-
-@dataclass
-class EventStream(Stream):
-    connection: 'Connection'
-    events: list[str]
-
-    # noinspection PyMethodOverriding
-    @classmethod
-    def create(cls, connection: 'Connection'):
-        return cls(
-            items=[],
-            next=asyncio.get_event_loop().create_future(),
-            connection=connection,
-            events=[]
-        )
-
-    def create_reader(self):
-        return EventStreamReader(self)
-
-
-@dataclass
-class EventStreamReader(StreamReader):
-    stream: EventStream
-
-    @property
-    def events(self):
-        return self.stream.events
-
-    @property
-    def connection(self):
-        return self.stream.connection
-
-    def close(self):
-        self.connection.close_stream(self)
 
 
 @dataclass
@@ -181,10 +146,15 @@ class Connection:
             self,
             events: list[str]
     ) -> EventStreamReader:
-        stream = EventStream.create(self)
+        stream = EventStream.create(
+            self,
+            events
+        )
 
         for event in events:
-            self.stream_readers[event].append(stream)
+            self.stream_readers[event].append(
+                stream
+            )
 
         return stream.create_reader()
 

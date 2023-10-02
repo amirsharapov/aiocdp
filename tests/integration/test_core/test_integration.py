@@ -3,11 +3,8 @@ import time
 from pathlib import Path
 from unittest import TestCase
 
-<<<<<<< HEAD:tests/integration/test_integration.py
 from pycdp.core.chrome import Chrome
-=======
 from pycdp import Chrome
->>>>>>> feature/extras:tests/integration/test_core/test_integration.py
 
 
 class Tests(TestCase):

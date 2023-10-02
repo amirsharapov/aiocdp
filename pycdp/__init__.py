@@ -1,1 +1,7 @@
-from .chrome import Chrome
+from .core import (
+    Chrome,
+    Target,
+    Connection,
+    EventStream,
+    EventStreamReader
+)
