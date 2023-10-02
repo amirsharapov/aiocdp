@@ -17,7 +17,7 @@ class Stream(Generic[_T]):
             next=asyncio.get_event_loop().create_future(),
         )
 
-    def get_reader(self):
+    def create_reader(self):
         return StreamReader(self)
 
     async def read(self) -> AsyncGenerator[_T, None]:

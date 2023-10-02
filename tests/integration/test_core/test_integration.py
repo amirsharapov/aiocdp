@@ -1,8 +1,13 @@
 import asyncio
 import time
+from pathlib import Path
 from unittest import TestCase
 
+<<<<<<< HEAD:tests/integration/test_integration.py
 from pycdp.core.chrome import Chrome
+=======
+from pycdp import Chrome
+>>>>>>> feature/extras:tests/integration/test_core/test_integration.py
 
 
 class Tests(TestCase):
@@ -11,8 +16,9 @@ class Tests(TestCase):
             chrome = Chrome.create().start()
 
             time.sleep(1)
+            path = Path('tests/integration/test.html').absolute().as_uri()
 
-            chrome.open_tab()
+            chrome.open_tab(tab_url=path)
 
             time.sleep(1)
 
@@ -55,7 +61,7 @@ class Tests(TestCase):
                 'Debugger.enable',
             )
 
-            stream = await target.open_stream(['Page.frameStoppedLoading'])
+            stream = target.open_stream(['Page.frameStoppedLoading'])
             future = stream.next
 
             await target.send_and_await_response(

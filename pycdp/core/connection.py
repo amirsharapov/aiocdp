@@ -44,7 +44,7 @@ class EventStream(Stream):
             events=[]
         )
 
-    def get_reader(self):
+    def create_reader(self):
         return EventStreamReader(self)
 
 
@@ -186,7 +186,7 @@ class Connection:
         for event in events:
             self.stream_readers[event].append(stream)
 
-        return stream.get_reader()
+        return stream.create_reader()
 
     async def send(
             self,
