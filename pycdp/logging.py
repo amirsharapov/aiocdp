@@ -18,7 +18,7 @@ events_to_log: dict[LoggableEvents, bool] = {
 
 
 def enable_logging(
-    events: list[LoggableEvents] = None
+        events: list[LoggableEvents] = None
 ):
     events = events or []
 
@@ -27,7 +27,7 @@ def enable_logging(
 
 
 def disable_logging(
-    events: list[LoggableEvents] = None
+        events: list[LoggableEvents] = None
 ):
     events = events or []
 

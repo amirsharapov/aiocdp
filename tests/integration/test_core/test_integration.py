@@ -3,7 +3,6 @@ import time
 from pathlib import Path
 from unittest import TestCase
 
-from pycdp.core.chrome import Chrome
 from pycdp import Chrome
 
 

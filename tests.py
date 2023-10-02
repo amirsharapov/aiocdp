@@ -1,7 +1,5 @@
 from unittest import TestLoader, TextTestRunner
 
-from dotenv import load_dotenv
-
 
 def run_integration_tests():
     test_loader = TestLoader()
@@ -12,5 +10,4 @@ def run_integration_tests():
 
 
 if __name__ == '__main__':
-    load_dotenv('.env.test')
     run_integration_tests()

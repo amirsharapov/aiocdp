@@ -63,8 +63,8 @@ class Target:
 
     async def connect(self, skip_if_already_connected: bool = True):
         if (
-            skip_if_already_connected and
-            self.is_connected
+                skip_if_already_connected and
+                self.is_connected
         ):
             return
 
@@ -92,8 +92,8 @@ class Target:
 
     async def start_session(self, skip_if_session_already_started: bool = True):
         if (
-            skip_if_session_already_started and
-            self.is_session_started
+                skip_if_session_already_started and
+                self.is_session_started
         ):
             return
 
