@@ -6,7 +6,7 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from pycdp.stream import EventStream
+from pycdp.stream import AsyncioStream
 from pycdp import logging
 
 _id = 0
@@ -26,6 +26,17 @@ def validate_rpc_response(response: dict):
             f'Err Code: {error["code"]}, '
             f'Err Message: {error["message"]}, '
             f'Raw Message: {response}'
+        )
+
+
+@dataclass
+class EventStream(AsyncioStream[dict]):
+    connection: 'Connection'
+    event_names: list[str]
+
+    def close(self):
+        self.connection.close_stream(
+            self
         )
 
 

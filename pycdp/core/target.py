@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 from pycdp.core.connection import Connection
-from pycdp.stream import EventStream
+from pycdp.stream import AsyncioStream
 
 if TYPE_CHECKING:
     from pycdp.core.chrome import Chrome
@@ -58,7 +58,7 @@ class Target:
             }
         )
 
-    def close_stream(self, stream: EventStream):
+    def close_stream(self, stream: AsyncioStream):
         return self._connection.close_stream(stream)
 
     async def connect(self, skip_if_already_connected: bool = True):
