@@ -63,7 +63,7 @@ class EventStream(Stream[dict]):
         )
 
     def create_reader(self):
-        return StreamReader(self)
+        return EventStreamReader(self)
 
 
 @dataclass
