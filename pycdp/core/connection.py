@@ -6,7 +6,7 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from pycdp.core.stream import EventStreamReader, EventStream
+from pycdp.core.events import EventStreamReader, EventStream
 from pycdp import logging
 from pycdp.exceptions import raise_invalid_rpc_response
 

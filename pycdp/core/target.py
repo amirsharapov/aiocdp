@@ -2,7 +2,8 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 from pycdp.core.connection import Connection
-from pycdp.core.stream import EventStream
+from pycdp.core.session import TargetSession
+from pycdp.core.events import EventStream
 
 if TYPE_CHECKING:
     from pycdp.core.chrome import Chrome
@@ -112,76 +113,3 @@ class Target:
             method,
             params
         ))
-
-
-@dataclass
-class TargetSession:
-    """
-    Represents a session with a target.
-    """
-    target: Target
-    session_id: str | None
-
-    @classmethod
-    def create(cls, target: Target):
-        """
-        Creates a new instance of the target session.
-        """
-        return cls(
-            target=target,
-            session_id=None
-        )
-
-    async def close(self):
-        """
-        Closes the session by detaching from the target.
-        """
-        method = 'Target.detachFromTarget'
-        params = {
-            'targetId': self.session_id
-        }
-
-        await self.send_and_await_response(
-            method,
-            params
-        )
-
-    async def open(self):
-        """
-        Opens the session by attaching to the target.
-        """
-        method = 'Target.attachToTarget'
-        params = {
-            'targetId': self.target.info.id
-        }
-
-        result = await self.send_and_await_response(
-            method,
-            params
-        )
-
-        self.session_id = result['sessionId']
-
-    async def send(self, method: str, params: dict = None):
-        """
-        Sends a message to the target. Calls `Target.send`.
-        """
-        params = params or {}
-        params['sessionId'] = self.session_id
-
-        return await self.target.send(
-            method,
-            params
-        )
-
-    async def send_and_await_response(self, method: str, params: dict = None):
-        """
-        Sends a message to the target and awaits a response. Calls `Target.send_and_await_response`
-        """
-        params = params or {}
-        params['sessionId'] = self.session_id
-
-        return await self.target.send_and_await_response(
-            method,
-            params
-        )

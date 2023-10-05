@@ -3,7 +3,9 @@ import time
 from pathlib import Path
 from unittest import TestCase
 
-from pycdp import Chrome
+from pycdp import Chrome, logging
+
+logging.enable_logging(['*'])
 
 
 class Tests(TestCase):
@@ -22,7 +24,6 @@ class Tests(TestCase):
             target = targets[0]
 
             await target.connect()
-            await target.start_session()
 
             print(await target.send_and_await_response(
                 'Page.navigate',
@@ -43,23 +44,16 @@ class Tests(TestCase):
             target = targets[0]
 
             await target.connect()
-            await target.start_session()
 
-            print(await target.send_and_await_response(
+            session = await target.open_session()
+
+            print(await session.send_and_await_response(
                 'Page.enable'
             ))
 
-            print(await target.send_and_await_response(
-                'Network.enable'
-            ))
+            reader = session.open_stream(['Page.frameStoppedLoading'])
 
-            await target.send(
-                'Debugger.enable',
-            )
-
-            reader = target.open_stream(['Page.frameStoppedLoading'])
-
-            await target.send_and_await_response(
+            await session.send_and_await_response(
                 'Page.navigate',
                 {
                     'url': 'https://google.com'

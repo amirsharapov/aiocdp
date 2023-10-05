@@ -47,10 +47,11 @@ def raise_no_target_found():
     )
 
 
-def raise_no_target_found_matching_condition(condition: Callable[[Target], bool]):
+def raise_no_target_found_matching_condition(condition: Callable[['Target'], bool]):
     """
     Raises a NoTargetFoundMatchingCondition exception.
     """
     raise NoTargetFoundMatchingCondition(
-        f'No target found matching the given condition. Condition: {condition.__name__}'
+        f'No target found matching the given condition. '
+        f'Condition: {condition.__name__}'
     )
