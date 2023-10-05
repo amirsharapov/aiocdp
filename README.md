@@ -2,14 +2,16 @@
 
 ### ** STATUS: UNDER DEVELOPMENT **
 
-This library will provide wrapper around the Chrome DevTools Protocol.
+This library provides an async wrapper around the Chrome DevTools Protocol.
 
-## Scope
+## About
+
+### Scope
 
 This library is built to be "one and done" with the exception of performance optimizations or bug fixes.
-This library should NOT depend on the CDP spec as the spec is subject to change.
+This library should not depend parts of the CDP spec that are not related to the core functionality of the protocol.
 
-## Motivation
+### Motivation
 
 I hope this library becomes the underlying engine for any projects using Chrome DevTools Protocol.
 With that in mind, we need to achieve the following points:
@@ -30,6 +32,21 @@ With that in mind, we need to achieve the following points:
 - Python `typing` module for type hints, enum literals, and other goodies
 - Python `asyncio` module for async futures (Support for other async libraries is TBD)
 - Python `websockets` module for websocket communication (Support for other WS libraries is TBD)
+
+## Internals
+
+### Main Components
+
+- `pycdp.core.chrome.Chrome`
+- `pycdp.core.connection.Connection`
+- `pycdp.core.connection.Session` # TODO
+- `pycdp.core.target.Target`
+- `pycdp.core.stream.EventStream`
+- `pycdp.core.stream.EventStreamReader`
+
+## Limitations
+
+- Does not support multiple sessions per target. # TODO
 
 ## Notes:
 

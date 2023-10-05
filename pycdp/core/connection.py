@@ -8,29 +8,33 @@ import websockets.client as websockets
 
 from pycdp.core.stream import EventStreamReader, EventStream
 from pycdp import logging
+from pycdp.exceptions import raise_invalid_rpc_response
 
 _id = 0
 
 
 def next_rpc_id():
+    """
+    Generates a new sequential id for rpc requests.
+    """
     global _id
     _id += 1
     return _id
 
 
 def validate_rpc_response(response: dict):
+    """
+    Validates the given rpc response and raises an exception if the response contains an error.
+    """
     if 'error' in response and response['error']:
-        error = response['error']
-        raise Exception(
-            'Received the following error: '
-            f'Err Code: {error["code"]}, '
-            f'Err Message: {error["message"]}, '
-            f'Raw Message: {response}'
-        )
+        raise_invalid_rpc_response(response)
 
 
 @dataclass
 class Connection:
+    """
+    Represents a websocket connection to a CDP target.
+    """
     stream_readers: defaultdict[str, list[EventStream]] = field(
         init=False,
         repr=False
@@ -56,6 +60,9 @@ class Connection:
 
     @property
     def is_connected(self):
+        """
+        Public readonly access to the connection status.
+        """
         return self.ws is not None
 
     def __post_init__(self):
@@ -66,6 +73,9 @@ class Connection:
         self.ws_listener = None
 
     def _handle_event(self, event: dict):
+        """
+        Handles an event received from the websocket.
+        """
         if logging.is_logging_enabled('connection.handle_event'):
             print(event)
 
@@ -73,6 +83,9 @@ class Connection:
             stream.write(event)
 
     async def _handle_message(self, message: str):
+        """
+        Handles any message received from the websocket.
+        """
         if logging.is_logging_enabled('connection.handle_message'):
             print(message)
 
@@ -89,6 +102,9 @@ class Connection:
             )
 
     def _handle_response(self, response: dict):
+        """
+        Handles a response received from the websocket.
+        """
         if logging.is_logging_enabled('connection.handle_response'):
             print(response)
 
@@ -113,6 +129,9 @@ class Connection:
             future.set_exception(e)
 
     async def _listen_async(self):
+        """
+        Listens for messages from the websocket.
+        """
         async with websockets.connect(self.ws_url) as ws:
             self.ws = ws
             self.ws_connected.set_result(
@@ -127,14 +146,18 @@ class Connection:
 
     def close_stream(
             self,
-            reader: EventStreamReader
+            stream: EventStream
     ):
-        for event in reader.events:
-            self.stream_readers[event].remove(
-                reader.stream
-            )
+        """
+        Unsubscribes the given event stream from receiving events from the connection.
+        """
+        for event in stream.events_to_listen:
+            self.stream_readers[event].remove(stream)
 
     async def connect(self):
+        """
+        Connects to the websocket and starts the listener task.
+        """
         loop = asyncio.get_event_loop()
 
         self.ws_connected = loop.create_future()
@@ -142,10 +165,20 @@ class Connection:
 
         await self.ws_connected
 
+    async def disconnect(self):
+        """
+        Disconnects from the websocket and cancels the listener task.
+        """
+        await self.ws.close()
+        self.ws_listener.cancel()
+
     def open_stream(
             self,
             events: list[str]
     ) -> EventStreamReader:
+        """
+        Opens a new event stream for the given events.
+        """
         stream = EventStream.create(
             self,
             events
@@ -156,13 +189,16 @@ class Connection:
                 stream
             )
 
-        return stream.create_reader()
+        return stream.get_reader()
 
     async def send(
             self,
             method: str,
             params: dict
     ):
+        """
+        Sends a message to the websocket.
+        """
         loop = asyncio.get_event_loop()
 
         request_id = next_rpc_id()
