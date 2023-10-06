@@ -1,11 +1,12 @@
 import os
 from dataclasses import dataclass
-from typing import Callable
+from typing import Callable, Any
 
 import requests
 
 from pycdp.core.target import Target, TargetInfo
 from pycdp.exceptions import NoTargetFoundMatchingCondition
+from pycdp.utils import UNDEFINED
 
 
 @dataclass
@@ -52,18 +53,31 @@ class Chrome:
         response = requests.get(url)
         response.raise_for_status()
 
-    def get_first_target_matching_condition(self, condition: Callable[[Target], bool]) -> Target:
+    def get_first_target(
+            self,
+            condition: Callable[[Target], bool] = None,
+            default: Any = UNDEFINED
+    ) -> Target:
         """
-        Fetches and iterates over all the targets and returns the first that matches the given condition.
-        Raises an exception if no target is found matching the condition.
+        Fetches and returns the first target. Raises an exception if no target is found and no default is supplied.
+
+        NOTES:
+            Supply a condition to filter against each target.
+            Supply a default to return a default if no target is found.
         """
         for target in self.iterate_targets():
-            if condition(target):
+            if condition:
+                if condition(target):
+                    return target
+            else:
                 return target
 
-            raise NoTargetFoundMatchingCondition(
-                condition
-            )
+        if default is not UNDEFINED:
+            return default
+
+        raise NoTargetFoundMatchingCondition(
+            condition
+        )
 
     def get_targets(self) -> list[Target]:
         """
