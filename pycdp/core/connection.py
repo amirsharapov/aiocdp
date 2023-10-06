@@ -158,6 +158,9 @@ class Connection:
         """
         Connects to the websocket and starts the listener task.
         """
+        if self.is_connected:
+            return
+
         loop = asyncio.get_event_loop()
 
         self.ws_connected = loop.create_future()
@@ -169,6 +172,9 @@ class Connection:
         """
         Disconnects from the websocket and cancels the listener task.
         """
+        if not self.is_connected:
+            return
+
         await self.ws.close()
         self.ws_listener.cancel()
 
