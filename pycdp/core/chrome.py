@@ -11,10 +11,7 @@ from pycdp.exceptions import NoTargetFoundMatchingCondition
 @dataclass
 class Chrome:
     """
-    Represents a Chrome instance.
-
-    NOTES:
-        - This class can be used as a singleton to manage a single instance of Chrome.
+    Represents a Chrome instance on a given host and port.
     """
     host: str
     port: int

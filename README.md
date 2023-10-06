@@ -9,7 +9,8 @@ This library provides an async wrapper around the Chrome DevTools Protocol.
 ### Scope
 
 This library is built to be "one and done" with the exception of performance optimizations or bug fixes.
-This library should not depend parts of the CDP spec that are not related to the core functionality of the protocol.
+This library should limit the dependencies it has on the CDP spec with the exception of
+starting / stopping sessions and other core functionality.
 
 ### Motivation
 
