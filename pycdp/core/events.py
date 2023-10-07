@@ -1,6 +1,7 @@
 import asyncio
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TypeVar, AsyncGenerator, TYPE_CHECKING
+from uuid import uuid4
 
 if TYPE_CHECKING:
     from pycdp import Connection
@@ -8,7 +9,7 @@ if TYPE_CHECKING:
 _T = TypeVar('_T')
 
 
-@dataclass
+@dataclass(eq=False)
 class EventStream:
     """
     Represents an asynchronous stream of CDP events received from the connection.
