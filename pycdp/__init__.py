@@ -1,6 +1,7 @@
 from .core import (
     Chrome,
     Target,
+    TargetSession,
     Connection,
     EventStream,
     EventStreamReader
