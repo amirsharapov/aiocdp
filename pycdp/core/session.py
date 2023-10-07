@@ -25,17 +25,17 @@ class TargetSession:
             session_id=None
         )
 
-    def __enter__(self):
+    async def __aenter__(self):
         """
         Allows this object to be used as a context manager.
         """
         return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
+    async def __aexit__(self, exc_type, exc_value, traceback):
         """
         Closes this session when used as a context manager.
         """
-        self.close()
+        await self.close()
 
         if exc_type is not None:
             return False
