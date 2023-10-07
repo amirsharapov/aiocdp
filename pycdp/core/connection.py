@@ -35,7 +35,7 @@ class Connection:
     """
     Represents a websocket connection to a CDP target.
     """
-    stream_readers: defaultdict[str, list[EventStream]] = field(
+    streams: defaultdict[str, list[EventStream]] = field(
         init=False,
         repr=False
     )
@@ -66,7 +66,7 @@ class Connection:
         return self.ws is not None
 
     def __post_init__(self):
-        self.stream_readers = defaultdict(list)
+        self.streams = defaultdict(list)
         self.in_flight_futures = {}
         self.ws = None
         self.ws_connected = None
@@ -79,7 +79,7 @@ class Connection:
         if logging.is_logging_enabled('connection.handle_event'):
             print(event)
 
-        for stream in self.stream_readers[event['method']]:
+        for stream in self.streams[event['method']]:
             stream.write(event)
 
     async def _handle_message(self, message: str):
@@ -152,7 +152,7 @@ class Connection:
         Unsubscribes the given event stream from receiving events from the connection.
         """
         for event in stream.events_to_listen:
-            self.stream_readers[event].remove(stream)
+            self.streams[event].remove(stream)
 
     async def connect(self):
         """
@@ -191,7 +191,7 @@ class Connection:
         )
 
         for event in events:
-            self.stream_readers[event].append(
+            self.streams[event].append(
                 stream
             )
 
