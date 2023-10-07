@@ -178,6 +178,16 @@ class Connection:
         await self.ws.close()
         self.ws_listener.cancel()
 
+    def is_stream_closed(self, stream: EventStream):
+        """
+        Checks if the given stream is closed.
+        """
+        for event in stream.events_to_listen:
+            if stream in self.streams[event]:
+                return False
+
+        return True
+
     def open_stream(
             self,
             events: list[str]

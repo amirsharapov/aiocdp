@@ -35,6 +35,28 @@ class EventStream:
             next=loop.create_future(),
         )
 
+    @property
+    def is_closed(self):
+        """
+        Public readonly access to the closed status of the stream.
+        """
+        return self.connection.is_stream_closed(self)
+
+    def __enter__(self):
+        """
+        Allows this object to be used as a context manager.
+        """
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        """
+        Closes this stream when used as a context manager.
+        """
+        self.close()
+
+        if exc_type is not None:
+            return False
+
     def close(self):
         """
         Unsubscribes this stream from receiving events from the connection.
@@ -99,6 +121,28 @@ class EventStreamReader:
         Public readonly access to the `Connection` instance. Provided by the stream.
         """
         return self.stream.connection
+
+    @property
+    def is_closed(self):
+        """
+        Public readonly access to the closed status of the stream. Provided by the stream.
+        """
+        return self.stream.is_closed
+
+    def __enter__(self):
+        """
+        Allows this object to be used as a context manager.
+        """
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        """
+        Closes this stream when used as a context manager.
+        """
+        self.close()
+
+        if exc_type is not None:
+            return False
 
     def close(self):
         """
