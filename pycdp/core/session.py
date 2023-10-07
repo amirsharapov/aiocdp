@@ -25,6 +25,21 @@ class TargetSession:
             session_id=None
         )
 
+    def __enter__(self):
+        """
+        Allows this object to be used as a context manager.
+        """
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        """
+        Closes this session when used as a context manager.
+        """
+        self.close()
+
+        if exc_type is not None:
+            return False
+
     async def close(self):
         """
         Closes the session by detaching from the target.

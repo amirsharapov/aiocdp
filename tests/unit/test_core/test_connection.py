@@ -15,26 +15,26 @@ class TestConnection(TestCase):
     def test_open_stream_context_manager(self):
         connection = Connection('ws://localhost:9222')
 
-        with connection.open_stream(['lol']) as reader:
+        with connection.open_stream(['lol']) as stream:
             self.assertIsInstance(
-                reader,
+                stream,
                 EventStreamReader
             )
             self.assertFalse(
-                reader.is_closed
+                stream.is_closed
             )
 
         self.assertTrue(
-            reader.is_closed
+            stream.is_closed
         )
 
-        reader = connection.open_stream(['lol'])
-        reader.close()
+        stream = connection.open_stream(['lol'])
+        stream.close()
 
         self.assertIsInstance(
-            reader,
+            stream,
             EventStreamReader
         )
         self.assertTrue(
-            reader.is_closed
+            stream.is_closed
         )
