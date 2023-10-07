@@ -46,7 +46,7 @@ class EventStream:
         Creates the reader for this stream.
 
         NOTES:
-            - The reader returned will be the same instance for the lifetime of this stream.
+            - This method returns the the same instance for the lifetime of this stream.
         """
 
         if self.reader is None:
@@ -59,7 +59,8 @@ class EventStream:
         Iterates over all the events in this stream and asynchronously yields new events as they are received.
 
         NOTES:
-            - Should not be used by public API. Use `EventStreamReader.iterate` instead.
+            - Should not be used by public API. First call `EventStream.get_reader`
+              and then use `EventStreamReader.iterate` instead.
         """
         for item in self.events:
             yield item
