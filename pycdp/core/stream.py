@@ -1,12 +1,18 @@
 import asyncio
 from dataclasses import dataclass, field
 from typing import TypeVar, AsyncGenerator, TYPE_CHECKING
-from uuid import uuid4
 
 if TYPE_CHECKING:
     from pycdp import Connection
 
 _T = TypeVar('_T')
+
+
+def _create_future():
+    """
+    Creates a new future.
+    """
+    return asyncio.get_event_loop().create_future()
 
 
 @dataclass(eq=False)
@@ -15,25 +21,20 @@ class EventStream:
     Represents an asynchronous stream of CDP events received from the connection.
     """
     connection: 'Connection'
-    events: list[_T]
     events_to_listen: list[str]
-    reader: 'EventStreamReader | None'
-    next: asyncio.Future
 
-    @classmethod
-    def create(cls, connection: 'Connection', events_to_listen: list[str]):
-        """
-        Creates a new instance of the event stream.
-        """
-        loop = asyncio.get_event_loop()
-
-        return cls(
-            connection=connection,
-            events=[],
-            events_to_listen=events_to_listen,
-            reader=None,
-            next=loop.create_future(),
-        )
+    events: list[_T] = field(
+        default_factory=list,
+        init=False
+    )
+    reader: 'EventStreamReader | None' = field(
+        default=None,
+        init=False
+    )
+    next: asyncio.Future = field(
+        default_factory=_create_future,
+        init=False
+    )
 
     @property
     def is_closed(self):
@@ -67,7 +68,7 @@ class EventStream:
         """
         Creates the reader for this stream.
 
-        NOTES:
+        Notes:
             - This method returns the the same instance for the lifetime of this stream.
         """
 
@@ -80,7 +81,7 @@ class EventStream:
         """
         Iterates over all the events in this stream and asynchronously yields new events as they are received.
 
-        NOTES:
+        Notes:
             - Should not be used by public API. First call `EventStream.get_reader`
               and then use `EventStreamReader.iterate` instead.
         """
@@ -94,11 +95,9 @@ class EventStream:
         """
         Writes an item to the stream. Responsible for resolving futures.
         """
-        loop = asyncio.get_event_loop()
-
         self.events.append(item)
         self.next.set_result(item)
-        self.next = loop.create_future()
+        self.next = _create_future()
 
 
 @dataclass

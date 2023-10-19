@@ -18,8 +18,8 @@ I hope this library becomes the underlying engine for any projects using Chrome 
 With that in mind, we need to achieve the following points:
 
 1. Flexibility
-2. Minimal external dependencies
-3. Compatible with built-in python libraries
+2. Minimal external dependencies / Compatible with built-in python libraries. No unnecessary dependencies.
+3. Quality code and documentation. No hacks, workarounds, or spaghetti code.
 
 ## Package
 
@@ -30,24 +30,25 @@ With that in mind, we need to achieve the following points:
 
 ### Dependencies
 
+#### Built-in
+- Python `dataclasses` module for classes
 - Python `typing` module for type hints, enum literals, and other goodies
-- Python `asyncio` module for async futures (Support for other async libraries is TBD)
-- Python `websockets` module for websocket communication (Support for other WS libraries is TBD)
+- Python `asyncio` module for async functionality
+
+#### External
+- Python `requests` module for HTTP communication
+- Python `websockets` module for websocket communication
 
 ## Internals
 
 ### Main Components
 
-- `pycdp.core.chrome.Chrome`
-- `pycdp.core.connection.Connection`
-- `pycdp.core.connection.Session` # TODO
-- `pycdp.core.target.Target`
-- `pycdp.core.stream.EventStream`
-- `pycdp.core.stream.EventStreamReader`
-
-## Limitations
-
-- Does not support multiple sessions per target. # TODO
+- `pycdp.core.chrome.Chrome` -> Represents the Chrome instance / process.
+- `pycdp.core.target.Target` -> Represents a chrome devtools protocol target (Page, Frame, Worker, etc)
+- `pycdp.core.connection.Connection` -> Represents a websocket connection to a target
+- `pycdp.core.session.TargetSession` -> Represents a session to a specific target.
+- `pycdp.core.stream.EventStream` -> Represents a stream of events from a connection.
+- `pycdp.core.stream.EventStreamReader` -> Readonly reader to an event stream.
 
 ## Notes:
 

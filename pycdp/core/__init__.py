@@ -1,6 +1,6 @@
 from .chrome import Chrome
 from .connection import Connection
-from .events import (
+from .stream import (
     EventStream,
     EventStreamReader
 )

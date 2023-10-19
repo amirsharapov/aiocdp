@@ -14,18 +14,21 @@ class Chrome:
     """
     Represents a Chrome instance on a given host and port.
     """
-    host: str
-    port: int
 
-    @classmethod
-    def create(cls, host: str = '127.0.0.1', port: int = 9222):
-        """
-        Method to create a new instance of Chrome with default host and port.
-        """
-        return cls(
-            host=host,
-            port=port
-        )
+    """
+    The host of the chrome instance.
+    """
+    host: str = '127.0.0.1'
+
+    """
+    The port of the chrome instance.
+    """
+    port: int = 9222
+
+    """
+    The origins allowed to remotely connect to the chrome instance.
+    """
+    allow_origins: str = '*'
 
     def start(self, cli_args: list[str] = None):
         """
@@ -34,7 +37,7 @@ class Chrome:
         commands = [
             f'start chrome',
             f'--remote-debugging-port={self.port}',
-            f'--remote-allow-origins=*'
+            f'--remote-allow-origins={self.allow_origins}'
         ]
 
         commands.extend(cli_args or [])
@@ -61,15 +64,15 @@ class Chrome:
         """
         Fetches and returns the first target. Raises an exception if no target is found and no default is supplied.
 
-        NOTES:
+        Notes:
             Supply a condition to filter against each target.
             Supply a default to return a default if no target is found.
         """
         for target in self.iterate_targets():
-            if condition:
-                if condition(target):
-                    return target
-            else:
+            if not condition:
+                return target
+
+            if condition(target):
                 return target
 
         if default is not UNDEFINED:

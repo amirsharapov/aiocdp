@@ -11,12 +11,10 @@ logging.enable_logging(['*'])
 class Tests(TestCase):
     def test_open_tab(self):
         async def _():
-            chrome = Chrome.create().start()
+            chrome = Chrome().start()
 
             time.sleep(1)
-            path = Path('tests/integration/test.html').absolute().as_uri()
-
-            chrome.open_tab(tab_url=path)
+            chrome.open_tab('https://yahoo.com')
 
             time.sleep(1)
 
@@ -36,7 +34,7 @@ class Tests(TestCase):
 
     def test(self):
         async def _():
-            chrome = Chrome.create().start()
+            chrome = Chrome().start()
 
             time.sleep(1)
 

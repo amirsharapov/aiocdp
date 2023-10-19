@@ -6,20 +6,23 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from pycdp.core.events import EventStreamReader, EventStream
 from pycdp import logging
+from pycdp.core.stream import EventStreamReader, EventStream
 from pycdp.exceptions import raise_invalid_rpc_response
 
-_id = 0
+_rpc_id = 0
 
 
 def next_rpc_id():
     """
     Generates a new sequential id for rpc requests.
+
+    Notes:
+        - Not implementing thread safety because this is used within the context of asyncio.
     """
-    global _id
-    _id += 1
-    return _id
+    global _rpc_id
+    _rpc_id += 1
+    return _rpc_id
 
 
 def validate_rpc_response(response: dict):
@@ -35,28 +38,51 @@ class Connection:
     """
     Represents a websocket connection to a CDP target.
     """
-    streams: defaultdict[str, list[EventStream]] = field(
-        init=False,
-        repr=False
-    )
+
+    """
+    The url of the websocket connection.
+    """
+    ws_url: str
+
+    """
+    The futures that are currently waiting for a response to a request.
+    """
     in_flight_futures: dict[int, asyncio.Future] = field(
-        init=False,
-        repr=False
-    )
-    ws: Optional[websockets.WebSocketClientProtocol] = field(
-        init=False,
-        repr=False
-    )
-    ws_listener: Optional[asyncio.Task] = field(
-        init=False,
-        repr=False
-    )
-    ws_connected: Optional[asyncio.Future] = field(
-        init=False,
-        repr=False
+        default_factory=dict,
+        init=False
     )
 
-    ws_url: str
+    """
+    The streams that are currently listening for events.
+    """
+    streams: defaultdict[str, list[EventStream]] = field(
+        default_factory=lambda: defaultdict(list),
+        init=False
+    )
+
+    """
+    The websocket connection instance.
+    """
+    ws: Optional[websockets.WebSocketClientProtocol] = field(
+        default=None,
+        init=False
+    )
+
+    """
+    The asyncio task that is listening for messages from the websocket in the background.
+    """
+    ws_listener: Optional[asyncio.Task] = field(
+        default=None,
+        init=False
+    )
+
+    """
+    The future that is set when the websocket connection is established.
+    """
+    ws_connected: Optional[asyncio.Future] = field(
+        default=None,
+        init=False
+    )
 
     @property
     def is_connected(self):
@@ -64,13 +90,6 @@ class Connection:
         Public readonly access to the connection status.
         """
         return self.ws is not None
-
-    def __post_init__(self):
-        self.streams = defaultdict(list)
-        self.in_flight_futures = {}
-        self.ws = None
-        self.ws_connected = None
-        self.ws_listener = None
 
     def _handle_event(self, event: dict):
         """
@@ -195,9 +214,9 @@ class Connection:
         """
         Opens a new event stream for the given events.
         """
-        stream = EventStream.create(
-            self,
-            events
+        stream = EventStream(
+            connection=self,
+            events_to_listen=events
         )
 
         for event in events:

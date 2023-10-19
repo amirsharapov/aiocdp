@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 
 from pycdp.core.connection import Connection
 from pycdp.core.session import TargetSession
-from pycdp.core.events import EventStream
+from pycdp.core.stream import EventStream
 
 if TYPE_CHECKING:
     from pycdp.core.chrome import Chrome
@@ -91,7 +91,7 @@ class Target:
         """
         Opens a session with the target.
         """
-        session = TargetSession.create(self)
+        session = TargetSession(self)
         await session.open()
 
         return session

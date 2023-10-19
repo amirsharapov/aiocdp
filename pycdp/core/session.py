@@ -1,9 +1,9 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from pycdp.core.events import EventStream
+    from pycdp.core.stream import EventStream
     from pycdp.core.target import Target
 
 
@@ -13,17 +13,10 @@ class TargetSession:
     Represents a session with a target.
     """
     target: 'Target'
-    session_id: str | None
-
-    @classmethod
-    def create(cls, target: 'Target'):
-        """
-        Creates a new instance of the target session.
-        """
-        return cls(
-            target=target,
-            session_id=None
-        )
+    session_id: str | None = field(
+        default=None,
+        init=False
+    )
 
     async def __aenter__(self):
         """
