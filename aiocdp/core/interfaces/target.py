@@ -48,3 +48,27 @@ class ITarget(ABC):
         Closes the given stream.
         """
         ...
+
+    def get_info(self):
+        """
+        Returns the associated ITargetInfo implementation
+        """
+        ...
+
+    def open_stream(self, events):
+        """
+        Opens a stream for the given events.
+        """
+        pass
+
+    def send(self, method, params):
+        """
+        Sends a message to the target.
+        """
+        pass
+
+    def send_and_await_response(self, method, params):
+        """
+        Sends a message to the target and awaits a response.
+        """
+        pass

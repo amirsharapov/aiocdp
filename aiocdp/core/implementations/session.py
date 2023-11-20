@@ -57,7 +57,7 @@ class TargetSession:
         """
         method = 'Target.attachToTarget'
         params = {
-            'targetId': self.target.info.id
+            'targetId': self.target.get_info().id
         }
 
         result = await self.send_and_await_response(

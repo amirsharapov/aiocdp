@@ -1,4 +1,4 @@
-import os
+import subprocess
 from dataclasses import dataclass
 from typing import Callable, Any
 
@@ -72,7 +72,7 @@ class Chrome(IChrome):
         commands.extend(extra_cli_args or [])
         command = ' '.join(commands)
 
-        os.system(command)
+        subprocess.run(command)
 
         return self
 
@@ -91,11 +91,8 @@ class Chrome(IChrome):
             default: Any = UNDEFINED
     ) -> ITarget:
         """
-        Fetches and returns the first target. Raises an exception if no target is found and no default is supplied.
-
-        Notes:
-            Supply a condition to filter against each target.
-            Supply a default to return a default if no target is found.
+        Fetches and returns the first target.
+        Raises an exception if no target is found and no default is supplied.
         """
         for target in self.iterate_targets():
             if not condition:

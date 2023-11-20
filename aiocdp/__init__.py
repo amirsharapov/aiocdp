@@ -20,21 +20,3 @@ from .exceptions import (
     NoTargetFound,
     NoTargetFoundMatchingCondition
 )
-from .ioc import set_class
-
-
-def set_default_factories():
-    defaults = {
-        IChrome: Chrome,
-        ITarget: Target,
-        ITargetSession: TargetSession,
-        IConnection: Connection,
-        IEventStream: EventStream,
-        IEventStreamReader: EventStreamReader
-    }
-
-    for interface, implementation in defaults.items():
-        set_class(
-            interface,
-            implementation
-        )
