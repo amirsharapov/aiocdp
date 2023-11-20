@@ -1,10 +1,8 @@
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import Optional
 
-
-if TYPE_CHECKING:
-    from pycdp.core.stream import EventStream
-    from pycdp.core.target import Target
+from aiocdp.core.interfaces.stream import IEventStream
+from aiocdp.core.interfaces.target import ITarget
 
 
 @dataclass
@@ -12,8 +10,8 @@ class TargetSession:
     """
     Represents a session with a target.
     """
-    target: 'Target'
-    session_id: str | None = field(
+    target: ITarget
+    session_id: Optional[str] = field(
         default=None,
         init=False
     )
@@ -47,7 +45,7 @@ class TargetSession:
             params
         )
 
-    def close_stream(self, stream: 'EventStream'):
+    def close_stream(self, stream: IEventStream):
         """
         Closes the stream. Calls `Target.close_stream`.
         """

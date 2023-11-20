@@ -1,12 +1,12 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from pycdp.core.connection import Connection
-from pycdp.core.session import TargetSession
-from pycdp.core.stream import EventStream
+from aiocdp.core.connection import Connection
+from aiocdp.core.implementations.session import TargetSession
+from aiocdp.core.stream import EventStream
 
 if TYPE_CHECKING:
-    from pycdp.core.chrome import Chrome
+    from aiocdp.core.chrome import Chrome
 
 
 @dataclass

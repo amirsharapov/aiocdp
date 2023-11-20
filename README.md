@@ -1,4 +1,4 @@
-# PYCDP
+# AIOCDP
 
 ### ** STATUS: UNDER DEVELOPMENT **
 
@@ -10,12 +10,13 @@ This library provides an async wrapper around the Chrome DevTools Protocol.
 
 This library is built to be "one and done" with the exception of performance optimizations or bug fixes.
 This library should limit the dependencies it has on the CDP spec with the exception of
-starting / stopping sessions and other core functionality.
+starting / stopping sessions and other generic functionality.
 
-### Motivation
+### Vision
 
-I hope this library becomes the underlying engine for any projects using Chrome DevTools Protocol.
-With that in mind, we need to achieve the following points:
+To be the underlying engine for any projects using Chrome DevTools Protocol.
+
+### Key Values
 
 1. Flexibility
 2. Minimal external dependencies / Compatible with built-in python libraries. No unnecessary dependencies.
@@ -23,10 +24,12 @@ With that in mind, we need to achieve the following points:
 
 ## Package
 
+You can find the AIOCDP package published to pypi.org/project/aiocdp
+
 ### Organization
 
-- `pycdp` - Root package. Contains core and utility modules
-- `pycdp.core` - Core functionality for communicating with the Chrome DevTools Protocol
+- `aiocdp` - Root package. Contains core and utility modules
+- `aiocdp.core` - Core functionality for communicating with the Chrome DevTools Protocol
 
 ### Dependencies
 
@@ -43,13 +46,13 @@ With that in mind, we need to achieve the following points:
 
 ### Main Components
 
-- `pycdp.core.chrome.Chrome` -> Represents the Chrome instance / process.
-- `pycdp.core.target.Target` -> Represents a chrome devtools protocol target (Page, Frame, Worker, etc)
-- `pycdp.core.connection.Connection` -> Represents a websocket connection to a target
-- `pycdp.core.session.TargetSession` -> Represents a session to a specific target.
-- `pycdp.core.stream.EventStream` -> Represents a stream of events from a connection.
-- `pycdp.core.stream.EventStreamReader` -> Readonly reader to an event stream.
+- `aiocdp.core.chrome.Chrome` -> Represents the Chrome instance / process.
+- `aiocdp.core.target.Target` -> Represents a chrome devtools protocol target (Page, Frame, Worker, etc)
+- `aiocdp.core.connection.Connection` -> Represents a websocket connection to a target
+- `aiocdp.core.session.TargetSession` -> Represents a session to a specific target.
+- `aiocdp.core.stream.EventStream` -> Represents a stream of events from a connection.
+- `aiocdp.core.stream.EventStreamReader` -> Readonly reader to an event stream.
 
 ## Notes:
 
-- The `pycdp` package will be published to PyPI
+- The `aiocdp` package will be published to PyPI

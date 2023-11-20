@@ -1,4 +1,4 @@
-from typing import TypeVar
+from typing import TypeVar, Union
 
 T = TypeVar('T')
 
@@ -18,7 +18,7 @@ class _Undefined:
 
 
 UNDEFINED = _Undefined()
-MaybeUndefined = T | _Undefined
+MaybeUndefined = Union[T, _Undefined]
 
 
 def is_undefined(value):

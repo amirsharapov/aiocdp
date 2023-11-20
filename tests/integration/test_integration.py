@@ -3,7 +3,7 @@ import time
 from pathlib import Path
 from unittest import TestCase
 
-from pycdp import Chrome, logging
+from aiocdp import Chrome, logging
 
 logging.enable_logging(['*'])
 

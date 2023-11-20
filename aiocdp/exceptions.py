@@ -1,22 +1,22 @@
 from typing import Callable, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from pycdp import Target
+    from aiocdp import Target
 
 
-class PYCDPException(Exception):
+class AIOCDPException(Exception):
     """
-    Base exception class for all pycdp exceptions.
+    Base exception class for all aiocdp exceptions.
     """
 
 
-class InvalidRPCResponse(PYCDPException):
+class InvalidRPCResponse(AIOCDPException):
     """
     Exception raised when an invalid rpc response is received.
     """
 
 
-class NoTargetFound(PYCDPException):
+class NoTargetFound(AIOCDPException):
     """
     Exception raised when no target is found.
     """

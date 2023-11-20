@@ -2,35 +2,57 @@ import asyncio
 from dataclasses import dataclass, field
 from typing import TypeVar, AsyncGenerator, TYPE_CHECKING
 
+from aiocdp.core.interfaces.connection import IConnection
+from aiocdp.core.interfaces.stream import IEventStream
+
 if TYPE_CHECKING:
-    from pycdp import Connection
+    from aiocdp import Connection
 
 _T = TypeVar('_T')
 
 
 def _create_future():
     """
-    Creates a new future.
+    Utility function to create a new future.
     """
     return asyncio.get_event_loop().create_future()
 
 
 @dataclass(eq=False)
-class EventStream:
+class EventStream(IEventStream):
     """
     Represents an asynchronous stream of CDP events received from the connection.
     """
+
+    """
+    The connection
+    """
     connection: 'Connection'
+
+    """
+    The list of event names to listen to
+    """
     events_to_listen: list[str]
 
+    """
+    The list of recorded events
+    """
     events: list[_T] = field(
         default_factory=list,
         init=False
     )
+
+    """
+    Instance of the reader for this class
+    """
     reader: 'EventStreamReader | None' = field(
         default=None,
         init=False
     )
+
+    """
+    An async future resolved everytime an event is recorded
+    """
     next: asyncio.Future = field(
         default_factory=_create_future,
         init=False
@@ -64,12 +86,18 @@ class EventStream:
         """
         self.connection.close_stream(self)
 
+    def get_connection(self) -> 'IConnection':
+        """
+        Returns the connection this event stream is associated to.
+        """
+        return self.connection
+
     def get_reader(self):
         """
         Creates the reader for this stream.
 
         Notes:
-            - This method returns the the same instance for the lifetime of this stream.
+            - This method returns the same instance for the lifetime of this stream.
         """
 
         if self.reader is None:

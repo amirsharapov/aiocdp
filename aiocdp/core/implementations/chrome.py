@@ -4,17 +4,15 @@ from typing import Callable, Any
 
 import requests
 
-from pycdp.core.target import Target, TargetInfo
-from pycdp.exceptions import NoTargetFoundMatchingCondition
-from pycdp.utils import UNDEFINED
+from aiocdp.core.interfaces.chrome import IChrome
+from aiocdp.core.interfaces.target import ITarget, ITargetInfo
+from aiocdp.exceptions import NoTargetFoundMatchingCondition
+from aiocdp.factories import get_factory
+from aiocdp.utils import UNDEFINED
 
 
 @dataclass
-class Chrome:
-    """
-    Represents a Chrome instance on a given host and port.
-    """
-
+class Chrome(IChrome):
     """
     The host of the chrome instance.
     """
@@ -30,7 +28,26 @@ class Chrome:
     """
     allow_origins: str = '*'
 
-    def start(self, cli_args: list[str] = None):
+    def _init_target(self, target: dict):
+        """
+        Initializes an instance of the target using the registered factory
+        """
+        target_info_cls = get_factory(ITargetInfo)
+        target_cls = get_factory(ITarget)
+
+        return target_cls.create(
+            chrome=self,
+            info=target_info_cls.create(
+                id=target['id'],
+                title=target['title'],
+                description=target['description'],
+                url=target['url'],
+                type=target['type'],
+                web_socket_debugger_url=target['webSocketDebuggerUrl']
+            )
+        )
+
+    def start(self, extra_cli_args: list[str] = None):
         """
         Starts chrome through the command line.
         """
@@ -40,7 +57,7 @@ class Chrome:
             f'--remote-allow-origins={self.allow_origins}'
         ]
 
-        commands.extend(cli_args or [])
+        commands.extend(extra_cli_args or [])
         command = ' '.join(commands)
 
         os.system(command)
@@ -58,9 +75,9 @@ class Chrome:
 
     def get_first_target(
             self,
-            condition: Callable[[Target], bool] = None,
+            condition: Callable[[ITarget], bool] = None,
             default: Any = UNDEFINED
-    ) -> Target:
+    ) -> ITarget:
         """
         Fetches and returns the first target. Raises an exception if no target is found and no default is supplied.
 
@@ -82,7 +99,7 @@ class Chrome:
             condition
         )
 
-    def get_targets(self) -> list[Target]:
+    def get_targets(self) -> list[ITarget]:
         """
         Fetches a list of all the targets.
         """
@@ -100,19 +117,9 @@ class Chrome:
         response.raise_for_status()
 
         for target in response.json():
-            yield Target(
-                chrome=self,
-                info=TargetInfo(
-                    id=target['id'],
-                    title=target['title'],
-                    description=target['description'],
-                    url=target['url'],
-                    type=target['type'],
-                    web_socket_debugger_url=target['webSocketDebuggerUrl']
-                )
-            )
+            return self._init_target(target)
 
-    def open_tab(self, tab_url: str = None) -> Target:
+    def open_tab(self, tab_url: str = None) -> ITarget:
         """
         Opens a new tab.
         """
@@ -124,14 +131,6 @@ class Chrome:
         response = requests.put(url)
         response.raise_for_status()
 
-        return Target(
-            chrome=self,
-            info=TargetInfo(
-                id=response.json()['id'],
-                title=response.json()['title'],
-                description=response.json()['description'],
-                url=response.json()['url'],
-                type=response.json()['type'],
-                web_socket_debugger_url=response.json()['webSocketDebuggerUrl']
-            )
-        )
+        target = response.json()
+
+        return self._init_target(target)

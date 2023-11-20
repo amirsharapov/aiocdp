@@ -6,9 +6,11 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from pycdp import logging
-from pycdp.core.stream import EventStreamReader, EventStream
-from pycdp.exceptions import raise_invalid_rpc_response
+from aiocdp import logging
+from aiocdp.core.stream import EventStreamReader, EventStream
+
+from aiocdp.core.interfaces.connection import IConnection
+from aiocdp.exceptions import raise_invalid_rpc_response
 
 _rpc_id = 0
 
@@ -34,7 +36,7 @@ def validate_rpc_response(response: dict):
 
 
 @dataclass
-class Connection:
+class Connection(IConnection):
     """
     Represents a websocket connection to a CDP target.
     """

@@ -7,7 +7,7 @@ from .core import (
     EventStreamReader
 )
 from .exceptions import (
-    PYCDPException,
+    AIOCDPException,
     InvalidRPCResponse,
     NoTargetFound,
     NoTargetFoundMatchingCondition
