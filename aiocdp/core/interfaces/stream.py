@@ -13,6 +13,18 @@ class IEventStream(ABC):
     Represents an asynchronous stream of CDP events received from the connection.
     """
 
+    @classmethod
+    @abstractmethod
+    def create(
+        cls,
+        connection: IConnection,
+        events_to_listen: list[str]
+    ) -> 'IEventStream':
+        """
+        Initializer method for the IEventStream class
+        """
+        ...
+
     @abstractmethod
     def close(self):
         """
@@ -28,9 +40,23 @@ class IEventStream(ABC):
         ...
 
     @abstractmethod
+    def get_events_to_listen(self):
+        """
+        Returns a list of events to listen to
+        """
+        ...
+
+    @abstractmethod
     def get_reader(self) -> 'IEventStreamReader':
         """
         Returns a read only interface to this event stream
+        """
+        ...
+
+    @abstractmethod
+    def write(self, event):
+        """
+        Writes an event to the stream
         """
         ...
 

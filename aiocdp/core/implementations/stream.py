@@ -92,6 +92,12 @@ class EventStream(IEventStream):
         """
         return self.connection
 
+    def get_events_to_listen(self):
+        """
+        Returns the list of events this stream is subscribed to
+        """
+        return self.events_to_listen
+
     def get_reader(self):
         """
         Creates the reader for this stream.

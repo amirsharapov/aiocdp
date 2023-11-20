@@ -4,12 +4,47 @@ from aiocdp.core.interfaces.stream import IEventStream
 
 
 class ITargetInfo(ABC):
-    id: int
+    """
+    Represents information about a CDP target.
+    """
+
+    @classmethod
+    @abstractmethod
+    def create(
+        cls,
+        id,
+        title,
+        description,
+        url,
+        type,
+        web_socket_debugger_url
+    ):
+        """
+        Initializer method for the ITargetInfo class
+        """
+        ...
 
 
 class ITarget(ABC):
-    info: ITargetInfo = None
+    """
+    Represents a CDP target.
+    """
+
+    @classmethod
+    @abstractmethod
+    def create(
+        cls,
+        chrome,
+        info: ITargetInfo
+    ):
+        """
+        Initializer method for the ITarget class
+        """
+        ...
 
     @abstractmethod
     def close_stream(self, stream: IEventStream):
-        pass
+        """
+        Closes the given stream.
+        """
+        ...

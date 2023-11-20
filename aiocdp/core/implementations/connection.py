@@ -7,10 +7,11 @@ from typing import Optional
 import websockets.client as websockets
 
 from aiocdp import logging
-from aiocdp.core.stream import EventStreamReader, EventStream
-
+from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
 from aiocdp.core.interfaces.connection import IConnection
+from aiocdp.core.implementations.stream import EventStream
 from aiocdp.exceptions import raise_invalid_rpc_response
+from aiocdp.ioc import get_class
 
 _rpc_id = 0
 
@@ -57,7 +58,7 @@ class Connection(IConnection):
     """
     The streams that are currently listening for events.
     """
-    streams: defaultdict[str, list[EventStream]] = field(
+    streams: defaultdict[str, list['IEventStream']] = field(
         default_factory=lambda: defaultdict(list),
         init=False
     )
@@ -167,12 +168,12 @@ class Connection(IConnection):
 
     def close_stream(
             self,
-            stream: EventStream
+            stream: 'IEventStream'
     ):
         """
         Unsubscribes the given event stream from receiving events from the connection.
         """
-        for event in stream.events_to_listen:
+        for event in stream.get_events_to_listen():
             self.streams[event].remove(stream)
 
     async def connect(self):
@@ -199,11 +200,11 @@ class Connection(IConnection):
         await self.ws.close()
         self.ws_listener.cancel()
 
-    def is_stream_closed(self, stream: EventStream):
+    def is_stream_closed(self, stream: 'IEventStream'):
         """
         Checks if the given stream is closed.
         """
-        for event in stream.events_to_listen:
+        for event in stream.get_events_to_listen():
             if stream in self.streams[event]:
                 return False
 
@@ -212,11 +213,16 @@ class Connection(IConnection):
     def open_stream(
             self,
             events: list[str]
-    ) -> EventStreamReader:
+    ) -> IEventStreamReader:
         """
         Opens a new event stream for the given events.
         """
-        stream = EventStream(
+        stream_cls = get_class(
+            IEventStream,
+            EventStream
+        )
+
+        stream = stream_cls.create(
             connection=self,
             events_to_listen=events
         )

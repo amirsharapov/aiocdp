@@ -4,10 +4,11 @@ from typing import Callable, Any
 
 import requests
 
+from aiocdp.core.implementations import Target, TargetInfo
 from aiocdp.core.interfaces.chrome import IChrome
 from aiocdp.core.interfaces.target import ITarget, ITargetInfo
 from aiocdp.exceptions import NoTargetFoundMatchingCondition
-from aiocdp.factories import get_factory
+from aiocdp.ioc import get_class
 from aiocdp.utils import UNDEFINED
 
 
@@ -32,20 +33,31 @@ class Chrome(IChrome):
         """
         Initializes an instance of the target using the registered factory
         """
-        target_info_cls = get_factory(ITargetInfo)
-        target_cls = get_factory(ITarget)
-
-        return target_cls.create(
-            chrome=self,
-            info=target_info_cls.create(
-                id=target['id'],
-                title=target['title'],
-                description=target['description'],
-                url=target['url'],
-                type=target['type'],
-                web_socket_debugger_url=target['webSocketDebuggerUrl']
-            )
+        target_info_cls = get_class(
+            ITargetInfo,
+            TargetInfo
         )
+
+        target_cls = get_class(
+            ITarget,
+            Target
+        )
+
+        target_info = target_info_cls.create(
+            id=target['id'],
+            title=target['title'],
+            description=target['description'],
+            url=target['url'],
+            type=target['type'],
+            web_socket_debugger_url=target['webSocketDebuggerUrl']
+        )
+
+        target = target_cls.create(
+            chrome=self,
+            info=target_info
+        )
+
+        return target
 
     def start(self, extra_cli_args: list[str] = None):
         """
