@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Callable, Any
+from typing import Callable, Any, Generator, Iterator
 
 from aiocdp.core.interfaces.target import ITarget
 from aiocdp.utils import UNDEFINED
@@ -16,7 +16,7 @@ class IChrome(ABC):
         cls,
         host: str,
         port: int,
-    ):
+    ) -> 'IChrome':
         """
         Initializer method for the Chrome classes
         """
@@ -52,7 +52,7 @@ class IChrome(ABC):
         """
         pass
 
-    def iterate_targets(self):
+    def iterate_targets(self) -> Iterator[ITarget]:
         """
         Returns a generator that fetches and iterates over all the targets.
         """

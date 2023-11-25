@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-from aiocdp.core.interfaces.stream import IEventStream
+from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
 
 if TYPE_CHECKING:
     from aiocdp.core.interfaces.chrome import IChrome
@@ -61,7 +61,7 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def open_stream(self, events):
+    def open_stream(self, events) -> IEventStreamReader:
         """
         Opens a stream for the given events.
         """

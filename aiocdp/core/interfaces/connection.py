@@ -10,7 +10,7 @@ class IConnection(ABC):
 
     @classmethod
     @abstractmethod
-    def init(cls, ws_url: str):
+    def init(cls, ws_url: str) -> 'IConnection':
         """
         Initializer method for the IConnection class
         """
@@ -18,7 +18,7 @@ class IConnection(ABC):
 
     @property
     @abstractmethod
-    def is_connected(self):
+    def is_connected(self) -> bool:
         """
         Returns whether the connection is closed.
         """
@@ -42,7 +42,7 @@ class IConnection(ABC):
         """
         pass
 
-    def is_stream_closed(self, stream: 'IEventStream'):
+    def is_stream_closed(self, stream: 'IEventStream') -> bool:
         """
         Checks if the given stream is closed.
         """

@@ -28,7 +28,7 @@ class IEventStream(ABC):
 
     @property
     @abstractmethod
-    def is_closed(self):
+    def is_closed(self) -> bool:
         """
         Returns whether the stream is closed.
         """
@@ -63,7 +63,7 @@ class IEventStream(ABC):
         pass
 
     @abstractmethod
-    def get_events_to_listen(self):
+    def get_events_to_listen(self) -> list[str]:
         """
         Returns a list of events to listen to.
         """
@@ -99,7 +99,7 @@ class IEventStreamReader(ABC):
 
     @property
     @abstractmethod
-    def connection(self):
+    def connection(self) -> 'IConnection':
         """
         Public readonly access to the `Connection` instance. Provided by the stream.
         """
@@ -107,7 +107,7 @@ class IEventStreamReader(ABC):
 
     @property
     @abstractmethod
-    def is_closed(self):
+    def is_closed(self) -> bool:
         """
         Public readonly access to the closed status of the stream. Provided by the stream.
         """
@@ -135,7 +135,7 @@ class IEventStreamReader(ABC):
         pass
 
     @abstractmethod
-    async def get_events_iterator(self) -> AsyncGenerator[_T, None]:
+    async def iterate(self) -> AsyncGenerator[_T, None]:
         """
         Returns an async iterator for all recorded events and new events as they are received.
         """

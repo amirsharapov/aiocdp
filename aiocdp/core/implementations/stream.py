@@ -180,9 +180,9 @@ class EventStreamReader(IEventStreamReader):
         """
         self.stream.close()
 
-    async def get_events_iterator(self) -> AsyncGenerator[_T, None]:
+    async def iterate(self) -> AsyncGenerator[_T, None]:
         """
-        Returns an async iterator for all recorded events and new events as they are received.
+        Returns a new async iterator for all recorded events and new events as they are received.
         """
         for item in self.stream.events:
             yield item

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from aiocdp.core.interfaces.stream import IEventStream
+from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
 
 
 class ISession(ABC):
@@ -44,7 +44,7 @@ class ISession(ABC):
         pass
 
     @abstractmethod
-    def open_stream(self, events: list[str]):
+    def open_stream(self, events: list[str]) -> IEventStreamReader:
         """
         Opens a stream. Calls `self.target.open_stream` method on the target.
         """
