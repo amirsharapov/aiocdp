@@ -1,7 +1,10 @@
 from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING
 
-from src.aiocdp.core.interfaces.chrome import IChrome
 from src.aiocdp.core.interfaces.stream import IEventStream
+
+if TYPE_CHECKING:
+    from src.aiocdp.core.interfaces.chrome import IChrome
 
 
 class ITargetInfo(ABC):

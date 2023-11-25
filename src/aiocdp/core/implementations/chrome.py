@@ -141,7 +141,7 @@ class Chrome(IChrome):
         response.raise_for_status()
 
         for target in response.json():
-            return self._init_target(target)
+            yield self._init_target(target)
 
     def open_tab(self, tab_url: str = None) -> ITarget:
         """

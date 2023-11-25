@@ -89,24 +89,24 @@ class IEventStreamReader(ABC):
     Read only interface to an event stream.
     """
 
-    @abstractmethod
     @property
+    @abstractmethod
     def events_to_listen(self) -> list[str]:
         """
         Public readonly access to the CDP events to listen for. Provided by the stream.
         """
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def connection(self):
         """
         Public readonly access to the `Connection` instance. Provided by the stream.
         """
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def is_closed(self):
         """
         Public readonly access to the closed status of the stream. Provided by the stream.
