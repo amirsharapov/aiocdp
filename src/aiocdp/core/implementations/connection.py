@@ -6,12 +6,12 @@ from typing import Optional
 
 import websockets.client as websockets
 
-from aiocdp import logging
-from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
-from aiocdp.core.interfaces.connection import IConnection
-from aiocdp.core.implementations.stream import EventStream
-from aiocdp.exceptions import raise_invalid_rpc_response
-from aiocdp.ioc import get_class
+from src.aiocdp import logging
+from src.aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
+from src.aiocdp.core.interfaces.connection import IConnection
+from src.aiocdp.core.implementations.stream import EventStream
+from src.aiocdp.exceptions import raise_invalid_rpc_response
+from src.aiocdp.ioc import get_class
 
 _rpc_id = 0
 

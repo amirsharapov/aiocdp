@@ -1,13 +1,13 @@
 from dataclasses import dataclass, field
 
-from aiocdp.core.interfaces.connection import IConnection
-from aiocdp.core.interfaces.target import ITarget
-from aiocdp.core.interfaces.chrome import IChrome
-from aiocdp.core.implementations.connection import Connection
-from aiocdp.core.implementations.session import Session
-from aiocdp.core.implementations.stream import EventStream
+from src.aiocdp.core.interfaces.connection import IConnection
+from src.aiocdp.core.interfaces.target import ITarget
+from src.aiocdp.core.interfaces.chrome import IChrome
+from src.aiocdp.core.implementations.connection import Connection
+from src.aiocdp.core.implementations.session import Session
+from src.aiocdp.core.implementations.stream import EventStream
 
-from aiocdp.core.interfaces import ITargetInfo
+from src.aiocdp.core.interfaces import ITargetInfo
 
 
 @dataclass
@@ -105,6 +105,9 @@ class Target(ITarget):
         Assigns the connection to the target.
         """
         self._connection = Connection(self.ws_url)
+
+    def get_info(self):
+        return self.info
 
     async def close_session(self, session: 'Session'):
         """

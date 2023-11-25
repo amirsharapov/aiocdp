@@ -1,9 +1,9 @@
 import asyncio
 import time
-from pathlib import Path
 from unittest import TestCase
 
-from aiocdp import Chrome, logging
+from src.aiocdp import Chrome
+from src.aiocdp import logging
 
 logging.enable_logging(['*'])
 

@@ -2,8 +2,8 @@ import asyncio
 from dataclasses import dataclass, field
 from typing import TypeVar, AsyncGenerator
 
-from aiocdp.core.interfaces.connection import IConnection
-from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
+from src.aiocdp.core.interfaces.connection import IConnection
+from src.aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
 
 _T = TypeVar('_T')
 

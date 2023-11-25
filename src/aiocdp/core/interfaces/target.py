@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from aiocdp.core.interfaces.chrome import IChrome
-from aiocdp.core.interfaces.stream import IEventStream
+from src.aiocdp.core.interfaces.chrome import IChrome
+from src.aiocdp.core.interfaces.stream import IEventStream
 
 
 class ITargetInfo(ABC):

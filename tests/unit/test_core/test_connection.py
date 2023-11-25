@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from aiocdp import Connection, EventStreamReader
+from src.aiocdp import Connection, EventStreamReader
 
 
 class TestConnection(TestCase):

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
+from src.aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
 
 
 class IConnection(ABC):
