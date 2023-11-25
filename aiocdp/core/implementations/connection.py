@@ -20,8 +20,8 @@ def next_rpc_id():
     """
     Generates a new sequential id for rpc requests.
 
-    Notes:
-        - Not implementing thread safety because this is used within the context of asyncio.
+    Implementation Notes:
+    - Thread safety was not implemented because this is used with asyncio context.
     """
     global _rpc_id
     _rpc_id += 1
@@ -87,6 +87,13 @@ class Connection(IConnection):
         init=False
     )
 
+    @classmethod
+    def init(cls, ws_url: str):
+        """
+        Initializer method for the Connection class
+        """
+        return cls(ws_url)
+
     @property
     def is_connected(self):
         """
@@ -114,14 +121,10 @@ class Connection(IConnection):
         message = json.loads(message)
 
         if 'id' in message:
-            return self._handle_response(
-                message
-            )
+            return self._handle_response(message)
 
         else:
-            return self._handle_event(
-                message
-            )
+            return self._handle_event(message)
 
     def _handle_response(self, response: dict):
         """
@@ -139,13 +142,8 @@ class Connection(IConnection):
             return
 
         try:
-            validate_rpc_response(
-                response
-            )
-
-            future.set_result(
-                response['result']
-            )
+            validate_rpc_response(response)
+            future.set_result(response['result'])
 
         except Exception as e:
             future.set_exception(e)
@@ -156,15 +154,11 @@ class Connection(IConnection):
         """
         async with websockets.connect(self.ws_url) as ws:
             self.ws = ws
-            self.ws_connected.set_result(
-                True
-            )
+            self.ws_connected.set_result(True)
 
             while True:
                 message = await ws.recv()
-                await self._handle_message(
-                    message
-                )
+                await self._handle_message(message)
 
     def close_stream(
             self,
@@ -215,22 +209,20 @@ class Connection(IConnection):
             events: list[str]
     ) -> IEventStreamReader:
         """
-        Opens a new event stream for the given events.
+        Opens a new event stream for the given events and returns a reader for it.
         """
-        stream_cls = get_class(
+        stream_class = get_class(
             IEventStream,
             EventStream
         )
 
-        stream = stream_cls.create(
+        stream = stream_class.init(
             connection=self,
             events_to_listen=events
         )
 
         for event in events:
-            self.streams[event].append(
-                stream
-            )
+            self.streams[event].append(stream)
 
         return stream.get_reader()
 

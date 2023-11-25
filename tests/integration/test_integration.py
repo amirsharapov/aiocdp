@@ -58,7 +58,7 @@ class Tests(TestCase):
                 }
             )
 
-            async for event in reader.iterate():
+            async for event in reader.get_events_iterator():
                 print(event)
                 break
 

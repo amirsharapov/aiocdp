@@ -4,7 +4,7 @@ from typing import Callable, Any
 
 import requests
 
-from aiocdp.core.implementations import Target, TargetInfo
+from aiocdp.core.implementations.target import Target, TargetInfo
 from aiocdp.core.interfaces.chrome import IChrome
 from aiocdp.core.interfaces.target import ITarget, ITargetInfo
 from aiocdp.exceptions import NoTargetFoundMatchingCondition
@@ -14,6 +14,10 @@ from aiocdp.utils import UNDEFINED
 
 @dataclass
 class Chrome(IChrome):
+    """
+    Represents a chrome instance.
+    """
+
     """
     The host of the chrome instance.
     """
@@ -25,13 +29,24 @@ class Chrome(IChrome):
     port: int = 9222
 
     """
-    The origins allowed to remotely connect to the chrome instance.
+    The list of allowed origins that can connect to the chrome instance.
     """
     allow_origins: str = '*'
 
+    @classmethod
+    def init(
+        cls,
+        host: str = '127.0.0.1',
+        port: int = 9222,
+    ):
+        return cls(
+            host=host,
+            port=port
+        )
+
     def _init_target(self, target: dict):
         """
-        Initializes an instance of the target using the registered factory
+        Initializes an instance of the target using the registered implementations.
         """
         target_info_cls = get_class(
             ITargetInfo,
@@ -43,16 +58,16 @@ class Chrome(IChrome):
             Target
         )
 
-        target_info = target_info_cls.create(
-            id=target['id'],
+        target_info = target_info_cls.init(
+            id_=target['id'],
             title=target['title'],
             description=target['description'],
             url=target['url'],
-            type=target['type'],
+            type_=target['type'],
             web_socket_debugger_url=target['webSocketDebuggerUrl']
         )
 
-        target = target_cls.create(
+        target = target_cls.init(
             chrome=self,
             info=target_info
         )
@@ -72,7 +87,7 @@ class Chrome(IChrome):
         commands.extend(extra_cli_args or [])
         command = ' '.join(commands)
 
-        subprocess.run(command)
+        subprocess.run(command, shell=True)
 
         return self
 

@@ -1,12 +1,9 @@
 import asyncio
 from dataclasses import dataclass, field
-from typing import TypeVar, AsyncGenerator, TYPE_CHECKING
+from typing import TypeVar, AsyncGenerator
 
 from aiocdp.core.interfaces.connection import IConnection
-from aiocdp.core.interfaces.stream import IEventStream
-
-if TYPE_CHECKING:
-    from aiocdp import Connection
+from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
 
 _T = TypeVar('_T')
 
@@ -25,17 +22,17 @@ class EventStream(IEventStream):
     """
 
     """
-    The connection
+    A reference to the parent connection.
     """
-    connection: 'Connection'
+    connection: 'IConnection'
 
     """
-    The list of event names to listen to
+    The list of event names to listen to.
     """
     events_to_listen: list[str]
 
     """
-    The list of recorded events
+    The list of recorded events.
     """
     events: list[_T] = field(
         default_factory=list,
@@ -43,7 +40,7 @@ class EventStream(IEventStream):
     )
 
     """
-    Instance of the reader for this class
+    References the single instance of the reader for this class.
     """
     reader: 'EventStreamReader | None' = field(
         default=None,
@@ -51,12 +48,26 @@ class EventStream(IEventStream):
     )
 
     """
-    An async future resolved everytime an event is recorded
+    An async future resolved everytime an event is recorded.
     """
     next: asyncio.Future = field(
         default_factory=_create_future,
         init=False
     )
+
+    @classmethod
+    def init(
+        cls,
+        connection: IConnection,
+        events_to_listen: list[str]
+    ) -> 'EventStream':
+        """
+        Initializer method for the EventStream class
+        """
+        return cls(
+            connection,
+            events_to_listen
+        )
 
     @property
     def is_closed(self):
@@ -100,30 +111,16 @@ class EventStream(IEventStream):
 
     def get_reader(self):
         """
-        Creates the reader for this stream.
+        Returns a read only interface associated with this event stream.
 
-        Notes:
-            - This method returns the same instance for the lifetime of this stream.
+        Implementation Notes:
+        - Returns the same instance for the lifetime of this stream.
         """
 
         if self.reader is None:
             self.reader = EventStreamReader(self)
 
         return self.reader
-
-    async def iterate(self) -> AsyncGenerator[_T, None]:
-        """
-        Iterates over all the events in this stream and asynchronously yields new events as they are received.
-
-        Notes:
-            - Should not be used by public API. First call `EventStream.get_reader`
-              and then use `EventStreamReader.iterate` instead.
-        """
-        for item in self.events:
-            yield item
-
-        while True:
-            yield await self.next
 
     def write(self, item: _T):
         """
@@ -135,9 +132,9 @@ class EventStream(IEventStream):
 
 
 @dataclass
-class EventStreamReader:
+class EventStreamReader(IEventStreamReader):
     """
-    Object that has read only access to an event stream.
+    Read only proxy to an event stream.
     """
     stream: EventStream
 
@@ -183,9 +180,12 @@ class EventStreamReader:
         """
         self.stream.close()
 
-    async def iterate(self) -> AsyncGenerator[_T, None]:
+    async def get_events_iterator(self) -> AsyncGenerator[_T, None]:
         """
-        Iterates over the events asynchronously in this stream.
+        Returns an async iterator for all recorded events and new events as they are received.
         """
-        async for item in self.stream.iterate():
+        for item in self.stream.events:
             yield item
+
+        while True:
+            yield await self.stream.next

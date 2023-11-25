@@ -1,19 +1,21 @@
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
 
-from aiocdp.core.connection import Connection
-from aiocdp.core.implementations.session import TargetSession
-from aiocdp.core.stream import EventStream
+from aiocdp.core.interfaces.connection import IConnection
+from aiocdp.core.interfaces.target import ITarget
+from aiocdp.core.interfaces.chrome import IChrome
+from aiocdp.core.implementations.connection import Connection
+from aiocdp.core.implementations.session import Session
+from aiocdp.core.implementations.stream import EventStream
 
-if TYPE_CHECKING:
-    from aiocdp.core.chrome import Chrome
+from aiocdp.core.interfaces import ITargetInfo
 
 
 @dataclass
-class TargetInfo:
+class TargetInfo(ITargetInfo):
     """
     Represents information about a target.
     """
+
     id: str
     title: str
     description: str
@@ -23,19 +25,66 @@ class TargetInfo:
     parent_id: str = None
     favicon_url: str = None
 
+    @classmethod
+    def init(
+            cls,
+            id_: str,
+            title: str,
+            description: str,
+            url: str,
+            type_: str,
+            web_socket_debugger_url: str,
+            parent_id: str = None,
+            favicon_url: str = None
+    ):
+        """
+        Initializer method for the ITargetInfo class
+        """
+        return cls(
+            id=id_,
+            title=title,
+            description=description,
+            url=url,
+            type=type_,
+            web_socket_debugger_url=web_socket_debugger_url,
+            parent_id=parent_id,
+            favicon_url=favicon_url
+        )
+
 
 @dataclass
-class Target:
+class Target(ITarget):
     """
     Represents a CDP target.
     """
-    _connection: Connection = field(
+    _connection: 'IConnection' = field(
         init=False,
         repr=False
     )
 
-    chrome: 'Chrome'
-    info: TargetInfo
+    """
+    A reference to the parent chrome instance
+    """
+    chrome: 'IChrome'
+
+    """
+    A reference to the target info.
+    """
+    info: 'ITargetInfo'
+
+    @classmethod
+    def init(
+        cls,
+        chrome: IChrome,
+        info: ITargetInfo
+    ):
+        """
+        Initializer method for the ITarget class
+        """
+        return cls(
+            chrome=chrome,
+            info=info
+        )
 
     @property
     def is_connected(self):
@@ -57,7 +106,7 @@ class Target:
         """
         self._connection = Connection(self.ws_url)
 
-    async def close_session(self, session: 'TargetSession'):
+    async def close_session(self, session: 'Session'):
         """
         Closes the session. Calls `TargetSession.close`.
         """
@@ -91,7 +140,7 @@ class Target:
         """
         Opens a session with the target.
         """
-        session = TargetSession(self)
+        session = Session(self)
         await session.open()
 
         return session

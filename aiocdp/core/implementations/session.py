@@ -1,16 +1,25 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
+from aiocdp.core.interfaces.session import ISession
 from aiocdp.core.interfaces.stream import IEventStream
 from aiocdp.core.interfaces.target import ITarget
 
 
 @dataclass
-class TargetSession:
+class Session(ISession):
     """
     Represents a session with a target.
     """
+
+    """
+    A reference to the target.
+    """
     target: ITarget
+
+    """
+    The session ID.
+    """
     session_id: Optional[str] = field(
         default=None,
         init=False
@@ -69,13 +78,13 @@ class TargetSession:
 
     def open_stream(self, events: list[str]):
         """
-        Opens a stream. Calls `Target.open_stream`.
+        Opens a stream. Calls `self.target.open_stream` method on the target.
         """
         return self.target.open_stream(events)
 
     async def send(self, method: str, params: dict = None):
         """
-        Sends a message to the target. Calls `Target.send`.
+        Sends a message to the target. Calls `self.target.send`.
         """
         params = params or {}
         params['sessionId'] = self.session_id
@@ -87,7 +96,7 @@ class TargetSession:
 
     async def send_and_await_response(self, method: str, params: dict = None):
         """
-        Sends a message to the target and awaits a response. Calls `Target.send_and_await_response`
+        Sends a message to the target and awaits a response. Calls `self.target.send_and_await_response`
         """
         params = params or {}
         params['sessionId'] = self.session_id
