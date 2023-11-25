@@ -2,8 +2,7 @@ import asyncio
 import time
 from unittest import TestCase
 
-from src.aiocdp import Chrome
-from src.aiocdp import logging
+from aiocdp import Chrome, logging
 
 logging.enable_logging(['*'])
 

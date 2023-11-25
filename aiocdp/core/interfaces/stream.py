@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import TypeVar, TYPE_CHECKING, AsyncGenerator
 
 if TYPE_CHECKING:
-    from src.aiocdp.core.interfaces.connection import IConnection
+    from aiocdp.core.interfaces.connection import IConnection
 
 _T = TypeVar('_T')
 

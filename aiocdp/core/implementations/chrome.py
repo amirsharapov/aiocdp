@@ -4,12 +4,12 @@ from typing import Callable, Any
 
 import requests
 
-from src.aiocdp.core.implementations.target import Target, TargetInfo
-from src.aiocdp.core.interfaces.chrome import IChrome
-from src.aiocdp.core.interfaces.target import ITarget, ITargetInfo
-from src.aiocdp.exceptions import NoTargetFoundMatchingCondition
-from src.aiocdp.ioc import get_class
-from src.aiocdp.utils import UNDEFINED
+from aiocdp.core.implementations.target import Target, TargetInfo
+from aiocdp.core.interfaces.chrome import IChrome
+from aiocdp.core.interfaces.target import ITarget, ITargetInfo
+from aiocdp.exceptions import NoTargetFoundMatchingCondition
+from aiocdp.ioc import get_class
+from aiocdp.utils import UNDEFINED
 
 
 @dataclass

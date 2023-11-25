@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from src.aiocdp.core.interfaces.session import ISession
-from src.aiocdp.core.interfaces.stream import IEventStream
-from src.aiocdp.core.interfaces.target import ITarget
+from aiocdp.core.interfaces.session import ISession
+from aiocdp.core.interfaces.stream import IEventStream
+from aiocdp.core.interfaces.target import ITarget
 
 
 @dataclass

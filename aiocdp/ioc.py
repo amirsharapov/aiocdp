@@ -1,11 +1,11 @@
 from typing import TypeVar
 
-from src.aiocdp.core.interfaces.stream import IEventStreamReader, IEventStream
-from src.aiocdp.core.interfaces.connection import IConnection
-from src.aiocdp.core.interfaces.session import ISession
-from src.aiocdp.core.interfaces.chrome import IChrome
-from src.aiocdp.core.interfaces.target import ITarget, ITargetInfo
-from src.aiocdp.utils import UNDEFINED
+from aiocdp.core.interfaces.stream import IEventStreamReader, IEventStream
+from aiocdp.core.interfaces.connection import IConnection
+from aiocdp.core.interfaces.session import ISession
+from aiocdp.core.interfaces.chrome import IChrome
+from aiocdp.core.interfaces.target import ITarget, ITargetInfo
+from aiocdp.utils import UNDEFINED
 
 _T = TypeVar('_T')
 _lookup = {}

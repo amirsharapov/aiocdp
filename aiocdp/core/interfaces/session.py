@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.aiocdp.core.interfaces.stream import IEventStream
+from aiocdp.core.interfaces.stream import IEventStream
 
 
 class ISession(ABC):

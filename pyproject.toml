@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aiocdp"
-version = "1.0.0"
+version = "1.0.2"
 description = "High performance, easy to use, python library for interacting with Chrome DevTools Protocol."
 readme = "README.md"
 authors = [{ name = "Amir Sharapov", email = "amirsharapov.personal@gmail.com" }]

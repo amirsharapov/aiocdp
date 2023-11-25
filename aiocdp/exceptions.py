@@ -1,7 +1,7 @@
 from typing import Callable, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.aiocdp import Target
+    from aiocdp import Target
 
 
 class AIOCDPException(Exception):

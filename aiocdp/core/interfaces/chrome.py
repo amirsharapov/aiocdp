@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Callable, Any
 
-from src.aiocdp.core.interfaces.target import ITarget
-from src.aiocdp.utils import UNDEFINED
+from aiocdp.core.interfaces.target import ITarget
+from aiocdp.utils import UNDEFINED
 
 
 class IChrome(ABC):
