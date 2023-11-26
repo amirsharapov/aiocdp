@@ -1,6 +1,6 @@
 import asyncio
 from dataclasses import dataclass, field
-from typing import TypeVar, AsyncGenerator
+from typing import TypeVar, Generator
 
 from aiocdp.core.interfaces.connection import IConnection
 from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
@@ -180,7 +180,7 @@ class EventStreamReader(IEventStreamReader):
         """
         self.stream.close()
 
-    async def iterate(self) -> AsyncGenerator[_T, None]:
+    async def iterate(self) -> Generator[_T, None]:
         """
         Returns a new async iterator for all recorded events and new events as they are received.
         """

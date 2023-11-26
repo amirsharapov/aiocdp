@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import TypeVar, TYPE_CHECKING, AsyncGenerator
+from typing import TypeVar, TYPE_CHECKING, Generator
 
 if TYPE_CHECKING:
     from aiocdp.core.interfaces.connection import IConnection
@@ -135,7 +135,7 @@ class IEventStreamReader(ABC):
         pass
 
     @abstractmethod
-    async def iterate(self) -> AsyncGenerator[_T, None]:
+    async def iterate(self) -> Generator[_T, None]:
         """
         Returns an async iterator for all recorded events and new events as they are received.
         """
