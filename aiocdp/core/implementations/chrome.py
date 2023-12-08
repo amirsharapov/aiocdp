@@ -176,7 +176,7 @@ class Chrome(IChrome):
         if url:
             url_ += f'?{url}'
 
-        response = requests.put(url)
+        response = requests.put(url_)
         response.raise_for_status()
 
         target = response.json()
