@@ -23,7 +23,7 @@ class IChrome(ABC):
         pass
 
     @abstractmethod
-    def start(self) -> None:
+    def start(self, extra_cli_args: list[str] = None) -> None:
         """
         Starts the chrome instance
         """
