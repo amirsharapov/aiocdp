@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from asyncio import Future
 from typing import TYPE_CHECKING, Any, Coroutine
 
 from aiocdp.core.interfaces.session import ISession
@@ -111,7 +112,7 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def open_session(self) -> Coroutine['ISession', None, None]:
+    def open_session(self) -> Future['ISession', None, None]:
         """
         Opens a session for the target.
         """
