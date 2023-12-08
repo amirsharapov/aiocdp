@@ -111,7 +111,7 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def open_session(self) -> 'ISession':
+    def open_session(self) -> Coroutine['ISession', None, None]:
         """
         Opens a session for the target.
         """

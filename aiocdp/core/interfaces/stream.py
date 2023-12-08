@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import TypeVar, TYPE_CHECKING, Generator, Iterator, AsyncIterator
+from typing import TypeVar, TYPE_CHECKING, AsyncIterator
 
 if TYPE_CHECKING:
     from aiocdp.core.interfaces.connection import IConnection
