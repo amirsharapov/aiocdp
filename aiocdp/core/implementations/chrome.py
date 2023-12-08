@@ -171,10 +171,10 @@ class Chrome(IChrome):
         """
         Opens a new tab.
         """
-        url = f'http://{self.host}:{self.port}/json/new'
+        url_ = f'http://{self.host}:{self.port}/json/new'
 
         if url:
-            url += f'?{url}'
+            url_ += f'?{url}'
 
         response = requests.put(url)
         response.raise_for_status()
