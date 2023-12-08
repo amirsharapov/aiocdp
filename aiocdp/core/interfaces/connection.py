@@ -30,14 +30,14 @@ class IConnection(ABC):
         """
         pass
 
-    def connect(self) -> Coroutine[Any, None, None]:
+    def connect(self) -> Coroutine[None, None, Any]:
         """
         Connects to the websocket and starts the listener task. Returns a future that resolves when the connection is
         established.
         """
         pass
 
-    def disconnect(self) -> Coroutine[Any, None, None]:
+    def disconnect(self) -> Coroutine[None, None, Any]:
         """
         Disconnects from the websocket and cancels the listener task. Returns a future that resolves when the
         connection is closed.
@@ -56,7 +56,7 @@ class IConnection(ABC):
         """
         pass
 
-    def send(self, method: str, params: dict) -> Coroutine[Any, None, None]:
+    def send(self, method: str, params: dict) -> Coroutine[None, None, Any]:
         """
         Sends a message to the websocket. Returns a future that resolves when the message is sent.
         """

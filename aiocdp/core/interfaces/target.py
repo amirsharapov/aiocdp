@@ -56,7 +56,7 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def close_session(self, session: 'ISession') -> Coroutine[Any, None, None]:
+    def close_session(self, session: 'ISession') -> Coroutine[None, None, Any]:
         """
         Closes the given session.
         """
@@ -70,14 +70,14 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def connect(self) -> Coroutine[Any, None, None]:
+    def connect(self) -> Coroutine[None, None, Any]:
         """
         Connects to the target.
         """
         pass
 
     @abstractmethod
-    def disconnect(self) -> Coroutine[Any, None, None]:
+    def disconnect(self) -> Coroutine[None, None, Any]:
         """
         Disconnects from the target.
         """
@@ -112,21 +112,21 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def open_session(self) -> Future['ISession', None, None]:
+    def open_session(self) -> Coroutine[None, None, 'ISession']:
         """
         Opens a session for the target.
         """
         pass
 
     @abstractmethod
-    def send(self, method, params) -> Coroutine[Any, None, None]:
+    def send(self, method, params) -> Coroutine[None, None, Any]:
         """
         Sends a message to the target.
         """
         pass
 
     @abstractmethod
-    def send_and_await_response(self, method, params) -> Coroutine[Any, None, None]:
+    def send_and_await_response(self, method, params) -> Coroutine[None, None, Any]:
         """
         Sends a message to the target and awaits a response.
         """

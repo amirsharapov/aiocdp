@@ -24,7 +24,7 @@ class ISession(ABC):
         pass
 
     @abstractmethod
-    def close(self) -> Coroutine[Any, None, None]:
+    def close(self) -> Coroutine[None, None, Any]:
         """
         Closes the session by detaching from the target.
         """
@@ -38,7 +38,7 @@ class ISession(ABC):
         pass
 
     @abstractmethod
-    def open(self) -> Coroutine[Any, None, None]:
+    def open(self) -> Coroutine[None, None, Any]:
         """
         Opens the session by attaching to the target.
         """
@@ -52,14 +52,14 @@ class ISession(ABC):
         pass
 
     @abstractmethod
-    def send(self, method: str, params: dict = None) -> Coroutine[Any, None, None]:
+    def send(self, method: str, params: dict = None) -> Coroutine[None, None, Any]:
         """
         Sends a message to the target. Calls `self.target.send`.
         """
         pass
 
     @abstractmethod
-    def send_and_await_response(self, method: str, params: dict = None) -> Coroutine[Any, None, None]:
+    def send_and_await_response(self, method: str, params: dict = None) -> Coroutine[None, None, Any]:
         """
         Sends a message to the target and awaits a response. Calls `self.target.send_and_await_response`
         """
