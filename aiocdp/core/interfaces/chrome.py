@@ -23,18 +23,20 @@ class IChrome(ABC):
         pass
 
     @abstractmethod
-    def start(self):
+    def start(self) -> None:
         """
         Starts the chrome instance
         """
         pass
 
+    @abstractmethod
     def close_tab(self, target_id: str):
         """
         Closes the tab with the given target id.
         """
         pass
 
+    @abstractmethod
     def get_first_target(
             self,
             condition: Callable[[ITarget], bool] = None,
@@ -46,19 +48,36 @@ class IChrome(ABC):
         """
         pass
 
+    @abstractmethod
+    def get_host(self) -> str:
+        """
+        Returns the host of the chrome instance
+        """
+        pass
+
+    @abstractmethod
+    def get_port(self) -> int:
+        """
+        Returns the port of the chrome instance
+        """
+        pass
+
+    @abstractmethod
     def get_targets(self) -> list[ITarget]:
         """
         Fetches a list of all the targets.
         """
         pass
 
+    @abstractmethod
     def iterate_targets(self) -> Iterator[ITarget]:
         """
         Returns a generator that fetches and iterates over all the targets.
         """
         pass
 
-    def open_tab(self, tab_url: str = None) -> ITarget:
+    @abstractmethod
+    def open_tab(self, url: str = None) -> ITarget:
         """
         Opens a new tab.
         """

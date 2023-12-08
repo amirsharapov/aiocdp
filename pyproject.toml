@@ -4,23 +4,29 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aiocdp"
-version = "1.0.2"
-description = "High performance, easy to use, python library for interacting with Chrome DevTools Protocol."
+version = "1.0.3"
+description = "High performance, asynchronous python module for programatic access to Chrome DevTools Protocol."
 readme = "README.md"
-authors = [{ name = "Amir Sharapov", email = "amirsharapov.personal@gmail.com" }]
+authors = [
+    {name = "Amir Sharapov", email = "amirsharapov.personal@gmail.com" }
+]
 classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
 ]
-keywords = ["cdp", "chrome devtools protocol", "chrome", "devtools", "browser", "automation"]
+keywords = [
+    "cdp",
+    "chrome devtools protocol",
+    "chrome",
+    "devtools",
+    "browser",
+    "automation"
+]
 dependencies = [
     'websockets',
     'requests'
 ]
 requires-python = ">=3.9"
-
-[project.optional-dependencies]
-dev = ["black", "bumpver", "isort", "pip-tools", "pytest"]
 
 [project.urls]
 Homepage = "https://github.com/amirdevstudio/aiocdp"

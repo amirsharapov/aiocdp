@@ -69,7 +69,6 @@ class EventStream(IEventStream):
             events_to_listen
         )
 
-    @property
     def is_closed(self):
         """
         Public readonly access to the closed status of the stream.
@@ -122,6 +121,16 @@ class EventStream(IEventStream):
 
         return self.reader
 
+    async def iterate(self):
+        """
+        Returns a new async iterator for all recorded events and new events as they are received.
+        """
+        for item in self.events:
+            yield item
+
+        while True:
+            yield await self.next
+
     def write(self, item: _T):
         """
         Writes an item to the stream. Responsible for resolving futures.
@@ -136,28 +145,13 @@ class EventStreamReader(IEventStreamReader):
     """
     Read only proxy to an event stream.
     """
-    stream: EventStream
+    stream: IEventStream
 
-    @property
-    def events_to_listen(self) -> list[str]:
-        """
-        Public readonly access to the CDP events to listen for. Provided by the stream.
-        """
-        return self.stream.events_to_listen
-
-    @property
-    def connection(self):
-        """
-        Public readonly access to the `Connection` instance. Provided by the stream.
-        """
-        return self.stream.connection
-
-    @property
     def is_closed(self):
         """
         Public readonly access to the closed status of the stream. Provided by the stream.
         """
-        return self.stream.is_closed
+        return self.stream.is_closed()
 
     def __enter__(self):
         """
@@ -180,12 +174,21 @@ class EventStreamReader(IEventStreamReader):
         """
         self.stream.close()
 
-    async def iterate(self) -> Generator[_T, None]:
+    def get_events_to_listen(self):
+        """
+        Returns the list of events this stream is subscribed to
+        """
+        return self.stream.get_events_to_listen()
+
+    def get_connection(self) -> 'IConnection':
+        """
+        Returns the connection this event stream is associated with.
+        """
+        return self.stream.get_connection()
+
+    async def iterate(self):
         """
         Returns a new async iterator for all recorded events and new events as they are received.
         """
-        for item in self.stream.events:
+        async for item in self.stream.iterate():
             yield item
-
-        while True:
-            yield await self.stream.next

@@ -29,19 +29,31 @@ class Chrome(IChrome):
     port: int = 9222
 
     """
+    The command to start chrome. This can be coupled to the underlying OS.
+    """
+    start_chrome_command: str = 'start chrome'
+
+    """
     The list of allowed origins that can connect to the chrome instance.
     """
     allow_origins: str = '*'
 
     @classmethod
     def init(
-        cls,
-        host: str = '127.0.0.1',
-        port: int = 9222,
+            cls,
+            host: str = '127.0.0.1',
+            port: int = 9222,
+            allow_origins: str = '*',
+            start_chrome_command: str = 'start chrome'
     ):
+        """
+        Initializer method for the Chrome classes
+        """
         return cls(
             host=host,
-            port=port
+            port=port,
+            allow_origins=allow_origins,
+            start_chrome_command=start_chrome_command
         )
 
     def _init_target(self, target: dict):
@@ -79,12 +91,12 @@ class Chrome(IChrome):
         Starts chrome through the command line.
         """
         commands = [
-            f'start chrome',
+            self.start_chrome_command,
             f'--remote-debugging-port={self.port}',
-            f'--remote-allow-origins={self.allow_origins}'
+            f'--remote-allow-origins={self.allow_origins}',
+            *(extra_cli_args or [])
         ]
 
-        commands.extend(extra_cli_args or [])
         command = ' '.join(commands)
 
         subprocess.run(command, shell=True)
@@ -123,6 +135,18 @@ class Chrome(IChrome):
             condition
         )
 
+    def get_host(self) -> str:
+        """
+        Returns the host of the chrome instance
+        """
+        return self.host
+
+    def get_port(self) -> int:
+        """
+        Returns the port of the chrome instance
+        """
+        return self.port
+
     def get_targets(self) -> list[ITarget]:
         """
         Fetches a list of all the targets.
@@ -143,14 +167,14 @@ class Chrome(IChrome):
         for target in response.json():
             yield self._init_target(target)
 
-    def open_tab(self, tab_url: str = None) -> ITarget:
+    def open_tab(self, url: str = None) -> ITarget:
         """
         Opens a new tab.
         """
         url = f'http://{self.host}:{self.port}/json/new'
 
-        if tab_url:
-            url += f'?{tab_url}'
+        if url:
+            url += f'?{url}'
 
         response = requests.put(url)
         response.raise_for_status()

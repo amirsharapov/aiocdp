@@ -21,11 +21,11 @@ class TestConnection(TestCase):
                 EventStreamReader
             )
             self.assertFalse(
-                stream.is_closed
+                stream.is_closed()
             )
 
         self.assertTrue(
-            stream.is_closed
+            stream.is_closed()
         )
 
         stream = connection.open_stream(['lol'])
@@ -36,5 +36,5 @@ class TestConnection(TestCase):
             EventStreamReader
         )
         self.assertTrue(
-            stream.is_closed
+            stream.is_closed()
         )

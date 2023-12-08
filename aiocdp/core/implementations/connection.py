@@ -94,7 +94,6 @@ class Connection(IConnection):
         """
         return cls(ws_url)
 
-    @property
     def is_connected(self):
         """
         Public readonly access to the connection status.
@@ -174,7 +173,7 @@ class Connection(IConnection):
         """
         Connects to the websocket and starts the listener task.
         """
-        if self.is_connected:
+        if self.is_connected():
             return
 
         loop = asyncio.get_event_loop()
@@ -188,7 +187,7 @@ class Connection(IConnection):
         """
         Disconnects from the websocket and cancels the listener task.
         """
-        if not self.is_connected:
+        if not self.is_connected():
             return
 
         await self.ws.close()

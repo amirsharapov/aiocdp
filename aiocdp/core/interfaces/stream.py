@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import TypeVar, TYPE_CHECKING, Generator
+from typing import TypeVar, TYPE_CHECKING, Generator, Iterator, AsyncIterator
 
 if TYPE_CHECKING:
     from aiocdp.core.interfaces.connection import IConnection
@@ -23,14 +23,6 @@ class IEventStream(ABC):
     ) -> 'IEventStream':
         """
         Initializer method for the IEventStream class.
-        """
-        pass
-
-    @property
-    @abstractmethod
-    def is_closed(self) -> bool:
-        """
-        Returns whether the stream is closed.
         """
         pass
 
@@ -77,6 +69,20 @@ class IEventStream(ABC):
         pass
 
     @abstractmethod
+    def is_closed(self) -> bool:
+        """
+        Returns whether the stream is closed.
+        """
+        pass
+
+    @abstractmethod
+    def iterate(self) -> AsyncIterator[_T]:
+        """
+        Returns an async iterator for all recorded events and new events as they are received.
+        """
+        pass
+
+    @abstractmethod
     def write(self, event: '_T'):
         """
         Writes an event to the stream.
@@ -88,30 +94,6 @@ class IEventStreamReader(ABC):
     """
     Read only interface to an event stream.
     """
-
-    @property
-    @abstractmethod
-    def events_to_listen(self) -> list[str]:
-        """
-        Public readonly access to the CDP events to listen for. Provided by the stream.
-        """
-        pass
-
-    @property
-    @abstractmethod
-    def connection(self) -> 'IConnection':
-        """
-        Public readonly access to the `Connection` instance. Provided by the stream.
-        """
-        pass
-
-    @property
-    @abstractmethod
-    def is_closed(self) -> bool:
-        """
-        Public readonly access to the closed status of the stream. Provided by the stream.
-        """
-        pass
 
     @abstractmethod
     def __enter__(self):
@@ -135,7 +117,28 @@ class IEventStreamReader(ABC):
         pass
 
     @abstractmethod
-    async def iterate(self) -> Generator[_T, None]:
+    def get_connection(self) -> 'IConnection':
+        """
+        Returns the connection this event stream is associated with.
+        """
+        pass
+
+    @abstractmethod
+    def get_events_to_listen(self):
+        """
+        Returns a list of events to listen to.
+        """
+        pass
+
+    @abstractmethod
+    def is_closed(self) -> bool:
+        """
+        Returns whether the stream is closed.
+        """
+        pass
+
+    @abstractmethod
+    def iterate(self) -> AsyncIterator[_T]:
         """
         Returns an async iterator for all recorded events and new events as they are received.
         """

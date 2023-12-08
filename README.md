@@ -12,16 +12,65 @@ To be the underlying engine for any projects using Chrome DevTools Protocol. Thi
 
 ## Usage
 
-TBD
+### Starting Chrome
+
+The following will launch chrome through the command line.
+
+```python
+import asyncio
+
+from aiocdp import Chrome
+
+
+async def setup_chrome():
+    chrome = Chrome.init(
+        host="localhost",
+        port=9222,
+    )
+    
+    chrome.start()
+    
+    # run your logic here
+    
+
+if __name__ == "__main__":
+    asyncio.run(setup_chrome())
+```
+
+_**NOTE:** If you had chrome open previously, you may run into connection issues.
+If this is the case, close your tabs, run the script to relaunch chrome, and then reopen your tabs._
+
+### Opening a tab
+
+```python
+import asyncio
+
+from aiocdp import Chrome
+
+async def setup_tabs():
+    chrome = Chrome.init(
+        host="localhost",
+        port=9222,
+    )
+    
+    chrome.start()
+
+    # opens a new tab. Return aiocdp.ITarget instance.
+    target = chrome.open_tab("https://www.google.com")
+    target = chrome.open_tab("https://www.yahoo.com")
+    target = chrome.open_tab("https://www.github.com/amirdevstudio/aiocdp")
+    
+    # opens a new tab. The parameter is optional
+    target = chrome.open_tab()
+    
+
+if __name__ == "__main__":
+    asyncio.run(setup_tabs())
+```
 
 ## Package
 
 You can find the AIOCDP package published to pypi.org/project/aiocdp
-
-### Organization
-
-- `aiocdp` - Root package. Contains core and utility modules
-- `aiocdp.core` - Core functionality for communicating with the Chrome DevTools Protocol
 
 # For Developers
 

@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Coroutine, Any
 
 from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
 
@@ -16,7 +17,6 @@ class IConnection(ABC):
         """
         pass
 
-    @property
     @abstractmethod
     def is_connected(self) -> bool:
         """
@@ -30,15 +30,17 @@ class IConnection(ABC):
         """
         pass
 
-    async def connect(self):
+    def connect(self) -> Coroutine[Any, None, None]:
         """
-        Connects to the websocket and starts the listener task.
+        Connects to the websocket and starts the listener task. Returns a future that resolves when the connection is
+        established.
         """
         pass
 
-    async def disconnect(self):
+    def disconnect(self) -> Coroutine[Any, None, None]:
         """
-        Disconnects from the websocket and cancels the listener task.
+        Disconnects from the websocket and cancels the listener task. Returns a future that resolves when the
+        connection is closed.
         """
         pass
 
@@ -54,8 +56,8 @@ class IConnection(ABC):
         """
         pass
 
-    async def send(self, method: str, params: dict):
+    def send(self, method: str, params: dict) -> Coroutine[Any, None, None]:
         """
-        Sends a message to the websocket.
+        Sends a message to the websocket. Returns a future that resolves when the message is sent.
         """
         pass

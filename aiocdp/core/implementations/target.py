@@ -51,6 +51,12 @@ class TargetInfo(ITargetInfo):
             favicon_url=favicon_url
         )
 
+    def get_id(self):
+        """
+        Returns the id of the target.
+        """
+        return self.id
+
 
 @dataclass
 class Target(ITarget):
@@ -86,28 +92,11 @@ class Target(ITarget):
             info=info
         )
 
-    @property
-    def is_connected(self):
-        """
-        Public readonly access to the connection status.
-        """
-        return self._connection.is_connected
-
-    @property
-    def ws_url(self):
-        """
-        A readonly property Web socket url.
-        """
-        return f'ws://{self.chrome.host}:{self.chrome.port}/devtools/page/{self.info.id}'
-
     def __post_init__(self):
         """
         Assigns the connection to the target.
         """
-        self._connection = Connection(self.ws_url)
-
-    def get_info(self):
-        return self.info
+        self._connection = Connection(self.get_ws_url())
 
     async def close_session(self, session: 'Session'):
         """
@@ -132,6 +121,29 @@ class Target(ITarget):
         Disconnects from the target. Calls `Connection.disconnect`.
         """
         return await self._connection.disconnect()
+
+    def get_info(self):
+        """
+        Returns the associated ITargetInfo implementation
+        """
+        return self.info
+
+    def get_ws_url(self):
+        """
+        Returns the associated Web Socket URL
+        """
+        host = self.chrome.get_host()
+        port = self.chrome.get_port()
+
+        target_id = self.info.get_id()
+
+        return f'ws://{host}:{port}/devtools/page/{target_id}'
+
+    def is_connected(self) -> bool:
+        """
+        Returns whether the target is connected. Calls `Connection.is_connected`.
+        """
+        return self._connection.is_connected()
 
     def open_stream(self, events: list[str]):
         """

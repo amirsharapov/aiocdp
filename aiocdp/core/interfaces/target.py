@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Coroutine
 
+from aiocdp.core.interfaces.session import ISession
 from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
 
 if TYPE_CHECKING:
@@ -28,6 +29,13 @@ class ITargetInfo(ABC):
         """
         pass
 
+    @abstractmethod
+    def get_id(self) -> str:
+        """
+        Returns the id of the target.
+        """
+        pass
+
 
 class ITarget(ABC):
     """
@@ -47,16 +55,51 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def close_stream(self, stream: 'IEventStream'):
+    def close_session(self, session: 'ISession') -> Coroutine[Any, None, None]:
+        """
+        Closes the given session.
+        """
+        pass
+
+    @abstractmethod
+    def close_stream(self, stream: 'IEventStream') -> None:
         """
         Closes the given stream.
         """
         pass
 
     @abstractmethod
-    def get_info(self):
+    def connect(self) -> Coroutine[Any, None, None]:
+        """
+        Connects to the target.
+        """
+        pass
+
+    @abstractmethod
+    def disconnect(self) -> Coroutine[Any, None, None]:
+        """
+        Disconnects from the target.
+        """
+        pass
+
+    @abstractmethod
+    def get_info(self) -> 'ITargetInfo':
         """
         Returns the associated ITargetInfo implementation
+        """
+        pass
+
+    @abstractmethod
+    def get_ws_url(self) -> str:
+        """
+        Returns the websocket url of the target.
+        """
+        pass
+
+    @abstractmethod
+    def is_connected(self) -> bool:
+        """
+        Returns whether the target is connected.
         """
         pass
 
@@ -68,14 +111,21 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def send(self, method, params):
+    def open_session(self) -> 'ISession':
+        """
+        Opens a session for the target.
+        """
+        pass
+
+    @abstractmethod
+    def send(self, method, params) -> Coroutine[Any, None, None]:
         """
         Sends a message to the target.
         """
         pass
 
     @abstractmethod
-    def send_and_await_response(self, method, params):
+    def send_and_await_response(self, method, params) -> Coroutine[Any, None, None]:
         """
         Sends a message to the target and awaits a response.
         """
