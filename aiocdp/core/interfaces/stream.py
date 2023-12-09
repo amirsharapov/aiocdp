@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import TypeVar, TYPE_CHECKING, AsyncIterator
+from typing import TypeVar, TYPE_CHECKING, AsyncIterator, Iterator
 
 if TYPE_CHECKING:
     from aiocdp.core.interfaces.connection import IConnection
@@ -83,6 +83,13 @@ class IEventStream(ABC):
         pass
 
     @abstractmethod
+    def iterate_already_recorded(self) -> Iterator[_T]:
+        """
+        Returns an async iterator for all recorded events.
+        """
+        pass
+
+    @abstractmethod
     def write(self, event: '_T'):
         """
         Writes an event to the stream.
@@ -141,5 +148,12 @@ class IEventStreamReader(ABC):
     def iterate(self) -> AsyncIterator[_T]:
         """
         Returns an async iterator for all recorded events and new events as they are received.
+        """
+        pass
+
+    @abstractmethod
+    def iterate_already_recorded(self) -> Iterator[_T]:
+        """
+        Returns an async iterator for all recorded events.
         """
         pass

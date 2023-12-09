@@ -1,6 +1,6 @@
 import asyncio
 from dataclasses import dataclass, field
-from typing import TypeVar, Generator
+from typing import TypeVar, Generator, AsyncIterator, Iterator
 
 from aiocdp.core.interfaces.connection import IConnection
 from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
@@ -131,6 +131,13 @@ class EventStream(IEventStream):
         while True:
             yield await self.next
 
+    def iterate_already_recorded(self) -> Iterator[_T]:
+        """
+        Returns an async iterator for all recorded events.
+        """
+        for item in self.events:
+            yield item
+
     def write(self, item: _T):
         """
         Writes an item to the stream. Responsible for resolving futures.
@@ -192,3 +199,9 @@ class EventStreamReader(IEventStreamReader):
         """
         async for item in self.stream.iterate():
             yield item
+
+    def iterate_already_recorded(self) -> Iterator[_T]:
+        """
+        Returns an async iterator for all recorded events.
+        """
+        return self.stream.iterate_already_recorded()
