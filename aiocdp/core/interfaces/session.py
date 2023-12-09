@@ -1,13 +1,27 @@
 from abc import ABC, abstractmethod
-from typing import Any, Coroutine
+from typing import Any, Coroutine, TYPE_CHECKING
 
 from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
+
+if TYPE_CHECKING:
+    from aiocdp.core.interfaces.target import ITarget
 
 
 class ISession(ABC):
     """
     Represents a session with a target.
     """
+
+    @classmethod
+    @abstractmethod
+    def init(
+        cls,
+        target: 'ITarget'
+    ):
+        """
+        Initializer method for the ISession class
+        """
+        pass
 
     @abstractmethod
     def __aenter__(self):

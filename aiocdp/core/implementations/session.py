@@ -25,6 +25,18 @@ class Session(ISession):
         init=False
     )
 
+    @classmethod
+    def init(
+        cls,
+        target: ITarget
+    ):
+        """
+        Initializer method for the ISession class
+        """
+        return cls(
+            target=target
+        )
+
     async def __aenter__(self):
         """
         Allows this object to be used as a context manager.

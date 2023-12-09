@@ -1,5 +1,7 @@
 from dataclasses import dataclass, field
 
+from aiocdp.ioc import get_class
+from aiocdp.core.interfaces.session import ISession
 from aiocdp.core.interfaces.connection import IConnection
 from aiocdp.core.interfaces.target import ITarget
 from aiocdp.core.interfaces.chrome import IChrome
@@ -155,7 +157,12 @@ class Target(ITarget):
         """
         Opens a session with the target.
         """
-        session = Session(self)
+        session_class = get_class(
+            ISession,
+            Session
+        )
+
+        session = session_class.init(self)
         await session.open()
 
         return session
