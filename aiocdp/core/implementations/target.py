@@ -98,7 +98,12 @@ class Target(ITarget):
         """
         Assigns the connection to the target.
         """
-        self._connection = Connection(self.get_ws_url())
+        connection_class = get_class(
+            IConnection,
+            Connection
+        )
+
+        self._connection = connection_class.init(self.get_ws_url())
 
     async def close_session(self, session: 'Session'):
         """
