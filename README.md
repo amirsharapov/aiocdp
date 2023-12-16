@@ -99,3 +99,11 @@ This library should limit the dependencies it has on the CDP unless it's a core 
 - `aiocdp.core.session.TargetSession` -> Represents a session to a specific target.
 - `aiocdp.core.stream.EventStream` -> Represents a stream of events from a connection.
 - `aiocdp.core.stream.EventStreamReader` -> Readonly reader to an event stream.
+
+## Publishing to PyPi
+
+1. Update the version in `setup.py`
+2. Run `python -m pip install build twine`
+3. Run `python -m build`
+4. Run `twine check dist/*`
+5. Run `twine upload dist/aiocdp-<MAJOR>.<MINOR>.<PATCH>*`
