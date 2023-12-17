@@ -98,7 +98,8 @@ class Target(ITarget):
         """
         Opens a session with the target.
         """
-        return await self.connect()
+        await self.connect()
+        return self
 
     async def __aexit__(self, exc_type, exc_value, traceback):
         """
