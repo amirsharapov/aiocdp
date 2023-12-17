@@ -94,6 +94,18 @@ class Target(ITarget):
             info=info
         )
 
+    async def __aenter__(self):
+        """
+        Opens a session with the target.
+        """
+        return await self.connect()
+
+    async def __aexit__(self, exc_type, exc_value, traceback):
+        """
+        Closes the session.
+        """
+        await self.disconnect()
+
     def __post_init__(self):
         """
         Assigns the connection to the target.

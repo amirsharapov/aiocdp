@@ -56,6 +56,20 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
+    def __aenter__(self):
+        """
+        Allows this object to be used as a context manager.
+        """
+        pass
+
+    @abstractmethod
+    def __aexit__(self, exc_type, exc_value, traceback):
+        """
+        Closes this target when used as a context manager.
+        """
+        pass
+
+    @abstractmethod
     def close_session(self, session: 'ISession') -> Coroutine[None, None, Any]:
         """
         Closes the given session.
