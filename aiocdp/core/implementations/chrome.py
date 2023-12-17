@@ -86,9 +86,9 @@ class Chrome(IChrome):
 
         return target
 
-    def start(self, extra_cli_args: list[str] = None):
+    def start(self, extra_cli_args: list[str] = None, popen_kwargs: dict = None):
         """
-        Starts chrome through the command line.
+        Starts chrome through the command line. Returns subprocess.Popen object.
         """
         commands = [
             self.start_chrome_command,
@@ -99,9 +99,10 @@ class Chrome(IChrome):
 
         command = ' '.join(commands)
 
-        subprocess.run(command, shell=True)
-
-        return self
+        return subprocess.Popen(
+            command,
+            **(popen_kwargs or {})
+        )
 
     def close_tab(self, target_id: str):
         """
