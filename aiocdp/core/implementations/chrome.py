@@ -1,6 +1,6 @@
 import subprocess
 from dataclasses import dataclass
-from typing import Callable, Any
+from typing import Callable, Any, Self
 
 import requests
 
@@ -28,32 +28,18 @@ class Chrome(IChrome[subprocess.Popen]):
     """
     port: int = 9222
 
-    """
-    The command to start chrome. This can be coupled to the underlying OS.
-    """
-    start_chrome_command: str = 'start chrome'
-
-    """
-    The list of allowed origins that can connect to the chrome instance.
-    """
-    allow_origins: str = '*'
-
     @classmethod
     def init(
             cls,
             host: str = '127.0.0.1',
             port: int = 9222,
-            allow_origins: str = '*',
-            start_chrome_command: str = 'start chrome'
-    ):
+    ) -> 'Chrome':
         """
         Initializer method for the Chrome classes
         """
         return cls(
             host=host,
-            port=port,
-            allow_origins=allow_origins,
-            start_chrome_command=start_chrome_command
+            port=port
         )
 
     def _init_target(self, target: dict):
@@ -98,7 +84,6 @@ class Chrome(IChrome[subprocess.Popen]):
         commands = [
             start_command,
             f'--remote-debugging-port={self.port}',
-            f'--remote-allow-origins={self.allow_origins}',
             *(extra_cli_args or [])
         ]
 
