@@ -13,7 +13,7 @@ from aiocdp.utils import UNDEFINED
 
 
 @dataclass
-class Chrome(IChrome):
+class Chrome(IChrome[subprocess.Popen]):
     """
     Represents a chrome instance.
     """
@@ -86,12 +86,17 @@ class Chrome(IChrome):
 
         return target
 
-    def start(self, extra_cli_args: list[str] = None, popen_kwargs: dict = None):
+    def start(
+            self,
+            start_command: str = 'start chrome',
+            extra_cli_args: list[str] = None,
+            popen_kwargs: dict = None
+    ) -> subprocess.Popen:
         """
         Starts chrome through the command line. Returns subprocess.Popen object.
         """
         commands = [
-            self.start_chrome_command,
+            start_command,
             f'--remote-debugging-port={self.port}',
             f'--remote-allow-origins={self.allow_origins}',
             *(extra_cli_args or [])

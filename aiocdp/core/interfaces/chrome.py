@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
-from typing import Callable, Any, Generator, Iterator
+from typing import Callable, Any, Generator, Iterator, TypeVar, Generic
 
 from aiocdp.core.interfaces.target import ITarget
 from aiocdp.utils import UNDEFINED
 
+_ProcessT = TypeVar('_ProcessT')
 
-class IChrome(ABC):
+
+class IChrome(ABC, Generic[_ProcessT]):
     """
     Represents an instance of a Chrome Browser
     """
@@ -23,9 +25,13 @@ class IChrome(ABC):
         pass
 
     @abstractmethod
-    def start(self, extra_cli_args: list[str] = None) -> None:
+    def start(
+            self,
+            command: str = None,
+            extra_cli_args: list[str] = None
+    ) -> _ProcessT:
         """
-        Starts the chrome instance
+        Starts the chrome instance and returns the process.
         """
         pass
 
