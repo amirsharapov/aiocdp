@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 import websockets.client as websockets
+from websockets import ConnectionClosedError
 
 from aiocdp import logging
 from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
@@ -156,7 +157,13 @@ class Connection(IConnection):
             self.ws_connected.set_result(True)
 
             while True:
-                message = await ws.recv()
+                try:
+                    message = await ws.recv()
+
+                except ConnectionClosedError as e:
+                    print(f'Connection closed. Exception: {str(e)}')
+                    break
+
                 await self._handle_message(message)
 
     def close_stream(
