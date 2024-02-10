@@ -100,6 +100,11 @@ This library should limit the dependencies it has on the CDP unless it's a core 
 - `aiocdp.core.stream.EventStream` -> Represents a stream of events from a connection.
 - `aiocdp.core.stream.EventStreamReader` -> Readonly reader to an event stream.
 
+## TODO:
+
+- Setup proper typehints for setting subclasses. (use a type var in a shared module)
+- documentation
+
 ## Publishing to PyPi
 
 1. Update the version in `setup.py`

@@ -59,6 +59,36 @@ class TargetInfo(ITargetInfo):
         """
         return self.id
 
+    def get_title(self) -> str:
+        """
+        Returns the title of the target.
+        """
+        return self.title
+
+    def get_description(self) -> str:
+        """
+        Returns the description of the target.
+        """
+        return self.description
+
+    def get_url(self) -> str:
+        """
+        Returns the url of the target.
+        """
+        return self.url
+
+    def get_type(self) -> str:
+        """
+        Returns the type of the target.
+        """
+        return self.type
+
+    def get_web_socket_debugger_url(self) -> str:
+        """
+        Returns the web socket debugger url of the target.
+        """
+        return self.web_socket_debugger_url
+
 
 @dataclass
 class Target(ITarget):
@@ -80,6 +110,11 @@ class Target(ITarget):
     """
     info: 'ITargetInfo'
 
+    """
+    The kwargs to pass to self._connection.connect()
+    """
+    connection_kwargs: dict
+
     @classmethod
     def init(
         cls,
@@ -91,7 +126,8 @@ class Target(ITarget):
         """
         return cls(
             chrome=chrome,
-            info=info
+            info=info,
+            connection_kwargs={}
         )
 
     async def __aenter__(self):
@@ -134,7 +170,9 @@ class Target(ITarget):
         """
         Connects to the target. Calls `Connection.connect`.
         """
-        return await self._connection.connect()
+        return await self._connection.connect(
+            **self.connection_kwargs
+        )
 
     async def disconnect(self):
         """
@@ -150,7 +188,7 @@ class Target(ITarget):
 
     def get_ws_url(self):
         """
-        Returns the associated Web Socket URL
+        Returns the associated Web Socket URL based on the parent chrome instance and the target info.
         """
         host = self.chrome.get_host()
         port = self.chrome.get_port()

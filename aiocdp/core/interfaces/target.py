@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
-from asyncio import Future
-from typing import TYPE_CHECKING, Any, Coroutine
+from typing import TYPE_CHECKING, Any
 
 from aiocdp.core.interfaces.session import ISession
 from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
@@ -37,6 +36,41 @@ class ITargetInfo(ABC):
         """
         pass
 
+    @abstractmethod
+    def get_title(self) -> str:
+        """
+        Returns the title of the target.
+        """
+        pass
+
+    @abstractmethod
+    def get_description(self) -> str:
+        """
+        Returns the description of the target.
+        """
+        pass
+
+    @abstractmethod
+    def get_url(self) -> str:
+        """
+        Returns the url of the target.
+        """
+        pass
+
+    @abstractmethod
+    def get_type(self) -> str:
+        """
+        Returns the type of the target.
+        """
+        pass
+
+    @abstractmethod
+    def get_web_socket_debugger_url(self) -> str:
+        """
+        Returns the web socket debugger url of the target.
+        """
+        pass
+
 
 class ITarget(ABC):
     """
@@ -70,7 +104,7 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def close_session(self, session: 'ISession') -> Coroutine[None, None, Any]:
+    async def close_session(self, session: 'ISession'):
         """
         Closes the given session.
         """
@@ -84,14 +118,14 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def connect(self) -> Coroutine[None, None, Any]:
+    async def connect(self) -> None:
         """
         Connects to the target.
         """
         pass
 
     @abstractmethod
-    def disconnect(self) -> Coroutine[None, None, Any]:
+    async def disconnect(self) -> None:
         """
         Disconnects from the target.
         """
@@ -126,21 +160,21 @@ class ITarget(ABC):
         pass
 
     @abstractmethod
-    def open_session(self) -> Coroutine[None, None, 'ISession']:
+    async def open_session(self) -> 'ISession':
         """
         Opens a session for the target.
         """
         pass
 
     @abstractmethod
-    def send(self, method, params) -> Coroutine[None, None, Any]:
+    async def send(self, method, params) -> Any:
         """
         Sends a message to the target.
         """
         pass
 
     @abstractmethod
-    def send_and_await_response(self, method, params) -> Coroutine[None, None, Any]:
+    async def send_and_await_response(self, method, params) -> dict:
         """
         Sends a message to the target and awaits a response.
         """

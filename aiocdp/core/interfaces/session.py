@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, Coroutine, TYPE_CHECKING
+from typing import Any, TYPE_CHECKING
 
 from aiocdp.core.interfaces.stream import IEventStream, IEventStreamReader
 
@@ -24,21 +24,21 @@ class ISession(ABC):
         pass
 
     @abstractmethod
-    def __aenter__(self):
+    async def __aenter__(self):
         """
         Allows this object to be used as an async context manager.
         """
         pass
 
     @abstractmethod
-    def __aexit__(self, exc_type, exc_value, traceback):
+    async def __aexit__(self, exc_type, exc_value, traceback):
         """
         Closes this session when used as an async context manager.
         """
         pass
 
     @abstractmethod
-    def close(self) -> Coroutine[None, None, Any]:
+    async def close(self) -> None:
         """
         Closes the session by detaching from the target.
         """
@@ -52,7 +52,7 @@ class ISession(ABC):
         pass
 
     @abstractmethod
-    def open(self) -> Coroutine[None, None, Any]:
+    async def open(self):
         """
         Opens the session by attaching to the target.
         """
@@ -66,14 +66,14 @@ class ISession(ABC):
         pass
 
     @abstractmethod
-    def send(self, method: str, params: dict = None) -> Coroutine[None, None, Any]:
+    async def send(self, method: str, params: dict = None) -> Any:
         """
         Sends a message to the target. Calls `self.target.send`.
         """
         pass
 
     @abstractmethod
-    def send_and_await_response(self, method: str, params: dict = None) -> Coroutine[None, None, Any]:
+    async def send_and_await_response(self, method: str, params: dict = None) -> dict:
         """
         Sends a message to the target and awaits a response. Calls `self.target.send_and_await_response`
         """

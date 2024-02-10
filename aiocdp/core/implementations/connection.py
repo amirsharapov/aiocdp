@@ -148,11 +148,13 @@ class Connection(IConnection):
         except Exception as e:
             future.set_exception(e)
 
-    async def _listen_async(self):
+    async def _listen_async(self, ws_connect_kwargs: dict = None):
         """
         Listens for messages from the websocket.
         """
-        async with websockets.connect(self.ws_url) as ws:
+        ws_connect_kwargs = ws_connect_kwargs or {}
+
+        async with websockets.connect(self.ws_url, **ws_connect_kwargs) as ws:
             self.ws = ws
             self.ws_connected.set_result(True)
 
@@ -176,7 +178,7 @@ class Connection(IConnection):
         for event in stream.get_events_to_listen():
             self.streams[event].remove(stream)
 
-    async def connect(self):
+    async def connect(self, ws_connect_kwargs: dict = None):
         """
         Connects to the websocket and starts the listener task.
         """
@@ -186,7 +188,11 @@ class Connection(IConnection):
         loop = asyncio.get_event_loop()
 
         self.ws_connected = loop.create_future()
-        self.ws_listener = loop.create_task(self._listen_async())
+        self.ws_listener = loop.create_task(
+            self._listen_async(
+                ws_connect_kwargs=ws_connect_kwargs
+            )
+        )
 
         await self.ws_connected
 

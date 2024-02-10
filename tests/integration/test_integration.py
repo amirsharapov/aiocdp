@@ -10,9 +10,11 @@ logging.enable_logging(['*'])
 class Tests(TestCase):
     def test_open_tab(self):
         async def _():
-            chrome = Chrome().start()
+            chrome = Chrome()
+            chrome.start()
 
             time.sleep(1)
+
             chrome.open_tab('https://yahoo.com')
 
             time.sleep(1)
@@ -33,7 +35,15 @@ class Tests(TestCase):
 
     def test(self):
         async def _():
-            chrome = Chrome().start()
+            chrome = Chrome()
+            chrome.start(
+                extra_cli_args=[
+                    '--guest'
+                ],
+                popen_kwargs={
+                    'shell': True
+                }
+            )
 
             time.sleep(1)
 
