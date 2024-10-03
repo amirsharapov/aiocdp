@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aiocdp"
-version = "1.1.6"
-description = "High performance, asynchronous python module for programatic access to Chrome DevTools Protocol."
+version = "1.1.7"
+description = "Asynchronous python module for programatic access to Chrome DevTools Protocol."
 readme = "README.md"
 authors = [
     {name = "Amir Sharapov", email = "amirsharapov.personal@gmail.com" }
@@ -29,4 +29,4 @@ dependencies = [
 requires-python = ">=3.9"
 
 [project.urls]
-Homepage = "https://github.com/amirdevstudio/aiocdp"
+Homepage = "https://github.com/amirsharapov/aiocdp"
