@@ -1,5 +1,7 @@
+import os
 import subprocess
 from dataclasses import dataclass
+from os import popen
 from typing import Callable, Any, Self
 
 import requests
@@ -74,13 +76,20 @@ class Chrome(IChrome[subprocess.Popen]):
 
     def start(
             self,
-            start_command: str = 'start chrome',
+            start_command: str = None,
             extra_cli_args: list[str] = None,
             popen_kwargs: dict = None
     ) -> subprocess.Popen:
         """
         Starts chrome through the command line. Returns subprocess.Popen object.
         """
+        if os.name == 'nt':
+            start_command = 'start chrome' if start_command is None else start_command
+
+        else:
+            start_command = 'google-chrome' if start_command is None else start_command
+            popen_kwargs = popen_kwargs or {'shell': True}
+
         commands = [
             start_command,
             f'--remote-debugging-port={self.port}',
@@ -158,7 +167,7 @@ class Chrome(IChrome[subprocess.Popen]):
         for target in response.json():
             yield self._init_target(target)
 
-    def open_tab(self, url: str = None) -> ITarget:
+    def new_tab(self, url: str = None) -> ITarget:
         """
         Opens a new tab.
         """

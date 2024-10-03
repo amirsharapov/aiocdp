@@ -16,8 +16,8 @@ class IChrome(ABC, Generic[_ProcessT]):
     @abstractmethod
     def init(
         cls,
-        host: str,
-        port: int,
+        host: str = None,
+        port: int = None,
     ) -> 'IChrome':
         """
         Initializer method for the Chrome classes
@@ -27,8 +27,9 @@ class IChrome(ABC, Generic[_ProcessT]):
     @abstractmethod
     def start(
             self,
-            command: str = None,
-            extra_cli_args: list[str] = None
+            start_command: str = None,
+            extra_cli_args: list[str] = None,
+            popen_kwargs: dict[str, Any] = None
     ) -> _ProcessT:
         """
         Starts the chrome instance and returns the process.
@@ -83,7 +84,7 @@ class IChrome(ABC, Generic[_ProcessT]):
         pass
 
     @abstractmethod
-    def open_tab(self, url: str = None) -> ITarget:
+    def new_tab(self, url: str = None) -> ITarget:
         """
         Opens a new tab.
         """

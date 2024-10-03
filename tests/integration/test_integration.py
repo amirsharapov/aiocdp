@@ -13,11 +13,11 @@ class Tests(TestCase):
             chrome = Chrome()
             chrome.start()
 
-            time.sleep(1)
+            time.sleep(2)
 
-            chrome.open_tab('https://yahoo.com')
+            chrome.new_tab('https://yahoo.com')
 
-            time.sleep(1)
+            time.sleep(2)
 
             targets = chrome.get_targets()
             target = targets[0]

@@ -47,22 +47,23 @@ import asyncio
 
 from aiocdp import Chrome
 
+
 async def setup_tabs():
     chrome = Chrome.init(
         host="localhost",
         port=9222,
     )
-    
+
     chrome.start()
 
     # opens a new tab. Return aiocdp.ITarget instance.
-    target = chrome.open_tab("https://www.google.com")
-    target = chrome.open_tab("https://www.yahoo.com")
-    target = chrome.open_tab("https://www.github.com/amirdevstudio/aiocdp")
-    
+    target = chrome.new_tab("https://www.google.com")
+    target = chrome.new_tab("https://www.yahoo.com")
+    target = chrome.new_tab("https://www.github.com/amirdevstudio/aiocdp")
+
     # opens a new tab. The parameter is optional
-    target = chrome.open_tab()
-    
+    target = chrome.new_tab()
+
 
 if __name__ == "__main__":
     asyncio.run(setup_tabs())
