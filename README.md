@@ -108,7 +108,7 @@ This library should limit the dependencies it has on the CDP unless it's a core 
 
 ## Publishing to PyPi
 
-1. Update the version in `setup.py`
+1. Update the version in `pyproject.toml`
 2. Run `python -m pip install build twine`
 3. Run `python -m build`
 4. Run `twine check dist/*`

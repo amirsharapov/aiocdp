@@ -227,6 +227,8 @@ class Target(ITarget):
         """
         Sends a message to the target. Calls `Connection.send`.
         """
+        await self._connection.connect()
+
         return await self._connection.send(
             method,
             params or {}

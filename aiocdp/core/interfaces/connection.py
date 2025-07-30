@@ -29,7 +29,7 @@ class IConnection(ABC):
         """
         pass
 
-    async def connect(self, ws_connect_kwargs: dict) -> None:
+    async def connect(self, ws_connect_kwargs: dict = None) -> None:
         """
         Connects to the websocket and starts the listener task. Returns a future that resolves when the connection is
         established.
